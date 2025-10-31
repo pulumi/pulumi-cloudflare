@@ -8,6 +8,38 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleAccountDnsSettings = new cloudflare.AccountDnsSettings("example_account_dns_settings", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     zoneDefaults: {
+ *         flattenAllCnames: false,
+ *         foundationDns: false,
+ *         internalDns: {
+ *             referenceZoneId: "reference_zone_id",
+ *         },
+ *         multiProvider: false,
+ *         nameservers: {
+ *             type: "cloudflare.standard",
+ *         },
+ *         nsTtl: 86400,
+ *         secondaryOverrides: false,
+ *         soa: {
+ *             expire: 604800,
+ *             minTtl: 1800,
+ *             mname: "kristina.ns.cloudflare.com",
+ *             refresh: 10000,
+ *             retry: 2400,
+ *             rname: "admin.example.com",
+ *             ttl: 3600,
+ *         },
+ *         zoneMode: "dns_only",
+ *     },
+ * });
+ * ```
  */
 export class AccountDnsSettings extends pulumi.CustomResource {
     /**

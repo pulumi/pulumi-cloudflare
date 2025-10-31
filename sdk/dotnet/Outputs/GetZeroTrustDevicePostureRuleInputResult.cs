@@ -121,7 +121,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string OsDistroRevision;
         /// <summary>
-        /// Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).
+        /// Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version. (Mac, iOS, and Linux only).
         /// </summary>
         public readonly string OsVersionExtra;
         /// <summary>

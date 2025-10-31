@@ -9,6 +9,52 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleAccountToken = new cloudflare.AccountToken("example_account_token", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     name: "readonly token",
+ *     policies: [{
+ *         effect: "allow",
+ *         permissionGroups: [
+ *             {
+ *                 id: "c8fed203ed3043cba015a93ad1616f1f",
+ *                 meta: {
+ *                     key: "key",
+ *                     value: "value",
+ *                 },
+ *             },
+ *             {
+ *                 id: "82e64a83756745bbbb1c9c2701bf816b",
+ *                 meta: {
+ *                     key: "key",
+ *                     value: "value",
+ *                 },
+ *             },
+ *         ],
+ *         resources: {
+ *             foo: "string",
+ *         },
+ *     }],
+ *     condition: {
+ *         requestIp: {
+ *             ins: [
+ *                 "123.123.123.0/24",
+ *                 "2606:4700::/32",
+ *             ],
+ *             notIns: [
+ *                 "123.123.123.100/24",
+ *                 "2606:4700:4700::/48",
+ *             ],
+ *         },
+ *     },
+ *     expiresOn: "2020-01-01T00:00:00Z",
+ *     notBefore: "2018-07-01T05:20:00Z",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

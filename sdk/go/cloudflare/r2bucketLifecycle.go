@@ -13,6 +13,61 @@ import (
 )
 
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewR2BucketLifecycle(ctx, "example_r2_bucket_lifecycle", &cloudflare.R2BucketLifecycleArgs{
+//				AccountId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				BucketName: pulumi.String("example-bucket"),
+//				Rules: cloudflare.R2BucketLifecycleRuleArray{
+//					&cloudflare.R2BucketLifecycleRuleArgs{
+//						Id: pulumi.String("Expire all objects older than 24 hours"),
+//						Conditions: &cloudflare.R2BucketLifecycleRuleConditionsArgs{
+//							Prefix: pulumi.String("prefix"),
+//						},
+//						Enabled: pulumi.Bool(true),
+//						AbortMultipartUploadsTransition: &cloudflare.R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs{
+//							Condition: &cloudflare.R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs{
+//								MaxAge: pulumi.Int(0),
+//								Type:   pulumi.String("Age"),
+//							},
+//						},
+//						DeleteObjectsTransition: &cloudflare.R2BucketLifecycleRuleDeleteObjectsTransitionArgs{
+//							Condition: &cloudflare.R2BucketLifecycleRuleDeleteObjectsTransitionConditionArgs{
+//								MaxAge: pulumi.Int(0),
+//								Type:   pulumi.String("Age"),
+//							},
+//						},
+//						StorageClassTransitions: cloudflare.R2BucketLifecycleRuleStorageClassTransitionArray{
+//							&cloudflare.R2BucketLifecycleRuleStorageClassTransitionArgs{
+//								Condition: &cloudflare.R2BucketLifecycleRuleStorageClassTransitionConditionArgs{
+//									MaxAge: pulumi.Int(0),
+//									Type:   pulumi.String("Age"),
+//								},
+//								StorageClass: pulumi.String("InfrequentAccess"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type R2BucketLifecycle struct {
 	pulumi.CustomResourceState
 

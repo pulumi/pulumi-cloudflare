@@ -3,10 +3,12 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestTargetPolicyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -38,11 +40,27 @@ public final class GetZeroTrustDexTestArgs extends com.pulumi.resources.InvokeAr
         return Optional.ofNullable(this.dexTestId);
     }
 
+    /**
+     * DEX rules targeted by this test
+     * 
+     */
+    @Import(name="targetPolicies")
+    private @Nullable Output<List<GetZeroTrustDexTestTargetPolicyArgs>> targetPolicies;
+
+    /**
+     * @return DEX rules targeted by this test
+     * 
+     */
+    public Optional<Output<List<GetZeroTrustDexTestTargetPolicyArgs>>> targetPolicies() {
+        return Optional.ofNullable(this.targetPolicies);
+    }
+
     private GetZeroTrustDexTestArgs() {}
 
     private GetZeroTrustDexTestArgs(GetZeroTrustDexTestArgs $) {
         this.accountId = $.accountId;
         this.dexTestId = $.dexTestId;
+        this.targetPolicies = $.targetPolicies;
     }
 
     public static Builder builder() {
@@ -91,6 +109,37 @@ public final class GetZeroTrustDexTestArgs extends com.pulumi.resources.InvokeAr
          */
         public Builder dexTestId(String dexTestId) {
             return dexTestId(Output.of(dexTestId));
+        }
+
+        /**
+         * @param targetPolicies DEX rules targeted by this test
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetPolicies(@Nullable Output<List<GetZeroTrustDexTestTargetPolicyArgs>> targetPolicies) {
+            $.targetPolicies = targetPolicies;
+            return this;
+        }
+
+        /**
+         * @param targetPolicies DEX rules targeted by this test
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetPolicies(List<GetZeroTrustDexTestTargetPolicyArgs> targetPolicies) {
+            return targetPolicies(Output.of(targetPolicies));
+        }
+
+        /**
+         * @param targetPolicies DEX rules targeted by this test
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetPolicies(GetZeroTrustDexTestTargetPolicyArgs... targetPolicies) {
+            return targetPolicies(List.of(targetPolicies));
         }
 
         public GetZeroTrustDexTestArgs build() {

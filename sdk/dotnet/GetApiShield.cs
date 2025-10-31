@@ -25,10 +25,6 @@ namespace Pulumi.Cloudflare
         ///     var exampleApiShield = Cloudflare.GetApiShield.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         Properties = new[]
-        ///         {
-        ///             "auth_id_characteristics",
-        ///         },
         ///     });
         /// 
         /// });
@@ -51,10 +47,6 @@ namespace Pulumi.Cloudflare
         ///     var exampleApiShield = Cloudflare.GetApiShield.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         Properties = new[]
-        ///         {
-        ///             "auth_id_characteristics",
-        ///         },
         ///     });
         /// 
         /// });
@@ -77,10 +69,6 @@ namespace Pulumi.Cloudflare
         ///     var exampleApiShield = Cloudflare.GetApiShield.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         Properties = new[]
-        ///         {
-        ///             "auth_id_characteristics",
-        ///         },
         ///     });
         /// 
         /// });
@@ -93,18 +81,6 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetApiShieldArgs : global::Pulumi.InvokeArgs
     {
-        [Input("properties")]
-        private List<string>? _properties;
-
-        /// <summary>
-        /// Requests information about certain properties.
-        /// </summary>
-        public List<string> Properties
-        {
-            get => _properties ?? (_properties = new List<string>());
-            set => _properties = value;
-        }
-
         /// <summary>
         /// Identifier.
         /// </summary>
@@ -119,18 +95,6 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetApiShieldInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("properties")]
-        private InputList<string>? _properties;
-
-        /// <summary>
-        /// Requests information about certain properties.
-        /// </summary>
-        public InputList<string> Properties
-        {
-            get => _properties ?? (_properties = new InputList<string>());
-            set => _properties = value;
-        }
-
         /// <summary>
         /// Identifier.
         /// </summary>
@@ -153,10 +117,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Requests information about certain properties.
-        /// </summary>
-        public readonly ImmutableArray<string> Properties;
-        /// <summary>
         /// Identifier.
         /// </summary>
         public readonly string ZoneId;
@@ -167,13 +127,10 @@ namespace Pulumi.Cloudflare
 
             string id,
 
-            ImmutableArray<string> properties,
-
             string zoneId)
         {
             AuthIdCharacteristics = authIdCharacteristics;
             Id = id;
-            Properties = properties;
             ZoneId = zoneId;
         }
     }

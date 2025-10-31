@@ -15,6 +15,10 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("config")]
         public Input<Inputs.PagesProjectLatestDeploymentSourceConfigArgs>? Config { get; set; }
 
+        /// <summary>
+        /// The source control management provider.
+        /// Available values: "github", "gitlab".
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

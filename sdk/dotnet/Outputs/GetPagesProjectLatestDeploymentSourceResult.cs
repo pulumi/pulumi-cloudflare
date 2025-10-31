@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetPagesProjectLatestDeploymentSourceResult
     {
         public readonly Outputs.GetPagesProjectLatestDeploymentSourceConfigResult Config;
+        /// <summary>
+        /// The source control management provider.
+        /// Available values: "github", "gitlab".
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

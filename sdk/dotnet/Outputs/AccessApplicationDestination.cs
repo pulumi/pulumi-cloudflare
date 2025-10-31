@@ -27,6 +27,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? L4Protocol;
         /// <summary>
+        /// A MCP server id configured in ai-controls. Access will secure the MCP server if accessed through a MCP portal.
+        /// </summary>
+        public readonly string? McpServerId;
+        /// <summary>
         /// The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match.
         /// </summary>
         public readonly string? PortRange;
@@ -51,6 +55,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? l4Protocol,
 
+            string? mcpServerId,
+
             string? portRange,
 
             string? type,
@@ -62,6 +68,7 @@ namespace Pulumi.Cloudflare.Outputs
             Cidr = cidr;
             Hostname = hostname;
             L4Protocol = l4Protocol;
+            McpServerId = mcpServerId;
             PortRange = portRange;
             Type = type;
             Uri = uri;

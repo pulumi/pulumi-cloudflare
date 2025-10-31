@@ -147,7 +147,7 @@ public final class GetZeroTrustDevicePostureRuleInput {
      */
     private String osDistroRevision;
     /**
-     * @return Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).
+     * @return Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version. (Mac, iOS, and Linux only).
      * 
      */
     private String osVersionExtra;
@@ -412,7 +412,7 @@ public final class GetZeroTrustDevicePostureRuleInput {
         return this.osDistroRevision;
     }
     /**
-     * @return Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).
+     * @return Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version. (Mac, iOS, and Linux only).
      * 
      */
     public String osVersionExtra() {

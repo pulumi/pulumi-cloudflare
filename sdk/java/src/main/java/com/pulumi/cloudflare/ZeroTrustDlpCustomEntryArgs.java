@@ -10,6 +10,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ZeroTrustDlpCustomEntryArgs extends com.pulumi.resources.ResourceArgs {
@@ -44,11 +46,11 @@ public final class ZeroTrustDlpCustomEntryArgs extends com.pulumi.resources.Reso
         return this.pattern;
     }
 
-    @Import(name="profileId", required=true)
-    private Output<String> profileId;
+    @Import(name="profileId")
+    private @Nullable Output<String> profileId;
 
-    public Output<String> profileId() {
-        return this.profileId;
+    public Optional<Output<String>> profileId() {
+        return Optional.ofNullable(this.profileId);
     }
 
     private ZeroTrustDlpCustomEntryArgs() {}
@@ -115,7 +117,7 @@ public final class ZeroTrustDlpCustomEntryArgs extends com.pulumi.resources.Reso
             return pattern(Output.of(pattern));
         }
 
-        public Builder profileId(Output<String> profileId) {
+        public Builder profileId(@Nullable Output<String> profileId) {
             $.profileId = profileId;
             return this;
         }
@@ -136,9 +138,6 @@ public final class ZeroTrustDlpCustomEntryArgs extends com.pulumi.resources.Reso
             }
             if ($.pattern == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustDlpCustomEntryArgs", "pattern");
-            }
-            if ($.profileId == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustDlpCustomEntryArgs", "profileId");
             }
             return $;
         }

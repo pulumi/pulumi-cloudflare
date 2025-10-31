@@ -10,6 +10,7 @@ import com.pulumi.cloudflare.inputs.PagesProjectLatestDeploymentArgs;
 import com.pulumi.cloudflare.inputs.PagesProjectSourceArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -52,14 +53,14 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Most recent deployment to the repo.
+     * Most recent production deployment of the project.
      * 
      */
     @Import(name="canonicalDeployment")
     private @Nullable Output<PagesProjectCanonicalDeploymentArgs> canonicalDeployment;
 
     /**
-     * @return Most recent deployment to the repo.
+     * @return Most recent production deployment of the project.
      * 
      */
     public Optional<Output<PagesProjectCanonicalDeploymentArgs>> canonicalDeployment() {
@@ -112,14 +113,44 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Most recent deployment to the repo.
+     * Framework the project is using.
+     * 
+     */
+    @Import(name="framework")
+    private @Nullable Output<String> framework;
+
+    /**
+     * @return Framework the project is using.
+     * 
+     */
+    public Optional<Output<String>> framework() {
+        return Optional.ofNullable(this.framework);
+    }
+
+    /**
+     * Version of the framework the project is using.
+     * 
+     */
+    @Import(name="frameworkVersion")
+    private @Nullable Output<String> frameworkVersion;
+
+    /**
+     * @return Version of the framework the project is using.
+     * 
+     */
+    public Optional<Output<String>> frameworkVersion() {
+        return Optional.ofNullable(this.frameworkVersion);
+    }
+
+    /**
+     * Most recent deployment of the project.
      * 
      */
     @Import(name="latestDeployment")
     private @Nullable Output<PagesProjectLatestDeploymentArgs> latestDeployment;
 
     /**
-     * @return Most recent deployment to the repo.
+     * @return Most recent deployment of the project.
      * 
      */
     public Optional<Output<PagesProjectLatestDeploymentArgs>> latestDeployment() {
@@ -142,6 +173,21 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Name of the preview script.
+     * 
+     */
+    @Import(name="previewScriptName")
+    private @Nullable Output<String> previewScriptName;
+
+    /**
+     * @return Name of the preview script.
+     * 
+     */
+    public Optional<Output<String>> previewScriptName() {
+        return Optional.ofNullable(this.previewScriptName);
+    }
+
+    /**
      * Production branch of the project. Used to identify production deployments.
      * 
      */
@@ -154,6 +200,21 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> productionBranch() {
         return Optional.ofNullable(this.productionBranch);
+    }
+
+    /**
+     * Name of the production script.
+     * 
+     */
+    @Import(name="productionScriptName")
+    private @Nullable Output<String> productionScriptName;
+
+    /**
+     * @return Name of the production script.
+     * 
+     */
+    public Optional<Output<String>> productionScriptName() {
+        return Optional.ofNullable(this.productionScriptName);
     }
 
     @Import(name="source")
@@ -178,6 +239,21 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.subdomain);
     }
 
+    /**
+     * Whether the project uses functions.
+     * 
+     */
+    @Import(name="usesFunctions")
+    private @Nullable Output<Boolean> usesFunctions;
+
+    /**
+     * @return Whether the project uses functions.
+     * 
+     */
+    public Optional<Output<Boolean>> usesFunctions() {
+        return Optional.ofNullable(this.usesFunctions);
+    }
+
     private PagesProjectState() {}
 
     private PagesProjectState(PagesProjectState $) {
@@ -187,11 +263,16 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
         this.createdOn = $.createdOn;
         this.deploymentConfigs = $.deploymentConfigs;
         this.domains = $.domains;
+        this.framework = $.framework;
+        this.frameworkVersion = $.frameworkVersion;
         this.latestDeployment = $.latestDeployment;
         this.name = $.name;
+        this.previewScriptName = $.previewScriptName;
         this.productionBranch = $.productionBranch;
+        this.productionScriptName = $.productionScriptName;
         this.source = $.source;
         this.subdomain = $.subdomain;
+        this.usesFunctions = $.usesFunctions;
     }
 
     public static Builder builder() {
@@ -255,7 +336,7 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param canonicalDeployment Most recent deployment to the repo.
+         * @param canonicalDeployment Most recent production deployment of the project.
          * 
          * @return builder
          * 
@@ -266,7 +347,7 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param canonicalDeployment Most recent deployment to the repo.
+         * @param canonicalDeployment Most recent production deployment of the project.
          * 
          * @return builder
          * 
@@ -349,7 +430,49 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param latestDeployment Most recent deployment to the repo.
+         * @param framework Framework the project is using.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder framework(@Nullable Output<String> framework) {
+            $.framework = framework;
+            return this;
+        }
+
+        /**
+         * @param framework Framework the project is using.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder framework(String framework) {
+            return framework(Output.of(framework));
+        }
+
+        /**
+         * @param frameworkVersion Version of the framework the project is using.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder frameworkVersion(@Nullable Output<String> frameworkVersion) {
+            $.frameworkVersion = frameworkVersion;
+            return this;
+        }
+
+        /**
+         * @param frameworkVersion Version of the framework the project is using.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder frameworkVersion(String frameworkVersion) {
+            return frameworkVersion(Output.of(frameworkVersion));
+        }
+
+        /**
+         * @param latestDeployment Most recent deployment of the project.
          * 
          * @return builder
          * 
@@ -360,7 +483,7 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param latestDeployment Most recent deployment to the repo.
+         * @param latestDeployment Most recent deployment of the project.
          * 
          * @return builder
          * 
@@ -391,6 +514,27 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param previewScriptName Name of the preview script.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder previewScriptName(@Nullable Output<String> previewScriptName) {
+            $.previewScriptName = previewScriptName;
+            return this;
+        }
+
+        /**
+         * @param previewScriptName Name of the preview script.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder previewScriptName(String previewScriptName) {
+            return previewScriptName(Output.of(previewScriptName));
+        }
+
+        /**
          * @param productionBranch Production branch of the project. Used to identify production deployments.
          * 
          * @return builder
@@ -409,6 +553,27 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder productionBranch(String productionBranch) {
             return productionBranch(Output.of(productionBranch));
+        }
+
+        /**
+         * @param productionScriptName Name of the production script.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder productionScriptName(@Nullable Output<String> productionScriptName) {
+            $.productionScriptName = productionScriptName;
+            return this;
+        }
+
+        /**
+         * @param productionScriptName Name of the production script.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder productionScriptName(String productionScriptName) {
+            return productionScriptName(Output.of(productionScriptName));
         }
 
         public Builder source(@Nullable Output<PagesProjectSourceArgs> source) {
@@ -439,6 +604,27 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder subdomain(String subdomain) {
             return subdomain(Output.of(subdomain));
+        }
+
+        /**
+         * @param usesFunctions Whether the project uses functions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usesFunctions(@Nullable Output<Boolean> usesFunctions) {
+            $.usesFunctions = usesFunctions;
+            return this;
+        }
+
+        /**
+         * @param usesFunctions Whether the project uses functions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usesFunctions(Boolean usesFunctions) {
+            return usesFunctions(Output.of(usesFunctions));
         }
 
         public PagesProjectState build() {

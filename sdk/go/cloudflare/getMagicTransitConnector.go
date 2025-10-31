@@ -68,6 +68,7 @@ type LookupMagicTransitConnectorResult struct {
 	LastHeartbeat                string  `pulumi:"lastHeartbeat"`
 	LastSeenVersion              string  `pulumi:"lastSeenVersion"`
 	LastUpdated                  string  `pulumi:"lastUpdated"`
+	LicenseKey                   string  `pulumi:"licenseKey"`
 	Notes                        string  `pulumi:"notes"`
 	Timezone                     string  `pulumi:"timezone"`
 }
@@ -147,6 +148,10 @@ func (o LookupMagicTransitConnectorResultOutput) LastSeenVersion() pulumi.String
 
 func (o LookupMagicTransitConnectorResultOutput) LastUpdated() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMagicTransitConnectorResult) string { return v.LastUpdated }).(pulumi.StringOutput)
+}
+
+func (o LookupMagicTransitConnectorResultOutput) LicenseKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMagicTransitConnectorResult) string { return v.LicenseKey }).(pulumi.StringOutput)
 }
 
 func (o LookupMagicTransitConnectorResultOutput) Notes() pulumi.StringOutput {

@@ -13,6 +13,50 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewZeroTrustOrganization(ctx, "example_zero_trust_organization", &cloudflare.ZeroTrustOrganizationArgs{
+//				ZoneId:                   pulumi.String("zone_id"),
+//				AllowAuthenticateViaWarp: pulumi.Bool(true),
+//				AuthDomain:               pulumi.String("test.cloudflareaccess.com"),
+//				AutoRedirectToIdentity:   pulumi.Bool(true),
+//				CustomPages: &cloudflare.ZeroTrustOrganizationCustomPagesArgs{
+//					Forbidden:      pulumi.String("699d98642c564d2e855e9661899b7252"),
+//					IdentityDenied: pulumi.String("699d98642c564d2e855e9661899b7252"),
+//				},
+//				IsUiReadOnly: pulumi.Bool(true),
+//				LoginDesign: &cloudflare.ZeroTrustOrganizationLoginDesignArgs{
+//					BackgroundColor: pulumi.String("#c5ed1b"),
+//					FooterText:      pulumi.String("This is an example description."),
+//					HeaderText:      pulumi.String("This is an example description."),
+//					LogoPath:        pulumi.String("https://example.com/logo.png"),
+//					TextColor:       pulumi.String("#c5ed1b"),
+//				},
+//				Name:                           pulumi.String("Widget Corps Internal Applications"),
+//				SessionDuration:                pulumi.String("24h"),
+//				UiReadOnlyToggleReason:         pulumi.String("Temporarily turn off the UI read only lock to make a change via the UI"),
+//				UserSeatExpirationInactiveTime: pulumi.String("730h"),
+//				WarpAuthSessionDuration:        pulumi.String("24h"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // Deprecated: cloudflare.index/accessorganization.AccessOrganization has been deprecated in favor of cloudflare.index/zerotrustorganization.ZeroTrustOrganization
 type AccessOrganization struct {
 	pulumi.CustomResourceState

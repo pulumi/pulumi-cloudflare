@@ -84,7 +84,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Namespace to bind to.
+        /// The name of the dispatch namespace.
         /// </summary>
         public readonly string? Namespace;
         /// <summary>

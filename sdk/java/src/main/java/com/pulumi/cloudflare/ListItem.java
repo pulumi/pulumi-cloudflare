@@ -63,6 +63,14 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/listItem:ListItem example &#39;&lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;&#39;
  * ```
  * 
+ * ```sh
+ * $ pulumi import cloudflare:index/listItem:ListItem example &#39;&lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;&#39;
+ * ```
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/listItem:ListItem example &#39;&lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;&#39;
+ * ```
+ * 
  */
 @ResourceType(type="cloudflare:index/listItem:ListItem")
 public class ListItem extends com.pulumi.resources.CustomResource {

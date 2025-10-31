@@ -26,6 +26,93 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.WorkerVersion;
+ * import com.pulumi.cloudflare.WorkerVersionArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerVersionAnnotationsArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerVersionAssetsArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerVersionAssetsConfigArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerVersionBindingArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerVersionLimitsArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerVersionMigrationsArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerVersionModuleArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerVersionPlacementArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleWorkerVersion = new WorkerVersion("exampleWorkerVersion", WorkerVersionArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .workerId("worker_id")
+ *             .annotations(WorkerVersionAnnotationsArgs.builder()
+ *                 .workersMessage("Fixed bug.")
+ *                 .workersTag("v1.0.1")
+ *                 .build())
+ *             .assets(WorkerVersionAssetsArgs.builder()
+ *                 .config(WorkerVersionAssetsConfigArgs.builder()
+ *                     .htmlHandling("auto-trailing-slash")
+ *                     .notFoundHandling("404-page")
+ *                     .runWorkerFirsts("string")
+ *                     .build())
+ *                 .jwt("jwt")
+ *                 .build())
+ *             .bindings(WorkerVersionBindingArgs.builder()
+ *                 .name("MY_ENV_VAR")
+ *                 .text("my_data")
+ *                 .type("plain_text")
+ *                 .build())
+ *             .compatibilityDate("2021-01-01")
+ *             .compatibilityFlags("nodejs_compat")
+ *             .limits(WorkerVersionLimitsArgs.builder()
+ *                 .cpuMs(50)
+ *                 .build())
+ *             .mainModule("index.js")
+ *             .migrations(WorkerVersionMigrationsArgs.builder()
+ *                 .deletedClasses("string")
+ *                 .newClasses("string")
+ *                 .newSqliteClasses("string")
+ *                 .newTag("v2")
+ *                 .oldTag("v1")
+ *                 .renamedClasses(WorkerVersionMigrationsRenamedClassArgs.builder()
+ *                     .from("from")
+ *                     .to("to")
+ *                     .build())
+ *                 .transferredClasses(WorkerVersionMigrationsTransferredClassArgs.builder()
+ *                     .from("from")
+ *                     .fromScript("from_script")
+ *                     .to("to")
+ *                     .build())
+ *                 .build())
+ *             .modules(WorkerVersionModuleArgs.builder()
+ *                 .contentFile("dist/index.js")
+ *                 .contentType("application/javascript+module")
+ *                 .name("index.js")
+ *                 .build())
+ *             .placement(WorkerVersionPlacementArgs.builder()
+ *                 .mode("smart")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh

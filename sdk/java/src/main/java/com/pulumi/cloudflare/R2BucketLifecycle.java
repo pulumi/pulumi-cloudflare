@@ -19,6 +19,70 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.R2BucketLifecycle;
+ * import com.pulumi.cloudflare.R2BucketLifecycleArgs;
+ * import com.pulumi.cloudflare.inputs.R2BucketLifecycleRuleArgs;
+ * import com.pulumi.cloudflare.inputs.R2BucketLifecycleRuleConditionsArgs;
+ * import com.pulumi.cloudflare.inputs.R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs;
+ * import com.pulumi.cloudflare.inputs.R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs;
+ * import com.pulumi.cloudflare.inputs.R2BucketLifecycleRuleDeleteObjectsTransitionArgs;
+ * import com.pulumi.cloudflare.inputs.R2BucketLifecycleRuleDeleteObjectsTransitionConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleR2BucketLifecycle = new R2BucketLifecycle("exampleR2BucketLifecycle", R2BucketLifecycleArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .bucketName("example-bucket")
+ *             .rules(R2BucketLifecycleRuleArgs.builder()
+ *                 .id("Expire all objects older than 24 hours")
+ *                 .conditions(R2BucketLifecycleRuleConditionsArgs.builder()
+ *                     .prefix("prefix")
+ *                     .build())
+ *                 .enabled(true)
+ *                 .abortMultipartUploadsTransition(R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs.builder()
+ *                     .condition(R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs.builder()
+ *                         .maxAge(0)
+ *                         .type("Age")
+ *                         .build())
+ *                     .build())
+ *                 .deleteObjectsTransition(R2BucketLifecycleRuleDeleteObjectsTransitionArgs.builder()
+ *                     .condition(R2BucketLifecycleRuleDeleteObjectsTransitionConditionArgs.builder()
+ *                         .maxAge(0)
+ *                         .type("Age")
+ *                         .build())
+ *                     .build())
+ *                 .storageClassTransitions(R2BucketLifecycleRuleStorageClassTransitionArgs.builder()
+ *                     .condition(R2BucketLifecycleRuleStorageClassTransitionConditionArgs.builder()
+ *                         .maxAge(0)
+ *                         .type("Age")
+ *                         .build())
+ *                     .storageClass("InfrequentAccess")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  */
 @ResourceType(type="cloudflare:index/r2BucketLifecycle:R2BucketLifecycle")
 public class R2BucketLifecycle extends com.pulumi.resources.CustomResource {

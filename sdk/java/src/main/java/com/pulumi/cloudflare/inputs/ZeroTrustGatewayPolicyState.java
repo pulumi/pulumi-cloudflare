@@ -120,14 +120,14 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+     * Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
      * 
      */
     @Import(name="filters")
     private @Nullable Output<List<String>> filters;
 
     /**
-     * @return Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+     * @return Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
      * 
      */
     public Optional<Output<List<String>>> filters() {
@@ -453,7 +453,7 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param filters Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+         * @param filters Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
          * 
          * @return builder
          * 
@@ -464,7 +464,7 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param filters Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+         * @param filters Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
          * 
          * @return builder
          * 
@@ -474,7 +474,7 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param filters Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+         * @param filters Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
          * 
          * @return builder
          * 

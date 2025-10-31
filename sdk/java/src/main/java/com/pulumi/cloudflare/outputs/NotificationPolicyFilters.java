@@ -215,6 +215,11 @@ public final class NotificationPolicyFilters {
      * @return Usage depends on specific alert type
      * 
      */
+    private @Nullable List<String> types;
+    /**
+     * @return Usage depends on specific alert type
+     * 
+     */
     private @Nullable List<String> wheres;
     /**
      * @return Usage depends on specific alert type
@@ -507,6 +512,13 @@ public final class NotificationPolicyFilters {
      * @return Usage depends on specific alert type
      * 
      */
+    public List<String> types() {
+        return this.types == null ? List.of() : this.types;
+    }
+    /**
+     * @return Usage depends on specific alert type
+     * 
+     */
     public List<String> wheres() {
         return this.wheres == null ? List.of() : this.wheres;
     }
@@ -567,6 +579,7 @@ public final class NotificationPolicyFilters {
         private @Nullable List<String> trafficExclusions;
         private @Nullable List<String> tunnelIds;
         private @Nullable List<String> tunnelNames;
+        private @Nullable List<String> types;
         private @Nullable List<String> wheres;
         private @Nullable List<String> zones;
         public Builder() {}
@@ -612,6 +625,7 @@ public final class NotificationPolicyFilters {
     	      this.trafficExclusions = defaults.trafficExclusions;
     	      this.tunnelIds = defaults.tunnelIds;
     	      this.tunnelNames = defaults.tunnelNames;
+    	      this.types = defaults.types;
     	      this.wheres = defaults.wheres;
     	      this.zones = defaults.zones;
         }
@@ -977,6 +991,15 @@ public final class NotificationPolicyFilters {
             return tunnelNames(List.of(tunnelNames));
         }
         @CustomType.Setter
+        public Builder types(@Nullable List<String> types) {
+
+            this.types = types;
+            return this;
+        }
+        public Builder types(String... types) {
+            return types(List.of(types));
+        }
+        @CustomType.Setter
         public Builder wheres(@Nullable List<String> wheres) {
 
             this.wheres = wheres;
@@ -1036,6 +1059,7 @@ public final class NotificationPolicyFilters {
             _resultValue.trafficExclusions = trafficExclusions;
             _resultValue.tunnelIds = tunnelIds;
             _resultValue.tunnelNames = tunnelNames;
+            _resultValue.types = types;
             _resultValue.wheres = wheres;
             _resultValue.zones = zones;
             return _resultValue;

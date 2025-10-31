@@ -6,30 +6,12 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetApiShieldPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetApiShieldPlainArgs Empty = new GetApiShieldPlainArgs();
-
-    /**
-     * Requests information about certain properties.
-     * 
-     */
-    @Import(name="properties")
-    private @Nullable List<String> properties;
-
-    /**
-     * @return Requests information about certain properties.
-     * 
-     */
-    public Optional<List<String>> properties() {
-        return Optional.ofNullable(this.properties);
-    }
 
     /**
      * Identifier.
@@ -49,7 +31,6 @@ public final class GetApiShieldPlainArgs extends com.pulumi.resources.InvokeArgs
     private GetApiShieldPlainArgs() {}
 
     private GetApiShieldPlainArgs(GetApiShieldPlainArgs $) {
-        this.properties = $.properties;
         this.zoneId = $.zoneId;
     }
 
@@ -69,27 +50,6 @@ public final class GetApiShieldPlainArgs extends com.pulumi.resources.InvokeArgs
 
         public Builder(GetApiShieldPlainArgs defaults) {
             $ = new GetApiShieldPlainArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param properties Requests information about certain properties.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder properties(@Nullable List<String> properties) {
-            $.properties = properties;
-            return this;
-        }
-
-        /**
-         * @param properties Requests information about certain properties.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder properties(String... properties) {
-            return properties(List.of(properties));
         }
 
         /**

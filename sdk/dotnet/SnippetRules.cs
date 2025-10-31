@@ -11,6 +11,32 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleSnippetRules = new Cloudflare.SnippetRules("example_snippet_rules", new()
+    ///     {
+    ///         ZoneId = "9f1839b6152d298aca64c4e906b6d074",
+    ///         Rules = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.SnippetRulesRuleArgs
+    ///             {
+    ///                 Expression = "ip.src eq 1.1.1.1",
+    ///                 SnippetName = "my_snippet",
+    ///                 Description = "Execute my_snippet when IP address is 1.1.1.1.",
+    ///                 Enabled = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/snippetRules:SnippetRules")]
     public partial class SnippetRules : global::Pulumi.CustomResource

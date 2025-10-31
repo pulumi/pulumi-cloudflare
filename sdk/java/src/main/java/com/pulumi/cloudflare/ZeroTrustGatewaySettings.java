@@ -20,6 +20,119 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.ZeroTrustGatewaySettings;
+ * import com.pulumi.cloudflare.ZeroTrustGatewaySettingsArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsActivityLogArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsAntivirusArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettingsArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsBlockPageArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsBodyScanningArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsBrowserIsolationArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsCertificateArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsCustomCertificateArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsFipsArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsHostSelectorArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsInspectionArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsProtocolDetectionArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsSandboxArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsTlsDecryptArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var exampleZeroTrustGatewaySettings = new ZeroTrustGatewaySettings("exampleZeroTrustGatewaySettings", ZeroTrustGatewaySettingsArgs.builder()
+ *             .accountId("699d98642c564d2e855e9661899b7252")
+ *             .settings(ZeroTrustGatewaySettingsSettingsArgs.builder()
+ *                 .activityLog(ZeroTrustGatewaySettingsSettingsActivityLogArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .antivirus(ZeroTrustGatewaySettingsSettingsAntivirusArgs.builder()
+ *                     .enabledDownloadPhase(false)
+ *                     .enabledUploadPhase(false)
+ *                     .failClosed(false)
+ *                     .notificationSettings(ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettingsArgs.builder()
+ *                         .enabled(true)
+ *                         .includeContext(true)
+ *                         .msg("msg")
+ *                         .supportUrl("support_url")
+ *                         .build())
+ *                     .build())
+ *                 .blockPage(ZeroTrustGatewaySettingsSettingsBlockPageArgs.builder()
+ *                     .backgroundColor("background_color")
+ *                     .enabled(true)
+ *                     .footerText("--footer--")
+ *                     .headerText("--header--")
+ *                     .includeContext(true)
+ *                     .logoPath("https://logos.com/a.png")
+ *                     .mailtoAddress("admin}{@literal @}{@code example.com")
+ *                     .mailtoSubject("Blocked User Inquiry")
+ *                     .mode("")
+ *                     .name("Cloudflare")
+ *                     .suppressFooter(false)
+ *                     .targetUri("https://example.com")
+ *                     .build())
+ *                 .bodyScanning(ZeroTrustGatewaySettingsSettingsBodyScanningArgs.builder()
+ *                     .inspectionMode("deep")
+ *                     .build())
+ *                 .browserIsolation(ZeroTrustGatewaySettingsSettingsBrowserIsolationArgs.builder()
+ *                     .nonIdentityEnabled(true)
+ *                     .urlBrowserIsolationEnabled(true)
+ *                     .build())
+ *                 .certificate(ZeroTrustGatewaySettingsSettingsCertificateArgs.builder()
+ *                     .id("d1b364c5-1311-466e-a194-f0e943e0799f")
+ *                     .build())
+ *                 .customCertificate(ZeroTrustGatewaySettingsSettingsCustomCertificateArgs.builder()
+ *                     .enabled(true)
+ *                     .id("d1b364c5-1311-466e-a194-f0e943e0799f")
+ *                     .build())
+ *                 .extendedEmailMatching(ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .fips(ZeroTrustGatewaySettingsSettingsFipsArgs.builder()
+ *                     .tls(true)
+ *                     .build())
+ *                 .hostSelector(ZeroTrustGatewaySettingsSettingsHostSelectorArgs.builder()
+ *                     .enabled(false)
+ *                     .build())
+ *                 .inspection(ZeroTrustGatewaySettingsSettingsInspectionArgs.builder()
+ *                     .mode("static")
+ *                     .build())
+ *                 .protocolDetection(ZeroTrustGatewaySettingsSettingsProtocolDetectionArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .sandbox(ZeroTrustGatewaySettingsSettingsSandboxArgs.builder()
+ *                     .enabled(true)
+ *                     .fallbackAction("allow")
+ *                     .build())
+ *                 .tlsDecrypt(ZeroTrustGatewaySettingsSettingsTlsDecryptArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh

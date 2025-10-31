@@ -14,6 +14,48 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewHyperdriveConfig(ctx, "example_hyperdrive_config", &cloudflare.HyperdriveConfigArgs{
+//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Name:      pulumi.String("example-hyperdrive"),
+//				Origin: &cloudflare.HyperdriveConfigOriginArgs{
+//					Database: pulumi.String("postgres"),
+//					Host:     pulumi.String("database.example.com"),
+//					Password: pulumi.String("password"),
+//					Port:     pulumi.Int(5432),
+//					Scheme:   pulumi.String("postgres"),
+//					User:     pulumi.String("postgres"),
+//				},
+//				Caching: &cloudflare.HyperdriveConfigCachingArgs{
+//					Disabled: pulumi.Bool(true),
+//				},
+//				Mtls: &cloudflare.HyperdriveConfigMtlsArgs{
+//					CaCertificateId:   pulumi.String("00000000-0000-0000-0000-0000000000"),
+//					MtlsCertificateId: pulumi.String("00000000-0000-0000-0000-0000000000"),
+//					Sslmode:           pulumi.String("verify-full"),
+//				},
+//				OriginConnectionLimit: pulumi.Int(60),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

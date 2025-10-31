@@ -11,6 +11,7 @@ import com.pulumi.cloudflare.outputs.GetPagesProjectDeploymentConfigsProductionD
 import com.pulumi.cloudflare.outputs.GetPagesProjectDeploymentConfigsProductionEnvVars;
 import com.pulumi.cloudflare.outputs.GetPagesProjectDeploymentConfigsProductionHyperdriveBindings;
 import com.pulumi.cloudflare.outputs.GetPagesProjectDeploymentConfigsProductionKvNamespaces;
+import com.pulumi.cloudflare.outputs.GetPagesProjectDeploymentConfigsProductionLimits;
 import com.pulumi.cloudflare.outputs.GetPagesProjectDeploymentConfigsProductionMtlsCertificates;
 import com.pulumi.cloudflare.outputs.GetPagesProjectDeploymentConfigsProductionPlacement;
 import com.pulumi.cloudflare.outputs.GetPagesProjectDeploymentConfigsProductionQueueProducers;
@@ -19,6 +20,8 @@ import com.pulumi.cloudflare.outputs.GetPagesProjectDeploymentConfigsProductionS
 import com.pulumi.cloudflare.outputs.GetPagesProjectDeploymentConfigsProductionVectorizeBindings;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +35,11 @@ public final class GetPagesProjectDeploymentConfigsProduction {
      */
     private Map<String,GetPagesProjectDeploymentConfigsProductionAiBindings> aiBindings;
     /**
+     * @return Whether to always use the latest compatibility date for Pages Functions.
+     * 
+     */
+    private Boolean alwaysUseLatestCompatibilityDate;
+    /**
      * @return Analytics Engine bindings used for Pages Functions.
      * 
      */
@@ -41,6 +49,11 @@ public final class GetPagesProjectDeploymentConfigsProduction {
      * 
      */
     private Map<String,GetPagesProjectDeploymentConfigsProductionBrowsers> browsers;
+    /**
+     * @return The major version of the build image to use for Pages Functions.
+     * 
+     */
+    private Integer buildImageMajorVersion;
     /**
      * @return Compatibility date used for Pages Functions.
      * 
@@ -67,6 +80,11 @@ public final class GetPagesProjectDeploymentConfigsProduction {
      */
     private Map<String,GetPagesProjectDeploymentConfigsProductionEnvVars> envVars;
     /**
+     * @return Whether to fail open when the deployment config cannot be applied.
+     * 
+     */
+    private Boolean failOpen;
+    /**
      * @return Hyperdrive bindings used for Pages Functions.
      * 
      */
@@ -76,6 +94,11 @@ public final class GetPagesProjectDeploymentConfigsProduction {
      * 
      */
     private Map<String,GetPagesProjectDeploymentConfigsProductionKvNamespaces> kvNamespaces;
+    /**
+     * @return Limits for Pages Functions.
+     * 
+     */
+    private GetPagesProjectDeploymentConfigsProductionLimits limits;
     /**
      * @return mTLS bindings used for Pages Functions.
      * 
@@ -102,10 +125,25 @@ public final class GetPagesProjectDeploymentConfigsProduction {
      */
     private Map<String,GetPagesProjectDeploymentConfigsProductionServices> services;
     /**
+     * @return The usage model for Pages Functions.
+     * Available values: &#34;standard&#34;, &#34;bundled&#34;, &#34;unbound&#34;.
+     * 
+     * @deprecated
+     * All new projects now use the Standard usage model.
+     * 
+     */
+    @Deprecated /* All new projects now use the Standard usage model. */
+    private String usageModel;
+    /**
      * @return Vectorize bindings used for Pages Functions.
      * 
      */
     private Map<String,GetPagesProjectDeploymentConfigsProductionVectorizeBindings> vectorizeBindings;
+    /**
+     * @return Hash of the Wrangler configuration used for the deployment.
+     * 
+     */
+    private String wranglerConfigHash;
 
     private GetPagesProjectDeploymentConfigsProduction() {}
     /**
@@ -114,6 +152,13 @@ public final class GetPagesProjectDeploymentConfigsProduction {
      */
     public Map<String,GetPagesProjectDeploymentConfigsProductionAiBindings> aiBindings() {
         return this.aiBindings;
+    }
+    /**
+     * @return Whether to always use the latest compatibility date for Pages Functions.
+     * 
+     */
+    public Boolean alwaysUseLatestCompatibilityDate() {
+        return this.alwaysUseLatestCompatibilityDate;
     }
     /**
      * @return Analytics Engine bindings used for Pages Functions.
@@ -128,6 +173,13 @@ public final class GetPagesProjectDeploymentConfigsProduction {
      */
     public Map<String,GetPagesProjectDeploymentConfigsProductionBrowsers> browsers() {
         return this.browsers;
+    }
+    /**
+     * @return The major version of the build image to use for Pages Functions.
+     * 
+     */
+    public Integer buildImageMajorVersion() {
+        return this.buildImageMajorVersion;
     }
     /**
      * @return Compatibility date used for Pages Functions.
@@ -165,6 +217,13 @@ public final class GetPagesProjectDeploymentConfigsProduction {
         return this.envVars;
     }
     /**
+     * @return Whether to fail open when the deployment config cannot be applied.
+     * 
+     */
+    public Boolean failOpen() {
+        return this.failOpen;
+    }
+    /**
      * @return Hyperdrive bindings used for Pages Functions.
      * 
      */
@@ -177,6 +236,13 @@ public final class GetPagesProjectDeploymentConfigsProduction {
      */
     public Map<String,GetPagesProjectDeploymentConfigsProductionKvNamespaces> kvNamespaces() {
         return this.kvNamespaces;
+    }
+    /**
+     * @return Limits for Pages Functions.
+     * 
+     */
+    public GetPagesProjectDeploymentConfigsProductionLimits limits() {
+        return this.limits;
     }
     /**
      * @return mTLS bindings used for Pages Functions.
@@ -214,11 +280,30 @@ public final class GetPagesProjectDeploymentConfigsProduction {
         return this.services;
     }
     /**
+     * @return The usage model for Pages Functions.
+     * Available values: &#34;standard&#34;, &#34;bundled&#34;, &#34;unbound&#34;.
+     * 
+     * @deprecated
+     * All new projects now use the Standard usage model.
+     * 
+     */
+    @Deprecated /* All new projects now use the Standard usage model. */
+    public String usageModel() {
+        return this.usageModel;
+    }
+    /**
      * @return Vectorize bindings used for Pages Functions.
      * 
      */
     public Map<String,GetPagesProjectDeploymentConfigsProductionVectorizeBindings> vectorizeBindings() {
         return this.vectorizeBindings;
+    }
+    /**
+     * @return Hash of the Wrangler configuration used for the deployment.
+     * 
+     */
+    public String wranglerConfigHash() {
+        return this.wranglerConfigHash;
     }
 
     public static Builder builder() {
@@ -231,40 +316,52 @@ public final class GetPagesProjectDeploymentConfigsProduction {
     @CustomType.Builder
     public static final class Builder {
         private Map<String,GetPagesProjectDeploymentConfigsProductionAiBindings> aiBindings;
+        private Boolean alwaysUseLatestCompatibilityDate;
         private Map<String,GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasets> analyticsEngineDatasets;
         private Map<String,GetPagesProjectDeploymentConfigsProductionBrowsers> browsers;
+        private Integer buildImageMajorVersion;
         private String compatibilityDate;
         private List<String> compatibilityFlags;
         private Map<String,GetPagesProjectDeploymentConfigsProductionD1Databases> d1Databases;
         private Map<String,GetPagesProjectDeploymentConfigsProductionDurableObjectNamespaces> durableObjectNamespaces;
         private Map<String,GetPagesProjectDeploymentConfigsProductionEnvVars> envVars;
+        private Boolean failOpen;
         private Map<String,GetPagesProjectDeploymentConfigsProductionHyperdriveBindings> hyperdriveBindings;
         private Map<String,GetPagesProjectDeploymentConfigsProductionKvNamespaces> kvNamespaces;
+        private GetPagesProjectDeploymentConfigsProductionLimits limits;
         private Map<String,GetPagesProjectDeploymentConfigsProductionMtlsCertificates> mtlsCertificates;
         private GetPagesProjectDeploymentConfigsProductionPlacement placement;
         private Map<String,GetPagesProjectDeploymentConfigsProductionQueueProducers> queueProducers;
         private Map<String,GetPagesProjectDeploymentConfigsProductionR2Buckets> r2Buckets;
         private Map<String,GetPagesProjectDeploymentConfigsProductionServices> services;
+        private String usageModel;
         private Map<String,GetPagesProjectDeploymentConfigsProductionVectorizeBindings> vectorizeBindings;
+        private String wranglerConfigHash;
         public Builder() {}
         public Builder(GetPagesProjectDeploymentConfigsProduction defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aiBindings = defaults.aiBindings;
+    	      this.alwaysUseLatestCompatibilityDate = defaults.alwaysUseLatestCompatibilityDate;
     	      this.analyticsEngineDatasets = defaults.analyticsEngineDatasets;
     	      this.browsers = defaults.browsers;
+    	      this.buildImageMajorVersion = defaults.buildImageMajorVersion;
     	      this.compatibilityDate = defaults.compatibilityDate;
     	      this.compatibilityFlags = defaults.compatibilityFlags;
     	      this.d1Databases = defaults.d1Databases;
     	      this.durableObjectNamespaces = defaults.durableObjectNamespaces;
     	      this.envVars = defaults.envVars;
+    	      this.failOpen = defaults.failOpen;
     	      this.hyperdriveBindings = defaults.hyperdriveBindings;
     	      this.kvNamespaces = defaults.kvNamespaces;
+    	      this.limits = defaults.limits;
     	      this.mtlsCertificates = defaults.mtlsCertificates;
     	      this.placement = defaults.placement;
     	      this.queueProducers = defaults.queueProducers;
     	      this.r2Buckets = defaults.r2Buckets;
     	      this.services = defaults.services;
+    	      this.usageModel = defaults.usageModel;
     	      this.vectorizeBindings = defaults.vectorizeBindings;
+    	      this.wranglerConfigHash = defaults.wranglerConfigHash;
         }
 
         @CustomType.Setter
@@ -273,6 +370,14 @@ public final class GetPagesProjectDeploymentConfigsProduction {
               throw new MissingRequiredPropertyException("GetPagesProjectDeploymentConfigsProduction", "aiBindings");
             }
             this.aiBindings = aiBindings;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder alwaysUseLatestCompatibilityDate(Boolean alwaysUseLatestCompatibilityDate) {
+            if (alwaysUseLatestCompatibilityDate == null) {
+              throw new MissingRequiredPropertyException("GetPagesProjectDeploymentConfigsProduction", "alwaysUseLatestCompatibilityDate");
+            }
+            this.alwaysUseLatestCompatibilityDate = alwaysUseLatestCompatibilityDate;
             return this;
         }
         @CustomType.Setter
@@ -289,6 +394,14 @@ public final class GetPagesProjectDeploymentConfigsProduction {
               throw new MissingRequiredPropertyException("GetPagesProjectDeploymentConfigsProduction", "browsers");
             }
             this.browsers = browsers;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder buildImageMajorVersion(Integer buildImageMajorVersion) {
+            if (buildImageMajorVersion == null) {
+              throw new MissingRequiredPropertyException("GetPagesProjectDeploymentConfigsProduction", "buildImageMajorVersion");
+            }
+            this.buildImageMajorVersion = buildImageMajorVersion;
             return this;
         }
         @CustomType.Setter
@@ -335,6 +448,14 @@ public final class GetPagesProjectDeploymentConfigsProduction {
             return this;
         }
         @CustomType.Setter
+        public Builder failOpen(Boolean failOpen) {
+            if (failOpen == null) {
+              throw new MissingRequiredPropertyException("GetPagesProjectDeploymentConfigsProduction", "failOpen");
+            }
+            this.failOpen = failOpen;
+            return this;
+        }
+        @CustomType.Setter
         public Builder hyperdriveBindings(Map<String,GetPagesProjectDeploymentConfigsProductionHyperdriveBindings> hyperdriveBindings) {
             if (hyperdriveBindings == null) {
               throw new MissingRequiredPropertyException("GetPagesProjectDeploymentConfigsProduction", "hyperdriveBindings");
@@ -348,6 +469,14 @@ public final class GetPagesProjectDeploymentConfigsProduction {
               throw new MissingRequiredPropertyException("GetPagesProjectDeploymentConfigsProduction", "kvNamespaces");
             }
             this.kvNamespaces = kvNamespaces;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder limits(GetPagesProjectDeploymentConfigsProductionLimits limits) {
+            if (limits == null) {
+              throw new MissingRequiredPropertyException("GetPagesProjectDeploymentConfigsProduction", "limits");
+            }
+            this.limits = limits;
             return this;
         }
         @CustomType.Setter
@@ -391,6 +520,14 @@ public final class GetPagesProjectDeploymentConfigsProduction {
             return this;
         }
         @CustomType.Setter
+        public Builder usageModel(String usageModel) {
+            if (usageModel == null) {
+              throw new MissingRequiredPropertyException("GetPagesProjectDeploymentConfigsProduction", "usageModel");
+            }
+            this.usageModel = usageModel;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vectorizeBindings(Map<String,GetPagesProjectDeploymentConfigsProductionVectorizeBindings> vectorizeBindings) {
             if (vectorizeBindings == null) {
               throw new MissingRequiredPropertyException("GetPagesProjectDeploymentConfigsProduction", "vectorizeBindings");
@@ -398,24 +535,38 @@ public final class GetPagesProjectDeploymentConfigsProduction {
             this.vectorizeBindings = vectorizeBindings;
             return this;
         }
+        @CustomType.Setter
+        public Builder wranglerConfigHash(String wranglerConfigHash) {
+            if (wranglerConfigHash == null) {
+              throw new MissingRequiredPropertyException("GetPagesProjectDeploymentConfigsProduction", "wranglerConfigHash");
+            }
+            this.wranglerConfigHash = wranglerConfigHash;
+            return this;
+        }
         public GetPagesProjectDeploymentConfigsProduction build() {
             final var _resultValue = new GetPagesProjectDeploymentConfigsProduction();
             _resultValue.aiBindings = aiBindings;
+            _resultValue.alwaysUseLatestCompatibilityDate = alwaysUseLatestCompatibilityDate;
             _resultValue.analyticsEngineDatasets = analyticsEngineDatasets;
             _resultValue.browsers = browsers;
+            _resultValue.buildImageMajorVersion = buildImageMajorVersion;
             _resultValue.compatibilityDate = compatibilityDate;
             _resultValue.compatibilityFlags = compatibilityFlags;
             _resultValue.d1Databases = d1Databases;
             _resultValue.durableObjectNamespaces = durableObjectNamespaces;
             _resultValue.envVars = envVars;
+            _resultValue.failOpen = failOpen;
             _resultValue.hyperdriveBindings = hyperdriveBindings;
             _resultValue.kvNamespaces = kvNamespaces;
+            _resultValue.limits = limits;
             _resultValue.mtlsCertificates = mtlsCertificates;
             _resultValue.placement = placement;
             _resultValue.queueProducers = queueProducers;
             _resultValue.r2Buckets = r2Buckets;
             _resultValue.services = services;
+            _resultValue.usageModel = usageModel;
             _resultValue.vectorizeBindings = vectorizeBindings;
+            _resultValue.wranglerConfigHash = wranglerConfigHash;
             return _resultValue;
         }
     }

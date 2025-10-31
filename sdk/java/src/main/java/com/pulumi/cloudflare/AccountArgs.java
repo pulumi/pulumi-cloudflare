@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare;
 
+import com.pulumi.cloudflare.inputs.AccountManagedByArgs;
 import com.pulumi.cloudflare.inputs.AccountSettingsArgs;
 import com.pulumi.cloudflare.inputs.AccountUnitArgs;
 import com.pulumi.core.Output;
@@ -17,6 +18,21 @@ import javax.annotation.Nullable;
 public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AccountArgs Empty = new AccountArgs();
+
+    /**
+     * Parent container details
+     * 
+     */
+    @Import(name="managedBy")
+    private @Nullable Output<AccountManagedByArgs> managedBy;
+
+    /**
+     * @return Parent container details
+     * 
+     */
+    public Optional<Output<AccountManagedByArgs>> managedBy() {
+        return Optional.ofNullable(this.managedBy);
+    }
 
     /**
      * Account name
@@ -81,6 +97,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
     private AccountArgs() {}
 
     private AccountArgs(AccountArgs $) {
+        this.managedBy = $.managedBy;
         this.name = $.name;
         this.settings = $.settings;
         this.type = $.type;
@@ -103,6 +120,27 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(AccountArgs defaults) {
             $ = new AccountArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param managedBy Parent container details
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managedBy(@Nullable Output<AccountManagedByArgs> managedBy) {
+            $.managedBy = managedBy;
+            return this;
+        }
+
+        /**
+         * @param managedBy Parent container details
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managedBy(AccountManagedByArgs managedBy) {
+            return managedBy(Output.of(managedBy));
         }
 
         /**

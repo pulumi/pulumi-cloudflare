@@ -486,7 +486,7 @@ class ZeroTrustDlpPredefinedEntry(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="profileId")
-    def profile_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def profile_id(self) -> pulumi.Output[_builtins.str]:
         """
         This field is not actually used as the owning profile for a predefined entry is already set
         to a predefined profile

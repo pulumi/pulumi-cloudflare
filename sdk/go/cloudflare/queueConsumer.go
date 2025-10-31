@@ -13,6 +13,41 @@ import (
 )
 
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewQueueConsumer(ctx, "example_queue_consumer", &cloudflare.QueueConsumerArgs{
+//				AccountId:       pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				QueueId:         pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				DeadLetterQueue: pulumi.String("example-queue"),
+//				ScriptName:      pulumi.String("my-consumer-worker"),
+//				Settings: &cloudflare.QueueConsumerSettingsArgs{
+//					BatchSize:      pulumi.Float64(50),
+//					MaxConcurrency: pulumi.Float64(10),
+//					MaxRetries:     pulumi.Float64(3),
+//					MaxWaitTimeMs:  pulumi.Float64(5000),
+//					RetryDelay:     pulumi.Float64(10),
+//				},
+//				Type: pulumi.String("worker"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type QueueConsumer struct {
 	pulumi.CustomResourceState
 

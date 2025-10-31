@@ -20,6 +20,43 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.AuthenticatedOriginPulls;
+ * import com.pulumi.cloudflare.AuthenticatedOriginPullsArgs;
+ * import com.pulumi.cloudflare.inputs.AuthenticatedOriginPullsConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleAuthenticatedOriginPulls = new AuthenticatedOriginPulls("exampleAuthenticatedOriginPulls", AuthenticatedOriginPullsArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .configs(AuthenticatedOriginPullsConfigArgs.builder()
+ *                 .certId("2458ce5a-0c35-4c7f-82c7-8e9487d3ff60")
+ *                 .enabled(true)
+ *                 .hostname("app.example.com")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  */
 @ResourceType(type="cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls")
 public class AuthenticatedOriginPulls extends com.pulumi.resources.CustomResource {

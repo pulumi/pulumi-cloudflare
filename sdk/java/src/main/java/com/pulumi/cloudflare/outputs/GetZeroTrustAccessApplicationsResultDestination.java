@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustAccessApplicationsResultDestination {
@@ -26,6 +28,11 @@ public final class GetZeroTrustAccessApplicationsResultDestination {
      * 
      */
     private String l4Protocol;
+    /**
+     * @return A MCP server id configured in ai-controls. Access will secure the MCP server if accessed through a MCP portal.
+     * 
+     */
+    private @Nullable String mcpServerId;
     /**
      * @return The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match.
      * 
@@ -71,6 +78,13 @@ public final class GetZeroTrustAccessApplicationsResultDestination {
         return this.l4Protocol;
     }
     /**
+     * @return A MCP server id configured in ai-controls. Access will secure the MCP server if accessed through a MCP portal.
+     * 
+     */
+    public Optional<String> mcpServerId() {
+        return Optional.ofNullable(this.mcpServerId);
+    }
+    /**
      * @return The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match.
      * 
      */
@@ -111,6 +125,7 @@ public final class GetZeroTrustAccessApplicationsResultDestination {
         private String cidr;
         private String hostname;
         private String l4Protocol;
+        private @Nullable String mcpServerId;
         private String portRange;
         private String type;
         private String uri;
@@ -121,6 +136,7 @@ public final class GetZeroTrustAccessApplicationsResultDestination {
     	      this.cidr = defaults.cidr;
     	      this.hostname = defaults.hostname;
     	      this.l4Protocol = defaults.l4Protocol;
+    	      this.mcpServerId = defaults.mcpServerId;
     	      this.portRange = defaults.portRange;
     	      this.type = defaults.type;
     	      this.uri = defaults.uri;
@@ -149,6 +165,12 @@ public final class GetZeroTrustAccessApplicationsResultDestination {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationsResultDestination", "l4Protocol");
             }
             this.l4Protocol = l4Protocol;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mcpServerId(@Nullable String mcpServerId) {
+
+            this.mcpServerId = mcpServerId;
             return this;
         }
         @CustomType.Setter
@@ -188,6 +210,7 @@ public final class GetZeroTrustAccessApplicationsResultDestination {
             _resultValue.cidr = cidr;
             _resultValue.hostname = hostname;
             _resultValue.l4Protocol = l4Protocol;
+            _resultValue.mcpServerId = mcpServerId;
             _resultValue.portRange = portRange;
             _resultValue.type = type;
             _resultValue.uri = uri;

@@ -21,6 +21,54 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.DnsFirewall;
+ * import com.pulumi.cloudflare.DnsFirewallArgs;
+ * import com.pulumi.cloudflare.inputs.DnsFirewallAttackMitigationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleDnsFirewall = new DnsFirewall("exampleDnsFirewall", DnsFirewallArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .name("My Awesome DNS Firewall cluster")
+ *             .upstreamIps(            
+ *                 "192.0.2.1",
+ *                 "198.51.100.1",
+ *                 "2001:DB8:100::CF")
+ *             .attackMitigation(DnsFirewallAttackMitigationArgs.builder()
+ *                 .enabled(true)
+ *                 .onlyWhenUpstreamUnhealthy(false)
+ *                 .build())
+ *             .deprecateAnyRequests(true)
+ *             .ecsFallback(false)
+ *             .maximumCacheTtl(900.0)
+ *             .minimumCacheTtl(60.0)
+ *             .negativeCacheTtl(900.0)
+ *             .ratelimit(600.0)
+ *             .retries(2.0)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh

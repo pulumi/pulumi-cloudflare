@@ -12,6 +12,45 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZeroTrustDlpCustomProfile = new Cloudflare.ZeroTrustDlpCustomProfile("example_zero_trust_dlp_custom_profile", new()
+    ///     {
+    ///         AccountId = "account_id",
+    ///         Name = "name",
+    ///         AiContextEnabled = true,
+    ///         AllowedMatchCount = 5,
+    ///         ConfidenceThreshold = "confidence_threshold",
+    ///         ContextAwareness = new Cloudflare.Inputs.ZeroTrustDlpCustomProfileContextAwarenessArgs
+    ///         {
+    ///             Enabled = true,
+    ///             Skip = new Cloudflare.Inputs.ZeroTrustDlpCustomProfileContextAwarenessSkipArgs
+    ///             {
+    ///                 Files = true,
+    ///             },
+    ///         },
+    ///         Description = "description",
+    ///         OcrEnabled = true,
+    ///         SharedEntries = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ZeroTrustDlpCustomProfileSharedEntryArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 EntryId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+    ///                 EntryType = "custom",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh
@@ -175,7 +214,7 @@ namespace Pulumi.Cloudflare
         /// Custom entries from this profile.
         /// If this field is omitted, entries owned by this profile will not be changed.
         /// </summary>
-        [Obsolete(@"This attribute is deprecated.")]
+        [Obsolete(@"This attribute will be sunset on 01/01/2026")]
         public InputList<Inputs.ZeroTrustDlpCustomProfileEntryArgs> Entries
         {
             get => _entries ?? (_entries = new InputList<Inputs.ZeroTrustDlpCustomProfileEntryArgs>());
@@ -248,7 +287,7 @@ namespace Pulumi.Cloudflare
         /// Custom entries from this profile.
         /// If this field is omitted, entries owned by this profile will not be changed.
         /// </summary>
-        [Obsolete(@"This attribute is deprecated.")]
+        [Obsolete(@"This attribute will be sunset on 01/01/2026")]
         public InputList<Inputs.ZeroTrustDlpCustomProfileEntryGetArgs> Entries
         {
             get => _entries ?? (_entries = new InputList<Inputs.ZeroTrustDlpCustomProfileEntryGetArgs>());

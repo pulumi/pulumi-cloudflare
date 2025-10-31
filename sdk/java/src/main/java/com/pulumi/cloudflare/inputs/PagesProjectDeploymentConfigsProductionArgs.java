@@ -11,6 +11,7 @@ import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsProductionDurab
 import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsProductionEnvVarsArgs;
 import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsProductionHyperdriveBindingsArgs;
 import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsProductionKvNamespacesArgs;
+import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsProductionLimitsArgs;
 import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsProductionMtlsCertificatesArgs;
 import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsProductionPlacementArgs;
 import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsProductionQueueProducersArgs;
@@ -19,6 +20,8 @@ import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsProductionServi
 import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsProductionVectorizeBindingsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -44,6 +47,21 @@ public final class PagesProjectDeploymentConfigsProductionArgs extends com.pulum
      */
     public Optional<Output<Map<String,PagesProjectDeploymentConfigsProductionAiBindingsArgs>>> aiBindings() {
         return Optional.ofNullable(this.aiBindings);
+    }
+
+    /**
+     * Whether to always use the latest compatibility date for Pages Functions.
+     * 
+     */
+    @Import(name="alwaysUseLatestCompatibilityDate")
+    private @Nullable Output<Boolean> alwaysUseLatestCompatibilityDate;
+
+    /**
+     * @return Whether to always use the latest compatibility date for Pages Functions.
+     * 
+     */
+    public Optional<Output<Boolean>> alwaysUseLatestCompatibilityDate() {
+        return Optional.ofNullable(this.alwaysUseLatestCompatibilityDate);
     }
 
     /**
@@ -74,6 +92,21 @@ public final class PagesProjectDeploymentConfigsProductionArgs extends com.pulum
      */
     public Optional<Output<Map<String,PagesProjectDeploymentConfigsProductionBrowsersArgs>>> browsers() {
         return Optional.ofNullable(this.browsers);
+    }
+
+    /**
+     * The major version of the build image to use for Pages Functions.
+     * 
+     */
+    @Import(name="buildImageMajorVersion")
+    private @Nullable Output<Integer> buildImageMajorVersion;
+
+    /**
+     * @return The major version of the build image to use for Pages Functions.
+     * 
+     */
+    public Optional<Output<Integer>> buildImageMajorVersion() {
+        return Optional.ofNullable(this.buildImageMajorVersion);
     }
 
     /**
@@ -152,6 +185,21 @@ public final class PagesProjectDeploymentConfigsProductionArgs extends com.pulum
     }
 
     /**
+     * Whether to fail open when the deployment config cannot be applied.
+     * 
+     */
+    @Import(name="failOpen")
+    private @Nullable Output<Boolean> failOpen;
+
+    /**
+     * @return Whether to fail open when the deployment config cannot be applied.
+     * 
+     */
+    public Optional<Output<Boolean>> failOpen() {
+        return Optional.ofNullable(this.failOpen);
+    }
+
+    /**
      * Hyperdrive bindings used for Pages Functions.
      * 
      */
@@ -179,6 +227,21 @@ public final class PagesProjectDeploymentConfigsProductionArgs extends com.pulum
      */
     public Optional<Output<Map<String,PagesProjectDeploymentConfigsProductionKvNamespacesArgs>>> kvNamespaces() {
         return Optional.ofNullable(this.kvNamespaces);
+    }
+
+    /**
+     * Limits for Pages Functions.
+     * 
+     */
+    @Import(name="limits")
+    private @Nullable Output<PagesProjectDeploymentConfigsProductionLimitsArgs> limits;
+
+    /**
+     * @return Limits for Pages Functions.
+     * 
+     */
+    public Optional<Output<PagesProjectDeploymentConfigsProductionLimitsArgs>> limits() {
+        return Optional.ofNullable(this.limits);
     }
 
     /**
@@ -257,6 +320,31 @@ public final class PagesProjectDeploymentConfigsProductionArgs extends com.pulum
     }
 
     /**
+     * The usage model for Pages Functions.
+     * Available values: &#34;standard&#34;, &#34;bundled&#34;, &#34;unbound&#34;.
+     * 
+     * @deprecated
+     * All new projects now use the Standard usage model.
+     * 
+     */
+    @Deprecated /* All new projects now use the Standard usage model. */
+    @Import(name="usageModel")
+    private @Nullable Output<String> usageModel;
+
+    /**
+     * @return The usage model for Pages Functions.
+     * Available values: &#34;standard&#34;, &#34;bundled&#34;, &#34;unbound&#34;.
+     * 
+     * @deprecated
+     * All new projects now use the Standard usage model.
+     * 
+     */
+    @Deprecated /* All new projects now use the Standard usage model. */
+    public Optional<Output<String>> usageModel() {
+        return Optional.ofNullable(this.usageModel);
+    }
+
+    /**
      * Vectorize bindings used for Pages Functions.
      * 
      */
@@ -271,25 +359,46 @@ public final class PagesProjectDeploymentConfigsProductionArgs extends com.pulum
         return Optional.ofNullable(this.vectorizeBindings);
     }
 
+    /**
+     * Hash of the Wrangler configuration used for the deployment.
+     * 
+     */
+    @Import(name="wranglerConfigHash")
+    private @Nullable Output<String> wranglerConfigHash;
+
+    /**
+     * @return Hash of the Wrangler configuration used for the deployment.
+     * 
+     */
+    public Optional<Output<String>> wranglerConfigHash() {
+        return Optional.ofNullable(this.wranglerConfigHash);
+    }
+
     private PagesProjectDeploymentConfigsProductionArgs() {}
 
     private PagesProjectDeploymentConfigsProductionArgs(PagesProjectDeploymentConfigsProductionArgs $) {
         this.aiBindings = $.aiBindings;
+        this.alwaysUseLatestCompatibilityDate = $.alwaysUseLatestCompatibilityDate;
         this.analyticsEngineDatasets = $.analyticsEngineDatasets;
         this.browsers = $.browsers;
+        this.buildImageMajorVersion = $.buildImageMajorVersion;
         this.compatibilityDate = $.compatibilityDate;
         this.compatibilityFlags = $.compatibilityFlags;
         this.d1Databases = $.d1Databases;
         this.durableObjectNamespaces = $.durableObjectNamespaces;
         this.envVars = $.envVars;
+        this.failOpen = $.failOpen;
         this.hyperdriveBindings = $.hyperdriveBindings;
         this.kvNamespaces = $.kvNamespaces;
+        this.limits = $.limits;
         this.mtlsCertificates = $.mtlsCertificates;
         this.placement = $.placement;
         this.queueProducers = $.queueProducers;
         this.r2Buckets = $.r2Buckets;
         this.services = $.services;
+        this.usageModel = $.usageModel;
         this.vectorizeBindings = $.vectorizeBindings;
+        this.wranglerConfigHash = $.wranglerConfigHash;
     }
 
     public static Builder builder() {
@@ -332,6 +441,27 @@ public final class PagesProjectDeploymentConfigsProductionArgs extends com.pulum
         }
 
         /**
+         * @param alwaysUseLatestCompatibilityDate Whether to always use the latest compatibility date for Pages Functions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder alwaysUseLatestCompatibilityDate(@Nullable Output<Boolean> alwaysUseLatestCompatibilityDate) {
+            $.alwaysUseLatestCompatibilityDate = alwaysUseLatestCompatibilityDate;
+            return this;
+        }
+
+        /**
+         * @param alwaysUseLatestCompatibilityDate Whether to always use the latest compatibility date for Pages Functions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder alwaysUseLatestCompatibilityDate(Boolean alwaysUseLatestCompatibilityDate) {
+            return alwaysUseLatestCompatibilityDate(Output.of(alwaysUseLatestCompatibilityDate));
+        }
+
+        /**
          * @param analyticsEngineDatasets Analytics Engine bindings used for Pages Functions.
          * 
          * @return builder
@@ -371,6 +501,27 @@ public final class PagesProjectDeploymentConfigsProductionArgs extends com.pulum
          */
         public Builder browsers(Map<String,PagesProjectDeploymentConfigsProductionBrowsersArgs> browsers) {
             return browsers(Output.of(browsers));
+        }
+
+        /**
+         * @param buildImageMajorVersion The major version of the build image to use for Pages Functions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder buildImageMajorVersion(@Nullable Output<Integer> buildImageMajorVersion) {
+            $.buildImageMajorVersion = buildImageMajorVersion;
+            return this;
+        }
+
+        /**
+         * @param buildImageMajorVersion The major version of the build image to use for Pages Functions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder buildImageMajorVersion(Integer buildImageMajorVersion) {
+            return buildImageMajorVersion(Output.of(buildImageMajorVersion));
         }
 
         /**
@@ -489,6 +640,27 @@ public final class PagesProjectDeploymentConfigsProductionArgs extends com.pulum
         }
 
         /**
+         * @param failOpen Whether to fail open when the deployment config cannot be applied.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder failOpen(@Nullable Output<Boolean> failOpen) {
+            $.failOpen = failOpen;
+            return this;
+        }
+
+        /**
+         * @param failOpen Whether to fail open when the deployment config cannot be applied.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder failOpen(Boolean failOpen) {
+            return failOpen(Output.of(failOpen));
+        }
+
+        /**
          * @param hyperdriveBindings Hyperdrive bindings used for Pages Functions.
          * 
          * @return builder
@@ -528,6 +700,27 @@ public final class PagesProjectDeploymentConfigsProductionArgs extends com.pulum
          */
         public Builder kvNamespaces(Map<String,PagesProjectDeploymentConfigsProductionKvNamespacesArgs> kvNamespaces) {
             return kvNamespaces(Output.of(kvNamespaces));
+        }
+
+        /**
+         * @param limits Limits for Pages Functions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder limits(@Nullable Output<PagesProjectDeploymentConfigsProductionLimitsArgs> limits) {
+            $.limits = limits;
+            return this;
+        }
+
+        /**
+         * @param limits Limits for Pages Functions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder limits(PagesProjectDeploymentConfigsProductionLimitsArgs limits) {
+            return limits(Output.of(limits));
         }
 
         /**
@@ -636,6 +829,37 @@ public final class PagesProjectDeploymentConfigsProductionArgs extends com.pulum
         }
 
         /**
+         * @param usageModel The usage model for Pages Functions.
+         * Available values: &#34;standard&#34;, &#34;bundled&#34;, &#34;unbound&#34;.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * All new projects now use the Standard usage model.
+         * 
+         */
+        @Deprecated /* All new projects now use the Standard usage model. */
+        public Builder usageModel(@Nullable Output<String> usageModel) {
+            $.usageModel = usageModel;
+            return this;
+        }
+
+        /**
+         * @param usageModel The usage model for Pages Functions.
+         * Available values: &#34;standard&#34;, &#34;bundled&#34;, &#34;unbound&#34;.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * All new projects now use the Standard usage model.
+         * 
+         */
+        @Deprecated /* All new projects now use the Standard usage model. */
+        public Builder usageModel(String usageModel) {
+            return usageModel(Output.of(usageModel));
+        }
+
+        /**
          * @param vectorizeBindings Vectorize bindings used for Pages Functions.
          * 
          * @return builder
@@ -654,6 +878,27 @@ public final class PagesProjectDeploymentConfigsProductionArgs extends com.pulum
          */
         public Builder vectorizeBindings(Map<String,PagesProjectDeploymentConfigsProductionVectorizeBindingsArgs> vectorizeBindings) {
             return vectorizeBindings(Output.of(vectorizeBindings));
+        }
+
+        /**
+         * @param wranglerConfigHash Hash of the Wrangler configuration used for the deployment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wranglerConfigHash(@Nullable Output<String> wranglerConfigHash) {
+            $.wranglerConfigHash = wranglerConfigHash;
+            return this;
+        }
+
+        /**
+         * @param wranglerConfigHash Hash of the Wrangler configuration used for the deployment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wranglerConfigHash(String wranglerConfigHash) {
+            return wranglerConfigHash(Output.of(wranglerConfigHash));
         }
 
         public PagesProjectDeploymentConfigsProductionArgs build() {

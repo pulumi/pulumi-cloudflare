@@ -14,6 +14,183 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewLoadBalancer(ctx, "example_load_balancer", &cloudflare.LoadBalancerArgs{
+//				ZoneId: pulumi.String("699d98642c564d2e855e9661899b7252"),
+//				DefaultPools: pulumi.StringArray{
+//					pulumi.String("17b5962d775c646f3f9725cbc7a53df4"),
+//					pulumi.String("9290f38c5d07c2e2f4df57b1f61d4196"),
+//					pulumi.String("00920f38ce07c2e2f4df50b1f61d4194"),
+//				},
+//				FallbackPool: pulumi.String("fallback_pool"),
+//				Name:         pulumi.String("www.example.com"),
+//				AdaptiveRouting: &cloudflare.LoadBalancerAdaptiveRoutingArgs{
+//					FailoverAcrossPools: pulumi.Bool(true),
+//				},
+//				CountryPools: pulumi.StringArrayMap{
+//					"GB": pulumi.StringArray{
+//						pulumi.String("abd90f38ced07c2e2f4df50b1f61d4194"),
+//					},
+//					"US": pulumi.StringArray{
+//						pulumi.String("de90f38ced07c2e2f4df50b1f61d4194"),
+//						pulumi.String("00920f38ce07c2e2f4df50b1f61d4194"),
+//					},
+//				},
+//				Description: pulumi.String("Load Balancer for www.example.com"),
+//				LocationStrategy: &cloudflare.LoadBalancerLocationStrategyArgs{
+//					Mode:      pulumi.String("resolver_ip"),
+//					PreferEcs: pulumi.String("always"),
+//				},
+//				Networks: pulumi.StringArray{
+//					pulumi.String("string"),
+//				},
+//				PopPools: pulumi.StringArrayMap{
+//					"LAX": pulumi.StringArray{
+//						pulumi.String("de90f38ced07c2e2f4df50b1f61d4194"),
+//						pulumi.String("9290f38c5d07c2e2f4df57b1f61d4196"),
+//					},
+//					"LHR": pulumi.StringArray{
+//						pulumi.String("abd90f38ced07c2e2f4df50b1f61d4194"),
+//						pulumi.String("f9138c5d07c2e2f4df57b1f61d4196"),
+//					},
+//					"SJC": pulumi.StringArray{
+//						pulumi.String("00920f38ce07c2e2f4df50b1f61d4194"),
+//					},
+//				},
+//				Proxied: pulumi.Bool(true),
+//				RandomSteering: &cloudflare.LoadBalancerRandomSteeringArgs{
+//					DefaultWeight: pulumi.Float64(0.2),
+//					PoolWeights: pulumi.Float64Map{
+//						"9290f38c5d07c2e2f4df57b1f61d4196": pulumi.Float64(0.5),
+//						"de90f38ced07c2e2f4df50b1f61d4194": pulumi.Float64(0.3),
+//					},
+//				},
+//				RegionPools: pulumi.StringArrayMap{
+//					"ENAM": pulumi.StringArray{
+//						pulumi.String("00920f38ce07c2e2f4df50b1f61d4194"),
+//					},
+//					"WNAM": pulumi.StringArray{
+//						pulumi.String("de90f38ced07c2e2f4df50b1f61d4194"),
+//						pulumi.String("9290f38c5d07c2e2f4df57b1f61d4196"),
+//					},
+//				},
+//				Rules: cloudflare.LoadBalancerRuleArray{
+//					&cloudflare.LoadBalancerRuleArgs{
+//						Condition: pulumi.String("http.request.uri.path contains \"/testing\""),
+//						Disabled:  pulumi.Bool(true),
+//						FixedResponse: &cloudflare.LoadBalancerRuleFixedResponseArgs{
+//							ContentType: pulumi.String("application/json"),
+//							Location:    pulumi.String("www.example.com"),
+//							MessageBody: pulumi.String("Testing Hello"),
+//							StatusCode:  pulumi.Int(0),
+//						},
+//						Name: pulumi.String("route the path /testing to testing datacenter."),
+//						Overrides: &cloudflare.LoadBalancerRuleOverridesArgs{
+//							AdaptiveRouting: &cloudflare.LoadBalancerRuleOverridesAdaptiveRoutingArgs{
+//								FailoverAcrossPools: pulumi.Bool(true),
+//							},
+//							CountryPools: pulumi.StringArrayMap{
+//								"GB": pulumi.StringArray{
+//									pulumi.String("abd90f38ced07c2e2f4df50b1f61d4194"),
+//								},
+//								"US": pulumi.StringArray{
+//									pulumi.String("de90f38ced07c2e2f4df50b1f61d4194"),
+//									pulumi.String("00920f38ce07c2e2f4df50b1f61d4194"),
+//								},
+//							},
+//							DefaultPools: pulumi.StringArray{
+//								pulumi.String("17b5962d775c646f3f9725cbc7a53df4"),
+//								pulumi.String("9290f38c5d07c2e2f4df57b1f61d4196"),
+//								pulumi.String("00920f38ce07c2e2f4df50b1f61d4194"),
+//							},
+//							FallbackPool: pulumi.String("fallback_pool"),
+//							LocationStrategy: &cloudflare.LoadBalancerRuleOverridesLocationStrategyArgs{
+//								Mode:      pulumi.String("resolver_ip"),
+//								PreferEcs: pulumi.String("always"),
+//							},
+//							PopPools: pulumi.StringArrayMap{
+//								"LAX": pulumi.StringArray{
+//									pulumi.String("de90f38ced07c2e2f4df50b1f61d4194"),
+//									pulumi.String("9290f38c5d07c2e2f4df57b1f61d4196"),
+//								},
+//								"LHR": pulumi.StringArray{
+//									pulumi.String("abd90f38ced07c2e2f4df50b1f61d4194"),
+//									pulumi.String("f9138c5d07c2e2f4df57b1f61d4196"),
+//								},
+//								"SJC": pulumi.StringArray{
+//									pulumi.String("00920f38ce07c2e2f4df50b1f61d4194"),
+//								},
+//							},
+//							RandomSteering: &cloudflare.LoadBalancerRuleOverridesRandomSteeringArgs{
+//								DefaultWeight: pulumi.Float64(0.2),
+//								PoolWeights: pulumi.Float64Map{
+//									"9290f38c5d07c2e2f4df57b1f61d4196": pulumi.Float64(0.5),
+//									"de90f38ced07c2e2f4df50b1f61d4194": pulumi.Float64(0.3),
+//								},
+//							},
+//							RegionPools: pulumi.StringArrayMap{
+//								"ENAM": pulumi.StringArray{
+//									pulumi.String("00920f38ce07c2e2f4df50b1f61d4194"),
+//								},
+//								"WNAM": pulumi.StringArray{
+//									pulumi.String("de90f38ced07c2e2f4df50b1f61d4194"),
+//									pulumi.String("9290f38c5d07c2e2f4df57b1f61d4196"),
+//								},
+//							},
+//							SessionAffinity: pulumi.String("cookie"),
+//							SessionAffinityAttributes: &cloudflare.LoadBalancerRuleOverridesSessionAffinityAttributesArgs{
+//								DrainDuration: pulumi.Float64(100),
+//								Headers: pulumi.StringArray{
+//									pulumi.String("x"),
+//								},
+//								RequireAllHeaders:    pulumi.Bool(true),
+//								Samesite:             pulumi.String("Auto"),
+//								Secure:               pulumi.String("Auto"),
+//								ZeroDowntimeFailover: pulumi.String("sticky"),
+//							},
+//							SessionAffinityTtl: pulumi.Float64(1800),
+//							SteeringPolicy:     pulumi.String("dynamic_latency"),
+//							Ttl:                pulumi.Float64(30),
+//						},
+//						Priority:   pulumi.Int(0),
+//						Terminates: pulumi.Bool(true),
+//					},
+//				},
+//				SessionAffinity: pulumi.String("cookie"),
+//				SessionAffinityAttributes: &cloudflare.LoadBalancerSessionAffinityAttributesArgs{
+//					DrainDuration: pulumi.Float64(100),
+//					Headers: pulumi.StringArray{
+//						pulumi.String("x"),
+//					},
+//					RequireAllHeaders:    pulumi.Bool(true),
+//					Samesite:             pulumi.String("Auto"),
+//					Secure:               pulumi.String("Auto"),
+//					ZeroDowntimeFailover: pulumi.String("sticky"),
+//				},
+//				SessionAffinityTtl: pulumi.Float64(1800),
+//				SteeringPolicy:     pulumi.String("dynamic_latency"),
+//				Ttl:                pulumi.Float64(30),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

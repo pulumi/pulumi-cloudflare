@@ -52,6 +52,8 @@ type LookupZeroTrustDexTestArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// The unique identifier for the test.
 	DexTestId *string `pulumi:"dexTestId"`
+	// DEX rules targeted by this test
+	TargetPolicies []GetZeroTrustDexTestTargetPolicy `pulumi:"targetPolicies"`
 }
 
 // A collection of values returned by getZeroTrustDexTest.
@@ -92,6 +94,8 @@ type LookupZeroTrustDexTestOutputArgs struct {
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The unique identifier for the test.
 	DexTestId pulumi.StringPtrInput `pulumi:"dexTestId"`
+	// DEX rules targeted by this test
+	TargetPolicies GetZeroTrustDexTestTargetPolicyArrayInput `pulumi:"targetPolicies"`
 }
 
 func (LookupZeroTrustDexTestOutputArgs) ElementType() reflect.Type {

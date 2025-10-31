@@ -148,7 +148,7 @@ public final class ZeroTrustDevicePostureRuleInput {
      */
     private @Nullable String osDistroRevision;
     /**
-     * @return Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).
+     * @return Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version. (Mac, iOS, and Linux only).
      * 
      */
     private @Nullable String osVersionExtra;
@@ -413,7 +413,7 @@ public final class ZeroTrustDevicePostureRuleInput {
         return Optional.ofNullable(this.osDistroRevision);
     }
     /**
-     * @return Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).
+     * @return Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version. (Mac, iOS, and Linux only).
      * 
      */
     public Optional<String> osVersionExtra() {

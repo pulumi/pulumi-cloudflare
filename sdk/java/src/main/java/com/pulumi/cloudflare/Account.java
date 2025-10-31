@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.AccountArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.AccountState;
+import com.pulumi.cloudflare.outputs.AccountManagedBy;
 import com.pulumi.cloudflare.outputs.AccountSettings;
 import com.pulumi.cloudflare.outputs.AccountUnit;
 import com.pulumi.core.Output;
@@ -77,6 +78,20 @@ public class Account extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createdOn() {
         return this.createdOn;
+    }
+    /**
+     * Parent container details
+     * 
+     */
+    @Export(name="managedBy", refs={AccountManagedBy.class}, tree="[0]")
+    private Output<AccountManagedBy> managedBy;
+
+    /**
+     * @return Parent container details
+     * 
+     */
+    public Output<AccountManagedBy> managedBy() {
+        return this.managedBy;
     }
     /**
      * Account name

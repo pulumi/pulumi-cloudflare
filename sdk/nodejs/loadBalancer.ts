@@ -9,6 +9,148 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleLoadBalancer = new cloudflare.LoadBalancer("example_load_balancer", {
+ *     zoneId: "699d98642c564d2e855e9661899b7252",
+ *     defaultPools: [
+ *         "17b5962d775c646f3f9725cbc7a53df4",
+ *         "9290f38c5d07c2e2f4df57b1f61d4196",
+ *         "00920f38ce07c2e2f4df50b1f61d4194",
+ *     ],
+ *     fallbackPool: "fallback_pool",
+ *     name: "www.example.com",
+ *     adaptiveRouting: {
+ *         failoverAcrossPools: true,
+ *     },
+ *     countryPools: {
+ *         GB: ["abd90f38ced07c2e2f4df50b1f61d4194"],
+ *         US: [
+ *             "de90f38ced07c2e2f4df50b1f61d4194",
+ *             "00920f38ce07c2e2f4df50b1f61d4194",
+ *         ],
+ *     },
+ *     description: "Load Balancer for www.example.com",
+ *     locationStrategy: {
+ *         mode: "resolver_ip",
+ *         preferEcs: "always",
+ *     },
+ *     networks: ["string"],
+ *     popPools: {
+ *         LAX: [
+ *             "de90f38ced07c2e2f4df50b1f61d4194",
+ *             "9290f38c5d07c2e2f4df57b1f61d4196",
+ *         ],
+ *         LHR: [
+ *             "abd90f38ced07c2e2f4df50b1f61d4194",
+ *             "f9138c5d07c2e2f4df57b1f61d4196",
+ *         ],
+ *         SJC: ["00920f38ce07c2e2f4df50b1f61d4194"],
+ *     },
+ *     proxied: true,
+ *     randomSteering: {
+ *         defaultWeight: 0.2,
+ *         poolWeights: {
+ *             "9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
+ *             de90f38ced07c2e2f4df50b1f61d4194: 0.3,
+ *         },
+ *     },
+ *     regionPools: {
+ *         ENAM: ["00920f38ce07c2e2f4df50b1f61d4194"],
+ *         WNAM: [
+ *             "de90f38ced07c2e2f4df50b1f61d4194",
+ *             "9290f38c5d07c2e2f4df57b1f61d4196",
+ *         ],
+ *     },
+ *     rules: [{
+ *         condition: "http.request.uri.path contains \"/testing\"",
+ *         disabled: true,
+ *         fixedResponse: {
+ *             contentType: "application/json",
+ *             location: "www.example.com",
+ *             messageBody: "Testing Hello",
+ *             statusCode: 0,
+ *         },
+ *         name: "route the path /testing to testing datacenter.",
+ *         overrides: {
+ *             adaptiveRouting: {
+ *                 failoverAcrossPools: true,
+ *             },
+ *             countryPools: {
+ *                 GB: ["abd90f38ced07c2e2f4df50b1f61d4194"],
+ *                 US: [
+ *                     "de90f38ced07c2e2f4df50b1f61d4194",
+ *                     "00920f38ce07c2e2f4df50b1f61d4194",
+ *                 ],
+ *             },
+ *             defaultPools: [
+ *                 "17b5962d775c646f3f9725cbc7a53df4",
+ *                 "9290f38c5d07c2e2f4df57b1f61d4196",
+ *                 "00920f38ce07c2e2f4df50b1f61d4194",
+ *             ],
+ *             fallbackPool: "fallback_pool",
+ *             locationStrategy: {
+ *                 mode: "resolver_ip",
+ *                 preferEcs: "always",
+ *             },
+ *             popPools: {
+ *                 LAX: [
+ *                     "de90f38ced07c2e2f4df50b1f61d4194",
+ *                     "9290f38c5d07c2e2f4df57b1f61d4196",
+ *                 ],
+ *                 LHR: [
+ *                     "abd90f38ced07c2e2f4df50b1f61d4194",
+ *                     "f9138c5d07c2e2f4df57b1f61d4196",
+ *                 ],
+ *                 SJC: ["00920f38ce07c2e2f4df50b1f61d4194"],
+ *             },
+ *             randomSteering: {
+ *                 defaultWeight: 0.2,
+ *                 poolWeights: {
+ *                     "9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
+ *                     de90f38ced07c2e2f4df50b1f61d4194: 0.3,
+ *                 },
+ *             },
+ *             regionPools: {
+ *                 ENAM: ["00920f38ce07c2e2f4df50b1f61d4194"],
+ *                 WNAM: [
+ *                     "de90f38ced07c2e2f4df50b1f61d4194",
+ *                     "9290f38c5d07c2e2f4df57b1f61d4196",
+ *                 ],
+ *             },
+ *             sessionAffinity: "cookie",
+ *             sessionAffinityAttributes: {
+ *                 drainDuration: 100,
+ *                 headers: ["x"],
+ *                 requireAllHeaders: true,
+ *                 samesite: "Auto",
+ *                 secure: "Auto",
+ *                 zeroDowntimeFailover: "sticky",
+ *             },
+ *             sessionAffinityTtl: 1800,
+ *             steeringPolicy: "dynamic_latency",
+ *             ttl: 30,
+ *         },
+ *         priority: 0,
+ *         terminates: true,
+ *     }],
+ *     sessionAffinity: "cookie",
+ *     sessionAffinityAttributes: {
+ *         drainDuration: 100,
+ *         headers: ["x"],
+ *         requireAllHeaders: true,
+ *         samesite: "Auto",
+ *         secure: "Auto",
+ *         zeroDowntimeFailover: "sticky",
+ *     },
+ *     sessionAffinityTtl: 1800,
+ *     steeringPolicy: "dynamic_latency",
+ *     ttl: 30,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

@@ -12,6 +12,176 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZeroTrustGatewayPolicy = new Cloudflare.ZeroTrustGatewayPolicy("example_zero_trust_gateway_policy", new()
+    ///     {
+    ///         AccountId = "699d98642c564d2e855e9661899b7252",
+    ///         Action = "allow",
+    ///         Name = "block bad websites",
+    ///         Description = "Block bad websites based on their host name.",
+    ///         DevicePosture = "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
+    ///         Enabled = true,
+    ///         Expiration = new Cloudflare.Inputs.ZeroTrustGatewayPolicyExpirationArgs
+    ///         {
+    ///             ExpiresAt = "2014-01-01T05:20:20Z",
+    ///             Duration = 10,
+    ///         },
+    ///         Filters = new[]
+    ///         {
+    ///             "http",
+    ///         },
+    ///         Identity = "any(identity.groups.name[*] in {\"finance\"})",
+    ///         Precedence = 0,
+    ///         RuleSettings = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsArgs
+    ///         {
+    ///             AddHeaders = 
+    ///             {
+    ///                 { "My-Next-Header", new[]
+    ///                 {
+    ///                     "foo",
+    ///                     "bar",
+    ///                 } },
+    ///                 { "X-Custom-Header-Name", new[]
+    ///                 {
+    ///                     "somecustomvalue",
+    ///                 } },
+    ///             },
+    ///             AllowChildBypass = false,
+    ///             AuditSsh = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs
+    ///             {
+    ///                 CommandLogging = false,
+    ///             },
+    ///             BisoAdminControls = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs
+    ///             {
+    ///                 Copy = "remote_only",
+    ///                 Dcp = true,
+    ///                 Dd = true,
+    ///                 Dk = true,
+    ///                 Download = "enabled",
+    ///                 Dp = false,
+    ///                 Du = true,
+    ///                 Keyboard = "enabled",
+    ///                 Paste = "enabled",
+    ///                 Printing = "enabled",
+    ///                 Upload = "enabled",
+    ///                 Version = "v1",
+    ///             },
+    ///             BlockPage = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsBlockPageArgs
+    ///             {
+    ///                 TargetUri = "https://example.com",
+    ///                 IncludeContext = true,
+    ///             },
+    ///             BlockPageEnabled = true,
+    ///             BlockReason = "This website is a security risk",
+    ///             BypassParentRule = false,
+    ///             CheckSession = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgs
+    ///             {
+    ///                 Duration = "300s",
+    ///                 Enforce = true,
+    ///             },
+    ///             DnsResolvers = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgs
+    ///             {
+    ///                 Ipv4s = new[]
+    ///                 {
+    ///                     new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Args
+    ///                     {
+    ///                         Ip = "2.2.2.2",
+    ///                         Port = 5053,
+    ///                         RouteThroughPrivateNetwork = true,
+    ///                         VnetId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+    ///                     },
+    ///                 },
+    ///                 Ipv6s = new[]
+    ///                 {
+    ///                     new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6Args
+    ///                     {
+    ///                         Ip = "2001:DB8::",
+    ///                         Port = 5053,
+    ///                         RouteThroughPrivateNetwork = true,
+    ///                         VnetId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Egress = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsEgressArgs
+    ///             {
+    ///                 Ipv4 = "192.0.2.2",
+    ///                 Ipv4Fallback = "192.0.2.3",
+    ///                 Ipv6 = "2001:DB8::/64",
+    ///             },
+    ///             IgnoreCnameCategoryMatches = true,
+    ///             InsecureDisableDnssecValidation = false,
+    ///             IpCategories = true,
+    ///             IpIndicatorFeeds = true,
+    ///             L4override = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs
+    ///             {
+    ///                 Ip = "1.1.1.1",
+    ///                 Port = 0,
+    ///             },
+    ///             NotificationSettings = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 IncludeContext = true,
+    ///                 Msg = "msg",
+    ///                 SupportUrl = "support_url",
+    ///             },
+    ///             OverrideHost = "example.com",
+    ///             OverrideIps = new[]
+    ///             {
+    ///                 "1.1.1.1",
+    ///                 "2.2.2.2",
+    ///             },
+    ///             PayloadLog = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsPayloadLogArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
+    ///             Quarantine = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsQuarantineArgs
+    ///             {
+    ///                 FileTypes = new[]
+    ///                 {
+    ///                     "exe",
+    ///                 },
+    ///             },
+    ///             Redirect = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsRedirectArgs
+    ///             {
+    ///                 TargetUri = "https://example.com",
+    ///                 IncludeContext = true,
+    ///                 PreservePathAndQuery = true,
+    ///             },
+    ///             ResolveDnsInternally = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgs
+    ///             {
+    ///                 Fallback = "none",
+    ///                 ViewId = "view_id",
+    ///             },
+    ///             ResolveDnsThroughCloudflare = true,
+    ///             UntrustedCert = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgs
+    ///             {
+    ///                 Action = "error",
+    ///             },
+    ///         },
+    ///         Schedule = new Cloudflare.Inputs.ZeroTrustGatewayPolicyScheduleArgs
+    ///         {
+    ///             Fri = "08:00-12:30,13:30-17:00",
+    ///             Mon = "08:00-12:30,13:30-17:00",
+    ///             Sat = "08:00-12:30,13:30-17:00",
+    ///             Sun = "08:00-12:30,13:30-17:00",
+    ///             Thu = "08:00-12:30,13:30-17:00",
+    ///             TimeZone = "America/New York",
+    ///             Tue = "08:00-12:30,13:30-17:00",
+    ///             Wed = "08:00-12:30,13:30-17:00",
+    ///         },
+    ///         Traffic = "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh
@@ -63,7 +233,7 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.TeamsRuleExpiration> Expiration { get; private set; } = null!;
 
         /// <summary>
-        /// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+        /// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
         /// </summary>
         [Output("filters")]
         public Output<ImmutableArray<string>> Filters { get; private set; } = null!;
@@ -210,7 +380,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _filters;
 
         /// <summary>
-        /// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+        /// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
         /// </summary>
         public InputList<string> Filters
         {
@@ -294,7 +464,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _filters;
 
         /// <summary>
-        /// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+        /// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
         /// </summary>
         public InputList<string> Filters
         {

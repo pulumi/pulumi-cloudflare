@@ -55,6 +55,10 @@ export interface AccessApplicationDestination {
      */
     l4Protocol?: string;
     /**
+     * A MCP server id configured in ai-controls. Access will secure the MCP server if accessed through a MCP portal.
+     */
+    mcpServerId?: string;
+    /**
      * The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match.
      */
     portRange?: string;
@@ -2923,6 +2927,17 @@ export interface AccountDnsSettingsZoneDefaultsSoa {
     ttl?: number;
 }
 
+export interface AccountManagedBy {
+    /**
+     * ID of the parent Organization, if one exists
+     */
+    parentOrgId: string;
+    /**
+     * Name of the parent Organization, if one exists
+     */
+    parentOrgName: string;
+}
+
 export interface AccountMemberPolicy {
     /**
      * Allow or deny operations against the resources.
@@ -3111,28 +3126,6 @@ export interface ApiShieldAuthIdCharacteristic {
      * Available values: "header", "cookie", "jwt".
      */
     type: string;
-}
-
-export interface ApiShieldError {
-    code: number;
-    documentationUrl: string;
-    message: string;
-    source: outputs.ApiShieldErrorSource;
-}
-
-export interface ApiShieldErrorSource {
-    pointer: string;
-}
-
-export interface ApiShieldMessage {
-    code: number;
-    documentationUrl: string;
-    message: string;
-    source: outputs.ApiShieldMessageSource;
-}
-
-export interface ApiShieldMessageSource {
-    pointer: string;
 }
 
 export interface ApiShieldOperationFeatures {
@@ -3850,7 +3843,7 @@ export interface DevicePostureRuleInput {
      */
     osDistroRevision?: string;
     /**
-     * Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).
+     * Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version. (Mac, iOS, and Linux only).
      */
     osVersionExtra?: string;
     /**
@@ -4781,6 +4774,17 @@ export interface GetAccountFilter {
     name?: string;
 }
 
+export interface GetAccountManagedBy {
+    /**
+     * ID of the parent Organization, if one exists
+     */
+    parentOrgId: string;
+    /**
+     * Name of the parent Organization, if one exists
+     */
+    parentOrgName: string;
+}
+
 export interface GetAccountMemberFilter {
     /**
      * Direction to order results.
@@ -5629,6 +5633,10 @@ export interface GetAccountsResult {
      */
     id: string;
     /**
+     * Parent container details
+     */
+    managedBy: outputs.GetAccountsResultManagedBy;
+    /**
      * Account name
      */
     name: string;
@@ -5640,6 +5648,17 @@ export interface GetAccountsResult {
      * Available values: "standard", "enterprise".
      */
     type: string;
+}
+
+export interface GetAccountsResultManagedBy {
+    /**
+     * ID of the parent Organization, if one exists
+     */
+    parentOrgId: string;
+    /**
+     * Name of the parent Organization, if one exists
+     */
+    parentOrgName: string;
 }
 
 export interface GetAccountsResultSettings {
@@ -10367,6 +10386,7 @@ export interface GetMagicTransitConnectorsResult {
     lastHeartbeat: string;
     lastSeenVersion: string;
     lastUpdated: string;
+    licenseKey: string;
     notes: string;
     timezone: string;
 }
@@ -11156,7 +11176,7 @@ export interface GetNotificationPoliciesResult {
     alertInterval: string;
     /**
      * Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.
-     * Available values: "access*custom*certificate*expiration*type", "advanced*ddos*attack*l4*alert", "advanced*ddos*attack*l7*alert", "advanced*http*alert*error", "bgp*hijack*notification", "billing*usage*alert", "block*notification*block*removed", "block*notification*new*block", "block*notification*review*rejected", "bot*traffic*basic*alert", "brand*protection*alert", "brand*protection*digest", "clickhouse*alert*fw*anomaly", "clickhouse*alert*fw*ent*anomaly", "cloudforce*one*request*notification", "custom*analytics", "custom*bot*detection*alert", "custom*ssl*certificate*event*type", "dedicated*ssl*certificate*event*type", "device*connectivity*anomaly*alert", "dos*attack*l4", "dos*attack*l7", "expiring*service*token*alert", "failing*logpush*job*disabled*alert", "fbm*auto*advertisement", "fbm*dosd*attack", "fbm*volumetric*attack", "health*check*status*notification", "hostname*aop*custom*certificate*expiration*type", "http*alert*edge*error", "http*alert*origin*error", "image*notification", "image*resizing*notification", "incident*alert", "load*balancing*health*alert", "load*balancing*pool*enablement*alert", "logo*match*alert", "magic*tunnel*health*check*event", "magic*wan*tunnel*health", "maintenance*event*notification", "mtls*certificate*store*certificate*expiration*type", "pages*event*alert", "radar*notification", "real*origin*monitoring", "scriptmonitor*alert*new*code*change*detections", "scriptmonitor*alert*new*hosts", "scriptmonitor*alert*new*malicious*hosts", "scriptmonitor*alert*new*malicious*scripts", "scriptmonitor*alert*new*malicious*url", "scriptmonitor*alert*new*max*length*resource*url", "scriptmonitor*alert*new*resources", "secondary*dns*all*primaries*failing", "secondary*dns*primaries*failing", "secondary*dns*warning", "secondary*dns*zone*successfully*updated", "secondary*dns*zone*validation*warning", "security*insights*alert", "sentinel*alert", "stream*live*notifications", "synthetic*test*latency*alert", "synthetic*test*low*availability*alert", "traffic*anomalies*alert", "tunnel*health*event", "tunnel*update*event", "universal*ssl*event*type", "web*analytics*metrics*update", "zone*aop*custom*certificate*expiration*type".
+     * Available values: "abuse*report*alert", "access*custom*certificate*expiration*type", "advanced*ddos*attack*l4*alert", "advanced*ddos*attack*l7*alert", "advanced*http*alert*error", "bgp*hijack*notification", "billing*usage*alert", "block*notification*block*removed", "block*notification*new*block", "block*notification*review*rejected", "bot*traffic*basic*alert", "brand*protection*alert", "brand*protection*digest", "clickhouse*alert*fw*anomaly", "clickhouse*alert*fw*ent*anomaly", "cloudforce*one*request*notification", "custom*analytics", "custom*bot*detection*alert", "custom*ssl*certificate*event*type", "dedicated*ssl*certificate*event*type", "device*connectivity*anomaly*alert", "dos*attack*l4", "dos*attack*l7", "expiring*service*token*alert", "failing*logpush*job*disabled*alert", "fbm*auto*advertisement", "fbm*dosd*attack", "fbm*volumetric*attack", "health*check*status*notification", "hostname*aop*custom*certificate*expiration*type", "http*alert*edge*error", "http*alert*origin*error", "image*notification", "image*resizing*notification", "incident*alert", "load*balancing*health*alert", "load*balancing*pool*enablement*alert", "logo*match*alert", "magic*tunnel*health*check*event", "magic*wan*tunnel*health", "maintenance*event*notification", "mtls*certificate*store*certificate*expiration*type", "pages*event*alert", "radar*notification", "real*origin*monitoring", "scriptmonitor*alert*new*code*change*detections", "scriptmonitor*alert*new*hosts", "scriptmonitor*alert*new*malicious*hosts", "scriptmonitor*alert*new*malicious*scripts", "scriptmonitor*alert*new*malicious*url", "scriptmonitor*alert*new*max*length*resource*url", "scriptmonitor*alert*new*resources", "secondary*dns*all*primaries*failing", "secondary*dns*primaries*failing", "secondary*dns*warning", "secondary*dns*zone*successfully*updated", "secondary*dns*zone*validation*warning", "security*insights*alert", "sentinel*alert", "stream*live*notifications", "synthetic*test*latency*alert", "synthetic*test*low*availability*alert", "traffic*anomalies*alert", "tunnel*health*event", "tunnel*update*event", "universal*ssl*event*type", "web*analytics*metrics*update", "zone*aop*custom*certificate*expiration*type".
      */
     alertType: string;
     created: string;
@@ -11348,6 +11368,10 @@ export interface GetNotificationPoliciesResultFilters {
      * Usage depends on specific alert type
      */
     tunnelNames: string[];
+    /**
+     * Usage depends on specific alert type
+     */
+    types: string[];
     /**
      * Usage depends on specific alert type
      */
@@ -11549,6 +11573,10 @@ export interface GetNotificationPolicyFilters {
     /**
      * Usage depends on specific alert type
      */
+    types: string[];
+    /**
+     * Usage depends on specific alert type
+     */
     wheres: string[];
     /**
      * Usage depends on specific alert type
@@ -11617,6 +11645,181 @@ export interface GetNotificationPolicyWebhooksListResult {
      * The POST endpoint to call when dispatching a notification.
      */
     url: string;
+}
+
+export interface GetOrganizationFilter {
+    containing?: outputs.GetOrganizationFilterContaining;
+    /**
+     * Only return organizations with the specified IDs (ex. id=foo&id=bar). Send multiple elements
+     * by repeating the query value.
+     */
+    ids?: string[];
+    name?: outputs.GetOrganizationFilterName;
+    /**
+     * The amount of items to return. Defaults to 10.
+     */
+    pageSize?: number;
+    /**
+     * An opaque token returned from the last list response that when
+     * provided will retrieve the next page.
+     */
+    pageToken?: string;
+    parent?: outputs.GetOrganizationFilterParent;
+}
+
+export interface GetOrganizationFilterContaining {
+    /**
+     * Filter the list of organizations to the ones that contain this particular
+     * account.
+     */
+    account?: string;
+    /**
+     * Filter the list of organizations to the ones that contain this particular
+     * organization.
+     */
+    organization?: string;
+    /**
+     * Filter the list of organizations to the ones that contain this particular
+     * user.
+     */
+    user?: string;
+}
+
+export interface GetOrganizationFilterName {
+    /**
+     * (case-insensitive) Filter the list of organizations to where the name contains a particular
+     * string.
+     */
+    contains?: string;
+    /**
+     * (case-insensitive) Filter the list of organizations to where the name ends with a particular
+     * string.
+     */
+    endsWith?: string;
+    /**
+     * (case-insensitive) Filter the list of organizations to where the name starts with a
+     * particular string.
+     */
+    startsWith?: string;
+}
+
+export interface GetOrganizationFilterParent {
+    /**
+     * Filter the list of organizations to the ones that are a sub-organization
+     * of the specified organization.
+     */
+    id?: string;
+}
+
+export interface GetOrganizationMeta {
+    /**
+     * Enable features for Organizations.
+     */
+    flags: outputs.GetOrganizationMetaFlags;
+    managedBy: string;
+}
+
+export interface GetOrganizationMetaFlags {
+    accountCreation: string;
+    accountDeletion: string;
+    accountMigration: string;
+    accountMobility: string;
+    subOrgCreation: string;
+}
+
+export interface GetOrganizationParent {
+    id: string;
+    name: string;
+}
+
+export interface GetOrganizationProfile {
+    businessAddress: string;
+    businessEmail: string;
+    businessName: string;
+    businessPhone: string;
+    externalMetadata: string;
+}
+
+export interface GetOrganizationsContaining {
+    /**
+     * Filter the list of organizations to the ones that contain this particular
+     * account.
+     */
+    account?: string;
+    /**
+     * Filter the list of organizations to the ones that contain this particular
+     * organization.
+     */
+    organization?: string;
+    /**
+     * Filter the list of organizations to the ones that contain this particular
+     * user.
+     */
+    user?: string;
+}
+
+export interface GetOrganizationsName {
+    /**
+     * (case-insensitive) Filter the list of organizations to where the name contains a particular
+     * string.
+     */
+    contains?: string;
+    /**
+     * (case-insensitive) Filter the list of organizations to where the name ends with a particular
+     * string.
+     */
+    endsWith?: string;
+    /**
+     * (case-insensitive) Filter the list of organizations to where the name starts with a
+     * particular string.
+     */
+    startsWith?: string;
+}
+
+export interface GetOrganizationsParent {
+    /**
+     * Filter the list of organizations to the ones that are a sub-organization
+     * of the specified organization.
+     */
+    id: string;
+}
+
+export interface GetOrganizationsResult {
+    createTime: string;
+    id: string;
+    meta: outputs.GetOrganizationsResultMeta;
+    name: string;
+    parent: outputs.GetOrganizationsResultParent;
+    profile: outputs.GetOrganizationsResultProfile;
+}
+
+export interface GetOrganizationsResultMeta {
+    /**
+     * Enable features for Organizations.
+     */
+    flags: outputs.GetOrganizationsResultMetaFlags;
+    managedBy: string;
+}
+
+export interface GetOrganizationsResultMetaFlags {
+    accountCreation: string;
+    accountDeletion: string;
+    accountMigration: string;
+    accountMobility: string;
+    subOrgCreation: string;
+}
+
+export interface GetOrganizationsResultParent {
+    id: string;
+    name: string;
+}
+
+export interface GetOrganizationsResultProfile {
+    businessAddress: string;
+    businessEmail: string;
+    businessName: string;
+    businessPhone: string;
+    externalMetadata: string;
 }
 
 export interface GetOriginCaCertificateFilter {
@@ -12068,23 +12271,61 @@ export interface GetPagesProjectCanonicalDeploymentLatestStage {
 
 export interface GetPagesProjectCanonicalDeploymentSource {
     config: outputs.GetPagesProjectCanonicalDeploymentSourceConfig;
+    /**
+     * The source control management provider.
+     * Available values: "github", "gitlab".
+     */
     type: string;
 }
 
 export interface GetPagesProjectCanonicalDeploymentSourceConfig {
+    /**
+     * Whether to enable automatic deployments when pushing to the source repository.
+     * When disabled, no deployments (production or preview) will be triggered automatically.
+     *
+     * @deprecated Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+     */
     deploymentsEnabled: boolean;
+    /**
+     * The owner of the repository.
+     */
     owner: string;
+    /**
+     * A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
+     */
     pathExcludes: string[];
+    /**
+     * A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
+     */
     pathIncludes: string[];
+    /**
+     * Whether to enable PR comments.
+     */
     prCommentsEnabled: boolean;
+    /**
+     * A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     */
     previewBranchExcludes: string[];
+    /**
+     * A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     */
     previewBranchIncludes: string[];
     /**
+     * Controls whether commits to preview branches trigger a preview deployment.
      * Available values: "all", "none", "custom".
      */
     previewDeploymentSetting: string;
+    /**
+     * The production branch of the repository.
+     */
     productionBranch: string;
+    /**
+     * Whether to trigger a production deployment on commits to the production branch.
+     */
     productionDeploymentsEnabled: boolean;
+    /**
+     * The name of the repository.
+     */
     repoName: string;
 }
 
@@ -12126,6 +12367,10 @@ export interface GetPagesProjectDeploymentConfigsPreview {
      */
     aiBindings: {[key: string]: outputs.GetPagesProjectDeploymentConfigsPreviewAiBindings};
     /**
+     * Whether to always use the latest compatibility date for Pages Functions.
+     */
+    alwaysUseLatestCompatibilityDate: boolean;
+    /**
      * Analytics Engine bindings used for Pages Functions.
      */
     analyticsEngineDatasets: {[key: string]: outputs.GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasets};
@@ -12133,6 +12378,10 @@ export interface GetPagesProjectDeploymentConfigsPreview {
      * Browser bindings used for Pages Functions.
      */
     browsers: {[key: string]: outputs.GetPagesProjectDeploymentConfigsPreviewBrowsers};
+    /**
+     * The major version of the build image to use for Pages Functions.
+     */
+    buildImageMajorVersion: number;
     /**
      * Compatibility date used for Pages Functions.
      */
@@ -12154,6 +12403,10 @@ export interface GetPagesProjectDeploymentConfigsPreview {
      */
     envVars: {[key: string]: outputs.GetPagesProjectDeploymentConfigsPreviewEnvVars};
     /**
+     * Whether to fail open when the deployment config cannot be applied.
+     */
+    failOpen: boolean;
+    /**
      * Hyperdrive bindings used for Pages Functions.
      */
     hyperdriveBindings: {[key: string]: outputs.GetPagesProjectDeploymentConfigsPreviewHyperdriveBindings};
@@ -12161,6 +12414,10 @@ export interface GetPagesProjectDeploymentConfigsPreview {
      * KV namespaces used for Pages Functions.
      */
     kvNamespaces: {[key: string]: outputs.GetPagesProjectDeploymentConfigsPreviewKvNamespaces};
+    /**
+     * Limits for Pages Functions.
+     */
+    limits: outputs.GetPagesProjectDeploymentConfigsPreviewLimits;
     /**
      * mTLS bindings used for Pages Functions.
      */
@@ -12182,9 +12439,20 @@ export interface GetPagesProjectDeploymentConfigsPreview {
      */
     services: {[key: string]: outputs.GetPagesProjectDeploymentConfigsPreviewServices};
     /**
+     * The usage model for Pages Functions.
+     * Available values: "standard", "bundled", "unbound".
+     *
+     * @deprecated All new projects now use the Standard usage model.
+     */
+    usageModel: string;
+    /**
      * Vectorize bindings used for Pages Functions.
      */
     vectorizeBindings: {[key: string]: outputs.GetPagesProjectDeploymentConfigsPreviewVectorizeBindings};
+    /**
+     * Hash of the Wrangler configuration used for the deployment.
+     */
+    wranglerConfigHash: string;
 }
 
 export interface GetPagesProjectDeploymentConfigsPreviewAiBindings {
@@ -12235,6 +12503,13 @@ export interface GetPagesProjectDeploymentConfigsPreviewKvNamespaces {
      * ID of the KV namespace.
      */
     namespaceId: string;
+}
+
+export interface GetPagesProjectDeploymentConfigsPreviewLimits {
+    /**
+     * CPU time limit in milliseconds.
+     */
+    cpuMs: number;
 }
 
 export interface GetPagesProjectDeploymentConfigsPreviewMtlsCertificates {
@@ -12291,6 +12566,10 @@ export interface GetPagesProjectDeploymentConfigsProduction {
      */
     aiBindings: {[key: string]: outputs.GetPagesProjectDeploymentConfigsProductionAiBindings};
     /**
+     * Whether to always use the latest compatibility date for Pages Functions.
+     */
+    alwaysUseLatestCompatibilityDate: boolean;
+    /**
      * Analytics Engine bindings used for Pages Functions.
      */
     analyticsEngineDatasets: {[key: string]: outputs.GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasets};
@@ -12298,6 +12577,10 @@ export interface GetPagesProjectDeploymentConfigsProduction {
      * Browser bindings used for Pages Functions.
      */
     browsers: {[key: string]: outputs.GetPagesProjectDeploymentConfigsProductionBrowsers};
+    /**
+     * The major version of the build image to use for Pages Functions.
+     */
+    buildImageMajorVersion: number;
     /**
      * Compatibility date used for Pages Functions.
      */
@@ -12319,6 +12602,10 @@ export interface GetPagesProjectDeploymentConfigsProduction {
      */
     envVars: {[key: string]: outputs.GetPagesProjectDeploymentConfigsProductionEnvVars};
     /**
+     * Whether to fail open when the deployment config cannot be applied.
+     */
+    failOpen: boolean;
+    /**
      * Hyperdrive bindings used for Pages Functions.
      */
     hyperdriveBindings: {[key: string]: outputs.GetPagesProjectDeploymentConfigsProductionHyperdriveBindings};
@@ -12326,6 +12613,10 @@ export interface GetPagesProjectDeploymentConfigsProduction {
      * KV namespaces used for Pages Functions.
      */
     kvNamespaces: {[key: string]: outputs.GetPagesProjectDeploymentConfigsProductionKvNamespaces};
+    /**
+     * Limits for Pages Functions.
+     */
+    limits: outputs.GetPagesProjectDeploymentConfigsProductionLimits;
     /**
      * mTLS bindings used for Pages Functions.
      */
@@ -12347,9 +12638,20 @@ export interface GetPagesProjectDeploymentConfigsProduction {
      */
     services: {[key: string]: outputs.GetPagesProjectDeploymentConfigsProductionServices};
     /**
+     * The usage model for Pages Functions.
+     * Available values: "standard", "bundled", "unbound".
+     *
+     * @deprecated All new projects now use the Standard usage model.
+     */
+    usageModel: string;
+    /**
      * Vectorize bindings used for Pages Functions.
      */
     vectorizeBindings: {[key: string]: outputs.GetPagesProjectDeploymentConfigsProductionVectorizeBindings};
+    /**
+     * Hash of the Wrangler configuration used for the deployment.
+     */
+    wranglerConfigHash: string;
 }
 
 export interface GetPagesProjectDeploymentConfigsProductionAiBindings {
@@ -12400,6 +12702,13 @@ export interface GetPagesProjectDeploymentConfigsProductionKvNamespaces {
      * ID of the KV namespace.
      */
     namespaceId: string;
+}
+
+export interface GetPagesProjectDeploymentConfigsProductionLimits {
+    /**
+     * CPU time limit in milliseconds.
+     */
+    cpuMs: number;
 }
 
 export interface GetPagesProjectDeploymentConfigsProductionMtlsCertificates {
@@ -12603,23 +12912,61 @@ export interface GetPagesProjectLatestDeploymentLatestStage {
 
 export interface GetPagesProjectLatestDeploymentSource {
     config: outputs.GetPagesProjectLatestDeploymentSourceConfig;
+    /**
+     * The source control management provider.
+     * Available values: "github", "gitlab".
+     */
     type: string;
 }
 
 export interface GetPagesProjectLatestDeploymentSourceConfig {
+    /**
+     * Whether to enable automatic deployments when pushing to the source repository.
+     * When disabled, no deployments (production or preview) will be triggered automatically.
+     *
+     * @deprecated Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+     */
     deploymentsEnabled: boolean;
+    /**
+     * The owner of the repository.
+     */
     owner: string;
+    /**
+     * A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
+     */
     pathExcludes: string[];
+    /**
+     * A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
+     */
     pathIncludes: string[];
+    /**
+     * Whether to enable PR comments.
+     */
     prCommentsEnabled: boolean;
+    /**
+     * A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     */
     previewBranchExcludes: string[];
+    /**
+     * A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     */
     previewBranchIncludes: string[];
     /**
+     * Controls whether commits to preview branches trigger a preview deployment.
      * Available values: "all", "none", "custom".
      */
     previewDeploymentSetting: string;
+    /**
+     * The production branch of the repository.
+     */
     productionBranch: string;
+    /**
+     * Whether to trigger a production deployment on commits to the production branch.
+     */
     productionDeploymentsEnabled: boolean;
+    /**
+     * The name of the repository.
+     */
     repoName: string;
 }
 
@@ -12646,23 +12993,61 @@ export interface GetPagesProjectLatestDeploymentStage {
 
 export interface GetPagesProjectSource {
     config: outputs.GetPagesProjectSourceConfig;
+    /**
+     * The source control management provider.
+     * Available values: "github", "gitlab".
+     */
     type: string;
 }
 
 export interface GetPagesProjectSourceConfig {
+    /**
+     * Whether to enable automatic deployments when pushing to the source repository.
+     * When disabled, no deployments (production or preview) will be triggered automatically.
+     *
+     * @deprecated Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+     */
     deploymentsEnabled: boolean;
+    /**
+     * The owner of the repository.
+     */
     owner: string;
+    /**
+     * A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
+     */
     pathExcludes: string[];
+    /**
+     * A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
+     */
     pathIncludes: string[];
+    /**
+     * Whether to enable PR comments.
+     */
     prCommentsEnabled: boolean;
+    /**
+     * A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     */
     previewBranchExcludes: string[];
+    /**
+     * A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     */
     previewBranchIncludes: string[];
     /**
+     * Controls whether commits to preview branches trigger a preview deployment.
      * Available values: "all", "none", "custom".
      */
     previewDeploymentSetting: string;
+    /**
+     * The production branch of the repository.
+     */
     productionBranch: string;
+    /**
+     * Whether to trigger a production deployment on commits to the production branch.
+     */
     productionDeploymentsEnabled: boolean;
+    /**
+     * The name of the repository.
+     */
     repoName: string;
 }
 
@@ -12819,23 +13204,61 @@ export interface GetPagesProjectsResultLatestStage {
 
 export interface GetPagesProjectsResultSource {
     config: outputs.GetPagesProjectsResultSourceConfig;
+    /**
+     * The source control management provider.
+     * Available values: "github", "gitlab".
+     */
     type: string;
 }
 
 export interface GetPagesProjectsResultSourceConfig {
+    /**
+     * Whether to enable automatic deployments when pushing to the source repository.
+     * When disabled, no deployments (production or preview) will be triggered automatically.
+     *
+     * @deprecated Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+     */
     deploymentsEnabled: boolean;
+    /**
+     * The owner of the repository.
+     */
     owner: string;
+    /**
+     * A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
+     */
     pathExcludes: string[];
+    /**
+     * A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
+     */
     pathIncludes: string[];
+    /**
+     * Whether to enable PR comments.
+     */
     prCommentsEnabled: boolean;
+    /**
+     * A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     */
     previewBranchExcludes: string[];
+    /**
+     * A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     */
     previewBranchIncludes: string[];
     /**
+     * Controls whether commits to preview branches trigger a preview deployment.
      * Available values: "all", "none", "custom".
      */
     previewDeploymentSetting: string;
+    /**
+     * The production branch of the repository.
+     */
     productionBranch: string;
+    /**
+     * Whether to trigger a production deployment on commits to the production branch.
+     */
     productionDeploymentsEnabled: boolean;
+    /**
+     * The name of the repository.
+     */
     repoName: string;
 }
 
@@ -15796,6 +16219,116 @@ export interface GetWorkerObservabilityLogs {
     invocationLogs: boolean;
 }
 
+export interface GetWorkerReferences {
+    /**
+     * Other Workers that reference the Worker as an outbound for a dispatch namespace.
+     */
+    dispatchNamespaceOutbounds: outputs.GetWorkerReferencesDispatchNamespaceOutbound[];
+    /**
+     * Custom domains connected to the Worker.
+     */
+    domains: outputs.GetWorkerReferencesDomain[];
+    /**
+     * Other Workers that reference Durable Object classes implemented by the Worker.
+     */
+    durableObjects: outputs.GetWorkerReferencesDurableObject[];
+    /**
+     * Queues that send messages to the Worker.
+     */
+    queues: outputs.GetWorkerReferencesQueue[];
+    /**
+     * Other Workers that reference the Worker using [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/).
+     */
+    workers: outputs.GetWorkerReferencesWorker[];
+}
+
+export interface GetWorkerReferencesDispatchNamespaceOutbound {
+    /**
+     * ID of the dispatch namespace.
+     */
+    namespaceId: string;
+    /**
+     * Name of the dispatch namespace.
+     */
+    namespaceName: string;
+    /**
+     * ID of the Worker using the dispatch namespace.
+     */
+    workerId: string;
+    /**
+     * Name of the Worker using the dispatch namespace.
+     */
+    workerName: string;
+}
+
+export interface GetWorkerReferencesDomain {
+    /**
+     * ID of the TLS certificate issued for the custom domain.
+     */
+    certificateId: string;
+    /**
+     * Full hostname of the custom domain, including the zone name.
+     */
+    hostname: string;
+    /**
+     * ID of the custom domain.
+     */
+    id: string;
+    /**
+     * ID of the zone.
+     */
+    zoneId: string;
+    /**
+     * Name of the zone.
+     */
+    zoneName: string;
+}
+
+export interface GetWorkerReferencesDurableObject {
+    /**
+     * ID of the Durable Object namespace being used.
+     */
+    namespaceId: string;
+    /**
+     * Name of the Durable Object namespace being used.
+     */
+    namespaceName: string;
+    /**
+     * ID of the Worker using the Durable Object implementation.
+     */
+    workerId: string;
+    /**
+     * Name of the Worker using the Durable Object implementation.
+     */
+    workerName: string;
+}
+
+export interface GetWorkerReferencesQueue {
+    /**
+     * ID of the queue consumer configuration.
+     */
+    queueConsumerId: string;
+    /**
+     * ID of the queue.
+     */
+    queueId: string;
+    /**
+     * Name of the queue.
+     */
+    queueName: string;
+}
+
+export interface GetWorkerReferencesWorker {
+    /**
+     * ID of the referencing Worker.
+     */
+    id: string;
+    /**
+     * Name of the referencing Worker.
+     */
+    name: string;
+}
+
 export interface GetWorkerSubdomain {
     /**
      * Whether the *.workers.dev subdomain is enabled for the Worker.
@@ -15929,7 +16462,7 @@ export interface GetWorkerVersionBinding {
      */
     name: string;
     /**
-     * Namespace to bind to.
+     * The name of the dispatch namespace.
      */
     namespace: string;
     /**
@@ -15978,7 +16511,7 @@ export interface GetWorkerVersionBinding {
     text: string;
     /**
      * The kind of resource that the binding provides.
-     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "tail*consumer", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasm*module".
+     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasmModule".
      */
     type: string;
     /**
@@ -16313,7 +16846,7 @@ export interface GetWorkerVersionsResultBinding {
      */
     name: string;
     /**
-     * Namespace to bind to.
+     * The name of the dispatch namespace.
      */
     namespace: string;
     /**
@@ -16362,7 +16895,7 @@ export interface GetWorkerVersionsResultBinding {
     text: string;
     /**
      * The kind of resource that the binding provides.
-     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "tail*consumer", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasm*module".
+     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasmModule".
      */
     type: string;
     /**
@@ -16668,6 +17201,10 @@ export interface GetWorkersResult {
      */
     observability: outputs.GetWorkersResultObservability;
     /**
+     * Other resources that reference the Worker and depend on it existing.
+     */
+    references: outputs.GetWorkersResultReferences;
+    /**
      * Subdomain settings for the Worker.
      */
     subdomain: outputs.GetWorkersResultSubdomain;
@@ -16713,6 +17250,116 @@ export interface GetWorkersResultObservabilityLogs {
      * Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.
      */
     invocationLogs: boolean;
+}
+
+export interface GetWorkersResultReferences {
+    /**
+     * Other Workers that reference the Worker as an outbound for a dispatch namespace.
+     */
+    dispatchNamespaceOutbounds: outputs.GetWorkersResultReferencesDispatchNamespaceOutbound[];
+    /**
+     * Custom domains connected to the Worker.
+     */
+    domains: outputs.GetWorkersResultReferencesDomain[];
+    /**
+     * Other Workers that reference Durable Object classes implemented by the Worker.
+     */
+    durableObjects: outputs.GetWorkersResultReferencesDurableObject[];
+    /**
+     * Queues that send messages to the Worker.
+     */
+    queues: outputs.GetWorkersResultReferencesQueue[];
+    /**
+     * Other Workers that reference the Worker using [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/).
+     */
+    workers: outputs.GetWorkersResultReferencesWorker[];
+}
+
+export interface GetWorkersResultReferencesDispatchNamespaceOutbound {
+    /**
+     * ID of the dispatch namespace.
+     */
+    namespaceId: string;
+    /**
+     * Name of the dispatch namespace.
+     */
+    namespaceName: string;
+    /**
+     * ID of the Worker using the dispatch namespace.
+     */
+    workerId: string;
+    /**
+     * Name of the Worker using the dispatch namespace.
+     */
+    workerName: string;
+}
+
+export interface GetWorkersResultReferencesDomain {
+    /**
+     * ID of the TLS certificate issued for the custom domain.
+     */
+    certificateId: string;
+    /**
+     * Full hostname of the custom domain, including the zone name.
+     */
+    hostname: string;
+    /**
+     * ID of the custom domain.
+     */
+    id: string;
+    /**
+     * ID of the zone.
+     */
+    zoneId: string;
+    /**
+     * Name of the zone.
+     */
+    zoneName: string;
+}
+
+export interface GetWorkersResultReferencesDurableObject {
+    /**
+     * ID of the Durable Object namespace being used.
+     */
+    namespaceId: string;
+    /**
+     * Name of the Durable Object namespace being used.
+     */
+    namespaceName: string;
+    /**
+     * ID of the Worker using the Durable Object implementation.
+     */
+    workerId: string;
+    /**
+     * Name of the Worker using the Durable Object implementation.
+     */
+    workerName: string;
+}
+
+export interface GetWorkersResultReferencesQueue {
+    /**
+     * ID of the queue consumer configuration.
+     */
+    queueConsumerId: string;
+    /**
+     * ID of the queue.
+     */
+    queueId: string;
+    /**
+     * Name of the queue.
+     */
+    queueName: string;
+}
+
+export interface GetWorkersResultReferencesWorker {
+    /**
+     * ID of the referencing Worker.
+     */
+    id: string;
+    /**
+     * Name of the referencing Worker.
+     */
+    name: string;
 }
 
 export interface GetWorkersResultSubdomain {
@@ -16962,6 +17609,10 @@ export interface GetZeroTrustAccessApplicationDestination {
      * Available values: "tcp", "udp".
      */
     l4Protocol: string;
+    /**
+     * A MCP server id configured in ai-controls. Access will secure the MCP server if accessed through a MCP portal.
+     */
+    mcpServerId?: string;
     /**
      * The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match.
      */
@@ -18290,7 +18941,7 @@ export interface GetZeroTrustAccessApplicationsResult {
     targetCriterias: outputs.GetZeroTrustAccessApplicationsResultTargetCriteria[];
     /**
      * The application type.
-     * Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dashSso", "infrastructure", "rdp".
+     * Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal".
      */
     type: string;
 }
@@ -18344,6 +18995,10 @@ export interface GetZeroTrustAccessApplicationsResultDestination {
      * Available values: "tcp", "udp".
      */
     l4Protocol: string;
+    /**
+     * A MCP server id configured in ai-controls. Access will secure the MCP server if accessed through a MCP portal.
+     */
+    mcpServerId?: string;
     /**
      * The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match.
      */
@@ -24035,7 +24690,7 @@ export interface GetZeroTrustDevicePostureRuleInput {
      */
     osDistroRevision: string;
     /**
-     * Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).
+     * Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version. (Mac, iOS, and Linux only).
      */
     osVersionExtra: string;
     /**
@@ -24263,7 +24918,7 @@ export interface GetZeroTrustDevicePostureRulesResultInput {
      */
     osDistroRevision: string;
     /**
-     * Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).
+     * Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version. (Mac, iOS, and Linux only).
      */
     osVersionExtra: string;
     /**
@@ -25404,7 +26059,7 @@ export interface GetZeroTrustGatewayPoliciesResult {
      */
     expiration: outputs.GetZeroTrustGatewayPoliciesResultExpiration;
     /**
-     * Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+     * Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
      */
     filters: string[];
     /**
@@ -26190,7 +26845,7 @@ export interface GetZeroTrustGatewaySettingsSettings {
      */
     customCertificate: outputs.GetZeroTrustGatewaySettingsSettingsCustomCertificate;
     /**
-     * Specify user email settings for the firewall policies. When this is enabled, we standardize the email addresses in the identity part of the rule, so that they match the extended email variants in the firewall policies. When this setting is turned off, the email addresses in the identity part of the rule will be matched exactly as provided. If your email has `.` or `+` modifiers, you should enable this setting.
+     * Configures user email settings for firewall policies. When you enable this, the system standardizes email addresses in the identity portion of the rule to match extended email variants in firewall policies. When you disable this setting, the system matches email addresses exactly as you provide them. Enable this setting if your email uses `.` or `+` modifiers.
      */
     extendedEmailMatching: outputs.GetZeroTrustGatewaySettingsSettingsExtendedEmailMatching;
     /**
@@ -28966,6 +29621,10 @@ export interface NotificationPolicyFilters {
     /**
      * Usage depends on specific alert type
      */
+    types?: string[];
+    /**
+     * Usage depends on specific alert type
+     */
     wheres?: string[];
     /**
      * Usage depends on specific alert type
@@ -29185,6 +29844,35 @@ export interface ObservatoryScheduledTestTestRegion {
      * Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
      */
     value: string;
+}
+
+export interface OrganizationMeta {
+    /**
+     * Enable features for Organizations.
+     */
+    flags: outputs.OrganizationMetaFlags;
+    managedBy: string;
+}
+
+export interface OrganizationMetaFlags {
+    accountCreation: string;
+    accountDeletion: string;
+    accountMigration: string;
+    accountMobility: string;
+    subOrgCreation: string;
+}
+
+export interface OrganizationParent {
+    id: string;
+    name: string;
+}
+
+export interface OrganizationProfile {
+    businessAddress: string;
+    businessEmail: string;
+    businessName: string;
+    businessPhone: string;
+    externalMetadata: string;
 }
 
 export interface PageRuleActions {
@@ -29465,23 +30153,61 @@ export interface PagesProjectCanonicalDeploymentLatestStage {
 
 export interface PagesProjectCanonicalDeploymentSource {
     config: outputs.PagesProjectCanonicalDeploymentSourceConfig;
+    /**
+     * The source control management provider.
+     * Available values: "github", "gitlab".
+     */
     type: string;
 }
 
 export interface PagesProjectCanonicalDeploymentSourceConfig {
+    /**
+     * Whether to enable automatic deployments when pushing to the source repository.
+     * When disabled, no deployments (production or preview) will be triggered automatically.
+     *
+     * @deprecated Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+     */
     deploymentsEnabled: boolean;
+    /**
+     * The owner of the repository.
+     */
     owner: string;
+    /**
+     * A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
+     */
     pathExcludes: string[];
+    /**
+     * A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
+     */
     pathIncludes: string[];
+    /**
+     * Whether to enable PR comments.
+     */
     prCommentsEnabled: boolean;
+    /**
+     * A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     */
     previewBranchExcludes: string[];
+    /**
+     * A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     */
     previewBranchIncludes: string[];
     /**
+     * Controls whether commits to preview branches trigger a preview deployment.
      * Available values: "all", "none", "custom".
      */
     previewDeploymentSetting: string;
+    /**
+     * The production branch of the repository.
+     */
     productionBranch: string;
+    /**
+     * Whether to trigger a production deployment on commits to the production branch.
+     */
     productionDeploymentsEnabled: boolean;
+    /**
+     * The name of the repository.
+     */
     repoName: string;
 }
 
@@ -29510,11 +30236,11 @@ export interface PagesProjectDeploymentConfigs {
     /**
      * Configs for preview deploys.
      */
-    preview?: outputs.PagesProjectDeploymentConfigsPreview;
+    preview: outputs.PagesProjectDeploymentConfigsPreview;
     /**
      * Configs for production deploys.
      */
-    production?: outputs.PagesProjectDeploymentConfigsProduction;
+    production: outputs.PagesProjectDeploymentConfigsProduction;
 }
 
 export interface PagesProjectDeploymentConfigsPreview {
@@ -29522,6 +30248,10 @@ export interface PagesProjectDeploymentConfigsPreview {
      * Constellation bindings used for Pages Functions.
      */
     aiBindings?: {[key: string]: outputs.PagesProjectDeploymentConfigsPreviewAiBindings};
+    /**
+     * Whether to always use the latest compatibility date for Pages Functions.
+     */
+    alwaysUseLatestCompatibilityDate: boolean;
     /**
      * Analytics Engine bindings used for Pages Functions.
      */
@@ -29531,13 +30261,17 @@ export interface PagesProjectDeploymentConfigsPreview {
      */
     browsers?: {[key: string]: outputs.PagesProjectDeploymentConfigsPreviewBrowsers};
     /**
+     * The major version of the build image to use for Pages Functions.
+     */
+    buildImageMajorVersion: number;
+    /**
      * Compatibility date used for Pages Functions.
      */
-    compatibilityDate?: string;
+    compatibilityDate: string;
     /**
      * Compatibility flags used for Pages Functions.
      */
-    compatibilityFlags?: string[];
+    compatibilityFlags: string[];
     /**
      * D1 databases used for Pages Functions.
      */
@@ -29551,6 +30285,10 @@ export interface PagesProjectDeploymentConfigsPreview {
      */
     envVars?: {[key: string]: outputs.PagesProjectDeploymentConfigsPreviewEnvVars};
     /**
+     * Whether to fail open when the deployment config cannot be applied.
+     */
+    failOpen: boolean;
+    /**
      * Hyperdrive bindings used for Pages Functions.
      */
     hyperdriveBindings?: {[key: string]: outputs.PagesProjectDeploymentConfigsPreviewHyperdriveBindings};
@@ -29558,6 +30296,10 @@ export interface PagesProjectDeploymentConfigsPreview {
      * KV namespaces used for Pages Functions.
      */
     kvNamespaces?: {[key: string]: outputs.PagesProjectDeploymentConfigsPreviewKvNamespaces};
+    /**
+     * Limits for Pages Functions.
+     */
+    limits?: outputs.PagesProjectDeploymentConfigsPreviewLimits;
     /**
      * mTLS bindings used for Pages Functions.
      */
@@ -29579,9 +30321,20 @@ export interface PagesProjectDeploymentConfigsPreview {
      */
     services?: {[key: string]: outputs.PagesProjectDeploymentConfigsPreviewServices};
     /**
+     * The usage model for Pages Functions.
+     * Available values: "standard", "bundled", "unbound".
+     *
+     * @deprecated All new projects now use the Standard usage model.
+     */
+    usageModel: string;
+    /**
      * Vectorize bindings used for Pages Functions.
      */
     vectorizeBindings?: {[key: string]: outputs.PagesProjectDeploymentConfigsPreviewVectorizeBindings};
+    /**
+     * Hash of the Wrangler configuration used for the deployment.
+     */
+    wranglerConfigHash?: string;
 }
 
 export interface PagesProjectDeploymentConfigsPreviewAiBindings {
@@ -29632,6 +30385,13 @@ export interface PagesProjectDeploymentConfigsPreviewKvNamespaces {
      * ID of the KV namespace.
      */
     namespaceId?: string;
+}
+
+export interface PagesProjectDeploymentConfigsPreviewLimits {
+    /**
+     * CPU time limit in milliseconds.
+     */
+    cpuMs?: number;
 }
 
 export interface PagesProjectDeploymentConfigsPreviewMtlsCertificates {
@@ -29688,6 +30448,10 @@ export interface PagesProjectDeploymentConfigsProduction {
      */
     aiBindings?: {[key: string]: outputs.PagesProjectDeploymentConfigsProductionAiBindings};
     /**
+     * Whether to always use the latest compatibility date for Pages Functions.
+     */
+    alwaysUseLatestCompatibilityDate: boolean;
+    /**
      * Analytics Engine bindings used for Pages Functions.
      */
     analyticsEngineDatasets?: {[key: string]: outputs.PagesProjectDeploymentConfigsProductionAnalyticsEngineDatasets};
@@ -29696,13 +30460,17 @@ export interface PagesProjectDeploymentConfigsProduction {
      */
     browsers?: {[key: string]: outputs.PagesProjectDeploymentConfigsProductionBrowsers};
     /**
+     * The major version of the build image to use for Pages Functions.
+     */
+    buildImageMajorVersion: number;
+    /**
      * Compatibility date used for Pages Functions.
      */
-    compatibilityDate?: string;
+    compatibilityDate: string;
     /**
      * Compatibility flags used for Pages Functions.
      */
-    compatibilityFlags?: string[];
+    compatibilityFlags: string[];
     /**
      * D1 databases used for Pages Functions.
      */
@@ -29716,6 +30484,10 @@ export interface PagesProjectDeploymentConfigsProduction {
      */
     envVars?: {[key: string]: outputs.PagesProjectDeploymentConfigsProductionEnvVars};
     /**
+     * Whether to fail open when the deployment config cannot be applied.
+     */
+    failOpen: boolean;
+    /**
      * Hyperdrive bindings used for Pages Functions.
      */
     hyperdriveBindings?: {[key: string]: outputs.PagesProjectDeploymentConfigsProductionHyperdriveBindings};
@@ -29723,6 +30495,10 @@ export interface PagesProjectDeploymentConfigsProduction {
      * KV namespaces used for Pages Functions.
      */
     kvNamespaces?: {[key: string]: outputs.PagesProjectDeploymentConfigsProductionKvNamespaces};
+    /**
+     * Limits for Pages Functions.
+     */
+    limits?: outputs.PagesProjectDeploymentConfigsProductionLimits;
     /**
      * mTLS bindings used for Pages Functions.
      */
@@ -29744,9 +30520,20 @@ export interface PagesProjectDeploymentConfigsProduction {
      */
     services?: {[key: string]: outputs.PagesProjectDeploymentConfigsProductionServices};
     /**
+     * The usage model for Pages Functions.
+     * Available values: "standard", "bundled", "unbound".
+     *
+     * @deprecated All new projects now use the Standard usage model.
+     */
+    usageModel: string;
+    /**
      * Vectorize bindings used for Pages Functions.
      */
     vectorizeBindings?: {[key: string]: outputs.PagesProjectDeploymentConfigsProductionVectorizeBindings};
+    /**
+     * Hash of the Wrangler configuration used for the deployment.
+     */
+    wranglerConfigHash?: string;
 }
 
 export interface PagesProjectDeploymentConfigsProductionAiBindings {
@@ -29797,6 +30584,13 @@ export interface PagesProjectDeploymentConfigsProductionKvNamespaces {
      * ID of the KV namespace.
      */
     namespaceId?: string;
+}
+
+export interface PagesProjectDeploymentConfigsProductionLimits {
+    /**
+     * CPU time limit in milliseconds.
+     */
+    cpuMs?: number;
 }
 
 export interface PagesProjectDeploymentConfigsProductionMtlsCertificates {
@@ -30000,23 +30794,61 @@ export interface PagesProjectLatestDeploymentLatestStage {
 
 export interface PagesProjectLatestDeploymentSource {
     config: outputs.PagesProjectLatestDeploymentSourceConfig;
+    /**
+     * The source control management provider.
+     * Available values: "github", "gitlab".
+     */
     type: string;
 }
 
 export interface PagesProjectLatestDeploymentSourceConfig {
+    /**
+     * Whether to enable automatic deployments when pushing to the source repository.
+     * When disabled, no deployments (production or preview) will be triggered automatically.
+     *
+     * @deprecated Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+     */
     deploymentsEnabled: boolean;
+    /**
+     * The owner of the repository.
+     */
     owner: string;
+    /**
+     * A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
+     */
     pathExcludes: string[];
+    /**
+     * A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
+     */
     pathIncludes: string[];
+    /**
+     * Whether to enable PR comments.
+     */
     prCommentsEnabled: boolean;
+    /**
+     * A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     */
     previewBranchExcludes: string[];
+    /**
+     * A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     */
     previewBranchIncludes: string[];
     /**
+     * Controls whether commits to preview branches trigger a preview deployment.
      * Available values: "all", "none", "custom".
      */
     previewDeploymentSetting: string;
+    /**
+     * The production branch of the repository.
+     */
     productionBranch: string;
+    /**
+     * Whether to trigger a production deployment on commits to the production branch.
+     */
     productionDeploymentsEnabled: boolean;
+    /**
+     * The name of the repository.
+     */
     repoName: string;
 }
 
@@ -30042,24 +30874,62 @@ export interface PagesProjectLatestDeploymentStage {
 }
 
 export interface PagesProjectSource {
-    config?: outputs.PagesProjectSourceConfig;
+    config: outputs.PagesProjectSourceConfig;
+    /**
+     * The source control management provider.
+     * Available values: "github", "gitlab".
+     */
     type?: string;
 }
 
 export interface PagesProjectSourceConfig {
-    deploymentsEnabled?: boolean;
-    owner?: string;
-    pathExcludes?: string[];
-    pathIncludes?: string[];
-    prCommentsEnabled?: boolean;
-    previewBranchExcludes?: string[];
-    previewBranchIncludes?: string[];
     /**
+     * Whether to enable automatic deployments when pushing to the source repository.
+     * When disabled, no deployments (production or preview) will be triggered automatically.
+     *
+     * @deprecated Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+     */
+    deploymentsEnabled?: boolean;
+    /**
+     * The owner of the repository.
+     */
+    owner?: string;
+    /**
+     * A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
+     */
+    pathExcludes: string[];
+    /**
+     * A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
+     */
+    pathIncludes: string[];
+    /**
+     * Whether to enable PR comments.
+     */
+    prCommentsEnabled?: boolean;
+    /**
+     * A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     */
+    previewBranchExcludes: string[];
+    /**
+     * A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     */
+    previewBranchIncludes: string[];
+    /**
+     * Controls whether commits to preview branches trigger a preview deployment.
      * Available values: "all", "none", "custom".
      */
-    previewDeploymentSetting?: string;
+    previewDeploymentSetting: string;
+    /**
+     * The production branch of the repository.
+     */
     productionBranch?: string;
+    /**
+     * Whether to trigger a production deployment on commits to the production branch.
+     */
     productionDeploymentsEnabled?: boolean;
+    /**
+     * The name of the repository.
+     */
     repoName?: string;
 }
 
@@ -31727,7 +32597,7 @@ export interface TeamsAccountSettings {
      */
     customCertificate?: outputs.TeamsAccountSettingsCustomCertificate;
     /**
-     * Specify user email settings for the firewall policies. When this is enabled, we standardize the email addresses in the identity part of the rule, so that they match the extended email variants in the firewall policies. When this setting is turned off, the email addresses in the identity part of the rule will be matched exactly as provided. If your email has `.` or `+` modifiers, you should enable this setting.
+     * Configures user email settings for firewall policies. When you enable this, the system standardizes email addresses in the identity portion of the rule to match extended email variants in firewall policies. When you disable this setting, the system matches email addresses exactly as you provide them. Enable this setting if your email uses `.` or `+` modifiers.
      */
     extendedEmailMatching?: outputs.TeamsAccountSettingsExtendedEmailMatching;
     /**
@@ -32429,10 +33299,6 @@ export interface TunnelConfigConfig {
      * Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
      */
     originRequest?: outputs.TunnelConfigConfigOriginRequest;
-    /**
-     * Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
-     */
-    warpRouting: outputs.TunnelConfigConfigWarpRouting;
 }
 
 export interface TunnelConfigConfigIngress {
@@ -32594,10 +33460,6 @@ export interface TunnelConfigConfigOriginRequestAccess {
      */
     required?: boolean;
     teamName: string;
-}
-
-export interface TunnelConfigConfigWarpRouting {
-    enabled: boolean;
 }
 
 export interface TunnelConnection {
@@ -32792,6 +33654,116 @@ export interface WorkerObservabilityLogs {
     invocationLogs: boolean;
 }
 
+export interface WorkerReferences {
+    /**
+     * Other Workers that reference the Worker as an outbound for a dispatch namespace.
+     */
+    dispatchNamespaceOutbounds: outputs.WorkerReferencesDispatchNamespaceOutbound[];
+    /**
+     * Custom domains connected to the Worker.
+     */
+    domains: outputs.WorkerReferencesDomain[];
+    /**
+     * Other Workers that reference Durable Object classes implemented by the Worker.
+     */
+    durableObjects: outputs.WorkerReferencesDurableObject[];
+    /**
+     * Queues that send messages to the Worker.
+     */
+    queues: outputs.WorkerReferencesQueue[];
+    /**
+     * Other Workers that reference the Worker using [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/).
+     */
+    workers: outputs.WorkerReferencesWorker[];
+}
+
+export interface WorkerReferencesDispatchNamespaceOutbound {
+    /**
+     * ID of the dispatch namespace.
+     */
+    namespaceId: string;
+    /**
+     * Name of the dispatch namespace.
+     */
+    namespaceName: string;
+    /**
+     * ID of the Worker using the dispatch namespace.
+     */
+    workerId: string;
+    /**
+     * Name of the Worker using the dispatch namespace.
+     */
+    workerName: string;
+}
+
+export interface WorkerReferencesDomain {
+    /**
+     * ID of the TLS certificate issued for the custom domain.
+     */
+    certificateId: string;
+    /**
+     * Full hostname of the custom domain, including the zone name.
+     */
+    hostname: string;
+    /**
+     * ID of the custom domain.
+     */
+    id: string;
+    /**
+     * ID of the zone.
+     */
+    zoneId: string;
+    /**
+     * Name of the zone.
+     */
+    zoneName: string;
+}
+
+export interface WorkerReferencesDurableObject {
+    /**
+     * ID of the Durable Object namespace being used.
+     */
+    namespaceId: string;
+    /**
+     * Name of the Durable Object namespace being used.
+     */
+    namespaceName: string;
+    /**
+     * ID of the Worker using the Durable Object implementation.
+     */
+    workerId: string;
+    /**
+     * Name of the Worker using the Durable Object implementation.
+     */
+    workerName: string;
+}
+
+export interface WorkerReferencesQueue {
+    /**
+     * ID of the queue consumer configuration.
+     */
+    queueConsumerId: string;
+    /**
+     * ID of the queue.
+     */
+    queueId: string;
+    /**
+     * Name of the queue.
+     */
+    queueName: string;
+}
+
+export interface WorkerReferencesWorker {
+    /**
+     * ID of the referencing Worker.
+     */
+    id: string;
+    /**
+     * Name of the referencing Worker.
+     */
+    name: string;
+}
+
 export interface WorkerScriptAssets {
     /**
      * The SHA-256 hash of the asset manifest of files to upload.
@@ -32914,7 +33886,7 @@ export interface WorkerScriptBinding {
      */
     name: string;
     /**
-     * Namespace to bind to.
+     * The name of the dispatch namespace.
      */
     namespace?: string;
     /**
@@ -33354,7 +34326,7 @@ export interface WorkerVersionBinding {
      */
     name: string;
     /**
-     * Namespace to bind to.
+     * The name of the dispatch namespace.
      */
     namespace?: string;
     /**
@@ -33403,7 +34375,7 @@ export interface WorkerVersionBinding {
     text?: string;
     /**
      * The kind of resource that the binding provides.
-     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "tail*consumer", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasm*module".
+     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasmModule".
      */
     type: string;
     /**
@@ -33700,7 +34672,7 @@ export interface WorkersScriptBinding {
      */
     name: string;
     /**
-     * Namespace to bind to.
+     * The name of the dispatch namespace.
      */
     namespace?: string;
     /**
@@ -34059,6 +35031,10 @@ export interface ZeroTrustAccessApplicationDestination {
      * Available values: "tcp", "udp".
      */
     l4Protocol?: string;
+    /**
+     * A MCP server id configured in ai-controls. Access will secure the MCP server if accessed through a MCP portal.
+     */
+    mcpServerId?: string;
     /**
      * The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match.
      */
@@ -37121,7 +38097,7 @@ export interface ZeroTrustDevicePostureRuleInput {
      */
     osDistroRevision?: string;
     /**
-     * Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).
+     * Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version. (Mac, iOS, and Linux only).
      */
     osVersionExtra?: string;
     /**
@@ -37208,11 +38184,11 @@ export interface ZeroTrustDexTestData {
     /**
      * The desired endpoint to test.
      */
-    host: string;
+    host?: string;
     /**
      * The type of test.
      */
-    kind: string;
+    kind?: string;
     /**
      * The HTTP request method type.
      */
@@ -38010,7 +38986,7 @@ export interface ZeroTrustGatewaySettingsSettings {
      */
     customCertificate?: outputs.ZeroTrustGatewaySettingsSettingsCustomCertificate;
     /**
-     * Specify user email settings for the firewall policies. When this is enabled, we standardize the email addresses in the identity part of the rule, so that they match the extended email variants in the firewall policies. When this setting is turned off, the email addresses in the identity part of the rule will be matched exactly as provided. If your email has `.` or `+` modifiers, you should enable this setting.
+     * Configures user email settings for firewall policies. When you enable this, the system standardizes email addresses in the identity portion of the rule to match extended email variants in firewall policies. When you disable this setting, the system matches email addresses exactly as you provide them. Enable this setting if your email uses `.` or `+` modifiers.
      */
     extendedEmailMatching?: outputs.ZeroTrustGatewaySettingsSettingsExtendedEmailMatching;
     /**
@@ -38334,10 +39310,6 @@ export interface ZeroTrustTunnelCloudflaredConfigConfig {
      * Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
      */
     originRequest?: outputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequest;
-    /**
-     * Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
-     */
-    warpRouting: outputs.ZeroTrustTunnelCloudflaredConfigConfigWarpRouting;
 }
 
 export interface ZeroTrustTunnelCloudflaredConfigConfigIngress {
@@ -38499,10 +39471,6 @@ export interface ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccess {
      */
     required?: boolean;
     teamName: string;
-}
-
-export interface ZeroTrustTunnelCloudflaredConfigConfigWarpRouting {
-    enabled: boolean;
 }
 
 export interface ZeroTrustTunnelCloudflaredConnection {

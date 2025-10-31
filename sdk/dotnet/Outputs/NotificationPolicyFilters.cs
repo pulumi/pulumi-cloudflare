@@ -176,6 +176,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Usage depends on specific alert type
         /// </summary>
+        public readonly ImmutableArray<string> Types;
+        /// <summary>
+        /// Usage depends on specific alert type
+        /// </summary>
         public readonly ImmutableArray<string> Wheres;
         /// <summary>
         /// Usage depends on specific alert type
@@ -264,6 +268,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> tunnelNames,
 
+            ImmutableArray<string> types,
+
             ImmutableArray<string> wheres,
 
             ImmutableArray<string> zones)
@@ -308,6 +314,7 @@ namespace Pulumi.Cloudflare.Outputs
             TrafficExclusions = trafficExclusions;
             TunnelIds = tunnelIds;
             TunnelNames = tunnelNames;
+            Types = types;
             Wheres = wheres;
             Zones = zones;
         }

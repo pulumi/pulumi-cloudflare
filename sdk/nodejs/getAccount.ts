@@ -56,6 +56,10 @@ export interface GetAccountResult {
      */
     readonly id: string;
     /**
+     * Parent container details
+     */
+    readonly managedBy: outputs.GetAccountManagedBy;
+    /**
      * Account name
      */
     readonly name: string;

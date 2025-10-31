@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetAccountsResultManagedBy;
 import com.pulumi.cloudflare.outputs.GetAccountsResultSettings;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -21,6 +22,11 @@ public final class GetAccountsResult {
      * 
      */
     private String id;
+    /**
+     * @return Parent container details
+     * 
+     */
+    private GetAccountsResultManagedBy managedBy;
     /**
      * @return Account name
      * 
@@ -51,6 +57,13 @@ public final class GetAccountsResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return Parent container details
+     * 
+     */
+    public GetAccountsResultManagedBy managedBy() {
+        return this.managedBy;
     }
     /**
      * @return Account name
@@ -85,6 +98,7 @@ public final class GetAccountsResult {
     public static final class Builder {
         private String createdOn;
         private String id;
+        private GetAccountsResultManagedBy managedBy;
         private String name;
         private GetAccountsResultSettings settings;
         private String type;
@@ -93,6 +107,7 @@ public final class GetAccountsResult {
     	      Objects.requireNonNull(defaults);
     	      this.createdOn = defaults.createdOn;
     	      this.id = defaults.id;
+    	      this.managedBy = defaults.managedBy;
     	      this.name = defaults.name;
     	      this.settings = defaults.settings;
     	      this.type = defaults.type;
@@ -112,6 +127,14 @@ public final class GetAccountsResult {
               throw new MissingRequiredPropertyException("GetAccountsResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder managedBy(GetAccountsResultManagedBy managedBy) {
+            if (managedBy == null) {
+              throw new MissingRequiredPropertyException("GetAccountsResult", "managedBy");
+            }
+            this.managedBy = managedBy;
             return this;
         }
         @CustomType.Setter
@@ -142,6 +165,7 @@ public final class GetAccountsResult {
             final var _resultValue = new GetAccountsResult();
             _resultValue.createdOn = createdOn;
             _resultValue.id = id;
+            _resultValue.managedBy = managedBy;
             _resultValue.name = name;
             _resultValue.settings = settings;
             _resultValue.type = type;

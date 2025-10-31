@@ -72,7 +72,7 @@ export class ZeroTrustDlpPredefinedEntry extends pulumi.CustomResource {
      * This field is not actually used as the owning profile for a predefined entry is already set
      * to a predefined profile
      */
-    declare public readonly profileId: pulumi.Output<string | undefined>;
+    declare public readonly profileId: pulumi.Output<string>;
     declare public /*out*/ readonly secret: pulumi.Output<boolean>;
     /**
      * Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".

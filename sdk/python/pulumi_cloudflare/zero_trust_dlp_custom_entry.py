@@ -25,7 +25,7 @@ class ZeroTrustDlpCustomEntryArgs:
                  enabled: pulumi.Input[_builtins.bool],
                  name: pulumi.Input[_builtins.str],
                  pattern: pulumi.Input['ZeroTrustDlpCustomEntryPatternArgs'],
-                 profile_id: pulumi.Input[_builtins.str]):
+                 profile_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustDlpCustomEntry resource.
         """
@@ -33,7 +33,8 @@ class ZeroTrustDlpCustomEntryArgs:
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "pattern", pattern)
-        pulumi.set(__self__, "profile_id", profile_id)
+        if profile_id is not None:
+            pulumi.set(__self__, "profile_id", profile_id)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -73,11 +74,11 @@ class ZeroTrustDlpCustomEntryArgs:
 
     @_builtins.property
     @pulumi.getter(name="profileId")
-    def profile_id(self) -> pulumi.Input[_builtins.str]:
+    def profile_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "profile_id")
 
     @profile_id.setter
-    def profile_id(self, value: pulumi.Input[_builtins.str]):
+    def profile_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "profile_id", value)
 
 
@@ -367,8 +368,6 @@ class ZeroTrustDlpCustomEntry(pulumi.CustomResource):
             if pattern is None and not opts.urn:
                 raise TypeError("Missing required property 'pattern'")
             __props__.__dict__["pattern"] = pattern
-            if profile_id is None and not opts.urn:
-                raise TypeError("Missing required property 'profile_id'")
             __props__.__dict__["profile_id"] = profile_id
             __props__.__dict__["case_sensitive"] = None
             __props__.__dict__["confidence"] = None
@@ -474,7 +473,7 @@ class ZeroTrustDlpCustomEntry(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="profileId")
-    def profile_id(self) -> pulumi.Output[_builtins.str]:
+    def profile_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "profile_id")
 
     @_builtins.property

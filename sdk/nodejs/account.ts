@@ -61,6 +61,10 @@ export class Account extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
+     * Parent container details
+     */
+    declare public readonly managedBy: pulumi.Output<outputs.AccountManagedBy>;
+    /**
      * Account name
      */
     declare public readonly name: pulumi.Output<string>;
@@ -91,6 +95,7 @@ export class Account extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AccountState | undefined;
             resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["managedBy"] = state?.managedBy;
             resourceInputs["name"] = state?.name;
             resourceInputs["settings"] = state?.settings;
             resourceInputs["type"] = state?.type;
@@ -100,6 +105,7 @@ export class Account extends pulumi.CustomResource {
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
+            resourceInputs["managedBy"] = args?.managedBy;
             resourceInputs["name"] = args?.name;
             resourceInputs["settings"] = args?.settings;
             resourceInputs["type"] = args?.type;
@@ -119,6 +125,10 @@ export interface AccountState {
      * Timestamp for the creation of the account
      */
     createdOn?: pulumi.Input<string>;
+    /**
+     * Parent container details
+     */
+    managedBy?: pulumi.Input<inputs.AccountManagedBy>;
     /**
      * Account name
      */
@@ -141,6 +151,10 @@ export interface AccountState {
  * The set of arguments for constructing a Account resource.
  */
 export interface AccountArgs {
+    /**
+     * Parent container details
+     */
+    managedBy?: pulumi.Input<inputs.AccountManagedBy>;
     /**
      * Account name
      */

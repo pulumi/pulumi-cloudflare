@@ -21,22 +21,15 @@ namespace Pulumi.Cloudflare.Outputs
         /// Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
         /// </summary>
         public readonly Outputs.TunnelConfigConfigOriginRequest? OriginRequest;
-        /// <summary>
-        /// Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
-        /// </summary>
-        public readonly Outputs.TunnelConfigConfigWarpRouting? WarpRouting;
 
         [OutputConstructor]
         private TunnelConfigConfig(
             ImmutableArray<Outputs.TunnelConfigConfigIngress> ingresses,
 
-            Outputs.TunnelConfigConfigOriginRequest? originRequest,
-
-            Outputs.TunnelConfigConfigWarpRouting? warpRouting)
+            Outputs.TunnelConfigConfigOriginRequest? originRequest)
         {
             Ingresses = ingresses;
             OriginRequest = originRequest;
-            WarpRouting = warpRouting;
         }
     }
 }

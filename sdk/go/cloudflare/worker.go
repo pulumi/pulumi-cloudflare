@@ -14,6 +14,54 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewWorker(ctx, "example_worker", &cloudflare.WorkerArgs{
+//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Name:      pulumi.String("my-worker"),
+//				Logpush:   pulumi.Bool(true),
+//				Observability: &cloudflare.WorkerObservabilityArgs{
+//					Enabled:          pulumi.Bool(true),
+//					HeadSamplingRate: pulumi.Float64(1),
+//					Logs: &cloudflare.WorkerObservabilityLogsArgs{
+//						Enabled:          pulumi.Bool(true),
+//						HeadSamplingRate: pulumi.Float64(1),
+//						InvocationLogs:   pulumi.Bool(true),
+//					},
+//				},
+//				Subdomain: &cloudflare.WorkerSubdomainArgs{
+//					Enabled:         pulumi.Bool(true),
+//					PreviewsEnabled: pulumi.Bool(true),
+//				},
+//				Tags: pulumi.StringArray{
+//					pulumi.String("my-team"),
+//					pulumi.String("my-public-api"),
+//				},
+//				TailConsumers: cloudflare.WorkerTailConsumerArray{
+//					&cloudflare.WorkerTailConsumerArgs{
+//						Name: pulumi.String("my-tail-consumer"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh
@@ -32,6 +80,8 @@ type Worker struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Observability settings for the Worker.
 	Observability WorkerObservabilityOutput `pulumi:"observability"`
+	// Other resources that reference the Worker and depend on it existing.
+	References WorkerReferencesOutput `pulumi:"references"`
 	// Subdomain settings for the Worker.
 	Subdomain WorkerSubdomainOutput `pulumi:"subdomain"`
 	// Tags associated with the Worker.
@@ -88,6 +138,8 @@ type workerState struct {
 	Name *string `pulumi:"name"`
 	// Observability settings for the Worker.
 	Observability *WorkerObservability `pulumi:"observability"`
+	// Other resources that reference the Worker and depend on it existing.
+	References *WorkerReferences `pulumi:"references"`
 	// Subdomain settings for the Worker.
 	Subdomain *WorkerSubdomain `pulumi:"subdomain"`
 	// Tags associated with the Worker.
@@ -109,6 +161,8 @@ type WorkerState struct {
 	Name pulumi.StringPtrInput
 	// Observability settings for the Worker.
 	Observability WorkerObservabilityPtrInput
+	// Other resources that reference the Worker and depend on it existing.
+	References WorkerReferencesPtrInput
 	// Subdomain settings for the Worker.
 	Subdomain WorkerSubdomainPtrInput
 	// Tags associated with the Worker.
@@ -268,6 +322,11 @@ func (o WorkerOutput) Name() pulumi.StringOutput {
 // Observability settings for the Worker.
 func (o WorkerOutput) Observability() WorkerObservabilityOutput {
 	return o.ApplyT(func(v *Worker) WorkerObservabilityOutput { return v.Observability }).(WorkerObservabilityOutput)
+}
+
+// Other resources that reference the Worker and depend on it existing.
+func (o WorkerOutput) References() WorkerReferencesOutput {
+	return o.ApplyT(func(v *Worker) WorkerReferencesOutput { return v.References }).(WorkerReferencesOutput)
 }
 
 // Subdomain settings for the Worker.

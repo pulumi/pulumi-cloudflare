@@ -14,6 +14,76 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewZoneCacheVariants(ctx, "example_zone_cache_variants", &cloudflare.ZoneCacheVariantsArgs{
+//				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Value: &cloudflare.ZoneCacheVariantsValueArgs{
+//					Avifs: pulumi.StringArray{
+//						pulumi.String("image/webp"),
+//						pulumi.String("image/jpeg"),
+//					},
+//					Bmps: pulumi.StringArray{
+//						pulumi.String("image/webp"),
+//						pulumi.String("image/jpeg"),
+//					},
+//					Gifs: pulumi.StringArray{
+//						pulumi.String("image/webp"),
+//						pulumi.String("image/jpeg"),
+//					},
+//					Jp2s: pulumi.StringArray{
+//						pulumi.String("image/webp"),
+//						pulumi.String("image/avif"),
+//					},
+//					Jpegs: pulumi.StringArray{
+//						pulumi.String("image/webp"),
+//						pulumi.String("image/avif"),
+//					},
+//					Jpgs: pulumi.StringArray{
+//						pulumi.String("image/webp"),
+//						pulumi.String("image/avif"),
+//					},
+//					Jpg2s: pulumi.StringArray{
+//						pulumi.String("image/webp"),
+//						pulumi.String("image/avif"),
+//					},
+//					Pngs: pulumi.StringArray{
+//						pulumi.String("image/webp"),
+//						pulumi.String("image/avif"),
+//					},
+//					Tifs: pulumi.StringArray{
+//						pulumi.String("image/webp"),
+//						pulumi.String("image/avif"),
+//					},
+//					Tiffs: pulumi.StringArray{
+//						pulumi.String("image/webp"),
+//						pulumi.String("image/avif"),
+//					},
+//					Webps: pulumi.StringArray{
+//						pulumi.String("image/jpeg"),
+//						pulumi.String("image/avif"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

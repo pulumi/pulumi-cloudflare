@@ -166,6 +166,25 @@ class R2BucketCors(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_r2_bucket_cors = cloudflare.R2BucketCors("example_r2_bucket_cors",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            bucket_name="example-bucket",
+            rules=[{
+                "allowed": {
+                    "methods": ["GET"],
+                    "origins": ["http://localhost:3000"],
+                    "headers": ["x-requested-by"],
+                },
+                "id": "Allow Local Development",
+                "expose_headers": ["Content-Encoding"],
+                "max_age_seconds": 3600,
+            }])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account ID.
@@ -180,6 +199,25 @@ class R2BucketCors(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_r2_bucket_cors = cloudflare.R2BucketCors("example_r2_bucket_cors",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            bucket_name="example-bucket",
+            rules=[{
+                "allowed": {
+                    "methods": ["GET"],
+                    "origins": ["http://localhost:3000"],
+                    "headers": ["x-requested-by"],
+                },
+                "id": "Allow Local Development",
+                "expose_headers": ["Content-Encoding"],
+                "max_age_seconds": 3600,
+            }])
+        ```
 
         :param str resource_name: The name of the resource.
         :param R2BucketCorsArgs args: The arguments to use to populate this resource's properties.

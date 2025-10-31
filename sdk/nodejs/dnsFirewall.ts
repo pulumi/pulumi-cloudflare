@@ -9,6 +9,32 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleDnsFirewall = new cloudflare.DnsFirewall("example_dns_firewall", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     name: "My Awesome DNS Firewall cluster",
+ *     upstreamIps: [
+ *         "192.0.2.1",
+ *         "198.51.100.1",
+ *         "2001:DB8:100::CF",
+ *     ],
+ *     attackMitigation: {
+ *         enabled: true,
+ *         onlyWhenUpstreamUnhealthy: false,
+ *     },
+ *     deprecateAnyRequests: true,
+ *     ecsFallback: false,
+ *     maximumCacheTtl: 900,
+ *     minimumCacheTtl: 60,
+ *     negativeCacheTtl: 900,
+ *     ratelimit: 600,
+ *     retries: 2,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

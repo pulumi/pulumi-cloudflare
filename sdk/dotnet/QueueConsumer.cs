@@ -11,6 +11,34 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleQueueConsumer = new Cloudflare.QueueConsumer("example_queue_consumer", new()
+    ///     {
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         QueueId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         DeadLetterQueue = "example-queue",
+    ///         ScriptName = "my-consumer-worker",
+    ///         Settings = new Cloudflare.Inputs.QueueConsumerSettingsArgs
+    ///         {
+    ///             BatchSize = 50,
+    ///             MaxConcurrency = 10,
+    ///             MaxRetries = 3,
+    ///             MaxWaitTimeMs = 5000,
+    ///             RetryDelay = 10,
+    ///         },
+    ///         Type = "worker",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/queueConsumer:QueueConsumer")]
     public partial class QueueConsumer : global::Pulumi.CustomResource

@@ -37,7 +37,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewayPoliciesResultExpirationResult Expiration;
         /// <summary>
-        /// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+        /// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
         /// </summary>
         public readonly ImmutableArray<string> Filters;
         /// <summary>

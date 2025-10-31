@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.WorkerArgs;
 import com.pulumi.cloudflare.inputs.WorkerState;
 import com.pulumi.cloudflare.outputs.WorkerObservability;
+import com.pulumi.cloudflare.outputs.WorkerReferences;
 import com.pulumi.cloudflare.outputs.WorkerSubdomain;
 import com.pulumi.cloudflare.outputs.WorkerTailConsumer;
 import com.pulumi.core.Output;
@@ -20,6 +21,62 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.Worker;
+ * import com.pulumi.cloudflare.WorkerArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerObservabilityArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerObservabilityLogsArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerSubdomainArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerTailConsumerArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleWorker = new Worker("exampleWorker", WorkerArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .name("my-worker")
+ *             .logpush(true)
+ *             .observability(WorkerObservabilityArgs.builder()
+ *                 .enabled(true)
+ *                 .headSamplingRate(1.0)
+ *                 .logs(WorkerObservabilityLogsArgs.builder()
+ *                     .enabled(true)
+ *                     .headSamplingRate(1.0)
+ *                     .invocationLogs(true)
+ *                     .build())
+ *                 .build())
+ *             .subdomain(WorkerSubdomainArgs.builder()
+ *                 .enabled(true)
+ *                 .previewsEnabled(true)
+ *                 .build())
+ *             .tags(            
+ *                 "my-team",
+ *                 "my-public-api")
+ *             .tailConsumers(WorkerTailConsumerArgs.builder()
+ *                 .name("my-tail-consumer")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -99,6 +156,20 @@ public class Worker extends com.pulumi.resources.CustomResource {
      */
     public Output<WorkerObservability> observability() {
         return this.observability;
+    }
+    /**
+     * Other resources that reference the Worker and depend on it existing.
+     * 
+     */
+    @Export(name="references", refs={WorkerReferences.class}, tree="[0]")
+    private Output<WorkerReferences> references;
+
+    /**
+     * @return Other resources that reference the Worker and depend on it existing.
+     * 
+     */
+    public Output<WorkerReferences> references() {
+        return this.references;
     }
     /**
      * Subdomain settings for the Worker.

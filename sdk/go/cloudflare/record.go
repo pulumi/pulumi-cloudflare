@@ -14,6 +14,43 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewDnsRecord(ctx, "example_dns_record", &cloudflare.DnsRecordArgs{
+//				ZoneId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Name:    pulumi.String("example.com"),
+//				Ttl:     pulumi.Float64(3600),
+//				Type:    pulumi.String("A"),
+//				Comment: pulumi.String("Domain verification record"),
+//				Content: pulumi.String("198.51.100.4"),
+//				Proxied: pulumi.Bool(true),
+//				Settings: &cloudflare.DnsRecordSettingsArgs{
+//					Ipv4Only: pulumi.Bool(true),
+//					Ipv6Only: pulumi.Bool(true),
+//				},
+//				Tags: pulumi.StringArray{
+//					pulumi.String("owner:dns-team"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

@@ -215,7 +215,7 @@ public final class GetZeroTrustAccessApplicationResult {
     private List<GetZeroTrustAccessApplicationTargetCriteria> targetCriterias;
     /**
      * @return The application type.
-     * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dashSso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;.
+     * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dash*sso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;, &#34;mcp&#34;, &#34;mcp*portal&#34;.
      * 
      */
     private String type;
@@ -498,7 +498,7 @@ public final class GetZeroTrustAccessApplicationResult {
     }
     /**
      * @return The application type.
-     * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dashSso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;.
+     * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dash*sso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;, &#34;mcp&#34;, &#34;mcp*portal&#34;.
      * 
      */
     public String type() {

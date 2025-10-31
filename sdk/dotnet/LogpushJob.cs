@@ -12,6 +12,56 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleLogpushJob = new Cloudflare.LogpushJob("example_logpush_job", new()
+    ///     {
+    ///         DestinationConf = "s3://mybucket/logs?region=us-west-2",
+    ///         ZoneId = "zone_id",
+    ///         Dataset = "gateway_dns",
+    ///         Enabled = false,
+    ///         Filter = "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
+    ///         Frequency = "high",
+    ///         Kind = "",
+    ///         LogpullOptions = "fields=RayID,ClientIP,EdgeStartTimestamp&amp;timestamps=rfc3339",
+    ///         MaxUploadBytes = 5000000,
+    ///         MaxUploadIntervalSeconds = 30,
+    ///         MaxUploadRecords = 1000,
+    ///         Name = "example.com",
+    ///         OutputOptions = new Cloudflare.Inputs.LogpushJobOutputOptionsArgs
+    ///         {
+    ///             BatchPrefix = "",
+    ///             BatchSuffix = "",
+    ///             Cve202144228 = false,
+    ///             FieldDelimiter = ",",
+    ///             FieldNames = new[]
+    ///             {
+    ///                 "Datetime",
+    ///                 "DstIP",
+    ///                 "SrcIP",
+    ///             },
+    ///             OutputType = "ndjson",
+    ///             RecordDelimiter = "",
+    ///             RecordPrefix = "{",
+    ///             RecordSuffix = @"    }
+    /// 
+    /// ",
+    ///             RecordTemplate = "record_template",
+    ///             SampleRate = 1,
+    ///             TimestampFormat = "unixnano",
+    ///         },
+    ///         OwnershipChallenge = "00000000000000000000",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

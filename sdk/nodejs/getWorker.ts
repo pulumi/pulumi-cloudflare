@@ -70,6 +70,10 @@ export interface GetWorkerResult {
      */
     readonly observability: outputs.GetWorkerObservability;
     /**
+     * Other resources that reference the Worker and depend on it existing.
+     */
+    readonly references: outputs.GetWorkerReferences;
+    /**
      * Subdomain settings for the Worker.
      */
     readonly subdomain: outputs.GetWorkerSubdomain;

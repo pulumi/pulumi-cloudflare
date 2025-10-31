@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleNotificationPolicyWebhooks = Cloudflare.GetNotificationPolicyWebhooks.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         WebhookId = "b115d5ec-15c6-41ee-8b76-92c449b5227b",
+        ///         WebhookId = "b115d5ec15c641ee8b7692c449b5227b",
         ///     });
         /// 
         /// });
@@ -48,7 +48,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleNotificationPolicyWebhooks = Cloudflare.GetNotificationPolicyWebhooks.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         WebhookId = "b115d5ec-15c6-41ee-8b76-92c449b5227b",
+        ///         WebhookId = "b115d5ec15c641ee8b7692c449b5227b",
         ///     });
         /// 
         /// });
@@ -71,7 +71,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleNotificationPolicyWebhooks = Cloudflare.GetNotificationPolicyWebhooks.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         WebhookId = "b115d5ec-15c6-41ee-8b76-92c449b5227b",
+        ///         WebhookId = "b115d5ec15c641ee8b7692c449b5227b",
         ///     });
         /// 
         /// });

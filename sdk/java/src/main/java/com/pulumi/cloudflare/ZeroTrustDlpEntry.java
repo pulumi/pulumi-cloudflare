@@ -124,10 +124,10 @@ public class ZeroTrustDlpEntry extends com.pulumi.resources.CustomResource {
         return this.pattern;
     }
     @Export(name="profileId", refs={String.class}, tree="[0]")
-    private Output<String> profileId;
+    private Output</* @Nullable */ String> profileId;
 
-    public Output<String> profileId() {
-        return this.profileId;
+    public Output<Optional<String>> profileId() {
+        return Codegen.optional(this.profileId);
     }
     @Export(name="secret", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> secret;

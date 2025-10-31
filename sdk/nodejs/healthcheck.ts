@@ -9,6 +9,49 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleHealthcheck = new cloudflare.Healthcheck("example_healthcheck", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     address: "www.example.com",
+ *     name: "server-1",
+ *     checkRegions: [
+ *         "WEU",
+ *         "ENAM",
+ *     ],
+ *     consecutiveFails: 0,
+ *     consecutiveSuccesses: 0,
+ *     description: "Health check for www.example.com",
+ *     httpConfig: {
+ *         allowInsecure: true,
+ *         expectedBody: "success",
+ *         expectedCodes: [
+ *             "2xx",
+ *             "302",
+ *         ],
+ *         followRedirects: true,
+ *         header: {
+ *             Host: ["example.com"],
+ *             "X-App-ID": ["abc123"],
+ *         },
+ *         method: "GET",
+ *         path: "/health",
+ *         port: 0,
+ *     },
+ *     interval: 0,
+ *     retries: 0,
+ *     suspended: true,
+ *     tcpConfig: {
+ *         method: "connection_established",
+ *         port: 0,
+ *     },
+ *     timeout: 0,
+ *     type: "HTTPS",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

@@ -14,6 +14,158 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewZeroTrustGatewayPolicy(ctx, "example_zero_trust_gateway_policy", &cloudflare.ZeroTrustGatewayPolicyArgs{
+//				AccountId:     pulumi.String("699d98642c564d2e855e9661899b7252"),
+//				Action:        pulumi.String("allow"),
+//				Name:          pulumi.String("block bad websites"),
+//				Description:   pulumi.String("Block bad websites based on their host name."),
+//				DevicePosture: pulumi.String("any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})"),
+//				Enabled:       pulumi.Bool(true),
+//				Expiration: &cloudflare.ZeroTrustGatewayPolicyExpirationArgs{
+//					ExpiresAt: pulumi.String("2014-01-01T05:20:20Z"),
+//					Duration:  pulumi.Int(10),
+//				},
+//				Filters: pulumi.StringArray{
+//					pulumi.String("http"),
+//				},
+//				Identity:   pulumi.String("any(identity.groups.name[*] in {\"finance\"})"),
+//				Precedence: pulumi.Int(0),
+//				RuleSettings: &cloudflare.ZeroTrustGatewayPolicyRuleSettingsArgs{
+//					AddHeaders: pulumi.StringArrayMap{
+//						"My-Next-Header": pulumi.StringArray{
+//							pulumi.String("foo"),
+//							pulumi.String("bar"),
+//						},
+//						"X-Custom-Header-Name": pulumi.StringArray{
+//							pulumi.String("somecustomvalue"),
+//						},
+//					},
+//					AllowChildBypass: pulumi.Bool(false),
+//					AuditSsh: &cloudflare.ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs{
+//						CommandLogging: pulumi.Bool(false),
+//					},
+//					BisoAdminControls: &cloudflare.ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs{
+//						Copy:     pulumi.String("remote_only"),
+//						Dcp:      pulumi.Bool(true),
+//						Dd:       pulumi.Bool(true),
+//						Dk:       pulumi.Bool(true),
+//						Download: pulumi.String("enabled"),
+//						Dp:       pulumi.Bool(false),
+//						Du:       pulumi.Bool(true),
+//						Keyboard: pulumi.String("enabled"),
+//						Paste:    pulumi.String("enabled"),
+//						Printing: pulumi.String("enabled"),
+//						Upload:   pulumi.String("enabled"),
+//						Version:  pulumi.String("v1"),
+//					},
+//					BlockPage: &cloudflare.ZeroTrustGatewayPolicyRuleSettingsBlockPageArgs{
+//						TargetUri:      pulumi.String("https://example.com"),
+//						IncludeContext: pulumi.Bool(true),
+//					},
+//					BlockPageEnabled: pulumi.Bool(true),
+//					BlockReason:      pulumi.String("This website is a security risk"),
+//					BypassParentRule: pulumi.Bool(false),
+//					CheckSession: &cloudflare.ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgs{
+//						Duration: pulumi.String("300s"),
+//						Enforce:  pulumi.Bool(true),
+//					},
+//					DnsResolvers: &cloudflare.ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgs{
+//						Ipv4s: cloudflare.ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Array{
+//							&cloudflare.ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Args{
+//								Ip:                         pulumi.String("2.2.2.2"),
+//								Port:                       pulumi.Int(5053),
+//								RouteThroughPrivateNetwork: pulumi.Bool(true),
+//								VnetId:                     pulumi.String("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
+//							},
+//						},
+//						Ipv6s: cloudflare.ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6Array{
+//							&cloudflare.ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6Args{
+//								Ip:                         pulumi.String("2001:DB8::"),
+//								Port:                       pulumi.Int(5053),
+//								RouteThroughPrivateNetwork: pulumi.Bool(true),
+//								VnetId:                     pulumi.String("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
+//							},
+//						},
+//					},
+//					Egress: &cloudflare.ZeroTrustGatewayPolicyRuleSettingsEgressArgs{
+//						Ipv4:         pulumi.String("192.0.2.2"),
+//						Ipv4Fallback: pulumi.String("192.0.2.3"),
+//						Ipv6:         pulumi.String("2001:DB8::/64"),
+//					},
+//					IgnoreCnameCategoryMatches:      pulumi.Bool(true),
+//					InsecureDisableDnssecValidation: pulumi.Bool(false),
+//					IpCategories:                    pulumi.Bool(true),
+//					IpIndicatorFeeds:                pulumi.Bool(true),
+//					L4override: &cloudflare.ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs{
+//						Ip:   pulumi.String("1.1.1.1"),
+//						Port: pulumi.Int(0),
+//					},
+//					NotificationSettings: &cloudflare.ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgs{
+//						Enabled:        pulumi.Bool(true),
+//						IncludeContext: pulumi.Bool(true),
+//						Msg:            pulumi.String("msg"),
+//						SupportUrl:     pulumi.String("support_url"),
+//					},
+//					OverrideHost: pulumi.String("example.com"),
+//					OverrideIps: pulumi.StringArray{
+//						pulumi.String("1.1.1.1"),
+//						pulumi.String("2.2.2.2"),
+//					},
+//					PayloadLog: &cloudflare.ZeroTrustGatewayPolicyRuleSettingsPayloadLogArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//					Quarantine: &cloudflare.ZeroTrustGatewayPolicyRuleSettingsQuarantineArgs{
+//						FileTypes: pulumi.StringArray{
+//							pulumi.String("exe"),
+//						},
+//					},
+//					Redirect: &cloudflare.ZeroTrustGatewayPolicyRuleSettingsRedirectArgs{
+//						TargetUri:            pulumi.String("https://example.com"),
+//						IncludeContext:       pulumi.Bool(true),
+//						PreservePathAndQuery: pulumi.Bool(true),
+//					},
+//					ResolveDnsInternally: &cloudflare.ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgs{
+//						Fallback: pulumi.String("none"),
+//						ViewId:   pulumi.String("view_id"),
+//					},
+//					ResolveDnsThroughCloudflare: pulumi.Bool(true),
+//					UntrustedCert: &cloudflare.ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgs{
+//						Action: pulumi.String("error"),
+//					},
+//				},
+//				Schedule: &cloudflare.ZeroTrustGatewayPolicyScheduleArgs{
+//					Fri:      pulumi.String("08:00-12:30,13:30-17:00"),
+//					Mon:      pulumi.String("08:00-12:30,13:30-17:00"),
+//					Sat:      pulumi.String("08:00-12:30,13:30-17:00"),
+//					Sun:      pulumi.String("08:00-12:30,13:30-17:00"),
+//					Thu:      pulumi.String("08:00-12:30,13:30-17:00"),
+//					TimeZone: pulumi.String("America/New York"),
+//					Tue:      pulumi.String("08:00-12:30,13:30-17:00"),
+//					Wed:      pulumi.String("08:00-12:30,13:30-17:00"),
+//				},
+//				Traffic: pulumi.String("http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh
@@ -38,7 +190,7 @@ type TeamsRule struct {
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
 	Expiration TeamsRuleExpirationOutput `pulumi:"expiration"`
-	// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+	// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
 	Filters  pulumi.StringArrayOutput `pulumi:"filters"`
 	Identity pulumi.StringOutput      `pulumi:"identity"`
 	// Specify the rule name.
@@ -120,7 +272,7 @@ type teamsRuleState struct {
 	Enabled *bool `pulumi:"enabled"`
 	// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
 	Expiration *TeamsRuleExpiration `pulumi:"expiration"`
-	// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+	// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
 	Filters  []string `pulumi:"filters"`
 	Identity *string  `pulumi:"identity"`
 	// Specify the rule name.
@@ -158,7 +310,7 @@ type TeamsRuleState struct {
 	Enabled pulumi.BoolPtrInput
 	// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
 	Expiration TeamsRuleExpirationPtrInput
-	// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+	// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
 	Filters  pulumi.StringArrayInput
 	Identity pulumi.StringPtrInput
 	// Specify the rule name.
@@ -197,7 +349,7 @@ type teamsRuleArgs struct {
 	Enabled *bool `pulumi:"enabled"`
 	// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
 	Expiration *TeamsRuleExpiration `pulumi:"expiration"`
-	// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+	// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
 	Filters  []string `pulumi:"filters"`
 	Identity *string  `pulumi:"identity"`
 	// Specify the rule name.
@@ -222,7 +374,7 @@ type TeamsRuleArgs struct {
 	Enabled pulumi.BoolPtrInput
 	// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
 	Expiration TeamsRuleExpirationPtrInput
-	// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+	// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
 	Filters  pulumi.StringArrayInput
 	Identity pulumi.StringPtrInput
 	// Specify the rule name.
@@ -359,7 +511,7 @@ func (o TeamsRuleOutput) Expiration() TeamsRuleExpirationOutput {
 	return o.ApplyT(func(v *TeamsRule) TeamsRuleExpirationOutput { return v.Expiration }).(TeamsRuleExpirationOutput)
 }
 
-// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
 func (o TeamsRuleOutput) Filters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.StringArrayOutput { return v.Filters }).(pulumi.StringArrayOutput)
 }

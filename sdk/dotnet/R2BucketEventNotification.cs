@@ -153,7 +153,7 @@ namespace Pulumi.Cloudflare
         [Input("queueId", required: true)]
         public Input<string> QueueId { get; set; } = null!;
 
-        [Input("rules")]
+        [Input("rules", required: true)]
         private InputList<Inputs.R2BucketEventNotificationRuleArgs>? _rules;
 
         /// <summary>

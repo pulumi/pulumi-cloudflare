@@ -9,6 +9,133 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustGatewayPolicy = new cloudflare.ZeroTrustGatewayPolicy("example_zero_trust_gateway_policy", {
+ *     accountId: "699d98642c564d2e855e9661899b7252",
+ *     action: "allow",
+ *     name: "block bad websites",
+ *     description: "Block bad websites based on their host name.",
+ *     devicePosture: "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
+ *     enabled: true,
+ *     expiration: {
+ *         expiresAt: "2014-01-01T05:20:20Z",
+ *         duration: 10,
+ *     },
+ *     filters: ["http"],
+ *     identity: "any(identity.groups.name[*] in {\"finance\"})",
+ *     precedence: 0,
+ *     ruleSettings: {
+ *         addHeaders: {
+ *             "My-Next-Header": [
+ *                 "foo",
+ *                 "bar",
+ *             ],
+ *             "X-Custom-Header-Name": ["somecustomvalue"],
+ *         },
+ *         allowChildBypass: false,
+ *         auditSsh: {
+ *             commandLogging: false,
+ *         },
+ *         bisoAdminControls: {
+ *             copy: "remote_only",
+ *             dcp: true,
+ *             dd: true,
+ *             dk: true,
+ *             download: "enabled",
+ *             dp: false,
+ *             du: true,
+ *             keyboard: "enabled",
+ *             paste: "enabled",
+ *             printing: "enabled",
+ *             upload: "enabled",
+ *             version: "v1",
+ *         },
+ *         blockPage: {
+ *             targetUri: "https://example.com",
+ *             includeContext: true,
+ *         },
+ *         blockPageEnabled: true,
+ *         blockReason: "This website is a security risk",
+ *         bypassParentRule: false,
+ *         checkSession: {
+ *             duration: "300s",
+ *             enforce: true,
+ *         },
+ *         dnsResolvers: {
+ *             ipv4s: [{
+ *                 ip: "2.2.2.2",
+ *                 port: 5053,
+ *                 routeThroughPrivateNetwork: true,
+ *                 vnetId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+ *             }],
+ *             ipv6s: [{
+ *                 ip: "2001:DB8::",
+ *                 port: 5053,
+ *                 routeThroughPrivateNetwork: true,
+ *                 vnetId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+ *             }],
+ *         },
+ *         egress: {
+ *             ipv4: "192.0.2.2",
+ *             ipv4Fallback: "192.0.2.3",
+ *             ipv6: "2001:DB8::/64",
+ *         },
+ *         ignoreCnameCategoryMatches: true,
+ *         insecureDisableDnssecValidation: false,
+ *         ipCategories: true,
+ *         ipIndicatorFeeds: true,
+ *         l4override: {
+ *             ip: "1.1.1.1",
+ *             port: 0,
+ *         },
+ *         notificationSettings: {
+ *             enabled: true,
+ *             includeContext: true,
+ *             msg: "msg",
+ *             supportUrl: "support_url",
+ *         },
+ *         overrideHost: "example.com",
+ *         overrideIps: [
+ *             "1.1.1.1",
+ *             "2.2.2.2",
+ *         ],
+ *         payloadLog: {
+ *             enabled: true,
+ *         },
+ *         quarantine: {
+ *             fileTypes: ["exe"],
+ *         },
+ *         redirect: {
+ *             targetUri: "https://example.com",
+ *             includeContext: true,
+ *             preservePathAndQuery: true,
+ *         },
+ *         resolveDnsInternally: {
+ *             fallback: "none",
+ *             viewId: "view_id",
+ *         },
+ *         resolveDnsThroughCloudflare: true,
+ *         untrustedCert: {
+ *             action: "error",
+ *         },
+ *     },
+ *     schedule: {
+ *         fri: "08:00-12:30,13:30-17:00",
+ *         mon: "08:00-12:30,13:30-17:00",
+ *         sat: "08:00-12:30,13:30-17:00",
+ *         sun: "08:00-12:30,13:30-17:00",
+ *         thu: "08:00-12:30,13:30-17:00",
+ *         timeZone: "America/New York",
+ *         tue: "08:00-12:30,13:30-17:00",
+ *         wed: "08:00-12:30,13:30-17:00",
+ *     },
+ *     traffic: "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh
@@ -71,7 +198,7 @@ export class TeamsRule extends pulumi.CustomResource {
      */
     declare public readonly expiration: pulumi.Output<outputs.TeamsRuleExpiration>;
     /**
-     * Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+     * Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
      */
     declare public readonly filters: pulumi.Output<string[] | undefined>;
     declare public readonly identity: pulumi.Output<string>;
@@ -214,7 +341,7 @@ export interface TeamsRuleState {
      */
     expiration?: pulumi.Input<inputs.TeamsRuleExpiration>;
     /**
-     * Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+     * Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
      */
     filters?: pulumi.Input<pulumi.Input<string>[]>;
     identity?: pulumi.Input<string>;
@@ -276,7 +403,7 @@ export interface TeamsRuleArgs {
      */
     expiration?: pulumi.Input<inputs.TeamsRuleExpiration>;
     /**
-     * Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+     * Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
      */
     filters?: pulumi.Input<pulumi.Input<string>[]>;
     identity?: pulumi.Input<string>;

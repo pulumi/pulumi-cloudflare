@@ -71,7 +71,7 @@ export class ZeroTrustDlpEntry extends pulumi.CustomResource {
     declare public readonly enabled: pulumi.Output<boolean>;
     declare public readonly name: pulumi.Output<string>;
     declare public readonly pattern: pulumi.Output<outputs.ZeroTrustDlpEntryPattern>;
-    declare public readonly profileId: pulumi.Output<string>;
+    declare public readonly profileId: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly secret: pulumi.Output<boolean>;
     /**
      * Available values: "custom", "predefined", "integration".
@@ -120,9 +120,6 @@ export class ZeroTrustDlpEntry extends pulumi.CustomResource {
             }
             if (args?.pattern === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pattern'");
-            }
-            if (args?.profileId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'profileId'");
             }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["enabled"] = args?.enabled;
@@ -178,7 +175,7 @@ export interface ZeroTrustDlpEntryArgs {
     enabled: pulumi.Input<boolean>;
     name: pulumi.Input<string>;
     pattern: pulumi.Input<inputs.ZeroTrustDlpEntryPattern>;
-    profileId: pulumi.Input<string>;
+    profileId?: pulumi.Input<string>;
     /**
      * Available values: "custom", "predefined", "integration".
      */

@@ -9,6 +9,26 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleDnsRecord = new cloudflare.DnsRecord("example_dns_record", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     name: "example.com",
+ *     ttl: 3600,
+ *     type: "A",
+ *     comment: "Domain verification record",
+ *     content: "198.51.100.4",
+ *     proxied: true,
+ *     settings: {
+ *         ipv4Only: true,
+ *         ipv6Only: true,
+ *     },
+ *     tags: ["owner:dns-team"],
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

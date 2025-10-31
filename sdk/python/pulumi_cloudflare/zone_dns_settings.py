@@ -377,6 +377,36 @@ class ZoneDnsSettings(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zone_dns_settings = cloudflare.ZoneDnsSettings("example_zone_dns_settings",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            flatten_all_cnames=False,
+            foundation_dns=False,
+            internal_dns={
+                "reference_zone_id": "reference_zone_id",
+            },
+            multi_provider=False,
+            nameservers={
+                "ns_set": 1,
+                "type": "cloudflare.standard",
+            },
+            ns_ttl=86400,
+            secondary_overrides=False,
+            soa={
+                "expire": 604800,
+                "min_ttl": 1800,
+                "mname": "kristina.ns.cloudflare.com",
+                "refresh": 10000,
+                "retry": 2400,
+                "rname": "admin.example.com",
+                "ttl": 3600,
+            },
+            zone_mode="dns_only")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] flatten_all_cnames: Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
@@ -399,6 +429,36 @@ class ZoneDnsSettings(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zone_dns_settings = cloudflare.ZoneDnsSettings("example_zone_dns_settings",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            flatten_all_cnames=False,
+            foundation_dns=False,
+            internal_dns={
+                "reference_zone_id": "reference_zone_id",
+            },
+            multi_provider=False,
+            nameservers={
+                "ns_set": 1,
+                "type": "cloudflare.standard",
+            },
+            ns_ttl=86400,
+            secondary_overrides=False,
+            soa={
+                "expire": 604800,
+                "min_ttl": 1800,
+                "mname": "kristina.ns.cloudflare.com",
+                "refresh": 10000,
+                "retry": 2400,
+                "rname": "admin.example.com",
+                "ttl": 3600,
+            },
+            zone_mode="dns_only")
+        ```
 
         :param str resource_name: The name of the resource.
         :param ZoneDnsSettingsArgs args: The arguments to use to populate this resource's properties.

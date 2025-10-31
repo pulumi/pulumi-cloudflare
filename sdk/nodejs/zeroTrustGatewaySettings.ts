@@ -9,6 +9,81 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustGatewaySettings = new cloudflare.ZeroTrustGatewaySettings("example_zero_trust_gateway_settings", {
+ *     accountId: "699d98642c564d2e855e9661899b7252",
+ *     settings: {
+ *         activityLog: {
+ *             enabled: true,
+ *         },
+ *         antivirus: {
+ *             enabledDownloadPhase: false,
+ *             enabledUploadPhase: false,
+ *             failClosed: false,
+ *             notificationSettings: {
+ *                 enabled: true,
+ *                 includeContext: true,
+ *                 msg: "msg",
+ *                 supportUrl: "support_url",
+ *             },
+ *         },
+ *         blockPage: {
+ *             backgroundColor: "background_color",
+ *             enabled: true,
+ *             footerText: "--footer--",
+ *             headerText: "--header--",
+ *             includeContext: true,
+ *             logoPath: "https://logos.com/a.png",
+ *             mailtoAddress: "admin@example.com",
+ *             mailtoSubject: "Blocked User Inquiry",
+ *             mode: "",
+ *             name: "Cloudflare",
+ *             suppressFooter: false,
+ *             targetUri: "https://example.com",
+ *         },
+ *         bodyScanning: {
+ *             inspectionMode: "deep",
+ *         },
+ *         browserIsolation: {
+ *             nonIdentityEnabled: true,
+ *             urlBrowserIsolationEnabled: true,
+ *         },
+ *         certificate: {
+ *             id: "d1b364c5-1311-466e-a194-f0e943e0799f",
+ *         },
+ *         customCertificate: {
+ *             enabled: true,
+ *             id: "d1b364c5-1311-466e-a194-f0e943e0799f",
+ *         },
+ *         extendedEmailMatching: {
+ *             enabled: true,
+ *         },
+ *         fips: {
+ *             tls: true,
+ *         },
+ *         hostSelector: {
+ *             enabled: false,
+ *         },
+ *         inspection: {
+ *             mode: "static",
+ *         },
+ *         protocolDetection: {
+ *             enabled: true,
+ *         },
+ *         sandbox: {
+ *             enabled: true,
+ *             fallbackAction: "allow",
+ *         },
+ *         tlsDecrypt: {
+ *             enabled: true,
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

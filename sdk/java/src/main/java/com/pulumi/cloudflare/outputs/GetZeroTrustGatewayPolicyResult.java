@@ -48,7 +48,7 @@ public final class GetZeroTrustGatewayPolicyResult {
      */
     private GetZeroTrustGatewayPolicyExpiration expiration;
     /**
-     * @return Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+     * @return Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
      * 
      */
     private List<String> filters;
@@ -150,7 +150,7 @@ public final class GetZeroTrustGatewayPolicyResult {
         return this.expiration;
     }
     /**
-     * @return Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+     * @return Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
      * 
      */
     public List<String> filters() {

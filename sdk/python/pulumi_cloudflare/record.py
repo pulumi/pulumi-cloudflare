@@ -508,6 +508,25 @@ class Record(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_dns_record = cloudflare.DnsRecord("example_dns_record",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            name="example.com",
+            ttl=3600,
+            type="A",
+            comment="Domain verification record",
+            content="198.51.100.4",
+            proxied=True,
+            settings={
+                "ipv4_only": True,
+                "ipv6_only": True,
+            },
+            tags=["owner:dns-team"])
+        ```
+
         ## Import
 
         ```sh
@@ -537,6 +556,25 @@ class Record(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_dns_record = cloudflare.DnsRecord("example_dns_record",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            name="example.com",
+            ttl=3600,
+            type="A",
+            comment="Domain verification record",
+            content="198.51.100.4",
+            proxied=True,
+            settings={
+                "ipv4_only": True,
+                "ipv6_only": True,
+            },
+            tags=["owner:dns-team"])
+        ```
 
         ## Import
 

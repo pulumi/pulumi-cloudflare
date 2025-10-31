@@ -204,6 +204,27 @@ class Snippet(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_snippet = cloudflare.Snippet("example_snippet",
+            zone_id="9f1839b6152d298aca64c4e906b6d074",
+            snippet_name="my_snippet",
+            files=[{
+                "name": "main.js",
+                "content": \"\"\"export default {
+          async fetch(request) {
+            return new Response('Hello, World!');
+          }
+        }
+        \"\"\",
+            }],
+            metadata={
+                "main_module": "main.js",
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SnippetFileArgs', 'SnippetFileArgsDict']]]] files: The list of files belonging to the snippet.
@@ -219,6 +240,27 @@ class Snippet(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_snippet = cloudflare.Snippet("example_snippet",
+            zone_id="9f1839b6152d298aca64c4e906b6d074",
+            snippet_name="my_snippet",
+            files=[{
+                "name": "main.js",
+                "content": \"\"\"export default {
+          async fetch(request) {
+            return new Response('Hello, World!');
+          }
+        }
+        \"\"\",
+            }],
+            metadata={
+                "main_module": "main.js",
+            })
+        ```
 
         :param str resource_name: The name of the resource.
         :param SnippetArgs args: The arguments to use to populate this resource's properties.

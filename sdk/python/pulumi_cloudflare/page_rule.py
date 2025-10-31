@@ -242,6 +242,23 @@ class PageRule(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_page_rule = cloudflare.PageRule("example_page_rule",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            target="example.com/*",
+            priority=1,
+            status="active",
+            actions={
+                "forwarding_url": {
+                    "url": "https://example.com/foo",
+                    "status_code": 301,
+                },
+            })
+        ```
+
         ## Import
 
         ```sh
@@ -267,6 +284,23 @@ class PageRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_page_rule = cloudflare.PageRule("example_page_rule",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            target="example.com/*",
+            priority=1,
+            status="active",
+            actions={
+                "forwarding_url": {
+                    "url": "https://example.com/foo",
+                    "status_code": 301,
+                },
+            })
+        ```
 
         ## Import
 

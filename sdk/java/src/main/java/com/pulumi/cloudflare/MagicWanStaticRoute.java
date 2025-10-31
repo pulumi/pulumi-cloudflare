@@ -21,6 +21,47 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.MagicWanStaticRoute;
+ * import com.pulumi.cloudflare.MagicWanStaticRouteArgs;
+ * import com.pulumi.cloudflare.inputs.MagicWanStaticRouteScopeArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleMagicWanStaticRoute = new MagicWanStaticRoute("exampleMagicWanStaticRoute", MagicWanStaticRouteArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .nexthop("203.0.113.1")
+ *             .prefix("192.0.2.0/24")
+ *             .priority(0)
+ *             .description("New route for new prefix 203.0.113.1")
+ *             .scope(MagicWanStaticRouteScopeArgs.builder()
+ *                 .coloNames("den01")
+ *                 .coloRegions("APAC")
+ *                 .build())
+ *             .weight(0)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh

@@ -151,6 +151,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly Outputs.GetWorkerObservabilityResult Observability;
         /// <summary>
+        /// Other resources that reference the Worker and depend on it existing.
+        /// </summary>
+        public readonly Outputs.GetWorkerReferencesResult References;
+        /// <summary>
         /// Subdomain settings for the Worker.
         /// </summary>
         public readonly Outputs.GetWorkerSubdomainResult Subdomain;
@@ -185,6 +189,8 @@ namespace Pulumi.Cloudflare
 
             Outputs.GetWorkerObservabilityResult observability,
 
+            Outputs.GetWorkerReferencesResult references,
+
             Outputs.GetWorkerSubdomainResult subdomain,
 
             ImmutableArray<string> tags,
@@ -201,6 +207,7 @@ namespace Pulumi.Cloudflare
             Logpush = logpush;
             Name = name;
             Observability = observability;
+            References = references;
             Subdomain = subdomain;
             Tags = tags;
             TailConsumers = tailConsumers;

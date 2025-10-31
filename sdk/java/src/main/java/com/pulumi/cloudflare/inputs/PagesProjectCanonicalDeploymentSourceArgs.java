@@ -23,9 +23,19 @@ public final class PagesProjectCanonicalDeploymentSourceArgs extends com.pulumi.
         return Optional.ofNullable(this.config);
     }
 
+    /**
+     * The source control management provider.
+     * Available values: &#34;github&#34;, &#34;gitlab&#34;.
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return The source control management provider.
+     * Available values: &#34;github&#34;, &#34;gitlab&#34;.
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -64,11 +74,25 @@ public final class PagesProjectCanonicalDeploymentSourceArgs extends com.pulumi.
             return config(Output.of(config));
         }
 
+        /**
+         * @param type The source control management provider.
+         * Available values: &#34;github&#34;, &#34;gitlab&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type The source control management provider.
+         * Available values: &#34;github&#34;, &#34;gitlab&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

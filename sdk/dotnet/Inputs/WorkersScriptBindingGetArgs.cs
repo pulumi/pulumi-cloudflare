@@ -149,7 +149,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Namespace to bind to.
+        /// The name of the dispatch namespace.
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }

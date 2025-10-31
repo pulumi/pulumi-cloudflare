@@ -62,6 +62,8 @@ type LookupAccountResult struct {
 	Filter    *GetAccountFilter `pulumi:"filter"`
 	// Account identifier tag.
 	Id string `pulumi:"id"`
+	// Parent container details
+	ManagedBy GetAccountManagedBy `pulumi:"managedBy"`
 	// Account name
 	Name string `pulumi:"name"`
 	// Account settings
@@ -122,6 +124,11 @@ func (o LookupAccountResultOutput) Filter() GetAccountFilterPtrOutput {
 // Account identifier tag.
 func (o LookupAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Parent container details
+func (o LookupAccountResultOutput) ManagedBy() GetAccountManagedByOutput {
+	return o.ApplyT(func(v LookupAccountResult) GetAccountManagedBy { return v.ManagedBy }).(GetAccountManagedByOutput)
 }
 
 // Account name

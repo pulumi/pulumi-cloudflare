@@ -14,6 +14,49 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewZeroTrustDlpCustomProfile(ctx, "example_zero_trust_dlp_custom_profile", &cloudflare.ZeroTrustDlpCustomProfileArgs{
+//				AccountId:           pulumi.String("account_id"),
+//				Name:                pulumi.String("name"),
+//				AiContextEnabled:    pulumi.Bool(true),
+//				AllowedMatchCount:   pulumi.Int(5),
+//				ConfidenceThreshold: pulumi.String("confidence_threshold"),
+//				ContextAwareness: &cloudflare.ZeroTrustDlpCustomProfileContextAwarenessArgs{
+//					Enabled: pulumi.Bool(true),
+//					Skip: &cloudflare.ZeroTrustDlpCustomProfileContextAwarenessSkipArgs{
+//						Files: pulumi.Bool(true),
+//					},
+//				},
+//				Description: pulumi.String("description"),
+//				OcrEnabled:  pulumi.Bool(true),
+//				SharedEntries: cloudflare.ZeroTrustDlpCustomProfileSharedEntryArray{
+//					&cloudflare.ZeroTrustDlpCustomProfileSharedEntryArgs{
+//						Enabled:   pulumi.Bool(true),
+//						EntryId:   pulumi.String("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
+//						EntryType: pulumi.String("custom"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh
@@ -40,7 +83,7 @@ type DlpCustomProfile struct {
 	// Custom entries from this profile.
 	// If this field is omitted, entries owned by this profile will not be changed.
 	//
-	// Deprecated: This attribute is deprecated.
+	// Deprecated: This attribute will be sunset on 01/01/2026
 	Entries    DlpCustomProfileEntryArrayOutput `pulumi:"entries"`
 	Name       pulumi.StringOutput              `pulumi:"name"`
 	OcrEnabled pulumi.BoolOutput                `pulumi:"ocrEnabled"`
@@ -112,7 +155,7 @@ type dlpCustomProfileState struct {
 	// Custom entries from this profile.
 	// If this field is omitted, entries owned by this profile will not be changed.
 	//
-	// Deprecated: This attribute is deprecated.
+	// Deprecated: This attribute will be sunset on 01/01/2026
 	Entries    []DlpCustomProfileEntry `pulumi:"entries"`
 	Name       *string                 `pulumi:"name"`
 	OcrEnabled *bool                   `pulumi:"ocrEnabled"`
@@ -143,7 +186,7 @@ type DlpCustomProfileState struct {
 	// Custom entries from this profile.
 	// If this field is omitted, entries owned by this profile will not be changed.
 	//
-	// Deprecated: This attribute is deprecated.
+	// Deprecated: This attribute will be sunset on 01/01/2026
 	Entries    DlpCustomProfileEntryArrayInput
 	Name       pulumi.StringPtrInput
 	OcrEnabled pulumi.BoolPtrInput
@@ -176,7 +219,7 @@ type dlpCustomProfileArgs struct {
 	// Custom entries from this profile.
 	// If this field is omitted, entries owned by this profile will not be changed.
 	//
-	// Deprecated: This attribute is deprecated.
+	// Deprecated: This attribute will be sunset on 01/01/2026
 	Entries    []DlpCustomProfileEntry `pulumi:"entries"`
 	Name       string                  `pulumi:"name"`
 	OcrEnabled *bool                   `pulumi:"ocrEnabled"`
@@ -200,7 +243,7 @@ type DlpCustomProfileArgs struct {
 	// Custom entries from this profile.
 	// If this field is omitted, entries owned by this profile will not be changed.
 	//
-	// Deprecated: This attribute is deprecated.
+	// Deprecated: This attribute will be sunset on 01/01/2026
 	Entries    DlpCustomProfileEntryArrayInput
 	Name       pulumi.StringInput
 	OcrEnabled pulumi.BoolPtrInput
@@ -332,7 +375,7 @@ func (o DlpCustomProfileOutput) Description() pulumi.StringPtrOutput {
 // Custom entries from this profile.
 // If this field is omitted, entries owned by this profile will not be changed.
 //
-// Deprecated: This attribute is deprecated.
+// Deprecated: This attribute will be sunset on 01/01/2026
 func (o DlpCustomProfileOutput) Entries() DlpCustomProfileEntryArrayOutput {
 	return o.ApplyT(func(v *DlpCustomProfile) DlpCustomProfileEntryArrayOutput { return v.Entries }).(DlpCustomProfileEntryArrayOutput)
 }

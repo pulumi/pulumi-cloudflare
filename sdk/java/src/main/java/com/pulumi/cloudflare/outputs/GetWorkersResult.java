@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetWorkersResultObservability;
+import com.pulumi.cloudflare.outputs.GetWorkersResultReferences;
 import com.pulumi.cloudflare.outputs.GetWorkersResultSubdomain;
 import com.pulumi.cloudflare.outputs.GetWorkersResultTailConsumer;
 import com.pulumi.core.annotations.CustomType;
@@ -40,6 +41,11 @@ public final class GetWorkersResult {
      * 
      */
     private GetWorkersResultObservability observability;
+    /**
+     * @return Other resources that reference the Worker and depend on it existing.
+     * 
+     */
+    private GetWorkersResultReferences references;
     /**
      * @return Subdomain settings for the Worker.
      * 
@@ -98,6 +104,13 @@ public final class GetWorkersResult {
         return this.observability;
     }
     /**
+     * @return Other resources that reference the Worker and depend on it existing.
+     * 
+     */
+    public GetWorkersResultReferences references() {
+        return this.references;
+    }
+    /**
      * @return Subdomain settings for the Worker.
      * 
      */
@@ -140,6 +153,7 @@ public final class GetWorkersResult {
         private Boolean logpush;
         private String name;
         private GetWorkersResultObservability observability;
+        private GetWorkersResultReferences references;
         private GetWorkersResultSubdomain subdomain;
         private List<String> tags;
         private List<GetWorkersResultTailConsumer> tailConsumers;
@@ -152,6 +166,7 @@ public final class GetWorkersResult {
     	      this.logpush = defaults.logpush;
     	      this.name = defaults.name;
     	      this.observability = defaults.observability;
+    	      this.references = defaults.references;
     	      this.subdomain = defaults.subdomain;
     	      this.tags = defaults.tags;
     	      this.tailConsumers = defaults.tailConsumers;
@@ -199,6 +214,14 @@ public final class GetWorkersResult {
             return this;
         }
         @CustomType.Setter
+        public Builder references(GetWorkersResultReferences references) {
+            if (references == null) {
+              throw new MissingRequiredPropertyException("GetWorkersResult", "references");
+            }
+            this.references = references;
+            return this;
+        }
+        @CustomType.Setter
         public Builder subdomain(GetWorkersResultSubdomain subdomain) {
             if (subdomain == null) {
               throw new MissingRequiredPropertyException("GetWorkersResult", "subdomain");
@@ -243,6 +266,7 @@ public final class GetWorkersResult {
             _resultValue.logpush = logpush;
             _resultValue.name = name;
             _resultValue.observability = observability;
+            _resultValue.references = references;
             _resultValue.subdomain = subdomain;
             _resultValue.tags = tags;
             _resultValue.tailConsumers = tailConsumers;

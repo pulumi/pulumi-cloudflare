@@ -14,6 +14,41 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewWorkersDeployment(ctx, "example_workers_deployment", &cloudflare.WorkersDeploymentArgs{
+//				AccountId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				ScriptName: pulumi.String("this-is_my_script-01"),
+//				Strategy:   pulumi.String("percentage"),
+//				Versions: cloudflare.WorkersDeploymentVersionArray{
+//					&cloudflare.WorkersDeploymentVersionArgs{
+//						Percentage: pulumi.Float64(100),
+//						VersionId:  pulumi.String("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
+//					},
+//				},
+//				Annotations: &cloudflare.WorkersDeploymentAnnotationsArgs{
+//					WorkersMessage: pulumi.String("Deploy bug fix."),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

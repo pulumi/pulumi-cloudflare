@@ -54,7 +54,7 @@ export interface GetPagesProjectResult {
      */
     readonly buildConfig: outputs.GetPagesProjectBuildConfig;
     /**
-     * Most recent deployment to the repo.
+     * Most recent production deployment of the project.
      */
     readonly canonicalDeployment: outputs.GetPagesProjectCanonicalDeployment;
     /**
@@ -70,11 +70,19 @@ export interface GetPagesProjectResult {
      */
     readonly domains: string[];
     /**
-     * Id of the project.
+     * Framework the project is using.
+     */
+    readonly framework: string;
+    /**
+     * Version of the framework the project is using.
+     */
+    readonly frameworkVersion: string;
+    /**
+     * ID of the project.
      */
     readonly id: string;
     /**
-     * Most recent deployment to the repo.
+     * Most recent deployment of the project.
      */
     readonly latestDeployment: outputs.GetPagesProjectLatestDeployment;
     /**
@@ -82,9 +90,17 @@ export interface GetPagesProjectResult {
      */
     readonly name: string;
     /**
+     * Name of the preview script.
+     */
+    readonly previewScriptName: string;
+    /**
      * Production branch of the project. Used to identify production deployments.
      */
     readonly productionBranch: string;
+    /**
+     * Name of the production script.
+     */
+    readonly productionScriptName: string;
     /**
      * Name of the project.
      */
@@ -94,6 +110,10 @@ export interface GetPagesProjectResult {
      * The Cloudflare subdomain associated with the project.
      */
     readonly subdomain: string;
+    /**
+     * Whether the project uses functions.
+     */
+    readonly usesFunctions: boolean;
 }
 /**
  * ## Example Usage

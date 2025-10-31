@@ -63,7 +63,7 @@ type ZeroTrustDlpEntry struct {
 	Enabled       pulumi.BoolOutput                 `pulumi:"enabled"`
 	Name          pulumi.StringOutput               `pulumi:"name"`
 	Pattern       ZeroTrustDlpEntryPatternOutput    `pulumi:"pattern"`
-	ProfileId     pulumi.StringOutput               `pulumi:"profileId"`
+	ProfileId     pulumi.StringPtrOutput            `pulumi:"profileId"`
 	Secret        pulumi.BoolOutput                 `pulumi:"secret"`
 	// Available values: "custom", "predefined", "integration".
 	Type      pulumi.StringPtrOutput         `pulumi:"type"`
@@ -90,9 +90,6 @@ func NewZeroTrustDlpEntry(ctx *pulumi.Context,
 	}
 	if args.Pattern == nil {
 		return nil, errors.New("invalid value for required argument 'Pattern'")
-	}
-	if args.ProfileId == nil {
-		return nil, errors.New("invalid value for required argument 'ProfileId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustDlpEntry
@@ -165,7 +162,7 @@ type zeroTrustDlpEntryArgs struct {
 	Enabled   bool                     `pulumi:"enabled"`
 	Name      string                   `pulumi:"name"`
 	Pattern   ZeroTrustDlpEntryPattern `pulumi:"pattern"`
-	ProfileId string                   `pulumi:"profileId"`
+	ProfileId *string                  `pulumi:"profileId"`
 	// Available values: "custom", "predefined", "integration".
 	Type *string `pulumi:"type"`
 }
@@ -176,7 +173,7 @@ type ZeroTrustDlpEntryArgs struct {
 	Enabled   pulumi.BoolInput
 	Name      pulumi.StringInput
 	Pattern   ZeroTrustDlpEntryPatternInput
-	ProfileId pulumi.StringInput
+	ProfileId pulumi.StringPtrInput
 	// Available values: "custom", "predefined", "integration".
 	Type pulumi.StringPtrInput
 }
@@ -299,8 +296,8 @@ func (o ZeroTrustDlpEntryOutput) Pattern() ZeroTrustDlpEntryPatternOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpEntry) ZeroTrustDlpEntryPatternOutput { return v.Pattern }).(ZeroTrustDlpEntryPatternOutput)
 }
 
-func (o ZeroTrustDlpEntryOutput) ProfileId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustDlpEntry) pulumi.StringOutput { return v.ProfileId }).(pulumi.StringOutput)
+func (o ZeroTrustDlpEntryOutput) ProfileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpEntry) pulumi.StringPtrOutput { return v.ProfileId }).(pulumi.StringPtrOutput)
 }
 
 func (o ZeroTrustDlpEntryOutput) Secret() pulumi.BoolOutput {

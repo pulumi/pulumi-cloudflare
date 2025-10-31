@@ -9,6 +9,35 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleMagicTransitSiteAcl = new cloudflare.MagicTransitSiteAcl("example_magic_transit_site_acl", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     siteId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     lan1: {
+ *         lanId: "lan_id",
+ *         lanName: "lan_name",
+ *         portRanges: ["8080-9000"],
+ *         ports: [1],
+ *         subnets: ["192.0.2.1"],
+ *     },
+ *     lan2: {
+ *         lanId: "lan_id",
+ *         lanName: "lan_name",
+ *         portRanges: ["8080-9000"],
+ *         ports: [1],
+ *         subnets: ["192.0.2.1"],
+ *     },
+ *     name: "PIN Pad - Cash Register",
+ *     description: "Allows local traffic between PIN pads and cash register.",
+ *     forwardLocally: true,
+ *     protocols: ["tcp"],
+ *     unidirectional: true,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

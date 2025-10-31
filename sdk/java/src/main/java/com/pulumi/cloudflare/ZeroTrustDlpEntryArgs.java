@@ -46,11 +46,11 @@ public final class ZeroTrustDlpEntryArgs extends com.pulumi.resources.ResourceAr
         return this.pattern;
     }
 
-    @Import(name="profileId", required=true)
-    private Output<String> profileId;
+    @Import(name="profileId")
+    private @Nullable Output<String> profileId;
 
-    public Output<String> profileId() {
-        return this.profileId;
+    public Optional<Output<String>> profileId() {
+        return Optional.ofNullable(this.profileId);
     }
 
     /**
@@ -133,7 +133,7 @@ public final class ZeroTrustDlpEntryArgs extends com.pulumi.resources.ResourceAr
             return pattern(Output.of(pattern));
         }
 
-        public Builder profileId(Output<String> profileId) {
+        public Builder profileId(@Nullable Output<String> profileId) {
             $.profileId = profileId;
             return this;
         }
@@ -175,9 +175,6 @@ public final class ZeroTrustDlpEntryArgs extends com.pulumi.resources.ResourceAr
             }
             if ($.pattern == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustDlpEntryArgs", "pattern");
-            }
-            if ($.profileId == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustDlpEntryArgs", "profileId");
             }
             return $;
         }

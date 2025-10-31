@@ -14,6 +14,96 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewWorkerVersion(ctx, "example_worker_version", &cloudflare.WorkerVersionArgs{
+//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				WorkerId:  pulumi.String("worker_id"),
+//				Annotations: &cloudflare.WorkerVersionAnnotationsArgs{
+//					WorkersMessage: pulumi.String("Fixed bug."),
+//					WorkersTag:     pulumi.String("v1.0.1"),
+//				},
+//				Assets: &cloudflare.WorkerVersionAssetsArgs{
+//					Config: &cloudflare.WorkerVersionAssetsConfigArgs{
+//						HtmlHandling:     pulumi.String("auto-trailing-slash"),
+//						NotFoundHandling: pulumi.String("404-page"),
+//						RunWorkerFirsts: pulumi.StringArray{
+//							pulumi.String("string"),
+//						},
+//					},
+//					Jwt: pulumi.String("jwt"),
+//				},
+//				Bindings: cloudflare.WorkerVersionBindingArray{
+//					&cloudflare.WorkerVersionBindingArgs{
+//						Name: pulumi.String("MY_ENV_VAR"),
+//						Text: pulumi.String("my_data"),
+//						Type: pulumi.String("plain_text"),
+//					},
+//				},
+//				CompatibilityDate: pulumi.String("2021-01-01"),
+//				CompatibilityFlags: pulumi.StringArray{
+//					pulumi.String("nodejs_compat"),
+//				},
+//				Limits: &cloudflare.WorkerVersionLimitsArgs{
+//					CpuMs: pulumi.Int(50),
+//				},
+//				MainModule: pulumi.String("index.js"),
+//				Migrations: &cloudflare.WorkerVersionMigrationsArgs{
+//					DeletedClasses: pulumi.StringArray{
+//						pulumi.String("string"),
+//					},
+//					NewClasses: pulumi.StringArray{
+//						pulumi.String("string"),
+//					},
+//					NewSqliteClasses: pulumi.StringArray{
+//						pulumi.String("string"),
+//					},
+//					NewTag: pulumi.String("v2"),
+//					OldTag: pulumi.String("v1"),
+//					RenamedClasses: cloudflare.WorkerVersionMigrationsRenamedClassArray{
+//						&cloudflare.WorkerVersionMigrationsRenamedClassArgs{
+//							From: pulumi.String("from"),
+//							To:   pulumi.String("to"),
+//						},
+//					},
+//					TransferredClasses: cloudflare.WorkerVersionMigrationsTransferredClassArray{
+//						&cloudflare.WorkerVersionMigrationsTransferredClassArgs{
+//							From:       pulumi.String("from"),
+//							FromScript: pulumi.String("from_script"),
+//							To:         pulumi.String("to"),
+//						},
+//					},
+//				},
+//				Modules: cloudflare.WorkerVersionModuleArray{
+//					&cloudflare.WorkerVersionModuleArgs{
+//						ContentFile: pulumi.String("dist/index.js"),
+//						ContentType: pulumi.String("application/javascript+module"),
+//						Name:        pulumi.String("index.js"),
+//					},
+//				},
+//				Placement: &cloudflare.WorkerVersionPlacementArgs{
+//					Mode: pulumi.String("smart"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

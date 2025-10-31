@@ -7,30 +7,12 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetApiShieldArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetApiShieldArgs Empty = new GetApiShieldArgs();
-
-    /**
-     * Requests information about certain properties.
-     * 
-     */
-    @Import(name="properties")
-    private @Nullable Output<List<String>> properties;
-
-    /**
-     * @return Requests information about certain properties.
-     * 
-     */
-    public Optional<Output<List<String>>> properties() {
-        return Optional.ofNullable(this.properties);
-    }
 
     /**
      * Identifier.
@@ -50,7 +32,6 @@ public final class GetApiShieldArgs extends com.pulumi.resources.InvokeArgs {
     private GetApiShieldArgs() {}
 
     private GetApiShieldArgs(GetApiShieldArgs $) {
-        this.properties = $.properties;
         this.zoneId = $.zoneId;
     }
 
@@ -70,37 +51,6 @@ public final class GetApiShieldArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetApiShieldArgs defaults) {
             $ = new GetApiShieldArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param properties Requests information about certain properties.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder properties(@Nullable Output<List<String>> properties) {
-            $.properties = properties;
-            return this;
-        }
-
-        /**
-         * @param properties Requests information about certain properties.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder properties(List<String> properties) {
-            return properties(Output.of(properties));
-        }
-
-        /**
-         * @param properties Requests information about certain properties.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder properties(String... properties) {
-            return properties(List.of(properties));
         }
 
         /**

@@ -63,7 +63,7 @@ type ZeroTrustDlpCustomEntry struct {
 	Enabled       pulumi.BoolOutput                       `pulumi:"enabled"`
 	Name          pulumi.StringOutput                     `pulumi:"name"`
 	Pattern       ZeroTrustDlpCustomEntryPatternOutput    `pulumi:"pattern"`
-	ProfileId     pulumi.StringOutput                     `pulumi:"profileId"`
+	ProfileId     pulumi.StringPtrOutput                  `pulumi:"profileId"`
 	Secret        pulumi.BoolOutput                       `pulumi:"secret"`
 	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
 	Type      pulumi.StringOutput                  `pulumi:"type"`
@@ -90,9 +90,6 @@ func NewZeroTrustDlpCustomEntry(ctx *pulumi.Context,
 	}
 	if args.Pattern == nil {
 		return nil, errors.New("invalid value for required argument 'Pattern'")
-	}
-	if args.ProfileId == nil {
-		return nil, errors.New("invalid value for required argument 'ProfileId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustDlpCustomEntry
@@ -165,7 +162,7 @@ type zeroTrustDlpCustomEntryArgs struct {
 	Enabled   bool                           `pulumi:"enabled"`
 	Name      string                         `pulumi:"name"`
 	Pattern   ZeroTrustDlpCustomEntryPattern `pulumi:"pattern"`
-	ProfileId string                         `pulumi:"profileId"`
+	ProfileId *string                        `pulumi:"profileId"`
 }
 
 // The set of arguments for constructing a ZeroTrustDlpCustomEntry resource.
@@ -174,7 +171,7 @@ type ZeroTrustDlpCustomEntryArgs struct {
 	Enabled   pulumi.BoolInput
 	Name      pulumi.StringInput
 	Pattern   ZeroTrustDlpCustomEntryPatternInput
-	ProfileId pulumi.StringInput
+	ProfileId pulumi.StringPtrInput
 }
 
 func (ZeroTrustDlpCustomEntryArgs) ElementType() reflect.Type {
@@ -295,8 +292,8 @@ func (o ZeroTrustDlpCustomEntryOutput) Pattern() ZeroTrustDlpCustomEntryPatternO
 	return o.ApplyT(func(v *ZeroTrustDlpCustomEntry) ZeroTrustDlpCustomEntryPatternOutput { return v.Pattern }).(ZeroTrustDlpCustomEntryPatternOutput)
 }
 
-func (o ZeroTrustDlpCustomEntryOutput) ProfileId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustDlpCustomEntry) pulumi.StringOutput { return v.ProfileId }).(pulumi.StringOutput)
+func (o ZeroTrustDlpCustomEntryOutput) ProfileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpCustomEntry) pulumi.StringPtrOutput { return v.ProfileId }).(pulumi.StringPtrOutput)
 }
 
 func (o ZeroTrustDlpCustomEntryOutput) Secret() pulumi.BoolOutput {

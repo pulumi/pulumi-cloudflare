@@ -13,12 +13,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PagesProjectLatestDeploymentSource {
     private @Nullable PagesProjectLatestDeploymentSourceConfig config;
+    /**
+     * @return The source control management provider.
+     * Available values: &#34;github&#34;, &#34;gitlab&#34;.
+     * 
+     */
     private @Nullable String type;
 
     private PagesProjectLatestDeploymentSource() {}
     public Optional<PagesProjectLatestDeploymentSourceConfig> config() {
         return Optional.ofNullable(this.config);
     }
+    /**
+     * @return The source control management provider.
+     * Available values: &#34;github&#34;, &#34;gitlab&#34;.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

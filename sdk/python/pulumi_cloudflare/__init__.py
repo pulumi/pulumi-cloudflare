@@ -48,6 +48,7 @@ from .cloudforce_one_request import *
 from .cloudforce_one_request_asset import *
 from .cloudforce_one_request_message import *
 from .cloudforce_one_request_priority import *
+from .content_scanning import *
 from .content_scanning_expression import *
 from .custom_hostname import *
 from .custom_hostname_fallback_origin import *
@@ -129,6 +130,7 @@ from .get_cloudforce_one_request_asset import *
 from .get_cloudforce_one_request_message import *
 from .get_cloudforce_one_request_priority import *
 from .get_cloudforce_one_requests import *
+from .get_content_scanning import *
 from .get_content_scanning_expressions import *
 from .get_custom_hostname import *
 from .get_custom_hostname_fallback_origin import *
@@ -221,6 +223,9 @@ from .get_notification_policy import *
 from .get_notification_policy_webhooks import *
 from .get_notification_policy_webhooks_list import *
 from .get_observatory_scheduled_test import *
+from .get_organization import *
+from .get_organization_profile import *
+from .get_organizations import *
 from .get_origin_ca_certificate import *
 from .get_origin_ca_certificates import *
 from .get_page_rule import *
@@ -440,6 +445,8 @@ from .mtls_certificate import *
 from .notification_policy import *
 from .notification_policy_webhooks import *
 from .observatory_scheduled_test import *
+from .organization import *
+from .organization_profile import *
 from .origin_ca_certificate import *
 from .page_rule import *
 from .page_shield_policy import *
@@ -923,6 +930,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/contentScanning",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/contentScanning:ContentScanning": "ContentScanning"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/contentScanningExpression",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -1399,6 +1414,22 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest": "ObservatoryScheduledTest"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/organization",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/organization:Organization": "Organization"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/organizationProfile",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/organizationProfile:OrganizationProfile": "OrganizationProfile"
   }
  },
  {

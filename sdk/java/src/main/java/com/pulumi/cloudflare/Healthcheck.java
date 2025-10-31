@@ -22,6 +22,71 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.Healthcheck;
+ * import com.pulumi.cloudflare.HealthcheckArgs;
+ * import com.pulumi.cloudflare.inputs.HealthcheckHttpConfigArgs;
+ * import com.pulumi.cloudflare.inputs.HealthcheckTcpConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleHealthcheck = new Healthcheck("exampleHealthcheck", HealthcheckArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .address("www.example.com")
+ *             .name("server-1")
+ *             .checkRegions(            
+ *                 "WEU",
+ *                 "ENAM")
+ *             .consecutiveFails(0)
+ *             .consecutiveSuccesses(0)
+ *             .description("Health check for www.example.com")
+ *             .httpConfig(HealthcheckHttpConfigArgs.builder()
+ *                 .allowInsecure(true)
+ *                 .expectedBody("success")
+ *                 .expectedCodes(                
+ *                     "2xx",
+ *                     "302")
+ *                 .followRedirects(true)
+ *                 .header(Map.ofEntries(
+ *                     Map.entry("Host", "example.com"),
+ *                     Map.entry("X-App-ID", "abc123")
+ *                 ))
+ *                 .method("GET")
+ *                 .path("/health")
+ *                 .port(0)
+ *                 .build())
+ *             .interval(0)
+ *             .retries(0)
+ *             .suspended(true)
+ *             .tcpConfig(HealthcheckTcpConfigArgs.builder()
+ *                 .method("connection_established")
+ *                 .port(0)
+ *                 .build())
+ *             .timeout(0)
+ *             .type("HTTPS")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh

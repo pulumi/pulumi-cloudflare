@@ -11,6 +11,31 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleAuthenticatedOriginPulls = new Cloudflare.AuthenticatedOriginPulls("example_authenticated_origin_pulls", new()
+    ///     {
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Configs = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.AuthenticatedOriginPullsConfigArgs
+    ///             {
+    ///                 CertId = "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+    ///                 Enabled = true,
+    ///                 Hostname = "app.example.com",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls")]
     public partial class AuthenticatedOriginPulls : global::Pulumi.CustomResource

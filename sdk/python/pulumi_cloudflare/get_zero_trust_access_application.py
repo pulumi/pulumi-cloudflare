@@ -473,7 +473,7 @@ class GetZeroTrustAccessApplicationResult:
     def type(self) -> _builtins.str:
         """
         The application type.
-        Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash_sso", "infrastructure", "rdp".
+        Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal".
         """
         return pulumi.get(self, "type")
 

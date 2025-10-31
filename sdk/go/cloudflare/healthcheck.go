@@ -14,6 +14,68 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewHealthcheck(ctx, "example_healthcheck", &cloudflare.HealthcheckArgs{
+//				ZoneId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Address: pulumi.String("www.example.com"),
+//				Name:    pulumi.String("server-1"),
+//				CheckRegions: pulumi.StringArray{
+//					pulumi.String("WEU"),
+//					pulumi.String("ENAM"),
+//				},
+//				ConsecutiveFails:     pulumi.Int(0),
+//				ConsecutiveSuccesses: pulumi.Int(0),
+//				Description:          pulumi.String("Health check for www.example.com"),
+//				HttpConfig: &cloudflare.HealthcheckHttpConfigArgs{
+//					AllowInsecure: pulumi.Bool(true),
+//					ExpectedBody:  pulumi.String("success"),
+//					ExpectedCodes: pulumi.StringArray{
+//						pulumi.String("2xx"),
+//						pulumi.String("302"),
+//					},
+//					FollowRedirects: pulumi.Bool(true),
+//					Header: pulumi.StringArrayMap{
+//						"Host": pulumi.StringArray{
+//							pulumi.String("example.com"),
+//						},
+//						"X-App-ID": pulumi.StringArray{
+//							pulumi.String("abc123"),
+//						},
+//					},
+//					Method: pulumi.String("GET"),
+//					Path:   pulumi.String("/health"),
+//					Port:   pulumi.Int(0),
+//				},
+//				Interval:  pulumi.Int(0),
+//				Retries:   pulumi.Int(0),
+//				Suspended: pulumi.Bool(true),
+//				TcpConfig: &cloudflare.HealthcheckTcpConfigArgs{
+//					Method: pulumi.String("connection_established"),
+//					Port:   pulumi.Int(0),
+//				},
+//				Timeout: pulumi.Int(0),
+//				Type:    pulumi.String("HTTPS"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

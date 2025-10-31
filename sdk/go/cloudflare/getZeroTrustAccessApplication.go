@@ -145,7 +145,7 @@ type LookupZeroTrustAccessApplicationResult struct {
 	Tags            []string                                      `pulumi:"tags"`
 	TargetCriterias []GetZeroTrustAccessApplicationTargetCriteria `pulumi:"targetCriterias"`
 	// The application type.
-	// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dashSso", "infrastructure", "rdp".
+	// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal".
 	Type string `pulumi:"type"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
@@ -408,7 +408,7 @@ func (o LookupZeroTrustAccessApplicationResultOutput) TargetCriterias() GetZeroT
 }
 
 // The application type.
-// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dashSso", "infrastructure", "rdp".
+// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal".
 func (o LookupZeroTrustAccessApplicationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) string { return v.Type }).(pulumi.StringOutput)
 }

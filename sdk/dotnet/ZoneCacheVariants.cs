@@ -12,6 +12,80 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZoneCacheVariants = new Cloudflare.ZoneCacheVariants("example_zone_cache_variants", new()
+    ///     {
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Value = new Cloudflare.Inputs.ZoneCacheVariantsValueArgs
+    ///         {
+    ///             Avifs = new[]
+    ///             {
+    ///                 "image/webp",
+    ///                 "image/jpeg",
+    ///             },
+    ///             Bmps = new[]
+    ///             {
+    ///                 "image/webp",
+    ///                 "image/jpeg",
+    ///             },
+    ///             Gifs = new[]
+    ///             {
+    ///                 "image/webp",
+    ///                 "image/jpeg",
+    ///             },
+    ///             Jp2s = new[]
+    ///             {
+    ///                 "image/webp",
+    ///                 "image/avif",
+    ///             },
+    ///             Jpegs = new[]
+    ///             {
+    ///                 "image/webp",
+    ///                 "image/avif",
+    ///             },
+    ///             Jpgs = new[]
+    ///             {
+    ///                 "image/webp",
+    ///                 "image/avif",
+    ///             },
+    ///             Jpg2s = new[]
+    ///             {
+    ///                 "image/webp",
+    ///                 "image/avif",
+    ///             },
+    ///             Pngs = new[]
+    ///             {
+    ///                 "image/webp",
+    ///                 "image/avif",
+    ///             },
+    ///             Tifs = new[]
+    ///             {
+    ///                 "image/webp",
+    ///                 "image/avif",
+    ///             },
+    ///             Tiffs = new[]
+    ///             {
+    ///                 "image/webp",
+    ///                 "image/avif",
+    ///             },
+    ///             Webps = new[]
+    ///             {
+    ///                 "image/jpeg",
+    ///                 "image/avif",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

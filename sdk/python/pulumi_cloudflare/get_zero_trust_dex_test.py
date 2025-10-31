@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetZeroTrustDexTestResult',
@@ -166,6 +167,7 @@ class AwaitableGetZeroTrustDexTestResult(GetZeroTrustDexTestResult):
 
 def get_zero_trust_dex_test(account_id: Optional[_builtins.str] = None,
                             dex_test_id: Optional[_builtins.str] = None,
+                            target_policies: Optional[Sequence[Union['GetZeroTrustDexTestTargetPolicyArgs', 'GetZeroTrustDexTestTargetPolicyArgsDict']]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustDexTestResult:
     """
     ## Example Usage
@@ -180,10 +182,12 @@ def get_zero_trust_dex_test(account_id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str dex_test_id: The unique identifier for the test.
+    :param Sequence[Union['GetZeroTrustDexTestTargetPolicyArgs', 'GetZeroTrustDexTestTargetPolicyArgsDict']] target_policies: DEX rules targeted by this test
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['dexTestId'] = dex_test_id
+    __args__['targetPolicies'] = target_policies
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getZeroTrustDexTest:getZeroTrustDexTest', __args__, opts=opts, typ=GetZeroTrustDexTestResult).value
 
@@ -201,6 +205,7 @@ def get_zero_trust_dex_test(account_id: Optional[_builtins.str] = None,
         test_id=pulumi.get(__ret__, 'test_id'))
 def get_zero_trust_dex_test_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
                                    dex_test_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                   target_policies: Optional[pulumi.Input[Optional[Sequence[Union['GetZeroTrustDexTestTargetPolicyArgs', 'GetZeroTrustDexTestTargetPolicyArgsDict']]]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDexTestResult]:
     """
     ## Example Usage
@@ -215,10 +220,12 @@ def get_zero_trust_dex_test_output(account_id: Optional[pulumi.Input[_builtins.s
 
 
     :param _builtins.str dex_test_id: The unique identifier for the test.
+    :param Sequence[Union['GetZeroTrustDexTestTargetPolicyArgs', 'GetZeroTrustDexTestTargetPolicyArgsDict']] target_policies: DEX rules targeted by this test
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['dexTestId'] = dex_test_id
+    __args__['targetPolicies'] = target_policies
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustDexTest:getZeroTrustDexTest', __args__, opts=opts, typ=GetZeroTrustDexTestResult)
     return __ret__.apply(lambda __response__: GetZeroTrustDexTestResult(

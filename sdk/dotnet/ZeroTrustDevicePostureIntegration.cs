@@ -12,6 +12,32 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZeroTrustDevicePostureIntegration = new Cloudflare.ZeroTrustDevicePostureIntegration("example_zero_trust_device_posture_integration", new()
+    ///     {
+    ///         AccountId = "699d98642c564d2e855e9661899b7252",
+    ///         Config = new Cloudflare.Inputs.ZeroTrustDevicePostureIntegrationConfigArgs
+    ///         {
+    ///             ApiUrl = "https://as123.awmdm.com/API",
+    ///             AuthUrl = "https://na.uemauth.vmwservices.com/connect/token",
+    ///             ClientId = "example client id",
+    ///             ClientSecret = "example client secret",
+    ///         },
+    ///         Interval = "10m",
+    ///         Name = "My Workspace One Integration",
+    ///         Type = "workspace_one",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

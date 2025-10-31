@@ -71,6 +71,10 @@ export interface GetZeroTrustTunnelCloudflaredConfigResult {
      * The version of the Tunnel Configuration.
      */
     readonly version: number;
+    /**
+     * Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+     */
+    readonly warpRoutingEnabled: boolean;
 }
 /**
  * ## Example Usage

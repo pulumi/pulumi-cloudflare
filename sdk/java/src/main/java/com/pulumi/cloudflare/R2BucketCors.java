@@ -19,6 +19,50 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.R2BucketCors;
+ * import com.pulumi.cloudflare.R2BucketCorsArgs;
+ * import com.pulumi.cloudflare.inputs.R2BucketCorsRuleArgs;
+ * import com.pulumi.cloudflare.inputs.R2BucketCorsRuleAllowedArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleR2BucketCors = new R2BucketCors("exampleR2BucketCors", R2BucketCorsArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .bucketName("example-bucket")
+ *             .rules(R2BucketCorsRuleArgs.builder()
+ *                 .allowed(R2BucketCorsRuleAllowedArgs.builder()
+ *                     .methods("GET")
+ *                     .origins("http://localhost:3000")
+ *                     .headers("x-requested-by")
+ *                     .build())
+ *                 .id("Allow Local Development")
+ *                 .exposeHeaders("Content-Encoding")
+ *                 .maxAgeSeconds(3600.0)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  */
 @ResourceType(type="cloudflare:index/r2BucketCors:R2BucketCors")
 public class R2BucketCors extends com.pulumi.resources.CustomResource {

@@ -12,6 +12,214 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleLoadBalancer = new Cloudflare.LoadBalancer("example_load_balancer", new()
+    ///     {
+    ///         ZoneId = "699d98642c564d2e855e9661899b7252",
+    ///         DefaultPools = new[]
+    ///         {
+    ///             "17b5962d775c646f3f9725cbc7a53df4",
+    ///             "9290f38c5d07c2e2f4df57b1f61d4196",
+    ///             "00920f38ce07c2e2f4df50b1f61d4194",
+    ///         },
+    ///         FallbackPool = "fallback_pool",
+    ///         Name = "www.example.com",
+    ///         AdaptiveRouting = new Cloudflare.Inputs.LoadBalancerAdaptiveRoutingArgs
+    ///         {
+    ///             FailoverAcrossPools = true,
+    ///         },
+    ///         CountryPools = 
+    ///         {
+    ///             { "GB", new[]
+    ///             {
+    ///                 "abd90f38ced07c2e2f4df50b1f61d4194",
+    ///             } },
+    ///             { "US", new[]
+    ///             {
+    ///                 "de90f38ced07c2e2f4df50b1f61d4194",
+    ///                 "00920f38ce07c2e2f4df50b1f61d4194",
+    ///             } },
+    ///         },
+    ///         Description = "Load Balancer for www.example.com",
+    ///         LocationStrategy = new Cloudflare.Inputs.LoadBalancerLocationStrategyArgs
+    ///         {
+    ///             Mode = "resolver_ip",
+    ///             PreferEcs = "always",
+    ///         },
+    ///         Networks = new[]
+    ///         {
+    ///             "string",
+    ///         },
+    ///         PopPools = 
+    ///         {
+    ///             { "LAX", new[]
+    ///             {
+    ///                 "de90f38ced07c2e2f4df50b1f61d4194",
+    ///                 "9290f38c5d07c2e2f4df57b1f61d4196",
+    ///             } },
+    ///             { "LHR", new[]
+    ///             {
+    ///                 "abd90f38ced07c2e2f4df50b1f61d4194",
+    ///                 "f9138c5d07c2e2f4df57b1f61d4196",
+    ///             } },
+    ///             { "SJC", new[]
+    ///             {
+    ///                 "00920f38ce07c2e2f4df50b1f61d4194",
+    ///             } },
+    ///         },
+    ///         Proxied = true,
+    ///         RandomSteering = new Cloudflare.Inputs.LoadBalancerRandomSteeringArgs
+    ///         {
+    ///             DefaultWeight = 0.2,
+    ///             PoolWeights = 
+    ///             {
+    ///                 { "9290f38c5d07c2e2f4df57b1f61d4196", 0.5 },
+    ///                 { "de90f38ced07c2e2f4df50b1f61d4194", 0.3 },
+    ///             },
+    ///         },
+    ///         RegionPools = 
+    ///         {
+    ///             { "ENAM", new[]
+    ///             {
+    ///                 "00920f38ce07c2e2f4df50b1f61d4194",
+    ///             } },
+    ///             { "WNAM", new[]
+    ///             {
+    ///                 "de90f38ced07c2e2f4df50b1f61d4194",
+    ///                 "9290f38c5d07c2e2f4df57b1f61d4196",
+    ///             } },
+    ///         },
+    ///         Rules = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.LoadBalancerRuleArgs
+    ///             {
+    ///                 Condition = "http.request.uri.path contains \"/testing\"",
+    ///                 Disabled = true,
+    ///                 FixedResponse = new Cloudflare.Inputs.LoadBalancerRuleFixedResponseArgs
+    ///                 {
+    ///                     ContentType = "application/json",
+    ///                     Location = "www.example.com",
+    ///                     MessageBody = "Testing Hello",
+    ///                     StatusCode = 0,
+    ///                 },
+    ///                 Name = "route the path /testing to testing datacenter.",
+    ///                 Overrides = new Cloudflare.Inputs.LoadBalancerRuleOverridesArgs
+    ///                 {
+    ///                     AdaptiveRouting = new Cloudflare.Inputs.LoadBalancerRuleOverridesAdaptiveRoutingArgs
+    ///                     {
+    ///                         FailoverAcrossPools = true,
+    ///                     },
+    ///                     CountryPools = 
+    ///                     {
+    ///                         { "GB", new[]
+    ///                         {
+    ///                             "abd90f38ced07c2e2f4df50b1f61d4194",
+    ///                         } },
+    ///                         { "US", new[]
+    ///                         {
+    ///                             "de90f38ced07c2e2f4df50b1f61d4194",
+    ///                             "00920f38ce07c2e2f4df50b1f61d4194",
+    ///                         } },
+    ///                     },
+    ///                     DefaultPools = new[]
+    ///                     {
+    ///                         "17b5962d775c646f3f9725cbc7a53df4",
+    ///                         "9290f38c5d07c2e2f4df57b1f61d4196",
+    ///                         "00920f38ce07c2e2f4df50b1f61d4194",
+    ///                     },
+    ///                     FallbackPool = "fallback_pool",
+    ///                     LocationStrategy = new Cloudflare.Inputs.LoadBalancerRuleOverridesLocationStrategyArgs
+    ///                     {
+    ///                         Mode = "resolver_ip",
+    ///                         PreferEcs = "always",
+    ///                     },
+    ///                     PopPools = 
+    ///                     {
+    ///                         { "LAX", new[]
+    ///                         {
+    ///                             "de90f38ced07c2e2f4df50b1f61d4194",
+    ///                             "9290f38c5d07c2e2f4df57b1f61d4196",
+    ///                         } },
+    ///                         { "LHR", new[]
+    ///                         {
+    ///                             "abd90f38ced07c2e2f4df50b1f61d4194",
+    ///                             "f9138c5d07c2e2f4df57b1f61d4196",
+    ///                         } },
+    ///                         { "SJC", new[]
+    ///                         {
+    ///                             "00920f38ce07c2e2f4df50b1f61d4194",
+    ///                         } },
+    ///                     },
+    ///                     RandomSteering = new Cloudflare.Inputs.LoadBalancerRuleOverridesRandomSteeringArgs
+    ///                     {
+    ///                         DefaultWeight = 0.2,
+    ///                         PoolWeights = 
+    ///                         {
+    ///                             { "9290f38c5d07c2e2f4df57b1f61d4196", 0.5 },
+    ///                             { "de90f38ced07c2e2f4df50b1f61d4194", 0.3 },
+    ///                         },
+    ///                     },
+    ///                     RegionPools = 
+    ///                     {
+    ///                         { "ENAM", new[]
+    ///                         {
+    ///                             "00920f38ce07c2e2f4df50b1f61d4194",
+    ///                         } },
+    ///                         { "WNAM", new[]
+    ///                         {
+    ///                             "de90f38ced07c2e2f4df50b1f61d4194",
+    ///                             "9290f38c5d07c2e2f4df57b1f61d4196",
+    ///                         } },
+    ///                     },
+    ///                     SessionAffinity = "cookie",
+    ///                     SessionAffinityAttributes = new Cloudflare.Inputs.LoadBalancerRuleOverridesSessionAffinityAttributesArgs
+    ///                     {
+    ///                         DrainDuration = 100,
+    ///                         Headers = new[]
+    ///                         {
+    ///                             "x",
+    ///                         },
+    ///                         RequireAllHeaders = true,
+    ///                         Samesite = "Auto",
+    ///                         Secure = "Auto",
+    ///                         ZeroDowntimeFailover = "sticky",
+    ///                     },
+    ///                     SessionAffinityTtl = 1800,
+    ///                     SteeringPolicy = "dynamic_latency",
+    ///                     Ttl = 30,
+    ///                 },
+    ///                 Priority = 0,
+    ///                 Terminates = true,
+    ///             },
+    ///         },
+    ///         SessionAffinity = "cookie",
+    ///         SessionAffinityAttributes = new Cloudflare.Inputs.LoadBalancerSessionAffinityAttributesArgs
+    ///         {
+    ///             DrainDuration = 100,
+    ///             Headers = new[]
+    ///             {
+    ///                 "x",
+    ///             },
+    ///             RequireAllHeaders = true,
+    ///             Samesite = "Auto",
+    ///             Secure = "Auto",
+    ///             ZeroDowntimeFailover = "sticky",
+    ///         },
+    ///         SessionAffinityTtl = 1800,
+    ///         SteeringPolicy = "dynamic_latency",
+    ///         Ttl = 30,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

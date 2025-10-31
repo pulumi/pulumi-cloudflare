@@ -361,6 +361,19 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_authenticated_origin_pulls = cloudflare.AuthenticatedOriginPulls("example_authenticated_origin_pulls",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            configs=[{
+                "cert_id": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+                "enabled": True,
+                "hostname": "app.example.com",
+            }])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] hostname: The hostname on the origin for which the client certificate uploaded will be used.
@@ -374,6 +387,19 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_authenticated_origin_pulls = cloudflare.AuthenticatedOriginPulls("example_authenticated_origin_pulls",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            configs=[{
+                "cert_id": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+                "enabled": True,
+                "hostname": "app.example.com",
+            }])
+        ```
 
         :param str resource_name: The name of the resource.
         :param AuthenticatedOriginPullsArgs args: The arguments to use to populate this resource's properties.

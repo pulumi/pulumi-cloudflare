@@ -11,6 +11,63 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleR2BucketLifecycle = new Cloudflare.R2BucketLifecycle("example_r2_bucket_lifecycle", new()
+    ///     {
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         BucketName = "example-bucket",
+    ///         Rules = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.R2BucketLifecycleRuleArgs
+    ///             {
+    ///                 Id = "Expire all objects older than 24 hours",
+    ///                 Conditions = new Cloudflare.Inputs.R2BucketLifecycleRuleConditionsArgs
+    ///                 {
+    ///                     Prefix = "prefix",
+    ///                 },
+    ///                 Enabled = true,
+    ///                 AbortMultipartUploadsTransition = new Cloudflare.Inputs.R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs
+    ///                 {
+    ///                     Condition = new Cloudflare.Inputs.R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs
+    ///                     {
+    ///                         MaxAge = 0,
+    ///                         Type = "Age",
+    ///                     },
+    ///                 },
+    ///                 DeleteObjectsTransition = new Cloudflare.Inputs.R2BucketLifecycleRuleDeleteObjectsTransitionArgs
+    ///                 {
+    ///                     Condition = new Cloudflare.Inputs.R2BucketLifecycleRuleDeleteObjectsTransitionConditionArgs
+    ///                     {
+    ///                         MaxAge = 0,
+    ///                         Type = "Age",
+    ///                     },
+    ///                 },
+    ///                 StorageClassTransitions = new[]
+    ///                 {
+    ///                     new Cloudflare.Inputs.R2BucketLifecycleRuleStorageClassTransitionArgs
+    ///                     {
+    ///                         Condition = new Cloudflare.Inputs.R2BucketLifecycleRuleStorageClassTransitionConditionArgs
+    ///                         {
+    ///                             MaxAge = 0,
+    ///                             Type = "Age",
+    ///                         },
+    ///                         StorageClass = "InfrequentAccess",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/r2BucketLifecycle:R2BucketLifecycle")]
     public partial class R2BucketLifecycle : global::Pulumi.CustomResource

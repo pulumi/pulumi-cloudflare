@@ -215,6 +215,11 @@ export type CloudforceOneRequestPriority = import("./cloudforceOneRequestPriorit
 export const CloudforceOneRequestPriority: typeof import("./cloudforceOneRequestPriority").CloudforceOneRequestPriority = null as any;
 utilities.lazyLoad(exports, ["CloudforceOneRequestPriority"], () => require("./cloudforceOneRequestPriority"));
 
+export { ContentScanningArgs, ContentScanningState } from "./contentScanning";
+export type ContentScanning = import("./contentScanning").ContentScanning;
+export const ContentScanning: typeof import("./contentScanning").ContentScanning = null as any;
+utilities.lazyLoad(exports, ["ContentScanning"], () => require("./contentScanning"));
+
 export { ContentScanningExpressionArgs, ContentScanningExpressionState } from "./contentScanningExpression";
 export type ContentScanningExpression = import("./contentScanningExpression").ContentScanningExpression;
 export const ContentScanningExpression: typeof import("./contentScanningExpression").ContentScanningExpression = null as any;
@@ -619,6 +624,11 @@ export { GetCloudforceOneRequestsArgs, GetCloudforceOneRequestsResult, GetCloudf
 export const getCloudforceOneRequests: typeof import("./getCloudforceOneRequests").getCloudforceOneRequests = null as any;
 export const getCloudforceOneRequestsOutput: typeof import("./getCloudforceOneRequests").getCloudforceOneRequestsOutput = null as any;
 utilities.lazyLoad(exports, ["getCloudforceOneRequests","getCloudforceOneRequestsOutput"], () => require("./getCloudforceOneRequests"));
+
+export { GetContentScanningArgs, GetContentScanningResult, GetContentScanningOutputArgs } from "./getContentScanning";
+export const getContentScanning: typeof import("./getContentScanning").getContentScanning = null as any;
+export const getContentScanningOutput: typeof import("./getContentScanning").getContentScanningOutput = null as any;
+utilities.lazyLoad(exports, ["getContentScanning","getContentScanningOutput"], () => require("./getContentScanning"));
 
 export { GetContentScanningExpressionsArgs, GetContentScanningExpressionsResult, GetContentScanningExpressionsOutputArgs } from "./getContentScanningExpressions";
 export const getContentScanningExpressions: typeof import("./getContentScanningExpressions").getContentScanningExpressions = null as any;
@@ -1079,6 +1089,21 @@ export { GetObservatoryScheduledTestArgs, GetObservatoryScheduledTestResult, Get
 export const getObservatoryScheduledTest: typeof import("./getObservatoryScheduledTest").getObservatoryScheduledTest = null as any;
 export const getObservatoryScheduledTestOutput: typeof import("./getObservatoryScheduledTest").getObservatoryScheduledTestOutput = null as any;
 utilities.lazyLoad(exports, ["getObservatoryScheduledTest","getObservatoryScheduledTestOutput"], () => require("./getObservatoryScheduledTest"));
+
+export { GetOrganizationArgs, GetOrganizationResult, GetOrganizationOutputArgs } from "./getOrganization";
+export const getOrganization: typeof import("./getOrganization").getOrganization = null as any;
+export const getOrganizationOutput: typeof import("./getOrganization").getOrganizationOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganization","getOrganizationOutput"], () => require("./getOrganization"));
+
+export { GetOrganizationProfileArgs, GetOrganizationProfileResult, GetOrganizationProfileOutputArgs } from "./getOrganizationProfile";
+export const getOrganizationProfile: typeof import("./getOrganizationProfile").getOrganizationProfile = null as any;
+export const getOrganizationProfileOutput: typeof import("./getOrganizationProfile").getOrganizationProfileOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizationProfile","getOrganizationProfileOutput"], () => require("./getOrganizationProfile"));
+
+export { GetOrganizationsArgs, GetOrganizationsResult, GetOrganizationsOutputArgs } from "./getOrganizations";
+export const getOrganizations: typeof import("./getOrganizations").getOrganizations = null as any;
+export const getOrganizationsOutput: typeof import("./getOrganizations").getOrganizationsOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizations","getOrganizationsOutput"], () => require("./getOrganizations"));
 
 export { GetOriginCaCertificateArgs, GetOriginCaCertificateResult, GetOriginCaCertificateOutputArgs } from "./getOriginCaCertificate";
 export const getOriginCaCertificate: typeof import("./getOriginCaCertificate").getOriginCaCertificate = null as any;
@@ -2175,6 +2200,16 @@ export type ObservatoryScheduledTest = import("./observatoryScheduledTest").Obse
 export const ObservatoryScheduledTest: typeof import("./observatoryScheduledTest").ObservatoryScheduledTest = null as any;
 utilities.lazyLoad(exports, ["ObservatoryScheduledTest"], () => require("./observatoryScheduledTest"));
 
+export { OrganizationArgs, OrganizationState } from "./organization";
+export type Organization = import("./organization").Organization;
+export const Organization: typeof import("./organization").Organization = null as any;
+utilities.lazyLoad(exports, ["Organization"], () => require("./organization"));
+
+export { OrganizationProfileArgs, OrganizationProfileState } from "./organizationProfile";
+export type OrganizationProfile = import("./organizationProfile").OrganizationProfile;
+export const OrganizationProfile: typeof import("./organizationProfile").OrganizationProfile = null as any;
+utilities.lazyLoad(exports, ["OrganizationProfile"], () => require("./organizationProfile"));
+
 export { OriginCaCertificateArgs, OriginCaCertificateState } from "./originCaCertificate";
 export type OriginCaCertificate = import("./originCaCertificate").OriginCaCertificate;
 export const OriginCaCertificate: typeof import("./originCaCertificate").OriginCaCertificate = null as any;
@@ -2931,6 +2966,8 @@ const _module = {
                 return new CloudforceOneRequestMessage(name, <any>undefined, { urn })
             case "cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority":
                 return new CloudforceOneRequestPriority(name, <any>undefined, { urn })
+            case "cloudflare:index/contentScanning:ContentScanning":
+                return new ContentScanning(name, <any>undefined, { urn })
             case "cloudflare:index/contentScanningExpression:ContentScanningExpression":
                 return new ContentScanningExpression(name, <any>undefined, { urn })
             case "cloudflare:index/customHostname:CustomHostname":
@@ -3051,6 +3088,10 @@ const _module = {
                 return new NotificationPolicyWebhooks(name, <any>undefined, { urn })
             case "cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest":
                 return new ObservatoryScheduledTest(name, <any>undefined, { urn })
+            case "cloudflare:index/organization:Organization":
+                return new Organization(name, <any>undefined, { urn })
+            case "cloudflare:index/organizationProfile:OrganizationProfile":
+                return new OrganizationProfile(name, <any>undefined, { urn })
             case "cloudflare:index/originCaCertificate:OriginCaCertificate":
                 return new OriginCaCertificate(name, <any>undefined, { urn })
             case "cloudflare:index/pageRule:PageRule":
@@ -3360,6 +3401,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/cloudforceOneRequest"
 pulumi.runtime.registerResourceModule("cloudflare", "index/cloudforceOneRequestAsset", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/cloudforceOneRequestMessage", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/cloudforceOneRequestPriority", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/contentScanning", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/contentScanningExpression", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customHostname", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customHostnameFallbackOrigin", _module)
@@ -3420,6 +3462,8 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/mtlsCertificate", _mo
 pulumi.runtime.registerResourceModule("cloudflare", "index/notificationPolicy", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/notificationPolicyWebhooks", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/observatoryScheduledTest", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/organization", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/organizationProfile", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/originCaCertificate", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/pageRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/pageShieldPolicy", _module)

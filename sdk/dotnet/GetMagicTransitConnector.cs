@@ -136,6 +136,7 @@ namespace Pulumi.Cloudflare
         public readonly string LastHeartbeat;
         public readonly string LastSeenVersion;
         public readonly string LastUpdated;
+        public readonly string LicenseKey;
         public readonly string Notes;
         public readonly string Timezone;
 
@@ -161,6 +162,8 @@ namespace Pulumi.Cloudflare
 
             string lastUpdated,
 
+            string licenseKey,
+
             string notes,
 
             string timezone)
@@ -175,6 +178,7 @@ namespace Pulumi.Cloudflare
             LastHeartbeat = lastHeartbeat;
             LastSeenVersion = lastSeenVersion;
             LastUpdated = lastUpdated;
+            LicenseKey = licenseKey;
             Notes = notes;
             Timezone = timezone;
         }

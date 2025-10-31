@@ -82,15 +82,15 @@ public final class R2BucketEventNotificationArgs extends com.pulumi.resources.Re
      * Array of rules to drive notifications.
      * 
      */
-    @Import(name="rules")
-    private @Nullable Output<List<R2BucketEventNotificationRuleArgs>> rules;
+    @Import(name="rules", required=true)
+    private Output<List<R2BucketEventNotificationRuleArgs>> rules;
 
     /**
      * @return Array of rules to drive notifications.
      * 
      */
-    public Optional<Output<List<R2BucketEventNotificationRuleArgs>>> rules() {
-        return Optional.ofNullable(this.rules);
+    public Output<List<R2BucketEventNotificationRuleArgs>> rules() {
+        return this.rules;
     }
 
     private R2BucketEventNotificationArgs() {}
@@ -211,7 +211,7 @@ public final class R2BucketEventNotificationArgs extends com.pulumi.resources.Re
          * @return builder
          * 
          */
-        public Builder rules(@Nullable Output<List<R2BucketEventNotificationRuleArgs>> rules) {
+        public Builder rules(Output<List<R2BucketEventNotificationRuleArgs>> rules) {
             $.rules = rules;
             return this;
         }
@@ -245,6 +245,9 @@ public final class R2BucketEventNotificationArgs extends com.pulumi.resources.Re
             }
             if ($.queueId == null) {
                 throw new MissingRequiredPropertyException("R2BucketEventNotificationArgs", "queueId");
+            }
+            if ($.rules == null) {
+                throw new MissingRequiredPropertyException("R2BucketEventNotificationArgs", "rules");
             }
             return $;
         }

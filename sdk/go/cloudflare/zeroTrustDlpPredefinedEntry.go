@@ -62,8 +62,8 @@ type ZeroTrustDlpPredefinedEntry struct {
 	Pattern       ZeroTrustDlpPredefinedEntryPatternOutput    `pulumi:"pattern"`
 	// This field is not actually used as the owning profile for a predefined entry is already set
 	// to a predefined profile
-	ProfileId pulumi.StringPtrOutput `pulumi:"profileId"`
-	Secret    pulumi.BoolOutput      `pulumi:"secret"`
+	ProfileId pulumi.StringOutput `pulumi:"profileId"`
+	Secret    pulumi.BoolOutput   `pulumi:"secret"`
 	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
 	Type      pulumi.StringOutput                      `pulumi:"type"`
 	UpdatedAt pulumi.StringOutput                      `pulumi:"updatedAt"`
@@ -302,8 +302,8 @@ func (o ZeroTrustDlpPredefinedEntryOutput) Pattern() ZeroTrustDlpPredefinedEntry
 
 // This field is not actually used as the owning profile for a predefined entry is already set
 // to a predefined profile
-func (o ZeroTrustDlpPredefinedEntryOutput) ProfileId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDlpPredefinedEntry) pulumi.StringPtrOutput { return v.ProfileId }).(pulumi.StringPtrOutput)
+func (o ZeroTrustDlpPredefinedEntryOutput) ProfileId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpPredefinedEntry) pulumi.StringOutput { return v.ProfileId }).(pulumi.StringOutput)
 }
 
 func (o ZeroTrustDlpPredefinedEntryOutput) Secret() pulumi.BoolOutput {

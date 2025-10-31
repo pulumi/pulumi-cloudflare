@@ -102,7 +102,7 @@ public final class WorkersScriptBinding {
      */
     private String name;
     /**
-     * @return Namespace to bind to.
+     * @return The name of the dispatch namespace.
      * 
      */
     private @Nullable String namespace;
@@ -306,7 +306,7 @@ public final class WorkersScriptBinding {
         return this.name;
     }
     /**
-     * @return Namespace to bind to.
+     * @return The name of the dispatch namespace.
      * 
      */
     public Optional<String> namespace() {

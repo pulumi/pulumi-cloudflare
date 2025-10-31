@@ -24,6 +24,12 @@ namespace Pulumi.Cloudflare.Inputs
             set => _aiBindings = value;
         }
 
+        /// <summary>
+        /// Whether to always use the latest compatibility date for Pages Functions.
+        /// </summary>
+        [Input("alwaysUseLatestCompatibilityDate")]
+        public Input<bool>? AlwaysUseLatestCompatibilityDate { get; set; }
+
         [Input("analyticsEngineDatasets")]
         private InputMap<Inputs.PagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsArgs>? _analyticsEngineDatasets;
 
@@ -47,6 +53,12 @@ namespace Pulumi.Cloudflare.Inputs
             get => _browsers ?? (_browsers = new InputMap<Inputs.PagesProjectDeploymentConfigsPreviewBrowsersArgs>());
             set => _browsers = value;
         }
+
+        /// <summary>
+        /// The major version of the build image to use for Pages Functions.
+        /// </summary>
+        [Input("buildImageMajorVersion")]
+        public Input<int>? BuildImageMajorVersion { get; set; }
 
         /// <summary>
         /// Compatibility date used for Pages Functions.
@@ -102,6 +114,12 @@ namespace Pulumi.Cloudflare.Inputs
             set => _envVars = value;
         }
 
+        /// <summary>
+        /// Whether to fail open when the deployment config cannot be applied.
+        /// </summary>
+        [Input("failOpen")]
+        public Input<bool>? FailOpen { get; set; }
+
         [Input("hyperdriveBindings")]
         private InputMap<Inputs.PagesProjectDeploymentConfigsPreviewHyperdriveBindingsArgs>? _hyperdriveBindings;
 
@@ -125,6 +143,12 @@ namespace Pulumi.Cloudflare.Inputs
             get => _kvNamespaces ?? (_kvNamespaces = new InputMap<Inputs.PagesProjectDeploymentConfigsPreviewKvNamespacesArgs>());
             set => _kvNamespaces = value;
         }
+
+        /// <summary>
+        /// Limits for Pages Functions.
+        /// </summary>
+        [Input("limits")]
+        public Input<Inputs.PagesProjectDeploymentConfigsPreviewLimitsArgs>? Limits { get; set; }
 
         [Input("mtlsCertificates")]
         private InputMap<Inputs.PagesProjectDeploymentConfigsPreviewMtlsCertificatesArgs>? _mtlsCertificates;
@@ -180,6 +204,13 @@ namespace Pulumi.Cloudflare.Inputs
             set => _services = value;
         }
 
+        /// <summary>
+        /// The usage model for Pages Functions.
+        /// Available values: "standard", "bundled", "unbound".
+        /// </summary>
+        [Input("usageModel")]
+        public Input<string>? UsageModel { get; set; }
+
         [Input("vectorizeBindings")]
         private InputMap<Inputs.PagesProjectDeploymentConfigsPreviewVectorizeBindingsArgs>? _vectorizeBindings;
 
@@ -191,6 +222,12 @@ namespace Pulumi.Cloudflare.Inputs
             get => _vectorizeBindings ?? (_vectorizeBindings = new InputMap<Inputs.PagesProjectDeploymentConfigsPreviewVectorizeBindingsArgs>());
             set => _vectorizeBindings = value;
         }
+
+        /// <summary>
+        /// Hash of the Wrangler configuration used for the deployment.
+        /// </summary>
+        [Input("wranglerConfigHash")]
+        public Input<string>? WranglerConfigHash { get; set; }
 
         public PagesProjectDeploymentConfigsPreviewArgs()
         {

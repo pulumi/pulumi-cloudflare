@@ -36,6 +36,8 @@ type TunnelConfig struct {
 	TunnelId pulumi.StringOutput `pulumi:"tunnelId"`
 	// The version of the Tunnel Configuration.
 	Version pulumi.IntOutput `pulumi:"version"`
+	// Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+	WarpRoutingEnabled pulumi.BoolOutput `pulumi:"warpRoutingEnabled"`
 }
 
 // NewTunnelConfig registers a new resource with the given unique name, arguments, and options.
@@ -92,6 +94,8 @@ type tunnelConfigState struct {
 	TunnelId *string `pulumi:"tunnelId"`
 	// The version of the Tunnel Configuration.
 	Version *int `pulumi:"version"`
+	// Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+	WarpRoutingEnabled *bool `pulumi:"warpRoutingEnabled"`
 }
 
 type TunnelConfigState struct {
@@ -107,6 +111,8 @@ type TunnelConfigState struct {
 	TunnelId pulumi.StringPtrInput
 	// The version of the Tunnel Configuration.
 	Version pulumi.IntPtrInput
+	// Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+	WarpRoutingEnabled pulumi.BoolPtrInput
 }
 
 func (TunnelConfigState) ElementType() reflect.Type {
@@ -123,6 +129,8 @@ type tunnelConfigArgs struct {
 	Source *string `pulumi:"source"`
 	// UUID of the tunnel.
 	TunnelId string `pulumi:"tunnelId"`
+	// Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+	WarpRoutingEnabled *bool `pulumi:"warpRoutingEnabled"`
 }
 
 // The set of arguments for constructing a TunnelConfig resource.
@@ -136,6 +144,8 @@ type TunnelConfigArgs struct {
 	Source pulumi.StringPtrInput
 	// UUID of the tunnel.
 	TunnelId pulumi.StringInput
+	// Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+	WarpRoutingEnabled pulumi.BoolPtrInput
 }
 
 func (TunnelConfigArgs) ElementType() reflect.Type {
@@ -253,6 +263,11 @@ func (o TunnelConfigOutput) TunnelId() pulumi.StringOutput {
 // The version of the Tunnel Configuration.
 func (o TunnelConfigOutput) Version() pulumi.IntOutput {
 	return o.ApplyT(func(v *TunnelConfig) pulumi.IntOutput { return v.Version }).(pulumi.IntOutput)
+}
+
+// Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+func (o TunnelConfigOutput) WarpRoutingEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *TunnelConfig) pulumi.BoolOutput { return v.WarpRoutingEnabled }).(pulumi.BoolOutput)
 }
 
 type TunnelConfigArrayOutput struct{ *pulumi.OutputState }

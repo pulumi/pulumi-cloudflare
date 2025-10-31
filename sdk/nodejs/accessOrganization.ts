@@ -9,6 +9,35 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustOrganization = new cloudflare.ZeroTrustOrganization("example_zero_trust_organization", {
+ *     zoneId: "zone_id",
+ *     allowAuthenticateViaWarp: true,
+ *     authDomain: "test.cloudflareaccess.com",
+ *     autoRedirectToIdentity: true,
+ *     customPages: {
+ *         forbidden: "699d98642c564d2e855e9661899b7252",
+ *         identityDenied: "699d98642c564d2e855e9661899b7252",
+ *     },
+ *     isUiReadOnly: true,
+ *     loginDesign: {
+ *         backgroundColor: "#c5ed1b",
+ *         footerText: "This is an example description.",
+ *         headerText: "This is an example description.",
+ *         logoPath: "https://example.com/logo.png",
+ *         textColor: "#c5ed1b",
+ *     },
+ *     name: "Widget Corps Internal Applications",
+ *     sessionDuration: "24h",
+ *     uiReadOnlyToggleReason: "Temporarily turn off the UI read only lock to make a change via the UI",
+ *     userSeatExpirationInactiveTime: "730h",
+ *     warpAuthSessionDuration: "24h",
+ * });
+ * ```
+ *
  * @deprecated cloudflare.index/accessorganization.AccessOrganization has been deprecated in favor of cloudflare.index/zerotrustorganization.ZeroTrustOrganization
  */
 export class AccessOrganization extends pulumi.CustomResource {

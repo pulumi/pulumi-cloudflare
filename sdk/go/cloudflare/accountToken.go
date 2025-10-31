@@ -14,6 +14,69 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewAccountToken(ctx, "example_account_token", &cloudflare.AccountTokenArgs{
+//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Name:      pulumi.String("readonly token"),
+//				Policies: cloudflare.AccountTokenPolicyArray{
+//					&cloudflare.AccountTokenPolicyArgs{
+//						Effect: pulumi.String("allow"),
+//						PermissionGroups: cloudflare.AccountTokenPolicyPermissionGroupArray{
+//							&cloudflare.AccountTokenPolicyPermissionGroupArgs{
+//								Id: pulumi.String("c8fed203ed3043cba015a93ad1616f1f"),
+//								Meta: &cloudflare.AccountTokenPolicyPermissionGroupMetaArgs{
+//									Key:   pulumi.String("key"),
+//									Value: pulumi.String("value"),
+//								},
+//							},
+//							&cloudflare.AccountTokenPolicyPermissionGroupArgs{
+//								Id: pulumi.String("82e64a83756745bbbb1c9c2701bf816b"),
+//								Meta: &cloudflare.AccountTokenPolicyPermissionGroupMetaArgs{
+//									Key:   pulumi.String("key"),
+//									Value: pulumi.String("value"),
+//								},
+//							},
+//						},
+//						Resources: pulumi.StringMap{
+//							"foo": pulumi.String("string"),
+//						},
+//					},
+//				},
+//				Condition: &cloudflare.AccountTokenConditionArgs{
+//					RequestIp: &cloudflare.AccountTokenConditionRequestIpArgs{
+//						Ins: pulumi.StringArray{
+//							pulumi.String("123.123.123.0/24"),
+//							pulumi.String("2606:4700::/32"),
+//						},
+//						NotIns: pulumi.StringArray{
+//							pulumi.String("123.123.123.100/24"),
+//							pulumi.String("2606:4700:4700::/48"),
+//						},
+//					},
+//				},
+//				ExpiresOn: pulumi.String("2020-01-01T00:00:00Z"),
+//				NotBefore: pulumi.String("2018-07-01T05:20:00Z"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

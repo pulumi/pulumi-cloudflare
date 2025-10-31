@@ -24,6 +24,7 @@ export function getZeroTrustDexTest(args: GetZeroTrustDexTestArgs, opts?: pulumi
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDexTest:getZeroTrustDexTest", {
         "accountId": args.accountId,
         "dexTestId": args.dexTestId,
+        "targetPolicies": args.targetPolicies,
     }, opts);
 }
 
@@ -36,6 +37,10 @@ export interface GetZeroTrustDexTestArgs {
      * The unique identifier for the test.
      */
     dexTestId?: string;
+    /**
+     * DEX rules targeted by this test
+     */
+    targetPolicies?: inputs.GetZeroTrustDexTestTargetPolicy[];
 }
 
 /**
@@ -99,6 +104,7 @@ export function getZeroTrustDexTestOutput(args: GetZeroTrustDexTestOutputArgs, o
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDexTest:getZeroTrustDexTest", {
         "accountId": args.accountId,
         "dexTestId": args.dexTestId,
+        "targetPolicies": args.targetPolicies,
     }, opts);
 }
 
@@ -111,4 +117,8 @@ export interface GetZeroTrustDexTestOutputArgs {
      * The unique identifier for the test.
      */
     dexTestId?: pulumi.Input<string>;
+    /**
+     * DEX rules targeted by this test
+     */
+    targetPolicies?: pulumi.Input<pulumi.Input<inputs.GetZeroTrustDexTestTargetPolicyArgs>[]>;
 }
