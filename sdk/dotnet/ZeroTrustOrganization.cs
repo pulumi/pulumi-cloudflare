@@ -11,6 +11,44 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZeroTrustOrganization = new Cloudflare.ZeroTrustOrganization("example_zero_trust_organization", new()
+    ///     {
+    ///         ZoneId = "zone_id",
+    ///         AllowAuthenticateViaWarp = true,
+    ///         AuthDomain = "test.cloudflareaccess.com",
+    ///         AutoRedirectToIdentity = true,
+    ///         CustomPages = new Cloudflare.Inputs.ZeroTrustOrganizationCustomPagesArgs
+    ///         {
+    ///             Forbidden = "699d98642c564d2e855e9661899b7252",
+    ///             IdentityDenied = "699d98642c564d2e855e9661899b7252",
+    ///         },
+    ///         IsUiReadOnly = true,
+    ///         LoginDesign = new Cloudflare.Inputs.ZeroTrustOrganizationLoginDesignArgs
+    ///         {
+    ///             BackgroundColor = "#c5ed1b",
+    ///             FooterText = "This is an example description.",
+    ///             HeaderText = "This is an example description.",
+    ///             LogoPath = "https://example.com/logo.png",
+    ///             TextColor = "#c5ed1b",
+    ///         },
+    ///         Name = "Widget Corps Internal Applications",
+    ///         SessionDuration = "24h",
+    ///         UiReadOnlyToggleReason = "Temporarily turn off the UI read only lock to make a change via the UI",
+    ///         UserSeatExpirationInactiveTime = "730h",
+    ///         WarpAuthSessionDuration = "24h",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zeroTrustOrganization:ZeroTrustOrganization")]
     public partial class ZeroTrustOrganization : global::Pulumi.CustomResource

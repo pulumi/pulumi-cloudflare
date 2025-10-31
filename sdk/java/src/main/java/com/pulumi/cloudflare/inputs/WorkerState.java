@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.WorkerObservabilityArgs;
+import com.pulumi.cloudflare.inputs.WorkerReferencesArgs;
 import com.pulumi.cloudflare.inputs.WorkerSubdomainArgs;
 import com.pulumi.cloudflare.inputs.WorkerTailConsumerArgs;
 import com.pulumi.core.Output;
@@ -96,6 +97,21 @@ public final class WorkerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Other resources that reference the Worker and depend on it existing.
+     * 
+     */
+    @Import(name="references")
+    private @Nullable Output<WorkerReferencesArgs> references;
+
+    /**
+     * @return Other resources that reference the Worker and depend on it existing.
+     * 
+     */
+    public Optional<Output<WorkerReferencesArgs>> references() {
+        return Optional.ofNullable(this.references);
+    }
+
+    /**
      * Subdomain settings for the Worker.
      * 
      */
@@ -163,6 +179,7 @@ public final class WorkerState extends com.pulumi.resources.ResourceArgs {
         this.logpush = $.logpush;
         this.name = $.name;
         this.observability = $.observability;
+        this.references = $.references;
         this.subdomain = $.subdomain;
         this.tags = $.tags;
         this.tailConsumers = $.tailConsumers;
@@ -290,6 +307,27 @@ public final class WorkerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder observability(WorkerObservabilityArgs observability) {
             return observability(Output.of(observability));
+        }
+
+        /**
+         * @param references Other resources that reference the Worker and depend on it existing.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder references(@Nullable Output<WorkerReferencesArgs> references) {
+            $.references = references;
+            return this;
+        }
+
+        /**
+         * @param references Other resources that reference the Worker and depend on it existing.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder references(WorkerReferencesArgs references) {
+            return references(Output.of(references));
         }
 
         /**

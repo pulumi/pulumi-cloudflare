@@ -53,10 +53,6 @@ type ApiShield struct {
 	pulumi.CustomResourceState
 
 	AuthIdCharacteristics ApiShieldAuthIdCharacteristicArrayOutput `pulumi:"authIdCharacteristics"`
-	Errors                ApiShieldErrorArrayOutput                `pulumi:"errors"`
-	Messages              ApiShieldMessageArrayOutput              `pulumi:"messages"`
-	// Whether the API call was successful.
-	Success pulumi.BoolOutput `pulumi:"success"`
 	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -98,20 +94,12 @@ func GetApiShield(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ApiShield resources.
 type apiShieldState struct {
 	AuthIdCharacteristics []ApiShieldAuthIdCharacteristic `pulumi:"authIdCharacteristics"`
-	Errors                []ApiShieldError                `pulumi:"errors"`
-	Messages              []ApiShieldMessage              `pulumi:"messages"`
-	// Whether the API call was successful.
-	Success *bool `pulumi:"success"`
 	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ApiShieldState struct {
 	AuthIdCharacteristics ApiShieldAuthIdCharacteristicArrayInput
-	Errors                ApiShieldErrorArrayInput
-	Messages              ApiShieldMessageArrayInput
-	// Whether the API call was successful.
-	Success pulumi.BoolPtrInput
 	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
@@ -222,19 +210,6 @@ func (o ApiShieldOutput) ToApiShieldOutputWithContext(ctx context.Context) ApiSh
 
 func (o ApiShieldOutput) AuthIdCharacteristics() ApiShieldAuthIdCharacteristicArrayOutput {
 	return o.ApplyT(func(v *ApiShield) ApiShieldAuthIdCharacteristicArrayOutput { return v.AuthIdCharacteristics }).(ApiShieldAuthIdCharacteristicArrayOutput)
-}
-
-func (o ApiShieldOutput) Errors() ApiShieldErrorArrayOutput {
-	return o.ApplyT(func(v *ApiShield) ApiShieldErrorArrayOutput { return v.Errors }).(ApiShieldErrorArrayOutput)
-}
-
-func (o ApiShieldOutput) Messages() ApiShieldMessageArrayOutput {
-	return o.ApplyT(func(v *ApiShield) ApiShieldMessageArrayOutput { return v.Messages }).(ApiShieldMessageArrayOutput)
-}
-
-// Whether the API call was successful.
-func (o ApiShieldOutput) Success() pulumi.BoolOutput {
-	return o.ApplyT(func(v *ApiShield) pulumi.BoolOutput { return v.Success }).(pulumi.BoolOutput)
 }
 
 // Identifier.

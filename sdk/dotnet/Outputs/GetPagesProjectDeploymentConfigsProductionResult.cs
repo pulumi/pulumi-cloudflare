@@ -18,6 +18,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GetPagesProjectDeploymentConfigsProductionAiBindingsResult> AiBindings;
         /// <summary>
+        /// Whether to always use the latest compatibility date for Pages Functions.
+        /// </summary>
+        public readonly bool AlwaysUseLatestCompatibilityDate;
+        /// <summary>
         /// Analytics Engine bindings used for Pages Functions.
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsResult> AnalyticsEngineDatasets;
@@ -25,6 +29,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// Browser bindings used for Pages Functions.
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GetPagesProjectDeploymentConfigsProductionBrowsersResult> Browsers;
+        /// <summary>
+        /// The major version of the build image to use for Pages Functions.
+        /// </summary>
+        public readonly int BuildImageMajorVersion;
         /// <summary>
         /// Compatibility date used for Pages Functions.
         /// </summary>
@@ -46,6 +54,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GetPagesProjectDeploymentConfigsProductionEnvVarsResult> EnvVars;
         /// <summary>
+        /// Whether to fail open when the deployment config cannot be applied.
+        /// </summary>
+        public readonly bool FailOpen;
+        /// <summary>
         /// Hyperdrive bindings used for Pages Functions.
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsResult> HyperdriveBindings;
@@ -53,6 +65,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// KV namespaces used for Pages Functions.
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GetPagesProjectDeploymentConfigsProductionKvNamespacesResult> KvNamespaces;
+        /// <summary>
+        /// Limits for Pages Functions.
+        /// </summary>
+        public readonly Outputs.GetPagesProjectDeploymentConfigsProductionLimitsResult Limits;
         /// <summary>
         /// mTLS bindings used for Pages Functions.
         /// </summary>
@@ -74,17 +90,30 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GetPagesProjectDeploymentConfigsProductionServicesResult> Services;
         /// <summary>
+        /// The usage model for Pages Functions.
+        /// Available values: "standard", "bundled", "unbound".
+        /// </summary>
+        public readonly string UsageModel;
+        /// <summary>
         /// Vectorize bindings used for Pages Functions.
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GetPagesProjectDeploymentConfigsProductionVectorizeBindingsResult> VectorizeBindings;
+        /// <summary>
+        /// Hash of the Wrangler configuration used for the deployment.
+        /// </summary>
+        public readonly string WranglerConfigHash;
 
         [OutputConstructor]
         private GetPagesProjectDeploymentConfigsProductionResult(
             ImmutableDictionary<string, Outputs.GetPagesProjectDeploymentConfigsProductionAiBindingsResult> aiBindings,
 
+            bool alwaysUseLatestCompatibilityDate,
+
             ImmutableDictionary<string, Outputs.GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsResult> analyticsEngineDatasets,
 
             ImmutableDictionary<string, Outputs.GetPagesProjectDeploymentConfigsProductionBrowsersResult> browsers,
+
+            int buildImageMajorVersion,
 
             string compatibilityDate,
 
@@ -96,9 +125,13 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableDictionary<string, Outputs.GetPagesProjectDeploymentConfigsProductionEnvVarsResult> envVars,
 
+            bool failOpen,
+
             ImmutableDictionary<string, Outputs.GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsResult> hyperdriveBindings,
 
             ImmutableDictionary<string, Outputs.GetPagesProjectDeploymentConfigsProductionKvNamespacesResult> kvNamespaces,
+
+            Outputs.GetPagesProjectDeploymentConfigsProductionLimitsResult limits,
 
             ImmutableDictionary<string, Outputs.GetPagesProjectDeploymentConfigsProductionMtlsCertificatesResult> mtlsCertificates,
 
@@ -110,24 +143,34 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableDictionary<string, Outputs.GetPagesProjectDeploymentConfigsProductionServicesResult> services,
 
-            ImmutableDictionary<string, Outputs.GetPagesProjectDeploymentConfigsProductionVectorizeBindingsResult> vectorizeBindings)
+            string usageModel,
+
+            ImmutableDictionary<string, Outputs.GetPagesProjectDeploymentConfigsProductionVectorizeBindingsResult> vectorizeBindings,
+
+            string wranglerConfigHash)
         {
             AiBindings = aiBindings;
+            AlwaysUseLatestCompatibilityDate = alwaysUseLatestCompatibilityDate;
             AnalyticsEngineDatasets = analyticsEngineDatasets;
             Browsers = browsers;
+            BuildImageMajorVersion = buildImageMajorVersion;
             CompatibilityDate = compatibilityDate;
             CompatibilityFlags = compatibilityFlags;
             D1Databases = d1Databases;
             DurableObjectNamespaces = durableObjectNamespaces;
             EnvVars = envVars;
+            FailOpen = failOpen;
             HyperdriveBindings = hyperdriveBindings;
             KvNamespaces = kvNamespaces;
+            Limits = limits;
             MtlsCertificates = mtlsCertificates;
             Placement = placement;
             QueueProducers = queueProducers;
             R2Buckets = r2Buckets;
             Services = services;
+            UsageModel = usageModel;
             VectorizeBindings = vectorizeBindings;
+            WranglerConfigHash = wranglerConfigHash;
         }
     }
 }

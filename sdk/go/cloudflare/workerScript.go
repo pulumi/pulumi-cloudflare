@@ -12,9 +12,129 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// !> This resource is no longer recommended. Please use the `Worker`, `WorkerVersion`, and `WorkersDeployment` resources instead. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
+// > For more direct control over Workers resources, we recommend the beta `Worker`, `WorkerVersion`, and `WorkersDeployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeFilesha256, err := std.Filesha256(ctx, &std.Filesha256Args{
+//				Input: "worker.js",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewWorkersScript(ctx, "example_workers_script", &cloudflare.WorkersScriptArgs{
+//				AccountId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				ScriptName: pulumi.String("this-is_my_script-01"),
+//				Assets: &cloudflare.WorkersScriptAssetsArgs{
+//					Config: &cloudflare.WorkersScriptAssetsConfigArgs{
+//						Headers: pulumi.String(`        /dashboard/*
+//	        X-Frame-Options: DENY
+//
+//	        /static/*
+//	        Access-Control-Allow-Origin: *
+//
+// `),
+//
+//						Redirects:        pulumi.String("        /foo /bar 301\n        /news/* /blog/:splat\n"),
+//						HtmlHandling:     pulumi.String("auto-trailing-slash"),
+//						NotFoundHandling: pulumi.String("none"),
+//						RunWorkerFirst:   pulumi.Bool(false),
+//					},
+//					Jwt: pulumi.String("jwt"),
+//				},
+//				Bindings: cloudflare.WorkersScriptBindingArray{
+//					&cloudflare.WorkersScriptBindingArgs{
+//						Name: pulumi.String("MY_ENV_VAR"),
+//						Text: pulumi.String("my_data"),
+//						Type: pulumi.String("plain_text"),
+//					},
+//				},
+//				CompatibilityDate: pulumi.String("2021-01-01"),
+//				CompatibilityFlags: pulumi.StringArray{
+//					pulumi.String("nodejs_compat"),
+//				},
+//				ContentFile:   pulumi.String("worker.js"),
+//				ContentSha256: pulumi.String(invokeFilesha256.Result),
+//				KeepAssets:    pulumi.Bool(false),
+//				KeepBindings: pulumi.StringArray{
+//					pulumi.String("kv_namespace"),
+//				},
+//				Limits: &cloudflare.WorkersScriptLimitsArgs{
+//					CpuMs: pulumi.Int(50),
+//				},
+//				Logpush:    pulumi.Bool(false),
+//				MainModule: pulumi.String("worker.js"),
+//				Migrations: &cloudflare.WorkersScriptMigrationsArgs{
+//					DeletedClasses: pulumi.StringArray{
+//						pulumi.String("string"),
+//					},
+//					NewClasses: pulumi.StringArray{
+//						pulumi.String("string"),
+//					},
+//					NewSqliteClasses: pulumi.StringArray{
+//						pulumi.String("string"),
+//					},
+//					NewTag: pulumi.String("v2"),
+//					OldTag: pulumi.String("v1"),
+//					RenamedClasses: cloudflare.WorkersScriptMigrationsRenamedClassArray{
+//						&cloudflare.WorkersScriptMigrationsRenamedClassArgs{
+//							From: pulumi.String("from"),
+//							To:   pulumi.String("to"),
+//						},
+//					},
+//					TransferredClasses: cloudflare.WorkersScriptMigrationsTransferredClassArray{
+//						&cloudflare.WorkersScriptMigrationsTransferredClassArgs{
+//							From:       pulumi.String("from"),
+//							FromScript: pulumi.String("from_script"),
+//							To:         pulumi.String("to"),
+//						},
+//					},
+//				},
+//				Observability: &cloudflare.WorkersScriptObservabilityArgs{
+//					Enabled:          pulumi.Bool(true),
+//					HeadSamplingRate: pulumi.Float64(0.1),
+//					Logs: &cloudflare.WorkersScriptObservabilityLogsArgs{
+//						Enabled:        pulumi.Bool(true),
+//						InvocationLogs: pulumi.Bool(true),
+//						Destinations: pulumi.StringArray{
+//							pulumi.String("cloudflare"),
+//						},
+//						HeadSamplingRate: pulumi.Float64(0.1),
+//						Persist:          pulumi.Bool(true),
+//					},
+//				},
+//				Placement: &cloudflare.WorkersScriptPlacementArgs{
+//					Mode: pulumi.String("smart"),
+//				},
+//				TailConsumers: cloudflare.WorkersScriptTailConsumerArray{
+//					&cloudflare.WorkersScriptTailConsumerArgs{
+//						Service:     pulumi.String("my-log-consumer"),
+//						Environment: pulumi.String("production"),
+//						Namespace:   pulumi.String("my-namespace"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

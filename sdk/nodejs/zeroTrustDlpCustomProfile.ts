@@ -9,6 +9,32 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustDlpCustomProfile = new cloudflare.ZeroTrustDlpCustomProfile("example_zero_trust_dlp_custom_profile", {
+ *     accountId: "account_id",
+ *     name: "name",
+ *     aiContextEnabled: true,
+ *     allowedMatchCount: 5,
+ *     confidenceThreshold: "confidence_threshold",
+ *     contextAwareness: {
+ *         enabled: true,
+ *         skip: {
+ *             files: true,
+ *         },
+ *     },
+ *     description: "description",
+ *     ocrEnabled: true,
+ *     sharedEntries: [{
+ *         enabled: true,
+ *         entryId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+ *         entryType: "custom",
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh
@@ -68,7 +94,7 @@ export class ZeroTrustDlpCustomProfile extends pulumi.CustomResource {
      * Custom entries from this profile.
      * If this field is omitted, entries owned by this profile will not be changed.
      *
-     * @deprecated This attribute is deprecated.
+     * @deprecated This attribute will be sunset on 01/01/2026
      */
     declare public readonly entries: pulumi.Output<outputs.ZeroTrustDlpCustomProfileEntry[] | undefined>;
     declare public readonly name: pulumi.Output<string>;
@@ -176,7 +202,7 @@ export interface ZeroTrustDlpCustomProfileState {
      * Custom entries from this profile.
      * If this field is omitted, entries owned by this profile will not be changed.
      *
-     * @deprecated This attribute is deprecated.
+     * @deprecated This attribute will be sunset on 01/01/2026
      */
     entries?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDlpCustomProfileEntry>[]>;
     name?: pulumi.Input<string>;
@@ -224,7 +250,7 @@ export interface ZeroTrustDlpCustomProfileArgs {
      * Custom entries from this profile.
      * If this field is omitted, entries owned by this profile will not be changed.
      *
-     * @deprecated This attribute is deprecated.
+     * @deprecated This attribute will be sunset on 01/01/2026
      */
     entries?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDlpCustomProfileEntry>[]>;
     name: pulumi.Input<string>;

@@ -27,16 +27,13 @@ class GetApiShieldResult:
     """
     A collection of values returned by getApiShield.
     """
-    def __init__(__self__, auth_id_characteristics=None, id=None, properties=None, zone_id=None):
+    def __init__(__self__, auth_id_characteristics=None, id=None, zone_id=None):
         if auth_id_characteristics and not isinstance(auth_id_characteristics, list):
             raise TypeError("Expected argument 'auth_id_characteristics' to be a list")
         pulumi.set(__self__, "auth_id_characteristics", auth_id_characteristics)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if properties and not isinstance(properties, list):
-            raise TypeError("Expected argument 'properties' to be a list")
-        pulumi.set(__self__, "properties", properties)
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
@@ -55,14 +52,6 @@ class GetApiShieldResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
-    @pulumi.getter
-    def properties(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        Requests information about certain properties.
-        """
-        return pulumi.get(self, "properties")
-
-    @_builtins.property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> _builtins.str:
         """
@@ -79,12 +68,10 @@ class AwaitableGetApiShieldResult(GetApiShieldResult):
         return GetApiShieldResult(
             auth_id_characteristics=self.auth_id_characteristics,
             id=self.id,
-            properties=self.properties,
             zone_id=self.zone_id)
 
 
-def get_api_shield(properties: Optional[Sequence[_builtins.str]] = None,
-                   zone_id: Optional[_builtins.str] = None,
+def get_api_shield(zone_id: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApiShieldResult:
     """
     ## Example Usage
@@ -93,16 +80,13 @@ def get_api_shield(properties: Optional[Sequence[_builtins.str]] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_api_shield = cloudflare.get_api_shield(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-        properties=["auth_id_characteristics"])
+    example_api_shield = cloudflare.get_api_shield(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
-    :param Sequence[_builtins.str] properties: Requests information about certain properties.
     :param _builtins.str zone_id: Identifier.
     """
     __args__ = dict()
-    __args__['properties'] = properties
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getApiShield:getApiShield', __args__, opts=opts, typ=GetApiShieldResult).value
@@ -110,10 +94,8 @@ def get_api_shield(properties: Optional[Sequence[_builtins.str]] = None,
     return AwaitableGetApiShieldResult(
         auth_id_characteristics=pulumi.get(__ret__, 'auth_id_characteristics'),
         id=pulumi.get(__ret__, 'id'),
-        properties=pulumi.get(__ret__, 'properties'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_api_shield_output(properties: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                          zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_api_shield_output(zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApiShieldResult]:
     """
     ## Example Usage
@@ -122,21 +104,17 @@ def get_api_shield_output(properties: Optional[pulumi.Input[Optional[Sequence[_b
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_api_shield = cloudflare.get_api_shield(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-        properties=["auth_id_characteristics"])
+    example_api_shield = cloudflare.get_api_shield(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
-    :param Sequence[_builtins.str] properties: Requests information about certain properties.
     :param _builtins.str zone_id: Identifier.
     """
     __args__ = dict()
-    __args__['properties'] = properties
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getApiShield:getApiShield', __args__, opts=opts, typ=GetApiShieldResult)
     return __ret__.apply(lambda __response__: GetApiShieldResult(
         auth_id_characteristics=pulumi.get(__response__, 'auth_id_characteristics'),
         id=pulumi.get(__response__, 'id'),
-        properties=pulumi.get(__response__, 'properties'),
         zone_id=pulumi.get(__response__, 'zone_id')))

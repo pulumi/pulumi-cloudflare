@@ -37,7 +37,7 @@ export interface GetCustomPagesArgs {
     accountId?: string;
     /**
      * Error Page Types
-     * Available values: "under*attack", "basic*challenge", "waf*challenge", "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimit*block".
+     * Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "wafBlock".
      */
     identifier: string;
     /**
@@ -62,7 +62,7 @@ export interface GetCustomPagesResult {
     readonly id: string;
     /**
      * Error Page Types
-     * Available values: "under*attack", "basic*challenge", "waf*challenge", "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimit*block".
+     * Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "wafBlock".
      */
     readonly identifier: string;
     readonly modifiedOn: string;
@@ -115,7 +115,7 @@ export interface GetCustomPagesOutputArgs {
     accountId?: pulumi.Input<string>;
     /**
      * Error Page Types
-     * Available values: "under*attack", "basic*challenge", "waf*challenge", "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimit*block".
+     * Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "wafBlock".
      */
     identifier: pulumi.Input<string>;
     /**

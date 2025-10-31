@@ -27,7 +27,7 @@ class GetPagesProjectResult:
     """
     A collection of values returned by getPagesProject.
     """
-    def __init__(__self__, account_id=None, build_config=None, canonical_deployment=None, created_on=None, deployment_configs=None, domains=None, id=None, latest_deployment=None, name=None, production_branch=None, project_name=None, source=None, subdomain=None):
+    def __init__(__self__, account_id=None, build_config=None, canonical_deployment=None, created_on=None, deployment_configs=None, domains=None, framework=None, framework_version=None, id=None, latest_deployment=None, name=None, preview_script_name=None, production_branch=None, production_script_name=None, project_name=None, source=None, subdomain=None, uses_functions=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -46,6 +46,12 @@ class GetPagesProjectResult:
         if domains and not isinstance(domains, list):
             raise TypeError("Expected argument 'domains' to be a list")
         pulumi.set(__self__, "domains", domains)
+        if framework and not isinstance(framework, str):
+            raise TypeError("Expected argument 'framework' to be a str")
+        pulumi.set(__self__, "framework", framework)
+        if framework_version and not isinstance(framework_version, str):
+            raise TypeError("Expected argument 'framework_version' to be a str")
+        pulumi.set(__self__, "framework_version", framework_version)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -55,9 +61,15 @@ class GetPagesProjectResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if preview_script_name and not isinstance(preview_script_name, str):
+            raise TypeError("Expected argument 'preview_script_name' to be a str")
+        pulumi.set(__self__, "preview_script_name", preview_script_name)
         if production_branch and not isinstance(production_branch, str):
             raise TypeError("Expected argument 'production_branch' to be a str")
         pulumi.set(__self__, "production_branch", production_branch)
+        if production_script_name and not isinstance(production_script_name, str):
+            raise TypeError("Expected argument 'production_script_name' to be a str")
+        pulumi.set(__self__, "production_script_name", production_script_name)
         if project_name and not isinstance(project_name, str):
             raise TypeError("Expected argument 'project_name' to be a str")
         pulumi.set(__self__, "project_name", project_name)
@@ -67,6 +79,9 @@ class GetPagesProjectResult:
         if subdomain and not isinstance(subdomain, str):
             raise TypeError("Expected argument 'subdomain' to be a str")
         pulumi.set(__self__, "subdomain", subdomain)
+        if uses_functions and not isinstance(uses_functions, bool):
+            raise TypeError("Expected argument 'uses_functions' to be a bool")
+        pulumi.set(__self__, "uses_functions", uses_functions)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -88,7 +103,7 @@ class GetPagesProjectResult:
     @pulumi.getter(name="canonicalDeployment")
     def canonical_deployment(self) -> 'outputs.GetPagesProjectCanonicalDeploymentResult':
         """
-        Most recent deployment to the repo.
+        Most recent production deployment of the project.
         """
         return pulumi.get(self, "canonical_deployment")
 
@@ -118,9 +133,25 @@ class GetPagesProjectResult:
 
     @_builtins.property
     @pulumi.getter
+    def framework(self) -> _builtins.str:
+        """
+        Framework the project is using.
+        """
+        return pulumi.get(self, "framework")
+
+    @_builtins.property
+    @pulumi.getter(name="frameworkVersion")
+    def framework_version(self) -> _builtins.str:
+        """
+        Version of the framework the project is using.
+        """
+        return pulumi.get(self, "framework_version")
+
+    @_builtins.property
+    @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Id of the project.
+        ID of the project.
         """
         return pulumi.get(self, "id")
 
@@ -128,7 +159,7 @@ class GetPagesProjectResult:
     @pulumi.getter(name="latestDeployment")
     def latest_deployment(self) -> 'outputs.GetPagesProjectLatestDeploymentResult':
         """
-        Most recent deployment to the repo.
+        Most recent deployment of the project.
         """
         return pulumi.get(self, "latest_deployment")
 
@@ -141,12 +172,28 @@ class GetPagesProjectResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="previewScriptName")
+    def preview_script_name(self) -> _builtins.str:
+        """
+        Name of the preview script.
+        """
+        return pulumi.get(self, "preview_script_name")
+
+    @_builtins.property
     @pulumi.getter(name="productionBranch")
     def production_branch(self) -> _builtins.str:
         """
         Production branch of the project. Used to identify production deployments.
         """
         return pulumi.get(self, "production_branch")
+
+    @_builtins.property
+    @pulumi.getter(name="productionScriptName")
+    def production_script_name(self) -> _builtins.str:
+        """
+        Name of the production script.
+        """
+        return pulumi.get(self, "production_script_name")
 
     @_builtins.property
     @pulumi.getter(name="projectName")
@@ -169,6 +216,14 @@ class GetPagesProjectResult:
         """
         return pulumi.get(self, "subdomain")
 
+    @_builtins.property
+    @pulumi.getter(name="usesFunctions")
+    def uses_functions(self) -> _builtins.bool:
+        """
+        Whether the project uses functions.
+        """
+        return pulumi.get(self, "uses_functions")
+
 
 class AwaitableGetPagesProjectResult(GetPagesProjectResult):
     # pylint: disable=using-constant-test
@@ -182,13 +237,18 @@ class AwaitableGetPagesProjectResult(GetPagesProjectResult):
             created_on=self.created_on,
             deployment_configs=self.deployment_configs,
             domains=self.domains,
+            framework=self.framework,
+            framework_version=self.framework_version,
             id=self.id,
             latest_deployment=self.latest_deployment,
             name=self.name,
+            preview_script_name=self.preview_script_name,
             production_branch=self.production_branch,
+            production_script_name=self.production_script_name,
             project_name=self.project_name,
             source=self.source,
-            subdomain=self.subdomain)
+            subdomain=self.subdomain,
+            uses_functions=self.uses_functions)
 
 
 def get_pages_project(account_id: Optional[_builtins.str] = None,
@@ -222,13 +282,18 @@ def get_pages_project(account_id: Optional[_builtins.str] = None,
         created_on=pulumi.get(__ret__, 'created_on'),
         deployment_configs=pulumi.get(__ret__, 'deployment_configs'),
         domains=pulumi.get(__ret__, 'domains'),
+        framework=pulumi.get(__ret__, 'framework'),
+        framework_version=pulumi.get(__ret__, 'framework_version'),
         id=pulumi.get(__ret__, 'id'),
         latest_deployment=pulumi.get(__ret__, 'latest_deployment'),
         name=pulumi.get(__ret__, 'name'),
+        preview_script_name=pulumi.get(__ret__, 'preview_script_name'),
         production_branch=pulumi.get(__ret__, 'production_branch'),
+        production_script_name=pulumi.get(__ret__, 'production_script_name'),
         project_name=pulumi.get(__ret__, 'project_name'),
         source=pulumi.get(__ret__, 'source'),
-        subdomain=pulumi.get(__ret__, 'subdomain'))
+        subdomain=pulumi.get(__ret__, 'subdomain'),
+        uses_functions=pulumi.get(__ret__, 'uses_functions'))
 def get_pages_project_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
                              project_name: Optional[pulumi.Input[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPagesProjectResult]:
@@ -259,10 +324,15 @@ def get_pages_project_output(account_id: Optional[pulumi.Input[_builtins.str]] =
         created_on=pulumi.get(__response__, 'created_on'),
         deployment_configs=pulumi.get(__response__, 'deployment_configs'),
         domains=pulumi.get(__response__, 'domains'),
+        framework=pulumi.get(__response__, 'framework'),
+        framework_version=pulumi.get(__response__, 'framework_version'),
         id=pulumi.get(__response__, 'id'),
         latest_deployment=pulumi.get(__response__, 'latest_deployment'),
         name=pulumi.get(__response__, 'name'),
+        preview_script_name=pulumi.get(__response__, 'preview_script_name'),
         production_branch=pulumi.get(__response__, 'production_branch'),
+        production_script_name=pulumi.get(__response__, 'production_script_name'),
         project_name=pulumi.get(__response__, 'project_name'),
         source=pulumi.get(__response__, 'source'),
-        subdomain=pulumi.get(__response__, 'subdomain')))
+        subdomain=pulumi.get(__response__, 'subdomain'),
+        uses_functions=pulumi.get(__response__, 'uses_functions')))

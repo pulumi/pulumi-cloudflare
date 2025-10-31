@@ -149,7 +149,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Namespace to bind to.
+        /// The name of the dispatch namespace.
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
@@ -232,7 +232,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The kind of resource that the binding provides.
-        /// Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "tail*consumer", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasm*module".
+        /// Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "WasmModule".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

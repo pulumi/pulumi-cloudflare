@@ -83,6 +83,9 @@ func NewR2BucketEventNotification(ctx *pulumi.Context,
 	if args.QueueId == nil {
 		return nil, errors.New("invalid value for required argument 'QueueId'")
 	}
+	if args.Rules == nil {
+		return nil, errors.New("invalid value for required argument 'Rules'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource R2BucketEventNotification
 	err := ctx.RegisterResource("cloudflare:index/r2BucketEventNotification:R2BucketEventNotification", name, args, &resource, opts...)

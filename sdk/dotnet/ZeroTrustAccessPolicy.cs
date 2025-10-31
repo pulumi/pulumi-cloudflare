@@ -12,6 +12,82 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZeroTrustAccessPolicy = new Cloudflare.ZeroTrustAccessPolicy("example_zero_trust_access_policy", new()
+    ///     {
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Decision = "allow",
+    ///         Includes = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ZeroTrustAccessPolicyIncludeArgs
+    ///             {
+    ///                 Group = new Cloudflare.Inputs.ZeroTrustAccessPolicyIncludeGroupArgs
+    ///                 {
+    ///                     Id = "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Name = "Allow devs",
+    ///         ApprovalGroups = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ZeroTrustAccessPolicyApprovalGroupArgs
+    ///             {
+    ///                 ApprovalsNeeded = 1,
+    ///                 EmailAddresses = new[]
+    ///                 {
+    ///                     "test1@cloudflare.com",
+    ///                     "test2@cloudflare.com",
+    ///                 },
+    ///                 EmailListUuid = "email_list_uuid",
+    ///             },
+    ///             new Cloudflare.Inputs.ZeroTrustAccessPolicyApprovalGroupArgs
+    ///             {
+    ///                 ApprovalsNeeded = 3,
+    ///                 EmailAddresses = new[]
+    ///                 {
+    ///                     "test@cloudflare.com",
+    ///                     "test2@cloudflare.com",
+    ///                 },
+    ///                 EmailListUuid = "597147a1-976b-4ef2-9af0-81d5d007fc34",
+    ///             },
+    ///         },
+    ///         ApprovalRequired = true,
+    ///         Excludes = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ZeroTrustAccessPolicyExcludeArgs
+    ///             {
+    ///                 Group = new Cloudflare.Inputs.ZeroTrustAccessPolicyExcludeGroupArgs
+    ///                 {
+    ///                     Id = "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+    ///                 },
+    ///             },
+    ///         },
+    ///         IsolationRequired = false,
+    ///         PurposeJustificationPrompt = "Please enter a justification for entering this protected domain.",
+    ///         PurposeJustificationRequired = true,
+    ///         Requires = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ZeroTrustAccessPolicyRequireArgs
+    ///             {
+    ///                 Group = new Cloudflare.Inputs.ZeroTrustAccessPolicyRequireGroupArgs
+    ///                 {
+    ///                     Id = "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+    ///                 },
+    ///             },
+    ///         },
+    ///         SessionDuration = "24h",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

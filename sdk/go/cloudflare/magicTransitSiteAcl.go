@@ -14,6 +14,64 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewMagicTransitSiteAcl(ctx, "example_magic_transit_site_acl", &cloudflare.MagicTransitSiteAclArgs{
+//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				SiteId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Lan1: &cloudflare.MagicTransitSiteAclLan1Args{
+//					LanId:   pulumi.String("lan_id"),
+//					LanName: pulumi.String("lan_name"),
+//					PortRanges: pulumi.StringArray{
+//						pulumi.String("8080-9000"),
+//					},
+//					Ports: pulumi.IntArray{
+//						pulumi.Int(1),
+//					},
+//					Subnets: pulumi.StringArray{
+//						pulumi.String("192.0.2.1"),
+//					},
+//				},
+//				Lan2: &cloudflare.MagicTransitSiteAclLan2Args{
+//					LanId:   pulumi.String("lan_id"),
+//					LanName: pulumi.String("lan_name"),
+//					PortRanges: pulumi.StringArray{
+//						pulumi.String("8080-9000"),
+//					},
+//					Ports: pulumi.IntArray{
+//						pulumi.Int(1),
+//					},
+//					Subnets: pulumi.StringArray{
+//						pulumi.String("192.0.2.1"),
+//					},
+//				},
+//				Name:           pulumi.String("PIN Pad - Cash Register"),
+//				Description:    pulumi.String("Allows local traffic between PIN pads and cash register."),
+//				ForwardLocally: pulumi.Bool(true),
+//				Protocols: pulumi.StringArray{
+//					pulumi.String("tcp"),
+//				},
+//				Unidirectional: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

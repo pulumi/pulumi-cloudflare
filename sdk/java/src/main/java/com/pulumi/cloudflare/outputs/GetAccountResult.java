@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetAccountFilter;
+import com.pulumi.cloudflare.outputs.GetAccountManagedBy;
 import com.pulumi.cloudflare.outputs.GetAccountSettings;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -30,6 +31,11 @@ public final class GetAccountResult {
      * 
      */
     private String id;
+    /**
+     * @return Parent container details
+     * 
+     */
+    private GetAccountManagedBy managedBy;
     /**
      * @return Account name
      * 
@@ -72,6 +78,13 @@ public final class GetAccountResult {
         return this.id;
     }
     /**
+     * @return Parent container details
+     * 
+     */
+    public GetAccountManagedBy managedBy() {
+        return this.managedBy;
+    }
+    /**
      * @return Account name
      * 
      */
@@ -106,6 +119,7 @@ public final class GetAccountResult {
         private String createdOn;
         private @Nullable GetAccountFilter filter;
         private String id;
+        private GetAccountManagedBy managedBy;
         private String name;
         private GetAccountSettings settings;
         private String type;
@@ -116,6 +130,7 @@ public final class GetAccountResult {
     	      this.createdOn = defaults.createdOn;
     	      this.filter = defaults.filter;
     	      this.id = defaults.id;
+    	      this.managedBy = defaults.managedBy;
     	      this.name = defaults.name;
     	      this.settings = defaults.settings;
     	      this.type = defaults.type;
@@ -150,6 +165,14 @@ public final class GetAccountResult {
             return this;
         }
         @CustomType.Setter
+        public Builder managedBy(GetAccountManagedBy managedBy) {
+            if (managedBy == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "managedBy");
+            }
+            this.managedBy = managedBy;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetAccountResult", "name");
@@ -179,6 +202,7 @@ public final class GetAccountResult {
             _resultValue.createdOn = createdOn;
             _resultValue.filter = filter;
             _resultValue.id = id;
+            _resultValue.managedBy = managedBy;
             _resultValue.name = name;
             _resultValue.settings = settings;
             _resultValue.type = type;

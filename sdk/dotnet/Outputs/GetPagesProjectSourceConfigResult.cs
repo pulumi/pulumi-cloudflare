@@ -13,19 +13,51 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetPagesProjectSourceConfigResult
     {
+        /// <summary>
+        /// Whether to enable automatic deployments when pushing to the source repository.
+        /// When disabled, no deployments (production or preview) will be triggered automatically.
+        /// </summary>
         public readonly bool DeploymentsEnabled;
+        /// <summary>
+        /// The owner of the repository.
+        /// </summary>
         public readonly string Owner;
+        /// <summary>
+        /// A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
+        /// </summary>
         public readonly ImmutableArray<string> PathExcludes;
+        /// <summary>
+        /// A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
+        /// </summary>
         public readonly ImmutableArray<string> PathIncludes;
+        /// <summary>
+        /// Whether to enable PR comments.
+        /// </summary>
         public readonly bool PrCommentsEnabled;
+        /// <summary>
+        /// A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `PreviewDeploymentSetting` set to `Custom`.
+        /// </summary>
         public readonly ImmutableArray<string> PreviewBranchExcludes;
+        /// <summary>
+        /// A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `PreviewDeploymentSetting` set to `Custom`.
+        /// </summary>
         public readonly ImmutableArray<string> PreviewBranchIncludes;
         /// <summary>
+        /// Controls whether commits to preview branches trigger a preview deployment.
         /// Available values: "all", "none", "custom".
         /// </summary>
         public readonly string PreviewDeploymentSetting;
+        /// <summary>
+        /// The production branch of the repository.
+        /// </summary>
         public readonly string ProductionBranch;
+        /// <summary>
+        /// Whether to trigger a production deployment on commits to the production branch.
+        /// </summary>
         public readonly bool ProductionDeploymentsEnabled;
+        /// <summary>
+        /// The name of the repository.
+        /// </summary>
         public readonly string RepoName;
 
         [OutputConstructor]

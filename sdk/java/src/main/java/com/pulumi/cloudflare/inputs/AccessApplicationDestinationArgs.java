@@ -63,6 +63,21 @@ public final class AccessApplicationDestinationArgs extends com.pulumi.resources
     }
 
     /**
+     * A MCP server id configured in ai-controls. Access will secure the MCP server if accessed through a MCP portal.
+     * 
+     */
+    @Import(name="mcpServerId")
+    private @Nullable Output<String> mcpServerId;
+
+    /**
+     * @return A MCP server id configured in ai-controls. Access will secure the MCP server if accessed through a MCP portal.
+     * 
+     */
+    public Optional<Output<String>> mcpServerId() {
+        return Optional.ofNullable(this.mcpServerId);
+    }
+
+    /**
      * The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match.
      * 
      */
@@ -128,6 +143,7 @@ public final class AccessApplicationDestinationArgs extends com.pulumi.resources
         this.cidr = $.cidr;
         this.hostname = $.hostname;
         this.l4Protocol = $.l4Protocol;
+        this.mcpServerId = $.mcpServerId;
         this.portRange = $.portRange;
         this.type = $.type;
         this.uri = $.uri;
@@ -215,6 +231,27 @@ public final class AccessApplicationDestinationArgs extends com.pulumi.resources
          */
         public Builder l4Protocol(String l4Protocol) {
             return l4Protocol(Output.of(l4Protocol));
+        }
+
+        /**
+         * @param mcpServerId A MCP server id configured in ai-controls. Access will secure the MCP server if accessed through a MCP portal.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mcpServerId(@Nullable Output<String> mcpServerId) {
+            $.mcpServerId = mcpServerId;
+            return this;
+        }
+
+        /**
+         * @param mcpServerId A MCP server id configured in ai-controls. Access will secure the MCP server if accessed through a MCP portal.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mcpServerId(String mcpServerId) {
+            return mcpServerId(Output.of(mcpServerId));
         }
 
         /**

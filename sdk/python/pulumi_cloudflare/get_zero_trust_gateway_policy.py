@@ -158,7 +158,7 @@ class GetZeroTrustGatewayPolicyResult:
     @pulumi.getter
     def filters(self) -> Sequence[_builtins.str]:
         """
-        Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+        Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
         """
         return pulumi.get(self, "filters")
 

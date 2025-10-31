@@ -12,57 +12,149 @@ import java.util.Objects;
 
 @CustomType
 public final class GetPagesProjectsResultSourceConfig {
+    /**
+     * @return Whether to enable automatic deployments when pushing to the source repository.
+     * When disabled, no deployments (production or preview) will be triggered automatically.
+     * 
+     * @deprecated
+     * Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+     * 
+     */
+    @Deprecated /* Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control. */
     private Boolean deploymentsEnabled;
+    /**
+     * @return The owner of the repository.
+     * 
+     */
     private String owner;
+    /**
+     * @return A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
+     * 
+     */
     private List<String> pathExcludes;
+    /**
+     * @return A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
+     * 
+     */
     private List<String> pathIncludes;
+    /**
+     * @return Whether to enable PR comments.
+     * 
+     */
     private Boolean prCommentsEnabled;
+    /**
+     * @return A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     * 
+     */
     private List<String> previewBranchExcludes;
+    /**
+     * @return A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     * 
+     */
     private List<String> previewBranchIncludes;
     /**
-     * @return Available values: &#34;all&#34;, &#34;none&#34;, &#34;custom&#34;.
+     * @return Controls whether commits to preview branches trigger a preview deployment.
+     * Available values: &#34;all&#34;, &#34;none&#34;, &#34;custom&#34;.
      * 
      */
     private String previewDeploymentSetting;
+    /**
+     * @return The production branch of the repository.
+     * 
+     */
     private String productionBranch;
+    /**
+     * @return Whether to trigger a production deployment on commits to the production branch.
+     * 
+     */
     private Boolean productionDeploymentsEnabled;
+    /**
+     * @return The name of the repository.
+     * 
+     */
     private String repoName;
 
     private GetPagesProjectsResultSourceConfig() {}
+    /**
+     * @return Whether to enable automatic deployments when pushing to the source repository.
+     * When disabled, no deployments (production or preview) will be triggered automatically.
+     * 
+     * @deprecated
+     * Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+     * 
+     */
+    @Deprecated /* Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control. */
     public Boolean deploymentsEnabled() {
         return this.deploymentsEnabled;
     }
+    /**
+     * @return The owner of the repository.
+     * 
+     */
     public String owner() {
         return this.owner;
     }
+    /**
+     * @return A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
+     * 
+     */
     public List<String> pathExcludes() {
         return this.pathExcludes;
     }
+    /**
+     * @return A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
+     * 
+     */
     public List<String> pathIncludes() {
         return this.pathIncludes;
     }
+    /**
+     * @return Whether to enable PR comments.
+     * 
+     */
     public Boolean prCommentsEnabled() {
         return this.prCommentsEnabled;
     }
+    /**
+     * @return A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     * 
+     */
     public List<String> previewBranchExcludes() {
         return this.previewBranchExcludes;
     }
+    /**
+     * @return A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     * 
+     */
     public List<String> previewBranchIncludes() {
         return this.previewBranchIncludes;
     }
     /**
-     * @return Available values: &#34;all&#34;, &#34;none&#34;, &#34;custom&#34;.
+     * @return Controls whether commits to preview branches trigger a preview deployment.
+     * Available values: &#34;all&#34;, &#34;none&#34;, &#34;custom&#34;.
      * 
      */
     public String previewDeploymentSetting() {
         return this.previewDeploymentSetting;
     }
+    /**
+     * @return The production branch of the repository.
+     * 
+     */
     public String productionBranch() {
         return this.productionBranch;
     }
+    /**
+     * @return Whether to trigger a production deployment on commits to the production branch.
+     * 
+     */
     public Boolean productionDeploymentsEnabled() {
         return this.productionDeploymentsEnabled;
     }
+    /**
+     * @return The name of the repository.
+     * 
+     */
     public String repoName() {
         return this.repoName;
     }

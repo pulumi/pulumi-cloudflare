@@ -83,15 +83,15 @@ public final class PagesProjectArgs extends com.pulumi.resources.ResourceArgs {
      * Production branch of the project. Used to identify production deployments.
      * 
      */
-    @Import(name="productionBranch")
-    private @Nullable Output<String> productionBranch;
+    @Import(name="productionBranch", required=true)
+    private Output<String> productionBranch;
 
     /**
      * @return Production branch of the project. Used to identify production deployments.
      * 
      */
-    public Optional<Output<String>> productionBranch() {
-        return Optional.ofNullable(this.productionBranch);
+    public Output<String> productionBranch() {
+        return this.productionBranch;
     }
 
     @Import(name="source")
@@ -220,7 +220,7 @@ public final class PagesProjectArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder productionBranch(@Nullable Output<String> productionBranch) {
+        public Builder productionBranch(Output<String> productionBranch) {
             $.productionBranch = productionBranch;
             return this;
         }
@@ -250,6 +250,9 @@ public final class PagesProjectArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("PagesProjectArgs", "name");
+            }
+            if ($.productionBranch == null) {
+                throw new MissingRequiredPropertyException("PagesProjectArgs", "productionBranch");
             }
             return $;
         }

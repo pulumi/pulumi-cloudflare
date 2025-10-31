@@ -15,7 +15,6 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -130,15 +129,15 @@ public class ZeroTrustDlpPredefinedEntry extends com.pulumi.resources.CustomReso
      * 
      */
     @Export(name="profileId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> profileId;
+    private Output<String> profileId;
 
     /**
      * @return This field is not actually used as the owning profile for a predefined entry is already set
      * to a predefined profile
      * 
      */
-    public Output<Optional<String>> profileId() {
-        return Codegen.optional(this.profileId);
+    public Output<String> profileId() {
+        return this.profileId;
     }
     @Export(name="secret", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> secret;

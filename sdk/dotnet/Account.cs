@@ -49,6 +49,12 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedOn { get; private set; } = null!;
 
         /// <summary>
+        /// Parent container details
+        /// </summary>
+        [Output("managedBy")]
+        public Output<Outputs.AccountManagedBy> ManagedBy { get; private set; } = null!;
+
+        /// <summary>
         /// Account name
         /// </summary>
         [Output("name")]
@@ -119,6 +125,12 @@ namespace Pulumi.Cloudflare
     public sealed class AccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Parent container details
+        /// </summary>
+        [Input("managedBy")]
+        public Input<Inputs.AccountManagedByArgs>? ManagedBy { get; set; }
+
+        /// <summary>
         /// Account name
         /// </summary>
         [Input("name", required: true)]
@@ -155,6 +167,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("createdOn")]
         public Input<string>? CreatedOn { get; set; }
+
+        /// <summary>
+        /// Parent container details
+        /// </summary>
+        [Input("managedBy")]
+        public Input<Inputs.AccountManagedByGetArgs>? ManagedBy { get; set; }
 
         /// <summary>
         /// Account name

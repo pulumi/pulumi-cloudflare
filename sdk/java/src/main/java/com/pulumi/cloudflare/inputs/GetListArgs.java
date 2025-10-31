@@ -35,15 +35,15 @@ public final class GetListArgs extends com.pulumi.resources.InvokeArgs {
      * The unique ID of the list.
      * 
      */
-    @Import(name="listId", required=true)
-    private Output<String> listId;
+    @Import(name="listId")
+    private @Nullable Output<String> listId;
 
     /**
      * @return The unique ID of the list.
      * 
      */
-    public Output<String> listId() {
-        return this.listId;
+    public Optional<Output<String>> listId() {
+        return Optional.ofNullable(this.listId);
     }
 
     /**
@@ -114,7 +114,7 @@ public final class GetListArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder listId(Output<String> listId) {
+        public Builder listId(@Nullable Output<String> listId) {
             $.listId = listId;
             return this;
         }
@@ -153,9 +153,6 @@ public final class GetListArgs extends com.pulumi.resources.InvokeArgs {
         public GetListArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetListArgs", "accountId");
-            }
-            if ($.listId == null) {
-                throw new MissingRequiredPropertyException("GetListArgs", "listId");
             }
             return $;
         }

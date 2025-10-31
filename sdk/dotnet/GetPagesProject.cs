@@ -135,7 +135,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly Outputs.GetPagesProjectBuildConfigResult BuildConfig;
         /// <summary>
-        /// Most recent deployment to the repo.
+        /// Most recent production deployment of the project.
         /// </summary>
         public readonly Outputs.GetPagesProjectCanonicalDeploymentResult CanonicalDeployment;
         /// <summary>
@@ -151,11 +151,19 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<string> Domains;
         /// <summary>
-        /// Id of the project.
+        /// Framework the project is using.
+        /// </summary>
+        public readonly string Framework;
+        /// <summary>
+        /// Version of the framework the project is using.
+        /// </summary>
+        public readonly string FrameworkVersion;
+        /// <summary>
+        /// ID of the project.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Most recent deployment to the repo.
+        /// Most recent deployment of the project.
         /// </summary>
         public readonly Outputs.GetPagesProjectLatestDeploymentResult LatestDeployment;
         /// <summary>
@@ -163,9 +171,17 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Name of the preview script.
+        /// </summary>
+        public readonly string PreviewScriptName;
+        /// <summary>
         /// Production branch of the project. Used to identify production deployments.
         /// </summary>
         public readonly string ProductionBranch;
+        /// <summary>
+        /// Name of the production script.
+        /// </summary>
+        public readonly string ProductionScriptName;
         /// <summary>
         /// Name of the project.
         /// </summary>
@@ -175,6 +191,10 @@ namespace Pulumi.Cloudflare
         /// The Cloudflare subdomain associated with the project.
         /// </summary>
         public readonly string Subdomain;
+        /// <summary>
+        /// Whether the project uses functions.
+        /// </summary>
+        public readonly bool UsesFunctions;
 
         [OutputConstructor]
         private GetPagesProjectResult(
@@ -190,19 +210,29 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<string> domains,
 
+            string framework,
+
+            string frameworkVersion,
+
             string id,
 
             Outputs.GetPagesProjectLatestDeploymentResult latestDeployment,
 
             string name,
 
+            string previewScriptName,
+
             string productionBranch,
+
+            string productionScriptName,
 
             string projectName,
 
             Outputs.GetPagesProjectSourceResult source,
 
-            string subdomain)
+            string subdomain,
+
+            bool usesFunctions)
         {
             AccountId = accountId;
             BuildConfig = buildConfig;
@@ -210,13 +240,18 @@ namespace Pulumi.Cloudflare
             CreatedOn = createdOn;
             DeploymentConfigs = deploymentConfigs;
             Domains = domains;
+            Framework = framework;
+            FrameworkVersion = frameworkVersion;
             Id = id;
             LatestDeployment = latestDeployment;
             Name = name;
+            PreviewScriptName = previewScriptName;
             ProductionBranch = productionBranch;
+            ProductionScriptName = productionScriptName;
             ProjectName = projectName;
             Source = source;
             Subdomain = subdomain;
+            UsesFunctions = usesFunctions;
         }
     }
 }

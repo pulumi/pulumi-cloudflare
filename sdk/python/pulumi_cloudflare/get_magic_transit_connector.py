@@ -27,7 +27,7 @@ class GetMagicTransitConnectorResult:
     """
     A collection of values returned by getMagicTransitConnector.
     """
-    def __init__(__self__, account_id=None, activated=None, connector_id=None, device=None, id=None, interrupt_window_duration_hours=None, interrupt_window_hour_of_day=None, last_heartbeat=None, last_seen_version=None, last_updated=None, notes=None, timezone=None):
+    def __init__(__self__, account_id=None, activated=None, connector_id=None, device=None, id=None, interrupt_window_duration_hours=None, interrupt_window_hour_of_day=None, last_heartbeat=None, last_seen_version=None, last_updated=None, license_key=None, notes=None, timezone=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -58,6 +58,9 @@ class GetMagicTransitConnectorResult:
         if last_updated and not isinstance(last_updated, str):
             raise TypeError("Expected argument 'last_updated' to be a str")
         pulumi.set(__self__, "last_updated", last_updated)
+        if license_key and not isinstance(license_key, str):
+            raise TypeError("Expected argument 'license_key' to be a str")
+        pulumi.set(__self__, "license_key", license_key)
         if notes and not isinstance(notes, str):
             raise TypeError("Expected argument 'notes' to be a str")
         pulumi.set(__self__, "notes", notes)
@@ -122,6 +125,11 @@ class GetMagicTransitConnectorResult:
         return pulumi.get(self, "last_updated")
 
     @_builtins.property
+    @pulumi.getter(name="licenseKey")
+    def license_key(self) -> _builtins.str:
+        return pulumi.get(self, "license_key")
+
+    @_builtins.property
     @pulumi.getter
     def notes(self) -> _builtins.str:
         return pulumi.get(self, "notes")
@@ -148,6 +156,7 @@ class AwaitableGetMagicTransitConnectorResult(GetMagicTransitConnectorResult):
             last_heartbeat=self.last_heartbeat,
             last_seen_version=self.last_seen_version,
             last_updated=self.last_updated,
+            license_key=self.license_key,
             notes=self.notes,
             timezone=self.timezone)
 
@@ -186,6 +195,7 @@ def get_magic_transit_connector(account_id: Optional[_builtins.str] = None,
         last_heartbeat=pulumi.get(__ret__, 'last_heartbeat'),
         last_seen_version=pulumi.get(__ret__, 'last_seen_version'),
         last_updated=pulumi.get(__ret__, 'last_updated'),
+        license_key=pulumi.get(__ret__, 'license_key'),
         notes=pulumi.get(__ret__, 'notes'),
         timezone=pulumi.get(__ret__, 'timezone'))
 def get_magic_transit_connector_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -221,5 +231,6 @@ def get_magic_transit_connector_output(account_id: Optional[pulumi.Input[_builti
         last_heartbeat=pulumi.get(__response__, 'last_heartbeat'),
         last_seen_version=pulumi.get(__response__, 'last_seen_version'),
         last_updated=pulumi.get(__response__, 'last_updated'),
+        license_key=pulumi.get(__response__, 'license_key'),
         notes=pulumi.get(__response__, 'notes'),
         timezone=pulumi.get(__response__, 'timezone')))

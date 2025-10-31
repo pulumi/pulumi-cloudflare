@@ -55,6 +55,10 @@ export interface AccessApplicationDestination {
      */
     l4Protocol?: pulumi.Input<string>;
     /**
+     * A MCP server id configured in ai-controls. Access will secure the MCP server if accessed through a MCP portal.
+     */
+    mcpServerId?: pulumi.Input<string>;
+    /**
      * The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match.
      */
     portRange?: pulumi.Input<string>;
@@ -2923,6 +2927,17 @@ export interface AccountDnsSettingsZoneDefaultsSoa {
     ttl?: pulumi.Input<number>;
 }
 
+export interface AccountManagedBy {
+    /**
+     * ID of the parent Organization, if one exists
+     */
+    parentOrgId?: pulumi.Input<string>;
+    /**
+     * Name of the parent Organization, if one exists
+     */
+    parentOrgName?: pulumi.Input<string>;
+}
+
 export interface AccountMemberPolicy {
     /**
      * Allow or deny operations against the resources.
@@ -3111,28 +3126,6 @@ export interface ApiShieldAuthIdCharacteristic {
      * Available values: "header", "cookie", "jwt".
      */
     type: pulumi.Input<string>;
-}
-
-export interface ApiShieldError {
-    code?: pulumi.Input<number>;
-    documentationUrl?: pulumi.Input<string>;
-    message?: pulumi.Input<string>;
-    source?: pulumi.Input<inputs.ApiShieldErrorSource>;
-}
-
-export interface ApiShieldErrorSource {
-    pointer?: pulumi.Input<string>;
-}
-
-export interface ApiShieldMessage {
-    code?: pulumi.Input<number>;
-    documentationUrl?: pulumi.Input<string>;
-    message?: pulumi.Input<string>;
-    source?: pulumi.Input<inputs.ApiShieldMessageSource>;
-}
-
-export interface ApiShieldMessageSource {
-    pointer?: pulumi.Input<string>;
 }
 
 export interface ApiShieldOperationFeatures {
@@ -3850,7 +3843,7 @@ export interface DevicePostureRuleInput {
      */
     osDistroRevision?: pulumi.Input<string>;
     /**
-     * Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).
+     * Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version. (Mac, iOS, and Linux only).
      */
     osVersionExtra?: pulumi.Input<string>;
     /**
@@ -5709,6 +5702,222 @@ export interface GetMagicTransitSiteFilterArgs {
     connectorid?: pulumi.Input<string>;
 }
 
+export interface GetOrganizationFilter {
+    containing?: inputs.GetOrganizationFilterContaining;
+    /**
+     * Only return organizations with the specified IDs (ex. id=foo&id=bar). Send multiple elements
+     * by repeating the query value.
+     */
+    ids?: string[];
+    name?: inputs.GetOrganizationFilterName;
+    /**
+     * The amount of items to return. Defaults to 10.
+     */
+    pageSize?: number;
+    /**
+     * An opaque token returned from the last list response that when
+     * provided will retrieve the next page.
+     */
+    pageToken?: string;
+    parent?: inputs.GetOrganizationFilterParent;
+}
+
+export interface GetOrganizationFilterArgs {
+    containing?: pulumi.Input<inputs.GetOrganizationFilterContainingArgs>;
+    /**
+     * Only return organizations with the specified IDs (ex. id=foo&id=bar). Send multiple elements
+     * by repeating the query value.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    name?: pulumi.Input<inputs.GetOrganizationFilterNameArgs>;
+    /**
+     * The amount of items to return. Defaults to 10.
+     */
+    pageSize?: pulumi.Input<number>;
+    /**
+     * An opaque token returned from the last list response that when
+     * provided will retrieve the next page.
+     */
+    pageToken?: pulumi.Input<string>;
+    parent?: pulumi.Input<inputs.GetOrganizationFilterParentArgs>;
+}
+
+export interface GetOrganizationFilterContaining {
+    /**
+     * Filter the list of organizations to the ones that contain this particular
+     * account.
+     */
+    account?: string;
+    /**
+     * Filter the list of organizations to the ones that contain this particular
+     * organization.
+     */
+    organization?: string;
+    /**
+     * Filter the list of organizations to the ones that contain this particular
+     * user.
+     */
+    user?: string;
+}
+
+export interface GetOrganizationFilterContainingArgs {
+    /**
+     * Filter the list of organizations to the ones that contain this particular
+     * account.
+     */
+    account?: pulumi.Input<string>;
+    /**
+     * Filter the list of organizations to the ones that contain this particular
+     * organization.
+     */
+    organization?: pulumi.Input<string>;
+    /**
+     * Filter the list of organizations to the ones that contain this particular
+     * user.
+     */
+    user?: pulumi.Input<string>;
+}
+
+export interface GetOrganizationFilterName {
+    /**
+     * (case-insensitive) Filter the list of organizations to where the name contains a particular
+     * string.
+     */
+    contains?: string;
+    /**
+     * (case-insensitive) Filter the list of organizations to where the name ends with a particular
+     * string.
+     */
+    endsWith?: string;
+    /**
+     * (case-insensitive) Filter the list of organizations to where the name starts with a
+     * particular string.
+     */
+    startsWith?: string;
+}
+
+export interface GetOrganizationFilterNameArgs {
+    /**
+     * (case-insensitive) Filter the list of organizations to where the name contains a particular
+     * string.
+     */
+    contains?: pulumi.Input<string>;
+    /**
+     * (case-insensitive) Filter the list of organizations to where the name ends with a particular
+     * string.
+     */
+    endsWith?: pulumi.Input<string>;
+    /**
+     * (case-insensitive) Filter the list of organizations to where the name starts with a
+     * particular string.
+     */
+    startsWith?: pulumi.Input<string>;
+}
+
+export interface GetOrganizationFilterParent {
+    /**
+     * Filter the list of organizations to the ones that are a sub-organization
+     * of the specified organization.
+     */
+    id?: string;
+}
+
+export interface GetOrganizationFilterParentArgs {
+    /**
+     * Filter the list of organizations to the ones that are a sub-organization
+     * of the specified organization.
+     */
+    id?: pulumi.Input<string>;
+}
+
+export interface GetOrganizationsContaining {
+    /**
+     * Filter the list of organizations to the ones that contain this particular
+     * account.
+     */
+    account?: string;
+    /**
+     * Filter the list of organizations to the ones that contain this particular
+     * organization.
+     */
+    organization?: string;
+    /**
+     * Filter the list of organizations to the ones that contain this particular
+     * user.
+     */
+    user?: string;
+}
+
+export interface GetOrganizationsContainingArgs {
+    /**
+     * Filter the list of organizations to the ones that contain this particular
+     * account.
+     */
+    account?: pulumi.Input<string>;
+    /**
+     * Filter the list of organizations to the ones that contain this particular
+     * organization.
+     */
+    organization?: pulumi.Input<string>;
+    /**
+     * Filter the list of organizations to the ones that contain this particular
+     * user.
+     */
+    user?: pulumi.Input<string>;
+}
+
+export interface GetOrganizationsName {
+    /**
+     * (case-insensitive) Filter the list of organizations to where the name contains a particular
+     * string.
+     */
+    contains?: string;
+    /**
+     * (case-insensitive) Filter the list of organizations to where the name ends with a particular
+     * string.
+     */
+    endsWith?: string;
+    /**
+     * (case-insensitive) Filter the list of organizations to where the name starts with a
+     * particular string.
+     */
+    startsWith?: string;
+}
+
+export interface GetOrganizationsNameArgs {
+    /**
+     * (case-insensitive) Filter the list of organizations to where the name contains a particular
+     * string.
+     */
+    contains?: pulumi.Input<string>;
+    /**
+     * (case-insensitive) Filter the list of organizations to where the name ends with a particular
+     * string.
+     */
+    endsWith?: pulumi.Input<string>;
+    /**
+     * (case-insensitive) Filter the list of organizations to where the name starts with a
+     * particular string.
+     */
+    startsWith?: pulumi.Input<string>;
+}
+
+export interface GetOrganizationsParent {
+    /**
+     * Filter the list of organizations to the ones that are a sub-organization
+     * of the specified organization.
+     */
+    id?: string;
+}
+
+export interface GetOrganizationsParentArgs {
+    /**
+     * Filter the list of organizations to the ones that are a sub-organization
+     * of the specified organization.
+     */
+    id?: pulumi.Input<string>;
+}
+
 export interface GetOriginCaCertificateFilter {
     /**
      * Limit to the number of records returned.
@@ -6191,6 +6400,36 @@ export interface GetZeroTrustAccessServiceTokenFilterArgs {
      * Search for service tokens by other listed query parameters.
      */
     search?: pulumi.Input<string>;
+}
+
+export interface GetZeroTrustDexTestTargetPolicy {
+    /**
+     * Whether the DEX rule is the account default
+     */
+    default?: boolean;
+    /**
+     * The id of the DEX rule
+     */
+    id?: string;
+    /**
+     * The name of the DEX rule
+     */
+    name?: string;
+}
+
+export interface GetZeroTrustDexTestTargetPolicyArgs {
+    /**
+     * Whether the DEX rule is the account default
+     */
+    default?: pulumi.Input<boolean>;
+    /**
+     * The id of the DEX rule
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The name of the DEX rule
+     */
+    name?: pulumi.Input<string>;
 }
 
 export interface GetZeroTrustListFilter {
@@ -7790,6 +8029,10 @@ export interface NotificationPolicyFilters {
     /**
      * Usage depends on specific alert type
      */
+    types?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Usage depends on specific alert type
+     */
     wheres?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Usage depends on specific alert type
@@ -8009,6 +8252,35 @@ export interface ObservatoryScheduledTestTestRegion {
      * Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
      */
     value?: pulumi.Input<string>;
+}
+
+export interface OrganizationMeta {
+    /**
+     * Enable features for Organizations.
+     */
+    flags?: pulumi.Input<inputs.OrganizationMetaFlags>;
+    managedBy?: pulumi.Input<string>;
+}
+
+export interface OrganizationMetaFlags {
+    accountCreation?: pulumi.Input<string>;
+    accountDeletion?: pulumi.Input<string>;
+    accountMigration?: pulumi.Input<string>;
+    accountMobility?: pulumi.Input<string>;
+    subOrgCreation?: pulumi.Input<string>;
+}
+
+export interface OrganizationParent {
+    id: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+}
+
+export interface OrganizationProfile {
+    businessAddress: pulumi.Input<string>;
+    businessEmail: pulumi.Input<string>;
+    businessName: pulumi.Input<string>;
+    businessPhone: pulumi.Input<string>;
+    externalMetadata: pulumi.Input<string>;
 }
 
 export interface PageRuleActions {
@@ -8289,23 +8561,61 @@ export interface PagesProjectCanonicalDeploymentLatestStage {
 
 export interface PagesProjectCanonicalDeploymentSource {
     config?: pulumi.Input<inputs.PagesProjectCanonicalDeploymentSourceConfig>;
+    /**
+     * The source control management provider.
+     * Available values: "github", "gitlab".
+     */
     type?: pulumi.Input<string>;
 }
 
 export interface PagesProjectCanonicalDeploymentSourceConfig {
+    /**
+     * Whether to enable automatic deployments when pushing to the source repository.
+     * When disabled, no deployments (production or preview) will be triggered automatically.
+     *
+     * @deprecated Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+     */
     deploymentsEnabled?: pulumi.Input<boolean>;
+    /**
+     * The owner of the repository.
+     */
     owner?: pulumi.Input<string>;
+    /**
+     * A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
+     */
     pathExcludes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
+     */
     pathIncludes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether to enable PR comments.
+     */
     prCommentsEnabled?: pulumi.Input<boolean>;
+    /**
+     * A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     */
     previewBranchExcludes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     */
     previewBranchIncludes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Controls whether commits to preview branches trigger a preview deployment.
      * Available values: "all", "none", "custom".
      */
     previewDeploymentSetting?: pulumi.Input<string>;
+    /**
+     * The production branch of the repository.
+     */
     productionBranch?: pulumi.Input<string>;
+    /**
+     * Whether to trigger a production deployment on commits to the production branch.
+     */
     productionDeploymentsEnabled?: pulumi.Input<boolean>;
+    /**
+     * The name of the repository.
+     */
     repoName?: pulumi.Input<string>;
 }
 
@@ -8347,6 +8657,10 @@ export interface PagesProjectDeploymentConfigsPreview {
      */
     aiBindings?: pulumi.Input<{[key: string]: pulumi.Input<inputs.PagesProjectDeploymentConfigsPreviewAiBindings>}>;
     /**
+     * Whether to always use the latest compatibility date for Pages Functions.
+     */
+    alwaysUseLatestCompatibilityDate?: pulumi.Input<boolean>;
+    /**
      * Analytics Engine bindings used for Pages Functions.
      */
     analyticsEngineDatasets?: pulumi.Input<{[key: string]: pulumi.Input<inputs.PagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasets>}>;
@@ -8354,6 +8668,10 @@ export interface PagesProjectDeploymentConfigsPreview {
      * Browser bindings used for Pages Functions.
      */
     browsers?: pulumi.Input<{[key: string]: pulumi.Input<inputs.PagesProjectDeploymentConfigsPreviewBrowsers>}>;
+    /**
+     * The major version of the build image to use for Pages Functions.
+     */
+    buildImageMajorVersion?: pulumi.Input<number>;
     /**
      * Compatibility date used for Pages Functions.
      */
@@ -8375,6 +8693,10 @@ export interface PagesProjectDeploymentConfigsPreview {
      */
     envVars?: pulumi.Input<{[key: string]: pulumi.Input<inputs.PagesProjectDeploymentConfigsPreviewEnvVars>}>;
     /**
+     * Whether to fail open when the deployment config cannot be applied.
+     */
+    failOpen?: pulumi.Input<boolean>;
+    /**
      * Hyperdrive bindings used for Pages Functions.
      */
     hyperdriveBindings?: pulumi.Input<{[key: string]: pulumi.Input<inputs.PagesProjectDeploymentConfigsPreviewHyperdriveBindings>}>;
@@ -8382,6 +8704,10 @@ export interface PagesProjectDeploymentConfigsPreview {
      * KV namespaces used for Pages Functions.
      */
     kvNamespaces?: pulumi.Input<{[key: string]: pulumi.Input<inputs.PagesProjectDeploymentConfigsPreviewKvNamespaces>}>;
+    /**
+     * Limits for Pages Functions.
+     */
+    limits?: pulumi.Input<inputs.PagesProjectDeploymentConfigsPreviewLimits>;
     /**
      * mTLS bindings used for Pages Functions.
      */
@@ -8403,9 +8729,20 @@ export interface PagesProjectDeploymentConfigsPreview {
      */
     services?: pulumi.Input<{[key: string]: pulumi.Input<inputs.PagesProjectDeploymentConfigsPreviewServices>}>;
     /**
+     * The usage model for Pages Functions.
+     * Available values: "standard", "bundled", "unbound".
+     *
+     * @deprecated All new projects now use the Standard usage model.
+     */
+    usageModel?: pulumi.Input<string>;
+    /**
      * Vectorize bindings used for Pages Functions.
      */
     vectorizeBindings?: pulumi.Input<{[key: string]: pulumi.Input<inputs.PagesProjectDeploymentConfigsPreviewVectorizeBindings>}>;
+    /**
+     * Hash of the Wrangler configuration used for the deployment.
+     */
+    wranglerConfigHash?: pulumi.Input<string>;
 }
 
 export interface PagesProjectDeploymentConfigsPreviewAiBindings {
@@ -8456,6 +8793,13 @@ export interface PagesProjectDeploymentConfigsPreviewKvNamespaces {
      * ID of the KV namespace.
      */
     namespaceId?: pulumi.Input<string>;
+}
+
+export interface PagesProjectDeploymentConfigsPreviewLimits {
+    /**
+     * CPU time limit in milliseconds.
+     */
+    cpuMs?: pulumi.Input<number>;
 }
 
 export interface PagesProjectDeploymentConfigsPreviewMtlsCertificates {
@@ -8512,6 +8856,10 @@ export interface PagesProjectDeploymentConfigsProduction {
      */
     aiBindings?: pulumi.Input<{[key: string]: pulumi.Input<inputs.PagesProjectDeploymentConfigsProductionAiBindings>}>;
     /**
+     * Whether to always use the latest compatibility date for Pages Functions.
+     */
+    alwaysUseLatestCompatibilityDate?: pulumi.Input<boolean>;
+    /**
      * Analytics Engine bindings used for Pages Functions.
      */
     analyticsEngineDatasets?: pulumi.Input<{[key: string]: pulumi.Input<inputs.PagesProjectDeploymentConfigsProductionAnalyticsEngineDatasets>}>;
@@ -8519,6 +8867,10 @@ export interface PagesProjectDeploymentConfigsProduction {
      * Browser bindings used for Pages Functions.
      */
     browsers?: pulumi.Input<{[key: string]: pulumi.Input<inputs.PagesProjectDeploymentConfigsProductionBrowsers>}>;
+    /**
+     * The major version of the build image to use for Pages Functions.
+     */
+    buildImageMajorVersion?: pulumi.Input<number>;
     /**
      * Compatibility date used for Pages Functions.
      */
@@ -8540,6 +8892,10 @@ export interface PagesProjectDeploymentConfigsProduction {
      */
     envVars?: pulumi.Input<{[key: string]: pulumi.Input<inputs.PagesProjectDeploymentConfigsProductionEnvVars>}>;
     /**
+     * Whether to fail open when the deployment config cannot be applied.
+     */
+    failOpen?: pulumi.Input<boolean>;
+    /**
      * Hyperdrive bindings used for Pages Functions.
      */
     hyperdriveBindings?: pulumi.Input<{[key: string]: pulumi.Input<inputs.PagesProjectDeploymentConfigsProductionHyperdriveBindings>}>;
@@ -8547,6 +8903,10 @@ export interface PagesProjectDeploymentConfigsProduction {
      * KV namespaces used for Pages Functions.
      */
     kvNamespaces?: pulumi.Input<{[key: string]: pulumi.Input<inputs.PagesProjectDeploymentConfigsProductionKvNamespaces>}>;
+    /**
+     * Limits for Pages Functions.
+     */
+    limits?: pulumi.Input<inputs.PagesProjectDeploymentConfigsProductionLimits>;
     /**
      * mTLS bindings used for Pages Functions.
      */
@@ -8568,9 +8928,20 @@ export interface PagesProjectDeploymentConfigsProduction {
      */
     services?: pulumi.Input<{[key: string]: pulumi.Input<inputs.PagesProjectDeploymentConfigsProductionServices>}>;
     /**
+     * The usage model for Pages Functions.
+     * Available values: "standard", "bundled", "unbound".
+     *
+     * @deprecated All new projects now use the Standard usage model.
+     */
+    usageModel?: pulumi.Input<string>;
+    /**
      * Vectorize bindings used for Pages Functions.
      */
     vectorizeBindings?: pulumi.Input<{[key: string]: pulumi.Input<inputs.PagesProjectDeploymentConfigsProductionVectorizeBindings>}>;
+    /**
+     * Hash of the Wrangler configuration used for the deployment.
+     */
+    wranglerConfigHash?: pulumi.Input<string>;
 }
 
 export interface PagesProjectDeploymentConfigsProductionAiBindings {
@@ -8621,6 +8992,13 @@ export interface PagesProjectDeploymentConfigsProductionKvNamespaces {
      * ID of the KV namespace.
      */
     namespaceId?: pulumi.Input<string>;
+}
+
+export interface PagesProjectDeploymentConfigsProductionLimits {
+    /**
+     * CPU time limit in milliseconds.
+     */
+    cpuMs?: pulumi.Input<number>;
 }
 
 export interface PagesProjectDeploymentConfigsProductionMtlsCertificates {
@@ -8824,23 +9202,61 @@ export interface PagesProjectLatestDeploymentLatestStage {
 
 export interface PagesProjectLatestDeploymentSource {
     config?: pulumi.Input<inputs.PagesProjectLatestDeploymentSourceConfig>;
+    /**
+     * The source control management provider.
+     * Available values: "github", "gitlab".
+     */
     type?: pulumi.Input<string>;
 }
 
 export interface PagesProjectLatestDeploymentSourceConfig {
+    /**
+     * Whether to enable automatic deployments when pushing to the source repository.
+     * When disabled, no deployments (production or preview) will be triggered automatically.
+     *
+     * @deprecated Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+     */
     deploymentsEnabled?: pulumi.Input<boolean>;
+    /**
+     * The owner of the repository.
+     */
     owner?: pulumi.Input<string>;
+    /**
+     * A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
+     */
     pathExcludes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
+     */
     pathIncludes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether to enable PR comments.
+     */
     prCommentsEnabled?: pulumi.Input<boolean>;
+    /**
+     * A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     */
     previewBranchExcludes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     */
     previewBranchIncludes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Controls whether commits to preview branches trigger a preview deployment.
      * Available values: "all", "none", "custom".
      */
     previewDeploymentSetting?: pulumi.Input<string>;
+    /**
+     * The production branch of the repository.
+     */
     productionBranch?: pulumi.Input<string>;
+    /**
+     * Whether to trigger a production deployment on commits to the production branch.
+     */
     productionDeploymentsEnabled?: pulumi.Input<boolean>;
+    /**
+     * The name of the repository.
+     */
     repoName?: pulumi.Input<string>;
 }
 
@@ -8867,23 +9283,61 @@ export interface PagesProjectLatestDeploymentStage {
 
 export interface PagesProjectSource {
     config?: pulumi.Input<inputs.PagesProjectSourceConfig>;
+    /**
+     * The source control management provider.
+     * Available values: "github", "gitlab".
+     */
     type?: pulumi.Input<string>;
 }
 
 export interface PagesProjectSourceConfig {
+    /**
+     * Whether to enable automatic deployments when pushing to the source repository.
+     * When disabled, no deployments (production or preview) will be triggered automatically.
+     *
+     * @deprecated Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+     */
     deploymentsEnabled?: pulumi.Input<boolean>;
+    /**
+     * The owner of the repository.
+     */
     owner?: pulumi.Input<string>;
+    /**
+     * A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
+     */
     pathExcludes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
+     */
     pathIncludes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether to enable PR comments.
+     */
     prCommentsEnabled?: pulumi.Input<boolean>;
+    /**
+     * A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     */
     previewBranchExcludes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     */
     previewBranchIncludes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Controls whether commits to preview branches trigger a preview deployment.
      * Available values: "all", "none", "custom".
      */
     previewDeploymentSetting?: pulumi.Input<string>;
+    /**
+     * The production branch of the repository.
+     */
     productionBranch?: pulumi.Input<string>;
+    /**
+     * Whether to trigger a production deployment on commits to the production branch.
+     */
     productionDeploymentsEnabled?: pulumi.Input<boolean>;
+    /**
+     * The name of the repository.
+     */
     repoName?: pulumi.Input<string>;
 }
 
@@ -10551,7 +11005,7 @@ export interface TeamsAccountSettings {
      */
     customCertificate?: pulumi.Input<inputs.TeamsAccountSettingsCustomCertificate>;
     /**
-     * Specify user email settings for the firewall policies. When this is enabled, we standardize the email addresses in the identity part of the rule, so that they match the extended email variants in the firewall policies. When this setting is turned off, the email addresses in the identity part of the rule will be matched exactly as provided. If your email has `.` or `+` modifiers, you should enable this setting.
+     * Configures user email settings for firewall policies. When you enable this, the system standardizes email addresses in the identity portion of the rule to match extended email variants in firewall policies. When you disable this setting, the system matches email addresses exactly as you provide them. Enable this setting if your email uses `.` or `+` modifiers.
      */
     extendedEmailMatching?: pulumi.Input<inputs.TeamsAccountSettingsExtendedEmailMatching>;
     /**
@@ -11253,10 +11707,6 @@ export interface TunnelConfigConfig {
      * Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
      */
     originRequest?: pulumi.Input<inputs.TunnelConfigConfigOriginRequest>;
-    /**
-     * Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
-     */
-    warpRouting?: pulumi.Input<inputs.TunnelConfigConfigWarpRouting>;
 }
 
 export interface TunnelConfigConfigIngress {
@@ -11418,10 +11868,6 @@ export interface TunnelConfigConfigOriginRequestAccess {
      */
     required?: pulumi.Input<boolean>;
     teamName: pulumi.Input<string>;
-}
-
-export interface TunnelConfigConfigWarpRouting {
-    enabled?: pulumi.Input<boolean>;
 }
 
 export interface TunnelConnection {
@@ -11616,6 +12062,116 @@ export interface WorkerObservabilityLogs {
     invocationLogs?: pulumi.Input<boolean>;
 }
 
+export interface WorkerReferences {
+    /**
+     * Other Workers that reference the Worker as an outbound for a dispatch namespace.
+     */
+    dispatchNamespaceOutbounds?: pulumi.Input<pulumi.Input<inputs.WorkerReferencesDispatchNamespaceOutbound>[]>;
+    /**
+     * Custom domains connected to the Worker.
+     */
+    domains?: pulumi.Input<pulumi.Input<inputs.WorkerReferencesDomain>[]>;
+    /**
+     * Other Workers that reference Durable Object classes implemented by the Worker.
+     */
+    durableObjects?: pulumi.Input<pulumi.Input<inputs.WorkerReferencesDurableObject>[]>;
+    /**
+     * Queues that send messages to the Worker.
+     */
+    queues?: pulumi.Input<pulumi.Input<inputs.WorkerReferencesQueue>[]>;
+    /**
+     * Other Workers that reference the Worker using [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/).
+     */
+    workers?: pulumi.Input<pulumi.Input<inputs.WorkerReferencesWorker>[]>;
+}
+
+export interface WorkerReferencesDispatchNamespaceOutbound {
+    /**
+     * ID of the dispatch namespace.
+     */
+    namespaceId?: pulumi.Input<string>;
+    /**
+     * Name of the dispatch namespace.
+     */
+    namespaceName?: pulumi.Input<string>;
+    /**
+     * ID of the Worker using the dispatch namespace.
+     */
+    workerId?: pulumi.Input<string>;
+    /**
+     * Name of the Worker using the dispatch namespace.
+     */
+    workerName?: pulumi.Input<string>;
+}
+
+export interface WorkerReferencesDomain {
+    /**
+     * ID of the TLS certificate issued for the custom domain.
+     */
+    certificateId?: pulumi.Input<string>;
+    /**
+     * Full hostname of the custom domain, including the zone name.
+     */
+    hostname?: pulumi.Input<string>;
+    /**
+     * ID of the custom domain.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * ID of the zone.
+     */
+    zoneId?: pulumi.Input<string>;
+    /**
+     * Name of the zone.
+     */
+    zoneName?: pulumi.Input<string>;
+}
+
+export interface WorkerReferencesDurableObject {
+    /**
+     * ID of the Durable Object namespace being used.
+     */
+    namespaceId?: pulumi.Input<string>;
+    /**
+     * Name of the Durable Object namespace being used.
+     */
+    namespaceName?: pulumi.Input<string>;
+    /**
+     * ID of the Worker using the Durable Object implementation.
+     */
+    workerId?: pulumi.Input<string>;
+    /**
+     * Name of the Worker using the Durable Object implementation.
+     */
+    workerName?: pulumi.Input<string>;
+}
+
+export interface WorkerReferencesQueue {
+    /**
+     * ID of the queue consumer configuration.
+     */
+    queueConsumerId?: pulumi.Input<string>;
+    /**
+     * ID of the queue.
+     */
+    queueId?: pulumi.Input<string>;
+    /**
+     * Name of the queue.
+     */
+    queueName?: pulumi.Input<string>;
+}
+
+export interface WorkerReferencesWorker {
+    /**
+     * ID of the referencing Worker.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Name of the referencing Worker.
+     */
+    name?: pulumi.Input<string>;
+}
+
 export interface WorkerScriptAssets {
     /**
      * The SHA-256 hash of the asset manifest of files to upload.
@@ -11738,7 +12294,7 @@ export interface WorkerScriptBinding {
      */
     name: pulumi.Input<string>;
     /**
-     * Namespace to bind to.
+     * The name of the dispatch namespace.
      */
     namespace?: pulumi.Input<string>;
     /**
@@ -12178,7 +12734,7 @@ export interface WorkerVersionBinding {
      */
     name: pulumi.Input<string>;
     /**
-     * Namespace to bind to.
+     * The name of the dispatch namespace.
      */
     namespace?: pulumi.Input<string>;
     /**
@@ -12227,7 +12783,7 @@ export interface WorkerVersionBinding {
     text?: pulumi.Input<string>;
     /**
      * The kind of resource that the binding provides.
-     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "tail*consumer", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasm*module".
+     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasmModule".
      */
     type: pulumi.Input<string>;
     /**
@@ -12524,7 +13080,7 @@ export interface WorkersScriptBinding {
      */
     name: pulumi.Input<string>;
     /**
-     * Namespace to bind to.
+     * The name of the dispatch namespace.
      */
     namespace?: pulumi.Input<string>;
     /**
@@ -12883,6 +13439,10 @@ export interface ZeroTrustAccessApplicationDestination {
      * Available values: "tcp", "udp".
      */
     l4Protocol?: pulumi.Input<string>;
+    /**
+     * A MCP server id configured in ai-controls. Access will secure the MCP server if accessed through a MCP portal.
+     */
+    mcpServerId?: pulumi.Input<string>;
     /**
      * The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match.
      */
@@ -15945,7 +16505,7 @@ export interface ZeroTrustDevicePostureRuleInput {
      */
     osDistroRevision?: pulumi.Input<string>;
     /**
-     * Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).
+     * Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version. (Mac, iOS, and Linux only).
      */
     osVersionExtra?: pulumi.Input<string>;
     /**
@@ -16032,11 +16592,11 @@ export interface ZeroTrustDexTestData {
     /**
      * The desired endpoint to test.
      */
-    host: pulumi.Input<string>;
+    host?: pulumi.Input<string>;
     /**
      * The type of test.
      */
-    kind: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * The HTTP request method type.
      */
@@ -16834,7 +17394,7 @@ export interface ZeroTrustGatewaySettingsSettings {
      */
     customCertificate?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettingsCustomCertificate>;
     /**
-     * Specify user email settings for the firewall policies. When this is enabled, we standardize the email addresses in the identity part of the rule, so that they match the extended email variants in the firewall policies. When this setting is turned off, the email addresses in the identity part of the rule will be matched exactly as provided. If your email has `.` or `+` modifiers, you should enable this setting.
+     * Configures user email settings for firewall policies. When you enable this, the system standardizes email addresses in the identity portion of the rule to match extended email variants in firewall policies. When you disable this setting, the system matches email addresses exactly as you provide them. Enable this setting if your email uses `.` or `+` modifiers.
      */
     extendedEmailMatching?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettingsExtendedEmailMatching>;
     /**
@@ -17158,10 +17718,6 @@ export interface ZeroTrustTunnelCloudflaredConfigConfig {
      * Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
      */
     originRequest?: pulumi.Input<inputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequest>;
-    /**
-     * Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
-     */
-    warpRouting?: pulumi.Input<inputs.ZeroTrustTunnelCloudflaredConfigConfigWarpRouting>;
 }
 
 export interface ZeroTrustTunnelCloudflaredConfigConfigIngress {
@@ -17323,10 +17879,6 @@ export interface ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccess {
      */
     required?: pulumi.Input<boolean>;
     teamName: pulumi.Input<string>;
-}
-
-export interface ZeroTrustTunnelCloudflaredConfigConfigWarpRouting {
-    enabled?: pulumi.Input<boolean>;
 }
 
 export interface ZeroTrustTunnelCloudflaredConnection {

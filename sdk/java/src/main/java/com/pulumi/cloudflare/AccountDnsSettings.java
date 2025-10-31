@@ -18,6 +18,64 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.AccountDnsSettings;
+ * import com.pulumi.cloudflare.AccountDnsSettingsArgs;
+ * import com.pulumi.cloudflare.inputs.AccountDnsSettingsZoneDefaultsArgs;
+ * import com.pulumi.cloudflare.inputs.AccountDnsSettingsZoneDefaultsInternalDnsArgs;
+ * import com.pulumi.cloudflare.inputs.AccountDnsSettingsZoneDefaultsNameserversArgs;
+ * import com.pulumi.cloudflare.inputs.AccountDnsSettingsZoneDefaultsSoaArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleAccountDnsSettings = new AccountDnsSettings("exampleAccountDnsSettings", AccountDnsSettingsArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .zoneDefaults(AccountDnsSettingsZoneDefaultsArgs.builder()
+ *                 .flattenAllCnames(false)
+ *                 .foundationDns(false)
+ *                 .internalDns(AccountDnsSettingsZoneDefaultsInternalDnsArgs.builder()
+ *                     .referenceZoneId("reference_zone_id")
+ *                     .build())
+ *                 .multiProvider(false)
+ *                 .nameservers(AccountDnsSettingsZoneDefaultsNameserversArgs.builder()
+ *                     .type("cloudflare.standard")
+ *                     .build())
+ *                 .nsTtl(86400.0)
+ *                 .secondaryOverrides(false)
+ *                 .soa(AccountDnsSettingsZoneDefaultsSoaArgs.builder()
+ *                     .expire(604800.0)
+ *                     .minTtl(1800.0)
+ *                     .mname("kristina.ns.cloudflare.com")
+ *                     .refresh(10000.0)
+ *                     .retry(2400.0)
+ *                     .rname("admin.example.com")
+ *                     .ttl(3600.0)
+ *                     .build())
+ *                 .zoneMode("dns_only")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  */
 @ResourceType(type="cloudflare:index/accountDnsSettings:AccountDnsSettings")
 public class AccountDnsSettings extends com.pulumi.resources.CustomResource {

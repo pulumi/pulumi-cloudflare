@@ -34,6 +34,8 @@ type ZeroTrustTunnelCloudflaredConfig struct {
 	TunnelId pulumi.StringOutput `pulumi:"tunnelId"`
 	// The version of the Tunnel Configuration.
 	Version pulumi.IntOutput `pulumi:"version"`
+	// Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+	WarpRoutingEnabled pulumi.BoolOutput `pulumi:"warpRoutingEnabled"`
 }
 
 // NewZeroTrustTunnelCloudflaredConfig registers a new resource with the given unique name, arguments, and options.
@@ -90,6 +92,8 @@ type zeroTrustTunnelCloudflaredConfigState struct {
 	TunnelId *string `pulumi:"tunnelId"`
 	// The version of the Tunnel Configuration.
 	Version *int `pulumi:"version"`
+	// Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+	WarpRoutingEnabled *bool `pulumi:"warpRoutingEnabled"`
 }
 
 type ZeroTrustTunnelCloudflaredConfigState struct {
@@ -105,6 +109,8 @@ type ZeroTrustTunnelCloudflaredConfigState struct {
 	TunnelId pulumi.StringPtrInput
 	// The version of the Tunnel Configuration.
 	Version pulumi.IntPtrInput
+	// Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+	WarpRoutingEnabled pulumi.BoolPtrInput
 }
 
 func (ZeroTrustTunnelCloudflaredConfigState) ElementType() reflect.Type {
@@ -121,6 +127,8 @@ type zeroTrustTunnelCloudflaredConfigArgs struct {
 	Source *string `pulumi:"source"`
 	// UUID of the tunnel.
 	TunnelId string `pulumi:"tunnelId"`
+	// Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+	WarpRoutingEnabled *bool `pulumi:"warpRoutingEnabled"`
 }
 
 // The set of arguments for constructing a ZeroTrustTunnelCloudflaredConfig resource.
@@ -134,6 +142,8 @@ type ZeroTrustTunnelCloudflaredConfigArgs struct {
 	Source pulumi.StringPtrInput
 	// UUID of the tunnel.
 	TunnelId pulumi.StringInput
+	// Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+	WarpRoutingEnabled pulumi.BoolPtrInput
 }
 
 func (ZeroTrustTunnelCloudflaredConfigArgs) ElementType() reflect.Type {
@@ -253,6 +263,11 @@ func (o ZeroTrustTunnelCloudflaredConfigOutput) TunnelId() pulumi.StringOutput {
 // The version of the Tunnel Configuration.
 func (o ZeroTrustTunnelCloudflaredConfigOutput) Version() pulumi.IntOutput {
 	return o.ApplyT(func(v *ZeroTrustTunnelCloudflaredConfig) pulumi.IntOutput { return v.Version }).(pulumi.IntOutput)
+}
+
+// Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+func (o ZeroTrustTunnelCloudflaredConfigOutput) WarpRoutingEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustTunnelCloudflaredConfig) pulumi.BoolOutput { return v.WarpRoutingEnabled }).(pulumi.BoolOutput)
 }
 
 type ZeroTrustTunnelCloudflaredConfigArrayOutput struct{ *pulumi.OutputState }

@@ -12,6 +12,71 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleMagicTransitSiteLan = new Cloudflare.MagicTransitSiteLan("example_magic_transit_site_lan", new()
+    ///     {
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         SiteId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Physport = 1,
+    ///         HaLink = true,
+    ///         Name = "name",
+    ///         Nat = new Cloudflare.Inputs.MagicTransitSiteLanNatArgs
+    ///         {
+    ///             StaticPrefix = "192.0.2.0/24",
+    ///         },
+    ///         RoutedSubnets = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.MagicTransitSiteLanRoutedSubnetArgs
+    ///             {
+    ///                 NextHop = "192.0.2.1",
+    ///                 Prefix = "192.0.2.0/24",
+    ///                 Nat = new Cloudflare.Inputs.MagicTransitSiteLanRoutedSubnetNatArgs
+    ///                 {
+    ///                     StaticPrefix = "192.0.2.0/24",
+    ///                 },
+    ///             },
+    ///         },
+    ///         StaticAddressing = new Cloudflare.Inputs.MagicTransitSiteLanStaticAddressingArgs
+    ///         {
+    ///             Address = "192.0.2.0/24",
+    ///             DhcpRelay = new Cloudflare.Inputs.MagicTransitSiteLanStaticAddressingDhcpRelayArgs
+    ///             {
+    ///                 ServerAddresses = new[]
+    ///                 {
+    ///                     "192.0.2.1",
+    ///                 },
+    ///             },
+    ///             DhcpServer = new Cloudflare.Inputs.MagicTransitSiteLanStaticAddressingDhcpServerArgs
+    ///             {
+    ///                 DhcpPoolEnd = "192.0.2.1",
+    ///                 DhcpPoolStart = "192.0.2.1",
+    ///                 DnsServer = "192.0.2.1",
+    ///                 DnsServers = new[]
+    ///                 {
+    ///                     "192.0.2.1",
+    ///                 },
+    ///                 Reservations = 
+    ///                 {
+    ///                     { "00:11:22:33:44:55", "192.0.2.100" },
+    ///                     { "AA:BB:CC:DD:EE:FF", "192.168.1.101" },
+    ///                 },
+    ///             },
+    ///             SecondaryAddress = "192.0.2.0/24",
+    ///             VirtualAddress = "192.0.2.0/24",
+    ///         },
+    ///         VlanTag = 42,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

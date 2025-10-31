@@ -12,6 +12,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -110,6 +111,20 @@ public class TunnelConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> version() {
         return this.version;
+    }
+    /**
+     * Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+     * 
+     */
+    @Export(name="warpRoutingEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> warpRoutingEnabled;
+
+    /**
+     * @return Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+     * 
+     */
+    public Output<Boolean> warpRoutingEnabled() {
+        return this.warpRoutingEnabled;
     }
 
     /**

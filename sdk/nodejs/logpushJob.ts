@@ -9,6 +9,47 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleLogpushJob = new cloudflare.LogpushJob("example_logpush_job", {
+ *     destinationConf: "s3://mybucket/logs?region=us-west-2",
+ *     zoneId: "zone_id",
+ *     dataset: "gateway_dns",
+ *     enabled: false,
+ *     filter: "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
+ *     frequency: "high",
+ *     kind: "",
+ *     logpullOptions: "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
+ *     maxUploadBytes: 5000000,
+ *     maxUploadIntervalSeconds: 30,
+ *     maxUploadRecords: 1000,
+ *     name: "example.com",
+ *     outputOptions: {
+ *         batchPrefix: "",
+ *         batchSuffix: "",
+ *         cve202144228: false,
+ *         fieldDelimiter: ",",
+ *         fieldNames: [
+ *             "Datetime",
+ *             "DstIP",
+ *             "SrcIP",
+ *         ],
+ *         outputType: "ndjson",
+ *         recordDelimiter: "",
+ *         recordPrefix: "{",
+ *         recordSuffix: `    }
+ *
+ * `,
+ *         recordTemplate: "record_template",
+ *         sampleRate: 1,
+ *         timestampFormat: "unixnano",
+ *     },
+ *     ownershipChallenge: "00000000000000000000",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

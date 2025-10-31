@@ -67,7 +67,7 @@ export interface GetZeroTrustGatewayPolicyResult {
      */
     readonly expiration: outputs.GetZeroTrustGatewayPolicyExpiration;
     /**
-     * Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+     * Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
      */
     readonly filters: string[];
     /**

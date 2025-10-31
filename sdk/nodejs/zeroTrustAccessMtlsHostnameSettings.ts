@@ -8,6 +8,20 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustAccessMtlsHostnameSettings = new cloudflare.ZeroTrustAccessMtlsHostnameSettings("example_zero_trust_access_mtls_hostname_settings", {
+ *     settings: [{
+ *         chinaNetwork: false,
+ *         clientCertificateForwarding: true,
+ *         hostname: "admin.example.com",
+ *     }],
+ *     zoneId: "zone_id",
+ * });
+ * ```
  */
 export class ZeroTrustAccessMtlsHostnameSettings extends pulumi.CustomResource {
     /**

@@ -12,12 +12,22 @@ import java.util.Objects;
 @CustomType
 public final class GetPagesProjectCanonicalDeploymentSource {
     private GetPagesProjectCanonicalDeploymentSourceConfig config;
+    /**
+     * @return The source control management provider.
+     * Available values: &#34;github&#34;, &#34;gitlab&#34;.
+     * 
+     */
     private String type;
 
     private GetPagesProjectCanonicalDeploymentSource() {}
     public GetPagesProjectCanonicalDeploymentSourceConfig config() {
         return this.config;
     }
+    /**
+     * @return The source control management provider.
+     * Available values: &#34;github&#34;, &#34;gitlab&#34;.
+     * 
+     */
     public String type() {
         return this.type;
     }

@@ -12,6 +12,41 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleDnsFirewall = new Cloudflare.DnsFirewall("example_dns_firewall", new()
+    ///     {
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Name = "My Awesome DNS Firewall cluster",
+    ///         UpstreamIps = new[]
+    ///         {
+    ///             "192.0.2.1",
+    ///             "198.51.100.1",
+    ///             "2001:DB8:100::CF",
+    ///         },
+    ///         AttackMitigation = new Cloudflare.Inputs.DnsFirewallAttackMitigationArgs
+    ///         {
+    ///             Enabled = true,
+    ///             OnlyWhenUpstreamUnhealthy = false,
+    ///         },
+    ///         DeprecateAnyRequests = true,
+    ///         EcsFallback = false,
+    ///         MaximumCacheTtl = 900,
+    ///         MinimumCacheTtl = 60,
+    ///         NegativeCacheTtl = 900,
+    ///         Ratelimit = 600,
+    ///         Retries = 2,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

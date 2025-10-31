@@ -18,6 +18,49 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.QueueConsumer;
+ * import com.pulumi.cloudflare.QueueConsumerArgs;
+ * import com.pulumi.cloudflare.inputs.QueueConsumerSettingsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleQueueConsumer = new QueueConsumer("exampleQueueConsumer", QueueConsumerArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .queueId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .deadLetterQueue("example-queue")
+ *             .scriptName("my-consumer-worker")
+ *             .settings(QueueConsumerSettingsArgs.builder()
+ *                 .batchSize(50.0)
+ *                 .maxConcurrency(10.0)
+ *                 .maxRetries(3.0)
+ *                 .maxWaitTimeMs(5000.0)
+ *                 .retryDelay(10.0)
+ *                 .build())
+ *             .type("worker")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  */
 @ResourceType(type="cloudflare:index/queueConsumer:QueueConsumer")
 public class QueueConsumer extends com.pulumi.resources.CustomResource {

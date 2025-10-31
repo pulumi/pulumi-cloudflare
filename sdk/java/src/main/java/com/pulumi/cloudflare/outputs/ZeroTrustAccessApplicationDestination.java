@@ -28,6 +28,11 @@ public final class ZeroTrustAccessApplicationDestination {
      */
     private @Nullable String l4Protocol;
     /**
+     * @return A MCP server id configured in ai-controls. Access will secure the MCP server if accessed through a MCP portal.
+     * 
+     */
+    private @Nullable String mcpServerId;
+    /**
      * @return The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match.
      * 
      */
@@ -72,6 +77,13 @@ public final class ZeroTrustAccessApplicationDestination {
         return Optional.ofNullable(this.l4Protocol);
     }
     /**
+     * @return A MCP server id configured in ai-controls. Access will secure the MCP server if accessed through a MCP portal.
+     * 
+     */
+    public Optional<String> mcpServerId() {
+        return Optional.ofNullable(this.mcpServerId);
+    }
+    /**
      * @return The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match.
      * 
      */
@@ -112,6 +124,7 @@ public final class ZeroTrustAccessApplicationDestination {
         private @Nullable String cidr;
         private @Nullable String hostname;
         private @Nullable String l4Protocol;
+        private @Nullable String mcpServerId;
         private @Nullable String portRange;
         private @Nullable String type;
         private @Nullable String uri;
@@ -122,6 +135,7 @@ public final class ZeroTrustAccessApplicationDestination {
     	      this.cidr = defaults.cidr;
     	      this.hostname = defaults.hostname;
     	      this.l4Protocol = defaults.l4Protocol;
+    	      this.mcpServerId = defaults.mcpServerId;
     	      this.portRange = defaults.portRange;
     	      this.type = defaults.type;
     	      this.uri = defaults.uri;
@@ -144,6 +158,12 @@ public final class ZeroTrustAccessApplicationDestination {
         public Builder l4Protocol(@Nullable String l4Protocol) {
 
             this.l4Protocol = l4Protocol;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mcpServerId(@Nullable String mcpServerId) {
+
+            this.mcpServerId = mcpServerId;
             return this;
         }
         @CustomType.Setter
@@ -175,6 +195,7 @@ public final class ZeroTrustAccessApplicationDestination {
             _resultValue.cidr = cidr;
             _resultValue.hostname = hostname;
             _resultValue.l4Protocol = l4Protocol;
+            _resultValue.mcpServerId = mcpServerId;
             _resultValue.portRange = portRange;
             _resultValue.type = type;
             _resultValue.uri = uri;

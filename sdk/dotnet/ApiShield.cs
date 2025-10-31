@@ -48,18 +48,6 @@ namespace Pulumi.Cloudflare
         [Output("authIdCharacteristics")]
         public Output<ImmutableArray<Outputs.ApiShieldAuthIdCharacteristic>> AuthIdCharacteristics { get; private set; } = null!;
 
-        [Output("errors")]
-        public Output<ImmutableArray<Outputs.ApiShieldError>> Errors { get; private set; } = null!;
-
-        [Output("messages")]
-        public Output<ImmutableArray<Outputs.ApiShieldMessage>> Messages { get; private set; } = null!;
-
-        /// <summary>
-        /// Whether the API call was successful.
-        /// </summary>
-        [Output("success")]
-        public Output<bool> Success { get; private set; } = null!;
-
         /// <summary>
         /// Identifier.
         /// </summary>
@@ -141,28 +129,6 @@ namespace Pulumi.Cloudflare
             get => _authIdCharacteristics ?? (_authIdCharacteristics = new InputList<Inputs.ApiShieldAuthIdCharacteristicGetArgs>());
             set => _authIdCharacteristics = value;
         }
-
-        [Input("errors")]
-        private InputList<Inputs.ApiShieldErrorGetArgs>? _errors;
-        public InputList<Inputs.ApiShieldErrorGetArgs> Errors
-        {
-            get => _errors ?? (_errors = new InputList<Inputs.ApiShieldErrorGetArgs>());
-            set => _errors = value;
-        }
-
-        [Input("messages")]
-        private InputList<Inputs.ApiShieldMessageGetArgs>? _messages;
-        public InputList<Inputs.ApiShieldMessageGetArgs> Messages
-        {
-            get => _messages ?? (_messages = new InputList<Inputs.ApiShieldMessageGetArgs>());
-            set => _messages = value;
-        }
-
-        /// <summary>
-        /// Whether the API call was successful.
-        /// </summary>
-        [Input("success")]
-        public Input<bool>? Success { get; set; }
 
         /// <summary>
         /// Identifier.

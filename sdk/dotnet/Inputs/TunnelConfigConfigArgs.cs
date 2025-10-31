@@ -30,12 +30,6 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("originRequest")]
         public Input<Inputs.TunnelConfigConfigOriginRequestArgs>? OriginRequest { get; set; }
 
-        /// <summary>
-        /// Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
-        /// </summary>
-        [Input("warpRouting")]
-        public Input<Inputs.TunnelConfigConfigWarpRoutingArgs>? WarpRouting { get; set; }
-
         public TunnelConfigConfigArgs()
         {
         }

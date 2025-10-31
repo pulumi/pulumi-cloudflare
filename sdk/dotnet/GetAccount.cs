@@ -131,6 +131,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// Parent container details
+        /// </summary>
+        public readonly Outputs.GetAccountManagedByResult ManagedBy;
+        /// <summary>
         /// Account name
         /// </summary>
         public readonly string Name;
@@ -153,6 +157,8 @@ namespace Pulumi.Cloudflare
 
             string id,
 
+            Outputs.GetAccountManagedByResult managedBy,
+
             string name,
 
             Outputs.GetAccountSettingsResult settings,
@@ -163,6 +169,7 @@ namespace Pulumi.Cloudflare
             CreatedOn = createdOn;
             Filter = filter;
             Id = id;
+            ManagedBy = managedBy;
             Name = name;
             Settings = settings;
             Type = type;

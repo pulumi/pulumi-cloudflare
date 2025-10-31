@@ -13,7 +13,6 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -139,14 +138,14 @@ public class R2BucketEventNotification extends com.pulumi.resources.CustomResour
      * 
      */
     @Export(name="rules", refs={List.class,R2BucketEventNotificationRule.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<R2BucketEventNotificationRule>> rules;
+    private Output<List<R2BucketEventNotificationRule>> rules;
 
     /**
      * @return Array of rules to drive notifications.
      * 
      */
-    public Output<Optional<List<R2BucketEventNotificationRule>>> rules() {
-        return Codegen.optional(this.rules);
+    public Output<List<R2BucketEventNotificationRule>> rules() {
+        return this.rules;
     }
 
     /**

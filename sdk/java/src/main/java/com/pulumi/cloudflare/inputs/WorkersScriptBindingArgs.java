@@ -278,14 +278,14 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Namespace to bind to.
+     * The name of the dispatch namespace.
      * 
      */
     @Import(name="namespace")
     private @Nullable Output<String> namespace;
 
     /**
-     * @return Namespace to bind to.
+     * @return The name of the dispatch namespace.
      * 
      */
     public Optional<Output<String>> namespace() {
@@ -957,7 +957,7 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param namespace Namespace to bind to.
+         * @param namespace The name of the dispatch namespace.
          * 
          * @return builder
          * 
@@ -968,7 +968,7 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param namespace Namespace to bind to.
+         * @param namespace The name of the dispatch namespace.
          * 
          * @return builder
          * 

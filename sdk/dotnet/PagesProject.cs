@@ -16,6 +16,292 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var examplePagesProject = new Cloudflare.PagesProject("example_pages_project", new()
+    ///     {
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Name = "my-pages-app",
+    ///         ProductionBranch = "main",
+    ///         BuildConfig = new Cloudflare.Inputs.PagesProjectBuildConfigArgs
+    ///         {
+    ///             BuildCaching = true,
+    ///             BuildCommand = "npm run build",
+    ///             DestinationDir = "build",
+    ///             RootDir = "/",
+    ///             WebAnalyticsTag = "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
+    ///             WebAnalyticsToken = "021e1057c18547eca7b79f2516f06o7x",
+    ///         },
+    ///         DeploymentConfigs = new Cloudflare.Inputs.PagesProjectDeploymentConfigsArgs
+    ///         {
+    ///             Preview = new Cloudflare.Inputs.PagesProjectDeploymentConfigsPreviewArgs
+    ///             {
+    ///                 AiBindings = 
+    ///                 {
+    ///                     { "AI_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsPreviewAiBindingsArgs
+    ///                     {
+    ///                         ProjectId = "some-project-id",
+    ///                     } },
+    ///                 },
+    ///                 AlwaysUseLatestCompatibilityDate = false,
+    ///                 AnalyticsEngineDatasets = 
+    ///                 {
+    ///                     { "ANALYTICS_ENGINE_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsArgs
+    ///                     {
+    ///                         Dataset = "api_analytics",
+    ///                     } },
+    ///                 },
+    ///                 Browsers = 
+    ///                 {
+    ///                     { "BROWSER", null },
+    ///                 },
+    ///                 BuildImageMajorVersion = 3,
+    ///                 CompatibilityDate = "2025-01-01",
+    ///                 CompatibilityFlags = new[]
+    ///                 {
+    ///                     "url_standard",
+    ///                 },
+    ///                 D1Databases = 
+    ///                 {
+    ///                     { "D1_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsPreviewD1DatabasesArgs
+    ///                     {
+    ///                         Id = "445e2955-951a-43f8-a35b-a4d0c8138f63",
+    ///                     } },
+    ///                 },
+    ///                 DurableObjectNamespaces = 
+    ///                 {
+    ///                     { "DO_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsPreviewDurableObjectNamespacesArgs
+    ///                     {
+    ///                         NamespaceId = "5eb63bbbe01eeed093cb22bb8f5acdc3",
+    ///                     } },
+    ///                 },
+    ///                 EnvVars = 
+    ///                 {
+    ///                     { "foo", new Cloudflare.Inputs.PagesProjectDeploymentConfigsPreviewEnvVarsArgs
+    ///                     {
+    ///                         Type = "plain_text",
+    ///                         Value = "hello world",
+    ///                     } },
+    ///                 },
+    ///                 FailOpen = true,
+    ///                 HyperdriveBindings = 
+    ///                 {
+    ///                     { "HYPERDRIVE", new Cloudflare.Inputs.PagesProjectDeploymentConfigsPreviewHyperdriveBindingsArgs
+    ///                     {
+    ///                         Id = "a76a99bc342644deb02c38d66082262a",
+    ///                     } },
+    ///                 },
+    ///                 KvNamespaces = 
+    ///                 {
+    ///                     { "KV_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsPreviewKvNamespacesArgs
+    ///                     {
+    ///                         NamespaceId = "5eb63bbbe01eeed093cb22bb8f5acdc3",
+    ///                     } },
+    ///                 },
+    ///                 Limits = new Cloudflare.Inputs.PagesProjectDeploymentConfigsPreviewLimitsArgs
+    ///                 {
+    ///                     CpuMs = 100,
+    ///                 },
+    ///                 MtlsCertificates = 
+    ///                 {
+    ///                     { "MTLS", new Cloudflare.Inputs.PagesProjectDeploymentConfigsPreviewMtlsCertificatesArgs
+    ///                     {
+    ///                         CertificateId = "d7cdd17c-916f-4cb7-aabe-585eb382ec4e",
+    ///                     } },
+    ///                 },
+    ///                 Placement = new Cloudflare.Inputs.PagesProjectDeploymentConfigsPreviewPlacementArgs
+    ///                 {
+    ///                     Mode = "smart",
+    ///                 },
+    ///                 QueueProducers = 
+    ///                 {
+    ///                     { "QUEUE_PRODUCER_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsPreviewQueueProducersArgs
+    ///                     {
+    ///                         Name = "some-queue",
+    ///                     } },
+    ///                 },
+    ///                 R2Buckets = 
+    ///                 {
+    ///                     { "R2_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsPreviewR2BucketsArgs
+    ///                     {
+    ///                         Jurisdiction = "eu",
+    ///                         Name = "some-bucket",
+    ///                     } },
+    ///                 },
+    ///                 Services = 
+    ///                 {
+    ///                     { "SERVICE_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsPreviewServicesArgs
+    ///                     {
+    ///                         Entrypoint = "MyHandler",
+    ///                         Environment = "production",
+    ///                         Service = "example-worker",
+    ///                     } },
+    ///                 },
+    ///                 UsageModel = "standard",
+    ///                 VectorizeBindings = 
+    ///                 {
+    ///                     { "VECTORIZE", new Cloudflare.Inputs.PagesProjectDeploymentConfigsPreviewVectorizeBindingsArgs
+    ///                     {
+    ///                         IndexName = "my_index",
+    ///                     } },
+    ///                 },
+    ///                 WranglerConfigHash = "abc123def456",
+    ///             },
+    ///             Production = new Cloudflare.Inputs.PagesProjectDeploymentConfigsProductionArgs
+    ///             {
+    ///                 AiBindings = 
+    ///                 {
+    ///                     { "AI_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsProductionAiBindingsArgs
+    ///                     {
+    ///                         ProjectId = "some-project-id",
+    ///                     } },
+    ///                 },
+    ///                 AlwaysUseLatestCompatibilityDate = false,
+    ///                 AnalyticsEngineDatasets = 
+    ///                 {
+    ///                     { "ANALYTICS_ENGINE_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsArgs
+    ///                     {
+    ///                         Dataset = "api_analytics",
+    ///                     } },
+    ///                 },
+    ///                 Browsers = 
+    ///                 {
+    ///                     { "BROWSER", null },
+    ///                 },
+    ///                 BuildImageMajorVersion = 3,
+    ///                 CompatibilityDate = "2025-01-01",
+    ///                 CompatibilityFlags = new[]
+    ///                 {
+    ///                     "url_standard",
+    ///                 },
+    ///                 D1Databases = 
+    ///                 {
+    ///                     { "D1_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsProductionD1DatabasesArgs
+    ///                     {
+    ///                         Id = "445e2955-951a-43f8-a35b-a4d0c8138f63",
+    ///                     } },
+    ///                 },
+    ///                 DurableObjectNamespaces = 
+    ///                 {
+    ///                     { "DO_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsProductionDurableObjectNamespacesArgs
+    ///                     {
+    ///                         NamespaceId = "5eb63bbbe01eeed093cb22bb8f5acdc3",
+    ///                     } },
+    ///                 },
+    ///                 EnvVars = 
+    ///                 {
+    ///                     { "foo", new Cloudflare.Inputs.PagesProjectDeploymentConfigsProductionEnvVarsArgs
+    ///                     {
+    ///                         Type = "plain_text",
+    ///                         Value = "hello world",
+    ///                     } },
+    ///                 },
+    ///                 FailOpen = true,
+    ///                 HyperdriveBindings = 
+    ///                 {
+    ///                     { "HYPERDRIVE", new Cloudflare.Inputs.PagesProjectDeploymentConfigsProductionHyperdriveBindingsArgs
+    ///                     {
+    ///                         Id = "a76a99bc342644deb02c38d66082262a",
+    ///                     } },
+    ///                 },
+    ///                 KvNamespaces = 
+    ///                 {
+    ///                     { "KV_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsProductionKvNamespacesArgs
+    ///                     {
+    ///                         NamespaceId = "5eb63bbbe01eeed093cb22bb8f5acdc3",
+    ///                     } },
+    ///                 },
+    ///                 Limits = new Cloudflare.Inputs.PagesProjectDeploymentConfigsProductionLimitsArgs
+    ///                 {
+    ///                     CpuMs = 100,
+    ///                 },
+    ///                 MtlsCertificates = 
+    ///                 {
+    ///                     { "MTLS", new Cloudflare.Inputs.PagesProjectDeploymentConfigsProductionMtlsCertificatesArgs
+    ///                     {
+    ///                         CertificateId = "d7cdd17c-916f-4cb7-aabe-585eb382ec4e",
+    ///                     } },
+    ///                 },
+    ///                 Placement = new Cloudflare.Inputs.PagesProjectDeploymentConfigsProductionPlacementArgs
+    ///                 {
+    ///                     Mode = "smart",
+    ///                 },
+    ///                 QueueProducers = 
+    ///                 {
+    ///                     { "QUEUE_PRODUCER_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsProductionQueueProducersArgs
+    ///                     {
+    ///                         Name = "some-queue",
+    ///                     } },
+    ///                 },
+    ///                 R2Buckets = 
+    ///                 {
+    ///                     { "R2_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsProductionR2BucketsArgs
+    ///                     {
+    ///                         Jurisdiction = "eu",
+    ///                         Name = "some-bucket",
+    ///                     } },
+    ///                 },
+    ///                 Services = 
+    ///                 {
+    ///                     { "SERVICE_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsProductionServicesArgs
+    ///                     {
+    ///                         Entrypoint = "MyHandler",
+    ///                         Environment = "production",
+    ///                         Service = "example-worker",
+    ///                     } },
+    ///                 },
+    ///                 UsageModel = "standard",
+    ///                 VectorizeBindings = 
+    ///                 {
+    ///                     { "VECTORIZE", new Cloudflare.Inputs.PagesProjectDeploymentConfigsProductionVectorizeBindingsArgs
+    ///                     {
+    ///                         IndexName = "my_index",
+    ///                     } },
+    ///                 },
+    ///                 WranglerConfigHash = "abc123def456",
+    ///             },
+    ///         },
+    ///         Source = new Cloudflare.Inputs.PagesProjectSourceArgs
+    ///         {
+    ///             Config = new Cloudflare.Inputs.PagesProjectSourceConfigArgs
+    ///             {
+    ///                 DeploymentsEnabled = true,
+    ///                 Owner = "my-org",
+    ///                 PathExcludes = new[]
+    ///                 {
+    ///                     "string",
+    ///                 },
+    ///                 PathIncludes = new[]
+    ///                 {
+    ///                     "string",
+    ///                 },
+    ///                 PrCommentsEnabled = true,
+    ///                 PreviewBranchExcludes = new[]
+    ///                 {
+    ///                     "string",
+    ///                 },
+    ///                 PreviewBranchIncludes = new[]
+    ///                 {
+    ///                     "string",
+    ///                 },
+    ///                 PreviewDeploymentSetting = "all",
+    ///                 ProductionBranch = "main",
+    ///                 ProductionDeploymentsEnabled = true,
+    ///                 RepoName = "my-repo",
+    ///             },
+    ///             Type = "github",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// !&gt; It is not possible to import a pages project with secret environment variables. If you have a secret environment variable, you must remove it from your project before importing it.
@@ -37,10 +323,10 @@ namespace Pulumi.Cloudflare
         /// Configs for the project build process.
         /// </summary>
         [Output("buildConfig")]
-        public Output<Outputs.PagesProjectBuildConfig?> BuildConfig { get; private set; } = null!;
+        public Output<Outputs.PagesProjectBuildConfig> BuildConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Most recent deployment to the repo.
+        /// Most recent production deployment of the project.
         /// </summary>
         [Output("canonicalDeployment")]
         public Output<Outputs.PagesProjectCanonicalDeployment> CanonicalDeployment { get; private set; } = null!;
@@ -55,7 +341,7 @@ namespace Pulumi.Cloudflare
         /// Configs for deployments in a project.
         /// </summary>
         [Output("deploymentConfigs")]
-        public Output<Outputs.PagesProjectDeploymentConfigs?> DeploymentConfigs { get; private set; } = null!;
+        public Output<Outputs.PagesProjectDeploymentConfigs> DeploymentConfigs { get; private set; } = null!;
 
         /// <summary>
         /// A list of associated custom domains for the project.
@@ -64,7 +350,19 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<string>> Domains { get; private set; } = null!;
 
         /// <summary>
-        /// Most recent deployment to the repo.
+        /// Framework the project is using.
+        /// </summary>
+        [Output("framework")]
+        public Output<string> Framework { get; private set; } = null!;
+
+        /// <summary>
+        /// Version of the framework the project is using.
+        /// </summary>
+        [Output("frameworkVersion")]
+        public Output<string> FrameworkVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// Most recent deployment of the project.
         /// </summary>
         [Output("latestDeployment")]
         public Output<Outputs.PagesProjectLatestDeployment> LatestDeployment { get; private set; } = null!;
@@ -76,19 +374,37 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Name of the preview script.
+        /// </summary>
+        [Output("previewScriptName")]
+        public Output<string> PreviewScriptName { get; private set; } = null!;
+
+        /// <summary>
         /// Production branch of the project. Used to identify production deployments.
         /// </summary>
         [Output("productionBranch")]
-        public Output<string?> ProductionBranch { get; private set; } = null!;
+        public Output<string> ProductionBranch { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the production script.
+        /// </summary>
+        [Output("productionScriptName")]
+        public Output<string> ProductionScriptName { get; private set; } = null!;
 
         [Output("source")]
-        public Output<Outputs.PagesProjectSource?> Source { get; private set; } = null!;
+        public Output<Outputs.PagesProjectSource> Source { get; private set; } = null!;
 
         /// <summary>
         /// The Cloudflare subdomain associated with the project.
         /// </summary>
         [Output("subdomain")]
         public Output<string> Subdomain { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether the project uses functions.
+        /// </summary>
+        [Output("usesFunctions")]
+        public Output<bool> UsesFunctions { get; private set; } = null!;
 
 
         /// <summary>
@@ -163,8 +479,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Production branch of the project. Used to identify production deployments.
         /// </summary>
-        [Input("productionBranch")]
-        public Input<string>? ProductionBranch { get; set; }
+        [Input("productionBranch", required: true)]
+        public Input<string> ProductionBranch { get; set; } = null!;
 
         [Input("source")]
         public Input<Inputs.PagesProjectSourceArgs>? Source { get; set; }
@@ -190,7 +506,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.PagesProjectBuildConfigGetArgs>? BuildConfig { get; set; }
 
         /// <summary>
-        /// Most recent deployment to the repo.
+        /// Most recent production deployment of the project.
         /// </summary>
         [Input("canonicalDeployment")]
         public Input<Inputs.PagesProjectCanonicalDeploymentGetArgs>? CanonicalDeployment { get; set; }
@@ -220,7 +536,19 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Most recent deployment to the repo.
+        /// Framework the project is using.
+        /// </summary>
+        [Input("framework")]
+        public Input<string>? Framework { get; set; }
+
+        /// <summary>
+        /// Version of the framework the project is using.
+        /// </summary>
+        [Input("frameworkVersion")]
+        public Input<string>? FrameworkVersion { get; set; }
+
+        /// <summary>
+        /// Most recent deployment of the project.
         /// </summary>
         [Input("latestDeployment")]
         public Input<Inputs.PagesProjectLatestDeploymentGetArgs>? LatestDeployment { get; set; }
@@ -232,10 +560,22 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Name of the preview script.
+        /// </summary>
+        [Input("previewScriptName")]
+        public Input<string>? PreviewScriptName { get; set; }
+
+        /// <summary>
         /// Production branch of the project. Used to identify production deployments.
         /// </summary>
         [Input("productionBranch")]
         public Input<string>? ProductionBranch { get; set; }
+
+        /// <summary>
+        /// Name of the production script.
+        /// </summary>
+        [Input("productionScriptName")]
+        public Input<string>? ProductionScriptName { get; set; }
 
         [Input("source")]
         public Input<Inputs.PagesProjectSourceGetArgs>? Source { get; set; }
@@ -245,6 +585,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("subdomain")]
         public Input<string>? Subdomain { get; set; }
+
+        /// <summary>
+        /// Whether the project uses functions.
+        /// </summary>
+        [Input("usesFunctions")]
+        public Input<bool>? UsesFunctions { get; set; }
 
         public PagesProjectState()
         {

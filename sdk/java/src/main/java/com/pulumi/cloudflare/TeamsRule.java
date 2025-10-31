@@ -24,6 +24,169 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.ZeroTrustGatewayPolicy;
+ * import com.pulumi.cloudflare.ZeroTrustGatewayPolicyArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyExpirationArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsBlockPageArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsEgressArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsPayloadLogArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsQuarantineArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsRedirectArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyScheduleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleZeroTrustGatewayPolicy = new ZeroTrustGatewayPolicy("exampleZeroTrustGatewayPolicy", ZeroTrustGatewayPolicyArgs.builder()
+ *             .accountId("699d98642c564d2e855e9661899b7252")
+ *             .action("allow")
+ *             .name("block bad websites")
+ *             .description("Block bad websites based on their host name.")
+ *             .devicePosture("any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})")
+ *             .enabled(true)
+ *             .expiration(ZeroTrustGatewayPolicyExpirationArgs.builder()
+ *                 .expiresAt("2014-01-01T05:20:20Z")
+ *                 .duration(10)
+ *                 .build())
+ *             .filters("http")
+ *             .identity("any(identity.groups.name[*] in {\"finance\"})")
+ *             .precedence(0)
+ *             .ruleSettings(ZeroTrustGatewayPolicyRuleSettingsArgs.builder()
+ *                 .addHeaders(Map.ofEntries(
+ *                     Map.entry("My-Next-Header",                     
+ *                         "foo",
+ *                         "bar"),
+ *                     Map.entry("X-Custom-Header-Name", "somecustomvalue")
+ *                 ))
+ *                 .allowChildBypass(false)
+ *                 .auditSsh(ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs.builder()
+ *                     .commandLogging(false)
+ *                     .build())
+ *                 .bisoAdminControls(ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs.builder()
+ *                     .copy("remote_only")
+ *                     .dcp(true)
+ *                     .dd(true)
+ *                     .dk(true)
+ *                     .download("enabled")
+ *                     .dp(false)
+ *                     .du(true)
+ *                     .keyboard("enabled")
+ *                     .paste("enabled")
+ *                     .printing("enabled")
+ *                     .upload("enabled")
+ *                     .version("v1")
+ *                     .build())
+ *                 .blockPage(ZeroTrustGatewayPolicyRuleSettingsBlockPageArgs.builder()
+ *                     .targetUri("https://example.com")
+ *                     .includeContext(true)
+ *                     .build())
+ *                 .blockPageEnabled(true)
+ *                 .blockReason("This website is a security risk")
+ *                 .bypassParentRule(false)
+ *                 .checkSession(ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgs.builder()
+ *                     .duration("300s")
+ *                     .enforce(true)
+ *                     .build())
+ *                 .dnsResolvers(ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgs.builder()
+ *                     .ipv4s(ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Args.builder()
+ *                         .ip("2.2.2.2")
+ *                         .port(5053)
+ *                         .routeThroughPrivateNetwork(true)
+ *                         .vnetId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+ *                         .build())
+ *                     .ipv6s(ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6Args.builder()
+ *                         .ip("2001:DB8::")
+ *                         .port(5053)
+ *                         .routeThroughPrivateNetwork(true)
+ *                         .vnetId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+ *                         .build())
+ *                     .build())
+ *                 .egress(ZeroTrustGatewayPolicyRuleSettingsEgressArgs.builder()
+ *                     .ipv4("192.0.2.2")
+ *                     .ipv4Fallback("192.0.2.3")
+ *                     .ipv6("2001:DB8::/64")
+ *                     .build())
+ *                 .ignoreCnameCategoryMatches(true)
+ *                 .insecureDisableDnssecValidation(false)
+ *                 .ipCategories(true)
+ *                 .ipIndicatorFeeds(true)
+ *                 .l4override(ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs.builder()
+ *                     .ip("1.1.1.1")
+ *                     .port(0)
+ *                     .build())
+ *                 .notificationSettings(ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgs.builder()
+ *                     .enabled(true)
+ *                     .includeContext(true)
+ *                     .msg("msg")
+ *                     .supportUrl("support_url")
+ *                     .build())
+ *                 .overrideHost("example.com")
+ *                 .overrideIps(                
+ *                     "1.1.1.1",
+ *                     "2.2.2.2")
+ *                 .payloadLog(ZeroTrustGatewayPolicyRuleSettingsPayloadLogArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .quarantine(ZeroTrustGatewayPolicyRuleSettingsQuarantineArgs.builder()
+ *                     .fileTypes("exe")
+ *                     .build())
+ *                 .redirect(ZeroTrustGatewayPolicyRuleSettingsRedirectArgs.builder()
+ *                     .targetUri("https://example.com")
+ *                     .includeContext(true)
+ *                     .preservePathAndQuery(true)
+ *                     .build())
+ *                 .resolveDnsInternally(ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgs.builder()
+ *                     .fallback("none")
+ *                     .viewId("view_id")
+ *                     .build())
+ *                 .resolveDnsThroughCloudflare(true)
+ *                 .untrustedCert(ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgs.builder()
+ *                     .action("error")
+ *                     .build())
+ *                 .build())
+ *             .schedule(ZeroTrustGatewayPolicyScheduleArgs.builder()
+ *                 .fri("08:00-12:30,13:30-17:00")
+ *                 .mon("08:00-12:30,13:30-17:00")
+ *                 .sat("08:00-12:30,13:30-17:00")
+ *                 .sun("08:00-12:30,13:30-17:00")
+ *                 .thu("08:00-12:30,13:30-17:00")
+ *                 .timeZone("America/New York")
+ *                 .tue("08:00-12:30,13:30-17:00")
+ *                 .wed("08:00-12:30,13:30-17:00")
+ *                 .build())
+ *             .traffic("http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh
@@ -128,14 +291,14 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
         return this.expiration;
     }
     /**
-     * Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+     * Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
      * 
      */
     @Export(name="filters", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> filters;
 
     /**
-     * @return Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+     * @return Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
      * 
      */
     public Output<Optional<List<String>>> filters() {

@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * const exampleNotificationPolicyWebhooks = cloudflare.getNotificationPolicyWebhooks({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     webhookId: "b115d5ec-15c6-41ee-8b76-92c449b5227b",
+ *     webhookId: "b115d5ec15c641ee8b7692c449b5227b",
  * });
  * ```
  */
@@ -94,7 +94,7 @@ export interface GetNotificationPolicyWebhooksResult {
  *
  * const exampleNotificationPolicyWebhooks = cloudflare.getNotificationPolicyWebhooks({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     webhookId: "b115d5ec-15c6-41ee-8b76-92c449b5227b",
+ *     webhookId: "b115d5ec15c641ee8b7692c449b5227b",
  * });
  * ```
  */

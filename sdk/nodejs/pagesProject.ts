@@ -13,6 +13,207 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const examplePagesProject = new cloudflare.PagesProject("example_pages_project", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     name: "my-pages-app",
+ *     productionBranch: "main",
+ *     buildConfig: {
+ *         buildCaching: true,
+ *         buildCommand: "npm run build",
+ *         destinationDir: "build",
+ *         rootDir: "/",
+ *         webAnalyticsTag: "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
+ *         webAnalyticsToken: "021e1057c18547eca7b79f2516f06o7x",
+ *     },
+ *     deploymentConfigs: {
+ *         preview: {
+ *             aiBindings: {
+ *                 AI_BINDING: {
+ *                     projectId: "some-project-id",
+ *                 },
+ *             },
+ *             alwaysUseLatestCompatibilityDate: false,
+ *             analyticsEngineDatasets: {
+ *                 ANALYTICS_ENGINE_BINDING: {
+ *                     dataset: "api_analytics",
+ *                 },
+ *             },
+ *             browsers: {
+ *                 BROWSER: {},
+ *             },
+ *             buildImageMajorVersion: 3,
+ *             compatibilityDate: "2025-01-01",
+ *             compatibilityFlags: ["url_standard"],
+ *             d1Databases: {
+ *                 D1_BINDING: {
+ *                     id: "445e2955-951a-43f8-a35b-a4d0c8138f63",
+ *                 },
+ *             },
+ *             durableObjectNamespaces: {
+ *                 DO_BINDING: {
+ *                     namespaceId: "5eb63bbbe01eeed093cb22bb8f5acdc3",
+ *                 },
+ *             },
+ *             envVars: {
+ *                 foo: {
+ *                     type: "plain_text",
+ *                     value: "hello world",
+ *                 },
+ *             },
+ *             failOpen: true,
+ *             hyperdriveBindings: {
+ *                 HYPERDRIVE: {
+ *                     id: "a76a99bc342644deb02c38d66082262a",
+ *                 },
+ *             },
+ *             kvNamespaces: {
+ *                 KV_BINDING: {
+ *                     namespaceId: "5eb63bbbe01eeed093cb22bb8f5acdc3",
+ *                 },
+ *             },
+ *             limits: {
+ *                 cpuMs: 100,
+ *             },
+ *             mtlsCertificates: {
+ *                 MTLS: {
+ *                     certificateId: "d7cdd17c-916f-4cb7-aabe-585eb382ec4e",
+ *                 },
+ *             },
+ *             placement: {
+ *                 mode: "smart",
+ *             },
+ *             queueProducers: {
+ *                 QUEUE_PRODUCER_BINDING: {
+ *                     name: "some-queue",
+ *                 },
+ *             },
+ *             r2Buckets: {
+ *                 R2_BINDING: {
+ *                     jurisdiction: "eu",
+ *                     name: "some-bucket",
+ *                 },
+ *             },
+ *             services: {
+ *                 SERVICE_BINDING: {
+ *                     entrypoint: "MyHandler",
+ *                     environment: "production",
+ *                     service: "example-worker",
+ *                 },
+ *             },
+ *             usageModel: "standard",
+ *             vectorizeBindings: {
+ *                 VECTORIZE: {
+ *                     indexName: "my_index",
+ *                 },
+ *             },
+ *             wranglerConfigHash: "abc123def456",
+ *         },
+ *         production: {
+ *             aiBindings: {
+ *                 AI_BINDING: {
+ *                     projectId: "some-project-id",
+ *                 },
+ *             },
+ *             alwaysUseLatestCompatibilityDate: false,
+ *             analyticsEngineDatasets: {
+ *                 ANALYTICS_ENGINE_BINDING: {
+ *                     dataset: "api_analytics",
+ *                 },
+ *             },
+ *             browsers: {
+ *                 BROWSER: {},
+ *             },
+ *             buildImageMajorVersion: 3,
+ *             compatibilityDate: "2025-01-01",
+ *             compatibilityFlags: ["url_standard"],
+ *             d1Databases: {
+ *                 D1_BINDING: {
+ *                     id: "445e2955-951a-43f8-a35b-a4d0c8138f63",
+ *                 },
+ *             },
+ *             durableObjectNamespaces: {
+ *                 DO_BINDING: {
+ *                     namespaceId: "5eb63bbbe01eeed093cb22bb8f5acdc3",
+ *                 },
+ *             },
+ *             envVars: {
+ *                 foo: {
+ *                     type: "plain_text",
+ *                     value: "hello world",
+ *                 },
+ *             },
+ *             failOpen: true,
+ *             hyperdriveBindings: {
+ *                 HYPERDRIVE: {
+ *                     id: "a76a99bc342644deb02c38d66082262a",
+ *                 },
+ *             },
+ *             kvNamespaces: {
+ *                 KV_BINDING: {
+ *                     namespaceId: "5eb63bbbe01eeed093cb22bb8f5acdc3",
+ *                 },
+ *             },
+ *             limits: {
+ *                 cpuMs: 100,
+ *             },
+ *             mtlsCertificates: {
+ *                 MTLS: {
+ *                     certificateId: "d7cdd17c-916f-4cb7-aabe-585eb382ec4e",
+ *                 },
+ *             },
+ *             placement: {
+ *                 mode: "smart",
+ *             },
+ *             queueProducers: {
+ *                 QUEUE_PRODUCER_BINDING: {
+ *                     name: "some-queue",
+ *                 },
+ *             },
+ *             r2Buckets: {
+ *                 R2_BINDING: {
+ *                     jurisdiction: "eu",
+ *                     name: "some-bucket",
+ *                 },
+ *             },
+ *             services: {
+ *                 SERVICE_BINDING: {
+ *                     entrypoint: "MyHandler",
+ *                     environment: "production",
+ *                     service: "example-worker",
+ *                 },
+ *             },
+ *             usageModel: "standard",
+ *             vectorizeBindings: {
+ *                 VECTORIZE: {
+ *                     indexName: "my_index",
+ *                 },
+ *             },
+ *             wranglerConfigHash: "abc123def456",
+ *         },
+ *     },
+ *     source: {
+ *         config: {
+ *             deploymentsEnabled: true,
+ *             owner: "my-org",
+ *             pathExcludes: ["string"],
+ *             pathIncludes: ["string"],
+ *             prCommentsEnabled: true,
+ *             previewBranchExcludes: ["string"],
+ *             previewBranchIncludes: ["string"],
+ *             previewDeploymentSetting: "all",
+ *             productionBranch: "main",
+ *             productionDeploymentsEnabled: true,
+ *             repoName: "my-repo",
+ *         },
+ *         type: "github",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * !> It is not possible to import a pages project with secret environment variables. If you have a secret environment variable, you must remove it from your project before importing it.
@@ -56,9 +257,9 @@ export class PagesProject extends pulumi.CustomResource {
     /**
      * Configs for the project build process.
      */
-    declare public readonly buildConfig: pulumi.Output<outputs.PagesProjectBuildConfig | undefined>;
+    declare public readonly buildConfig: pulumi.Output<outputs.PagesProjectBuildConfig>;
     /**
-     * Most recent deployment to the repo.
+     * Most recent production deployment of the project.
      */
     declare public /*out*/ readonly canonicalDeployment: pulumi.Output<outputs.PagesProjectCanonicalDeployment>;
     /**
@@ -68,13 +269,21 @@ export class PagesProject extends pulumi.CustomResource {
     /**
      * Configs for deployments in a project.
      */
-    declare public readonly deploymentConfigs: pulumi.Output<outputs.PagesProjectDeploymentConfigs | undefined>;
+    declare public readonly deploymentConfigs: pulumi.Output<outputs.PagesProjectDeploymentConfigs>;
     /**
      * A list of associated custom domains for the project.
      */
     declare public /*out*/ readonly domains: pulumi.Output<string[]>;
     /**
-     * Most recent deployment to the repo.
+     * Framework the project is using.
+     */
+    declare public /*out*/ readonly framework: pulumi.Output<string>;
+    /**
+     * Version of the framework the project is using.
+     */
+    declare public /*out*/ readonly frameworkVersion: pulumi.Output<string>;
+    /**
+     * Most recent deployment of the project.
      */
     declare public /*out*/ readonly latestDeployment: pulumi.Output<outputs.PagesProjectLatestDeployment>;
     /**
@@ -82,14 +291,26 @@ export class PagesProject extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Name of the preview script.
+     */
+    declare public /*out*/ readonly previewScriptName: pulumi.Output<string>;
+    /**
      * Production branch of the project. Used to identify production deployments.
      */
-    declare public readonly productionBranch: pulumi.Output<string | undefined>;
-    declare public readonly source: pulumi.Output<outputs.PagesProjectSource | undefined>;
+    declare public readonly productionBranch: pulumi.Output<string>;
+    /**
+     * Name of the production script.
+     */
+    declare public /*out*/ readonly productionScriptName: pulumi.Output<string>;
+    declare public readonly source: pulumi.Output<outputs.PagesProjectSource>;
     /**
      * The Cloudflare subdomain associated with the project.
      */
     declare public /*out*/ readonly subdomain: pulumi.Output<string>;
+    /**
+     * Whether the project uses functions.
+     */
+    declare public /*out*/ readonly usesFunctions: pulumi.Output<boolean>;
 
     /**
      * Create a PagesProject resource with the given unique name, arguments, and options.
@@ -110,11 +331,16 @@ export class PagesProject extends pulumi.CustomResource {
             resourceInputs["createdOn"] = state?.createdOn;
             resourceInputs["deploymentConfigs"] = state?.deploymentConfigs;
             resourceInputs["domains"] = state?.domains;
+            resourceInputs["framework"] = state?.framework;
+            resourceInputs["frameworkVersion"] = state?.frameworkVersion;
             resourceInputs["latestDeployment"] = state?.latestDeployment;
             resourceInputs["name"] = state?.name;
+            resourceInputs["previewScriptName"] = state?.previewScriptName;
             resourceInputs["productionBranch"] = state?.productionBranch;
+            resourceInputs["productionScriptName"] = state?.productionScriptName;
             resourceInputs["source"] = state?.source;
             resourceInputs["subdomain"] = state?.subdomain;
+            resourceInputs["usesFunctions"] = state?.usesFunctions;
         } else {
             const args = argsOrState as PagesProjectArgs | undefined;
             if (args?.accountId === undefined && !opts.urn) {
@@ -122,6 +348,9 @@ export class PagesProject extends pulumi.CustomResource {
             }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
+            }
+            if (args?.productionBranch === undefined && !opts.urn) {
+                throw new Error("Missing required property 'productionBranch'");
             }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["buildConfig"] = args?.buildConfig;
@@ -132,8 +361,13 @@ export class PagesProject extends pulumi.CustomResource {
             resourceInputs["canonicalDeployment"] = undefined /*out*/;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["domains"] = undefined /*out*/;
+            resourceInputs["framework"] = undefined /*out*/;
+            resourceInputs["frameworkVersion"] = undefined /*out*/;
             resourceInputs["latestDeployment"] = undefined /*out*/;
+            resourceInputs["previewScriptName"] = undefined /*out*/;
+            resourceInputs["productionScriptName"] = undefined /*out*/;
             resourceInputs["subdomain"] = undefined /*out*/;
+            resourceInputs["usesFunctions"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PagesProject.__pulumiType, name, resourceInputs, opts);
@@ -153,7 +387,7 @@ export interface PagesProjectState {
      */
     buildConfig?: pulumi.Input<inputs.PagesProjectBuildConfig>;
     /**
-     * Most recent deployment to the repo.
+     * Most recent production deployment of the project.
      */
     canonicalDeployment?: pulumi.Input<inputs.PagesProjectCanonicalDeployment>;
     /**
@@ -169,7 +403,15 @@ export interface PagesProjectState {
      */
     domains?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Most recent deployment to the repo.
+     * Framework the project is using.
+     */
+    framework?: pulumi.Input<string>;
+    /**
+     * Version of the framework the project is using.
+     */
+    frameworkVersion?: pulumi.Input<string>;
+    /**
+     * Most recent deployment of the project.
      */
     latestDeployment?: pulumi.Input<inputs.PagesProjectLatestDeployment>;
     /**
@@ -177,14 +419,26 @@ export interface PagesProjectState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Name of the preview script.
+     */
+    previewScriptName?: pulumi.Input<string>;
+    /**
      * Production branch of the project. Used to identify production deployments.
      */
     productionBranch?: pulumi.Input<string>;
+    /**
+     * Name of the production script.
+     */
+    productionScriptName?: pulumi.Input<string>;
     source?: pulumi.Input<inputs.PagesProjectSource>;
     /**
      * The Cloudflare subdomain associated with the project.
      */
     subdomain?: pulumi.Input<string>;
+    /**
+     * Whether the project uses functions.
+     */
+    usesFunctions?: pulumi.Input<boolean>;
 }
 
 /**
@@ -210,6 +464,6 @@ export interface PagesProjectArgs {
     /**
      * Production branch of the project. Used to identify production deployments.
      */
-    productionBranch?: pulumi.Input<string>;
+    productionBranch: pulumi.Input<string>;
     source?: pulumi.Input<inputs.PagesProjectSource>;
 }

@@ -70,7 +70,7 @@ type LookupZeroTrustGatewayPolicyResult struct {
 	Enabled bool `pulumi:"enabled"`
 	// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
 	Expiration GetZeroTrustGatewayPolicyExpiration `pulumi:"expiration"`
-	// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+	// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
 	Filters []string `pulumi:"filters"`
 	// Identify the API resource with a UUID.
 	Id       string `pulumi:"id"`
@@ -170,7 +170,7 @@ func (o LookupZeroTrustGatewayPolicyResultOutput) Expiration() GetZeroTrustGatew
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) GetZeroTrustGatewayPolicyExpiration { return v.Expiration }).(GetZeroTrustGatewayPolicyExpirationOutput)
 }
 
-// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
 func (o LookupZeroTrustGatewayPolicyResultOutput) Filters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) []string { return v.Filters }).(pulumi.StringArrayOutput)
 }

@@ -52,6 +52,8 @@ type Account struct {
 
 	// Timestamp for the creation of the account
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
+	// Parent container details
+	ManagedBy AccountManagedByOutput `pulumi:"managedBy"`
 	// Account name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Account settings
@@ -97,6 +99,8 @@ func GetAccount(ctx *pulumi.Context,
 type accountState struct {
 	// Timestamp for the creation of the account
 	CreatedOn *string `pulumi:"createdOn"`
+	// Parent container details
+	ManagedBy *AccountManagedBy `pulumi:"managedBy"`
 	// Account name
 	Name *string `pulumi:"name"`
 	// Account settings
@@ -110,6 +114,8 @@ type accountState struct {
 type AccountState struct {
 	// Timestamp for the creation of the account
 	CreatedOn pulumi.StringPtrInput
+	// Parent container details
+	ManagedBy AccountManagedByPtrInput
 	// Account name
 	Name pulumi.StringPtrInput
 	// Account settings
@@ -125,6 +131,8 @@ func (AccountState) ElementType() reflect.Type {
 }
 
 type accountArgs struct {
+	// Parent container details
+	ManagedBy *AccountManagedBy `pulumi:"managedBy"`
 	// Account name
 	Name string `pulumi:"name"`
 	// Account settings
@@ -137,6 +145,8 @@ type accountArgs struct {
 
 // The set of arguments for constructing a Account resource.
 type AccountArgs struct {
+	// Parent container details
+	ManagedBy AccountManagedByPtrInput
 	// Account name
 	Name pulumi.StringInput
 	// Account settings
@@ -237,6 +247,11 @@ func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOu
 // Timestamp for the creation of the account
 func (o AccountOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// Parent container details
+func (o AccountOutput) ManagedBy() AccountManagedByOutput {
+	return o.ApplyT(func(v *Account) AccountManagedByOutput { return v.ManagedBy }).(AccountManagedByOutput)
 }
 
 // Account name

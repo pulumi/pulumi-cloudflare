@@ -12,6 +12,107 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleWorkerVersion = new Cloudflare.WorkerVersion("example_worker_version", new()
+    ///     {
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         WorkerId = "worker_id",
+    ///         Annotations = new Cloudflare.Inputs.WorkerVersionAnnotationsArgs
+    ///         {
+    ///             WorkersMessage = "Fixed bug.",
+    ///             WorkersTag = "v1.0.1",
+    ///         },
+    ///         Assets = new Cloudflare.Inputs.WorkerVersionAssetsArgs
+    ///         {
+    ///             Config = new Cloudflare.Inputs.WorkerVersionAssetsConfigArgs
+    ///             {
+    ///                 HtmlHandling = "auto-trailing-slash",
+    ///                 NotFoundHandling = "404-page",
+    ///                 RunWorkerFirsts = new[]
+    ///                 {
+    ///                     "string",
+    ///                 },
+    ///             },
+    ///             Jwt = "jwt",
+    ///         },
+    ///         Bindings = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.WorkerVersionBindingArgs
+    ///             {
+    ///                 Name = "MY_ENV_VAR",
+    ///                 Text = "my_data",
+    ///                 Type = "plain_text",
+    ///             },
+    ///         },
+    ///         CompatibilityDate = "2021-01-01",
+    ///         CompatibilityFlags = new[]
+    ///         {
+    ///             "nodejs_compat",
+    ///         },
+    ///         Limits = new Cloudflare.Inputs.WorkerVersionLimitsArgs
+    ///         {
+    ///             CpuMs = 50,
+    ///         },
+    ///         MainModule = "index.js",
+    ///         Migrations = new Cloudflare.Inputs.WorkerVersionMigrationsArgs
+    ///         {
+    ///             DeletedClasses = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             NewClasses = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             NewSqliteClasses = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             NewTag = "v2",
+    ///             OldTag = "v1",
+    ///             RenamedClasses = new[]
+    ///             {
+    ///                 new Cloudflare.Inputs.WorkerVersionMigrationsRenamedClassArgs
+    ///                 {
+    ///                     From = "from",
+    ///                     To = "to",
+    ///                 },
+    ///             },
+    ///             TransferredClasses = new[]
+    ///             {
+    ///                 new Cloudflare.Inputs.WorkerVersionMigrationsTransferredClassArgs
+    ///                 {
+    ///                     From = "from",
+    ///                     FromScript = "from_script",
+    ///                     To = "to",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Modules = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.WorkerVersionModuleArgs
+    ///             {
+    ///                 ContentFile = "dist/index.js",
+    ///                 ContentType = "application/javascript+module",
+    ///                 Name = "index.js",
+    ///             },
+    ///         },
+    ///         Placement = new Cloudflare.Inputs.WorkerVersionPlacementArgs
+    ///         {
+    ///             Mode = "smart",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

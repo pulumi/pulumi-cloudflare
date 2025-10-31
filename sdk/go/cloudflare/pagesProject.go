@@ -19,6 +19,234 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewPagesProject(ctx, "example_pages_project", &cloudflare.PagesProjectArgs{
+//				AccountId:        pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Name:             pulumi.String("my-pages-app"),
+//				ProductionBranch: pulumi.String("main"),
+//				BuildConfig: &cloudflare.PagesProjectBuildConfigArgs{
+//					BuildCaching:      pulumi.Bool(true),
+//					BuildCommand:      pulumi.String("npm run build"),
+//					DestinationDir:    pulumi.String("build"),
+//					RootDir:           pulumi.String("/"),
+//					WebAnalyticsTag:   pulumi.String("cee1c73f6e4743d0b5e6bb1a0bcaabcc"),
+//					WebAnalyticsToken: pulumi.String("021e1057c18547eca7b79f2516f06o7x"),
+//				},
+//				DeploymentConfigs: &cloudflare.PagesProjectDeploymentConfigsArgs{
+//					Preview: &cloudflare.PagesProjectDeploymentConfigsPreviewArgs{
+//						AiBindings: cloudflare.PagesProjectDeploymentConfigsPreviewAiBindingsMap{
+//							"AI_BINDING": &cloudflare.PagesProjectDeploymentConfigsPreviewAiBindingsArgs{
+//								ProjectId: pulumi.String("some-project-id"),
+//							},
+//						},
+//						AlwaysUseLatestCompatibilityDate: pulumi.Bool(false),
+//						AnalyticsEngineDatasets: cloudflare.PagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMap{
+//							"ANALYTICS_ENGINE_BINDING": &cloudflare.PagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsArgs{
+//								Dataset: pulumi.String("api_analytics"),
+//							},
+//						},
+//						Browsers: cloudflare.PagesProjectDeploymentConfigsPreviewBrowsersMap{
+//							"BROWSER": &cloudflare.PagesProjectDeploymentConfigsPreviewBrowsersArgs{},
+//						},
+//						BuildImageMajorVersion: pulumi.Int(3),
+//						CompatibilityDate:      pulumi.String("2025-01-01"),
+//						CompatibilityFlags: pulumi.StringArray{
+//							pulumi.String("url_standard"),
+//						},
+//						D1Databases: cloudflare.PagesProjectDeploymentConfigsPreviewD1DatabasesMap{
+//							"D1_BINDING": &cloudflare.PagesProjectDeploymentConfigsPreviewD1DatabasesArgs{
+//								Id: pulumi.String("445e2955-951a-43f8-a35b-a4d0c8138f63"),
+//							},
+//						},
+//						DurableObjectNamespaces: cloudflare.PagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMap{
+//							"DO_BINDING": &cloudflare.PagesProjectDeploymentConfigsPreviewDurableObjectNamespacesArgs{
+//								NamespaceId: pulumi.String("5eb63bbbe01eeed093cb22bb8f5acdc3"),
+//							},
+//						},
+//						EnvVars: cloudflare.PagesProjectDeploymentConfigsPreviewEnvVarsMap{
+//							"foo": &cloudflare.PagesProjectDeploymentConfigsPreviewEnvVarsArgs{
+//								Type:  pulumi.String("plain_text"),
+//								Value: pulumi.String("hello world"),
+//							},
+//						},
+//						FailOpen: pulumi.Bool(true),
+//						HyperdriveBindings: cloudflare.PagesProjectDeploymentConfigsPreviewHyperdriveBindingsMap{
+//							"HYPERDRIVE": &cloudflare.PagesProjectDeploymentConfigsPreviewHyperdriveBindingsArgs{
+//								Id: pulumi.String("a76a99bc342644deb02c38d66082262a"),
+//							},
+//						},
+//						KvNamespaces: cloudflare.PagesProjectDeploymentConfigsPreviewKvNamespacesMap{
+//							"KV_BINDING": &cloudflare.PagesProjectDeploymentConfigsPreviewKvNamespacesArgs{
+//								NamespaceId: pulumi.String("5eb63bbbe01eeed093cb22bb8f5acdc3"),
+//							},
+//						},
+//						Limits: &cloudflare.PagesProjectDeploymentConfigsPreviewLimitsArgs{
+//							CpuMs: pulumi.Int(100),
+//						},
+//						MtlsCertificates: cloudflare.PagesProjectDeploymentConfigsPreviewMtlsCertificatesMap{
+//							"MTLS": &cloudflare.PagesProjectDeploymentConfigsPreviewMtlsCertificatesArgs{
+//								CertificateId: pulumi.String("d7cdd17c-916f-4cb7-aabe-585eb382ec4e"),
+//							},
+//						},
+//						Placement: &cloudflare.PagesProjectDeploymentConfigsPreviewPlacementArgs{
+//							Mode: pulumi.String("smart"),
+//						},
+//						QueueProducers: cloudflare.PagesProjectDeploymentConfigsPreviewQueueProducersMap{
+//							"QUEUE_PRODUCER_BINDING": &cloudflare.PagesProjectDeploymentConfigsPreviewQueueProducersArgs{
+//								Name: pulumi.String("some-queue"),
+//							},
+//						},
+//						R2Buckets: cloudflare.PagesProjectDeploymentConfigsPreviewR2BucketsMap{
+//							"R2_BINDING": &cloudflare.PagesProjectDeploymentConfigsPreviewR2BucketsArgs{
+//								Jurisdiction: pulumi.String("eu"),
+//								Name:         pulumi.String("some-bucket"),
+//							},
+//						},
+//						Services: cloudflare.PagesProjectDeploymentConfigsPreviewServicesMap{
+//							"SERVICE_BINDING": &cloudflare.PagesProjectDeploymentConfigsPreviewServicesArgs{
+//								Entrypoint:  pulumi.String("MyHandler"),
+//								Environment: pulumi.String("production"),
+//								Service:     pulumi.String("example-worker"),
+//							},
+//						},
+//						UsageModel: pulumi.String("standard"),
+//						VectorizeBindings: cloudflare.PagesProjectDeploymentConfigsPreviewVectorizeBindingsMap{
+//							"VECTORIZE": &cloudflare.PagesProjectDeploymentConfigsPreviewVectorizeBindingsArgs{
+//								IndexName: pulumi.String("my_index"),
+//							},
+//						},
+//						WranglerConfigHash: pulumi.String("abc123def456"),
+//					},
+//					Production: &cloudflare.PagesProjectDeploymentConfigsProductionArgs{
+//						AiBindings: cloudflare.PagesProjectDeploymentConfigsProductionAiBindingsMap{
+//							"AI_BINDING": &cloudflare.PagesProjectDeploymentConfigsProductionAiBindingsArgs{
+//								ProjectId: pulumi.String("some-project-id"),
+//							},
+//						},
+//						AlwaysUseLatestCompatibilityDate: pulumi.Bool(false),
+//						AnalyticsEngineDatasets: cloudflare.PagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMap{
+//							"ANALYTICS_ENGINE_BINDING": &cloudflare.PagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsArgs{
+//								Dataset: pulumi.String("api_analytics"),
+//							},
+//						},
+//						Browsers: cloudflare.PagesProjectDeploymentConfigsProductionBrowsersMap{
+//							"BROWSER": &cloudflare.PagesProjectDeploymentConfigsProductionBrowsersArgs{},
+//						},
+//						BuildImageMajorVersion: pulumi.Int(3),
+//						CompatibilityDate:      pulumi.String("2025-01-01"),
+//						CompatibilityFlags: pulumi.StringArray{
+//							pulumi.String("url_standard"),
+//						},
+//						D1Databases: cloudflare.PagesProjectDeploymentConfigsProductionD1DatabasesMap{
+//							"D1_BINDING": &cloudflare.PagesProjectDeploymentConfigsProductionD1DatabasesArgs{
+//								Id: pulumi.String("445e2955-951a-43f8-a35b-a4d0c8138f63"),
+//							},
+//						},
+//						DurableObjectNamespaces: cloudflare.PagesProjectDeploymentConfigsProductionDurableObjectNamespacesMap{
+//							"DO_BINDING": &cloudflare.PagesProjectDeploymentConfigsProductionDurableObjectNamespacesArgs{
+//								NamespaceId: pulumi.String("5eb63bbbe01eeed093cb22bb8f5acdc3"),
+//							},
+//						},
+//						EnvVars: cloudflare.PagesProjectDeploymentConfigsProductionEnvVarsMap{
+//							"foo": &cloudflare.PagesProjectDeploymentConfigsProductionEnvVarsArgs{
+//								Type:  pulumi.String("plain_text"),
+//								Value: pulumi.String("hello world"),
+//							},
+//						},
+//						FailOpen: pulumi.Bool(true),
+//						HyperdriveBindings: cloudflare.PagesProjectDeploymentConfigsProductionHyperdriveBindingsMap{
+//							"HYPERDRIVE": &cloudflare.PagesProjectDeploymentConfigsProductionHyperdriveBindingsArgs{
+//								Id: pulumi.String("a76a99bc342644deb02c38d66082262a"),
+//							},
+//						},
+//						KvNamespaces: cloudflare.PagesProjectDeploymentConfigsProductionKvNamespacesMap{
+//							"KV_BINDING": &cloudflare.PagesProjectDeploymentConfigsProductionKvNamespacesArgs{
+//								NamespaceId: pulumi.String("5eb63bbbe01eeed093cb22bb8f5acdc3"),
+//							},
+//						},
+//						Limits: &cloudflare.PagesProjectDeploymentConfigsProductionLimitsArgs{
+//							CpuMs: pulumi.Int(100),
+//						},
+//						MtlsCertificates: cloudflare.PagesProjectDeploymentConfigsProductionMtlsCertificatesMap{
+//							"MTLS": &cloudflare.PagesProjectDeploymentConfigsProductionMtlsCertificatesArgs{
+//								CertificateId: pulumi.String("d7cdd17c-916f-4cb7-aabe-585eb382ec4e"),
+//							},
+//						},
+//						Placement: &cloudflare.PagesProjectDeploymentConfigsProductionPlacementArgs{
+//							Mode: pulumi.String("smart"),
+//						},
+//						QueueProducers: cloudflare.PagesProjectDeploymentConfigsProductionQueueProducersMap{
+//							"QUEUE_PRODUCER_BINDING": &cloudflare.PagesProjectDeploymentConfigsProductionQueueProducersArgs{
+//								Name: pulumi.String("some-queue"),
+//							},
+//						},
+//						R2Buckets: cloudflare.PagesProjectDeploymentConfigsProductionR2BucketsMap{
+//							"R2_BINDING": &cloudflare.PagesProjectDeploymentConfigsProductionR2BucketsArgs{
+//								Jurisdiction: pulumi.String("eu"),
+//								Name:         pulumi.String("some-bucket"),
+//							},
+//						},
+//						Services: cloudflare.PagesProjectDeploymentConfigsProductionServicesMap{
+//							"SERVICE_BINDING": &cloudflare.PagesProjectDeploymentConfigsProductionServicesArgs{
+//								Entrypoint:  pulumi.String("MyHandler"),
+//								Environment: pulumi.String("production"),
+//								Service:     pulumi.String("example-worker"),
+//							},
+//						},
+//						UsageModel: pulumi.String("standard"),
+//						VectorizeBindings: cloudflare.PagesProjectDeploymentConfigsProductionVectorizeBindingsMap{
+//							"VECTORIZE": &cloudflare.PagesProjectDeploymentConfigsProductionVectorizeBindingsArgs{
+//								IndexName: pulumi.String("my_index"),
+//							},
+//						},
+//						WranglerConfigHash: pulumi.String("abc123def456"),
+//					},
+//				},
+//				Source: &cloudflare.PagesProjectSourceArgs{
+//					Config: &cloudflare.PagesProjectSourceConfigArgs{
+//						DeploymentsEnabled: pulumi.Bool(true),
+//						Owner:              pulumi.String("my-org"),
+//						PathExcludes: pulumi.StringArray{
+//							pulumi.String("string"),
+//						},
+//						PathIncludes: pulumi.StringArray{
+//							pulumi.String("string"),
+//						},
+//						PrCommentsEnabled: pulumi.Bool(true),
+//						PreviewBranchExcludes: pulumi.StringArray{
+//							pulumi.String("string"),
+//						},
+//						PreviewBranchIncludes: pulumi.StringArray{
+//							pulumi.String("string"),
+//						},
+//						PreviewDeploymentSetting:     pulumi.String("all"),
+//						ProductionBranch:             pulumi.String("main"),
+//						ProductionDeploymentsEnabled: pulumi.Bool(true),
+//						RepoName:                     pulumi.String("my-repo"),
+//					},
+//					Type: pulumi.String("github"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // !> It is not possible to import a pages project with secret environment variables. If you have a secret environment variable, you must remove it from your project before importing it.
@@ -32,24 +260,34 @@ type PagesProject struct {
 	// Identifier
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Configs for the project build process.
-	BuildConfig PagesProjectBuildConfigPtrOutput `pulumi:"buildConfig"`
-	// Most recent deployment to the repo.
+	BuildConfig PagesProjectBuildConfigOutput `pulumi:"buildConfig"`
+	// Most recent production deployment of the project.
 	CanonicalDeployment PagesProjectCanonicalDeploymentOutput `pulumi:"canonicalDeployment"`
 	// When the project was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// Configs for deployments in a project.
-	DeploymentConfigs PagesProjectDeploymentConfigsPtrOutput `pulumi:"deploymentConfigs"`
+	DeploymentConfigs PagesProjectDeploymentConfigsOutput `pulumi:"deploymentConfigs"`
 	// A list of associated custom domains for the project.
 	Domains pulumi.StringArrayOutput `pulumi:"domains"`
-	// Most recent deployment to the repo.
+	// Framework the project is using.
+	Framework pulumi.StringOutput `pulumi:"framework"`
+	// Version of the framework the project is using.
+	FrameworkVersion pulumi.StringOutput `pulumi:"frameworkVersion"`
+	// Most recent deployment of the project.
 	LatestDeployment PagesProjectLatestDeploymentOutput `pulumi:"latestDeployment"`
 	// Name of the project.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Name of the preview script.
+	PreviewScriptName pulumi.StringOutput `pulumi:"previewScriptName"`
 	// Production branch of the project. Used to identify production deployments.
-	ProductionBranch pulumi.StringPtrOutput      `pulumi:"productionBranch"`
-	Source           PagesProjectSourcePtrOutput `pulumi:"source"`
+	ProductionBranch pulumi.StringOutput `pulumi:"productionBranch"`
+	// Name of the production script.
+	ProductionScriptName pulumi.StringOutput      `pulumi:"productionScriptName"`
+	Source               PagesProjectSourceOutput `pulumi:"source"`
 	// The Cloudflare subdomain associated with the project.
 	Subdomain pulumi.StringOutput `pulumi:"subdomain"`
+	// Whether the project uses functions.
+	UsesFunctions pulumi.BoolOutput `pulumi:"usesFunctions"`
 }
 
 // NewPagesProject registers a new resource with the given unique name, arguments, and options.
@@ -64,6 +302,9 @@ func NewPagesProject(ctx *pulumi.Context,
 	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
+	}
+	if args.ProductionBranch == nil {
+		return nil, errors.New("invalid value for required argument 'ProductionBranch'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PagesProject
@@ -92,7 +333,7 @@ type pagesProjectState struct {
 	AccountId *string `pulumi:"accountId"`
 	// Configs for the project build process.
 	BuildConfig *PagesProjectBuildConfig `pulumi:"buildConfig"`
-	// Most recent deployment to the repo.
+	// Most recent production deployment of the project.
 	CanonicalDeployment *PagesProjectCanonicalDeployment `pulumi:"canonicalDeployment"`
 	// When the project was created.
 	CreatedOn *string `pulumi:"createdOn"`
@@ -100,15 +341,25 @@ type pagesProjectState struct {
 	DeploymentConfigs *PagesProjectDeploymentConfigs `pulumi:"deploymentConfigs"`
 	// A list of associated custom domains for the project.
 	Domains []string `pulumi:"domains"`
-	// Most recent deployment to the repo.
+	// Framework the project is using.
+	Framework *string `pulumi:"framework"`
+	// Version of the framework the project is using.
+	FrameworkVersion *string `pulumi:"frameworkVersion"`
+	// Most recent deployment of the project.
 	LatestDeployment *PagesProjectLatestDeployment `pulumi:"latestDeployment"`
 	// Name of the project.
 	Name *string `pulumi:"name"`
+	// Name of the preview script.
+	PreviewScriptName *string `pulumi:"previewScriptName"`
 	// Production branch of the project. Used to identify production deployments.
-	ProductionBranch *string             `pulumi:"productionBranch"`
-	Source           *PagesProjectSource `pulumi:"source"`
+	ProductionBranch *string `pulumi:"productionBranch"`
+	// Name of the production script.
+	ProductionScriptName *string             `pulumi:"productionScriptName"`
+	Source               *PagesProjectSource `pulumi:"source"`
 	// The Cloudflare subdomain associated with the project.
 	Subdomain *string `pulumi:"subdomain"`
+	// Whether the project uses functions.
+	UsesFunctions *bool `pulumi:"usesFunctions"`
 }
 
 type PagesProjectState struct {
@@ -116,7 +367,7 @@ type PagesProjectState struct {
 	AccountId pulumi.StringPtrInput
 	// Configs for the project build process.
 	BuildConfig PagesProjectBuildConfigPtrInput
-	// Most recent deployment to the repo.
+	// Most recent production deployment of the project.
 	CanonicalDeployment PagesProjectCanonicalDeploymentPtrInput
 	// When the project was created.
 	CreatedOn pulumi.StringPtrInput
@@ -124,15 +375,25 @@ type PagesProjectState struct {
 	DeploymentConfigs PagesProjectDeploymentConfigsPtrInput
 	// A list of associated custom domains for the project.
 	Domains pulumi.StringArrayInput
-	// Most recent deployment to the repo.
+	// Framework the project is using.
+	Framework pulumi.StringPtrInput
+	// Version of the framework the project is using.
+	FrameworkVersion pulumi.StringPtrInput
+	// Most recent deployment of the project.
 	LatestDeployment PagesProjectLatestDeploymentPtrInput
 	// Name of the project.
 	Name pulumi.StringPtrInput
+	// Name of the preview script.
+	PreviewScriptName pulumi.StringPtrInput
 	// Production branch of the project. Used to identify production deployments.
 	ProductionBranch pulumi.StringPtrInput
-	Source           PagesProjectSourcePtrInput
+	// Name of the production script.
+	ProductionScriptName pulumi.StringPtrInput
+	Source               PagesProjectSourcePtrInput
 	// The Cloudflare subdomain associated with the project.
 	Subdomain pulumi.StringPtrInput
+	// Whether the project uses functions.
+	UsesFunctions pulumi.BoolPtrInput
 }
 
 func (PagesProjectState) ElementType() reflect.Type {
@@ -149,7 +410,7 @@ type pagesProjectArgs struct {
 	// Name of the project.
 	Name string `pulumi:"name"`
 	// Production branch of the project. Used to identify production deployments.
-	ProductionBranch *string             `pulumi:"productionBranch"`
+	ProductionBranch string              `pulumi:"productionBranch"`
 	Source           *PagesProjectSource `pulumi:"source"`
 }
 
@@ -164,7 +425,7 @@ type PagesProjectArgs struct {
 	// Name of the project.
 	Name pulumi.StringInput
 	// Production branch of the project. Used to identify production deployments.
-	ProductionBranch pulumi.StringPtrInput
+	ProductionBranch pulumi.StringInput
 	Source           PagesProjectSourcePtrInput
 }
 
@@ -261,11 +522,11 @@ func (o PagesProjectOutput) AccountId() pulumi.StringOutput {
 }
 
 // Configs for the project build process.
-func (o PagesProjectOutput) BuildConfig() PagesProjectBuildConfigPtrOutput {
-	return o.ApplyT(func(v *PagesProject) PagesProjectBuildConfigPtrOutput { return v.BuildConfig }).(PagesProjectBuildConfigPtrOutput)
+func (o PagesProjectOutput) BuildConfig() PagesProjectBuildConfigOutput {
+	return o.ApplyT(func(v *PagesProject) PagesProjectBuildConfigOutput { return v.BuildConfig }).(PagesProjectBuildConfigOutput)
 }
 
-// Most recent deployment to the repo.
+// Most recent production deployment of the project.
 func (o PagesProjectOutput) CanonicalDeployment() PagesProjectCanonicalDeploymentOutput {
 	return o.ApplyT(func(v *PagesProject) PagesProjectCanonicalDeploymentOutput { return v.CanonicalDeployment }).(PagesProjectCanonicalDeploymentOutput)
 }
@@ -276,8 +537,8 @@ func (o PagesProjectOutput) CreatedOn() pulumi.StringOutput {
 }
 
 // Configs for deployments in a project.
-func (o PagesProjectOutput) DeploymentConfigs() PagesProjectDeploymentConfigsPtrOutput {
-	return o.ApplyT(func(v *PagesProject) PagesProjectDeploymentConfigsPtrOutput { return v.DeploymentConfigs }).(PagesProjectDeploymentConfigsPtrOutput)
+func (o PagesProjectOutput) DeploymentConfigs() PagesProjectDeploymentConfigsOutput {
+	return o.ApplyT(func(v *PagesProject) PagesProjectDeploymentConfigsOutput { return v.DeploymentConfigs }).(PagesProjectDeploymentConfigsOutput)
 }
 
 // A list of associated custom domains for the project.
@@ -285,7 +546,17 @@ func (o PagesProjectOutput) Domains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PagesProject) pulumi.StringArrayOutput { return v.Domains }).(pulumi.StringArrayOutput)
 }
 
-// Most recent deployment to the repo.
+// Framework the project is using.
+func (o PagesProjectOutput) Framework() pulumi.StringOutput {
+	return o.ApplyT(func(v *PagesProject) pulumi.StringOutput { return v.Framework }).(pulumi.StringOutput)
+}
+
+// Version of the framework the project is using.
+func (o PagesProjectOutput) FrameworkVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PagesProject) pulumi.StringOutput { return v.FrameworkVersion }).(pulumi.StringOutput)
+}
+
+// Most recent deployment of the project.
 func (o PagesProjectOutput) LatestDeployment() PagesProjectLatestDeploymentOutput {
 	return o.ApplyT(func(v *PagesProject) PagesProjectLatestDeploymentOutput { return v.LatestDeployment }).(PagesProjectLatestDeploymentOutput)
 }
@@ -295,18 +566,33 @@ func (o PagesProjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesProject) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Production branch of the project. Used to identify production deployments.
-func (o PagesProjectOutput) ProductionBranch() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PagesProject) pulumi.StringPtrOutput { return v.ProductionBranch }).(pulumi.StringPtrOutput)
+// Name of the preview script.
+func (o PagesProjectOutput) PreviewScriptName() pulumi.StringOutput {
+	return o.ApplyT(func(v *PagesProject) pulumi.StringOutput { return v.PreviewScriptName }).(pulumi.StringOutput)
 }
 
-func (o PagesProjectOutput) Source() PagesProjectSourcePtrOutput {
-	return o.ApplyT(func(v *PagesProject) PagesProjectSourcePtrOutput { return v.Source }).(PagesProjectSourcePtrOutput)
+// Production branch of the project. Used to identify production deployments.
+func (o PagesProjectOutput) ProductionBranch() pulumi.StringOutput {
+	return o.ApplyT(func(v *PagesProject) pulumi.StringOutput { return v.ProductionBranch }).(pulumi.StringOutput)
+}
+
+// Name of the production script.
+func (o PagesProjectOutput) ProductionScriptName() pulumi.StringOutput {
+	return o.ApplyT(func(v *PagesProject) pulumi.StringOutput { return v.ProductionScriptName }).(pulumi.StringOutput)
+}
+
+func (o PagesProjectOutput) Source() PagesProjectSourceOutput {
+	return o.ApplyT(func(v *PagesProject) PagesProjectSourceOutput { return v.Source }).(PagesProjectSourceOutput)
 }
 
 // The Cloudflare subdomain associated with the project.
 func (o PagesProjectOutput) Subdomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesProject) pulumi.StringOutput { return v.Subdomain }).(pulumi.StringOutput)
+}
+
+// Whether the project uses functions.
+func (o PagesProjectOutput) UsesFunctions() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PagesProject) pulumi.BoolOutput { return v.UsesFunctions }).(pulumi.BoolOutput)
 }
 
 type PagesProjectArrayOutput struct{ *pulumi.OutputState }

@@ -209,7 +209,7 @@ export interface GetZeroTrustAccessApplicationResult {
     readonly targetCriterias: outputs.GetZeroTrustAccessApplicationTargetCriteria[];
     /**
      * The application type.
-     * Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dashSso", "infrastructure", "rdp".
+     * Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal".
      */
     readonly type: string;
     /**

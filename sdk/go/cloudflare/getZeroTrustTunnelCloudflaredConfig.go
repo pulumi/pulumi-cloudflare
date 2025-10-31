@@ -71,6 +71,8 @@ type LookupZeroTrustTunnelCloudflaredConfigResult struct {
 	TunnelId string `pulumi:"tunnelId"`
 	// The version of the Tunnel Configuration.
 	Version int `pulumi:"version"`
+	// Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+	WarpRoutingEnabled bool `pulumi:"warpRoutingEnabled"`
 }
 
 func LookupZeroTrustTunnelCloudflaredConfigOutput(ctx *pulumi.Context, args LookupZeroTrustTunnelCloudflaredConfigOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustTunnelCloudflaredConfigResultOutput {
@@ -144,6 +146,11 @@ func (o LookupZeroTrustTunnelCloudflaredConfigResultOutput) TunnelId() pulumi.St
 // The version of the Tunnel Configuration.
 func (o LookupZeroTrustTunnelCloudflaredConfigResultOutput) Version() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredConfigResult) int { return v.Version }).(pulumi.IntOutput)
+}
+
+// Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+func (o LookupZeroTrustTunnelCloudflaredConfigResultOutput) WarpRoutingEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredConfigResult) bool { return v.WarpRoutingEnabled }).(pulumi.BoolOutput)
 }
 
 func init() {

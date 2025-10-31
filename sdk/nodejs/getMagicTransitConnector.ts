@@ -58,6 +58,7 @@ export interface GetMagicTransitConnectorResult {
     readonly lastHeartbeat: string;
     readonly lastSeenVersion: string;
     readonly lastUpdated: string;
+    readonly licenseKey: string;
     readonly notes: string;
     readonly timezone: string;
 }

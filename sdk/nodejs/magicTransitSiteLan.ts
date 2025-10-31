@@ -9,6 +9,48 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleMagicTransitSiteLan = new cloudflare.MagicTransitSiteLan("example_magic_transit_site_lan", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     siteId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     physport: 1,
+ *     haLink: true,
+ *     name: "name",
+ *     nat: {
+ *         staticPrefix: "192.0.2.0/24",
+ *     },
+ *     routedSubnets: [{
+ *         nextHop: "192.0.2.1",
+ *         prefix: "192.0.2.0/24",
+ *         nat: {
+ *             staticPrefix: "192.0.2.0/24",
+ *         },
+ *     }],
+ *     staticAddressing: {
+ *         address: "192.0.2.0/24",
+ *         dhcpRelay: {
+ *             serverAddresses: ["192.0.2.1"],
+ *         },
+ *         dhcpServer: {
+ *             dhcpPoolEnd: "192.0.2.1",
+ *             dhcpPoolStart: "192.0.2.1",
+ *             dnsServer: "192.0.2.1",
+ *             dnsServers: ["192.0.2.1"],
+ *             reservations: {
+ *                 "00:11:22:33:44:55": "192.0.2.100",
+ *                 "AA:BB:CC:DD:EE:FF": "192.168.1.101",
+ *             },
+ *         },
+ *         secondaryAddress: "192.0.2.0/24",
+ *         virtualAddress: "192.0.2.0/24",
+ *     },
+ *     vlanTag: 42,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

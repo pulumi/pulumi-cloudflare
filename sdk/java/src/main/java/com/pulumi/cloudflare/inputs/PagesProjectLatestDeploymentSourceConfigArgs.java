@@ -17,56 +17,123 @@ public final class PagesProjectLatestDeploymentSourceConfigArgs extends com.pulu
 
     public static final PagesProjectLatestDeploymentSourceConfigArgs Empty = new PagesProjectLatestDeploymentSourceConfigArgs();
 
+    /**
+     * Whether to enable automatic deployments when pushing to the source repository.
+     * When disabled, no deployments (production or preview) will be triggered automatically.
+     * 
+     * @deprecated
+     * Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+     * 
+     */
+    @Deprecated /* Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control. */
     @Import(name="deploymentsEnabled")
     private @Nullable Output<Boolean> deploymentsEnabled;
 
+    /**
+     * @return Whether to enable automatic deployments when pushing to the source repository.
+     * When disabled, no deployments (production or preview) will be triggered automatically.
+     * 
+     * @deprecated
+     * Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+     * 
+     */
+    @Deprecated /* Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control. */
     public Optional<Output<Boolean>> deploymentsEnabled() {
         return Optional.ofNullable(this.deploymentsEnabled);
     }
 
+    /**
+     * The owner of the repository.
+     * 
+     */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
+    /**
+     * @return The owner of the repository.
+     * 
+     */
     public Optional<Output<String>> owner() {
         return Optional.ofNullable(this.owner);
     }
 
+    /**
+     * A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
+     * 
+     */
     @Import(name="pathExcludes")
     private @Nullable Output<List<String>> pathExcludes;
 
+    /**
+     * @return A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
+     * 
+     */
     public Optional<Output<List<String>>> pathExcludes() {
         return Optional.ofNullable(this.pathExcludes);
     }
 
+    /**
+     * A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
+     * 
+     */
     @Import(name="pathIncludes")
     private @Nullable Output<List<String>> pathIncludes;
 
+    /**
+     * @return A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
+     * 
+     */
     public Optional<Output<List<String>>> pathIncludes() {
         return Optional.ofNullable(this.pathIncludes);
     }
 
+    /**
+     * Whether to enable PR comments.
+     * 
+     */
     @Import(name="prCommentsEnabled")
     private @Nullable Output<Boolean> prCommentsEnabled;
 
+    /**
+     * @return Whether to enable PR comments.
+     * 
+     */
     public Optional<Output<Boolean>> prCommentsEnabled() {
         return Optional.ofNullable(this.prCommentsEnabled);
     }
 
+    /**
+     * A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     * 
+     */
     @Import(name="previewBranchExcludes")
     private @Nullable Output<List<String>> previewBranchExcludes;
 
+    /**
+     * @return A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     * 
+     */
     public Optional<Output<List<String>>> previewBranchExcludes() {
         return Optional.ofNullable(this.previewBranchExcludes);
     }
 
+    /**
+     * A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     * 
+     */
     @Import(name="previewBranchIncludes")
     private @Nullable Output<List<String>> previewBranchIncludes;
 
+    /**
+     * @return A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     * 
+     */
     public Optional<Output<List<String>>> previewBranchIncludes() {
         return Optional.ofNullable(this.previewBranchIncludes);
     }
 
     /**
+     * Controls whether commits to preview branches trigger a preview deployment.
      * Available values: &#34;all&#34;, &#34;none&#34;, &#34;custom&#34;.
      * 
      */
@@ -74,30 +141,55 @@ public final class PagesProjectLatestDeploymentSourceConfigArgs extends com.pulu
     private @Nullable Output<String> previewDeploymentSetting;
 
     /**
-     * @return Available values: &#34;all&#34;, &#34;none&#34;, &#34;custom&#34;.
+     * @return Controls whether commits to preview branches trigger a preview deployment.
+     * Available values: &#34;all&#34;, &#34;none&#34;, &#34;custom&#34;.
      * 
      */
     public Optional<Output<String>> previewDeploymentSetting() {
         return Optional.ofNullable(this.previewDeploymentSetting);
     }
 
+    /**
+     * The production branch of the repository.
+     * 
+     */
     @Import(name="productionBranch")
     private @Nullable Output<String> productionBranch;
 
+    /**
+     * @return The production branch of the repository.
+     * 
+     */
     public Optional<Output<String>> productionBranch() {
         return Optional.ofNullable(this.productionBranch);
     }
 
+    /**
+     * Whether to trigger a production deployment on commits to the production branch.
+     * 
+     */
     @Import(name="productionDeploymentsEnabled")
     private @Nullable Output<Boolean> productionDeploymentsEnabled;
 
+    /**
+     * @return Whether to trigger a production deployment on commits to the production branch.
+     * 
+     */
     public Optional<Output<Boolean>> productionDeploymentsEnabled() {
         return Optional.ofNullable(this.productionDeploymentsEnabled);
     }
 
+    /**
+     * The name of the repository.
+     * 
+     */
     @Import(name="repoName")
     private @Nullable Output<String> repoName;
 
+    /**
+     * @return The name of the repository.
+     * 
+     */
     public Optional<Output<String>> repoName() {
         return Optional.ofNullable(this.repoName);
     }
@@ -136,87 +228,206 @@ public final class PagesProjectLatestDeploymentSourceConfigArgs extends com.pulu
             $ = new PagesProjectLatestDeploymentSourceConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param deploymentsEnabled Whether to enable automatic deployments when pushing to the source repository.
+         * When disabled, no deployments (production or preview) will be triggered automatically.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+         * 
+         */
+        @Deprecated /* Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control. */
         public Builder deploymentsEnabled(@Nullable Output<Boolean> deploymentsEnabled) {
             $.deploymentsEnabled = deploymentsEnabled;
             return this;
         }
 
+        /**
+         * @param deploymentsEnabled Whether to enable automatic deployments when pushing to the source repository.
+         * When disabled, no deployments (production or preview) will be triggered automatically.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+         * 
+         */
+        @Deprecated /* Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control. */
         public Builder deploymentsEnabled(Boolean deploymentsEnabled) {
             return deploymentsEnabled(Output.of(deploymentsEnabled));
         }
 
+        /**
+         * @param owner The owner of the repository.
+         * 
+         * @return builder
+         * 
+         */
         public Builder owner(@Nullable Output<String> owner) {
             $.owner = owner;
             return this;
         }
 
+        /**
+         * @param owner The owner of the repository.
+         * 
+         * @return builder
+         * 
+         */
         public Builder owner(String owner) {
             return owner(Output.of(owner));
         }
 
+        /**
+         * @param pathExcludes A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pathExcludes(@Nullable Output<List<String>> pathExcludes) {
             $.pathExcludes = pathExcludes;
             return this;
         }
 
+        /**
+         * @param pathExcludes A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pathExcludes(List<String> pathExcludes) {
             return pathExcludes(Output.of(pathExcludes));
         }
 
+        /**
+         * @param pathExcludes A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pathExcludes(String... pathExcludes) {
             return pathExcludes(List.of(pathExcludes));
         }
 
+        /**
+         * @param pathIncludes A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pathIncludes(@Nullable Output<List<String>> pathIncludes) {
             $.pathIncludes = pathIncludes;
             return this;
         }
 
+        /**
+         * @param pathIncludes A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pathIncludes(List<String> pathIncludes) {
             return pathIncludes(Output.of(pathIncludes));
         }
 
+        /**
+         * @param pathIncludes A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pathIncludes(String... pathIncludes) {
             return pathIncludes(List.of(pathIncludes));
         }
 
+        /**
+         * @param prCommentsEnabled Whether to enable PR comments.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prCommentsEnabled(@Nullable Output<Boolean> prCommentsEnabled) {
             $.prCommentsEnabled = prCommentsEnabled;
             return this;
         }
 
+        /**
+         * @param prCommentsEnabled Whether to enable PR comments.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prCommentsEnabled(Boolean prCommentsEnabled) {
             return prCommentsEnabled(Output.of(prCommentsEnabled));
         }
 
+        /**
+         * @param previewBranchExcludes A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder previewBranchExcludes(@Nullable Output<List<String>> previewBranchExcludes) {
             $.previewBranchExcludes = previewBranchExcludes;
             return this;
         }
 
+        /**
+         * @param previewBranchExcludes A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder previewBranchExcludes(List<String> previewBranchExcludes) {
             return previewBranchExcludes(Output.of(previewBranchExcludes));
         }
 
+        /**
+         * @param previewBranchExcludes A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder previewBranchExcludes(String... previewBranchExcludes) {
             return previewBranchExcludes(List.of(previewBranchExcludes));
         }
 
+        /**
+         * @param previewBranchIncludes A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder previewBranchIncludes(@Nullable Output<List<String>> previewBranchIncludes) {
             $.previewBranchIncludes = previewBranchIncludes;
             return this;
         }
 
+        /**
+         * @param previewBranchIncludes A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder previewBranchIncludes(List<String> previewBranchIncludes) {
             return previewBranchIncludes(Output.of(previewBranchIncludes));
         }
 
+        /**
+         * @param previewBranchIncludes A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder previewBranchIncludes(String... previewBranchIncludes) {
             return previewBranchIncludes(List.of(previewBranchIncludes));
         }
 
         /**
-         * @param previewDeploymentSetting Available values: &#34;all&#34;, &#34;none&#34;, &#34;custom&#34;.
+         * @param previewDeploymentSetting Controls whether commits to preview branches trigger a preview deployment.
+         * Available values: &#34;all&#34;, &#34;none&#34;, &#34;custom&#34;.
          * 
          * @return builder
          * 
@@ -227,7 +438,8 @@ public final class PagesProjectLatestDeploymentSourceConfigArgs extends com.pulu
         }
 
         /**
-         * @param previewDeploymentSetting Available values: &#34;all&#34;, &#34;none&#34;, &#34;custom&#34;.
+         * @param previewDeploymentSetting Controls whether commits to preview branches trigger a preview deployment.
+         * Available values: &#34;all&#34;, &#34;none&#34;, &#34;custom&#34;.
          * 
          * @return builder
          * 
@@ -236,29 +448,65 @@ public final class PagesProjectLatestDeploymentSourceConfigArgs extends com.pulu
             return previewDeploymentSetting(Output.of(previewDeploymentSetting));
         }
 
+        /**
+         * @param productionBranch The production branch of the repository.
+         * 
+         * @return builder
+         * 
+         */
         public Builder productionBranch(@Nullable Output<String> productionBranch) {
             $.productionBranch = productionBranch;
             return this;
         }
 
+        /**
+         * @param productionBranch The production branch of the repository.
+         * 
+         * @return builder
+         * 
+         */
         public Builder productionBranch(String productionBranch) {
             return productionBranch(Output.of(productionBranch));
         }
 
+        /**
+         * @param productionDeploymentsEnabled Whether to trigger a production deployment on commits to the production branch.
+         * 
+         * @return builder
+         * 
+         */
         public Builder productionDeploymentsEnabled(@Nullable Output<Boolean> productionDeploymentsEnabled) {
             $.productionDeploymentsEnabled = productionDeploymentsEnabled;
             return this;
         }
 
+        /**
+         * @param productionDeploymentsEnabled Whether to trigger a production deployment on commits to the production branch.
+         * 
+         * @return builder
+         * 
+         */
         public Builder productionDeploymentsEnabled(Boolean productionDeploymentsEnabled) {
             return productionDeploymentsEnabled(Output.of(productionDeploymentsEnabled));
         }
 
+        /**
+         * @param repoName The name of the repository.
+         * 
+         * @return builder
+         * 
+         */
         public Builder repoName(@Nullable Output<String> repoName) {
             $.repoName = repoName;
             return this;
         }
 
+        /**
+         * @param repoName The name of the repository.
+         * 
+         * @return builder
+         * 
+         */
         public Builder repoName(String repoName) {
             return repoName(Output.of(repoName));
         }

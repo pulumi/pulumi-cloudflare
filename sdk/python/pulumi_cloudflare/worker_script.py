@@ -902,9 +902,87 @@ class WorkerScript(pulumi.CustomResource):
                  usage_model: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        !> This resource is no longer recommended. Please use the `Worker`, `WorkerVersion`, and `WorkersDeployment` resources instead. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
+        > For more direct control over Workers resources, we recommend the beta `Worker`, `WorkerVersion`, and `WorkersDeployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+        import pulumi_std as std
+
+        example_workers_script = cloudflare.WorkersScript("example_workers_script",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            script_name="this-is_my_script-01",
+            assets={
+                "config": {
+                    "headers": \"\"\"        /dashboard/*
+                X-Frame-Options: DENY
+
+                /static/*
+                Access-Control-Allow-Origin: *
+        \"\"\",
+                    "redirects": \"\"\"        /foo /bar 301
+                /news/* /blog/:splat
+        \"\"\",
+                    "html_handling": "auto-trailing-slash",
+                    "not_found_handling": "none",
+                    "run_worker_first": False,
+                },
+                "jwt": "jwt",
+            },
+            bindings=[{
+                "name": "MY_ENV_VAR",
+                "text": "my_data",
+                "type": "plain_text",
+            }],
+            compatibility_date="2021-01-01",
+            compatibility_flags=["nodejs_compat"],
+            content_file="worker.js",
+            content_sha256=std.filesha256(input="worker.js").result,
+            keep_assets=False,
+            keep_bindings=["kv_namespace"],
+            limits={
+                "cpu_ms": 50,
+            },
+            logpush=False,
+            main_module="worker.js",
+            migrations={
+                "deleted_classes": ["string"],
+                "new_classes": ["string"],
+                "new_sqlite_classes": ["string"],
+                "new_tag": "v2",
+                "old_tag": "v1",
+                "renamed_classes": [{
+                    "from_": "from",
+                    "to": "to",
+                }],
+                "transferred_classes": [{
+                    "from_": "from",
+                    "from_script": "from_script",
+                    "to": "to",
+                }],
+            },
+            observability={
+                "enabled": True,
+                "head_sampling_rate": 0.1,
+                "logs": {
+                    "enabled": True,
+                    "invocation_logs": True,
+                    "destinations": ["cloudflare"],
+                    "head_sampling_rate": 0.1,
+                    "persist": True,
+                },
+            },
+            placement={
+                "mode": "smart",
+            },
+            tail_consumers=[{
+                "service": "my-log-consumer",
+                "environment": "production",
+                "namespace": "my-namespace",
+            }])
+        ```
 
         ## Import
 
@@ -945,9 +1023,87 @@ class WorkerScript(pulumi.CustomResource):
                  args: WorkerScriptArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        !> This resource is no longer recommended. Please use the `Worker`, `WorkerVersion`, and `WorkersDeployment` resources instead. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
+        > For more direct control over Workers resources, we recommend the beta `Worker`, `WorkerVersion`, and `WorkersDeployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+        import pulumi_std as std
+
+        example_workers_script = cloudflare.WorkersScript("example_workers_script",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            script_name="this-is_my_script-01",
+            assets={
+                "config": {
+                    "headers": \"\"\"        /dashboard/*
+                X-Frame-Options: DENY
+
+                /static/*
+                Access-Control-Allow-Origin: *
+        \"\"\",
+                    "redirects": \"\"\"        /foo /bar 301
+                /news/* /blog/:splat
+        \"\"\",
+                    "html_handling": "auto-trailing-slash",
+                    "not_found_handling": "none",
+                    "run_worker_first": False,
+                },
+                "jwt": "jwt",
+            },
+            bindings=[{
+                "name": "MY_ENV_VAR",
+                "text": "my_data",
+                "type": "plain_text",
+            }],
+            compatibility_date="2021-01-01",
+            compatibility_flags=["nodejs_compat"],
+            content_file="worker.js",
+            content_sha256=std.filesha256(input="worker.js").result,
+            keep_assets=False,
+            keep_bindings=["kv_namespace"],
+            limits={
+                "cpu_ms": 50,
+            },
+            logpush=False,
+            main_module="worker.js",
+            migrations={
+                "deleted_classes": ["string"],
+                "new_classes": ["string"],
+                "new_sqlite_classes": ["string"],
+                "new_tag": "v2",
+                "old_tag": "v1",
+                "renamed_classes": [{
+                    "from_": "from",
+                    "to": "to",
+                }],
+                "transferred_classes": [{
+                    "from_": "from",
+                    "from_script": "from_script",
+                    "to": "to",
+                }],
+            },
+            observability={
+                "enabled": True,
+                "head_sampling_rate": 0.1,
+                "logs": {
+                    "enabled": True,
+                    "invocation_logs": True,
+                    "destinations": ["cloudflare"],
+                    "head_sampling_rate": 0.1,
+                    "persist": True,
+                },
+            },
+            placement={
+                "mode": "smart",
+            },
+            tail_consumers=[{
+                "service": "my-log-consumer",
+                "environment": "production",
+                "namespace": "my-namespace",
+            }])
+        ```
 
         ## Import
 

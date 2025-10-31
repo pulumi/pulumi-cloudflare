@@ -9,6 +9,37 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleWorker = new cloudflare.Worker("example_worker", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     name: "my-worker",
+ *     logpush: true,
+ *     observability: {
+ *         enabled: true,
+ *         headSamplingRate: 1,
+ *         logs: {
+ *             enabled: true,
+ *             headSamplingRate: 1,
+ *             invocationLogs: true,
+ *         },
+ *     },
+ *     subdomain: {
+ *         enabled: true,
+ *         previewsEnabled: true,
+ *     },
+ *     tags: [
+ *         "my-team",
+ *         "my-public-api",
+ *     ],
+ *     tailConsumers: [{
+ *         name: "my-tail-consumer",
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh
@@ -64,6 +95,10 @@ export class Worker extends pulumi.CustomResource {
      */
     declare public readonly observability: pulumi.Output<outputs.WorkerObservability>;
     /**
+     * Other resources that reference the Worker and depend on it existing.
+     */
+    declare public /*out*/ readonly references: pulumi.Output<outputs.WorkerReferences>;
+    /**
      * Subdomain settings for the Worker.
      */
     declare public readonly subdomain: pulumi.Output<outputs.WorkerSubdomain>;
@@ -98,6 +133,7 @@ export class Worker extends pulumi.CustomResource {
             resourceInputs["logpush"] = state?.logpush;
             resourceInputs["name"] = state?.name;
             resourceInputs["observability"] = state?.observability;
+            resourceInputs["references"] = state?.references;
             resourceInputs["subdomain"] = state?.subdomain;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["tailConsumers"] = state?.tailConsumers;
@@ -118,6 +154,7 @@ export class Worker extends pulumi.CustomResource {
             resourceInputs["tags"] = args?.tags;
             resourceInputs["tailConsumers"] = args?.tailConsumers;
             resourceInputs["createdOn"] = undefined /*out*/;
+            resourceInputs["references"] = undefined /*out*/;
             resourceInputs["updatedOn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -149,6 +186,10 @@ export interface WorkerState {
      * Observability settings for the Worker.
      */
     observability?: pulumi.Input<inputs.WorkerObservability>;
+    /**
+     * Other resources that reference the Worker and depend on it existing.
+     */
+    references?: pulumi.Input<inputs.WorkerReferences>;
     /**
      * Subdomain settings for the Worker.
      */

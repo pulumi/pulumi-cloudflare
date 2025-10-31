@@ -12,6 +12,104 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZeroTrustGatewaySettings = new Cloudflare.ZeroTrustGatewaySettings("example_zero_trust_gateway_settings", new()
+    ///     {
+    ///         AccountId = "699d98642c564d2e855e9661899b7252",
+    ///         Settings = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsArgs
+    ///         {
+    ///             ActivityLog = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsActivityLogArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
+    ///             Antivirus = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsAntivirusArgs
+    ///             {
+    ///                 EnabledDownloadPhase = false,
+    ///                 EnabledUploadPhase = false,
+    ///                 FailClosed = false,
+    ///                 NotificationSettings = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettingsArgs
+    ///                 {
+    ///                     Enabled = true,
+    ///                     IncludeContext = true,
+    ///                     Msg = "msg",
+    ///                     SupportUrl = "support_url",
+    ///                 },
+    ///             },
+    ///             BlockPage = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsBlockPageArgs
+    ///             {
+    ///                 BackgroundColor = "background_color",
+    ///                 Enabled = true,
+    ///                 FooterText = "--footer--",
+    ///                 HeaderText = "--header--",
+    ///                 IncludeContext = true,
+    ///                 LogoPath = "https://logos.com/a.png",
+    ///                 MailtoAddress = "admin@example.com",
+    ///                 MailtoSubject = "Blocked User Inquiry",
+    ///                 Mode = "",
+    ///                 Name = "Cloudflare",
+    ///                 SuppressFooter = false,
+    ///                 TargetUri = "https://example.com",
+    ///             },
+    ///             BodyScanning = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsBodyScanningArgs
+    ///             {
+    ///                 InspectionMode = "deep",
+    ///             },
+    ///             BrowserIsolation = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsBrowserIsolationArgs
+    ///             {
+    ///                 NonIdentityEnabled = true,
+    ///                 UrlBrowserIsolationEnabled = true,
+    ///             },
+    ///             Certificate = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsCertificateArgs
+    ///             {
+    ///                 Id = "d1b364c5-1311-466e-a194-f0e943e0799f",
+    ///             },
+    ///             CustomCertificate = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsCustomCertificateArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 Id = "d1b364c5-1311-466e-a194-f0e943e0799f",
+    ///             },
+    ///             ExtendedEmailMatching = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
+    ///             Fips = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsFipsArgs
+    ///             {
+    ///                 Tls = true,
+    ///             },
+    ///             HostSelector = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsHostSelectorArgs
+    ///             {
+    ///                 Enabled = false,
+    ///             },
+    ///             Inspection = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsInspectionArgs
+    ///             {
+    ///                 Mode = "static",
+    ///             },
+    ///             ProtocolDetection = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsProtocolDetectionArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
+    ///             Sandbox = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsSandboxArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 FallbackAction = "allow",
+    ///             },
+    ///             TlsDecrypt = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsTlsDecryptArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

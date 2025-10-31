@@ -125,6 +125,80 @@ class ZeroTrustGatewaySettings(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zero_trust_gateway_settings = cloudflare.ZeroTrustGatewaySettings("example_zero_trust_gateway_settings",
+            account_id="699d98642c564d2e855e9661899b7252",
+            settings={
+                "activity_log": {
+                    "enabled": True,
+                },
+                "antivirus": {
+                    "enabled_download_phase": False,
+                    "enabled_upload_phase": False,
+                    "fail_closed": False,
+                    "notification_settings": {
+                        "enabled": True,
+                        "include_context": True,
+                        "msg": "msg",
+                        "support_url": "support_url",
+                    },
+                },
+                "block_page": {
+                    "background_color": "background_color",
+                    "enabled": True,
+                    "footer_text": "--footer--",
+                    "header_text": "--header--",
+                    "include_context": True,
+                    "logo_path": "https://logos.com/a.png",
+                    "mailto_address": "admin@example.com",
+                    "mailto_subject": "Blocked User Inquiry",
+                    "mode": "",
+                    "name": "Cloudflare",
+                    "suppress_footer": False,
+                    "target_uri": "https://example.com",
+                },
+                "body_scanning": {
+                    "inspection_mode": "deep",
+                },
+                "browser_isolation": {
+                    "non_identity_enabled": True,
+                    "url_browser_isolation_enabled": True,
+                },
+                "certificate": {
+                    "id": "d1b364c5-1311-466e-a194-f0e943e0799f",
+                },
+                "custom_certificate": {
+                    "enabled": True,
+                    "id": "d1b364c5-1311-466e-a194-f0e943e0799f",
+                },
+                "extended_email_matching": {
+                    "enabled": True,
+                },
+                "fips": {
+                    "tls": True,
+                },
+                "host_selector": {
+                    "enabled": False,
+                },
+                "inspection": {
+                    "mode": "static",
+                },
+                "protocol_detection": {
+                    "enabled": True,
+                },
+                "sandbox": {
+                    "enabled": True,
+                    "fallback_action": "allow",
+                },
+                "tls_decrypt": {
+                    "enabled": True,
+                },
+            })
+        ```
+
         ## Import
 
         ```sh
@@ -143,6 +217,80 @@ class ZeroTrustGatewaySettings(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zero_trust_gateway_settings = cloudflare.ZeroTrustGatewaySettings("example_zero_trust_gateway_settings",
+            account_id="699d98642c564d2e855e9661899b7252",
+            settings={
+                "activity_log": {
+                    "enabled": True,
+                },
+                "antivirus": {
+                    "enabled_download_phase": False,
+                    "enabled_upload_phase": False,
+                    "fail_closed": False,
+                    "notification_settings": {
+                        "enabled": True,
+                        "include_context": True,
+                        "msg": "msg",
+                        "support_url": "support_url",
+                    },
+                },
+                "block_page": {
+                    "background_color": "background_color",
+                    "enabled": True,
+                    "footer_text": "--footer--",
+                    "header_text": "--header--",
+                    "include_context": True,
+                    "logo_path": "https://logos.com/a.png",
+                    "mailto_address": "admin@example.com",
+                    "mailto_subject": "Blocked User Inquiry",
+                    "mode": "",
+                    "name": "Cloudflare",
+                    "suppress_footer": False,
+                    "target_uri": "https://example.com",
+                },
+                "body_scanning": {
+                    "inspection_mode": "deep",
+                },
+                "browser_isolation": {
+                    "non_identity_enabled": True,
+                    "url_browser_isolation_enabled": True,
+                },
+                "certificate": {
+                    "id": "d1b364c5-1311-466e-a194-f0e943e0799f",
+                },
+                "custom_certificate": {
+                    "enabled": True,
+                    "id": "d1b364c5-1311-466e-a194-f0e943e0799f",
+                },
+                "extended_email_matching": {
+                    "enabled": True,
+                },
+                "fips": {
+                    "tls": True,
+                },
+                "host_selector": {
+                    "enabled": False,
+                },
+                "inspection": {
+                    "mode": "static",
+                },
+                "protocol_detection": {
+                    "enabled": True,
+                },
+                "sandbox": {
+                    "enabled": True,
+                    "fallback_action": "allow",
+                },
+                "tls_decrypt": {
+                    "enabled": True,
+                },
+            })
+        ```
 
         ## Import
 

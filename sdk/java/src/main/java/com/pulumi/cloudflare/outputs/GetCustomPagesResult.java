@@ -27,7 +27,7 @@ public final class GetCustomPagesResult {
     private String id;
     /**
      * @return Error Page Types
-     * Available values: &#34;under*attack&#34;, &#34;basic*challenge&#34;, &#34;waf*challenge&#34;, &#34;waf*block&#34;, &#34;ip*block&#34;, &#34;country*challenge&#34;, &#34;500*errors&#34;, &#34;1000*errors&#34;, &#34;managed*challenge&#34;, &#34;ratelimit*block&#34;.
+     * Available values: &#34;1000*errors&#34;, &#34;500*errors&#34;, &#34;basic*challenge&#34;, &#34;country*challenge&#34;, &#34;ip*block&#34;, &#34;managed*challenge&#34;, &#34;ratelimit*block&#34;, &#34;under*attack&#34;, &#34;wafBlock&#34;.
      * 
      */
     private String identifier;
@@ -74,7 +74,7 @@ public final class GetCustomPagesResult {
     }
     /**
      * @return Error Page Types
-     * Available values: &#34;under*attack&#34;, &#34;basic*challenge&#34;, &#34;waf*challenge&#34;, &#34;waf*block&#34;, &#34;ip*block&#34;, &#34;country*challenge&#34;, &#34;500*errors&#34;, &#34;1000*errors&#34;, &#34;managed*challenge&#34;, &#34;ratelimit*block&#34;.
+     * Available values: &#34;1000*errors&#34;, &#34;500*errors&#34;, &#34;basic*challenge&#34;, &#34;country*challenge&#34;, &#34;ip*block&#34;, &#34;managed*challenge&#34;, &#34;ratelimit*block&#34;, &#34;under*attack&#34;, &#34;wafBlock&#34;.
      * 
      */
     public String identifier() {

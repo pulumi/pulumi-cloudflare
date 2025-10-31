@@ -19,6 +19,44 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.ZeroTrustDeviceManagedNetworks;
+ * import com.pulumi.cloudflare.ZeroTrustDeviceManagedNetworksArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustDeviceManagedNetworksConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleZeroTrustDeviceManagedNetworks = new ZeroTrustDeviceManagedNetworks("exampleZeroTrustDeviceManagedNetworks", ZeroTrustDeviceManagedNetworksArgs.builder()
+ *             .accountId("699d98642c564d2e855e9661899b7252")
+ *             .config(ZeroTrustDeviceManagedNetworksConfigArgs.builder()
+ *                 .tlsSockaddr("foo.bar:1234")
+ *                 .sha256("b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c")
+ *                 .build())
+ *             .name("managed-network-1")
+ *             .type("tls")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh

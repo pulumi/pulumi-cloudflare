@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,30 +19,30 @@ public final class ZeroTrustDexTestDataArgs extends com.pulumi.resources.Resourc
      * The desired endpoint to test.
      * 
      */
-    @Import(name="host", required=true)
-    private Output<String> host;
+    @Import(name="host")
+    private @Nullable Output<String> host;
 
     /**
      * @return The desired endpoint to test.
      * 
      */
-    public Output<String> host() {
-        return this.host;
+    public Optional<Output<String>> host() {
+        return Optional.ofNullable(this.host);
     }
 
     /**
      * The type of test.
      * 
      */
-    @Import(name="kind", required=true)
-    private Output<String> kind;
+    @Import(name="kind")
+    private @Nullable Output<String> kind;
 
     /**
      * @return The type of test.
      * 
      */
-    public Output<String> kind() {
-        return this.kind;
+    public Optional<Output<String>> kind() {
+        return Optional.ofNullable(this.kind);
     }
 
     /**
@@ -93,7 +92,7 @@ public final class ZeroTrustDexTestDataArgs extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder host(Output<String> host) {
+        public Builder host(@Nullable Output<String> host) {
             $.host = host;
             return this;
         }
@@ -114,7 +113,7 @@ public final class ZeroTrustDexTestDataArgs extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder kind(Output<String> kind) {
+        public Builder kind(@Nullable Output<String> kind) {
             $.kind = kind;
             return this;
         }
@@ -151,12 +150,6 @@ public final class ZeroTrustDexTestDataArgs extends com.pulumi.resources.Resourc
         }
 
         public ZeroTrustDexTestDataArgs build() {
-            if ($.host == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustDexTestDataArgs", "host");
-            }
-            if ($.kind == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustDexTestDataArgs", "kind");
-            }
             return $;
         }
     }

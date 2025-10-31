@@ -9,6 +9,37 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustAccessIdentityProvider = new cloudflare.ZeroTrustAccessIdentityProvider("example_zero_trust_access_identity_provider", {
+ *     config: {
+ *         claims: [
+ *             "email_verified",
+ *             "preferred_username",
+ *             "custom_claim_name",
+ *         ],
+ *         clientId: "<your client id>",
+ *         clientSecret: "<your client secret>",
+ *         conditionalAccessEnabled: true,
+ *         directoryId: "<your azure directory uuid>",
+ *         emailClaimName: "custom_claim_name",
+ *         prompt: "login",
+ *         supportGroups: true,
+ *     },
+ *     name: "Widget Corps IDP",
+ *     type: "onetimepin",
+ *     zoneId: "zone_id",
+ *     scimConfig: {
+ *         enabled: true,
+ *         identityUpdateBehavior: "automatic",
+ *         seatDeprovision: true,
+ *         userDeprovision: true,
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

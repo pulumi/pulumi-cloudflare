@@ -57,12 +57,6 @@ export class ApiShield extends pulumi.CustomResource {
     }
 
     declare public readonly authIdCharacteristics: pulumi.Output<outputs.ApiShieldAuthIdCharacteristic[]>;
-    declare public /*out*/ readonly errors: pulumi.Output<outputs.ApiShieldError[]>;
-    declare public /*out*/ readonly messages: pulumi.Output<outputs.ApiShieldMessage[]>;
-    /**
-     * Whether the API call was successful.
-     */
-    declare public /*out*/ readonly success: pulumi.Output<boolean>;
     /**
      * Identifier.
      */
@@ -82,9 +76,6 @@ export class ApiShield extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ApiShieldState | undefined;
             resourceInputs["authIdCharacteristics"] = state?.authIdCharacteristics;
-            resourceInputs["errors"] = state?.errors;
-            resourceInputs["messages"] = state?.messages;
-            resourceInputs["success"] = state?.success;
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ApiShieldArgs | undefined;
@@ -96,9 +87,6 @@ export class ApiShield extends pulumi.CustomResource {
             }
             resourceInputs["authIdCharacteristics"] = args?.authIdCharacteristics;
             resourceInputs["zoneId"] = args?.zoneId;
-            resourceInputs["errors"] = undefined /*out*/;
-            resourceInputs["messages"] = undefined /*out*/;
-            resourceInputs["success"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApiShield.__pulumiType, name, resourceInputs, opts);
@@ -110,12 +98,6 @@ export class ApiShield extends pulumi.CustomResource {
  */
 export interface ApiShieldState {
     authIdCharacteristics?: pulumi.Input<pulumi.Input<inputs.ApiShieldAuthIdCharacteristic>[]>;
-    errors?: pulumi.Input<pulumi.Input<inputs.ApiShieldError>[]>;
-    messages?: pulumi.Input<pulumi.Input<inputs.ApiShieldMessage>[]>;
-    /**
-     * Whether the API call was successful.
-     */
-    success?: pulumi.Input<boolean>;
     /**
      * Identifier.
      */

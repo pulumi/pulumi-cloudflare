@@ -215,6 +215,11 @@ public final class GetNotificationPolicyFilters {
      * @return Usage depends on specific alert type
      * 
      */
+    private List<String> types;
+    /**
+     * @return Usage depends on specific alert type
+     * 
+     */
     private List<String> wheres;
     /**
      * @return Usage depends on specific alert type
@@ -507,6 +512,13 @@ public final class GetNotificationPolicyFilters {
      * @return Usage depends on specific alert type
      * 
      */
+    public List<String> types() {
+        return this.types;
+    }
+    /**
+     * @return Usage depends on specific alert type
+     * 
+     */
     public List<String> wheres() {
         return this.wheres;
     }
@@ -567,6 +579,7 @@ public final class GetNotificationPolicyFilters {
         private List<String> trafficExclusions;
         private List<String> tunnelIds;
         private List<String> tunnelNames;
+        private List<String> types;
         private List<String> wheres;
         private List<String> zones;
         public Builder() {}
@@ -612,6 +625,7 @@ public final class GetNotificationPolicyFilters {
     	      this.trafficExclusions = defaults.trafficExclusions;
     	      this.tunnelIds = defaults.tunnelIds;
     	      this.tunnelNames = defaults.tunnelNames;
+    	      this.types = defaults.types;
     	      this.wheres = defaults.wheres;
     	      this.zones = defaults.zones;
         }
@@ -1057,6 +1071,17 @@ public final class GetNotificationPolicyFilters {
             return tunnelNames(List.of(tunnelNames));
         }
         @CustomType.Setter
+        public Builder types(List<String> types) {
+            if (types == null) {
+              throw new MissingRequiredPropertyException("GetNotificationPolicyFilters", "types");
+            }
+            this.types = types;
+            return this;
+        }
+        public Builder types(String... types) {
+            return types(List.of(types));
+        }
+        @CustomType.Setter
         public Builder wheres(List<String> wheres) {
             if (wheres == null) {
               throw new MissingRequiredPropertyException("GetNotificationPolicyFilters", "wheres");
@@ -1120,6 +1145,7 @@ public final class GetNotificationPolicyFilters {
             _resultValue.trafficExclusions = trafficExclusions;
             _resultValue.tunnelIds = tunnelIds;
             _resultValue.tunnelNames = tunnelNames;
+            _resultValue.types = types;
             _resultValue.wheres = wheres;
             _resultValue.zones = zones;
             return _resultValue;

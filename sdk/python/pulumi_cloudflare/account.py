@@ -22,17 +22,21 @@ __all__ = ['AccountArgs', 'Account']
 class AccountArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
+                 managed_by: Optional[pulumi.Input['AccountManagedByArgs']] = None,
                  settings: Optional[pulumi.Input['AccountSettingsArgs']] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  unit: Optional[pulumi.Input['AccountUnitArgs']] = None):
         """
         The set of arguments for constructing a Account resource.
         :param pulumi.Input[_builtins.str] name: Account name
+        :param pulumi.Input['AccountManagedByArgs'] managed_by: Parent container details
         :param pulumi.Input['AccountSettingsArgs'] settings: Account settings
         :param pulumi.Input[_builtins.str] type: Available values: "standard", "enterprise".
         :param pulumi.Input['AccountUnitArgs'] unit: information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
         """
         pulumi.set(__self__, "name", name)
+        if managed_by is not None:
+            pulumi.set(__self__, "managed_by", managed_by)
         if settings is not None:
             pulumi.set(__self__, "settings", settings)
         if type is not None:
@@ -51,6 +55,18 @@ class AccountArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="managedBy")
+    def managed_by(self) -> Optional[pulumi.Input['AccountManagedByArgs']]:
+        """
+        Parent container details
+        """
+        return pulumi.get(self, "managed_by")
+
+    @managed_by.setter
+    def managed_by(self, value: Optional[pulumi.Input['AccountManagedByArgs']]):
+        pulumi.set(self, "managed_by", value)
 
     @_builtins.property
     @pulumi.getter
@@ -93,6 +109,7 @@ class AccountArgs:
 class _AccountState:
     def __init__(__self__, *,
                  created_on: Optional[pulumi.Input[_builtins.str]] = None,
+                 managed_by: Optional[pulumi.Input['AccountManagedByArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  settings: Optional[pulumi.Input['AccountSettingsArgs']] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -100,6 +117,7 @@ class _AccountState:
         """
         Input properties used for looking up and filtering Account resources.
         :param pulumi.Input[_builtins.str] created_on: Timestamp for the creation of the account
+        :param pulumi.Input['AccountManagedByArgs'] managed_by: Parent container details
         :param pulumi.Input[_builtins.str] name: Account name
         :param pulumi.Input['AccountSettingsArgs'] settings: Account settings
         :param pulumi.Input[_builtins.str] type: Available values: "standard", "enterprise".
@@ -107,6 +125,8 @@ class _AccountState:
         """
         if created_on is not None:
             pulumi.set(__self__, "created_on", created_on)
+        if managed_by is not None:
+            pulumi.set(__self__, "managed_by", managed_by)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if settings is not None:
@@ -127,6 +147,18 @@ class _AccountState:
     @created_on.setter
     def created_on(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "created_on", value)
+
+    @_builtins.property
+    @pulumi.getter(name="managedBy")
+    def managed_by(self) -> Optional[pulumi.Input['AccountManagedByArgs']]:
+        """
+        Parent container details
+        """
+        return pulumi.get(self, "managed_by")
+
+    @managed_by.setter
+    def managed_by(self, value: Optional[pulumi.Input['AccountManagedByArgs']]):
+        pulumi.set(self, "managed_by", value)
 
     @_builtins.property
     @pulumi.getter
@@ -183,6 +215,7 @@ class Account(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 managed_by: Optional[pulumi.Input[Union['AccountManagedByArgs', 'AccountManagedByArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  settings: Optional[pulumi.Input[Union['AccountSettingsArgs', 'AccountSettingsArgsDict']]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -211,6 +244,7 @@ class Account(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['AccountManagedByArgs', 'AccountManagedByArgsDict']] managed_by: Parent container details
         :param pulumi.Input[_builtins.str] name: Account name
         :param pulumi.Input[Union['AccountSettingsArgs', 'AccountSettingsArgsDict']] settings: Account settings
         :param pulumi.Input[_builtins.str] type: Available values: "standard", "enterprise".
@@ -258,6 +292,7 @@ class Account(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 managed_by: Optional[pulumi.Input[Union['AccountManagedByArgs', 'AccountManagedByArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  settings: Optional[pulumi.Input[Union['AccountSettingsArgs', 'AccountSettingsArgsDict']]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -271,6 +306,7 @@ class Account(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AccountArgs.__new__(AccountArgs)
 
+            __props__.__dict__["managed_by"] = managed_by
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
@@ -289,6 +325,7 @@ class Account(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             created_on: Optional[pulumi.Input[_builtins.str]] = None,
+            managed_by: Optional[pulumi.Input[Union['AccountManagedByArgs', 'AccountManagedByArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             settings: Optional[pulumi.Input[Union['AccountSettingsArgs', 'AccountSettingsArgsDict']]] = None,
             type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -301,6 +338,7 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] created_on: Timestamp for the creation of the account
+        :param pulumi.Input[Union['AccountManagedByArgs', 'AccountManagedByArgsDict']] managed_by: Parent container details
         :param pulumi.Input[_builtins.str] name: Account name
         :param pulumi.Input[Union['AccountSettingsArgs', 'AccountSettingsArgsDict']] settings: Account settings
         :param pulumi.Input[_builtins.str] type: Available values: "standard", "enterprise".
@@ -311,6 +349,7 @@ class Account(pulumi.CustomResource):
         __props__ = _AccountState.__new__(_AccountState)
 
         __props__.__dict__["created_on"] = created_on
+        __props__.__dict__["managed_by"] = managed_by
         __props__.__dict__["name"] = name
         __props__.__dict__["settings"] = settings
         __props__.__dict__["type"] = type
@@ -324,6 +363,14 @@ class Account(pulumi.CustomResource):
         Timestamp for the creation of the account
         """
         return pulumi.get(self, "created_on")
+
+    @_builtins.property
+    @pulumi.getter(name="managedBy")
+    def managed_by(self) -> pulumi.Output['outputs.AccountManagedBy']:
+        """
+        Parent container details
+        """
+        return pulumi.get(self, "managed_by")
 
     @_builtins.property
     @pulumi.getter

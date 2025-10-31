@@ -18,6 +18,73 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.ZoneCacheVariants;
+ * import com.pulumi.cloudflare.ZoneCacheVariantsArgs;
+ * import com.pulumi.cloudflare.inputs.ZoneCacheVariantsValueArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleZoneCacheVariants = new ZoneCacheVariants("exampleZoneCacheVariants", ZoneCacheVariantsArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .value(ZoneCacheVariantsValueArgs.builder()
+ *                 .avifs(                
+ *                     "image/webp",
+ *                     "image/jpeg")
+ *                 .bmps(                
+ *                     "image/webp",
+ *                     "image/jpeg")
+ *                 .gifs(                
+ *                     "image/webp",
+ *                     "image/jpeg")
+ *                 .jp2s(                
+ *                     "image/webp",
+ *                     "image/avif")
+ *                 .jpegs(                
+ *                     "image/webp",
+ *                     "image/avif")
+ *                 .jpgs(                
+ *                     "image/webp",
+ *                     "image/avif")
+ *                 .jpg2s(                
+ *                     "image/webp",
+ *                     "image/avif")
+ *                 .pngs(                
+ *                     "image/webp",
+ *                     "image/avif")
+ *                 .tifs(                
+ *                     "image/webp",
+ *                     "image/avif")
+ *                 .tiffs(                
+ *                     "image/webp",
+ *                     "image/avif")
+ *                 .webps(                
+ *                     "image/jpeg",
+ *                     "image/avif")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh

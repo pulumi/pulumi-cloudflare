@@ -12,6 +12,52 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleWorker = new Cloudflare.Worker("example_worker", new()
+    ///     {
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Name = "my-worker",
+    ///         Logpush = true,
+    ///         Observability = new Cloudflare.Inputs.WorkerObservabilityArgs
+    ///         {
+    ///             Enabled = true,
+    ///             HeadSamplingRate = 1,
+    ///             Logs = new Cloudflare.Inputs.WorkerObservabilityLogsArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 HeadSamplingRate = 1,
+    ///                 InvocationLogs = true,
+    ///             },
+    ///         },
+    ///         Subdomain = new Cloudflare.Inputs.WorkerSubdomainArgs
+    ///         {
+    ///             Enabled = true,
+    ///             PreviewsEnabled = true,
+    ///         },
+    ///         Tags = new[]
+    ///         {
+    ///             "my-team",
+    ///             "my-public-api",
+    ///         },
+    ///         TailConsumers = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.WorkerTailConsumerArgs
+    ///             {
+    ///                 Name = "my-tail-consumer",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh
@@ -50,6 +96,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("observability")]
         public Output<Outputs.WorkerObservability> Observability { get; private set; } = null!;
+
+        /// <summary>
+        /// Other resources that reference the Worker and depend on it existing.
+        /// </summary>
+        [Output("references")]
+        public Output<Outputs.WorkerReferences> References { get; private set; } = null!;
 
         /// <summary>
         /// Subdomain settings for the Worker.
@@ -212,6 +264,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("observability")]
         public Input<Inputs.WorkerObservabilityGetArgs>? Observability { get; set; }
+
+        /// <summary>
+        /// Other resources that reference the Worker and depend on it existing.
+        /// </summary>
+        [Input("references")]
+        public Input<Inputs.WorkerReferencesGetArgs>? References { get; set; }
 
         /// <summary>
         /// Subdomain settings for the Worker.

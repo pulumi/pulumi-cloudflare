@@ -9,6 +9,55 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustAccessPolicy = new cloudflare.ZeroTrustAccessPolicy("example_zero_trust_access_policy", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     decision: "allow",
+ *     includes: [{
+ *         group: {
+ *             id: "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+ *         },
+ *     }],
+ *     name: "Allow devs",
+ *     approvalGroups: [
+ *         {
+ *             approvalsNeeded: 1,
+ *             emailAddresses: [
+ *                 "test1@cloudflare.com",
+ *                 "test2@cloudflare.com",
+ *             ],
+ *             emailListUuid: "email_list_uuid",
+ *         },
+ *         {
+ *             approvalsNeeded: 3,
+ *             emailAddresses: [
+ *                 "test@cloudflare.com",
+ *                 "test2@cloudflare.com",
+ *             ],
+ *             emailListUuid: "597147a1-976b-4ef2-9af0-81d5d007fc34",
+ *         },
+ *     ],
+ *     approvalRequired: true,
+ *     excludes: [{
+ *         group: {
+ *             id: "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+ *         },
+ *     }],
+ *     isolationRequired: false,
+ *     purposeJustificationPrompt: "Please enter a justification for entering this protected domain.",
+ *     purposeJustificationRequired: true,
+ *     requires: [{
+ *         group: {
+ *             id: "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+ *         },
+ *     }],
+ *     sessionDuration: "24h",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

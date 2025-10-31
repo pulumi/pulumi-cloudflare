@@ -12,6 +12,42 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZeroTrustDexTest = new Cloudflare.ZeroTrustDexTest("example_zero_trust_dex_test", new()
+    ///     {
+    ///         AccountId = "01a7362d577a6c3019a474fd6f485823",
+    ///         Data = new Cloudflare.Inputs.ZeroTrustDexTestDataArgs
+    ///         {
+    ///             Host = "https://dash.cloudflare.com",
+    ///             Kind = "http",
+    ///             Method = "GET",
+    ///         },
+    ///         Enabled = true,
+    ///         Interval = "30m",
+    ///         Name = "HTTP dash health check",
+    ///         Description = "Checks the dash endpoint every 30 minutes",
+    ///         TargetPolicies = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ZeroTrustDexTestTargetPolicyArgs
+    ///             {
+    ///                 Id = "id",
+    ///                 Default = true,
+    ///                 Name = "name",
+    ///             },
+    ///         },
+    ///         Targeted = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh
@@ -61,7 +97,7 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.ZeroTrustDexTestTargetPolicy>> TargetPolicies { get; private set; } = null!;
 
         [Output("targeted")]
-        public Output<bool> Targeted { get; private set; } = null!;
+        public Output<bool?> Targeted { get; private set; } = null!;
 
         /// <summary>
         /// The unique identifier for the test.
@@ -159,6 +195,9 @@ namespace Pulumi.Cloudflare
             get => _targetPolicies ?? (_targetPolicies = new InputList<Inputs.ZeroTrustDexTestTargetPolicyArgs>());
             set => _targetPolicies = value;
         }
+
+        [Input("targeted")]
+        public Input<bool>? Targeted { get; set; }
 
         public ZeroTrustDexTestArgs()
         {

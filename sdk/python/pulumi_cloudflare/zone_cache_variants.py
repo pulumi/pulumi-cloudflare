@@ -140,6 +140,60 @@ class ZoneCacheVariants(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zone_cache_variants = cloudflare.ZoneCacheVariants("example_zone_cache_variants",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            value={
+                "avifs": [
+                    "image/webp",
+                    "image/jpeg",
+                ],
+                "bmps": [
+                    "image/webp",
+                    "image/jpeg",
+                ],
+                "gifs": [
+                    "image/webp",
+                    "image/jpeg",
+                ],
+                "jp2s": [
+                    "image/webp",
+                    "image/avif",
+                ],
+                "jpegs": [
+                    "image/webp",
+                    "image/avif",
+                ],
+                "jpgs": [
+                    "image/webp",
+                    "image/avif",
+                ],
+                "jpg2s": [
+                    "image/webp",
+                    "image/avif",
+                ],
+                "pngs": [
+                    "image/webp",
+                    "image/avif",
+                ],
+                "tifs": [
+                    "image/webp",
+                    "image/avif",
+                ],
+                "tiffs": [
+                    "image/webp",
+                    "image/avif",
+                ],
+                "webps": [
+                    "image/jpeg",
+                    "image/avif",
+                ],
+            })
+        ```
+
         ## Import
 
         ```sh
@@ -159,6 +213,60 @@ class ZoneCacheVariants(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zone_cache_variants = cloudflare.ZoneCacheVariants("example_zone_cache_variants",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            value={
+                "avifs": [
+                    "image/webp",
+                    "image/jpeg",
+                ],
+                "bmps": [
+                    "image/webp",
+                    "image/jpeg",
+                ],
+                "gifs": [
+                    "image/webp",
+                    "image/jpeg",
+                ],
+                "jp2s": [
+                    "image/webp",
+                    "image/avif",
+                ],
+                "jpegs": [
+                    "image/webp",
+                    "image/avif",
+                ],
+                "jpgs": [
+                    "image/webp",
+                    "image/avif",
+                ],
+                "jpg2s": [
+                    "image/webp",
+                    "image/avif",
+                ],
+                "pngs": [
+                    "image/webp",
+                    "image/avif",
+                ],
+                "tifs": [
+                    "image/webp",
+                    "image/avif",
+                ],
+                "tiffs": [
+                    "image/webp",
+                    "image/avif",
+                ],
+                "webps": [
+                    "image/jpeg",
+                    "image/avif",
+                ],
+            })
+        ```
 
         ## Import
 

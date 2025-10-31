@@ -8,6 +8,28 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleSnippet = new cloudflare.Snippet("example_snippet", {
+ *     zoneId: "9f1839b6152d298aca64c4e906b6d074",
+ *     snippetName: "my_snippet",
+ *     files: [{
+ *         name: "main.js",
+ *         content: `export default {
+ *   async fetch(request) {
+ *     return new Response('Hello, World!');
+ *   }
+ * }
+ * `,
+ *     }],
+ *     metadata: {
+ *         mainModule: "main.js",
+ *     },
+ * });
+ * ```
  */
 export class Snippet extends pulumi.CustomResource {
     /**

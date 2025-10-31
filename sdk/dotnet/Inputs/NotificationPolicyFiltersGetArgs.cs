@@ -492,6 +492,18 @@ namespace Pulumi.Cloudflare.Inputs
             set => _tunnelNames = value;
         }
 
+        [Input("types")]
+        private InputList<string>? _types;
+
+        /// <summary>
+        /// Usage depends on specific alert type
+        /// </summary>
+        public InputList<string> Types
+        {
+            get => _types ?? (_types = new InputList<string>());
+            set => _types = value;
+        }
+
         [Input("wheres")]
         private InputList<string>? _wheres;
 

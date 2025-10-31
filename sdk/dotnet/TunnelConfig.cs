@@ -56,6 +56,12 @@ namespace Pulumi.Cloudflare
         [Output("version")]
         public Output<int> Version { get; private set; } = null!;
 
+        /// <summary>
+        /// Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+        /// </summary>
+        [Output("warpRoutingEnabled")]
+        public Output<bool> WarpRoutingEnabled { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a TunnelConfig resource with the given unique name, arguments, and options.
@@ -131,6 +137,12 @@ namespace Pulumi.Cloudflare
         [Input("tunnelId", required: true)]
         public Input<string> TunnelId { get; set; } = null!;
 
+        /// <summary>
+        /// Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+        /// </summary>
+        [Input("warpRoutingEnabled")]
+        public Input<bool>? WarpRoutingEnabled { get; set; }
+
         public TunnelConfigArgs()
         {
         }
@@ -172,6 +184,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("version")]
         public Input<int>? Version { get; set; }
+
+        /// <summary>
+        /// Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+        /// </summary>
+        [Input("warpRoutingEnabled")]
+        public Input<bool>? WarpRoutingEnabled { get; set; }
 
         public TunnelConfigState()
         {

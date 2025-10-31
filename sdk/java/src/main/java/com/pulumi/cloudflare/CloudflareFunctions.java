@@ -110,8 +110,10 @@ import com.pulumi.cloudflare.inputs.GetCloudforceOneRequestPriorityArgs;
 import com.pulumi.cloudflare.inputs.GetCloudforceOneRequestPriorityPlainArgs;
 import com.pulumi.cloudflare.inputs.GetCloudforceOneRequestsArgs;
 import com.pulumi.cloudflare.inputs.GetCloudforceOneRequestsPlainArgs;
+import com.pulumi.cloudflare.inputs.GetContentScanningArgs;
 import com.pulumi.cloudflare.inputs.GetContentScanningExpressionsArgs;
 import com.pulumi.cloudflare.inputs.GetContentScanningExpressionsPlainArgs;
+import com.pulumi.cloudflare.inputs.GetContentScanningPlainArgs;
 import com.pulumi.cloudflare.inputs.GetCustomHostnameArgs;
 import com.pulumi.cloudflare.inputs.GetCustomHostnameFallbackOriginArgs;
 import com.pulumi.cloudflare.inputs.GetCustomHostnameFallbackOriginPlainArgs;
@@ -294,6 +296,12 @@ import com.pulumi.cloudflare.inputs.GetNotificationPolicyWebhooksListPlainArgs;
 import com.pulumi.cloudflare.inputs.GetNotificationPolicyWebhooksPlainArgs;
 import com.pulumi.cloudflare.inputs.GetObservatoryScheduledTestArgs;
 import com.pulumi.cloudflare.inputs.GetObservatoryScheduledTestPlainArgs;
+import com.pulumi.cloudflare.inputs.GetOrganizationArgs;
+import com.pulumi.cloudflare.inputs.GetOrganizationPlainArgs;
+import com.pulumi.cloudflare.inputs.GetOrganizationProfileArgs;
+import com.pulumi.cloudflare.inputs.GetOrganizationProfilePlainArgs;
+import com.pulumi.cloudflare.inputs.GetOrganizationsArgs;
+import com.pulumi.cloudflare.inputs.GetOrganizationsPlainArgs;
 import com.pulumi.cloudflare.inputs.GetOriginCaCertificateArgs;
 import com.pulumi.cloudflare.inputs.GetOriginCaCertificatePlainArgs;
 import com.pulumi.cloudflare.inputs.GetOriginCaCertificatesArgs;
@@ -720,6 +728,7 @@ import com.pulumi.cloudflare.outputs.GetCloudforceOneRequestPriorityResult;
 import com.pulumi.cloudflare.outputs.GetCloudforceOneRequestResult;
 import com.pulumi.cloudflare.outputs.GetCloudforceOneRequestsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetContentScanningExpressionsInvokeResult;
+import com.pulumi.cloudflare.outputs.GetContentScanningResult;
 import com.pulumi.cloudflare.outputs.GetCustomHostnameFallbackOriginResult;
 import com.pulumi.cloudflare.outputs.GetCustomHostnameResult;
 import com.pulumi.cloudflare.outputs.GetCustomHostnamesInvokeResult;
@@ -811,6 +820,9 @@ import com.pulumi.cloudflare.outputs.GetNotificationPolicyResult;
 import com.pulumi.cloudflare.outputs.GetNotificationPolicyWebhooksListInvokeResult;
 import com.pulumi.cloudflare.outputs.GetNotificationPolicyWebhooksResult;
 import com.pulumi.cloudflare.outputs.GetObservatoryScheduledTestResult;
+import com.pulumi.cloudflare.outputs.GetOrganizationProfileResult;
+import com.pulumi.cloudflare.outputs.GetOrganizationResult;
+import com.pulumi.cloudflare.outputs.GetOrganizationsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetOriginCaCertificateResult;
 import com.pulumi.cloudflare.outputs.GetOriginCaCertificatesInvokeResult;
 import com.pulumi.cloudflare.outputs.GetPageRuleResult;
@@ -5364,7 +5376,6 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleApiShield = CloudflareFunctions.getApiShield(GetApiShieldArgs.builder()
      *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .properties("auth_id_characteristics")
      *             .build());
      * 
      *     }
@@ -5403,7 +5414,6 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleApiShield = CloudflareFunctions.getApiShield(GetApiShieldArgs.builder()
      *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .properties("auth_id_characteristics")
      *             .build());
      * 
      *     }
@@ -5442,7 +5452,6 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleApiShield = CloudflareFunctions.getApiShield(GetApiShieldArgs.builder()
      *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .properties("auth_id_characteristics")
      *             .build());
      * 
      *     }
@@ -5481,7 +5490,6 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleApiShield = CloudflareFunctions.getApiShield(GetApiShieldArgs.builder()
      *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .properties("auth_id_characteristics")
      *             .build());
      * 
      *     }
@@ -5520,7 +5528,6 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleApiShield = CloudflareFunctions.getApiShield(GetApiShieldArgs.builder()
      *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .properties("auth_id_characteristics")
      *             .build());
      * 
      *     }
@@ -11921,6 +11928,196 @@ public final class CloudflareFunctions {
      */
     public static CompletableFuture<GetCloudforceOneRequestsInvokeResult> getCloudforceOneRequestsPlain(GetCloudforceOneRequestsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getCloudforceOneRequests:getCloudforceOneRequests", TypeShape.of(GetCloudforceOneRequestsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetContentScanningArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleContentScanning = CloudflareFunctions.getContentScanning(GetContentScanningArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetContentScanningResult> getContentScanning(GetContentScanningArgs args) {
+        return getContentScanning(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetContentScanningArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleContentScanning = CloudflareFunctions.getContentScanning(GetContentScanningArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetContentScanningResult> getContentScanningPlain(GetContentScanningPlainArgs args) {
+        return getContentScanningPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetContentScanningArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleContentScanning = CloudflareFunctions.getContentScanning(GetContentScanningArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetContentScanningResult> getContentScanning(GetContentScanningArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getContentScanning:getContentScanning", TypeShape.of(GetContentScanningResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetContentScanningArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleContentScanning = CloudflareFunctions.getContentScanning(GetContentScanningArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetContentScanningResult> getContentScanning(GetContentScanningArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getContentScanning:getContentScanning", TypeShape.of(GetContentScanningResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetContentScanningArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleContentScanning = CloudflareFunctions.getContentScanning(GetContentScanningArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetContentScanningResult> getContentScanningPlain(GetContentScanningPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getContentScanning:getContentScanning", TypeShape.of(GetContentScanningResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage
@@ -29771,7 +29968,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleNotificationPolicy = CloudflareFunctions.getNotificationPolicy(GetNotificationPolicyArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .policyId("0da2b59e-f118-439d-8097-bdfb215203c9")
+     *             .policyId("0da2b59ef118439d8097bdfb215203c9")
      *             .build());
      * 
      *     }
@@ -29810,7 +30007,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleNotificationPolicy = CloudflareFunctions.getNotificationPolicy(GetNotificationPolicyArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .policyId("0da2b59e-f118-439d-8097-bdfb215203c9")
+     *             .policyId("0da2b59ef118439d8097bdfb215203c9")
      *             .build());
      * 
      *     }
@@ -29849,7 +30046,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleNotificationPolicy = CloudflareFunctions.getNotificationPolicy(GetNotificationPolicyArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .policyId("0da2b59e-f118-439d-8097-bdfb215203c9")
+     *             .policyId("0da2b59ef118439d8097bdfb215203c9")
      *             .build());
      * 
      *     }
@@ -29888,7 +30085,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleNotificationPolicy = CloudflareFunctions.getNotificationPolicy(GetNotificationPolicyArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .policyId("0da2b59e-f118-439d-8097-bdfb215203c9")
+     *             .policyId("0da2b59ef118439d8097bdfb215203c9")
      *             .build());
      * 
      *     }
@@ -29927,7 +30124,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleNotificationPolicy = CloudflareFunctions.getNotificationPolicy(GetNotificationPolicyArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .policyId("0da2b59e-f118-439d-8097-bdfb215203c9")
+     *             .policyId("0da2b59ef118439d8097bdfb215203c9")
      *             .build());
      * 
      *     }
@@ -29966,7 +30163,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleNotificationPolicyWebhooks = CloudflareFunctions.getNotificationPolicyWebhooks(GetNotificationPolicyWebhooksArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .webhookId("b115d5ec-15c6-41ee-8b76-92c449b5227b")
+     *             .webhookId("b115d5ec15c641ee8b7692c449b5227b")
      *             .build());
      * 
      *     }
@@ -30005,7 +30202,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleNotificationPolicyWebhooks = CloudflareFunctions.getNotificationPolicyWebhooks(GetNotificationPolicyWebhooksArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .webhookId("b115d5ec-15c6-41ee-8b76-92c449b5227b")
+     *             .webhookId("b115d5ec15c641ee8b7692c449b5227b")
      *             .build());
      * 
      *     }
@@ -30044,7 +30241,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleNotificationPolicyWebhooks = CloudflareFunctions.getNotificationPolicyWebhooks(GetNotificationPolicyWebhooksArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .webhookId("b115d5ec-15c6-41ee-8b76-92c449b5227b")
+     *             .webhookId("b115d5ec15c641ee8b7692c449b5227b")
      *             .build());
      * 
      *     }
@@ -30083,7 +30280,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleNotificationPolicyWebhooks = CloudflareFunctions.getNotificationPolicyWebhooks(GetNotificationPolicyWebhooksArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .webhookId("b115d5ec-15c6-41ee-8b76-92c449b5227b")
+     *             .webhookId("b115d5ec15c641ee8b7692c449b5227b")
      *             .build());
      * 
      *     }
@@ -30122,7 +30319,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleNotificationPolicyWebhooks = CloudflareFunctions.getNotificationPolicyWebhooks(GetNotificationPolicyWebhooksArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .webhookId("b115d5ec-15c6-41ee-8b76-92c449b5227b")
+     *             .webhookId("b115d5ec15c641ee8b7692c449b5227b")
      *             .build());
      * 
      *     }
@@ -30523,6 +30720,854 @@ public final class CloudflareFunctions {
      */
     public static CompletableFuture<GetObservatoryScheduledTestResult> getObservatoryScheduledTestPlain(GetObservatoryScheduledTestPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getObservatoryScheduledTest:getObservatoryScheduledTest", TypeShape.of(GetObservatoryScheduledTestResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleOrganization = CloudflareFunctions.getOrganization(GetOrganizationArgs.builder()
+     *             .organizationId("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOrganizationResult> getOrganization() {
+        return getOrganization(GetOrganizationArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleOrganization = CloudflareFunctions.getOrganization(GetOrganizationArgs.builder()
+     *             .organizationId("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetOrganizationResult> getOrganizationPlain() {
+        return getOrganizationPlain(GetOrganizationPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleOrganization = CloudflareFunctions.getOrganization(GetOrganizationArgs.builder()
+     *             .organizationId("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOrganizationResult> getOrganization(GetOrganizationArgs args) {
+        return getOrganization(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleOrganization = CloudflareFunctions.getOrganization(GetOrganizationArgs.builder()
+     *             .organizationId("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetOrganizationResult> getOrganizationPlain(GetOrganizationPlainArgs args) {
+        return getOrganizationPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleOrganization = CloudflareFunctions.getOrganization(GetOrganizationArgs.builder()
+     *             .organizationId("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOrganizationResult> getOrganization(GetOrganizationArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getOrganization:getOrganization", TypeShape.of(GetOrganizationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleOrganization = CloudflareFunctions.getOrganization(GetOrganizationArgs.builder()
+     *             .organizationId("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOrganizationResult> getOrganization(GetOrganizationArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getOrganization:getOrganization", TypeShape.of(GetOrganizationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleOrganization = CloudflareFunctions.getOrganization(GetOrganizationArgs.builder()
+     *             .organizationId("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetOrganizationResult> getOrganizationPlain(GetOrganizationPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getOrganization:getOrganization", TypeShape.of(GetOrganizationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleOrganizationProfile = CloudflareFunctions.getOrganizationProfile(GetOrganizationProfileArgs.builder()
+     *             .organizationId("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOrganizationProfileResult> getOrganizationProfile(GetOrganizationProfileArgs args) {
+        return getOrganizationProfile(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleOrganizationProfile = CloudflareFunctions.getOrganizationProfile(GetOrganizationProfileArgs.builder()
+     *             .organizationId("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetOrganizationProfileResult> getOrganizationProfilePlain(GetOrganizationProfilePlainArgs args) {
+        return getOrganizationProfilePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleOrganizationProfile = CloudflareFunctions.getOrganizationProfile(GetOrganizationProfileArgs.builder()
+     *             .organizationId("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOrganizationProfileResult> getOrganizationProfile(GetOrganizationProfileArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getOrganizationProfile:getOrganizationProfile", TypeShape.of(GetOrganizationProfileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleOrganizationProfile = CloudflareFunctions.getOrganizationProfile(GetOrganizationProfileArgs.builder()
+     *             .organizationId("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOrganizationProfileResult> getOrganizationProfile(GetOrganizationProfileArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getOrganizationProfile:getOrganizationProfile", TypeShape.of(GetOrganizationProfileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleOrganizationProfile = CloudflareFunctions.getOrganizationProfile(GetOrganizationProfileArgs.builder()
+     *             .organizationId("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetOrganizationProfileResult> getOrganizationProfilePlain(GetOrganizationProfilePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getOrganizationProfile:getOrganizationProfile", TypeShape.of(GetOrganizationProfileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationsArgs;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationsContainingArgs;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationsNameArgs;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationsParentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleOrganizations = CloudflareFunctions.getOrganizations(GetOrganizationsArgs.builder()
+     *             .ids("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+     *             .containing(GetOrganizationsContainingArgs.builder()
+     *                 .account("account")
+     *                 .organization("organization")
+     *                 .user("user")
+     *                 .build())
+     *             .name(GetOrganizationsNameArgs.builder()
+     *                 .contains("contains")
+     *                 .endsWith("endsWith")
+     *                 .startsWith("startsWith")
+     *                 .build())
+     *             .pageSize(0)
+     *             .pageToken("page_token")
+     *             .parent(GetOrganizationsParentArgs.builder()
+     *                 .id("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOrganizationsInvokeResult> getOrganizations() {
+        return getOrganizations(GetOrganizationsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationsArgs;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationsContainingArgs;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationsNameArgs;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationsParentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleOrganizations = CloudflareFunctions.getOrganizations(GetOrganizationsArgs.builder()
+     *             .ids("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+     *             .containing(GetOrganizationsContainingArgs.builder()
+     *                 .account("account")
+     *                 .organization("organization")
+     *                 .user("user")
+     *                 .build())
+     *             .name(GetOrganizationsNameArgs.builder()
+     *                 .contains("contains")
+     *                 .endsWith("endsWith")
+     *                 .startsWith("startsWith")
+     *                 .build())
+     *             .pageSize(0)
+     *             .pageToken("page_token")
+     *             .parent(GetOrganizationsParentArgs.builder()
+     *                 .id("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetOrganizationsInvokeResult> getOrganizationsPlain() {
+        return getOrganizationsPlain(GetOrganizationsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationsArgs;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationsContainingArgs;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationsNameArgs;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationsParentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleOrganizations = CloudflareFunctions.getOrganizations(GetOrganizationsArgs.builder()
+     *             .ids("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+     *             .containing(GetOrganizationsContainingArgs.builder()
+     *                 .account("account")
+     *                 .organization("organization")
+     *                 .user("user")
+     *                 .build())
+     *             .name(GetOrganizationsNameArgs.builder()
+     *                 .contains("contains")
+     *                 .endsWith("endsWith")
+     *                 .startsWith("startsWith")
+     *                 .build())
+     *             .pageSize(0)
+     *             .pageToken("page_token")
+     *             .parent(GetOrganizationsParentArgs.builder()
+     *                 .id("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOrganizationsInvokeResult> getOrganizations(GetOrganizationsArgs args) {
+        return getOrganizations(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationsArgs;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationsContainingArgs;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationsNameArgs;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationsParentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleOrganizations = CloudflareFunctions.getOrganizations(GetOrganizationsArgs.builder()
+     *             .ids("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+     *             .containing(GetOrganizationsContainingArgs.builder()
+     *                 .account("account")
+     *                 .organization("organization")
+     *                 .user("user")
+     *                 .build())
+     *             .name(GetOrganizationsNameArgs.builder()
+     *                 .contains("contains")
+     *                 .endsWith("endsWith")
+     *                 .startsWith("startsWith")
+     *                 .build())
+     *             .pageSize(0)
+     *             .pageToken("page_token")
+     *             .parent(GetOrganizationsParentArgs.builder()
+     *                 .id("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetOrganizationsInvokeResult> getOrganizationsPlain(GetOrganizationsPlainArgs args) {
+        return getOrganizationsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationsArgs;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationsContainingArgs;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationsNameArgs;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationsParentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleOrganizations = CloudflareFunctions.getOrganizations(GetOrganizationsArgs.builder()
+     *             .ids("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+     *             .containing(GetOrganizationsContainingArgs.builder()
+     *                 .account("account")
+     *                 .organization("organization")
+     *                 .user("user")
+     *                 .build())
+     *             .name(GetOrganizationsNameArgs.builder()
+     *                 .contains("contains")
+     *                 .endsWith("endsWith")
+     *                 .startsWith("startsWith")
+     *                 .build())
+     *             .pageSize(0)
+     *             .pageToken("page_token")
+     *             .parent(GetOrganizationsParentArgs.builder()
+     *                 .id("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOrganizationsInvokeResult> getOrganizations(GetOrganizationsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getOrganizations:getOrganizations", TypeShape.of(GetOrganizationsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationsArgs;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationsContainingArgs;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationsNameArgs;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationsParentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleOrganizations = CloudflareFunctions.getOrganizations(GetOrganizationsArgs.builder()
+     *             .ids("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+     *             .containing(GetOrganizationsContainingArgs.builder()
+     *                 .account("account")
+     *                 .organization("organization")
+     *                 .user("user")
+     *                 .build())
+     *             .name(GetOrganizationsNameArgs.builder()
+     *                 .contains("contains")
+     *                 .endsWith("endsWith")
+     *                 .startsWith("startsWith")
+     *                 .build())
+     *             .pageSize(0)
+     *             .pageToken("page_token")
+     *             .parent(GetOrganizationsParentArgs.builder()
+     *                 .id("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOrganizationsInvokeResult> getOrganizations(GetOrganizationsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getOrganizations:getOrganizations", TypeShape.of(GetOrganizationsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationsArgs;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationsContainingArgs;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationsNameArgs;
+     * import com.pulumi.cloudflare.inputs.GetOrganizationsParentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleOrganizations = CloudflareFunctions.getOrganizations(GetOrganizationsArgs.builder()
+     *             .ids("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+     *             .containing(GetOrganizationsContainingArgs.builder()
+     *                 .account("account")
+     *                 .organization("organization")
+     *                 .user("user")
+     *                 .build())
+     *             .name(GetOrganizationsNameArgs.builder()
+     *                 .contains("contains")
+     *                 .endsWith("endsWith")
+     *                 .startsWith("startsWith")
+     *                 .build())
+     *             .pageSize(0)
+     *             .pageToken("page_token")
+     *             .parent(GetOrganizationsParentArgs.builder()
+     *                 .id("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetOrganizationsInvokeResult> getOrganizationsPlain(GetOrganizationsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getOrganizations:getOrganizations", TypeShape.of(GetOrganizationsInvokeResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage

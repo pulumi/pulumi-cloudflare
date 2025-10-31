@@ -11,6 +11,31 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZeroTrustAccessMtlsHostnameSettings = new Cloudflare.ZeroTrustAccessMtlsHostnameSettings("example_zero_trust_access_mtls_hostname_settings", new()
+    ///     {
+    ///         Settings = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ZeroTrustAccessMtlsHostnameSettingsSettingArgs
+    ///             {
+    ///                 ChinaNetwork = false,
+    ///                 ClientCertificateForwarding = true,
+    ///                 Hostname = "admin.example.com",
+    ///             },
+    ///         },
+    ///         ZoneId = "zone_id",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [Obsolete(@"cloudflare.index/accessmutualtlshostnamesettings.AccessMutualTlsHostnameSettings has been deprecated in favor of cloudflare.index/zerotrustaccessmtlshostnamesettings.ZeroTrustAccessMtlsHostnameSettings")]
     [CloudflareResourceType("cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings")]

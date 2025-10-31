@@ -8,6 +8,26 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleR2BucketCors = new cloudflare.R2BucketCors("example_r2_bucket_cors", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     bucketName: "example-bucket",
+ *     rules: [{
+ *         allowed: {
+ *             methods: ["GET"],
+ *             origins: ["http://localhost:3000"],
+ *             headers: ["x-requested-by"],
+ *         },
+ *         id: "Allow Local Development",
+ *         exposeHeaders: ["Content-Encoding"],
+ *         maxAgeSeconds: 3600,
+ *     }],
+ * });
+ * ```
  */
 export class R2BucketCors extends pulumi.CustomResource {
     /**

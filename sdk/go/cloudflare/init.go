@@ -105,6 +105,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CloudforceOneRequestMessage{}
 	case "cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority":
 		r = &CloudforceOneRequestPriority{}
+	case "cloudflare:index/contentScanning:ContentScanning":
+		r = &ContentScanning{}
 	case "cloudflare:index/contentScanningExpression:ContentScanningExpression":
 		r = &ContentScanningExpression{}
 	case "cloudflare:index/customHostname:CustomHostname":
@@ -225,6 +227,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NotificationPolicyWebhooks{}
 	case "cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest":
 		r = &ObservatoryScheduledTest{}
+	case "cloudflare:index/organization:Organization":
+		r = &Organization{}
+	case "cloudflare:index/organizationProfile:OrganizationProfile":
+		r = &OrganizationProfile{}
 	case "cloudflare:index/originCaCertificate:OriginCaCertificate":
 		r = &OriginCaCertificate{}
 	case "cloudflare:index/pageRule:PageRule":
@@ -730,6 +736,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/contentScanning",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/contentScanningExpression",
 		&module{version},
 	)
@@ -1026,6 +1037,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/observatoryScheduledTest",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/organization",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/organizationProfile",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -65,6 +65,10 @@ export class ZeroTrustTunnelCloudflaredConfig extends pulumi.CustomResource {
      * The version of the Tunnel Configuration.
      */
     declare public /*out*/ readonly version: pulumi.Output<number>;
+    /**
+     * Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+     */
+    declare public readonly warpRoutingEnabled: pulumi.Output<boolean>;
 
     /**
      * Create a ZeroTrustTunnelCloudflaredConfig resource with the given unique name, arguments, and options.
@@ -85,6 +89,7 @@ export class ZeroTrustTunnelCloudflaredConfig extends pulumi.CustomResource {
             resourceInputs["source"] = state?.source;
             resourceInputs["tunnelId"] = state?.tunnelId;
             resourceInputs["version"] = state?.version;
+            resourceInputs["warpRoutingEnabled"] = state?.warpRoutingEnabled;
         } else {
             const args = argsOrState as ZeroTrustTunnelCloudflaredConfigArgs | undefined;
             if (args?.accountId === undefined && !opts.urn) {
@@ -97,6 +102,7 @@ export class ZeroTrustTunnelCloudflaredConfig extends pulumi.CustomResource {
             resourceInputs["config"] = args?.config;
             resourceInputs["source"] = args?.source;
             resourceInputs["tunnelId"] = args?.tunnelId;
+            resourceInputs["warpRoutingEnabled"] = args?.warpRoutingEnabled;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
         }
@@ -133,6 +139,10 @@ export interface ZeroTrustTunnelCloudflaredConfigState {
      * The version of the Tunnel Configuration.
      */
     version?: pulumi.Input<number>;
+    /**
+     * Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+     */
+    warpRoutingEnabled?: pulumi.Input<boolean>;
 }
 
 /**
@@ -156,4 +166,8 @@ export interface ZeroTrustTunnelCloudflaredConfigArgs {
      * UUID of the tunnel.
      */
     tunnelId: pulumi.Input<string>;
+    /**
+     * Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+     */
+    warpRoutingEnabled?: pulumi.Input<boolean>;
 }

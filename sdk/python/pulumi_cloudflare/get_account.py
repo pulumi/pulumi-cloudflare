@@ -28,7 +28,7 @@ class GetAccountResult:
     """
     A collection of values returned by getAccount.
     """
-    def __init__(__self__, account_id=None, created_on=None, filter=None, id=None, name=None, settings=None, type=None):
+    def __init__(__self__, account_id=None, created_on=None, filter=None, id=None, managed_by=None, name=None, settings=None, type=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -41,6 +41,9 @@ class GetAccountResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if managed_by and not isinstance(managed_by, dict):
+            raise TypeError("Expected argument 'managed_by' to be a dict")
+        pulumi.set(__self__, "managed_by", managed_by)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -81,6 +84,14 @@ class GetAccountResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter(name="managedBy")
+    def managed_by(self) -> 'outputs.GetAccountManagedByResult':
+        """
+        Parent container details
+        """
+        return pulumi.get(self, "managed_by")
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
@@ -115,6 +126,7 @@ class AwaitableGetAccountResult(GetAccountResult):
             created_on=self.created_on,
             filter=self.filter,
             id=self.id,
+            managed_by=self.managed_by,
             name=self.name,
             settings=self.settings,
             type=self.type)
@@ -147,6 +159,7 @@ def get_account(account_id: Optional[_builtins.str] = None,
         created_on=pulumi.get(__ret__, 'created_on'),
         filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
+        managed_by=pulumi.get(__ret__, 'managed_by'),
         name=pulumi.get(__ret__, 'name'),
         settings=pulumi.get(__ret__, 'settings'),
         type=pulumi.get(__ret__, 'type'))
@@ -176,6 +189,7 @@ def get_account_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]
         created_on=pulumi.get(__response__, 'created_on'),
         filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
+        managed_by=pulumi.get(__response__, 'managed_by'),
         name=pulumi.get(__response__, 'name'),
         settings=pulumi.get(__response__, 'settings'),
         type=pulumi.get(__response__, 'type')))

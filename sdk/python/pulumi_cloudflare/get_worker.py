@@ -27,7 +27,7 @@ class GetWorkerResult:
     """
     A collection of values returned by getWorker.
     """
-    def __init__(__self__, account_id=None, created_on=None, id=None, logpush=None, name=None, observability=None, subdomain=None, tags=None, tail_consumers=None, updated_on=None, worker_id=None):
+    def __init__(__self__, account_id=None, created_on=None, id=None, logpush=None, name=None, observability=None, references=None, subdomain=None, tags=None, tail_consumers=None, updated_on=None, worker_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -46,6 +46,9 @@ class GetWorkerResult:
         if observability and not isinstance(observability, dict):
             raise TypeError("Expected argument 'observability' to be a dict")
         pulumi.set(__self__, "observability", observability)
+        if references and not isinstance(references, dict):
+            raise TypeError("Expected argument 'references' to be a dict")
+        pulumi.set(__self__, "references", references)
         if subdomain and not isinstance(subdomain, dict):
             raise TypeError("Expected argument 'subdomain' to be a dict")
         pulumi.set(__self__, "subdomain", subdomain)
@@ -112,6 +115,14 @@ class GetWorkerResult:
 
     @_builtins.property
     @pulumi.getter
+    def references(self) -> 'outputs.GetWorkerReferencesResult':
+        """
+        Other resources that reference the Worker and depend on it existing.
+        """
+        return pulumi.get(self, "references")
+
+    @_builtins.property
+    @pulumi.getter
     def subdomain(self) -> 'outputs.GetWorkerSubdomainResult':
         """
         Subdomain settings for the Worker.
@@ -163,6 +174,7 @@ class AwaitableGetWorkerResult(GetWorkerResult):
             logpush=self.logpush,
             name=self.name,
             observability=self.observability,
+            references=self.references,
             subdomain=self.subdomain,
             tags=self.tags,
             tail_consumers=self.tail_consumers,
@@ -201,6 +213,7 @@ def get_worker(account_id: Optional[_builtins.str] = None,
         logpush=pulumi.get(__ret__, 'logpush'),
         name=pulumi.get(__ret__, 'name'),
         observability=pulumi.get(__ret__, 'observability'),
+        references=pulumi.get(__ret__, 'references'),
         subdomain=pulumi.get(__ret__, 'subdomain'),
         tags=pulumi.get(__ret__, 'tags'),
         tail_consumers=pulumi.get(__ret__, 'tail_consumers'),
@@ -236,6 +249,7 @@ def get_worker_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
         logpush=pulumi.get(__response__, 'logpush'),
         name=pulumi.get(__response__, 'name'),
         observability=pulumi.get(__response__, 'observability'),
+        references=pulumi.get(__response__, 'references'),
         subdomain=pulumi.get(__response__, 'subdomain'),
         tags=pulumi.get(__response__, 'tags'),
         tail_consumers=pulumi.get(__response__, 'tail_consumers'),

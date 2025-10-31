@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,12 +15,12 @@ public final class ZeroTrustDexTestData {
      * @return The desired endpoint to test.
      * 
      */
-    private String host;
+    private @Nullable String host;
     /**
      * @return The type of test.
      * 
      */
-    private String kind;
+    private @Nullable String kind;
     /**
      * @return The HTTP request method type.
      * 
@@ -33,15 +32,15 @@ public final class ZeroTrustDexTestData {
      * @return The desired endpoint to test.
      * 
      */
-    public String host() {
-        return this.host;
+    public Optional<String> host() {
+        return Optional.ofNullable(this.host);
     }
     /**
      * @return The type of test.
      * 
      */
-    public String kind() {
-        return this.kind;
+    public Optional<String> kind() {
+        return Optional.ofNullable(this.kind);
     }
     /**
      * @return The HTTP request method type.
@@ -60,8 +59,8 @@ public final class ZeroTrustDexTestData {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String host;
-        private String kind;
+        private @Nullable String host;
+        private @Nullable String kind;
         private @Nullable String method;
         public Builder() {}
         public Builder(ZeroTrustDexTestData defaults) {
@@ -72,18 +71,14 @@ public final class ZeroTrustDexTestData {
         }
 
         @CustomType.Setter
-        public Builder host(String host) {
-            if (host == null) {
-              throw new MissingRequiredPropertyException("ZeroTrustDexTestData", "host");
-            }
+        public Builder host(@Nullable String host) {
+
             this.host = host;
             return this;
         }
         @CustomType.Setter
-        public Builder kind(String kind) {
-            if (kind == null) {
-              throw new MissingRequiredPropertyException("ZeroTrustDexTestData", "kind");
-            }
+        public Builder kind(@Nullable String kind) {
+
             this.kind = kind;
             return this;
         }

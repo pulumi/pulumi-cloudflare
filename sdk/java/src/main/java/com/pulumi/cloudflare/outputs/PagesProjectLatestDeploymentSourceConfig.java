@@ -13,57 +13,149 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PagesProjectLatestDeploymentSourceConfig {
+    /**
+     * @return Whether to enable automatic deployments when pushing to the source repository.
+     * When disabled, no deployments (production or preview) will be triggered automatically.
+     * 
+     * @deprecated
+     * Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+     * 
+     */
+    @Deprecated /* Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control. */
     private @Nullable Boolean deploymentsEnabled;
+    /**
+     * @return The owner of the repository.
+     * 
+     */
     private @Nullable String owner;
+    /**
+     * @return A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
+     * 
+     */
     private @Nullable List<String> pathExcludes;
+    /**
+     * @return A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
+     * 
+     */
     private @Nullable List<String> pathIncludes;
+    /**
+     * @return Whether to enable PR comments.
+     * 
+     */
     private @Nullable Boolean prCommentsEnabled;
+    /**
+     * @return A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     * 
+     */
     private @Nullable List<String> previewBranchExcludes;
+    /**
+     * @return A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     * 
+     */
     private @Nullable List<String> previewBranchIncludes;
     /**
-     * @return Available values: &#34;all&#34;, &#34;none&#34;, &#34;custom&#34;.
+     * @return Controls whether commits to preview branches trigger a preview deployment.
+     * Available values: &#34;all&#34;, &#34;none&#34;, &#34;custom&#34;.
      * 
      */
     private @Nullable String previewDeploymentSetting;
+    /**
+     * @return The production branch of the repository.
+     * 
+     */
     private @Nullable String productionBranch;
+    /**
+     * @return Whether to trigger a production deployment on commits to the production branch.
+     * 
+     */
     private @Nullable Boolean productionDeploymentsEnabled;
+    /**
+     * @return The name of the repository.
+     * 
+     */
     private @Nullable String repoName;
 
     private PagesProjectLatestDeploymentSourceConfig() {}
+    /**
+     * @return Whether to enable automatic deployments when pushing to the source repository.
+     * When disabled, no deployments (production or preview) will be triggered automatically.
+     * 
+     * @deprecated
+     * Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+     * 
+     */
+    @Deprecated /* Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control. */
     public Optional<Boolean> deploymentsEnabled() {
         return Optional.ofNullable(this.deploymentsEnabled);
     }
+    /**
+     * @return The owner of the repository.
+     * 
+     */
     public Optional<String> owner() {
         return Optional.ofNullable(this.owner);
     }
+    /**
+     * @return A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
+     * 
+     */
     public List<String> pathExcludes() {
         return this.pathExcludes == null ? List.of() : this.pathExcludes;
     }
+    /**
+     * @return A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
+     * 
+     */
     public List<String> pathIncludes() {
         return this.pathIncludes == null ? List.of() : this.pathIncludes;
     }
+    /**
+     * @return Whether to enable PR comments.
+     * 
+     */
     public Optional<Boolean> prCommentsEnabled() {
         return Optional.ofNullable(this.prCommentsEnabled);
     }
+    /**
+     * @return A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     * 
+     */
     public List<String> previewBranchExcludes() {
         return this.previewBranchExcludes == null ? List.of() : this.previewBranchExcludes;
     }
+    /**
+     * @return A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     * 
+     */
     public List<String> previewBranchIncludes() {
         return this.previewBranchIncludes == null ? List.of() : this.previewBranchIncludes;
     }
     /**
-     * @return Available values: &#34;all&#34;, &#34;none&#34;, &#34;custom&#34;.
+     * @return Controls whether commits to preview branches trigger a preview deployment.
+     * Available values: &#34;all&#34;, &#34;none&#34;, &#34;custom&#34;.
      * 
      */
     public Optional<String> previewDeploymentSetting() {
         return Optional.ofNullable(this.previewDeploymentSetting);
     }
+    /**
+     * @return The production branch of the repository.
+     * 
+     */
     public Optional<String> productionBranch() {
         return Optional.ofNullable(this.productionBranch);
     }
+    /**
+     * @return Whether to trigger a production deployment on commits to the production branch.
+     * 
+     */
     public Optional<Boolean> productionDeploymentsEnabled() {
         return Optional.ofNullable(this.productionDeploymentsEnabled);
     }
+    /**
+     * @return The name of the repository.
+     * 
+     */
     public Optional<String> repoName() {
         return Optional.ofNullable(this.repoName);
     }

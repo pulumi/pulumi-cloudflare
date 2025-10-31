@@ -32,6 +32,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? L4Protocol { get; set; }
 
         /// <summary>
+        /// A MCP server id configured in ai-controls. Access will secure the MCP server if accessed through a MCP portal.
+        /// </summary>
+        [Input("mcpServerId")]
+        public Input<string>? McpServerId { get; set; }
+
+        /// <summary>
         /// The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match.
         /// </summary>
         [Input("portRange")]

@@ -72,7 +72,7 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.ZeroTrustDlpCustomEntryPattern> Pattern { get; private set; } = null!;
 
         [Output("profileId")]
-        public Output<string> ProfileId { get; private set; } = null!;
+        public Output<string?> ProfileId { get; private set; } = null!;
 
         [Output("secret")]
         public Output<bool> Secret { get; private set; } = null!;
@@ -150,8 +150,8 @@ namespace Pulumi.Cloudflare
         [Input("pattern", required: true)]
         public Input<Inputs.ZeroTrustDlpCustomEntryPatternArgs> Pattern { get; set; } = null!;
 
-        [Input("profileId", required: true)]
-        public Input<string> ProfileId { get; set; } = null!;
+        [Input("profileId")]
+        public Input<string>? ProfileId { get; set; }
 
         public ZeroTrustDlpCustomEntryArgs()
         {

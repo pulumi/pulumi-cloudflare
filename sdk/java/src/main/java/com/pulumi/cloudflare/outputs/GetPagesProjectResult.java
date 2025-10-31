@@ -10,6 +10,7 @@ import com.pulumi.cloudflare.outputs.GetPagesProjectLatestDeployment;
 import com.pulumi.cloudflare.outputs.GetPagesProjectSource;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -27,7 +28,7 @@ public final class GetPagesProjectResult {
      */
     private GetPagesProjectBuildConfig buildConfig;
     /**
-     * @return Most recent deployment to the repo.
+     * @return Most recent production deployment of the project.
      * 
      */
     private GetPagesProjectCanonicalDeployment canonicalDeployment;
@@ -47,12 +48,22 @@ public final class GetPagesProjectResult {
      */
     private List<String> domains;
     /**
-     * @return Id of the project.
+     * @return Framework the project is using.
+     * 
+     */
+    private String framework;
+    /**
+     * @return Version of the framework the project is using.
+     * 
+     */
+    private String frameworkVersion;
+    /**
+     * @return ID of the project.
      * 
      */
     private String id;
     /**
-     * @return Most recent deployment to the repo.
+     * @return Most recent deployment of the project.
      * 
      */
     private GetPagesProjectLatestDeployment latestDeployment;
@@ -62,10 +73,20 @@ public final class GetPagesProjectResult {
      */
     private String name;
     /**
+     * @return Name of the preview script.
+     * 
+     */
+    private String previewScriptName;
+    /**
      * @return Production branch of the project. Used to identify production deployments.
      * 
      */
     private String productionBranch;
+    /**
+     * @return Name of the production script.
+     * 
+     */
+    private String productionScriptName;
     /**
      * @return Name of the project.
      * 
@@ -77,6 +98,11 @@ public final class GetPagesProjectResult {
      * 
      */
     private String subdomain;
+    /**
+     * @return Whether the project uses functions.
+     * 
+     */
+    private Boolean usesFunctions;
 
     private GetPagesProjectResult() {}
     /**
@@ -94,7 +120,7 @@ public final class GetPagesProjectResult {
         return this.buildConfig;
     }
     /**
-     * @return Most recent deployment to the repo.
+     * @return Most recent production deployment of the project.
      * 
      */
     public GetPagesProjectCanonicalDeployment canonicalDeployment() {
@@ -122,14 +148,28 @@ public final class GetPagesProjectResult {
         return this.domains;
     }
     /**
-     * @return Id of the project.
+     * @return Framework the project is using.
+     * 
+     */
+    public String framework() {
+        return this.framework;
+    }
+    /**
+     * @return Version of the framework the project is using.
+     * 
+     */
+    public String frameworkVersion() {
+        return this.frameworkVersion;
+    }
+    /**
+     * @return ID of the project.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Most recent deployment to the repo.
+     * @return Most recent deployment of the project.
      * 
      */
     public GetPagesProjectLatestDeployment latestDeployment() {
@@ -143,11 +183,25 @@ public final class GetPagesProjectResult {
         return this.name;
     }
     /**
+     * @return Name of the preview script.
+     * 
+     */
+    public String previewScriptName() {
+        return this.previewScriptName;
+    }
+    /**
      * @return Production branch of the project. Used to identify production deployments.
      * 
      */
     public String productionBranch() {
         return this.productionBranch;
+    }
+    /**
+     * @return Name of the production script.
+     * 
+     */
+    public String productionScriptName() {
+        return this.productionScriptName;
     }
     /**
      * @return Name of the project.
@@ -166,6 +220,13 @@ public final class GetPagesProjectResult {
     public String subdomain() {
         return this.subdomain;
     }
+    /**
+     * @return Whether the project uses functions.
+     * 
+     */
+    public Boolean usesFunctions() {
+        return this.usesFunctions;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -182,13 +243,18 @@ public final class GetPagesProjectResult {
         private String createdOn;
         private GetPagesProjectDeploymentConfigs deploymentConfigs;
         private List<String> domains;
+        private String framework;
+        private String frameworkVersion;
         private String id;
         private GetPagesProjectLatestDeployment latestDeployment;
         private String name;
+        private String previewScriptName;
         private String productionBranch;
+        private String productionScriptName;
         private String projectName;
         private GetPagesProjectSource source;
         private String subdomain;
+        private Boolean usesFunctions;
         public Builder() {}
         public Builder(GetPagesProjectResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -198,13 +264,18 @@ public final class GetPagesProjectResult {
     	      this.createdOn = defaults.createdOn;
     	      this.deploymentConfigs = defaults.deploymentConfigs;
     	      this.domains = defaults.domains;
+    	      this.framework = defaults.framework;
+    	      this.frameworkVersion = defaults.frameworkVersion;
     	      this.id = defaults.id;
     	      this.latestDeployment = defaults.latestDeployment;
     	      this.name = defaults.name;
+    	      this.previewScriptName = defaults.previewScriptName;
     	      this.productionBranch = defaults.productionBranch;
+    	      this.productionScriptName = defaults.productionScriptName;
     	      this.projectName = defaults.projectName;
     	      this.source = defaults.source;
     	      this.subdomain = defaults.subdomain;
+    	      this.usesFunctions = defaults.usesFunctions;
         }
 
         @CustomType.Setter
@@ -259,6 +330,22 @@ public final class GetPagesProjectResult {
             return domains(List.of(domains));
         }
         @CustomType.Setter
+        public Builder framework(String framework) {
+            if (framework == null) {
+              throw new MissingRequiredPropertyException("GetPagesProjectResult", "framework");
+            }
+            this.framework = framework;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder frameworkVersion(String frameworkVersion) {
+            if (frameworkVersion == null) {
+              throw new MissingRequiredPropertyException("GetPagesProjectResult", "frameworkVersion");
+            }
+            this.frameworkVersion = frameworkVersion;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetPagesProjectResult", "id");
@@ -283,11 +370,27 @@ public final class GetPagesProjectResult {
             return this;
         }
         @CustomType.Setter
+        public Builder previewScriptName(String previewScriptName) {
+            if (previewScriptName == null) {
+              throw new MissingRequiredPropertyException("GetPagesProjectResult", "previewScriptName");
+            }
+            this.previewScriptName = previewScriptName;
+            return this;
+        }
+        @CustomType.Setter
         public Builder productionBranch(String productionBranch) {
             if (productionBranch == null) {
               throw new MissingRequiredPropertyException("GetPagesProjectResult", "productionBranch");
             }
             this.productionBranch = productionBranch;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder productionScriptName(String productionScriptName) {
+            if (productionScriptName == null) {
+              throw new MissingRequiredPropertyException("GetPagesProjectResult", "productionScriptName");
+            }
+            this.productionScriptName = productionScriptName;
             return this;
         }
         @CustomType.Setter
@@ -314,6 +417,14 @@ public final class GetPagesProjectResult {
             this.subdomain = subdomain;
             return this;
         }
+        @CustomType.Setter
+        public Builder usesFunctions(Boolean usesFunctions) {
+            if (usesFunctions == null) {
+              throw new MissingRequiredPropertyException("GetPagesProjectResult", "usesFunctions");
+            }
+            this.usesFunctions = usesFunctions;
+            return this;
+        }
         public GetPagesProjectResult build() {
             final var _resultValue = new GetPagesProjectResult();
             _resultValue.accountId = accountId;
@@ -322,13 +433,18 @@ public final class GetPagesProjectResult {
             _resultValue.createdOn = createdOn;
             _resultValue.deploymentConfigs = deploymentConfigs;
             _resultValue.domains = domains;
+            _resultValue.framework = framework;
+            _resultValue.frameworkVersion = frameworkVersion;
             _resultValue.id = id;
             _resultValue.latestDeployment = latestDeployment;
             _resultValue.name = name;
+            _resultValue.previewScriptName = previewScriptName;
             _resultValue.productionBranch = productionBranch;
+            _resultValue.productionScriptName = productionScriptName;
             _resultValue.projectName = projectName;
             _resultValue.source = source;
             _resultValue.subdomain = subdomain;
+            _resultValue.usesFunctions = usesFunctions;
             return _resultValue;
         }
     }

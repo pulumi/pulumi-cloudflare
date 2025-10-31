@@ -61,7 +61,7 @@ type LookupPagesProjectResult struct {
 	AccountId string `pulumi:"accountId"`
 	// Configs for the project build process.
 	BuildConfig GetPagesProjectBuildConfig `pulumi:"buildConfig"`
-	// Most recent deployment to the repo.
+	// Most recent production deployment of the project.
 	CanonicalDeployment GetPagesProjectCanonicalDeployment `pulumi:"canonicalDeployment"`
 	// When the project was created.
 	CreatedOn string `pulumi:"createdOn"`
@@ -69,19 +69,29 @@ type LookupPagesProjectResult struct {
 	DeploymentConfigs GetPagesProjectDeploymentConfigs `pulumi:"deploymentConfigs"`
 	// A list of associated custom domains for the project.
 	Domains []string `pulumi:"domains"`
-	// Id of the project.
+	// Framework the project is using.
+	Framework string `pulumi:"framework"`
+	// Version of the framework the project is using.
+	FrameworkVersion string `pulumi:"frameworkVersion"`
+	// ID of the project.
 	Id string `pulumi:"id"`
-	// Most recent deployment to the repo.
+	// Most recent deployment of the project.
 	LatestDeployment GetPagesProjectLatestDeployment `pulumi:"latestDeployment"`
 	// Name of the project.
 	Name string `pulumi:"name"`
+	// Name of the preview script.
+	PreviewScriptName string `pulumi:"previewScriptName"`
 	// Production branch of the project. Used to identify production deployments.
 	ProductionBranch string `pulumi:"productionBranch"`
+	// Name of the production script.
+	ProductionScriptName string `pulumi:"productionScriptName"`
 	// Name of the project.
 	ProjectName string                `pulumi:"projectName"`
 	Source      GetPagesProjectSource `pulumi:"source"`
 	// The Cloudflare subdomain associated with the project.
 	Subdomain string `pulumi:"subdomain"`
+	// Whether the project uses functions.
+	UsesFunctions bool `pulumi:"usesFunctions"`
 }
 
 func LookupPagesProjectOutput(ctx *pulumi.Context, args LookupPagesProjectOutputArgs, opts ...pulumi.InvokeOption) LookupPagesProjectResultOutput {
@@ -130,7 +140,7 @@ func (o LookupPagesProjectResultOutput) BuildConfig() GetPagesProjectBuildConfig
 	return o.ApplyT(func(v LookupPagesProjectResult) GetPagesProjectBuildConfig { return v.BuildConfig }).(GetPagesProjectBuildConfigOutput)
 }
 
-// Most recent deployment to the repo.
+// Most recent production deployment of the project.
 func (o LookupPagesProjectResultOutput) CanonicalDeployment() GetPagesProjectCanonicalDeploymentOutput {
 	return o.ApplyT(func(v LookupPagesProjectResult) GetPagesProjectCanonicalDeployment { return v.CanonicalDeployment }).(GetPagesProjectCanonicalDeploymentOutput)
 }
@@ -150,12 +160,22 @@ func (o LookupPagesProjectResultOutput) Domains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupPagesProjectResult) []string { return v.Domains }).(pulumi.StringArrayOutput)
 }
 
-// Id of the project.
+// Framework the project is using.
+func (o LookupPagesProjectResultOutput) Framework() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPagesProjectResult) string { return v.Framework }).(pulumi.StringOutput)
+}
+
+// Version of the framework the project is using.
+func (o LookupPagesProjectResultOutput) FrameworkVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPagesProjectResult) string { return v.FrameworkVersion }).(pulumi.StringOutput)
+}
+
+// ID of the project.
 func (o LookupPagesProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPagesProjectResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Most recent deployment to the repo.
+// Most recent deployment of the project.
 func (o LookupPagesProjectResultOutput) LatestDeployment() GetPagesProjectLatestDeploymentOutput {
 	return o.ApplyT(func(v LookupPagesProjectResult) GetPagesProjectLatestDeployment { return v.LatestDeployment }).(GetPagesProjectLatestDeploymentOutput)
 }
@@ -165,9 +185,19 @@ func (o LookupPagesProjectResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPagesProjectResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Name of the preview script.
+func (o LookupPagesProjectResultOutput) PreviewScriptName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPagesProjectResult) string { return v.PreviewScriptName }).(pulumi.StringOutput)
+}
+
 // Production branch of the project. Used to identify production deployments.
 func (o LookupPagesProjectResultOutput) ProductionBranch() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPagesProjectResult) string { return v.ProductionBranch }).(pulumi.StringOutput)
+}
+
+// Name of the production script.
+func (o LookupPagesProjectResultOutput) ProductionScriptName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPagesProjectResult) string { return v.ProductionScriptName }).(pulumi.StringOutput)
 }
 
 // Name of the project.
@@ -182,6 +212,11 @@ func (o LookupPagesProjectResultOutput) Source() GetPagesProjectSourceOutput {
 // The Cloudflare subdomain associated with the project.
 func (o LookupPagesProjectResultOutput) Subdomain() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPagesProjectResult) string { return v.Subdomain }).(pulumi.StringOutput)
+}
+
+// Whether the project uses functions.
+func (o LookupPagesProjectResultOutput) UsesFunctions() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupPagesProjectResult) bool { return v.UsesFunctions }).(pulumi.BoolOutput)
 }
 
 func init() {

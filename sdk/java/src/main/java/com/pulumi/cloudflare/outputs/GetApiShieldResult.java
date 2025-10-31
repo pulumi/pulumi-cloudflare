@@ -9,7 +9,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetApiShieldResult {
@@ -19,11 +18,6 @@ public final class GetApiShieldResult {
      * 
      */
     private String id;
-    /**
-     * @return Requests information about certain properties.
-     * 
-     */
-    private @Nullable List<String> properties;
     /**
      * @return Identifier.
      * 
@@ -40,13 +34,6 @@ public final class GetApiShieldResult {
      */
     public String id() {
         return this.id;
-    }
-    /**
-     * @return Requests information about certain properties.
-     * 
-     */
-    public List<String> properties() {
-        return this.properties == null ? List.of() : this.properties;
     }
     /**
      * @return Identifier.
@@ -67,14 +54,12 @@ public final class GetApiShieldResult {
     public static final class Builder {
         private List<GetApiShieldAuthIdCharacteristic> authIdCharacteristics;
         private String id;
-        private @Nullable List<String> properties;
         private String zoneId;
         public Builder() {}
         public Builder(GetApiShieldResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authIdCharacteristics = defaults.authIdCharacteristics;
     	      this.id = defaults.id;
-    	      this.properties = defaults.properties;
     	      this.zoneId = defaults.zoneId;
         }
 
@@ -98,15 +83,6 @@ public final class GetApiShieldResult {
             return this;
         }
         @CustomType.Setter
-        public Builder properties(@Nullable List<String> properties) {
-
-            this.properties = properties;
-            return this;
-        }
-        public Builder properties(String... properties) {
-            return properties(List.of(properties));
-        }
-        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             if (zoneId == null) {
               throw new MissingRequiredPropertyException("GetApiShieldResult", "zoneId");
@@ -118,7 +94,6 @@ public final class GetApiShieldResult {
             final var _resultValue = new GetApiShieldResult();
             _resultValue.authIdCharacteristics = authIdCharacteristics;
             _resultValue.id = id;
-            _resultValue.properties = properties;
             _resultValue.zoneId = zoneId;
             return _resultValue;
         }

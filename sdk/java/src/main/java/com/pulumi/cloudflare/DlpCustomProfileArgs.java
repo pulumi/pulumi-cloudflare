@@ -101,10 +101,10 @@ public final class DlpCustomProfileArgs extends com.pulumi.resources.ResourceArg
      * If this field is omitted, entries owned by this profile will not be changed.
      * 
      * @deprecated
-     * This attribute is deprecated.
+     * This attribute will be sunset on 01/01/2026
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated /* This attribute will be sunset on 01/01/2026 */
     @Import(name="entries")
     private @Nullable Output<List<DlpCustomProfileEntryArgs>> entries;
 
@@ -113,10 +113,10 @@ public final class DlpCustomProfileArgs extends com.pulumi.resources.ResourceArg
      * If this field is omitted, entries owned by this profile will not be changed.
      * 
      * @deprecated
-     * This attribute is deprecated.
+     * This attribute will be sunset on 01/01/2026
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated /* This attribute will be sunset on 01/01/2026 */
     public Optional<Output<List<DlpCustomProfileEntryArgs>>> entries() {
         return Optional.ofNullable(this.entries);
     }
@@ -288,10 +288,10 @@ public final class DlpCustomProfileArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          * @deprecated
-         * This attribute is deprecated.
+         * This attribute will be sunset on 01/01/2026
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated /* This attribute will be sunset on 01/01/2026 */
         public Builder entries(@Nullable Output<List<DlpCustomProfileEntryArgs>> entries) {
             $.entries = entries;
             return this;
@@ -304,10 +304,10 @@ public final class DlpCustomProfileArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          * @deprecated
-         * This attribute is deprecated.
+         * This attribute will be sunset on 01/01/2026
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated /* This attribute will be sunset on 01/01/2026 */
         public Builder entries(List<DlpCustomProfileEntryArgs> entries) {
             return entries(Output.of(entries));
         }
@@ -319,10 +319,10 @@ public final class DlpCustomProfileArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          * @deprecated
-         * This attribute is deprecated.
+         * This attribute will be sunset on 01/01/2026
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated /* This attribute will be sunset on 01/01/2026 */
         public Builder entries(DlpCustomProfileEntryArgs... entries) {
             return entries(List.of(entries));
         }

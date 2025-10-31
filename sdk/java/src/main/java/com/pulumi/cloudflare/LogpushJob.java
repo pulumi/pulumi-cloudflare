@@ -21,6 +21,70 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.LogpushJob;
+ * import com.pulumi.cloudflare.LogpushJobArgs;
+ * import com.pulumi.cloudflare.inputs.LogpushJobOutputOptionsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleLogpushJob = new LogpushJob("exampleLogpushJob", LogpushJobArgs.builder()
+ *             .destinationConf("s3://mybucket/logs?region=us-west-2")
+ *             .zoneId("zone_id")
+ *             .dataset("gateway_dns")
+ *             .enabled(false)
+ *             .filter("{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}")
+ *             .frequency("high")
+ *             .kind("")
+ *             .logpullOptions("fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339")
+ *             .maxUploadBytes(5000000)
+ *             .maxUploadIntervalSeconds(30)
+ *             .maxUploadRecords(1000)
+ *             .name("example.com")
+ *             .outputOptions(LogpushJobOutputOptionsArgs.builder()
+ *                 .batchPrefix("")
+ *                 .batchSuffix("")
+ *                 .cve202144228(false)
+ *                 .fieldDelimiter(",")
+ *                 .fieldNames(                
+ *                     "Datetime",
+ *                     "DstIP",
+ *                     "SrcIP")
+ *                 .outputType("ndjson")
+ *                 .recordDelimiter("")
+ *                 .recordPrefix("{")
+ *                 .recordSuffix("""
+ *     }
+ * 
+ *                 """)
+ *                 .recordTemplate("record_template")
+ *                 .sampleRate(1.0)
+ *                 .timestampFormat("unixnano")
+ *                 .build())
+ *             .ownershipChallenge("00000000000000000000")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh

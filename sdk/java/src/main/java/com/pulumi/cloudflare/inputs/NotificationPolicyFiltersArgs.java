@@ -620,6 +620,21 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
      * Usage depends on specific alert type
      * 
      */
+    @Import(name="types")
+    private @Nullable Output<List<String>> types;
+
+    /**
+     * @return Usage depends on specific alert type
+     * 
+     */
+    public Optional<Output<List<String>>> types() {
+        return Optional.ofNullable(this.types);
+    }
+
+    /**
+     * Usage depends on specific alert type
+     * 
+     */
     @Import(name="wheres")
     private @Nullable Output<List<String>> wheres;
 
@@ -689,6 +704,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         this.trafficExclusions = $.trafficExclusions;
         this.tunnelIds = $.tunnelIds;
         this.tunnelNames = $.tunnelNames;
+        this.types = $.types;
         this.wheres = $.wheres;
         this.zones = $.zones;
     }
@@ -1949,6 +1965,37 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
          */
         public Builder tunnelNames(String... tunnelNames) {
             return tunnelNames(List.of(tunnelNames));
+        }
+
+        /**
+         * @param types Usage depends on specific alert type
+         * 
+         * @return builder
+         * 
+         */
+        public Builder types(@Nullable Output<List<String>> types) {
+            $.types = types;
+            return this;
+        }
+
+        /**
+         * @param types Usage depends on specific alert type
+         * 
+         * @return builder
+         * 
+         */
+        public Builder types(List<String> types) {
+            return types(Output.of(types));
+        }
+
+        /**
+         * @param types Usage depends on specific alert type
+         * 
+         * @return builder
+         * 
+         */
+        public Builder types(String... types) {
+            return types(List.of(types));
         }
 
         /**

@@ -19,6 +19,48 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.AccountSubscription;
+ * import com.pulumi.cloudflare.AccountSubscriptionArgs;
+ * import com.pulumi.cloudflare.inputs.AccountSubscriptionRatePlanArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleAccountSubscription = new AccountSubscription("exampleAccountSubscription", AccountSubscriptionArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .frequency("monthly")
+ *             .ratePlan(AccountSubscriptionRatePlanArgs.builder()
+ *                 .id("free")
+ *                 .currency("USD")
+ *                 .externallyManaged(false)
+ *                 .isContract(false)
+ *                 .publicName("Business Plan")
+ *                 .scope("zone")
+ *                 .sets("string")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh

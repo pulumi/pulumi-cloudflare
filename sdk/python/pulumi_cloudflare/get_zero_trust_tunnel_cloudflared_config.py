@@ -27,7 +27,7 @@ class GetZeroTrustTunnelCloudflaredConfigResult:
     """
     A collection of values returned by getZeroTrustTunnelCloudflaredConfig.
     """
-    def __init__(__self__, account_id=None, config=None, created_at=None, id=None, source=None, tunnel_id=None, version=None):
+    def __init__(__self__, account_id=None, config=None, created_at=None, id=None, source=None, tunnel_id=None, version=None, warp_routing_enabled=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -49,6 +49,9 @@ class GetZeroTrustTunnelCloudflaredConfigResult:
         if version and not isinstance(version, int):
             raise TypeError("Expected argument 'version' to be a int")
         pulumi.set(__self__, "version", version)
+        if warp_routing_enabled and not isinstance(warp_routing_enabled, bool):
+            raise TypeError("Expected argument 'warp_routing_enabled' to be a bool")
+        pulumi.set(__self__, "warp_routing_enabled", warp_routing_enabled)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -104,6 +107,14 @@ class GetZeroTrustTunnelCloudflaredConfigResult:
         """
         return pulumi.get(self, "version")
 
+    @_builtins.property
+    @pulumi.getter(name="warpRoutingEnabled")
+    def warp_routing_enabled(self) -> _builtins.bool:
+        """
+        Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+        """
+        return pulumi.get(self, "warp_routing_enabled")
+
 
 class AwaitableGetZeroTrustTunnelCloudflaredConfigResult(GetZeroTrustTunnelCloudflaredConfigResult):
     # pylint: disable=using-constant-test
@@ -117,7 +128,8 @@ class AwaitableGetZeroTrustTunnelCloudflaredConfigResult(GetZeroTrustTunnelCloud
             id=self.id,
             source=self.source,
             tunnel_id=self.tunnel_id,
-            version=self.version)
+            version=self.version,
+            warp_routing_enabled=self.warp_routing_enabled)
 
 
 def get_zero_trust_tunnel_cloudflared_config(account_id: Optional[_builtins.str] = None,
@@ -151,7 +163,8 @@ def get_zero_trust_tunnel_cloudflared_config(account_id: Optional[_builtins.str]
         id=pulumi.get(__ret__, 'id'),
         source=pulumi.get(__ret__, 'source'),
         tunnel_id=pulumi.get(__ret__, 'tunnel_id'),
-        version=pulumi.get(__ret__, 'version'))
+        version=pulumi.get(__ret__, 'version'),
+        warp_routing_enabled=pulumi.get(__ret__, 'warp_routing_enabled'))
 def get_zero_trust_tunnel_cloudflared_config_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
                                                     tunnel_id: Optional[pulumi.Input[_builtins.str]] = None,
                                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustTunnelCloudflaredConfigResult]:
@@ -182,4 +195,5 @@ def get_zero_trust_tunnel_cloudflared_config_output(account_id: Optional[pulumi.
         id=pulumi.get(__response__, 'id'),
         source=pulumi.get(__response__, 'source'),
         tunnel_id=pulumi.get(__response__, 'tunnel_id'),
-        version=pulumi.get(__response__, 'version')))
+        version=pulumi.get(__response__, 'version'),
+        warp_routing_enabled=pulumi.get(__response__, 'warp_routing_enabled')))

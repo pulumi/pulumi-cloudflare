@@ -80,7 +80,7 @@ export class R2BucketEventNotification extends pulumi.CustomResource {
     /**
      * Array of rules to drive notifications.
      */
-    declare public readonly rules: pulumi.Output<outputs.R2BucketEventNotificationRule[] | undefined>;
+    declare public readonly rules: pulumi.Output<outputs.R2BucketEventNotificationRule[]>;
 
     /**
      * Create a R2BucketEventNotification resource with the given unique name, arguments, and options.
@@ -111,6 +111,9 @@ export class R2BucketEventNotification extends pulumi.CustomResource {
             }
             if (args?.queueId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'queueId'");
+            }
+            if (args?.rules === undefined && !opts.urn) {
+                throw new Error("Missing required property 'rules'");
             }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["bucketName"] = args?.bucketName;
@@ -177,5 +180,5 @@ export interface R2BucketEventNotificationArgs {
     /**
      * Array of rules to drive notifications.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.R2BucketEventNotificationRule>[]>;
+    rules: pulumi.Input<pulumi.Input<inputs.R2BucketEventNotificationRule>[]>;
 }

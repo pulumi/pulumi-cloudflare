@@ -21,6 +21,7 @@ public final class GetMagicTransitConnectorsResult {
     private String lastHeartbeat;
     private String lastSeenVersion;
     private String lastUpdated;
+    private String licenseKey;
     private String notes;
     private String timezone;
 
@@ -49,6 +50,9 @@ public final class GetMagicTransitConnectorsResult {
     public String lastUpdated() {
         return this.lastUpdated;
     }
+    public String licenseKey() {
+        return this.licenseKey;
+    }
     public String notes() {
         return this.notes;
     }
@@ -73,6 +77,7 @@ public final class GetMagicTransitConnectorsResult {
         private String lastHeartbeat;
         private String lastSeenVersion;
         private String lastUpdated;
+        private String licenseKey;
         private String notes;
         private String timezone;
         public Builder() {}
@@ -86,6 +91,7 @@ public final class GetMagicTransitConnectorsResult {
     	      this.lastHeartbeat = defaults.lastHeartbeat;
     	      this.lastSeenVersion = defaults.lastSeenVersion;
     	      this.lastUpdated = defaults.lastUpdated;
+    	      this.licenseKey = defaults.licenseKey;
     	      this.notes = defaults.notes;
     	      this.timezone = defaults.timezone;
         }
@@ -155,6 +161,14 @@ public final class GetMagicTransitConnectorsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder licenseKey(String licenseKey) {
+            if (licenseKey == null) {
+              throw new MissingRequiredPropertyException("GetMagicTransitConnectorsResult", "licenseKey");
+            }
+            this.licenseKey = licenseKey;
+            return this;
+        }
+        @CustomType.Setter
         public Builder notes(String notes) {
             if (notes == null) {
               throw new MissingRequiredPropertyException("GetMagicTransitConnectorsResult", "notes");
@@ -180,6 +194,7 @@ public final class GetMagicTransitConnectorsResult {
             _resultValue.lastHeartbeat = lastHeartbeat;
             _resultValue.lastSeenVersion = lastSeenVersion;
             _resultValue.lastUpdated = lastUpdated;
+            _resultValue.licenseKey = licenseKey;
             _resultValue.notes = notes;
             _resultValue.timezone = timezone;
             return _resultValue;

@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.inputs.TunnelConfigConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -79,6 +80,21 @@ public final class TunnelConfigArgs extends com.pulumi.resources.ResourceArgs {
         return this.tunnelId;
     }
 
+    /**
+     * Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+     * 
+     */
+    @Import(name="warpRoutingEnabled")
+    private @Nullable Output<Boolean> warpRoutingEnabled;
+
+    /**
+     * @return Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+     * 
+     */
+    public Optional<Output<Boolean>> warpRoutingEnabled() {
+        return Optional.ofNullable(this.warpRoutingEnabled);
+    }
+
     private TunnelConfigArgs() {}
 
     private TunnelConfigArgs(TunnelConfigArgs $) {
@@ -86,6 +102,7 @@ public final class TunnelConfigArgs extends com.pulumi.resources.ResourceArgs {
         this.config = $.config;
         this.source = $.source;
         this.tunnelId = $.tunnelId;
+        this.warpRoutingEnabled = $.warpRoutingEnabled;
     }
 
     public static Builder builder() {
@@ -190,6 +207,27 @@ public final class TunnelConfigArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tunnelId(String tunnelId) {
             return tunnelId(Output.of(tunnelId));
+        }
+
+        /**
+         * @param warpRoutingEnabled Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warpRoutingEnabled(@Nullable Output<Boolean> warpRoutingEnabled) {
+            $.warpRoutingEnabled = warpRoutingEnabled;
+            return this;
+        }
+
+        /**
+         * @param warpRoutingEnabled Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warpRoutingEnabled(Boolean warpRoutingEnabled) {
+            return warpRoutingEnabled(Output.of(warpRoutingEnabled));
         }
 
         public TunnelConfigArgs build() {

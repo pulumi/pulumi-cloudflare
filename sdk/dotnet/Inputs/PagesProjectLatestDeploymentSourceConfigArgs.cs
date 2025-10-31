@@ -12,14 +12,25 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class PagesProjectLatestDeploymentSourceConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to enable automatic deployments when pushing to the source repository.
+        /// When disabled, no deployments (production or preview) will be triggered automatically.
+        /// </summary>
         [Input("deploymentsEnabled")]
         public Input<bool>? DeploymentsEnabled { get; set; }
 
+        /// <summary>
+        /// The owner of the repository.
+        /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
         [Input("pathExcludes")]
         private InputList<string>? _pathExcludes;
+
+        /// <summary>
+        /// A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
+        /// </summary>
         public InputList<string> PathExcludes
         {
             get => _pathExcludes ?? (_pathExcludes = new InputList<string>());
@@ -28,17 +39,28 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("pathIncludes")]
         private InputList<string>? _pathIncludes;
+
+        /// <summary>
+        /// A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
+        /// </summary>
         public InputList<string> PathIncludes
         {
             get => _pathIncludes ?? (_pathIncludes = new InputList<string>());
             set => _pathIncludes = value;
         }
 
+        /// <summary>
+        /// Whether to enable PR comments.
+        /// </summary>
         [Input("prCommentsEnabled")]
         public Input<bool>? PrCommentsEnabled { get; set; }
 
         [Input("previewBranchExcludes")]
         private InputList<string>? _previewBranchExcludes;
+
+        /// <summary>
+        /// A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `PreviewDeploymentSetting` set to `Custom`.
+        /// </summary>
         public InputList<string> PreviewBranchExcludes
         {
             get => _previewBranchExcludes ?? (_previewBranchExcludes = new InputList<string>());
@@ -47,6 +69,10 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("previewBranchIncludes")]
         private InputList<string>? _previewBranchIncludes;
+
+        /// <summary>
+        /// A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `PreviewDeploymentSetting` set to `Custom`.
+        /// </summary>
         public InputList<string> PreviewBranchIncludes
         {
             get => _previewBranchIncludes ?? (_previewBranchIncludes = new InputList<string>());
@@ -54,17 +80,27 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
+        /// Controls whether commits to preview branches trigger a preview deployment.
         /// Available values: "all", "none", "custom".
         /// </summary>
         [Input("previewDeploymentSetting")]
         public Input<string>? PreviewDeploymentSetting { get; set; }
 
+        /// <summary>
+        /// The production branch of the repository.
+        /// </summary>
         [Input("productionBranch")]
         public Input<string>? ProductionBranch { get; set; }
 
+        /// <summary>
+        /// Whether to trigger a production deployment on commits to the production branch.
+        /// </summary>
         [Input("productionDeploymentsEnabled")]
         public Input<bool>? ProductionDeploymentsEnabled { get; set; }
 
+        /// <summary>
+        /// The name of the repository.
+        /// </summary>
         [Input("repoName")]
         public Input<string>? RepoName { get; set; }
 

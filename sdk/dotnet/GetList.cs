@@ -96,8 +96,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The unique ID of the list.
         /// </summary>
-        [Input("listId", required: true)]
-        public string ListId { get; set; } = null!;
+        [Input("listId")]
+        public string? ListId { get; set; }
 
         /// <summary>
         /// A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
@@ -122,8 +122,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The unique ID of the list.
         /// </summary>
-        [Input("listId", required: true)]
-        public Input<string> ListId { get; set; } = null!;
+        [Input("listId")]
+        public Input<string>? ListId { get; set; }
 
         /// <summary>
         /// A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
@@ -169,7 +169,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The unique ID of the list.
         /// </summary>
-        public readonly string ListId;
+        public readonly string? ListId;
         /// <summary>
         /// The RFC 3339 timestamp of when the list was last modified.
         /// </summary>
@@ -205,7 +205,7 @@ namespace Pulumi.Cloudflare
 
             string kind,
 
-            string listId,
+            string? listId,
 
             string modifiedOn,
 

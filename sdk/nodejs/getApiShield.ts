@@ -15,14 +15,12 @@ import * as utilities from "./utilities";
  *
  * const exampleApiShield = cloudflare.getApiShield({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     properties: ["auth_id_characteristics"],
  * });
  * ```
  */
 export function getApiShield(args: GetApiShieldArgs, opts?: pulumi.InvokeOptions): Promise<GetApiShieldResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getApiShield:getApiShield", {
-        "properties": args.properties,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -31,10 +29,6 @@ export function getApiShield(args: GetApiShieldArgs, opts?: pulumi.InvokeOptions
  * A collection of arguments for invoking getApiShield.
  */
 export interface GetApiShieldArgs {
-    /**
-     * Requests information about certain properties.
-     */
-    properties?: string[];
     /**
      * Identifier.
      */
@@ -51,10 +45,6 @@ export interface GetApiShieldResult {
      */
     readonly id: string;
     /**
-     * Requests information about certain properties.
-     */
-    readonly properties?: string[];
-    /**
      * Identifier.
      */
     readonly zoneId: string;
@@ -68,14 +58,12 @@ export interface GetApiShieldResult {
  *
  * const exampleApiShield = cloudflare.getApiShield({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     properties: ["auth_id_characteristics"],
  * });
  * ```
  */
 export function getApiShieldOutput(args: GetApiShieldOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApiShieldResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getApiShield:getApiShield", {
-        "properties": args.properties,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -84,10 +72,6 @@ export function getApiShieldOutput(args: GetApiShieldOutputArgs, opts?: pulumi.I
  * A collection of arguments for invoking getApiShield.
  */
 export interface GetApiShieldOutputArgs {
-    /**
-     * Requests information about certain properties.
-     */
-    properties?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Identifier.
      */

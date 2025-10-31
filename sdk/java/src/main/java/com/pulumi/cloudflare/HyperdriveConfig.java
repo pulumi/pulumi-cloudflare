@@ -21,6 +21,58 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.HyperdriveConfig;
+ * import com.pulumi.cloudflare.HyperdriveConfigArgs;
+ * import com.pulumi.cloudflare.inputs.HyperdriveConfigOriginArgs;
+ * import com.pulumi.cloudflare.inputs.HyperdriveConfigCachingArgs;
+ * import com.pulumi.cloudflare.inputs.HyperdriveConfigMtlsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleHyperdriveConfig = new HyperdriveConfig("exampleHyperdriveConfig", HyperdriveConfigArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .name("example-hyperdrive")
+ *             .origin(HyperdriveConfigOriginArgs.builder()
+ *                 .database("postgres")
+ *                 .host("database.example.com")
+ *                 .password("password")
+ *                 .port(5432)
+ *                 .scheme("postgres")
+ *                 .user("postgres")
+ *                 .build())
+ *             .caching(HyperdriveConfigCachingArgs.builder()
+ *                 .disabled(true)
+ *                 .build())
+ *             .mtls(HyperdriveConfigMtlsArgs.builder()
+ *                 .caCertificateId("00000000-0000-0000-0000-0000000000")
+ *                 .mtlsCertificateId("00000000-0000-0000-0000-0000000000")
+ *                 .sslmode("verify-full")
+ *                 .build())
+ *             .originConnectionLimit(60)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh

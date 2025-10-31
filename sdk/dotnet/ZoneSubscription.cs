@@ -12,6 +12,36 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZoneSubscription = new Cloudflare.ZoneSubscription("example_zone_subscription", new()
+    ///     {
+    ///         ZoneId = "506e3185e9c882d175a2d0cb0093d9f2",
+    ///         Frequency = "monthly",
+    ///         RatePlan = new Cloudflare.Inputs.ZoneSubscriptionRatePlanArgs
+    ///         {
+    ///             Id = "free",
+    ///             Currency = "USD",
+    ///             ExternallyManaged = false,
+    ///             IsContract = false,
+    ///             PublicName = "Business Plan",
+    ///             Scope = "zone",
+    ///             Sets = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

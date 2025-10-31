@@ -9,6 +9,25 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleMagicTransitSiteWan = new cloudflare.MagicTransitSiteWan("example_magic_transit_site_wan", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     siteId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     physport: 1,
+ *     name: "name",
+ *     priority: 0,
+ *     staticAddressing: {
+ *         address: "192.0.2.0/24",
+ *         gatewayAddress: "192.0.2.1",
+ *         secondaryAddress: "192.0.2.0/24",
+ *     },
+ *     vlanTag: 42,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

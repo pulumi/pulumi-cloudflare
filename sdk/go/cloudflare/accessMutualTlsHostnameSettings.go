@@ -14,6 +14,37 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewZeroTrustAccessMtlsHostnameSettings(ctx, "example_zero_trust_access_mtls_hostname_settings", &cloudflare.ZeroTrustAccessMtlsHostnameSettingsArgs{
+//				Settings: cloudflare.ZeroTrustAccessMtlsHostnameSettingsSettingArray{
+//					&cloudflare.ZeroTrustAccessMtlsHostnameSettingsSettingArgs{
+//						ChinaNetwork:                pulumi.Bool(false),
+//						ClientCertificateForwarding: pulumi.Bool(true),
+//						Hostname:                    pulumi.String("admin.example.com"),
+//					},
+//				},
+//				ZoneId: pulumi.String("zone_id"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // Deprecated: cloudflare.index/accessmutualtlshostnamesettings.AccessMutualTlsHostnameSettings has been deprecated in favor of cloudflare.index/zerotrustaccessmtlshostnamesettings.ZeroTrustAccessMtlsHostnameSettings
 type AccessMutualTlsHostnameSettings struct {
 	pulumi.CustomResourceState

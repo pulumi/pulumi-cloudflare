@@ -14,6 +14,76 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewZeroTrustAccessPolicy(ctx, "example_zero_trust_access_policy", &cloudflare.ZeroTrustAccessPolicyArgs{
+//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Decision:  pulumi.String("allow"),
+//				Includes: cloudflare.ZeroTrustAccessPolicyIncludeArray{
+//					&cloudflare.ZeroTrustAccessPolicyIncludeArgs{
+//						Group: &cloudflare.ZeroTrustAccessPolicyIncludeGroupArgs{
+//							Id: pulumi.String("aa0a4aab-672b-4bdb-bc33-a59f1130a11f"),
+//						},
+//					},
+//				},
+//				Name: pulumi.String("Allow devs"),
+//				ApprovalGroups: cloudflare.ZeroTrustAccessPolicyApprovalGroupArray{
+//					&cloudflare.ZeroTrustAccessPolicyApprovalGroupArgs{
+//						ApprovalsNeeded: pulumi.Float64(1),
+//						EmailAddresses: pulumi.StringArray{
+//							pulumi.String("test1@cloudflare.com"),
+//							pulumi.String("test2@cloudflare.com"),
+//						},
+//						EmailListUuid: pulumi.String("email_list_uuid"),
+//					},
+//					&cloudflare.ZeroTrustAccessPolicyApprovalGroupArgs{
+//						ApprovalsNeeded: pulumi.Float64(3),
+//						EmailAddresses: pulumi.StringArray{
+//							pulumi.String("test@cloudflare.com"),
+//							pulumi.String("test2@cloudflare.com"),
+//						},
+//						EmailListUuid: pulumi.String("597147a1-976b-4ef2-9af0-81d5d007fc34"),
+//					},
+//				},
+//				ApprovalRequired: pulumi.Bool(true),
+//				Excludes: cloudflare.ZeroTrustAccessPolicyExcludeArray{
+//					&cloudflare.ZeroTrustAccessPolicyExcludeArgs{
+//						Group: &cloudflare.ZeroTrustAccessPolicyExcludeGroupArgs{
+//							Id: pulumi.String("aa0a4aab-672b-4bdb-bc33-a59f1130a11f"),
+//						},
+//					},
+//				},
+//				IsolationRequired:            pulumi.Bool(false),
+//				PurposeJustificationPrompt:   pulumi.String("Please enter a justification for entering this protected domain."),
+//				PurposeJustificationRequired: pulumi.Bool(true),
+//				Requires: cloudflare.ZeroTrustAccessPolicyRequireArray{
+//					&cloudflare.ZeroTrustAccessPolicyRequireArgs{
+//						Group: &cloudflare.ZeroTrustAccessPolicyRequireGroupArgs{
+//							Id: pulumi.String("aa0a4aab-672b-4bdb-bc33-a59f1130a11f"),
+//						},
+//					},
+//				},
+//				SessionDuration: pulumi.String("24h"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

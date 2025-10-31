@@ -184,7 +184,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? OsDistroRevision { get; set; }
 
         /// <summary>
-        /// Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).
+        /// Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version. (Mac, iOS, and Linux only).
         /// </summary>
         [Input("osVersionExtra")]
         public Input<string>? OsVersionExtra { get; set; }

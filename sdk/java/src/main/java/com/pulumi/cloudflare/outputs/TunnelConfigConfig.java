@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.TunnelConfigConfigIngress;
 import com.pulumi.cloudflare.outputs.TunnelConfigConfigOriginRequest;
-import com.pulumi.cloudflare.outputs.TunnelConfigConfigWarpRouting;
 import com.pulumi.core.annotations.CustomType;
 import java.util.List;
 import java.util.Objects;
@@ -24,11 +23,6 @@ public final class TunnelConfigConfig {
      * 
      */
     private @Nullable TunnelConfigConfigOriginRequest originRequest;
-    /**
-     * @return Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
-     * 
-     */
-    private @Nullable TunnelConfigConfigWarpRouting warpRouting;
 
     private TunnelConfigConfig() {}
     /**
@@ -45,13 +39,6 @@ public final class TunnelConfigConfig {
     public Optional<TunnelConfigConfigOriginRequest> originRequest() {
         return Optional.ofNullable(this.originRequest);
     }
-    /**
-     * @return Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
-     * 
-     */
-    public Optional<TunnelConfigConfigWarpRouting> warpRouting() {
-        return Optional.ofNullable(this.warpRouting);
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -64,13 +51,11 @@ public final class TunnelConfigConfig {
     public static final class Builder {
         private @Nullable List<TunnelConfigConfigIngress> ingresses;
         private @Nullable TunnelConfigConfigOriginRequest originRequest;
-        private @Nullable TunnelConfigConfigWarpRouting warpRouting;
         public Builder() {}
         public Builder(TunnelConfigConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ingresses = defaults.ingresses;
     	      this.originRequest = defaults.originRequest;
-    	      this.warpRouting = defaults.warpRouting;
         }
 
         @CustomType.Setter
@@ -88,17 +73,10 @@ public final class TunnelConfigConfig {
             this.originRequest = originRequest;
             return this;
         }
-        @CustomType.Setter
-        public Builder warpRouting(@Nullable TunnelConfigConfigWarpRouting warpRouting) {
-
-            this.warpRouting = warpRouting;
-            return this;
-        }
         public TunnelConfigConfig build() {
             final var _resultValue = new TunnelConfigConfig();
             _resultValue.ingresses = ingresses;
             _resultValue.originRequest = originRequest;
-            _resultValue.warpRouting = warpRouting;
             return _resultValue;
         }
     }

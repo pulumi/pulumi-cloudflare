@@ -144,6 +144,7 @@ class _WorkerState:
                  logpush: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  observability: Optional[pulumi.Input['WorkerObservabilityArgs']] = None,
+                 references: Optional[pulumi.Input['WorkerReferencesArgs']] = None,
                  subdomain: Optional[pulumi.Input['WorkerSubdomainArgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tail_consumers: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerTailConsumerArgs']]]] = None,
@@ -155,6 +156,7 @@ class _WorkerState:
         :param pulumi.Input[_builtins.bool] logpush: Whether logpush is enabled for the Worker.
         :param pulumi.Input[_builtins.str] name: Name of the Worker.
         :param pulumi.Input['WorkerObservabilityArgs'] observability: Observability settings for the Worker.
+        :param pulumi.Input['WorkerReferencesArgs'] references: Other resources that reference the Worker and depend on it existing.
         :param pulumi.Input['WorkerSubdomainArgs'] subdomain: Subdomain settings for the Worker.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with the Worker.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerTailConsumerArgs']]] tail_consumers: Other Workers that should consume logs from the Worker.
@@ -170,6 +172,8 @@ class _WorkerState:
             pulumi.set(__self__, "name", name)
         if observability is not None:
             pulumi.set(__self__, "observability", observability)
+        if references is not None:
+            pulumi.set(__self__, "references", references)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -241,6 +245,18 @@ class _WorkerState:
 
     @_builtins.property
     @pulumi.getter
+    def references(self) -> Optional[pulumi.Input['WorkerReferencesArgs']]:
+        """
+        Other resources that reference the Worker and depend on it existing.
+        """
+        return pulumi.get(self, "references")
+
+    @references.setter
+    def references(self, value: Optional[pulumi.Input['WorkerReferencesArgs']]):
+        pulumi.set(self, "references", value)
+
+    @_builtins.property
+    @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input['WorkerSubdomainArgs']]:
         """
         Subdomain settings for the Worker.
@@ -305,6 +321,36 @@ class Worker(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_worker = cloudflare.Worker("example_worker",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            name="my-worker",
+            logpush=True,
+            observability={
+                "enabled": True,
+                "head_sampling_rate": 1,
+                "logs": {
+                    "enabled": True,
+                    "head_sampling_rate": 1,
+                    "invocation_logs": True,
+                },
+            },
+            subdomain={
+                "enabled": True,
+                "previews_enabled": True,
+            },
+            tags=[
+                "my-team",
+                "my-public-api",
+            ],
+            tail_consumers=[{
+                "name": "my-tail-consumer",
+            }])
+        ```
+
         ## Import
 
         ```sh
@@ -329,6 +375,36 @@ class Worker(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_worker = cloudflare.Worker("example_worker",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            name="my-worker",
+            logpush=True,
+            observability={
+                "enabled": True,
+                "head_sampling_rate": 1,
+                "logs": {
+                    "enabled": True,
+                    "head_sampling_rate": 1,
+                    "invocation_logs": True,
+                },
+            },
+            subdomain={
+                "enabled": True,
+                "previews_enabled": True,
+            },
+            tags=[
+                "my-team",
+                "my-public-api",
+            ],
+            tail_consumers=[{
+                "name": "my-tail-consumer",
+            }])
+        ```
 
         ## Import
 
@@ -379,6 +455,7 @@ class Worker(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["tail_consumers"] = tail_consumers
             __props__.__dict__["created_on"] = None
+            __props__.__dict__["references"] = None
             __props__.__dict__["updated_on"] = None
         super(Worker, __self__).__init__(
             'cloudflare:index/worker:Worker',
@@ -395,6 +472,7 @@ class Worker(pulumi.CustomResource):
             logpush: Optional[pulumi.Input[_builtins.bool]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             observability: Optional[pulumi.Input[Union['WorkerObservabilityArgs', 'WorkerObservabilityArgsDict']]] = None,
+            references: Optional[pulumi.Input[Union['WorkerReferencesArgs', 'WorkerReferencesArgsDict']]] = None,
             subdomain: Optional[pulumi.Input[Union['WorkerSubdomainArgs', 'WorkerSubdomainArgsDict']]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             tail_consumers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerTailConsumerArgs', 'WorkerTailConsumerArgsDict']]]]] = None,
@@ -411,6 +489,7 @@ class Worker(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] logpush: Whether logpush is enabled for the Worker.
         :param pulumi.Input[_builtins.str] name: Name of the Worker.
         :param pulumi.Input[Union['WorkerObservabilityArgs', 'WorkerObservabilityArgsDict']] observability: Observability settings for the Worker.
+        :param pulumi.Input[Union['WorkerReferencesArgs', 'WorkerReferencesArgsDict']] references: Other resources that reference the Worker and depend on it existing.
         :param pulumi.Input[Union['WorkerSubdomainArgs', 'WorkerSubdomainArgsDict']] subdomain: Subdomain settings for the Worker.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with the Worker.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerTailConsumerArgs', 'WorkerTailConsumerArgsDict']]]] tail_consumers: Other Workers that should consume logs from the Worker.
@@ -425,6 +504,7 @@ class Worker(pulumi.CustomResource):
         __props__.__dict__["logpush"] = logpush
         __props__.__dict__["name"] = name
         __props__.__dict__["observability"] = observability
+        __props__.__dict__["references"] = references
         __props__.__dict__["subdomain"] = subdomain
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tail_consumers"] = tail_consumers
@@ -470,6 +550,14 @@ class Worker(pulumi.CustomResource):
         Observability settings for the Worker.
         """
         return pulumi.get(self, "observability")
+
+    @_builtins.property
+    @pulumi.getter
+    def references(self) -> pulumi.Output['outputs.WorkerReferences']:
+        """
+        Other resources that reference the Worker and depend on it existing.
+        """
+        return pulumi.get(self, "references")
 
     @_builtins.property
     @pulumi.getter

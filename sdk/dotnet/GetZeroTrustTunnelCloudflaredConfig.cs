@@ -152,6 +152,10 @@ namespace Pulumi.Cloudflare
         /// The version of the Tunnel Configuration.
         /// </summary>
         public readonly int Version;
+        /// <summary>
+        /// Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+        /// </summary>
+        public readonly bool WarpRoutingEnabled;
 
         [OutputConstructor]
         private GetZeroTrustTunnelCloudflaredConfigResult(
@@ -167,7 +171,9 @@ namespace Pulumi.Cloudflare
 
             string tunnelId,
 
-            int version)
+            int version,
+
+            bool warpRoutingEnabled)
         {
             AccountId = accountId;
             Config = config;
@@ -176,6 +182,7 @@ namespace Pulumi.Cloudflare
             Source = source;
             TunnelId = tunnelId;
             Version = version;
+            WarpRoutingEnabled = warpRoutingEnabled;
         }
     }
 }

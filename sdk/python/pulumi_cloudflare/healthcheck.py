@@ -561,6 +561,48 @@ class Healthcheck(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_healthcheck = cloudflare.Healthcheck("example_healthcheck",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            address="www.example.com",
+            name="server-1",
+            check_regions=[
+                "WEU",
+                "ENAM",
+            ],
+            consecutive_fails=0,
+            consecutive_successes=0,
+            description="Health check for www.example.com",
+            http_config={
+                "allow_insecure": True,
+                "expected_body": "success",
+                "expected_codes": [
+                    "2xx",
+                    "302",
+                ],
+                "follow_redirects": True,
+                "header": {
+                    "Host": ["example.com"],
+                    "X-App-ID": ["abc123"],
+                },
+                "method": "GET",
+                "path": "/health",
+                "port": 0,
+            },
+            interval=0,
+            retries=0,
+            suspended=True,
+            tcp_config={
+                "method": "connection_established",
+                "port": 0,
+            },
+            timeout=0,
+            type="HTTPS")
+        ```
+
         ## Import
 
         ```sh
@@ -592,6 +634,48 @@ class Healthcheck(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_healthcheck = cloudflare.Healthcheck("example_healthcheck",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            address="www.example.com",
+            name="server-1",
+            check_regions=[
+                "WEU",
+                "ENAM",
+            ],
+            consecutive_fails=0,
+            consecutive_successes=0,
+            description="Health check for www.example.com",
+            http_config={
+                "allow_insecure": True,
+                "expected_body": "success",
+                "expected_codes": [
+                    "2xx",
+                    "302",
+                ],
+                "follow_redirects": True,
+                "header": {
+                    "Host": ["example.com"],
+                    "X-App-ID": ["abc123"],
+                },
+                "method": "GET",
+                "path": "/health",
+                "port": 0,
+            },
+            interval=0,
+            retries=0,
+            suspended=True,
+            tcp_config={
+                "method": "connection_established",
+                "port": 0,
+            },
+            timeout=0,
+            type="HTTPS")
+        ```
 
         ## Import
 

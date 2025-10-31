@@ -27,9 +27,6 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupApiShield(ctx, &cloudflare.LookupApiShieldArgs{
 //				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
-//				Properties: []string{
-//					"auth_id_characteristics",
-//				},
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,8 +48,6 @@ func LookupApiShield(ctx *pulumi.Context, args *LookupApiShieldArgs, opts ...pul
 
 // A collection of arguments for invoking getApiShield.
 type LookupApiShieldArgs struct {
-	// Requests information about certain properties.
-	Properties []string `pulumi:"properties"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -62,8 +57,6 @@ type LookupApiShieldResult struct {
 	AuthIdCharacteristics []GetApiShieldAuthIdCharacteristic `pulumi:"authIdCharacteristics"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Requests information about certain properties.
-	Properties []string `pulumi:"properties"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -79,8 +72,6 @@ func LookupApiShieldOutput(ctx *pulumi.Context, args LookupApiShieldOutputArgs, 
 
 // A collection of arguments for invoking getApiShield.
 type LookupApiShieldOutputArgs struct {
-	// Requests information about certain properties.
-	Properties pulumi.StringArrayInput `pulumi:"properties"`
 	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
@@ -111,11 +102,6 @@ func (o LookupApiShieldResultOutput) AuthIdCharacteristics() GetApiShieldAuthIdC
 // The provider-assigned unique ID for this managed resource.
 func (o LookupApiShieldResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiShieldResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Requests information about certain properties.
-func (o LookupApiShieldResultOutput) Properties() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupApiShieldResult) []string { return v.Properties }).(pulumi.StringArrayOutput)
 }
 
 // Identifier.

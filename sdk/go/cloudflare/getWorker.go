@@ -69,6 +69,8 @@ type LookupWorkerResult struct {
 	Name string `pulumi:"name"`
 	// Observability settings for the Worker.
 	Observability GetWorkerObservability `pulumi:"observability"`
+	// Other resources that reference the Worker and depend on it existing.
+	References GetWorkerReferences `pulumi:"references"`
 	// Subdomain settings for the Worker.
 	Subdomain GetWorkerSubdomain `pulumi:"subdomain"`
 	// Tags associated with the Worker.
@@ -145,6 +147,11 @@ func (o LookupWorkerResultOutput) Name() pulumi.StringOutput {
 // Observability settings for the Worker.
 func (o LookupWorkerResultOutput) Observability() GetWorkerObservabilityOutput {
 	return o.ApplyT(func(v LookupWorkerResult) GetWorkerObservability { return v.Observability }).(GetWorkerObservabilityOutput)
+}
+
+// Other resources that reference the Worker and depend on it existing.
+func (o LookupWorkerResultOutput) References() GetWorkerReferencesOutput {
+	return o.ApplyT(func(v LookupWorkerResult) GetWorkerReferences { return v.References }).(GetWorkerReferencesOutput)
 }
 
 // Subdomain settings for the Worker.

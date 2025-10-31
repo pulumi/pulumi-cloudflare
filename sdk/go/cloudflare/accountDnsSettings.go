@@ -13,6 +13,53 @@ import (
 )
 
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewAccountDnsSettings(ctx, "example_account_dns_settings", &cloudflare.AccountDnsSettingsArgs{
+//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				ZoneDefaults: &cloudflare.AccountDnsSettingsZoneDefaultsArgs{
+//					FlattenAllCnames: pulumi.Bool(false),
+//					FoundationDns:    pulumi.Bool(false),
+//					InternalDns: &cloudflare.AccountDnsSettingsZoneDefaultsInternalDnsArgs{
+//						ReferenceZoneId: pulumi.String("reference_zone_id"),
+//					},
+//					MultiProvider: pulumi.Bool(false),
+//					Nameservers: &cloudflare.AccountDnsSettingsZoneDefaultsNameserversArgs{
+//						Type: pulumi.String("cloudflare.standard"),
+//					},
+//					NsTtl:              pulumi.Float64(86400),
+//					SecondaryOverrides: pulumi.Bool(false),
+//					Soa: &cloudflare.AccountDnsSettingsZoneDefaultsSoaArgs{
+//						Expire:  pulumi.Float64(604800),
+//						MinTtl:  pulumi.Float64(1800),
+//						Mname:   pulumi.String("kristina.ns.cloudflare.com"),
+//						Refresh: pulumi.Float64(10000),
+//						Retry:   pulumi.Float64(2400),
+//						Rname:   pulumi.String("admin.example.com"),
+//						Ttl:     pulumi.Float64(3600),
+//					},
+//					ZoneMode: pulumi.String("dns_only"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type AccountDnsSettings struct {
 	pulumi.CustomResourceState
 

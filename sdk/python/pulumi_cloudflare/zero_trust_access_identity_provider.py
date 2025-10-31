@@ -243,6 +243,36 @@ class ZeroTrustAccessIdentityProvider(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zero_trust_access_identity_provider = cloudflare.ZeroTrustAccessIdentityProvider("example_zero_trust_access_identity_provider",
+            config={
+                "claims": [
+                    "email_verified",
+                    "preferred_username",
+                    "custom_claim_name",
+                ],
+                "client_id": "<your client id>",
+                "client_secret": "<your client secret>",
+                "conditional_access_enabled": True,
+                "directory_id": "<your azure directory uuid>",
+                "email_claim_name": "custom_claim_name",
+                "prompt": "login",
+                "support_groups": True,
+            },
+            name="Widget Corps IDP",
+            type="onetimepin",
+            zone_id="zone_id",
+            scim_config={
+                "enabled": True,
+                "identity_update_behavior": "automatic",
+                "seat_deprovision": True,
+                "user_deprovision": True,
+            })
+        ```
+
         ## Import
 
         ```sh
@@ -267,6 +297,36 @@ class ZeroTrustAccessIdentityProvider(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zero_trust_access_identity_provider = cloudflare.ZeroTrustAccessIdentityProvider("example_zero_trust_access_identity_provider",
+            config={
+                "claims": [
+                    "email_verified",
+                    "preferred_username",
+                    "custom_claim_name",
+                ],
+                "client_id": "<your client id>",
+                "client_secret": "<your client secret>",
+                "conditional_access_enabled": True,
+                "directory_id": "<your azure directory uuid>",
+                "email_claim_name": "custom_claim_name",
+                "prompt": "login",
+                "support_groups": True,
+            },
+            name="Widget Corps IDP",
+            type="onetimepin",
+            zone_id="zone_id",
+            scim_config={
+                "enabled": True,
+                "identity_update_behavior": "automatic",
+                "seat_deprovision": True,
+                "user_deprovision": True,
+            })
+        ```
 
         ## Import
 

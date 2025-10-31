@@ -93,6 +93,18 @@ namespace Pulumi.Cloudflare
         [Input("dexTestId")]
         public string? DexTestId { get; set; }
 
+        [Input("targetPolicies")]
+        private List<Inputs.GetZeroTrustDexTestTargetPolicyArgs>? _targetPolicies;
+
+        /// <summary>
+        /// DEX rules targeted by this test
+        /// </summary>
+        public List<Inputs.GetZeroTrustDexTestTargetPolicyArgs> TargetPolicies
+        {
+            get => _targetPolicies ?? (_targetPolicies = new List<Inputs.GetZeroTrustDexTestTargetPolicyArgs>());
+            set => _targetPolicies = value;
+        }
+
         public GetZeroTrustDexTestArgs()
         {
         }
@@ -109,6 +121,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("dexTestId")]
         public Input<string>? DexTestId { get; set; }
+
+        [Input("targetPolicies")]
+        private InputList<Inputs.GetZeroTrustDexTestTargetPolicyInputArgs>? _targetPolicies;
+
+        /// <summary>
+        /// DEX rules targeted by this test
+        /// </summary>
+        public InputList<Inputs.GetZeroTrustDexTestTargetPolicyInputArgs> TargetPolicies
+        {
+            get => _targetPolicies ?? (_targetPolicies = new InputList<Inputs.GetZeroTrustDexTestTargetPolicyInputArgs>());
+            set => _targetPolicies = value;
+        }
 
         public GetZeroTrustDexTestInvokeArgs()
         {

@@ -25,6 +25,171 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.LoadBalancer;
+ * import com.pulumi.cloudflare.LoadBalancerArgs;
+ * import com.pulumi.cloudflare.inputs.LoadBalancerAdaptiveRoutingArgs;
+ * import com.pulumi.cloudflare.inputs.LoadBalancerLocationStrategyArgs;
+ * import com.pulumi.cloudflare.inputs.LoadBalancerRandomSteeringArgs;
+ * import com.pulumi.cloudflare.inputs.LoadBalancerRuleArgs;
+ * import com.pulumi.cloudflare.inputs.LoadBalancerRuleFixedResponseArgs;
+ * import com.pulumi.cloudflare.inputs.LoadBalancerRuleOverridesArgs;
+ * import com.pulumi.cloudflare.inputs.LoadBalancerRuleOverridesAdaptiveRoutingArgs;
+ * import com.pulumi.cloudflare.inputs.LoadBalancerRuleOverridesLocationStrategyArgs;
+ * import com.pulumi.cloudflare.inputs.LoadBalancerRuleOverridesRandomSteeringArgs;
+ * import com.pulumi.cloudflare.inputs.LoadBalancerRuleOverridesSessionAffinityAttributesArgs;
+ * import com.pulumi.cloudflare.inputs.LoadBalancerSessionAffinityAttributesArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleLoadBalancer = new LoadBalancer("exampleLoadBalancer", LoadBalancerArgs.builder()
+ *             .zoneId("699d98642c564d2e855e9661899b7252")
+ *             .defaultPools(            
+ *                 "17b5962d775c646f3f9725cbc7a53df4",
+ *                 "9290f38c5d07c2e2f4df57b1f61d4196",
+ *                 "00920f38ce07c2e2f4df50b1f61d4194")
+ *             .fallbackPool("fallback_pool")
+ *             .name("www.example.com")
+ *             .adaptiveRouting(LoadBalancerAdaptiveRoutingArgs.builder()
+ *                 .failoverAcrossPools(true)
+ *                 .build())
+ *             .countryPools(Map.ofEntries(
+ *                 Map.entry("GB", "abd90f38ced07c2e2f4df50b1f61d4194"),
+ *                 Map.entry("US",                 
+ *                     "de90f38ced07c2e2f4df50b1f61d4194",
+ *                     "00920f38ce07c2e2f4df50b1f61d4194")
+ *             ))
+ *             .description("Load Balancer for www.example.com")
+ *             .locationStrategy(LoadBalancerLocationStrategyArgs.builder()
+ *                 .mode("resolver_ip")
+ *                 .preferEcs("always")
+ *                 .build())
+ *             .networks("string")
+ *             .popPools(Map.ofEntries(
+ *                 Map.entry("LAX",                 
+ *                     "de90f38ced07c2e2f4df50b1f61d4194",
+ *                     "9290f38c5d07c2e2f4df57b1f61d4196"),
+ *                 Map.entry("LHR",                 
+ *                     "abd90f38ced07c2e2f4df50b1f61d4194",
+ *                     "f9138c5d07c2e2f4df57b1f61d4196"),
+ *                 Map.entry("SJC", "00920f38ce07c2e2f4df50b1f61d4194")
+ *             ))
+ *             .proxied(true)
+ *             .randomSteering(LoadBalancerRandomSteeringArgs.builder()
+ *                 .defaultWeight(0.2)
+ *                 .poolWeights(Map.ofEntries(
+ *                     Map.entry("9290f38c5d07c2e2f4df57b1f61d4196", 0.5),
+ *                     Map.entry("de90f38ced07c2e2f4df50b1f61d4194", 0.3)
+ *                 ))
+ *                 .build())
+ *             .regionPools(Map.ofEntries(
+ *                 Map.entry("ENAM", "00920f38ce07c2e2f4df50b1f61d4194"),
+ *                 Map.entry("WNAM",                 
+ *                     "de90f38ced07c2e2f4df50b1f61d4194",
+ *                     "9290f38c5d07c2e2f4df57b1f61d4196")
+ *             ))
+ *             .rules(LoadBalancerRuleArgs.builder()
+ *                 .condition("http.request.uri.path contains \"/testing\"")
+ *                 .disabled(true)
+ *                 .fixedResponse(LoadBalancerRuleFixedResponseArgs.builder()
+ *                     .contentType("application/json")
+ *                     .location("www.example.com")
+ *                     .messageBody("Testing Hello")
+ *                     .statusCode(0)
+ *                     .build())
+ *                 .name("route the path /testing to testing datacenter.")
+ *                 .overrides(LoadBalancerRuleOverridesArgs.builder()
+ *                     .adaptiveRouting(LoadBalancerRuleOverridesAdaptiveRoutingArgs.builder()
+ *                         .failoverAcrossPools(true)
+ *                         .build())
+ *                     .countryPools(Map.ofEntries(
+ *                         Map.entry("GB", "abd90f38ced07c2e2f4df50b1f61d4194"),
+ *                         Map.entry("US",                         
+ *                             "de90f38ced07c2e2f4df50b1f61d4194",
+ *                             "00920f38ce07c2e2f4df50b1f61d4194")
+ *                     ))
+ *                     .defaultPools(                    
+ *                         "17b5962d775c646f3f9725cbc7a53df4",
+ *                         "9290f38c5d07c2e2f4df57b1f61d4196",
+ *                         "00920f38ce07c2e2f4df50b1f61d4194")
+ *                     .fallbackPool("fallback_pool")
+ *                     .locationStrategy(LoadBalancerRuleOverridesLocationStrategyArgs.builder()
+ *                         .mode("resolver_ip")
+ *                         .preferEcs("always")
+ *                         .build())
+ *                     .popPools(Map.ofEntries(
+ *                         Map.entry("LAX",                         
+ *                             "de90f38ced07c2e2f4df50b1f61d4194",
+ *                             "9290f38c5d07c2e2f4df57b1f61d4196"),
+ *                         Map.entry("LHR",                         
+ *                             "abd90f38ced07c2e2f4df50b1f61d4194",
+ *                             "f9138c5d07c2e2f4df57b1f61d4196"),
+ *                         Map.entry("SJC", "00920f38ce07c2e2f4df50b1f61d4194")
+ *                     ))
+ *                     .randomSteering(LoadBalancerRuleOverridesRandomSteeringArgs.builder()
+ *                         .defaultWeight(0.2)
+ *                         .poolWeights(Map.ofEntries(
+ *                             Map.entry("9290f38c5d07c2e2f4df57b1f61d4196", 0.5),
+ *                             Map.entry("de90f38ced07c2e2f4df50b1f61d4194", 0.3)
+ *                         ))
+ *                         .build())
+ *                     .regionPools(Map.ofEntries(
+ *                         Map.entry("ENAM", "00920f38ce07c2e2f4df50b1f61d4194"),
+ *                         Map.entry("WNAM",                         
+ *                             "de90f38ced07c2e2f4df50b1f61d4194",
+ *                             "9290f38c5d07c2e2f4df57b1f61d4196")
+ *                     ))
+ *                     .sessionAffinity("cookie")
+ *                     .sessionAffinityAttributes(LoadBalancerRuleOverridesSessionAffinityAttributesArgs.builder()
+ *                         .drainDuration(100.0)
+ *                         .headers("x")
+ *                         .requireAllHeaders(true)
+ *                         .samesite("Auto")
+ *                         .secure("Auto")
+ *                         .zeroDowntimeFailover("sticky")
+ *                         .build())
+ *                     .sessionAffinityTtl(1800.0)
+ *                     .steeringPolicy("dynamic_latency")
+ *                     .ttl(30.0)
+ *                     .build())
+ *                 .priority(0)
+ *                 .terminates(true)
+ *                 .build())
+ *             .sessionAffinity("cookie")
+ *             .sessionAffinityAttributes(LoadBalancerSessionAffinityAttributesArgs.builder()
+ *                 .drainDuration(100.0)
+ *                 .headers("x")
+ *                 .requireAllHeaders(true)
+ *                 .samesite("Auto")
+ *                 .secure("Auto")
+ *                 .zeroDowntimeFailover("sticky")
+ *                 .build())
+ *             .sessionAffinityTtl(1800.0)
+ *             .steeringPolicy("dynamic_latency")
+ *             .ttl(30.0)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh

@@ -101,10 +101,10 @@ public final class ZeroTrustDlpCustomProfileArgs extends com.pulumi.resources.Re
      * If this field is omitted, entries owned by this profile will not be changed.
      * 
      * @deprecated
-     * This attribute is deprecated.
+     * This attribute will be sunset on 01/01/2026
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated /* This attribute will be sunset on 01/01/2026 */
     @Import(name="entries")
     private @Nullable Output<List<ZeroTrustDlpCustomProfileEntryArgs>> entries;
 
@@ -113,10 +113,10 @@ public final class ZeroTrustDlpCustomProfileArgs extends com.pulumi.resources.Re
      * If this field is omitted, entries owned by this profile will not be changed.
      * 
      * @deprecated
-     * This attribute is deprecated.
+     * This attribute will be sunset on 01/01/2026
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated /* This attribute will be sunset on 01/01/2026 */
     public Optional<Output<List<ZeroTrustDlpCustomProfileEntryArgs>>> entries() {
         return Optional.ofNullable(this.entries);
     }
@@ -288,10 +288,10 @@ public final class ZeroTrustDlpCustomProfileArgs extends com.pulumi.resources.Re
          * @return builder
          * 
          * @deprecated
-         * This attribute is deprecated.
+         * This attribute will be sunset on 01/01/2026
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated /* This attribute will be sunset on 01/01/2026 */
         public Builder entries(@Nullable Output<List<ZeroTrustDlpCustomProfileEntryArgs>> entries) {
             $.entries = entries;
             return this;
@@ -304,10 +304,10 @@ public final class ZeroTrustDlpCustomProfileArgs extends com.pulumi.resources.Re
          * @return builder
          * 
          * @deprecated
-         * This attribute is deprecated.
+         * This attribute will be sunset on 01/01/2026
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated /* This attribute will be sunset on 01/01/2026 */
         public Builder entries(List<ZeroTrustDlpCustomProfileEntryArgs> entries) {
             return entries(Output.of(entries));
         }
@@ -319,10 +319,10 @@ public final class ZeroTrustDlpCustomProfileArgs extends com.pulumi.resources.Re
          * @return builder
          * 
          * @deprecated
-         * This attribute is deprecated.
+         * This attribute will be sunset on 01/01/2026
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated /* This attribute will be sunset on 01/01/2026 */
         public Builder entries(ZeroTrustDlpCustomProfileEntryArgs... entries) {
             return entries(List.of(entries));
         }

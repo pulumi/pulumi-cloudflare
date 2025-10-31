@@ -7,13 +7,10 @@ import com.pulumi.cloudflare.ApiShieldArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.ApiShieldState;
 import com.pulumi.cloudflare.outputs.ApiShieldAuthIdCharacteristic;
-import com.pulumi.cloudflare.outputs.ApiShieldError;
-import com.pulumi.cloudflare.outputs.ApiShieldMessage;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
@@ -71,32 +68,6 @@ public class ApiShield extends com.pulumi.resources.CustomResource {
 
     public Output<List<ApiShieldAuthIdCharacteristic>> authIdCharacteristics() {
         return this.authIdCharacteristics;
-    }
-    @Export(name="errors", refs={List.class,ApiShieldError.class}, tree="[0,1]")
-    private Output<List<ApiShieldError>> errors;
-
-    public Output<List<ApiShieldError>> errors() {
-        return this.errors;
-    }
-    @Export(name="messages", refs={List.class,ApiShieldMessage.class}, tree="[0,1]")
-    private Output<List<ApiShieldMessage>> messages;
-
-    public Output<List<ApiShieldMessage>> messages() {
-        return this.messages;
-    }
-    /**
-     * Whether the API call was successful.
-     * 
-     */
-    @Export(name="success", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> success;
-
-    /**
-     * @return Whether the API call was successful.
-     * 
-     */
-    public Output<Boolean> success() {
-        return this.success;
     }
     /**
      * Identifier.

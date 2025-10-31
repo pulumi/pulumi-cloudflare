@@ -74,7 +74,7 @@ namespace Pulumi.Cloudflare
         /// to a predefined profile
         /// </summary>
         [Output("profileId")]
-        public Output<string?> ProfileId { get; private set; } = null!;
+        public Output<string> ProfileId { get; private set; } = null!;
 
         [Output("secret")]
         public Output<bool> Secret { get; private set; } = null!;
