@@ -225,6 +225,24 @@ class MagicTransitConnector(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_magic_transit_connector = cloudflare.MagicTransitConnector("example_magic_transit_connector",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            device={
+                "id": "id",
+                "provision_license": True,
+                "serial_number": "serial_number",
+            },
+            activated=True,
+            interrupt_window_duration_hours=0,
+            interrupt_window_hour_of_day=0,
+            notes="notes",
+            timezone="timezone")
+        ```
+
         ## Import
 
         ```sh
@@ -243,6 +261,24 @@ class MagicTransitConnector(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_magic_transit_connector = cloudflare.MagicTransitConnector("example_magic_transit_connector",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            device={
+                "id": "id",
+                "provision_license": True,
+                "serial_number": "serial_number",
+            },
+            activated=True,
+            interrupt_window_duration_hours=0,
+            interrupt_window_hour_of_day=0,
+            notes="notes",
+            timezone="timezone")
+        ```
 
         ## Import
 

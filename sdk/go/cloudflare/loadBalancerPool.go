@@ -14,6 +14,73 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewLoadBalancerPool(ctx, "example_load_balancer_pool", &cloudflare.LoadBalancerPoolArgs{
+//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Name:      pulumi.String("primary-dc-1"),
+//				Origins: cloudflare.LoadBalancerPoolOriginArray{
+//					&cloudflare.LoadBalancerPoolOriginArgs{
+//						Address: pulumi.String("0.0.0.0"),
+//						Enabled: pulumi.Bool(true),
+//						Header: &cloudflare.LoadBalancerPoolOriginHeaderArgs{
+//							Host: []string{
+//								"example.com",
+//							},
+//						},
+//						Name:             pulumi.String("app-server-1"),
+//						Port:             pulumi.Int(0),
+//						VirtualNetworkId: pulumi.String("a5624d4e-044a-4ff0-b3e1-e2465353d4b4"),
+//						Weight:           pulumi.Float64(0.6),
+//					},
+//				},
+//				Description: pulumi.String("Primary data center - Provider XYZ"),
+//				Enabled:     pulumi.Bool(false),
+//				Latitude:    pulumi.Float64(0),
+//				LoadShedding: &cloudflare.LoadBalancerPoolLoadSheddingArgs{
+//					DefaultPercent: pulumi.Float64(0),
+//					DefaultPolicy:  pulumi.String("random"),
+//					SessionPercent: pulumi.Float64(0),
+//					SessionPolicy:  pulumi.String("hash"),
+//				},
+//				Longitude:         pulumi.Float64(0),
+//				MinimumOrigins:    pulumi.Int(0),
+//				Monitor:           pulumi.String("monitor"),
+//				MonitorGroup:      pulumi.String("monitor_group"),
+//				NotificationEmail: pulumi.String("someone@example.com,sometwo@example.com"),
+//				NotificationFilter: &cloudflare.LoadBalancerPoolNotificationFilterArgs{
+//					Origin: &cloudflare.LoadBalancerPoolNotificationFilterOriginArgs{
+//						Disable: pulumi.Bool(true),
+//						Healthy: pulumi.Bool(true),
+//					},
+//					Pool: &cloudflare.LoadBalancerPoolNotificationFilterPoolArgs{
+//						Disable: pulumi.Bool(true),
+//						Healthy: pulumi.Bool(false),
+//					},
+//				},
+//				OriginSteering: &cloudflare.LoadBalancerPoolOriginSteeringArgs{
+//					Policy: pulumi.String("random"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh
