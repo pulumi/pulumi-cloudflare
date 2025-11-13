@@ -120,7 +120,8 @@ func TestRuleSetUpgrade(t *testing.T) {
 }
 
 func TestAccRecordGo(t *testing.T) {
-	pt := testProgram(t, "test-programs/recordgo")
+	pt := testProgram(t, "test-programs/recordgo",
+		opttest.GoModReplacement("github.com/pulumi/pulumi-cloudflare/sdk/v6", "..", "sdk"))
 	pt.Up(t)
 	pt.Refresh(t, optrefresh.ExpectNoChanges(), optrefresh.Diff())
 	pt.Up(t, optup.ExpectNoChanges())

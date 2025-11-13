@@ -9,17 +9,14 @@ import (
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
 		c := config.New(ctx, "")
-		accountID := c.Require("cloudflare-account-id")
+		accountId := c.Require("cloudflare-account-id")
 
 		zone, err := cloudflare.NewZone(ctx, "my-zone", &cloudflare.ZoneArgs{
-			Name: pulumi.String("go-test-cloudflare-pulumi.com"),
+			Name:      pulumi.String("go-test-cloudflare-pulumi.com"),
 			Account: cloudflare.ZoneAccountArgs{
-				Id: pulumi.String(accountID),
+				Id: pulumi.String(accountId),
 			},
 		})
-		if err != nil {
-			return err
-		}
 
 		_, err = cloudflare.NewRecord(ctx, "my-record-go", &cloudflare.RecordArgs{
 			Name:    pulumi.String("my-record-go.go-test-cloudflare-pulumi.com"),
