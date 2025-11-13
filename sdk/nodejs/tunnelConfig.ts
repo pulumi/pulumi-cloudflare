@@ -9,6 +9,63 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustTunnelCloudflaredConfig = new cloudflare.ZeroTrustTunnelCloudflaredConfig("example_zero_trust_tunnel_cloudflared_config", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     tunnelId: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+ *     config: {
+ *         ingresses: [{
+ *             hostname: "tunnel.example.com",
+ *             service: "https://localhost:8001",
+ *             originRequest: {
+ *                 access: {
+ *                     audTag: ["string"],
+ *                     teamName: "zero-trust-organization-name",
+ *                     required: false,
+ *                 },
+ *                 caPool: "caPool",
+ *                 connectTimeout: 10,
+ *                 disableChunkedEncoding: true,
+ *                 http2Origin: true,
+ *                 httpHostHeader: "httpHostHeader",
+ *                 keepAliveConnections: 100,
+ *                 keepAliveTimeout: 90,
+ *                 noHappyEyeballs: false,
+ *                 noTlsVerify: false,
+ *                 originServerName: "originServerName",
+ *                 proxyType: "proxyType",
+ *                 tcpKeepAlive: 30,
+ *                 tlsTimeout: 10,
+ *             },
+ *             path: "subpath",
+ *         }],
+ *         originRequest: {
+ *             access: {
+ *                 audTags: ["string"],
+ *                 teamName: "zero-trust-organization-name",
+ *                 required: false,
+ *             },
+ *             caPool: "caPool",
+ *             connectTimeout: 10,
+ *             disableChunkedEncoding: true,
+ *             http2Origin: true,
+ *             httpHostHeader: "httpHostHeader",
+ *             keepAliveConnections: 100,
+ *             keepAliveTimeout: 90,
+ *             noHappyEyeballs: false,
+ *             noTlsVerify: false,
+ *             originServerName: "originServerName",
+ *             proxyType: "proxyType",
+ *             tcpKeepAlive: 30,
+ *             tlsTimeout: 10,
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

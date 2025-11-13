@@ -9,6 +9,24 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleEmailRoutingCatchAll = new cloudflare.EmailRoutingCatchAll("example_email_routing_catch_all", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     actions: [{
+ *         type: "forward",
+ *         value: ["destinationaddress@example.net"],
+ *     }],
+ *     matchers: [{
+ *         type: "all",
+ *     }],
+ *     enabled: true,
+ *     name: "Send to user@example.net rule.",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

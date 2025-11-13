@@ -226,6 +226,23 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_email_routing_catch_all = cloudflare.EmailRoutingCatchAll("example_email_routing_catch_all",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            actions=[{
+                "type": "forward",
+                "value": ["destinationaddress@example.net"],
+            }],
+            matchers=[{
+                "type": "all",
+            }],
+            enabled=True,
+            name="Send to user@example.net rule.")
+        ```
+
         ## Import
 
         ```sh
@@ -248,6 +265,23 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_email_routing_catch_all = cloudflare.EmailRoutingCatchAll("example_email_routing_catch_all",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            actions=[{
+                "type": "forward",
+                "value": ["destinationaddress@example.net"],
+            }],
+            matchers=[{
+                "type": "all",
+            }],
+            enabled=True,
+            name="Send to user@example.net rule.")
+        ```
 
         ## Import
 

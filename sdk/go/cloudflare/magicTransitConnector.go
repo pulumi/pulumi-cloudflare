@@ -14,6 +14,40 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewMagicTransitConnector(ctx, "example_magic_transit_connector", &cloudflare.MagicTransitConnectorArgs{
+//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Device: &cloudflare.MagicTransitConnectorDeviceArgs{
+//					Id:               pulumi.String("id"),
+//					ProvisionLicense: true,
+//					SerialNumber:     pulumi.String("serial_number"),
+//				},
+//				Activated:                    pulumi.Bool(true),
+//				InterruptWindowDurationHours: pulumi.Float64(0),
+//				InterruptWindowHourOfDay:     pulumi.Float64(0),
+//				Notes:                        pulumi.String("notes"),
+//				Timezone:                     pulumi.String("timezone"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

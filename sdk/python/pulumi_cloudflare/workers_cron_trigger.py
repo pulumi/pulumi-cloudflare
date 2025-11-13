@@ -132,6 +132,18 @@ class WorkersCronTrigger(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_workers_cron_trigger = cloudflare.WorkersCronTrigger("example_workers_cron_trigger",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            script_name="this-is_my_script-01",
+            body=[{
+                "cron": "*/30 * * * *",
+            }])
+        ```
+
         ## Import
 
         ```sh
@@ -151,6 +163,18 @@ class WorkersCronTrigger(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_workers_cron_trigger = cloudflare.WorkersCronTrigger("example_workers_cron_trigger",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            script_name="this-is_my_script-01",
+            body=[{
+                "cron": "*/30 * * * *",
+            }])
+        ```
 
         ## Import
 
