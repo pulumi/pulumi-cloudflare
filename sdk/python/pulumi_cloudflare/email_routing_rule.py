@@ -259,6 +259,26 @@ class EmailRoutingRule(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_email_routing_rule = cloudflare.EmailRoutingRule("example_email_routing_rule",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            actions=[{
+                "type": "forward",
+                "value": ["destinationaddress@example.net"],
+            }],
+            matchers=[{
+                "type": "literal",
+                "field": "to",
+                "value": "test@example.com",
+            }],
+            enabled=True,
+            name="Send to user@example.net rule.",
+            priority=0)
+        ```
+
         ## Import
 
         ```sh
@@ -282,6 +302,26 @@ class EmailRoutingRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_email_routing_rule = cloudflare.EmailRoutingRule("example_email_routing_rule",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            actions=[{
+                "type": "forward",
+                "value": ["destinationaddress@example.net"],
+            }],
+            matchers=[{
+                "type": "literal",
+                "field": "to",
+                "value": "test@example.com",
+            }],
+            enabled=True,
+            name="Send to user@example.net rule.",
+            priority=0)
+        ```
 
         ## Import
 

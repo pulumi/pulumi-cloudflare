@@ -592,6 +592,53 @@ class LoadBalancerPool(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_load_balancer_pool = cloudflare.LoadBalancerPool("example_load_balancer_pool",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            name="primary-dc-1",
+            origins=[{
+                "address": "0.0.0.0",
+                "enabled": True,
+                "header": {
+                    "host": ["example.com"],
+                },
+                "name": "app-server-1",
+                "port": 0,
+                "virtual_network_id": "a5624d4e-044a-4ff0-b3e1-e2465353d4b4",
+                "weight": 0.6,
+            }],
+            description="Primary data center - Provider XYZ",
+            enabled=False,
+            latitude=0,
+            load_shedding={
+                "default_percent": 0,
+                "default_policy": "random",
+                "session_percent": 0,
+                "session_policy": "hash",
+            },
+            longitude=0,
+            minimum_origins=0,
+            monitor="monitor",
+            monitor_group="monitor_group",
+            notification_email="someone@example.com,sometwo@example.com",
+            notification_filter={
+                "origin": {
+                    "disable": True,
+                    "healthy": True,
+                },
+                "pool": {
+                    "disable": True,
+                    "healthy": False,
+                },
+            },
+            origin_steering={
+                "policy": "random",
+            })
+        ```
+
         ## Import
 
         ```sh
@@ -624,6 +671,53 @@ class LoadBalancerPool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_load_balancer_pool = cloudflare.LoadBalancerPool("example_load_balancer_pool",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            name="primary-dc-1",
+            origins=[{
+                "address": "0.0.0.0",
+                "enabled": True,
+                "header": {
+                    "host": ["example.com"],
+                },
+                "name": "app-server-1",
+                "port": 0,
+                "virtual_network_id": "a5624d4e-044a-4ff0-b3e1-e2465353d4b4",
+                "weight": 0.6,
+            }],
+            description="Primary data center - Provider XYZ",
+            enabled=False,
+            latitude=0,
+            load_shedding={
+                "default_percent": 0,
+                "default_policy": "random",
+                "session_percent": 0,
+                "session_policy": "hash",
+            },
+            longitude=0,
+            minimum_origins=0,
+            monitor="monitor",
+            monitor_group="monitor_group",
+            notification_email="someone@example.com,sometwo@example.com",
+            notification_filter={
+                "origin": {
+                    "disable": True,
+                    "healthy": True,
+                },
+                "pool": {
+                    "disable": True,
+                    "healthy": False,
+                },
+            },
+            origin_steering={
+                "policy": "random",
+            })
+        ```
 
         ## Import
 

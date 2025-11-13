@@ -18,6 +18,43 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.ZeroTrustDeviceDefaultProfileLocalDomainFallback;
+ * import com.pulumi.cloudflare.ZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleZeroTrustDeviceDefaultProfileLocalDomainFallback = new ZeroTrustDeviceDefaultProfileLocalDomainFallback("exampleZeroTrustDeviceDefaultProfileLocalDomainFallback", ZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs.builder()
+ *             .accountId("699d98642c564d2e855e9661899b7252")
+ *             .domains(ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs.builder()
+ *                 .suffix("example.com")
+ *                 .description("Domain bypass for local development")
+ *                 .dnsServer(List.of("1.1.1.1"))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh

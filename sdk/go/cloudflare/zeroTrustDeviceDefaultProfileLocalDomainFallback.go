@@ -14,6 +14,39 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewZeroTrustDeviceDefaultProfileLocalDomainFallback(ctx, "example_zero_trust_device_default_profile_local_domain_fallback", &cloudflare.ZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs{
+//				AccountId: pulumi.String("699d98642c564d2e855e9661899b7252"),
+//				Domains: cloudflare.ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArray{
+//					&cloudflare.ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs{
+//						Suffix:      pulumi.String("example.com"),
+//						Description: pulumi.String("Domain bypass for local development"),
+//						DnsServer: []string{
+//							"1.1.1.1",
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

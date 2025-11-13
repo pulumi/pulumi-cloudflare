@@ -223,6 +223,27 @@ class R2BucketSippy(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_r2_bucket_sippy = cloudflare.R2BucketSippy("example_r2_bucket_sippy",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            bucket_name="example-bucket",
+            destination={
+                "access_key_id": "accessKeyId",
+                "provider": "r2",
+                "secret_access_key": "secretAccessKey",
+            },
+            source={
+                "access_key_id": "accessKeyId",
+                "bucket": "bucket",
+                "cloud_provider": "aws",
+                "region": "region",
+                "secret_access_key": "secretAccessKey",
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account ID.
@@ -239,6 +260,27 @@ class R2BucketSippy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_r2_bucket_sippy = cloudflare.R2BucketSippy("example_r2_bucket_sippy",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            bucket_name="example-bucket",
+            destination={
+                "access_key_id": "accessKeyId",
+                "provider": "r2",
+                "secret_access_key": "secretAccessKey",
+            },
+            source={
+                "access_key_id": "accessKeyId",
+                "bucket": "bucket",
+                "cloud_provider": "aws",
+                "region": "region",
+                "secret_access_key": "secretAccessKey",
+            })
+        ```
 
         :param str resource_name: The name of the resource.
         :param R2BucketSippyArgs args: The arguments to use to populate this resource's properties.

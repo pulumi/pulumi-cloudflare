@@ -12,6 +12,85 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZeroTrustTunnelCloudflaredConfig = new Cloudflare.ZeroTrustTunnelCloudflaredConfig("example_zero_trust_tunnel_cloudflared_config", new()
+    ///     {
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         TunnelId = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+    ///         Config = new Cloudflare.Inputs.ZeroTrustTunnelCloudflaredConfigConfigArgs
+    ///         {
+    ///             Ingresses = new[]
+    ///             {
+    ///                 new Cloudflare.Inputs.ZeroTrustTunnelCloudflaredConfigConfigIngressArgs
+    ///                 {
+    ///                     Hostname = "tunnel.example.com",
+    ///                     Service = "https://localhost:8001",
+    ///                     OriginRequest = new Cloudflare.Inputs.ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestArgs
+    ///                     {
+    ///                         Access = new Cloudflare.Inputs.ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestAccessArgs
+    ///                         {
+    ///                             AudTag = new[]
+    ///                             {
+    ///                                 "string",
+    ///                             },
+    ///                             TeamName = "zero-trust-organization-name",
+    ///                             Required = false,
+    ///                         },
+    ///                         CaPool = "caPool",
+    ///                         ConnectTimeout = 10,
+    ///                         DisableChunkedEncoding = true,
+    ///                         Http2Origin = true,
+    ///                         HttpHostHeader = "httpHostHeader",
+    ///                         KeepAliveConnections = 100,
+    ///                         KeepAliveTimeout = 90,
+    ///                         NoHappyEyeballs = false,
+    ///                         NoTlsVerify = false,
+    ///                         OriginServerName = "originServerName",
+    ///                         ProxyType = "proxyType",
+    ///                         TcpKeepAlive = 30,
+    ///                         TlsTimeout = 10,
+    ///                     },
+    ///                     Path = "subpath",
+    ///                 },
+    ///             },
+    ///             OriginRequest = new Cloudflare.Inputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs
+    ///             {
+    ///                 Access = new Cloudflare.Inputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessArgs
+    ///                 {
+    ///                     AudTags = new[]
+    ///                     {
+    ///                         "string",
+    ///                     },
+    ///                     TeamName = "zero-trust-organization-name",
+    ///                     Required = false,
+    ///                 },
+    ///                 CaPool = "caPool",
+    ///                 ConnectTimeout = 10,
+    ///                 DisableChunkedEncoding = true,
+    ///                 Http2Origin = true,
+    ///                 HttpHostHeader = "httpHostHeader",
+    ///                 KeepAliveConnections = 100,
+    ///                 KeepAliveTimeout = 90,
+    ///                 NoHappyEyeballs = false,
+    ///                 NoTlsVerify = false,
+    ///                 OriginServerName = "originServerName",
+    ///                 ProxyType = "proxyType",
+    ///                 TcpKeepAlive = 30,
+    ///                 TlsTimeout = 10,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

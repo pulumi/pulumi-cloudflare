@@ -22,6 +22,62 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.MagicWanIpsecTunnel;
+ * import com.pulumi.cloudflare.MagicWanIpsecTunnelArgs;
+ * import com.pulumi.cloudflare.inputs.MagicWanIpsecTunnelHealthCheckArgs;
+ * import com.pulumi.cloudflare.inputs.MagicWanIpsecTunnelHealthCheckTargetArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleMagicWanIpsecTunnel = new MagicWanIpsecTunnel("exampleMagicWanIpsecTunnel", MagicWanIpsecTunnelArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .cloudflareEndpoint("203.0.113.1")
+ *             .interfaceAddress("192.0.2.0/31")
+ *             .name("IPsec_1")
+ *             .automaticReturnRouting(true)
+ *             .bgp(Map.ofEntries(
+ *                 Map.entry("customerAsn", 0),
+ *                 Map.entry("extraPrefixes", List.of("string")),
+ *                 Map.entry("md5Key", "md5_key")
+ *             ))
+ *             .customerEndpoint("203.0.113.1")
+ *             .description("Tunnel for ISP X")
+ *             .healthCheck(MagicWanIpsecTunnelHealthCheckArgs.builder()
+ *                 .direction("bidirectional")
+ *                 .enabled(true)
+ *                 .rate("low")
+ *                 .target(MagicWanIpsecTunnelHealthCheckTargetArgs.builder()
+ *                     .saved("203.0.113.1")
+ *                     .build())
+ *                 .type("request")
+ *                 .build())
+ *             .interfaceAddress6("2606:54c1:7:0:a9fe:12d2:1:200/127")
+ *             .psk("O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy")
+ *             .replayProtection(false)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh

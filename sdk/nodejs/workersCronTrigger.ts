@@ -9,6 +9,19 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleWorkersCronTrigger = new cloudflare.WorkersCronTrigger("example_workers_cron_trigger", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     scriptName: "this-is_my_script-01",
+ *     body: [{
+ *         cron: "*&#47;30 * * * *",
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

@@ -20,6 +20,52 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.R2BucketSippy;
+ * import com.pulumi.cloudflare.R2BucketSippyArgs;
+ * import com.pulumi.cloudflare.inputs.R2BucketSippyDestinationArgs;
+ * import com.pulumi.cloudflare.inputs.R2BucketSippySourceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleR2BucketSippy = new R2BucketSippy("exampleR2BucketSippy", R2BucketSippyArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .bucketName("example-bucket")
+ *             .destination(R2BucketSippyDestinationArgs.builder()
+ *                 .accessKeyId("accessKeyId")
+ *                 .provider("r2")
+ *                 .secretAccessKey("secretAccessKey")
+ *                 .build())
+ *             .source(R2BucketSippySourceArgs.builder()
+ *                 .accessKeyId("accessKeyId")
+ *                 .bucket("bucket")
+ *                 .cloudProvider("aws")
+ *                 .region("region")
+ *                 .secretAccessKey("secretAccessKey")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  */
 @ResourceType(type="cloudflare:index/r2BucketSippy:R2BucketSippy")
 public class R2BucketSippy extends com.pulumi.resources.CustomResource {

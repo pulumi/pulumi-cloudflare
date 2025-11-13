@@ -21,6 +21,88 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.ZeroTrustTunnelCloudflaredConfig;
+ * import com.pulumi.cloudflare.ZeroTrustTunnelCloudflaredConfigArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustTunnelCloudflaredConfigConfigArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleZeroTrustTunnelCloudflaredConfig = new ZeroTrustTunnelCloudflaredConfig("exampleZeroTrustTunnelCloudflaredConfig", ZeroTrustTunnelCloudflaredConfigArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .tunnelId("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+ *             .config(ZeroTrustTunnelCloudflaredConfigConfigArgs.builder()
+ *                 .ingresses(ZeroTrustTunnelCloudflaredConfigConfigIngressArgs.builder()
+ *                     .hostname("tunnel.example.com")
+ *                     .service("https://localhost:8001")
+ *                     .originRequest(ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestArgs.builder()
+ *                         .access(ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestAccessArgs.builder()
+ *                             .audTag(List.of("string"))
+ *                             .teamName("zero-trust-organization-name")
+ *                             .required(false)
+ *                             .build())
+ *                         .caPool("caPool")
+ *                         .connectTimeout(10)
+ *                         .disableChunkedEncoding(true)
+ *                         .http2Origin(true)
+ *                         .httpHostHeader("httpHostHeader")
+ *                         .keepAliveConnections(100)
+ *                         .keepAliveTimeout(90)
+ *                         .noHappyEyeballs(false)
+ *                         .noTlsVerify(false)
+ *                         .originServerName("originServerName")
+ *                         .proxyType("proxyType")
+ *                         .tcpKeepAlive(30)
+ *                         .tlsTimeout(10)
+ *                         .build())
+ *                     .path("subpath")
+ *                     .build())
+ *                 .originRequest(ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs.builder()
+ *                     .access(ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessArgs.builder()
+ *                         .audTags("string")
+ *                         .teamName("zero-trust-organization-name")
+ *                         .required(false)
+ *                         .build())
+ *                     .caPool("caPool")
+ *                     .connectTimeout(10)
+ *                     .disableChunkedEncoding(true)
+ *                     .http2Origin(true)
+ *                     .httpHostHeader("httpHostHeader")
+ *                     .keepAliveConnections(100)
+ *                     .keepAliveTimeout(90)
+ *                     .noHappyEyeballs(false)
+ *                     .noTlsVerify(false)
+ *                     .originServerName("originServerName")
+ *                     .proxyType("proxyType")
+ *                     .tcpKeepAlive(30)
+ *                     .tlsTimeout(10)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh

@@ -153,6 +153,22 @@ class ImageVariant(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_image_variant = cloudflare.ImageVariant("example_image_variant",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            id="hero",
+            options={
+                "fit": "scale-down",
+                "height": 768,
+                "metadata": "none",
+                "width": 1366,
+            },
+            never_require_signed_urls=True)
+        ```
+
         ## Import
 
         ```sh
@@ -173,6 +189,22 @@ class ImageVariant(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_image_variant = cloudflare.ImageVariant("example_image_variant",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            id="hero",
+            options={
+                "fit": "scale-down",
+                "height": 768,
+                "metadata": "none",
+                "width": 1366,
+            },
+            never_require_signed_urls=True)
+        ```
 
         ## Import
 

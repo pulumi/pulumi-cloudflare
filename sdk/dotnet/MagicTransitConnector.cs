@@ -12,6 +12,33 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleMagicTransitConnector = new Cloudflare.MagicTransitConnector("example_magic_transit_connector", new()
+    ///     {
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Device = new Cloudflare.Inputs.MagicTransitConnectorDeviceArgs
+    ///         {
+    ///             Id = "id",
+    ///             ProvisionLicense = true,
+    ///             SerialNumber = "serial_number",
+    ///         },
+    ///         Activated = true,
+    ///         InterruptWindowDurationHours = 0,
+    ///         InterruptWindowHourOfDay = 0,
+    ///         Notes = "notes",
+    ///         Timezone = "timezone",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

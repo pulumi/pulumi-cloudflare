@@ -14,6 +14,55 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewMagicWanGreTunnel(ctx, "example_magic_wan_gre_tunnel", &cloudflare.MagicWanGreTunnelArgs{
+//				AccountId:              pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				CloudflareGreEndpoint:  pulumi.String("203.0.113.1"),
+//				CustomerGreEndpoint:    pulumi.String("203.0.113.1"),
+//				InterfaceAddress:       pulumi.String("192.0.2.0/31"),
+//				Name:                   pulumi.String("GRE_1"),
+//				AutomaticReturnRouting: true,
+//				Bgp: map[string]interface{}{
+//					"customerAsn": 0,
+//					"extraPrefixes": []string{
+//						"string",
+//					},
+//					"md5Key": "md5_key",
+//				},
+//				Description: pulumi.String("Tunnel for ISP X"),
+//				HealthCheck: &cloudflare.MagicWanGreTunnelHealthCheckArgs{
+//					Direction: pulumi.String("bidirectional"),
+//					Enabled:   pulumi.Bool(true),
+//					Rate:      pulumi.String("low"),
+//					Target: &cloudflare.MagicWanGreTunnelHealthCheckTargetArgs{
+//						Saved: pulumi.String("203.0.113.1"),
+//					},
+//					Type: pulumi.String("request"),
+//				},
+//				InterfaceAddress6: pulumi.String("2606:54c1:7:0:a9fe:12d2:1:200/127"),
+//				Mtu:               pulumi.Int(0),
+//				Ttl:               pulumi.Int(0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

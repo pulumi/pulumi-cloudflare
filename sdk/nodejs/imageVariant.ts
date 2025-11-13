@@ -9,6 +9,23 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleImageVariant = new cloudflare.ImageVariant("example_image_variant", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     id: "hero",
+ *     options: {
+ *         fit: "scale-down",
+ *         height: 768,
+ *         metadata: "none",
+ *         width: 1366,
+ *     },
+ *     neverRequireSignedUrls: true,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

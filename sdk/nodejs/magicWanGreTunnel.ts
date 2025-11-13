@@ -9,6 +9,38 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleMagicWanGreTunnel = new cloudflare.MagicWanGreTunnel("example_magic_wan_gre_tunnel", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     cloudflareGreEndpoint: "203.0.113.1",
+ *     customerGreEndpoint: "203.0.113.1",
+ *     interfaceAddress: "192.0.2.0/31",
+ *     name: "GRE_1",
+ *     automaticReturnRouting: true,
+ *     bgp: {
+ *         customerAsn: 0,
+ *         extraPrefixes: ["string"],
+ *         md5Key: "md5_key",
+ *     },
+ *     description: "Tunnel for ISP X",
+ *     healthCheck: {
+ *         direction: "bidirectional",
+ *         enabled: true,
+ *         rate: "low",
+ *         target: {
+ *             saved: "203.0.113.1",
+ *         },
+ *         type: "request",
+ *     },
+ *     interfaceAddress6: "2606:54c1:7:0:a9fe:12d2:1:200/127",
+ *     mtu: 0,
+ *     ttl: 0,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

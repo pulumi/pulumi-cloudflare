@@ -21,6 +21,62 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.MagicWanGreTunnel;
+ * import com.pulumi.cloudflare.MagicWanGreTunnelArgs;
+ * import com.pulumi.cloudflare.inputs.MagicWanGreTunnelHealthCheckArgs;
+ * import com.pulumi.cloudflare.inputs.MagicWanGreTunnelHealthCheckTargetArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleMagicWanGreTunnel = new MagicWanGreTunnel("exampleMagicWanGreTunnel", MagicWanGreTunnelArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .cloudflareGreEndpoint("203.0.113.1")
+ *             .customerGreEndpoint("203.0.113.1")
+ *             .interfaceAddress("192.0.2.0/31")
+ *             .name("GRE_1")
+ *             .automaticReturnRouting(true)
+ *             .bgp(Map.ofEntries(
+ *                 Map.entry("customerAsn", 0),
+ *                 Map.entry("extraPrefixes", List.of("string")),
+ *                 Map.entry("md5Key", "md5_key")
+ *             ))
+ *             .description("Tunnel for ISP X")
+ *             .healthCheck(MagicWanGreTunnelHealthCheckArgs.builder()
+ *                 .direction("bidirectional")
+ *                 .enabled(true)
+ *                 .rate("low")
+ *                 .target(MagicWanGreTunnelHealthCheckTargetArgs.builder()
+ *                     .saved("203.0.113.1")
+ *                     .build())
+ *                 .type("request")
+ *                 .build())
+ *             .interfaceAddress6("2606:54c1:7:0:a9fe:12d2:1:200/127")
+ *             .mtu(0)
+ *             .ttl(0)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh
