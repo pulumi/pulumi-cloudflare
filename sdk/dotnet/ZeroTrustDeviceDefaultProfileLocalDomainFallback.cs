@@ -12,6 +12,34 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZeroTrustDeviceDefaultProfileLocalDomainFallback = new Cloudflare.ZeroTrustDeviceDefaultProfileLocalDomainFallback("example_zero_trust_device_default_profile_local_domain_fallback", new()
+    ///     {
+    ///         AccountId = "699d98642c564d2e855e9661899b7252",
+    ///         Domains = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs
+    ///             {
+    ///                 Suffix = "example.com",
+    ///                 Description = "Domain bypass for local development",
+    ///                 DnsServer = new[]
+    ///                 {
+    ///                     "1.1.1.1",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

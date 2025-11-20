@@ -9,6 +9,27 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleEmailRoutingRule = new cloudflare.EmailRoutingRule("example_email_routing_rule", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     actions: [{
+ *         type: "forward",
+ *         value: ["destinationaddress@example.net"],
+ *     }],
+ *     matchers: [{
+ *         type: "literal",
+ *         field: "to",
+ *         value: "test@example.com",
+ *     }],
+ *     enabled: true,
+ *     name: "Send to user@example.net rule.",
+ *     priority: 0,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

@@ -14,6 +14,38 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewImageVariant(ctx, "example_image_variant", &cloudflare.ImageVariantArgs{
+//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Id:        "hero",
+//				Options: &cloudflare.ImageVariantOptionsArgs{
+//					Fit:      pulumi.String("scale-down"),
+//					Height:   pulumi.Float64(768),
+//					Metadata: pulumi.String("none"),
+//					Width:    pulumi.Float64(1366),
+//				},
+//				NeverRequireSignedUrls: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh
