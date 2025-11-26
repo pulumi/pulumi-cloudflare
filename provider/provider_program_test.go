@@ -121,7 +121,9 @@ func TestRuleSetUpgrade(t *testing.T) {
 
 func TestAccRecordGo(t *testing.T) {
 	pt := testProgram(t, "test-programs/recordgo",
-		opttest.GoModReplacement("github.com/pulumi/pulumi-cloudflare/sdk/v6", "..", "sdk"))
+		opttest.TestInPlace(), /* to use the parent directory's module */
+		opttest.SkipInstall(), /* https://github.com/pulumi/pulumi/issues/21086 */
+	)
 	pt.Up(t)
 	pt.Refresh(t, optrefresh.ExpectNoChanges(), optrefresh.Diff())
 	pt.Up(t, optup.ExpectNoChanges())

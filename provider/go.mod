@@ -9,10 +9,13 @@ require (
 	github.com/pulumi/providertest v0.3.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.117.0
 	github.com/pulumi/pulumi/sdk/v3 v3.207.0
+	github.com/pulumi/pulumi-cloudflare/sdk/v6 v6.0.0-00010101000000-000000000000
 	github.com/stretchr/testify v1.10.0
 )
 
 replace github.com/cloudflare/terraform-provider-cloudflare => ../upstream
+
+replace github.com/pulumi/pulumi-cloudflare/sdk/v6 => ../sdk
 
 require (
 	cloud.google.com/go v0.112.1 // indirect
