@@ -14,6 +14,84 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewZeroTrustTunnelCloudflaredConfig(ctx, "example_zero_trust_tunnel_cloudflared_config", &cloudflare.ZeroTrustTunnelCloudflaredConfigArgs{
+//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				TunnelId:  pulumi.String("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"),
+//				Config: &cloudflare.ZeroTrustTunnelCloudflaredConfigConfigArgs{
+//					Ingresses: cloudflare.ZeroTrustTunnelCloudflaredConfigConfigIngressArray{
+//						&cloudflare.ZeroTrustTunnelCloudflaredConfigConfigIngressArgs{
+//							Hostname: pulumi.String("tunnel.example.com"),
+//							Service:  pulumi.String("https://localhost:8001"),
+//							OriginRequest: &cloudflare.ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestArgs{
+//								Access: &cloudflare.ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestAccessArgs{
+//									AudTag: []string{
+//										"string",
+//									},
+//									TeamName: pulumi.String("zero-trust-organization-name"),
+//									Required: pulumi.Bool(false),
+//								},
+//								CaPool:                 pulumi.String("caPool"),
+//								ConnectTimeout:         pulumi.Int(10),
+//								DisableChunkedEncoding: pulumi.Bool(true),
+//								Http2Origin:            pulumi.Bool(true),
+//								HttpHostHeader:         pulumi.String("httpHostHeader"),
+//								KeepAliveConnections:   pulumi.Int(100),
+//								KeepAliveTimeout:       pulumi.Int(90),
+//								NoHappyEyeballs:        pulumi.Bool(false),
+//								NoTlsVerify:            pulumi.Bool(false),
+//								OriginServerName:       pulumi.String("originServerName"),
+//								ProxyType:              pulumi.String("proxyType"),
+//								TcpKeepAlive:           pulumi.Int(30),
+//								TlsTimeout:             pulumi.Int(10),
+//							},
+//							Path: pulumi.String("subpath"),
+//						},
+//					},
+//					OriginRequest: &cloudflare.ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs{
+//						Access: &cloudflare.ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessArgs{
+//							AudTags: pulumi.StringArray{
+//								pulumi.String("string"),
+//							},
+//							TeamName: pulumi.String("zero-trust-organization-name"),
+//							Required: pulumi.Bool(false),
+//						},
+//						CaPool:                 pulumi.String("caPool"),
+//						ConnectTimeout:         pulumi.Int(10),
+//						DisableChunkedEncoding: pulumi.Bool(true),
+//						Http2Origin:            pulumi.Bool(true),
+//						HttpHostHeader:         pulumi.String("httpHostHeader"),
+//						KeepAliveConnections:   pulumi.Int(100),
+//						KeepAliveTimeout:       pulumi.Int(90),
+//						NoHappyEyeballs:        pulumi.Bool(false),
+//						NoTlsVerify:            pulumi.Bool(false),
+//						OriginServerName:       pulumi.String("originServerName"),
+//						ProxyType:              pulumi.String("proxyType"),
+//						TcpKeepAlive:           pulumi.Int(30),
+//						TlsTimeout:             pulumi.Int(10),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh
