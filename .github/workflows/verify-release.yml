@@ -62,7 +62,7 @@ jobs:
       - name: Configure Git to checkout files with long names
         run: git config --global core.longpaths true
       - name: Checkout Repo
-        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
         with:
           persist-credentials: false      
       - env:
@@ -74,10 +74,18 @@ jobs:
         id: esc-secrets
         name: Fetch secrets from ESC
         uses: pulumi/esc-action@9eb774255b1a4afb7855678ae8d4a77359da0d9b
+      - name: Download python SDK
+        uses: ./.github/actions/download-sdk
+        with:
+          language: python
       - name: Setup Python
         uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548 # v6.1.0
         with:
           python-version: 3.11.8
+      - name: Download java SDK
+        uses: ./.github/actions/download-sdk
+        with:
+          language: java
       - name: Setup Java
         uses: actions/setup-java@dded0888837ed1f317902acf8a20df0ad188d165 # v5.0.0
         with:
@@ -88,15 +96,27 @@ jobs:
         uses: gradle/actions/setup-gradle@4d9f0ba0025fe599b4ebab900eb7f3a1d93ef4c2 # v5.0.0
         with:
           gradle-version: 7.6
+      - name: Download dotnet SDK
+        uses: ./.github/actions/download-sdk
+        with:
+          language: dotnet
       - name: Setup DotNet
         uses: actions/setup-dotnet@2016bd2012dba4e32de620c46fe006a3ac9f0602 # v5.0.1
         with:
           dotnet-version: 8.0.x
+      - name: Download nodejs SDK
+        uses: ./.github/actions/download-sdk
+        with:
+          language: nodejs
       - name: Setup Node
         uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903 # v6
         with:
           node-version: 20.x
           registry-url: https://registry.npmjs.org
+      - name: Download go SDK
+        uses: ./.github/actions/download-sdk
+        with:
+          language: go
       - name: Install Go
         uses: actions/setup-go@4dc6199c7b1a012772edbd06daecab0f50c9053c # v6
         with:
