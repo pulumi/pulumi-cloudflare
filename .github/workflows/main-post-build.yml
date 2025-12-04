@@ -30,7 +30,7 @@ jobs:
           tool-cache: false
           swap-storage: false
       - name: Checkout Repo
-        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
         with:
           persist-credentials: false      
       - env:
@@ -49,7 +49,7 @@ jobs:
           aws-region: us-west-2
           aws-secret-access-key: ${{ steps.esc-secrets.outputs.AWS_CORP_S3_UPLOAD_SECRET_ACCESS_KEY }}
       - name: Setup mise
-        uses: jdx/mise-action@146a28175021df8ca24f8ee1828cc2a60f980bd5 # v3
+        uses: jdx/mise-action@v3
         env:
           MISE_FETCH_REMOTE_VERSIONS_TIMEOUT: 30s
         with:

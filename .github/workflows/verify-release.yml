@@ -62,7 +62,7 @@ jobs:
       - name: Configure Git to checkout files with long names
         run: git config --global core.longpaths true
       - name: Checkout Repo
-        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
         with:
           persist-credentials: false      
       - env:
@@ -74,44 +74,14 @@ jobs:
         id: esc-secrets
         name: Fetch secrets from ESC
         uses: pulumi/esc-action@9eb774255b1a4afb7855678ae8d4a77359da0d9b
-      - name: Setup Python
-        uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548 # v6.1.0
+      - name: Setup mise
+        uses: jdx/mise-action@v3
+        env:
+          MISE_FETCH_REMOTE_VERSIONS_TIMEOUT: 30s
         with:
-          python-version: 3.11.8
-      - name: Setup Java
-        uses: actions/setup-java@dded0888837ed1f317902acf8a20df0ad188d165 # v5.0.0
-        with:
-          cache: gradle
-          distribution: temurin
-          java-version: 11
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@4d9f0ba0025fe599b4ebab900eb7f3a1d93ef4c2 # v5.0.0
-        with:
-          gradle-version: 7.6
-      - name: Setup DotNet
-        uses: actions/setup-dotnet@2016bd2012dba4e32de620c46fe006a3ac9f0602 # v5.0.1
-        with:
-          dotnet-version: 8.0.x
-      - name: Setup Node
-        uses: actions/setup-node@395ad3262231945c25e8478fd5baf05154b1d79f # v6
-        with:
-          node-version: 20.x
-          registry-url: https://registry.npmjs.org
-      - name: Install Go
-        uses: actions/setup-go@4dc6199c7b1a012772edbd06daecab0f50c9053c # v6
-        with:
-          go-version: "1.21.x"
-          cache-dependency-path: |
-            provider/*.sum
-            upstream/*.sum
-            sdk/go/*.sum
-            sdk/*.sum
-            *.sum
-          cache: true
-      - name: Set Go Toolchain to auto explicitly
-        run: |
-          echo "GOTOOLCHAIN=auto" >> "$GITHUB_ENV"
+          version: 2025.11.6
+          github_token: ${{ steps.esc-secrets.outputs.PULUMI_BOT_TOKEN }}
       - name: Install Pulumi CLI
-        uses: pulumi/actions@8582a9e8cc630786854029b4e09281acd6794b58 # v6
+        uses: pulumi/actions@d7ceb0215da5a14ec84f50b703365ddf0194a9c8 # v6
         with:
           pulumi-version: "dev"

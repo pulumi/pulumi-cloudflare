@@ -23,6 +23,7 @@ pulumi = "{{ get_env(name='PULUMI_VERSION_MISE', default='latest') }}"
 "aqua:gradle/gradle-distributions" = '7.6.6'
 golangci-lint = "1.64.8" # See note about about overrides if you need to customize this.
 "npm:yarn" = "1.22.22"
+"go:github.com/pulumi/provider-sdk-builder" = "v0.0.7"
 "vfox-pulumi:pulumi/pulumi-converter-terraform" = "latest"
 "vfox-pulumi:pulumi/pulumi-std" = "latest"
 "vfox-pulumi:pulumi/pulumi-gcp" = "latest"
