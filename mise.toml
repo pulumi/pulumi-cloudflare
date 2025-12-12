@@ -1,0 +1,5 @@
+[tools]
+"vfox-pulumi:pulumi/pulumi-converter-terraform" = "latest"
+"vfox-pulumi:pulumi/pulumi-std" = "latest"
+"vfox-pulumi:pulumi/pulumi-gcp" = "latest"
+"vfox-pulumi:pulumi/pulumi-tls" = "latest"
