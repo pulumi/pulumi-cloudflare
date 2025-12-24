@@ -35,7 +35,7 @@ export interface GetZeroTrustGatewayPolicyArgs {
     /**
      * Identify the API resource with a UUID.
      */
-    ruleId?: string;
+    ruleId: string;
 }
 
 /**
@@ -87,7 +87,7 @@ export interface GetZeroTrustGatewayPolicyResult {
     /**
      * Identify the API resource with a UUID.
      */
-    readonly ruleId?: string;
+    readonly ruleId: string;
     readonly ruleSettings: outputs.GetZeroTrustGatewayPolicyRuleSettings;
     /**
      * Defines the schedule for activating DNS policies. Settable only for `dns` and `dnsResolver` rules.
@@ -141,5 +141,5 @@ export interface GetZeroTrustGatewayPolicyOutputArgs {
     /**
      * Identify the API resource with a UUID.
      */
-    ruleId?: pulumi.Input<string>;
+    ruleId: pulumi.Input<string>;
 }

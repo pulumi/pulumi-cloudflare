@@ -88,7 +88,7 @@ class GetMagicTransitSiteLanResult:
 
     @_builtins.property
     @pulumi.getter(name="lanId")
-    def lan_id(self) -> Optional[_builtins.str]:
+    def lan_id(self) -> _builtins.str:
         """
         Identifier
         """
@@ -199,7 +199,7 @@ def get_magic_transit_site_lan(account_id: Optional[_builtins.str] = None,
         static_addressing=pulumi.get(__ret__, 'static_addressing'),
         vlan_tag=pulumi.get(__ret__, 'vlan_tag'))
 def get_magic_transit_site_lan_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                      lan_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                      lan_id: Optional[pulumi.Input[_builtins.str]] = None,
                                       site_id: Optional[pulumi.Input[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMagicTransitSiteLanResult]:
     """

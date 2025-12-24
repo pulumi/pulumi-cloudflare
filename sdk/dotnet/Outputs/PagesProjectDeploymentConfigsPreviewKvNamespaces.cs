@@ -16,10 +16,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// ID of the KV namespace.
         /// </summary>
-        public readonly string? NamespaceId;
+        public readonly string NamespaceId;
 
         [OutputConstructor]
-        private PagesProjectDeploymentConfigsPreviewKvNamespaces(string? namespaceId)
+        private PagesProjectDeploymentConfigsPreviewKvNamespaces(string namespaceId)
         {
             NamespaceId = namespaceId;
         }

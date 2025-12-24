@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.ZeroTrustDlpCustomEntryArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomEntryState;
 import com.pulumi.cloudflare.outputs.ZeroTrustDlpCustomEntryConfidence;
 import com.pulumi.cloudflare.outputs.ZeroTrustDlpCustomEntryPattern;
+import com.pulumi.cloudflare.outputs.ZeroTrustDlpCustomEntryProfile;
 import com.pulumi.cloudflare.outputs.ZeroTrustDlpCustomEntryVariant;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -15,6 +16,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -129,6 +131,12 @@ public class ZeroTrustDlpCustomEntry extends com.pulumi.resources.CustomResource
     public Output<Optional<String>> profileId() {
         return Codegen.optional(this.profileId);
     }
+    @Export(name="profiles", refs={List.class,ZeroTrustDlpCustomEntryProfile.class}, tree="[0,1]")
+    private Output<List<ZeroTrustDlpCustomEntryProfile>> profiles;
+
+    public Output<List<ZeroTrustDlpCustomEntryProfile>> profiles() {
+        return this.profiles;
+    }
     @Export(name="secret", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> secret;
 
@@ -154,6 +162,20 @@ public class ZeroTrustDlpCustomEntry extends com.pulumi.resources.CustomResource
 
     public Output<String> updatedAt() {
         return this.updatedAt;
+    }
+    /**
+     * Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;pending&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+     * 
+     */
+    @Export(name="uploadStatus", refs={String.class}, tree="[0]")
+    private Output<String> uploadStatus;
+
+    /**
+     * @return Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;pending&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+     * 
+     */
+    public Output<String> uploadStatus() {
+        return this.uploadStatus;
     }
     @Export(name="variant", refs={ZeroTrustDlpCustomEntryVariant.class}, tree="[0]")
     private Output<ZeroTrustDlpCustomEntryVariant> variant;

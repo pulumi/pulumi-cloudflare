@@ -201,6 +201,10 @@ class R2BucketLifecycle(pulumi.CustomResource):
             }])
         ```
 
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account ID.
@@ -250,6 +254,10 @@ class R2BucketLifecycle(pulumi.CustomResource):
                 }],
             }])
         ```
+
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
 
         :param str resource_name: The name of the resource.
         :param R2BucketLifecycleArgs args: The arguments to use to populate this resource's properties.

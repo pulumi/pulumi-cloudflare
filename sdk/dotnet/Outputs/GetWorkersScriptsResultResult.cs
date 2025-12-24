@@ -42,7 +42,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool HasModules;
         /// <summary>
-        /// The id of the script in the Workers system. Usually the script name.
+        /// The name used to identify the script.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -66,19 +66,33 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetWorkersScriptsResultNamedHandlerResult> NamedHandlers;
         /// <summary>
+        /// Observability settings for the Worker.
+        /// </summary>
+        public readonly Outputs.GetWorkersScriptsResultObservabilityResult Observability;
+        /// <summary>
         /// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
         /// </summary>
         public readonly Outputs.GetWorkersScriptsResultPlacementResult Placement;
         /// <summary>
-        /// Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
         /// Available values: "smart".
         /// </summary>
         public readonly string PlacementMode;
         /// <summary>
-        /// Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
         /// Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
         /// </summary>
         public readonly string PlacementStatus;
+        /// <summary>
+        /// Routes associated with the Worker.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetWorkersScriptsResultRouteResult> Routes;
+        /// <summary>
+        /// The immutable ID of the script.
+        /// </summary>
+        public readonly string Tag;
+        /// <summary>
+        /// Tags associated with the Worker.
+        /// </summary>
+        public readonly ImmutableArray<string> Tags;
         /// <summary>
         /// List of Workers that will consume logs from the attached Worker.
         /// </summary>
@@ -117,11 +131,19 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<Outputs.GetWorkersScriptsResultNamedHandlerResult> namedHandlers,
 
+            Outputs.GetWorkersScriptsResultObservabilityResult observability,
+
             Outputs.GetWorkersScriptsResultPlacementResult placement,
 
             string placementMode,
 
             string placementStatus,
+
+            ImmutableArray<Outputs.GetWorkersScriptsResultRouteResult> routes,
+
+            string tag,
+
+            ImmutableArray<string> tags,
 
             ImmutableArray<Outputs.GetWorkersScriptsResultTailConsumerResult> tailConsumers,
 
@@ -140,9 +162,13 @@ namespace Pulumi.Cloudflare.Outputs
             MigrationTag = migrationTag;
             ModifiedOn = modifiedOn;
             NamedHandlers = namedHandlers;
+            Observability = observability;
             Placement = placement;
             PlacementMode = placementMode;
             PlacementStatus = placementStatus;
+            Routes = routes;
+            Tag = tag;
+            Tags = tags;
             TailConsumers = tailConsumers;
             UsageModel = usageModel;
         }

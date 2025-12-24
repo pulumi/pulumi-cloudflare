@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupWeb3Hostname(ctx, &cloudflare.LookupWeb3HostnameArgs{
 //				ZoneId:     "023e105f4ecef8ad9ca31a8372d0c353",
-//				Identifier: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Identifier: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -50,7 +50,7 @@ func LookupWeb3Hostname(ctx *pulumi.Context, args *LookupWeb3HostnameArgs, opts 
 // A collection of arguments for invoking getWeb3Hostname.
 type LookupWeb3HostnameArgs struct {
 	// Specify the identifier of the hostname.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Specify the identifier of the hostname.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -65,8 +65,8 @@ type LookupWeb3HostnameResult struct {
 	// Specify the identifier of the hostname.
 	Id string `pulumi:"id"`
 	// Specify the identifier of the hostname.
-	Identifier *string `pulumi:"identifier"`
-	ModifiedOn string  `pulumi:"modifiedOn"`
+	Identifier string `pulumi:"identifier"`
+	ModifiedOn string `pulumi:"modifiedOn"`
 	// Specify the hostname that points to the target gateway via CNAME.
 	Name string `pulumi:"name"`
 	// Specifies the status of the hostname's activation.
@@ -91,7 +91,7 @@ func LookupWeb3HostnameOutput(ctx *pulumi.Context, args LookupWeb3HostnameOutput
 // A collection of arguments for invoking getWeb3Hostname.
 type LookupWeb3HostnameOutputArgs struct {
 	// Specify the identifier of the hostname.
-	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Specify the identifier of the hostname.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
@@ -135,8 +135,8 @@ func (o LookupWeb3HostnameResultOutput) Id() pulumi.StringOutput {
 }
 
 // Specify the identifier of the hostname.
-func (o LookupWeb3HostnameResultOutput) Identifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupWeb3HostnameResult) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+func (o LookupWeb3HostnameResultOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWeb3HostnameResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
 func (o LookupWeb3HostnameResultOutput) ModifiedOn() pulumi.StringOutput {

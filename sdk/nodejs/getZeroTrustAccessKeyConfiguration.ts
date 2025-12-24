@@ -46,7 +46,7 @@ export interface GetZeroTrustAccessKeyConfigurationResult {
      */
     readonly daysUntilNextRotation: number;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Identifier.
      */
     readonly id: string;
     /**

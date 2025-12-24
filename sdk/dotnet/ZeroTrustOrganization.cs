@@ -49,6 +49,10 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ~&gt; This resource does not currently support `pulumi import`.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zeroTrustOrganization:ZeroTrustOrganization")]
     public partial class ZeroTrustOrganization : global::Pulumi.CustomResource

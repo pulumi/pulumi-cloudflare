@@ -14,27 +14,22 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class WorkersScriptMigrationsStep
     {
         /// <summary>
-        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         /// A list of classes to delete Durable Object namespaces from.
         /// </summary>
         public readonly ImmutableArray<string> DeletedClasses;
         /// <summary>
-        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         /// A list of classes to create Durable Object namespaces from.
         /// </summary>
         public readonly ImmutableArray<string> NewClasses;
         /// <summary>
-        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         /// A list of classes to create Durable Object namespaces with SQLite from.
         /// </summary>
         public readonly ImmutableArray<string> NewSqliteClasses;
         /// <summary>
-        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         /// A list of classes with Durable Object namespaces that were renamed.
         /// </summary>
         public readonly ImmutableArray<Outputs.WorkersScriptMigrationsStepRenamedClass> RenamedClasses;
         /// <summary>
-        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         /// A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
         /// </summary>
         public readonly ImmutableArray<Outputs.WorkersScriptMigrationsStepTransferredClass> TransferredClasses;

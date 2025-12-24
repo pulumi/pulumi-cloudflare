@@ -11,8 +11,6 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustDexTestResult {
@@ -31,7 +29,7 @@ public final class GetZeroTrustDexTestResult {
      * @return The unique identifier for the test.
      * 
      */
-    private @Nullable String dexTestId;
+    private String dexTestId;
     /**
      * @return Determines whether or not the test is active.
      * 
@@ -86,8 +84,8 @@ public final class GetZeroTrustDexTestResult {
      * @return The unique identifier for the test.
      * 
      */
-    public Optional<String> dexTestId() {
-        return Optional.ofNullable(this.dexTestId);
+    public String dexTestId() {
+        return this.dexTestId;
     }
     /**
      * @return Determines whether or not the test is active.
@@ -147,7 +145,7 @@ public final class GetZeroTrustDexTestResult {
         private String accountId;
         private GetZeroTrustDexTestData data;
         private String description;
-        private @Nullable String dexTestId;
+        private String dexTestId;
         private Boolean enabled;
         private String id;
         private String interval;
@@ -196,8 +194,10 @@ public final class GetZeroTrustDexTestResult {
             return this;
         }
         @CustomType.Setter
-        public Builder dexTestId(@Nullable String dexTestId) {
-
+        public Builder dexTestId(String dexTestId) {
+            if (dexTestId == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDexTestResult", "dexTestId");
+            }
             this.dexTestId = dexTestId;
             return this;
         }

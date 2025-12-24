@@ -13,6 +13,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -42,8 +43,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var exampleZeroTrustGatewayProxyEndpoint = new ZeroTrustGatewayProxyEndpoint("exampleZeroTrustGatewayProxyEndpoint", ZeroTrustGatewayProxyEndpointArgs.builder()
  *             .accountId("699d98642c564d2e855e9661899b7252")
- *             .ips("192.0.2.1/32")
  *             .name("Devops team")
+ *             .kind("ip")
  *             .build());
  * 
  *     }
@@ -81,14 +82,30 @@ public class TeamsProxyEndpoint extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="ips", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> ips;
+    private Output</* @Nullable */ List<String>> ips;
 
     /**
      * @return Specify the list of CIDRs to restrict ingress connections.
      * 
      */
-    public Output<List<String>> ips() {
-        return this.ips;
+    public Output<Optional<List<String>>> ips() {
+        return Codegen.optional(this.ips);
+    }
+    /**
+     * The proxy endpoint kind
+     * Available values: &#34;ip&#34;, &#34;identity&#34;.
+     * 
+     */
+    @Export(name="kind", refs={String.class}, tree="[0]")
+    private Output<String> kind;
+
+    /**
+     * @return The proxy endpoint kind
+     * Available values: &#34;ip&#34;, &#34;identity&#34;.
+     * 
+     */
+    public Output<String> kind() {
+        return this.kind;
     }
     /**
      * Specify the name of the proxy endpoint.

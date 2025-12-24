@@ -56,7 +56,7 @@ export interface GetR2BucketResult {
      */
     readonly creationDate: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Name of the bucket.
      */
     readonly id: string;
     /**

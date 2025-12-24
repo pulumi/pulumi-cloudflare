@@ -42,8 +42,7 @@ export interface GetTieredCacheResult {
      */
     readonly editable: boolean;
     /**
-     * The identifier of the caching setting.
-     * Available values: "tiered*cache*smart*topology*enable".
+     * Identifier.
      */
     readonly id: string;
     /**

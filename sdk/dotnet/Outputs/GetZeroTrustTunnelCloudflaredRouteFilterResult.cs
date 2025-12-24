@@ -34,10 +34,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? NetworkSuperset;
         /// <summary>
-        /// UUID of the route.
-        /// </summary>
-        public readonly string? RouteId;
-        /// <summary>
         /// The types of tunnels to filter by, separated by commas.
         /// </summary>
         public readonly ImmutableArray<string> TunTypes;
@@ -62,8 +58,6 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? networkSuperset,
 
-            string? routeId,
-
             ImmutableArray<string> tunTypes,
 
             string? tunnelId,
@@ -75,7 +69,6 @@ namespace Pulumi.Cloudflare.Outputs
             IsDeleted = isDeleted;
             NetworkSubset = networkSubset;
             NetworkSuperset = networkSuperset;
-            RouteId = routeId;
             TunTypes = tunTypes;
             TunnelId = tunnelId;
             VirtualNetworkId = virtualNetworkId;

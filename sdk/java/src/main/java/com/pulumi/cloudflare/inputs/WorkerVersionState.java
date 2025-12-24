@@ -245,6 +245,21 @@ public final class WorkerVersionState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
+     * 
+     */
+    @Import(name="startupTimeMs")
+    private @Nullable Output<Integer> startupTimeMs;
+
+    /**
+     * @return Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
+     * 
+     */
+    public Optional<Output<Integer>> startupTimeMs() {
+        return Optional.ofNullable(this.startupTimeMs);
+    }
+
+    /**
      * Usage model for the version.
      * Available values: &#34;standard&#34;, &#34;bundled&#34;, &#34;unbound&#34;.
      * 
@@ -301,6 +316,7 @@ public final class WorkerVersionState extends com.pulumi.resources.ResourceArgs 
         this.number = $.number;
         this.placement = $.placement;
         this.source = $.source;
+        this.startupTimeMs = $.startupTimeMs;
         this.usageModel = $.usageModel;
         this.workerId = $.workerId;
     }
@@ -660,6 +676,27 @@ public final class WorkerVersionState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder source(String source) {
             return source(Output.of(source));
+        }
+
+        /**
+         * @param startupTimeMs Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startupTimeMs(@Nullable Output<Integer> startupTimeMs) {
+            $.startupTimeMs = startupTimeMs;
+            return this;
+        }
+
+        /**
+         * @param startupTimeMs Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startupTimeMs(Integer startupTimeMs) {
+            return startupTimeMs(Output.of(startupTimeMs));
         }
 
         /**

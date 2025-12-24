@@ -138,7 +138,7 @@ namespace Pulumi.Cloudflare
         public readonly string Description;
         public readonly ImmutableArray<Outputs.GetZeroTrustDlpCustomProfileEntryResult> Entries;
         /// <summary>
-        /// The id of the profile (uuid).
+        /// The ID of this resource.
         /// </summary>
         public readonly string Id;
         /// <summary>

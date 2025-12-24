@@ -33,6 +33,10 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ~&gt; This resource does not currently support `pulumi import`.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/streamWatermark:StreamWatermark")]
     public partial class StreamWatermark : global::Pulumi.CustomResource

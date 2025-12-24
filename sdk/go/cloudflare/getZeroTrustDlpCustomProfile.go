@@ -70,7 +70,7 @@ type LookupZeroTrustDlpCustomProfileResult struct {
 	// The description of the profile.
 	Description string                              `pulumi:"description"`
 	Entries     []GetZeroTrustDlpCustomProfileEntry `pulumi:"entries"`
-	// The id of the profile (uuid).
+	// The ID of this resource.
 	Id string `pulumi:"id"`
 	// The name of the profile.
 	Name       string `pulumi:"name"`
@@ -159,7 +159,7 @@ func (o LookupZeroTrustDlpCustomProfileResultOutput) Entries() GetZeroTrustDlpCu
 	return o.ApplyT(func(v LookupZeroTrustDlpCustomProfileResult) []GetZeroTrustDlpCustomProfileEntry { return v.Entries }).(GetZeroTrustDlpCustomProfileEntryArrayOutput)
 }
 
-// The id of the profile (uuid).
+// The ID of this resource.
 func (o LookupZeroTrustDlpCustomProfileResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpCustomProfileResult) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -68,7 +68,7 @@ type AccountSubscription struct {
 	CurrentPeriodStart pulumi.StringOutput `pulumi:"currentPeriodStart"`
 	// How often the subscription is renewed automatically.
 	// Available values: "weekly", "monthly", "quarterly", "yearly".
-	Frequency pulumi.StringPtrOutput `pulumi:"frequency"`
+	Frequency pulumi.StringOutput `pulumi:"frequency"`
 	// The price of the subscription that will be billed, in US dollars.
 	Price pulumi.Float64Output `pulumi:"price"`
 	// The rate plan applied to the subscription.
@@ -286,8 +286,8 @@ func (o AccountSubscriptionOutput) CurrentPeriodStart() pulumi.StringOutput {
 
 // How often the subscription is renewed automatically.
 // Available values: "weekly", "monthly", "quarterly", "yearly".
-func (o AccountSubscriptionOutput) Frequency() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccountSubscription) pulumi.StringPtrOutput { return v.Frequency }).(pulumi.StringPtrOutput)
+func (o AccountSubscriptionOutput) Frequency() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountSubscription) pulumi.StringOutput { return v.Frequency }).(pulumi.StringOutput)
 }
 
 // The price of the subscription that will be billed, in US dollars.

@@ -17,7 +17,7 @@ public final class GetArgoSmartRoutingResult {
      */
     private Boolean editable;
     /**
-     * @return Specifies the identifier of the Argo Smart Routing setting.
+     * @return Specifies the zone associated with the API call.
      * 
      */
     private String id;
@@ -47,7 +47,7 @@ public final class GetArgoSmartRoutingResult {
         return this.editable;
     }
     /**
-     * @return Specifies the identifier of the Argo Smart Routing setting.
+     * @return Specifies the zone associated with the API call.
      * 
      */
     public String id() {

@@ -36,7 +36,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Name;
         /// <summary>
         /// Specify the list type.
-        /// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+        /// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
         /// </summary>
         public readonly string Type;
         public readonly string UpdatedAt;

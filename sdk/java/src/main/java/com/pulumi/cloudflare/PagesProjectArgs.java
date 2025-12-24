@@ -20,14 +20,14 @@ public final class PagesProjectArgs extends com.pulumi.resources.ResourceArgs {
     public static final PagesProjectArgs Empty = new PagesProjectArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -94,9 +94,17 @@ public final class PagesProjectArgs extends com.pulumi.resources.ResourceArgs {
         return this.productionBranch;
     }
 
+    /**
+     * Configs for the project source control.
+     * 
+     */
     @Import(name="source")
     private @Nullable Output<PagesProjectSourceArgs> source;
 
+    /**
+     * @return Configs for the project source control.
+     * 
+     */
     public Optional<Output<PagesProjectSourceArgs>> source() {
         return Optional.ofNullable(this.source);
     }
@@ -131,7 +139,7 @@ public final class PagesProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -142,7 +150,7 @@ public final class PagesProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -235,11 +243,23 @@ public final class PagesProjectArgs extends com.pulumi.resources.ResourceArgs {
             return productionBranch(Output.of(productionBranch));
         }
 
+        /**
+         * @param source Configs for the project source control.
+         * 
+         * @return builder
+         * 
+         */
         public Builder source(@Nullable Output<PagesProjectSourceArgs> source) {
             $.source = source;
             return this;
         }
 
+        /**
+         * @param source Configs for the project source control.
+         * 
+         * @return builder
+         * 
+         */
         public Builder source(PagesProjectSourceArgs source) {
             return source(Output.of(source));
         }

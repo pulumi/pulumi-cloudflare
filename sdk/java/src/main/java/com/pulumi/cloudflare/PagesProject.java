@@ -18,6 +18,7 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -115,13 +116,13 @@ import javax.annotation.Nullable;
  *                         .name("some-queue")
  *                         .build()))
  *                     .r2Buckets(Map.of("R2_BINDING", PagesProjectDeploymentConfigsPreviewR2BucketsArgs.builder()
- *                         .jurisdiction("eu")
  *                         .name("some-bucket")
+ *                         .jurisdiction("eu")
  *                         .build()))
  *                     .services(Map.of("SERVICE_BINDING", PagesProjectDeploymentConfigsPreviewServicesArgs.builder()
+ *                         .service("example-worker")
  *                         .entrypoint("MyHandler")
  *                         .environment("production")
- *                         .service("example-worker")
  *                         .build()))
  *                     .usageModel("standard")
  *                     .vectorizeBindings(Map.of("VECTORIZE", PagesProjectDeploymentConfigsPreviewVectorizeBindingsArgs.builder()
@@ -172,13 +173,13 @@ import javax.annotation.Nullable;
  *                         .name("some-queue")
  *                         .build()))
  *                     .r2Buckets(Map.of("R2_BINDING", PagesProjectDeploymentConfigsProductionR2BucketsArgs.builder()
- *                         .jurisdiction("eu")
  *                         .name("some-bucket")
+ *                         .jurisdiction("eu")
  *                         .build()))
  *                     .services(Map.of("SERVICE_BINDING", PagesProjectDeploymentConfigsProductionServicesArgs.builder()
+ *                         .service("example-worker")
  *                         .entrypoint("MyHandler")
  *                         .environment("production")
- *                         .service("example-worker")
  *                         .build()))
  *                     .usageModel("standard")
  *                     .vectorizeBindings(Map.of("VECTORIZE", PagesProjectDeploymentConfigsProductionVectorizeBindingsArgs.builder()
@@ -191,6 +192,7 @@ import javax.annotation.Nullable;
  *                 .config(PagesProjectSourceConfigArgs.builder()
  *                     .deploymentsEnabled(true)
  *                     .owner("my-org")
+ *                     .ownerId("12345678")
  *                     .pathExcludes("string")
  *                     .pathIncludes("string")
  *                     .prCommentsEnabled(true)
@@ -199,6 +201,7 @@ import javax.annotation.Nullable;
  *                     .previewDeploymentSetting("all")
  *                     .productionBranch("main")
  *                     .productionDeploymentsEnabled(true)
+ *                     .repoId("12345678")
  *                     .repoName("my-repo")
  *                     .build())
  *                 .type("github")
@@ -222,14 +225,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/pagesProject:PagesProject")
 public class PagesProject extends com.pulumi.resources.CustomResource {
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -240,14 +243,14 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="buildConfig", refs={PagesProjectBuildConfig.class}, tree="[0]")
-    private Output<PagesProjectBuildConfig> buildConfig;
+    private Output</* @Nullable */ PagesProjectBuildConfig> buildConfig;
 
     /**
      * @return Configs for the project build process.
      * 
      */
-    public Output<PagesProjectBuildConfig> buildConfig() {
-        return this.buildConfig;
+    public Output<Optional<PagesProjectBuildConfig>> buildConfig() {
+        return Codegen.optional(this.buildConfig);
     }
     /**
      * Most recent production deployment of the project.
@@ -403,11 +406,19 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
     public Output<String> productionScriptName() {
         return this.productionScriptName;
     }
+    /**
+     * Configs for the project source control.
+     * 
+     */
     @Export(name="source", refs={PagesProjectSource.class}, tree="[0]")
-    private Output<PagesProjectSource> source;
+    private Output</* @Nullable */ PagesProjectSource> source;
 
-    public Output<PagesProjectSource> source() {
-        return this.source;
+    /**
+     * @return Configs for the project source control.
+     * 
+     */
+    public Output<Optional<PagesProjectSource>> source() {
+        return Codegen.optional(this.source);
     }
     /**
      * The Cloudflare subdomain associated with the project.

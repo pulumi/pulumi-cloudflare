@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,7 +21,7 @@ public final class PagesProjectDeploymentConfigsProductionR2Buckets {
      * @return Name of the R2 bucket.
      * 
      */
-    private @Nullable String name;
+    private String name;
 
     private PagesProjectDeploymentConfigsProductionR2Buckets() {}
     /**
@@ -34,8 +35,8 @@ public final class PagesProjectDeploymentConfigsProductionR2Buckets {
      * @return Name of the R2 bucket.
      * 
      */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
     }
 
     public static Builder builder() {
@@ -48,7 +49,7 @@ public final class PagesProjectDeploymentConfigsProductionR2Buckets {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String jurisdiction;
-        private @Nullable String name;
+        private String name;
         public Builder() {}
         public Builder(PagesProjectDeploymentConfigsProductionR2Buckets defaults) {
     	      Objects.requireNonNull(defaults);
@@ -63,8 +64,10 @@ public final class PagesProjectDeploymentConfigsProductionR2Buckets {
             return this;
         }
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("PagesProjectDeploymentConfigsProductionR2Buckets", "name");
+            }
             this.name = name;
             return this;
         }

@@ -47,7 +47,7 @@ export interface GetImageVariantResult {
      */
     readonly accountId: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this resource.
      */
     readonly id: string;
     readonly variant: outputs.GetImageVariantVariant;

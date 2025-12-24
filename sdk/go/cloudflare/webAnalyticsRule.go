@@ -44,6 +44,10 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ~> This resource does not currently support `pulumi import`.
 type WebAnalyticsRule struct {
 	pulumi.CustomResourceState
 

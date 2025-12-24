@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetWorkersForPlatformsDispatchNamespaceArgs extends com.pulumi.resources.InvokeArgs {
@@ -35,15 +33,15 @@ public final class GetWorkersForPlatformsDispatchNamespaceArgs extends com.pulum
      * Name of the Workers for Platforms dispatch namespace.
      * 
      */
-    @Import(name="dispatchNamespace")
-    private @Nullable Output<String> dispatchNamespace;
+    @Import(name="dispatchNamespace", required=true)
+    private Output<String> dispatchNamespace;
 
     /**
      * @return Name of the Workers for Platforms dispatch namespace.
      * 
      */
-    public Optional<Output<String>> dispatchNamespace() {
-        return Optional.ofNullable(this.dispatchNamespace);
+    public Output<String> dispatchNamespace() {
+        return this.dispatchNamespace;
     }
 
     private GetWorkersForPlatformsDispatchNamespaceArgs() {}
@@ -98,7 +96,7 @@ public final class GetWorkersForPlatformsDispatchNamespaceArgs extends com.pulum
          * @return builder
          * 
          */
-        public Builder dispatchNamespace(@Nullable Output<String> dispatchNamespace) {
+        public Builder dispatchNamespace(Output<String> dispatchNamespace) {
             $.dispatchNamespace = dispatchNamespace;
             return this;
         }
@@ -116,6 +114,9 @@ public final class GetWorkersForPlatformsDispatchNamespaceArgs extends com.pulum
         public GetWorkersForPlatformsDispatchNamespaceArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetWorkersForPlatformsDispatchNamespaceArgs", "accountId");
+            }
+            if ($.dispatchNamespace == null) {
+                throw new MissingRequiredPropertyException("GetWorkersForPlatformsDispatchNamespaceArgs", "dispatchNamespace");
             }
             return $;
         }

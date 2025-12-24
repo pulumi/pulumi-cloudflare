@@ -33,7 +33,7 @@ public final class GetWaitingRoomRulesResult {
      */
     private String expression;
     /**
-     * @return The ID of the rule.
+     * @return The ID of this resource.
      * 
      */
     private String id;
@@ -81,7 +81,7 @@ public final class GetWaitingRoomRulesResult {
         return this.expression;
     }
     /**
-     * @return The ID of the rule.
+     * @return The ID of this resource.
      * 
      */
     public String id() {

@@ -36,7 +36,7 @@ export interface GetByoIpPrefixArgs {
     /**
      * Identifier of an IP Prefix.
      */
-    prefixId?: string;
+    prefixId: string;
 }
 
 /**
@@ -73,6 +73,10 @@ export interface GetByoIpPrefixResult {
     readonly cidr: string;
     readonly createdAt: string;
     /**
+     * Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+     */
+    readonly delegateLoaCreation: boolean;
+    /**
      * Description of the prefix.
      */
     readonly description: string;
@@ -80,6 +84,10 @@ export interface GetByoIpPrefixResult {
      * Identifier of an IP Prefix.
      */
     readonly id: string;
+    /**
+     * State of one kind of validation for an IP prefix.
+     */
+    readonly irrValidationState: string;
     /**
      * Identifier for the uploaded LOA document.
      */
@@ -98,9 +106,21 @@ export interface GetByoIpPrefixResult {
      */
     readonly onDemandLocked: boolean;
     /**
+     * State of one kind of validation for an IP prefix.
+     */
+    readonly ownershipValidationState: string;
+    /**
+     * Token provided to demonstrate ownership of the prefix.
+     */
+    readonly ownershipValidationToken: string;
+    /**
      * Identifier of an IP Prefix.
      */
-    readonly prefixId?: string;
+    readonly prefixId: string;
+    /**
+     * State of one kind of validation for an IP prefix.
+     */
+    readonly rpkiValidationState: string;
 }
 /**
  * ## Example Usage
@@ -134,5 +154,5 @@ export interface GetByoIpPrefixOutputArgs {
     /**
      * Identifier of an IP Prefix.
      */
-    prefixId?: pulumi.Input<string>;
+    prefixId: pulumi.Input<string>;
 }

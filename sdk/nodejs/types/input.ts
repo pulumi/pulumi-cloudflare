@@ -2945,10 +2945,6 @@ export interface AccountMemberPolicy {
      */
     access: pulumi.Input<string>;
     /**
-     * Policy identifier.
-     */
-    id?: pulumi.Input<string>;
-    /**
      * A set of permission groups that are specified to the policy.
      */
     permissionGroups: pulumi.Input<pulumi.Input<inputs.AccountMemberPolicyPermissionGroup>[]>;
@@ -3018,7 +3014,6 @@ export interface AccountSubscriptionRatePlan {
     externallyManaged?: pulumi.Input<boolean>;
     /**
      * The ID of the rate plan.
-     * Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnterprise".
      */
     id?: pulumi.Input<string>;
     /**
@@ -3064,17 +3059,13 @@ export interface AccountTokenPolicy {
      */
     effect: pulumi.Input<string>;
     /**
-     * Policy identifier.
-     */
-    id?: pulumi.Input<string>;
-    /**
      * A set of permission groups that are specified to the policy.
      */
     permissionGroups: pulumi.Input<pulumi.Input<inputs.AccountTokenPolicyPermissionGroup>[]>;
     /**
-     * A list of resource names that the policy applies to.
+     * A json object representing the resources that are specified to the policy.
      */
-    resources: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    resources: pulumi.Input<string>;
 }
 
 export interface AccountTokenPolicyPermissionGroup {
@@ -3082,19 +3073,6 @@ export interface AccountTokenPolicyPermissionGroup {
      * Identifier of the permission group.
      */
     id: pulumi.Input<string>;
-    /**
-     * Attributes associated to the permission group.
-     */
-    meta?: pulumi.Input<inputs.AccountTokenPolicyPermissionGroupMeta>;
-    /**
-     * Name of the permission group.
-     */
-    name?: pulumi.Input<string>;
-}
-
-export interface AccountTokenPolicyPermissionGroupMeta {
-    key?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
 }
 
 export interface AccountUnit {
@@ -3367,17 +3345,13 @@ export interface ApiTokenPolicy {
      */
     effect: pulumi.Input<string>;
     /**
-     * Policy identifier.
-     */
-    id?: pulumi.Input<string>;
-    /**
      * A set of permission groups that are specified to the policy.
      */
     permissionGroups: pulumi.Input<pulumi.Input<inputs.ApiTokenPolicyPermissionGroup>[]>;
     /**
-     * A list of resource names that the policy applies to.
+     * A json object representing the resources that are specified to the policy.
      */
-    resources: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    resources: pulumi.Input<string>;
 }
 
 export interface ApiTokenPolicyPermissionGroup {
@@ -3385,19 +3359,6 @@ export interface ApiTokenPolicyPermissionGroup {
      * Identifier of the permission group.
      */
     id: pulumi.Input<string>;
-    /**
-     * Attributes associated to the permission group.
-     */
-    meta?: pulumi.Input<inputs.ApiTokenPolicyPermissionGroupMeta>;
-    /**
-     * Name of the permission group.
-     */
-    name?: pulumi.Input<string>;
-}
-
-export interface ApiTokenPolicyPermissionGroupMeta {
-    key?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
 }
 
 export interface AuthenticatedOriginPullsConfig {
@@ -3444,6 +3405,64 @@ export interface BotManagementStaleZoneConfiguration {
      * Indicates that the zone's session score tracking is disabled.
      */
     suppressSessionScore?: pulumi.Input<boolean>;
+}
+
+export interface CertificatePackCertificate {
+    /**
+     * Certificate bundle method.
+     */
+    bundleMethod?: pulumi.Input<string>;
+    /**
+     * When the certificate from the authority expires.
+     */
+    expiresOn?: pulumi.Input<string>;
+    /**
+     * Specify the region where your private key can be held locally.
+     */
+    geoRestrictions?: pulumi.Input<inputs.CertificatePackCertificateGeoRestrictions>;
+    /**
+     * Hostnames covered by this certificate.
+     */
+    hosts?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Certificate identifier.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The certificate authority that issued the certificate.
+     */
+    issuer?: pulumi.Input<string>;
+    /**
+     * When the certificate was last modified.
+     */
+    modifiedOn?: pulumi.Input<string>;
+    /**
+     * The order/priority in which the certificate will be used.
+     */
+    priority?: pulumi.Input<number>;
+    /**
+     * The type of hash used for the certificate.
+     */
+    signature?: pulumi.Input<string>;
+    /**
+     * Certificate status.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * When the certificate was uploaded to Cloudflare.
+     */
+    uploadedOn?: pulumi.Input<string>;
+    /**
+     * Identifier.
+     */
+    zoneId?: pulumi.Input<string>;
+}
+
+export interface CertificatePackCertificateGeoRestrictions {
+    /**
+     * Available values: "us", "eu", "highestSecurity".
+     */
+    label?: pulumi.Input<string>;
 }
 
 export interface CertificatePackValidationError {
@@ -3497,6 +3516,23 @@ export interface CloudConnectorRulesRuleParameters {
      * Host to perform Cloud Connection to
      */
     host?: pulumi.Input<string>;
+}
+
+export interface ConnectivityDirectoryServiceHost {
+    hostname?: pulumi.Input<string>;
+    ipv4?: pulumi.Input<string>;
+    ipv6?: pulumi.Input<string>;
+    network?: pulumi.Input<inputs.ConnectivityDirectoryServiceHostNetwork>;
+    resolverNetwork?: pulumi.Input<inputs.ConnectivityDirectoryServiceHostResolverNetwork>;
+}
+
+export interface ConnectivityDirectoryServiceHostNetwork {
+    tunnelId: pulumi.Input<string>;
+}
+
+export interface ConnectivityDirectoryServiceHostResolverNetwork {
+    resolverIps?: pulumi.Input<pulumi.Input<string>[]>;
+    tunnelId: pulumi.Input<string>;
 }
 
 export interface ContentScanningExpressionBody {
@@ -3843,7 +3879,7 @@ export interface DevicePostureRuleInput {
      */
     osDistroRevision?: pulumi.Input<string>;
     /**
-     * Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version. (Mac, iOS, and Linux only).
+     * Additional operating system version details. For Windows, the UBR (Update Build Revision). For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version.
      */
     osVersionExtra?: pulumi.Input<string>;
     /**
@@ -3897,6 +3933,10 @@ export interface DevicePostureRuleInput {
      * For more details on total score, refer to the Tanium documentation.
      */
     totalScore?: pulumi.Input<number>;
+    /**
+     * Number of days that the antivirus should be updated within.
+     */
+    updateWindowDays?: pulumi.Input<number>;
     /**
      * Version of OS.
      */
@@ -3968,24 +4008,6 @@ export interface DlpCustomProfileSharedEntry {
      * Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint".
      */
     entryType: pulumi.Input<string>;
-}
-
-export interface DlpPredefinedProfileContextAwareness {
-    /**
-     * If true, scan the context of predefined entries to only return matches surrounded by keywords.
-     */
-    enabled: pulumi.Input<boolean>;
-    /**
-     * Content types to exclude from context analysis and return all matches.
-     */
-    skip: pulumi.Input<inputs.DlpPredefinedProfileContextAwarenessSkip>;
-}
-
-export interface DlpPredefinedProfileContextAwarenessSkip {
-    /**
-     * If the content type is a file, skip context analysis and return all matches.
-     */
-    files: pulumi.Input<boolean>;
 }
 
 export interface DlpPredefinedProfileEntry {
@@ -4269,7 +4291,7 @@ export interface EmailRoutingDnsResultInfo {
     /**
      * Total number of results for the requested service.
      */
-    count?: pulumi.Input<number>;
+    emailRoutingDnsCount?: pulumi.Input<number>;
     /**
      * Current page within paginated list of results.
      */
@@ -4816,6 +4838,22 @@ export interface GetApiTokenFilterArgs {
     direction?: pulumi.Input<string>;
 }
 
+export interface GetCertificatePackFilter {
+    /**
+     * Include Certificate Packs of all statuses, not just active ones.
+     * Available values: "all".
+     */
+    status?: string;
+}
+
+export interface GetCertificatePackFilterArgs {
+    /**
+     * Include Certificate Packs of all statuses, not just active ones.
+     * Available values: "all".
+     */
+    status?: pulumi.Input<string>;
+}
+
 export interface GetCloudforceOneRequestFilter {
     /**
      * Retrieve requests completed after this time.
@@ -4904,6 +4942,20 @@ export interface GetCloudforceOneRequestFilterArgs {
      * Available values: "open", "accepted", "reported", "approved", "completed", "declined".
      */
     status?: pulumi.Input<string>;
+}
+
+export interface GetConnectivityDirectoryServiceFilter {
+    /**
+     * Available values: "http".
+     */
+    type?: string;
+}
+
+export interface GetConnectivityDirectoryServiceFilterArgs {
+    /**
+     * Available values: "http".
+     */
+    type?: pulumi.Input<string>;
 }
 
 export interface GetCustomHostnameFilter {
@@ -5950,10 +6002,6 @@ export interface GetOriginCaCertificateFilterArgs {
 
 export interface GetSchemaValidationSchemasFilter {
     /**
-     * Omit the source-files of schemas and only retrieve their meta-data.
-     */
-    omitSource?: boolean;
-    /**
      * Filter for enabled schemas
      */
     validationEnabled?: boolean;
@@ -5961,13 +6009,91 @@ export interface GetSchemaValidationSchemasFilter {
 
 export interface GetSchemaValidationSchemasFilterArgs {
     /**
-     * Omit the source-files of schemas and only retrieve their meta-data.
-     */
-    omitSource?: pulumi.Input<boolean>;
-    /**
      * Filter for enabled schemas
      */
     validationEnabled?: pulumi.Input<boolean>;
+}
+
+export interface GetSpectrumApplicationFilter {
+    /**
+     * Sets the direction by which results are ordered.
+     * Available values: "asc", "desc".
+     */
+    direction?: string;
+    /**
+     * Application field by which results are ordered.
+     * Available values: "protocol", "app*id", "created*on", "modifiedOn", "dns".
+     */
+    order?: string;
+}
+
+export interface GetSpectrumApplicationFilterArgs {
+    /**
+     * Sets the direction by which results are ordered.
+     * Available values: "asc", "desc".
+     */
+    direction?: pulumi.Input<string>;
+    /**
+     * Application field by which results are ordered.
+     * Available values: "protocol", "app*id", "created*on", "modifiedOn", "dns".
+     */
+    order?: pulumi.Input<string>;
+}
+
+export interface GetTokenValidationRulesFilter {
+    /**
+     * Action to take on requests that match operations included in `selector` and fail `expression`.
+     * Available values: "log", "block".
+     */
+    action?: string;
+    /**
+     * Toggle rule on or off.
+     */
+    enabled?: boolean;
+    /**
+     * Select rules with this host in `include`.
+     */
+    host?: string;
+    /**
+     * Select rules with this host in `include`.
+     */
+    hostname?: string;
+    /**
+     * Select rules with these IDs.
+     */
+    id?: string;
+    /**
+     * Select rules using any of these token configurations.
+     */
+    tokenConfigurations?: string[];
+}
+
+export interface GetTokenValidationRulesFilterArgs {
+    /**
+     * Action to take on requests that match operations included in `selector` and fail `expression`.
+     * Available values: "log", "block".
+     */
+    action?: pulumi.Input<string>;
+    /**
+     * Toggle rule on or off.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Select rules with this host in `include`.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Select rules with this host in `include`.
+     */
+    hostname?: pulumi.Input<string>;
+    /**
+     * Select rules with these IDs.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Select rules using any of these token configurations.
+     */
+    tokenConfigurations?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetTurnstileWidgetFilter {
@@ -6114,6 +6240,20 @@ export interface GetWorkersKvNamespaceFilterArgs {
     order?: pulumi.Input<string>;
 }
 
+export interface GetWorkersScriptFilter {
+    /**
+     * Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is 'yes' or 'no'.
+     */
+    tags?: string;
+}
+
+export interface GetWorkersScriptFilterArgs {
+    /**
+     * Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is 'yes' or 'no'.
+     */
+    tags?: pulumi.Input<string>;
+}
+
 export interface GetWorkflowFilter {
     /**
      * Allows filtering workflows` name.
@@ -6124,6 +6264,34 @@ export interface GetWorkflowFilter {
 export interface GetWorkflowFilterArgs {
     /**
      * Allows filtering workflows` name.
+     */
+    search?: pulumi.Input<string>;
+}
+
+export interface GetZeroTrustAccessAiControlsMcpPortalFilter {
+    /**
+     * Search by id, name, hostname
+     */
+    search?: string;
+}
+
+export interface GetZeroTrustAccessAiControlsMcpPortalFilterArgs {
+    /**
+     * Search by id, name, hostname
+     */
+    search?: pulumi.Input<string>;
+}
+
+export interface GetZeroTrustAccessAiControlsMcpServerFilter {
+    /**
+     * Search by id, name
+     */
+    search?: string;
+}
+
+export interface GetZeroTrustAccessAiControlsMcpServerFilterArgs {
+    /**
+     * Search by id, name
      */
     search?: pulumi.Input<string>;
 }
@@ -6435,7 +6603,7 @@ export interface GetZeroTrustDexTestTargetPolicyArgs {
 export interface GetZeroTrustListFilter {
     /**
      * Specify the list type.
-     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
      */
     type?: string;
 }
@@ -6443,7 +6611,7 @@ export interface GetZeroTrustListFilter {
 export interface GetZeroTrustListFilterArgs {
     /**
      * Specify the list type.
-     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
      */
     type?: pulumi.Input<string>;
 }
@@ -6580,10 +6748,6 @@ export interface GetZeroTrustTunnelCloudflaredRouteFilter {
      */
     networkSuperset?: string;
     /**
-     * UUID of the route.
-     */
-    routeId?: string;
-    /**
      * The types of tunnels to filter by, separated by commas.
      */
     tunTypes?: string[];
@@ -6618,10 +6782,6 @@ export interface GetZeroTrustTunnelCloudflaredRouteFilterArgs {
      * If set, only list routes that contain this IP range.
      */
     networkSuperset?: pulumi.Input<string>;
-    /**
-     * UUID of the route.
-     */
-    routeId?: pulumi.Input<string>;
     /**
      * The types of tunnels to filter by, separated by commas.
      */
@@ -7584,6 +7744,10 @@ export interface MagicNetworkMonitoringConfigurationWarpDevice {
 
 export interface MagicTransitConnectorDevice {
     id?: pulumi.Input<string>;
+    /**
+     * Set to true to provision a license key for this connector. Only used during resource creation. This is a write-only field that will not be stored in state.
+     */
+    provisionLicense?: pulumi.Input<boolean>;
     serialNumber?: pulumi.Input<string>;
 }
 
@@ -8462,6 +8626,9 @@ export interface PagesProjectCanonicalDeployment {
      * Short Id (8 character) of the deployment.
      */
     shortId?: pulumi.Input<string>;
+    /**
+     * Configs for the project source control.
+     */
     source?: pulumi.Input<inputs.PagesProjectCanonicalDeploymentSource>;
     /**
      * List of past stages.
@@ -8471,6 +8638,10 @@ export interface PagesProjectCanonicalDeployment {
      * The live URL to view this deployment.
      */
     url?: pulumi.Input<string>;
+    /**
+     * Whether the deployment uses functions.
+     */
+    usesFunctions?: pulumi.Input<boolean>;
 }
 
 export interface PagesProjectCanonicalDeploymentBuildConfig {
@@ -8483,7 +8654,7 @@ export interface PagesProjectCanonicalDeploymentBuildConfig {
      */
     buildCommand?: pulumi.Input<string>;
     /**
-     * Output directory of the build.
+     * Assets output directory of the build.
      */
     destinationDir?: pulumi.Input<string>;
     /**
@@ -8507,7 +8678,7 @@ export interface PagesProjectCanonicalDeploymentDeploymentTrigger {
     metadata?: pulumi.Input<inputs.PagesProjectCanonicalDeploymentDeploymentTriggerMetadata>;
     /**
      * What caused the deployment.
-     * Available values: "push", "adHoc".
+     * Available values: "github:push", "ad*hoc", "deploy*hook".
      */
     type?: pulumi.Input<string>;
 }
@@ -8517,6 +8688,10 @@ export interface PagesProjectCanonicalDeploymentDeploymentTriggerMetadata {
      * Where the trigger happened.
      */
     branch?: pulumi.Input<string>;
+    /**
+     * Whether the deployment trigger commit was dirty.
+     */
+    commitDirty?: pulumi.Input<boolean>;
     /**
      * Hash of the deployment trigger commit.
      */
@@ -8581,6 +8756,10 @@ export interface PagesProjectCanonicalDeploymentSourceConfig {
      */
     owner?: pulumi.Input<string>;
     /**
+     * The owner ID of the repository.
+     */
+    ownerId?: pulumi.Input<string>;
+    /**
      * A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
      */
     pathExcludes?: pulumi.Input<pulumi.Input<string>[]>;
@@ -8613,6 +8792,10 @@ export interface PagesProjectCanonicalDeploymentSourceConfig {
      * Whether to trigger a production deployment on commits to the production branch.
      */
     productionDeploymentsEnabled?: pulumi.Input<boolean>;
+    /**
+     * The ID of the repository.
+     */
+    repoId?: pulumi.Input<string>;
     /**
      * The name of the repository.
      */
@@ -8746,14 +8929,14 @@ export interface PagesProjectDeploymentConfigsPreview {
 }
 
 export interface PagesProjectDeploymentConfigsPreviewAiBindings {
-    projectId?: pulumi.Input<string>;
+    projectId: pulumi.Input<string>;
 }
 
 export interface PagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasets {
     /**
      * Name of the dataset.
      */
-    dataset?: pulumi.Input<string>;
+    dataset: pulumi.Input<string>;
 }
 
 export interface PagesProjectDeploymentConfigsPreviewBrowsers {
@@ -8763,14 +8946,14 @@ export interface PagesProjectDeploymentConfigsPreviewD1Databases {
     /**
      * UUID of the D1 database.
      */
-    id?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
 }
 
 export interface PagesProjectDeploymentConfigsPreviewDurableObjectNamespaces {
     /**
      * ID of the Durable Object namespace.
      */
-    namespaceId?: pulumi.Input<string>;
+    namespaceId: pulumi.Input<string>;
 }
 
 export interface PagesProjectDeploymentConfigsPreviewEnvVars {
@@ -8785,25 +8968,25 @@ export interface PagesProjectDeploymentConfigsPreviewEnvVars {
 }
 
 export interface PagesProjectDeploymentConfigsPreviewHyperdriveBindings {
-    id?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
 }
 
 export interface PagesProjectDeploymentConfigsPreviewKvNamespaces {
     /**
      * ID of the KV namespace.
      */
-    namespaceId?: pulumi.Input<string>;
+    namespaceId: pulumi.Input<string>;
 }
 
 export interface PagesProjectDeploymentConfigsPreviewLimits {
     /**
      * CPU time limit in milliseconds.
      */
-    cpuMs?: pulumi.Input<number>;
+    cpuMs: pulumi.Input<number>;
 }
 
 export interface PagesProjectDeploymentConfigsPreviewMtlsCertificates {
-    certificateId?: pulumi.Input<string>;
+    certificateId: pulumi.Input<string>;
 }
 
 export interface PagesProjectDeploymentConfigsPreviewPlacement {
@@ -8817,7 +9000,7 @@ export interface PagesProjectDeploymentConfigsPreviewQueueProducers {
     /**
      * Name of the Queue.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
 }
 
 export interface PagesProjectDeploymentConfigsPreviewR2Buckets {
@@ -8828,7 +9011,7 @@ export interface PagesProjectDeploymentConfigsPreviewR2Buckets {
     /**
      * Name of the R2 bucket.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
 }
 
 export interface PagesProjectDeploymentConfigsPreviewServices {
@@ -8843,11 +9026,11 @@ export interface PagesProjectDeploymentConfigsPreviewServices {
     /**
      * The Service name.
      */
-    service?: pulumi.Input<string>;
+    service: pulumi.Input<string>;
 }
 
 export interface PagesProjectDeploymentConfigsPreviewVectorizeBindings {
-    indexName?: pulumi.Input<string>;
+    indexName: pulumi.Input<string>;
 }
 
 export interface PagesProjectDeploymentConfigsProduction {
@@ -8945,14 +9128,14 @@ export interface PagesProjectDeploymentConfigsProduction {
 }
 
 export interface PagesProjectDeploymentConfigsProductionAiBindings {
-    projectId?: pulumi.Input<string>;
+    projectId: pulumi.Input<string>;
 }
 
 export interface PagesProjectDeploymentConfigsProductionAnalyticsEngineDatasets {
     /**
      * Name of the dataset.
      */
-    dataset?: pulumi.Input<string>;
+    dataset: pulumi.Input<string>;
 }
 
 export interface PagesProjectDeploymentConfigsProductionBrowsers {
@@ -8962,14 +9145,14 @@ export interface PagesProjectDeploymentConfigsProductionD1Databases {
     /**
      * UUID of the D1 database.
      */
-    id?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
 }
 
 export interface PagesProjectDeploymentConfigsProductionDurableObjectNamespaces {
     /**
      * ID of the Durable Object namespace.
      */
-    namespaceId?: pulumi.Input<string>;
+    namespaceId: pulumi.Input<string>;
 }
 
 export interface PagesProjectDeploymentConfigsProductionEnvVars {
@@ -8984,25 +9167,25 @@ export interface PagesProjectDeploymentConfigsProductionEnvVars {
 }
 
 export interface PagesProjectDeploymentConfigsProductionHyperdriveBindings {
-    id?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
 }
 
 export interface PagesProjectDeploymentConfigsProductionKvNamespaces {
     /**
      * ID of the KV namespace.
      */
-    namespaceId?: pulumi.Input<string>;
+    namespaceId: pulumi.Input<string>;
 }
 
 export interface PagesProjectDeploymentConfigsProductionLimits {
     /**
      * CPU time limit in milliseconds.
      */
-    cpuMs?: pulumi.Input<number>;
+    cpuMs: pulumi.Input<number>;
 }
 
 export interface PagesProjectDeploymentConfigsProductionMtlsCertificates {
-    certificateId?: pulumi.Input<string>;
+    certificateId: pulumi.Input<string>;
 }
 
 export interface PagesProjectDeploymentConfigsProductionPlacement {
@@ -9016,7 +9199,7 @@ export interface PagesProjectDeploymentConfigsProductionQueueProducers {
     /**
      * Name of the Queue.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
 }
 
 export interface PagesProjectDeploymentConfigsProductionR2Buckets {
@@ -9027,7 +9210,7 @@ export interface PagesProjectDeploymentConfigsProductionR2Buckets {
     /**
      * Name of the R2 bucket.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
 }
 
 export interface PagesProjectDeploymentConfigsProductionServices {
@@ -9042,11 +9225,11 @@ export interface PagesProjectDeploymentConfigsProductionServices {
     /**
      * The Service name.
      */
-    service?: pulumi.Input<string>;
+    service: pulumi.Input<string>;
 }
 
 export interface PagesProjectDeploymentConfigsProductionVectorizeBindings {
-    indexName?: pulumi.Input<string>;
+    indexName: pulumi.Input<string>;
 }
 
 export interface PagesProjectLatestDeployment {
@@ -9103,6 +9286,9 @@ export interface PagesProjectLatestDeployment {
      * Short Id (8 character) of the deployment.
      */
     shortId?: pulumi.Input<string>;
+    /**
+     * Configs for the project source control.
+     */
     source?: pulumi.Input<inputs.PagesProjectLatestDeploymentSource>;
     /**
      * List of past stages.
@@ -9112,6 +9298,10 @@ export interface PagesProjectLatestDeployment {
      * The live URL to view this deployment.
      */
     url?: pulumi.Input<string>;
+    /**
+     * Whether the deployment uses functions.
+     */
+    usesFunctions?: pulumi.Input<boolean>;
 }
 
 export interface PagesProjectLatestDeploymentBuildConfig {
@@ -9124,7 +9314,7 @@ export interface PagesProjectLatestDeploymentBuildConfig {
      */
     buildCommand?: pulumi.Input<string>;
     /**
-     * Output directory of the build.
+     * Assets output directory of the build.
      */
     destinationDir?: pulumi.Input<string>;
     /**
@@ -9148,7 +9338,7 @@ export interface PagesProjectLatestDeploymentDeploymentTrigger {
     metadata?: pulumi.Input<inputs.PagesProjectLatestDeploymentDeploymentTriggerMetadata>;
     /**
      * What caused the deployment.
-     * Available values: "push", "adHoc".
+     * Available values: "github:push", "ad*hoc", "deploy*hook".
      */
     type?: pulumi.Input<string>;
 }
@@ -9158,6 +9348,10 @@ export interface PagesProjectLatestDeploymentDeploymentTriggerMetadata {
      * Where the trigger happened.
      */
     branch?: pulumi.Input<string>;
+    /**
+     * Whether the deployment trigger commit was dirty.
+     */
+    commitDirty?: pulumi.Input<boolean>;
     /**
      * Hash of the deployment trigger commit.
      */
@@ -9222,6 +9416,10 @@ export interface PagesProjectLatestDeploymentSourceConfig {
      */
     owner?: pulumi.Input<string>;
     /**
+     * The owner ID of the repository.
+     */
+    ownerId?: pulumi.Input<string>;
+    /**
      * A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
      */
     pathExcludes?: pulumi.Input<pulumi.Input<string>[]>;
@@ -9254,6 +9452,10 @@ export interface PagesProjectLatestDeploymentSourceConfig {
      * Whether to trigger a production deployment on commits to the production branch.
      */
     productionDeploymentsEnabled?: pulumi.Input<boolean>;
+    /**
+     * The ID of the repository.
+     */
+    repoId?: pulumi.Input<string>;
     /**
      * The name of the repository.
      */
@@ -9282,12 +9484,12 @@ export interface PagesProjectLatestDeploymentStage {
 }
 
 export interface PagesProjectSource {
-    config?: pulumi.Input<inputs.PagesProjectSourceConfig>;
+    config: pulumi.Input<inputs.PagesProjectSourceConfig>;
     /**
      * The source control management provider.
      * Available values: "github", "gitlab".
      */
-    type?: pulumi.Input<string>;
+    type: pulumi.Input<string>;
 }
 
 export interface PagesProjectSourceConfig {
@@ -9302,6 +9504,10 @@ export interface PagesProjectSourceConfig {
      * The owner of the repository.
      */
     owner?: pulumi.Input<string>;
+    /**
+     * The owner ID of the repository.
+     */
+    ownerId?: pulumi.Input<string>;
     /**
      * A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
      */
@@ -9335,6 +9541,10 @@ export interface PagesProjectSourceConfig {
      * Whether to trigger a production deployment on commits to the production branch.
      */
     productionDeploymentsEnabled?: pulumi.Input<boolean>;
+    /**
+     * The ID of the repository.
+     */
+    repoId?: pulumi.Input<string>;
     /**
      * The name of the repository.
      */
@@ -9615,11 +9825,15 @@ export interface R2BucketSippySource {
      */
     bucket?: pulumi.Input<string>;
     /**
+     * URL to the S3-compatible API of the bucket.
+     */
+    bucketUrl?: pulumi.Input<string>;
+    /**
      * Client email of an IAM credential (ideally scoped to a single GCS bucket).
      */
     clientEmail?: pulumi.Input<string>;
     /**
-     * Available values: "aws", "gcs".
+     * Available values: "aws", "gcs", "s3".
      */
     cloudProvider?: pulumi.Input<string>;
     /**
@@ -10783,6 +10997,18 @@ export interface SpectrumApplicationOriginDns {
     type?: pulumi.Input<string>;
 }
 
+export interface SsoConnectorVerification {
+    /**
+     * DNS verification code. Add this entire string to the DNS TXT record of the email domain to validate ownership.
+     */
+    code?: pulumi.Input<string>;
+    /**
+     * The status of the verification code from the verification process.
+     * Available values: "awaiting", "pending", "failed", "verified".
+     */
+    status?: pulumi.Input<string>;
+}
+
 export interface StaticRouteScope {
     /**
      * List of colo names for the ECMP scope.
@@ -11403,6 +11629,10 @@ export interface TeamsRuleRuleSettings {
      */
     egress?: pulumi.Input<inputs.TeamsRuleRuleSettingsEgress>;
     /**
+     * Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
+     */
+    forensicCopy?: pulumi.Input<inputs.TeamsRuleRuleSettingsForensicCopy>;
+    /**
      * Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dnsResolver` rules.
      */
     ignoreCnameCategoryMatches?: pulumi.Input<boolean>;
@@ -11605,6 +11835,13 @@ export interface TeamsRuleRuleSettingsEgress {
     ipv6?: pulumi.Input<string>;
 }
 
+export interface TeamsRuleRuleSettingsForensicCopy {
+    /**
+     * Enable sending the copy to storage.
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
 export interface TeamsRuleRuleSettingsL4override {
     /**
      * Defines the IPv4 or IPv6 address.
@@ -11698,6 +11935,88 @@ export interface TeamsRuleSchedule {
     wed?: pulumi.Input<string>;
 }
 
+export interface TokenValidationConfigCredentials {
+    keys: pulumi.Input<pulumi.Input<inputs.TokenValidationConfigCredentialsKey>[]>;
+}
+
+export interface TokenValidationConfigCredentialsKey {
+    /**
+     * Algorithm
+     * Available values: "RS256", "RS384", "RS512", "PS256", "PS384", "PS512", "ES256", "ES384".
+     */
+    alg: pulumi.Input<string>;
+    /**
+     * Curve
+     * Available values: "P-256", "P-384".
+     */
+    crv?: pulumi.Input<string>;
+    /**
+     * RSA exponent
+     */
+    e?: pulumi.Input<string>;
+    /**
+     * Key ID
+     */
+    kid: pulumi.Input<string>;
+    /**
+     * Key Type
+     * Available values: "RSA", "EC".
+     */
+    kty: pulumi.Input<string>;
+    /**
+     * RSA modulus
+     */
+    n?: pulumi.Input<string>;
+    /**
+     * X EC coordinate
+     */
+    x?: pulumi.Input<string>;
+    /**
+     * Y EC coordinate
+     */
+    y?: pulumi.Input<string>;
+}
+
+export interface TokenValidationRulesPosition {
+    /**
+     * Move rule to after rule with this ID.
+     */
+    after?: pulumi.Input<string>;
+    /**
+     * Move rule to before rule with this ID.
+     */
+    before?: pulumi.Input<string>;
+    /**
+     * Move rule to this position
+     */
+    index?: pulumi.Input<number>;
+}
+
+export interface TokenValidationRulesSelector {
+    /**
+     * Ignore operations that were otherwise included by `include`.
+     */
+    excludes?: pulumi.Input<pulumi.Input<inputs.TokenValidationRulesSelectorExclude>[]>;
+    /**
+     * Select all matching operations.
+     */
+    includes?: pulumi.Input<pulumi.Input<inputs.TokenValidationRulesSelectorInclude>[]>;
+}
+
+export interface TokenValidationRulesSelectorExclude {
+    /**
+     * Excluded operation IDs.
+     */
+    operationIds?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface TokenValidationRulesSelectorInclude {
+    /**
+     * Included hostnames.
+     */
+    hosts?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface TunnelConfigConfig {
     /**
      * List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.
@@ -11761,6 +12080,10 @@ export interface TunnelConfigConfigIngressOriginRequest {
      * Timeout after which an idle keepalive connection can be discarded.
      */
     keepAliveTimeout?: pulumi.Input<number>;
+    /**
+     * Auto configure the Hostname on the origin server certificate.
+     */
+    matchSnItoHost?: pulumi.Input<boolean>;
     /**
      * Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
      */
@@ -11832,6 +12155,10 @@ export interface TunnelConfigConfigOriginRequest {
      * Timeout after which an idle keepalive connection can be discarded.
      */
     keepAliveTimeout?: pulumi.Input<number>;
+    /**
+     * Auto configure the Hostname on the origin server certificate.
+     */
+    matchSnItoHost?: pulumi.Input<boolean>;
     /**
      * Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
      */
@@ -12211,9 +12538,9 @@ export interface WorkerScriptAssetsConfig {
      */
     redirects?: pulumi.Input<string>;
     /**
-     * When true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script.
+     * When a boolean true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script. When a list of strings, contains path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
      */
-    runWorkerFirst?: pulumi.Input<boolean>;
+    runWorkerFirst?: any;
     /**
      * When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.
      *
@@ -12391,124 +12718,81 @@ export interface WorkerScriptLimits {
 
 export interface WorkerScriptMigrations {
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes to delete Durable Object namespaces from.
      */
     deletedClasses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes to create Durable Object namespaces from.
      */
     newClasses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes to create Durable Object namespaces with SQLite from.
      */
     newSqliteClasses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Tag to set as the latest migration tag.
      */
     newTag?: pulumi.Input<string>;
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.
      */
     oldTag?: pulumi.Input<string>;
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes with Durable Object namespaces that were renamed.
      */
     renamedClasses?: pulumi.Input<pulumi.Input<inputs.WorkerScriptMigrationsRenamedClass>[]>;
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Migrations to apply in order.
      */
     steps?: pulumi.Input<pulumi.Input<inputs.WorkerScriptMigrationsStep>[]>;
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
      */
     transferredClasses?: pulumi.Input<pulumi.Input<inputs.WorkerScriptMigrationsTransferredClass>[]>;
 }
 
 export interface WorkerScriptMigrationsRenamedClass {
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     from?: pulumi.Input<string>;
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     to?: pulumi.Input<string>;
 }
 
 export interface WorkerScriptMigrationsStep {
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes to delete Durable Object namespaces from.
      */
     deletedClasses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes to create Durable Object namespaces from.
      */
     newClasses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes to create Durable Object namespaces with SQLite from.
      */
     newSqliteClasses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes with Durable Object namespaces that were renamed.
      */
     renamedClasses?: pulumi.Input<pulumi.Input<inputs.WorkerScriptMigrationsStepRenamedClass>[]>;
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
      */
     transferredClasses?: pulumi.Input<pulumi.Input<inputs.WorkerScriptMigrationsStepTransferredClass>[]>;
 }
 
 export interface WorkerScriptMigrationsStepRenamedClass {
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     from?: pulumi.Input<string>;
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     to?: pulumi.Input<string>;
 }
 
 export interface WorkerScriptMigrationsStepTransferredClass {
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     from?: pulumi.Input<string>;
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     fromScript?: pulumi.Input<string>;
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     to?: pulumi.Input<string>;
 }
 
 export interface WorkerScriptMigrationsTransferredClass {
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     from?: pulumi.Input<string>;
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     fromScript?: pulumi.Input<string>;
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     to?: pulumi.Input<string>;
 }
 
@@ -12657,9 +12941,9 @@ export interface WorkerVersionAssetsConfig {
      */
     notFoundHandling?: pulumi.Input<string>;
     /**
-     * Contains a list path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
+     * When a boolean true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script. When a list of strings, contains path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
      */
-    runWorkerFirsts?: pulumi.Input<pulumi.Input<string>[]>;
+    runWorkerFirst?: any;
 }
 
 export interface WorkerVersionBinding {
@@ -12911,9 +13195,13 @@ export interface WorkerVersionMigrationsTransferredClass {
 
 export interface WorkerVersionModule {
     /**
+     * The base64-encoded module content.
+     */
+    contentBase64?: pulumi.Input<string>;
+    /**
      * The file path of the module content.
      */
-    contentFile: pulumi.Input<string>;
+    contentFile?: pulumi.Input<string>;
     /**
      * The SHA-256 hash of the module content.
      */
@@ -12997,9 +13285,9 @@ export interface WorkersScriptAssetsConfig {
      */
     redirects?: pulumi.Input<string>;
     /**
-     * When true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script.
+     * When a boolean true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script. When a list of strings, contains path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
      */
-    runWorkerFirst?: pulumi.Input<boolean>;
+    runWorkerFirst?: any;
     /**
      * When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.
      *
@@ -13177,124 +13465,81 @@ export interface WorkersScriptLimits {
 
 export interface WorkersScriptMigrations {
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes to delete Durable Object namespaces from.
      */
     deletedClasses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes to create Durable Object namespaces from.
      */
     newClasses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes to create Durable Object namespaces with SQLite from.
      */
     newSqliteClasses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Tag to set as the latest migration tag.
      */
     newTag?: pulumi.Input<string>;
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.
      */
     oldTag?: pulumi.Input<string>;
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes with Durable Object namespaces that were renamed.
      */
     renamedClasses?: pulumi.Input<pulumi.Input<inputs.WorkersScriptMigrationsRenamedClass>[]>;
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Migrations to apply in order.
      */
     steps?: pulumi.Input<pulumi.Input<inputs.WorkersScriptMigrationsStep>[]>;
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
      */
     transferredClasses?: pulumi.Input<pulumi.Input<inputs.WorkersScriptMigrationsTransferredClass>[]>;
 }
 
 export interface WorkersScriptMigrationsRenamedClass {
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     from?: pulumi.Input<string>;
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     to?: pulumi.Input<string>;
 }
 
 export interface WorkersScriptMigrationsStep {
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes to delete Durable Object namespaces from.
      */
     deletedClasses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes to create Durable Object namespaces from.
      */
     newClasses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes to create Durable Object namespaces with SQLite from.
      */
     newSqliteClasses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes with Durable Object namespaces that were renamed.
      */
     renamedClasses?: pulumi.Input<pulumi.Input<inputs.WorkersScriptMigrationsStepRenamedClass>[]>;
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
      */
     transferredClasses?: pulumi.Input<pulumi.Input<inputs.WorkersScriptMigrationsStepTransferredClass>[]>;
 }
 
 export interface WorkersScriptMigrationsStepRenamedClass {
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     from?: pulumi.Input<string>;
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     to?: pulumi.Input<string>;
 }
 
 export interface WorkersScriptMigrationsStepTransferredClass {
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     from?: pulumi.Input<string>;
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     fromScript?: pulumi.Input<string>;
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     to?: pulumi.Input<string>;
 }
 
 export interface WorkersScriptMigrationsTransferredClass {
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     from?: pulumi.Input<string>;
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     fromScript?: pulumi.Input<string>;
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     to?: pulumi.Input<string>;
 }
 
@@ -13388,6 +13633,29 @@ export interface WorkflowInstances {
     terminated?: pulumi.Input<number>;
     waiting?: pulumi.Input<number>;
     waitingForPause?: pulumi.Input<number>;
+}
+
+export interface ZeroTrustAccessAiControlsMcpPortalServer {
+    defaultDisabled?: pulumi.Input<boolean>;
+    onBehalf?: pulumi.Input<boolean>;
+    /**
+     * server id
+     */
+    serverId: pulumi.Input<string>;
+    updatedPrompts?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt>[]>;
+    updatedTools?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessAiControlsMcpPortalServerUpdatedTool>[]>;
+}
+
+export interface ZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt {
+    description?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
+    name: pulumi.Input<string>;
+}
+
+export interface ZeroTrustAccessAiControlsMcpPortalServerUpdatedTool {
+    description?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
+    name: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessApplicationCorsHeaders {
@@ -16505,7 +16773,7 @@ export interface ZeroTrustDevicePostureRuleInput {
      */
     osDistroRevision?: pulumi.Input<string>;
     /**
-     * Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version. (Mac, iOS, and Linux only).
+     * Additional operating system version details. For Windows, the UBR (Update Build Revision). For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version.
      */
     osVersionExtra?: pulumi.Input<string>;
     /**
@@ -16559,6 +16827,10 @@ export interface ZeroTrustDevicePostureRuleInput {
      * For more details on total score, refer to the Tanium documentation.
      */
     totalScore?: pulumi.Input<number>;
+    /**
+     * Number of days that the antivirus should be updated within.
+     */
+    updateWindowDays?: pulumi.Input<number>;
     /**
      * Version of OS.
      */
@@ -16637,6 +16909,11 @@ export interface ZeroTrustDlpCustomEntryPattern {
      * @deprecated This attribute is deprecated.
      */
     validation?: pulumi.Input<string>;
+}
+
+export interface ZeroTrustDlpCustomEntryProfile {
+    id?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 export interface ZeroTrustDlpCustomEntryVariant {
@@ -16723,7 +17000,7 @@ export interface ZeroTrustDlpDatasetDataset {
      */
     status?: pulumi.Input<string>;
     /**
-     * When the dataset was last updated.
+     * Stores when the dataset was last updated.
      */
     updatedAt?: pulumi.Input<string>;
     uploads?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDlpDatasetDatasetUpload>[]>;
@@ -16778,6 +17055,11 @@ export interface ZeroTrustDlpEntryPattern {
     validation?: pulumi.Input<string>;
 }
 
+export interface ZeroTrustDlpEntryProfile {
+    id?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+}
+
 export interface ZeroTrustDlpEntryVariant {
     description?: pulumi.Input<string>;
     /**
@@ -16809,6 +17091,11 @@ export interface ZeroTrustDlpIntegrationEntryPattern {
      * @deprecated This attribute is deprecated.
      */
     validation?: pulumi.Input<string>;
+}
+
+export interface ZeroTrustDlpIntegrationEntryProfile {
+    id?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 export interface ZeroTrustDlpIntegrationEntryVariant {
@@ -16844,6 +17131,11 @@ export interface ZeroTrustDlpPredefinedEntryPattern {
     validation?: pulumi.Input<string>;
 }
 
+export interface ZeroTrustDlpPredefinedEntryProfile {
+    id?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+}
+
 export interface ZeroTrustDlpPredefinedEntryVariant {
     description?: pulumi.Input<string>;
     /**
@@ -16854,24 +17146,6 @@ export interface ZeroTrustDlpPredefinedEntryVariant {
      * Available values: "PromptTopic".
      */
     type?: pulumi.Input<string>;
-}
-
-export interface ZeroTrustDlpPredefinedProfileContextAwareness {
-    /**
-     * If true, scan the context of predefined entries to only return matches surrounded by keywords.
-     */
-    enabled: pulumi.Input<boolean>;
-    /**
-     * Content types to exclude from context analysis and return all matches.
-     */
-    skip: pulumi.Input<inputs.ZeroTrustDlpPredefinedProfileContextAwarenessSkip>;
-}
-
-export interface ZeroTrustDlpPredefinedProfileContextAwarenessSkip {
-    /**
-     * If the content type is a file, skip context analysis and return all matches.
-     */
-    files: pulumi.Input<boolean>;
 }
 
 export interface ZeroTrustDlpPredefinedProfileEntry {
@@ -17066,6 +17340,10 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
      * Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs. Settable only for `egress` rules.
      */
     egress?: pulumi.Input<inputs.ZeroTrustGatewayPolicyRuleSettingsEgress>;
+    /**
+     * Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
+     */
+    forensicCopy?: pulumi.Input<inputs.ZeroTrustGatewayPolicyRuleSettingsForensicCopy>;
     /**
      * Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dnsResolver` rules.
      */
@@ -17267,6 +17545,13 @@ export interface ZeroTrustGatewayPolicyRuleSettingsEgress {
      * Specify the IPv6 range to use for egress.
      */
     ipv6?: pulumi.Input<string>;
+}
+
+export interface ZeroTrustGatewayPolicyRuleSettingsForensicCopy {
+    /**
+     * Enable sending the copy to storage.
+     */
+    enabled?: pulumi.Input<boolean>;
 }
 
 export interface ZeroTrustGatewayPolicyRuleSettingsL4override {
@@ -17773,6 +18058,10 @@ export interface ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequest {
      */
     keepAliveTimeout?: pulumi.Input<number>;
     /**
+     * Auto configure the Hostname on the origin server certificate.
+     */
+    matchSnItoHost?: pulumi.Input<boolean>;
+    /**
      * Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
      */
     noHappyEyeballs?: pulumi.Input<boolean>;
@@ -17843,6 +18132,10 @@ export interface ZeroTrustTunnelCloudflaredConfigConfigOriginRequest {
      * Timeout after which an idle keepalive connection can be discarded.
      */
     keepAliveTimeout?: pulumi.Input<number>;
+    /**
+     * Auto configure the Hostname on the origin server certificate.
+     */
+    matchSnItoHost?: pulumi.Input<boolean>;
     /**
      * Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
      */
@@ -18164,7 +18457,7 @@ export interface ZoneSubscriptionRatePlan {
     externallyManaged?: pulumi.Input<boolean>;
     /**
      * The ID of the rate plan.
-     * Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnterprise".
+     * Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partners*enterprise", "partners*ent".
      */
     id?: pulumi.Input<string>;
     /**

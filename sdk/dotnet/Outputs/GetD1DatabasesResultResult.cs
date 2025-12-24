@@ -18,6 +18,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
+        /// D1 database identifier (UUID).
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// D1 database name.
         /// </summary>
         public readonly string Name;
@@ -31,6 +35,8 @@ namespace Pulumi.Cloudflare.Outputs
         private GetD1DatabasesResultResult(
             string createdAt,
 
+            string id,
+
             string name,
 
             string uuid,
@@ -38,6 +44,7 @@ namespace Pulumi.Cloudflare.Outputs
             string version)
         {
             CreatedAt = createdAt;
+            Id = id;
             Name = name;
             Uuid = uuid;
             Version = version;

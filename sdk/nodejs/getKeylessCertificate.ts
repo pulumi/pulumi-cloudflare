@@ -34,7 +34,7 @@ export interface GetKeylessCertificateArgs {
     /**
      * Identifier.
      */
-    keylessCertificateId?: string;
+    keylessCertificateId: string;
     /**
      * Identifier.
      */
@@ -64,7 +64,7 @@ export interface GetKeylessCertificateResult {
     /**
      * Identifier.
      */
-    readonly keylessCertificateId?: string;
+    readonly keylessCertificateId: string;
     /**
      * When the Keyless SSL was last modified.
      */
@@ -123,7 +123,7 @@ export interface GetKeylessCertificateOutputArgs {
     /**
      * Identifier.
      */
-    keylessCertificateId?: pulumi.Input<string>;
+    keylessCertificateId: pulumi.Input<string>;
     /**
      * Identifier.
      */

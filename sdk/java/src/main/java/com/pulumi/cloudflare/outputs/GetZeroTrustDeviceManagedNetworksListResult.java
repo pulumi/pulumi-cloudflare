@@ -17,6 +17,11 @@ public final class GetZeroTrustDeviceManagedNetworksListResult {
      */
     private GetZeroTrustDeviceManagedNetworksListResultConfig config;
     /**
+     * @return API UUID.
+     * 
+     */
+    private String id;
+    /**
      * @return The name of the device managed network. This name must be unique.
      * 
      */
@@ -40,6 +45,13 @@ public final class GetZeroTrustDeviceManagedNetworksListResult {
      */
     public GetZeroTrustDeviceManagedNetworksListResultConfig config() {
         return this.config;
+    }
+    /**
+     * @return API UUID.
+     * 
+     */
+    public String id() {
+        return this.id;
     }
     /**
      * @return The name of the device managed network. This name must be unique.
@@ -74,6 +86,7 @@ public final class GetZeroTrustDeviceManagedNetworksListResult {
     @CustomType.Builder
     public static final class Builder {
         private GetZeroTrustDeviceManagedNetworksListResultConfig config;
+        private String id;
         private String name;
         private String networkId;
         private String type;
@@ -81,6 +94,7 @@ public final class GetZeroTrustDeviceManagedNetworksListResult {
         public Builder(GetZeroTrustDeviceManagedNetworksListResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.config = defaults.config;
+    	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.networkId = defaults.networkId;
     	      this.type = defaults.type;
@@ -92,6 +106,14 @@ public final class GetZeroTrustDeviceManagedNetworksListResult {
               throw new MissingRequiredPropertyException("GetZeroTrustDeviceManagedNetworksListResult", "config");
             }
             this.config = config;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDeviceManagedNetworksListResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -121,6 +143,7 @@ public final class GetZeroTrustDeviceManagedNetworksListResult {
         public GetZeroTrustDeviceManagedNetworksListResult build() {
             final var _resultValue = new GetZeroTrustDeviceManagedNetworksListResult();
             _resultValue.config = config;
+            _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.networkId = networkId;
             _resultValue.type = type;

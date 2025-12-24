@@ -56,6 +56,10 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ## Import
+ * 
+ * ~&gt; This resource does not currently support `pulumi import`.
+ * 
  */
 @ResourceType(type="cloudflare:index/streamWatermark:StreamWatermark")
 public class StreamWatermark extends com.pulumi.resources.CustomResource {

@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWeb3HostnameResult {
@@ -32,7 +30,7 @@ public final class GetWeb3HostnameResult {
      * @return Specify the identifier of the hostname.
      * 
      */
-    private @Nullable String identifier;
+    private String identifier;
     private String modifiedOn;
     /**
      * @return Specify the hostname that points to the target gateway via CNAME.
@@ -86,8 +84,8 @@ public final class GetWeb3HostnameResult {
      * @return Specify the identifier of the hostname.
      * 
      */
-    public Optional<String> identifier() {
-        return Optional.ofNullable(this.identifier);
+    public String identifier() {
+        return this.identifier;
     }
     public String modifiedOn() {
         return this.modifiedOn;
@@ -136,7 +134,7 @@ public final class GetWeb3HostnameResult {
         private String description;
         private String dnslink;
         private String id;
-        private @Nullable String identifier;
+        private String identifier;
         private String modifiedOn;
         private String name;
         private String status;
@@ -190,8 +188,10 @@ public final class GetWeb3HostnameResult {
             return this;
         }
         @CustomType.Setter
-        public Builder identifier(@Nullable String identifier) {
-
+        public Builder identifier(String identifier) {
+            if (identifier == null) {
+              throw new MissingRequiredPropertyException("GetWeb3HostnameResult", "identifier");
+            }
             this.identifier = identifier;
             return this;
         }

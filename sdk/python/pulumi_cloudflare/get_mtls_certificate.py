@@ -111,7 +111,7 @@ class GetMtlsCertificateResult:
 
     @_builtins.property
     @pulumi.getter(name="mtlsCertificateId")
-    def mtls_certificate_id(self) -> Optional[_builtins.str]:
+    def mtls_certificate_id(self) -> _builtins.str:
         """
         Identifier.
         """
@@ -206,7 +206,7 @@ def get_mtls_certificate(account_id: Optional[_builtins.str] = None,
         signature=pulumi.get(__ret__, 'signature'),
         uploaded_on=pulumi.get(__ret__, 'uploaded_on'))
 def get_mtls_certificate_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                mtls_certificate_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                mtls_certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMtlsCertificateResult]:
     """
     ## Example Usage

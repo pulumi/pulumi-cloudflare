@@ -120,7 +120,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// Routing rule identifier.
+        /// Identifier.
         /// </summary>
         public readonly string Id;
         /// <summary>

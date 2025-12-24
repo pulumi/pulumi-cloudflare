@@ -4,18 +4,17 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class PagesProjectDeploymentConfigsProductionAiBindings {
-    private @Nullable String projectId;
+    private String projectId;
 
     private PagesProjectDeploymentConfigsProductionAiBindings() {}
-    public Optional<String> projectId() {
-        return Optional.ofNullable(this.projectId);
+    public String projectId() {
+        return this.projectId;
     }
 
     public static Builder builder() {
@@ -27,7 +26,7 @@ public final class PagesProjectDeploymentConfigsProductionAiBindings {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String projectId;
+        private String projectId;
         public Builder() {}
         public Builder(PagesProjectDeploymentConfigsProductionAiBindings defaults) {
     	      Objects.requireNonNull(defaults);
@@ -35,8 +34,10 @@ public final class PagesProjectDeploymentConfigsProductionAiBindings {
         }
 
         @CustomType.Setter
-        public Builder projectId(@Nullable String projectId) {
-
+        public Builder projectId(String projectId) {
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("PagesProjectDeploymentConfigsProductionAiBindings", "projectId");
+            }
             this.projectId = projectId;
             return this;
         }

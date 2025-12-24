@@ -28,6 +28,10 @@ import * as utilities from "./utilities";
  *     type: "worker",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ~> This resource does not currently support `pulumi import`.
  */
 export class QueueConsumer extends pulumi.CustomResource {
     /**
@@ -64,7 +68,7 @@ export class QueueConsumer extends pulumi.CustomResource {
     /**
      * A Resource identifier.
      */
-    declare public readonly consumerId: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly consumerId: pulumi.Output<string>;
     declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     declare public readonly deadLetterQueue: pulumi.Output<string | undefined>;
     /**
@@ -116,12 +120,12 @@ export class QueueConsumer extends pulumi.CustomResource {
                 throw new Error("Missing required property 'queueId'");
             }
             resourceInputs["accountId"] = args?.accountId;
-            resourceInputs["consumerId"] = args?.consumerId;
             resourceInputs["deadLetterQueue"] = args?.deadLetterQueue;
             resourceInputs["queueId"] = args?.queueId;
             resourceInputs["scriptName"] = args?.scriptName;
             resourceInputs["settings"] = args?.settings;
             resourceInputs["type"] = args?.type;
+            resourceInputs["consumerId"] = undefined /*out*/;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["script"] = undefined /*out*/;
         }
@@ -171,10 +175,6 @@ export interface QueueConsumerArgs {
      * A Resource identifier.
      */
     accountId: pulumi.Input<string>;
-    /**
-     * A Resource identifier.
-     */
-    consumerId?: pulumi.Input<string>;
     deadLetterQueue?: pulumi.Input<string>;
     /**
      * A Resource identifier.

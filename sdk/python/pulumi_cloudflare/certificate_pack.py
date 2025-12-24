@@ -22,17 +22,16 @@ __all__ = ['CertificatePackArgs', 'CertificatePack']
 class CertificatePackArgs:
     def __init__(__self__, *,
                  certificate_authority: pulumi.Input[_builtins.str],
-                 hosts: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  type: pulumi.Input[_builtins.str],
                  validation_method: pulumi.Input[_builtins.str],
                  validity_days: pulumi.Input[_builtins.int],
                  zone_id: pulumi.Input[_builtins.str],
-                 cloudflare_branding: Optional[pulumi.Input[_builtins.bool]] = None):
+                 cloudflare_branding: Optional[pulumi.Input[_builtins.bool]] = None,
+                 hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a CertificatePack resource.
         :param pulumi.Input[_builtins.str] certificate_authority: Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
                Available values: "google", "lets*encrypt", "ssl*com".
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hosts: Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
         :param pulumi.Input[_builtins.str] type: Type of certificate pack.
                Available values: "advanced".
         :param pulumi.Input[_builtins.str] validation_method: Validation Method selected for the order.
@@ -41,15 +40,17 @@ class CertificatePackArgs:
                Available values: 14, 30, 90, 365.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.bool] cloudflare_branding: Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hosts: Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
         """
         pulumi.set(__self__, "certificate_authority", certificate_authority)
-        pulumi.set(__self__, "hosts", hosts)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "validation_method", validation_method)
         pulumi.set(__self__, "validity_days", validity_days)
         pulumi.set(__self__, "zone_id", zone_id)
         if cloudflare_branding is not None:
             pulumi.set(__self__, "cloudflare_branding", cloudflare_branding)
+        if hosts is not None:
+            pulumi.set(__self__, "hosts", hosts)
 
     @_builtins.property
     @pulumi.getter(name="certificateAuthority")
@@ -63,18 +64,6 @@ class CertificatePackArgs:
     @certificate_authority.setter
     def certificate_authority(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "certificate_authority", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def hosts(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
-        """
-        return pulumi.get(self, "hosts")
-
-    @hosts.setter
-    def hosts(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
-        pulumi.set(self, "hosts", value)
 
     @_builtins.property
     @pulumi.getter
@@ -139,13 +128,27 @@ class CertificatePackArgs:
     def cloudflare_branding(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "cloudflare_branding", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
+        """
+        return pulumi.get(self, "hosts")
+
+    @hosts.setter
+    def hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "hosts", value)
+
 
 @pulumi.input_type
 class _CertificatePackState:
     def __init__(__self__, *,
                  certificate_authority: Optional[pulumi.Input[_builtins.str]] = None,
+                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackCertificateArgs']]]] = None,
                  cloudflare_branding: Optional[pulumi.Input[_builtins.bool]] = None,
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 primary_certificate: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  validation_errors: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationErrorArgs']]]] = None,
@@ -157,8 +160,10 @@ class _CertificatePackState:
         Input properties used for looking up and filtering CertificatePack resources.
         :param pulumi.Input[_builtins.str] certificate_authority: Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
                Available values: "google", "lets*encrypt", "ssl*com".
+        :param pulumi.Input[Sequence[pulumi.Input['CertificatePackCertificateArgs']]] certificates: Array of certificates in this pack.
         :param pulumi.Input[_builtins.bool] cloudflare_branding: Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hosts: Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
+        :param pulumi.Input[_builtins.str] primary_certificate: Identifier of the primary certificate in a pack.
         :param pulumi.Input[_builtins.str] status: Status of certificate pack.
                Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
         :param pulumi.Input[_builtins.str] type: Type of certificate pack.
@@ -166,17 +171,21 @@ class _CertificatePackState:
         :param pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationErrorArgs']]] validation_errors: Domain validation errors that have been received by the certificate authority (CA).
         :param pulumi.Input[_builtins.str] validation_method: Validation Method selected for the order.
                Available values: "txt", "http", "email".
-        :param pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationRecordArgs']]] validation_records: Certificates' validation records. Only present when certificate pack is in "pending*validation" status
+        :param pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationRecordArgs']]] validation_records: Certificates' validation records.
         :param pulumi.Input[_builtins.int] validity_days: Validity Days selected for the order.
                Available values: 14, 30, 90, 365.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         if certificate_authority is not None:
             pulumi.set(__self__, "certificate_authority", certificate_authority)
+        if certificates is not None:
+            pulumi.set(__self__, "certificates", certificates)
         if cloudflare_branding is not None:
             pulumi.set(__self__, "cloudflare_branding", cloudflare_branding)
         if hosts is not None:
             pulumi.set(__self__, "hosts", hosts)
+        if primary_certificate is not None:
+            pulumi.set(__self__, "primary_certificate", primary_certificate)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if type is not None:
@@ -206,6 +215,18 @@ class _CertificatePackState:
         pulumi.set(self, "certificate_authority", value)
 
     @_builtins.property
+    @pulumi.getter
+    def certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackCertificateArgs']]]]:
+        """
+        Array of certificates in this pack.
+        """
+        return pulumi.get(self, "certificates")
+
+    @certificates.setter
+    def certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackCertificateArgs']]]]):
+        pulumi.set(self, "certificates", value)
+
+    @_builtins.property
     @pulumi.getter(name="cloudflareBranding")
     def cloudflare_branding(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -228,6 +249,18 @@ class _CertificatePackState:
     @hosts.setter
     def hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "hosts", value)
+
+    @_builtins.property
+    @pulumi.getter(name="primaryCertificate")
+    def primary_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier of the primary certificate in a pack.
+        """
+        return pulumi.get(self, "primary_certificate")
+
+    @primary_certificate.setter
+    def primary_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "primary_certificate", value)
 
     @_builtins.property
     @pulumi.getter
@@ -284,7 +317,7 @@ class _CertificatePackState:
     @pulumi.getter(name="validationRecords")
     def validation_records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationRecordArgs']]]]:
         """
-        Certificates' validation records. Only present when certificate pack is in "pending*validation" status
+        Certificates' validation records.
         """
         return pulumi.get(self, "validation_records")
 
@@ -333,6 +366,12 @@ class CertificatePack(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        > Certificate packs are not able to be updated in place. If
+        you require a zero downtime rotation, you can create multiple
+        resources using a 2-phase change where you have both resources
+        live at once and you remove the old one once you've confirmed
+        the certificate is available.
+
         ## Example Usage
 
         ```python
@@ -384,6 +423,12 @@ class CertificatePack(pulumi.CustomResource):
                  args: CertificatePackArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > Certificate packs are not able to be updated in place. If
+        you require a zero downtime rotation, you can create multiple
+        resources using a 2-phase change where you have both resources
+        live at once and you remove the old one once you've confirmed
+        the certificate is available.
+
         ## Example Usage
 
         ```python
@@ -449,8 +494,6 @@ class CertificatePack(pulumi.CustomResource):
                 raise TypeError("Missing required property 'certificate_authority'")
             __props__.__dict__["certificate_authority"] = certificate_authority
             __props__.__dict__["cloudflare_branding"] = cloudflare_branding
-            if hosts is None and not opts.urn:
-                raise TypeError("Missing required property 'hosts'")
             __props__.__dict__["hosts"] = hosts
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
@@ -464,6 +507,8 @@ class CertificatePack(pulumi.CustomResource):
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["certificates"] = None
+            __props__.__dict__["primary_certificate"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["validation_errors"] = None
             __props__.__dict__["validation_records"] = None
@@ -478,8 +523,10 @@ class CertificatePack(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             certificate_authority: Optional[pulumi.Input[_builtins.str]] = None,
+            certificates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CertificatePackCertificateArgs', 'CertificatePackCertificateArgsDict']]]]] = None,
             cloudflare_branding: Optional[pulumi.Input[_builtins.bool]] = None,
             hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            primary_certificate: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
             type: Optional[pulumi.Input[_builtins.str]] = None,
             validation_errors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CertificatePackValidationErrorArgs', 'CertificatePackValidationErrorArgsDict']]]]] = None,
@@ -496,8 +543,10 @@ class CertificatePack(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] certificate_authority: Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
                Available values: "google", "lets*encrypt", "ssl*com".
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CertificatePackCertificateArgs', 'CertificatePackCertificateArgsDict']]]] certificates: Array of certificates in this pack.
         :param pulumi.Input[_builtins.bool] cloudflare_branding: Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hosts: Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
+        :param pulumi.Input[_builtins.str] primary_certificate: Identifier of the primary certificate in a pack.
         :param pulumi.Input[_builtins.str] status: Status of certificate pack.
                Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
         :param pulumi.Input[_builtins.str] type: Type of certificate pack.
@@ -505,7 +554,7 @@ class CertificatePack(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['CertificatePackValidationErrorArgs', 'CertificatePackValidationErrorArgsDict']]]] validation_errors: Domain validation errors that have been received by the certificate authority (CA).
         :param pulumi.Input[_builtins.str] validation_method: Validation Method selected for the order.
                Available values: "txt", "http", "email".
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CertificatePackValidationRecordArgs', 'CertificatePackValidationRecordArgsDict']]]] validation_records: Certificates' validation records. Only present when certificate pack is in "pending*validation" status
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CertificatePackValidationRecordArgs', 'CertificatePackValidationRecordArgsDict']]]] validation_records: Certificates' validation records.
         :param pulumi.Input[_builtins.int] validity_days: Validity Days selected for the order.
                Available values: 14, 30, 90, 365.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
@@ -515,8 +564,10 @@ class CertificatePack(pulumi.CustomResource):
         __props__ = _CertificatePackState.__new__(_CertificatePackState)
 
         __props__.__dict__["certificate_authority"] = certificate_authority
+        __props__.__dict__["certificates"] = certificates
         __props__.__dict__["cloudflare_branding"] = cloudflare_branding
         __props__.__dict__["hosts"] = hosts
+        __props__.__dict__["primary_certificate"] = primary_certificate
         __props__.__dict__["status"] = status
         __props__.__dict__["type"] = type
         __props__.__dict__["validation_errors"] = validation_errors
@@ -536,6 +587,14 @@ class CertificatePack(pulumi.CustomResource):
         return pulumi.get(self, "certificate_authority")
 
     @_builtins.property
+    @pulumi.getter
+    def certificates(self) -> pulumi.Output[Sequence['outputs.CertificatePackCertificate']]:
+        """
+        Array of certificates in this pack.
+        """
+        return pulumi.get(self, "certificates")
+
+    @_builtins.property
     @pulumi.getter(name="cloudflareBranding")
     def cloudflare_branding(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
@@ -550,6 +609,14 @@ class CertificatePack(pulumi.CustomResource):
         Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
         """
         return pulumi.get(self, "hosts")
+
+    @_builtins.property
+    @pulumi.getter(name="primaryCertificate")
+    def primary_certificate(self) -> pulumi.Output[_builtins.str]:
+        """
+        Identifier of the primary certificate in a pack.
+        """
+        return pulumi.get(self, "primary_certificate")
 
     @_builtins.property
     @pulumi.getter
@@ -590,7 +657,7 @@ class CertificatePack(pulumi.CustomResource):
     @pulumi.getter(name="validationRecords")
     def validation_records(self) -> pulumi.Output[Sequence['outputs.CertificatePackValidationRecord']]:
         """
-        Certificates' validation records. Only present when certificate pack is in "pending*validation" status
+        Certificates' validation records.
         """
         return pulumi.get(self, "validation_records")
 

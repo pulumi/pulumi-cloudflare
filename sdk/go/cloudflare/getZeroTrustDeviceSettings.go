@@ -56,6 +56,14 @@ type LookupZeroTrustDeviceSettingsResult struct {
 	AccountId string `pulumi:"accountId"`
 	// Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
 	DisableForTime float64 `pulumi:"disableForTime"`
+	// Controls whether the external emergency disconnect feature is enabled.
+	ExternalEmergencySignalEnabled bool `pulumi:"externalEmergencySignalEnabled"`
+	// The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
+	ExternalEmergencySignalFingerprint string `pulumi:"externalEmergencySignalFingerprint"`
+	// The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds.
+	ExternalEmergencySignalInterval string `pulumi:"externalEmergencySignalInterval"`
+	// The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
+	ExternalEmergencySignalUrl string `pulumi:"externalEmergencySignalUrl"`
 	// Enable gateway proxy filtering on TCP.
 	GatewayProxyEnabled bool `pulumi:"gatewayProxyEnabled"`
 	// Enable gateway proxy filtering on UDP.
@@ -108,6 +116,26 @@ func (o LookupZeroTrustDeviceSettingsResultOutput) AccountId() pulumi.StringOutp
 // Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
 func (o LookupZeroTrustDeviceSettingsResultOutput) DisableForTime() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupZeroTrustDeviceSettingsResult) float64 { return v.DisableForTime }).(pulumi.Float64Output)
+}
+
+// Controls whether the external emergency disconnect feature is enabled.
+func (o LookupZeroTrustDeviceSettingsResultOutput) ExternalEmergencySignalEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustDeviceSettingsResult) bool { return v.ExternalEmergencySignalEnabled }).(pulumi.BoolOutput)
+}
+
+// The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
+func (o LookupZeroTrustDeviceSettingsResultOutput) ExternalEmergencySignalFingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustDeviceSettingsResult) string { return v.ExternalEmergencySignalFingerprint }).(pulumi.StringOutput)
+}
+
+// The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds.
+func (o LookupZeroTrustDeviceSettingsResultOutput) ExternalEmergencySignalInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustDeviceSettingsResult) string { return v.ExternalEmergencySignalInterval }).(pulumi.StringOutput)
+}
+
+// The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
+func (o LookupZeroTrustDeviceSettingsResultOutput) ExternalEmergencySignalUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustDeviceSettingsResult) string { return v.ExternalEmergencySignalUrl }).(pulumi.StringOutput)
 }
 
 // Enable gateway proxy filtering on TCP.

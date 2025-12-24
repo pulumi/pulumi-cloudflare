@@ -70,9 +70,9 @@ export interface GetCloudforceOneRequestAssetResult {
      */
     readonly fileType: string;
     /**
-     * Asset ID.
+     * UUID.
      */
-    readonly id: number;
+    readonly id: string;
     /**
      * Asset name.
      */

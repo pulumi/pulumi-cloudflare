@@ -114,7 +114,7 @@ namespace Pulumi.Cloudflare
         public readonly bool Hold;
         public readonly string HoldAfter;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Identifier.
         /// </summary>
         public readonly string Id;
         public readonly string IncludeSubdomains;

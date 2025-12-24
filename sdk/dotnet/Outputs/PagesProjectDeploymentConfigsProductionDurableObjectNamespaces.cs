@@ -16,10 +16,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// ID of the Durable Object namespace.
         /// </summary>
-        public readonly string? NamespaceId;
+        public readonly string NamespaceId;
 
         [OutputConstructor]
-        private PagesProjectDeploymentConfigsProductionDurableObjectNamespaces(string? namespaceId)
+        private PagesProjectDeploymentConfigsProductionDurableObjectNamespaces(string namespaceId)
         {
             NamespaceId = namespaceId;
         }

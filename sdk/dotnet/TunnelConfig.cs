@@ -50,6 +50,7 @@ namespace Pulumi.Cloudflare
     ///                         HttpHostHeader = "httpHostHeader",
     ///                         KeepAliveConnections = 100,
     ///                         KeepAliveTimeout = 90,
+    ///                         MatchSnItoHost = false,
     ///                         NoHappyEyeballs = false,
     ///                         NoTlsVerify = false,
     ///                         OriginServerName = "originServerName",
@@ -78,6 +79,7 @@ namespace Pulumi.Cloudflare
     ///                 HttpHostHeader = "httpHostHeader",
     ///                 KeepAliveConnections = 100,
     ///                 KeepAliveTimeout = 90,
+    ///                 MatchSnItoHost = false,
     ///                 NoHappyEyeballs = false,
     ///                 NoTlsVerify = false,
     ///                 OriginServerName = "originServerName",
@@ -134,12 +136,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("version")]
         public Output<int> Version { get; private set; } = null!;
-
-        /// <summary>
-        /// Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
-        /// </summary>
-        [Output("warpRoutingEnabled")]
-        public Output<bool> WarpRoutingEnabled { get; private set; } = null!;
 
 
         /// <summary>
@@ -216,12 +212,6 @@ namespace Pulumi.Cloudflare
         [Input("tunnelId", required: true)]
         public Input<string> TunnelId { get; set; } = null!;
 
-        /// <summary>
-        /// Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
-        /// </summary>
-        [Input("warpRoutingEnabled")]
-        public Input<bool>? WarpRoutingEnabled { get; set; }
-
         public TunnelConfigArgs()
         {
         }
@@ -263,12 +253,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("version")]
         public Input<int>? Version { get; set; }
-
-        /// <summary>
-        /// Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
-        /// </summary>
-        [Input("warpRoutingEnabled")]
-        public Input<bool>? WarpRoutingEnabled { get; set; }
 
         public TunnelConfigState()
         {

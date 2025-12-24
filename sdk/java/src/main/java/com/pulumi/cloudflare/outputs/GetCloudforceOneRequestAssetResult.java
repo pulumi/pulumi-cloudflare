@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
@@ -37,10 +36,10 @@ public final class GetCloudforceOneRequestAssetResult {
      */
     private String fileType;
     /**
-     * @return Asset ID.
+     * @return UUID.
      * 
      */
-    private Integer id;
+    private String id;
     /**
      * @return Asset name.
      * 
@@ -89,10 +88,10 @@ public final class GetCloudforceOneRequestAssetResult {
         return this.fileType;
     }
     /**
-     * @return Asset ID.
+     * @return UUID.
      * 
      */
-    public Integer id() {
+    public String id() {
         return this.id;
     }
     /**
@@ -124,7 +123,7 @@ public final class GetCloudforceOneRequestAssetResult {
         private String created;
         private String description;
         private String fileType;
-        private Integer id;
+        private String id;
         private String name;
         private String requestId;
         public Builder() {}
@@ -181,7 +180,7 @@ public final class GetCloudforceOneRequestAssetResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(Integer id) {
+        public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetCloudforceOneRequestAssetResult", "id");
             }

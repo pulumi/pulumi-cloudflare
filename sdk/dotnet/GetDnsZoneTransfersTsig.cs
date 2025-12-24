@@ -87,8 +87,8 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
-        [Input("tsigId")]
-        public string? TsigId { get; set; }
+        [Input("tsigId", required: true)]
+        public string TsigId { get; set; } = null!;
 
         public GetDnsZoneTransfersTsigArgs()
         {
@@ -101,8 +101,8 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        [Input("tsigId")]
-        public Input<string>? TsigId { get; set; }
+        [Input("tsigId", required: true)]
+        public Input<string> TsigId { get; set; } = null!;
 
         public GetDnsZoneTransfersTsigInvokeArgs()
         {
@@ -131,7 +131,7 @@ namespace Pulumi.Cloudflare
         /// TSIG secret.
         /// </summary>
         public readonly string Secret;
-        public readonly string? TsigId;
+        public readonly string TsigId;
 
         [OutputConstructor]
         private GetDnsZoneTransfersTsigResult(
@@ -145,7 +145,7 @@ namespace Pulumi.Cloudflare
 
             string secret,
 
-            string? tsigId)
+            string tsigId)
         {
             AccountId = accountId;
             Algo = algo;

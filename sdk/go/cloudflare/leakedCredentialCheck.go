@@ -38,6 +38,10 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ~> This resource does not currently support `pulumi import`.
 type LeakedCredentialCheck struct {
 	pulumi.CustomResourceState
 

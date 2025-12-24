@@ -33,7 +33,7 @@ export interface GetZeroTrustGatewayCertificateArgs {
     /**
      * Identify the certificate with a UUID.
      */
-    certificateId?: string;
+    certificateId: string;
 }
 
 /**
@@ -53,7 +53,7 @@ export interface GetZeroTrustGatewayCertificateResult {
     /**
      * Identify the certificate with a UUID.
      */
-    readonly certificateId?: string;
+    readonly certificateId: string;
     readonly createdAt: string;
     readonly expiresOn: string;
     /**
@@ -113,5 +113,5 @@ export interface GetZeroTrustGatewayCertificateOutputArgs {
     /**
      * Identify the certificate with a UUID.
      */
-    certificateId?: pulumi.Input<string>;
+    certificateId: pulumi.Input<string>;
 }

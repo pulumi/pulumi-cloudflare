@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustAccessCustomPagesResultResult
     {
         /// <summary>
+        /// UUID.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Custom page name.
         /// </summary>
         public readonly string Name;
@@ -29,12 +33,15 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private GetZeroTrustAccessCustomPagesResultResult(
+            string id,
+
             string name,
 
             string type,
 
             string uid)
         {
+            Id = id;
             Name = name;
             Type = type;
             Uid = uid;

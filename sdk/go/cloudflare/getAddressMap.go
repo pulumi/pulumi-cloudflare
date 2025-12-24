@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupAddressMap(ctx, &cloudflare.LookupAddressMapArgs{
 //				AccountId:    "258def64c72dae45f3e4c8516e2111f2",
-//				AddressMapId: pulumi.StringRef("055817b111884e0227e1be16a0be6ee0"),
+//				AddressMapId: "055817b111884e0227e1be16a0be6ee0",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -52,7 +52,7 @@ type LookupAddressMapArgs struct {
 	// Identifier of a Cloudflare account.
 	AccountId string `pulumi:"accountId"`
 	// Identifier of an Address Map.
-	AddressMapId *string `pulumi:"addressMapId"`
+	AddressMapId string `pulumi:"addressMapId"`
 }
 
 // A collection of values returned by getAddressMap.
@@ -60,7 +60,7 @@ type LookupAddressMapResult struct {
 	// Identifier of a Cloudflare account.
 	AccountId string `pulumi:"accountId"`
 	// Identifier of an Address Map.
-	AddressMapId *string `pulumi:"addressMapId"`
+	AddressMapId string `pulumi:"addressMapId"`
 	// If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
 	CanDelete bool `pulumi:"canDelete"`
 	// If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps.
@@ -95,7 +95,7 @@ type LookupAddressMapOutputArgs struct {
 	// Identifier of a Cloudflare account.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Identifier of an Address Map.
-	AddressMapId pulumi.StringPtrInput `pulumi:"addressMapId"`
+	AddressMapId pulumi.StringInput `pulumi:"addressMapId"`
 }
 
 func (LookupAddressMapOutputArgs) ElementType() reflect.Type {
@@ -123,8 +123,8 @@ func (o LookupAddressMapResultOutput) AccountId() pulumi.StringOutput {
 }
 
 // Identifier of an Address Map.
-func (o LookupAddressMapResultOutput) AddressMapId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupAddressMapResult) *string { return v.AddressMapId }).(pulumi.StringPtrOutput)
+func (o LookupAddressMapResultOutput) AddressMapId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAddressMapResult) string { return v.AddressMapId }).(pulumi.StringOutput)
 }
 
 // If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.

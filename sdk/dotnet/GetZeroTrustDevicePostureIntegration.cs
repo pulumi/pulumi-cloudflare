@@ -90,8 +90,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// API UUID.
         /// </summary>
-        [Input("integrationId")]
-        public string? IntegrationId { get; set; }
+        [Input("integrationId", required: true)]
+        public string IntegrationId { get; set; } = null!;
 
         public GetZeroTrustDevicePostureIntegrationArgs()
         {
@@ -107,8 +107,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// API UUID.
         /// </summary>
-        [Input("integrationId")]
-        public Input<string>? IntegrationId { get; set; }
+        [Input("integrationId", required: true)]
+        public Input<string> IntegrationId { get; set; } = null!;
 
         public GetZeroTrustDevicePostureIntegrationInvokeArgs()
         {
@@ -132,7 +132,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// API UUID.
         /// </summary>
-        public readonly string? IntegrationId;
+        public readonly string IntegrationId;
         /// <summary>
         /// The interval between each posture check with the third-party API. Use `M` for minutes (e.g. `5m`) and `H` for hours (e.g. `12h`).
         /// </summary>
@@ -155,7 +155,7 @@ namespace Pulumi.Cloudflare
 
             string id,
 
-            string? integrationId,
+            string integrationId,
 
             string interval,
 

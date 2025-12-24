@@ -34,7 +34,7 @@ export interface GetRateLimitArgs {
     /**
      * Defines the unique identifier of the rate limit.
      */
-    rateLimitId?: string;
+    rateLimitId: string;
     /**
      * Defines an identifier.
      */
@@ -76,7 +76,7 @@ export interface GetRateLimitResult {
     /**
      * Defines the unique identifier of the rate limit.
      */
-    readonly rateLimitId?: string;
+    readonly rateLimitId: string;
     /**
      * The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
      */
@@ -114,7 +114,7 @@ export interface GetRateLimitOutputArgs {
     /**
      * Defines the unique identifier of the rate limit.
      */
-    rateLimitId?: pulumi.Input<string>;
+    rateLimitId: pulumi.Input<string>;
     /**
      * Defines an identifier.
      */

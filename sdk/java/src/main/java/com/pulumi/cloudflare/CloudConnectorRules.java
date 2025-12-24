@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *                 .parameters(CloudConnectorRulesRuleParametersArgs.builder()
  *                     .host("examplebucket.s3.eu-north-1.amazonaws.com")
  *                     .build())
- *                 .provider("aws_s3")
+ *                 .cloudConnectorRulesProvider("aws_s3")
  *                 .build())
  *             .build());
  * 

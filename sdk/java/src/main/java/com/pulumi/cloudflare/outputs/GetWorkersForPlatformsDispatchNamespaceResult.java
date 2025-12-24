@@ -9,8 +9,6 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWorkersForPlatformsDispatchNamespaceResult {
@@ -33,7 +31,7 @@ public final class GetWorkersForPlatformsDispatchNamespaceResult {
      * @return Name of the Workers for Platforms dispatch namespace.
      * 
      */
-    private @Nullable String dispatchNamespace;
+    private String dispatchNamespace;
     /**
      * @return Name of the Workers for Platforms dispatch namespace.
      * 
@@ -96,8 +94,8 @@ public final class GetWorkersForPlatformsDispatchNamespaceResult {
      * @return Name of the Workers for Platforms dispatch namespace.
      * 
      */
-    public Optional<String> dispatchNamespace() {
-        return Optional.ofNullable(this.dispatchNamespace);
+    public String dispatchNamespace() {
+        return this.dispatchNamespace;
     }
     /**
      * @return Name of the Workers for Platforms dispatch namespace.
@@ -161,7 +159,7 @@ public final class GetWorkersForPlatformsDispatchNamespaceResult {
         private String accountId;
         private String createdBy;
         private String createdOn;
-        private @Nullable String dispatchNamespace;
+        private String dispatchNamespace;
         private String id;
         private String modifiedBy;
         private String modifiedOn;
@@ -210,8 +208,10 @@ public final class GetWorkersForPlatformsDispatchNamespaceResult {
             return this;
         }
         @CustomType.Setter
-        public Builder dispatchNamespace(@Nullable String dispatchNamespace) {
-
+        public Builder dispatchNamespace(String dispatchNamespace) {
+            if (dispatchNamespace == null) {
+              throw new MissingRequiredPropertyException("GetWorkersForPlatformsDispatchNamespaceResult", "dispatchNamespace");
+            }
             this.dispatchNamespace = dispatchNamespace;
             return this;
         }

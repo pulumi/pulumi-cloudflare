@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -28,6 +29,21 @@ public final class PagesProjectCanonicalDeploymentDeploymentTriggerMetadataArgs 
      */
     public Optional<Output<String>> branch() {
         return Optional.ofNullable(this.branch);
+    }
+
+    /**
+     * Whether the deployment trigger commit was dirty.
+     * 
+     */
+    @Import(name="commitDirty")
+    private @Nullable Output<Boolean> commitDirty;
+
+    /**
+     * @return Whether the deployment trigger commit was dirty.
+     * 
+     */
+    public Optional<Output<Boolean>> commitDirty() {
+        return Optional.ofNullable(this.commitDirty);
     }
 
     /**
@@ -64,6 +80,7 @@ public final class PagesProjectCanonicalDeploymentDeploymentTriggerMetadataArgs 
 
     private PagesProjectCanonicalDeploymentDeploymentTriggerMetadataArgs(PagesProjectCanonicalDeploymentDeploymentTriggerMetadataArgs $) {
         this.branch = $.branch;
+        this.commitDirty = $.commitDirty;
         this.commitHash = $.commitHash;
         this.commitMessage = $.commitMessage;
     }
@@ -105,6 +122,27 @@ public final class PagesProjectCanonicalDeploymentDeploymentTriggerMetadataArgs 
          */
         public Builder branch(String branch) {
             return branch(Output.of(branch));
+        }
+
+        /**
+         * @param commitDirty Whether the deployment trigger commit was dirty.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder commitDirty(@Nullable Output<Boolean> commitDirty) {
+            $.commitDirty = commitDirty;
+            return this;
+        }
+
+        /**
+         * @param commitDirty Whether the deployment trigger commit was dirty.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder commitDirty(Boolean commitDirty) {
+            return commitDirty(Output.of(commitDirty));
         }
 
         /**

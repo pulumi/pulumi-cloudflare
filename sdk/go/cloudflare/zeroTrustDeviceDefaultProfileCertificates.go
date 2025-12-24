@@ -38,6 +38,10 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ~> This resource does not currently support `pulumi import`.
 type ZeroTrustDeviceDefaultProfileCertificates struct {
 	pulumi.CustomResourceState
 

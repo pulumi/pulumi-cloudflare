@@ -71,7 +71,7 @@ export interface GetBotManagementResult {
      */
     readonly fightMode: boolean;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Identifier.
      */
     readonly id: string;
     /**

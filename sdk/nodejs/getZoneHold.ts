@@ -40,7 +40,7 @@ export interface GetZoneHoldResult {
     readonly hold: boolean;
     readonly holdAfter: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Identifier.
      */
     readonly id: string;
     readonly includeSubdomains: string;

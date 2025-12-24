@@ -28,6 +28,11 @@ public final class GetPagesProjectCanonicalDeploymentSourceConfig {
      */
     private String owner;
     /**
+     * @return The owner ID of the repository.
+     * 
+     */
+    private String ownerId;
+    /**
      * @return A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
      * 
      */
@@ -69,6 +74,11 @@ public final class GetPagesProjectCanonicalDeploymentSourceConfig {
      */
     private Boolean productionDeploymentsEnabled;
     /**
+     * @return The ID of the repository.
+     * 
+     */
+    private String repoId;
+    /**
      * @return The name of the repository.
      * 
      */
@@ -93,6 +103,13 @@ public final class GetPagesProjectCanonicalDeploymentSourceConfig {
      */
     public String owner() {
         return this.owner;
+    }
+    /**
+     * @return The owner ID of the repository.
+     * 
+     */
+    public String ownerId() {
+        return this.ownerId;
     }
     /**
      * @return A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
@@ -152,6 +169,13 @@ public final class GetPagesProjectCanonicalDeploymentSourceConfig {
         return this.productionDeploymentsEnabled;
     }
     /**
+     * @return The ID of the repository.
+     * 
+     */
+    public String repoId() {
+        return this.repoId;
+    }
+    /**
      * @return The name of the repository.
      * 
      */
@@ -170,6 +194,7 @@ public final class GetPagesProjectCanonicalDeploymentSourceConfig {
     public static final class Builder {
         private Boolean deploymentsEnabled;
         private String owner;
+        private String ownerId;
         private List<String> pathExcludes;
         private List<String> pathIncludes;
         private Boolean prCommentsEnabled;
@@ -178,12 +203,14 @@ public final class GetPagesProjectCanonicalDeploymentSourceConfig {
         private String previewDeploymentSetting;
         private String productionBranch;
         private Boolean productionDeploymentsEnabled;
+        private String repoId;
         private String repoName;
         public Builder() {}
         public Builder(GetPagesProjectCanonicalDeploymentSourceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deploymentsEnabled = defaults.deploymentsEnabled;
     	      this.owner = defaults.owner;
+    	      this.ownerId = defaults.ownerId;
     	      this.pathExcludes = defaults.pathExcludes;
     	      this.pathIncludes = defaults.pathIncludes;
     	      this.prCommentsEnabled = defaults.prCommentsEnabled;
@@ -192,6 +219,7 @@ public final class GetPagesProjectCanonicalDeploymentSourceConfig {
     	      this.previewDeploymentSetting = defaults.previewDeploymentSetting;
     	      this.productionBranch = defaults.productionBranch;
     	      this.productionDeploymentsEnabled = defaults.productionDeploymentsEnabled;
+    	      this.repoId = defaults.repoId;
     	      this.repoName = defaults.repoName;
         }
 
@@ -209,6 +237,14 @@ public final class GetPagesProjectCanonicalDeploymentSourceConfig {
               throw new MissingRequiredPropertyException("GetPagesProjectCanonicalDeploymentSourceConfig", "owner");
             }
             this.owner = owner;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ownerId(String ownerId) {
+            if (ownerId == null) {
+              throw new MissingRequiredPropertyException("GetPagesProjectCanonicalDeploymentSourceConfig", "ownerId");
+            }
+            this.ownerId = ownerId;
             return this;
         }
         @CustomType.Setter
@@ -288,6 +324,14 @@ public final class GetPagesProjectCanonicalDeploymentSourceConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder repoId(String repoId) {
+            if (repoId == null) {
+              throw new MissingRequiredPropertyException("GetPagesProjectCanonicalDeploymentSourceConfig", "repoId");
+            }
+            this.repoId = repoId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder repoName(String repoName) {
             if (repoName == null) {
               throw new MissingRequiredPropertyException("GetPagesProjectCanonicalDeploymentSourceConfig", "repoName");
@@ -299,6 +343,7 @@ public final class GetPagesProjectCanonicalDeploymentSourceConfig {
             final var _resultValue = new GetPagesProjectCanonicalDeploymentSourceConfig();
             _resultValue.deploymentsEnabled = deploymentsEnabled;
             _resultValue.owner = owner;
+            _resultValue.ownerId = ownerId;
             _resultValue.pathExcludes = pathExcludes;
             _resultValue.pathIncludes = pathIncludes;
             _resultValue.prCommentsEnabled = prCommentsEnabled;
@@ -307,6 +352,7 @@ public final class GetPagesProjectCanonicalDeploymentSourceConfig {
             _resultValue.previewDeploymentSetting = previewDeploymentSetting;
             _resultValue.productionBranch = productionBranch;
             _resultValue.productionDeploymentsEnabled = productionDeploymentsEnabled;
+            _resultValue.repoId = repoId;
             _resultValue.repoName = repoName;
             return _resultValue;
         }

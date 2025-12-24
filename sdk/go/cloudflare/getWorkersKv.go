@@ -62,7 +62,7 @@ type LookupWorkersKvArgs struct {
 type LookupWorkersKvResult struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
+	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
 	Id string `pulumi:"id"`
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
 	KeyName string `pulumi:"keyName"`
@@ -113,7 +113,7 @@ func (o LookupWorkersKvResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersKvResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
 func (o LookupWorkersKvResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersKvResult) string { return v.Id }).(pulumi.StringOutput)
 }

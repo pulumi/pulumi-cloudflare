@@ -19,6 +19,10 @@ import * as utilities from "./utilities";
  *     label: "director commentary",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ~> This resource does not currently support `pulumi import`.
  */
 export class StreamAudioTrack extends pulumi.CustomResource {
     /**

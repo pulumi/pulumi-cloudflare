@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupList(ctx, &cloudflare.LookupListArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
-//				ListId:    pulumi.StringRef("2c0fc9fa937b11eaa1b71c4d701ab86e"),
+//				ListId:    "2c0fc9fa937b11eaa1b71c4d701ab86e",
 //				Search:    pulumi.StringRef("1.1.1.1"),
 //			}, nil)
 //			if err != nil {
@@ -53,7 +53,7 @@ type LookupListArgs struct {
 	// The Account ID for this resource.
 	AccountId string `pulumi:"accountId"`
 	// The unique ID of the list.
-	ListId *string `pulumi:"listId"`
+	ListId string `pulumi:"listId"`
 	// A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
 	Search *string `pulumi:"search"`
 }
@@ -74,7 +74,7 @@ type LookupListResult struct {
 	// Available values: "ip", "redirect", "hostname", "asn".
 	Kind string `pulumi:"kind"`
 	// The unique ID of the list.
-	ListId *string `pulumi:"listId"`
+	ListId string `pulumi:"listId"`
 	// The RFC 3339 timestamp of when the list was last modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
 	// An informative name for the list. Use this name in filter and rule expressions.
@@ -101,7 +101,7 @@ type LookupListOutputArgs struct {
 	// The Account ID for this resource.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The unique ID of the list.
-	ListId pulumi.StringPtrInput `pulumi:"listId"`
+	ListId pulumi.StringInput `pulumi:"listId"`
 	// A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
 	Search pulumi.StringPtrInput `pulumi:"search"`
 }
@@ -157,8 +157,8 @@ func (o LookupListResultOutput) Kind() pulumi.StringOutput {
 }
 
 // The unique ID of the list.
-func (o LookupListResultOutput) ListId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupListResult) *string { return v.ListId }).(pulumi.StringPtrOutput)
+func (o LookupListResultOutput) ListId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupListResult) string { return v.ListId }).(pulumi.StringOutput)
 }
 
 // The RFC 3339 timestamp of when the list was last modified.

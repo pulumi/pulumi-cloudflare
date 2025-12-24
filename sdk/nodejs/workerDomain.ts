@@ -13,10 +13,10 @@ import * as utilities from "./utilities";
  *
  * const exampleWorkersCustomDomain = new cloudflare.WorkersCustomDomain("example_workers_custom_domain", {
  *     accountId: "9a7806061c88ada191ed06f989cc3dac",
- *     environment: "production",
  *     hostname: "foo.example.com",
  *     service: "foo",
  *     zoneId: "593c9c94de529bbbfaac7c53ced0447d",
+ *     environment: "production",
  * });
  * ```
  *
@@ -63,8 +63,10 @@ export class WorkerDomain extends pulumi.CustomResource {
     declare public readonly accountId: pulumi.Output<string>;
     /**
      * Worker environment associated with the zone and hostname.
+     *
+     * @deprecated This attribute is deprecated.
      */
-    declare public readonly environment: pulumi.Output<string>;
+    declare public readonly environment: pulumi.Output<string | undefined>;
     /**
      * Hostname of the Worker Domain.
      */
@@ -109,9 +111,6 @@ export class WorkerDomain extends pulumi.CustomResource {
             if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if (args?.environment === undefined && !opts.urn) {
-                throw new Error("Missing required property 'environment'");
-            }
             if (args?.hostname === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostname'");
             }
@@ -145,6 +144,8 @@ export interface WorkerDomainState {
     accountId?: pulumi.Input<string>;
     /**
      * Worker environment associated with the zone and hostname.
+     *
+     * @deprecated This attribute is deprecated.
      */
     environment?: pulumi.Input<string>;
     /**
@@ -175,8 +176,10 @@ export interface WorkerDomainArgs {
     accountId: pulumi.Input<string>;
     /**
      * Worker environment associated with the zone and hostname.
+     *
+     * @deprecated This attribute is deprecated.
      */
-    environment: pulumi.Input<string>;
+    environment?: pulumi.Input<string>;
     /**
      * Hostname of the Worker Domain.
      */

@@ -83,7 +83,7 @@ class GetMagicTransitConnectorResult:
 
     @_builtins.property
     @pulumi.getter(name="connectorId")
-    def connector_id(self) -> Optional[_builtins.str]:
+    def connector_id(self) -> _builtins.str:
         return pulumi.get(self, "connector_id")
 
     @_builtins.property
@@ -199,7 +199,7 @@ def get_magic_transit_connector(account_id: Optional[_builtins.str] = None,
         notes=pulumi.get(__ret__, 'notes'),
         timezone=pulumi.get(__ret__, 'timezone'))
 def get_magic_transit_connector_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                       connector_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                       connector_id: Optional[pulumi.Input[_builtins.str]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMagicTransitConnectorResult]:
     """
     ## Example Usage

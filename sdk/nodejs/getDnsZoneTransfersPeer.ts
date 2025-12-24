@@ -30,7 +30,7 @@ export function getDnsZoneTransfersPeer(args: GetDnsZoneTransfersPeerArgs, opts?
  */
 export interface GetDnsZoneTransfersPeerArgs {
     accountId: string;
-    peerId?: string;
+    peerId: string;
 }
 
 /**
@@ -54,7 +54,7 @@ export interface GetDnsZoneTransfersPeerResult {
      * The name of the peer.
      */
     readonly name: string;
-    readonly peerId?: string;
+    readonly peerId: string;
     /**
      * DNS port of primary or secondary nameserver, depending on what zone this peer is linked to.
      */
@@ -90,5 +90,5 @@ export function getDnsZoneTransfersPeerOutput(args: GetDnsZoneTransfersPeerOutpu
  */
 export interface GetDnsZoneTransfersPeerOutputArgs {
     accountId: pulumi.Input<string>;
-    peerId?: pulumi.Input<string>;
+    peerId: pulumi.Input<string>;
 }

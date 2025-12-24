@@ -70,8 +70,8 @@ type LookupCloudforceOneRequestAssetResult struct {
 	Description string `pulumi:"description"`
 	// Asset file type.
 	FileType string `pulumi:"fileType"`
-	// Asset ID.
-	Id int `pulumi:"id"`
+	// UUID.
+	Id string `pulumi:"id"`
 	// Asset name.
 	Name string `pulumi:"name"`
 	// UUID.
@@ -141,9 +141,9 @@ func (o LookupCloudforceOneRequestAssetResultOutput) FileType() pulumi.StringOut
 	return o.ApplyT(func(v LookupCloudforceOneRequestAssetResult) string { return v.FileType }).(pulumi.StringOutput)
 }
 
-// Asset ID.
-func (o LookupCloudforceOneRequestAssetResultOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupCloudforceOneRequestAssetResult) int { return v.Id }).(pulumi.IntOutput)
+// UUID.
+func (o LookupCloudforceOneRequestAssetResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestAssetResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Asset name.

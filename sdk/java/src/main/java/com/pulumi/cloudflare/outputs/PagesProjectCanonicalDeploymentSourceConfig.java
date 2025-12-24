@@ -29,6 +29,11 @@ public final class PagesProjectCanonicalDeploymentSourceConfig {
      */
     private @Nullable String owner;
     /**
+     * @return The owner ID of the repository.
+     * 
+     */
+    private @Nullable String ownerId;
+    /**
      * @return A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
      * 
      */
@@ -70,6 +75,11 @@ public final class PagesProjectCanonicalDeploymentSourceConfig {
      */
     private @Nullable Boolean productionDeploymentsEnabled;
     /**
+     * @return The ID of the repository.
+     * 
+     */
+    private @Nullable String repoId;
+    /**
      * @return The name of the repository.
      * 
      */
@@ -94,6 +104,13 @@ public final class PagesProjectCanonicalDeploymentSourceConfig {
      */
     public Optional<String> owner() {
         return Optional.ofNullable(this.owner);
+    }
+    /**
+     * @return The owner ID of the repository.
+     * 
+     */
+    public Optional<String> ownerId() {
+        return Optional.ofNullable(this.ownerId);
     }
     /**
      * @return A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
@@ -153,6 +170,13 @@ public final class PagesProjectCanonicalDeploymentSourceConfig {
         return Optional.ofNullable(this.productionDeploymentsEnabled);
     }
     /**
+     * @return The ID of the repository.
+     * 
+     */
+    public Optional<String> repoId() {
+        return Optional.ofNullable(this.repoId);
+    }
+    /**
      * @return The name of the repository.
      * 
      */
@@ -171,6 +195,7 @@ public final class PagesProjectCanonicalDeploymentSourceConfig {
     public static final class Builder {
         private @Nullable Boolean deploymentsEnabled;
         private @Nullable String owner;
+        private @Nullable String ownerId;
         private @Nullable List<String> pathExcludes;
         private @Nullable List<String> pathIncludes;
         private @Nullable Boolean prCommentsEnabled;
@@ -179,12 +204,14 @@ public final class PagesProjectCanonicalDeploymentSourceConfig {
         private @Nullable String previewDeploymentSetting;
         private @Nullable String productionBranch;
         private @Nullable Boolean productionDeploymentsEnabled;
+        private @Nullable String repoId;
         private @Nullable String repoName;
         public Builder() {}
         public Builder(PagesProjectCanonicalDeploymentSourceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deploymentsEnabled = defaults.deploymentsEnabled;
     	      this.owner = defaults.owner;
+    	      this.ownerId = defaults.ownerId;
     	      this.pathExcludes = defaults.pathExcludes;
     	      this.pathIncludes = defaults.pathIncludes;
     	      this.prCommentsEnabled = defaults.prCommentsEnabled;
@@ -193,6 +220,7 @@ public final class PagesProjectCanonicalDeploymentSourceConfig {
     	      this.previewDeploymentSetting = defaults.previewDeploymentSetting;
     	      this.productionBranch = defaults.productionBranch;
     	      this.productionDeploymentsEnabled = defaults.productionDeploymentsEnabled;
+    	      this.repoId = defaults.repoId;
     	      this.repoName = defaults.repoName;
         }
 
@@ -206,6 +234,12 @@ public final class PagesProjectCanonicalDeploymentSourceConfig {
         public Builder owner(@Nullable String owner) {
 
             this.owner = owner;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ownerId(@Nullable String ownerId) {
+
+            this.ownerId = ownerId;
             return this;
         }
         @CustomType.Setter
@@ -269,6 +303,12 @@ public final class PagesProjectCanonicalDeploymentSourceConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder repoId(@Nullable String repoId) {
+
+            this.repoId = repoId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder repoName(@Nullable String repoName) {
 
             this.repoName = repoName;
@@ -278,6 +318,7 @@ public final class PagesProjectCanonicalDeploymentSourceConfig {
             final var _resultValue = new PagesProjectCanonicalDeploymentSourceConfig();
             _resultValue.deploymentsEnabled = deploymentsEnabled;
             _resultValue.owner = owner;
+            _resultValue.ownerId = ownerId;
             _resultValue.pathExcludes = pathExcludes;
             _resultValue.pathIncludes = pathIncludes;
             _resultValue.prCommentsEnabled = prCommentsEnabled;
@@ -286,6 +327,7 @@ public final class PagesProjectCanonicalDeploymentSourceConfig {
             _resultValue.previewDeploymentSetting = previewDeploymentSetting;
             _resultValue.productionBranch = productionBranch;
             _resultValue.productionDeploymentsEnabled = productionDeploymentsEnabled;
+            _resultValue.repoId = repoId;
             _resultValue.repoName = repoName;
             return _resultValue;
         }

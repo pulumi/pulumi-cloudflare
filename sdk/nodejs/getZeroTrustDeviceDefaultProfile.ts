@@ -80,7 +80,7 @@ export interface GetZeroTrustDeviceDefaultProfileResult {
     readonly fallbackDomains: outputs.GetZeroTrustDeviceDefaultProfileFallbackDomain[];
     readonly gatewayUniqueId: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this resource.
      */
     readonly id: string;
     /**

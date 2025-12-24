@@ -3,7 +3,6 @@
 
 package com.pulumi.cloudflare;
 
-import com.pulumi.cloudflare.inputs.ZeroTrustDlpPredefinedProfileContextAwarenessArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDlpPredefinedProfileEntryArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -49,27 +48,11 @@ public final class ZeroTrustDlpPredefinedProfileArgs extends com.pulumi.resource
         return Optional.ofNullable(this.confidenceThreshold);
     }
 
-    /**
-     * Scan the context of predefined entries to only return matches surrounded by keywords.
-     * 
-     * @deprecated
-     * This attribute is deprecated.
-     * 
-     */
-    @Deprecated /* This attribute is deprecated. */
-    @Import(name="contextAwareness")
-    private @Nullable Output<ZeroTrustDlpPredefinedProfileContextAwarenessArgs> contextAwareness;
+    @Import(name="enabledEntries")
+    private @Nullable Output<List<String>> enabledEntries;
 
-    /**
-     * @return Scan the context of predefined entries to only return matches surrounded by keywords.
-     * 
-     * @deprecated
-     * This attribute is deprecated.
-     * 
-     */
-    @Deprecated /* This attribute is deprecated. */
-    public Optional<Output<ZeroTrustDlpPredefinedProfileContextAwarenessArgs>> contextAwareness() {
-        return Optional.ofNullable(this.contextAwareness);
+    public Optional<Output<List<String>>> enabledEntries() {
+        return Optional.ofNullable(this.enabledEntries);
     }
 
     /**
@@ -112,7 +95,7 @@ public final class ZeroTrustDlpPredefinedProfileArgs extends com.pulumi.resource
         this.aiContextEnabled = $.aiContextEnabled;
         this.allowedMatchCount = $.allowedMatchCount;
         this.confidenceThreshold = $.confidenceThreshold;
-        this.contextAwareness = $.contextAwareness;
+        this.enabledEntries = $.enabledEntries;
         this.entries = $.entries;
         this.ocrEnabled = $.ocrEnabled;
         this.profileId = $.profileId;
@@ -172,33 +155,17 @@ public final class ZeroTrustDlpPredefinedProfileArgs extends com.pulumi.resource
             return confidenceThreshold(Output.of(confidenceThreshold));
         }
 
-        /**
-         * @param contextAwareness Scan the context of predefined entries to only return matches surrounded by keywords.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * This attribute is deprecated.
-         * 
-         */
-        @Deprecated /* This attribute is deprecated. */
-        public Builder contextAwareness(@Nullable Output<ZeroTrustDlpPredefinedProfileContextAwarenessArgs> contextAwareness) {
-            $.contextAwareness = contextAwareness;
+        public Builder enabledEntries(@Nullable Output<List<String>> enabledEntries) {
+            $.enabledEntries = enabledEntries;
             return this;
         }
 
-        /**
-         * @param contextAwareness Scan the context of predefined entries to only return matches surrounded by keywords.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * This attribute is deprecated.
-         * 
-         */
-        @Deprecated /* This attribute is deprecated. */
-        public Builder contextAwareness(ZeroTrustDlpPredefinedProfileContextAwarenessArgs contextAwareness) {
-            return contextAwareness(Output.of(contextAwareness));
+        public Builder enabledEntries(List<String> enabledEntries) {
+            return enabledEntries(Output.of(enabledEntries));
+        }
+
+        public Builder enabledEntries(String... enabledEntries) {
+            return enabledEntries(List.of(enabledEntries));
         }
 
         /**

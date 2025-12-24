@@ -19,6 +19,10 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool AutoInstall;
         public readonly string Created;
         /// <summary>
+        /// The Web Analytics site identifier.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// A list of rules.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetWebAnalyticsSitesResultRuleResult> Rules;
@@ -42,6 +46,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string created,
 
+            string id,
+
             ImmutableArray<Outputs.GetWebAnalyticsSitesResultRuleResult> rules,
 
             Outputs.GetWebAnalyticsSitesResultRulesetResult ruleset,
@@ -54,6 +60,7 @@ namespace Pulumi.Cloudflare.Outputs
         {
             AutoInstall = autoInstall;
             Created = created;
+            Id = id;
             Rules = rules;
             Ruleset = ruleset;
             SiteTag = siteTag;

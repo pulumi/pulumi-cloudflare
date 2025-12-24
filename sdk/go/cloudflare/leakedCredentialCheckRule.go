@@ -39,6 +39,12 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule example '<zone_id>/<detection_id>'
+// ```
 type LeakedCredentialCheckRule struct {
 	pulumi.CustomResourceState
 

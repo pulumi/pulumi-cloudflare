@@ -32,7 +32,7 @@ export interface GetRegionalHostnameArgs {
     /**
      * DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
      */
-    hostname?: string;
+    hostname: string;
     /**
      * Identifier.
      */
@@ -96,7 +96,7 @@ export interface GetRegionalHostnameOutputArgs {
     /**
      * DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
      */
-    hostname?: pulumi.Input<string>;
+    hostname: pulumi.Input<string>;
     /**
      * Identifier.
      */

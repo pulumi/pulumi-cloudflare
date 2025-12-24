@@ -14,118 +14,120 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetPagesProjectsResultResult
     {
         /// <summary>
-        /// A list of alias URLs pointing to this deployment.
-        /// </summary>
-        public readonly ImmutableArray<string> Aliases;
-        /// <summary>
         /// Configs for the project build process.
         /// </summary>
         public readonly Outputs.GetPagesProjectsResultBuildConfigResult BuildConfig;
         /// <summary>
-        /// When the deployment was created.
+        /// Most recent production deployment of the project.
+        /// </summary>
+        public readonly Outputs.GetPagesProjectsResultCanonicalDeploymentResult CanonicalDeployment;
+        /// <summary>
+        /// When the project was created.
         /// </summary>
         public readonly string CreatedOn;
         /// <summary>
-        /// Info about what caused the deployment.
+        /// Configs for deployments in a project.
         /// </summary>
-        public readonly Outputs.GetPagesProjectsResultDeploymentTriggerResult DeploymentTrigger;
+        public readonly Outputs.GetPagesProjectsResultDeploymentConfigsResult DeploymentConfigs;
         /// <summary>
-        /// Environment variables used for builds and Pages Functions.
+        /// A list of associated custom domains for the project.
         /// </summary>
-        public readonly ImmutableDictionary<string, Outputs.GetPagesProjectsResultEnvVarsResult> EnvVars;
+        public readonly ImmutableArray<string> Domains;
         /// <summary>
-        /// Type of deploy.
-        /// Available values: "preview", "production".
+        /// Framework the project is using.
         /// </summary>
-        public readonly string Environment;
+        public readonly string Framework;
         /// <summary>
-        /// Id of the deployment.
+        /// Version of the framework the project is using.
+        /// </summary>
+        public readonly string FrameworkVersion;
+        /// <summary>
+        /// ID of the project.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// If the deployment has been skipped.
+        /// Most recent deployment of the project.
         /// </summary>
-        public readonly bool IsSkipped;
-        /// <summary>
-        /// The status of the deployment.
-        /// </summary>
-        public readonly Outputs.GetPagesProjectsResultLatestStageResult LatestStage;
-        /// <summary>
-        /// When the deployment was last modified.
-        /// </summary>
-        public readonly string ModifiedOn;
-        /// <summary>
-        /// Id of the project.
-        /// </summary>
-        public readonly string ProjectId;
+        public readonly Outputs.GetPagesProjectsResultLatestDeploymentResult LatestDeployment;
         /// <summary>
         /// Name of the project.
         /// </summary>
-        public readonly string ProjectName;
+        public readonly string Name;
         /// <summary>
-        /// Short Id (8 character) of the deployment.
+        /// Name of the preview script.
         /// </summary>
-        public readonly string ShortId;
+        public readonly string PreviewScriptName;
+        /// <summary>
+        /// Production branch of the project. Used to identify production deployments.
+        /// </summary>
+        public readonly string ProductionBranch;
+        /// <summary>
+        /// Name of the production script.
+        /// </summary>
+        public readonly string ProductionScriptName;
+        /// <summary>
+        /// Configs for the project source control.
+        /// </summary>
         public readonly Outputs.GetPagesProjectsResultSourceResult Source;
         /// <summary>
-        /// List of past stages.
+        /// The Cloudflare subdomain associated with the project.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetPagesProjectsResultStageResult> Stages;
+        public readonly string Subdomain;
         /// <summary>
-        /// The live URL to view this deployment.
+        /// Whether the project uses functions.
         /// </summary>
-        public readonly string Url;
+        public readonly bool UsesFunctions;
 
         [OutputConstructor]
         private GetPagesProjectsResultResult(
-            ImmutableArray<string> aliases,
-
             Outputs.GetPagesProjectsResultBuildConfigResult buildConfig,
+
+            Outputs.GetPagesProjectsResultCanonicalDeploymentResult canonicalDeployment,
 
             string createdOn,
 
-            Outputs.GetPagesProjectsResultDeploymentTriggerResult deploymentTrigger,
+            Outputs.GetPagesProjectsResultDeploymentConfigsResult deploymentConfigs,
 
-            ImmutableDictionary<string, Outputs.GetPagesProjectsResultEnvVarsResult> envVars,
+            ImmutableArray<string> domains,
 
-            string environment,
+            string framework,
+
+            string frameworkVersion,
 
             string id,
 
-            bool isSkipped,
+            Outputs.GetPagesProjectsResultLatestDeploymentResult latestDeployment,
 
-            Outputs.GetPagesProjectsResultLatestStageResult latestStage,
+            string name,
 
-            string modifiedOn,
+            string previewScriptName,
 
-            string projectId,
+            string productionBranch,
 
-            string projectName,
-
-            string shortId,
+            string productionScriptName,
 
             Outputs.GetPagesProjectsResultSourceResult source,
 
-            ImmutableArray<Outputs.GetPagesProjectsResultStageResult> stages,
+            string subdomain,
 
-            string url)
+            bool usesFunctions)
         {
-            Aliases = aliases;
             BuildConfig = buildConfig;
+            CanonicalDeployment = canonicalDeployment;
             CreatedOn = createdOn;
-            DeploymentTrigger = deploymentTrigger;
-            EnvVars = envVars;
-            Environment = environment;
+            DeploymentConfigs = deploymentConfigs;
+            Domains = domains;
+            Framework = framework;
+            FrameworkVersion = frameworkVersion;
             Id = id;
-            IsSkipped = isSkipped;
-            LatestStage = latestStage;
-            ModifiedOn = modifiedOn;
-            ProjectId = projectId;
-            ProjectName = projectName;
-            ShortId = shortId;
+            LatestDeployment = latestDeployment;
+            Name = name;
+            PreviewScriptName = previewScriptName;
+            ProductionBranch = productionBranch;
+            ProductionScriptName = productionScriptName;
             Source = source;
-            Stages = stages;
-            Url = url;
+            Subdomain = subdomain;
+            UsesFunctions = usesFunctions;
         }
     }
 }

@@ -87,8 +87,8 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
-        [Input("integrationId")]
-        public string? IntegrationId { get; set; }
+        [Input("integrationId", required: true)]
+        public string IntegrationId { get; set; } = null!;
 
         public GetZeroTrustRiskScoringIntegrationArgs()
         {
@@ -101,8 +101,8 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        [Input("integrationId")]
-        public Input<string>? IntegrationId { get; set; }
+        [Input("integrationId", required: true)]
+        public Input<string> IntegrationId { get; set; } = null!;
 
         public GetZeroTrustRiskScoringIntegrationInvokeArgs()
         {
@@ -131,7 +131,7 @@ namespace Pulumi.Cloudflare
         /// The ID of this resource.
         /// </summary>
         public readonly string Id;
-        public readonly string? IntegrationId;
+        public readonly string IntegrationId;
         /// <summary>
         /// Available values: "Okta".
         /// </summary>
@@ -163,7 +163,7 @@ namespace Pulumi.Cloudflare
 
             string id,
 
-            string? integrationId,
+            string integrationId,
 
             string integrationType,
 

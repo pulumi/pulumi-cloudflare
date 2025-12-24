@@ -4,7 +4,9 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetWorkersScriptsResultNamedHandler;
+import com.pulumi.cloudflare.outputs.GetWorkersScriptsResultObservability;
 import com.pulumi.cloudflare.outputs.GetWorkersScriptsResultPlacement;
+import com.pulumi.cloudflare.outputs.GetWorkersScriptsResultRoute;
 import com.pulumi.cloudflare.outputs.GetWorkersScriptsResultTailConsumer;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -51,7 +53,7 @@ public final class GetWorkersScriptsResult {
      */
     private Boolean hasModules;
     /**
-     * @return The id of the script in the Workers system. Usually the script name.
+     * @return The name used to identify the script.
      * 
      */
     private String id;
@@ -81,13 +83,17 @@ public final class GetWorkersScriptsResult {
      */
     private List<GetWorkersScriptsResultNamedHandler> namedHandlers;
     /**
+     * @return Observability settings for the Worker.
+     * 
+     */
+    private GetWorkersScriptsResultObservability observability;
+    /**
      * @return Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * 
      */
     private GetWorkersScriptsResultPlacement placement;
     /**
-     * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: &#34;smart&#34;.
+     * @return Available values: &#34;smart&#34;.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -96,8 +102,7 @@ public final class GetWorkersScriptsResult {
     @Deprecated /* This attribute is deprecated. */
     private String placementMode;
     /**
-     * @return Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
+     * @return Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -105,6 +110,21 @@ public final class GetWorkersScriptsResult {
      */
     @Deprecated /* This attribute is deprecated. */
     private String placementStatus;
+    /**
+     * @return Routes associated with the Worker.
+     * 
+     */
+    private List<GetWorkersScriptsResultRoute> routes;
+    /**
+     * @return The immutable ID of the script.
+     * 
+     */
+    private String tag;
+    /**
+     * @return Tags associated with the Worker.
+     * 
+     */
+    private List<String> tags;
     /**
      * @return List of Workers that will consume logs from the attached Worker.
      * 
@@ -168,7 +188,7 @@ public final class GetWorkersScriptsResult {
         return this.hasModules;
     }
     /**
-     * @return The id of the script in the Workers system. Usually the script name.
+     * @return The name used to identify the script.
      * 
      */
     public String id() {
@@ -210,6 +230,13 @@ public final class GetWorkersScriptsResult {
         return this.namedHandlers;
     }
     /**
+     * @return Observability settings for the Worker.
+     * 
+     */
+    public GetWorkersScriptsResultObservability observability() {
+        return this.observability;
+    }
+    /**
      * @return Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * 
      */
@@ -217,8 +244,7 @@ public final class GetWorkersScriptsResult {
         return this.placement;
     }
     /**
-     * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: &#34;smart&#34;.
+     * @return Available values: &#34;smart&#34;.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -229,8 +255,7 @@ public final class GetWorkersScriptsResult {
         return this.placementMode;
     }
     /**
-     * @return Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
+     * @return Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -239,6 +264,27 @@ public final class GetWorkersScriptsResult {
     @Deprecated /* This attribute is deprecated. */
     public String placementStatus() {
         return this.placementStatus;
+    }
+    /**
+     * @return Routes associated with the Worker.
+     * 
+     */
+    public List<GetWorkersScriptsResultRoute> routes() {
+        return this.routes;
+    }
+    /**
+     * @return The immutable ID of the script.
+     * 
+     */
+    public String tag() {
+        return this.tag;
+    }
+    /**
+     * @return Tags associated with the Worker.
+     * 
+     */
+    public List<String> tags() {
+        return this.tags;
     }
     /**
      * @return List of Workers that will consume logs from the attached Worker.
@@ -278,9 +324,13 @@ public final class GetWorkersScriptsResult {
         private String migrationTag;
         private String modifiedOn;
         private List<GetWorkersScriptsResultNamedHandler> namedHandlers;
+        private GetWorkersScriptsResultObservability observability;
         private GetWorkersScriptsResultPlacement placement;
         private String placementMode;
         private String placementStatus;
+        private List<GetWorkersScriptsResultRoute> routes;
+        private String tag;
+        private List<String> tags;
         private List<GetWorkersScriptsResultTailConsumer> tailConsumers;
         private String usageModel;
         public Builder() {}
@@ -299,9 +349,13 @@ public final class GetWorkersScriptsResult {
     	      this.migrationTag = defaults.migrationTag;
     	      this.modifiedOn = defaults.modifiedOn;
     	      this.namedHandlers = defaults.namedHandlers;
+    	      this.observability = defaults.observability;
     	      this.placement = defaults.placement;
     	      this.placementMode = defaults.placementMode;
     	      this.placementStatus = defaults.placementStatus;
+    	      this.routes = defaults.routes;
+    	      this.tag = defaults.tag;
+    	      this.tags = defaults.tags;
     	      this.tailConsumers = defaults.tailConsumers;
     	      this.usageModel = defaults.usageModel;
         }
@@ -420,6 +474,14 @@ public final class GetWorkersScriptsResult {
             return namedHandlers(List.of(namedHandlers));
         }
         @CustomType.Setter
+        public Builder observability(GetWorkersScriptsResultObservability observability) {
+            if (observability == null) {
+              throw new MissingRequiredPropertyException("GetWorkersScriptsResult", "observability");
+            }
+            this.observability = observability;
+            return this;
+        }
+        @CustomType.Setter
         public Builder placement(GetWorkersScriptsResultPlacement placement) {
             if (placement == null) {
               throw new MissingRequiredPropertyException("GetWorkersScriptsResult", "placement");
@@ -442,6 +504,36 @@ public final class GetWorkersScriptsResult {
             }
             this.placementStatus = placementStatus;
             return this;
+        }
+        @CustomType.Setter
+        public Builder routes(List<GetWorkersScriptsResultRoute> routes) {
+            if (routes == null) {
+              throw new MissingRequiredPropertyException("GetWorkersScriptsResult", "routes");
+            }
+            this.routes = routes;
+            return this;
+        }
+        public Builder routes(GetWorkersScriptsResultRoute... routes) {
+            return routes(List.of(routes));
+        }
+        @CustomType.Setter
+        public Builder tag(String tag) {
+            if (tag == null) {
+              throw new MissingRequiredPropertyException("GetWorkersScriptsResult", "tag");
+            }
+            this.tag = tag;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tags(List<String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetWorkersScriptsResult", "tags");
+            }
+            this.tags = tags;
+            return this;
+        }
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
         }
         @CustomType.Setter
         public Builder tailConsumers(List<GetWorkersScriptsResultTailConsumer> tailConsumers) {
@@ -477,9 +569,13 @@ public final class GetWorkersScriptsResult {
             _resultValue.migrationTag = migrationTag;
             _resultValue.modifiedOn = modifiedOn;
             _resultValue.namedHandlers = namedHandlers;
+            _resultValue.observability = observability;
             _resultValue.placement = placement;
             _resultValue.placementMode = placementMode;
             _resultValue.placementStatus = placementStatus;
+            _resultValue.routes = routes;
+            _resultValue.tag = tag;
+            _resultValue.tags = tags;
             _resultValue.tailConsumers = tailConsumers;
             _resultValue.usageModel = usageModel;
             return _resultValue;

@@ -8,8 +8,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustGatewayCertificateResult {
@@ -29,7 +27,7 @@ public final class GetZeroTrustGatewayCertificateResult {
      * @return Identify the certificate with a UUID.
      * 
      */
-    private @Nullable String certificateId;
+    private String certificateId;
     private String createdAt;
     private String expiresOn;
     /**
@@ -89,8 +87,8 @@ public final class GetZeroTrustGatewayCertificateResult {
      * @return Identify the certificate with a UUID.
      * 
      */
-    public Optional<String> certificateId() {
-        return Optional.ofNullable(this.certificateId);
+    public String certificateId() {
+        return this.certificateId;
     }
     public String createdAt() {
         return this.createdAt;
@@ -160,7 +158,7 @@ public final class GetZeroTrustGatewayCertificateResult {
         private String accountId;
         private String bindingStatus;
         private String certificate;
-        private @Nullable String certificateId;
+        private String certificateId;
         private String createdAt;
         private String expiresOn;
         private String fingerprint;
@@ -215,8 +213,10 @@ public final class GetZeroTrustGatewayCertificateResult {
             return this;
         }
         @CustomType.Setter
-        public Builder certificateId(@Nullable String certificateId) {
-
+        public Builder certificateId(String certificateId) {
+            if (certificateId == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustGatewayCertificateResult", "certificateId");
+            }
             this.certificateId = certificateId;
             return this;
         }

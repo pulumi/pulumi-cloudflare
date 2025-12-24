@@ -38,6 +38,10 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ## Import
+ *
+ * ~> This resource does not currently support `pulumi import`.
+ *
  * @deprecated cloudflare.index/accessorganization.AccessOrganization has been deprecated in favor of cloudflare.index/zerotrustorganization.ZeroTrustOrganization
  */
 export class AccessOrganization extends pulumi.CustomResource {

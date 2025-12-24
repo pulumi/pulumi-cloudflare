@@ -55,8 +55,7 @@ class GetArgoTieredCachingResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The identifier of the caching setting.
-        Available values: "tiered_caching".
+        Identifier.
         """
         return pulumi.get(self, "id")
 

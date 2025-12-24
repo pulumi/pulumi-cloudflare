@@ -17,7 +17,7 @@ public final class GetImageVariantResult {
      */
     private String accountId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this resource.
      * 
      */
     private String id;
@@ -33,7 +33,7 @@ public final class GetImageVariantResult {
         return this.accountId;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this resource.
      * 
      */
     public String id() {

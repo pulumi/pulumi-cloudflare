@@ -87,8 +87,8 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
-        [Input("aclId")]
-        public string? AclId { get; set; }
+        [Input("aclId", required: true)]
+        public string AclId { get; set; } = null!;
 
         public GetDnsZoneTransfersAclArgs()
         {
@@ -101,8 +101,8 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        [Input("aclId")]
-        public Input<string>? AclId { get; set; }
+        [Input("aclId", required: true)]
+        public Input<string> AclId { get; set; } = null!;
 
         public GetDnsZoneTransfersAclInvokeArgs()
         {
@@ -115,7 +115,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetDnsZoneTransfersAclResult
     {
         public readonly string AccountId;
-        public readonly string? AclId;
+        public readonly string AclId;
         /// <summary>
         /// The ID of this resource.
         /// </summary>
@@ -133,7 +133,7 @@ namespace Pulumi.Cloudflare
         private GetDnsZoneTransfersAclResult(
             string accountId,
 
-            string? aclId,
+            string aclId,
 
             string id,
 

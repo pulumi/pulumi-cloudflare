@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetMagicTransitSiteAclPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -34,15 +32,15 @@ public final class GetMagicTransitSiteAclPlainArgs extends com.pulumi.resources.
      * Identifier
      * 
      */
-    @Import(name="aclId")
-    private @Nullable String aclId;
+    @Import(name="aclId", required=true)
+    private String aclId;
 
     /**
      * @return Identifier
      * 
      */
-    public Optional<String> aclId() {
-        return Optional.ofNullable(this.aclId);
+    public String aclId() {
+        return this.aclId;
     }
 
     /**
@@ -103,7 +101,7 @@ public final class GetMagicTransitSiteAclPlainArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder aclId(@Nullable String aclId) {
+        public Builder aclId(String aclId) {
             $.aclId = aclId;
             return this;
         }
@@ -122,6 +120,9 @@ public final class GetMagicTransitSiteAclPlainArgs extends com.pulumi.resources.
         public GetMagicTransitSiteAclPlainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetMagicTransitSiteAclPlainArgs", "accountId");
+            }
+            if ($.aclId == null) {
+                throw new MissingRequiredPropertyException("GetMagicTransitSiteAclPlainArgs", "aclId");
             }
             if ($.siteId == null) {
                 throw new MissingRequiredPropertyException("GetMagicTransitSiteAclPlainArgs", "siteId");

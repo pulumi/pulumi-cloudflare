@@ -5,32 +5,31 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.PagesProjectSourceConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class PagesProjectSource {
-    private @Nullable PagesProjectSourceConfig config;
+    private PagesProjectSourceConfig config;
     /**
      * @return The source control management provider.
      * Available values: &#34;github&#34;, &#34;gitlab&#34;.
      * 
      */
-    private @Nullable String type;
+    private String type;
 
     private PagesProjectSource() {}
-    public Optional<PagesProjectSourceConfig> config() {
-        return Optional.ofNullable(this.config);
+    public PagesProjectSourceConfig config() {
+        return this.config;
     }
     /**
      * @return The source control management provider.
      * Available values: &#34;github&#34;, &#34;gitlab&#34;.
      * 
      */
-    public Optional<String> type() {
-        return Optional.ofNullable(this.type);
+    public String type() {
+        return this.type;
     }
 
     public static Builder builder() {
@@ -42,8 +41,8 @@ public final class PagesProjectSource {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable PagesProjectSourceConfig config;
-        private @Nullable String type;
+        private PagesProjectSourceConfig config;
+        private String type;
         public Builder() {}
         public Builder(PagesProjectSource defaults) {
     	      Objects.requireNonNull(defaults);
@@ -52,14 +51,18 @@ public final class PagesProjectSource {
         }
 
         @CustomType.Setter
-        public Builder config(@Nullable PagesProjectSourceConfig config) {
-
+        public Builder config(PagesProjectSourceConfig config) {
+            if (config == null) {
+              throw new MissingRequiredPropertyException("PagesProjectSource", "config");
+            }
             this.config = config;
             return this;
         }
         @CustomType.Setter
-        public Builder type(@Nullable String type) {
-
+        public Builder type(String type) {
+            if (type == null) {
+              throw new MissingRequiredPropertyException("PagesProjectSource", "type");
+            }
             this.type = type;
             return this;
         }

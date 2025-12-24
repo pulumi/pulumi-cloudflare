@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetMagicTransitSiteWanPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -49,15 +47,15 @@ public final class GetMagicTransitSiteWanPlainArgs extends com.pulumi.resources.
      * Identifier
      * 
      */
-    @Import(name="wanId")
-    private @Nullable String wanId;
+    @Import(name="wanId", required=true)
+    private String wanId;
 
     /**
      * @return Identifier
      * 
      */
-    public Optional<String> wanId() {
-        return Optional.ofNullable(this.wanId);
+    public String wanId() {
+        return this.wanId;
     }
 
     private GetMagicTransitSiteWanPlainArgs() {}
@@ -114,7 +112,7 @@ public final class GetMagicTransitSiteWanPlainArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder wanId(@Nullable String wanId) {
+        public Builder wanId(String wanId) {
             $.wanId = wanId;
             return this;
         }
@@ -125,6 +123,9 @@ public final class GetMagicTransitSiteWanPlainArgs extends com.pulumi.resources.
             }
             if ($.siteId == null) {
                 throw new MissingRequiredPropertyException("GetMagicTransitSiteWanPlainArgs", "siteId");
+            }
+            if ($.wanId == null) {
+                throw new MissingRequiredPropertyException("GetMagicTransitSiteWanPlainArgs", "wanId");
             }
             return $;
         }

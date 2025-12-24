@@ -5,21 +5,20 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class PagesProjectDeploymentConfigsPreviewHyperdriveBindingsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PagesProjectDeploymentConfigsPreviewHyperdriveBindingsArgs Empty = new PagesProjectDeploymentConfigsPreviewHyperdriveBindingsArgs();
 
-    @Import(name="id")
-    private @Nullable Output<String> id;
+    @Import(name="id", required=true)
+    private Output<String> id;
 
-    public Optional<Output<String>> id() {
-        return Optional.ofNullable(this.id);
+    public Output<String> id() {
+        return this.id;
     }
 
     private PagesProjectDeploymentConfigsPreviewHyperdriveBindingsArgs() {}
@@ -46,7 +45,7 @@ public final class PagesProjectDeploymentConfigsPreviewHyperdriveBindingsArgs ex
             $ = new PagesProjectDeploymentConfigsPreviewHyperdriveBindingsArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder id(@Nullable Output<String> id) {
+        public Builder id(Output<String> id) {
             $.id = id;
             return this;
         }
@@ -56,6 +55,9 @@ public final class PagesProjectDeploymentConfigsPreviewHyperdriveBindingsArgs ex
         }
 
         public PagesProjectDeploymentConfigsPreviewHyperdriveBindingsArgs build() {
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("PagesProjectDeploymentConfigsPreviewHyperdriveBindingsArgs", "id");
+            }
             return $;
         }
     }

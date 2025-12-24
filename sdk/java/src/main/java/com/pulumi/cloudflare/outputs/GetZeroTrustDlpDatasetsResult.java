@@ -34,7 +34,7 @@ public final class GetZeroTrustDlpDatasetsResult {
      */
     private String status;
     /**
-     * @return When the dataset was last updated.
+     * @return Stores when the dataset was last updated.
      * 
      */
     private String updatedAt;
@@ -80,7 +80,7 @@ public final class GetZeroTrustDlpDatasetsResult {
         return this.status;
     }
     /**
-     * @return When the dataset was last updated.
+     * @return Stores when the dataset was last updated.
      * 
      */
     public String updatedAt() {

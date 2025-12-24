@@ -17,6 +17,10 @@ import * as utilities from "./utilities";
  *     state: "review",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ~> This resource does not currently support `pulumi import`.
  */
 export class ApiShieldDiscoveryOperation extends pulumi.CustomResource {
     /**

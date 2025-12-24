@@ -13,10 +13,207 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZoneSetting = new cloudflare.ZoneSetting("example_zone_setting", {
+ * // Basic on/off setting
+ * const alwaysOnline = new cloudflare.ZoneSetting("always_online", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     settingId: "always_online",
  *     value: "on",
+ * });
+ * // String value with specific choices
+ * const minTlsVersion = new cloudflare.ZoneSetting("min_tls_version", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     settingId: "min_tls_version",
+ *     value: "1.2",
+ * });
+ * // Numeric value
+ * const browserCacheTtl = new cloudflare.ZoneSetting("browser_cache_ttl", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     settingId: "browser_cache_ttl",
+ *     value: 14400,
+ * });
+ * // Array/List value
+ * const ciphers = new cloudflare.ZoneSetting("ciphers", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     settingId: "ciphers",
+ *     value: [
+ *         "ECDHE-ECDSA-AES128-GCM-SHA256",
+ *         "ECDHE-ECDSA-CHACHA20-POLY1305",
+ *     ],
+ * });
+ * // Nested object value
+ * const securityHeader = new cloudflare.ZoneSetting("security_header", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     settingId: "security_header",
+ *     value: {
+ *         strictTransportSecurity: {
+ *             enabled: true,
+ *             includeSubdomains: true,
+ *             maxAge: 86400,
+ *             nosniff: true,
+ *             preload: false,
+ *         },
+ *     },
+ * });
+ * // Special case: ssl_recommender uses 'enabled' instead of 'value'
+ * const sslRecommender = new cloudflare.ZoneSetting("ssl_recommender", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     settingId: "ssl_recommender",
+ *     enabled: true,
+ * });
+ * ```
+ *
+ * ### Additional Examples
+ *
+ * ### String Value with Choices
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * // Minimum TLS Version
+ * const minTls = new cloudflare.ZoneSetting("min_tls", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     settingId: "min_tls_version",
+ *     value: "1.2",
+ * });
+ * // SSL/TLS Mode
+ * const ssl = new cloudflare.ZoneSetting("ssl", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     settingId: "ssl",
+ *     value: "strict",
+ * });
+ * // Security Level
+ * const securityLevel = new cloudflare.ZoneSetting("security_level", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     settingId: "security_level",
+ *     value: "medium",
+ * });
+ * // Cache Level
+ * const cacheLevel = new cloudflare.ZoneSetting("cache_level", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     settingId: "cache_level",
+ *     value: "aggressive",
+ * });
+ * ```
+ *
+ * ### Numeric Values
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * // Browser Cache TTL
+ * const browserCacheTtl = new cloudflare.ZoneSetting("browser_cache_ttl", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     settingId: "browser_cache_ttl",
+ *     value: 14400,
+ * });
+ * // Challenge TTL
+ * const challengeTtl = new cloudflare.ZoneSetting("challenge_ttl", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     settingId: "challenge_ttl",
+ *     value: 1800,
+ * });
+ * // Max Upload Size
+ * const maxUpload = new cloudflare.ZoneSetting("max_upload", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     settingId: "max_upload",
+ *     value: 100,
+ * });
+ * ```
+ *
+ * ### Special Cases
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * // 0-RTT (Zero Round Trip Time)
+ * const zeroRtt = new cloudflare.ZoneSetting("zero_rtt", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     settingId: "0rtt",
+ *     value: "on",
+ * });
+ * // Network Error Logging (NEL)
+ * const nel = new cloudflare.ZoneSetting("nel", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     settingId: "nel",
+ *     value: {
+ *         enabled: true,
+ *     },
+ * });
+ * ```
+ *
+ * ### Common Configuration Sets
+ *
+ * ### Security Hardening Configuration
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * // Enable HTTPS everywhere
+ * const alwaysUseHttps = new cloudflare.ZoneSetting("always_use_https", {
+ *     zoneId: zoneId,
+ *     settingId: "always_use_https",
+ *     value: "on",
+ * });
+ * // Automatic HTTPS Rewrites
+ * const automaticHttpsRewrites = new cloudflare.ZoneSetting("automatic_https_rewrites", {
+ *     zoneId: zoneId,
+ *     settingId: "automatic_https_rewrites",
+ *     value: "on",
+ * });
+ * // Minimum TLS 1.2
+ * const minTlsVersion = new cloudflare.ZoneSetting("min_tls_version", {
+ *     zoneId: zoneId,
+ *     settingId: "min_tls_version",
+ *     value: "1.2",
+ * });
+ * // Enable TLS 1.3
+ * const tls13 = new cloudflare.ZoneSetting("tls_1_3", {
+ *     zoneId: zoneId,
+ *     settingId: "tls_1_3",
+ *     value: "on",
+ * });
+ * // Strict SSL
+ * const ssl = new cloudflare.ZoneSetting("ssl", {
+ *     zoneId: zoneId,
+ *     settingId: "ssl",
+ *     value: "strict",
+ * });
+ * ```
+ *
+ * ### Performance Optimization Configuration
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * // Enable HTTP/3
+ * const http3 = new cloudflare.ZoneSetting("http3", {
+ *     zoneId: zoneId,
+ *     settingId: "http3",
+ *     value: "on",
+ * });
+ * // Enable Brotli Compression
+ * const brotli = new cloudflare.ZoneSetting("brotli", {
+ *     zoneId: zoneId,
+ *     settingId: "brotli",
+ *     value: "on",
+ * });
+ * // Early Hints
+ * const earlyHints = new cloudflare.ZoneSetting("early_hints", {
+ *     zoneId: zoneId,
+ *     settingId: "early_hints",
+ *     value: "on",
+ * });
+ * // Aggressive Caching
+ * const cacheLevel = new cloudflare.ZoneSetting("cache_level", {
+ *     zoneId: zoneId,
+ *     settingId: "cache_level",
+ *     value: "aggressive",
+ * });
+ * // Browser Cache TTL
+ * const browserCache = new cloudflare.ZoneSetting("browser_cache", {
+ *     zoneId: zoneId,
+ *     settingId: "browser_cache_ttl",
+ *     value: 14400,
  * });
  * ```
  *

@@ -61,6 +61,21 @@ public final class MagicTransitConnectorState extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.interruptWindowHourOfDay);
     }
 
+    /**
+     * License key for the connector. This is only returned on creation and will not be available in subsequent reads.
+     * 
+     */
+    @Import(name="licenseKey")
+    private @Nullable Output<String> licenseKey;
+
+    /**
+     * @return License key for the connector. This is only returned on creation and will not be available in subsequent reads.
+     * 
+     */
+    public Optional<Output<String>> licenseKey() {
+        return Optional.ofNullable(this.licenseKey);
+    }
+
     @Import(name="notes")
     private @Nullable Output<String> notes;
 
@@ -83,6 +98,7 @@ public final class MagicTransitConnectorState extends com.pulumi.resources.Resou
         this.device = $.device;
         this.interruptWindowDurationHours = $.interruptWindowDurationHours;
         this.interruptWindowHourOfDay = $.interruptWindowHourOfDay;
+        this.licenseKey = $.licenseKey;
         this.notes = $.notes;
         this.timezone = $.timezone;
     }
@@ -160,6 +176,27 @@ public final class MagicTransitConnectorState extends com.pulumi.resources.Resou
 
         public Builder interruptWindowHourOfDay(Double interruptWindowHourOfDay) {
             return interruptWindowHourOfDay(Output.of(interruptWindowHourOfDay));
+        }
+
+        /**
+         * @param licenseKey License key for the connector. This is only returned on creation and will not be available in subsequent reads.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder licenseKey(@Nullable Output<String> licenseKey) {
+            $.licenseKey = licenseKey;
+            return this;
+        }
+
+        /**
+         * @param licenseKey License key for the connector. This is only returned on creation and will not be available in subsequent reads.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder licenseKey(String licenseKey) {
+            return licenseKey(Output.of(licenseKey));
         }
 
         public Builder notes(@Nullable Output<String> notes) {

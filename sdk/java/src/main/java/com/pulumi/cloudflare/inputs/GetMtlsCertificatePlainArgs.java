@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetMtlsCertificatePlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -34,15 +32,15 @@ public final class GetMtlsCertificatePlainArgs extends com.pulumi.resources.Invo
      * Identifier.
      * 
      */
-    @Import(name="mtlsCertificateId")
-    private @Nullable String mtlsCertificateId;
+    @Import(name="mtlsCertificateId", required=true)
+    private String mtlsCertificateId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Optional<String> mtlsCertificateId() {
-        return Optional.ofNullable(this.mtlsCertificateId);
+    public String mtlsCertificateId() {
+        return this.mtlsCertificateId;
     }
 
     private GetMtlsCertificatePlainArgs() {}
@@ -87,7 +85,7 @@ public final class GetMtlsCertificatePlainArgs extends com.pulumi.resources.Invo
          * @return builder
          * 
          */
-        public Builder mtlsCertificateId(@Nullable String mtlsCertificateId) {
+        public Builder mtlsCertificateId(String mtlsCertificateId) {
             $.mtlsCertificateId = mtlsCertificateId;
             return this;
         }
@@ -95,6 +93,9 @@ public final class GetMtlsCertificatePlainArgs extends com.pulumi.resources.Invo
         public GetMtlsCertificatePlainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetMtlsCertificatePlainArgs", "accountId");
+            }
+            if ($.mtlsCertificateId == null) {
+                throw new MissingRequiredPropertyException("GetMtlsCertificatePlainArgs", "mtlsCertificateId");
             }
             return $;
         }

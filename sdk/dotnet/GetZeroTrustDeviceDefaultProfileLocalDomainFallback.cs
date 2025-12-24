@@ -115,7 +115,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<string> DnsServers;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this resource.
         /// </summary>
         public readonly string Id;
         /// <summary>

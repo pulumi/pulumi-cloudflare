@@ -36,7 +36,7 @@ export interface GetZeroTrustDexTestArgs {
     /**
      * The unique identifier for the test.
      */
-    dexTestId?: string;
+    dexTestId: string;
     /**
      * DEX rules targeted by this test
      */
@@ -59,7 +59,7 @@ export interface GetZeroTrustDexTestResult {
     /**
      * The unique identifier for the test.
      */
-    readonly dexTestId?: string;
+    readonly dexTestId: string;
     /**
      * Determines whether or not the test is active.
      */
@@ -116,7 +116,7 @@ export interface GetZeroTrustDexTestOutputArgs {
     /**
      * The unique identifier for the test.
      */
-    dexTestId?: pulumi.Input<string>;
+    dexTestId: pulumi.Input<string>;
     /**
      * DEX rules targeted by this test
      */

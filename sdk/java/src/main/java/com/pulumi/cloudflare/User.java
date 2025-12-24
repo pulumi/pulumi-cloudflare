@@ -55,6 +55,10 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ## Import
+ * 
+ * ~&gt; This resource does not currently support `pulumi import`.
+ * 
  */
 @ResourceType(type="cloudflare:index/user:User")
 public class User extends com.pulumi.resources.CustomResource {

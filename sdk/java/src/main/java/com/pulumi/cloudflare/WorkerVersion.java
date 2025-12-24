@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *                 .config(WorkerVersionAssetsConfigArgs.builder()
  *                     .htmlHandling("auto-trailing-slash")
  *                     .notFoundHandling("404-page")
- *                     .runWorkerFirsts("string")
+ *                     .runWorkerFirst("string")
  *                     .build())
  *                 .jwt("jwt")
  *                 .build())
@@ -327,6 +327,20 @@ public class WorkerVersion extends com.pulumi.resources.CustomResource {
      */
     public Output<String> source() {
         return this.source;
+    }
+    /**
+     * Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
+     * 
+     */
+    @Export(name="startupTimeMs", refs={Integer.class}, tree="[0]")
+    private Output<Integer> startupTimeMs;
+
+    /**
+     * @return Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
+     * 
+     */
+    public Output<Integer> startupTimeMs() {
+        return this.startupTimeMs;
     }
     /**
      * Usage model for the version.

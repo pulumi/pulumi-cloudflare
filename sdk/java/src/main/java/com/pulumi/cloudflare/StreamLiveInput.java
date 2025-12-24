@@ -25,6 +25,10 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * ## Import
+ * 
+ * ~&gt; This resource does not currently support `pulumi import`.
+ * 
  */
 @ResourceType(type="cloudflare:index/streamLiveInput:StreamLiveInput")
 public class StreamLiveInput extends com.pulumi.resources.CustomResource {

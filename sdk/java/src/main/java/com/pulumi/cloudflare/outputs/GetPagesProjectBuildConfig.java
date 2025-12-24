@@ -22,7 +22,7 @@ public final class GetPagesProjectBuildConfig {
      */
     private String buildCommand;
     /**
-     * @return Output directory of the build.
+     * @return Assets output directory of the build.
      * 
      */
     private String destinationDir;
@@ -58,7 +58,7 @@ public final class GetPagesProjectBuildConfig {
         return this.buildCommand;
     }
     /**
-     * @return Output directory of the build.
+     * @return Assets output directory of the build.
      * 
      */
     public String destinationDir() {

@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// Specify the list type.
-        /// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+        /// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }

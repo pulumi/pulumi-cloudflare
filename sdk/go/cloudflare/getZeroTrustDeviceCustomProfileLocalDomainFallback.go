@@ -60,7 +60,7 @@ type LookupZeroTrustDeviceCustomProfileLocalDomainFallbackResult struct {
 	Description string `pulumi:"description"`
 	// A list of IP addresses to handle domain resolution.
 	DnsServers []string `pulumi:"dnsServers"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this resource.
 	Id       string `pulumi:"id"`
 	PolicyId string `pulumi:"policyId"`
 	// The domain suffix to match when resolving locally.
@@ -115,7 +115,7 @@ func (o LookupZeroTrustDeviceCustomProfileLocalDomainFallbackResultOutput) DnsSe
 	return o.ApplyT(func(v LookupZeroTrustDeviceCustomProfileLocalDomainFallbackResult) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this resource.
 func (o LookupZeroTrustDeviceCustomProfileLocalDomainFallbackResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDeviceCustomProfileLocalDomainFallbackResult) string { return v.Id }).(pulumi.StringOutput)
 }

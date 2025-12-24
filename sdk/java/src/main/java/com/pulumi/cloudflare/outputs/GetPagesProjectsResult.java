@@ -4,107 +4,101 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetPagesProjectsResultBuildConfig;
-import com.pulumi.cloudflare.outputs.GetPagesProjectsResultDeploymentTrigger;
-import com.pulumi.cloudflare.outputs.GetPagesProjectsResultEnvVars;
-import com.pulumi.cloudflare.outputs.GetPagesProjectsResultLatestStage;
+import com.pulumi.cloudflare.outputs.GetPagesProjectsResultCanonicalDeployment;
+import com.pulumi.cloudflare.outputs.GetPagesProjectsResultDeploymentConfigs;
+import com.pulumi.cloudflare.outputs.GetPagesProjectsResultLatestDeployment;
 import com.pulumi.cloudflare.outputs.GetPagesProjectsResultSource;
-import com.pulumi.cloudflare.outputs.GetPagesProjectsResultStage;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 @CustomType
 public final class GetPagesProjectsResult {
-    /**
-     * @return A list of alias URLs pointing to this deployment.
-     * 
-     */
-    private List<String> aliases;
     /**
      * @return Configs for the project build process.
      * 
      */
     private GetPagesProjectsResultBuildConfig buildConfig;
     /**
-     * @return When the deployment was created.
+     * @return Most recent production deployment of the project.
+     * 
+     */
+    private GetPagesProjectsResultCanonicalDeployment canonicalDeployment;
+    /**
+     * @return When the project was created.
      * 
      */
     private String createdOn;
     /**
-     * @return Info about what caused the deployment.
+     * @return Configs for deployments in a project.
      * 
      */
-    private GetPagesProjectsResultDeploymentTrigger deploymentTrigger;
+    private GetPagesProjectsResultDeploymentConfigs deploymentConfigs;
     /**
-     * @return Environment variables used for builds and Pages Functions.
+     * @return A list of associated custom domains for the project.
      * 
      */
-    private Map<String,GetPagesProjectsResultEnvVars> envVars;
+    private List<String> domains;
     /**
-     * @return Type of deploy.
-     * Available values: &#34;preview&#34;, &#34;production&#34;.
+     * @return Framework the project is using.
      * 
      */
-    private String environment;
+    private String framework;
     /**
-     * @return Id of the deployment.
+     * @return Version of the framework the project is using.
+     * 
+     */
+    private String frameworkVersion;
+    /**
+     * @return ID of the project.
      * 
      */
     private String id;
     /**
-     * @return If the deployment has been skipped.
+     * @return Most recent deployment of the project.
      * 
      */
-    private Boolean isSkipped;
-    /**
-     * @return The status of the deployment.
-     * 
-     */
-    private GetPagesProjectsResultLatestStage latestStage;
-    /**
-     * @return When the deployment was last modified.
-     * 
-     */
-    private String modifiedOn;
-    /**
-     * @return Id of the project.
-     * 
-     */
-    private String projectId;
+    private GetPagesProjectsResultLatestDeployment latestDeployment;
     /**
      * @return Name of the project.
      * 
      */
-    private String projectName;
+    private String name;
     /**
-     * @return Short Id (8 character) of the deployment.
+     * @return Name of the preview script.
      * 
      */
-    private String shortId;
+    private String previewScriptName;
+    /**
+     * @return Production branch of the project. Used to identify production deployments.
+     * 
+     */
+    private String productionBranch;
+    /**
+     * @return Name of the production script.
+     * 
+     */
+    private String productionScriptName;
+    /**
+     * @return Configs for the project source control.
+     * 
+     */
     private GetPagesProjectsResultSource source;
     /**
-     * @return List of past stages.
+     * @return The Cloudflare subdomain associated with the project.
      * 
      */
-    private List<GetPagesProjectsResultStage> stages;
+    private String subdomain;
     /**
-     * @return The live URL to view this deployment.
+     * @return Whether the project uses functions.
      * 
      */
-    private String url;
+    private Boolean usesFunctions;
 
     private GetPagesProjectsResult() {}
-    /**
-     * @return A list of alias URLs pointing to this deployment.
-     * 
-     */
-    public List<String> aliases() {
-        return this.aliases;
-    }
     /**
      * @return Configs for the project build process.
      * 
@@ -113,99 +107,109 @@ public final class GetPagesProjectsResult {
         return this.buildConfig;
     }
     /**
-     * @return When the deployment was created.
+     * @return Most recent production deployment of the project.
+     * 
+     */
+    public GetPagesProjectsResultCanonicalDeployment canonicalDeployment() {
+        return this.canonicalDeployment;
+    }
+    /**
+     * @return When the project was created.
      * 
      */
     public String createdOn() {
         return this.createdOn;
     }
     /**
-     * @return Info about what caused the deployment.
+     * @return Configs for deployments in a project.
      * 
      */
-    public GetPagesProjectsResultDeploymentTrigger deploymentTrigger() {
-        return this.deploymentTrigger;
+    public GetPagesProjectsResultDeploymentConfigs deploymentConfigs() {
+        return this.deploymentConfigs;
     }
     /**
-     * @return Environment variables used for builds and Pages Functions.
+     * @return A list of associated custom domains for the project.
      * 
      */
-    public Map<String,GetPagesProjectsResultEnvVars> envVars() {
-        return this.envVars;
+    public List<String> domains() {
+        return this.domains;
     }
     /**
-     * @return Type of deploy.
-     * Available values: &#34;preview&#34;, &#34;production&#34;.
+     * @return Framework the project is using.
      * 
      */
-    public String environment() {
-        return this.environment;
+    public String framework() {
+        return this.framework;
     }
     /**
-     * @return Id of the deployment.
+     * @return Version of the framework the project is using.
+     * 
+     */
+    public String frameworkVersion() {
+        return this.frameworkVersion;
+    }
+    /**
+     * @return ID of the project.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return If the deployment has been skipped.
+     * @return Most recent deployment of the project.
      * 
      */
-    public Boolean isSkipped() {
-        return this.isSkipped;
-    }
-    /**
-     * @return The status of the deployment.
-     * 
-     */
-    public GetPagesProjectsResultLatestStage latestStage() {
-        return this.latestStage;
-    }
-    /**
-     * @return When the deployment was last modified.
-     * 
-     */
-    public String modifiedOn() {
-        return this.modifiedOn;
-    }
-    /**
-     * @return Id of the project.
-     * 
-     */
-    public String projectId() {
-        return this.projectId;
+    public GetPagesProjectsResultLatestDeployment latestDeployment() {
+        return this.latestDeployment;
     }
     /**
      * @return Name of the project.
      * 
      */
-    public String projectName() {
-        return this.projectName;
+    public String name() {
+        return this.name;
     }
     /**
-     * @return Short Id (8 character) of the deployment.
+     * @return Name of the preview script.
      * 
      */
-    public String shortId() {
-        return this.shortId;
+    public String previewScriptName() {
+        return this.previewScriptName;
     }
+    /**
+     * @return Production branch of the project. Used to identify production deployments.
+     * 
+     */
+    public String productionBranch() {
+        return this.productionBranch;
+    }
+    /**
+     * @return Name of the production script.
+     * 
+     */
+    public String productionScriptName() {
+        return this.productionScriptName;
+    }
+    /**
+     * @return Configs for the project source control.
+     * 
+     */
     public GetPagesProjectsResultSource source() {
         return this.source;
     }
     /**
-     * @return List of past stages.
+     * @return The Cloudflare subdomain associated with the project.
      * 
      */
-    public List<GetPagesProjectsResultStage> stages() {
-        return this.stages;
+    public String subdomain() {
+        return this.subdomain;
     }
     /**
-     * @return The live URL to view this deployment.
+     * @return Whether the project uses functions.
      * 
      */
-    public String url() {
-        return this.url;
+    public Boolean usesFunctions() {
+        return this.usesFunctions;
     }
 
     public static Builder builder() {
@@ -217,60 +221,57 @@ public final class GetPagesProjectsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<String> aliases;
         private GetPagesProjectsResultBuildConfig buildConfig;
+        private GetPagesProjectsResultCanonicalDeployment canonicalDeployment;
         private String createdOn;
-        private GetPagesProjectsResultDeploymentTrigger deploymentTrigger;
-        private Map<String,GetPagesProjectsResultEnvVars> envVars;
-        private String environment;
+        private GetPagesProjectsResultDeploymentConfigs deploymentConfigs;
+        private List<String> domains;
+        private String framework;
+        private String frameworkVersion;
         private String id;
-        private Boolean isSkipped;
-        private GetPagesProjectsResultLatestStage latestStage;
-        private String modifiedOn;
-        private String projectId;
-        private String projectName;
-        private String shortId;
+        private GetPagesProjectsResultLatestDeployment latestDeployment;
+        private String name;
+        private String previewScriptName;
+        private String productionBranch;
+        private String productionScriptName;
         private GetPagesProjectsResultSource source;
-        private List<GetPagesProjectsResultStage> stages;
-        private String url;
+        private String subdomain;
+        private Boolean usesFunctions;
         public Builder() {}
         public Builder(GetPagesProjectsResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.aliases = defaults.aliases;
     	      this.buildConfig = defaults.buildConfig;
+    	      this.canonicalDeployment = defaults.canonicalDeployment;
     	      this.createdOn = defaults.createdOn;
-    	      this.deploymentTrigger = defaults.deploymentTrigger;
-    	      this.envVars = defaults.envVars;
-    	      this.environment = defaults.environment;
+    	      this.deploymentConfigs = defaults.deploymentConfigs;
+    	      this.domains = defaults.domains;
+    	      this.framework = defaults.framework;
+    	      this.frameworkVersion = defaults.frameworkVersion;
     	      this.id = defaults.id;
-    	      this.isSkipped = defaults.isSkipped;
-    	      this.latestStage = defaults.latestStage;
-    	      this.modifiedOn = defaults.modifiedOn;
-    	      this.projectId = defaults.projectId;
-    	      this.projectName = defaults.projectName;
-    	      this.shortId = defaults.shortId;
+    	      this.latestDeployment = defaults.latestDeployment;
+    	      this.name = defaults.name;
+    	      this.previewScriptName = defaults.previewScriptName;
+    	      this.productionBranch = defaults.productionBranch;
+    	      this.productionScriptName = defaults.productionScriptName;
     	      this.source = defaults.source;
-    	      this.stages = defaults.stages;
-    	      this.url = defaults.url;
+    	      this.subdomain = defaults.subdomain;
+    	      this.usesFunctions = defaults.usesFunctions;
         }
 
-        @CustomType.Setter
-        public Builder aliases(List<String> aliases) {
-            if (aliases == null) {
-              throw new MissingRequiredPropertyException("GetPagesProjectsResult", "aliases");
-            }
-            this.aliases = aliases;
-            return this;
-        }
-        public Builder aliases(String... aliases) {
-            return aliases(List.of(aliases));
-        }
         @CustomType.Setter
         public Builder buildConfig(GetPagesProjectsResultBuildConfig buildConfig) {
             if (buildConfig == null) {
               throw new MissingRequiredPropertyException("GetPagesProjectsResult", "buildConfig");
             }
             this.buildConfig = buildConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder canonicalDeployment(GetPagesProjectsResultCanonicalDeployment canonicalDeployment) {
+            if (canonicalDeployment == null) {
+              throw new MissingRequiredPropertyException("GetPagesProjectsResult", "canonicalDeployment");
+            }
+            this.canonicalDeployment = canonicalDeployment;
             return this;
         }
         @CustomType.Setter
@@ -282,27 +283,38 @@ public final class GetPagesProjectsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder deploymentTrigger(GetPagesProjectsResultDeploymentTrigger deploymentTrigger) {
-            if (deploymentTrigger == null) {
-              throw new MissingRequiredPropertyException("GetPagesProjectsResult", "deploymentTrigger");
+        public Builder deploymentConfigs(GetPagesProjectsResultDeploymentConfigs deploymentConfigs) {
+            if (deploymentConfigs == null) {
+              throw new MissingRequiredPropertyException("GetPagesProjectsResult", "deploymentConfigs");
             }
-            this.deploymentTrigger = deploymentTrigger;
+            this.deploymentConfigs = deploymentConfigs;
             return this;
         }
         @CustomType.Setter
-        public Builder envVars(Map<String,GetPagesProjectsResultEnvVars> envVars) {
-            if (envVars == null) {
-              throw new MissingRequiredPropertyException("GetPagesProjectsResult", "envVars");
+        public Builder domains(List<String> domains) {
+            if (domains == null) {
+              throw new MissingRequiredPropertyException("GetPagesProjectsResult", "domains");
             }
-            this.envVars = envVars;
+            this.domains = domains;
+            return this;
+        }
+        public Builder domains(String... domains) {
+            return domains(List.of(domains));
+        }
+        @CustomType.Setter
+        public Builder framework(String framework) {
+            if (framework == null) {
+              throw new MissingRequiredPropertyException("GetPagesProjectsResult", "framework");
+            }
+            this.framework = framework;
             return this;
         }
         @CustomType.Setter
-        public Builder environment(String environment) {
-            if (environment == null) {
-              throw new MissingRequiredPropertyException("GetPagesProjectsResult", "environment");
+        public Builder frameworkVersion(String frameworkVersion) {
+            if (frameworkVersion == null) {
+              throw new MissingRequiredPropertyException("GetPagesProjectsResult", "frameworkVersion");
             }
-            this.environment = environment;
+            this.frameworkVersion = frameworkVersion;
             return this;
         }
         @CustomType.Setter
@@ -314,51 +326,43 @@ public final class GetPagesProjectsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder isSkipped(Boolean isSkipped) {
-            if (isSkipped == null) {
-              throw new MissingRequiredPropertyException("GetPagesProjectsResult", "isSkipped");
+        public Builder latestDeployment(GetPagesProjectsResultLatestDeployment latestDeployment) {
+            if (latestDeployment == null) {
+              throw new MissingRequiredPropertyException("GetPagesProjectsResult", "latestDeployment");
             }
-            this.isSkipped = isSkipped;
+            this.latestDeployment = latestDeployment;
             return this;
         }
         @CustomType.Setter
-        public Builder latestStage(GetPagesProjectsResultLatestStage latestStage) {
-            if (latestStage == null) {
-              throw new MissingRequiredPropertyException("GetPagesProjectsResult", "latestStage");
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetPagesProjectsResult", "name");
             }
-            this.latestStage = latestStage;
+            this.name = name;
             return this;
         }
         @CustomType.Setter
-        public Builder modifiedOn(String modifiedOn) {
-            if (modifiedOn == null) {
-              throw new MissingRequiredPropertyException("GetPagesProjectsResult", "modifiedOn");
+        public Builder previewScriptName(String previewScriptName) {
+            if (previewScriptName == null) {
+              throw new MissingRequiredPropertyException("GetPagesProjectsResult", "previewScriptName");
             }
-            this.modifiedOn = modifiedOn;
+            this.previewScriptName = previewScriptName;
             return this;
         }
         @CustomType.Setter
-        public Builder projectId(String projectId) {
-            if (projectId == null) {
-              throw new MissingRequiredPropertyException("GetPagesProjectsResult", "projectId");
+        public Builder productionBranch(String productionBranch) {
+            if (productionBranch == null) {
+              throw new MissingRequiredPropertyException("GetPagesProjectsResult", "productionBranch");
             }
-            this.projectId = projectId;
+            this.productionBranch = productionBranch;
             return this;
         }
         @CustomType.Setter
-        public Builder projectName(String projectName) {
-            if (projectName == null) {
-              throw new MissingRequiredPropertyException("GetPagesProjectsResult", "projectName");
+        public Builder productionScriptName(String productionScriptName) {
+            if (productionScriptName == null) {
+              throw new MissingRequiredPropertyException("GetPagesProjectsResult", "productionScriptName");
             }
-            this.projectName = projectName;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder shortId(String shortId) {
-            if (shortId == null) {
-              throw new MissingRequiredPropertyException("GetPagesProjectsResult", "shortId");
-            }
-            this.shortId = shortId;
+            this.productionScriptName = productionScriptName;
             return this;
         }
         @CustomType.Setter
@@ -370,42 +374,39 @@ public final class GetPagesProjectsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder stages(List<GetPagesProjectsResultStage> stages) {
-            if (stages == null) {
-              throw new MissingRequiredPropertyException("GetPagesProjectsResult", "stages");
+        public Builder subdomain(String subdomain) {
+            if (subdomain == null) {
+              throw new MissingRequiredPropertyException("GetPagesProjectsResult", "subdomain");
             }
-            this.stages = stages;
+            this.subdomain = subdomain;
             return this;
         }
-        public Builder stages(GetPagesProjectsResultStage... stages) {
-            return stages(List.of(stages));
-        }
         @CustomType.Setter
-        public Builder url(String url) {
-            if (url == null) {
-              throw new MissingRequiredPropertyException("GetPagesProjectsResult", "url");
+        public Builder usesFunctions(Boolean usesFunctions) {
+            if (usesFunctions == null) {
+              throw new MissingRequiredPropertyException("GetPagesProjectsResult", "usesFunctions");
             }
-            this.url = url;
+            this.usesFunctions = usesFunctions;
             return this;
         }
         public GetPagesProjectsResult build() {
             final var _resultValue = new GetPagesProjectsResult();
-            _resultValue.aliases = aliases;
             _resultValue.buildConfig = buildConfig;
+            _resultValue.canonicalDeployment = canonicalDeployment;
             _resultValue.createdOn = createdOn;
-            _resultValue.deploymentTrigger = deploymentTrigger;
-            _resultValue.envVars = envVars;
-            _resultValue.environment = environment;
+            _resultValue.deploymentConfigs = deploymentConfigs;
+            _resultValue.domains = domains;
+            _resultValue.framework = framework;
+            _resultValue.frameworkVersion = frameworkVersion;
             _resultValue.id = id;
-            _resultValue.isSkipped = isSkipped;
-            _resultValue.latestStage = latestStage;
-            _resultValue.modifiedOn = modifiedOn;
-            _resultValue.projectId = projectId;
-            _resultValue.projectName = projectName;
-            _resultValue.shortId = shortId;
+            _resultValue.latestDeployment = latestDeployment;
+            _resultValue.name = name;
+            _resultValue.previewScriptName = previewScriptName;
+            _resultValue.productionBranch = productionBranch;
+            _resultValue.productionScriptName = productionScriptName;
             _resultValue.source = source;
-            _resultValue.stages = stages;
-            _resultValue.url = url;
+            _resultValue.subdomain = subdomain;
+            _resultValue.usesFunctions = usesFunctions;
             return _resultValue;
         }
     }

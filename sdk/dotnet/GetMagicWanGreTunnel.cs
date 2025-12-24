@@ -136,7 +136,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string GreTunnelId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Identifier
         /// </summary>
         public readonly string Id;
 

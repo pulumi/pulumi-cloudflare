@@ -71,7 +71,7 @@ type LookupBotManagementResult struct {
 	EnableJs bool `pulumi:"enableJs"`
 	// Whether to enable Bot Fight Mode.
 	FightMode bool `pulumi:"fightMode"`
-	// The provider-assigned unique ID for this managed resource.
+	// Identifier.
 	Id string `pulumi:"id"`
 	// Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
 	IsRobotsTxtManaged bool `pulumi:"isRobotsTxtManaged"`
@@ -172,7 +172,7 @@ func (o LookupBotManagementResultOutput) FightMode() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBotManagementResult) bool { return v.FightMode }).(pulumi.BoolOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Identifier.
 func (o LookupBotManagementResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBotManagementResult) string { return v.Id }).(pulumi.StringOutput)
 }

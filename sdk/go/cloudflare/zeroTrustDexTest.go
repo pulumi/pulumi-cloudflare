@@ -44,7 +44,7 @@ import (
 //						Name:    pulumi.String("name"),
 //					},
 //				},
-//				Targeted: pulumi.Bool(true),
+//				Targeted: true,
 //			})
 //			if err != nil {
 //				return err
@@ -76,7 +76,7 @@ type ZeroTrustDexTest struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// DEX rules targeted by this test
 	TargetPolicies ZeroTrustDexTestTargetPolicyArrayOutput `pulumi:"targetPolicies"`
-	Targeted       pulumi.BoolPtrOutput                    `pulumi:"targeted"`
+	Targeted       pulumi.BoolOutput                       `pulumi:"targeted"`
 	// The unique identifier for the test.
 	TestId pulumi.StringOutput `pulumi:"testId"`
 }
@@ -181,7 +181,6 @@ type zeroTrustDexTestArgs struct {
 	Name string `pulumi:"name"`
 	// DEX rules targeted by this test
 	TargetPolicies []ZeroTrustDexTestTargetPolicy `pulumi:"targetPolicies"`
-	Targeted       *bool                          `pulumi:"targeted"`
 }
 
 // The set of arguments for constructing a ZeroTrustDexTest resource.
@@ -199,7 +198,6 @@ type ZeroTrustDexTestArgs struct {
 	Name pulumi.StringInput
 	// DEX rules targeted by this test
 	TargetPolicies ZeroTrustDexTestTargetPolicyArrayInput
-	Targeted       pulumi.BoolPtrInput
 }
 
 func (ZeroTrustDexTestArgs) ElementType() reflect.Type {
@@ -323,8 +321,8 @@ func (o ZeroTrustDexTestOutput) TargetPolicies() ZeroTrustDexTestTargetPolicyArr
 	return o.ApplyT(func(v *ZeroTrustDexTest) ZeroTrustDexTestTargetPolicyArrayOutput { return v.TargetPolicies }).(ZeroTrustDexTestTargetPolicyArrayOutput)
 }
 
-func (o ZeroTrustDexTestOutput) Targeted() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDexTest) pulumi.BoolPtrOutput { return v.Targeted }).(pulumi.BoolPtrOutput)
+func (o ZeroTrustDexTestOutput) Targeted() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustDexTest) pulumi.BoolOutput { return v.Targeted }).(pulumi.BoolOutput)
 }
 
 // The unique identifier for the test.

@@ -21,6 +21,10 @@ import * as utilities from "./utilities";
  *     zipcode: "12345",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ~> This resource does not currently support `pulumi import`.
  */
 export class User extends pulumi.CustomResource {
     /**

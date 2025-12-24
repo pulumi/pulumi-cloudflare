@@ -413,7 +413,7 @@ class AccountSubscription(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def frequency(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def frequency(self) -> pulumi.Output[_builtins.str]:
         """
         How often the subscription is renewed automatically.
         Available values: "weekly", "monthly", "quarterly", "yearly".

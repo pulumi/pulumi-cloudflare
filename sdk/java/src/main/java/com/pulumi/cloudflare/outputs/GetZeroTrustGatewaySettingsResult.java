@@ -14,7 +14,7 @@ public final class GetZeroTrustGatewaySettingsResult {
     private String accountId;
     private String createdAt;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this resource.
      * 
      */
     private String id;
@@ -33,7 +33,7 @@ public final class GetZeroTrustGatewaySettingsResult {
         return this.createdAt;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this resource.
      * 
      */
     public String id() {

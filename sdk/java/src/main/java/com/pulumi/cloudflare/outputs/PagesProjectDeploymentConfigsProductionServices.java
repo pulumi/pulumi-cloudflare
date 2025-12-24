@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -25,7 +26,7 @@ public final class PagesProjectDeploymentConfigsProductionServices {
      * @return The Service name.
      * 
      */
-    private @Nullable String service;
+    private String service;
 
     private PagesProjectDeploymentConfigsProductionServices() {}
     /**
@@ -46,8 +47,8 @@ public final class PagesProjectDeploymentConfigsProductionServices {
      * @return The Service name.
      * 
      */
-    public Optional<String> service() {
-        return Optional.ofNullable(this.service);
+    public String service() {
+        return this.service;
     }
 
     public static Builder builder() {
@@ -61,7 +62,7 @@ public final class PagesProjectDeploymentConfigsProductionServices {
     public static final class Builder {
         private @Nullable String entrypoint;
         private @Nullable String environment;
-        private @Nullable String service;
+        private String service;
         public Builder() {}
         public Builder(PagesProjectDeploymentConfigsProductionServices defaults) {
     	      Objects.requireNonNull(defaults);
@@ -83,8 +84,10 @@ public final class PagesProjectDeploymentConfigsProductionServices {
             return this;
         }
         @CustomType.Setter
-        public Builder service(@Nullable String service) {
-
+        public Builder service(String service) {
+            if (service == null) {
+              throw new MissingRequiredPropertyException("PagesProjectDeploymentConfigsProductionServices", "service");
+            }
             this.service = service;
             return this;
         }

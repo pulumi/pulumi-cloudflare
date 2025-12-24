@@ -10,8 +10,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class AccountMemberPolicy {
@@ -21,11 +19,6 @@ public final class AccountMemberPolicy {
      * 
      */
     private String access;
-    /**
-     * @return Policy identifier.
-     * 
-     */
-    private @Nullable String id;
     /**
      * @return A set of permission groups that are specified to the policy.
      * 
@@ -45,13 +38,6 @@ public final class AccountMemberPolicy {
      */
     public String access() {
         return this.access;
-    }
-    /**
-     * @return Policy identifier.
-     * 
-     */
-    public Optional<String> id() {
-        return Optional.ofNullable(this.id);
     }
     /**
      * @return A set of permission groups that are specified to the policy.
@@ -78,14 +64,12 @@ public final class AccountMemberPolicy {
     @CustomType.Builder
     public static final class Builder {
         private String access;
-        private @Nullable String id;
         private List<AccountMemberPolicyPermissionGroup> permissionGroups;
         private List<AccountMemberPolicyResourceGroup> resourceGroups;
         public Builder() {}
         public Builder(AccountMemberPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.access = defaults.access;
-    	      this.id = defaults.id;
     	      this.permissionGroups = defaults.permissionGroups;
     	      this.resourceGroups = defaults.resourceGroups;
         }
@@ -96,12 +80,6 @@ public final class AccountMemberPolicy {
               throw new MissingRequiredPropertyException("AccountMemberPolicy", "access");
             }
             this.access = access;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(@Nullable String id) {
-
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -129,7 +107,6 @@ public final class AccountMemberPolicy {
         public AccountMemberPolicy build() {
             final var _resultValue = new AccountMemberPolicy();
             _resultValue.access = access;
-            _resultValue.id = id;
             _resultValue.permissionGroups = permissionGroups;
             _resultValue.resourceGroups = resourceGroups;
             return _resultValue;

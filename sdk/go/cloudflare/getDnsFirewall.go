@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupDnsFirewall(ctx, &cloudflare.LookupDnsFirewallArgs{
 //				AccountId:     "023e105f4ecef8ad9ca31a8372d0c353",
-//				DnsFirewallId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				DnsFirewallId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -52,7 +52,7 @@ type LookupDnsFirewallArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Identifier.
-	DnsFirewallId *string `pulumi:"dnsFirewallId"`
+	DnsFirewallId string `pulumi:"dnsFirewallId"`
 }
 
 // A collection of values returned by getDnsFirewall.
@@ -64,7 +64,7 @@ type LookupDnsFirewallResult struct {
 	// Whether to refuse to answer queries for the ANY type
 	DeprecateAnyRequests bool `pulumi:"deprecateAnyRequests"`
 	// Identifier.
-	DnsFirewallId  *string  `pulumi:"dnsFirewallId"`
+	DnsFirewallId  string   `pulumi:"dnsFirewallId"`
 	DnsFirewallIps []string `pulumi:"dnsFirewallIps"`
 	// Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
 	EcsFallback bool `pulumi:"ecsFallback"`
@@ -98,7 +98,7 @@ type LookupDnsFirewallOutputArgs struct {
 	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Identifier.
-	DnsFirewallId pulumi.StringPtrInput `pulumi:"dnsFirewallId"`
+	DnsFirewallId pulumi.StringInput `pulumi:"dnsFirewallId"`
 }
 
 func (LookupDnsFirewallOutputArgs) ElementType() reflect.Type {
@@ -136,8 +136,8 @@ func (o LookupDnsFirewallResultOutput) DeprecateAnyRequests() pulumi.BoolOutput 
 }
 
 // Identifier.
-func (o LookupDnsFirewallResultOutput) DnsFirewallId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupDnsFirewallResult) *string { return v.DnsFirewallId }).(pulumi.StringPtrOutput)
+func (o LookupDnsFirewallResultOutput) DnsFirewallId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDnsFirewallResult) string { return v.DnsFirewallId }).(pulumi.StringOutput)
 }
 
 func (o LookupDnsFirewallResultOutput) DnsFirewallIps() pulumi.StringArrayOutput {

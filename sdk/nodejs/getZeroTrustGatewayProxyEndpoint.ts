@@ -48,6 +48,11 @@ export interface GetZeroTrustGatewayProxyEndpointResult {
      */
     readonly ips: string[];
     /**
+     * The proxy endpoint kind
+     * Available values: "ip", "identity".
+     */
+    readonly kind: string;
+    /**
      * Specify the name of the proxy endpoint.
      */
     readonly name: string;

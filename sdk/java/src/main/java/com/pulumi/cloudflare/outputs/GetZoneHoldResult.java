@@ -14,7 +14,7 @@ public final class GetZoneHoldResult {
     private Boolean hold;
     private String holdAfter;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Identifier.
      * 
      */
     private String id;
@@ -33,7 +33,7 @@ public final class GetZoneHoldResult {
         return this.holdAfter;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Identifier.
      * 
      */
     public String id() {

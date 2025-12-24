@@ -15,7 +15,7 @@ public final class EmailRoutingDnsResultInfo {
      * @return Total number of results for the requested service.
      * 
      */
-    private @Nullable Double count;
+    private @Nullable Double emailRoutingDnsCount;
     /**
      * @return Current page within paginated list of results.
      * 
@@ -37,8 +37,8 @@ public final class EmailRoutingDnsResultInfo {
      * @return Total number of results for the requested service.
      * 
      */
-    public Optional<Double> count() {
-        return Optional.ofNullable(this.count);
+    public Optional<Double> emailRoutingDnsCount() {
+        return Optional.ofNullable(this.emailRoutingDnsCount);
     }
     /**
      * @return Current page within paginated list of results.
@@ -71,23 +71,23 @@ public final class EmailRoutingDnsResultInfo {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Double count;
+        private @Nullable Double emailRoutingDnsCount;
         private @Nullable Double page;
         private @Nullable Double perPage;
         private @Nullable Double totalCount;
         public Builder() {}
         public Builder(EmailRoutingDnsResultInfo defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.count = defaults.count;
+    	      this.emailRoutingDnsCount = defaults.emailRoutingDnsCount;
     	      this.page = defaults.page;
     	      this.perPage = defaults.perPage;
     	      this.totalCount = defaults.totalCount;
         }
 
         @CustomType.Setter
-        public Builder count(@Nullable Double count) {
+        public Builder emailRoutingDnsCount(@Nullable Double emailRoutingDnsCount) {
 
-            this.count = count;
+            this.emailRoutingDnsCount = emailRoutingDnsCount;
             return this;
         }
         @CustomType.Setter
@@ -110,7 +110,7 @@ public final class EmailRoutingDnsResultInfo {
         }
         public EmailRoutingDnsResultInfo build() {
             final var _resultValue = new EmailRoutingDnsResultInfo();
-            _resultValue.count = count;
+            _resultValue.emailRoutingDnsCount = emailRoutingDnsCount;
             _resultValue.page = page;
             _resultValue.perPage = perPage;
             _resultValue.totalCount = totalCount;

@@ -32,7 +32,7 @@ export function getZeroTrustDlpPredefinedEntry(args: GetZeroTrustDlpPredefinedEn
  */
 export interface GetZeroTrustDlpPredefinedEntryArgs {
     accountId: string;
-    entryId?: string;
+    entryId: string;
 }
 
 /**
@@ -49,7 +49,7 @@ export interface GetZeroTrustDlpPredefinedEntryResult {
     readonly confidence: outputs.GetZeroTrustDlpPredefinedEntryConfidence;
     readonly createdAt: string;
     readonly enabled: boolean;
-    readonly entryId?: string;
+    readonly entryId: string;
     /**
      * The ID of this resource.
      */
@@ -57,12 +57,17 @@ export interface GetZeroTrustDlpPredefinedEntryResult {
     readonly name: string;
     readonly pattern: outputs.GetZeroTrustDlpPredefinedEntryPattern;
     readonly profileId: string;
+    readonly profiles: outputs.GetZeroTrustDlpPredefinedEntryProfile[];
     readonly secret: boolean;
     /**
      * Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
      */
     readonly type: string;
     readonly updatedAt: string;
+    /**
+     * Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+     */
+    readonly uploadStatus: string;
     readonly variant: outputs.GetZeroTrustDlpPredefinedEntryVariant;
     readonly wordList: string;
 }
@@ -92,5 +97,5 @@ export function getZeroTrustDlpPredefinedEntryOutput(args: GetZeroTrustDlpPredef
  */
 export interface GetZeroTrustDlpPredefinedEntryOutputArgs {
     accountId: pulumi.Input<string>;
-    entryId?: pulumi.Input<string>;
+    entryId: pulumi.Input<string>;
 }

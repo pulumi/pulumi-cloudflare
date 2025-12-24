@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupNotificationPolicy(ctx, &cloudflare.LookupNotificationPolicyArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
-//				PolicyId:  pulumi.StringRef("0da2b59ef118439d8097bdfb215203c9"),
+//				PolicyId:  "0da2b59ef118439d8097bdfb215203c9",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -52,7 +52,7 @@ type LookupNotificationPolicyArgs struct {
 	// The account id
 	AccountId string `pulumi:"accountId"`
 	// The unique identifier of a notification policy
-	PolicyId *string `pulumi:"policyId"`
+	PolicyId string `pulumi:"policyId"`
 }
 
 // A collection of values returned by getNotificationPolicy.
@@ -79,7 +79,7 @@ type LookupNotificationPolicyResult struct {
 	// Name of the policy.
 	Name string `pulumi:"name"`
 	// The unique identifier of a notification policy
-	PolicyId *string `pulumi:"policyId"`
+	PolicyId string `pulumi:"policyId"`
 }
 
 func LookupNotificationPolicyOutput(ctx *pulumi.Context, args LookupNotificationPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupNotificationPolicyResultOutput {
@@ -96,7 +96,7 @@ type LookupNotificationPolicyOutputArgs struct {
 	// The account id
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The unique identifier of a notification policy
-	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
+	PolicyId pulumi.StringInput `pulumi:"policyId"`
 }
 
 func (LookupNotificationPolicyOutputArgs) ElementType() reflect.Type {
@@ -173,8 +173,8 @@ func (o LookupNotificationPolicyResultOutput) Name() pulumi.StringOutput {
 }
 
 // The unique identifier of a notification policy
-func (o LookupNotificationPolicyResultOutput) PolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupNotificationPolicyResult) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
+func (o LookupNotificationPolicyResultOutput) PolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNotificationPolicyResult) string { return v.PolicyId }).(pulumi.StringOutput)
 }
 
 func init() {

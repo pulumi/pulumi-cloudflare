@@ -44,10 +44,6 @@ public final class GetZoneDnssecResult {
     private Boolean dnssecUseNsec3;
     private String ds;
     private Double flags;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     private String id;
     private Double keyTag;
     private String keyType;
@@ -111,10 +107,6 @@ public final class GetZoneDnssecResult {
     public Double flags() {
         return this.flags;
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     public String id() {
         return this.id;
     }

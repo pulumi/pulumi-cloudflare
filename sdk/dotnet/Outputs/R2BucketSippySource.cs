@@ -22,11 +22,15 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Bucket;
         /// <summary>
+        /// URL to the S3-compatible API of the bucket.
+        /// </summary>
+        public readonly string? BucketUrl;
+        /// <summary>
         /// Client email of an IAM credential (ideally scoped to a single GCS bucket).
         /// </summary>
         public readonly string? ClientEmail;
         /// <summary>
-        /// Available values: "aws", "gcs".
+        /// Available values: "aws", "gcs", "s3".
         /// </summary>
         public readonly string? CloudProvider;
         /// <summary>
@@ -48,6 +52,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? bucket,
 
+            string? bucketUrl,
+
             string? clientEmail,
 
             string? cloudProvider,
@@ -60,6 +66,7 @@ namespace Pulumi.Cloudflare.Outputs
         {
             AccessKeyId = accessKeyId;
             Bucket = bucket;
+            BucketUrl = bucketUrl;
             ClientEmail = clientEmail;
             CloudProvider = cloudProvider;
             PrivateKey = privateKey;

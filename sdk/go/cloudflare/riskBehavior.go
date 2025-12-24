@@ -44,6 +44,10 @@ import (
 //
 // ```
 //
+// ## Import
+//
+// ~> This resource does not currently support `pulumi import`.
+//
 // Deprecated: cloudflare.index/riskbehavior.RiskBehavior has been deprecated in favor of cloudflare.index/zerotrustriskbehavior.ZeroTrustRiskBehavior
 type RiskBehavior struct {
 	pulumi.CustomResourceState

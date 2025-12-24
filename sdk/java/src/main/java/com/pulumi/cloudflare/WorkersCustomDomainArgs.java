@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class WorkersCustomDomainArgs extends com.pulumi.resources.ResourceArgs {
@@ -32,16 +34,24 @@ public final class WorkersCustomDomainArgs extends com.pulumi.resources.Resource
     /**
      * Worker environment associated with the zone and hostname.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
-    @Import(name="environment", required=true)
-    private Output<String> environment;
+    @Deprecated /* This attribute is deprecated. */
+    @Import(name="environment")
+    private @Nullable Output<String> environment;
 
     /**
      * @return Worker environment associated with the zone and hostname.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
-    public Output<String> environment() {
-        return this.environment;
+    @Deprecated /* This attribute is deprecated. */
+    public Optional<Output<String>> environment() {
+        return Optional.ofNullable(this.environment);
     }
 
     /**
@@ -143,8 +153,12 @@ public final class WorkersCustomDomainArgs extends com.pulumi.resources.Resource
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
-        public Builder environment(Output<String> environment) {
+        @Deprecated /* This attribute is deprecated. */
+        public Builder environment(@Nullable Output<String> environment) {
             $.environment = environment;
             return this;
         }
@@ -154,7 +168,11 @@ public final class WorkersCustomDomainArgs extends com.pulumi.resources.Resource
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder environment(String environment) {
             return environment(Output.of(environment));
         }
@@ -225,9 +243,6 @@ public final class WorkersCustomDomainArgs extends com.pulumi.resources.Resource
         public WorkersCustomDomainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("WorkersCustomDomainArgs", "accountId");
-            }
-            if ($.environment == null) {
-                throw new MissingRequiredPropertyException("WorkersCustomDomainArgs", "environment");
             }
             if ($.hostname == null) {
                 throw new MissingRequiredPropertyException("WorkersCustomDomainArgs", "hostname");

@@ -8,6 +8,10 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
+ *
+ * ## Import
+ *
+ * ~> This resource does not currently support `pulumi import`.
  */
 export class StreamLiveInput extends pulumi.CustomResource {
     /**

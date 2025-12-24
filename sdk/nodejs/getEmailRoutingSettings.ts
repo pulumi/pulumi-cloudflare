@@ -46,7 +46,7 @@ export interface GetEmailRoutingSettingsResult {
      */
     readonly enabled: boolean;
     /**
-     * Email Routing settings identifier.
+     * Identifier.
      */
     readonly id: string;
     /**

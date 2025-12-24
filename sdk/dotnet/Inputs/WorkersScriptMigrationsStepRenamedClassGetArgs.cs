@@ -13,36 +13,10 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class WorkersScriptMigrationsStepRenamedClassGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("from")]
-        private Input<string>? _from;
-
-        /// <summary>
-        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        /// </summary>
-        public Input<string>? From
-        {
-            get => _from;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _from = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        public Input<string>? From { get; set; }
 
         [Input("to")]
-        private Input<string>? _to;
-
-        /// <summary>
-        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        /// </summary>
-        public Input<string>? To
-        {
-            get => _to;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _to = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        public Input<string>? To { get; set; }
 
         public WorkersScriptMigrationsStepRenamedClassGetArgs()
         {

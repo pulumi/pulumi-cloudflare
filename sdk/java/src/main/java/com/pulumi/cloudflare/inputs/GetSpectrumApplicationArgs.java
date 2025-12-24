@@ -3,11 +3,14 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetSpectrumApplicationFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetSpectrumApplicationArgs extends com.pulumi.resources.InvokeArgs {
@@ -18,15 +21,22 @@ public final class GetSpectrumApplicationArgs extends com.pulumi.resources.Invok
      * App identifier.
      * 
      */
-    @Import(name="appId", required=true)
-    private Output<String> appId;
+    @Import(name="appId")
+    private @Nullable Output<String> appId;
 
     /**
      * @return App identifier.
      * 
      */
-    public Output<String> appId() {
-        return this.appId;
+    public Optional<Output<String>> appId() {
+        return Optional.ofNullable(this.appId);
+    }
+
+    @Import(name="filter")
+    private @Nullable Output<GetSpectrumApplicationFilterArgs> filter;
+
+    public Optional<Output<GetSpectrumApplicationFilterArgs>> filter() {
+        return Optional.ofNullable(this.filter);
     }
 
     /**
@@ -48,6 +58,7 @@ public final class GetSpectrumApplicationArgs extends com.pulumi.resources.Invok
 
     private GetSpectrumApplicationArgs(GetSpectrumApplicationArgs $) {
         this.appId = $.appId;
+        this.filter = $.filter;
         this.zoneId = $.zoneId;
     }
 
@@ -75,7 +86,7 @@ public final class GetSpectrumApplicationArgs extends com.pulumi.resources.Invok
          * @return builder
          * 
          */
-        public Builder appId(Output<String> appId) {
+        public Builder appId(@Nullable Output<String> appId) {
             $.appId = appId;
             return this;
         }
@@ -88,6 +99,15 @@ public final class GetSpectrumApplicationArgs extends com.pulumi.resources.Invok
          */
         public Builder appId(String appId) {
             return appId(Output.of(appId));
+        }
+
+        public Builder filter(@Nullable Output<GetSpectrumApplicationFilterArgs> filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        public Builder filter(GetSpectrumApplicationFilterArgs filter) {
+            return filter(Output.of(filter));
         }
 
         /**
@@ -112,9 +132,6 @@ public final class GetSpectrumApplicationArgs extends com.pulumi.resources.Invok
         }
 
         public GetSpectrumApplicationArgs build() {
-            if ($.appId == null) {
-                throw new MissingRequiredPropertyException("GetSpectrumApplicationArgs", "appId");
-            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("GetSpectrumApplicationArgs", "zoneId");
             }

@@ -87,7 +87,7 @@ class GetWorkersForPlatformsDispatchNamespaceResult:
 
     @_builtins.property
     @pulumi.getter(name="dispatchNamespace")
-    def dispatch_namespace(self) -> Optional[_builtins.str]:
+    def dispatch_namespace(self) -> _builtins.str:
         """
         Name of the Workers for Platforms dispatch namespace.
         """
@@ -206,7 +206,7 @@ def get_workers_for_platforms_dispatch_namespace(account_id: Optional[_builtins.
         script_count=pulumi.get(__ret__, 'script_count'),
         trusted_workers=pulumi.get(__ret__, 'trusted_workers'))
 def get_workers_for_platforms_dispatch_namespace_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                                        dispatch_namespace: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                                        dispatch_namespace: Optional[pulumi.Input[_builtins.str]] = None,
                                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkersForPlatformsDispatchNamespaceResult]:
     """
     ## Example Usage

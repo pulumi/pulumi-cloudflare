@@ -35,6 +35,11 @@ public final class GetZeroTrustDlpCustomEntriesResult {
      */
     private String type;
     private String updatedAt;
+    /**
+     * @return Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;pending&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+     * 
+     */
+    private String uploadStatus;
     private GetZeroTrustDlpCustomEntriesResultVariant variant;
     private String wordList;
 
@@ -82,6 +87,13 @@ public final class GetZeroTrustDlpCustomEntriesResult {
     public String updatedAt() {
         return this.updatedAt;
     }
+    /**
+     * @return Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;pending&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+     * 
+     */
+    public String uploadStatus() {
+        return this.uploadStatus;
+    }
     public GetZeroTrustDlpCustomEntriesResultVariant variant() {
         return this.variant;
     }
@@ -109,6 +121,7 @@ public final class GetZeroTrustDlpCustomEntriesResult {
         private Boolean secret;
         private String type;
         private String updatedAt;
+        private String uploadStatus;
         private GetZeroTrustDlpCustomEntriesResultVariant variant;
         private String wordList;
         public Builder() {}
@@ -125,6 +138,7 @@ public final class GetZeroTrustDlpCustomEntriesResult {
     	      this.secret = defaults.secret;
     	      this.type = defaults.type;
     	      this.updatedAt = defaults.updatedAt;
+    	      this.uploadStatus = defaults.uploadStatus;
     	      this.variant = defaults.variant;
     	      this.wordList = defaults.wordList;
         }
@@ -218,6 +232,14 @@ public final class GetZeroTrustDlpCustomEntriesResult {
             return this;
         }
         @CustomType.Setter
+        public Builder uploadStatus(String uploadStatus) {
+            if (uploadStatus == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDlpCustomEntriesResult", "uploadStatus");
+            }
+            this.uploadStatus = uploadStatus;
+            return this;
+        }
+        @CustomType.Setter
         public Builder variant(GetZeroTrustDlpCustomEntriesResultVariant variant) {
             if (variant == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustDlpCustomEntriesResult", "variant");
@@ -246,6 +268,7 @@ public final class GetZeroTrustDlpCustomEntriesResult {
             _resultValue.secret = secret;
             _resultValue.type = type;
             _resultValue.updatedAt = updatedAt;
+            _resultValue.uploadStatus = uploadStatus;
             _resultValue.variant = variant;
             _resultValue.wordList = wordList;
             return _resultValue;

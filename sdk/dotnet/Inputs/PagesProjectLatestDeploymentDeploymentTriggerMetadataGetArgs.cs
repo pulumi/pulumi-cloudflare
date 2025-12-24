@@ -19,6 +19,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Branch { get; set; }
 
         /// <summary>
+        /// Whether the deployment trigger commit was dirty.
+        /// </summary>
+        [Input("commitDirty")]
+        public Input<bool>? CommitDirty { get; set; }
+
+        /// <summary>
         /// Hash of the deployment trigger commit.
         /// </summary>
         [Input("commitHash")]

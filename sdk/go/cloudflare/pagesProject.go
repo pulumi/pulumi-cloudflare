@@ -109,15 +109,15 @@ import (
 //						},
 //						R2Buckets: cloudflare.PagesProjectDeploymentConfigsPreviewR2BucketsMap{
 //							"R2_BINDING": &cloudflare.PagesProjectDeploymentConfigsPreviewR2BucketsArgs{
-//								Jurisdiction: pulumi.String("eu"),
 //								Name:         pulumi.String("some-bucket"),
+//								Jurisdiction: pulumi.String("eu"),
 //							},
 //						},
 //						Services: cloudflare.PagesProjectDeploymentConfigsPreviewServicesMap{
 //							"SERVICE_BINDING": &cloudflare.PagesProjectDeploymentConfigsPreviewServicesArgs{
+//								Service:     pulumi.String("example-worker"),
 //								Entrypoint:  pulumi.String("MyHandler"),
 //								Environment: pulumi.String("production"),
-//								Service:     pulumi.String("example-worker"),
 //							},
 //						},
 //						UsageModel: pulumi.String("standard"),
@@ -193,15 +193,15 @@ import (
 //						},
 //						R2Buckets: cloudflare.PagesProjectDeploymentConfigsProductionR2BucketsMap{
 //							"R2_BINDING": &cloudflare.PagesProjectDeploymentConfigsProductionR2BucketsArgs{
-//								Jurisdiction: pulumi.String("eu"),
 //								Name:         pulumi.String("some-bucket"),
+//								Jurisdiction: pulumi.String("eu"),
 //							},
 //						},
 //						Services: cloudflare.PagesProjectDeploymentConfigsProductionServicesMap{
 //							"SERVICE_BINDING": &cloudflare.PagesProjectDeploymentConfigsProductionServicesArgs{
+//								Service:     pulumi.String("example-worker"),
 //								Entrypoint:  pulumi.String("MyHandler"),
 //								Environment: pulumi.String("production"),
-//								Service:     pulumi.String("example-worker"),
 //							},
 //						},
 //						UsageModel: pulumi.String("standard"),
@@ -217,6 +217,7 @@ import (
 //					Config: &cloudflare.PagesProjectSourceConfigArgs{
 //						DeploymentsEnabled: pulumi.Bool(true),
 //						Owner:              pulumi.String("my-org"),
+//						OwnerId:            pulumi.String("12345678"),
 //						PathExcludes: pulumi.StringArray{
 //							pulumi.String("string"),
 //						},
@@ -233,6 +234,7 @@ import (
 //						PreviewDeploymentSetting:     pulumi.String("all"),
 //						ProductionBranch:             pulumi.String("main"),
 //						ProductionDeploymentsEnabled: pulumi.Bool(true),
+//						RepoId:                       pulumi.String("12345678"),
 //						RepoName:                     pulumi.String("my-repo"),
 //					},
 //					Type: pulumi.String("github"),
@@ -257,10 +259,10 @@ import (
 type PagesProject struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Configs for the project build process.
-	BuildConfig PagesProjectBuildConfigOutput `pulumi:"buildConfig"`
+	BuildConfig PagesProjectBuildConfigPtrOutput `pulumi:"buildConfig"`
 	// Most recent production deployment of the project.
 	CanonicalDeployment PagesProjectCanonicalDeploymentOutput `pulumi:"canonicalDeployment"`
 	// When the project was created.
@@ -282,8 +284,9 @@ type PagesProject struct {
 	// Production branch of the project. Used to identify production deployments.
 	ProductionBranch pulumi.StringOutput `pulumi:"productionBranch"`
 	// Name of the production script.
-	ProductionScriptName pulumi.StringOutput      `pulumi:"productionScriptName"`
-	Source               PagesProjectSourceOutput `pulumi:"source"`
+	ProductionScriptName pulumi.StringOutput `pulumi:"productionScriptName"`
+	// Configs for the project source control.
+	Source PagesProjectSourcePtrOutput `pulumi:"source"`
 	// The Cloudflare subdomain associated with the project.
 	Subdomain pulumi.StringOutput `pulumi:"subdomain"`
 	// Whether the project uses functions.
@@ -329,7 +332,7 @@ func GetPagesProject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PagesProject resources.
 type pagesProjectState struct {
-	// Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// Configs for the project build process.
 	BuildConfig *PagesProjectBuildConfig `pulumi:"buildConfig"`
@@ -354,8 +357,9 @@ type pagesProjectState struct {
 	// Production branch of the project. Used to identify production deployments.
 	ProductionBranch *string `pulumi:"productionBranch"`
 	// Name of the production script.
-	ProductionScriptName *string             `pulumi:"productionScriptName"`
-	Source               *PagesProjectSource `pulumi:"source"`
+	ProductionScriptName *string `pulumi:"productionScriptName"`
+	// Configs for the project source control.
+	Source *PagesProjectSource `pulumi:"source"`
 	// The Cloudflare subdomain associated with the project.
 	Subdomain *string `pulumi:"subdomain"`
 	// Whether the project uses functions.
@@ -363,7 +367,7 @@ type pagesProjectState struct {
 }
 
 type PagesProjectState struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
 	// Configs for the project build process.
 	BuildConfig PagesProjectBuildConfigPtrInput
@@ -389,7 +393,8 @@ type PagesProjectState struct {
 	ProductionBranch pulumi.StringPtrInput
 	// Name of the production script.
 	ProductionScriptName pulumi.StringPtrInput
-	Source               PagesProjectSourcePtrInput
+	// Configs for the project source control.
+	Source PagesProjectSourcePtrInput
 	// The Cloudflare subdomain associated with the project.
 	Subdomain pulumi.StringPtrInput
 	// Whether the project uses functions.
@@ -401,7 +406,7 @@ func (PagesProjectState) ElementType() reflect.Type {
 }
 
 type pagesProjectArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Configs for the project build process.
 	BuildConfig *PagesProjectBuildConfig `pulumi:"buildConfig"`
@@ -410,13 +415,14 @@ type pagesProjectArgs struct {
 	// Name of the project.
 	Name string `pulumi:"name"`
 	// Production branch of the project. Used to identify production deployments.
-	ProductionBranch string              `pulumi:"productionBranch"`
-	Source           *PagesProjectSource `pulumi:"source"`
+	ProductionBranch string `pulumi:"productionBranch"`
+	// Configs for the project source control.
+	Source *PagesProjectSource `pulumi:"source"`
 }
 
 // The set of arguments for constructing a PagesProject resource.
 type PagesProjectArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput
 	// Configs for the project build process.
 	BuildConfig PagesProjectBuildConfigPtrInput
@@ -426,7 +432,8 @@ type PagesProjectArgs struct {
 	Name pulumi.StringInput
 	// Production branch of the project. Used to identify production deployments.
 	ProductionBranch pulumi.StringInput
-	Source           PagesProjectSourcePtrInput
+	// Configs for the project source control.
+	Source PagesProjectSourcePtrInput
 }
 
 func (PagesProjectArgs) ElementType() reflect.Type {
@@ -516,14 +523,14 @@ func (o PagesProjectOutput) ToPagesProjectOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o PagesProjectOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesProject) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Configs for the project build process.
-func (o PagesProjectOutput) BuildConfig() PagesProjectBuildConfigOutput {
-	return o.ApplyT(func(v *PagesProject) PagesProjectBuildConfigOutput { return v.BuildConfig }).(PagesProjectBuildConfigOutput)
+func (o PagesProjectOutput) BuildConfig() PagesProjectBuildConfigPtrOutput {
+	return o.ApplyT(func(v *PagesProject) PagesProjectBuildConfigPtrOutput { return v.BuildConfig }).(PagesProjectBuildConfigPtrOutput)
 }
 
 // Most recent production deployment of the project.
@@ -581,8 +588,9 @@ func (o PagesProjectOutput) ProductionScriptName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesProject) pulumi.StringOutput { return v.ProductionScriptName }).(pulumi.StringOutput)
 }
 
-func (o PagesProjectOutput) Source() PagesProjectSourceOutput {
-	return o.ApplyT(func(v *PagesProject) PagesProjectSourceOutput { return v.Source }).(PagesProjectSourceOutput)
+// Configs for the project source control.
+func (o PagesProjectOutput) Source() PagesProjectSourcePtrOutput {
+	return o.ApplyT(func(v *PagesProject) PagesProjectSourcePtrOutput { return v.Source }).(PagesProjectSourcePtrOutput)
 }
 
 // The Cloudflare subdomain associated with the project.

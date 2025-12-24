@@ -16,6 +16,10 @@ import * as utilities from "./utilities";
  *     value: "enabled",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ~> This resource does not currently support `pulumi import`.
  */
 export class ContentScanning extends pulumi.CustomResource {
     /**

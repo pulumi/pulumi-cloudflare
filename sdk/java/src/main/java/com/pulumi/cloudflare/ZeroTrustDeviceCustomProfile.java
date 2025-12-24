@@ -223,14 +223,14 @@ public class ZeroTrustDeviceCustomProfile extends com.pulumi.resources.CustomRes
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> enabled;
+    private Output<Boolean> enabled;
 
     /**
      * @return Whether the policy will be applied to matching devices.
      * 
      */
-    public Output<Optional<Boolean>> enabled() {
-        return Codegen.optional(this.enabled);
+    public Output<Boolean> enabled() {
+        return this.enabled;
     }
     /**
      * Whether to add Microsoft IPs to Split Tunnel exclusions.

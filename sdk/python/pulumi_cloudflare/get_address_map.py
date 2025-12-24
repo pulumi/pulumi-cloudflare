@@ -75,7 +75,7 @@ class GetAddressMapResult:
 
     @_builtins.property
     @pulumi.getter(name="addressMapId")
-    def address_map_id(self) -> Optional[_builtins.str]:
+    def address_map_id(self) -> _builtins.str:
         """
         Identifier of an Address Map.
         """
@@ -214,7 +214,7 @@ def get_address_map(account_id: Optional[_builtins.str] = None,
         memberships=pulumi.get(__ret__, 'memberships'),
         modified_at=pulumi.get(__ret__, 'modified_at'))
 def get_address_map_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                           address_map_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                           address_map_id: Optional[pulumi.Input[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAddressMapResult]:
     """
     ## Example Usage

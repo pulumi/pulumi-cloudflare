@@ -87,8 +87,8 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
-        [Input("locationId")]
-        public string? LocationId { get; set; }
+        [Input("locationId", required: true)]
+        public string LocationId { get; set; } = null!;
 
         public GetZeroTrustDnsLocationArgs()
         {
@@ -101,8 +101,8 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        [Input("locationId")]
-        public Input<string>? LocationId { get; set; }
+        [Input("locationId", required: true)]
+        public Input<string> LocationId { get; set; } = null!;
 
         public GetZeroTrustDnsLocationInvokeArgs()
         {
@@ -156,7 +156,7 @@ namespace Pulumi.Cloudflare
         /// Show the backup destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
         /// </summary>
         public readonly string Ipv4DestinationBackup;
-        public readonly string? LocationId;
+        public readonly string LocationId;
         /// <summary>
         /// Specify the location name.
         /// </summary>
@@ -193,7 +193,7 @@ namespace Pulumi.Cloudflare
 
             string ipv4DestinationBackup,
 
-            string? locationId,
+            string locationId,
 
             string name,
 

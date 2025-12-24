@@ -31,7 +31,7 @@ export function getWaitingRoom(args: GetWaitingRoomArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getWaitingRoom.
  */
 export interface GetWaitingRoomArgs {
-    waitingRoomId?: string;
+    waitingRoomId: string;
     /**
      * Identifier.
      */
@@ -80,7 +80,7 @@ export interface GetWaitingRoomResult {
     readonly totalActiveUsers: number;
     readonly turnstileAction: string;
     readonly turnstileMode: string;
-    readonly waitingRoomId?: string;
+    readonly waitingRoomId: string;
     /**
      * Identifier.
      */
@@ -111,7 +111,7 @@ export function getWaitingRoomOutput(args: GetWaitingRoomOutputArgs, opts?: pulu
  * A collection of arguments for invoking getWaitingRoom.
  */
 export interface GetWaitingRoomOutputArgs {
-    waitingRoomId?: pulumi.Input<string>;
+    waitingRoomId: pulumi.Input<string>;
     /**
      * Identifier.
      */

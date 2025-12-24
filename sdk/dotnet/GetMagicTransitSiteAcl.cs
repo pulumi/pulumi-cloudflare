@@ -96,8 +96,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("aclId")]
-        public string? AclId { get; set; }
+        [Input("aclId", required: true)]
+        public string AclId { get; set; } = null!;
 
         /// <summary>
         /// Identifier
@@ -122,8 +122,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("aclId")]
-        public Input<string>? AclId { get; set; }
+        [Input("aclId", required: true)]
+        public Input<string> AclId { get; set; } = null!;
 
         /// <summary>
         /// Identifier
@@ -148,7 +148,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        public readonly string? AclId;
+        public readonly string AclId;
         /// <summary>
         /// Description for the ACL.
         /// </summary>
@@ -181,7 +181,7 @@ namespace Pulumi.Cloudflare
         private GetMagicTransitSiteAclResult(
             string accountId,
 
-            string? aclId,
+            string aclId,
 
             string description,
 

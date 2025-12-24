@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *             .bucketName("example-bucket")
  *             .destination(R2BucketSippyDestinationArgs.builder()
  *                 .accessKeyId("accessKeyId")
- *                 .provider("r2")
+ *                 .cloudProvider("r2")
  *                 .secretAccessKey("secretAccessKey")
  *                 .build())
  *             .source(R2BucketSippySourceArgs.builder()
@@ -65,6 +65,10 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
+ * ## Import
+ * 
+ * ~&gt; This resource does not currently support `pulumi import`.
  * 
  */
 @ResourceType(type="cloudflare:index/r2BucketSippy:R2BucketSippy")

@@ -26,7 +26,7 @@ public final class GetR2BucketResult {
      */
     private String creationDate;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Name of the bucket.
      * 
      */
     private String id;
@@ -77,7 +77,7 @@ public final class GetR2BucketResult {
         return this.creationDate;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Name of the bucket.
      * 
      */
     public String id() {

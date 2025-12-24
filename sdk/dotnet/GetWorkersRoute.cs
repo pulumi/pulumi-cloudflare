@@ -87,8 +87,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("routeId")]
-        public string? RouteId { get; set; }
+        [Input("routeId", required: true)]
+        public string RouteId { get; set; } = null!;
 
         /// <summary>
         /// Identifier.
@@ -107,8 +107,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("routeId")]
-        public Input<string>? RouteId { get; set; }
+        [Input("routeId", required: true)]
+        public Input<string> RouteId { get; set; } = null!;
 
         /// <summary>
         /// Identifier.
@@ -137,7 +137,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string? RouteId;
+        public readonly string RouteId;
         /// <summary>
         /// Name of the script to run if the route matches.
         /// </summary>
@@ -153,7 +153,7 @@ namespace Pulumi.Cloudflare
 
             string pattern,
 
-            string? routeId,
+            string routeId,
 
             string script,
 

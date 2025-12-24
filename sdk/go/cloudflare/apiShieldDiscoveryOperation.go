@@ -39,6 +39,10 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ~> This resource does not currently support `pulumi import`.
 type ApiShieldDiscoveryOperation struct {
 	pulumi.CustomResourceState
 

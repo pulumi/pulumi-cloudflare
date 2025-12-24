@@ -14,42 +14,34 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class WorkerScriptMigrations
     {
         /// <summary>
-        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         /// A list of classes to delete Durable Object namespaces from.
         /// </summary>
         public readonly ImmutableArray<string> DeletedClasses;
         /// <summary>
-        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         /// A list of classes to create Durable Object namespaces from.
         /// </summary>
         public readonly ImmutableArray<string> NewClasses;
         /// <summary>
-        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         /// A list of classes to create Durable Object namespaces with SQLite from.
         /// </summary>
         public readonly ImmutableArray<string> NewSqliteClasses;
         /// <summary>
-        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         /// Tag to set as the latest migration tag.
         /// </summary>
         public readonly string? NewTag;
         /// <summary>
-        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         /// Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.
         /// </summary>
         public readonly string? OldTag;
         /// <summary>
-        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         /// A list of classes with Durable Object namespaces that were renamed.
         /// </summary>
         public readonly ImmutableArray<Outputs.WorkerScriptMigrationsRenamedClass> RenamedClasses;
         /// <summary>
-        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         /// Migrations to apply in order.
         /// </summary>
         public readonly ImmutableArray<Outputs.WorkerScriptMigrationsStep> Steps;
         /// <summary>
-        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         /// A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
         /// </summary>
         public readonly ImmutableArray<Outputs.WorkerScriptMigrationsTransferredClass> TransferredClasses;

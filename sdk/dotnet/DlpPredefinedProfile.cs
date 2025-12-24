@@ -27,13 +27,9 @@ namespace Pulumi.Cloudflare
     ///         AiContextEnabled = true,
     ///         AllowedMatchCount = 5,
     ///         ConfidenceThreshold = "confidence_threshold",
-    ///         ContextAwareness = new Cloudflare.Inputs.ZeroTrustDlpPredefinedProfileContextAwarenessArgs
+    ///         EnabledEntries = new[]
     ///         {
-    ///             Enabled = true,
-    ///             Skip = new Cloudflare.Inputs.ZeroTrustDlpPredefinedProfileContextAwarenessSkipArgs
-    ///             {
-    ///                 Files = true,
-    ///             },
+    ///             "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
     ///         },
     ///         Entries = new[]
     ///         {
@@ -71,29 +67,14 @@ namespace Pulumi.Cloudflare
         [Output("confidenceThreshold")]
         public Output<string> ConfidenceThreshold { get; private set; } = null!;
 
-        /// <summary>
-        /// Scan the context of predefined entries to only return matches surrounded by keywords.
-        /// </summary>
-        [Output("contextAwareness")]
-        public Output<Outputs.DlpPredefinedProfileContextAwareness?> ContextAwareness { get; private set; } = null!;
-
-        /// <summary>
-        /// When the profile was created.
-        /// </summary>
-        [Output("createdAt")]
-        public Output<string> CreatedAt { get; private set; } = null!;
-
-        /// <summary>
-        /// The description of the profile.
-        /// </summary>
-        [Output("description")]
-        public Output<string> Description { get; private set; } = null!;
+        [Output("enabledEntries")]
+        public Output<ImmutableArray<string>> EnabledEntries { get; private set; } = null!;
 
         [Output("entries")]
         public Output<ImmutableArray<Outputs.DlpPredefinedProfileEntry>> Entries { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the profile.
+        /// The name of the predefined profile.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -109,18 +90,6 @@ namespace Pulumi.Cloudflare
 
         [Output("profileId")]
         public Output<string> ProfileId { get; private set; } = null!;
-
-        /// <summary>
-        /// Available values: "custom", "predefined", "integration".
-        /// </summary>
-        [Output("type")]
-        public Output<string> Type { get; private set; } = null!;
-
-        /// <summary>
-        /// When the profile was lasted updated.
-        /// </summary>
-        [Output("updatedAt")]
-        public Output<string> UpdatedAt { get; private set; } = null!;
 
 
         /// <summary>
@@ -184,11 +153,13 @@ namespace Pulumi.Cloudflare
         [Input("confidenceThreshold")]
         public Input<string>? ConfidenceThreshold { get; set; }
 
-        /// <summary>
-        /// Scan the context of predefined entries to only return matches surrounded by keywords.
-        /// </summary>
-        [Input("contextAwareness")]
-        public Input<Inputs.DlpPredefinedProfileContextAwarenessArgs>? ContextAwareness { get; set; }
+        [Input("enabledEntries")]
+        private InputList<string>? _enabledEntries;
+        public InputList<string> EnabledEntries
+        {
+            get => _enabledEntries ?? (_enabledEntries = new InputList<string>());
+            set => _enabledEntries = value;
+        }
 
         [Input("entries")]
         private InputList<Inputs.DlpPredefinedProfileEntryArgs>? _entries;
@@ -225,23 +196,13 @@ namespace Pulumi.Cloudflare
         [Input("confidenceThreshold")]
         public Input<string>? ConfidenceThreshold { get; set; }
 
-        /// <summary>
-        /// Scan the context of predefined entries to only return matches surrounded by keywords.
-        /// </summary>
-        [Input("contextAwareness")]
-        public Input<Inputs.DlpPredefinedProfileContextAwarenessGetArgs>? ContextAwareness { get; set; }
-
-        /// <summary>
-        /// When the profile was created.
-        /// </summary>
-        [Input("createdAt")]
-        public Input<string>? CreatedAt { get; set; }
-
-        /// <summary>
-        /// The description of the profile.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
+        [Input("enabledEntries")]
+        private InputList<string>? _enabledEntries;
+        public InputList<string> EnabledEntries
+        {
+            get => _enabledEntries ?? (_enabledEntries = new InputList<string>());
+            set => _enabledEntries = value;
+        }
 
         [Input("entries")]
         private InputList<Inputs.DlpPredefinedProfileEntryGetArgs>? _entries;
@@ -253,7 +214,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The name of the profile.
+        /// The name of the predefined profile.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -269,18 +230,6 @@ namespace Pulumi.Cloudflare
 
         [Input("profileId")]
         public Input<string>? ProfileId { get; set; }
-
-        /// <summary>
-        /// Available values: "custom", "predefined", "integration".
-        /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        /// <summary>
-        /// When the profile was lasted updated.
-        /// </summary>
-        [Input("updatedAt")]
-        public Input<string>? UpdatedAt { get; set; }
 
         public DlpPredefinedProfileState()
         {

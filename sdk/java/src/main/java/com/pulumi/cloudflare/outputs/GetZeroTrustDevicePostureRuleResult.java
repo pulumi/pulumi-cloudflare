@@ -10,8 +10,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustDevicePostureRuleResult {
@@ -50,7 +48,7 @@ public final class GetZeroTrustDevicePostureRuleResult {
      * @return API UUID.
      * 
      */
-    private @Nullable String ruleId;
+    private String ruleId;
     /**
      * @return Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
      * 
@@ -58,7 +56,7 @@ public final class GetZeroTrustDevicePostureRuleResult {
     private String schedule;
     /**
      * @return The type of device posture rule.
-     * Available values: &#34;file&#34;, &#34;application&#34;, &#34;tanium&#34;, &#34;gateway&#34;, &#34;warp&#34;, &#34;disk*encryption&#34;, &#34;serial*number&#34;, &#34;sentinelone&#34;, &#34;carbonblack&#34;, &#34;firewall&#34;, &#34;os*version&#34;, &#34;domain*joined&#34;, &#34;client*certificate&#34;, &#34;client*certificate*v2&#34;, &#34;unique*client*id&#34;, &#34;kolide&#34;, &#34;tanium*s2s&#34;, &#34;crowdstrike*s2s&#34;, &#34;intune&#34;, &#34;workspace*one&#34;, &#34;sentinelone*s2s&#34;, &#34;custom*s2s&#34;.
+     * Available values: &#34;file&#34;, &#34;application&#34;, &#34;tanium&#34;, &#34;gateway&#34;, &#34;warp&#34;, &#34;disk*encryption&#34;, &#34;serial*number&#34;, &#34;sentinelone&#34;, &#34;carbonblack&#34;, &#34;firewall&#34;, &#34;os*version&#34;, &#34;domain*joined&#34;, &#34;client*certificate&#34;, &#34;client*certificate*v2&#34;, &#34;antivirus&#34;, &#34;unique*client*id&#34;, &#34;kolide&#34;, &#34;tanium*s2s&#34;, &#34;crowdstrike*s2s&#34;, &#34;intune&#34;, &#34;workspace*one&#34;, &#34;sentinelone*s2s&#34;, &#34;custom*s2s&#34;.
      * 
      */
     private String type;
@@ -113,8 +111,8 @@ public final class GetZeroTrustDevicePostureRuleResult {
      * @return API UUID.
      * 
      */
-    public Optional<String> ruleId() {
-        return Optional.ofNullable(this.ruleId);
+    public String ruleId() {
+        return this.ruleId;
     }
     /**
      * @return Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
@@ -125,7 +123,7 @@ public final class GetZeroTrustDevicePostureRuleResult {
     }
     /**
      * @return The type of device posture rule.
-     * Available values: &#34;file&#34;, &#34;application&#34;, &#34;tanium&#34;, &#34;gateway&#34;, &#34;warp&#34;, &#34;disk*encryption&#34;, &#34;serial*number&#34;, &#34;sentinelone&#34;, &#34;carbonblack&#34;, &#34;firewall&#34;, &#34;os*version&#34;, &#34;domain*joined&#34;, &#34;client*certificate&#34;, &#34;client*certificate*v2&#34;, &#34;unique*client*id&#34;, &#34;kolide&#34;, &#34;tanium*s2s&#34;, &#34;crowdstrike*s2s&#34;, &#34;intune&#34;, &#34;workspace*one&#34;, &#34;sentinelone*s2s&#34;, &#34;custom*s2s&#34;.
+     * Available values: &#34;file&#34;, &#34;application&#34;, &#34;tanium&#34;, &#34;gateway&#34;, &#34;warp&#34;, &#34;disk*encryption&#34;, &#34;serial*number&#34;, &#34;sentinelone&#34;, &#34;carbonblack&#34;, &#34;firewall&#34;, &#34;os*version&#34;, &#34;domain*joined&#34;, &#34;client*certificate&#34;, &#34;client*certificate*v2&#34;, &#34;antivirus&#34;, &#34;unique*client*id&#34;, &#34;kolide&#34;, &#34;tanium*s2s&#34;, &#34;crowdstrike*s2s&#34;, &#34;intune&#34;, &#34;workspace*one&#34;, &#34;sentinelone*s2s&#34;, &#34;custom*s2s&#34;.
      * 
      */
     public String type() {
@@ -148,7 +146,7 @@ public final class GetZeroTrustDevicePostureRuleResult {
         private GetZeroTrustDevicePostureRuleInput input;
         private List<GetZeroTrustDevicePostureRuleMatch> matches;
         private String name;
-        private @Nullable String ruleId;
+        private String ruleId;
         private String schedule;
         private String type;
         public Builder() {}
@@ -226,8 +224,10 @@ public final class GetZeroTrustDevicePostureRuleResult {
             return this;
         }
         @CustomType.Setter
-        public Builder ruleId(@Nullable String ruleId) {
-
+        public Builder ruleId(String ruleId) {
+            if (ruleId == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDevicePostureRuleResult", "ruleId");
+            }
             this.ruleId = ruleId;
             return this;
         }

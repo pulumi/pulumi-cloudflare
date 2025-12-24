@@ -8,19 +8,17 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetWaitingRoomEventArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetWaitingRoomEventArgs Empty = new GetWaitingRoomEventArgs();
 
-    @Import(name="eventId")
-    private @Nullable Output<String> eventId;
+    @Import(name="eventId", required=true)
+    private Output<String> eventId;
 
-    public Optional<Output<String>> eventId() {
-        return Optional.ofNullable(this.eventId);
+    public Output<String> eventId() {
+        return this.eventId;
     }
 
     @Import(name="waitingRoomId", required=true)
@@ -71,7 +69,7 @@ public final class GetWaitingRoomEventArgs extends com.pulumi.resources.InvokeAr
             $ = new GetWaitingRoomEventArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder eventId(@Nullable Output<String> eventId) {
+        public Builder eventId(Output<String> eventId) {
             $.eventId = eventId;
             return this;
         }
@@ -111,6 +109,9 @@ public final class GetWaitingRoomEventArgs extends com.pulumi.resources.InvokeAr
         }
 
         public GetWaitingRoomEventArgs build() {
+            if ($.eventId == null) {
+                throw new MissingRequiredPropertyException("GetWaitingRoomEventArgs", "eventId");
+            }
             if ($.waitingRoomId == null) {
                 throw new MissingRequiredPropertyException("GetWaitingRoomEventArgs", "waitingRoomId");
             }

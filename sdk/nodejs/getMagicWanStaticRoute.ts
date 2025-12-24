@@ -50,7 +50,7 @@ export interface GetMagicWanStaticRouteResult {
      */
     readonly accountId: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Identifier
      */
     readonly id: string;
     readonly route: outputs.GetMagicWanStaticRouteRoute;

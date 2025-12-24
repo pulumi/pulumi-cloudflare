@@ -15,8 +15,8 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// Name of the dataset.
         /// </summary>
-        [Input("dataset")]
-        public Input<string>? Dataset { get; set; }
+        [Input("dataset", required: true)]
+        public Input<string> Dataset { get; set; } = null!;
 
         public PagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsGetArgs()
         {

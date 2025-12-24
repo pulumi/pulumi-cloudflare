@@ -13,10 +13,15 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkerVersionModule {
     /**
+     * @return The base64-encoded module content.
+     * 
+     */
+    private @Nullable String contentBase64;
+    /**
      * @return The file path of the module content.
      * 
      */
-    private String contentFile;
+    private @Nullable String contentFile;
     /**
      * @return The SHA-256 hash of the module content.
      * 
@@ -35,11 +40,18 @@ public final class WorkerVersionModule {
 
     private WorkerVersionModule() {}
     /**
+     * @return The base64-encoded module content.
+     * 
+     */
+    public Optional<String> contentBase64() {
+        return Optional.ofNullable(this.contentBase64);
+    }
+    /**
      * @return The file path of the module content.
      * 
      */
-    public String contentFile() {
-        return this.contentFile;
+    public Optional<String> contentFile() {
+        return Optional.ofNullable(this.contentFile);
     }
     /**
      * @return The SHA-256 hash of the module content.
@@ -72,13 +84,15 @@ public final class WorkerVersionModule {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String contentFile;
+        private @Nullable String contentBase64;
+        private @Nullable String contentFile;
         private @Nullable String contentSha256;
         private String contentType;
         private String name;
         public Builder() {}
         public Builder(WorkerVersionModule defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.contentBase64 = defaults.contentBase64;
     	      this.contentFile = defaults.contentFile;
     	      this.contentSha256 = defaults.contentSha256;
     	      this.contentType = defaults.contentType;
@@ -86,10 +100,14 @@ public final class WorkerVersionModule {
         }
 
         @CustomType.Setter
-        public Builder contentFile(String contentFile) {
-            if (contentFile == null) {
-              throw new MissingRequiredPropertyException("WorkerVersionModule", "contentFile");
-            }
+        public Builder contentBase64(@Nullable String contentBase64) {
+
+            this.contentBase64 = contentBase64;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder contentFile(@Nullable String contentFile) {
+
             this.contentFile = contentFile;
             return this;
         }
@@ -117,6 +135,7 @@ public final class WorkerVersionModule {
         }
         public WorkerVersionModule build() {
             final var _resultValue = new WorkerVersionModule();
+            _resultValue.contentBase64 = contentBase64;
             _resultValue.contentFile = contentFile;
             _resultValue.contentSha256 = contentSha256;
             _resultValue.contentType = contentType;

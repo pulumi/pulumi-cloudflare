@@ -65,7 +65,7 @@ export interface GetZeroTrustDlpCustomProfileResult {
     readonly description: string;
     readonly entries: outputs.GetZeroTrustDlpCustomProfileEntry[];
     /**
-     * The id of the profile (uuid).
+     * The ID of this resource.
      */
     readonly id: string;
     /**

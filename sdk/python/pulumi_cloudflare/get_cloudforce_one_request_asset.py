@@ -42,8 +42,8 @@ class GetCloudforceOneRequestAssetResult:
         if file_type and not isinstance(file_type, str):
             raise TypeError("Expected argument 'file_type' to be a str")
         pulumi.set(__self__, "file_type", file_type)
-        if id and not isinstance(id, int):
-            raise TypeError("Expected argument 'id' to be a int")
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -94,9 +94,9 @@ class GetCloudforceOneRequestAssetResult:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> _builtins.int:
+    def id(self) -> _builtins.str:
         """
-        Asset ID.
+        UUID.
         """
         return pulumi.get(self, "id")
 

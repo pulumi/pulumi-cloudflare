@@ -3,7 +3,6 @@
 
 package com.pulumi.cloudflare.outputs;
 
-import com.pulumi.cloudflare.outputs.GetZeroTrustDlpPredefinedProfileContextAwareness;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDlpPredefinedProfileEntry;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -17,43 +16,23 @@ import java.util.Objects;
 public final class GetZeroTrustDlpPredefinedProfileResult {
     private String accountId;
     private Boolean aiContextEnabled;
-    /**
-     * @return Related DLP policies will trigger when the match count exceeds the number set.
-     * 
-     */
     private Integer allowedMatchCount;
-    /**
-     * @return Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;veryHigh&#34;.
-     * 
-     */
     private String confidenceThreshold;
+    private List<String> enabledEntries;
     /**
-     * @return Scan the context of predefined entries to only return matches surrounded by keywords.
-     * 
      * @deprecated
      * This attribute is deprecated.
      * 
      */
     @Deprecated /* This attribute is deprecated. */
-    private GetZeroTrustDlpPredefinedProfileContextAwareness contextAwareness;
-    /**
-     * @return When the profile was created.
-     * 
-     */
-    private String createdAt;
-    /**
-     * @return The description of the profile.
-     * 
-     */
-    private String description;
     private List<GetZeroTrustDlpPredefinedProfileEntry> entries;
     /**
-     * @return The id of the profile (uuid).
+     * @return The ID of this resource.
      * 
      */
     private String id;
     /**
-     * @return The name of the profile.
+     * @return The name of the predefined profile.
      * 
      */
     private String name;
@@ -64,16 +43,6 @@ public final class GetZeroTrustDlpPredefinedProfileResult {
      */
     private Boolean openAccess;
     private String profileId;
-    /**
-     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
-     * 
-     */
-    private String type;
-    /**
-     * @return When the profile was lasted updated.
-     * 
-     */
-    private String updatedAt;
 
     private GetZeroTrustDlpPredefinedProfileResult() {}
     public String accountId() {
@@ -82,57 +51,33 @@ public final class GetZeroTrustDlpPredefinedProfileResult {
     public Boolean aiContextEnabled() {
         return this.aiContextEnabled;
     }
-    /**
-     * @return Related DLP policies will trigger when the match count exceeds the number set.
-     * 
-     */
     public Integer allowedMatchCount() {
         return this.allowedMatchCount;
     }
-    /**
-     * @return Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;veryHigh&#34;.
-     * 
-     */
     public String confidenceThreshold() {
         return this.confidenceThreshold;
     }
+    public List<String> enabledEntries() {
+        return this.enabledEntries;
+    }
     /**
-     * @return Scan the context of predefined entries to only return matches surrounded by keywords.
-     * 
      * @deprecated
      * This attribute is deprecated.
      * 
      */
     @Deprecated /* This attribute is deprecated. */
-    public GetZeroTrustDlpPredefinedProfileContextAwareness contextAwareness() {
-        return this.contextAwareness;
-    }
-    /**
-     * @return When the profile was created.
-     * 
-     */
-    public String createdAt() {
-        return this.createdAt;
-    }
-    /**
-     * @return The description of the profile.
-     * 
-     */
-    public String description() {
-        return this.description;
-    }
     public List<GetZeroTrustDlpPredefinedProfileEntry> entries() {
         return this.entries;
     }
     /**
-     * @return The id of the profile (uuid).
+     * @return The ID of this resource.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The name of the profile.
+     * @return The name of the predefined profile.
      * 
      */
     public String name() {
@@ -151,20 +96,6 @@ public final class GetZeroTrustDlpPredefinedProfileResult {
     public String profileId() {
         return this.profileId;
     }
-    /**
-     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
-     * 
-     */
-    public String type() {
-        return this.type;
-    }
-    /**
-     * @return When the profile was lasted updated.
-     * 
-     */
-    public String updatedAt() {
-        return this.updatedAt;
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -179,17 +110,13 @@ public final class GetZeroTrustDlpPredefinedProfileResult {
         private Boolean aiContextEnabled;
         private Integer allowedMatchCount;
         private String confidenceThreshold;
-        private GetZeroTrustDlpPredefinedProfileContextAwareness contextAwareness;
-        private String createdAt;
-        private String description;
+        private List<String> enabledEntries;
         private List<GetZeroTrustDlpPredefinedProfileEntry> entries;
         private String id;
         private String name;
         private Boolean ocrEnabled;
         private Boolean openAccess;
         private String profileId;
-        private String type;
-        private String updatedAt;
         public Builder() {}
         public Builder(GetZeroTrustDlpPredefinedProfileResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -197,17 +124,13 @@ public final class GetZeroTrustDlpPredefinedProfileResult {
     	      this.aiContextEnabled = defaults.aiContextEnabled;
     	      this.allowedMatchCount = defaults.allowedMatchCount;
     	      this.confidenceThreshold = defaults.confidenceThreshold;
-    	      this.contextAwareness = defaults.contextAwareness;
-    	      this.createdAt = defaults.createdAt;
-    	      this.description = defaults.description;
+    	      this.enabledEntries = defaults.enabledEntries;
     	      this.entries = defaults.entries;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.ocrEnabled = defaults.ocrEnabled;
     	      this.openAccess = defaults.openAccess;
     	      this.profileId = defaults.profileId;
-    	      this.type = defaults.type;
-    	      this.updatedAt = defaults.updatedAt;
         }
 
         @CustomType.Setter
@@ -243,28 +166,15 @@ public final class GetZeroTrustDlpPredefinedProfileResult {
             return this;
         }
         @CustomType.Setter
-        public Builder contextAwareness(GetZeroTrustDlpPredefinedProfileContextAwareness contextAwareness) {
-            if (contextAwareness == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustDlpPredefinedProfileResult", "contextAwareness");
+        public Builder enabledEntries(List<String> enabledEntries) {
+            if (enabledEntries == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDlpPredefinedProfileResult", "enabledEntries");
             }
-            this.contextAwareness = contextAwareness;
+            this.enabledEntries = enabledEntries;
             return this;
         }
-        @CustomType.Setter
-        public Builder createdAt(String createdAt) {
-            if (createdAt == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustDlpPredefinedProfileResult", "createdAt");
-            }
-            this.createdAt = createdAt;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder description(String description) {
-            if (description == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustDlpPredefinedProfileResult", "description");
-            }
-            this.description = description;
-            return this;
+        public Builder enabledEntries(String... enabledEntries) {
+            return enabledEntries(List.of(enabledEntries));
         }
         @CustomType.Setter
         public Builder entries(List<GetZeroTrustDlpPredefinedProfileEntry> entries) {
@@ -317,39 +227,19 @@ public final class GetZeroTrustDlpPredefinedProfileResult {
             this.profileId = profileId;
             return this;
         }
-        @CustomType.Setter
-        public Builder type(String type) {
-            if (type == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustDlpPredefinedProfileResult", "type");
-            }
-            this.type = type;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder updatedAt(String updatedAt) {
-            if (updatedAt == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustDlpPredefinedProfileResult", "updatedAt");
-            }
-            this.updatedAt = updatedAt;
-            return this;
-        }
         public GetZeroTrustDlpPredefinedProfileResult build() {
             final var _resultValue = new GetZeroTrustDlpPredefinedProfileResult();
             _resultValue.accountId = accountId;
             _resultValue.aiContextEnabled = aiContextEnabled;
             _resultValue.allowedMatchCount = allowedMatchCount;
             _resultValue.confidenceThreshold = confidenceThreshold;
-            _resultValue.contextAwareness = contextAwareness;
-            _resultValue.createdAt = createdAt;
-            _resultValue.description = description;
+            _resultValue.enabledEntries = enabledEntries;
             _resultValue.entries = entries;
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.ocrEnabled = ocrEnabled;
             _resultValue.openAccess = openAccess;
             _resultValue.profileId = profileId;
-            _resultValue.type = type;
-            _resultValue.updatedAt = updatedAt;
             return _resultValue;
         }
     }

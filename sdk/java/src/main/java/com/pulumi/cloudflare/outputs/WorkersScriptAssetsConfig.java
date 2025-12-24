@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.Object;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -35,10 +36,10 @@ public final class WorkersScriptAssetsConfig {
      */
     private @Nullable String redirects;
     /**
-     * @return When true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script.
+     * @return When a boolean true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script. When a list of strings, contains path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either &#39;/&#39; or &#39;!/&#39;. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
      * 
      */
-    private @Nullable Boolean runWorkerFirst;
+    private @Nullable Object runWorkerFirst;
     /**
      * @return When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.
      * 
@@ -81,10 +82,10 @@ public final class WorkersScriptAssetsConfig {
         return Optional.ofNullable(this.redirects);
     }
     /**
-     * @return When true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script.
+     * @return When a boolean true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script. When a list of strings, contains path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either &#39;/&#39; or &#39;!/&#39;. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
      * 
      */
-    public Optional<Boolean> runWorkerFirst() {
+    public Optional<Object> runWorkerFirst() {
         return Optional.ofNullable(this.runWorkerFirst);
     }
     /**
@@ -112,7 +113,7 @@ public final class WorkersScriptAssetsConfig {
         private @Nullable String htmlHandling;
         private @Nullable String notFoundHandling;
         private @Nullable String redirects;
-        private @Nullable Boolean runWorkerFirst;
+        private @Nullable Object runWorkerFirst;
         private @Nullable Boolean serveDirectly;
         public Builder() {}
         public Builder(WorkersScriptAssetsConfig defaults) {
@@ -150,7 +151,7 @@ public final class WorkersScriptAssetsConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder runWorkerFirst(@Nullable Boolean runWorkerFirst) {
+        public Builder runWorkerFirst(@Nullable Object runWorkerFirst) {
 
             this.runWorkerFirst = runWorkerFirst;
             return this;

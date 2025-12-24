@@ -62,7 +62,7 @@ export interface GetZeroTrustAccessShortLivedCertificateResult {
      */
     readonly aud: string;
     /**
-     * The ID of the CA.
+     * UUID.
      */
     readonly id: string;
     /**

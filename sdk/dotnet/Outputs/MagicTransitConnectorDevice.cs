@@ -14,15 +14,22 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class MagicTransitConnectorDevice
     {
         public readonly string? Id;
+        /// <summary>
+        /// Set to true to provision a license key for this connector. Only used during resource creation. This is a write-only field that will not be stored in state.
+        /// </summary>
+        public readonly bool? ProvisionLicense;
         public readonly string? SerialNumber;
 
         [OutputConstructor]
         private MagicTransitConnectorDevice(
             string? id,
 
+            bool? provisionLicense,
+
             string? serialNumber)
         {
             Id = id;
+            ProvisionLicense = provisionLicense;
             SerialNumber = serialNumber;
         }
     }

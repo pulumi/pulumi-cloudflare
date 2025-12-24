@@ -30,6 +30,11 @@ public final class GetZeroTrustDexTestsResult {
      */
     private Boolean enabled;
     /**
+     * @return The unique identifier for the test.
+     * 
+     */
+    private String id;
+    /**
      * @return How often the test will run.
      * 
      */
@@ -72,6 +77,13 @@ public final class GetZeroTrustDexTestsResult {
      */
     public Boolean enabled() {
         return this.enabled;
+    }
+    /**
+     * @return The unique identifier for the test.
+     * 
+     */
+    public String id() {
+        return this.id;
     }
     /**
      * @return How often the test will run.
@@ -117,6 +129,7 @@ public final class GetZeroTrustDexTestsResult {
         private GetZeroTrustDexTestsResultData data;
         private String description;
         private Boolean enabled;
+        private String id;
         private String interval;
         private String name;
         private List<GetZeroTrustDexTestsResultTargetPolicy> targetPolicies;
@@ -128,6 +141,7 @@ public final class GetZeroTrustDexTestsResult {
     	      this.data = defaults.data;
     	      this.description = defaults.description;
     	      this.enabled = defaults.enabled;
+    	      this.id = defaults.id;
     	      this.interval = defaults.interval;
     	      this.name = defaults.name;
     	      this.targetPolicies = defaults.targetPolicies;
@@ -157,6 +171,14 @@ public final class GetZeroTrustDexTestsResult {
               throw new MissingRequiredPropertyException("GetZeroTrustDexTestsResult", "enabled");
             }
             this.enabled = enabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDexTestsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -207,6 +229,7 @@ public final class GetZeroTrustDexTestsResult {
             _resultValue.data = data;
             _resultValue.description = description;
             _resultValue.enabled = enabled;
+            _resultValue.id = id;
             _resultValue.interval = interval;
             _resultValue.name = name;
             _resultValue.targetPolicies = targetPolicies;

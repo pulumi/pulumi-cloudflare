@@ -93,8 +93,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("mtlsCertificateId")]
-        public string? MtlsCertificateId { get; set; }
+        [Input("mtlsCertificateId", required: true)]
+        public string MtlsCertificateId { get; set; } = null!;
 
         public GetMtlsCertificateArgs()
         {
@@ -113,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("mtlsCertificateId")]
-        public Input<string>? MtlsCertificateId { get; set; }
+        [Input("mtlsCertificateId", required: true)]
+        public Input<string> MtlsCertificateId { get; set; } = null!;
 
         public GetMtlsCertificateInvokeArgs()
         {
@@ -153,7 +153,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string? MtlsCertificateId;
+        public readonly string MtlsCertificateId;
         /// <summary>
         /// Optional unique name for the certificate. Only used for human readability.
         /// </summary>
@@ -185,7 +185,7 @@ namespace Pulumi.Cloudflare
 
             string issuer,
 
-            string? mtlsCertificateId,
+            string mtlsCertificateId,
 
             string name,
 

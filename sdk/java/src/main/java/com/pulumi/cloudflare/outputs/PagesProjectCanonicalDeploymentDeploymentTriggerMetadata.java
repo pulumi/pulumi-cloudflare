@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,6 +17,11 @@ public final class PagesProjectCanonicalDeploymentDeploymentTriggerMetadata {
      * 
      */
     private @Nullable String branch;
+    /**
+     * @return Whether the deployment trigger commit was dirty.
+     * 
+     */
+    private @Nullable Boolean commitDirty;
     /**
      * @return Hash of the deployment trigger commit.
      * 
@@ -34,6 +40,13 @@ public final class PagesProjectCanonicalDeploymentDeploymentTriggerMetadata {
      */
     public Optional<String> branch() {
         return Optional.ofNullable(this.branch);
+    }
+    /**
+     * @return Whether the deployment trigger commit was dirty.
+     * 
+     */
+    public Optional<Boolean> commitDirty() {
+        return Optional.ofNullable(this.commitDirty);
     }
     /**
      * @return Hash of the deployment trigger commit.
@@ -60,12 +73,14 @@ public final class PagesProjectCanonicalDeploymentDeploymentTriggerMetadata {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String branch;
+        private @Nullable Boolean commitDirty;
         private @Nullable String commitHash;
         private @Nullable String commitMessage;
         public Builder() {}
         public Builder(PagesProjectCanonicalDeploymentDeploymentTriggerMetadata defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.branch = defaults.branch;
+    	      this.commitDirty = defaults.commitDirty;
     	      this.commitHash = defaults.commitHash;
     	      this.commitMessage = defaults.commitMessage;
         }
@@ -74,6 +89,12 @@ public final class PagesProjectCanonicalDeploymentDeploymentTriggerMetadata {
         public Builder branch(@Nullable String branch) {
 
             this.branch = branch;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder commitDirty(@Nullable Boolean commitDirty) {
+
+            this.commitDirty = commitDirty;
             return this;
         }
         @CustomType.Setter
@@ -91,6 +112,7 @@ public final class PagesProjectCanonicalDeploymentDeploymentTriggerMetadata {
         public PagesProjectCanonicalDeploymentDeploymentTriggerMetadata build() {
             final var _resultValue = new PagesProjectCanonicalDeploymentDeploymentTriggerMetadata();
             _resultValue.branch = branch;
+            _resultValue.commitDirty = commitDirty;
             _resultValue.commitHash = commitHash;
             _resultValue.commitMessage = commitMessage;
             return _resultValue;

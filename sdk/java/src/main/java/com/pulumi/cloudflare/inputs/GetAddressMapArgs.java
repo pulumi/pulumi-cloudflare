@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetAddressMapArgs extends com.pulumi.resources.InvokeArgs {
@@ -35,15 +33,15 @@ public final class GetAddressMapArgs extends com.pulumi.resources.InvokeArgs {
      * Identifier of an Address Map.
      * 
      */
-    @Import(name="addressMapId")
-    private @Nullable Output<String> addressMapId;
+    @Import(name="addressMapId", required=true)
+    private Output<String> addressMapId;
 
     /**
      * @return Identifier of an Address Map.
      * 
      */
-    public Optional<Output<String>> addressMapId() {
-        return Optional.ofNullable(this.addressMapId);
+    public Output<String> addressMapId() {
+        return this.addressMapId;
     }
 
     private GetAddressMapArgs() {}
@@ -98,7 +96,7 @@ public final class GetAddressMapArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder addressMapId(@Nullable Output<String> addressMapId) {
+        public Builder addressMapId(Output<String> addressMapId) {
             $.addressMapId = addressMapId;
             return this;
         }
@@ -116,6 +114,9 @@ public final class GetAddressMapArgs extends com.pulumi.resources.InvokeArgs {
         public GetAddressMapArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetAddressMapArgs", "accountId");
+            }
+            if ($.addressMapId == null) {
+                throw new MissingRequiredPropertyException("GetAddressMapArgs", "addressMapId");
             }
             return $;
         }

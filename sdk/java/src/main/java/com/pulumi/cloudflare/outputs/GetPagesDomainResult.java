@@ -9,13 +9,11 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPagesDomainResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String accountId;
@@ -27,15 +25,19 @@ public final class GetPagesDomainResult {
     private String createdOn;
     private String domainId;
     /**
-     * @return Name of the domain.
+     * @return The domain name.
      * 
      */
-    private @Nullable String domainName;
+    private String domainName;
     /**
-     * @return Name of the domain.
+     * @return The domain name.
      * 
      */
     private String id;
+    /**
+     * @return The domain name.
+     * 
+     */
     private String name;
     /**
      * @return Name of the project.
@@ -53,7 +55,7 @@ public final class GetPagesDomainResult {
 
     private GetPagesDomainResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -73,19 +75,23 @@ public final class GetPagesDomainResult {
         return this.domainId;
     }
     /**
-     * @return Name of the domain.
+     * @return The domain name.
      * 
      */
-    public Optional<String> domainName() {
-        return Optional.ofNullable(this.domainName);
+    public String domainName() {
+        return this.domainName;
     }
     /**
-     * @return Name of the domain.
+     * @return The domain name.
      * 
      */
     public String id() {
         return this.id;
     }
+    /**
+     * @return The domain name.
+     * 
+     */
     public String name() {
         return this.name;
     }
@@ -126,7 +132,7 @@ public final class GetPagesDomainResult {
         private String certificateAuthority;
         private String createdOn;
         private String domainId;
-        private @Nullable String domainName;
+        private String domainName;
         private String id;
         private String name;
         private String projectName;
@@ -184,8 +190,10 @@ public final class GetPagesDomainResult {
             return this;
         }
         @CustomType.Setter
-        public Builder domainName(@Nullable String domainName) {
-
+        public Builder domainName(String domainName) {
+            if (domainName == null) {
+              throw new MissingRequiredPropertyException("GetPagesDomainResult", "domainName");
+            }
             this.domainName = domainName;
             return this;
         }

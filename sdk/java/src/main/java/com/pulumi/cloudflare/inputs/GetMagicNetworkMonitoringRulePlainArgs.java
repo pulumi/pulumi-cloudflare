@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetMagicNetworkMonitoringRulePlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -26,15 +24,15 @@ public final class GetMagicNetworkMonitoringRulePlainArgs extends com.pulumi.res
      * The id of the rule. Must be unique.
      * 
      */
-    @Import(name="ruleId")
-    private @Nullable String ruleId;
+    @Import(name="ruleId", required=true)
+    private String ruleId;
 
     /**
      * @return The id of the rule. Must be unique.
      * 
      */
-    public Optional<String> ruleId() {
-        return Optional.ofNullable(this.ruleId);
+    public String ruleId() {
+        return this.ruleId;
     }
 
     private GetMagicNetworkMonitoringRulePlainArgs() {}
@@ -73,7 +71,7 @@ public final class GetMagicNetworkMonitoringRulePlainArgs extends com.pulumi.res
          * @return builder
          * 
          */
-        public Builder ruleId(@Nullable String ruleId) {
+        public Builder ruleId(String ruleId) {
             $.ruleId = ruleId;
             return this;
         }
@@ -81,6 +79,9 @@ public final class GetMagicNetworkMonitoringRulePlainArgs extends com.pulumi.res
         public GetMagicNetworkMonitoringRulePlainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetMagicNetworkMonitoringRulePlainArgs", "accountId");
+            }
+            if ($.ruleId == null) {
+                throw new MissingRequiredPropertyException("GetMagicNetworkMonitoringRulePlainArgs", "ruleId");
             }
             return $;
         }

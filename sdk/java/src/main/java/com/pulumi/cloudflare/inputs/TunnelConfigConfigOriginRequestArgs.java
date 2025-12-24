@@ -139,6 +139,21 @@ public final class TunnelConfigConfigOriginRequestArgs extends com.pulumi.resour
     }
 
     /**
+     * Auto configure the Hostname on the origin server certificate.
+     * 
+     */
+    @Import(name="matchSnItoHost")
+    private @Nullable Output<Boolean> matchSnItoHost;
+
+    /**
+     * @return Auto configure the Hostname on the origin server certificate.
+     * 
+     */
+    public Optional<Output<Boolean>> matchSnItoHost() {
+        return Optional.ofNullable(this.matchSnItoHost);
+    }
+
+    /**
      * Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
      * 
      */
@@ -239,6 +254,7 @@ public final class TunnelConfigConfigOriginRequestArgs extends com.pulumi.resour
         this.httpHostHeader = $.httpHostHeader;
         this.keepAliveConnections = $.keepAliveConnections;
         this.keepAliveTimeout = $.keepAliveTimeout;
+        this.matchSnItoHost = $.matchSnItoHost;
         this.noHappyEyeballs = $.noHappyEyeballs;
         this.noTlsVerify = $.noTlsVerify;
         this.originServerName = $.originServerName;
@@ -431,6 +447,27 @@ public final class TunnelConfigConfigOriginRequestArgs extends com.pulumi.resour
          */
         public Builder keepAliveTimeout(Integer keepAliveTimeout) {
             return keepAliveTimeout(Output.of(keepAliveTimeout));
+        }
+
+        /**
+         * @param matchSnItoHost Auto configure the Hostname on the origin server certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder matchSnItoHost(@Nullable Output<Boolean> matchSnItoHost) {
+            $.matchSnItoHost = matchSnItoHost;
+            return this;
+        }
+
+        /**
+         * @param matchSnItoHost Auto configure the Hostname on the origin server certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder matchSnItoHost(Boolean matchSnItoHost) {
+            return matchSnItoHost(Output.of(matchSnItoHost));
         }
 
         /**

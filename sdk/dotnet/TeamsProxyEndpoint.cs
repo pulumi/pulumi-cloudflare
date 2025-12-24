@@ -23,11 +23,8 @@ namespace Pulumi.Cloudflare
     ///     var exampleZeroTrustGatewayProxyEndpoint = new Cloudflare.ZeroTrustGatewayProxyEndpoint("example_zero_trust_gateway_proxy_endpoint", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
-    ///         Ips = new[]
-    ///         {
-    ///             "192.0.2.1/32",
-    ///         },
     ///         Name = "Devops team",
+    ///         Kind = "ip",
     ///     });
     /// 
     /// });
@@ -54,6 +51,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("ips")]
         public Output<ImmutableArray<string>> Ips { get; private set; } = null!;
+
+        /// <summary>
+        /// The proxy endpoint kind
+        /// Available values: "ip", "identity".
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
         /// Specify the name of the proxy endpoint.
@@ -123,7 +127,7 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        [Input("ips", required: true)]
+        [Input("ips")]
         private InputList<string>? _ips;
 
         /// <summary>
@@ -134,6 +138,13 @@ namespace Pulumi.Cloudflare
             get => _ips ?? (_ips = new InputList<string>());
             set => _ips = value;
         }
+
+        /// <summary>
+        /// The proxy endpoint kind
+        /// Available values: "ip", "identity".
+        /// </summary>
+        [Input("kind")]
+        public Input<string>? Kind { get; set; }
 
         /// <summary>
         /// Specify the name of the proxy endpoint.
@@ -166,6 +177,13 @@ namespace Pulumi.Cloudflare
             get => _ips ?? (_ips = new InputList<string>());
             set => _ips = value;
         }
+
+        /// <summary>
+        /// The proxy endpoint kind
+        /// Available values: "ip", "identity".
+        /// </summary>
+        [Input("kind")]
+        public Input<string>? Kind { get; set; }
 
         /// <summary>
         /// Specify the name of the proxy endpoint.

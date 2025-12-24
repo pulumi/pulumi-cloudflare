@@ -11,8 +11,6 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustDnsLocationResult {
@@ -68,7 +66,7 @@ public final class GetZeroTrustDnsLocationResult {
      * 
      */
     private String ipv4DestinationBackup;
-    private @Nullable String locationId;
+    private String locationId;
     /**
      * @return Specify the location name.
      * 
@@ -158,8 +156,8 @@ public final class GetZeroTrustDnsLocationResult {
     public String ipv4DestinationBackup() {
         return this.ipv4DestinationBackup;
     }
-    public Optional<String> locationId() {
-        return Optional.ofNullable(this.locationId);
+    public String locationId() {
+        return this.locationId;
     }
     /**
      * @return Specify the location name.
@@ -200,7 +198,7 @@ public final class GetZeroTrustDnsLocationResult {
         private String ip;
         private String ipv4Destination;
         private String ipv4DestinationBackup;
-        private @Nullable String locationId;
+        private String locationId;
         private String name;
         private List<GetZeroTrustDnsLocationNetwork> networks;
         private String updatedAt;
@@ -322,8 +320,10 @@ public final class GetZeroTrustDnsLocationResult {
             return this;
         }
         @CustomType.Setter
-        public Builder locationId(@Nullable String locationId) {
-
+        public Builder locationId(String locationId) {
+            if (locationId == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDnsLocationResult", "locationId");
+            }
             this.locationId = locationId;
             return this;
         }

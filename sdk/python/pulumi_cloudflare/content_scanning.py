@@ -135,6 +135,10 @@ class ContentScanning(pulumi.CustomResource):
             value="enabled")
         ```
 
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] value: The status value for Content Scanning.
@@ -158,6 +162,10 @@ class ContentScanning(pulumi.CustomResource):
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             value="enabled")
         ```
+
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
 
         :param str resource_name: The name of the resource.
         :param ContentScanningArgs args: The arguments to use to populate this resource's properties.

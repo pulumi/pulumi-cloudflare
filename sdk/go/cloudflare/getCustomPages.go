@@ -65,7 +65,8 @@ type LookupCustomPagesResult struct {
 	AccountId   *string `pulumi:"accountId"`
 	CreatedOn   string  `pulumi:"createdOn"`
 	Description string  `pulumi:"description"`
-	// The ID of this resource.
+	// Error Page Types
+	// Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "wafBlock".
 	Id string `pulumi:"id"`
 	// Error Page Types
 	// Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "wafBlock".
@@ -134,7 +135,8 @@ func (o LookupCustomPagesResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomPagesResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The ID of this resource.
+// Error Page Types
+// Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "wafBlock".
 func (o LookupCustomPagesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomPagesResult) string { return v.Id }).(pulumi.StringOutput)
 }

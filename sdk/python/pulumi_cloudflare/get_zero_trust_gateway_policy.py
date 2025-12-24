@@ -198,7 +198,7 @@ class GetZeroTrustGatewayPolicyResult:
 
     @_builtins.property
     @pulumi.getter(name="ruleId")
-    def rule_id(self) -> Optional[_builtins.str]:
+    def rule_id(self) -> _builtins.str:
         """
         Identify the API resource with a UUID.
         """
@@ -339,7 +339,7 @@ def get_zero_trust_gateway_policy(account_id: Optional[_builtins.str] = None,
         version=pulumi.get(__ret__, 'version'),
         warning_status=pulumi.get(__ret__, 'warning_status'))
 def get_zero_trust_gateway_policy_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                         rule_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                         rule_id: Optional[pulumi.Input[_builtins.str]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustGatewayPolicyResult]:
     """
     ## Example Usage

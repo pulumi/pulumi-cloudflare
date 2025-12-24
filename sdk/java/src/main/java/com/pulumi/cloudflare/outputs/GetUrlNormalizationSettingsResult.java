@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetUrlNormalizationSettingsResult {
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The unique ID of the zone.
      * 
      */
     private String id;
@@ -35,7 +35,7 @@ public final class GetUrlNormalizationSettingsResult {
 
     private GetUrlNormalizationSettingsResult() {}
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The unique ID of the zone.
      * 
      */
     public String id() {

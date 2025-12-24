@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.CertificatePackCertificateArgs;
 import com.pulumi.cloudflare.inputs.CertificatePackValidationErrorArgs;
 import com.pulumi.cloudflare.inputs.CertificatePackValidationRecordArgs;
 import com.pulumi.core.Output;
@@ -38,6 +39,21 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Array of certificates in this pack.
+     * 
+     */
+    @Import(name="certificates")
+    private @Nullable Output<List<CertificatePackCertificateArgs>> certificates;
+
+    /**
+     * @return Array of certificates in this pack.
+     * 
+     */
+    public Optional<Output<List<CertificatePackCertificateArgs>>> certificates() {
+        return Optional.ofNullable(this.certificates);
+    }
+
+    /**
      * Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
      * 
      */
@@ -65,6 +81,21 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<List<String>>> hosts() {
         return Optional.ofNullable(this.hosts);
+    }
+
+    /**
+     * Identifier of the primary certificate in a pack.
+     * 
+     */
+    @Import(name="primaryCertificate")
+    private @Nullable Output<String> primaryCertificate;
+
+    /**
+     * @return Identifier of the primary certificate in a pack.
+     * 
+     */
+    public Optional<Output<String>> primaryCertificate() {
+        return Optional.ofNullable(this.primaryCertificate);
     }
 
     /**
@@ -134,14 +165,14 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Certificates&#39; validation records. Only present when certificate pack is in &#34;pending*validation&#34; status
+     * Certificates&#39; validation records.
      * 
      */
     @Import(name="validationRecords")
     private @Nullable Output<List<CertificatePackValidationRecordArgs>> validationRecords;
 
     /**
-     * @return Certificates&#39; validation records. Only present when certificate pack is in &#34;pending*validation&#34; status
+     * @return Certificates&#39; validation records.
      * 
      */
     public Optional<Output<List<CertificatePackValidationRecordArgs>>> validationRecords() {
@@ -184,8 +215,10 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
 
     private CertificatePackState(CertificatePackState $) {
         this.certificateAuthority = $.certificateAuthority;
+        this.certificates = $.certificates;
         this.cloudflareBranding = $.cloudflareBranding;
         this.hosts = $.hosts;
+        this.primaryCertificate = $.primaryCertificate;
         this.status = $.status;
         this.type = $.type;
         this.validationErrors = $.validationErrors;
@@ -234,6 +267,37 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
          */
         public Builder certificateAuthority(String certificateAuthority) {
             return certificateAuthority(Output.of(certificateAuthority));
+        }
+
+        /**
+         * @param certificates Array of certificates in this pack.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificates(@Nullable Output<List<CertificatePackCertificateArgs>> certificates) {
+            $.certificates = certificates;
+            return this;
+        }
+
+        /**
+         * @param certificates Array of certificates in this pack.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificates(List<CertificatePackCertificateArgs> certificates) {
+            return certificates(Output.of(certificates));
+        }
+
+        /**
+         * @param certificates Array of certificates in this pack.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificates(CertificatePackCertificateArgs... certificates) {
+            return certificates(List.of(certificates));
         }
 
         /**
@@ -286,6 +350,27 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
          */
         public Builder hosts(String... hosts) {
             return hosts(List.of(hosts));
+        }
+
+        /**
+         * @param primaryCertificate Identifier of the primary certificate in a pack.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder primaryCertificate(@Nullable Output<String> primaryCertificate) {
+            $.primaryCertificate = primaryCertificate;
+            return this;
+        }
+
+        /**
+         * @param primaryCertificate Identifier of the primary certificate in a pack.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder primaryCertificate(String primaryCertificate) {
+            return primaryCertificate(Output.of(primaryCertificate));
         }
 
         /**
@@ -389,7 +474,7 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param validationRecords Certificates&#39; validation records. Only present when certificate pack is in &#34;pending*validation&#34; status
+         * @param validationRecords Certificates&#39; validation records.
          * 
          * @return builder
          * 
@@ -400,7 +485,7 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param validationRecords Certificates&#39; validation records. Only present when certificate pack is in &#34;pending*validation&#34; status
+         * @param validationRecords Certificates&#39; validation records.
          * 
          * @return builder
          * 
@@ -410,7 +495,7 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param validationRecords Certificates&#39; validation records. Only present when certificate pack is in &#34;pending*validation&#34; status
+         * @param validationRecords Certificates&#39; validation records.
          * 
          * @return builder
          * 

@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -34,15 +35,15 @@ public final class GetLogpushJobPlainArgs extends com.pulumi.resources.InvokeArg
      * Unique id of the job.
      * 
      */
-    @Import(name="jobId")
-    private @Nullable Integer jobId;
+    @Import(name="jobId", required=true)
+    private Integer jobId;
 
     /**
      * @return Unique id of the job.
      * 
      */
-    public Optional<Integer> jobId() {
-        return Optional.ofNullable(this.jobId);
+    public Integer jobId() {
+        return this.jobId;
     }
 
     /**
@@ -103,7 +104,7 @@ public final class GetLogpushJobPlainArgs extends com.pulumi.resources.InvokeArg
          * @return builder
          * 
          */
-        public Builder jobId(@Nullable Integer jobId) {
+        public Builder jobId(Integer jobId) {
             $.jobId = jobId;
             return this;
         }
@@ -120,6 +121,9 @@ public final class GetLogpushJobPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         public GetLogpushJobPlainArgs build() {
+            if ($.jobId == null) {
+                throw new MissingRequiredPropertyException("GetLogpushJobPlainArgs", "jobId");
+            }
             return $;
         }
     }

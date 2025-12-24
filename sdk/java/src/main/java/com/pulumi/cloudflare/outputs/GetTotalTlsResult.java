@@ -24,7 +24,7 @@ public final class GetTotalTlsResult {
      */
     private Boolean enabled;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Identifier.
      * 
      */
     private String id;
@@ -57,7 +57,7 @@ public final class GetTotalTlsResult {
         return this.enabled;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Identifier.
      * 
      */
     public String id() {

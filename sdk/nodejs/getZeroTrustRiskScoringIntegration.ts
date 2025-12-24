@@ -30,7 +30,7 @@ export function getZeroTrustRiskScoringIntegration(args: GetZeroTrustRiskScoring
  */
 export interface GetZeroTrustRiskScoringIntegrationArgs {
     accountId: string;
-    integrationId?: string;
+    integrationId: string;
 }
 
 /**
@@ -54,7 +54,7 @@ export interface GetZeroTrustRiskScoringIntegrationResult {
      * The ID of this resource.
      */
     readonly id: string;
-    readonly integrationId?: string;
+    readonly integrationId: string;
     /**
      * Available values: "Okta".
      */
@@ -100,5 +100,5 @@ export function getZeroTrustRiskScoringIntegrationOutput(args: GetZeroTrustRiskS
  */
 export interface GetZeroTrustRiskScoringIntegrationOutputArgs {
     accountId: pulumi.Input<string>;
-    integrationId?: pulumi.Input<string>;
+    integrationId: pulumi.Input<string>;
 }

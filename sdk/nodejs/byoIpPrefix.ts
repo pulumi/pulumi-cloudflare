@@ -13,8 +13,10 @@ import * as utilities from "./utilities";
  *
  * const exampleByoIpPrefix = new cloudflare.ByoIpPrefix("example_byo_ip_prefix", {
  *     accountId: "258def64c72dae45f3e4c8516e2111f2",
- *     asn: 209242,
+ *     asn: 13335,
  *     cidr: "192.0.2.0/24",
+ *     delegateLoaCreation: true,
+ *     description: "Internal test prefix",
  *     loaDocumentId: "d933b1530bc56c9953cf8ce166da8004",
  * });
  * ```
@@ -83,13 +85,21 @@ export class ByoIpPrefix extends pulumi.CustomResource {
     declare public readonly cidr: pulumi.Output<string>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
+     * Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+     */
+    declare public readonly delegateLoaCreation: pulumi.Output<boolean>;
+    /**
      * Description of the prefix.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
+     * State of one kind of validation for an IP prefix.
+     */
+    declare public /*out*/ readonly irrValidationState: pulumi.Output<string>;
+    /**
      * Identifier for the uploaded LOA document.
      */
-    declare public readonly loaDocumentId: pulumi.Output<string>;
+    declare public readonly loaDocumentId: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly modifiedAt: pulumi.Output<string>;
     /**
      * Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
@@ -103,6 +113,18 @@ export class ByoIpPrefix extends pulumi.CustomResource {
      * @deprecated Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
      */
     declare public /*out*/ readonly onDemandLocked: pulumi.Output<boolean>;
+    /**
+     * State of one kind of validation for an IP prefix.
+     */
+    declare public /*out*/ readonly ownershipValidationState: pulumi.Output<string>;
+    /**
+     * Token provided to demonstrate ownership of the prefix.
+     */
+    declare public /*out*/ readonly ownershipValidationToken: pulumi.Output<string>;
+    /**
+     * State of one kind of validation for an IP prefix.
+     */
+    declare public /*out*/ readonly rpkiValidationState: pulumi.Output<string>;
 
     /**
      * Create a ByoIpPrefix resource with the given unique name, arguments, and options.
@@ -124,11 +146,16 @@ export class ByoIpPrefix extends pulumi.CustomResource {
             resourceInputs["asn"] = state?.asn;
             resourceInputs["cidr"] = state?.cidr;
             resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["delegateLoaCreation"] = state?.delegateLoaCreation;
             resourceInputs["description"] = state?.description;
+            resourceInputs["irrValidationState"] = state?.irrValidationState;
             resourceInputs["loaDocumentId"] = state?.loaDocumentId;
             resourceInputs["modifiedAt"] = state?.modifiedAt;
             resourceInputs["onDemandEnabled"] = state?.onDemandEnabled;
             resourceInputs["onDemandLocked"] = state?.onDemandLocked;
+            resourceInputs["ownershipValidationState"] = state?.ownershipValidationState;
+            resourceInputs["ownershipValidationToken"] = state?.ownershipValidationToken;
+            resourceInputs["rpkiValidationState"] = state?.rpkiValidationState;
         } else {
             const args = argsOrState as ByoIpPrefixArgs | undefined;
             if (args?.accountId === undefined && !opts.urn) {
@@ -140,21 +167,23 @@ export class ByoIpPrefix extends pulumi.CustomResource {
             if (args?.cidr === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cidr'");
             }
-            if (args?.loaDocumentId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'loaDocumentId'");
-            }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["asn"] = args?.asn;
             resourceInputs["cidr"] = args?.cidr;
+            resourceInputs["delegateLoaCreation"] = args?.delegateLoaCreation;
             resourceInputs["description"] = args?.description;
             resourceInputs["loaDocumentId"] = args?.loaDocumentId;
             resourceInputs["advertised"] = undefined /*out*/;
             resourceInputs["advertisedModifiedAt"] = undefined /*out*/;
             resourceInputs["approved"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["irrValidationState"] = undefined /*out*/;
             resourceInputs["modifiedAt"] = undefined /*out*/;
             resourceInputs["onDemandEnabled"] = undefined /*out*/;
             resourceInputs["onDemandLocked"] = undefined /*out*/;
+            resourceInputs["ownershipValidationState"] = undefined /*out*/;
+            resourceInputs["ownershipValidationToken"] = undefined /*out*/;
+            resourceInputs["rpkiValidationState"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ByoIpPrefix.__pulumiType, name, resourceInputs, opts);
@@ -195,9 +224,17 @@ export interface ByoIpPrefixState {
     cidr?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
     /**
+     * Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+     */
+    delegateLoaCreation?: pulumi.Input<boolean>;
+    /**
      * Description of the prefix.
      */
     description?: pulumi.Input<string>;
+    /**
+     * State of one kind of validation for an IP prefix.
+     */
+    irrValidationState?: pulumi.Input<string>;
     /**
      * Identifier for the uploaded LOA document.
      */
@@ -215,6 +252,18 @@ export interface ByoIpPrefixState {
      * @deprecated Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
      */
     onDemandLocked?: pulumi.Input<boolean>;
+    /**
+     * State of one kind of validation for an IP prefix.
+     */
+    ownershipValidationState?: pulumi.Input<string>;
+    /**
+     * Token provided to demonstrate ownership of the prefix.
+     */
+    ownershipValidationToken?: pulumi.Input<string>;
+    /**
+     * State of one kind of validation for an IP prefix.
+     */
+    rpkiValidationState?: pulumi.Input<string>;
 }
 
 /**
@@ -234,11 +283,15 @@ export interface ByoIpPrefixArgs {
      */
     cidr: pulumi.Input<string>;
     /**
+     * Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+     */
+    delegateLoaCreation?: pulumi.Input<boolean>;
+    /**
      * Description of the prefix.
      */
     description?: pulumi.Input<string>;
     /**
      * Identifier for the uploaded LOA document.
      */
-    loaDocumentId: pulumi.Input<string>;
+    loaDocumentId?: pulumi.Input<string>;
 }

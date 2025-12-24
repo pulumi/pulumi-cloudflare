@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupNotificationPolicyWebhooks(ctx, &cloudflare.LookupNotificationPolicyWebhooksArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
-//				WebhookId: pulumi.StringRef("b115d5ec15c641ee8b7692c449b5227b"),
+//				WebhookId: "b115d5ec15c641ee8b7692c449b5227b",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -52,7 +52,7 @@ type LookupNotificationPolicyWebhooksArgs struct {
 	// The account id
 	AccountId string `pulumi:"accountId"`
 	// The unique identifier of a webhook
-	WebhookId *string `pulumi:"webhookId"`
+	WebhookId string `pulumi:"webhookId"`
 }
 
 // A collection of values returned by getNotificationPolicyWebhooks.
@@ -77,7 +77,7 @@ type LookupNotificationPolicyWebhooksResult struct {
 	// The POST endpoint to call when dispatching a notification.
 	Url string `pulumi:"url"`
 	// The unique identifier of a webhook
-	WebhookId *string `pulumi:"webhookId"`
+	WebhookId string `pulumi:"webhookId"`
 }
 
 func LookupNotificationPolicyWebhooksOutput(ctx *pulumi.Context, args LookupNotificationPolicyWebhooksOutputArgs, opts ...pulumi.InvokeOption) LookupNotificationPolicyWebhooksResultOutput {
@@ -94,7 +94,7 @@ type LookupNotificationPolicyWebhooksOutputArgs struct {
 	// The account id
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The unique identifier of a webhook
-	WebhookId pulumi.StringPtrInput `pulumi:"webhookId"`
+	WebhookId pulumi.StringInput `pulumi:"webhookId"`
 }
 
 func (LookupNotificationPolicyWebhooksOutputArgs) ElementType() reflect.Type {
@@ -163,8 +163,8 @@ func (o LookupNotificationPolicyWebhooksResultOutput) Url() pulumi.StringOutput 
 }
 
 // The unique identifier of a webhook
-func (o LookupNotificationPolicyWebhooksResultOutput) WebhookId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupNotificationPolicyWebhooksResult) *string { return v.WebhookId }).(pulumi.StringPtrOutput)
+func (o LookupNotificationPolicyWebhooksResultOutput) WebhookId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNotificationPolicyWebhooksResult) string { return v.WebhookId }).(pulumi.StringOutput)
 }
 
 func init() {

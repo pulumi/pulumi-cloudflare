@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustAccessTagResult {
@@ -31,7 +29,7 @@ public final class GetZeroTrustAccessTagResult {
      * @return The name of the tag
      * 
      */
-    private @Nullable String tagName;
+    private String tagName;
 
     private GetZeroTrustAccessTagResult() {}
     /**
@@ -59,8 +57,8 @@ public final class GetZeroTrustAccessTagResult {
      * @return The name of the tag
      * 
      */
-    public Optional<String> tagName() {
-        return Optional.ofNullable(this.tagName);
+    public String tagName() {
+        return this.tagName;
     }
 
     public static Builder builder() {
@@ -75,7 +73,7 @@ public final class GetZeroTrustAccessTagResult {
         private String accountId;
         private String id;
         private String name;
-        private @Nullable String tagName;
+        private String tagName;
         public Builder() {}
         public Builder(GetZeroTrustAccessTagResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -110,8 +108,10 @@ public final class GetZeroTrustAccessTagResult {
             return this;
         }
         @CustomType.Setter
-        public Builder tagName(@Nullable String tagName) {
-
+        public Builder tagName(String tagName) {
+            if (tagName == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessTagResult", "tagName");
+            }
             this.tagName = tagName;
             return this;
         }

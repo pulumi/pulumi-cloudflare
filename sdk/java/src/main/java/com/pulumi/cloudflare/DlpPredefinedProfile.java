@@ -6,7 +6,6 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.DlpPredefinedProfileArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.DlpPredefinedProfileState;
-import com.pulumi.cloudflare.outputs.DlpPredefinedProfileContextAwareness;
 import com.pulumi.cloudflare.outputs.DlpPredefinedProfileEntry;
 import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
@@ -32,8 +31,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.ZeroTrustDlpPredefinedProfile;
  * import com.pulumi.cloudflare.ZeroTrustDlpPredefinedProfileArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDlpPredefinedProfileContextAwarenessArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDlpPredefinedProfileContextAwarenessSkipArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustDlpPredefinedProfileEntryArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -54,12 +51,7 @@ import javax.annotation.Nullable;
  *             .aiContextEnabled(true)
  *             .allowedMatchCount(5)
  *             .confidenceThreshold("confidence_threshold")
- *             .contextAwareness(ZeroTrustDlpPredefinedProfileContextAwarenessArgs.builder()
- *                 .enabled(true)
- *                 .skip(ZeroTrustDlpPredefinedProfileContextAwarenessSkipArgs.builder()
- *                     .files(true)
- *                     .build())
- *                 .build())
+ *             .enabledEntries("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
  *             .entries(ZeroTrustDlpPredefinedProfileEntryArgs.builder()
  *                 .id("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
  *                 .enabled(true)
@@ -109,51 +101,11 @@ public class DlpPredefinedProfile extends com.pulumi.resources.CustomResource {
     public Output<String> confidenceThreshold() {
         return this.confidenceThreshold;
     }
-    /**
-     * Scan the context of predefined entries to only return matches surrounded by keywords.
-     * 
-     * @deprecated
-     * This attribute is deprecated.
-     * 
-     */
-    @Deprecated /* This attribute is deprecated. */
-    @Export(name="contextAwareness", refs={DlpPredefinedProfileContextAwareness.class}, tree="[0]")
-    private Output</* @Nullable */ DlpPredefinedProfileContextAwareness> contextAwareness;
+    @Export(name="enabledEntries", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> enabledEntries;
 
-    /**
-     * @return Scan the context of predefined entries to only return matches surrounded by keywords.
-     * 
-     */
-    public Output<Optional<DlpPredefinedProfileContextAwareness>> contextAwareness() {
-        return Codegen.optional(this.contextAwareness);
-    }
-    /**
-     * When the profile was created.
-     * 
-     */
-    @Export(name="createdAt", refs={String.class}, tree="[0]")
-    private Output<String> createdAt;
-
-    /**
-     * @return When the profile was created.
-     * 
-     */
-    public Output<String> createdAt() {
-        return this.createdAt;
-    }
-    /**
-     * The description of the profile.
-     * 
-     */
-    @Export(name="description", refs={String.class}, tree="[0]")
-    private Output<String> description;
-
-    /**
-     * @return The description of the profile.
-     * 
-     */
-    public Output<String> description() {
-        return this.description;
+    public Output<Optional<List<String>>> enabledEntries() {
+        return Codegen.optional(this.enabledEntries);
     }
     /**
      * @deprecated
@@ -162,20 +114,20 @@ public class DlpPredefinedProfile extends com.pulumi.resources.CustomResource {
      */
     @Deprecated /* This attribute is deprecated. */
     @Export(name="entries", refs={List.class,DlpPredefinedProfileEntry.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<DlpPredefinedProfileEntry>> entries;
+    private Output<List<DlpPredefinedProfileEntry>> entries;
 
-    public Output<Optional<List<DlpPredefinedProfileEntry>>> entries() {
-        return Codegen.optional(this.entries);
+    public Output<List<DlpPredefinedProfileEntry>> entries() {
+        return this.entries;
     }
     /**
-     * The name of the profile.
+     * The name of the predefined profile.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the profile.
+     * @return The name of the predefined profile.
      * 
      */
     public Output<String> name() {
@@ -206,34 +158,6 @@ public class DlpPredefinedProfile extends com.pulumi.resources.CustomResource {
 
     public Output<String> profileId() {
         return this.profileId;
-    }
-    /**
-     * Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
-     * 
-     */
-    @Export(name="type", refs={String.class}, tree="[0]")
-    private Output<String> type;
-
-    /**
-     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
-     * 
-     */
-    public Output<String> type() {
-        return this.type;
-    }
-    /**
-     * When the profile was lasted updated.
-     * 
-     */
-    @Export(name="updatedAt", refs={String.class}, tree="[0]")
-    private Output<String> updatedAt;
-
-    /**
-     * @return When the profile was lasted updated.
-     * 
-     */
-    public Output<String> updatedAt() {
-        return this.updatedAt;
     }
 
     /**

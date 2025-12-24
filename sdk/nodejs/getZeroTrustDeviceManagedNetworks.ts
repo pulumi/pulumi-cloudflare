@@ -35,7 +35,7 @@ export interface GetZeroTrustDeviceManagedNetworksArgs {
     /**
      * API UUID.
      */
-    networkId?: string;
+    networkId: string;
 }
 
 /**
@@ -94,5 +94,5 @@ export interface GetZeroTrustDeviceManagedNetworksOutputArgs {
     /**
      * API UUID.
      */
-    networkId?: pulumi.Input<string>;
+    networkId: pulumi.Input<string>;
 }

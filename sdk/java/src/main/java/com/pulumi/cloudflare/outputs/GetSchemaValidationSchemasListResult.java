@@ -13,6 +13,11 @@ import java.util.Objects;
 public final class GetSchemaValidationSchemasListResult {
     private String createdAt;
     /**
+     * @return A unique identifier of this schema
+     * 
+     */
+    private String id;
+    /**
      * @return The kind of the schema
      * Available values: &#34;openapiV3&#34;.
      * 
@@ -42,6 +47,13 @@ public final class GetSchemaValidationSchemasListResult {
     private GetSchemaValidationSchemasListResult() {}
     public String createdAt() {
         return this.createdAt;
+    }
+    /**
+     * @return A unique identifier of this schema
+     * 
+     */
+    public String id() {
+        return this.id;
     }
     /**
      * @return The kind of the schema
@@ -90,6 +102,7 @@ public final class GetSchemaValidationSchemasListResult {
     @CustomType.Builder
     public static final class Builder {
         private String createdAt;
+        private String id;
         private String kind;
         private String name;
         private String schemaId;
@@ -99,6 +112,7 @@ public final class GetSchemaValidationSchemasListResult {
         public Builder(GetSchemaValidationSchemasListResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createdAt = defaults.createdAt;
+    	      this.id = defaults.id;
     	      this.kind = defaults.kind;
     	      this.name = defaults.name;
     	      this.schemaId = defaults.schemaId;
@@ -112,6 +126,14 @@ public final class GetSchemaValidationSchemasListResult {
               throw new MissingRequiredPropertyException("GetSchemaValidationSchemasListResult", "createdAt");
             }
             this.createdAt = createdAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSchemaValidationSchemasListResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -157,6 +179,7 @@ public final class GetSchemaValidationSchemasListResult {
         public GetSchemaValidationSchemasListResult build() {
             final var _resultValue = new GetSchemaValidationSchemasListResult();
             _resultValue.createdAt = createdAt;
+            _resultValue.id = id;
             _resultValue.kind = kind;
             _resultValue.name = name;
             _resultValue.schemaId = schemaId;

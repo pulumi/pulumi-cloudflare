@@ -22,6 +22,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Hostname;
         /// <summary>
+        /// DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Identifying key for the region
         /// </summary>
         public readonly string RegionKey;
@@ -36,12 +40,15 @@ namespace Pulumi.Cloudflare.Outputs
 
             string hostname,
 
+            string id,
+
             string regionKey,
 
             string routing)
         {
             CreatedOn = createdOn;
             Hostname = hostname;
+            Id = id;
             RegionKey = regionKey;
             Routing = routing;
         }

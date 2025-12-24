@@ -4,18 +4,17 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class PagesProjectDeploymentConfigsProductionVectorizeBindings {
-    private @Nullable String indexName;
+    private String indexName;
 
     private PagesProjectDeploymentConfigsProductionVectorizeBindings() {}
-    public Optional<String> indexName() {
-        return Optional.ofNullable(this.indexName);
+    public String indexName() {
+        return this.indexName;
     }
 
     public static Builder builder() {
@@ -27,7 +26,7 @@ public final class PagesProjectDeploymentConfigsProductionVectorizeBindings {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String indexName;
+        private String indexName;
         public Builder() {}
         public Builder(PagesProjectDeploymentConfigsProductionVectorizeBindings defaults) {
     	      Objects.requireNonNull(defaults);
@@ -35,8 +34,10 @@ public final class PagesProjectDeploymentConfigsProductionVectorizeBindings {
         }
 
         @CustomType.Setter
-        public Builder indexName(@Nullable String indexName) {
-
+        public Builder indexName(String indexName) {
+            if (indexName == null) {
+              throw new MissingRequiredPropertyException("PagesProjectDeploymentConfigsProductionVectorizeBindings", "indexName");
+            }
             this.indexName = indexName;
             return this;
         }

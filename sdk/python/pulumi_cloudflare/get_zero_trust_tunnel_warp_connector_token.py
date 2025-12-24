@@ -26,13 +26,16 @@ class GetZeroTrustTunnelWarpConnectorTokenResult:
     """
     A collection of values returned by getZeroTrustTunnelWarpConnectorToken.
     """
-    def __init__(__self__, account_id=None, id=None, tunnel_id=None):
+    def __init__(__self__, account_id=None, id=None, token=None, tunnel_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if token and not isinstance(token, str):
+            raise TypeError("Expected argument 'token' to be a str")
+        pulumi.set(__self__, "token", token)
         if tunnel_id and not isinstance(tunnel_id, str):
             raise TypeError("Expected argument 'tunnel_id' to be a str")
         pulumi.set(__self__, "tunnel_id", tunnel_id)
@@ -54,6 +57,14 @@ class GetZeroTrustTunnelWarpConnectorTokenResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter
+    def token(self) -> _builtins.str:
+        """
+        The Warp Connector Token is used as a mechanism to authenticate the operation of a tunnel.
+        """
+        return pulumi.get(self, "token")
+
+    @_builtins.property
     @pulumi.getter(name="tunnelId")
     def tunnel_id(self) -> _builtins.str:
         """
@@ -70,6 +81,7 @@ class AwaitableGetZeroTrustTunnelWarpConnectorTokenResult(GetZeroTrustTunnelWarp
         return GetZeroTrustTunnelWarpConnectorTokenResult(
             account_id=self.account_id,
             id=self.id,
+            token=self.token,
             tunnel_id=self.tunnel_id)
 
 
@@ -100,6 +112,7 @@ def get_zero_trust_tunnel_warp_connector_token(account_id: Optional[_builtins.st
     return AwaitableGetZeroTrustTunnelWarpConnectorTokenResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         id=pulumi.get(__ret__, 'id'),
+        token=pulumi.get(__ret__, 'token'),
         tunnel_id=pulumi.get(__ret__, 'tunnel_id'))
 def get_zero_trust_tunnel_warp_connector_token_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
                                                       tunnel_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -127,4 +140,5 @@ def get_zero_trust_tunnel_warp_connector_token_output(account_id: Optional[pulum
     return __ret__.apply(lambda __response__: GetZeroTrustTunnelWarpConnectorTokenResult(
         account_id=pulumi.get(__response__, 'account_id'),
         id=pulumi.get(__response__, 'id'),
+        token=pulumi.get(__response__, 'token'),
         tunnel_id=pulumi.get(__response__, 'tunnel_id')))

@@ -50,7 +50,7 @@ export interface GetWorkersCronTriggerResult {
      */
     readonly accountId: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Name of the script, used in URLs and route configuration.
      */
     readonly id: string;
     readonly schedules: outputs.GetWorkersCronTriggerSchedule[];

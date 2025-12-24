@@ -16,114 +16,98 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkersScriptMigrations {
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * A list of classes to delete Durable Object namespaces from.
+     * @return A list of classes to delete Durable Object namespaces from.
      * 
      */
     private @Nullable List<String> deletedClasses;
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * A list of classes to create Durable Object namespaces from.
+     * @return A list of classes to create Durable Object namespaces from.
      * 
      */
     private @Nullable List<String> newClasses;
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * A list of classes to create Durable Object namespaces with SQLite from.
+     * @return A list of classes to create Durable Object namespaces with SQLite from.
      * 
      */
     private @Nullable List<String> newSqliteClasses;
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * Tag to set as the latest migration tag.
+     * @return Tag to set as the latest migration tag.
      * 
      */
     private @Nullable String newTag;
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * Tag used to verify against the latest migration tag for this Worker. If they don&#39;t match, the upload is rejected.
+     * @return Tag used to verify against the latest migration tag for this Worker. If they don&#39;t match, the upload is rejected.
      * 
      */
     private @Nullable String oldTag;
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * A list of classes with Durable Object namespaces that were renamed.
+     * @return A list of classes with Durable Object namespaces that were renamed.
      * 
      */
     private @Nullable List<WorkersScriptMigrationsRenamedClass> renamedClasses;
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * Migrations to apply in order.
+     * @return Migrations to apply in order.
      * 
      */
     private @Nullable List<WorkersScriptMigrationsStep> steps;
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+     * @return A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
      * 
      */
     private @Nullable List<WorkersScriptMigrationsTransferredClass> transferredClasses;
 
     private WorkersScriptMigrations() {}
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * A list of classes to delete Durable Object namespaces from.
+     * @return A list of classes to delete Durable Object namespaces from.
      * 
      */
     public List<String> deletedClasses() {
         return this.deletedClasses == null ? List.of() : this.deletedClasses;
     }
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * A list of classes to create Durable Object namespaces from.
+     * @return A list of classes to create Durable Object namespaces from.
      * 
      */
     public List<String> newClasses() {
         return this.newClasses == null ? List.of() : this.newClasses;
     }
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * A list of classes to create Durable Object namespaces with SQLite from.
+     * @return A list of classes to create Durable Object namespaces with SQLite from.
      * 
      */
     public List<String> newSqliteClasses() {
         return this.newSqliteClasses == null ? List.of() : this.newSqliteClasses;
     }
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * Tag to set as the latest migration tag.
+     * @return Tag to set as the latest migration tag.
      * 
      */
     public Optional<String> newTag() {
         return Optional.ofNullable(this.newTag);
     }
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * Tag used to verify against the latest migration tag for this Worker. If they don&#39;t match, the upload is rejected.
+     * @return Tag used to verify against the latest migration tag for this Worker. If they don&#39;t match, the upload is rejected.
      * 
      */
     public Optional<String> oldTag() {
         return Optional.ofNullable(this.oldTag);
     }
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * A list of classes with Durable Object namespaces that were renamed.
+     * @return A list of classes with Durable Object namespaces that were renamed.
      * 
      */
     public List<WorkersScriptMigrationsRenamedClass> renamedClasses() {
         return this.renamedClasses == null ? List.of() : this.renamedClasses;
     }
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * Migrations to apply in order.
+     * @return Migrations to apply in order.
      * 
      */
     public List<WorkersScriptMigrationsStep> steps() {
         return this.steps == null ? List.of() : this.steps;
     }
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+     * @return A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
      * 
      */
     public List<WorkersScriptMigrationsTransferredClass> transferredClasses() {

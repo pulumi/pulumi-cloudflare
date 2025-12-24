@@ -72,7 +72,8 @@ class GetHostnameTlsSettingResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The TLS Setting name.
+        Available values: "ciphers", "min*tls*version", "http2".
         """
         return pulumi.get(self, "id")
 

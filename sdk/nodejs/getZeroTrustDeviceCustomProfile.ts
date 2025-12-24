@@ -32,7 +32,7 @@ export function getZeroTrustDeviceCustomProfile(args: GetZeroTrustDeviceCustomPr
  */
 export interface GetZeroTrustDeviceCustomProfileArgs {
     accountId: string;
-    policyId?: string;
+    policyId: string;
 }
 
 /**
@@ -164,5 +164,5 @@ export function getZeroTrustDeviceCustomProfileOutput(args: GetZeroTrustDeviceCu
  */
 export interface GetZeroTrustDeviceCustomProfileOutputArgs {
     accountId: pulumi.Input<string>;
-    policyId?: pulumi.Input<string>;
+    policyId: pulumi.Input<string>;
 }

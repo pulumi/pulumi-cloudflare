@@ -97,7 +97,7 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.ZeroTrustDexTestTargetPolicy>> TargetPolicies { get; private set; } = null!;
 
         [Output("targeted")]
-        public Output<bool?> Targeted { get; private set; } = null!;
+        public Output<bool> Targeted { get; private set; } = null!;
 
         /// <summary>
         /// The unique identifier for the test.
@@ -195,9 +195,6 @@ namespace Pulumi.Cloudflare
             get => _targetPolicies ?? (_targetPolicies = new InputList<Inputs.ZeroTrustDexTestTargetPolicyArgs>());
             set => _targetPolicies = value;
         }
-
-        [Input("targeted")]
-        public Input<bool>? Targeted { get; set; }
 
         public ZeroTrustDexTestArgs()
         {

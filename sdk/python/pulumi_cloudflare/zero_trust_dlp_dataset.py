@@ -165,7 +165,7 @@ class _ZeroTrustDlpDatasetState:
                If true, the response will include a secret to use with the EDM encoder.
                If false, the response has no secret and the dataset is uploaded in plaintext.
         :param pulumi.Input[_builtins.str] status: Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
-        :param pulumi.Input[_builtins.str] updated_at: When the dataset was last updated.
+        :param pulumi.Input[_builtins.str] updated_at: Stores when the dataset was last updated.
                
                This includes name or description changes as well as uploads.
         :param pulumi.Input[_builtins.int] version: The version to use when uploading the dataset.
@@ -344,7 +344,7 @@ class _ZeroTrustDlpDatasetState:
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        When the dataset was last updated.
+        Stores when the dataset was last updated.
 
         This includes name or description changes as well as uploads.
         """
@@ -406,6 +406,10 @@ class ZeroTrustDlpDataset(pulumi.CustomResource):
             secret=True)
         ```
 
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] case_sensitive: Only applies to custom word lists.
@@ -439,6 +443,10 @@ class ZeroTrustDlpDataset(pulumi.CustomResource):
             encoding_version=0,
             secret=True)
         ```
+
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustDlpDatasetArgs args: The arguments to use to populate this resource's properties.
@@ -534,7 +542,7 @@ class ZeroTrustDlpDataset(pulumi.CustomResource):
                If true, the response will include a secret to use with the EDM encoder.
                If false, the response has no secret and the dataset is uploaded in plaintext.
         :param pulumi.Input[_builtins.str] status: Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
-        :param pulumi.Input[_builtins.str] updated_at: When the dataset was last updated.
+        :param pulumi.Input[_builtins.str] updated_at: Stores when the dataset was last updated.
                
                This includes name or description changes as well as uploads.
         :param pulumi.Input[_builtins.int] version: The version to use when uploading the dataset.
@@ -650,7 +658,7 @@ class ZeroTrustDlpDataset(pulumi.CustomResource):
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[_builtins.str]:
         """
-        When the dataset was last updated.
+        Stores when the dataset was last updated.
 
         This includes name or description changes as well as uploads.
         """

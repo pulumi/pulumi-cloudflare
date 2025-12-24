@@ -48,6 +48,7 @@ from .cloudforce_one_request import *
 from .cloudforce_one_request_asset import *
 from .cloudforce_one_request_message import *
 from .cloudforce_one_request_priority import *
+from .connectivity_directory_service import *
 from .content_scanning import *
 from .content_scanning_expression import *
 from .custom_hostname import *
@@ -130,6 +131,8 @@ from .get_cloudforce_one_request_asset import *
 from .get_cloudforce_one_request_message import *
 from .get_cloudforce_one_request_priority import *
 from .get_cloudforce_one_requests import *
+from .get_connectivity_directory_service import *
+from .get_connectivity_directory_services import *
 from .get_content_scanning import *
 from .get_content_scanning_expressions import *
 from .get_custom_hostname import *
@@ -183,6 +186,7 @@ from .get_ip_ranges import *
 from .get_keyless_certificate import *
 from .get_keyless_certificates import *
 from .get_leaked_credential_check import *
+from .get_leaked_credential_check_rule import *
 from .get_leaked_credential_check_rules import *
 from .get_list import *
 from .get_list_item import *
@@ -275,6 +279,8 @@ from .get_snippets import *
 from .get_snippets_list import *
 from .get_spectrum_application import *
 from .get_spectrum_applications import *
+from .get_sso_connector import *
+from .get_sso_connectors import *
 from .get_stream import *
 from .get_stream_audio_track import *
 from .get_stream_caption_language import *
@@ -286,9 +292,14 @@ from .get_stream_watermarks import *
 from .get_stream_webhook import *
 from .get_streams import *
 from .get_tiered_cache import *
+from .get_token_validation_config import *
+from .get_token_validation_configs import *
+from .get_token_validation_rules import *
+from .get_token_validation_rules_list import *
 from .get_total_tls import *
 from .get_turnstile_widget import *
 from .get_turnstile_widgets import *
+from .get_universal_ssl_setting import *
 from .get_url_normalization_settings import *
 from .get_user import *
 from .get_user_agent_blocking_rule import *
@@ -323,6 +334,10 @@ from .get_workers_script_subdomain import *
 from .get_workers_scripts import *
 from .get_workflow import *
 from .get_workflows import *
+from .get_zero_trust_access_ai_controls_mcp_portal import *
+from .get_zero_trust_access_ai_controls_mcp_portals import *
+from .get_zero_trust_access_ai_controls_mcp_server import *
+from .get_zero_trust_access_ai_controls_mcp_servers import *
 from .get_zero_trust_access_application import *
 from .get_zero_trust_access_applications import *
 from .get_zero_trust_access_custom_page import *
@@ -382,6 +397,7 @@ from .get_zero_trust_gateway_logging import *
 from .get_zero_trust_gateway_policies import *
 from .get_zero_trust_gateway_policy import *
 from .get_zero_trust_gateway_proxy_endpoint import *
+from .get_zero_trust_gateway_proxy_endpoints import *
 from .get_zero_trust_gateway_settings import *
 from .get_zero_trust_list import *
 from .get_zero_trust_lists import *
@@ -477,6 +493,7 @@ from .snippet import *
 from .snippet_rules import *
 from .snippets import *
 from .spectrum_application import *
+from .sso_connector import *
 from .static_route import *
 from .stream import *
 from .stream_audio_track import *
@@ -492,12 +509,15 @@ from .teams_location import *
 from .teams_proxy_endpoint import *
 from .teams_rule import *
 from .tiered_cache import *
+from .token_validation_config import *
+from .token_validation_rules import *
 from .total_tls import *
 from .tunnel import *
 from .tunnel_config import *
 from .tunnel_route import *
 from .tunnel_virtual_network import *
 from .turnstile_widget import *
+from .universal_ssl_setting import *
 from .url_normalization_settings import *
 from .user import *
 from .user_agent_blocking_rule import *
@@ -524,6 +544,8 @@ from .workers_route import *
 from .workers_script import *
 from .workers_script_subdomain import *
 from .workflow import *
+from .zero_trust_access_ai_controls_mcp_portal import *
+from .zero_trust_access_ai_controls_mcp_server import *
 from .zero_trust_access_application import *
 from .zero_trust_access_custom_page import *
 from .zero_trust_access_group import *
@@ -926,6 +948,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority": "CloudforceOneRequestPriority"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/connectivityDirectoryService",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/connectivityDirectoryService:ConnectivityDirectoryService": "ConnectivityDirectoryService"
   }
  },
  {
@@ -1666,6 +1696,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/ssoConnector",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/ssoConnector:SsoConnector": "SsoConnector"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/staticRoute",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -1786,6 +1824,22 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/tokenValidationConfig",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/tokenValidationConfig:TokenValidationConfig": "TokenValidationConfig"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/tokenValidationRules",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/tokenValidationRules:TokenValidationRules": "TokenValidationRules"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/totalTls",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -1830,6 +1884,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/turnstileWidget:TurnstileWidget": "TurnstileWidget"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/universalSslSetting",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/universalSslSetting:UniversalSslSetting": "UniversalSslSetting"
   }
  },
  {
@@ -2038,6 +2100,22 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/workflow:Workflow": "Workflow"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustAccessAiControlsMcpPortal",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustAccessAiControlsMcpPortal:ZeroTrustAccessAiControlsMcpPortal": "ZeroTrustAccessAiControlsMcpPortal"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustAccessAiControlsMcpServer",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustAccessAiControlsMcpServer:ZeroTrustAccessAiControlsMcpServer": "ZeroTrustAccessAiControlsMcpServer"
   }
  },
  {

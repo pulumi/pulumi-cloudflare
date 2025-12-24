@@ -14,72 +14,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkersScriptMigrationsStep {
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * A list of classes to delete Durable Object namespaces from.
+     * @return A list of classes to delete Durable Object namespaces from.
      * 
      */
     private @Nullable List<String> deletedClasses;
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * A list of classes to create Durable Object namespaces from.
+     * @return A list of classes to create Durable Object namespaces from.
      * 
      */
     private @Nullable List<String> newClasses;
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * A list of classes to create Durable Object namespaces with SQLite from.
+     * @return A list of classes to create Durable Object namespaces with SQLite from.
      * 
      */
     private @Nullable List<String> newSqliteClasses;
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * A list of classes with Durable Object namespaces that were renamed.
+     * @return A list of classes with Durable Object namespaces that were renamed.
      * 
      */
     private @Nullable List<WorkersScriptMigrationsStepRenamedClass> renamedClasses;
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+     * @return A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
      * 
      */
     private @Nullable List<WorkersScriptMigrationsStepTransferredClass> transferredClasses;
 
     private WorkersScriptMigrationsStep() {}
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * A list of classes to delete Durable Object namespaces from.
+     * @return A list of classes to delete Durable Object namespaces from.
      * 
      */
     public List<String> deletedClasses() {
         return this.deletedClasses == null ? List.of() : this.deletedClasses;
     }
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * A list of classes to create Durable Object namespaces from.
+     * @return A list of classes to create Durable Object namespaces from.
      * 
      */
     public List<String> newClasses() {
         return this.newClasses == null ? List.of() : this.newClasses;
     }
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * A list of classes to create Durable Object namespaces with SQLite from.
+     * @return A list of classes to create Durable Object namespaces with SQLite from.
      * 
      */
     public List<String> newSqliteClasses() {
         return this.newSqliteClasses == null ? List.of() : this.newSqliteClasses;
     }
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * A list of classes with Durable Object namespaces that were renamed.
+     * @return A list of classes with Durable Object namespaces that were renamed.
      * 
      */
     public List<WorkersScriptMigrationsStepRenamedClass> renamedClasses() {
         return this.renamedClasses == null ? List.of() : this.renamedClasses;
     }
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+     * @return A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
      * 
      */
     public List<WorkersScriptMigrationsStepTransferredClass> transferredClasses() {

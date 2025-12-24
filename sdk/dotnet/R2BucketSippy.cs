@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
     ///         Destination = new Cloudflare.Inputs.R2BucketSippyDestinationArgs
     ///         {
     ///             AccessKeyId = "accessKeyId",
-    ///             Provider = "r2",
+    ///             CloudProvider = "r2",
     ///             SecretAccessKey = "secretAccessKey",
     ///         },
     ///         Source = new Cloudflare.Inputs.R2BucketSippySourceArgs
@@ -42,6 +42,10 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ~&gt; This resource does not currently support `pulumi import`.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/r2BucketSippy:R2BucketSippy")]
     public partial class R2BucketSippy : global::Pulumi.CustomResource

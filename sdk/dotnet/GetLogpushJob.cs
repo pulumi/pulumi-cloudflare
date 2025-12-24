@@ -32,7 +32,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetLogpushJobResult> InvokeAsync(GetLogpushJobArgs? args = null, InvokeOptions? options = null)
+        public static Task<GetLogpushJobResult> InvokeAsync(GetLogpushJobArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLogpushJobResult>("cloudflare:index/getLogpushJob:getLogpushJob", args ?? new GetLogpushJobArgs(), options.WithDefaults());
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetLogpushJobResult> Invoke(GetLogpushJobInvokeArgs? args = null, InvokeOptions? options = null)
+        public static Output<GetLogpushJobResult> Invoke(GetLogpushJobInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLogpushJobResult>("cloudflare:index/getLogpushJob:getLogpushJob", args ?? new GetLogpushJobInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -96,8 +96,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Unique id of the job.
         /// </summary>
-        [Input("jobId")]
-        public int? JobId { get; set; }
+        [Input("jobId", required: true)]
+        public int JobId { get; set; }
 
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -122,8 +122,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Unique id of the job.
         /// </summary>
-        [Input("jobId")]
-        public Input<int>? JobId { get; set; }
+        [Input("jobId", required: true)]
+        public Input<int> JobId { get; set; } = null!;
 
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -147,7 +147,7 @@ namespace Pulumi.Cloudflare
         public readonly string? AccountId;
         /// <summary>
         /// Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-        /// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+        /// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
         /// </summary>
         public readonly string Dataset;
         /// <summary>
@@ -174,7 +174,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Unique id of the job.
         /// </summary>
-        public readonly int? JobId;
+        public readonly int JobId;
         /// <summary>
         /// The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
         /// Available values: "", "edge".
@@ -233,7 +233,7 @@ namespace Pulumi.Cloudflare
 
             int id,
 
-            int? jobId,
+            int jobId,
 
             string kind,
 

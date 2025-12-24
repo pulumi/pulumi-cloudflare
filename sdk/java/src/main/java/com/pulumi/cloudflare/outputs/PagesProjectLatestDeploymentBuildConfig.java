@@ -23,7 +23,7 @@ public final class PagesProjectLatestDeploymentBuildConfig {
      */
     private @Nullable String buildCommand;
     /**
-     * @return Output directory of the build.
+     * @return Assets output directory of the build.
      * 
      */
     private @Nullable String destinationDir;
@@ -59,7 +59,7 @@ public final class PagesProjectLatestDeploymentBuildConfig {
         return Optional.ofNullable(this.buildCommand);
     }
     /**
-     * @return Output directory of the build.
+     * @return Assets output directory of the build.
      * 
      */
     public Optional<String> destinationDir() {

@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Object;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -81,17 +82,17 @@ public final class WorkersScriptAssetsConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * When true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script.
+     * When a boolean true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script. When a list of strings, contains path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either &#39;/&#39; or &#39;!/&#39;. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
      * 
      */
     @Import(name="runWorkerFirst")
-    private @Nullable Output<Boolean> runWorkerFirst;
+    private @Nullable Output<Object> runWorkerFirst;
 
     /**
-     * @return When true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script.
+     * @return When a boolean true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script. When a list of strings, contains path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either &#39;/&#39; or &#39;!/&#39;. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
      * 
      */
-    public Optional<Output<Boolean>> runWorkerFirst() {
+    public Optional<Output<Object>> runWorkerFirst() {
         return Optional.ofNullable(this.runWorkerFirst);
     }
 
@@ -236,23 +237,23 @@ public final class WorkersScriptAssetsConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param runWorkerFirst When true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script.
+         * @param runWorkerFirst When a boolean true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script. When a list of strings, contains path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either &#39;/&#39; or &#39;!/&#39;. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
          * 
          * @return builder
          * 
          */
-        public Builder runWorkerFirst(@Nullable Output<Boolean> runWorkerFirst) {
+        public Builder runWorkerFirst(@Nullable Output<Object> runWorkerFirst) {
             $.runWorkerFirst = runWorkerFirst;
             return this;
         }
 
         /**
-         * @param runWorkerFirst When true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script.
+         * @param runWorkerFirst When a boolean true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script. When a list of strings, contains path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either &#39;/&#39; or &#39;!/&#39;. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
          * 
          * @return builder
          * 
          */
-        public Builder runWorkerFirst(Boolean runWorkerFirst) {
+        public Builder runWorkerFirst(Object runWorkerFirst) {
             return runWorkerFirst(Output.of(runWorkerFirst));
         }
 

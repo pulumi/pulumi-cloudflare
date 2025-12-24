@@ -47,7 +47,7 @@ export interface GetWorkerVersionArgs {
     /**
      * Identifier for the version, which can be ID or the literal "latest" to operate on the most recently created version.
      */
-    versionId?: string;
+    versionId: string;
     /**
      * Identifier for the Worker, which can be ID or name.
      */
@@ -87,6 +87,7 @@ export interface GetWorkerVersionResult {
     readonly number: number;
     readonly placement: outputs.GetWorkerVersionPlacement;
     readonly source: string;
+    readonly startupTimeMs: number;
     /**
      * @deprecated This attribute is deprecated.
      */
@@ -94,7 +95,7 @@ export interface GetWorkerVersionResult {
     /**
      * Identifier for the version, which can be ID or the literal "latest" to operate on the most recently created version.
      */
-    readonly versionId?: string;
+    readonly versionId: string;
     /**
      * Identifier for the Worker, which can be ID or name.
      */
@@ -141,7 +142,7 @@ export interface GetWorkerVersionOutputArgs {
     /**
      * Identifier for the version, which can be ID or the literal "latest" to operate on the most recently created version.
      */
-    versionId?: pulumi.Input<string>;
+    versionId: pulumi.Input<string>;
     /**
      * Identifier for the Worker, which can be ID or name.
      */

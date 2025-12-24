@@ -6,18 +6,26 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.GetApiShieldAuthIdCharacteristic;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetApiShieldResult {
     private List<GetApiShieldAuthIdCharacteristic> authIdCharacteristics;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Identifier.
      * 
      */
     private String id;
+    /**
+     * @return Ensures that the configuration is written or retrieved in normalized fashion
+     * 
+     */
+    private @Nullable Boolean normalize;
     /**
      * @return Identifier.
      * 
@@ -29,11 +37,18 @@ public final class GetApiShieldResult {
         return this.authIdCharacteristics;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Identifier.
      * 
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return Ensures that the configuration is written or retrieved in normalized fashion
+     * 
+     */
+    public Optional<Boolean> normalize() {
+        return Optional.ofNullable(this.normalize);
     }
     /**
      * @return Identifier.
@@ -54,12 +69,14 @@ public final class GetApiShieldResult {
     public static final class Builder {
         private List<GetApiShieldAuthIdCharacteristic> authIdCharacteristics;
         private String id;
+        private @Nullable Boolean normalize;
         private String zoneId;
         public Builder() {}
         public Builder(GetApiShieldResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authIdCharacteristics = defaults.authIdCharacteristics;
     	      this.id = defaults.id;
+    	      this.normalize = defaults.normalize;
     	      this.zoneId = defaults.zoneId;
         }
 
@@ -83,6 +100,12 @@ public final class GetApiShieldResult {
             return this;
         }
         @CustomType.Setter
+        public Builder normalize(@Nullable Boolean normalize) {
+
+            this.normalize = normalize;
+            return this;
+        }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             if (zoneId == null) {
               throw new MissingRequiredPropertyException("GetApiShieldResult", "zoneId");
@@ -94,6 +117,7 @@ public final class GetApiShieldResult {
             final var _resultValue = new GetApiShieldResult();
             _resultValue.authIdCharacteristics = authIdCharacteristics;
             _resultValue.id = id;
+            _resultValue.normalize = normalize;
             _resultValue.zoneId = zoneId;
             return _resultValue;
         }

@@ -24,8 +24,7 @@ class ZeroTrustTunnelCloudflaredConfigArgs:
                  account_id: pulumi.Input[_builtins.str],
                  tunnel_id: pulumi.Input[_builtins.str],
                  config: Optional[pulumi.Input['ZeroTrustTunnelCloudflaredConfigConfigArgs']] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 warp_routing_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 source: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustTunnelCloudflaredConfig resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -33,7 +32,6 @@ class ZeroTrustTunnelCloudflaredConfigArgs:
         :param pulumi.Input['ZeroTrustTunnelCloudflaredConfigConfigArgs'] config: The tunnel configuration and ingress rules.
         :param pulumi.Input[_builtins.str] source: Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
                Available values: "local", "cloudflare".
-        :param pulumi.Input[_builtins.bool] warp_routing_enabled: Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "tunnel_id", tunnel_id)
@@ -41,8 +39,6 @@ class ZeroTrustTunnelCloudflaredConfigArgs:
             pulumi.set(__self__, "config", config)
         if source is not None:
             pulumi.set(__self__, "source", source)
-        if warp_routing_enabled is not None:
-            pulumi.set(__self__, "warp_routing_enabled", warp_routing_enabled)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -93,18 +89,6 @@ class ZeroTrustTunnelCloudflaredConfigArgs:
     def source(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "source", value)
 
-    @_builtins.property
-    @pulumi.getter(name="warpRoutingEnabled")
-    def warp_routing_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
-        """
-        return pulumi.get(self, "warp_routing_enabled")
-
-    @warp_routing_enabled.setter
-    def warp_routing_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "warp_routing_enabled", value)
-
 
 @pulumi.input_type
 class _ZeroTrustTunnelCloudflaredConfigState:
@@ -114,8 +98,7 @@ class _ZeroTrustTunnelCloudflaredConfigState:
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  source: Optional[pulumi.Input[_builtins.str]] = None,
                  tunnel_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.int]] = None,
-                 warp_routing_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustTunnelCloudflaredConfig resources.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -124,7 +107,6 @@ class _ZeroTrustTunnelCloudflaredConfigState:
                Available values: "local", "cloudflare".
         :param pulumi.Input[_builtins.str] tunnel_id: UUID of the tunnel.
         :param pulumi.Input[_builtins.int] version: The version of the Tunnel Configuration.
-        :param pulumi.Input[_builtins.bool] warp_routing_enabled: Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -138,8 +120,6 @@ class _ZeroTrustTunnelCloudflaredConfigState:
             pulumi.set(__self__, "tunnel_id", tunnel_id)
         if version is not None:
             pulumi.set(__self__, "version", version)
-        if warp_routing_enabled is not None:
-            pulumi.set(__self__, "warp_routing_enabled", warp_routing_enabled)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -211,18 +191,6 @@ class _ZeroTrustTunnelCloudflaredConfigState:
     def version(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "version", value)
 
-    @_builtins.property
-    @pulumi.getter(name="warpRoutingEnabled")
-    def warp_routing_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
-        """
-        return pulumi.get(self, "warp_routing_enabled")
-
-    @warp_routing_enabled.setter
-    def warp_routing_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "warp_routing_enabled", value)
-
 
 @pulumi.type_token("cloudflare:index/zeroTrustTunnelCloudflaredConfig:ZeroTrustTunnelCloudflaredConfig")
 class ZeroTrustTunnelCloudflaredConfig(pulumi.CustomResource):
@@ -234,7 +202,6 @@ class ZeroTrustTunnelCloudflaredConfig(pulumi.CustomResource):
                  config: Optional[pulumi.Input[Union['ZeroTrustTunnelCloudflaredConfigConfigArgs', 'ZeroTrustTunnelCloudflaredConfigConfigArgsDict']]] = None,
                  source: Optional[pulumi.Input[_builtins.str]] = None,
                  tunnel_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 warp_routing_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -263,6 +230,7 @@ class ZeroTrustTunnelCloudflaredConfig(pulumi.CustomResource):
                         "http_host_header": "httpHostHeader",
                         "keep_alive_connections": 100,
                         "keep_alive_timeout": 90,
+                        "match_sn_ito_host": False,
                         "no_happy_eyeballs": False,
                         "no_tls_verify": False,
                         "origin_server_name": "originServerName",
@@ -285,6 +253,7 @@ class ZeroTrustTunnelCloudflaredConfig(pulumi.CustomResource):
                     "http_host_header": "httpHostHeader",
                     "keep_alive_connections": 100,
                     "keep_alive_timeout": 90,
+                    "match_sn_ito_host": False,
                     "no_happy_eyeballs": False,
                     "no_tls_verify": False,
                     "origin_server_name": "originServerName",
@@ -308,7 +277,6 @@ class ZeroTrustTunnelCloudflaredConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] source: Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
                Available values: "local", "cloudflare".
         :param pulumi.Input[_builtins.str] tunnel_id: UUID of the tunnel.
-        :param pulumi.Input[_builtins.bool] warp_routing_enabled: Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
         """
         ...
     @overload
@@ -343,6 +311,7 @@ class ZeroTrustTunnelCloudflaredConfig(pulumi.CustomResource):
                         "http_host_header": "httpHostHeader",
                         "keep_alive_connections": 100,
                         "keep_alive_timeout": 90,
+                        "match_sn_ito_host": False,
                         "no_happy_eyeballs": False,
                         "no_tls_verify": False,
                         "origin_server_name": "originServerName",
@@ -365,6 +334,7 @@ class ZeroTrustTunnelCloudflaredConfig(pulumi.CustomResource):
                     "http_host_header": "httpHostHeader",
                     "keep_alive_connections": 100,
                     "keep_alive_timeout": 90,
+                    "match_sn_ito_host": False,
                     "no_happy_eyeballs": False,
                     "no_tls_verify": False,
                     "origin_server_name": "originServerName",
@@ -400,7 +370,6 @@ class ZeroTrustTunnelCloudflaredConfig(pulumi.CustomResource):
                  config: Optional[pulumi.Input[Union['ZeroTrustTunnelCloudflaredConfigConfigArgs', 'ZeroTrustTunnelCloudflaredConfigConfigArgsDict']]] = None,
                  source: Optional[pulumi.Input[_builtins.str]] = None,
                  tunnel_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 warp_routing_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -418,7 +387,6 @@ class ZeroTrustTunnelCloudflaredConfig(pulumi.CustomResource):
             if tunnel_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tunnel_id'")
             __props__.__dict__["tunnel_id"] = tunnel_id
-            __props__.__dict__["warp_routing_enabled"] = warp_routing_enabled
             __props__.__dict__["created_at"] = None
             __props__.__dict__["version"] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/tunnelConfig:TunnelConfig")])
@@ -438,8 +406,7 @@ class ZeroTrustTunnelCloudflaredConfig(pulumi.CustomResource):
             created_at: Optional[pulumi.Input[_builtins.str]] = None,
             source: Optional[pulumi.Input[_builtins.str]] = None,
             tunnel_id: Optional[pulumi.Input[_builtins.str]] = None,
-            version: Optional[pulumi.Input[_builtins.int]] = None,
-            warp_routing_enabled: Optional[pulumi.Input[_builtins.bool]] = None) -> 'ZeroTrustTunnelCloudflaredConfig':
+            version: Optional[pulumi.Input[_builtins.int]] = None) -> 'ZeroTrustTunnelCloudflaredConfig':
         """
         Get an existing ZeroTrustTunnelCloudflaredConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -453,7 +420,6 @@ class ZeroTrustTunnelCloudflaredConfig(pulumi.CustomResource):
                Available values: "local", "cloudflare".
         :param pulumi.Input[_builtins.str] tunnel_id: UUID of the tunnel.
         :param pulumi.Input[_builtins.int] version: The version of the Tunnel Configuration.
-        :param pulumi.Input[_builtins.bool] warp_routing_enabled: Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -465,7 +431,6 @@ class ZeroTrustTunnelCloudflaredConfig(pulumi.CustomResource):
         __props__.__dict__["source"] = source
         __props__.__dict__["tunnel_id"] = tunnel_id
         __props__.__dict__["version"] = version
-        __props__.__dict__["warp_routing_enabled"] = warp_routing_enabled
         return ZeroTrustTunnelCloudflaredConfig(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -513,12 +478,4 @@ class ZeroTrustTunnelCloudflaredConfig(pulumi.CustomResource):
         The version of the Tunnel Configuration.
         """
         return pulumi.get(self, "version")
-
-    @_builtins.property
-    @pulumi.getter(name="warpRoutingEnabled")
-    def warp_routing_enabled(self) -> pulumi.Output[_builtins.bool]:
-        """
-        Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
-        """
-        return pulumi.get(self, "warp_routing_enabled")
 

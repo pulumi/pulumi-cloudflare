@@ -28,7 +28,7 @@ import (
 //			_, err := cloudflare.LookupPagesDomain(ctx, &cloudflare.LookupPagesDomainArgs{
 //				AccountId:   "023e105f4ecef8ad9ca31a8372d0c353",
 //				ProjectName: "this-is-my-project-01",
-//				DomainName:  pulumi.StringRef("this-is-my-domain-01.com"),
+//				DomainName:  "this-is-my-domain-01.com",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -50,26 +50,27 @@ func LookupPagesDomain(ctx *pulumi.Context, args *LookupPagesDomainArgs, opts ..
 
 // A collection of arguments for invoking getPagesDomain.
 type LookupPagesDomainArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
-	// Name of the domain.
-	DomainName *string `pulumi:"domainName"`
+	// The domain name.
+	DomainName string `pulumi:"domainName"`
 	// Name of the project.
 	ProjectName string `pulumi:"projectName"`
 }
 
 // A collection of values returned by getPagesDomain.
 type LookupPagesDomainResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Available values: "google", "letsEncrypt".
 	CertificateAuthority string `pulumi:"certificateAuthority"`
 	CreatedOn            string `pulumi:"createdOn"`
 	DomainId             string `pulumi:"domainId"`
-	// Name of the domain.
-	DomainName *string `pulumi:"domainName"`
-	// Name of the domain.
-	Id   string `pulumi:"id"`
+	// The domain name.
+	DomainName string `pulumi:"domainName"`
+	// The domain name.
+	Id string `pulumi:"id"`
+	// The domain name.
 	Name string `pulumi:"name"`
 	// Name of the project.
 	ProjectName string `pulumi:"projectName"`
@@ -91,10 +92,10 @@ func LookupPagesDomainOutput(ctx *pulumi.Context, args LookupPagesDomainOutputAr
 
 // A collection of arguments for invoking getPagesDomain.
 type LookupPagesDomainOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// Name of the domain.
-	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
+	// The domain name.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
 	// Name of the project.
 	ProjectName pulumi.StringInput `pulumi:"projectName"`
 }
@@ -118,7 +119,7 @@ func (o LookupPagesDomainResultOutput) ToLookupPagesDomainResultOutputWithContex
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupPagesDomainResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPagesDomainResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -136,16 +137,17 @@ func (o LookupPagesDomainResultOutput) DomainId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPagesDomainResult) string { return v.DomainId }).(pulumi.StringOutput)
 }
 
-// Name of the domain.
-func (o LookupPagesDomainResultOutput) DomainName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupPagesDomainResult) *string { return v.DomainName }).(pulumi.StringPtrOutput)
+// The domain name.
+func (o LookupPagesDomainResultOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPagesDomainResult) string { return v.DomainName }).(pulumi.StringOutput)
 }
 
-// Name of the domain.
+// The domain name.
 func (o LookupPagesDomainResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPagesDomainResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The domain name.
 func (o LookupPagesDomainResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPagesDomainResult) string { return v.Name }).(pulumi.StringOutput)
 }

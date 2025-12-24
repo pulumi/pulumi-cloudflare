@@ -30,7 +30,7 @@ export function getDnsZoneTransfersTsig(args: GetDnsZoneTransfersTsigArgs, opts?
  */
 export interface GetDnsZoneTransfersTsigArgs {
     accountId: string;
-    tsigId?: string;
+    tsigId: string;
 }
 
 /**
@@ -54,7 +54,7 @@ export interface GetDnsZoneTransfersTsigResult {
      * TSIG secret.
      */
     readonly secret: string;
-    readonly tsigId?: string;
+    readonly tsigId: string;
 }
 /**
  * ## Example Usage
@@ -82,5 +82,5 @@ export function getDnsZoneTransfersTsigOutput(args: GetDnsZoneTransfersTsigOutpu
  */
 export interface GetDnsZoneTransfersTsigOutputArgs {
     accountId: pulumi.Input<string>;
-    tsigId?: pulumi.Input<string>;
+    tsigId: pulumi.Input<string>;
 }

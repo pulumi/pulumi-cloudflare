@@ -8,10 +8,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class ApiTokenPolicy {
@@ -22,20 +19,15 @@ public final class ApiTokenPolicy {
      */
     private String effect;
     /**
-     * @return Policy identifier.
-     * 
-     */
-    private @Nullable String id;
-    /**
      * @return A set of permission groups that are specified to the policy.
      * 
      */
     private List<ApiTokenPolicyPermissionGroup> permissionGroups;
     /**
-     * @return A list of resource names that the policy applies to.
+     * @return A json object representing the resources that are specified to the policy.
      * 
      */
-    private Map<String,String> resources;
+    private String resources;
 
     private ApiTokenPolicy() {}
     /**
@@ -47,13 +39,6 @@ public final class ApiTokenPolicy {
         return this.effect;
     }
     /**
-     * @return Policy identifier.
-     * 
-     */
-    public Optional<String> id() {
-        return Optional.ofNullable(this.id);
-    }
-    /**
      * @return A set of permission groups that are specified to the policy.
      * 
      */
@@ -61,10 +46,10 @@ public final class ApiTokenPolicy {
         return this.permissionGroups;
     }
     /**
-     * @return A list of resource names that the policy applies to.
+     * @return A json object representing the resources that are specified to the policy.
      * 
      */
-    public Map<String,String> resources() {
+    public String resources() {
         return this.resources;
     }
 
@@ -78,14 +63,12 @@ public final class ApiTokenPolicy {
     @CustomType.Builder
     public static final class Builder {
         private String effect;
-        private @Nullable String id;
         private List<ApiTokenPolicyPermissionGroup> permissionGroups;
-        private Map<String,String> resources;
+        private String resources;
         public Builder() {}
         public Builder(ApiTokenPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.effect = defaults.effect;
-    	      this.id = defaults.id;
     	      this.permissionGroups = defaults.permissionGroups;
     	      this.resources = defaults.resources;
         }
@@ -96,12 +79,6 @@ public final class ApiTokenPolicy {
               throw new MissingRequiredPropertyException("ApiTokenPolicy", "effect");
             }
             this.effect = effect;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(@Nullable String id) {
-
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -116,7 +93,7 @@ public final class ApiTokenPolicy {
             return permissionGroups(List.of(permissionGroups));
         }
         @CustomType.Setter
-        public Builder resources(Map<String,String> resources) {
+        public Builder resources(String resources) {
             if (resources == null) {
               throw new MissingRequiredPropertyException("ApiTokenPolicy", "resources");
             }
@@ -126,7 +103,6 @@ public final class ApiTokenPolicy {
         public ApiTokenPolicy build() {
             final var _resultValue = new ApiTokenPolicy();
             _resultValue.effect = effect;
-            _resultValue.id = id;
             _resultValue.permissionGroups = permissionGroups;
             _resultValue.resources = resources;
             return _resultValue;

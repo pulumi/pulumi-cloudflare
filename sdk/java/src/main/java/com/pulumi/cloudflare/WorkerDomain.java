@@ -13,6 +13,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -42,10 +43,10 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var exampleWorkersCustomDomain = new WorkersCustomDomain("exampleWorkersCustomDomain", WorkersCustomDomainArgs.builder()
  *             .accountId("9a7806061c88ada191ed06f989cc3dac")
- *             .environment("production")
  *             .hostname("foo.example.com")
  *             .service("foo")
  *             .zoneId("593c9c94de529bbbfaac7c53ced0447d")
+ *             .environment("production")
  *             .build());
  * 
  *     }
@@ -83,16 +84,20 @@ public class WorkerDomain extends com.pulumi.resources.CustomResource {
     /**
      * Worker environment associated with the zone and hostname.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     @Export(name="environment", refs={String.class}, tree="[0]")
-    private Output<String> environment;
+    private Output</* @Nullable */ String> environment;
 
     /**
      * @return Worker environment associated with the zone and hostname.
      * 
      */
-    public Output<String> environment() {
-        return this.environment;
+    public Output<Optional<String>> environment() {
+        return Codegen.optional(this.environment);
     }
     /**
      * Hostname of the Worker Domain.

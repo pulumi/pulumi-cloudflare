@@ -82,7 +82,7 @@ export class TeamsList extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     /**
      * Specify the list type.
-     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
      */
     declare public readonly type: pulumi.Output<string>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
@@ -162,7 +162,7 @@ export interface TeamsListState {
     name?: pulumi.Input<string>;
     /**
      * Specify the list type.
-     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
      */
     type?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<string>;
@@ -187,7 +187,7 @@ export interface TeamsListArgs {
     name: pulumi.Input<string>;
     /**
      * Specify the list type.
-     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
      */
     type: pulumi.Input<string>;
 }

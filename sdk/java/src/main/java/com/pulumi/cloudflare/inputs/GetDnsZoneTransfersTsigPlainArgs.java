@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetDnsZoneTransfersTsigPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -22,11 +20,11 @@ public final class GetDnsZoneTransfersTsigPlainArgs extends com.pulumi.resources
         return this.accountId;
     }
 
-    @Import(name="tsigId")
-    private @Nullable String tsigId;
+    @Import(name="tsigId", required=true)
+    private String tsigId;
 
-    public Optional<String> tsigId() {
-        return Optional.ofNullable(this.tsigId);
+    public String tsigId() {
+        return this.tsigId;
     }
 
     private GetDnsZoneTransfersTsigPlainArgs() {}
@@ -59,7 +57,7 @@ public final class GetDnsZoneTransfersTsigPlainArgs extends com.pulumi.resources
             return this;
         }
 
-        public Builder tsigId(@Nullable String tsigId) {
+        public Builder tsigId(String tsigId) {
             $.tsigId = tsigId;
             return this;
         }
@@ -67,6 +65,9 @@ public final class GetDnsZoneTransfersTsigPlainArgs extends com.pulumi.resources
         public GetDnsZoneTransfersTsigPlainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetDnsZoneTransfersTsigPlainArgs", "accountId");
+            }
+            if ($.tsigId == null) {
+                throw new MissingRequiredPropertyException("GetDnsZoneTransfersTsigPlainArgs", "tsigId");
             }
             return $;
         }

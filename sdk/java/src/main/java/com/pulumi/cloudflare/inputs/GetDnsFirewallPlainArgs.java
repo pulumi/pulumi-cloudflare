@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetDnsFirewallPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -34,15 +32,15 @@ public final class GetDnsFirewallPlainArgs extends com.pulumi.resources.InvokeAr
      * Identifier.
      * 
      */
-    @Import(name="dnsFirewallId")
-    private @Nullable String dnsFirewallId;
+    @Import(name="dnsFirewallId", required=true)
+    private String dnsFirewallId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Optional<String> dnsFirewallId() {
-        return Optional.ofNullable(this.dnsFirewallId);
+    public String dnsFirewallId() {
+        return this.dnsFirewallId;
     }
 
     private GetDnsFirewallPlainArgs() {}
@@ -87,7 +85,7 @@ public final class GetDnsFirewallPlainArgs extends com.pulumi.resources.InvokeAr
          * @return builder
          * 
          */
-        public Builder dnsFirewallId(@Nullable String dnsFirewallId) {
+        public Builder dnsFirewallId(String dnsFirewallId) {
             $.dnsFirewallId = dnsFirewallId;
             return this;
         }
@@ -95,6 +93,9 @@ public final class GetDnsFirewallPlainArgs extends com.pulumi.resources.InvokeAr
         public GetDnsFirewallPlainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetDnsFirewallPlainArgs", "accountId");
+            }
+            if ($.dnsFirewallId == null) {
+                throw new MissingRequiredPropertyException("GetDnsFirewallPlainArgs", "dnsFirewallId");
             }
             return $;
         }

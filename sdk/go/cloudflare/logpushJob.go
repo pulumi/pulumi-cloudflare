@@ -79,7 +79,7 @@ type LogpushJob struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-	// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+	// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
 	Dataset pulumi.StringOutput `pulumi:"dataset"`
 	// Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
 	DestinationConf pulumi.StringOutput `pulumi:"destinationConf"`
@@ -88,7 +88,7 @@ type LogpushJob struct {
 	// If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
 	ErrorMessage pulumi.StringOutput `pulumi:"errorMessage"`
 	// The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
-	Filter pulumi.StringPtrOutput `pulumi:"filter"`
+	Filter pulumi.StringOutput `pulumi:"filter"`
 	// This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
 	// Available values: "high", "low".
 	//
@@ -104,15 +104,15 @@ type LogpushJob struct {
 	// This field is deprecated. Use `outputOptions` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
 	//
 	// Deprecated: This attribute is deprecated.
-	LogpullOptions pulumi.StringPtrOutput `pulumi:"logpullOptions"`
+	LogpullOptions pulumi.StringOutput `pulumi:"logpullOptions"`
 	// The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
-	MaxUploadBytes pulumi.IntPtrOutput `pulumi:"maxUploadBytes"`
+	MaxUploadBytes pulumi.IntOutput `pulumi:"maxUploadBytes"`
 	// The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
-	MaxUploadIntervalSeconds pulumi.IntPtrOutput `pulumi:"maxUploadIntervalSeconds"`
+	MaxUploadIntervalSeconds pulumi.IntOutput `pulumi:"maxUploadIntervalSeconds"`
 	// The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
-	MaxUploadRecords pulumi.IntPtrOutput `pulumi:"maxUploadRecords"`
+	MaxUploadRecords pulumi.IntOutput `pulumi:"maxUploadRecords"`
 	// Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
-	Name pulumi.StringPtrOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
 	// The structured replacement for `logpullOptions`. When including this field, the `logpullOption` field will be ignored.
 	OutputOptions LogpushJobOutputOptionsPtrOutput `pulumi:"outputOptions"`
 	// Ownership challenge token to prove destination ownership.
@@ -164,7 +164,7 @@ type logpushJobState struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
 	// Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-	// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+	// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
 	Dataset *string `pulumi:"dataset"`
 	// Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
 	DestinationConf *string `pulumi:"destinationConf"`
@@ -210,7 +210,7 @@ type LogpushJobState struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
 	// Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-	// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+	// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
 	Dataset pulumi.StringPtrInput
 	// Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
 	DestinationConf pulumi.StringPtrInput
@@ -260,7 +260,7 @@ type logpushJobArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
 	// Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-	// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+	// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
 	Dataset *string `pulumi:"dataset"`
 	// Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
 	DestinationConf string `pulumi:"destinationConf"`
@@ -301,7 +301,7 @@ type LogpushJobArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
 	// Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-	// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+	// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
 	Dataset pulumi.StringPtrInput
 	// Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
 	DestinationConf pulumi.StringInput
@@ -430,7 +430,7 @@ func (o LogpushJobOutput) AccountId() pulumi.StringPtrOutput {
 }
 
 // Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
 func (o LogpushJobOutput) Dataset() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.StringOutput { return v.Dataset }).(pulumi.StringOutput)
 }
@@ -451,8 +451,8 @@ func (o LogpushJobOutput) ErrorMessage() pulumi.StringOutput {
 }
 
 // The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
-func (o LogpushJobOutput) Filter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.Filter }).(pulumi.StringPtrOutput)
+func (o LogpushJobOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v *LogpushJob) pulumi.StringOutput { return v.Filter }).(pulumi.StringOutput)
 }
 
 // This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
@@ -482,28 +482,28 @@ func (o LogpushJobOutput) LastError() pulumi.StringOutput {
 // This field is deprecated. Use `outputOptions` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
 //
 // Deprecated: This attribute is deprecated.
-func (o LogpushJobOutput) LogpullOptions() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.LogpullOptions }).(pulumi.StringPtrOutput)
+func (o LogpushJobOutput) LogpullOptions() pulumi.StringOutput {
+	return o.ApplyT(func(v *LogpushJob) pulumi.StringOutput { return v.LogpullOptions }).(pulumi.StringOutput)
 }
 
 // The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
-func (o LogpushJobOutput) MaxUploadBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *LogpushJob) pulumi.IntPtrOutput { return v.MaxUploadBytes }).(pulumi.IntPtrOutput)
+func (o LogpushJobOutput) MaxUploadBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v *LogpushJob) pulumi.IntOutput { return v.MaxUploadBytes }).(pulumi.IntOutput)
 }
 
 // The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
-func (o LogpushJobOutput) MaxUploadIntervalSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *LogpushJob) pulumi.IntPtrOutput { return v.MaxUploadIntervalSeconds }).(pulumi.IntPtrOutput)
+func (o LogpushJobOutput) MaxUploadIntervalSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v *LogpushJob) pulumi.IntOutput { return v.MaxUploadIntervalSeconds }).(pulumi.IntOutput)
 }
 
 // The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
-func (o LogpushJobOutput) MaxUploadRecords() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *LogpushJob) pulumi.IntPtrOutput { return v.MaxUploadRecords }).(pulumi.IntPtrOutput)
+func (o LogpushJobOutput) MaxUploadRecords() pulumi.IntOutput {
+	return o.ApplyT(func(v *LogpushJob) pulumi.IntOutput { return v.MaxUploadRecords }).(pulumi.IntOutput)
 }
 
 // Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
-func (o LogpushJobOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
+func (o LogpushJobOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *LogpushJob) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // The structured replacement for `logpullOptions`. When including this field, the `logpullOption` field will be ignored.

@@ -131,7 +131,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Name of the script, used in URLs and route configuration.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetWorkersCronTriggerScheduleResult> Schedules;

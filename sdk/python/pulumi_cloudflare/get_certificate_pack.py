@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetCertificatePackResult',
@@ -26,20 +28,65 @@ class GetCertificatePackResult:
     """
     A collection of values returned by getCertificatePack.
     """
-    def __init__(__self__, certificate_pack_id=None, id=None, zone_id=None):
+    def __init__(__self__, certificate_authority=None, certificate_pack_id=None, certificates=None, cloudflare_branding=None, filter=None, hosts=None, id=None, primary_certificate=None, status=None, type=None, validation_errors=None, validation_method=None, validation_records=None, validity_days=None, zone_id=None):
+        if certificate_authority and not isinstance(certificate_authority, str):
+            raise TypeError("Expected argument 'certificate_authority' to be a str")
+        pulumi.set(__self__, "certificate_authority", certificate_authority)
         if certificate_pack_id and not isinstance(certificate_pack_id, str):
             raise TypeError("Expected argument 'certificate_pack_id' to be a str")
         pulumi.set(__self__, "certificate_pack_id", certificate_pack_id)
+        if certificates and not isinstance(certificates, list):
+            raise TypeError("Expected argument 'certificates' to be a list")
+        pulumi.set(__self__, "certificates", certificates)
+        if cloudflare_branding and not isinstance(cloudflare_branding, bool):
+            raise TypeError("Expected argument 'cloudflare_branding' to be a bool")
+        pulumi.set(__self__, "cloudflare_branding", cloudflare_branding)
+        if filter and not isinstance(filter, dict):
+            raise TypeError("Expected argument 'filter' to be a dict")
+        pulumi.set(__self__, "filter", filter)
+        if hosts and not isinstance(hosts, list):
+            raise TypeError("Expected argument 'hosts' to be a list")
+        pulumi.set(__self__, "hosts", hosts)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if primary_certificate and not isinstance(primary_certificate, str):
+            raise TypeError("Expected argument 'primary_certificate' to be a str")
+        pulumi.set(__self__, "primary_certificate", primary_certificate)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
+        if type and not isinstance(type, str):
+            raise TypeError("Expected argument 'type' to be a str")
+        pulumi.set(__self__, "type", type)
+        if validation_errors and not isinstance(validation_errors, list):
+            raise TypeError("Expected argument 'validation_errors' to be a list")
+        pulumi.set(__self__, "validation_errors", validation_errors)
+        if validation_method and not isinstance(validation_method, str):
+            raise TypeError("Expected argument 'validation_method' to be a str")
+        pulumi.set(__self__, "validation_method", validation_method)
+        if validation_records and not isinstance(validation_records, list):
+            raise TypeError("Expected argument 'validation_records' to be a list")
+        pulumi.set(__self__, "validation_records", validation_records)
+        if validity_days and not isinstance(validity_days, int):
+            raise TypeError("Expected argument 'validity_days' to be a int")
+        pulumi.set(__self__, "validity_days", validity_days)
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
+    @pulumi.getter(name="certificateAuthority")
+    def certificate_authority(self) -> _builtins.str:
+        """
+        Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+        Available values: "google", "lets*encrypt", "ssl*com".
+        """
+        return pulumi.get(self, "certificate_authority")
+
+    @_builtins.property
     @pulumi.getter(name="certificatePackId")
-    def certificate_pack_id(self) -> _builtins.str:
+    def certificate_pack_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -47,11 +94,100 @@ class GetCertificatePackResult:
 
     @_builtins.property
     @pulumi.getter
+    def certificates(self) -> Sequence['outputs.GetCertificatePackCertificateResult']:
+        """
+        Array of certificates in this pack.
+        """
+        return pulumi.get(self, "certificates")
+
+    @_builtins.property
+    @pulumi.getter(name="cloudflareBranding")
+    def cloudflare_branding(self) -> _builtins.bool:
+        """
+        Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
+        """
+        return pulumi.get(self, "cloudflare_branding")
+
+    @_builtins.property
+    @pulumi.getter
+    def filter(self) -> Optional['outputs.GetCertificatePackFilterResult']:
+        return pulumi.get(self, "filter")
+
+    @_builtins.property
+    @pulumi.getter
+    def hosts(self) -> Sequence[_builtins.str]:
+        """
+        Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
+        """
+        return pulumi.get(self, "hosts")
+
+    @_builtins.property
+    @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Identifier.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="primaryCertificate")
+    def primary_certificate(self) -> _builtins.str:
+        """
+        Identifier of the primary certificate in a pack.
+        """
+        return pulumi.get(self, "primary_certificate")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Status of certificate pack.
+        Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of certificate pack.
+        Available values: "mh*custom", "managed*hostname", "sni*custom", "universal", "advanced", "total*tls", "keyless", "legacy_custom".
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="validationErrors")
+    def validation_errors(self) -> Sequence['outputs.GetCertificatePackValidationErrorResult']:
+        """
+        Domain validation errors that have been received by the certificate authority (CA).
+        """
+        return pulumi.get(self, "validation_errors")
+
+    @_builtins.property
+    @pulumi.getter(name="validationMethod")
+    def validation_method(self) -> _builtins.str:
+        """
+        Validation Method selected for the order.
+        Available values: "txt", "http", "email".
+        """
+        return pulumi.get(self, "validation_method")
+
+    @_builtins.property
+    @pulumi.getter(name="validationRecords")
+    def validation_records(self) -> Sequence['outputs.GetCertificatePackValidationRecordResult']:
+        """
+        Certificates' validation records.
+        """
+        return pulumi.get(self, "validation_records")
+
+    @_builtins.property
+    @pulumi.getter(name="validityDays")
+    def validity_days(self) -> _builtins.int:
+        """
+        Validity Days selected for the order.
+        Available values: 14, 30, 90, 365.
+        """
+        return pulumi.get(self, "validity_days")
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
@@ -68,12 +204,25 @@ class AwaitableGetCertificatePackResult(GetCertificatePackResult):
         if False:
             yield self
         return GetCertificatePackResult(
+            certificate_authority=self.certificate_authority,
             certificate_pack_id=self.certificate_pack_id,
+            certificates=self.certificates,
+            cloudflare_branding=self.cloudflare_branding,
+            filter=self.filter,
+            hosts=self.hosts,
             id=self.id,
+            primary_certificate=self.primary_certificate,
+            status=self.status,
+            type=self.type,
+            validation_errors=self.validation_errors,
+            validation_method=self.validation_method,
+            validation_records=self.validation_records,
+            validity_days=self.validity_days,
             zone_id=self.zone_id)
 
 
 def get_certificate_pack(certificate_pack_id: Optional[_builtins.str] = None,
+                         filter: Optional[Union['GetCertificatePackFilterArgs', 'GetCertificatePackFilterArgsDict']] = None,
                          zone_id: Optional[_builtins.str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCertificatePackResult:
     """
@@ -93,15 +242,29 @@ def get_certificate_pack(certificate_pack_id: Optional[_builtins.str] = None,
     """
     __args__ = dict()
     __args__['certificatePackId'] = certificate_pack_id
+    __args__['filter'] = filter
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getCertificatePack:getCertificatePack', __args__, opts=opts, typ=GetCertificatePackResult).value
 
     return AwaitableGetCertificatePackResult(
+        certificate_authority=pulumi.get(__ret__, 'certificate_authority'),
         certificate_pack_id=pulumi.get(__ret__, 'certificate_pack_id'),
+        certificates=pulumi.get(__ret__, 'certificates'),
+        cloudflare_branding=pulumi.get(__ret__, 'cloudflare_branding'),
+        filter=pulumi.get(__ret__, 'filter'),
+        hosts=pulumi.get(__ret__, 'hosts'),
         id=pulumi.get(__ret__, 'id'),
+        primary_certificate=pulumi.get(__ret__, 'primary_certificate'),
+        status=pulumi.get(__ret__, 'status'),
+        type=pulumi.get(__ret__, 'type'),
+        validation_errors=pulumi.get(__ret__, 'validation_errors'),
+        validation_method=pulumi.get(__ret__, 'validation_method'),
+        validation_records=pulumi.get(__ret__, 'validation_records'),
+        validity_days=pulumi.get(__ret__, 'validity_days'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_certificate_pack_output(certificate_pack_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_certificate_pack_output(certificate_pack_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                filter: Optional[pulumi.Input[Optional[Union['GetCertificatePackFilterArgs', 'GetCertificatePackFilterArgsDict']]]] = None,
                                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCertificatePackResult]:
     """
@@ -121,10 +284,23 @@ def get_certificate_pack_output(certificate_pack_id: Optional[pulumi.Input[_buil
     """
     __args__ = dict()
     __args__['certificatePackId'] = certificate_pack_id
+    __args__['filter'] = filter
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getCertificatePack:getCertificatePack', __args__, opts=opts, typ=GetCertificatePackResult)
     return __ret__.apply(lambda __response__: GetCertificatePackResult(
+        certificate_authority=pulumi.get(__response__, 'certificate_authority'),
         certificate_pack_id=pulumi.get(__response__, 'certificate_pack_id'),
+        certificates=pulumi.get(__response__, 'certificates'),
+        cloudflare_branding=pulumi.get(__response__, 'cloudflare_branding'),
+        filter=pulumi.get(__response__, 'filter'),
+        hosts=pulumi.get(__response__, 'hosts'),
         id=pulumi.get(__response__, 'id'),
+        primary_certificate=pulumi.get(__response__, 'primary_certificate'),
+        status=pulumi.get(__response__, 'status'),
+        type=pulumi.get(__response__, 'type'),
+        validation_errors=pulumi.get(__response__, 'validation_errors'),
+        validation_method=pulumi.get(__response__, 'validation_method'),
+        validation_records=pulumi.get(__response__, 'validation_records'),
+        validity_days=pulumi.get(__response__, 'validity_days'),
         zone_id=pulumi.get(__response__, 'zone_id')))

@@ -87,8 +87,8 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
-        [Input("entryId")]
-        public string? EntryId { get; set; }
+        [Input("entryId", required: true)]
+        public string EntryId { get; set; } = null!;
 
         public GetZeroTrustDlpEntryArgs()
         {
@@ -101,8 +101,8 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        [Input("entryId")]
-        public Input<string>? EntryId { get; set; }
+        [Input("entryId", required: true)]
+        public Input<string> EntryId { get; set; } = null!;
 
         public GetZeroTrustDlpEntryInvokeArgs()
         {
@@ -124,7 +124,7 @@ namespace Pulumi.Cloudflare
         public readonly Outputs.GetZeroTrustDlpEntryConfidenceResult Confidence;
         public readonly string CreatedAt;
         public readonly bool Enabled;
-        public readonly string? EntryId;
+        public readonly string EntryId;
         /// <summary>
         /// The ID of this resource.
         /// </summary>
@@ -132,12 +132,17 @@ namespace Pulumi.Cloudflare
         public readonly string Name;
         public readonly Outputs.GetZeroTrustDlpEntryPatternResult Pattern;
         public readonly string ProfileId;
+        public readonly ImmutableArray<Outputs.GetZeroTrustDlpEntryProfileResult> Profiles;
         public readonly bool Secret;
         /// <summary>
         /// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "WordList".
         /// </summary>
         public readonly string Type;
         public readonly string UpdatedAt;
+        /// <summary>
+        /// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+        /// </summary>
+        public readonly string UploadStatus;
         public readonly Outputs.GetZeroTrustDlpEntryVariantResult Variant;
         public readonly string WordList;
 
@@ -153,7 +158,7 @@ namespace Pulumi.Cloudflare
 
             bool enabled,
 
-            string? entryId,
+            string entryId,
 
             string id,
 
@@ -163,11 +168,15 @@ namespace Pulumi.Cloudflare
 
             string profileId,
 
+            ImmutableArray<Outputs.GetZeroTrustDlpEntryProfileResult> profiles,
+
             bool secret,
 
             string type,
 
             string updatedAt,
+
+            string uploadStatus,
 
             Outputs.GetZeroTrustDlpEntryVariantResult variant,
 
@@ -183,9 +192,11 @@ namespace Pulumi.Cloudflare
             Name = name;
             Pattern = pattern;
             ProfileId = profileId;
+            Profiles = profiles;
             Secret = secret;
             Type = type;
             UpdatedAt = updatedAt;
+            UploadStatus = uploadStatus;
             Variant = variant;
             WordList = wordList;
         }

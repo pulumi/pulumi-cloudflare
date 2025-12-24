@@ -9,6 +9,7 @@ import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsBlockPage
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsCheckSession;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolvers;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsEgress;
+import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsForensicCopy;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsL4override;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsNotificationSettings;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsPayloadLog;
@@ -82,6 +83,11 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
      * 
      */
     private @Nullable ZeroTrustGatewayPolicyRuleSettingsEgress egress;
+    /**
+     * @return Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
+     * 
+     */
+    private @Nullable ZeroTrustGatewayPolicyRuleSettingsForensicCopy forensicCopy;
     /**
      * @return Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dnsResolver` rules.
      * 
@@ -232,6 +238,13 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
         return Optional.ofNullable(this.egress);
     }
     /**
+     * @return Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
+     * 
+     */
+    public Optional<ZeroTrustGatewayPolicyRuleSettingsForensicCopy> forensicCopy() {
+        return Optional.ofNullable(this.forensicCopy);
+    }
+    /**
      * @return Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dnsResolver` rules.
      * 
      */
@@ -350,6 +363,7 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
         private @Nullable ZeroTrustGatewayPolicyRuleSettingsCheckSession checkSession;
         private @Nullable ZeroTrustGatewayPolicyRuleSettingsDnsResolvers dnsResolvers;
         private @Nullable ZeroTrustGatewayPolicyRuleSettingsEgress egress;
+        private @Nullable ZeroTrustGatewayPolicyRuleSettingsForensicCopy forensicCopy;
         private @Nullable Boolean ignoreCnameCategoryMatches;
         private @Nullable Boolean insecureDisableDnssecValidation;
         private @Nullable Boolean ipCategories;
@@ -378,6 +392,7 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
     	      this.checkSession = defaults.checkSession;
     	      this.dnsResolvers = defaults.dnsResolvers;
     	      this.egress = defaults.egress;
+    	      this.forensicCopy = defaults.forensicCopy;
     	      this.ignoreCnameCategoryMatches = defaults.ignoreCnameCategoryMatches;
     	      this.insecureDisableDnssecValidation = defaults.insecureDisableDnssecValidation;
     	      this.ipCategories = defaults.ipCategories;
@@ -458,6 +473,12 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
         public Builder egress(@Nullable ZeroTrustGatewayPolicyRuleSettingsEgress egress) {
 
             this.egress = egress;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder forensicCopy(@Nullable ZeroTrustGatewayPolicyRuleSettingsForensicCopy forensicCopy) {
+
+            this.forensicCopy = forensicCopy;
             return this;
         }
         @CustomType.Setter
@@ -560,6 +581,7 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
             _resultValue.checkSession = checkSession;
             _resultValue.dnsResolvers = dnsResolvers;
             _resultValue.egress = egress;
+            _resultValue.forensicCopy = forensicCopy;
             _resultValue.ignoreCnameCategoryMatches = ignoreCnameCategoryMatches;
             _resultValue.insecureDisableDnssecValidation = insecureDisableDnssecValidation;
             _resultValue.ipCategories = ipCategories;

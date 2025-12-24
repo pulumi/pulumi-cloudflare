@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupZeroTrustRiskScoringIntegration(ctx, &cloudflare.LookupZeroTrustRiskScoringIntegrationArgs{
 //				AccountId:     "account_id",
-//				IntegrationId: pulumi.StringRef("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
+//				IntegrationId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,8 +49,8 @@ func LookupZeroTrustRiskScoringIntegration(ctx *pulumi.Context, args *LookupZero
 
 // A collection of arguments for invoking getZeroTrustRiskScoringIntegration.
 type LookupZeroTrustRiskScoringIntegrationArgs struct {
-	AccountId     string  `pulumi:"accountId"`
-	IntegrationId *string `pulumi:"integrationId"`
+	AccountId     string `pulumi:"accountId"`
+	IntegrationId string `pulumi:"integrationId"`
 }
 
 // A collection of values returned by getZeroTrustRiskScoringIntegration.
@@ -63,8 +63,8 @@ type LookupZeroTrustRiskScoringIntegrationResult struct {
 	// When the integration was created in RFC3339 format.
 	CreatedAt string `pulumi:"createdAt"`
 	// The ID of this resource.
-	Id            string  `pulumi:"id"`
-	IntegrationId *string `pulumi:"integrationId"`
+	Id            string `pulumi:"id"`
+	IntegrationId string `pulumi:"integrationId"`
 	// Available values: "Okta".
 	IntegrationType string `pulumi:"integrationType"`
 	// A reference ID defined by the client.
@@ -88,8 +88,8 @@ func LookupZeroTrustRiskScoringIntegrationOutput(ctx *pulumi.Context, args Looku
 
 // A collection of arguments for invoking getZeroTrustRiskScoringIntegration.
 type LookupZeroTrustRiskScoringIntegrationOutputArgs struct {
-	AccountId     pulumi.StringInput    `pulumi:"accountId"`
-	IntegrationId pulumi.StringPtrInput `pulumi:"integrationId"`
+	AccountId     pulumi.StringInput `pulumi:"accountId"`
+	IntegrationId pulumi.StringInput `pulumi:"integrationId"`
 }
 
 func (LookupZeroTrustRiskScoringIntegrationOutputArgs) ElementType() reflect.Type {
@@ -135,8 +135,8 @@ func (o LookupZeroTrustRiskScoringIntegrationResultOutput) Id() pulumi.StringOut
 	return o.ApplyT(func(v LookupZeroTrustRiskScoringIntegrationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o LookupZeroTrustRiskScoringIntegrationResultOutput) IntegrationId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupZeroTrustRiskScoringIntegrationResult) *string { return v.IntegrationId }).(pulumi.StringPtrOutput)
+func (o LookupZeroTrustRiskScoringIntegrationResultOutput) IntegrationId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustRiskScoringIntegrationResult) string { return v.IntegrationId }).(pulumi.StringOutput)
 }
 
 // Available values: "Okta".

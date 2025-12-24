@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupZeroTrustDnsLocation(ctx, &cloudflare.LookupZeroTrustDnsLocationArgs{
 //				AccountId:  "699d98642c564d2e855e9661899b7252",
-//				LocationId: pulumi.StringRef("ed35569b41ce4d1facfe683550f54086"),
+//				LocationId: "ed35569b41ce4d1facfe683550f54086",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,8 +49,8 @@ func LookupZeroTrustDnsLocation(ctx *pulumi.Context, args *LookupZeroTrustDnsLoc
 
 // A collection of arguments for invoking getZeroTrustDnsLocation.
 type LookupZeroTrustDnsLocationArgs struct {
-	AccountId  string  `pulumi:"accountId"`
-	LocationId *string `pulumi:"locationId"`
+	AccountId  string `pulumi:"accountId"`
+	LocationId string `pulumi:"locationId"`
 }
 
 // A collection of values returned by getZeroTrustDnsLocation.
@@ -76,8 +76,8 @@ type LookupZeroTrustDnsLocationResult struct {
 	// Show the primary destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
 	Ipv4Destination string `pulumi:"ipv4Destination"`
 	// Show the backup destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
-	Ipv4DestinationBackup string  `pulumi:"ipv4DestinationBackup"`
-	LocationId            *string `pulumi:"locationId"`
+	Ipv4DestinationBackup string `pulumi:"ipv4DestinationBackup"`
+	LocationId            string `pulumi:"locationId"`
 	// Specify the location name.
 	Name string `pulumi:"name"`
 	// Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
@@ -96,8 +96,8 @@ func LookupZeroTrustDnsLocationOutput(ctx *pulumi.Context, args LookupZeroTrustD
 
 // A collection of arguments for invoking getZeroTrustDnsLocation.
 type LookupZeroTrustDnsLocationOutputArgs struct {
-	AccountId  pulumi.StringInput    `pulumi:"accountId"`
-	LocationId pulumi.StringPtrInput `pulumi:"locationId"`
+	AccountId  pulumi.StringInput `pulumi:"accountId"`
+	LocationId pulumi.StringInput `pulumi:"locationId"`
 }
 
 func (LookupZeroTrustDnsLocationOutputArgs) ElementType() reflect.Type {
@@ -177,8 +177,8 @@ func (o LookupZeroTrustDnsLocationResultOutput) Ipv4DestinationBackup() pulumi.S
 	return o.ApplyT(func(v LookupZeroTrustDnsLocationResult) string { return v.Ipv4DestinationBackup }).(pulumi.StringOutput)
 }
 
-func (o LookupZeroTrustDnsLocationResultOutput) LocationId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupZeroTrustDnsLocationResult) *string { return v.LocationId }).(pulumi.StringPtrOutput)
+func (o LookupZeroTrustDnsLocationResultOutput) LocationId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustDnsLocationResult) string { return v.LocationId }).(pulumi.StringOutput)
 }
 
 // Specify the location name.

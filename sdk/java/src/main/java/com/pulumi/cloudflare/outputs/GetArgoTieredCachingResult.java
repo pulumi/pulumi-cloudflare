@@ -17,8 +17,7 @@ public final class GetArgoTieredCachingResult {
      */
     private Boolean editable;
     /**
-     * @return The identifier of the caching setting.
-     * Available values: &#34;tieredCaching&#34;.
+     * @return Identifier.
      * 
      */
     private String id;
@@ -48,8 +47,7 @@ public final class GetArgoTieredCachingResult {
         return this.editable;
     }
     /**
-     * @return The identifier of the caching setting.
-     * Available values: &#34;tieredCaching&#34;.
+     * @return Identifier.
      * 
      */
     public String id() {

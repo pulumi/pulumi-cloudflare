@@ -46,6 +46,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly int? KeepAliveTimeout;
         /// <summary>
+        /// Auto configure the Hostname on the origin server certificate.
+        /// </summary>
+        public readonly bool? MatchSnItoHost;
+        /// <summary>
         /// Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
         /// </summary>
         public readonly bool? NoHappyEyeballs;
@@ -88,6 +92,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             int? keepAliveTimeout,
 
+            bool? matchSnItoHost,
+
             bool? noHappyEyeballs,
 
             bool? noTlsVerify,
@@ -108,6 +114,7 @@ namespace Pulumi.Cloudflare.Outputs
             HttpHostHeader = httpHostHeader;
             KeepAliveConnections = keepAliveConnections;
             KeepAliveTimeout = keepAliveTimeout;
+            MatchSnItoHost = matchSnItoHost;
             NoHappyEyeballs = noHappyEyeballs;
             NoTlsVerify = noTlsVerify;
             OriginServerName = originServerName;

@@ -3,7 +3,6 @@
 
 package com.pulumi.cloudflare.inputs;
 
-import com.pulumi.cloudflare.inputs.ZeroTrustDlpPredefinedProfileContextAwarenessArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDlpPredefinedProfileEntryArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -48,57 +47,11 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
         return Optional.ofNullable(this.confidenceThreshold);
     }
 
-    /**
-     * Scan the context of predefined entries to only return matches surrounded by keywords.
-     * 
-     * @deprecated
-     * This attribute is deprecated.
-     * 
-     */
-    @Deprecated /* This attribute is deprecated. */
-    @Import(name="contextAwareness")
-    private @Nullable Output<ZeroTrustDlpPredefinedProfileContextAwarenessArgs> contextAwareness;
+    @Import(name="enabledEntries")
+    private @Nullable Output<List<String>> enabledEntries;
 
-    /**
-     * @return Scan the context of predefined entries to only return matches surrounded by keywords.
-     * 
-     * @deprecated
-     * This attribute is deprecated.
-     * 
-     */
-    @Deprecated /* This attribute is deprecated. */
-    public Optional<Output<ZeroTrustDlpPredefinedProfileContextAwarenessArgs>> contextAwareness() {
-        return Optional.ofNullable(this.contextAwareness);
-    }
-
-    /**
-     * When the profile was created.
-     * 
-     */
-    @Import(name="createdAt")
-    private @Nullable Output<String> createdAt;
-
-    /**
-     * @return When the profile was created.
-     * 
-     */
-    public Optional<Output<String>> createdAt() {
-        return Optional.ofNullable(this.createdAt);
-    }
-
-    /**
-     * The description of the profile.
-     * 
-     */
-    @Import(name="description")
-    private @Nullable Output<String> description;
-
-    /**
-     * @return The description of the profile.
-     * 
-     */
-    public Optional<Output<String>> description() {
-        return Optional.ofNullable(this.description);
+    public Optional<Output<List<String>>> enabledEntries() {
+        return Optional.ofNullable(this.enabledEntries);
     }
 
     /**
@@ -121,14 +74,14 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
     }
 
     /**
-     * The name of the profile.
+     * The name of the predefined profile.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the profile.
+     * @return The name of the predefined profile.
      * 
      */
     public Optional<Output<String>> name() {
@@ -164,36 +117,6 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
         return Optional.ofNullable(this.profileId);
     }
 
-    /**
-     * Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
-     * 
-     */
-    @Import(name="type")
-    private @Nullable Output<String> type;
-
-    /**
-     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
-     * 
-     */
-    public Optional<Output<String>> type() {
-        return Optional.ofNullable(this.type);
-    }
-
-    /**
-     * When the profile was lasted updated.
-     * 
-     */
-    @Import(name="updatedAt")
-    private @Nullable Output<String> updatedAt;
-
-    /**
-     * @return When the profile was lasted updated.
-     * 
-     */
-    public Optional<Output<String>> updatedAt() {
-        return Optional.ofNullable(this.updatedAt);
-    }
-
     private ZeroTrustDlpPredefinedProfileState() {}
 
     private ZeroTrustDlpPredefinedProfileState(ZeroTrustDlpPredefinedProfileState $) {
@@ -201,16 +124,12 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
         this.aiContextEnabled = $.aiContextEnabled;
         this.allowedMatchCount = $.allowedMatchCount;
         this.confidenceThreshold = $.confidenceThreshold;
-        this.contextAwareness = $.contextAwareness;
-        this.createdAt = $.createdAt;
-        this.description = $.description;
+        this.enabledEntries = $.enabledEntries;
         this.entries = $.entries;
         this.name = $.name;
         this.ocrEnabled = $.ocrEnabled;
         this.openAccess = $.openAccess;
         this.profileId = $.profileId;
-        this.type = $.type;
-        this.updatedAt = $.updatedAt;
     }
 
     public static Builder builder() {
@@ -267,75 +186,17 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
             return confidenceThreshold(Output.of(confidenceThreshold));
         }
 
-        /**
-         * @param contextAwareness Scan the context of predefined entries to only return matches surrounded by keywords.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * This attribute is deprecated.
-         * 
-         */
-        @Deprecated /* This attribute is deprecated. */
-        public Builder contextAwareness(@Nullable Output<ZeroTrustDlpPredefinedProfileContextAwarenessArgs> contextAwareness) {
-            $.contextAwareness = contextAwareness;
+        public Builder enabledEntries(@Nullable Output<List<String>> enabledEntries) {
+            $.enabledEntries = enabledEntries;
             return this;
         }
 
-        /**
-         * @param contextAwareness Scan the context of predefined entries to only return matches surrounded by keywords.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * This attribute is deprecated.
-         * 
-         */
-        @Deprecated /* This attribute is deprecated. */
-        public Builder contextAwareness(ZeroTrustDlpPredefinedProfileContextAwarenessArgs contextAwareness) {
-            return contextAwareness(Output.of(contextAwareness));
+        public Builder enabledEntries(List<String> enabledEntries) {
+            return enabledEntries(Output.of(enabledEntries));
         }
 
-        /**
-         * @param createdAt When the profile was created.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder createdAt(@Nullable Output<String> createdAt) {
-            $.createdAt = createdAt;
-            return this;
-        }
-
-        /**
-         * @param createdAt When the profile was created.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder createdAt(String createdAt) {
-            return createdAt(Output.of(createdAt));
-        }
-
-        /**
-         * @param description The description of the profile.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder description(@Nullable Output<String> description) {
-            $.description = description;
-            return this;
-        }
-
-        /**
-         * @param description The description of the profile.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder description(String description) {
-            return description(Output.of(description));
+        public Builder enabledEntries(String... enabledEntries) {
+            return enabledEntries(List.of(enabledEntries));
         }
 
         /**
@@ -376,7 +237,7 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
         }
 
         /**
-         * @param name The name of the profile.
+         * @param name The name of the predefined profile.
          * 
          * @return builder
          * 
@@ -387,7 +248,7 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
         }
 
         /**
-         * @param name The name of the profile.
+         * @param name The name of the predefined profile.
          * 
          * @return builder
          * 
@@ -433,48 +294,6 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
 
         public Builder profileId(String profileId) {
             return profileId(Output.of(profileId));
-        }
-
-        /**
-         * @param type Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder type(@Nullable Output<String> type) {
-            $.type = type;
-            return this;
-        }
-
-        /**
-         * @param type Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder type(String type) {
-            return type(Output.of(type));
-        }
-
-        /**
-         * @param updatedAt When the profile was lasted updated.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder updatedAt(@Nullable Output<String> updatedAt) {
-            $.updatedAt = updatedAt;
-            return this;
-        }
-
-        /**
-         * @param updatedAt When the profile was lasted updated.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder updatedAt(String updatedAt) {
-            return updatedAt(Output.of(updatedAt));
         }
 
         public ZeroTrustDlpPredefinedProfileState build() {

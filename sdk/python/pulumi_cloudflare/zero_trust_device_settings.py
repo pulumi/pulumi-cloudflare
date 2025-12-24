@@ -21,6 +21,10 @@ class ZeroTrustDeviceSettingsArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
                  disable_for_time: Optional[pulumi.Input[_builtins.float]] = None,
+                 external_emergency_signal_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 external_emergency_signal_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
+                 external_emergency_signal_interval: Optional[pulumi.Input[_builtins.str]] = None,
+                 external_emergency_signal_url: Optional[pulumi.Input[_builtins.str]] = None,
                  gateway_proxy_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  gateway_udp_proxy_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  root_certificate_installation_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -28,6 +32,10 @@ class ZeroTrustDeviceSettingsArgs:
         """
         The set of arguments for constructing a ZeroTrustDeviceSettings resource.
         :param pulumi.Input[_builtins.float] disable_for_time: Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
+        :param pulumi.Input[_builtins.bool] external_emergency_signal_enabled: Controls whether the external emergency disconnect feature is enabled.
+        :param pulumi.Input[_builtins.str] external_emergency_signal_fingerprint: The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
+        :param pulumi.Input[_builtins.str] external_emergency_signal_interval: The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds.
+        :param pulumi.Input[_builtins.str] external_emergency_signal_url: The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
         :param pulumi.Input[_builtins.bool] gateway_proxy_enabled: Enable gateway proxy filtering on TCP.
         :param pulumi.Input[_builtins.bool] gateway_udp_proxy_enabled: Enable gateway proxy filtering on UDP.
         :param pulumi.Input[_builtins.bool] root_certificate_installation_enabled: Enable installation of cloudflare managed root certificate.
@@ -36,6 +44,14 @@ class ZeroTrustDeviceSettingsArgs:
         pulumi.set(__self__, "account_id", account_id)
         if disable_for_time is not None:
             pulumi.set(__self__, "disable_for_time", disable_for_time)
+        if external_emergency_signal_enabled is not None:
+            pulumi.set(__self__, "external_emergency_signal_enabled", external_emergency_signal_enabled)
+        if external_emergency_signal_fingerprint is not None:
+            pulumi.set(__self__, "external_emergency_signal_fingerprint", external_emergency_signal_fingerprint)
+        if external_emergency_signal_interval is not None:
+            pulumi.set(__self__, "external_emergency_signal_interval", external_emergency_signal_interval)
+        if external_emergency_signal_url is not None:
+            pulumi.set(__self__, "external_emergency_signal_url", external_emergency_signal_url)
         if gateway_proxy_enabled is not None:
             pulumi.set(__self__, "gateway_proxy_enabled", gateway_proxy_enabled)
         if gateway_udp_proxy_enabled is not None:
@@ -65,6 +81,54 @@ class ZeroTrustDeviceSettingsArgs:
     @disable_for_time.setter
     def disable_for_time(self, value: Optional[pulumi.Input[_builtins.float]]):
         pulumi.set(self, "disable_for_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="externalEmergencySignalEnabled")
+    def external_emergency_signal_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Controls whether the external emergency disconnect feature is enabled.
+        """
+        return pulumi.get(self, "external_emergency_signal_enabled")
+
+    @external_emergency_signal_enabled.setter
+    def external_emergency_signal_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "external_emergency_signal_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="externalEmergencySignalFingerprint")
+    def external_emergency_signal_fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
+        """
+        return pulumi.get(self, "external_emergency_signal_fingerprint")
+
+    @external_emergency_signal_fingerprint.setter
+    def external_emergency_signal_fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "external_emergency_signal_fingerprint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="externalEmergencySignalInterval")
+    def external_emergency_signal_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds.
+        """
+        return pulumi.get(self, "external_emergency_signal_interval")
+
+    @external_emergency_signal_interval.setter
+    def external_emergency_signal_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "external_emergency_signal_interval", value)
+
+    @_builtins.property
+    @pulumi.getter(name="externalEmergencySignalUrl")
+    def external_emergency_signal_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
+        """
+        return pulumi.get(self, "external_emergency_signal_url")
+
+    @external_emergency_signal_url.setter
+    def external_emergency_signal_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "external_emergency_signal_url", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayProxyEnabled")
@@ -120,6 +184,10 @@ class _ZeroTrustDeviceSettingsState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  disable_for_time: Optional[pulumi.Input[_builtins.float]] = None,
+                 external_emergency_signal_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 external_emergency_signal_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
+                 external_emergency_signal_interval: Optional[pulumi.Input[_builtins.str]] = None,
+                 external_emergency_signal_url: Optional[pulumi.Input[_builtins.str]] = None,
                  gateway_proxy_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  gateway_udp_proxy_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  root_certificate_installation_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -127,6 +195,10 @@ class _ZeroTrustDeviceSettingsState:
         """
         Input properties used for looking up and filtering ZeroTrustDeviceSettings resources.
         :param pulumi.Input[_builtins.float] disable_for_time: Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
+        :param pulumi.Input[_builtins.bool] external_emergency_signal_enabled: Controls whether the external emergency disconnect feature is enabled.
+        :param pulumi.Input[_builtins.str] external_emergency_signal_fingerprint: The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
+        :param pulumi.Input[_builtins.str] external_emergency_signal_interval: The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds.
+        :param pulumi.Input[_builtins.str] external_emergency_signal_url: The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
         :param pulumi.Input[_builtins.bool] gateway_proxy_enabled: Enable gateway proxy filtering on TCP.
         :param pulumi.Input[_builtins.bool] gateway_udp_proxy_enabled: Enable gateway proxy filtering on UDP.
         :param pulumi.Input[_builtins.bool] root_certificate_installation_enabled: Enable installation of cloudflare managed root certificate.
@@ -136,6 +208,14 @@ class _ZeroTrustDeviceSettingsState:
             pulumi.set(__self__, "account_id", account_id)
         if disable_for_time is not None:
             pulumi.set(__self__, "disable_for_time", disable_for_time)
+        if external_emergency_signal_enabled is not None:
+            pulumi.set(__self__, "external_emergency_signal_enabled", external_emergency_signal_enabled)
+        if external_emergency_signal_fingerprint is not None:
+            pulumi.set(__self__, "external_emergency_signal_fingerprint", external_emergency_signal_fingerprint)
+        if external_emergency_signal_interval is not None:
+            pulumi.set(__self__, "external_emergency_signal_interval", external_emergency_signal_interval)
+        if external_emergency_signal_url is not None:
+            pulumi.set(__self__, "external_emergency_signal_url", external_emergency_signal_url)
         if gateway_proxy_enabled is not None:
             pulumi.set(__self__, "gateway_proxy_enabled", gateway_proxy_enabled)
         if gateway_udp_proxy_enabled is not None:
@@ -165,6 +245,54 @@ class _ZeroTrustDeviceSettingsState:
     @disable_for_time.setter
     def disable_for_time(self, value: Optional[pulumi.Input[_builtins.float]]):
         pulumi.set(self, "disable_for_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="externalEmergencySignalEnabled")
+    def external_emergency_signal_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Controls whether the external emergency disconnect feature is enabled.
+        """
+        return pulumi.get(self, "external_emergency_signal_enabled")
+
+    @external_emergency_signal_enabled.setter
+    def external_emergency_signal_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "external_emergency_signal_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="externalEmergencySignalFingerprint")
+    def external_emergency_signal_fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
+        """
+        return pulumi.get(self, "external_emergency_signal_fingerprint")
+
+    @external_emergency_signal_fingerprint.setter
+    def external_emergency_signal_fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "external_emergency_signal_fingerprint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="externalEmergencySignalInterval")
+    def external_emergency_signal_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds.
+        """
+        return pulumi.get(self, "external_emergency_signal_interval")
+
+    @external_emergency_signal_interval.setter
+    def external_emergency_signal_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "external_emergency_signal_interval", value)
+
+    @_builtins.property
+    @pulumi.getter(name="externalEmergencySignalUrl")
+    def external_emergency_signal_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
+        """
+        return pulumi.get(self, "external_emergency_signal_url")
+
+    @external_emergency_signal_url.setter
+    def external_emergency_signal_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "external_emergency_signal_url", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayProxyEnabled")
@@ -223,6 +351,10 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  disable_for_time: Optional[pulumi.Input[_builtins.float]] = None,
+                 external_emergency_signal_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 external_emergency_signal_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
+                 external_emergency_signal_interval: Optional[pulumi.Input[_builtins.str]] = None,
+                 external_emergency_signal_url: Optional[pulumi.Input[_builtins.str]] = None,
                  gateway_proxy_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  gateway_udp_proxy_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  root_certificate_installation_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -238,15 +370,27 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
         example_zero_trust_device_settings = cloudflare.ZeroTrustDeviceSettings("example_zero_trust_device_settings",
             account_id="699d98642c564d2e855e9661899b7252",
             disable_for_time=0,
+            external_emergency_signal_enabled=True,
+            external_emergency_signal_fingerprint="abcd1234567890abcd1234567890abcd1234567890abcd1234567890abcd1234",
+            external_emergency_signal_interval="5m",
+            external_emergency_signal_url="https://192.0.2.1/signal",
             gateway_proxy_enabled=True,
             gateway_udp_proxy_enabled=True,
             root_certificate_installation_enabled=True,
             use_zt_virtual_ip=True)
         ```
 
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.float] disable_for_time: Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
+        :param pulumi.Input[_builtins.bool] external_emergency_signal_enabled: Controls whether the external emergency disconnect feature is enabled.
+        :param pulumi.Input[_builtins.str] external_emergency_signal_fingerprint: The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
+        :param pulumi.Input[_builtins.str] external_emergency_signal_interval: The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds.
+        :param pulumi.Input[_builtins.str] external_emergency_signal_url: The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
         :param pulumi.Input[_builtins.bool] gateway_proxy_enabled: Enable gateway proxy filtering on TCP.
         :param pulumi.Input[_builtins.bool] gateway_udp_proxy_enabled: Enable gateway proxy filtering on UDP.
         :param pulumi.Input[_builtins.bool] root_certificate_installation_enabled: Enable installation of cloudflare managed root certificate.
@@ -268,11 +412,19 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
         example_zero_trust_device_settings = cloudflare.ZeroTrustDeviceSettings("example_zero_trust_device_settings",
             account_id="699d98642c564d2e855e9661899b7252",
             disable_for_time=0,
+            external_emergency_signal_enabled=True,
+            external_emergency_signal_fingerprint="abcd1234567890abcd1234567890abcd1234567890abcd1234567890abcd1234",
+            external_emergency_signal_interval="5m",
+            external_emergency_signal_url="https://192.0.2.1/signal",
             gateway_proxy_enabled=True,
             gateway_udp_proxy_enabled=True,
             root_certificate_installation_enabled=True,
             use_zt_virtual_ip=True)
         ```
+
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustDeviceSettingsArgs args: The arguments to use to populate this resource's properties.
@@ -291,6 +443,10 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  disable_for_time: Optional[pulumi.Input[_builtins.float]] = None,
+                 external_emergency_signal_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 external_emergency_signal_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
+                 external_emergency_signal_interval: Optional[pulumi.Input[_builtins.str]] = None,
+                 external_emergency_signal_url: Optional[pulumi.Input[_builtins.str]] = None,
                  gateway_proxy_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  gateway_udp_proxy_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  root_certificate_installation_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -308,6 +464,10 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["disable_for_time"] = disable_for_time
+            __props__.__dict__["external_emergency_signal_enabled"] = external_emergency_signal_enabled
+            __props__.__dict__["external_emergency_signal_fingerprint"] = external_emergency_signal_fingerprint
+            __props__.__dict__["external_emergency_signal_interval"] = external_emergency_signal_interval
+            __props__.__dict__["external_emergency_signal_url"] = external_emergency_signal_url
             __props__.__dict__["gateway_proxy_enabled"] = gateway_proxy_enabled
             __props__.__dict__["gateway_udp_proxy_enabled"] = gateway_udp_proxy_enabled
             __props__.__dict__["root_certificate_installation_enabled"] = root_certificate_installation_enabled
@@ -324,6 +484,10 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
             disable_for_time: Optional[pulumi.Input[_builtins.float]] = None,
+            external_emergency_signal_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+            external_emergency_signal_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
+            external_emergency_signal_interval: Optional[pulumi.Input[_builtins.str]] = None,
+            external_emergency_signal_url: Optional[pulumi.Input[_builtins.str]] = None,
             gateway_proxy_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             gateway_udp_proxy_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             root_certificate_installation_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -336,6 +500,10 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.float] disable_for_time: Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
+        :param pulumi.Input[_builtins.bool] external_emergency_signal_enabled: Controls whether the external emergency disconnect feature is enabled.
+        :param pulumi.Input[_builtins.str] external_emergency_signal_fingerprint: The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
+        :param pulumi.Input[_builtins.str] external_emergency_signal_interval: The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds.
+        :param pulumi.Input[_builtins.str] external_emergency_signal_url: The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
         :param pulumi.Input[_builtins.bool] gateway_proxy_enabled: Enable gateway proxy filtering on TCP.
         :param pulumi.Input[_builtins.bool] gateway_udp_proxy_enabled: Enable gateway proxy filtering on UDP.
         :param pulumi.Input[_builtins.bool] root_certificate_installation_enabled: Enable installation of cloudflare managed root certificate.
@@ -347,6 +515,10 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["disable_for_time"] = disable_for_time
+        __props__.__dict__["external_emergency_signal_enabled"] = external_emergency_signal_enabled
+        __props__.__dict__["external_emergency_signal_fingerprint"] = external_emergency_signal_fingerprint
+        __props__.__dict__["external_emergency_signal_interval"] = external_emergency_signal_interval
+        __props__.__dict__["external_emergency_signal_url"] = external_emergency_signal_url
         __props__.__dict__["gateway_proxy_enabled"] = gateway_proxy_enabled
         __props__.__dict__["gateway_udp_proxy_enabled"] = gateway_udp_proxy_enabled
         __props__.__dict__["root_certificate_installation_enabled"] = root_certificate_installation_enabled
@@ -365,6 +537,38 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
         Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
         """
         return pulumi.get(self, "disable_for_time")
+
+    @_builtins.property
+    @pulumi.getter(name="externalEmergencySignalEnabled")
+    def external_emergency_signal_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Controls whether the external emergency disconnect feature is enabled.
+        """
+        return pulumi.get(self, "external_emergency_signal_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="externalEmergencySignalFingerprint")
+    def external_emergency_signal_fingerprint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
+        """
+        return pulumi.get(self, "external_emergency_signal_fingerprint")
+
+    @_builtins.property
+    @pulumi.getter(name="externalEmergencySignalInterval")
+    def external_emergency_signal_interval(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds.
+        """
+        return pulumi.get(self, "external_emergency_signal_interval")
+
+    @_builtins.property
+    @pulumi.getter(name="externalEmergencySignalUrl")
+    def external_emergency_signal_url(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
+        """
+        return pulumi.get(self, "external_emergency_signal_url")
 
     @_builtins.property
     @pulumi.getter(name="gatewayProxyEnabled")

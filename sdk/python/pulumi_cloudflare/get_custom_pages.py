@@ -83,7 +83,8 @@ class GetCustomPagesResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The ID of this resource.
+        Error Page Types
+        Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf_block".
         """
         return pulumi.get(self, "id")
 

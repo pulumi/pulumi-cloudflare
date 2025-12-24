@@ -133,7 +133,7 @@ class GetNotificationPolicyWebhooksResult:
 
     @_builtins.property
     @pulumi.getter(name="webhookId")
-    def webhook_id(self) -> Optional[_builtins.str]:
+    def webhook_id(self) -> _builtins.str:
         """
         The unique identifier of a webhook
         """
@@ -194,7 +194,7 @@ def get_notification_policy_webhooks(account_id: Optional[_builtins.str] = None,
         url=pulumi.get(__ret__, 'url'),
         webhook_id=pulumi.get(__ret__, 'webhook_id'))
 def get_notification_policy_webhooks_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                            webhook_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                            webhook_id: Optional[pulumi.Input[_builtins.str]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNotificationPolicyWebhooksResult]:
     """
     ## Example Usage

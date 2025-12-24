@@ -20,6 +20,9 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string CreatedOn;
         public readonly string DomainId;
         public readonly string Id;
+        /// <summary>
+        /// The domain name.
+        /// </summary>
         public readonly string Name;
         /// <summary>
         /// Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".

@@ -16,6 +16,10 @@ import * as utilities from "./utilities";
  *     enabled: true,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ~> This resource does not currently support `pulumi import`.
  */
 export class AuthenticatedOriginPullsSettings extends pulumi.CustomResource {
     /**

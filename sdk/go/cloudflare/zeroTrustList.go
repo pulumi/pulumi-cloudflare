@@ -66,7 +66,7 @@ type ZeroTrustList struct {
 	// Specify the list name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Specify the list type.
-	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
 	Type      pulumi.StringOutput `pulumi:"type"`
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
@@ -127,7 +127,7 @@ type zeroTrustListState struct {
 	// Specify the list name.
 	Name *string `pulumi:"name"`
 	// Specify the list type.
-	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
 	Type      *string `pulumi:"type"`
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
@@ -144,7 +144,7 @@ type ZeroTrustListState struct {
 	// Specify the list name.
 	Name pulumi.StringPtrInput
 	// Specify the list type.
-	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
 	Type      pulumi.StringPtrInput
 	UpdatedAt pulumi.StringPtrInput
 }
@@ -162,7 +162,7 @@ type zeroTrustListArgs struct {
 	// Specify the list name.
 	Name string `pulumi:"name"`
 	// Specify the list type.
-	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
 	Type string `pulumi:"type"`
 }
 
@@ -176,7 +176,7 @@ type ZeroTrustListArgs struct {
 	// Specify the list name.
 	Name pulumi.StringInput
 	// Specify the list type.
-	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
 	Type pulumi.StringInput
 }
 
@@ -296,7 +296,7 @@ func (o ZeroTrustListOutput) Name() pulumi.StringOutput {
 }
 
 // Specify the list type.
-// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
 func (o ZeroTrustListOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustList) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

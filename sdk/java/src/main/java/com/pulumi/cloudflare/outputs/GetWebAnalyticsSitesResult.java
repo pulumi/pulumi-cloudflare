@@ -21,6 +21,11 @@ public final class GetWebAnalyticsSitesResult {
     private Boolean autoInstall;
     private String created;
     /**
+     * @return The Web Analytics site identifier.
+     * 
+     */
+    private String id;
+    /**
      * @return A list of rules.
      * 
      */
@@ -52,6 +57,13 @@ public final class GetWebAnalyticsSitesResult {
     }
     public String created() {
         return this.created;
+    }
+    /**
+     * @return The Web Analytics site identifier.
+     * 
+     */
+    public String id() {
+        return this.id;
     }
     /**
      * @return A list of rules.
@@ -96,6 +108,7 @@ public final class GetWebAnalyticsSitesResult {
     public static final class Builder {
         private Boolean autoInstall;
         private String created;
+        private String id;
         private List<GetWebAnalyticsSitesResultRule> rules;
         private GetWebAnalyticsSitesResultRuleset ruleset;
         private String siteTag;
@@ -106,6 +119,7 @@ public final class GetWebAnalyticsSitesResult {
     	      Objects.requireNonNull(defaults);
     	      this.autoInstall = defaults.autoInstall;
     	      this.created = defaults.created;
+    	      this.id = defaults.id;
     	      this.rules = defaults.rules;
     	      this.ruleset = defaults.ruleset;
     	      this.siteTag = defaults.siteTag;
@@ -127,6 +141,14 @@ public final class GetWebAnalyticsSitesResult {
               throw new MissingRequiredPropertyException("GetWebAnalyticsSitesResult", "created");
             }
             this.created = created;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetWebAnalyticsSitesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -176,6 +198,7 @@ public final class GetWebAnalyticsSitesResult {
             final var _resultValue = new GetWebAnalyticsSitesResult();
             _resultValue.autoInstall = autoInstall;
             _resultValue.created = created;
+            _resultValue.id = id;
             _resultValue.rules = rules;
             _resultValue.ruleset = ruleset;
             _resultValue.siteTag = siteTag;

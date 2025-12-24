@@ -57,19 +57,22 @@ type ZeroTrustDlpCustomEntry struct {
 	// Only applies to custom word lists.
 	// Determines if the words should be matched in a case-sensitive manner
 	// Cannot be set to false if secret is true
-	CaseSensitive pulumi.BoolOutput                       `pulumi:"caseSensitive"`
-	Confidence    ZeroTrustDlpCustomEntryConfidenceOutput `pulumi:"confidence"`
-	CreatedAt     pulumi.StringOutput                     `pulumi:"createdAt"`
-	Enabled       pulumi.BoolOutput                       `pulumi:"enabled"`
-	Name          pulumi.StringOutput                     `pulumi:"name"`
-	Pattern       ZeroTrustDlpCustomEntryPatternOutput    `pulumi:"pattern"`
-	ProfileId     pulumi.StringPtrOutput                  `pulumi:"profileId"`
-	Secret        pulumi.BoolOutput                       `pulumi:"secret"`
+	CaseSensitive pulumi.BoolOutput                         `pulumi:"caseSensitive"`
+	Confidence    ZeroTrustDlpCustomEntryConfidenceOutput   `pulumi:"confidence"`
+	CreatedAt     pulumi.StringOutput                       `pulumi:"createdAt"`
+	Enabled       pulumi.BoolOutput                         `pulumi:"enabled"`
+	Name          pulumi.StringOutput                       `pulumi:"name"`
+	Pattern       ZeroTrustDlpCustomEntryPatternOutput      `pulumi:"pattern"`
+	ProfileId     pulumi.StringPtrOutput                    `pulumi:"profileId"`
+	Profiles      ZeroTrustDlpCustomEntryProfileArrayOutput `pulumi:"profiles"`
+	Secret        pulumi.BoolOutput                         `pulumi:"secret"`
 	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
-	Type      pulumi.StringOutput                  `pulumi:"type"`
-	UpdatedAt pulumi.StringOutput                  `pulumi:"updatedAt"`
-	Variant   ZeroTrustDlpCustomEntryVariantOutput `pulumi:"variant"`
-	WordList  pulumi.StringOutput                  `pulumi:"wordList"`
+	Type      pulumi.StringOutput `pulumi:"type"`
+	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
+	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+	UploadStatus pulumi.StringOutput                  `pulumi:"uploadStatus"`
+	Variant      ZeroTrustDlpCustomEntryVariantOutput `pulumi:"variant"`
+	WordList     pulumi.StringOutput                  `pulumi:"wordList"`
 }
 
 // NewZeroTrustDlpCustomEntry registers a new resource with the given unique name, arguments, and options.
@@ -125,12 +128,15 @@ type zeroTrustDlpCustomEntryState struct {
 	Name          *string                            `pulumi:"name"`
 	Pattern       *ZeroTrustDlpCustomEntryPattern    `pulumi:"pattern"`
 	ProfileId     *string                            `pulumi:"profileId"`
+	Profiles      []ZeroTrustDlpCustomEntryProfile   `pulumi:"profiles"`
 	Secret        *bool                              `pulumi:"secret"`
 	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
-	Type      *string                         `pulumi:"type"`
-	UpdatedAt *string                         `pulumi:"updatedAt"`
-	Variant   *ZeroTrustDlpCustomEntryVariant `pulumi:"variant"`
-	WordList  *string                         `pulumi:"wordList"`
+	Type      *string `pulumi:"type"`
+	UpdatedAt *string `pulumi:"updatedAt"`
+	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+	UploadStatus *string                         `pulumi:"uploadStatus"`
+	Variant      *ZeroTrustDlpCustomEntryVariant `pulumi:"variant"`
+	WordList     *string                         `pulumi:"wordList"`
 }
 
 type ZeroTrustDlpCustomEntryState struct {
@@ -145,12 +151,15 @@ type ZeroTrustDlpCustomEntryState struct {
 	Name          pulumi.StringPtrInput
 	Pattern       ZeroTrustDlpCustomEntryPatternPtrInput
 	ProfileId     pulumi.StringPtrInput
+	Profiles      ZeroTrustDlpCustomEntryProfileArrayInput
 	Secret        pulumi.BoolPtrInput
 	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
 	Type      pulumi.StringPtrInput
 	UpdatedAt pulumi.StringPtrInput
-	Variant   ZeroTrustDlpCustomEntryVariantPtrInput
-	WordList  pulumi.StringPtrInput
+	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+	UploadStatus pulumi.StringPtrInput
+	Variant      ZeroTrustDlpCustomEntryVariantPtrInput
+	WordList     pulumi.StringPtrInput
 }
 
 func (ZeroTrustDlpCustomEntryState) ElementType() reflect.Type {
@@ -296,6 +305,10 @@ func (o ZeroTrustDlpCustomEntryOutput) ProfileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpCustomEntry) pulumi.StringPtrOutput { return v.ProfileId }).(pulumi.StringPtrOutput)
 }
 
+func (o ZeroTrustDlpCustomEntryOutput) Profiles() ZeroTrustDlpCustomEntryProfileArrayOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpCustomEntry) ZeroTrustDlpCustomEntryProfileArrayOutput { return v.Profiles }).(ZeroTrustDlpCustomEntryProfileArrayOutput)
+}
+
 func (o ZeroTrustDlpCustomEntryOutput) Secret() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpCustomEntry) pulumi.BoolOutput { return v.Secret }).(pulumi.BoolOutput)
 }
@@ -307,6 +320,11 @@ func (o ZeroTrustDlpCustomEntryOutput) Type() pulumi.StringOutput {
 
 func (o ZeroTrustDlpCustomEntryOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpCustomEntry) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+func (o ZeroTrustDlpCustomEntryOutput) UploadStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpCustomEntry) pulumi.StringOutput { return v.UploadStatus }).(pulumi.StringOutput)
 }
 
 func (o ZeroTrustDlpCustomEntryOutput) Variant() ZeroTrustDlpCustomEntryVariantOutput {

@@ -66,7 +66,7 @@ type AccessRule struct {
 	// The timestamp of when the rule was last modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
 	// An informative summary of the rule, typically used as a reminder or explanation.
-	Notes pulumi.StringPtrOutput `pulumi:"notes"`
+	Notes pulumi.StringOutput `pulumi:"notes"`
 	// All zones owned by the user will have the rule applied.
 	Scope AccessRuleScopeOutput `pulumi:"scope"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -304,8 +304,8 @@ func (o AccessRuleOutput) ModifiedOn() pulumi.StringOutput {
 }
 
 // An informative summary of the rule, typically used as a reminder or explanation.
-func (o AccessRuleOutput) Notes() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccessRule) pulumi.StringPtrOutput { return v.Notes }).(pulumi.StringPtrOutput)
+func (o AccessRuleOutput) Notes() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.Notes }).(pulumi.StringOutput)
 }
 
 // All zones owned by the user will have the rule applied.

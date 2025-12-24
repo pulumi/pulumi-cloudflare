@@ -43,10 +43,331 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZoneSetting = new ZoneSetting("exampleZoneSetting", ZoneSettingArgs.builder()
+ *         // Basic on/off setting
+ *         var alwaysOnline = new ZoneSetting("alwaysOnline", ZoneSettingArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .settingId("always_online")
  *             .value("on")
+ *             .build());
+ * 
+ *         // String value with specific choices
+ *         var minTlsVersion = new ZoneSetting("minTlsVersion", ZoneSettingArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .settingId("min_tls_version")
+ *             .value("1.2")
+ *             .build());
+ * 
+ *         // Numeric value
+ *         var browserCacheTtl = new ZoneSetting("browserCacheTtl", ZoneSettingArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .settingId("browser_cache_ttl")
+ *             .value(14400)
+ *             .build());
+ * 
+ *         // Array/List value
+ *         var ciphers = new ZoneSetting("ciphers", ZoneSettingArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .settingId("ciphers")
+ *             .value(            
+ *                 "ECDHE-ECDSA-AES128-GCM-SHA256",
+ *                 "ECDHE-ECDSA-CHACHA20-POLY1305")
+ *             .build());
+ * 
+ *         // Nested object value
+ *         var securityHeader = new ZoneSetting("securityHeader", ZoneSettingArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .settingId("security_header")
+ *             .value(Map.of("strictTransportSecurity", Map.ofEntries(
+ *                 Map.entry("enabled", true),
+ *                 Map.entry("includeSubdomains", true),
+ *                 Map.entry("maxAge", 86400),
+ *                 Map.entry("nosniff", true),
+ *                 Map.entry("preload", false)
+ *             )))
+ *             .build());
+ * 
+ *         // Special case: ssl_recommender uses 'enabled' instead of 'value'
+ *         var sslRecommender = new ZoneSetting("sslRecommender", ZoneSettingArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .settingId("ssl_recommender")
+ *             .enabled(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Additional Examples
+ * 
+ * ### String Value with Choices
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.ZoneSetting;
+ * import com.pulumi.cloudflare.ZoneSettingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Minimum TLS Version
+ *         var minTls = new ZoneSetting("minTls", ZoneSettingArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .settingId("min_tls_version")
+ *             .value("1.2")
+ *             .build());
+ * 
+ *         // SSL/TLS Mode
+ *         var ssl = new ZoneSetting("ssl", ZoneSettingArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .settingId("ssl")
+ *             .value("strict")
+ *             .build());
+ * 
+ *         // Security Level
+ *         var securityLevel = new ZoneSetting("securityLevel", ZoneSettingArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .settingId("security_level")
+ *             .value("medium")
+ *             .build());
+ * 
+ *         // Cache Level
+ *         var cacheLevel = new ZoneSetting("cacheLevel", ZoneSettingArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .settingId("cache_level")
+ *             .value("aggressive")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Numeric Values
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.ZoneSetting;
+ * import com.pulumi.cloudflare.ZoneSettingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Browser Cache TTL
+ *         var browserCacheTtl = new ZoneSetting("browserCacheTtl", ZoneSettingArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .settingId("browser_cache_ttl")
+ *             .value(14400)
+ *             .build());
+ * 
+ *         // Challenge TTL
+ *         var challengeTtl = new ZoneSetting("challengeTtl", ZoneSettingArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .settingId("challenge_ttl")
+ *             .value(1800)
+ *             .build());
+ * 
+ *         // Max Upload Size
+ *         var maxUpload = new ZoneSetting("maxUpload", ZoneSettingArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .settingId("max_upload")
+ *             .value(100)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Special Cases
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.ZoneSetting;
+ * import com.pulumi.cloudflare.ZoneSettingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // 0-RTT (Zero Round Trip Time)
+ *         var zeroRtt = new ZoneSetting("zeroRtt", ZoneSettingArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .settingId("0rtt")
+ *             .value("on")
+ *             .build());
+ * 
+ *         // Network Error Logging (NEL)
+ *         var nel = new ZoneSetting("nel", ZoneSettingArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .settingId("nel")
+ *             .value(Map.of("enabled", true))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Common Configuration Sets
+ * 
+ * ### Security Hardening Configuration
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.ZoneSetting;
+ * import com.pulumi.cloudflare.ZoneSettingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Enable HTTPS everywhere
+ *         var alwaysUseHttps = new ZoneSetting("alwaysUseHttps", ZoneSettingArgs.builder()
+ *             .zoneId(zoneId)
+ *             .settingId("always_use_https")
+ *             .value("on")
+ *             .build());
+ * 
+ *         // Automatic HTTPS Rewrites
+ *         var automaticHttpsRewrites = new ZoneSetting("automaticHttpsRewrites", ZoneSettingArgs.builder()
+ *             .zoneId(zoneId)
+ *             .settingId("automatic_https_rewrites")
+ *             .value("on")
+ *             .build());
+ * 
+ *         // Minimum TLS 1.2
+ *         var minTlsVersion = new ZoneSetting("minTlsVersion", ZoneSettingArgs.builder()
+ *             .zoneId(zoneId)
+ *             .settingId("min_tls_version")
+ *             .value("1.2")
+ *             .build());
+ * 
+ *         // Enable TLS 1.3
+ *         var tls13 = new ZoneSetting("tls13", ZoneSettingArgs.builder()
+ *             .zoneId(zoneId)
+ *             .settingId("tls_1_3")
+ *             .value("on")
+ *             .build());
+ * 
+ *         // Strict SSL
+ *         var ssl = new ZoneSetting("ssl", ZoneSettingArgs.builder()
+ *             .zoneId(zoneId)
+ *             .settingId("ssl")
+ *             .value("strict")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Performance Optimization Configuration
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.ZoneSetting;
+ * import com.pulumi.cloudflare.ZoneSettingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Enable HTTP/3
+ *         var http3 = new ZoneSetting("http3", ZoneSettingArgs.builder()
+ *             .zoneId(zoneId)
+ *             .settingId("http3")
+ *             .value("on")
+ *             .build());
+ * 
+ *         // Enable Brotli Compression
+ *         var brotli = new ZoneSetting("brotli", ZoneSettingArgs.builder()
+ *             .zoneId(zoneId)
+ *             .settingId("brotli")
+ *             .value("on")
+ *             .build());
+ * 
+ *         // Early Hints
+ *         var earlyHints = new ZoneSetting("earlyHints", ZoneSettingArgs.builder()
+ *             .zoneId(zoneId)
+ *             .settingId("early_hints")
+ *             .value("on")
+ *             .build());
+ * 
+ *         // Aggressive Caching
+ *         var cacheLevel = new ZoneSetting("cacheLevel", ZoneSettingArgs.builder()
+ *             .zoneId(zoneId)
+ *             .settingId("cache_level")
+ *             .value("aggressive")
+ *             .build());
+ * 
+ *         // Browser Cache TTL
+ *         var browserCache = new ZoneSetting("browserCache", ZoneSettingArgs.builder()
+ *             .zoneId(zoneId)
+ *             .settingId("browser_cache_ttl")
+ *             .value(14400)
  *             .build());
  * 
  *     }

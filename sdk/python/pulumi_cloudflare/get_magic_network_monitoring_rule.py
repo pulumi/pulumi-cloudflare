@@ -137,7 +137,7 @@ class GetMagicNetworkMonitoringRuleResult:
 
     @_builtins.property
     @pulumi.getter(name="ruleId")
-    def rule_id(self) -> Optional[_builtins.str]:
+    def rule_id(self) -> _builtins.str:
         """
         The id of the rule. Must be unique.
         """
@@ -230,7 +230,7 @@ def get_magic_network_monitoring_rule(account_id: Optional[_builtins.str] = None
         zscore_sensitivity=pulumi.get(__ret__, 'zscore_sensitivity'),
         zscore_target=pulumi.get(__ret__, 'zscore_target'))
 def get_magic_network_monitoring_rule_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                             rule_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                             rule_id: Optional[pulumi.Input[_builtins.str]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMagicNetworkMonitoringRuleResult]:
     """
     ## Example Usage

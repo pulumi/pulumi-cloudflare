@@ -9,8 +9,6 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetByoIpPrefixResult {
@@ -54,6 +52,11 @@ public final class GetByoIpPrefixResult {
     private String cidr;
     private String createdAt;
     /**
+     * @return Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+     * 
+     */
+    private Boolean delegateLoaCreation;
+    /**
      * @return Description of the prefix.
      * 
      */
@@ -63,6 +66,11 @@ public final class GetByoIpPrefixResult {
      * 
      */
     private String id;
+    /**
+     * @return State of one kind of validation for an IP prefix.
+     * 
+     */
+    private String irrValidationState;
     /**
      * @return Identifier for the uploaded LOA document.
      * 
@@ -88,10 +96,25 @@ public final class GetByoIpPrefixResult {
     @Deprecated /* Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix. */
     private Boolean onDemandLocked;
     /**
+     * @return State of one kind of validation for an IP prefix.
+     * 
+     */
+    private String ownershipValidationState;
+    /**
+     * @return Token provided to demonstrate ownership of the prefix.
+     * 
+     */
+    private String ownershipValidationToken;
+    /**
      * @return Identifier of an IP Prefix.
      * 
      */
-    private @Nullable String prefixId;
+    private String prefixId;
+    /**
+     * @return State of one kind of validation for an IP prefix.
+     * 
+     */
+    private String rpkiValidationState;
 
     private GetByoIpPrefixResult() {}
     /**
@@ -148,6 +171,13 @@ public final class GetByoIpPrefixResult {
         return this.createdAt;
     }
     /**
+     * @return Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+     * 
+     */
+    public Boolean delegateLoaCreation() {
+        return this.delegateLoaCreation;
+    }
+    /**
      * @return Description of the prefix.
      * 
      */
@@ -160,6 +190,13 @@ public final class GetByoIpPrefixResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return State of one kind of validation for an IP prefix.
+     * 
+     */
+    public String irrValidationState() {
+        return this.irrValidationState;
     }
     /**
      * @return Identifier for the uploaded LOA document.
@@ -194,11 +231,32 @@ public final class GetByoIpPrefixResult {
         return this.onDemandLocked;
     }
     /**
+     * @return State of one kind of validation for an IP prefix.
+     * 
+     */
+    public String ownershipValidationState() {
+        return this.ownershipValidationState;
+    }
+    /**
+     * @return Token provided to demonstrate ownership of the prefix.
+     * 
+     */
+    public String ownershipValidationToken() {
+        return this.ownershipValidationToken;
+    }
+    /**
      * @return Identifier of an IP Prefix.
      * 
      */
-    public Optional<String> prefixId() {
-        return Optional.ofNullable(this.prefixId);
+    public String prefixId() {
+        return this.prefixId;
+    }
+    /**
+     * @return State of one kind of validation for an IP prefix.
+     * 
+     */
+    public String rpkiValidationState() {
+        return this.rpkiValidationState;
     }
 
     public static Builder builder() {
@@ -217,13 +275,18 @@ public final class GetByoIpPrefixResult {
         private Integer asn;
         private String cidr;
         private String createdAt;
+        private Boolean delegateLoaCreation;
         private String description;
         private String id;
+        private String irrValidationState;
         private String loaDocumentId;
         private String modifiedAt;
         private Boolean onDemandEnabled;
         private Boolean onDemandLocked;
-        private @Nullable String prefixId;
+        private String ownershipValidationState;
+        private String ownershipValidationToken;
+        private String prefixId;
+        private String rpkiValidationState;
         public Builder() {}
         public Builder(GetByoIpPrefixResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -234,13 +297,18 @@ public final class GetByoIpPrefixResult {
     	      this.asn = defaults.asn;
     	      this.cidr = defaults.cidr;
     	      this.createdAt = defaults.createdAt;
+    	      this.delegateLoaCreation = defaults.delegateLoaCreation;
     	      this.description = defaults.description;
     	      this.id = defaults.id;
+    	      this.irrValidationState = defaults.irrValidationState;
     	      this.loaDocumentId = defaults.loaDocumentId;
     	      this.modifiedAt = defaults.modifiedAt;
     	      this.onDemandEnabled = defaults.onDemandEnabled;
     	      this.onDemandLocked = defaults.onDemandLocked;
+    	      this.ownershipValidationState = defaults.ownershipValidationState;
+    	      this.ownershipValidationToken = defaults.ownershipValidationToken;
     	      this.prefixId = defaults.prefixId;
+    	      this.rpkiValidationState = defaults.rpkiValidationState;
         }
 
         @CustomType.Setter
@@ -300,6 +368,14 @@ public final class GetByoIpPrefixResult {
             return this;
         }
         @CustomType.Setter
+        public Builder delegateLoaCreation(Boolean delegateLoaCreation) {
+            if (delegateLoaCreation == null) {
+              throw new MissingRequiredPropertyException("GetByoIpPrefixResult", "delegateLoaCreation");
+            }
+            this.delegateLoaCreation = delegateLoaCreation;
+            return this;
+        }
+        @CustomType.Setter
         public Builder description(String description) {
             if (description == null) {
               throw new MissingRequiredPropertyException("GetByoIpPrefixResult", "description");
@@ -313,6 +389,14 @@ public final class GetByoIpPrefixResult {
               throw new MissingRequiredPropertyException("GetByoIpPrefixResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder irrValidationState(String irrValidationState) {
+            if (irrValidationState == null) {
+              throw new MissingRequiredPropertyException("GetByoIpPrefixResult", "irrValidationState");
+            }
+            this.irrValidationState = irrValidationState;
             return this;
         }
         @CustomType.Setter
@@ -348,9 +432,35 @@ public final class GetByoIpPrefixResult {
             return this;
         }
         @CustomType.Setter
-        public Builder prefixId(@Nullable String prefixId) {
-
+        public Builder ownershipValidationState(String ownershipValidationState) {
+            if (ownershipValidationState == null) {
+              throw new MissingRequiredPropertyException("GetByoIpPrefixResult", "ownershipValidationState");
+            }
+            this.ownershipValidationState = ownershipValidationState;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ownershipValidationToken(String ownershipValidationToken) {
+            if (ownershipValidationToken == null) {
+              throw new MissingRequiredPropertyException("GetByoIpPrefixResult", "ownershipValidationToken");
+            }
+            this.ownershipValidationToken = ownershipValidationToken;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder prefixId(String prefixId) {
+            if (prefixId == null) {
+              throw new MissingRequiredPropertyException("GetByoIpPrefixResult", "prefixId");
+            }
             this.prefixId = prefixId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder rpkiValidationState(String rpkiValidationState) {
+            if (rpkiValidationState == null) {
+              throw new MissingRequiredPropertyException("GetByoIpPrefixResult", "rpkiValidationState");
+            }
+            this.rpkiValidationState = rpkiValidationState;
             return this;
         }
         public GetByoIpPrefixResult build() {
@@ -362,13 +472,18 @@ public final class GetByoIpPrefixResult {
             _resultValue.asn = asn;
             _resultValue.cidr = cidr;
             _resultValue.createdAt = createdAt;
+            _resultValue.delegateLoaCreation = delegateLoaCreation;
             _resultValue.description = description;
             _resultValue.id = id;
+            _resultValue.irrValidationState = irrValidationState;
             _resultValue.loaDocumentId = loaDocumentId;
             _resultValue.modifiedAt = modifiedAt;
             _resultValue.onDemandEnabled = onDemandEnabled;
             _resultValue.onDemandLocked = onDemandLocked;
+            _resultValue.ownershipValidationState = ownershipValidationState;
+            _resultValue.ownershipValidationToken = ownershipValidationToken;
             _resultValue.prefixId = prefixId;
+            _resultValue.rpkiValidationState = rpkiValidationState;
             return _resultValue;
         }
     }

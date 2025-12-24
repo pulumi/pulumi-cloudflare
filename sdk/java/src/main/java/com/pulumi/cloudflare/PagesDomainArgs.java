@@ -15,23 +15,31 @@ public final class PagesDomainArgs extends com.pulumi.resources.ResourceArgs {
     public static final PagesDomainArgs Empty = new PagesDomainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
 
+    /**
+     * The domain name.
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return The domain name.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
@@ -78,7 +86,7 @@ public final class PagesDomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -89,7 +97,7 @@ public final class PagesDomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -98,11 +106,23 @@ public final class PagesDomainArgs extends com.pulumi.resources.ResourceArgs {
             return accountId(Output.of(accountId));
         }
 
+        /**
+         * @param name The domain name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The domain name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

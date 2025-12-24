@@ -55,15 +55,15 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
      * Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
      * 
      */
-    @Import(name="hosts", required=true)
-    private Output<List<String>> hosts;
+    @Import(name="hosts")
+    private @Nullable Output<List<String>> hosts;
 
     /**
      * @return Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
      * 
      */
-    public Output<List<String>> hosts() {
-        return this.hosts;
+    public Optional<Output<List<String>>> hosts() {
+        return Optional.ofNullable(this.hosts);
     }
 
     /**
@@ -212,7 +212,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder hosts(Output<List<String>> hosts) {
+        public Builder hosts(@Nullable Output<List<String>> hosts) {
             $.hosts = hosts;
             return this;
         }
@@ -330,9 +330,6 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
         public CertificatePackArgs build() {
             if ($.certificateAuthority == null) {
                 throw new MissingRequiredPropertyException("CertificatePackArgs", "certificateAuthority");
-            }
-            if ($.hosts == null) {
-                throw new MissingRequiredPropertyException("CertificatePackArgs", "hosts");
             }
             if ($.type == null) {
                 throw new MissingRequiredPropertyException("CertificatePackArgs", "type");

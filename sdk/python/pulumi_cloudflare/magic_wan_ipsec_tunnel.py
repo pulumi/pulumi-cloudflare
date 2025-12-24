@@ -441,6 +441,9 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
                 "extraPrefixes": ["string"],
                 "md5Key": "md5_key",
             },
+            custom_remote_identities={
+                "fqdnId": "fqdn_id",
+            },
             customer_endpoint="203.0.113.1",
             description="Tunnel for ISP X",
             health_check={
@@ -498,6 +501,9 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
                 "customerAsn": 0,
                 "extraPrefixes": ["string"],
                 "md5Key": "md5_key",
+            },
+            custom_remote_identities={
+                "fqdnId": "fqdn_id",
             },
             customer_endpoint="203.0.113.1",
             description="Tunnel for ISP X",

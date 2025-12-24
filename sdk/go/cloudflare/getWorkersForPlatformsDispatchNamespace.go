@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupWorkersForPlatformsDispatchNamespace(ctx, &cloudflare.LookupWorkersForPlatformsDispatchNamespaceArgs{
 //				AccountId:         "023e105f4ecef8ad9ca31a8372d0c353",
-//				DispatchNamespace: pulumi.StringRef("my-dispatch-namespace"),
+//				DispatchNamespace: "my-dispatch-namespace",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -52,7 +52,7 @@ type LookupWorkersForPlatformsDispatchNamespaceArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Name of the Workers for Platforms dispatch namespace.
-	DispatchNamespace *string `pulumi:"dispatchNamespace"`
+	DispatchNamespace string `pulumi:"dispatchNamespace"`
 }
 
 // A collection of values returned by getWorkersForPlatformsDispatchNamespace.
@@ -64,7 +64,7 @@ type LookupWorkersForPlatformsDispatchNamespaceResult struct {
 	// When the script was created.
 	CreatedOn string `pulumi:"createdOn"`
 	// Name of the Workers for Platforms dispatch namespace.
-	DispatchNamespace *string `pulumi:"dispatchNamespace"`
+	DispatchNamespace string `pulumi:"dispatchNamespace"`
 	// Name of the Workers for Platforms dispatch namespace.
 	Id string `pulumi:"id"`
 	// Identifier.
@@ -95,7 +95,7 @@ type LookupWorkersForPlatformsDispatchNamespaceOutputArgs struct {
 	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Name of the Workers for Platforms dispatch namespace.
-	DispatchNamespace pulumi.StringPtrInput `pulumi:"dispatchNamespace"`
+	DispatchNamespace pulumi.StringInput `pulumi:"dispatchNamespace"`
 }
 
 func (LookupWorkersForPlatformsDispatchNamespaceOutputArgs) ElementType() reflect.Type {
@@ -133,8 +133,8 @@ func (o LookupWorkersForPlatformsDispatchNamespaceResultOutput) CreatedOn() pulu
 }
 
 // Name of the Workers for Platforms dispatch namespace.
-func (o LookupWorkersForPlatformsDispatchNamespaceResultOutput) DispatchNamespace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupWorkersForPlatformsDispatchNamespaceResult) *string { return v.DispatchNamespace }).(pulumi.StringPtrOutput)
+func (o LookupWorkersForPlatformsDispatchNamespaceResultOutput) DispatchNamespace() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkersForPlatformsDispatchNamespaceResult) string { return v.DispatchNamespace }).(pulumi.StringOutput)
 }
 
 // Name of the Workers for Platforms dispatch namespace.

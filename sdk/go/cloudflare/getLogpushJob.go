@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupLogpushJob(ctx, &cloudflare.LookupLogpushJobArgs{
-//				JobId:     pulumi.IntRef(1),
+//				JobId:     1,
 //				AccountId: pulumi.StringRef("account_id"),
 //				ZoneId:    pulumi.StringRef("zone_id"),
 //			}, nil)
@@ -53,7 +53,7 @@ type LookupLogpushJobArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
 	// Unique id of the job.
-	JobId *int `pulumi:"jobId"`
+	JobId int `pulumi:"jobId"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -63,7 +63,7 @@ type LookupLogpushJobResult struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
 	// Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-	// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+	// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
 	Dataset string `pulumi:"dataset"`
 	// Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
 	DestinationConf string `pulumi:"destinationConf"`
@@ -79,7 +79,7 @@ type LookupLogpushJobResult struct {
 	// Unique id of the job.
 	Id int `pulumi:"id"`
 	// Unique id of the job.
-	JobId *int `pulumi:"jobId"`
+	JobId int `pulumi:"jobId"`
 	// The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
 	// Available values: "", "edge".
 	Kind string `pulumi:"kind"`
@@ -119,7 +119,7 @@ type LookupLogpushJobOutputArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Unique id of the job.
-	JobId pulumi.IntPtrInput `pulumi:"jobId"`
+	JobId pulumi.IntInput `pulumi:"jobId"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
@@ -149,7 +149,7 @@ func (o LookupLogpushJobResultOutput) AccountId() pulumi.StringPtrOutput {
 }
 
 // Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
 func (o LookupLogpushJobResultOutput) Dataset() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLogpushJobResult) string { return v.Dataset }).(pulumi.StringOutput)
 }
@@ -183,8 +183,8 @@ func (o LookupLogpushJobResultOutput) Id() pulumi.IntOutput {
 }
 
 // Unique id of the job.
-func (o LookupLogpushJobResultOutput) JobId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LookupLogpushJobResult) *int { return v.JobId }).(pulumi.IntPtrOutput)
+func (o LookupLogpushJobResultOutput) JobId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupLogpushJobResult) int { return v.JobId }).(pulumi.IntOutput)
 }
 
 // The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).

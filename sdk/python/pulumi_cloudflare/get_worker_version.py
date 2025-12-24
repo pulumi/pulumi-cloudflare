@@ -27,7 +27,7 @@ class GetWorkerVersionResult:
     """
     A collection of values returned by getWorkerVersion.
     """
-    def __init__(__self__, account_id=None, annotations=None, assets=None, bindings=None, compatibility_date=None, compatibility_flags=None, created_on=None, id=None, include=None, limits=None, main_module=None, migrations=None, modules=None, number=None, placement=None, source=None, usage_model=None, version_id=None, worker_id=None):
+    def __init__(__self__, account_id=None, annotations=None, assets=None, bindings=None, compatibility_date=None, compatibility_flags=None, created_on=None, id=None, include=None, limits=None, main_module=None, migrations=None, modules=None, number=None, placement=None, source=None, startup_time_ms=None, usage_model=None, version_id=None, worker_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -76,6 +76,9 @@ class GetWorkerVersionResult:
         if source and not isinstance(source, str):
             raise TypeError("Expected argument 'source' to be a str")
         pulumi.set(__self__, "source", source)
+        if startup_time_ms and not isinstance(startup_time_ms, int):
+            raise TypeError("Expected argument 'startup_time_ms' to be a int")
+        pulumi.set(__self__, "startup_time_ms", startup_time_ms)
         if usage_model and not isinstance(usage_model, str):
             raise TypeError("Expected argument 'usage_model' to be a str")
         pulumi.set(__self__, "usage_model", usage_model)
@@ -180,6 +183,11 @@ class GetWorkerVersionResult:
         return pulumi.get(self, "source")
 
     @_builtins.property
+    @pulumi.getter(name="startupTimeMs")
+    def startup_time_ms(self) -> _builtins.int:
+        return pulumi.get(self, "startup_time_ms")
+
+    @_builtins.property
     @pulumi.getter(name="usageModel")
     @_utilities.deprecated("""This attribute is deprecated.""")
     def usage_model(self) -> _builtins.str:
@@ -187,7 +195,7 @@ class GetWorkerVersionResult:
 
     @_builtins.property
     @pulumi.getter(name="versionId")
-    def version_id(self) -> Optional[_builtins.str]:
+    def version_id(self) -> _builtins.str:
         """
         Identifier for the version, which can be ID or the literal "latest" to operate on the most recently created version.
         """
@@ -224,6 +232,7 @@ class AwaitableGetWorkerVersionResult(GetWorkerVersionResult):
             number=self.number,
             placement=self.placement,
             source=self.source,
+            startup_time_ms=self.startup_time_ms,
             usage_model=self.usage_model,
             version_id=self.version_id,
             worker_id=self.worker_id)
@@ -279,12 +288,13 @@ def get_worker_version(account_id: Optional[_builtins.str] = None,
         number=pulumi.get(__ret__, 'number'),
         placement=pulumi.get(__ret__, 'placement'),
         source=pulumi.get(__ret__, 'source'),
+        startup_time_ms=pulumi.get(__ret__, 'startup_time_ms'),
         usage_model=pulumi.get(__ret__, 'usage_model'),
         version_id=pulumi.get(__ret__, 'version_id'),
         worker_id=pulumi.get(__ret__, 'worker_id'))
 def get_worker_version_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
                               include: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              version_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                              version_id: Optional[pulumi.Input[_builtins.str]] = None,
                               worker_id: Optional[pulumi.Input[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkerVersionResult]:
     """
@@ -331,6 +341,7 @@ def get_worker_version_output(account_id: Optional[pulumi.Input[_builtins.str]] 
         number=pulumi.get(__response__, 'number'),
         placement=pulumi.get(__response__, 'placement'),
         source=pulumi.get(__response__, 'source'),
+        startup_time_ms=pulumi.get(__response__, 'startup_time_ms'),
         usage_model=pulumi.get(__response__, 'usage_model'),
         version_id=pulumi.get(__response__, 'version_id'),
         worker_id=pulumi.get(__response__, 'worker_id')))

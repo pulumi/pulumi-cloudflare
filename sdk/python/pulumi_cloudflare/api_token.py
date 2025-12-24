@@ -30,7 +30,7 @@ class ApiTokenArgs:
         """
         The set of arguments for constructing a ApiToken resource.
         :param pulumi.Input[_builtins.str] name: Token name.
-        :param pulumi.Input[Sequence[pulumi.Input['ApiTokenPolicyArgs']]] policies: List of access policies assigned to the token.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiTokenPolicyArgs']]] policies: Set of access policies assigned to the token.
         :param pulumi.Input[_builtins.str] expires_on: The expiration time on or after which the JWT MUST NOT be accepted for processing.
         :param pulumi.Input[_builtins.str] not_before: The time before which the token MUST NOT be accepted for processing.
         :param pulumi.Input[_builtins.str] status: Status of the token.
@@ -63,7 +63,7 @@ class ApiTokenArgs:
     @pulumi.getter
     def policies(self) -> pulumi.Input[Sequence[pulumi.Input['ApiTokenPolicyArgs']]]:
         """
-        List of access policies assigned to the token.
+        Set of access policies assigned to the token.
         """
         return pulumi.get(self, "policies")
 
@@ -139,7 +139,7 @@ class _ApiTokenState:
         :param pulumi.Input[_builtins.str] modified_on: Last time the token was modified.
         :param pulumi.Input[_builtins.str] name: Token name.
         :param pulumi.Input[_builtins.str] not_before: The time before which the token MUST NOT be accepted for processing.
-        :param pulumi.Input[Sequence[pulumi.Input['ApiTokenPolicyArgs']]] policies: List of access policies assigned to the token.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiTokenPolicyArgs']]] policies: Set of access policies assigned to the token.
         :param pulumi.Input[_builtins.str] status: Status of the token.
                Available values: "active", "disabled", "expired".
         :param pulumi.Input[_builtins.str] value: The token value.
@@ -250,7 +250,7 @@ class _ApiTokenState:
     @pulumi.getter
     def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiTokenPolicyArgs']]]]:
         """
-        List of access policies assigned to the token.
+        Set of access policies assigned to the token.
         """
         return pulumi.get(self, "policies")
 
@@ -300,50 +300,6 @@ class ApiToken(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example_api_token = cloudflare.ApiToken("example_api_token",
-            name="readonly token",
-            policies=[{
-                "effect": "allow",
-                "permission_groups": [
-                    {
-                        "id": "c8fed203ed3043cba015a93ad1616f1f",
-                        "meta": {
-                            "key": "key",
-                            "value": "value",
-                        },
-                    },
-                    {
-                        "id": "82e64a83756745bbbb1c9c2701bf816b",
-                        "meta": {
-                            "key": "key",
-                            "value": "value",
-                        },
-                    },
-                ],
-                "resources": {
-                    "foo": "string",
-                },
-            }],
-            condition={
-                "request_ip": {
-                    "ins": [
-                        "123.123.123.0/24",
-                        "2606:4700::/32",
-                    ],
-                    "not_ins": [
-                        "123.123.123.100/24",
-                        "2606:4700:4700::/48",
-                    ],
-                },
-            },
-            expires_on="2020-01-01T00:00:00Z",
-            not_before="2018-07-01T05:20:00Z")
-        ```
-
         ## Import
 
         ```sh
@@ -355,7 +311,7 @@ class ApiToken(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] expires_on: The expiration time on or after which the JWT MUST NOT be accepted for processing.
         :param pulumi.Input[_builtins.str] name: Token name.
         :param pulumi.Input[_builtins.str] not_before: The time before which the token MUST NOT be accepted for processing.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ApiTokenPolicyArgs', 'ApiTokenPolicyArgsDict']]]] policies: List of access policies assigned to the token.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApiTokenPolicyArgs', 'ApiTokenPolicyArgsDict']]]] policies: Set of access policies assigned to the token.
         :param pulumi.Input[_builtins.str] status: Status of the token.
                Available values: "active", "disabled", "expired".
         """
@@ -367,50 +323,6 @@ class ApiToken(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example_api_token = cloudflare.ApiToken("example_api_token",
-            name="readonly token",
-            policies=[{
-                "effect": "allow",
-                "permission_groups": [
-                    {
-                        "id": "c8fed203ed3043cba015a93ad1616f1f",
-                        "meta": {
-                            "key": "key",
-                            "value": "value",
-                        },
-                    },
-                    {
-                        "id": "82e64a83756745bbbb1c9c2701bf816b",
-                        "meta": {
-                            "key": "key",
-                            "value": "value",
-                        },
-                    },
-                ],
-                "resources": {
-                    "foo": "string",
-                },
-            }],
-            condition={
-                "request_ip": {
-                    "ins": [
-                        "123.123.123.0/24",
-                        "2606:4700::/32",
-                    ],
-                    "not_ins": [
-                        "123.123.123.100/24",
-                        "2606:4700:4700::/48",
-                    ],
-                },
-            },
-            expires_on="2020-01-01T00:00:00Z",
-            not_before="2018-07-01T05:20:00Z")
-        ```
 
         ## Import
 
@@ -497,7 +409,7 @@ class ApiToken(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] modified_on: Last time the token was modified.
         :param pulumi.Input[_builtins.str] name: Token name.
         :param pulumi.Input[_builtins.str] not_before: The time before which the token MUST NOT be accepted for processing.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ApiTokenPolicyArgs', 'ApiTokenPolicyArgsDict']]]] policies: List of access policies assigned to the token.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApiTokenPolicyArgs', 'ApiTokenPolicyArgsDict']]]] policies: Set of access policies assigned to the token.
         :param pulumi.Input[_builtins.str] status: Status of the token.
                Available values: "active", "disabled", "expired".
         :param pulumi.Input[_builtins.str] value: The token value.
@@ -575,7 +487,7 @@ class ApiToken(pulumi.CustomResource):
     @pulumi.getter
     def policies(self) -> pulumi.Output[Sequence['outputs.ApiTokenPolicy']]:
         """
-        List of access policies assigned to the token.
+        Set of access policies assigned to the token.
         """
         return pulumi.get(self, "policies")
 

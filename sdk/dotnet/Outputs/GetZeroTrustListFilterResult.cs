@@ -15,7 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// Specify the list type.
-        /// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+        /// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
         /// </summary>
         public readonly string? Type;
 

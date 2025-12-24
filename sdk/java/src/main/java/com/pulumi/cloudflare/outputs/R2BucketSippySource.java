@@ -22,12 +22,17 @@ public final class R2BucketSippySource {
      */
     private @Nullable String bucket;
     /**
+     * @return URL to the S3-compatible API of the bucket.
+     * 
+     */
+    private @Nullable String bucketUrl;
+    /**
      * @return Client email of an IAM credential (ideally scoped to a single GCS bucket).
      * 
      */
     private @Nullable String clientEmail;
     /**
-     * @return Available values: &#34;aws&#34;, &#34;gcs&#34;.
+     * @return Available values: &#34;aws&#34;, &#34;gcs&#34;, &#34;s3&#34;.
      * 
      */
     private @Nullable String cloudProvider;
@@ -63,6 +68,13 @@ public final class R2BucketSippySource {
         return Optional.ofNullable(this.bucket);
     }
     /**
+     * @return URL to the S3-compatible API of the bucket.
+     * 
+     */
+    public Optional<String> bucketUrl() {
+        return Optional.ofNullable(this.bucketUrl);
+    }
+    /**
      * @return Client email of an IAM credential (ideally scoped to a single GCS bucket).
      * 
      */
@@ -70,7 +82,7 @@ public final class R2BucketSippySource {
         return Optional.ofNullable(this.clientEmail);
     }
     /**
-     * @return Available values: &#34;aws&#34;, &#34;gcs&#34;.
+     * @return Available values: &#34;aws&#34;, &#34;gcs&#34;, &#34;s3&#34;.
      * 
      */
     public Optional<String> cloudProvider() {
@@ -109,6 +121,7 @@ public final class R2BucketSippySource {
     public static final class Builder {
         private @Nullable String accessKeyId;
         private @Nullable String bucket;
+        private @Nullable String bucketUrl;
         private @Nullable String clientEmail;
         private @Nullable String cloudProvider;
         private @Nullable String privateKey;
@@ -119,6 +132,7 @@ public final class R2BucketSippySource {
     	      Objects.requireNonNull(defaults);
     	      this.accessKeyId = defaults.accessKeyId;
     	      this.bucket = defaults.bucket;
+    	      this.bucketUrl = defaults.bucketUrl;
     	      this.clientEmail = defaults.clientEmail;
     	      this.cloudProvider = defaults.cloudProvider;
     	      this.privateKey = defaults.privateKey;
@@ -136,6 +150,12 @@ public final class R2BucketSippySource {
         public Builder bucket(@Nullable String bucket) {
 
             this.bucket = bucket;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder bucketUrl(@Nullable String bucketUrl) {
+
+            this.bucketUrl = bucketUrl;
             return this;
         }
         @CustomType.Setter
@@ -172,6 +192,7 @@ public final class R2BucketSippySource {
             final var _resultValue = new R2BucketSippySource();
             _resultValue.accessKeyId = accessKeyId;
             _resultValue.bucket = bucket;
+            _resultValue.bucketUrl = bucketUrl;
             _resultValue.clientEmail = clientEmail;
             _resultValue.cloudProvider = cloudProvider;
             _resultValue.privateKey = privateKey;

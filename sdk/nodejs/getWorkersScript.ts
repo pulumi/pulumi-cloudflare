@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -21,6 +23,7 @@ export function getWorkersScript(args: GetWorkersScriptArgs, opts?: pulumi.Invok
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWorkersScript:getWorkersScript", {
         "accountId": args.accountId,
+        "filter": args.filter,
         "scriptName": args.scriptName,
     }, opts);
 }
@@ -33,10 +36,11 @@ export interface GetWorkersScriptArgs {
      * Identifier.
      */
     accountId: string;
+    filter?: inputs.GetWorkersScriptFilter;
     /**
      * Name of the script, used in URLs and route configuration.
      */
-    scriptName: string;
+    scriptName?: string;
 }
 
 /**
@@ -47,14 +51,15 @@ export interface GetWorkersScriptResult {
      * Identifier.
      */
     readonly accountId: string;
+    readonly filter?: outputs.GetWorkersScriptFilter;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Name of the script, used in URLs and route configuration.
      */
     readonly id: string;
     /**
      * Name of the script, used in URLs and route configuration.
      */
-    readonly scriptName: string;
+    readonly scriptName?: string;
 }
 /**
  * ## Example Usage
@@ -73,6 +78,7 @@ export function getWorkersScriptOutput(args: GetWorkersScriptOutputArgs, opts?: 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWorkersScript:getWorkersScript", {
         "accountId": args.accountId,
+        "filter": args.filter,
         "scriptName": args.scriptName,
     }, opts);
 }
@@ -85,8 +91,9 @@ export interface GetWorkersScriptOutputArgs {
      * Identifier.
      */
     accountId: pulumi.Input<string>;
+    filter?: pulumi.Input<inputs.GetWorkersScriptFilterArgs>;
     /**
      * Name of the script, used in URLs and route configuration.
      */
-    scriptName: pulumi.Input<string>;
+    scriptName?: pulumi.Input<string>;
 }

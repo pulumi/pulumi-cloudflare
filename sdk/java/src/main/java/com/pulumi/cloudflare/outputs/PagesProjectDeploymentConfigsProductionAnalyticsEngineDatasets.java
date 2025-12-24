@@ -4,10 +4,9 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class PagesProjectDeploymentConfigsProductionAnalyticsEngineDatasets {
@@ -15,15 +14,15 @@ public final class PagesProjectDeploymentConfigsProductionAnalyticsEngineDataset
      * @return Name of the dataset.
      * 
      */
-    private @Nullable String dataset;
+    private String dataset;
 
     private PagesProjectDeploymentConfigsProductionAnalyticsEngineDatasets() {}
     /**
      * @return Name of the dataset.
      * 
      */
-    public Optional<String> dataset() {
-        return Optional.ofNullable(this.dataset);
+    public String dataset() {
+        return this.dataset;
     }
 
     public static Builder builder() {
@@ -35,7 +34,7 @@ public final class PagesProjectDeploymentConfigsProductionAnalyticsEngineDataset
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String dataset;
+        private String dataset;
         public Builder() {}
         public Builder(PagesProjectDeploymentConfigsProductionAnalyticsEngineDatasets defaults) {
     	      Objects.requireNonNull(defaults);
@@ -43,8 +42,10 @@ public final class PagesProjectDeploymentConfigsProductionAnalyticsEngineDataset
         }
 
         @CustomType.Setter
-        public Builder dataset(@Nullable String dataset) {
-
+        public Builder dataset(String dataset) {
+            if (dataset == null) {
+              throw new MissingRequiredPropertyException("PagesProjectDeploymentConfigsProductionAnalyticsEngineDatasets", "dataset");
+            }
             this.dataset = dataset;
             return this;
         }

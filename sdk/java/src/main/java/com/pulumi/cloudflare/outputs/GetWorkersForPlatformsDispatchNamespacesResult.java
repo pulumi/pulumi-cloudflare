@@ -23,6 +23,11 @@ public final class GetWorkersForPlatformsDispatchNamespacesResult {
      */
     private String createdOn;
     /**
+     * @return Name of the Workers for Platforms dispatch namespace.
+     * 
+     */
+    private String id;
+    /**
      * @return Identifier.
      * 
      */
@@ -67,6 +72,13 @@ public final class GetWorkersForPlatformsDispatchNamespacesResult {
      */
     public String createdOn() {
         return this.createdOn;
+    }
+    /**
+     * @return Name of the Workers for Platforms dispatch namespace.
+     * 
+     */
+    public String id() {
+        return this.id;
     }
     /**
      * @return Identifier.
@@ -122,6 +134,7 @@ public final class GetWorkersForPlatformsDispatchNamespacesResult {
     public static final class Builder {
         private String createdBy;
         private String createdOn;
+        private String id;
         private String modifiedBy;
         private String modifiedOn;
         private String namespaceId;
@@ -133,6 +146,7 @@ public final class GetWorkersForPlatformsDispatchNamespacesResult {
     	      Objects.requireNonNull(defaults);
     	      this.createdBy = defaults.createdBy;
     	      this.createdOn = defaults.createdOn;
+    	      this.id = defaults.id;
     	      this.modifiedBy = defaults.modifiedBy;
     	      this.modifiedOn = defaults.modifiedOn;
     	      this.namespaceId = defaults.namespaceId;
@@ -155,6 +169,14 @@ public final class GetWorkersForPlatformsDispatchNamespacesResult {
               throw new MissingRequiredPropertyException("GetWorkersForPlatformsDispatchNamespacesResult", "createdOn");
             }
             this.createdOn = createdOn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetWorkersForPlatformsDispatchNamespacesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -209,6 +231,7 @@ public final class GetWorkersForPlatformsDispatchNamespacesResult {
             final var _resultValue = new GetWorkersForPlatformsDispatchNamespacesResult();
             _resultValue.createdBy = createdBy;
             _resultValue.createdOn = createdOn;
+            _resultValue.id = id;
             _resultValue.modifiedBy = modifiedBy;
             _resultValue.modifiedOn = modifiedOn;
             _resultValue.namespaceId = namespaceId;

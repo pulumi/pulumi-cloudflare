@@ -132,15 +132,15 @@ public class AccountSubscription extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="frequency", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> frequency;
+    private Output<String> frequency;
 
     /**
      * @return How often the subscription is renewed automatically.
      * Available values: &#34;weekly&#34;, &#34;monthly&#34;, &#34;quarterly&#34;, &#34;yearly&#34;.
      * 
      */
-    public Output<Optional<String>> frequency() {
-        return Codegen.optional(this.frequency);
+    public Output<String> frequency() {
+        return this.frequency;
     }
     /**
      * The price of the subscription that will be billed, in US dollars.

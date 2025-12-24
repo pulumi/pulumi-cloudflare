@@ -93,8 +93,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier for the Worker, which can be ID or name.
         /// </summary>
-        [Input("workerId")]
-        public string? WorkerId { get; set; }
+        [Input("workerId", required: true)]
+        public string WorkerId { get; set; } = null!;
 
         public GetWorkerArgs()
         {
@@ -113,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier for the Worker, which can be ID or name.
         /// </summary>
-        [Input("workerId")]
-        public Input<string>? WorkerId { get; set; }
+        [Input("workerId", required: true)]
+        public Input<string> WorkerId { get; set; } = null!;
 
         public GetWorkerInvokeArgs()
         {
@@ -173,7 +173,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier for the Worker, which can be ID or name.
         /// </summary>
-        public readonly string? WorkerId;
+        public readonly string WorkerId;
 
         [OutputConstructor]
         private GetWorkerResult(
@@ -199,7 +199,7 @@ namespace Pulumi.Cloudflare
 
             string updatedOn,
 
-            string? workerId)
+            string workerId)
         {
             AccountId = accountId;
             CreatedOn = createdOn;

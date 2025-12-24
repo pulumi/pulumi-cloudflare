@@ -29,6 +29,10 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ~&gt; This resource does not currently support `pulumi import`.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/schemaValidationSettings:SchemaValidationSettings")]
     public partial class SchemaValidationSettings : global::Pulumi.CustomResource

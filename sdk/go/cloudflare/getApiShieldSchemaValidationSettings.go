@@ -54,7 +54,7 @@ type LookupApiShieldSchemaValidationSettingsArgs struct {
 
 // A collection of values returned by getApiShieldSchemaValidationSettings.
 type LookupApiShieldSchemaValidationSettingsResult struct {
-	// The provider-assigned unique ID for this managed resource.
+	// Identifier.
 	Id string `pulumi:"id"`
 	// The default mitigation action used when there is no mitigation action defined on the operation
 	ValidationDefaultMitigationAction  string `pulumi:"validationDefaultMitigationAction"`
@@ -97,7 +97,7 @@ func (o LookupApiShieldSchemaValidationSettingsResultOutput) ToLookupApiShieldSc
 	return o
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Identifier.
 func (o LookupApiShieldSchemaValidationSettingsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiShieldSchemaValidationSettingsResult) string { return v.Id }).(pulumi.StringOutput)
 }

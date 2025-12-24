@@ -144,7 +144,7 @@ class GetHealthcheckResult:
 
     @_builtins.property
     @pulumi.getter(name="healthcheckId")
-    def healthcheck_id(self) -> Optional[_builtins.str]:
+    def healthcheck_id(self) -> _builtins.str:
         """
         Identifier
         """
@@ -318,7 +318,7 @@ def get_healthcheck(healthcheck_id: Optional[_builtins.str] = None,
         timeout=pulumi.get(__ret__, 'timeout'),
         type=pulumi.get(__ret__, 'type'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_healthcheck_output(healthcheck_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_healthcheck_output(healthcheck_id: Optional[pulumi.Input[_builtins.str]] = None,
                            zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHealthcheckResult]:
     """

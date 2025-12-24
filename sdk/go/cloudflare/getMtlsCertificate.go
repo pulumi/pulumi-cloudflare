@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupMtlsCertificate(ctx, &cloudflare.LookupMtlsCertificateArgs{
 //				AccountId:         "023e105f4ecef8ad9ca31a8372d0c353",
-//				MtlsCertificateId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				MtlsCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -52,7 +52,7 @@ type LookupMtlsCertificateArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Identifier.
-	MtlsCertificateId *string `pulumi:"mtlsCertificateId"`
+	MtlsCertificateId string `pulumi:"mtlsCertificateId"`
 }
 
 // A collection of values returned by getMtlsCertificate.
@@ -70,7 +70,7 @@ type LookupMtlsCertificateResult struct {
 	// The certificate authority that issued the certificate.
 	Issuer string `pulumi:"issuer"`
 	// Identifier.
-	MtlsCertificateId *string `pulumi:"mtlsCertificateId"`
+	MtlsCertificateId string `pulumi:"mtlsCertificateId"`
 	// Optional unique name for the certificate. Only used for human readability.
 	Name string `pulumi:"name"`
 	// The certificate serial number.
@@ -95,7 +95,7 @@ type LookupMtlsCertificateOutputArgs struct {
 	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Identifier.
-	MtlsCertificateId pulumi.StringPtrInput `pulumi:"mtlsCertificateId"`
+	MtlsCertificateId pulumi.StringInput `pulumi:"mtlsCertificateId"`
 }
 
 func (LookupMtlsCertificateOutputArgs) ElementType() reflect.Type {
@@ -148,8 +148,8 @@ func (o LookupMtlsCertificateResultOutput) Issuer() pulumi.StringOutput {
 }
 
 // Identifier.
-func (o LookupMtlsCertificateResultOutput) MtlsCertificateId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMtlsCertificateResult) *string { return v.MtlsCertificateId }).(pulumi.StringPtrOutput)
+func (o LookupMtlsCertificateResultOutput) MtlsCertificateId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMtlsCertificateResult) string { return v.MtlsCertificateId }).(pulumi.StringOutput)
 }
 
 // Optional unique name for the certificate. Only used for human readability.

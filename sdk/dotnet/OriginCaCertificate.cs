@@ -71,7 +71,7 @@ namespace Pulumi.Cloudflare
         /// The Certificate Signing Request (CSR). Must be newline-encoded.
         /// </summary>
         [Output("csr")]
-        public Output<string?> Csr { get; private set; } = null!;
+        public Output<string> Csr { get; private set; } = null!;
 
         /// <summary>
         /// When the certificate will expire.
@@ -90,7 +90,7 @@ namespace Pulumi.Cloudflare
         /// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
         /// </summary>
         [Output("requestType")]
-        public Output<string?> RequestType { get; private set; } = null!;
+        public Output<string> RequestType { get; private set; } = null!;
 
         /// <summary>
         /// The number of days for which the certificate should be valid.
@@ -107,7 +107,7 @@ namespace Pulumi.Cloudflare
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public OriginCaCertificate(string name, OriginCaCertificateArgs? args = null, CustomResourceOptions? options = null)
+        public OriginCaCertificate(string name, OriginCaCertificateArgs args, CustomResourceOptions? options = null)
             : base("cloudflare:index/originCaCertificate:OriginCaCertificate", name, args ?? new OriginCaCertificateArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -148,10 +148,10 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The Certificate Signing Request (CSR). Must be newline-encoded.
         /// </summary>
-        [Input("csr")]
-        public Input<string>? Csr { get; set; }
+        [Input("csr", required: true)]
+        public Input<string> Csr { get; set; } = null!;
 
-        [Input("hostnames")]
+        [Input("hostnames", required: true)]
         private InputList<string>? _hostnames;
 
         /// <summary>
@@ -167,8 +167,8 @@ namespace Pulumi.Cloudflare
         /// Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
         /// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
         /// </summary>
-        [Input("requestType")]
-        public Input<string>? RequestType { get; set; }
+        [Input("requestType", required: true)]
+        public Input<string> RequestType { get; set; } = null!;
 
         /// <summary>
         /// The number of days for which the certificate should be valid.

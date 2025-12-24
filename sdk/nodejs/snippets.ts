@@ -6,6 +6,11 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## Import
+ *
+ * ~> This resource does not currently support `pulumi import`.
+ */
 export class Snippets extends pulumi.CustomResource {
     /**
      * Get an existing Snippets resource's state with the given name, ID, and optional extra

@@ -44,6 +44,10 @@ import javax.annotation.Nullable;
  *         var exampleZeroTrustDeviceSettings = new ZeroTrustDeviceSettings("exampleZeroTrustDeviceSettings", ZeroTrustDeviceSettingsArgs.builder()
  *             .accountId("699d98642c564d2e855e9661899b7252")
  *             .disableForTime(0.0)
+ *             .externalEmergencySignalEnabled(true)
+ *             .externalEmergencySignalFingerprint("abcd1234567890abcd1234567890abcd1234567890abcd1234567890abcd1234")
+ *             .externalEmergencySignalInterval("5m")
+ *             .externalEmergencySignalUrl("https://192.0.2.1/signal")
  *             .gatewayProxyEnabled(true)
  *             .gatewayUdpProxyEnabled(true)
  *             .rootCertificateInstallationEnabled(true)
@@ -54,6 +58,10 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
+ * ## Import
+ * 
+ * ~&gt; This resource does not currently support `pulumi import`.
  * 
  */
 @ResourceType(type="cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings")
@@ -77,6 +85,62 @@ public class ZeroTrustDeviceSettings extends com.pulumi.resources.CustomResource
      */
     public Output<Optional<Double>> disableForTime() {
         return Codegen.optional(this.disableForTime);
+    }
+    /**
+     * Controls whether the external emergency disconnect feature is enabled.
+     * 
+     */
+    @Export(name="externalEmergencySignalEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> externalEmergencySignalEnabled;
+
+    /**
+     * @return Controls whether the external emergency disconnect feature is enabled.
+     * 
+     */
+    public Output<Optional<Boolean>> externalEmergencySignalEnabled() {
+        return Codegen.optional(this.externalEmergencySignalEnabled);
+    }
+    /**
+     * The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server&#39;s identity. The device will ignore any response if the server&#39;s certificate fingerprint does not exactly match this value.
+     * 
+     */
+    @Export(name="externalEmergencySignalFingerprint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> externalEmergencySignalFingerprint;
+
+    /**
+     * @return The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server&#39;s identity. The device will ignore any response if the server&#39;s certificate fingerprint does not exactly match this value.
+     * 
+     */
+    public Output<Optional<String>> externalEmergencySignalFingerprint() {
+        return Codegen.optional(this.externalEmergencySignalFingerprint);
+    }
+    /**
+     * The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., &#34;5m&#34;, &#34;2m30s&#34;, &#34;1h&#34;). Minimum 30 seconds.
+     * 
+     */
+    @Export(name="externalEmergencySignalInterval", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> externalEmergencySignalInterval;
+
+    /**
+     * @return The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., &#34;5m&#34;, &#34;2m30s&#34;, &#34;1h&#34;). Minimum 30 seconds.
+     * 
+     */
+    public Output<Optional<String>> externalEmergencySignalInterval() {
+        return Codegen.optional(this.externalEmergencySignalInterval);
+    }
+    /**
+     * The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
+     * 
+     */
+    @Export(name="externalEmergencySignalUrl", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> externalEmergencySignalUrl;
+
+    /**
+     * @return The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
+     * 
+     */
+    public Output<Optional<String>> externalEmergencySignalUrl() {
+        return Codegen.optional(this.externalEmergencySignalUrl);
     }
     /**
      * Enable gateway proxy filtering on TCP.

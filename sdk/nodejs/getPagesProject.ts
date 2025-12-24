@@ -32,7 +32,7 @@ export function getPagesProject(args: GetPagesProjectArgs, opts?: pulumi.InvokeO
  */
 export interface GetPagesProjectArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
     /**
@@ -46,7 +46,7 @@ export interface GetPagesProjectArgs {
  */
 export interface GetPagesProjectResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
@@ -78,7 +78,7 @@ export interface GetPagesProjectResult {
      */
     readonly frameworkVersion: string;
     /**
-     * ID of the project.
+     * Name of the project.
      */
     readonly id: string;
     /**
@@ -105,6 +105,9 @@ export interface GetPagesProjectResult {
      * Name of the project.
      */
     readonly projectName: string;
+    /**
+     * Configs for the project source control.
+     */
     readonly source: outputs.GetPagesProjectSource;
     /**
      * The Cloudflare subdomain associated with the project.
@@ -141,7 +144,7 @@ export function getPagesProjectOutput(args: GetPagesProjectOutputArgs, opts?: pu
  */
 export interface GetPagesProjectOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

@@ -42,12 +42,6 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("networkSuperset")]
         public string? NetworkSuperset { get; set; }
 
-        /// <summary>
-        /// UUID of the route.
-        /// </summary>
-        [Input("routeId")]
-        public string? RouteId { get; set; }
-
         [Input("tunTypes")]
         private List<string>? _tunTypes;
 

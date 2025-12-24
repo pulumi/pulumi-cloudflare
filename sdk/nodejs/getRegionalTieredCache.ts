@@ -42,8 +42,7 @@ export interface GetRegionalTieredCacheResult {
      */
     readonly editable: boolean;
     /**
-     * The identifier of the caching setting.
-     * Available values: "tcRegional".
+     * Identifier.
      */
     readonly id: string;
     /**

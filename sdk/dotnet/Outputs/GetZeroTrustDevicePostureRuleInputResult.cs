@@ -121,7 +121,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string OsDistroRevision;
         /// <summary>
-        /// Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version. (Mac, iOS, and Linux only).
+        /// Additional operating system version details. For Windows, the UBR (Update Build Revision). For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version.
         /// </summary>
         public readonly string OsVersionExtra;
         /// <summary>
@@ -175,6 +175,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// For more details on total score, refer to the Tanium documentation.
         /// </summary>
         public readonly double TotalScore;
+        /// <summary>
+        /// Number of days that the antivirus should be updated within.
+        /// </summary>
+        public readonly double UpdateWindowDays;
         /// <summary>
         /// Version of OS.
         /// </summary>
@@ -265,6 +269,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             double totalScore,
 
+            double updateWindowDays,
+
             string version,
 
             string versionOperator)
@@ -308,6 +314,7 @@ namespace Pulumi.Cloudflare.Outputs
             SubjectAlternativeNames = subjectAlternativeNames;
             Thumbprint = thumbprint;
             TotalScore = totalScore;
+            UpdateWindowDays = updateWindowDays;
             Version = version;
             VersionOperator = versionOperator;
         }

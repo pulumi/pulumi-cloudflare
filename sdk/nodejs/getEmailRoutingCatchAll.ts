@@ -48,7 +48,7 @@ export interface GetEmailRoutingCatchAllResult {
      */
     readonly enabled: boolean;
     /**
-     * Routing rule identifier.
+     * Identifier.
      */
     readonly id: string;
     /**

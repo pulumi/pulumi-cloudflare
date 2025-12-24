@@ -12,15 +12,15 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class PagesProjectSourceGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("config")]
-        public Input<Inputs.PagesProjectSourceConfigGetArgs>? Config { get; set; }
+        [Input("config", required: true)]
+        public Input<Inputs.PagesProjectSourceConfigGetArgs> Config { get; set; } = null!;
 
         /// <summary>
         /// The source control management provider.
         /// Available values: "github", "gitlab".
         /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
+        [Input("type", required: true)]
+        public Input<string> Type { get; set; } = null!;
 
         public PagesProjectSourceGetArgs()
         {

@@ -93,8 +93,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier of an Address Map.
         /// </summary>
-        [Input("addressMapId")]
-        public string? AddressMapId { get; set; }
+        [Input("addressMapId", required: true)]
+        public string AddressMapId { get; set; } = null!;
 
         public GetAddressMapArgs()
         {
@@ -113,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier of an Address Map.
         /// </summary>
-        [Input("addressMapId")]
-        public Input<string>? AddressMapId { get; set; }
+        [Input("addressMapId", required: true)]
+        public Input<string> AddressMapId { get; set; } = null!;
 
         public GetAddressMapInvokeArgs()
         {
@@ -133,7 +133,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier of an Address Map.
         /// </summary>
-        public readonly string? AddressMapId;
+        public readonly string AddressMapId;
         /// <summary>
         /// If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
         /// </summary>
@@ -173,7 +173,7 @@ namespace Pulumi.Cloudflare
         private GetAddressMapResult(
             string accountId,
 
-            string? addressMapId,
+            string addressMapId,
 
             bool canDelete,
 

@@ -19,6 +19,10 @@ import * as utilities from "./utilities";
  *     privacy: true,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ~> This resource does not currently support `pulumi import`.
  */
 export class RegistrarDomain extends pulumi.CustomResource {
     /**

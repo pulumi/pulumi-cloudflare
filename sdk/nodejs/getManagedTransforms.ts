@@ -40,7 +40,7 @@ export interface GetManagedTransformsArgs {
  */
 export interface GetManagedTransformsResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The unique ID of the zone.
      */
     readonly id: string;
     /**

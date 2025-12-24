@@ -20,6 +20,10 @@ import * as utilities from "./utilities";
  *     externalMetadata: "external_metadata",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ~> This resource does not currently support `pulumi import`.
  */
 export class OrganizationProfile extends pulumi.CustomResource {
     /**

@@ -172,6 +172,10 @@ class SchemaValidationOperationSettings(pulumi.CustomResource):
             mitigation_action="block")
         ```
 
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] mitigation_action: When set, this applies a mitigation action to this operation
@@ -202,6 +206,10 @@ class SchemaValidationOperationSettings(pulumi.CustomResource):
             operation_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
             mitigation_action="block")
         ```
+
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
 
         :param str resource_name: The name of the resource.
         :param SchemaValidationOperationSettingsArgs args: The arguments to use to populate this resource's properties.

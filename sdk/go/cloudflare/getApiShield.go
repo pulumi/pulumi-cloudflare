@@ -26,7 +26,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupApiShield(ctx, &cloudflare.LookupApiShieldArgs{
-//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId:    "023e105f4ecef8ad9ca31a8372d0c353",
+//				Normalize: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -48,6 +49,8 @@ func LookupApiShield(ctx *pulumi.Context, args *LookupApiShieldArgs, opts ...pul
 
 // A collection of arguments for invoking getApiShield.
 type LookupApiShieldArgs struct {
+	// Ensures that the configuration is written or retrieved in normalized fashion
+	Normalize *bool `pulumi:"normalize"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -55,8 +58,10 @@ type LookupApiShieldArgs struct {
 // A collection of values returned by getApiShield.
 type LookupApiShieldResult struct {
 	AuthIdCharacteristics []GetApiShieldAuthIdCharacteristic `pulumi:"authIdCharacteristics"`
-	// The provider-assigned unique ID for this managed resource.
+	// Identifier.
 	Id string `pulumi:"id"`
+	// Ensures that the configuration is written or retrieved in normalized fashion
+	Normalize *bool `pulumi:"normalize"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -72,6 +77,8 @@ func LookupApiShieldOutput(ctx *pulumi.Context, args LookupApiShieldOutputArgs, 
 
 // A collection of arguments for invoking getApiShield.
 type LookupApiShieldOutputArgs struct {
+	// Ensures that the configuration is written or retrieved in normalized fashion
+	Normalize pulumi.BoolPtrInput `pulumi:"normalize"`
 	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
@@ -99,9 +106,14 @@ func (o LookupApiShieldResultOutput) AuthIdCharacteristics() GetApiShieldAuthIdC
 	return o.ApplyT(func(v LookupApiShieldResult) []GetApiShieldAuthIdCharacteristic { return v.AuthIdCharacteristics }).(GetApiShieldAuthIdCharacteristicArrayOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Identifier.
 func (o LookupApiShieldResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiShieldResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Ensures that the configuration is written or retrieved in normalized fashion
+func (o LookupApiShieldResultOutput) Normalize() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupApiShieldResult) *bool { return v.Normalize }).(pulumi.BoolPtrOutput)
 }
 
 // Identifier.

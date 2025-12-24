@@ -51,15 +51,15 @@ public final class GetWorkerVersionPlainArgs extends com.pulumi.resources.Invoke
      * Identifier for the version, which can be ID or the literal &#34;latest&#34; to operate on the most recently created version.
      * 
      */
-    @Import(name="versionId")
-    private @Nullable String versionId;
+    @Import(name="versionId", required=true)
+    private String versionId;
 
     /**
      * @return Identifier for the version, which can be ID or the literal &#34;latest&#34; to operate on the most recently created version.
      * 
      */
-    public Optional<String> versionId() {
-        return Optional.ofNullable(this.versionId);
+    public String versionId() {
+        return this.versionId;
     }
 
     /**
@@ -133,7 +133,7 @@ public final class GetWorkerVersionPlainArgs extends com.pulumi.resources.Invoke
          * @return builder
          * 
          */
-        public Builder versionId(@Nullable String versionId) {
+        public Builder versionId(String versionId) {
             $.versionId = versionId;
             return this;
         }
@@ -152,6 +152,9 @@ public final class GetWorkerVersionPlainArgs extends com.pulumi.resources.Invoke
         public GetWorkerVersionPlainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetWorkerVersionPlainArgs", "accountId");
+            }
+            if ($.versionId == null) {
+                throw new MissingRequiredPropertyException("GetWorkerVersionPlainArgs", "versionId");
             }
             if ($.workerId == null) {
                 throw new MissingRequiredPropertyException("GetWorkerVersionPlainArgs", "workerId");

@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupZeroTrustDeviceManagedNetworks(ctx, &cloudflare.LookupZeroTrustDeviceManagedNetworksArgs{
 //				AccountId: "699d98642c564d2e855e9661899b7252",
-//				NetworkId: pulumi.StringRef("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
+//				NetworkId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,7 +51,7 @@ func LookupZeroTrustDeviceManagedNetworks(ctx *pulumi.Context, args *LookupZeroT
 type LookupZeroTrustDeviceManagedNetworksArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// API UUID.
-	NetworkId *string `pulumi:"networkId"`
+	NetworkId string `pulumi:"networkId"`
 }
 
 // A collection of values returned by getZeroTrustDeviceManagedNetworks.
@@ -83,7 +83,7 @@ func LookupZeroTrustDeviceManagedNetworksOutput(ctx *pulumi.Context, args Lookup
 type LookupZeroTrustDeviceManagedNetworksOutputArgs struct {
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// API UUID.
-	NetworkId pulumi.StringPtrInput `pulumi:"networkId"`
+	NetworkId pulumi.StringInput `pulumi:"networkId"`
 }
 
 func (LookupZeroTrustDeviceManagedNetworksOutputArgs) ElementType() reflect.Type {

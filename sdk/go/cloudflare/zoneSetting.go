@@ -28,10 +28,339 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZoneSetting(ctx, "example_zone_setting", &cloudflare.ZoneSettingArgs{
+//			// Basic on/off setting
+//			_, err := cloudflare.NewZoneSetting(ctx, "always_online", &cloudflare.ZoneSettingArgs{
 //				ZoneId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				SettingId: pulumi.String("always_online"),
 //				Value:     pulumi.Any("on"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// String value with specific choices
+//			_, err = cloudflare.NewZoneSetting(ctx, "min_tls_version", &cloudflare.ZoneSettingArgs{
+//				ZoneId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				SettingId: pulumi.String("min_tls_version"),
+//				Value:     pulumi.Any("1.2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Numeric value
+//			_, err = cloudflare.NewZoneSetting(ctx, "browser_cache_ttl", &cloudflare.ZoneSettingArgs{
+//				ZoneId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				SettingId: pulumi.String("browser_cache_ttl"),
+//				Value:     pulumi.Any(14400),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Array/List value
+//			_, err = cloudflare.NewZoneSetting(ctx, "ciphers", &cloudflare.ZoneSettingArgs{
+//				ZoneId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				SettingId: pulumi.String("ciphers"),
+//				Value: pulumi.Any{
+//					"ECDHE-ECDSA-AES128-GCM-SHA256",
+//					"ECDHE-ECDSA-CHACHA20-POLY1305",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Nested object value
+//			_, err = cloudflare.NewZoneSetting(ctx, "security_header", &cloudflare.ZoneSettingArgs{
+//				ZoneId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				SettingId: pulumi.String("security_header"),
+//				Value: pulumi.Any(map[string]interface{}{
+//					"strictTransportSecurity": map[string]interface{}{
+//						"enabled":           true,
+//						"includeSubdomains": true,
+//						"maxAge":            86400,
+//						"nosniff":           true,
+//						"preload":           false,
+//					},
+//				}),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Special case: ssl_recommender uses 'enabled' instead of 'value'
+//			_, err = cloudflare.NewZoneSetting(ctx, "ssl_recommender", &cloudflare.ZoneSettingArgs{
+//				ZoneId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				SettingId: pulumi.String("ssl_recommender"),
+//				Enabled:   pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Additional Examples
+//
+// ### String Value with Choices
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Minimum TLS Version
+//			_, err := cloudflare.NewZoneSetting(ctx, "min_tls", &cloudflare.ZoneSettingArgs{
+//				ZoneId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				SettingId: pulumi.String("min_tls_version"),
+//				Value:     pulumi.Any("1.2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// SSL/TLS Mode
+//			_, err = cloudflare.NewZoneSetting(ctx, "ssl", &cloudflare.ZoneSettingArgs{
+//				ZoneId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				SettingId: pulumi.String("ssl"),
+//				Value:     pulumi.Any("strict"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Security Level
+//			_, err = cloudflare.NewZoneSetting(ctx, "security_level", &cloudflare.ZoneSettingArgs{
+//				ZoneId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				SettingId: pulumi.String("security_level"),
+//				Value:     pulumi.Any("medium"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Cache Level
+//			_, err = cloudflare.NewZoneSetting(ctx, "cache_level", &cloudflare.ZoneSettingArgs{
+//				ZoneId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				SettingId: pulumi.String("cache_level"),
+//				Value:     pulumi.Any("aggressive"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Numeric Values
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Browser Cache TTL
+//			_, err := cloudflare.NewZoneSetting(ctx, "browser_cache_ttl", &cloudflare.ZoneSettingArgs{
+//				ZoneId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				SettingId: pulumi.String("browser_cache_ttl"),
+//				Value:     pulumi.Any(14400),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Challenge TTL
+//			_, err = cloudflare.NewZoneSetting(ctx, "challenge_ttl", &cloudflare.ZoneSettingArgs{
+//				ZoneId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				SettingId: pulumi.String("challenge_ttl"),
+//				Value:     pulumi.Any(1800),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Max Upload Size
+//			_, err = cloudflare.NewZoneSetting(ctx, "max_upload", &cloudflare.ZoneSettingArgs{
+//				ZoneId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				SettingId: pulumi.String("max_upload"),
+//				Value:     pulumi.Any(100),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Special Cases
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// 0-RTT (Zero Round Trip Time)
+//			_, err := cloudflare.NewZoneSetting(ctx, "zero_rtt", &cloudflare.ZoneSettingArgs{
+//				ZoneId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				SettingId: pulumi.String("0rtt"),
+//				Value:     pulumi.Any("on"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Network Error Logging (NEL)
+//			_, err = cloudflare.NewZoneSetting(ctx, "nel", &cloudflare.ZoneSettingArgs{
+//				ZoneId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				SettingId: pulumi.String("nel"),
+//				Value: pulumi.Any(map[string]interface{}{
+//					"enabled": true,
+//				}),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Common Configuration Sets
+//
+// ### Security Hardening Configuration
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Enable HTTPS everywhere
+//			_, err := cloudflare.NewZoneSetting(ctx, "always_use_https", &cloudflare.ZoneSettingArgs{
+//				ZoneId:    pulumi.Any(zoneId),
+//				SettingId: pulumi.String("always_use_https"),
+//				Value:     pulumi.Any("on"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Automatic HTTPS Rewrites
+//			_, err = cloudflare.NewZoneSetting(ctx, "automatic_https_rewrites", &cloudflare.ZoneSettingArgs{
+//				ZoneId:    pulumi.Any(zoneId),
+//				SettingId: pulumi.String("automatic_https_rewrites"),
+//				Value:     pulumi.Any("on"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Minimum TLS 1.2
+//			_, err = cloudflare.NewZoneSetting(ctx, "min_tls_version", &cloudflare.ZoneSettingArgs{
+//				ZoneId:    pulumi.Any(zoneId),
+//				SettingId: pulumi.String("min_tls_version"),
+//				Value:     pulumi.Any("1.2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Enable TLS 1.3
+//			_, err = cloudflare.NewZoneSetting(ctx, "tls_1_3", &cloudflare.ZoneSettingArgs{
+//				ZoneId:    pulumi.Any(zoneId),
+//				SettingId: pulumi.String("tls_1_3"),
+//				Value:     pulumi.Any("on"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Strict SSL
+//			_, err = cloudflare.NewZoneSetting(ctx, "ssl", &cloudflare.ZoneSettingArgs{
+//				ZoneId:    pulumi.Any(zoneId),
+//				SettingId: pulumi.String("ssl"),
+//				Value:     pulumi.Any("strict"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Performance Optimization Configuration
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Enable HTTP/3
+//			_, err := cloudflare.NewZoneSetting(ctx, "http3", &cloudflare.ZoneSettingArgs{
+//				ZoneId:    pulumi.Any(zoneId),
+//				SettingId: pulumi.String("http3"),
+//				Value:     pulumi.Any("on"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Enable Brotli Compression
+//			_, err = cloudflare.NewZoneSetting(ctx, "brotli", &cloudflare.ZoneSettingArgs{
+//				ZoneId:    pulumi.Any(zoneId),
+//				SettingId: pulumi.String("brotli"),
+//				Value:     pulumi.Any("on"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Early Hints
+//			_, err = cloudflare.NewZoneSetting(ctx, "early_hints", &cloudflare.ZoneSettingArgs{
+//				ZoneId:    pulumi.Any(zoneId),
+//				SettingId: pulumi.String("early_hints"),
+//				Value:     pulumi.Any("on"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Aggressive Caching
+//			_, err = cloudflare.NewZoneSetting(ctx, "cache_level", &cloudflare.ZoneSettingArgs{
+//				ZoneId:    pulumi.Any(zoneId),
+//				SettingId: pulumi.String("cache_level"),
+//				Value:     pulumi.Any("aggressive"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Browser Cache TTL
+//			_, err = cloudflare.NewZoneSetting(ctx, "browser_cache", &cloudflare.ZoneSettingArgs{
+//				ZoneId:    pulumi.Any(zoneId),
+//				SettingId: pulumi.String("browser_cache_ttl"),
+//				Value:     pulumi.Any(14400),
 //			})
 //			if err != nil {
 //				return err

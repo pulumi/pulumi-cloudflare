@@ -15,8 +15,8 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// UUID of the D1 database.
         /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
+        [Input("id", required: true)]
+        public Input<string> Id { get; set; } = null!;
 
         public PagesProjectDeploymentConfigsProductionD1DatabasesArgs()
         {

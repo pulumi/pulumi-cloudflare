@@ -116,7 +116,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool Editable;
         /// <summary>
-        /// Specifies the identifier of the Argo Smart Routing setting.
+        /// Specifies the zone associated with the API call.
         /// </summary>
         public readonly string Id;
         /// <summary>

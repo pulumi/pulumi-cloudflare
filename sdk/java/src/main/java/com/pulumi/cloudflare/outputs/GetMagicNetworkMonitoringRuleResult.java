@@ -10,8 +10,6 @@ import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMagicNetworkMonitoringRuleResult {
@@ -58,7 +56,7 @@ public final class GetMagicNetworkMonitoringRuleResult {
      * @return The id of the rule. Must be unique.
      * 
      */
-    private @Nullable String ruleId;
+    private String ruleId;
     /**
      * @return MNM rule type.
      * Available values: &#34;threshold&#34;, &#34;zscore&#34;, &#34;advancedDdos&#34;.
@@ -140,8 +138,8 @@ public final class GetMagicNetworkMonitoringRuleResult {
      * @return The id of the rule. Must be unique.
      * 
      */
-    public Optional<String> ruleId() {
-        return Optional.ofNullable(this.ruleId);
+    public String ruleId() {
+        return this.ruleId;
     }
     /**
      * @return MNM rule type.
@@ -186,7 +184,7 @@ public final class GetMagicNetworkMonitoringRuleResult {
         private Double packetThreshold;
         private String prefixMatch;
         private List<String> prefixes;
-        private @Nullable String ruleId;
+        private String ruleId;
         private String type;
         private String zscoreSensitivity;
         private String zscoreTarget;
@@ -284,8 +282,10 @@ public final class GetMagicNetworkMonitoringRuleResult {
             return prefixes(List.of(prefixes));
         }
         @CustomType.Setter
-        public Builder ruleId(@Nullable String ruleId) {
-
+        public Builder ruleId(String ruleId) {
+            if (ruleId == null) {
+              throw new MissingRequiredPropertyException("GetMagicNetworkMonitoringRuleResult", "ruleId");
+            }
             this.ruleId = ruleId;
             return this;
         }

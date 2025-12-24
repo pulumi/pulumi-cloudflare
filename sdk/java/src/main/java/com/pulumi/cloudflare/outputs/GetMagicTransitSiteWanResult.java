@@ -9,8 +9,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMagicTransitSiteWanResult {
@@ -56,7 +54,7 @@ public final class GetMagicTransitSiteWanResult {
      * @return Identifier
      * 
      */
-    private @Nullable String wanId;
+    private String wanId;
 
     private GetMagicTransitSiteWanResult() {}
     /**
@@ -119,8 +117,8 @@ public final class GetMagicTransitSiteWanResult {
      * @return Identifier
      * 
      */
-    public Optional<String> wanId() {
-        return Optional.ofNullable(this.wanId);
+    public String wanId() {
+        return this.wanId;
     }
 
     public static Builder builder() {
@@ -141,7 +139,7 @@ public final class GetMagicTransitSiteWanResult {
         private String siteId;
         private GetMagicTransitSiteWanStaticAddressing staticAddressing;
         private Integer vlanTag;
-        private @Nullable String wanId;
+        private String wanId;
         public Builder() {}
         public Builder(GetMagicTransitSiteWanResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -230,8 +228,10 @@ public final class GetMagicTransitSiteWanResult {
             return this;
         }
         @CustomType.Setter
-        public Builder wanId(@Nullable String wanId) {
-
+        public Builder wanId(String wanId) {
+            if (wanId == null) {
+              throw new MissingRequiredPropertyException("GetMagicTransitSiteWanResult", "wanId");
+            }
             this.wanId = wanId;
             return this;
         }

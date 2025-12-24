@@ -67,7 +67,7 @@ class GetZeroTrustAccessCustomPageResult:
 
     @_builtins.property
     @pulumi.getter(name="customPageId")
-    def custom_page_id(self) -> Optional[_builtins.str]:
+    def custom_page_id(self) -> _builtins.str:
         """
         UUID.
         """
@@ -155,7 +155,7 @@ def get_zero_trust_access_custom_page(account_id: Optional[_builtins.str] = None
         type=pulumi.get(__ret__, 'type'),
         uid=pulumi.get(__ret__, 'uid'))
 def get_zero_trust_access_custom_page_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                             custom_page_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                             custom_page_id: Optional[pulumi.Input[_builtins.str]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessCustomPageResult]:
     """
     ## Example Usage

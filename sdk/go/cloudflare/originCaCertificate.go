@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -73,14 +74,14 @@ type OriginCaCertificate struct {
 	// The Origin CA certificate. Will be newline-encoded.
 	Certificate pulumi.StringOutput `pulumi:"certificate"`
 	// The Certificate Signing Request (CSR). Must be newline-encoded.
-	Csr pulumi.StringPtrOutput `pulumi:"csr"`
+	Csr pulumi.StringOutput `pulumi:"csr"`
 	// When the certificate will expire.
 	ExpiresOn pulumi.StringOutput `pulumi:"expiresOn"`
 	// Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
 	Hostnames pulumi.StringArrayOutput `pulumi:"hostnames"`
 	// Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
 	// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
-	RequestType pulumi.StringPtrOutput `pulumi:"requestType"`
+	RequestType pulumi.StringOutput `pulumi:"requestType"`
 	// The number of days for which the certificate should be valid.
 	// Available values: 7, 30, 90, 365, 730, 1095, 5475.
 	RequestedValidity pulumi.Float64Output `pulumi:"requestedValidity"`
@@ -90,9 +91,18 @@ type OriginCaCertificate struct {
 func NewOriginCaCertificate(ctx *pulumi.Context,
 	name string, args *OriginCaCertificateArgs, opts ...pulumi.ResourceOption) (*OriginCaCertificate, error) {
 	if args == nil {
-		args = &OriginCaCertificateArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Csr == nil {
+		return nil, errors.New("invalid value for required argument 'Csr'")
+	}
+	if args.Hostnames == nil {
+		return nil, errors.New("invalid value for required argument 'Hostnames'")
+	}
+	if args.RequestType == nil {
+		return nil, errors.New("invalid value for required argument 'RequestType'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource OriginCaCertificate
 	err := ctx.RegisterResource("cloudflare:index/originCaCertificate:OriginCaCertificate", name, args, &resource, opts...)
@@ -155,12 +165,12 @@ func (OriginCaCertificateState) ElementType() reflect.Type {
 
 type originCaCertificateArgs struct {
 	// The Certificate Signing Request (CSR). Must be newline-encoded.
-	Csr *string `pulumi:"csr"`
+	Csr string `pulumi:"csr"`
 	// Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
 	Hostnames []string `pulumi:"hostnames"`
 	// Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
 	// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
-	RequestType *string `pulumi:"requestType"`
+	RequestType string `pulumi:"requestType"`
 	// The number of days for which the certificate should be valid.
 	// Available values: 7, 30, 90, 365, 730, 1095, 5475.
 	RequestedValidity *float64 `pulumi:"requestedValidity"`
@@ -169,12 +179,12 @@ type originCaCertificateArgs struct {
 // The set of arguments for constructing a OriginCaCertificate resource.
 type OriginCaCertificateArgs struct {
 	// The Certificate Signing Request (CSR). Must be newline-encoded.
-	Csr pulumi.StringPtrInput
+	Csr pulumi.StringInput
 	// Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
 	Hostnames pulumi.StringArrayInput
 	// Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
 	// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
-	RequestType pulumi.StringPtrInput
+	RequestType pulumi.StringInput
 	// The number of days for which the certificate should be valid.
 	// Available values: 7, 30, 90, 365, 730, 1095, 5475.
 	RequestedValidity pulumi.Float64PtrInput
@@ -273,8 +283,8 @@ func (o OriginCaCertificateOutput) Certificate() pulumi.StringOutput {
 }
 
 // The Certificate Signing Request (CSR). Must be newline-encoded.
-func (o OriginCaCertificateOutput) Csr() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OriginCaCertificate) pulumi.StringPtrOutput { return v.Csr }).(pulumi.StringPtrOutput)
+func (o OriginCaCertificateOutput) Csr() pulumi.StringOutput {
+	return o.ApplyT(func(v *OriginCaCertificate) pulumi.StringOutput { return v.Csr }).(pulumi.StringOutput)
 }
 
 // When the certificate will expire.
@@ -289,8 +299,8 @@ func (o OriginCaCertificateOutput) Hostnames() pulumi.StringArrayOutput {
 
 // Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
 // Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
-func (o OriginCaCertificateOutput) RequestType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OriginCaCertificate) pulumi.StringPtrOutput { return v.RequestType }).(pulumi.StringPtrOutput)
+func (o OriginCaCertificateOutput) RequestType() pulumi.StringOutput {
+	return o.ApplyT(func(v *OriginCaCertificate) pulumi.StringOutput { return v.RequestType }).(pulumi.StringOutput)
 }
 
 // The number of days for which the certificate should be valid.

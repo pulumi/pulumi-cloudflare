@@ -16,7 +16,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Total number of results for the requested service.
         /// </summary>
-        public readonly double? Count;
+        public readonly double? EmailRoutingDnsCount;
         /// <summary>
         /// Current page within paginated list of results.
         /// </summary>
@@ -32,7 +32,7 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private EmailRoutingDnsResultInfo(
-            double? count,
+            double? emailRoutingDnsCount,
 
             double? page,
 
@@ -40,7 +40,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             double? totalCount)
         {
-            Count = count;
+            EmailRoutingDnsCount = emailRoutingDnsCount;
             Page = page;
             PerPage = perPage;
             TotalCount = totalCount;

@@ -87,8 +87,8 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
-        [Input("peerId")]
-        public string? PeerId { get; set; }
+        [Input("peerId", required: true)]
+        public string PeerId { get; set; } = null!;
 
         public GetDnsZoneTransfersPeerArgs()
         {
@@ -101,8 +101,8 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        [Input("peerId")]
-        public Input<string>? PeerId { get; set; }
+        [Input("peerId", required: true)]
+        public Input<string> PeerId { get; set; } = null!;
 
         public GetDnsZoneTransfersPeerInvokeArgs()
         {
@@ -131,7 +131,7 @@ namespace Pulumi.Cloudflare
         /// The name of the peer.
         /// </summary>
         public readonly string Name;
-        public readonly string? PeerId;
+        public readonly string PeerId;
         /// <summary>
         /// DNS port of primary or secondary nameserver, depending on what zone this peer is linked to.
         /// </summary>
@@ -153,7 +153,7 @@ namespace Pulumi.Cloudflare
 
             string name,
 
-            string? peerId,
+            string peerId,
 
             double port,
 

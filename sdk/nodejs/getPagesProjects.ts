@@ -31,7 +31,7 @@ export function getPagesProjects(args: GetPagesProjectsArgs, opts?: pulumi.Invok
  */
 export interface GetPagesProjectsArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
     /**
@@ -45,7 +45,7 @@ export interface GetPagesProjectsArgs {
  */
 export interface GetPagesProjectsResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
@@ -86,7 +86,7 @@ export function getPagesProjectsOutput(args: GetPagesProjectsOutputArgs, opts?: 
  */
 export interface GetPagesProjectsOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

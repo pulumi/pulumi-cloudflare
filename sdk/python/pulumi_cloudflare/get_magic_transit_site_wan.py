@@ -128,7 +128,7 @@ class GetMagicTransitSiteWanResult:
 
     @_builtins.property
     @pulumi.getter(name="wanId")
-    def wan_id(self) -> Optional[_builtins.str]:
+    def wan_id(self) -> _builtins.str:
         """
         Identifier
         """
@@ -194,7 +194,7 @@ def get_magic_transit_site_wan(account_id: Optional[_builtins.str] = None,
         wan_id=pulumi.get(__ret__, 'wan_id'))
 def get_magic_transit_site_wan_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
                                       site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                      wan_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                      wan_id: Optional[pulumi.Input[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMagicTransitSiteWanResult]:
     """
     ## Example Usage

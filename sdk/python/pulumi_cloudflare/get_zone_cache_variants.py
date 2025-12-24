@@ -56,8 +56,7 @@ class GetZoneCacheVariantsResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The identifier of the caching setting.
-        Available values: "variants".
+        Identifier.
         """
         return pulumi.get(self, "id")
 

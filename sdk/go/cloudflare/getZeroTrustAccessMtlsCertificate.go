@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupZeroTrustAccessMtlsCertificate(ctx, &cloudflare.LookupZeroTrustAccessMtlsCertificateArgs{
-//				CertificateId: pulumi.StringRef("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
+//				CertificateId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 //				AccountId:     pulumi.StringRef("account_id"),
 //				ZoneId:        pulumi.StringRef("zone_id"),
 //			}, nil)
@@ -53,7 +53,7 @@ type LookupZeroTrustAccessMtlsCertificateArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
 	// UUID.
-	CertificateId *string `pulumi:"certificateId"`
+	CertificateId string `pulumi:"certificateId"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -65,8 +65,8 @@ type LookupZeroTrustAccessMtlsCertificateResult struct {
 	// The hostnames of the applications that will use this certificate.
 	AssociatedHostnames []string `pulumi:"associatedHostnames"`
 	// UUID.
-	CertificateId *string `pulumi:"certificateId"`
-	ExpiresOn     string  `pulumi:"expiresOn"`
+	CertificateId string `pulumi:"certificateId"`
+	ExpiresOn     string `pulumi:"expiresOn"`
 	// The MD5 fingerprint of the certificate.
 	Fingerprint string `pulumi:"fingerprint"`
 	// UUID.
@@ -91,7 +91,7 @@ type LookupZeroTrustAccessMtlsCertificateOutputArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// UUID.
-	CertificateId pulumi.StringPtrInput `pulumi:"certificateId"`
+	CertificateId pulumi.StringInput `pulumi:"certificateId"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
@@ -126,8 +126,8 @@ func (o LookupZeroTrustAccessMtlsCertificateResultOutput) AssociatedHostnames() 
 }
 
 // UUID.
-func (o LookupZeroTrustAccessMtlsCertificateResultOutput) CertificateId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupZeroTrustAccessMtlsCertificateResult) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
+func (o LookupZeroTrustAccessMtlsCertificateResultOutput) CertificateId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessMtlsCertificateResult) string { return v.CertificateId }).(pulumi.StringOutput)
 }
 
 func (o LookupZeroTrustAccessMtlsCertificateResultOutput) ExpiresOn() pulumi.StringOutput {

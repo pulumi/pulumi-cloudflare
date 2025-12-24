@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupWorkersScript(ctx, &cloudflare.LookupWorkersScriptArgs{
 //				AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
-//				ScriptName: "this-is_my_script-01",
+//				ScriptName: pulumi.StringRef("this-is_my_script-01"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -50,19 +50,21 @@ func LookupWorkersScript(ctx *pulumi.Context, args *LookupWorkersScriptArgs, opt
 // A collection of arguments for invoking getWorkersScript.
 type LookupWorkersScriptArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId string                  `pulumi:"accountId"`
+	Filter    *GetWorkersScriptFilter `pulumi:"filter"`
 	// Name of the script, used in URLs and route configuration.
-	ScriptName string `pulumi:"scriptName"`
+	ScriptName *string `pulumi:"scriptName"`
 }
 
 // A collection of values returned by getWorkersScript.
 type LookupWorkersScriptResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
+	AccountId string                  `pulumi:"accountId"`
+	Filter    *GetWorkersScriptFilter `pulumi:"filter"`
+	// Name of the script, used in URLs and route configuration.
 	Id string `pulumi:"id"`
 	// Name of the script, used in URLs and route configuration.
-	ScriptName string `pulumi:"scriptName"`
+	ScriptName *string `pulumi:"scriptName"`
 }
 
 func LookupWorkersScriptOutput(ctx *pulumi.Context, args LookupWorkersScriptOutputArgs, opts ...pulumi.InvokeOption) LookupWorkersScriptResultOutput {
@@ -77,9 +79,10 @@ func LookupWorkersScriptOutput(ctx *pulumi.Context, args LookupWorkersScriptOutp
 // A collection of arguments for invoking getWorkersScript.
 type LookupWorkersScriptOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringInput             `pulumi:"accountId"`
+	Filter    GetWorkersScriptFilterPtrInput `pulumi:"filter"`
 	// Name of the script, used in URLs and route configuration.
-	ScriptName pulumi.StringInput `pulumi:"scriptName"`
+	ScriptName pulumi.StringPtrInput `pulumi:"scriptName"`
 }
 
 func (LookupWorkersScriptOutputArgs) ElementType() reflect.Type {
@@ -106,14 +109,18 @@ func (o LookupWorkersScriptResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersScriptResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+func (o LookupWorkersScriptResultOutput) Filter() GetWorkersScriptFilterPtrOutput {
+	return o.ApplyT(func(v LookupWorkersScriptResult) *GetWorkersScriptFilter { return v.Filter }).(GetWorkersScriptFilterPtrOutput)
+}
+
+// Name of the script, used in URLs and route configuration.
 func (o LookupWorkersScriptResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersScriptResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Name of the script, used in URLs and route configuration.
-func (o LookupWorkersScriptResultOutput) ScriptName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkersScriptResult) string { return v.ScriptName }).(pulumi.StringOutput)
+func (o LookupWorkersScriptResultOutput) ScriptName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkersScriptResult) *string { return v.ScriptName }).(pulumi.StringPtrOutput)
 }
 
 func init() {

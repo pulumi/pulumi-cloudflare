@@ -90,8 +90,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identify the certificate with a UUID.
         /// </summary>
-        [Input("certificateId")]
-        public string? CertificateId { get; set; }
+        [Input("certificateId", required: true)]
+        public string CertificateId { get; set; } = null!;
 
         public GetZeroTrustGatewayCertificateArgs()
         {
@@ -107,8 +107,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identify the certificate with a UUID.
         /// </summary>
-        [Input("certificateId")]
-        public Input<string>? CertificateId { get; set; }
+        [Input("certificateId", required: true)]
+        public Input<string> CertificateId { get; set; } = null!;
 
         public GetZeroTrustGatewayCertificateInvokeArgs()
         {
@@ -133,7 +133,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identify the certificate with a UUID.
         /// </summary>
-        public readonly string? CertificateId;
+        public readonly string CertificateId;
         public readonly string CreatedAt;
         public readonly string ExpiresOn;
         /// <summary>
@@ -172,7 +172,7 @@ namespace Pulumi.Cloudflare
 
             string certificate,
 
-            string? certificateId,
+            string certificateId,
 
             string createdAt,
 

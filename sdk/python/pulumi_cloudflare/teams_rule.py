@@ -625,6 +625,9 @@ class TeamsRule(pulumi.CustomResource):
                     "ipv4_fallback": "192.0.2.3",
                     "ipv6": "2001:DB8::/64",
                 },
+                "forensic_copy": {
+                    "enabled": True,
+                },
                 "ignore_cname_category_matches": True,
                 "insecure_disable_dnssec_validation": False,
                 "ip_categories": True,
@@ -776,6 +779,9 @@ class TeamsRule(pulumi.CustomResource):
                     "ipv4": "192.0.2.2",
                     "ipv4_fallback": "192.0.2.3",
                     "ipv6": "2001:DB8::/64",
+                },
+                "forensic_copy": {
+                    "enabled": True,
                 },
                 "ignore_cname_category_matches": True,
                 "insecure_disable_dnssec_validation": False,

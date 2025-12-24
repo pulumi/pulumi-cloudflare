@@ -22,22 +22,27 @@ class ByoIpPrefixArgs:
                  account_id: pulumi.Input[_builtins.str],
                  asn: pulumi.Input[_builtins.int],
                  cidr: pulumi.Input[_builtins.str],
-                 loa_document_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 delegate_loa_creation: Optional[pulumi.Input[_builtins.bool]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 loa_document_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ByoIpPrefix resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier of a Cloudflare account.
         :param pulumi.Input[_builtins.int] asn: Autonomous System Number (ASN) the prefix will be advertised under.
         :param pulumi.Input[_builtins.str] cidr: IP Prefix in Classless Inter-Domain Routing format.
-        :param pulumi.Input[_builtins.str] loa_document_id: Identifier for the uploaded LOA document.
+        :param pulumi.Input[_builtins.bool] delegate_loa_creation: Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
         :param pulumi.Input[_builtins.str] description: Description of the prefix.
+        :param pulumi.Input[_builtins.str] loa_document_id: Identifier for the uploaded LOA document.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "asn", asn)
         pulumi.set(__self__, "cidr", cidr)
-        pulumi.set(__self__, "loa_document_id", loa_document_id)
+        if delegate_loa_creation is not None:
+            pulumi.set(__self__, "delegate_loa_creation", delegate_loa_creation)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if loa_document_id is not None:
+            pulumi.set(__self__, "loa_document_id", loa_document_id)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -76,16 +81,16 @@ class ByoIpPrefixArgs:
         pulumi.set(self, "cidr", value)
 
     @_builtins.property
-    @pulumi.getter(name="loaDocumentId")
-    def loa_document_id(self) -> pulumi.Input[_builtins.str]:
+    @pulumi.getter(name="delegateLoaCreation")
+    def delegate_loa_creation(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Identifier for the uploaded LOA document.
+        Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
         """
-        return pulumi.get(self, "loa_document_id")
+        return pulumi.get(self, "delegate_loa_creation")
 
-    @loa_document_id.setter
-    def loa_document_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "loa_document_id", value)
+    @delegate_loa_creation.setter
+    def delegate_loa_creation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "delegate_loa_creation", value)
 
     @_builtins.property
     @pulumi.getter
@@ -99,6 +104,18 @@ class ByoIpPrefixArgs:
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
 
+    @_builtins.property
+    @pulumi.getter(name="loaDocumentId")
+    def loa_document_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier for the uploaded LOA document.
+        """
+        return pulumi.get(self, "loa_document_id")
+
+    @loa_document_id.setter
+    def loa_document_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "loa_document_id", value)
+
 
 @pulumi.input_type
 class _ByoIpPrefixState:
@@ -110,11 +127,16 @@ class _ByoIpPrefixState:
                  asn: Optional[pulumi.Input[_builtins.int]] = None,
                  cidr: Optional[pulumi.Input[_builtins.str]] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 delegate_loa_creation: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 irr_validation_state: Optional[pulumi.Input[_builtins.str]] = None,
                  loa_document_id: Optional[pulumi.Input[_builtins.str]] = None,
                  modified_at: Optional[pulumi.Input[_builtins.str]] = None,
                  on_demand_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 on_demand_locked: Optional[pulumi.Input[_builtins.bool]] = None):
+                 on_demand_locked: Optional[pulumi.Input[_builtins.bool]] = None,
+                 ownership_validation_state: Optional[pulumi.Input[_builtins.str]] = None,
+                 ownership_validation_token: Optional[pulumi.Input[_builtins.str]] = None,
+                 rpki_validation_state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ByoIpPrefix resources.
         :param pulumi.Input[_builtins.str] account_id: Identifier of a Cloudflare account.
@@ -123,10 +145,15 @@ class _ByoIpPrefixState:
         :param pulumi.Input[_builtins.str] approved: Approval state of the prefix (P = pending, V = active).
         :param pulumi.Input[_builtins.int] asn: Autonomous System Number (ASN) the prefix will be advertised under.
         :param pulumi.Input[_builtins.str] cidr: IP Prefix in Classless Inter-Domain Routing format.
+        :param pulumi.Input[_builtins.bool] delegate_loa_creation: Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
         :param pulumi.Input[_builtins.str] description: Description of the prefix.
+        :param pulumi.Input[_builtins.str] irr_validation_state: State of one kind of validation for an IP prefix.
         :param pulumi.Input[_builtins.str] loa_document_id: Identifier for the uploaded LOA document.
         :param pulumi.Input[_builtins.bool] on_demand_enabled: Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
         :param pulumi.Input[_builtins.bool] on_demand_locked: Whether advertisement status of the prefix is locked, meaning it cannot be changed.
+        :param pulumi.Input[_builtins.str] ownership_validation_state: State of one kind of validation for an IP prefix.
+        :param pulumi.Input[_builtins.str] ownership_validation_token: Token provided to demonstrate ownership of the prefix.
+        :param pulumi.Input[_builtins.str] rpki_validation_state: State of one kind of validation for an IP prefix.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -148,8 +175,12 @@ class _ByoIpPrefixState:
             pulumi.set(__self__, "cidr", cidr)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
+        if delegate_loa_creation is not None:
+            pulumi.set(__self__, "delegate_loa_creation", delegate_loa_creation)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if irr_validation_state is not None:
+            pulumi.set(__self__, "irr_validation_state", irr_validation_state)
         if loa_document_id is not None:
             pulumi.set(__self__, "loa_document_id", loa_document_id)
         if modified_at is not None:
@@ -164,6 +195,12 @@ class _ByoIpPrefixState:
             pulumi.log.warn("""on_demand_locked is deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.""")
         if on_demand_locked is not None:
             pulumi.set(__self__, "on_demand_locked", on_demand_locked)
+        if ownership_validation_state is not None:
+            pulumi.set(__self__, "ownership_validation_state", ownership_validation_state)
+        if ownership_validation_token is not None:
+            pulumi.set(__self__, "ownership_validation_token", ownership_validation_token)
+        if rpki_validation_state is not None:
+            pulumi.set(__self__, "rpki_validation_state", rpki_validation_state)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -249,6 +286,18 @@ class _ByoIpPrefixState:
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
+    @pulumi.getter(name="delegateLoaCreation")
+    def delegate_loa_creation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+        """
+        return pulumi.get(self, "delegate_loa_creation")
+
+    @delegate_loa_creation.setter
+    def delegate_loa_creation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "delegate_loa_creation", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -259,6 +308,18 @@ class _ByoIpPrefixState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="irrValidationState")
+    def irr_validation_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        State of one kind of validation for an IP prefix.
+        """
+        return pulumi.get(self, "irr_validation_state")
+
+    @irr_validation_state.setter
+    def irr_validation_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "irr_validation_state", value)
 
     @_builtins.property
     @pulumi.getter(name="loaDocumentId")
@@ -307,6 +368,42 @@ class _ByoIpPrefixState:
     def on_demand_locked(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "on_demand_locked", value)
 
+    @_builtins.property
+    @pulumi.getter(name="ownershipValidationState")
+    def ownership_validation_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        State of one kind of validation for an IP prefix.
+        """
+        return pulumi.get(self, "ownership_validation_state")
+
+    @ownership_validation_state.setter
+    def ownership_validation_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ownership_validation_state", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ownershipValidationToken")
+    def ownership_validation_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Token provided to demonstrate ownership of the prefix.
+        """
+        return pulumi.get(self, "ownership_validation_token")
+
+    @ownership_validation_token.setter
+    def ownership_validation_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ownership_validation_token", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rpkiValidationState")
+    def rpki_validation_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        State of one kind of validation for an IP prefix.
+        """
+        return pulumi.get(self, "rpki_validation_state")
+
+    @rpki_validation_state.setter
+    def rpki_validation_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "rpki_validation_state", value)
+
 
 @pulumi.type_token("cloudflare:index/byoIpPrefix:ByoIpPrefix")
 class ByoIpPrefix(pulumi.CustomResource):
@@ -317,6 +414,7 @@ class ByoIpPrefix(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  asn: Optional[pulumi.Input[_builtins.int]] = None,
                  cidr: Optional[pulumi.Input[_builtins.str]] = None,
+                 delegate_loa_creation: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  loa_document_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -329,8 +427,10 @@ class ByoIpPrefix(pulumi.CustomResource):
 
         example_byo_ip_prefix = cloudflare.ByoIpPrefix("example_byo_ip_prefix",
             account_id="258def64c72dae45f3e4c8516e2111f2",
-            asn=209242,
+            asn=13335,
             cidr="192.0.2.0/24",
+            delegate_loa_creation=True,
+            description="Internal test prefix",
             loa_document_id="d933b1530bc56c9953cf8ce166da8004")
         ```
 
@@ -345,6 +445,7 @@ class ByoIpPrefix(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Identifier of a Cloudflare account.
         :param pulumi.Input[_builtins.int] asn: Autonomous System Number (ASN) the prefix will be advertised under.
         :param pulumi.Input[_builtins.str] cidr: IP Prefix in Classless Inter-Domain Routing format.
+        :param pulumi.Input[_builtins.bool] delegate_loa_creation: Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
         :param pulumi.Input[_builtins.str] description: Description of the prefix.
         :param pulumi.Input[_builtins.str] loa_document_id: Identifier for the uploaded LOA document.
         """
@@ -363,8 +464,10 @@ class ByoIpPrefix(pulumi.CustomResource):
 
         example_byo_ip_prefix = cloudflare.ByoIpPrefix("example_byo_ip_prefix",
             account_id="258def64c72dae45f3e4c8516e2111f2",
-            asn=209242,
+            asn=13335,
             cidr="192.0.2.0/24",
+            delegate_loa_creation=True,
+            description="Internal test prefix",
             loa_document_id="d933b1530bc56c9953cf8ce166da8004")
         ```
 
@@ -392,6 +495,7 @@ class ByoIpPrefix(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  asn: Optional[pulumi.Input[_builtins.int]] = None,
                  cidr: Optional[pulumi.Input[_builtins.str]] = None,
+                 delegate_loa_creation: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  loa_document_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -412,17 +516,20 @@ class ByoIpPrefix(pulumi.CustomResource):
             if cidr is None and not opts.urn:
                 raise TypeError("Missing required property 'cidr'")
             __props__.__dict__["cidr"] = cidr
+            __props__.__dict__["delegate_loa_creation"] = delegate_loa_creation
             __props__.__dict__["description"] = description
-            if loa_document_id is None and not opts.urn:
-                raise TypeError("Missing required property 'loa_document_id'")
             __props__.__dict__["loa_document_id"] = loa_document_id
             __props__.__dict__["advertised"] = None
             __props__.__dict__["advertised_modified_at"] = None
             __props__.__dict__["approved"] = None
             __props__.__dict__["created_at"] = None
+            __props__.__dict__["irr_validation_state"] = None
             __props__.__dict__["modified_at"] = None
             __props__.__dict__["on_demand_enabled"] = None
             __props__.__dict__["on_demand_locked"] = None
+            __props__.__dict__["ownership_validation_state"] = None
+            __props__.__dict__["ownership_validation_token"] = None
+            __props__.__dict__["rpki_validation_state"] = None
         super(ByoIpPrefix, __self__).__init__(
             'cloudflare:index/byoIpPrefix:ByoIpPrefix',
             resource_name,
@@ -440,11 +547,16 @@ class ByoIpPrefix(pulumi.CustomResource):
             asn: Optional[pulumi.Input[_builtins.int]] = None,
             cidr: Optional[pulumi.Input[_builtins.str]] = None,
             created_at: Optional[pulumi.Input[_builtins.str]] = None,
+            delegate_loa_creation: Optional[pulumi.Input[_builtins.bool]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
+            irr_validation_state: Optional[pulumi.Input[_builtins.str]] = None,
             loa_document_id: Optional[pulumi.Input[_builtins.str]] = None,
             modified_at: Optional[pulumi.Input[_builtins.str]] = None,
             on_demand_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            on_demand_locked: Optional[pulumi.Input[_builtins.bool]] = None) -> 'ByoIpPrefix':
+            on_demand_locked: Optional[pulumi.Input[_builtins.bool]] = None,
+            ownership_validation_state: Optional[pulumi.Input[_builtins.str]] = None,
+            ownership_validation_token: Optional[pulumi.Input[_builtins.str]] = None,
+            rpki_validation_state: Optional[pulumi.Input[_builtins.str]] = None) -> 'ByoIpPrefix':
         """
         Get an existing ByoIpPrefix resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -458,10 +570,15 @@ class ByoIpPrefix(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] approved: Approval state of the prefix (P = pending, V = active).
         :param pulumi.Input[_builtins.int] asn: Autonomous System Number (ASN) the prefix will be advertised under.
         :param pulumi.Input[_builtins.str] cidr: IP Prefix in Classless Inter-Domain Routing format.
+        :param pulumi.Input[_builtins.bool] delegate_loa_creation: Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
         :param pulumi.Input[_builtins.str] description: Description of the prefix.
+        :param pulumi.Input[_builtins.str] irr_validation_state: State of one kind of validation for an IP prefix.
         :param pulumi.Input[_builtins.str] loa_document_id: Identifier for the uploaded LOA document.
         :param pulumi.Input[_builtins.bool] on_demand_enabled: Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
         :param pulumi.Input[_builtins.bool] on_demand_locked: Whether advertisement status of the prefix is locked, meaning it cannot be changed.
+        :param pulumi.Input[_builtins.str] ownership_validation_state: State of one kind of validation for an IP prefix.
+        :param pulumi.Input[_builtins.str] ownership_validation_token: Token provided to demonstrate ownership of the prefix.
+        :param pulumi.Input[_builtins.str] rpki_validation_state: State of one kind of validation for an IP prefix.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -474,11 +591,16 @@ class ByoIpPrefix(pulumi.CustomResource):
         __props__.__dict__["asn"] = asn
         __props__.__dict__["cidr"] = cidr
         __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["delegate_loa_creation"] = delegate_loa_creation
         __props__.__dict__["description"] = description
+        __props__.__dict__["irr_validation_state"] = irr_validation_state
         __props__.__dict__["loa_document_id"] = loa_document_id
         __props__.__dict__["modified_at"] = modified_at
         __props__.__dict__["on_demand_enabled"] = on_demand_enabled
         __props__.__dict__["on_demand_locked"] = on_demand_locked
+        __props__.__dict__["ownership_validation_state"] = ownership_validation_state
+        __props__.__dict__["ownership_validation_token"] = ownership_validation_token
+        __props__.__dict__["rpki_validation_state"] = rpki_validation_state
         return ByoIpPrefix(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -537,6 +659,14 @@ class ByoIpPrefix(pulumi.CustomResource):
         return pulumi.get(self, "created_at")
 
     @_builtins.property
+    @pulumi.getter(name="delegateLoaCreation")
+    def delegate_loa_creation(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+        """
+        return pulumi.get(self, "delegate_loa_creation")
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
@@ -545,8 +675,16 @@ class ByoIpPrefix(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @_builtins.property
+    @pulumi.getter(name="irrValidationState")
+    def irr_validation_state(self) -> pulumi.Output[_builtins.str]:
+        """
+        State of one kind of validation for an IP prefix.
+        """
+        return pulumi.get(self, "irr_validation_state")
+
+    @_builtins.property
     @pulumi.getter(name="loaDocumentId")
-    def loa_document_id(self) -> pulumi.Output[_builtins.str]:
+    def loa_document_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier for the uploaded LOA document.
         """
@@ -574,4 +712,28 @@ class ByoIpPrefix(pulumi.CustomResource):
         Whether advertisement status of the prefix is locked, meaning it cannot be changed.
         """
         return pulumi.get(self, "on_demand_locked")
+
+    @_builtins.property
+    @pulumi.getter(name="ownershipValidationState")
+    def ownership_validation_state(self) -> pulumi.Output[_builtins.str]:
+        """
+        State of one kind of validation for an IP prefix.
+        """
+        return pulumi.get(self, "ownership_validation_state")
+
+    @_builtins.property
+    @pulumi.getter(name="ownershipValidationToken")
+    def ownership_validation_token(self) -> pulumi.Output[_builtins.str]:
+        """
+        Token provided to demonstrate ownership of the prefix.
+        """
+        return pulumi.get(self, "ownership_validation_token")
+
+    @_builtins.property
+    @pulumi.getter(name="rpkiValidationState")
+    def rpki_validation_state(self) -> pulumi.Output[_builtins.str]:
+        """
+        State of one kind of validation for an IP prefix.
+        """
+        return pulumi.get(self, "rpki_validation_state")
 

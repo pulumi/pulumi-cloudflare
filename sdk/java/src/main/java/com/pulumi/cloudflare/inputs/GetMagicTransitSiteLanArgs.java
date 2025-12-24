@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetMagicTransitSiteLanArgs extends com.pulumi.resources.InvokeArgs {
@@ -35,15 +33,15 @@ public final class GetMagicTransitSiteLanArgs extends com.pulumi.resources.Invok
      * Identifier
      * 
      */
-    @Import(name="lanId")
-    private @Nullable Output<String> lanId;
+    @Import(name="lanId", required=true)
+    private Output<String> lanId;
 
     /**
      * @return Identifier
      * 
      */
-    public Optional<Output<String>> lanId() {
-        return Optional.ofNullable(this.lanId);
+    public Output<String> lanId() {
+        return this.lanId;
     }
 
     /**
@@ -114,7 +112,7 @@ public final class GetMagicTransitSiteLanArgs extends com.pulumi.resources.Invok
          * @return builder
          * 
          */
-        public Builder lanId(@Nullable Output<String> lanId) {
+        public Builder lanId(Output<String> lanId) {
             $.lanId = lanId;
             return this;
         }
@@ -153,6 +151,9 @@ public final class GetMagicTransitSiteLanArgs extends com.pulumi.resources.Invok
         public GetMagicTransitSiteLanArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetMagicTransitSiteLanArgs", "accountId");
+            }
+            if ($.lanId == null) {
+                throw new MissingRequiredPropertyException("GetMagicTransitSiteLanArgs", "lanId");
             }
             if ($.siteId == null) {
                 throw new MissingRequiredPropertyException("GetMagicTransitSiteLanArgs", "siteId");

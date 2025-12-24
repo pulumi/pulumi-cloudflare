@@ -289,6 +289,9 @@ class ApiShieldSchema(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        > `ApiShieldSchema` is in a deprecation phase and will be removed in the future.
+          Instead, please utilize the SchemaValidationSchemas resource instead.
+
         ## Example Usage
 
         ```python
@@ -320,6 +323,9 @@ class ApiShieldSchema(pulumi.CustomResource):
                  args: ApiShieldSchemaArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > `ApiShieldSchema` is in a deprecation phase and will be removed in the future.
+          Instead, please utilize the SchemaValidationSchemas resource instead.
+
         ## Example Usage
 
         ```python

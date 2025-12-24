@@ -116,33 +116,16 @@ namespace Pulumi.Cloudflare
     {
         public readonly string AccountId;
         public readonly bool AiContextEnabled;
-        /// <summary>
-        /// Related DLP policies will trigger when the match count exceeds the number set.
-        /// </summary>
         public readonly int AllowedMatchCount;
-        /// <summary>
-        /// Available values: "low", "medium", "high", "VeryHigh".
-        /// </summary>
         public readonly string ConfidenceThreshold;
-        /// <summary>
-        /// Scan the context of predefined entries to only return matches surrounded by keywords.
-        /// </summary>
-        public readonly Outputs.GetZeroTrustDlpPredefinedProfileContextAwarenessResult ContextAwareness;
-        /// <summary>
-        /// When the profile was created.
-        /// </summary>
-        public readonly string CreatedAt;
-        /// <summary>
-        /// The description of the profile.
-        /// </summary>
-        public readonly string Description;
+        public readonly ImmutableArray<string> EnabledEntries;
         public readonly ImmutableArray<Outputs.GetZeroTrustDlpPredefinedProfileEntryResult> Entries;
         /// <summary>
-        /// The id of the profile (uuid).
+        /// The ID of this resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The name of the profile.
+        /// The name of the predefined profile.
         /// </summary>
         public readonly string Name;
         public readonly bool OcrEnabled;
@@ -151,14 +134,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool OpenAccess;
         public readonly string ProfileId;
-        /// <summary>
-        /// Available values: "custom", "predefined", "integration".
-        /// </summary>
-        public readonly string Type;
-        /// <summary>
-        /// When the profile was lasted updated.
-        /// </summary>
-        public readonly string UpdatedAt;
 
         [OutputConstructor]
         private GetZeroTrustDlpPredefinedProfileResult(
@@ -170,11 +145,7 @@ namespace Pulumi.Cloudflare
 
             string confidenceThreshold,
 
-            Outputs.GetZeroTrustDlpPredefinedProfileContextAwarenessResult contextAwareness,
-
-            string createdAt,
-
-            string description,
+            ImmutableArray<string> enabledEntries,
 
             ImmutableArray<Outputs.GetZeroTrustDlpPredefinedProfileEntryResult> entries,
 
@@ -186,27 +157,19 @@ namespace Pulumi.Cloudflare
 
             bool openAccess,
 
-            string profileId,
-
-            string type,
-
-            string updatedAt)
+            string profileId)
         {
             AccountId = accountId;
             AiContextEnabled = aiContextEnabled;
             AllowedMatchCount = allowedMatchCount;
             ConfidenceThreshold = confidenceThreshold;
-            ContextAwareness = contextAwareness;
-            CreatedAt = createdAt;
-            Description = description;
+            EnabledEntries = enabledEntries;
             Entries = entries;
             Id = id;
             Name = name;
             OcrEnabled = ocrEnabled;
             OpenAccess = openAccess;
             ProfileId = profileId;
-            Type = type;
-            UpdatedAt = updatedAt;
         }
     }
 }

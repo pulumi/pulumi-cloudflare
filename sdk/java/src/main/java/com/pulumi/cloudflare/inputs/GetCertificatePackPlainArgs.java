@@ -3,10 +3,13 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetCertificatePackFilter;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetCertificatePackPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -17,15 +20,22 @@ public final class GetCertificatePackPlainArgs extends com.pulumi.resources.Invo
      * Identifier.
      * 
      */
-    @Import(name="certificatePackId", required=true)
-    private String certificatePackId;
+    @Import(name="certificatePackId")
+    private @Nullable String certificatePackId;
 
     /**
      * @return Identifier.
      * 
      */
-    public String certificatePackId() {
-        return this.certificatePackId;
+    public Optional<String> certificatePackId() {
+        return Optional.ofNullable(this.certificatePackId);
+    }
+
+    @Import(name="filter")
+    private @Nullable GetCertificatePackFilter filter;
+
+    public Optional<GetCertificatePackFilter> filter() {
+        return Optional.ofNullable(this.filter);
     }
 
     /**
@@ -47,6 +57,7 @@ public final class GetCertificatePackPlainArgs extends com.pulumi.resources.Invo
 
     private GetCertificatePackPlainArgs(GetCertificatePackPlainArgs $) {
         this.certificatePackId = $.certificatePackId;
+        this.filter = $.filter;
         this.zoneId = $.zoneId;
     }
 
@@ -74,8 +85,13 @@ public final class GetCertificatePackPlainArgs extends com.pulumi.resources.Invo
          * @return builder
          * 
          */
-        public Builder certificatePackId(String certificatePackId) {
+        public Builder certificatePackId(@Nullable String certificatePackId) {
             $.certificatePackId = certificatePackId;
+            return this;
+        }
+
+        public Builder filter(@Nullable GetCertificatePackFilter filter) {
+            $.filter = filter;
             return this;
         }
 
@@ -91,9 +107,6 @@ public final class GetCertificatePackPlainArgs extends com.pulumi.resources.Invo
         }
 
         public GetCertificatePackPlainArgs build() {
-            if ($.certificatePackId == null) {
-                throw new MissingRequiredPropertyException("GetCertificatePackPlainArgs", "certificatePackId");
-            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("GetCertificatePackPlainArgs", "zoneId");
             }

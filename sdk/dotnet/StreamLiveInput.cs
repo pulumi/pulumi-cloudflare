@@ -11,6 +11,10 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// ~&gt; This resource does not currently support `pulumi import`.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/streamLiveInput:StreamLiveInput")]
     public partial class StreamLiveInput : global::Pulumi.CustomResource

@@ -15,6 +15,10 @@ namespace Pulumi.Cloudflare.Outputs
     {
         public readonly string CreatedAt;
         /// <summary>
+        /// A unique identifier of this schema
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The kind of the schema
         /// Available values: "OpenapiV3".
         /// </summary>
@@ -40,6 +44,8 @@ namespace Pulumi.Cloudflare.Outputs
         private GetSchemaValidationSchemasListResultResult(
             string createdAt,
 
+            string id,
+
             string kind,
 
             string name,
@@ -51,6 +57,7 @@ namespace Pulumi.Cloudflare.Outputs
             bool validationEnabled)
         {
             CreatedAt = createdAt;
+            Id = id;
             Kind = kind;
             Name = name;
             SchemaId = schemaId;

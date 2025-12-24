@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetMagicTransitConnectorArgs extends com.pulumi.resources.InvokeArgs {
@@ -31,11 +29,11 @@ public final class GetMagicTransitConnectorArgs extends com.pulumi.resources.Inv
         return this.accountId;
     }
 
-    @Import(name="connectorId")
-    private @Nullable Output<String> connectorId;
+    @Import(name="connectorId", required=true)
+    private Output<String> connectorId;
 
-    public Optional<Output<String>> connectorId() {
-        return Optional.ofNullable(this.connectorId);
+    public Output<String> connectorId() {
+        return this.connectorId;
     }
 
     private GetMagicTransitConnectorArgs() {}
@@ -84,7 +82,7 @@ public final class GetMagicTransitConnectorArgs extends com.pulumi.resources.Inv
             return accountId(Output.of(accountId));
         }
 
-        public Builder connectorId(@Nullable Output<String> connectorId) {
+        public Builder connectorId(Output<String> connectorId) {
             $.connectorId = connectorId;
             return this;
         }
@@ -96,6 +94,9 @@ public final class GetMagicTransitConnectorArgs extends com.pulumi.resources.Inv
         public GetMagicTransitConnectorArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetMagicTransitConnectorArgs", "accountId");
+            }
+            if ($.connectorId == null) {
+                throw new MissingRequiredPropertyException("GetMagicTransitConnectorArgs", "connectorId");
             }
             return $;
         }

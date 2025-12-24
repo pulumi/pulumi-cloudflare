@@ -93,21 +93,6 @@ public final class GetZeroTrustTunnelCloudflaredRouteFilter extends com.pulumi.r
     }
 
     /**
-     * UUID of the route.
-     * 
-     */
-    @Import(name="routeId")
-    private @Nullable String routeId;
-
-    /**
-     * @return UUID of the route.
-     * 
-     */
-    public Optional<String> routeId() {
-        return Optional.ofNullable(this.routeId);
-    }
-
-    /**
      * The types of tunnels to filter by, separated by commas.
      * 
      */
@@ -160,7 +145,6 @@ public final class GetZeroTrustTunnelCloudflaredRouteFilter extends com.pulumi.r
         this.isDeleted = $.isDeleted;
         this.networkSubset = $.networkSubset;
         this.networkSuperset = $.networkSuperset;
-        this.routeId = $.routeId;
         this.tunTypes = $.tunTypes;
         this.tunnelId = $.tunnelId;
         this.virtualNetworkId = $.virtualNetworkId;
@@ -236,17 +220,6 @@ public final class GetZeroTrustTunnelCloudflaredRouteFilter extends com.pulumi.r
          */
         public Builder networkSuperset(@Nullable String networkSuperset) {
             $.networkSuperset = networkSuperset;
-            return this;
-        }
-
-        /**
-         * @param routeId UUID of the route.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder routeId(@Nullable String routeId) {
-            $.routeId = routeId;
             return this;
         }
 

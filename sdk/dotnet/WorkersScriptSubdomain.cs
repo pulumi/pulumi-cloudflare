@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// &gt; This resource is redundant with `cloudflare.Worker` and should not be used together. When using the `cloudflare.Worker` resource, use the nested `Subdomain` attribute to control subdomain settings instead.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -29,6 +31,12 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain example '&lt;account_id&gt;/&lt;script_name&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain")]

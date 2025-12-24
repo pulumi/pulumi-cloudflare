@@ -24,6 +24,10 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         DisableForTime = 0,
+    ///         ExternalEmergencySignalEnabled = true,
+    ///         ExternalEmergencySignalFingerprint = "abcd1234567890abcd1234567890abcd1234567890abcd1234567890abcd1234",
+    ///         ExternalEmergencySignalInterval = "5m",
+    ///         ExternalEmergencySignalUrl = "https://192.0.2.1/signal",
     ///         GatewayProxyEnabled = true,
     ///         GatewayUdpProxyEnabled = true,
     ///         RootCertificateInstallationEnabled = true,
@@ -32,6 +36,10 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ~&gt; This resource does not currently support `pulumi import`.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings")]
     public partial class ZeroTrustDeviceSettings : global::Pulumi.CustomResource
@@ -44,6 +52,30 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("disableForTime")]
         public Output<double?> DisableForTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Controls whether the external emergency disconnect feature is enabled.
+        /// </summary>
+        [Output("externalEmergencySignalEnabled")]
+        public Output<bool?> ExternalEmergencySignalEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
+        /// </summary>
+        [Output("externalEmergencySignalFingerprint")]
+        public Output<string?> ExternalEmergencySignalFingerprint { get; private set; } = null!;
+
+        /// <summary>
+        /// The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds.
+        /// </summary>
+        [Output("externalEmergencySignalInterval")]
+        public Output<string?> ExternalEmergencySignalInterval { get; private set; } = null!;
+
+        /// <summary>
+        /// The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
+        /// </summary>
+        [Output("externalEmergencySignalUrl")]
+        public Output<string?> ExternalEmergencySignalUrl { get; private set; } = null!;
 
         /// <summary>
         /// Enable gateway proxy filtering on TCP.
@@ -125,6 +157,30 @@ namespace Pulumi.Cloudflare
         public Input<double>? DisableForTime { get; set; }
 
         /// <summary>
+        /// Controls whether the external emergency disconnect feature is enabled.
+        /// </summary>
+        [Input("externalEmergencySignalEnabled")]
+        public Input<bool>? ExternalEmergencySignalEnabled { get; set; }
+
+        /// <summary>
+        /// The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
+        /// </summary>
+        [Input("externalEmergencySignalFingerprint")]
+        public Input<string>? ExternalEmergencySignalFingerprint { get; set; }
+
+        /// <summary>
+        /// The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds.
+        /// </summary>
+        [Input("externalEmergencySignalInterval")]
+        public Input<string>? ExternalEmergencySignalInterval { get; set; }
+
+        /// <summary>
+        /// The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
+        /// </summary>
+        [Input("externalEmergencySignalUrl")]
+        public Input<string>? ExternalEmergencySignalUrl { get; set; }
+
+        /// <summary>
         /// Enable gateway proxy filtering on TCP.
         /// </summary>
         [Input("gatewayProxyEnabled")]
@@ -164,6 +220,30 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("disableForTime")]
         public Input<double>? DisableForTime { get; set; }
+
+        /// <summary>
+        /// Controls whether the external emergency disconnect feature is enabled.
+        /// </summary>
+        [Input("externalEmergencySignalEnabled")]
+        public Input<bool>? ExternalEmergencySignalEnabled { get; set; }
+
+        /// <summary>
+        /// The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
+        /// </summary>
+        [Input("externalEmergencySignalFingerprint")]
+        public Input<string>? ExternalEmergencySignalFingerprint { get; set; }
+
+        /// <summary>
+        /// The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds.
+        /// </summary>
+        [Input("externalEmergencySignalInterval")]
+        public Input<string>? ExternalEmergencySignalInterval { get; set; }
+
+        /// <summary>
+        /// The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
+        /// </summary>
+        [Input("externalEmergencySignalUrl")]
+        public Input<string>? ExternalEmergencySignalUrl { get; set; }
 
         /// <summary>
         /// Enable gateway proxy filtering on TCP.

@@ -117,13 +117,6 @@ public final class ZeroTrustDexTestArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.targetPolicies);
     }
 
-    @Import(name="targeted")
-    private @Nullable Output<Boolean> targeted;
-
-    public Optional<Output<Boolean>> targeted() {
-        return Optional.ofNullable(this.targeted);
-    }
-
     private ZeroTrustDexTestArgs() {}
 
     private ZeroTrustDexTestArgs(ZeroTrustDexTestArgs $) {
@@ -134,7 +127,6 @@ public final class ZeroTrustDexTestArgs extends com.pulumi.resources.ResourceArg
         this.interval = $.interval;
         this.name = $.name;
         this.targetPolicies = $.targetPolicies;
-        this.targeted = $.targeted;
     }
 
     public static Builder builder() {
@@ -298,15 +290,6 @@ public final class ZeroTrustDexTestArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder targetPolicies(ZeroTrustDexTestTargetPolicyArgs... targetPolicies) {
             return targetPolicies(List.of(targetPolicies));
-        }
-
-        public Builder targeted(@Nullable Output<Boolean> targeted) {
-            $.targeted = targeted;
-            return this;
-        }
-
-        public Builder targeted(Boolean targeted) {
-            return targeted(Output.of(targeted));
         }
 
         public ZeroTrustDexTestArgs build() {

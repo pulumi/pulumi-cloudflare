@@ -265,6 +265,7 @@ class _WorkerVersionState:
                  number: Optional[pulumi.Input[_builtins.int]] = None,
                  placement: Optional[pulumi.Input['WorkerVersionPlacementArgs']] = None,
                  source: Optional[pulumi.Input[_builtins.str]] = None,
+                 startup_time_ms: Optional[pulumi.Input[_builtins.int]] = None,
                  usage_model: Optional[pulumi.Input[_builtins.str]] = None,
                  worker_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -288,6 +289,7 @@ class _WorkerVersionState:
         :param pulumi.Input[_builtins.int] number: The integer version number, starting from one.
         :param pulumi.Input['WorkerVersionPlacementArgs'] placement: Placement settings for the version.
         :param pulumi.Input[_builtins.str] source: The client used to create the version.
+        :param pulumi.Input[_builtins.int] startup_time_ms: Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
         :param pulumi.Input[_builtins.str] usage_model: Usage model for the version.
                Available values: "standard", "bundled", "unbound".
         :param pulumi.Input[_builtins.str] worker_id: Identifier for the Worker, which can be ID or name.
@@ -320,6 +322,8 @@ class _WorkerVersionState:
             pulumi.set(__self__, "placement", placement)
         if source is not None:
             pulumi.set(__self__, "source", source)
+        if startup_time_ms is not None:
+            pulumi.set(__self__, "startup_time_ms", startup_time_ms)
         if usage_model is not None:
             warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
             pulumi.log.warn("""usage_model is deprecated: This attribute is deprecated.""")
@@ -502,6 +506,18 @@ class _WorkerVersionState:
         pulumi.set(self, "source", value)
 
     @_builtins.property
+    @pulumi.getter(name="startupTimeMs")
+    def startup_time_ms(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
+        """
+        return pulumi.get(self, "startup_time_ms")
+
+    @startup_time_ms.setter
+    def startup_time_ms(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "startup_time_ms", value)
+
+    @_builtins.property
     @pulumi.getter(name="usageModel")
     @_utilities.deprecated("""This attribute is deprecated.""")
     def usage_model(self) -> Optional[pulumi.Input[_builtins.str]]:
@@ -566,7 +582,7 @@ class WorkerVersion(pulumi.CustomResource):
                 "config": {
                     "html_handling": "auto-trailing-slash",
                     "not_found_handling": "404-page",
-                    "run_worker_firsts": ["string"],
+                    "run_worker_first": ["string"],
                 },
                 "jwt": "jwt",
             },
@@ -659,7 +675,7 @@ class WorkerVersion(pulumi.CustomResource):
                 "config": {
                     "html_handling": "auto-trailing-slash",
                     "not_found_handling": "404-page",
-                    "run_worker_firsts": ["string"],
+                    "run_worker_first": ["string"],
                 },
                 "jwt": "jwt",
             },
@@ -763,6 +779,7 @@ class WorkerVersion(pulumi.CustomResource):
             __props__.__dict__["created_on"] = None
             __props__.__dict__["number"] = None
             __props__.__dict__["source"] = None
+            __props__.__dict__["startup_time_ms"] = None
         super(WorkerVersion, __self__).__init__(
             'cloudflare:index/workerVersion:WorkerVersion',
             resource_name,
@@ -787,6 +804,7 @@ class WorkerVersion(pulumi.CustomResource):
             number: Optional[pulumi.Input[_builtins.int]] = None,
             placement: Optional[pulumi.Input[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict']]] = None,
             source: Optional[pulumi.Input[_builtins.str]] = None,
+            startup_time_ms: Optional[pulumi.Input[_builtins.int]] = None,
             usage_model: Optional[pulumi.Input[_builtins.str]] = None,
             worker_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'WorkerVersion':
         """
@@ -815,6 +833,7 @@ class WorkerVersion(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] number: The integer version number, starting from one.
         :param pulumi.Input[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict']] placement: Placement settings for the version.
         :param pulumi.Input[_builtins.str] source: The client used to create the version.
+        :param pulumi.Input[_builtins.int] startup_time_ms: Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
         :param pulumi.Input[_builtins.str] usage_model: Usage model for the version.
                Available values: "standard", "bundled", "unbound".
         :param pulumi.Input[_builtins.str] worker_id: Identifier for the Worker, which can be ID or name.
@@ -837,6 +856,7 @@ class WorkerVersion(pulumi.CustomResource):
         __props__.__dict__["number"] = number
         __props__.__dict__["placement"] = placement
         __props__.__dict__["source"] = source
+        __props__.__dict__["startup_time_ms"] = startup_time_ms
         __props__.__dict__["usage_model"] = usage_model
         __props__.__dict__["worker_id"] = worker_id
         return WorkerVersion(resource_name, opts=opts, __props__=__props__)
@@ -957,6 +977,14 @@ class WorkerVersion(pulumi.CustomResource):
         The client used to create the version.
         """
         return pulumi.get(self, "source")
+
+    @_builtins.property
+    @pulumi.getter(name="startupTimeMs")
+    def startup_time_ms(self) -> pulumi.Output[_builtins.int]:
+        """
+        Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
+        """
+        return pulumi.get(self, "startup_time_ms")
 
     @_builtins.property
     @pulumi.getter(name="usageModel")

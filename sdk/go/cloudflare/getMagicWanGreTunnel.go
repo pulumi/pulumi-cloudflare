@@ -62,7 +62,7 @@ type LookupMagicWanGreTunnelResult struct {
 	GreTunnel GetMagicWanGreTunnelGreTunnel `pulumi:"greTunnel"`
 	// Identifier
 	GreTunnelId string `pulumi:"greTunnelId"`
-	// The provider-assigned unique ID for this managed resource.
+	// Identifier
 	Id string `pulumi:"id"`
 }
 
@@ -116,7 +116,7 @@ func (o LookupMagicWanGreTunnelResultOutput) GreTunnelId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMagicWanGreTunnelResult) string { return v.GreTunnelId }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Identifier
 func (o LookupMagicWanGreTunnelResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMagicWanGreTunnelResult) string { return v.Id }).(pulumi.StringOutput)
 }

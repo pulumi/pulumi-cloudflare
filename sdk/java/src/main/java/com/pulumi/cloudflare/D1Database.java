@@ -47,6 +47,7 @@ import javax.annotation.Nullable;
  *         var exampleD1Database = new D1Database("exampleD1Database", D1DatabaseArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .name("my-database")
+ *             .jurisdiction("eu")
  *             .primaryLocationHint("wnam")
  *             .build());
  * 
@@ -105,6 +106,22 @@ public class D1Database extends com.pulumi.resources.CustomResource {
      */
     public Output<Double> fileSize() {
         return this.fileSize;
+    }
+    /**
+     * Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;.
+     * 
+     */
+    @Export(name="jurisdiction", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> jurisdiction;
+
+    /**
+     * @return Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;.
+     * 
+     */
+    public Output<Optional<String>> jurisdiction() {
+        return Codegen.optional(this.jurisdiction);
     }
     /**
      * D1 database name.

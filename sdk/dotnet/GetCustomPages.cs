@@ -150,7 +150,8 @@ namespace Pulumi.Cloudflare
         public readonly string CreatedOn;
         public readonly string Description;
         /// <summary>
-        /// The ID of this resource.
+        /// Error Page Types
+        /// Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "WafBlock".
         /// </summary>
         public readonly string Id;
         /// <summary>

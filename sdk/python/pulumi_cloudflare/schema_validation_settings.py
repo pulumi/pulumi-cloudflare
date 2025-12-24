@@ -189,6 +189,10 @@ class SchemaValidationSettings(pulumi.CustomResource):
             validation_override_mitigation_action="none")
         ```
 
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] validation_default_mitigation_action: The default mitigation action used
@@ -223,6 +227,10 @@ class SchemaValidationSettings(pulumi.CustomResource):
             validation_default_mitigation_action="block",
             validation_override_mitigation_action="none")
         ```
+
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
 
         :param str resource_name: The name of the resource.
         :param SchemaValidationSettingsArgs args: The arguments to use to populate this resource's properties.

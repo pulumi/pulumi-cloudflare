@@ -162,9 +162,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string FileType;
         /// <summary>
-        /// Asset ID.
+        /// UUID.
         /// </summary>
-        public readonly int Id;
+        public readonly string Id;
         /// <summary>
         /// Asset name.
         /// </summary>
@@ -186,7 +186,7 @@ namespace Pulumi.Cloudflare
 
             string fileType,
 
-            int id,
+            string id,
 
             string name,
 

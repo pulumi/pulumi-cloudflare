@@ -49,7 +49,7 @@ func LookupPagesDomains(ctx *pulumi.Context, args *LookupPagesDomainsArgs, opts 
 
 // A collection of arguments for invoking getPagesDomains.
 type LookupPagesDomainsArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
@@ -59,7 +59,7 @@ type LookupPagesDomainsArgs struct {
 
 // A collection of values returned by getPagesDomains.
 type LookupPagesDomainsResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -82,7 +82,7 @@ func LookupPagesDomainsOutput(ctx *pulumi.Context, args LookupPagesDomainsOutput
 
 // A collection of arguments for invoking getPagesDomains.
 type LookupPagesDomainsOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
@@ -109,7 +109,7 @@ func (o LookupPagesDomainsResultOutput) ToLookupPagesDomainsResultOutputWithCont
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupPagesDomainsResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPagesDomainsResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

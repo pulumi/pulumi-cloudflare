@@ -357,7 +357,6 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Migrations to apply for Durable Objects associated with this Worker.
      * 
      */
@@ -365,8 +364,7 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<WorkerScriptMigrationsArgs> migrations;
 
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * Migrations to apply for Durable Objects associated with this Worker.
+     * @return Migrations to apply for Durable Objects associated with this Worker.
      * 
      */
     public Optional<Output<WorkerScriptMigrationsArgs>> migrations() {
@@ -1044,8 +1042,7 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param migrations **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * Migrations to apply for Durable Objects associated with this Worker.
+         * @param migrations Migrations to apply for Durable Objects associated with this Worker.
          * 
          * @return builder
          * 
@@ -1056,8 +1053,7 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param migrations **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * Migrations to apply for Durable Objects associated with this Worker.
+         * @param migrations Migrations to apply for Durable Objects associated with this Worker.
          * 
          * @return builder
          * 

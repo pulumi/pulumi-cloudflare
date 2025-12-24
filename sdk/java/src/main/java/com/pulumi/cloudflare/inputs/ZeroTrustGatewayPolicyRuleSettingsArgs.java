@@ -9,6 +9,7 @@ import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsBlockPageA
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsEgressArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsPayloadLogArgs;
@@ -194,6 +195,21 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
      */
     public Optional<Output<ZeroTrustGatewayPolicyRuleSettingsEgressArgs>> egress() {
         return Optional.ofNullable(this.egress);
+    }
+
+    /**
+     * Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
+     * 
+     */
+    @Import(name="forensicCopy")
+    private @Nullable Output<ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs> forensicCopy;
+
+    /**
+     * @return Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
+     * 
+     */
+    public Optional<Output<ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs>> forensicCopy() {
+        return Optional.ofNullable(this.forensicCopy);
     }
 
     /**
@@ -420,6 +436,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
         this.checkSession = $.checkSession;
         this.dnsResolvers = $.dnsResolvers;
         this.egress = $.egress;
+        this.forensicCopy = $.forensicCopy;
         this.ignoreCnameCategoryMatches = $.ignoreCnameCategoryMatches;
         this.insecureDisableDnssecValidation = $.insecureDisableDnssecValidation;
         this.ipCategories = $.ipCategories;
@@ -683,6 +700,27 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
          */
         public Builder egress(ZeroTrustGatewayPolicyRuleSettingsEgressArgs egress) {
             return egress(Output.of(egress));
+        }
+
+        /**
+         * @param forensicCopy Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forensicCopy(@Nullable Output<ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs> forensicCopy) {
+            $.forensicCopy = forensicCopy;
+            return this;
+        }
+
+        /**
+         * @param forensicCopy Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forensicCopy(ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs forensicCopy) {
+            return forensicCopy(Output.of(forensicCopy));
         }
 
         /**

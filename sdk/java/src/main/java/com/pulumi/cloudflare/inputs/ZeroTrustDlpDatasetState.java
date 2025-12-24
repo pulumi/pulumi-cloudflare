@@ -163,7 +163,7 @@ public final class ZeroTrustDlpDatasetState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * When the dataset was last updated.
+     * Stores when the dataset was last updated.
      * 
      * This includes name or description changes as well as uploads.
      * 
@@ -172,7 +172,7 @@ public final class ZeroTrustDlpDatasetState extends com.pulumi.resources.Resourc
     private @Nullable Output<String> updatedAt;
 
     /**
-     * @return When the dataset was last updated.
+     * @return Stores when the dataset was last updated.
      * 
      * This includes name or description changes as well as uploads.
      * 
@@ -434,7 +434,7 @@ public final class ZeroTrustDlpDatasetState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param updatedAt When the dataset was last updated.
+         * @param updatedAt Stores when the dataset was last updated.
          * 
          * This includes name or description changes as well as uploads.
          * 
@@ -447,7 +447,7 @@ public final class ZeroTrustDlpDatasetState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param updatedAt When the dataset was last updated.
+         * @param updatedAt Stores when the dataset was last updated.
          * 
          * This includes name or description changes as well as uploads.
          * 

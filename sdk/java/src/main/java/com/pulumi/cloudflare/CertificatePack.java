@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.CertificatePackArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.CertificatePackState;
+import com.pulumi.cloudflare.outputs.CertificatePackCertificate;
 import com.pulumi.cloudflare.outputs.CertificatePackValidationError;
 import com.pulumi.cloudflare.outputs.CertificatePackValidationRecord;
 import com.pulumi.core.Output;
@@ -20,6 +21,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; Certificate packs are not able to be updated in place. If
+ * you require a zero downtime rotation, you can create multiple
+ * resources using a 2-phase change where you have both resources
+ * live at once and you remove the old one once you&#39;ve confirmed
+ * the certificate is available.
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -92,6 +99,20 @@ public class CertificatePack extends com.pulumi.resources.CustomResource {
         return this.certificateAuthority;
     }
     /**
+     * Array of certificates in this pack.
+     * 
+     */
+    @Export(name="certificates", refs={List.class,CertificatePackCertificate.class}, tree="[0,1]")
+    private Output<List<CertificatePackCertificate>> certificates;
+
+    /**
+     * @return Array of certificates in this pack.
+     * 
+     */
+    public Output<List<CertificatePackCertificate>> certificates() {
+        return this.certificates;
+    }
+    /**
      * Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
      * 
      */
@@ -118,6 +139,20 @@ public class CertificatePack extends com.pulumi.resources.CustomResource {
      */
     public Output<List<String>> hosts() {
         return this.hosts;
+    }
+    /**
+     * Identifier of the primary certificate in a pack.
+     * 
+     */
+    @Export(name="primaryCertificate", refs={String.class}, tree="[0]")
+    private Output<String> primaryCertificate;
+
+    /**
+     * @return Identifier of the primary certificate in a pack.
+     * 
+     */
+    public Output<String> primaryCertificate() {
+        return this.primaryCertificate;
     }
     /**
      * Status of certificate pack.
@@ -182,14 +217,14 @@ public class CertificatePack extends com.pulumi.resources.CustomResource {
         return this.validationMethod;
     }
     /**
-     * Certificates&#39; validation records. Only present when certificate pack is in &#34;pending*validation&#34; status
+     * Certificates&#39; validation records.
      * 
      */
     @Export(name="validationRecords", refs={List.class,CertificatePackValidationRecord.class}, tree="[0,1]")
     private Output<List<CertificatePackValidationRecord>> validationRecords;
 
     /**
-     * @return Certificates&#39; validation records. Only present when certificate pack is in &#34;pending*validation&#34; status
+     * @return Certificates&#39; validation records.
      * 
      */
     public Output<List<CertificatePackValidationRecord>> validationRecords() {

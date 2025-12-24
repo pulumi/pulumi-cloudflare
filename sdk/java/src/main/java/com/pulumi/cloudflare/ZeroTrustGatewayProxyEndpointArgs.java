@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ZeroTrustGatewayProxyEndpointArgs extends com.pulumi.resources.ResourceArgs {
@@ -26,15 +28,32 @@ public final class ZeroTrustGatewayProxyEndpointArgs extends com.pulumi.resource
      * Specify the list of CIDRs to restrict ingress connections.
      * 
      */
-    @Import(name="ips", required=true)
-    private Output<List<String>> ips;
+    @Import(name="ips")
+    private @Nullable Output<List<String>> ips;
 
     /**
      * @return Specify the list of CIDRs to restrict ingress connections.
      * 
      */
-    public Output<List<String>> ips() {
-        return this.ips;
+    public Optional<Output<List<String>>> ips() {
+        return Optional.ofNullable(this.ips);
+    }
+
+    /**
+     * The proxy endpoint kind
+     * Available values: &#34;ip&#34;, &#34;identity&#34;.
+     * 
+     */
+    @Import(name="kind")
+    private @Nullable Output<String> kind;
+
+    /**
+     * @return The proxy endpoint kind
+     * Available values: &#34;ip&#34;, &#34;identity&#34;.
+     * 
+     */
+    public Optional<Output<String>> kind() {
+        return Optional.ofNullable(this.kind);
     }
 
     /**
@@ -57,6 +76,7 @@ public final class ZeroTrustGatewayProxyEndpointArgs extends com.pulumi.resource
     private ZeroTrustGatewayProxyEndpointArgs(ZeroTrustGatewayProxyEndpointArgs $) {
         this.accountId = $.accountId;
         this.ips = $.ips;
+        this.kind = $.kind;
         this.name = $.name;
     }
 
@@ -93,7 +113,7 @@ public final class ZeroTrustGatewayProxyEndpointArgs extends com.pulumi.resource
          * @return builder
          * 
          */
-        public Builder ips(Output<List<String>> ips) {
+        public Builder ips(@Nullable Output<List<String>> ips) {
             $.ips = ips;
             return this;
         }
@@ -116,6 +136,29 @@ public final class ZeroTrustGatewayProxyEndpointArgs extends com.pulumi.resource
          */
         public Builder ips(String... ips) {
             return ips(List.of(ips));
+        }
+
+        /**
+         * @param kind The proxy endpoint kind
+         * Available values: &#34;ip&#34;, &#34;identity&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kind(@Nullable Output<String> kind) {
+            $.kind = kind;
+            return this;
+        }
+
+        /**
+         * @param kind The proxy endpoint kind
+         * Available values: &#34;ip&#34;, &#34;identity&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kind(String kind) {
+            return kind(Output.of(kind));
         }
 
         /**
@@ -142,9 +185,6 @@ public final class ZeroTrustGatewayProxyEndpointArgs extends com.pulumi.resource
         public ZeroTrustGatewayProxyEndpointArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustGatewayProxyEndpointArgs", "accountId");
-            }
-            if ($.ips == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustGatewayProxyEndpointArgs", "ips");
             }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustGatewayProxyEndpointArgs", "name");

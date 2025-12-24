@@ -19,10 +19,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Access;
         /// <summary>
-        /// Policy identifier.
-        /// </summary>
-        public readonly string? Id;
-        /// <summary>
         /// A set of permission groups that are specified to the policy.
         /// </summary>
         public readonly ImmutableArray<Outputs.AccountMemberPolicyPermissionGroup> PermissionGroups;
@@ -35,14 +31,11 @@ namespace Pulumi.Cloudflare.Outputs
         private AccountMemberPolicy(
             string access,
 
-            string? id,
-
             ImmutableArray<Outputs.AccountMemberPolicyPermissionGroup> permissionGroups,
 
             ImmutableArray<Outputs.AccountMemberPolicyResourceGroup> resourceGroups)
         {
             Access = access;
-            Id = id;
             PermissionGroups = permissionGroups;
             ResourceGroups = resourceGroups;
         }

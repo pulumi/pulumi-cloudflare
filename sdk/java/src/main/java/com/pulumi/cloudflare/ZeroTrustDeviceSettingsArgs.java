@@ -41,6 +41,66 @@ public final class ZeroTrustDeviceSettingsArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * Controls whether the external emergency disconnect feature is enabled.
+     * 
+     */
+    @Import(name="externalEmergencySignalEnabled")
+    private @Nullable Output<Boolean> externalEmergencySignalEnabled;
+
+    /**
+     * @return Controls whether the external emergency disconnect feature is enabled.
+     * 
+     */
+    public Optional<Output<Boolean>> externalEmergencySignalEnabled() {
+        return Optional.ofNullable(this.externalEmergencySignalEnabled);
+    }
+
+    /**
+     * The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server&#39;s identity. The device will ignore any response if the server&#39;s certificate fingerprint does not exactly match this value.
+     * 
+     */
+    @Import(name="externalEmergencySignalFingerprint")
+    private @Nullable Output<String> externalEmergencySignalFingerprint;
+
+    /**
+     * @return The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server&#39;s identity. The device will ignore any response if the server&#39;s certificate fingerprint does not exactly match this value.
+     * 
+     */
+    public Optional<Output<String>> externalEmergencySignalFingerprint() {
+        return Optional.ofNullable(this.externalEmergencySignalFingerprint);
+    }
+
+    /**
+     * The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., &#34;5m&#34;, &#34;2m30s&#34;, &#34;1h&#34;). Minimum 30 seconds.
+     * 
+     */
+    @Import(name="externalEmergencySignalInterval")
+    private @Nullable Output<String> externalEmergencySignalInterval;
+
+    /**
+     * @return The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., &#34;5m&#34;, &#34;2m30s&#34;, &#34;1h&#34;). Minimum 30 seconds.
+     * 
+     */
+    public Optional<Output<String>> externalEmergencySignalInterval() {
+        return Optional.ofNullable(this.externalEmergencySignalInterval);
+    }
+
+    /**
+     * The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
+     * 
+     */
+    @Import(name="externalEmergencySignalUrl")
+    private @Nullable Output<String> externalEmergencySignalUrl;
+
+    /**
+     * @return The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
+     * 
+     */
+    public Optional<Output<String>> externalEmergencySignalUrl() {
+        return Optional.ofNullable(this.externalEmergencySignalUrl);
+    }
+
+    /**
      * Enable gateway proxy filtering on TCP.
      * 
      */
@@ -105,6 +165,10 @@ public final class ZeroTrustDeviceSettingsArgs extends com.pulumi.resources.Reso
     private ZeroTrustDeviceSettingsArgs(ZeroTrustDeviceSettingsArgs $) {
         this.accountId = $.accountId;
         this.disableForTime = $.disableForTime;
+        this.externalEmergencySignalEnabled = $.externalEmergencySignalEnabled;
+        this.externalEmergencySignalFingerprint = $.externalEmergencySignalFingerprint;
+        this.externalEmergencySignalInterval = $.externalEmergencySignalInterval;
+        this.externalEmergencySignalUrl = $.externalEmergencySignalUrl;
         this.gatewayProxyEnabled = $.gatewayProxyEnabled;
         this.gatewayUdpProxyEnabled = $.gatewayUdpProxyEnabled;
         this.rootCertificateInstallationEnabled = $.rootCertificateInstallationEnabled;
@@ -157,6 +221,90 @@ public final class ZeroTrustDeviceSettingsArgs extends com.pulumi.resources.Reso
          */
         public Builder disableForTime(Double disableForTime) {
             return disableForTime(Output.of(disableForTime));
+        }
+
+        /**
+         * @param externalEmergencySignalEnabled Controls whether the external emergency disconnect feature is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalEmergencySignalEnabled(@Nullable Output<Boolean> externalEmergencySignalEnabled) {
+            $.externalEmergencySignalEnabled = externalEmergencySignalEnabled;
+            return this;
+        }
+
+        /**
+         * @param externalEmergencySignalEnabled Controls whether the external emergency disconnect feature is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalEmergencySignalEnabled(Boolean externalEmergencySignalEnabled) {
+            return externalEmergencySignalEnabled(Output.of(externalEmergencySignalEnabled));
+        }
+
+        /**
+         * @param externalEmergencySignalFingerprint The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server&#39;s identity. The device will ignore any response if the server&#39;s certificate fingerprint does not exactly match this value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalEmergencySignalFingerprint(@Nullable Output<String> externalEmergencySignalFingerprint) {
+            $.externalEmergencySignalFingerprint = externalEmergencySignalFingerprint;
+            return this;
+        }
+
+        /**
+         * @param externalEmergencySignalFingerprint The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server&#39;s identity. The device will ignore any response if the server&#39;s certificate fingerprint does not exactly match this value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalEmergencySignalFingerprint(String externalEmergencySignalFingerprint) {
+            return externalEmergencySignalFingerprint(Output.of(externalEmergencySignalFingerprint));
+        }
+
+        /**
+         * @param externalEmergencySignalInterval The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., &#34;5m&#34;, &#34;2m30s&#34;, &#34;1h&#34;). Minimum 30 seconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalEmergencySignalInterval(@Nullable Output<String> externalEmergencySignalInterval) {
+            $.externalEmergencySignalInterval = externalEmergencySignalInterval;
+            return this;
+        }
+
+        /**
+         * @param externalEmergencySignalInterval The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., &#34;5m&#34;, &#34;2m30s&#34;, &#34;1h&#34;). Minimum 30 seconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalEmergencySignalInterval(String externalEmergencySignalInterval) {
+            return externalEmergencySignalInterval(Output.of(externalEmergencySignalInterval));
+        }
+
+        /**
+         * @param externalEmergencySignalUrl The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalEmergencySignalUrl(@Nullable Output<String> externalEmergencySignalUrl) {
+            $.externalEmergencySignalUrl = externalEmergencySignalUrl;
+            return this;
+        }
+
+        /**
+         * @param externalEmergencySignalUrl The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalEmergencySignalUrl(String externalEmergencySignalUrl) {
+            return externalEmergencySignalUrl(Output.of(externalEmergencySignalUrl));
         }
 
         /**

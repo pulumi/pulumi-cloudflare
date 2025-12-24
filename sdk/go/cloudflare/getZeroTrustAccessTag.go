@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupZeroTrustAccessTag(ctx, &cloudflare.LookupZeroTrustAccessTagArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
-//				TagName:   pulumi.StringRef("engineers"),
+//				TagName:   "engineers",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -52,7 +52,7 @@ type LookupZeroTrustAccessTagArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// The name of the tag
-	TagName *string `pulumi:"tagName"`
+	TagName string `pulumi:"tagName"`
 }
 
 // A collection of values returned by getZeroTrustAccessTag.
@@ -64,7 +64,7 @@ type LookupZeroTrustAccessTagResult struct {
 	// The name of the tag
 	Name string `pulumi:"name"`
 	// The name of the tag
-	TagName *string `pulumi:"tagName"`
+	TagName string `pulumi:"tagName"`
 }
 
 func LookupZeroTrustAccessTagOutput(ctx *pulumi.Context, args LookupZeroTrustAccessTagOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustAccessTagResultOutput {
@@ -81,7 +81,7 @@ type LookupZeroTrustAccessTagOutputArgs struct {
 	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The name of the tag
-	TagName pulumi.StringPtrInput `pulumi:"tagName"`
+	TagName pulumi.StringInput `pulumi:"tagName"`
 }
 
 func (LookupZeroTrustAccessTagOutputArgs) ElementType() reflect.Type {
@@ -119,8 +119,8 @@ func (o LookupZeroTrustAccessTagResultOutput) Name() pulumi.StringOutput {
 }
 
 // The name of the tag
-func (o LookupZeroTrustAccessTagResultOutput) TagName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupZeroTrustAccessTagResult) *string { return v.TagName }).(pulumi.StringPtrOutput)
+func (o LookupZeroTrustAccessTagResultOutput) TagName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessTagResult) string { return v.TagName }).(pulumi.StringOutput)
 }
 
 func init() {

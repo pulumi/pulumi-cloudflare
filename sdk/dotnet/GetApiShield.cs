@@ -25,6 +25,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleApiShield = Cloudflare.GetApiShield.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Normalize = true,
         ///     });
         /// 
         /// });
@@ -47,6 +48,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleApiShield = Cloudflare.GetApiShield.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Normalize = true,
         ///     });
         /// 
         /// });
@@ -69,6 +71,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleApiShield = Cloudflare.GetApiShield.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Normalize = true,
         ///     });
         /// 
         /// });
@@ -81,6 +84,12 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetApiShieldArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Ensures that the configuration is written or retrieved in normalized fashion
+        /// </summary>
+        [Input("normalize")]
+        public bool? Normalize { get; set; }
+
         /// <summary>
         /// Identifier.
         /// </summary>
@@ -95,6 +104,12 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetApiShieldInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Ensures that the configuration is written or retrieved in normalized fashion
+        /// </summary>
+        [Input("normalize")]
+        public Input<bool>? Normalize { get; set; }
+
         /// <summary>
         /// Identifier.
         /// </summary>
@@ -113,9 +128,13 @@ namespace Pulumi.Cloudflare
     {
         public readonly ImmutableArray<Outputs.GetApiShieldAuthIdCharacteristicResult> AuthIdCharacteristics;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Identifier.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Ensures that the configuration is written or retrieved in normalized fashion
+        /// </summary>
+        public readonly bool? Normalize;
         /// <summary>
         /// Identifier.
         /// </summary>
@@ -127,10 +146,13 @@ namespace Pulumi.Cloudflare
 
             string id,
 
+            bool? normalize,
+
             string zoneId)
         {
             AuthIdCharacteristics = authIdCharacteristics;
             Id = id;
+            Normalize = normalize;
             ZoneId = zoneId;
         }
     }

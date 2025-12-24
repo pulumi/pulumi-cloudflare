@@ -9,6 +9,7 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPolicyRuleSettingsBlockP
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPolicyRuleSettingsCheckSession;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPolicyRuleSettingsDnsResolvers;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPolicyRuleSettingsEgress;
+import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPolicyRuleSettingsForensicCopy;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPolicyRuleSettingsL4override;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPolicyRuleSettingsNotificationSettings;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPolicyRuleSettingsPayloadLog;
@@ -81,6 +82,11 @@ public final class GetZeroTrustGatewayPolicyRuleSettings {
      * 
      */
     private GetZeroTrustGatewayPolicyRuleSettingsEgress egress;
+    /**
+     * @return Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
+     * 
+     */
+    private GetZeroTrustGatewayPolicyRuleSettingsForensicCopy forensicCopy;
     /**
      * @return Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dnsResolver` rules.
      * 
@@ -231,6 +237,13 @@ public final class GetZeroTrustGatewayPolicyRuleSettings {
         return this.egress;
     }
     /**
+     * @return Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
+     * 
+     */
+    public GetZeroTrustGatewayPolicyRuleSettingsForensicCopy forensicCopy() {
+        return this.forensicCopy;
+    }
+    /**
      * @return Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dnsResolver` rules.
      * 
      */
@@ -349,6 +362,7 @@ public final class GetZeroTrustGatewayPolicyRuleSettings {
         private GetZeroTrustGatewayPolicyRuleSettingsCheckSession checkSession;
         private GetZeroTrustGatewayPolicyRuleSettingsDnsResolvers dnsResolvers;
         private GetZeroTrustGatewayPolicyRuleSettingsEgress egress;
+        private GetZeroTrustGatewayPolicyRuleSettingsForensicCopy forensicCopy;
         private Boolean ignoreCnameCategoryMatches;
         private Boolean insecureDisableDnssecValidation;
         private Boolean ipCategories;
@@ -377,6 +391,7 @@ public final class GetZeroTrustGatewayPolicyRuleSettings {
     	      this.checkSession = defaults.checkSession;
     	      this.dnsResolvers = defaults.dnsResolvers;
     	      this.egress = defaults.egress;
+    	      this.forensicCopy = defaults.forensicCopy;
     	      this.ignoreCnameCategoryMatches = defaults.ignoreCnameCategoryMatches;
     	      this.insecureDisableDnssecValidation = defaults.insecureDisableDnssecValidation;
     	      this.ipCategories = defaults.ipCategories;
@@ -479,6 +494,14 @@ public final class GetZeroTrustGatewayPolicyRuleSettings {
               throw new MissingRequiredPropertyException("GetZeroTrustGatewayPolicyRuleSettings", "egress");
             }
             this.egress = egress;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder forensicCopy(GetZeroTrustGatewayPolicyRuleSettingsForensicCopy forensicCopy) {
+            if (forensicCopy == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustGatewayPolicyRuleSettings", "forensicCopy");
+            }
+            this.forensicCopy = forensicCopy;
             return this;
         }
         @CustomType.Setter
@@ -609,6 +632,7 @@ public final class GetZeroTrustGatewayPolicyRuleSettings {
             _resultValue.checkSession = checkSession;
             _resultValue.dnsResolvers = dnsResolvers;
             _resultValue.egress = egress;
+            _resultValue.forensicCopy = forensicCopy;
             _resultValue.ignoreCnameCategoryMatches = ignoreCnameCategoryMatches;
             _resultValue.insecureDisableDnssecValidation = insecureDisableDnssecValidation;
             _resultValue.ipCategories = ipCategories;

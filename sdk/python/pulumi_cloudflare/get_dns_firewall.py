@@ -100,7 +100,7 @@ class GetDnsFirewallResult:
 
     @_builtins.property
     @pulumi.getter(name="dnsFirewallId")
-    def dns_firewall_id(self) -> Optional[_builtins.str]:
+    def dns_firewall_id(self) -> _builtins.str:
         """
         Identifier.
         """
@@ -238,7 +238,7 @@ def get_dns_firewall(account_id: Optional[_builtins.str] = None,
         retries=pulumi.get(__ret__, 'retries'),
         upstream_ips=pulumi.get(__ret__, 'upstream_ips'))
 def get_dns_firewall_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                            dns_firewall_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                            dns_firewall_id: Optional[pulumi.Input[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDnsFirewallResult]:
     """
     ## Example Usage

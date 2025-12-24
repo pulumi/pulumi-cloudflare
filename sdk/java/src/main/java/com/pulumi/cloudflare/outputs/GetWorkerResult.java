@@ -13,8 +13,6 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWorkerResult {
@@ -77,7 +75,7 @@ public final class GetWorkerResult {
      * @return Identifier for the Worker, which can be ID or name.
      * 
      */
-    private @Nullable String workerId;
+    private String workerId;
 
     private GetWorkerResult() {}
     /**
@@ -161,8 +159,8 @@ public final class GetWorkerResult {
      * @return Identifier for the Worker, which can be ID or name.
      * 
      */
-    public Optional<String> workerId() {
-        return Optional.ofNullable(this.workerId);
+    public String workerId() {
+        return this.workerId;
     }
 
     public static Builder builder() {
@@ -185,7 +183,7 @@ public final class GetWorkerResult {
         private List<String> tags;
         private List<GetWorkerTailConsumer> tailConsumers;
         private String updatedOn;
-        private @Nullable String workerId;
+        private String workerId;
         public Builder() {}
         public Builder(GetWorkerResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -298,8 +296,10 @@ public final class GetWorkerResult {
             return this;
         }
         @CustomType.Setter
-        public Builder workerId(@Nullable String workerId) {
-
+        public Builder workerId(String workerId) {
+            if (workerId == null) {
+              throw new MissingRequiredPropertyException("GetWorkerResult", "workerId");
+            }
             this.workerId = workerId;
             return this;
         }

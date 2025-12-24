@@ -213,6 +213,10 @@ class CallsSfuApp(pulumi.CustomResource):
             name="production-realtime-app")
         ```
 
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
@@ -236,6 +240,10 @@ class CallsSfuApp(pulumi.CustomResource):
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="production-realtime-app")
         ```
+
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
 
         :param str resource_name: The name of the resource.
         :param CallsSfuAppArgs args: The arguments to use to populate this resource's properties.

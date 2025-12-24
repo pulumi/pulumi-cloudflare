@@ -57,6 +57,8 @@ export interface GetWorkersCustomDomainResult {
     readonly domainId?: string;
     /**
      * Worker environment associated with the zone and hostname.
+     *
+     * @deprecated This attribute is deprecated.
      */
     readonly environment: string;
     readonly filter?: outputs.GetWorkersCustomDomainFilter;

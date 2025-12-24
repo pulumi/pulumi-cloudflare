@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetDnsZoneTransfersAclArgs extends com.pulumi.resources.InvokeArgs {
@@ -23,11 +21,11 @@ public final class GetDnsZoneTransfersAclArgs extends com.pulumi.resources.Invok
         return this.accountId;
     }
 
-    @Import(name="aclId")
-    private @Nullable Output<String> aclId;
+    @Import(name="aclId", required=true)
+    private Output<String> aclId;
 
-    public Optional<Output<String>> aclId() {
-        return Optional.ofNullable(this.aclId);
+    public Output<String> aclId() {
+        return this.aclId;
     }
 
     private GetDnsZoneTransfersAclArgs() {}
@@ -64,7 +62,7 @@ public final class GetDnsZoneTransfersAclArgs extends com.pulumi.resources.Invok
             return accountId(Output.of(accountId));
         }
 
-        public Builder aclId(@Nullable Output<String> aclId) {
+        public Builder aclId(Output<String> aclId) {
             $.aclId = aclId;
             return this;
         }
@@ -76,6 +74,9 @@ public final class GetDnsZoneTransfersAclArgs extends com.pulumi.resources.Invok
         public GetDnsZoneTransfersAclArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetDnsZoneTransfersAclArgs", "accountId");
+            }
+            if ($.aclId == null) {
+                throw new MissingRequiredPropertyException("GetDnsZoneTransfersAclArgs", "aclId");
             }
             return $;
         }

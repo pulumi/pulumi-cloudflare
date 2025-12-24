@@ -42,6 +42,10 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ~> This resource does not currently support `pulumi import`.
 type ZeroTrustDlpDataset struct {
 	pulumi.CustomResourceState
 
@@ -68,7 +72,7 @@ type ZeroTrustDlpDataset struct {
 	Secret pulumi.BoolPtrOutput `pulumi:"secret"`
 	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	Status pulumi.StringOutput `pulumi:"status"`
-	// When the dataset was last updated.
+	// Stores when the dataset was last updated.
 	//
 	// This includes name or description changes as well as uploads.
 	UpdatedAt pulumi.StringOutput                  `pulumi:"updatedAt"`
@@ -136,7 +140,7 @@ type zeroTrustDlpDatasetState struct {
 	Secret *bool `pulumi:"secret"`
 	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	Status *string `pulumi:"status"`
-	// When the dataset was last updated.
+	// Stores when the dataset was last updated.
 	//
 	// This includes name or description changes as well as uploads.
 	UpdatedAt *string                     `pulumi:"updatedAt"`
@@ -169,7 +173,7 @@ type ZeroTrustDlpDatasetState struct {
 	Secret pulumi.BoolPtrInput
 	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	Status pulumi.StringPtrInput
-	// When the dataset was last updated.
+	// Stores when the dataset was last updated.
 	//
 	// This includes name or description changes as well as uploads.
 	UpdatedAt pulumi.StringPtrInput
@@ -370,7 +374,7 @@ func (o ZeroTrustDlpDatasetOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpDataset) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// When the dataset was last updated.
+// Stores when the dataset was last updated.
 //
 // This includes name or description changes as well as uploads.
 func (o ZeroTrustDlpDatasetOutput) UpdatedAt() pulumi.StringOutput {

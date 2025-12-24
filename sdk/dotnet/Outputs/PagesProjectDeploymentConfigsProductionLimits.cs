@@ -16,10 +16,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// CPU time limit in milliseconds.
         /// </summary>
-        public readonly int? CpuMs;
+        public readonly int CpuMs;
 
         [OutputConstructor]
-        private PagesProjectDeploymentConfigsProductionLimits(int? cpuMs)
+        private PagesProjectDeploymentConfigsProductionLimits(int cpuMs)
         {
             CpuMs = cpuMs;
         }

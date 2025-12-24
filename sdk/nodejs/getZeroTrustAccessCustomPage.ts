@@ -36,7 +36,7 @@ export interface GetZeroTrustAccessCustomPageArgs {
     /**
      * UUID.
      */
-    customPageId?: string;
+    customPageId: string;
 }
 
 /**
@@ -54,7 +54,7 @@ export interface GetZeroTrustAccessCustomPageResult {
     /**
      * UUID.
      */
-    readonly customPageId?: string;
+    readonly customPageId: string;
     /**
      * UUID.
      */
@@ -105,5 +105,5 @@ export interface GetZeroTrustAccessCustomPageOutputArgs {
     /**
      * UUID.
      */
-    customPageId?: pulumi.Input<string>;
+    customPageId: pulumi.Input<string>;
 }

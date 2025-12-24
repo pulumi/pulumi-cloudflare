@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? BuildCommand;
         /// <summary>
-        /// Output directory of the build.
+        /// Assets output directory of the build.
         /// </summary>
         public readonly string? DestinationDir;
         /// <summary>

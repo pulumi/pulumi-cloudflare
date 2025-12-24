@@ -14,13 +14,17 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetR2BucketSippySourceResult
     {
         /// <summary>
-        /// Name of the bucket on the provider.
+        /// Name of the bucket on the provider (AWS, GCS only).
         /// </summary>
         public readonly string Bucket;
         /// <summary>
-        /// Available values: "aws", "gcs".
+        /// S3-compatible URL (Generic S3-compatible providers only).
         /// </summary>
-        public readonly string Provider;
+        public readonly string BucketUrl;
+        /// <summary>
+        /// Available values: "aws", "gcs", "s3".
+        /// </summary>
+        public readonly string R2BucketSippyProvider;
         /// <summary>
         /// Region where the bucket resides (AWS only).
         /// </summary>
@@ -30,12 +34,15 @@ namespace Pulumi.Cloudflare.Outputs
         private GetR2BucketSippySourceResult(
             string bucket,
 
-            string provider,
+            string bucketUrl,
+
+            string r2BucketSippyProvider,
 
             string region)
         {
             Bucket = bucket;
-            Provider = provider;
+            BucketUrl = bucketUrl;
+            R2BucketSippyProvider = r2BucketSippyProvider;
             Region = region;
         }
     }

@@ -43,8 +43,10 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var exampleByoIpPrefix = new ByoIpPrefix("exampleByoIpPrefix", ByoIpPrefixArgs.builder()
  *             .accountId("258def64c72dae45f3e4c8516e2111f2")
- *             .asn(209242)
+ *             .asn(13335)
  *             .cidr("192.0.2.0/24")
+ *             .delegateLoaCreation(true)
+ *             .description("Internal test prefix")
  *             .loaDocumentId("d933b1530bc56c9953cf8ce166da8004")
  *             .build());
  * 
@@ -161,6 +163,20 @@ public class ByoIpPrefix extends com.pulumi.resources.CustomResource {
         return this.createdAt;
     }
     /**
+     * Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+     * 
+     */
+    @Export(name="delegateLoaCreation", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> delegateLoaCreation;
+
+    /**
+     * @return Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+     * 
+     */
+    public Output<Boolean> delegateLoaCreation() {
+        return this.delegateLoaCreation;
+    }
+    /**
      * Description of the prefix.
      * 
      */
@@ -175,18 +191,32 @@ public class ByoIpPrefix extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * State of one kind of validation for an IP prefix.
+     * 
+     */
+    @Export(name="irrValidationState", refs={String.class}, tree="[0]")
+    private Output<String> irrValidationState;
+
+    /**
+     * @return State of one kind of validation for an IP prefix.
+     * 
+     */
+    public Output<String> irrValidationState() {
+        return this.irrValidationState;
+    }
+    /**
      * Identifier for the uploaded LOA document.
      * 
      */
     @Export(name="loaDocumentId", refs={String.class}, tree="[0]")
-    private Output<String> loaDocumentId;
+    private Output</* @Nullable */ String> loaDocumentId;
 
     /**
      * @return Identifier for the uploaded LOA document.
      * 
      */
-    public Output<String> loaDocumentId() {
-        return this.loaDocumentId;
+    public Output<Optional<String>> loaDocumentId() {
+        return Codegen.optional(this.loaDocumentId);
     }
     @Export(name="modifiedAt", refs={String.class}, tree="[0]")
     private Output<String> modifiedAt;
@@ -229,6 +259,48 @@ public class ByoIpPrefix extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> onDemandLocked() {
         return this.onDemandLocked;
+    }
+    /**
+     * State of one kind of validation for an IP prefix.
+     * 
+     */
+    @Export(name="ownershipValidationState", refs={String.class}, tree="[0]")
+    private Output<String> ownershipValidationState;
+
+    /**
+     * @return State of one kind of validation for an IP prefix.
+     * 
+     */
+    public Output<String> ownershipValidationState() {
+        return this.ownershipValidationState;
+    }
+    /**
+     * Token provided to demonstrate ownership of the prefix.
+     * 
+     */
+    @Export(name="ownershipValidationToken", refs={String.class}, tree="[0]")
+    private Output<String> ownershipValidationToken;
+
+    /**
+     * @return Token provided to demonstrate ownership of the prefix.
+     * 
+     */
+    public Output<String> ownershipValidationToken() {
+        return this.ownershipValidationToken;
+    }
+    /**
+     * State of one kind of validation for an IP prefix.
+     * 
+     */
+    @Export(name="rpkiValidationState", refs={String.class}, tree="[0]")
+    private Output<String> rpkiValidationState;
+
+    /**
+     * @return State of one kind of validation for an IP prefix.
+     * 
+     */
+    public Output<String> rpkiValidationState() {
+        return this.rpkiValidationState;
     }
 
     /**

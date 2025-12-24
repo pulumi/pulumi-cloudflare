@@ -144,7 +144,7 @@ class GetZeroTrustDlpDatasetResult:
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> _builtins.str:
         """
-        When the dataset was last updated.
+        Stores when the dataset was last updated.
         """
         return pulumi.get(self, "updated_at")
 

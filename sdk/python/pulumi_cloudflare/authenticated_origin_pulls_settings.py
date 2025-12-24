@@ -115,6 +115,10 @@ class AuthenticatedOriginPullsSettings(pulumi.CustomResource):
             enabled=True)
         ```
 
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enabled: Indicates whether zone-level authenticated origin pulls is enabled.
@@ -137,6 +141,10 @@ class AuthenticatedOriginPullsSettings(pulumi.CustomResource):
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             enabled=True)
         ```
+
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
 
         :param str resource_name: The name of the resource.
         :param AuthenticatedOriginPullsSettingsArgs args: The arguments to use to populate this resource's properties.

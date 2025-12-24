@@ -59,6 +59,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly ImmutableArray<Outputs.GetZeroTrustDeviceCustomProfilesResultExcludeResult> Excludes;
         public readonly ImmutableArray<Outputs.GetZeroTrustDeviceCustomProfilesResultFallbackDomainResult> FallbackDomains;
         public readonly string GatewayUniqueId;
+        public readonly string Id;
         /// <summary>
         /// List of routes included in the WARP client's tunnel.
         /// </summary>
@@ -135,6 +136,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string gatewayUniqueId,
 
+            string id,
+
             ImmutableArray<Outputs.GetZeroTrustDeviceCustomProfilesResultIncludeResult> includes,
 
             double lanAllowMinutes,
@@ -176,6 +179,7 @@ namespace Pulumi.Cloudflare.Outputs
             Excludes = excludes;
             FallbackDomains = fallbackDomains;
             GatewayUniqueId = gatewayUniqueId;
+            Id = id;
             Includes = includes;
             LanAllowMinutes = lanAllowMinutes;
             LanAllowSubnetSize = lanAllowSubnetSize;

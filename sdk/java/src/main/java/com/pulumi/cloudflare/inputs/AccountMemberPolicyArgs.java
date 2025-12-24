@@ -11,8 +11,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class AccountMemberPolicyArgs extends com.pulumi.resources.ResourceArgs {
@@ -34,21 +32,6 @@ public final class AccountMemberPolicyArgs extends com.pulumi.resources.Resource
      */
     public Output<String> access() {
         return this.access;
-    }
-
-    /**
-     * Policy identifier.
-     * 
-     */
-    @Import(name="id")
-    private @Nullable Output<String> id;
-
-    /**
-     * @return Policy identifier.
-     * 
-     */
-    public Optional<Output<String>> id() {
-        return Optional.ofNullable(this.id);
     }
 
     /**
@@ -85,7 +68,6 @@ public final class AccountMemberPolicyArgs extends com.pulumi.resources.Resource
 
     private AccountMemberPolicyArgs(AccountMemberPolicyArgs $) {
         this.access = $.access;
-        this.id = $.id;
         this.permissionGroups = $.permissionGroups;
         this.resourceGroups = $.resourceGroups;
     }
@@ -129,27 +111,6 @@ public final class AccountMemberPolicyArgs extends com.pulumi.resources.Resource
          */
         public Builder access(String access) {
             return access(Output.of(access));
-        }
-
-        /**
-         * @param id Policy identifier.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder id(@Nullable Output<String> id) {
-            $.id = id;
-            return this;
-        }
-
-        /**
-         * @param id Policy identifier.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder id(String id) {
-            return id(Output.of(id));
         }
 
         /**

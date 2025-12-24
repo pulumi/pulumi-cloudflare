@@ -45,10 +45,10 @@ public final class GetCloudforceOneRequestMessageResult {
      */
     private String created;
     /**
-     * @return Message ID.
+     * @return UUID.
      * 
      */
-    private Integer id;
+    private String id;
     /**
      * @return Whether the message is a follow-on request.
      * 
@@ -130,10 +130,10 @@ public final class GetCloudforceOneRequestMessageResult {
         return this.created;
     }
     /**
-     * @return Message ID.
+     * @return UUID.
      * 
      */
-    public Integer id() {
+    public String id() {
         return this.id;
     }
     /**
@@ -202,7 +202,7 @@ public final class GetCloudforceOneRequestMessageResult {
         private @Nullable String before;
         private String content;
         private String created;
-        private Integer id;
+        private String id;
         private Boolean isFollowOnRequest;
         private Integer page;
         private Integer perPage;
@@ -274,7 +274,7 @@ public final class GetCloudforceOneRequestMessageResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(Integer id) {
+        public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetCloudforceOneRequestMessageResult", "id");
             }

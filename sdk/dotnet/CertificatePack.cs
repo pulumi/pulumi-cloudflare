@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// &gt; Certificate packs are not able to be updated in place. If
+    /// you require a zero downtime rotation, you can create multiple
+    /// resources using a 2-phase change where you have both resources
+    /// live at once and you remove the old one once you've confirmed
+    /// the certificate is available.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -60,6 +66,12 @@ namespace Pulumi.Cloudflare
         public Output<string> CertificateAuthority { get; private set; } = null!;
 
         /// <summary>
+        /// Array of certificates in this pack.
+        /// </summary>
+        [Output("certificates")]
+        public Output<ImmutableArray<Outputs.CertificatePackCertificate>> Certificates { get; private set; } = null!;
+
+        /// <summary>
         /// Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
         /// </summary>
         [Output("cloudflareBranding")]
@@ -70,6 +82,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("hosts")]
         public Output<ImmutableArray<string>> Hosts { get; private set; } = null!;
+
+        /// <summary>
+        /// Identifier of the primary certificate in a pack.
+        /// </summary>
+        [Output("primaryCertificate")]
+        public Output<string> PrimaryCertificate { get; private set; } = null!;
 
         /// <summary>
         /// Status of certificate pack.
@@ -99,7 +117,7 @@ namespace Pulumi.Cloudflare
         public Output<string> ValidationMethod { get; private set; } = null!;
 
         /// <summary>
-        /// Certificates' validation records. Only present when certificate pack is in "pending*validation" status
+        /// Certificates' validation records.
         /// </summary>
         [Output("validationRecords")]
         public Output<ImmutableArray<Outputs.CertificatePackValidationRecord>> ValidationRecords { get; private set; } = null!;
@@ -176,7 +194,7 @@ namespace Pulumi.Cloudflare
         [Input("cloudflareBranding")]
         public Input<bool>? CloudflareBranding { get; set; }
 
-        [Input("hosts", required: true)]
+        [Input("hosts")]
         private InputList<string>? _hosts;
 
         /// <summary>
@@ -230,6 +248,18 @@ namespace Pulumi.Cloudflare
         [Input("certificateAuthority")]
         public Input<string>? CertificateAuthority { get; set; }
 
+        [Input("certificates")]
+        private InputList<Inputs.CertificatePackCertificateGetArgs>? _certificates;
+
+        /// <summary>
+        /// Array of certificates in this pack.
+        /// </summary>
+        public InputList<Inputs.CertificatePackCertificateGetArgs> Certificates
+        {
+            get => _certificates ?? (_certificates = new InputList<Inputs.CertificatePackCertificateGetArgs>());
+            set => _certificates = value;
+        }
+
         /// <summary>
         /// Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
         /// </summary>
@@ -247,6 +277,12 @@ namespace Pulumi.Cloudflare
             get => _hosts ?? (_hosts = new InputList<string>());
             set => _hosts = value;
         }
+
+        /// <summary>
+        /// Identifier of the primary certificate in a pack.
+        /// </summary>
+        [Input("primaryCertificate")]
+        public Input<string>? PrimaryCertificate { get; set; }
 
         /// <summary>
         /// Status of certificate pack.
@@ -285,7 +321,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.CertificatePackValidationRecordGetArgs>? _validationRecords;
 
         /// <summary>
-        /// Certificates' validation records. Only present when certificate pack is in "pending*validation" status
+        /// Certificates' validation records.
         /// </summary>
         public InputList<Inputs.CertificatePackValidationRecordGetArgs> ValidationRecords
         {

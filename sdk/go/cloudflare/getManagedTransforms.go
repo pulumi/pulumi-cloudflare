@@ -54,7 +54,7 @@ type LookupManagedTransformsArgs struct {
 
 // A collection of values returned by getManagedTransforms.
 type LookupManagedTransformsResult struct {
-	// The provider-assigned unique ID for this managed resource.
+	// The unique ID of the zone.
 	Id string `pulumi:"id"`
 	// The list of Managed Request Transforms.
 	ManagedRequestHeaders []GetManagedTransformsManagedRequestHeader `pulumi:"managedRequestHeaders"`
@@ -98,7 +98,7 @@ func (o LookupManagedTransformsResultOutput) ToLookupManagedTransformsResultOutp
 	return o
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The unique ID of the zone.
 func (o LookupManagedTransformsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedTransformsResult) string { return v.Id }).(pulumi.StringOutput)
 }

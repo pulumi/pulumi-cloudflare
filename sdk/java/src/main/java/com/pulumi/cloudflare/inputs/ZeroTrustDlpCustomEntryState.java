@@ -5,11 +5,13 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomEntryConfidenceArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomEntryPatternArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomEntryProfileArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomEntryVariantArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -87,6 +89,13 @@ public final class ZeroTrustDlpCustomEntryState extends com.pulumi.resources.Res
         return Optional.ofNullable(this.profileId);
     }
 
+    @Import(name="profiles")
+    private @Nullable Output<List<ZeroTrustDlpCustomEntryProfileArgs>> profiles;
+
+    public Optional<Output<List<ZeroTrustDlpCustomEntryProfileArgs>>> profiles() {
+        return Optional.ofNullable(this.profiles);
+    }
+
     @Import(name="secret")
     private @Nullable Output<Boolean> secret;
 
@@ -116,6 +125,21 @@ public final class ZeroTrustDlpCustomEntryState extends com.pulumi.resources.Res
         return Optional.ofNullable(this.updatedAt);
     }
 
+    /**
+     * Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;pending&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+     * 
+     */
+    @Import(name="uploadStatus")
+    private @Nullable Output<String> uploadStatus;
+
+    /**
+     * @return Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;pending&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+     * 
+     */
+    public Optional<Output<String>> uploadStatus() {
+        return Optional.ofNullable(this.uploadStatus);
+    }
+
     @Import(name="variant")
     private @Nullable Output<ZeroTrustDlpCustomEntryVariantArgs> variant;
 
@@ -141,9 +165,11 @@ public final class ZeroTrustDlpCustomEntryState extends com.pulumi.resources.Res
         this.name = $.name;
         this.pattern = $.pattern;
         this.profileId = $.profileId;
+        this.profiles = $.profiles;
         this.secret = $.secret;
         this.type = $.type;
         this.updatedAt = $.updatedAt;
+        this.uploadStatus = $.uploadStatus;
         this.variant = $.variant;
         this.wordList = $.wordList;
     }
@@ -254,6 +280,19 @@ public final class ZeroTrustDlpCustomEntryState extends com.pulumi.resources.Res
             return profileId(Output.of(profileId));
         }
 
+        public Builder profiles(@Nullable Output<List<ZeroTrustDlpCustomEntryProfileArgs>> profiles) {
+            $.profiles = profiles;
+            return this;
+        }
+
+        public Builder profiles(List<ZeroTrustDlpCustomEntryProfileArgs> profiles) {
+            return profiles(Output.of(profiles));
+        }
+
+        public Builder profiles(ZeroTrustDlpCustomEntryProfileArgs... profiles) {
+            return profiles(List.of(profiles));
+        }
+
         public Builder secret(@Nullable Output<Boolean> secret) {
             $.secret = secret;
             return this;
@@ -291,6 +330,27 @@ public final class ZeroTrustDlpCustomEntryState extends com.pulumi.resources.Res
 
         public Builder updatedAt(String updatedAt) {
             return updatedAt(Output.of(updatedAt));
+        }
+
+        /**
+         * @param uploadStatus Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;pending&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uploadStatus(@Nullable Output<String> uploadStatus) {
+            $.uploadStatus = uploadStatus;
+            return this;
+        }
+
+        /**
+         * @param uploadStatus Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;pending&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uploadStatus(String uploadStatus) {
+            return uploadStatus(Output.of(uploadStatus));
         }
 
         public Builder variant(@Nullable Output<ZeroTrustDlpCustomEntryVariantArgs> variant) {

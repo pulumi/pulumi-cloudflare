@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  *     bucketName: "example-bucket",
  *     destination: {
  *         accessKeyId: "accessKeyId",
- *         provider: "r2",
+ *         cloudProvider: "r2",
  *         secretAccessKey: "secretAccessKey",
  *     },
  *     source: {
@@ -30,6 +30,10 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ~> This resource does not currently support `pulumi import`.
  */
 export class R2BucketSippy extends pulumi.CustomResource {
     /**

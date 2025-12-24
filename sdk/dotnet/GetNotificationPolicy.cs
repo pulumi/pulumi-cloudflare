@@ -93,8 +93,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The unique identifier of a notification policy
         /// </summary>
-        [Input("policyId")]
-        public string? PolicyId { get; set; }
+        [Input("policyId", required: true)]
+        public string PolicyId { get; set; } = null!;
 
         public GetNotificationPolicyArgs()
         {
@@ -113,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The unique identifier of a notification policy
         /// </summary>
-        [Input("policyId")]
-        public Input<string>? PolicyId { get; set; }
+        [Input("policyId", required: true)]
+        public Input<string> PolicyId { get; set; } = null!;
 
         public GetNotificationPolicyInvokeArgs()
         {
@@ -168,7 +168,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The unique identifier of a notification policy
         /// </summary>
-        public readonly string? PolicyId;
+        public readonly string PolicyId;
 
         [OutputConstructor]
         private GetNotificationPolicyResult(
@@ -194,7 +194,7 @@ namespace Pulumi.Cloudflare
 
             string name,
 
-            string? policyId)
+            string policyId)
         {
             AccountId = accountId;
             AlertInterval = alertInterval;

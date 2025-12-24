@@ -4,10 +4,9 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class PagesProjectDeploymentConfigsPreviewLimits {
@@ -15,15 +14,15 @@ public final class PagesProjectDeploymentConfigsPreviewLimits {
      * @return CPU time limit in milliseconds.
      * 
      */
-    private @Nullable Integer cpuMs;
+    private Integer cpuMs;
 
     private PagesProjectDeploymentConfigsPreviewLimits() {}
     /**
      * @return CPU time limit in milliseconds.
      * 
      */
-    public Optional<Integer> cpuMs() {
-        return Optional.ofNullable(this.cpuMs);
+    public Integer cpuMs() {
+        return this.cpuMs;
     }
 
     public static Builder builder() {
@@ -35,7 +34,7 @@ public final class PagesProjectDeploymentConfigsPreviewLimits {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Integer cpuMs;
+        private Integer cpuMs;
         public Builder() {}
         public Builder(PagesProjectDeploymentConfigsPreviewLimits defaults) {
     	      Objects.requireNonNull(defaults);
@@ -43,8 +42,10 @@ public final class PagesProjectDeploymentConfigsPreviewLimits {
         }
 
         @CustomType.Setter
-        public Builder cpuMs(@Nullable Integer cpuMs) {
-
+        public Builder cpuMs(Integer cpuMs) {
+            if (cpuMs == null) {
+              throw new MissingRequiredPropertyException("PagesProjectDeploymentConfigsPreviewLimits", "cpuMs");
+            }
             this.cpuMs = cpuMs;
             return this;
         }

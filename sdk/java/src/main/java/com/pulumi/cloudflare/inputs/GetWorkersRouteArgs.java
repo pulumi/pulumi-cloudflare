@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetWorkersRouteArgs extends com.pulumi.resources.InvokeArgs {
@@ -20,15 +18,15 @@ public final class GetWorkersRouteArgs extends com.pulumi.resources.InvokeArgs {
      * Identifier.
      * 
      */
-    @Import(name="routeId")
-    private @Nullable Output<String> routeId;
+    @Import(name="routeId", required=true)
+    private Output<String> routeId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Optional<Output<String>> routeId() {
-        return Optional.ofNullable(this.routeId);
+    public Output<String> routeId() {
+        return this.routeId;
     }
 
     /**
@@ -77,7 +75,7 @@ public final class GetWorkersRouteArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder routeId(@Nullable Output<String> routeId) {
+        public Builder routeId(Output<String> routeId) {
             $.routeId = routeId;
             return this;
         }
@@ -114,6 +112,9 @@ public final class GetWorkersRouteArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetWorkersRouteArgs build() {
+            if ($.routeId == null) {
+                throw new MissingRequiredPropertyException("GetWorkersRouteArgs", "routeId");
+            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("GetWorkersRouteArgs", "zoneId");
             }

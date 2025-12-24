@@ -134,7 +134,7 @@ class GetZeroTrustDlpCustomProfileResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The id of the profile (uuid).
+        The ID of this resource.
         """
         return pulumi.get(self, "id")
 

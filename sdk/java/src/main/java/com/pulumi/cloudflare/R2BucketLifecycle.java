@@ -83,6 +83,10 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ## Import
+ * 
+ * ~&gt; This resource does not currently support `pulumi import`.
+ * 
  */
 @ResourceType(type="cloudflare:index/r2BucketLifecycle:R2BucketLifecycle")
 public class R2BucketLifecycle extends com.pulumi.resources.CustomResource {

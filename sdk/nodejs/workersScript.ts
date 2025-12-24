@@ -215,7 +215,6 @@ export class WorkersScript extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly migrationTag: pulumi.Output<string>;
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Migrations to apply for Durable Objects associated with this Worker.
      */
     declare public readonly migrations: pulumi.Output<outputs.WorkersScriptMigrations | undefined>;
@@ -317,7 +316,7 @@ export class WorkersScript extends pulumi.CustomResource {
             resourceInputs["limits"] = args?.limits;
             resourceInputs["logpush"] = args?.logpush;
             resourceInputs["mainModule"] = args?.mainModule;
-            resourceInputs["migrations"] = args?.migrations ? pulumi.secret(args.migrations) : undefined;
+            resourceInputs["migrations"] = args?.migrations;
             resourceInputs["observability"] = args?.observability;
             resourceInputs["placement"] = args?.placement;
             resourceInputs["scriptName"] = args?.scriptName;
@@ -337,8 +336,6 @@ export class WorkersScript extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/workerScript:WorkerScript" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
-        const secretOpts = { additionalSecretOutputs: ["migrations"] };
-        opts = pulumi.mergeOptions(opts, secretOpts);
         super(WorkersScript.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -436,7 +433,6 @@ export interface WorkersScriptState {
      */
     migrationTag?: pulumi.Input<string>;
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Migrations to apply for Durable Objects associated with this Worker.
      */
     migrations?: pulumi.Input<inputs.WorkersScriptMigrations>;
@@ -537,7 +533,6 @@ export interface WorkersScriptArgs {
      */
     mainModule?: pulumi.Input<string>;
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Migrations to apply for Durable Objects associated with this Worker.
      */
     migrations?: pulumi.Input<inputs.WorkersScriptMigrations>;

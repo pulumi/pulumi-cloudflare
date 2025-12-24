@@ -12,8 +12,6 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetHealthcheckResult {
@@ -52,7 +50,7 @@ public final class GetHealthcheckResult {
      * @return Identifier
      * 
      */
-    private @Nullable String healthcheckId;
+    private String healthcheckId;
     /**
      * @return Parameters specific to an HTTP or HTTPS health check.
      * 
@@ -161,8 +159,8 @@ public final class GetHealthcheckResult {
      * @return Identifier
      * 
      */
-    public Optional<String> healthcheckId() {
-        return Optional.ofNullable(this.healthcheckId);
+    public String healthcheckId() {
+        return this.healthcheckId;
     }
     /**
      * @return Parameters specific to an HTTP or HTTPS health check.
@@ -262,7 +260,7 @@ public final class GetHealthcheckResult {
         private String createdOn;
         private String description;
         private String failureReason;
-        private @Nullable String healthcheckId;
+        private String healthcheckId;
         private GetHealthcheckHttpConfig httpConfig;
         private String id;
         private Integer interval;
@@ -360,8 +358,10 @@ public final class GetHealthcheckResult {
             return this;
         }
         @CustomType.Setter
-        public Builder healthcheckId(@Nullable String healthcheckId) {
-
+        public Builder healthcheckId(String healthcheckId) {
+            if (healthcheckId == null) {
+              throw new MissingRequiredPropertyException("GetHealthcheckResult", "healthcheckId");
+            }
             this.healthcheckId = healthcheckId;
             return this;
         }

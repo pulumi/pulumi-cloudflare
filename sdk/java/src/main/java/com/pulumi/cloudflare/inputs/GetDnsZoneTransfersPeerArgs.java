@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetDnsZoneTransfersPeerArgs extends com.pulumi.resources.InvokeArgs {
@@ -23,11 +21,11 @@ public final class GetDnsZoneTransfersPeerArgs extends com.pulumi.resources.Invo
         return this.accountId;
     }
 
-    @Import(name="peerId")
-    private @Nullable Output<String> peerId;
+    @Import(name="peerId", required=true)
+    private Output<String> peerId;
 
-    public Optional<Output<String>> peerId() {
-        return Optional.ofNullable(this.peerId);
+    public Output<String> peerId() {
+        return this.peerId;
     }
 
     private GetDnsZoneTransfersPeerArgs() {}
@@ -64,7 +62,7 @@ public final class GetDnsZoneTransfersPeerArgs extends com.pulumi.resources.Invo
             return accountId(Output.of(accountId));
         }
 
-        public Builder peerId(@Nullable Output<String> peerId) {
+        public Builder peerId(Output<String> peerId) {
             $.peerId = peerId;
             return this;
         }
@@ -76,6 +74,9 @@ public final class GetDnsZoneTransfersPeerArgs extends com.pulumi.resources.Invo
         public GetDnsZoneTransfersPeerArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetDnsZoneTransfersPeerArgs", "accountId");
+            }
+            if ($.peerId == null) {
+                throw new MissingRequiredPropertyException("GetDnsZoneTransfersPeerArgs", "peerId");
             }
             return $;
         }

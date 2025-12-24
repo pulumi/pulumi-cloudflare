@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetZeroTrustDevicePostureRuleArgs extends com.pulumi.resources.InvokeArgs {
@@ -27,15 +25,15 @@ public final class GetZeroTrustDevicePostureRuleArgs extends com.pulumi.resource
      * API UUID.
      * 
      */
-    @Import(name="ruleId")
-    private @Nullable Output<String> ruleId;
+    @Import(name="ruleId", required=true)
+    private Output<String> ruleId;
 
     /**
      * @return API UUID.
      * 
      */
-    public Optional<Output<String>> ruleId() {
-        return Optional.ofNullable(this.ruleId);
+    public Output<String> ruleId() {
+        return this.ruleId;
     }
 
     private GetZeroTrustDevicePostureRuleArgs() {}
@@ -78,7 +76,7 @@ public final class GetZeroTrustDevicePostureRuleArgs extends com.pulumi.resource
          * @return builder
          * 
          */
-        public Builder ruleId(@Nullable Output<String> ruleId) {
+        public Builder ruleId(Output<String> ruleId) {
             $.ruleId = ruleId;
             return this;
         }
@@ -96,6 +94,9 @@ public final class GetZeroTrustDevicePostureRuleArgs extends com.pulumi.resource
         public GetZeroTrustDevicePostureRuleArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetZeroTrustDevicePostureRuleArgs", "accountId");
+            }
+            if ($.ruleId == null) {
+                throw new MissingRequiredPropertyException("GetZeroTrustDevicePostureRuleArgs", "ruleId");
             }
             return $;
         }

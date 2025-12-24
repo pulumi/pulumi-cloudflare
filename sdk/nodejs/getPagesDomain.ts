@@ -34,13 +34,13 @@ export function getPagesDomain(args: GetPagesDomainArgs, opts?: pulumi.InvokeOpt
  */
 export interface GetPagesDomainArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
     /**
-     * Name of the domain.
+     * The domain name.
      */
-    domainName?: string;
+    domainName: string;
     /**
      * Name of the project.
      */
@@ -52,7 +52,7 @@ export interface GetPagesDomainArgs {
  */
 export interface GetPagesDomainResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
@@ -62,13 +62,16 @@ export interface GetPagesDomainResult {
     readonly createdOn: string;
     readonly domainId: string;
     /**
-     * Name of the domain.
+     * The domain name.
      */
-    readonly domainName?: string;
+    readonly domainName: string;
     /**
-     * Name of the domain.
+     * The domain name.
      */
     readonly id: string;
+    /**
+     * The domain name.
+     */
     readonly name: string;
     /**
      * Name of the project.
@@ -110,13 +113,13 @@ export function getPagesDomainOutput(args: GetPagesDomainOutputArgs, opts?: pulu
  */
 export interface GetPagesDomainOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**
-     * Name of the domain.
+     * The domain name.
      */
-    domainName?: pulumi.Input<string>;
+    domainName: pulumi.Input<string>;
     /**
      * Name of the project.
      */

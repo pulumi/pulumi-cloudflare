@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetNotificationPolicyPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -34,15 +32,15 @@ public final class GetNotificationPolicyPlainArgs extends com.pulumi.resources.I
      * The unique identifier of a notification policy
      * 
      */
-    @Import(name="policyId")
-    private @Nullable String policyId;
+    @Import(name="policyId", required=true)
+    private String policyId;
 
     /**
      * @return The unique identifier of a notification policy
      * 
      */
-    public Optional<String> policyId() {
-        return Optional.ofNullable(this.policyId);
+    public String policyId() {
+        return this.policyId;
     }
 
     private GetNotificationPolicyPlainArgs() {}
@@ -87,7 +85,7 @@ public final class GetNotificationPolicyPlainArgs extends com.pulumi.resources.I
          * @return builder
          * 
          */
-        public Builder policyId(@Nullable String policyId) {
+        public Builder policyId(String policyId) {
             $.policyId = policyId;
             return this;
         }
@@ -95,6 +93,9 @@ public final class GetNotificationPolicyPlainArgs extends com.pulumi.resources.I
         public GetNotificationPolicyPlainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetNotificationPolicyPlainArgs", "accountId");
+            }
+            if ($.policyId == null) {
+                throw new MissingRequiredPropertyException("GetNotificationPolicyPlainArgs", "policyId");
             }
             return $;
         }

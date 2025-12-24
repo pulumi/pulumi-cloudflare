@@ -37,7 +37,7 @@ import (
 //						Parameters: &cloudflare.CloudConnectorRulesRuleParametersArgs{
 //							Host: pulumi.String("examplebucket.s3.eu-north-1.amazonaws.com"),
 //						},
-//						Provider: pulumi.String("aws_s3"),
+//						CloudConnectorRulesProvider: "aws_s3",
 //					},
 //				},
 //			})

@@ -16,7 +16,7 @@ public final class GetWorkersKvResult {
      */
     private String accountId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return A key&#39;s name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
      * 
      */
     private String id;
@@ -40,7 +40,7 @@ public final class GetWorkersKvResult {
         return this.accountId;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return A key&#39;s name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
      * 
      */
     public String id() {

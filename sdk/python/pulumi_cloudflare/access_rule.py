@@ -478,7 +478,7 @@ class AccessRule(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def notes(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def notes(self) -> pulumi.Output[_builtins.str]:
         """
         An informative summary of the rule, typically used as a reminder or explanation.
         """

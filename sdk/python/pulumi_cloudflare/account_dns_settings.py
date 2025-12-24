@@ -132,6 +132,10 @@ class AccountDnsSettings(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -175,6 +179,10 @@ class AccountDnsSettings(pulumi.CustomResource):
                 "zone_mode": "dns_only",
             })
         ```
+
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
 
         :param str resource_name: The name of the resource.
         :param AccountDnsSettingsArgs args: The arguments to use to populate this resource's properties.

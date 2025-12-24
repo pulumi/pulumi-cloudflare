@@ -103,6 +103,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("shortId")]
         public Input<string>? ShortId { get; set; }
 
+        /// <summary>
+        /// Configs for the project source control.
+        /// </summary>
         [Input("source")]
         public Input<Inputs.PagesProjectLatestDeploymentSourceGetArgs>? Source { get; set; }
 
@@ -123,6 +126,12 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
+
+        /// <summary>
+        /// Whether the deployment uses functions.
+        /// </summary>
+        [Input("usesFunctions")]
+        public Input<bool>? UsesFunctions { get; set; }
 
         public PagesProjectLatestDeploymentGetArgs()
         {

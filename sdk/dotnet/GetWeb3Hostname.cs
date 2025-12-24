@@ -87,8 +87,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Specify the identifier of the hostname.
         /// </summary>
-        [Input("identifier")]
-        public string? Identifier { get; set; }
+        [Input("identifier", required: true)]
+        public string Identifier { get; set; } = null!;
 
         /// <summary>
         /// Specify the identifier of the hostname.
@@ -107,8 +107,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Specify the identifier of the hostname.
         /// </summary>
-        [Input("identifier")]
-        public Input<string>? Identifier { get; set; }
+        [Input("identifier", required: true)]
+        public Input<string> Identifier { get; set; } = null!;
 
         /// <summary>
         /// Specify the identifier of the hostname.
@@ -142,7 +142,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Specify the identifier of the hostname.
         /// </summary>
-        public readonly string? Identifier;
+        public readonly string Identifier;
         public readonly string ModifiedOn;
         /// <summary>
         /// Specify the hostname that points to the target gateway via CNAME.
@@ -173,7 +173,7 @@ namespace Pulumi.Cloudflare
 
             string id,
 
-            string? identifier,
+            string identifier,
 
             string modifiedOn,
 

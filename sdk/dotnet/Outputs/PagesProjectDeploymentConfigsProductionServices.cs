@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// The Service name.
         /// </summary>
-        public readonly string? Service;
+        public readonly string Service;
 
         [OutputConstructor]
         private PagesProjectDeploymentConfigsProductionServices(
@@ -32,7 +32,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? environment,
 
-            string? service)
+            string service)
         {
             Entrypoint = entrypoint;
             Environment = environment;

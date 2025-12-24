@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupZeroTrustDevicePostureRule(ctx, &cloudflare.LookupZeroTrustDevicePostureRuleArgs{
 //				AccountId: "699d98642c564d2e855e9661899b7252",
-//				RuleId:    pulumi.StringRef("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
+//				RuleId:    "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,7 +51,7 @@ func LookupZeroTrustDevicePostureRule(ctx *pulumi.Context, args *LookupZeroTrust
 type LookupZeroTrustDevicePostureRuleArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// API UUID.
-	RuleId *string `pulumi:"ruleId"`
+	RuleId string `pulumi:"ruleId"`
 }
 
 // A collection of values returned by getZeroTrustDevicePostureRule.
@@ -70,11 +70,11 @@ type LookupZeroTrustDevicePostureRuleResult struct {
 	// The name of the device posture rule.
 	Name string `pulumi:"name"`
 	// API UUID.
-	RuleId *string `pulumi:"ruleId"`
+	RuleId string `pulumi:"ruleId"`
 	// Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
 	Schedule string `pulumi:"schedule"`
 	// The type of device posture rule.
-	// Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "serial*number", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom*s2s".
+	// Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "serial*number", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "antivirus", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom*s2s".
 	Type string `pulumi:"type"`
 }
 
@@ -91,7 +91,7 @@ func LookupZeroTrustDevicePostureRuleOutput(ctx *pulumi.Context, args LookupZero
 type LookupZeroTrustDevicePostureRuleOutputArgs struct {
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// API UUID.
-	RuleId pulumi.StringPtrInput `pulumi:"ruleId"`
+	RuleId pulumi.StringInput `pulumi:"ruleId"`
 }
 
 func (LookupZeroTrustDevicePostureRuleOutputArgs) ElementType() reflect.Type {
@@ -148,8 +148,8 @@ func (o LookupZeroTrustDevicePostureRuleResultOutput) Name() pulumi.StringOutput
 }
 
 // API UUID.
-func (o LookupZeroTrustDevicePostureRuleResultOutput) RuleId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupZeroTrustDevicePostureRuleResult) *string { return v.RuleId }).(pulumi.StringPtrOutput)
+func (o LookupZeroTrustDevicePostureRuleResultOutput) RuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustDevicePostureRuleResult) string { return v.RuleId }).(pulumi.StringOutput)
 }
 
 // Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
@@ -158,7 +158,7 @@ func (o LookupZeroTrustDevicePostureRuleResultOutput) Schedule() pulumi.StringOu
 }
 
 // The type of device posture rule.
-// Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "serial*number", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom*s2s".
+// Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "serial*number", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "antivirus", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom*s2s".
 func (o LookupZeroTrustDevicePostureRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDevicePostureRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -16,11 +16,19 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// The name of the tag
         /// </summary>
+        public readonly string Id;
+        /// <summary>
+        /// The name of the tag
+        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]
-        private GetZeroTrustAccessTagsResultResult(string name)
+        private GetZeroTrustAccessTagsResultResult(
+            string id,
+
+            string name)
         {
+            Id = id;
             Name = name;
         }
     }

@@ -11,8 +11,6 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAddressMapResult {
@@ -25,7 +23,7 @@ public final class GetAddressMapResult {
      * @return Identifier of an Address Map.
      * 
      */
-    private @Nullable String addressMapId;
+    private String addressMapId;
     /**
      * @return If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
      * 
@@ -81,8 +79,8 @@ public final class GetAddressMapResult {
      * @return Identifier of an Address Map.
      * 
      */
-    public Optional<String> addressMapId() {
-        return Optional.ofNullable(this.addressMapId);
+    public String addressMapId() {
+        return this.addressMapId;
     }
     /**
      * @return If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
@@ -157,7 +155,7 @@ public final class GetAddressMapResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
-        private @Nullable String addressMapId;
+        private String addressMapId;
         private Boolean canDelete;
         private Boolean canModifyIps;
         private String createdAt;
@@ -194,8 +192,10 @@ public final class GetAddressMapResult {
             return this;
         }
         @CustomType.Setter
-        public Builder addressMapId(@Nullable String addressMapId) {
-
+        public Builder addressMapId(String addressMapId) {
+            if (addressMapId == null) {
+              throw new MissingRequiredPropertyException("GetAddressMapResult", "addressMapId");
+            }
             this.addressMapId = addressMapId;
             return this;
         }

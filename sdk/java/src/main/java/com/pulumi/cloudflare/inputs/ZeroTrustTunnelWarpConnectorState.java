@@ -6,7 +6,6 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.ZeroTrustTunnelWarpConnectorConnectionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -46,23 +45,6 @@ public final class ZeroTrustTunnelWarpConnectorState extends com.pulumi.resource
      */
     public Optional<Output<String>> accountTag() {
         return Optional.ofNullable(this.accountTag);
-    }
-
-    /**
-     * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
-     * Available values: &#34;local&#34;, &#34;cloudflare&#34;.
-     * 
-     */
-    @Import(name="configSrc")
-    private @Nullable Output<String> configSrc;
-
-    /**
-     * @return Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
-     * Available values: &#34;local&#34;, &#34;cloudflare&#34;.
-     * 
-     */
-    public Optional<Output<String>> configSrc() {
-        return Optional.ofNullable(this.configSrc);
     }
 
     /**
@@ -179,29 +161,6 @@ public final class ZeroTrustTunnelWarpConnectorState extends com.pulumi.resource
     }
 
     /**
-     * If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
-     * 
-     * @deprecated
-     * Use the configSrc field instead.
-     * 
-     */
-    @Deprecated /* Use the configSrc field instead. */
-    @Import(name="remoteConfig")
-    private @Nullable Output<Boolean> remoteConfig;
-
-    /**
-     * @return If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
-     * 
-     * @deprecated
-     * Use the configSrc field instead.
-     * 
-     */
-    @Deprecated /* Use the configSrc field instead. */
-    public Optional<Output<Boolean>> remoteConfig() {
-        return Optional.ofNullable(this.remoteConfig);
-    }
-
-    /**
      * The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
      * Available values: &#34;inactive&#34;, &#34;degraded&#34;, &#34;healthy&#34;, &#34;down&#34;.
      * 
@@ -255,7 +214,6 @@ public final class ZeroTrustTunnelWarpConnectorState extends com.pulumi.resource
     private ZeroTrustTunnelWarpConnectorState(ZeroTrustTunnelWarpConnectorState $) {
         this.accountId = $.accountId;
         this.accountTag = $.accountTag;
-        this.configSrc = $.configSrc;
         this.connections = $.connections;
         this.connsActiveAt = $.connsActiveAt;
         this.connsInactiveAt = $.connsInactiveAt;
@@ -263,7 +221,6 @@ public final class ZeroTrustTunnelWarpConnectorState extends com.pulumi.resource
         this.deletedAt = $.deletedAt;
         this.metadata = $.metadata;
         this.name = $.name;
-        this.remoteConfig = $.remoteConfig;
         this.status = $.status;
         this.tunType = $.tunType;
         this.tunnelSecret = $.tunnelSecret;
@@ -327,29 +284,6 @@ public final class ZeroTrustTunnelWarpConnectorState extends com.pulumi.resource
          */
         public Builder accountTag(String accountTag) {
             return accountTag(Output.of(accountTag));
-        }
-
-        /**
-         * @param configSrc Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
-         * Available values: &#34;local&#34;, &#34;cloudflare&#34;.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder configSrc(@Nullable Output<String> configSrc) {
-            $.configSrc = configSrc;
-            return this;
-        }
-
-        /**
-         * @param configSrc Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
-         * Available values: &#34;local&#34;, &#34;cloudflare&#34;.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder configSrc(String configSrc) {
-            return configSrc(Output.of(configSrc));
         }
 
         /**
@@ -519,35 +453,6 @@ public final class ZeroTrustTunnelWarpConnectorState extends com.pulumi.resource
          */
         public Builder name(String name) {
             return name(Output.of(name));
-        }
-
-        /**
-         * @param remoteConfig If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use the configSrc field instead.
-         * 
-         */
-        @Deprecated /* Use the configSrc field instead. */
-        public Builder remoteConfig(@Nullable Output<Boolean> remoteConfig) {
-            $.remoteConfig = remoteConfig;
-            return this;
-        }
-
-        /**
-         * @param remoteConfig If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use the configSrc field instead.
-         * 
-         */
-        @Deprecated /* Use the configSrc field instead. */
-        public Builder remoteConfig(Boolean remoteConfig) {
-            return remoteConfig(Output.of(remoteConfig));
         }
 
         /**

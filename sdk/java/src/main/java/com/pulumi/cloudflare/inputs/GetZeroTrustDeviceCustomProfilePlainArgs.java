@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetZeroTrustDeviceCustomProfilePlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -22,11 +20,11 @@ public final class GetZeroTrustDeviceCustomProfilePlainArgs extends com.pulumi.r
         return this.accountId;
     }
 
-    @Import(name="policyId")
-    private @Nullable String policyId;
+    @Import(name="policyId", required=true)
+    private String policyId;
 
-    public Optional<String> policyId() {
-        return Optional.ofNullable(this.policyId);
+    public String policyId() {
+        return this.policyId;
     }
 
     private GetZeroTrustDeviceCustomProfilePlainArgs() {}
@@ -59,7 +57,7 @@ public final class GetZeroTrustDeviceCustomProfilePlainArgs extends com.pulumi.r
             return this;
         }
 
-        public Builder policyId(@Nullable String policyId) {
+        public Builder policyId(String policyId) {
             $.policyId = policyId;
             return this;
         }
@@ -67,6 +65,9 @@ public final class GetZeroTrustDeviceCustomProfilePlainArgs extends com.pulumi.r
         public GetZeroTrustDeviceCustomProfilePlainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetZeroTrustDeviceCustomProfilePlainArgs", "accountId");
+            }
+            if ($.policyId == null) {
+                throw new MissingRequiredPropertyException("GetZeroTrustDeviceCustomProfilePlainArgs", "policyId");
             }
             return $;
         }

@@ -39,6 +39,10 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ~&gt; This resource does not currently support `pulumi import`.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/queueConsumer:QueueConsumer")]
     public partial class QueueConsumer : global::Pulumi.CustomResource
@@ -53,7 +57,7 @@ namespace Pulumi.Cloudflare
         /// A Resource identifier.
         /// </summary>
         [Output("consumerId")]
-        public Output<string?> ConsumerId { get; private set; } = null!;
+        public Output<string> ConsumerId { get; private set; } = null!;
 
         [Output("createdOn")]
         public Output<string> CreatedOn { get; private set; } = null!;
@@ -139,12 +143,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
-
-        /// <summary>
-        /// A Resource identifier.
-        /// </summary>
-        [Input("consumerId")]
-        public Input<string>? ConsumerId { get; set; }
 
         [Input("deadLetterQueue")]
         public Input<string>? DeadLetterQueue { get; set; }

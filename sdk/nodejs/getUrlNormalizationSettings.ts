@@ -38,7 +38,7 @@ export interface GetUrlNormalizationSettingsArgs {
  */
 export interface GetUrlNormalizationSettingsResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The unique ID of the zone.
      */
     readonly id: string;
     /**

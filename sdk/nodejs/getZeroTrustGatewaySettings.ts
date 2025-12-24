@@ -39,7 +39,7 @@ export interface GetZeroTrustGatewaySettingsResult {
     readonly accountId: string;
     readonly createdAt: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this resource.
      */
     readonly id: string;
     /**

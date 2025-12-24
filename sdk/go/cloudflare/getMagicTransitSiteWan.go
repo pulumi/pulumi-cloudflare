@@ -28,7 +28,7 @@ import (
 //			_, err := cloudflare.LookupMagicTransitSiteWan(ctx, &cloudflare.LookupMagicTransitSiteWanArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				SiteId:    "023e105f4ecef8ad9ca31a8372d0c353",
-//				WanId:     pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				WanId:     "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -55,7 +55,7 @@ type LookupMagicTransitSiteWanArgs struct {
 	// Identifier
 	SiteId string `pulumi:"siteId"`
 	// Identifier
-	WanId *string `pulumi:"wanId"`
+	WanId string `pulumi:"wanId"`
 }
 
 // A collection of values returned by getMagicTransitSiteWan.
@@ -78,7 +78,7 @@ type LookupMagicTransitSiteWanResult struct {
 	// VLAN ID. Use zero for untagged.
 	VlanTag int `pulumi:"vlanTag"`
 	// Identifier
-	WanId *string `pulumi:"wanId"`
+	WanId string `pulumi:"wanId"`
 }
 
 func LookupMagicTransitSiteWanOutput(ctx *pulumi.Context, args LookupMagicTransitSiteWanOutputArgs, opts ...pulumi.InvokeOption) LookupMagicTransitSiteWanResultOutput {
@@ -97,7 +97,7 @@ type LookupMagicTransitSiteWanOutputArgs struct {
 	// Identifier
 	SiteId pulumi.StringInput `pulumi:"siteId"`
 	// Identifier
-	WanId pulumi.StringPtrInput `pulumi:"wanId"`
+	WanId pulumi.StringInput `pulumi:"wanId"`
 }
 
 func (LookupMagicTransitSiteWanOutputArgs) ElementType() reflect.Type {
@@ -166,8 +166,8 @@ func (o LookupMagicTransitSiteWanResultOutput) VlanTag() pulumi.IntOutput {
 }
 
 // Identifier
-func (o LookupMagicTransitSiteWanResultOutput) WanId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMagicTransitSiteWanResult) *string { return v.WanId }).(pulumi.StringPtrOutput)
+func (o LookupMagicTransitSiteWanResultOutput) WanId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMagicTransitSiteWanResult) string { return v.WanId }).(pulumi.StringOutput)
 }
 
 func init() {

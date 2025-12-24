@@ -107,14 +107,14 @@ public final class ZeroTrustDlpDatasetDatasetArgs extends com.pulumi.resources.R
     }
 
     /**
-     * When the dataset was last updated.
+     * Stores when the dataset was last updated.
      * 
      */
     @Import(name="updatedAt")
     private @Nullable Output<String> updatedAt;
 
     /**
-     * @return When the dataset was last updated.
+     * @return Stores when the dataset was last updated.
      * 
      */
     public Optional<Output<String>> updatedAt() {
@@ -282,7 +282,7 @@ public final class ZeroTrustDlpDatasetDatasetArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param updatedAt When the dataset was last updated.
+         * @param updatedAt Stores when the dataset was last updated.
          * 
          * @return builder
          * 
@@ -293,7 +293,7 @@ public final class ZeroTrustDlpDatasetDatasetArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param updatedAt When the dataset was last updated.
+         * @param updatedAt Stores when the dataset was last updated.
          * 
          * @return builder
          * 

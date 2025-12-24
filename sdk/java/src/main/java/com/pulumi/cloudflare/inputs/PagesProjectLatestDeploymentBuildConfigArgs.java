@@ -47,14 +47,14 @@ public final class PagesProjectLatestDeploymentBuildConfigArgs extends com.pulum
     }
 
     /**
-     * Output directory of the build.
+     * Assets output directory of the build.
      * 
      */
     @Import(name="destinationDir")
     private @Nullable Output<String> destinationDir;
 
     /**
-     * @return Output directory of the build.
+     * @return Assets output directory of the build.
      * 
      */
     public Optional<Output<String>> destinationDir() {
@@ -178,7 +178,7 @@ public final class PagesProjectLatestDeploymentBuildConfigArgs extends com.pulum
         }
 
         /**
-         * @param destinationDir Output directory of the build.
+         * @param destinationDir Assets output directory of the build.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class PagesProjectLatestDeploymentBuildConfigArgs extends com.pulum
         }
 
         /**
-         * @param destinationDir Output directory of the build.
+         * @param destinationDir Assets output directory of the build.
          * 
          * @return builder
          * 

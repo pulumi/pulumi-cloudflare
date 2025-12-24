@@ -35,6 +35,10 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ~&gt; This resource does not currently support `pulumi import`.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/webAnalyticsRule:WebAnalyticsRule")]
     public partial class WebAnalyticsRule : global::Pulumi.CustomResource

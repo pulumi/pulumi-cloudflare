@@ -101,7 +101,7 @@ class GetAccountSubscriptionResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Subscription identifier tag.
+        Identifier
         """
         return pulumi.get(self, "id")
 

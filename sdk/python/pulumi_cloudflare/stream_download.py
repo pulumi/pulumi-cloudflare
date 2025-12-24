@@ -115,6 +115,10 @@ class StreamDownload(pulumi.CustomResource):
             identifier="ea95132c15732412d22c1476fa83f27a")
         ```
 
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -137,6 +141,10 @@ class StreamDownload(pulumi.CustomResource):
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             identifier="ea95132c15732412d22c1476fa83f27a")
         ```
+
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
 
         :param str resource_name: The name of the resource.
         :param StreamDownloadArgs args: The arguments to use to populate this resource's properties.

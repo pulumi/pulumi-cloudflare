@@ -58,7 +58,7 @@ type LookupEmailRoutingSettingsResult struct {
 	Created string `pulumi:"created"`
 	// State of the zone settings for Email Routing.
 	Enabled bool `pulumi:"enabled"`
-	// Email Routing settings identifier.
+	// Identifier.
 	Id string `pulumi:"id"`
 	// The date and time the settings have been modified.
 	Modified string `pulumi:"modified"`
@@ -121,7 +121,7 @@ func (o LookupEmailRoutingSettingsResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupEmailRoutingSettingsResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Email Routing settings identifier.
+// Identifier.
 func (o LookupEmailRoutingSettingsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailRoutingSettingsResult) string { return v.Id }).(pulumi.StringOutput)
 }

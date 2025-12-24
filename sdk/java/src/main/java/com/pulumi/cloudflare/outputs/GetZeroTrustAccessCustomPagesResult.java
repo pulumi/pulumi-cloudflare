@@ -11,6 +11,11 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustAccessCustomPagesResult {
     /**
+     * @return UUID.
+     * 
+     */
+    private String id;
+    /**
      * @return Custom page name.
      * 
      */
@@ -28,6 +33,13 @@ public final class GetZeroTrustAccessCustomPagesResult {
     private String uid;
 
     private GetZeroTrustAccessCustomPagesResult() {}
+    /**
+     * @return UUID.
+     * 
+     */
+    public String id() {
+        return this.id;
+    }
     /**
      * @return Custom page name.
      * 
@@ -60,17 +72,27 @@ public final class GetZeroTrustAccessCustomPagesResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String id;
         private String name;
         private String type;
         private String uid;
         public Builder() {}
         public Builder(GetZeroTrustAccessCustomPagesResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.type = defaults.type;
     	      this.uid = defaults.uid;
         }
 
+        @CustomType.Setter
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessCustomPagesResult", "id");
+            }
+            this.id = id;
+            return this;
+        }
         @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
@@ -97,6 +119,7 @@ public final class GetZeroTrustAccessCustomPagesResult {
         }
         public GetZeroTrustAccessCustomPagesResult build() {
             final var _resultValue = new GetZeroTrustAccessCustomPagesResult();
+            _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.type = type;
             _resultValue.uid = uid;

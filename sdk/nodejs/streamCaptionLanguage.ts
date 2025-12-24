@@ -17,6 +17,10 @@ import * as utilities from "./utilities";
  *     language: "tr",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ~> This resource does not currently support `pulumi import`.
  */
 export class StreamCaptionLanguage extends pulumi.CustomResource {
     /**

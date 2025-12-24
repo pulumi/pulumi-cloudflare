@@ -33,6 +33,7 @@ import (
 //			_, err := cloudflare.NewD1Database(ctx, "example_d1_database", &cloudflare.D1DatabaseArgs{
 //				AccountId:           pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Name:                pulumi.String("my-database"),
+//				Jurisdiction:        pulumi.String("eu"),
 //				PrimaryLocationHint: pulumi.String("wnam"),
 //			})
 //			if err != nil {
@@ -58,6 +59,9 @@ type D1Database struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The D1 database's size, in bytes.
 	FileSize pulumi.Float64Output `pulumi:"fileSize"`
+	// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+	// Available values: "eu", "fedramp".
+	Jurisdiction pulumi.StringPtrOutput `pulumi:"jurisdiction"`
 	// D1 database name.
 	Name      pulumi.StringOutput  `pulumi:"name"`
 	NumTables pulumi.Float64Output `pulumi:"numTables"`
@@ -113,6 +117,9 @@ type d1databaseState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// The D1 database's size, in bytes.
 	FileSize *float64 `pulumi:"fileSize"`
+	// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+	// Available values: "eu", "fedramp".
+	Jurisdiction *string `pulumi:"jurisdiction"`
 	// D1 database name.
 	Name      *string  `pulumi:"name"`
 	NumTables *float64 `pulumi:"numTables"`
@@ -133,6 +140,9 @@ type D1DatabaseState struct {
 	CreatedAt pulumi.StringPtrInput
 	// The D1 database's size, in bytes.
 	FileSize pulumi.Float64PtrInput
+	// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+	// Available values: "eu", "fedramp".
+	Jurisdiction pulumi.StringPtrInput
 	// D1 database name.
 	Name      pulumi.StringPtrInput
 	NumTables pulumi.Float64PtrInput
@@ -153,6 +163,9 @@ func (D1DatabaseState) ElementType() reflect.Type {
 type d1databaseArgs struct {
 	// Account identifier tag.
 	AccountId string `pulumi:"accountId"`
+	// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+	// Available values: "eu", "fedramp".
+	Jurisdiction *string `pulumi:"jurisdiction"`
 	// D1 database name.
 	Name string `pulumi:"name"`
 	// Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
@@ -166,6 +179,9 @@ type d1databaseArgs struct {
 type D1DatabaseArgs struct {
 	// Account identifier tag.
 	AccountId pulumi.StringInput
+	// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+	// Available values: "eu", "fedramp".
+	Jurisdiction pulumi.StringPtrInput
 	// D1 database name.
 	Name pulumi.StringInput
 	// Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
@@ -275,6 +291,12 @@ func (o D1DatabaseOutput) CreatedAt() pulumi.StringOutput {
 // The D1 database's size, in bytes.
 func (o D1DatabaseOutput) FileSize() pulumi.Float64Output {
 	return o.ApplyT(func(v *D1Database) pulumi.Float64Output { return v.FileSize }).(pulumi.Float64Output)
+}
+
+// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+// Available values: "eu", "fedramp".
+func (o D1DatabaseOutput) Jurisdiction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *D1Database) pulumi.StringPtrOutput { return v.Jurisdiction }).(pulumi.StringPtrOutput)
 }
 
 // D1 database name.

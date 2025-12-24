@@ -32,21 +32,6 @@ public final class QueueConsumerArgs extends com.pulumi.resources.ResourceArgs {
         return this.accountId;
     }
 
-    /**
-     * A Resource identifier.
-     * 
-     */
-    @Import(name="consumerId")
-    private @Nullable Output<String> consumerId;
-
-    /**
-     * @return A Resource identifier.
-     * 
-     */
-    public Optional<Output<String>> consumerId() {
-        return Optional.ofNullable(this.consumerId);
-    }
-
     @Import(name="deadLetterQueue")
     private @Nullable Output<String> deadLetterQueue;
 
@@ -110,7 +95,6 @@ public final class QueueConsumerArgs extends com.pulumi.resources.ResourceArgs {
 
     private QueueConsumerArgs(QueueConsumerArgs $) {
         this.accountId = $.accountId;
-        this.consumerId = $.consumerId;
         this.deadLetterQueue = $.deadLetterQueue;
         this.queueId = $.queueId;
         this.scriptName = $.scriptName;
@@ -155,27 +139,6 @@ public final class QueueConsumerArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
-        }
-
-        /**
-         * @param consumerId A Resource identifier.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder consumerId(@Nullable Output<String> consumerId) {
-            $.consumerId = consumerId;
-            return this;
-        }
-
-        /**
-         * @param consumerId A Resource identifier.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder consumerId(String consumerId) {
-            return consumerId(Output.of(consumerId));
         }
 
         public Builder deadLetterQueue(@Nullable Output<String> deadLetterQueue) {

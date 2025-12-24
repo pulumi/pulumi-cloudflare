@@ -66,7 +66,7 @@ class GetZeroTrustAccessTagResult:
 
     @_builtins.property
     @pulumi.getter(name="tagName")
-    def tag_name(self) -> Optional[_builtins.str]:
+    def tag_name(self) -> _builtins.str:
         """
         The name of the tag
         """
@@ -115,7 +115,7 @@ def get_zero_trust_access_tag(account_id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         tag_name=pulumi.get(__ret__, 'tag_name'))
 def get_zero_trust_access_tag_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                     tag_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                     tag_name: Optional[pulumi.Input[_builtins.str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessTagResult]:
     """
     ## Example Usage

@@ -53,7 +53,7 @@ type LookupZeroTrustListsArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Specify the list type.
-	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
 	Type *string `pulumi:"type"`
 }
 
@@ -67,7 +67,7 @@ type LookupZeroTrustListsResult struct {
 	// The items returned by the data source
 	Results []GetZeroTrustListsResult `pulumi:"results"`
 	// Specify the list type.
-	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
 	Type *string `pulumi:"type"`
 }
 
@@ -86,7 +86,7 @@ type LookupZeroTrustListsOutputArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// Specify the list type.
-	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -129,7 +129,7 @@ func (o LookupZeroTrustListsResultOutput) Results() GetZeroTrustListsResultArray
 }
 
 // Specify the list type.
-// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
 func (o LookupZeroTrustListsResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustListsResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

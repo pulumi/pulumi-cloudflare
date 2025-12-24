@@ -61,7 +61,7 @@ export interface GetAccountSubscriptionResult {
      */
     readonly frequency: string;
     /**
-     * Subscription identifier tag.
+     * Identifier
      */
     readonly id: string;
     /**

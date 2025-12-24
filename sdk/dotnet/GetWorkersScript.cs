@@ -90,11 +90,14 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
+        [Input("filter")]
+        public Inputs.GetWorkersScriptFilterArgs? Filter { get; set; }
+
         /// <summary>
         /// Name of the script, used in URLs and route configuration.
         /// </summary>
-        [Input("scriptName", required: true)]
-        public string ScriptName { get; set; } = null!;
+        [Input("scriptName")]
+        public string? ScriptName { get; set; }
 
         public GetWorkersScriptArgs()
         {
@@ -110,11 +113,14 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
+        [Input("filter")]
+        public Input<Inputs.GetWorkersScriptFilterInputArgs>? Filter { get; set; }
+
         /// <summary>
         /// Name of the script, used in URLs and route configuration.
         /// </summary>
-        [Input("scriptName", required: true)]
-        public Input<string> ScriptName { get; set; } = null!;
+        [Input("scriptName")]
+        public Input<string>? ScriptName { get; set; }
 
         public GetWorkersScriptInvokeArgs()
         {
@@ -130,24 +136,28 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         public readonly string AccountId;
+        public readonly Outputs.GetWorkersScriptFilterResult? Filter;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Name of the script, used in URLs and route configuration.
         /// </summary>
         public readonly string Id;
         /// <summary>
         /// Name of the script, used in URLs and route configuration.
         /// </summary>
-        public readonly string ScriptName;
+        public readonly string? ScriptName;
 
         [OutputConstructor]
         private GetWorkersScriptResult(
             string accountId,
 
+            Outputs.GetWorkersScriptFilterResult? filter,
+
             string id,
 
-            string scriptName)
+            string? scriptName)
         {
             AccountId = accountId;
+            Filter = filter;
             Id = id;
             ScriptName = scriptName;
         }

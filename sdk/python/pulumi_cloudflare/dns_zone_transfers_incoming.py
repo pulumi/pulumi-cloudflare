@@ -19,34 +19,22 @@ __all__ = ['DnsZoneTransfersIncomingArgs', 'DnsZoneTransfersIncoming']
 @pulumi.input_type
 class DnsZoneTransfersIncomingArgs:
     def __init__(__self__, *,
-                 auto_refresh_seconds: pulumi.Input[_builtins.float],
                  name: pulumi.Input[_builtins.str],
                  peers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 zone_id: pulumi.Input[_builtins.str]):
+                 zone_id: pulumi.Input[_builtins.str],
+                 auto_refresh_seconds: Optional[pulumi.Input[_builtins.float]] = None):
         """
         The set of arguments for constructing a DnsZoneTransfersIncoming resource.
-        :param pulumi.Input[_builtins.float] auto_refresh_seconds: How often should a secondary zone auto refresh regardless of DNS NOTIFY.
-               Not applicable for primary zones.
         :param pulumi.Input[_builtins.str] name: Zone name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] peers: A list of peer tags.
+        :param pulumi.Input[_builtins.float] auto_refresh_seconds: How often should a secondary zone auto refresh regardless of DNS NOTIFY.
+               Not applicable for primary zones.
         """
-        pulumi.set(__self__, "auto_refresh_seconds", auto_refresh_seconds)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "peers", peers)
         pulumi.set(__self__, "zone_id", zone_id)
-
-    @_builtins.property
-    @pulumi.getter(name="autoRefreshSeconds")
-    def auto_refresh_seconds(self) -> pulumi.Input[_builtins.float]:
-        """
-        How often should a secondary zone auto refresh regardless of DNS NOTIFY.
-        Not applicable for primary zones.
-        """
-        return pulumi.get(self, "auto_refresh_seconds")
-
-    @auto_refresh_seconds.setter
-    def auto_refresh_seconds(self, value: pulumi.Input[_builtins.float]):
-        pulumi.set(self, "auto_refresh_seconds", value)
+        if auto_refresh_seconds is not None:
+            pulumi.set(__self__, "auto_refresh_seconds", auto_refresh_seconds)
 
     @_builtins.property
     @pulumi.getter
@@ -80,6 +68,19 @@ class DnsZoneTransfersIncomingArgs:
     @zone_id.setter
     def zone_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "zone_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoRefreshSeconds")
+    def auto_refresh_seconds(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        How often should a secondary zone auto refresh regardless of DNS NOTIFY.
+        Not applicable for primary zones.
+        """
+        return pulumi.get(self, "auto_refresh_seconds")
+
+    @auto_refresh_seconds.setter
+    def auto_refresh_seconds(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "auto_refresh_seconds", value)
 
 
 @pulumi.input_type
@@ -314,8 +315,6 @@ class DnsZoneTransfersIncoming(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DnsZoneTransfersIncomingArgs.__new__(DnsZoneTransfersIncomingArgs)
 
-            if auto_refresh_seconds is None and not opts.urn:
-                raise TypeError("Missing required property 'auto_refresh_seconds'")
             __props__.__dict__["auto_refresh_seconds"] = auto_refresh_seconds
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")

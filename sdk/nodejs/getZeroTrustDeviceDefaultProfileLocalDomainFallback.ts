@@ -44,7 +44,7 @@ export interface GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult {
      */
     readonly dnsServers: string[];
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this resource.
      */
     readonly id: string;
     /**

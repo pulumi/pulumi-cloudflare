@@ -34,7 +34,7 @@ export interface GetHealthcheckArgs {
     /**
      * Identifier
      */
-    healthcheckId?: string;
+    healthcheckId: string;
     /**
      * Identifier
      */
@@ -73,7 +73,7 @@ export interface GetHealthcheckResult {
     /**
      * Identifier
      */
-    readonly healthcheckId?: string;
+    readonly healthcheckId: string;
     /**
      * Parameters specific to an HTTP or HTTPS health check.
      */
@@ -149,7 +149,7 @@ export interface GetHealthcheckOutputArgs {
     /**
      * Identifier
      */
-    healthcheckId?: pulumi.Input<string>;
+    healthcheckId: pulumi.Input<string>;
     /**
      * Identifier
      */

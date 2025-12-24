@@ -93,8 +93,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// UUID.
         /// </summary>
-        [Input("customPageId")]
-        public string? CustomPageId { get; set; }
+        [Input("customPageId", required: true)]
+        public string CustomPageId { get; set; } = null!;
 
         public GetZeroTrustAccessCustomPageArgs()
         {
@@ -113,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// UUID.
         /// </summary>
-        [Input("customPageId")]
-        public Input<string>? CustomPageId { get; set; }
+        [Input("customPageId", required: true)]
+        public Input<string> CustomPageId { get; set; } = null!;
 
         public GetZeroTrustAccessCustomPageInvokeArgs()
         {
@@ -137,7 +137,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// UUID.
         /// </summary>
-        public readonly string? CustomPageId;
+        public readonly string CustomPageId;
         /// <summary>
         /// UUID.
         /// </summary>
@@ -162,7 +162,7 @@ namespace Pulumi.Cloudflare
 
             string customHtml,
 
-            string? customPageId,
+            string customPageId,
 
             string id,
 

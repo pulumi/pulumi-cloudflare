@@ -13,10 +13,10 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class PagesProjectDeploymentConfigsPreviewAiBindings
     {
-        public readonly string? ProjectId;
+        public readonly string ProjectId;
 
         [OutputConstructor]
-        private PagesProjectDeploymentConfigsPreviewAiBindings(string? projectId)
+        private PagesProjectDeploymentConfigsPreviewAiBindings(string projectId)
         {
             ProjectId = projectId;
         }

@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupHealthcheck(ctx, &cloudflare.LookupHealthcheckArgs{
 //				ZoneId:        "023e105f4ecef8ad9ca31a8372d0c353",
-//				HealthcheckId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				HealthcheckId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -50,7 +50,7 @@ func LookupHealthcheck(ctx *pulumi.Context, args *LookupHealthcheckArgs, opts ..
 // A collection of arguments for invoking getHealthcheck.
 type LookupHealthcheckArgs struct {
 	// Identifier
-	HealthcheckId *string `pulumi:"healthcheckId"`
+	HealthcheckId string `pulumi:"healthcheckId"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -71,7 +71,7 @@ type LookupHealthcheckResult struct {
 	// The current failure reason if status is unhealthy.
 	FailureReason string `pulumi:"failureReason"`
 	// Identifier
-	HealthcheckId *string `pulumi:"healthcheckId"`
+	HealthcheckId string `pulumi:"healthcheckId"`
 	// Parameters specific to an HTTP or HTTPS health check.
 	HttpConfig GetHealthcheckHttpConfig `pulumi:"httpConfig"`
 	// Identifier
@@ -110,7 +110,7 @@ func LookupHealthcheckOutput(ctx *pulumi.Context, args LookupHealthcheckOutputAr
 // A collection of arguments for invoking getHealthcheck.
 type LookupHealthcheckOutputArgs struct {
 	// Identifier
-	HealthcheckId pulumi.StringPtrInput `pulumi:"healthcheckId"`
+	HealthcheckId pulumi.StringInput `pulumi:"healthcheckId"`
 	// Identifier
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
@@ -169,8 +169,8 @@ func (o LookupHealthcheckResultOutput) FailureReason() pulumi.StringOutput {
 }
 
 // Identifier
-func (o LookupHealthcheckResultOutput) HealthcheckId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupHealthcheckResult) *string { return v.HealthcheckId }).(pulumi.StringPtrOutput)
+func (o LookupHealthcheckResultOutput) HealthcheckId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHealthcheckResult) string { return v.HealthcheckId }).(pulumi.StringOutput)
 }
 
 // Parameters specific to an HTTP or HTTPS health check.

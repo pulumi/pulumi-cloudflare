@@ -77,8 +77,9 @@ export class ZoneSubscription extends pulumi.CustomResource {
     /**
      * How often the subscription is renewed automatically.
      * Available values: "weekly", "monthly", "quarterly", "yearly".
+     * Note: Some plans may not support frequency configuration and will return "not-applicable".
      */
-    declare public readonly frequency: pulumi.Output<string | undefined>;
+    declare public readonly frequency: pulumi.Output<string>;
     /**
      * The price of the subscription that will be billed, in US dollars.
      */
@@ -156,6 +157,7 @@ export interface ZoneSubscriptionState {
     /**
      * How often the subscription is renewed automatically.
      * Available values: "weekly", "monthly", "quarterly", "yearly".
+     * Note: Some plans may not support frequency configuration and will return "not-applicable".
      */
     frequency?: pulumi.Input<string>;
     /**
@@ -184,6 +186,7 @@ export interface ZoneSubscriptionArgs {
     /**
      * How often the subscription is renewed automatically.
      * Available values: "weekly", "monthly", "quarterly", "yearly".
+     * Note: Some plans may not support frequency configuration and will return "not-applicable".
      */
     frequency?: pulumi.Input<string>;
     /**

@@ -16,10 +16,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// UUID of the D1 database.
         /// </summary>
-        public readonly string? Id;
+        public readonly string Id;
 
         [OutputConstructor]
-        private PagesProjectDeploymentConfigsPreviewD1Databases(string? id)
+        private PagesProjectDeploymentConfigsPreviewD1Databases(string id)
         {
             Id = id;
         }

@@ -63,6 +63,10 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ## Import
+ * 
+ * ~&gt; This resource does not currently support `pulumi import`.
+ * 
  */
 @ResourceType(type="cloudflare:index/r2BucketCors:R2BucketCors")
 public class R2BucketCors extends com.pulumi.resources.CustomResource {

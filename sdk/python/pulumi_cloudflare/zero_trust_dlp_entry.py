@@ -109,9 +109,11 @@ class _ZeroTrustDlpEntryState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  pattern: Optional[pulumi.Input['ZeroTrustDlpEntryPatternArgs']] = None,
                  profile_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 profiles: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpEntryProfileArgs']]]] = None,
                  secret: Optional[pulumi.Input[_builtins.bool]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 upload_status: Optional[pulumi.Input[_builtins.str]] = None,
                  variant: Optional[pulumi.Input['ZeroTrustDlpEntryVariantArgs']] = None,
                  word_list: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -120,6 +122,7 @@ class _ZeroTrustDlpEntryState:
                Determines if the words should be matched in a case-sensitive manner
                Cannot be set to false if secret is true
         :param pulumi.Input[_builtins.str] type: Available values: "custom", "predefined", "integration".
+        :param pulumi.Input[_builtins.str] upload_status: Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -137,12 +140,16 @@ class _ZeroTrustDlpEntryState:
             pulumi.set(__self__, "pattern", pattern)
         if profile_id is not None:
             pulumi.set(__self__, "profile_id", profile_id)
+        if profiles is not None:
+            pulumi.set(__self__, "profiles", profiles)
         if secret is not None:
             pulumi.set(__self__, "secret", secret)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if updated_at is not None:
             pulumi.set(__self__, "updated_at", updated_at)
+        if upload_status is not None:
+            pulumi.set(__self__, "upload_status", upload_status)
         if variant is not None:
             pulumi.set(__self__, "variant", variant)
         if word_list is not None:
@@ -227,6 +234,15 @@ class _ZeroTrustDlpEntryState:
 
     @_builtins.property
     @pulumi.getter
+    def profiles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpEntryProfileArgs']]]]:
+        return pulumi.get(self, "profiles")
+
+    @profiles.setter
+    def profiles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpEntryProfileArgs']]]]):
+        pulumi.set(self, "profiles", value)
+
+    @_builtins.property
+    @pulumi.getter
     def secret(self) -> Optional[pulumi.Input[_builtins.bool]]:
         return pulumi.get(self, "secret")
 
@@ -254,6 +270,18 @@ class _ZeroTrustDlpEntryState:
     @updated_at.setter
     def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="uploadStatus")
+    def upload_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+        """
+        return pulumi.get(self, "upload_status")
+
+    @upload_status.setter
+    def upload_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "upload_status", value)
 
     @_builtins.property
     @pulumi.getter
@@ -392,8 +420,10 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
             __props__.__dict__["case_sensitive"] = None
             __props__.__dict__["confidence"] = None
             __props__.__dict__["created_at"] = None
+            __props__.__dict__["profiles"] = None
             __props__.__dict__["secret"] = None
             __props__.__dict__["updated_at"] = None
+            __props__.__dict__["upload_status"] = None
             __props__.__dict__["variant"] = None
             __props__.__dict__["word_list"] = None
         super(ZeroTrustDlpEntry, __self__).__init__(
@@ -414,9 +444,11 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             pattern: Optional[pulumi.Input[Union['ZeroTrustDlpEntryPatternArgs', 'ZeroTrustDlpEntryPatternArgsDict']]] = None,
             profile_id: Optional[pulumi.Input[_builtins.str]] = None,
+            profiles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDlpEntryProfileArgs', 'ZeroTrustDlpEntryProfileArgsDict']]]]] = None,
             secret: Optional[pulumi.Input[_builtins.bool]] = None,
             type: Optional[pulumi.Input[_builtins.str]] = None,
             updated_at: Optional[pulumi.Input[_builtins.str]] = None,
+            upload_status: Optional[pulumi.Input[_builtins.str]] = None,
             variant: Optional[pulumi.Input[Union['ZeroTrustDlpEntryVariantArgs', 'ZeroTrustDlpEntryVariantArgsDict']]] = None,
             word_list: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZeroTrustDlpEntry':
         """
@@ -430,6 +462,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
                Determines if the words should be matched in a case-sensitive manner
                Cannot be set to false if secret is true
         :param pulumi.Input[_builtins.str] type: Available values: "custom", "predefined", "integration".
+        :param pulumi.Input[_builtins.str] upload_status: Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -443,9 +476,11 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["pattern"] = pattern
         __props__.__dict__["profile_id"] = profile_id
+        __props__.__dict__["profiles"] = profiles
         __props__.__dict__["secret"] = secret
         __props__.__dict__["type"] = type
         __props__.__dict__["updated_at"] = updated_at
+        __props__.__dict__["upload_status"] = upload_status
         __props__.__dict__["variant"] = variant
         __props__.__dict__["word_list"] = word_list
         return ZeroTrustDlpEntry(resource_name, opts=opts, __props__=__props__)
@@ -497,6 +532,11 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    def profiles(self) -> pulumi.Output[Sequence['outputs.ZeroTrustDlpEntryProfile']]:
+        return pulumi.get(self, "profiles")
+
+    @_builtins.property
+    @pulumi.getter
     def secret(self) -> pulumi.Output[_builtins.bool]:
         return pulumi.get(self, "secret")
 
@@ -512,6 +552,14 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "updated_at")
+
+    @_builtins.property
+    @pulumi.getter(name="uploadStatus")
+    def upload_status(self) -> pulumi.Output[_builtins.str]:
+        """
+        Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+        """
+        return pulumi.get(self, "upload_status")
 
     @_builtins.property
     @pulumi.getter

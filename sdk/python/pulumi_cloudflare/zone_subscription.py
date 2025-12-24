@@ -29,6 +29,7 @@ class ZoneSubscriptionArgs:
         :param pulumi.Input[_builtins.str] zone_id: Subscription identifier tag.
         :param pulumi.Input[_builtins.str] frequency: How often the subscription is renewed automatically.
                Available values: "weekly", "monthly", "quarterly", "yearly".
+               Note: Some plans may not support frequency configuration and will return "not-applicable".
         :param pulumi.Input['ZoneSubscriptionRatePlanArgs'] rate_plan: The rate plan applied to the subscription.
         """
         pulumi.set(__self__, "zone_id", zone_id)
@@ -55,6 +56,7 @@ class ZoneSubscriptionArgs:
         """
         How often the subscription is renewed automatically.
         Available values: "weekly", "monthly", "quarterly", "yearly".
+        Note: Some plans may not support frequency configuration and will return "not-applicable".
         """
         return pulumi.get(self, "frequency")
 
@@ -93,6 +95,7 @@ class _ZoneSubscriptionState:
         :param pulumi.Input[_builtins.str] current_period_start: When the current billing period started. May match initial*period*start if this is the first period.
         :param pulumi.Input[_builtins.str] frequency: How often the subscription is renewed automatically.
                Available values: "weekly", "monthly", "quarterly", "yearly".
+               Note: Some plans may not support frequency configuration and will return "not-applicable".
         :param pulumi.Input[_builtins.float] price: The price of the subscription that will be billed, in US dollars.
         :param pulumi.Input['ZoneSubscriptionRatePlanArgs'] rate_plan: The rate plan applied to the subscription.
         :param pulumi.Input[_builtins.str] state: The state that the subscription is in.
@@ -158,6 +161,7 @@ class _ZoneSubscriptionState:
         """
         How often the subscription is renewed automatically.
         Available values: "weekly", "monthly", "quarterly", "yearly".
+        Note: Some plans may not support frequency configuration and will return "not-applicable".
         """
         return pulumi.get(self, "frequency")
 
@@ -256,6 +260,7 @@ class ZoneSubscription(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] frequency: How often the subscription is renewed automatically.
                Available values: "weekly", "monthly", "quarterly", "yearly".
+               Note: Some plans may not support frequency configuration and will return "not-applicable".
         :param pulumi.Input[Union['ZoneSubscriptionRatePlanArgs', 'ZoneSubscriptionRatePlanArgsDict']] rate_plan: The rate plan applied to the subscription.
         :param pulumi.Input[_builtins.str] zone_id: Subscription identifier tag.
         """
@@ -359,6 +364,7 @@ class ZoneSubscription(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] current_period_start: When the current billing period started. May match initial*period*start if this is the first period.
         :param pulumi.Input[_builtins.str] frequency: How often the subscription is renewed automatically.
                Available values: "weekly", "monthly", "quarterly", "yearly".
+               Note: Some plans may not support frequency configuration and will return "not-applicable".
         :param pulumi.Input[_builtins.float] price: The price of the subscription that will be billed, in US dollars.
         :param pulumi.Input[Union['ZoneSubscriptionRatePlanArgs', 'ZoneSubscriptionRatePlanArgsDict']] rate_plan: The rate plan applied to the subscription.
         :param pulumi.Input[_builtins.str] state: The state that the subscription is in.
@@ -405,10 +411,11 @@ class ZoneSubscription(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def frequency(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def frequency(self) -> pulumi.Output[_builtins.str]:
         """
         How often the subscription is renewed automatically.
         Available values: "weekly", "monthly", "quarterly", "yearly".
+        Note: Some plans may not support frequency configuration and will return "not-applicable".
         """
         return pulumi.get(self, "frequency")
 

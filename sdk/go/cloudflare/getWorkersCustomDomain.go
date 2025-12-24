@@ -63,6 +63,8 @@ type LookupWorkersCustomDomainResult struct {
 	// Identifer of the Worker Domain.
 	DomainId *string `pulumi:"domainId"`
 	// Worker environment associated with the zone and hostname.
+	//
+	// Deprecated: This attribute is deprecated.
 	Environment string                        `pulumi:"environment"`
 	Filter      *GetWorkersCustomDomainFilter `pulumi:"filter"`
 	// Hostname of the Worker Domain.
@@ -125,6 +127,8 @@ func (o LookupWorkersCustomDomainResultOutput) DomainId() pulumi.StringPtrOutput
 }
 
 // Worker environment associated with the zone and hostname.
+//
+// Deprecated: This attribute is deprecated.
 func (o LookupWorkersCustomDomainResultOutput) Environment() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersCustomDomainResult) string { return v.Environment }).(pulumi.StringOutput)
 }

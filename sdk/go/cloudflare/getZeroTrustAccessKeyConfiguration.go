@@ -58,7 +58,7 @@ type LookupZeroTrustAccessKeyConfigurationResult struct {
 	AccountId string `pulumi:"accountId"`
 	// The number of days until the next key rotation.
 	DaysUntilNextRotation float64 `pulumi:"daysUntilNextRotation"`
-	// The provider-assigned unique ID for this managed resource.
+	// Identifier.
 	Id string `pulumi:"id"`
 	// The number of days between key rotations.
 	KeyRotationIntervalDays float64 `pulumi:"keyRotationIntervalDays"`
@@ -110,7 +110,7 @@ func (o LookupZeroTrustAccessKeyConfigurationResultOutput) DaysUntilNextRotation
 	return o.ApplyT(func(v LookupZeroTrustAccessKeyConfigurationResult) float64 { return v.DaysUntilNextRotation }).(pulumi.Float64Output)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Identifier.
 func (o LookupZeroTrustAccessKeyConfigurationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessKeyConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
 }

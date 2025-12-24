@@ -87,7 +87,7 @@ class GetPagesProjectResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -151,7 +151,7 @@ class GetPagesProjectResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        ID of the project.
+        Name of the project.
         """
         return pulumi.get(self, "id")
 
@@ -206,6 +206,9 @@ class GetPagesProjectResult:
     @_builtins.property
     @pulumi.getter
     def source(self) -> 'outputs.GetPagesProjectSourceResult':
+        """
+        Configs for the project source control.
+        """
         return pulumi.get(self, "source")
 
     @_builtins.property
@@ -266,7 +269,7 @@ def get_pages_project(account_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str account_id: Identifier
+    :param _builtins.str account_id: Identifier.
     :param _builtins.str project_name: Name of the project.
     """
     __args__ = dict()
@@ -309,7 +312,7 @@ def get_pages_project_output(account_id: Optional[pulumi.Input[_builtins.str]] =
     ```
 
 
-    :param _builtins.str account_id: Identifier
+    :param _builtins.str account_id: Identifier.
     :param _builtins.str project_name: Name of the project.
     """
     __args__ = dict()

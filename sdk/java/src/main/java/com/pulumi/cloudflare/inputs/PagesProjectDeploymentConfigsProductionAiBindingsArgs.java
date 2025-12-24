@@ -5,21 +5,20 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class PagesProjectDeploymentConfigsProductionAiBindingsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PagesProjectDeploymentConfigsProductionAiBindingsArgs Empty = new PagesProjectDeploymentConfigsProductionAiBindingsArgs();
 
-    @Import(name="projectId")
-    private @Nullable Output<String> projectId;
+    @Import(name="projectId", required=true)
+    private Output<String> projectId;
 
-    public Optional<Output<String>> projectId() {
-        return Optional.ofNullable(this.projectId);
+    public Output<String> projectId() {
+        return this.projectId;
     }
 
     private PagesProjectDeploymentConfigsProductionAiBindingsArgs() {}
@@ -46,7 +45,7 @@ public final class PagesProjectDeploymentConfigsProductionAiBindingsArgs extends
             $ = new PagesProjectDeploymentConfigsProductionAiBindingsArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder projectId(@Nullable Output<String> projectId) {
+        public Builder projectId(Output<String> projectId) {
             $.projectId = projectId;
             return this;
         }
@@ -56,6 +55,9 @@ public final class PagesProjectDeploymentConfigsProductionAiBindingsArgs extends
         }
 
         public PagesProjectDeploymentConfigsProductionAiBindingsArgs build() {
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("PagesProjectDeploymentConfigsProductionAiBindingsArgs", "projectId");
+            }
             return $;
         }
     }

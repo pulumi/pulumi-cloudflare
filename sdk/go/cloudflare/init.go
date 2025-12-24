@@ -105,6 +105,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CloudforceOneRequestMessage{}
 	case "cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority":
 		r = &CloudforceOneRequestPriority{}
+	case "cloudflare:index/connectivityDirectoryService:ConnectivityDirectoryService":
+		r = &ConnectivityDirectoryService{}
 	case "cloudflare:index/contentScanning:ContentScanning":
 		r = &ContentScanning{}
 	case "cloudflare:index/contentScanningExpression:ContentScanningExpression":
@@ -289,6 +291,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Snippets{}
 	case "cloudflare:index/spectrumApplication:SpectrumApplication":
 		r = &SpectrumApplication{}
+	case "cloudflare:index/ssoConnector:SsoConnector":
+		r = &SsoConnector{}
 	case "cloudflare:index/staticRoute:StaticRoute":
 		r = &StaticRoute{}
 	case "cloudflare:index/stream:Stream":
@@ -319,6 +323,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TeamsRule{}
 	case "cloudflare:index/tieredCache:TieredCache":
 		r = &TieredCache{}
+	case "cloudflare:index/tokenValidationConfig:TokenValidationConfig":
+		r = &TokenValidationConfig{}
+	case "cloudflare:index/tokenValidationRules:TokenValidationRules":
+		r = &TokenValidationRules{}
 	case "cloudflare:index/totalTls:TotalTls":
 		r = &TotalTls{}
 	case "cloudflare:index/tunnel:Tunnel":
@@ -331,6 +339,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TunnelVirtualNetwork{}
 	case "cloudflare:index/turnstileWidget:TurnstileWidget":
 		r = &TurnstileWidget{}
+	case "cloudflare:index/universalSslSetting:UniversalSslSetting":
+		r = &UniversalSslSetting{}
 	case "cloudflare:index/urlNormalizationSettings:UrlNormalizationSettings":
 		r = &UrlNormalizationSettings{}
 	case "cloudflare:index/user:User":
@@ -383,6 +393,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkersScriptSubdomain{}
 	case "cloudflare:index/workflow:Workflow":
 		r = &Workflow{}
+	case "cloudflare:index/zeroTrustAccessAiControlsMcpPortal:ZeroTrustAccessAiControlsMcpPortal":
+		r = &ZeroTrustAccessAiControlsMcpPortal{}
+	case "cloudflare:index/zeroTrustAccessAiControlsMcpServer:ZeroTrustAccessAiControlsMcpServer":
+		r = &ZeroTrustAccessAiControlsMcpServer{}
 	case "cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication":
 		r = &ZeroTrustAccessApplication{}
 	case "cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage":
@@ -732,6 +746,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/cloudforceOneRequestPriority",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/connectivityDirectoryService",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -1196,6 +1215,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/ssoConnector",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/staticRoute",
 		&module{version},
 	)
@@ -1271,6 +1295,16 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/tokenValidationConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/tokenValidationRules",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/totalTls",
 		&module{version},
 	)
@@ -1297,6 +1331,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/turnstileWidget",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/universalSslSetting",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -1427,6 +1466,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/workflow",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustAccessAiControlsMcpPortal",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustAccessAiControlsMcpServer",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

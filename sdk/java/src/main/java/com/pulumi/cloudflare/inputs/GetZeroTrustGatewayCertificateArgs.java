@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetZeroTrustGatewayCertificateArgs extends com.pulumi.resources.InvokeArgs {
@@ -27,15 +25,15 @@ public final class GetZeroTrustGatewayCertificateArgs extends com.pulumi.resourc
      * Identify the certificate with a UUID.
      * 
      */
-    @Import(name="certificateId")
-    private @Nullable Output<String> certificateId;
+    @Import(name="certificateId", required=true)
+    private Output<String> certificateId;
 
     /**
      * @return Identify the certificate with a UUID.
      * 
      */
-    public Optional<Output<String>> certificateId() {
-        return Optional.ofNullable(this.certificateId);
+    public Output<String> certificateId() {
+        return this.certificateId;
     }
 
     private GetZeroTrustGatewayCertificateArgs() {}
@@ -78,7 +76,7 @@ public final class GetZeroTrustGatewayCertificateArgs extends com.pulumi.resourc
          * @return builder
          * 
          */
-        public Builder certificateId(@Nullable Output<String> certificateId) {
+        public Builder certificateId(Output<String> certificateId) {
             $.certificateId = certificateId;
             return this;
         }
@@ -96,6 +94,9 @@ public final class GetZeroTrustGatewayCertificateArgs extends com.pulumi.resourc
         public GetZeroTrustGatewayCertificateArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetZeroTrustGatewayCertificateArgs", "accountId");
+            }
+            if ($.certificateId == null) {
+                throw new MissingRequiredPropertyException("GetZeroTrustGatewayCertificateArgs", "certificateId");
             }
             return $;
         }

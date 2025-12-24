@@ -58,7 +58,7 @@ type LookupCustomHostnameFallbackOriginResult struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// These are errors that were encountered while trying to activate a fallback origin.
 	Errors []string `pulumi:"errors"`
-	// The provider-assigned unique ID for this managed resource.
+	// Identifier.
 	Id string `pulumi:"id"`
 	// Your origin hostname that requests to your custom hostnames will be sent to.
 	Origin string `pulumi:"origin"`
@@ -115,7 +115,7 @@ func (o LookupCustomHostnameFallbackOriginResultOutput) Errors() pulumi.StringAr
 	return o.ApplyT(func(v LookupCustomHostnameFallbackOriginResult) []string { return v.Errors }).(pulumi.StringArrayOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Identifier.
 func (o LookupCustomHostnameFallbackOriginResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomHostnameFallbackOriginResult) string { return v.Id }).(pulumi.StringOutput)
 }

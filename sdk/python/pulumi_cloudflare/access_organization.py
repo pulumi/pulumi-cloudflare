@@ -482,6 +482,10 @@ class AccessOrganization(pulumi.CustomResource):
             warp_auth_session_duration="24h")
         ```
 
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
@@ -531,6 +535,10 @@ class AccessOrganization(pulumi.CustomResource):
             user_seat_expiration_inactive_time="730h",
             warp_auth_session_duration="24h")
         ```
+
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
 
         :param str resource_name: The name of the resource.
         :param AccessOrganizationArgs args: The arguments to use to populate this resource's properties.

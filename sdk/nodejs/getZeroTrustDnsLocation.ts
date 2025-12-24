@@ -32,7 +32,7 @@ export function getZeroTrustDnsLocation(args: GetZeroTrustDnsLocationArgs, opts?
  */
 export interface GetZeroTrustDnsLocationArgs {
     accountId: string;
-    locationId?: string;
+    locationId: string;
 }
 
 /**
@@ -81,7 +81,7 @@ export interface GetZeroTrustDnsLocationResult {
      * Show the backup destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
      */
     readonly ipv4DestinationBackup: string;
-    readonly locationId?: string;
+    readonly locationId: string;
     /**
      * Specify the location name.
      */
@@ -118,5 +118,5 @@ export function getZeroTrustDnsLocationOutput(args: GetZeroTrustDnsLocationOutpu
  */
 export interface GetZeroTrustDnsLocationOutputArgs {
     accountId: pulumi.Input<string>;
-    locationId?: pulumi.Input<string>;
+    locationId: pulumi.Input<string>;
 }

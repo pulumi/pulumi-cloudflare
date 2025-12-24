@@ -26,7 +26,7 @@ class GetByoIpPrefixResult:
     """
     A collection of values returned by getByoIpPrefix.
     """
-    def __init__(__self__, account_id=None, advertised=None, advertised_modified_at=None, approved=None, asn=None, cidr=None, created_at=None, description=None, id=None, loa_document_id=None, modified_at=None, on_demand_enabled=None, on_demand_locked=None, prefix_id=None):
+    def __init__(__self__, account_id=None, advertised=None, advertised_modified_at=None, approved=None, asn=None, cidr=None, created_at=None, delegate_loa_creation=None, description=None, id=None, irr_validation_state=None, loa_document_id=None, modified_at=None, on_demand_enabled=None, on_demand_locked=None, ownership_validation_state=None, ownership_validation_token=None, prefix_id=None, rpki_validation_state=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -48,12 +48,18 @@ class GetByoIpPrefixResult:
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
+        if delegate_loa_creation and not isinstance(delegate_loa_creation, bool):
+            raise TypeError("Expected argument 'delegate_loa_creation' to be a bool")
+        pulumi.set(__self__, "delegate_loa_creation", delegate_loa_creation)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if irr_validation_state and not isinstance(irr_validation_state, str):
+            raise TypeError("Expected argument 'irr_validation_state' to be a str")
+        pulumi.set(__self__, "irr_validation_state", irr_validation_state)
         if loa_document_id and not isinstance(loa_document_id, str):
             raise TypeError("Expected argument 'loa_document_id' to be a str")
         pulumi.set(__self__, "loa_document_id", loa_document_id)
@@ -66,9 +72,18 @@ class GetByoIpPrefixResult:
         if on_demand_locked and not isinstance(on_demand_locked, bool):
             raise TypeError("Expected argument 'on_demand_locked' to be a bool")
         pulumi.set(__self__, "on_demand_locked", on_demand_locked)
+        if ownership_validation_state and not isinstance(ownership_validation_state, str):
+            raise TypeError("Expected argument 'ownership_validation_state' to be a str")
+        pulumi.set(__self__, "ownership_validation_state", ownership_validation_state)
+        if ownership_validation_token and not isinstance(ownership_validation_token, str):
+            raise TypeError("Expected argument 'ownership_validation_token' to be a str")
+        pulumi.set(__self__, "ownership_validation_token", ownership_validation_token)
         if prefix_id and not isinstance(prefix_id, str):
             raise TypeError("Expected argument 'prefix_id' to be a str")
         pulumi.set(__self__, "prefix_id", prefix_id)
+        if rpki_validation_state and not isinstance(rpki_validation_state, str):
+            raise TypeError("Expected argument 'rpki_validation_state' to be a str")
+        pulumi.set(__self__, "rpki_validation_state", rpki_validation_state)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -126,6 +141,14 @@ class GetByoIpPrefixResult:
         return pulumi.get(self, "created_at")
 
     @_builtins.property
+    @pulumi.getter(name="delegateLoaCreation")
+    def delegate_loa_creation(self) -> _builtins.bool:
+        """
+        Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+        """
+        return pulumi.get(self, "delegate_loa_creation")
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
@@ -140,6 +163,14 @@ class GetByoIpPrefixResult:
         Identifier of an IP Prefix.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="irrValidationState")
+    def irr_validation_state(self) -> _builtins.str:
+        """
+        State of one kind of validation for an IP prefix.
+        """
+        return pulumi.get(self, "irr_validation_state")
 
     @_builtins.property
     @pulumi.getter(name="loaDocumentId")
@@ -173,12 +204,36 @@ class GetByoIpPrefixResult:
         return pulumi.get(self, "on_demand_locked")
 
     @_builtins.property
+    @pulumi.getter(name="ownershipValidationState")
+    def ownership_validation_state(self) -> _builtins.str:
+        """
+        State of one kind of validation for an IP prefix.
+        """
+        return pulumi.get(self, "ownership_validation_state")
+
+    @_builtins.property
+    @pulumi.getter(name="ownershipValidationToken")
+    def ownership_validation_token(self) -> _builtins.str:
+        """
+        Token provided to demonstrate ownership of the prefix.
+        """
+        return pulumi.get(self, "ownership_validation_token")
+
+    @_builtins.property
     @pulumi.getter(name="prefixId")
-    def prefix_id(self) -> Optional[_builtins.str]:
+    def prefix_id(self) -> _builtins.str:
         """
         Identifier of an IP Prefix.
         """
         return pulumi.get(self, "prefix_id")
+
+    @_builtins.property
+    @pulumi.getter(name="rpkiValidationState")
+    def rpki_validation_state(self) -> _builtins.str:
+        """
+        State of one kind of validation for an IP prefix.
+        """
+        return pulumi.get(self, "rpki_validation_state")
 
 
 class AwaitableGetByoIpPrefixResult(GetByoIpPrefixResult):
@@ -194,13 +249,18 @@ class AwaitableGetByoIpPrefixResult(GetByoIpPrefixResult):
             asn=self.asn,
             cidr=self.cidr,
             created_at=self.created_at,
+            delegate_loa_creation=self.delegate_loa_creation,
             description=self.description,
             id=self.id,
+            irr_validation_state=self.irr_validation_state,
             loa_document_id=self.loa_document_id,
             modified_at=self.modified_at,
             on_demand_enabled=self.on_demand_enabled,
             on_demand_locked=self.on_demand_locked,
-            prefix_id=self.prefix_id)
+            ownership_validation_state=self.ownership_validation_state,
+            ownership_validation_token=self.ownership_validation_token,
+            prefix_id=self.prefix_id,
+            rpki_validation_state=self.rpki_validation_state)
 
 
 def get_byo_ip_prefix(account_id: Optional[_builtins.str] = None,
@@ -235,15 +295,20 @@ def get_byo_ip_prefix(account_id: Optional[_builtins.str] = None,
         asn=pulumi.get(__ret__, 'asn'),
         cidr=pulumi.get(__ret__, 'cidr'),
         created_at=pulumi.get(__ret__, 'created_at'),
+        delegate_loa_creation=pulumi.get(__ret__, 'delegate_loa_creation'),
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
+        irr_validation_state=pulumi.get(__ret__, 'irr_validation_state'),
         loa_document_id=pulumi.get(__ret__, 'loa_document_id'),
         modified_at=pulumi.get(__ret__, 'modified_at'),
         on_demand_enabled=pulumi.get(__ret__, 'on_demand_enabled'),
         on_demand_locked=pulumi.get(__ret__, 'on_demand_locked'),
-        prefix_id=pulumi.get(__ret__, 'prefix_id'))
+        ownership_validation_state=pulumi.get(__ret__, 'ownership_validation_state'),
+        ownership_validation_token=pulumi.get(__ret__, 'ownership_validation_token'),
+        prefix_id=pulumi.get(__ret__, 'prefix_id'),
+        rpki_validation_state=pulumi.get(__ret__, 'rpki_validation_state'))
 def get_byo_ip_prefix_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                             prefix_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                             prefix_id: Optional[pulumi.Input[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetByoIpPrefixResult]:
     """
     ## Example Usage
@@ -273,10 +338,15 @@ def get_byo_ip_prefix_output(account_id: Optional[pulumi.Input[_builtins.str]] =
         asn=pulumi.get(__response__, 'asn'),
         cidr=pulumi.get(__response__, 'cidr'),
         created_at=pulumi.get(__response__, 'created_at'),
+        delegate_loa_creation=pulumi.get(__response__, 'delegate_loa_creation'),
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),
+        irr_validation_state=pulumi.get(__response__, 'irr_validation_state'),
         loa_document_id=pulumi.get(__response__, 'loa_document_id'),
         modified_at=pulumi.get(__response__, 'modified_at'),
         on_demand_enabled=pulumi.get(__response__, 'on_demand_enabled'),
         on_demand_locked=pulumi.get(__response__, 'on_demand_locked'),
-        prefix_id=pulumi.get(__response__, 'prefix_id')))
+        ownership_validation_state=pulumi.get(__response__, 'ownership_validation_state'),
+        ownership_validation_token=pulumi.get(__response__, 'ownership_validation_token'),
+        prefix_id=pulumi.get(__response__, 'prefix_id'),
+        rpki_validation_state=pulumi.get(__response__, 'rpki_validation_state')))

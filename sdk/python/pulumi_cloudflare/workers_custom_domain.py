@@ -20,23 +20,27 @@ __all__ = ['WorkersCustomDomainArgs', 'WorkersCustomDomain']
 class WorkersCustomDomainArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
-                 environment: pulumi.Input[_builtins.str],
                  hostname: pulumi.Input[_builtins.str],
                  service: pulumi.Input[_builtins.str],
-                 zone_id: pulumi.Input[_builtins.str]):
+                 zone_id: pulumi.Input[_builtins.str],
+                 environment: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkersCustomDomain resource.
         :param pulumi.Input[_builtins.str] account_id: Identifer of the account.
-        :param pulumi.Input[_builtins.str] environment: Worker environment associated with the zone and hostname.
         :param pulumi.Input[_builtins.str] hostname: Hostname of the Worker Domain.
         :param pulumi.Input[_builtins.str] service: Worker service associated with the zone and hostname.
         :param pulumi.Input[_builtins.str] zone_id: Identifier of the zone.
+        :param pulumi.Input[_builtins.str] environment: Worker environment associated with the zone and hostname.
         """
         pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "environment", environment)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "service", service)
         pulumi.set(__self__, "zone_id", zone_id)
+        if environment is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""environment is deprecated: This attribute is deprecated.""")
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -49,18 +53,6 @@ class WorkersCustomDomainArgs:
     @account_id.setter
     def account_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "account_id", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def environment(self) -> pulumi.Input[_builtins.str]:
-        """
-        Worker environment associated with the zone and hostname.
-        """
-        return pulumi.get(self, "environment")
-
-    @environment.setter
-    def environment(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "environment", value)
 
     @_builtins.property
     @pulumi.getter
@@ -98,6 +90,19 @@ class WorkersCustomDomainArgs:
     def zone_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "zone_id", value)
 
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""This attribute is deprecated.""")
+    def environment(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Worker environment associated with the zone and hostname.
+        """
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "environment", value)
+
 
 @pulumi.input_type
 class _WorkersCustomDomainState:
@@ -119,6 +124,9 @@ class _WorkersCustomDomainState:
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if environment is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""environment is deprecated: This attribute is deprecated.""")
         if environment is not None:
             pulumi.set(__self__, "environment", environment)
         if hostname is not None:
@@ -144,6 +152,7 @@ class _WorkersCustomDomainState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def environment(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Worker environment associated with the zone and hostname.
@@ -224,10 +233,10 @@ class WorkersCustomDomain(pulumi.CustomResource):
 
         example_workers_custom_domain = cloudflare.WorkersCustomDomain("example_workers_custom_domain",
             account_id="9a7806061c88ada191ed06f989cc3dac",
-            environment="production",
             hostname="foo.example.com",
             service="foo",
-            zone_id="593c9c94de529bbbfaac7c53ced0447d")
+            zone_id="593c9c94de529bbbfaac7c53ced0447d",
+            environment="production")
         ```
 
         ## Import
@@ -259,10 +268,10 @@ class WorkersCustomDomain(pulumi.CustomResource):
 
         example_workers_custom_domain = cloudflare.WorkersCustomDomain("example_workers_custom_domain",
             account_id="9a7806061c88ada191ed06f989cc3dac",
-            environment="production",
             hostname="foo.example.com",
             service="foo",
-            zone_id="593c9c94de529bbbfaac7c53ced0447d")
+            zone_id="593c9c94de529bbbfaac7c53ced0447d",
+            environment="production")
         ```
 
         ## Import
@@ -303,8 +312,6 @@ class WorkersCustomDomain(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
-            if environment is None and not opts.urn:
-                raise TypeError("Missing required property 'environment'")
             __props__.__dict__["environment"] = environment
             if hostname is None and not opts.urn:
                 raise TypeError("Missing required property 'hostname'")
@@ -370,7 +377,8 @@ class WorkersCustomDomain(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def environment(self) -> pulumi.Output[_builtins.str]:
+    @_utilities.deprecated("""This attribute is deprecated.""")
+    def environment(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Worker environment associated with the zone and hostname.
         """

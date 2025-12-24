@@ -93,15 +93,15 @@ import * as utilities from "./utilities";
  *             },
  *             r2Buckets: {
  *                 R2_BINDING: {
- *                     jurisdiction: "eu",
  *                     name: "some-bucket",
+ *                     jurisdiction: "eu",
  *                 },
  *             },
  *             services: {
  *                 SERVICE_BINDING: {
+ *                     service: "example-worker",
  *                     entrypoint: "MyHandler",
  *                     environment: "production",
- *                     service: "example-worker",
  *                 },
  *             },
  *             usageModel: "standard",
@@ -175,15 +175,15 @@ import * as utilities from "./utilities";
  *             },
  *             r2Buckets: {
  *                 R2_BINDING: {
- *                     jurisdiction: "eu",
  *                     name: "some-bucket",
+ *                     jurisdiction: "eu",
  *                 },
  *             },
  *             services: {
  *                 SERVICE_BINDING: {
+ *                     service: "example-worker",
  *                     entrypoint: "MyHandler",
  *                     environment: "production",
- *                     service: "example-worker",
  *                 },
  *             },
  *             usageModel: "standard",
@@ -199,6 +199,7 @@ import * as utilities from "./utilities";
  *         config: {
  *             deploymentsEnabled: true,
  *             owner: "my-org",
+ *             ownerId: "12345678",
  *             pathExcludes: ["string"],
  *             pathIncludes: ["string"],
  *             prCommentsEnabled: true,
@@ -207,6 +208,7 @@ import * as utilities from "./utilities";
  *             previewDeploymentSetting: "all",
  *             productionBranch: "main",
  *             productionDeploymentsEnabled: true,
+ *             repoId: "12345678",
  *             repoName: "my-repo",
  *         },
  *         type: "github",
@@ -251,13 +253,13 @@ export class PagesProject extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
     declare public readonly accountId: pulumi.Output<string>;
     /**
      * Configs for the project build process.
      */
-    declare public readonly buildConfig: pulumi.Output<outputs.PagesProjectBuildConfig>;
+    declare public readonly buildConfig: pulumi.Output<outputs.PagesProjectBuildConfig | undefined>;
     /**
      * Most recent production deployment of the project.
      */
@@ -302,7 +304,10 @@ export class PagesProject extends pulumi.CustomResource {
      * Name of the production script.
      */
     declare public /*out*/ readonly productionScriptName: pulumi.Output<string>;
-    declare public readonly source: pulumi.Output<outputs.PagesProjectSource>;
+    /**
+     * Configs for the project source control.
+     */
+    declare public readonly source: pulumi.Output<outputs.PagesProjectSource | undefined>;
     /**
      * The Cloudflare subdomain associated with the project.
      */
@@ -379,7 +384,7 @@ export class PagesProject extends pulumi.CustomResource {
  */
 export interface PagesProjectState {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -430,6 +435,9 @@ export interface PagesProjectState {
      * Name of the production script.
      */
     productionScriptName?: pulumi.Input<string>;
+    /**
+     * Configs for the project source control.
+     */
     source?: pulumi.Input<inputs.PagesProjectSource>;
     /**
      * The Cloudflare subdomain associated with the project.
@@ -446,7 +454,7 @@ export interface PagesProjectState {
  */
 export interface PagesProjectArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**
@@ -465,5 +473,8 @@ export interface PagesProjectArgs {
      * Production branch of the project. Used to identify production deployments.
      */
     productionBranch: pulumi.Input<string>;
+    /**
+     * Configs for the project source control.
+     */
     source?: pulumi.Input<inputs.PagesProjectSource>;
 }

@@ -13,8 +13,6 @@ import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRateLimitResult {
@@ -57,7 +55,7 @@ public final class GetRateLimitResult {
      * @return Defines the unique identifier of the rate limit.
      * 
      */
-    private @Nullable String rateLimitId;
+    private String rateLimitId;
     /**
      * @return The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
      * 
@@ -123,8 +121,8 @@ public final class GetRateLimitResult {
      * @return Defines the unique identifier of the rate limit.
      * 
      */
-    public Optional<String> rateLimitId() {
-        return Optional.ofNullable(this.rateLimitId);
+    public String rateLimitId() {
+        return this.rateLimitId;
     }
     /**
      * @return The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
@@ -157,7 +155,7 @@ public final class GetRateLimitResult {
         private String id;
         private GetRateLimitMatch match;
         private Double period;
-        private @Nullable String rateLimitId;
+        private String rateLimitId;
         private Double threshold;
         private String zoneId;
         public Builder() {}
@@ -235,8 +233,10 @@ public final class GetRateLimitResult {
             return this;
         }
         @CustomType.Setter
-        public Builder rateLimitId(@Nullable String rateLimitId) {
-
+        public Builder rateLimitId(String rateLimitId) {
+            if (rateLimitId == null) {
+              throw new MissingRequiredPropertyException("GetRateLimitResult", "rateLimitId");
+            }
             this.rateLimitId = rateLimitId;
             return this;
         }

@@ -3,11 +3,14 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetWorkersScriptFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetWorkersScriptArgs extends com.pulumi.resources.InvokeArgs {
@@ -29,25 +32,33 @@ public final class GetWorkersScriptArgs extends com.pulumi.resources.InvokeArgs 
         return this.accountId;
     }
 
+    @Import(name="filter")
+    private @Nullable Output<GetWorkersScriptFilterArgs> filter;
+
+    public Optional<Output<GetWorkersScriptFilterArgs>> filter() {
+        return Optional.ofNullable(this.filter);
+    }
+
     /**
      * Name of the script, used in URLs and route configuration.
      * 
      */
-    @Import(name="scriptName", required=true)
-    private Output<String> scriptName;
+    @Import(name="scriptName")
+    private @Nullable Output<String> scriptName;
 
     /**
      * @return Name of the script, used in URLs and route configuration.
      * 
      */
-    public Output<String> scriptName() {
-        return this.scriptName;
+    public Optional<Output<String>> scriptName() {
+        return Optional.ofNullable(this.scriptName);
     }
 
     private GetWorkersScriptArgs() {}
 
     private GetWorkersScriptArgs(GetWorkersScriptArgs $) {
         this.accountId = $.accountId;
+        this.filter = $.filter;
         this.scriptName = $.scriptName;
     }
 
@@ -90,13 +101,22 @@ public final class GetWorkersScriptArgs extends com.pulumi.resources.InvokeArgs 
             return accountId(Output.of(accountId));
         }
 
+        public Builder filter(@Nullable Output<GetWorkersScriptFilterArgs> filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        public Builder filter(GetWorkersScriptFilterArgs filter) {
+            return filter(Output.of(filter));
+        }
+
         /**
          * @param scriptName Name of the script, used in URLs and route configuration.
          * 
          * @return builder
          * 
          */
-        public Builder scriptName(Output<String> scriptName) {
+        public Builder scriptName(@Nullable Output<String> scriptName) {
             $.scriptName = scriptName;
             return this;
         }
@@ -114,9 +134,6 @@ public final class GetWorkersScriptArgs extends com.pulumi.resources.InvokeArgs 
         public GetWorkersScriptArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetWorkersScriptArgs", "accountId");
-            }
-            if ($.scriptName == null) {
-                throw new MissingRequiredPropertyException("GetWorkersScriptArgs", "scriptName");
             }
             return $;
         }

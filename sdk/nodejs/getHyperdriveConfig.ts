@@ -38,7 +38,7 @@ export interface GetHyperdriveConfigArgs {
     /**
      * Define configurations using a unique string identifier.
      */
-    hyperdriveId?: string;
+    hyperdriveId: string;
 }
 
 /**
@@ -57,7 +57,7 @@ export interface GetHyperdriveConfigResult {
     /**
      * Define configurations using a unique string identifier.
      */
-    readonly hyperdriveId?: string;
+    readonly hyperdriveId: string;
     /**
      * Define configurations using a unique string identifier.
      */
@@ -106,5 +106,5 @@ export interface GetHyperdriveConfigOutputArgs {
     /**
      * Define configurations using a unique string identifier.
      */
-    hyperdriveId?: pulumi.Input<string>;
+    hyperdriveId: pulumi.Input<string>;
 }

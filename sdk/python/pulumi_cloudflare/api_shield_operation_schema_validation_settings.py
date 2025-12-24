@@ -161,6 +161,9 @@ class ApiShieldOperationSchemaValidationSettings(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        > `ApiShieldOperationSchemaValidationSettings` is in a deprecation phase and will be removed in the future.
+          Instead, please utilize the SchemaValidationOperationSettings resource instead.
+
         ## Example Usage
 
         ```python
@@ -198,6 +201,9 @@ class ApiShieldOperationSchemaValidationSettings(pulumi.CustomResource):
                  args: ApiShieldOperationSchemaValidationSettingsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > `ApiShieldOperationSchemaValidationSettings` is in a deprecation phase and will be removed in the future.
+          Instead, please utilize the SchemaValidationOperationSettings resource instead.
+
         ## Example Usage
 
         ```python

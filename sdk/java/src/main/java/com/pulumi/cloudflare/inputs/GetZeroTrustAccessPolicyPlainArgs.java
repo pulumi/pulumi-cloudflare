@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetZeroTrustAccessPolicyPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -34,15 +32,15 @@ public final class GetZeroTrustAccessPolicyPlainArgs extends com.pulumi.resource
      * The UUID of the policy
      * 
      */
-    @Import(name="policyId")
-    private @Nullable String policyId;
+    @Import(name="policyId", required=true)
+    private String policyId;
 
     /**
      * @return The UUID of the policy
      * 
      */
-    public Optional<String> policyId() {
-        return Optional.ofNullable(this.policyId);
+    public String policyId() {
+        return this.policyId;
     }
 
     private GetZeroTrustAccessPolicyPlainArgs() {}
@@ -87,7 +85,7 @@ public final class GetZeroTrustAccessPolicyPlainArgs extends com.pulumi.resource
          * @return builder
          * 
          */
-        public Builder policyId(@Nullable String policyId) {
+        public Builder policyId(String policyId) {
             $.policyId = policyId;
             return this;
         }
@@ -95,6 +93,9 @@ public final class GetZeroTrustAccessPolicyPlainArgs extends com.pulumi.resource
         public GetZeroTrustAccessPolicyPlainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetZeroTrustAccessPolicyPlainArgs", "accountId");
+            }
+            if ($.policyId == null) {
+                throw new MissingRequiredPropertyException("GetZeroTrustAccessPolicyPlainArgs", "policyId");
             }
             return $;
         }

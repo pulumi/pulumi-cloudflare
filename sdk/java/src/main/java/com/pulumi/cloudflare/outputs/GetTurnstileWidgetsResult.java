@@ -37,6 +37,11 @@ public final class GetTurnstileWidgetsResult {
      */
     private Boolean ephemeralId;
     /**
+     * @return Widget item identifier tag.
+     * 
+     */
+    private String id;
+    /**
      * @return Widget Mode
      * Available values: &#34;non-interactive&#34;, &#34;invisible&#34;, &#34;managed&#34;.
      * 
@@ -107,6 +112,13 @@ public final class GetTurnstileWidgetsResult {
         return this.ephemeralId;
     }
     /**
+     * @return Widget item identifier tag.
+     * 
+     */
+    public String id() {
+        return this.id;
+    }
+    /**
      * @return Widget Mode
      * Available values: &#34;non-interactive&#34;, &#34;invisible&#34;, &#34;managed&#34;.
      * 
@@ -167,6 +179,7 @@ public final class GetTurnstileWidgetsResult {
         private String createdOn;
         private List<String> domains;
         private Boolean ephemeralId;
+        private String id;
         private String mode;
         private String modifiedOn;
         private String name;
@@ -181,6 +194,7 @@ public final class GetTurnstileWidgetsResult {
     	      this.createdOn = defaults.createdOn;
     	      this.domains = defaults.domains;
     	      this.ephemeralId = defaults.ephemeralId;
+    	      this.id = defaults.id;
     	      this.mode = defaults.mode;
     	      this.modifiedOn = defaults.modifiedOn;
     	      this.name = defaults.name;
@@ -230,6 +244,14 @@ public final class GetTurnstileWidgetsResult {
               throw new MissingRequiredPropertyException("GetTurnstileWidgetsResult", "ephemeralId");
             }
             this.ephemeralId = ephemeralId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTurnstileWidgetsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -287,6 +309,7 @@ public final class GetTurnstileWidgetsResult {
             _resultValue.createdOn = createdOn;
             _resultValue.domains = domains;
             _resultValue.ephemeralId = ephemeralId;
+            _resultValue.id = id;
             _resultValue.mode = mode;
             _resultValue.modifiedOn = modifiedOn;
             _resultValue.name = name;

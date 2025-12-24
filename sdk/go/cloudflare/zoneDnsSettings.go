@@ -59,6 +59,10 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ~> This resource does not currently support `pulumi import`.
 type ZoneDnsSettings struct {
 	pulumi.CustomResourceState
 

@@ -58,7 +58,7 @@ export interface GetWaitingRoomRulesResult {
      */
     readonly expression: string;
     /**
-     * The ID of the rule.
+     * The ID of this resource.
      */
     readonly id: string;
     readonly lastUpdated: string;

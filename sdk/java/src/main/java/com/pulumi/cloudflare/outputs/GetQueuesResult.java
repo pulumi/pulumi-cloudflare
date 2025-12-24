@@ -18,6 +18,7 @@ public final class GetQueuesResult {
     private List<GetQueuesResultConsumer> consumers;
     private Double consumersTotalCount;
     private String createdOn;
+    private String id;
     private String modifiedOn;
     private List<GetQueuesResultProducer> producers;
     private Double producersTotalCount;
@@ -34,6 +35,9 @@ public final class GetQueuesResult {
     }
     public String createdOn() {
         return this.createdOn;
+    }
+    public String id() {
+        return this.id;
     }
     public String modifiedOn() {
         return this.modifiedOn;
@@ -66,6 +70,7 @@ public final class GetQueuesResult {
         private List<GetQueuesResultConsumer> consumers;
         private Double consumersTotalCount;
         private String createdOn;
+        private String id;
         private String modifiedOn;
         private List<GetQueuesResultProducer> producers;
         private Double producersTotalCount;
@@ -78,6 +83,7 @@ public final class GetQueuesResult {
     	      this.consumers = defaults.consumers;
     	      this.consumersTotalCount = defaults.consumersTotalCount;
     	      this.createdOn = defaults.createdOn;
+    	      this.id = defaults.id;
     	      this.modifiedOn = defaults.modifiedOn;
     	      this.producers = defaults.producers;
     	      this.producersTotalCount = defaults.producersTotalCount;
@@ -111,6 +117,14 @@ public final class GetQueuesResult {
               throw new MissingRequiredPropertyException("GetQueuesResult", "createdOn");
             }
             this.createdOn = createdOn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetQueuesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -169,6 +183,7 @@ public final class GetQueuesResult {
             _resultValue.consumers = consumers;
             _resultValue.consumersTotalCount = consumersTotalCount;
             _resultValue.createdOn = createdOn;
+            _resultValue.id = id;
             _resultValue.modifiedOn = modifiedOn;
             _resultValue.producers = producers;
             _resultValue.producersTotalCount = producersTotalCount;

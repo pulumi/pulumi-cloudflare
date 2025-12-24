@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > This resource is redundant with `Worker` and should not be used together. When using the `Worker` resource, use the nested `subdomain` attribute to control subdomain settings instead.
+//
 // ## Example Usage
 //
 // ```go
@@ -39,6 +41,12 @@ import (
 //		})
 //	}
 //
+// ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain example '<account_id>/<script_name>'
 // ```
 type WorkersScriptSubdomain struct {
 	pulumi.CustomResourceState

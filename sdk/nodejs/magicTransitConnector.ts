@@ -70,6 +70,10 @@ export class MagicTransitConnector extends pulumi.CustomResource {
     declare public readonly device: pulumi.Output<outputs.MagicTransitConnectorDevice>;
     declare public readonly interruptWindowDurationHours: pulumi.Output<number>;
     declare public readonly interruptWindowHourOfDay: pulumi.Output<number>;
+    /**
+     * License key for the connector. This is only returned on creation and will not be available in subsequent reads.
+     */
+    declare public /*out*/ readonly licenseKey: pulumi.Output<string>;
     declare public readonly notes: pulumi.Output<string>;
     declare public readonly timezone: pulumi.Output<string>;
 
@@ -91,6 +95,7 @@ export class MagicTransitConnector extends pulumi.CustomResource {
             resourceInputs["device"] = state?.device;
             resourceInputs["interruptWindowDurationHours"] = state?.interruptWindowDurationHours;
             resourceInputs["interruptWindowHourOfDay"] = state?.interruptWindowHourOfDay;
+            resourceInputs["licenseKey"] = state?.licenseKey;
             resourceInputs["notes"] = state?.notes;
             resourceInputs["timezone"] = state?.timezone;
         } else {
@@ -108,8 +113,11 @@ export class MagicTransitConnector extends pulumi.CustomResource {
             resourceInputs["interruptWindowHourOfDay"] = args?.interruptWindowHourOfDay;
             resourceInputs["notes"] = args?.notes;
             resourceInputs["timezone"] = args?.timezone;
+            resourceInputs["licenseKey"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["licenseKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(MagicTransitConnector.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -126,6 +134,10 @@ export interface MagicTransitConnectorState {
     device?: pulumi.Input<inputs.MagicTransitConnectorDevice>;
     interruptWindowDurationHours?: pulumi.Input<number>;
     interruptWindowHourOfDay?: pulumi.Input<number>;
+    /**
+     * License key for the connector. This is only returned on creation and will not be available in subsequent reads.
+     */
+    licenseKey?: pulumi.Input<string>;
     notes?: pulumi.Input<string>;
     timezone?: pulumi.Input<string>;
 }

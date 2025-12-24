@@ -34,6 +34,10 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ~&gt; This resource does not currently support `pulumi import`.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/contentScanningExpression:ContentScanningExpression")]
     public partial class ContentScanningExpression : global::Pulumi.CustomResource

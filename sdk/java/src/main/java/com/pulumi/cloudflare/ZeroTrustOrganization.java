@@ -75,6 +75,10 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ## Import
+ * 
+ * ~&gt; This resource does not currently support `pulumi import`.
+ * 
  */
 @ResourceType(type="cloudflare:index/zeroTrustOrganization:ZeroTrustOrganization")
 public class ZeroTrustOrganization extends com.pulumi.resources.CustomResource {

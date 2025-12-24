@@ -4,18 +4,17 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class PagesProjectDeploymentConfigsPreviewHyperdriveBindings {
-    private @Nullable String id;
+    private String id;
 
     private PagesProjectDeploymentConfigsPreviewHyperdriveBindings() {}
-    public Optional<String> id() {
-        return Optional.ofNullable(this.id);
+    public String id() {
+        return this.id;
     }
 
     public static Builder builder() {
@@ -27,7 +26,7 @@ public final class PagesProjectDeploymentConfigsPreviewHyperdriveBindings {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String id;
+        private String id;
         public Builder() {}
         public Builder(PagesProjectDeploymentConfigsPreviewHyperdriveBindings defaults) {
     	      Objects.requireNonNull(defaults);
@@ -35,8 +34,10 @@ public final class PagesProjectDeploymentConfigsPreviewHyperdriveBindings {
         }
 
         @CustomType.Setter
-        public Builder id(@Nullable String id) {
-
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("PagesProjectDeploymentConfigsPreviewHyperdriveBindings", "id");
+            }
             this.id = id;
             return this;
         }

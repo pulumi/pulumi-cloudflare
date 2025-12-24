@@ -94,7 +94,7 @@ class GetZeroTrustGatewayCertificateResult:
 
     @_builtins.property
     @pulumi.getter(name="certificateId")
-    def certificate_id(self) -> Optional[_builtins.str]:
+    def certificate_id(self) -> _builtins.str:
         """
         Identify the certificate with a UUID.
         """
@@ -231,7 +231,7 @@ def get_zero_trust_gateway_certificate(account_id: Optional[_builtins.str] = Non
         updated_at=pulumi.get(__ret__, 'updated_at'),
         uploaded_on=pulumi.get(__ret__, 'uploaded_on'))
 def get_zero_trust_gateway_certificate_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                              certificate_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                              certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustGatewayCertificateResult]:
     """
     ## Example Usage

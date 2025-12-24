@@ -26,17 +26,11 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("notFoundHandling")]
         public Input<string>? NotFoundHandling { get; set; }
 
-        [Input("runWorkerFirsts")]
-        private InputList<string>? _runWorkerFirsts;
-
         /// <summary>
-        /// Contains a list path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
+        /// When a boolean true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script. When a list of strings, contains path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
         /// </summary>
-        public InputList<string> RunWorkerFirsts
-        {
-            get => _runWorkerFirsts ?? (_runWorkerFirsts = new InputList<string>());
-            set => _runWorkerFirsts = value;
-        }
+        [Input("runWorkerFirst")]
+        public Input<object>? RunWorkerFirst { get; set; }
 
         public WorkerVersionAssetsConfigGetArgs()
         {

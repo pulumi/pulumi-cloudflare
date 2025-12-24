@@ -169,6 +169,8 @@ class WorkersScriptSubdomain(pulumi.CustomResource):
                  script_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        > This resource is redundant with `Worker` and should not be used together. When using the `Worker` resource, use the nested `subdomain` attribute to control subdomain settings instead.
+
         ## Example Usage
 
         ```python
@@ -180,6 +182,12 @@ class WorkersScriptSubdomain(pulumi.CustomResource):
             script_name="this-is_my_script-01",
             enabled=True,
             previews_enabled=False)
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain example '<account_id>/<script_name>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -196,6 +204,8 @@ class WorkersScriptSubdomain(pulumi.CustomResource):
                  args: WorkersScriptSubdomainArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > This resource is redundant with `Worker` and should not be used together. When using the `Worker` resource, use the nested `subdomain` attribute to control subdomain settings instead.
+
         ## Example Usage
 
         ```python
@@ -207,6 +217,12 @@ class WorkersScriptSubdomain(pulumi.CustomResource):
             script_name="this-is_my_script-01",
             enabled=True,
             previews_enabled=False)
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain example '<account_id>/<script_name>'
         ```
 
         :param str resource_name: The name of the resource.

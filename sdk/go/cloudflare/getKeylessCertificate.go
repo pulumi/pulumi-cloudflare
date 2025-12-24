@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupKeylessCertificate(ctx, &cloudflare.LookupKeylessCertificateArgs{
 //				ZoneId:               "023e105f4ecef8ad9ca31a8372d0c353",
-//				KeylessCertificateId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				KeylessCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -50,7 +50,7 @@ func LookupKeylessCertificate(ctx *pulumi.Context, args *LookupKeylessCertificat
 // A collection of arguments for invoking getKeylessCertificate.
 type LookupKeylessCertificateArgs struct {
 	// Identifier.
-	KeylessCertificateId *string `pulumi:"keylessCertificateId"`
+	KeylessCertificateId string `pulumi:"keylessCertificateId"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -66,7 +66,7 @@ type LookupKeylessCertificateResult struct {
 	// Identifier.
 	Id string `pulumi:"id"`
 	// Identifier.
-	KeylessCertificateId *string `pulumi:"keylessCertificateId"`
+	KeylessCertificateId string `pulumi:"keylessCertificateId"`
 	// When the Keyless SSL was last modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
 	// The keyless SSL name.
@@ -96,7 +96,7 @@ func LookupKeylessCertificateOutput(ctx *pulumi.Context, args LookupKeylessCerti
 // A collection of arguments for invoking getKeylessCertificate.
 type LookupKeylessCertificateOutputArgs struct {
 	// Identifier.
-	KeylessCertificateId pulumi.StringPtrInput `pulumi:"keylessCertificateId"`
+	KeylessCertificateId pulumi.StringInput `pulumi:"keylessCertificateId"`
 	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
@@ -141,8 +141,8 @@ func (o LookupKeylessCertificateResultOutput) Id() pulumi.StringOutput {
 }
 
 // Identifier.
-func (o LookupKeylessCertificateResultOutput) KeylessCertificateId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupKeylessCertificateResult) *string { return v.KeylessCertificateId }).(pulumi.StringPtrOutput)
+func (o LookupKeylessCertificateResultOutput) KeylessCertificateId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKeylessCertificateResult) string { return v.KeylessCertificateId }).(pulumi.StringOutput)
 }
 
 // When the Keyless SSL was last modified.

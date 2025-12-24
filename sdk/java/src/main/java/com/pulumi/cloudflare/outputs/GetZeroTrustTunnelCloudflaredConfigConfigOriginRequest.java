@@ -54,6 +54,11 @@ public final class GetZeroTrustTunnelCloudflaredConfigConfigOriginRequest {
      */
     private Integer keepAliveTimeout;
     /**
+     * @return Auto configure the Hostname on the origin server certificate.
+     * 
+     */
+    private Boolean matchSnItoHost;
+    /**
      * @return Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
      * 
      */
@@ -142,6 +147,13 @@ public final class GetZeroTrustTunnelCloudflaredConfigConfigOriginRequest {
         return this.keepAliveTimeout;
     }
     /**
+     * @return Auto configure the Hostname on the origin server certificate.
+     * 
+     */
+    public Boolean matchSnItoHost() {
+        return this.matchSnItoHost;
+    }
+    /**
      * @return Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
      * 
      */
@@ -201,6 +213,7 @@ public final class GetZeroTrustTunnelCloudflaredConfigConfigOriginRequest {
         private String httpHostHeader;
         private Integer keepAliveConnections;
         private Integer keepAliveTimeout;
+        private Boolean matchSnItoHost;
         private Boolean noHappyEyeballs;
         private Boolean noTlsVerify;
         private String originServerName;
@@ -218,6 +231,7 @@ public final class GetZeroTrustTunnelCloudflaredConfigConfigOriginRequest {
     	      this.httpHostHeader = defaults.httpHostHeader;
     	      this.keepAliveConnections = defaults.keepAliveConnections;
     	      this.keepAliveTimeout = defaults.keepAliveTimeout;
+    	      this.matchSnItoHost = defaults.matchSnItoHost;
     	      this.noHappyEyeballs = defaults.noHappyEyeballs;
     	      this.noTlsVerify = defaults.noTlsVerify;
     	      this.originServerName = defaults.originServerName;
@@ -291,6 +305,14 @@ public final class GetZeroTrustTunnelCloudflaredConfigConfigOriginRequest {
             return this;
         }
         @CustomType.Setter
+        public Builder matchSnItoHost(Boolean matchSnItoHost) {
+            if (matchSnItoHost == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustTunnelCloudflaredConfigConfigOriginRequest", "matchSnItoHost");
+            }
+            this.matchSnItoHost = matchSnItoHost;
+            return this;
+        }
+        @CustomType.Setter
         public Builder noHappyEyeballs(Boolean noHappyEyeballs) {
             if (noHappyEyeballs == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustTunnelCloudflaredConfigConfigOriginRequest", "noHappyEyeballs");
@@ -348,6 +370,7 @@ public final class GetZeroTrustTunnelCloudflaredConfigConfigOriginRequest {
             _resultValue.httpHostHeader = httpHostHeader;
             _resultValue.keepAliveConnections = keepAliveConnections;
             _resultValue.keepAliveTimeout = keepAliveTimeout;
+            _resultValue.matchSnItoHost = matchSnItoHost;
             _resultValue.noHappyEyeballs = noHappyEyeballs;
             _resultValue.noTlsVerify = noTlsVerify;
             _resultValue.originServerName = originServerName;

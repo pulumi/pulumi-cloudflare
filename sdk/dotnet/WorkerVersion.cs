@@ -35,7 +35,7 @@ namespace Pulumi.Cloudflare
     ///             {
     ///                 HtmlHandling = "auto-trailing-slash",
     ///                 NotFoundHandling = "404-page",
-    ///                 RunWorkerFirsts = new[]
+    ///                 RunWorkerFirst = new[]
     ///                 {
     ///                     "string",
     ///                 },
@@ -210,6 +210,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("source")]
         public Output<string> Source { get; private set; } = null!;
+
+        /// <summary>
+        /// Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
+        /// </summary>
+        [Output("startupTimeMs")]
+        public Output<int> StartupTimeMs { get; private set; } = null!;
 
         /// <summary>
         /// Usage model for the version.
@@ -486,6 +492,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
+
+        /// <summary>
+        /// Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
+        /// </summary>
+        [Input("startupTimeMs")]
+        public Input<int>? StartupTimeMs { get; set; }
 
         /// <summary>
         /// Usage model for the version.

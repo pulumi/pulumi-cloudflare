@@ -72,9 +72,10 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// How often the subscription is renewed automatically.
         /// Available values: "weekly", "monthly", "quarterly", "yearly".
+        /// Note: Some plans may not support frequency configuration and will return "not-applicable".
         /// </summary>
         [Output("frequency")]
-        public Output<string?> Frequency { get; private set; } = null!;
+        public Output<string> Frequency { get; private set; } = null!;
 
         /// <summary>
         /// The price of the subscription that will be billed, in US dollars.
@@ -150,6 +151,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// How often the subscription is renewed automatically.
         /// Available values: "weekly", "monthly", "quarterly", "yearly".
+        /// Note: Some plans may not support frequency configuration and will return "not-applicable".
         /// </summary>
         [Input("frequency")]
         public Input<string>? Frequency { get; set; }
@@ -195,6 +197,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// How often the subscription is renewed automatically.
         /// Available values: "weekly", "monthly", "quarterly", "yearly".
+        /// Note: Some plans may not support frequency configuration and will return "not-applicable".
         /// </summary>
         [Input("frequency")]
         public Input<string>? Frequency { get; set; }

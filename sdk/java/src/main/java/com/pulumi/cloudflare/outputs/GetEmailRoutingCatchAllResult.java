@@ -25,7 +25,7 @@ public final class GetEmailRoutingCatchAllResult {
      */
     private Boolean enabled;
     /**
-     * @return Routing rule identifier.
+     * @return Identifier.
      * 
      */
     private String id;
@@ -70,7 +70,7 @@ public final class GetEmailRoutingCatchAllResult {
         return this.enabled;
     }
     /**
-     * @return Routing rule identifier.
+     * @return Identifier.
      * 
      */
     public String id() {

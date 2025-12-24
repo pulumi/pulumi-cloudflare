@@ -29,6 +29,10 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ~&gt; This resource does not currently support `pulumi import`.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/r2ManagedDomain:R2ManagedDomain")]
     public partial class R2ManagedDomain : global::Pulumi.CustomResource

@@ -39,7 +39,7 @@ public final class GetAccountSubscriptionResult {
      */
     private String frequency;
     /**
-     * @return Subscription identifier tag.
+     * @return Identifier
      * 
      */
     private String id;
@@ -98,7 +98,7 @@ public final class GetAccountSubscriptionResult {
         return this.frequency;
     }
     /**
-     * @return Subscription identifier tag.
+     * @return Identifier
      * 
      */
     public String id() {

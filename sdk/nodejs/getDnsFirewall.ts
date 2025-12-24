@@ -38,7 +38,7 @@ export interface GetDnsFirewallArgs {
     /**
      * Identifier.
      */
-    dnsFirewallId?: string;
+    dnsFirewallId: string;
 }
 
 /**
@@ -60,7 +60,7 @@ export interface GetDnsFirewallResult {
     /**
      * Identifier.
      */
-    readonly dnsFirewallId?: string;
+    readonly dnsFirewallId: string;
     readonly dnsFirewallIps: string[];
     /**
      * Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
@@ -117,5 +117,5 @@ export interface GetDnsFirewallOutputArgs {
     /**
      * Identifier.
      */
-    dnsFirewallId?: pulumi.Input<string>;
+    dnsFirewallId: pulumi.Input<string>;
 }

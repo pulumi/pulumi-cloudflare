@@ -5,10 +5,9 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class PagesProjectDeploymentConfigsProductionDurableObjectNamespacesArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,15 +18,15 @@ public final class PagesProjectDeploymentConfigsProductionDurableObjectNamespace
      * ID of the Durable Object namespace.
      * 
      */
-    @Import(name="namespaceId")
-    private @Nullable Output<String> namespaceId;
+    @Import(name="namespaceId", required=true)
+    private Output<String> namespaceId;
 
     /**
      * @return ID of the Durable Object namespace.
      * 
      */
-    public Optional<Output<String>> namespaceId() {
-        return Optional.ofNullable(this.namespaceId);
+    public Output<String> namespaceId() {
+        return this.namespaceId;
     }
 
     private PagesProjectDeploymentConfigsProductionDurableObjectNamespacesArgs() {}
@@ -60,7 +59,7 @@ public final class PagesProjectDeploymentConfigsProductionDurableObjectNamespace
          * @return builder
          * 
          */
-        public Builder namespaceId(@Nullable Output<String> namespaceId) {
+        public Builder namespaceId(Output<String> namespaceId) {
             $.namespaceId = namespaceId;
             return this;
         }
@@ -76,6 +75,9 @@ public final class PagesProjectDeploymentConfigsProductionDurableObjectNamespace
         }
 
         public PagesProjectDeploymentConfigsProductionDurableObjectNamespacesArgs build() {
+            if ($.namespaceId == null) {
+                throw new MissingRequiredPropertyException("PagesProjectDeploymentConfigsProductionDurableObjectNamespacesArgs", "namespaceId");
+            }
             return $;
         }
     }

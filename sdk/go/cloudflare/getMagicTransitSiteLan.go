@@ -28,7 +28,7 @@ import (
 //			_, err := cloudflare.LookupMagicTransitSiteLan(ctx, &cloudflare.LookupMagicTransitSiteLanArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				SiteId:    "023e105f4ecef8ad9ca31a8372d0c353",
-//				LanId:     pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				LanId:     "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -53,7 +53,7 @@ type LookupMagicTransitSiteLanArgs struct {
 	// Identifier
 	AccountId string `pulumi:"accountId"`
 	// Identifier
-	LanId *string `pulumi:"lanId"`
+	LanId string `pulumi:"lanId"`
 	// Identifier
 	SiteId string `pulumi:"siteId"`
 }
@@ -67,7 +67,7 @@ type LookupMagicTransitSiteLanResult struct {
 	// Identifier
 	Id string `pulumi:"id"`
 	// Identifier
-	LanId         *string                              `pulumi:"lanId"`
+	LanId         string                               `pulumi:"lanId"`
 	Name          string                               `pulumi:"name"`
 	Nat           GetMagicTransitSiteLanNat            `pulumi:"nat"`
 	Physport      int                                  `pulumi:"physport"`
@@ -94,7 +94,7 @@ type LookupMagicTransitSiteLanOutputArgs struct {
 	// Identifier
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Identifier
-	LanId pulumi.StringPtrInput `pulumi:"lanId"`
+	LanId pulumi.StringInput `pulumi:"lanId"`
 	// Identifier
 	SiteId pulumi.StringInput `pulumi:"siteId"`
 }
@@ -134,8 +134,8 @@ func (o LookupMagicTransitSiteLanResultOutput) Id() pulumi.StringOutput {
 }
 
 // Identifier
-func (o LookupMagicTransitSiteLanResultOutput) LanId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMagicTransitSiteLanResult) *string { return v.LanId }).(pulumi.StringPtrOutput)
+func (o LookupMagicTransitSiteLanResultOutput) LanId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMagicTransitSiteLanResult) string { return v.LanId }).(pulumi.StringOutput)
 }
 
 func (o LookupMagicTransitSiteLanResultOutput) Name() pulumi.StringOutput {

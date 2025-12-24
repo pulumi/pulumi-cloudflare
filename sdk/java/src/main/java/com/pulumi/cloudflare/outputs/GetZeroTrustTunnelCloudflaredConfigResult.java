@@ -6,7 +6,6 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.GetZeroTrustTunnelCloudflaredConfigConfig;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -45,11 +44,6 @@ public final class GetZeroTrustTunnelCloudflaredConfigResult {
      * 
      */
     private Integer version;
-    /**
-     * @return Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
-     * 
-     */
-    private Boolean warpRoutingEnabled;
 
     private GetZeroTrustTunnelCloudflaredConfigResult() {}
     /**
@@ -98,13 +92,6 @@ public final class GetZeroTrustTunnelCloudflaredConfigResult {
     public Integer version() {
         return this.version;
     }
-    /**
-     * @return Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
-     * 
-     */
-    public Boolean warpRoutingEnabled() {
-        return this.warpRoutingEnabled;
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -122,7 +109,6 @@ public final class GetZeroTrustTunnelCloudflaredConfigResult {
         private String source;
         private String tunnelId;
         private Integer version;
-        private Boolean warpRoutingEnabled;
         public Builder() {}
         public Builder(GetZeroTrustTunnelCloudflaredConfigResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -133,7 +119,6 @@ public final class GetZeroTrustTunnelCloudflaredConfigResult {
     	      this.source = defaults.source;
     	      this.tunnelId = defaults.tunnelId;
     	      this.version = defaults.version;
-    	      this.warpRoutingEnabled = defaults.warpRoutingEnabled;
         }
 
         @CustomType.Setter
@@ -192,14 +177,6 @@ public final class GetZeroTrustTunnelCloudflaredConfigResult {
             this.version = version;
             return this;
         }
-        @CustomType.Setter
-        public Builder warpRoutingEnabled(Boolean warpRoutingEnabled) {
-            if (warpRoutingEnabled == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustTunnelCloudflaredConfigResult", "warpRoutingEnabled");
-            }
-            this.warpRoutingEnabled = warpRoutingEnabled;
-            return this;
-        }
         public GetZeroTrustTunnelCloudflaredConfigResult build() {
             final var _resultValue = new GetZeroTrustTunnelCloudflaredConfigResult();
             _resultValue.accountId = accountId;
@@ -209,7 +186,6 @@ public final class GetZeroTrustTunnelCloudflaredConfigResult {
             _resultValue.source = source;
             _resultValue.tunnelId = tunnelId;
             _resultValue.version = version;
-            _resultValue.warpRoutingEnabled = warpRoutingEnabled;
             return _resultValue;
         }
     }

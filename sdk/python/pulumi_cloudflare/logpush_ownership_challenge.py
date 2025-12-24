@@ -185,6 +185,10 @@ class LogpushOwnershipChallenge(pulumi.CustomResource):
             zone_id="zone_id")
         ```
 
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
@@ -208,6 +212,10 @@ class LogpushOwnershipChallenge(pulumi.CustomResource):
             destination_conf="s3://mybucket/logs?region=us-west-2",
             zone_id="zone_id")
         ```
+
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
 
         :param str resource_name: The name of the resource.
         :param LogpushOwnershipChallengeArgs args: The arguments to use to populate this resource's properties.

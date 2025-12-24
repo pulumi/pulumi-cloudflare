@@ -32,6 +32,10 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ~&gt; This resource does not currently support `pulumi import`.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zeroTrustDlpDataset:ZeroTrustDlpDataset")]
     public partial class ZeroTrustDlpDataset : global::Pulumi.CustomResource
@@ -96,7 +100,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// When the dataset was last updated.
+        /// Stores when the dataset was last updated.
         /// 
         /// This includes name or description changes as well as uploads.
         /// </summary>
@@ -269,7 +273,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// When the dataset was last updated.
+        /// Stores when the dataset was last updated.
         /// 
         /// This includes name or description changes as well as uploads.
         /// </summary>

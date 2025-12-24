@@ -9,6 +9,7 @@ import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsBlockPageArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsCheckSessionArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsDnsResolversArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsEgressArgs;
+import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsForensicCopyArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsL4overrideArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsNotificationSettingsArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsPayloadLogArgs;
@@ -194,6 +195,21 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
      */
     public Optional<Output<TeamsRuleRuleSettingsEgressArgs>> egress() {
         return Optional.ofNullable(this.egress);
+    }
+
+    /**
+     * Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
+     * 
+     */
+    @Import(name="forensicCopy")
+    private @Nullable Output<TeamsRuleRuleSettingsForensicCopyArgs> forensicCopy;
+
+    /**
+     * @return Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
+     * 
+     */
+    public Optional<Output<TeamsRuleRuleSettingsForensicCopyArgs>> forensicCopy() {
+        return Optional.ofNullable(this.forensicCopy);
     }
 
     /**
@@ -420,6 +436,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         this.checkSession = $.checkSession;
         this.dnsResolvers = $.dnsResolvers;
         this.egress = $.egress;
+        this.forensicCopy = $.forensicCopy;
         this.ignoreCnameCategoryMatches = $.ignoreCnameCategoryMatches;
         this.insecureDisableDnssecValidation = $.insecureDisableDnssecValidation;
         this.ipCategories = $.ipCategories;
@@ -683,6 +700,27 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
          */
         public Builder egress(TeamsRuleRuleSettingsEgressArgs egress) {
             return egress(Output.of(egress));
+        }
+
+        /**
+         * @param forensicCopy Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forensicCopy(@Nullable Output<TeamsRuleRuleSettingsForensicCopyArgs> forensicCopy) {
+            $.forensicCopy = forensicCopy;
+            return this;
+        }
+
+        /**
+         * @param forensicCopy Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forensicCopy(TeamsRuleRuleSettingsForensicCopyArgs forensicCopy) {
+            return forensicCopy(Output.of(forensicCopy));
         }
 
         /**

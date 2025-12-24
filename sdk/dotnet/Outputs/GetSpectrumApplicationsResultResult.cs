@@ -13,9 +13,113 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetSpectrumApplicationsResultResult
     {
+        /// <summary>
+        /// Enables Argo Smart Routing for this application.
+        /// Notes: Only available for TCP applications with TrafficType set to "direct".
+        /// </summary>
+        public readonly bool ArgoSmartRouting;
+        /// <summary>
+        /// When the Application was created.
+        /// </summary>
+        public readonly string CreatedOn;
+        /// <summary>
+        /// The name and type of DNS record for the Spectrum application.
+        /// </summary>
+        public readonly Outputs.GetSpectrumApplicationsResultDnsResult Dns;
+        /// <summary>
+        /// The anycast edge IP configuration for the hostname of this application.
+        /// </summary>
+        public readonly Outputs.GetSpectrumApplicationsResultEdgeIpsResult EdgeIps;
+        /// <summary>
+        /// App identifier.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
+        /// Enables IP Access Rules for this application.
+        /// Notes: Only available for TCP applications.
+        /// </summary>
+        public readonly bool IpFirewall;
+        /// <summary>
+        /// When the Application was last modified.
+        /// </summary>
+        public readonly string ModifiedOn;
+        /// <summary>
+        /// List of origin IP addresses. Array may contain multiple IP addresses for load balancing.
+        /// </summary>
+        public readonly ImmutableArray<string> OriginDirects;
+        /// <summary>
+        /// The name and type of DNS record for the Spectrum application.
+        /// </summary>
+        public readonly Outputs.GetSpectrumApplicationsResultOriginDnsResult OriginDns;
+        /// <summary>
+        /// The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `"1000-2000"`.
+        /// Notes: If specifying a port range, the number of ports in the range must match the number of ports specified in the "protocol" field.
+        /// </summary>
+        public readonly object OriginPort;
+        /// <summary>
+        /// The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
+        /// </summary>
+        public readonly string Protocol;
+        /// <summary>
+        /// Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+        /// Available values: "off", "v1", "v2", "simple".
+        /// </summary>
+        public readonly string ProxyProtocol;
+        /// <summary>
+        /// The type of TLS termination associated with the application.
+        /// Available values: "off", "flexible", "full", "strict".
+        /// </summary>
+        public readonly string Tls;
+        /// <summary>
+        /// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `Protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+        /// Available values: "direct", "http", "https".
+        /// </summary>
+        public readonly string TrafficType;
+
         [OutputConstructor]
-        private GetSpectrumApplicationsResultResult()
+        private GetSpectrumApplicationsResultResult(
+            bool argoSmartRouting,
+
+            string createdOn,
+
+            Outputs.GetSpectrumApplicationsResultDnsResult dns,
+
+            Outputs.GetSpectrumApplicationsResultEdgeIpsResult edgeIps,
+
+            string id,
+
+            bool ipFirewall,
+
+            string modifiedOn,
+
+            ImmutableArray<string> originDirects,
+
+            Outputs.GetSpectrumApplicationsResultOriginDnsResult originDns,
+
+            object originPort,
+
+            string protocol,
+
+            string proxyProtocol,
+
+            string tls,
+
+            string trafficType)
         {
+            ArgoSmartRouting = argoSmartRouting;
+            CreatedOn = createdOn;
+            Dns = dns;
+            EdgeIps = edgeIps;
+            Id = id;
+            IpFirewall = ipFirewall;
+            ModifiedOn = modifiedOn;
+            OriginDirects = originDirects;
+            OriginDns = originDns;
+            OriginPort = originPort;
+            Protocol = protocol;
+            ProxyProtocol = proxyProtocol;
+            Tls = tls;
+            TrafficType = trafficType;
         }
     }
 }

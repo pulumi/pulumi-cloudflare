@@ -86,7 +86,7 @@ export class AccessRule extends pulumi.CustomResource {
     /**
      * An informative summary of the rule, typically used as a reminder or explanation.
      */
-    declare public readonly notes: pulumi.Output<string | undefined>;
+    declare public readonly notes: pulumi.Output<string>;
     /**
      * All zones owned by the user will have the rule applied.
      */

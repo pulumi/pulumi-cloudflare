@@ -6,21 +6,20 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.PagesProjectSourceConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class PagesProjectSourceArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PagesProjectSourceArgs Empty = new PagesProjectSourceArgs();
 
-    @Import(name="config")
-    private @Nullable Output<PagesProjectSourceConfigArgs> config;
+    @Import(name="config", required=true)
+    private Output<PagesProjectSourceConfigArgs> config;
 
-    public Optional<Output<PagesProjectSourceConfigArgs>> config() {
-        return Optional.ofNullable(this.config);
+    public Output<PagesProjectSourceConfigArgs> config() {
+        return this.config;
     }
 
     /**
@@ -28,16 +27,16 @@ public final class PagesProjectSourceArgs extends com.pulumi.resources.ResourceA
      * Available values: &#34;github&#34;, &#34;gitlab&#34;.
      * 
      */
-    @Import(name="type")
-    private @Nullable Output<String> type;
+    @Import(name="type", required=true)
+    private Output<String> type;
 
     /**
      * @return The source control management provider.
      * Available values: &#34;github&#34;, &#34;gitlab&#34;.
      * 
      */
-    public Optional<Output<String>> type() {
-        return Optional.ofNullable(this.type);
+    public Output<String> type() {
+        return this.type;
     }
 
     private PagesProjectSourceArgs() {}
@@ -65,7 +64,7 @@ public final class PagesProjectSourceArgs extends com.pulumi.resources.ResourceA
             $ = new PagesProjectSourceArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder config(@Nullable Output<PagesProjectSourceConfigArgs> config) {
+        public Builder config(Output<PagesProjectSourceConfigArgs> config) {
             $.config = config;
             return this;
         }
@@ -81,7 +80,7 @@ public final class PagesProjectSourceArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder type(@Nullable Output<String> type) {
+        public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
@@ -98,6 +97,12 @@ public final class PagesProjectSourceArgs extends com.pulumi.resources.ResourceA
         }
 
         public PagesProjectSourceArgs build() {
+            if ($.config == null) {
+                throw new MissingRequiredPropertyException("PagesProjectSourceArgs", "config");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("PagesProjectSourceArgs", "type");
+            }
             return $;
         }
     }

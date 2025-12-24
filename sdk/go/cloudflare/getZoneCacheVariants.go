@@ -56,8 +56,7 @@ type LookupZoneCacheVariantsArgs struct {
 type LookupZoneCacheVariantsResult struct {
 	// Whether the setting is editable.
 	Editable bool `pulumi:"editable"`
-	// The identifier of the caching setting.
-	// Available values: "variants".
+	// Identifier.
 	Id string `pulumi:"id"`
 	// Last time this setting was modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
@@ -106,8 +105,7 @@ func (o LookupZoneCacheVariantsResultOutput) Editable() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZoneCacheVariantsResult) bool { return v.Editable }).(pulumi.BoolOutput)
 }
 
-// The identifier of the caching setting.
-// Available values: "variants".
+// Identifier.
 func (o LookupZoneCacheVariantsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneCacheVariantsResult) string { return v.Id }).(pulumi.StringOutput)
 }

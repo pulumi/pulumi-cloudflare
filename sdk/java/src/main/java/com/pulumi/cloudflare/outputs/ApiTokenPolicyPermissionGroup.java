@@ -3,13 +3,10 @@
 
 package com.pulumi.cloudflare.outputs;
 
-import com.pulumi.cloudflare.outputs.ApiTokenPolicyPermissionGroupMeta;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class ApiTokenPolicyPermissionGroup {
@@ -18,16 +15,6 @@ public final class ApiTokenPolicyPermissionGroup {
      * 
      */
     private String id;
-    /**
-     * @return Attributes associated to the permission group.
-     * 
-     */
-    private @Nullable ApiTokenPolicyPermissionGroupMeta meta;
-    /**
-     * @return Name of the permission group.
-     * 
-     */
-    private @Nullable String name;
 
     private ApiTokenPolicyPermissionGroup() {}
     /**
@@ -36,20 +23,6 @@ public final class ApiTokenPolicyPermissionGroup {
      */
     public String id() {
         return this.id;
-    }
-    /**
-     * @return Attributes associated to the permission group.
-     * 
-     */
-    public Optional<ApiTokenPolicyPermissionGroupMeta> meta() {
-        return Optional.ofNullable(this.meta);
-    }
-    /**
-     * @return Name of the permission group.
-     * 
-     */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
     }
 
     public static Builder builder() {
@@ -62,14 +35,10 @@ public final class ApiTokenPolicyPermissionGroup {
     @CustomType.Builder
     public static final class Builder {
         private String id;
-        private @Nullable ApiTokenPolicyPermissionGroupMeta meta;
-        private @Nullable String name;
         public Builder() {}
         public Builder(ApiTokenPolicyPermissionGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
-    	      this.meta = defaults.meta;
-    	      this.name = defaults.name;
         }
 
         @CustomType.Setter
@@ -80,23 +49,9 @@ public final class ApiTokenPolicyPermissionGroup {
             this.id = id;
             return this;
         }
-        @CustomType.Setter
-        public Builder meta(@Nullable ApiTokenPolicyPermissionGroupMeta meta) {
-
-            this.meta = meta;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder name(@Nullable String name) {
-
-            this.name = name;
-            return this;
-        }
         public ApiTokenPolicyPermissionGroup build() {
             final var _resultValue = new ApiTokenPolicyPermissionGroup();
             _resultValue.id = id;
-            _resultValue.meta = meta;
-            _resultValue.name = name;
             return _resultValue;
         }
     }

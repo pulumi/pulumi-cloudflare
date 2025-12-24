@@ -232,7 +232,7 @@ see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresour
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[_builtins.str]:
+    def zone_id(self) -> _builtins.str:
         return pulumi.get(self, "zone_id")
 
 

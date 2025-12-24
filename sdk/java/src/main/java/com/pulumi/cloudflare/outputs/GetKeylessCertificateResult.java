@@ -11,8 +11,6 @@ import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKeylessCertificateResult {
@@ -40,7 +38,7 @@ public final class GetKeylessCertificateResult {
      * @return Identifier.
      * 
      */
-    private @Nullable String keylessCertificateId;
+    private String keylessCertificateId;
     /**
      * @return When the Keyless SSL was last modified.
      * 
@@ -111,8 +109,8 @@ public final class GetKeylessCertificateResult {
      * @return Identifier.
      * 
      */
-    public Optional<String> keylessCertificateId() {
-        return Optional.ofNullable(this.keylessCertificateId);
+    public String keylessCertificateId() {
+        return this.keylessCertificateId;
     }
     /**
      * @return When the Keyless SSL was last modified.
@@ -178,7 +176,7 @@ public final class GetKeylessCertificateResult {
         private Boolean enabled;
         private String host;
         private String id;
-        private @Nullable String keylessCertificateId;
+        private String keylessCertificateId;
         private String modifiedOn;
         private String name;
         private List<String> permissions;
@@ -236,8 +234,10 @@ public final class GetKeylessCertificateResult {
             return this;
         }
         @CustomType.Setter
-        public Builder keylessCertificateId(@Nullable String keylessCertificateId) {
-
+        public Builder keylessCertificateId(String keylessCertificateId) {
+            if (keylessCertificateId == null) {
+              throw new MissingRequiredPropertyException("GetKeylessCertificateResult", "keylessCertificateId");
+            }
             this.keylessCertificateId = keylessCertificateId;
             return this;
         }

@@ -15,8 +15,8 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// ID of the KV namespace.
         /// </summary>
-        [Input("namespaceId")]
-        public Input<string>? NamespaceId { get; set; }
+        [Input("namespaceId", required: true)]
+        public Input<string> NamespaceId { get; set; } = null!;
 
         public PagesProjectDeploymentConfigsPreviewKvNamespacesGetArgs()
         {

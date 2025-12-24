@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetKeylessCertificateArgs extends com.pulumi.resources.InvokeArgs {
@@ -20,15 +18,15 @@ public final class GetKeylessCertificateArgs extends com.pulumi.resources.Invoke
      * Identifier.
      * 
      */
-    @Import(name="keylessCertificateId")
-    private @Nullable Output<String> keylessCertificateId;
+    @Import(name="keylessCertificateId", required=true)
+    private Output<String> keylessCertificateId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Optional<Output<String>> keylessCertificateId() {
-        return Optional.ofNullable(this.keylessCertificateId);
+    public Output<String> keylessCertificateId() {
+        return this.keylessCertificateId;
     }
 
     /**
@@ -77,7 +75,7 @@ public final class GetKeylessCertificateArgs extends com.pulumi.resources.Invoke
          * @return builder
          * 
          */
-        public Builder keylessCertificateId(@Nullable Output<String> keylessCertificateId) {
+        public Builder keylessCertificateId(Output<String> keylessCertificateId) {
             $.keylessCertificateId = keylessCertificateId;
             return this;
         }
@@ -114,6 +112,9 @@ public final class GetKeylessCertificateArgs extends com.pulumi.resources.Invoke
         }
 
         public GetKeylessCertificateArgs build() {
+            if ($.keylessCertificateId == null) {
+                throw new MissingRequiredPropertyException("GetKeylessCertificateArgs", "keylessCertificateId");
+            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("GetKeylessCertificateArgs", "zoneId");
             }

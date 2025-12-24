@@ -5,10 +5,9 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class PagesProjectDeploymentConfigsProductionD1DatabasesArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,15 +18,15 @@ public final class PagesProjectDeploymentConfigsProductionD1DatabasesArgs extend
      * UUID of the D1 database.
      * 
      */
-    @Import(name="id")
-    private @Nullable Output<String> id;
+    @Import(name="id", required=true)
+    private Output<String> id;
 
     /**
      * @return UUID of the D1 database.
      * 
      */
-    public Optional<Output<String>> id() {
-        return Optional.ofNullable(this.id);
+    public Output<String> id() {
+        return this.id;
     }
 
     private PagesProjectDeploymentConfigsProductionD1DatabasesArgs() {}
@@ -60,7 +59,7 @@ public final class PagesProjectDeploymentConfigsProductionD1DatabasesArgs extend
          * @return builder
          * 
          */
-        public Builder id(@Nullable Output<String> id) {
+        public Builder id(Output<String> id) {
             $.id = id;
             return this;
         }
@@ -76,6 +75,9 @@ public final class PagesProjectDeploymentConfigsProductionD1DatabasesArgs extend
         }
 
         public PagesProjectDeploymentConfigsProductionD1DatabasesArgs build() {
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("PagesProjectDeploymentConfigsProductionD1DatabasesArgs", "id");
+            }
             return $;
         }
     }

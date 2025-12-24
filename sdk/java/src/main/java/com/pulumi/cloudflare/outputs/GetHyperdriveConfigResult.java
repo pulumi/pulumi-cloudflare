@@ -11,8 +11,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetHyperdriveConfigResult {
@@ -31,7 +29,7 @@ public final class GetHyperdriveConfigResult {
      * @return Define configurations using a unique string identifier.
      * 
      */
-    private @Nullable String hyperdriveId;
+    private String hyperdriveId;
     /**
      * @return Define configurations using a unique string identifier.
      * 
@@ -73,8 +71,8 @@ public final class GetHyperdriveConfigResult {
      * @return Define configurations using a unique string identifier.
      * 
      */
-    public Optional<String> hyperdriveId() {
-        return Optional.ofNullable(this.hyperdriveId);
+    public String hyperdriveId() {
+        return this.hyperdriveId;
     }
     /**
      * @return Define configurations using a unique string identifier.
@@ -119,7 +117,7 @@ public final class GetHyperdriveConfigResult {
         private String accountId;
         private GetHyperdriveConfigCaching caching;
         private String createdOn;
-        private @Nullable String hyperdriveId;
+        private String hyperdriveId;
         private String id;
         private String modifiedOn;
         private GetHyperdriveConfigMtls mtls;
@@ -166,8 +164,10 @@ public final class GetHyperdriveConfigResult {
             return this;
         }
         @CustomType.Setter
-        public Builder hyperdriveId(@Nullable String hyperdriveId) {
-
+        public Builder hyperdriveId(String hyperdriveId) {
+            if (hyperdriveId == null) {
+              throw new MissingRequiredPropertyException("GetHyperdriveConfigResult", "hyperdriveId");
+            }
             this.hyperdriveId = hyperdriveId;
             return this;
         }

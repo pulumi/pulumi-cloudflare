@@ -11,41 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class WorkersScriptMigrationsTransferredClass {
-    /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * 
-     */
     private @Nullable String from;
-    /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * 
-     */
     private @Nullable String fromScript;
-    /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * 
-     */
     private @Nullable String to;
 
     private WorkersScriptMigrationsTransferredClass() {}
-    /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * 
-     */
     public Optional<String> from() {
         return Optional.ofNullable(this.from);
     }
-    /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * 
-     */
     public Optional<String> fromScript() {
         return Optional.ofNullable(this.fromScript);
     }
-    /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * 
-     */
     public Optional<String> to() {
         return Optional.ofNullable(this.to);
     }

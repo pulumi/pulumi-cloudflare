@@ -9,6 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// ~&gt; This resource does not currently support `pulumi import`.
+    /// </summary>
     [CloudflareResourceType("cloudflare:index/snippets:Snippets")]
     public partial class Snippets : global::Pulumi.CustomResource
     {

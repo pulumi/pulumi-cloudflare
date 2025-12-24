@@ -6,7 +6,6 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.ZeroTrustTunnelCloudflaredConfigConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -102,21 +101,6 @@ public final class ZeroTrustTunnelCloudflaredConfigState extends com.pulumi.reso
         return Optional.ofNullable(this.version);
     }
 
-    /**
-     * Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
-     * 
-     */
-    @Import(name="warpRoutingEnabled")
-    private @Nullable Output<Boolean> warpRoutingEnabled;
-
-    /**
-     * @return Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
-     * 
-     */
-    public Optional<Output<Boolean>> warpRoutingEnabled() {
-        return Optional.ofNullable(this.warpRoutingEnabled);
-    }
-
     private ZeroTrustTunnelCloudflaredConfigState() {}
 
     private ZeroTrustTunnelCloudflaredConfigState(ZeroTrustTunnelCloudflaredConfigState $) {
@@ -126,7 +110,6 @@ public final class ZeroTrustTunnelCloudflaredConfigState extends com.pulumi.reso
         this.source = $.source;
         this.tunnelId = $.tunnelId;
         this.version = $.version;
-        this.warpRoutingEnabled = $.warpRoutingEnabled;
     }
 
     public static Builder builder() {
@@ -261,27 +244,6 @@ public final class ZeroTrustTunnelCloudflaredConfigState extends com.pulumi.reso
          */
         public Builder version(Integer version) {
             return version(Output.of(version));
-        }
-
-        /**
-         * @param warpRoutingEnabled Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder warpRoutingEnabled(@Nullable Output<Boolean> warpRoutingEnabled) {
-            $.warpRoutingEnabled = warpRoutingEnabled;
-            return this;
-        }
-
-        /**
-         * @param warpRoutingEnabled Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder warpRoutingEnabled(Boolean warpRoutingEnabled) {
-            return warpRoutingEnabled(Output.of(warpRoutingEnabled));
         }
 
         public ZeroTrustTunnelCloudflaredConfigState build() {

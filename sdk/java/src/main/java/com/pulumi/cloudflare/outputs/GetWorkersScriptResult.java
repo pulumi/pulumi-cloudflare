@@ -3,10 +3,13 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetWorkersScriptFilter;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWorkersScriptResult {
@@ -15,8 +18,9 @@ public final class GetWorkersScriptResult {
      * 
      */
     private String accountId;
+    private @Nullable GetWorkersScriptFilter filter;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Name of the script, used in URLs and route configuration.
      * 
      */
     private String id;
@@ -24,7 +28,7 @@ public final class GetWorkersScriptResult {
      * @return Name of the script, used in URLs and route configuration.
      * 
      */
-    private String scriptName;
+    private @Nullable String scriptName;
 
     private GetWorkersScriptResult() {}
     /**
@@ -34,8 +38,11 @@ public final class GetWorkersScriptResult {
     public String accountId() {
         return this.accountId;
     }
+    public Optional<GetWorkersScriptFilter> filter() {
+        return Optional.ofNullable(this.filter);
+    }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Name of the script, used in URLs and route configuration.
      * 
      */
     public String id() {
@@ -45,8 +52,8 @@ public final class GetWorkersScriptResult {
      * @return Name of the script, used in URLs and route configuration.
      * 
      */
-    public String scriptName() {
-        return this.scriptName;
+    public Optional<String> scriptName() {
+        return Optional.ofNullable(this.scriptName);
     }
 
     public static Builder builder() {
@@ -59,12 +66,14 @@ public final class GetWorkersScriptResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
+        private @Nullable GetWorkersScriptFilter filter;
         private String id;
-        private String scriptName;
+        private @Nullable String scriptName;
         public Builder() {}
         public Builder(GetWorkersScriptResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.filter = defaults.filter;
     	      this.id = defaults.id;
     	      this.scriptName = defaults.scriptName;
         }
@@ -78,6 +87,12 @@ public final class GetWorkersScriptResult {
             return this;
         }
         @CustomType.Setter
+        public Builder filter(@Nullable GetWorkersScriptFilter filter) {
+
+            this.filter = filter;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetWorkersScriptResult", "id");
@@ -86,16 +101,15 @@ public final class GetWorkersScriptResult {
             return this;
         }
         @CustomType.Setter
-        public Builder scriptName(String scriptName) {
-            if (scriptName == null) {
-              throw new MissingRequiredPropertyException("GetWorkersScriptResult", "scriptName");
-            }
+        public Builder scriptName(@Nullable String scriptName) {
+
             this.scriptName = scriptName;
             return this;
         }
         public GetWorkersScriptResult build() {
             final var _resultValue = new GetWorkersScriptResult();
             _resultValue.accountId = accountId;
+            _resultValue.filter = filter;
             _resultValue.id = id;
             _resultValue.scriptName = scriptName;
             return _resultValue;

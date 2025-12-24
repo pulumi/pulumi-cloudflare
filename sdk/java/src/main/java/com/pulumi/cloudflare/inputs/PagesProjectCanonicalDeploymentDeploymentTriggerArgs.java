@@ -33,7 +33,7 @@ public final class PagesProjectCanonicalDeploymentDeploymentTriggerArgs extends 
 
     /**
      * What caused the deployment.
-     * Available values: &#34;push&#34;, &#34;adHoc&#34;.
+     * Available values: &#34;github:push&#34;, &#34;ad*hoc&#34;, &#34;deploy*hook&#34;.
      * 
      */
     @Import(name="type")
@@ -41,7 +41,7 @@ public final class PagesProjectCanonicalDeploymentDeploymentTriggerArgs extends 
 
     /**
      * @return What caused the deployment.
-     * Available values: &#34;push&#34;, &#34;adHoc&#34;.
+     * Available values: &#34;github:push&#34;, &#34;ad*hoc&#34;, &#34;deploy*hook&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -96,7 +96,7 @@ public final class PagesProjectCanonicalDeploymentDeploymentTriggerArgs extends 
 
         /**
          * @param type What caused the deployment.
-         * Available values: &#34;push&#34;, &#34;adHoc&#34;.
+         * Available values: &#34;github:push&#34;, &#34;ad*hoc&#34;, &#34;deploy*hook&#34;.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class PagesProjectCanonicalDeploymentDeploymentTriggerArgs extends 
 
         /**
          * @param type What caused the deployment.
-         * Available values: &#34;push&#34;, &#34;adHoc&#34;.
+         * Available values: &#34;github:push&#34;, &#34;ad*hoc&#34;, &#34;deploy*hook&#34;.
          * 
          * @return builder
          * 

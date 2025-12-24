@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,11 +13,23 @@ import javax.annotation.Nullable;
 @CustomType
 public final class MagicTransitConnectorDevice {
     private @Nullable String id;
+    /**
+     * @return Set to true to provision a license key for this connector. Only used during resource creation. This is a write-only field that will not be stored in state.
+     * 
+     */
+    private @Nullable Boolean provisionLicense;
     private @Nullable String serialNumber;
 
     private MagicTransitConnectorDevice() {}
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
+    }
+    /**
+     * @return Set to true to provision a license key for this connector. Only used during resource creation. This is a write-only field that will not be stored in state.
+     * 
+     */
+    public Optional<Boolean> provisionLicense() {
+        return Optional.ofNullable(this.provisionLicense);
     }
     public Optional<String> serialNumber() {
         return Optional.ofNullable(this.serialNumber);
@@ -32,11 +45,13 @@ public final class MagicTransitConnectorDevice {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String id;
+        private @Nullable Boolean provisionLicense;
         private @Nullable String serialNumber;
         public Builder() {}
         public Builder(MagicTransitConnectorDevice defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
+    	      this.provisionLicense = defaults.provisionLicense;
     	      this.serialNumber = defaults.serialNumber;
         }
 
@@ -44,6 +59,12 @@ public final class MagicTransitConnectorDevice {
         public Builder id(@Nullable String id) {
 
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder provisionLicense(@Nullable Boolean provisionLicense) {
+
+            this.provisionLicense = provisionLicense;
             return this;
         }
         @CustomType.Setter
@@ -55,6 +76,7 @@ public final class MagicTransitConnectorDevice {
         public MagicTransitConnectorDevice build() {
             final var _resultValue = new MagicTransitConnectorDevice();
             _resultValue.id = id;
+            _resultValue.provisionLicense = provisionLicense;
             _resultValue.serialNumber = serialNumber;
             return _resultValue;
         }

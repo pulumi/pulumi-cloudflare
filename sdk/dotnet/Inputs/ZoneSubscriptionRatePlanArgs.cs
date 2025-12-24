@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The ID of the rate plan.
-        /// Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "PartnersEnterprise".
+        /// Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partners*enterprise", "partners*ent".
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }

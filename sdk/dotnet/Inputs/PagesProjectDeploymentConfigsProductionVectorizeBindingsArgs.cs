@@ -12,8 +12,8 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class PagesProjectDeploymentConfigsProductionVectorizeBindingsArgs : global::Pulumi.ResourceArgs
     {
-        [Input("indexName")]
-        public Input<string>? IndexName { get; set; }
+        [Input("indexName", required: true)]
+        public Input<string> IndexName { get; set; } = null!;
 
         public PagesProjectDeploymentConfigsProductionVectorizeBindingsArgs()
         {

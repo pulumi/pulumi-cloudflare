@@ -26,7 +26,7 @@ public final class GetR2BucketSippyDestination {
      * @return Available values: &#34;r2&#34;.
      * 
      */
-    private String provider;
+    private String r2BucketSippyProvider;
 
     private GetR2BucketSippyDestination() {}
     /**
@@ -51,8 +51,8 @@ public final class GetR2BucketSippyDestination {
      * @return Available values: &#34;r2&#34;.
      * 
      */
-    public String provider() {
-        return this.provider;
+    public String r2BucketSippyProvider() {
+        return this.r2BucketSippyProvider;
     }
 
     public static Builder builder() {
@@ -67,14 +67,14 @@ public final class GetR2BucketSippyDestination {
         private String accessKeyId;
         private String account;
         private String bucket;
-        private String provider;
+        private String r2BucketSippyProvider;
         public Builder() {}
         public Builder(GetR2BucketSippyDestination defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessKeyId = defaults.accessKeyId;
     	      this.account = defaults.account;
     	      this.bucket = defaults.bucket;
-    	      this.provider = defaults.provider;
+    	      this.r2BucketSippyProvider = defaults.r2BucketSippyProvider;
         }
 
         @CustomType.Setter
@@ -102,11 +102,11 @@ public final class GetR2BucketSippyDestination {
             return this;
         }
         @CustomType.Setter
-        public Builder provider(String provider) {
-            if (provider == null) {
-              throw new MissingRequiredPropertyException("GetR2BucketSippyDestination", "provider");
+        public Builder r2BucketSippyProvider(String r2BucketSippyProvider) {
+            if (r2BucketSippyProvider == null) {
+              throw new MissingRequiredPropertyException("GetR2BucketSippyDestination", "r2BucketSippyProvider");
             }
-            this.provider = provider;
+            this.r2BucketSippyProvider = r2BucketSippyProvider;
             return this;
         }
         public GetR2BucketSippyDestination build() {
@@ -114,7 +114,7 @@ public final class GetR2BucketSippyDestination {
             _resultValue.accessKeyId = accessKeyId;
             _resultValue.account = account;
             _resultValue.bucket = bucket;
-            _resultValue.provider = provider;
+            _resultValue.r2BucketSippyProvider = r2BucketSippyProvider;
             return _resultValue;
         }
     }

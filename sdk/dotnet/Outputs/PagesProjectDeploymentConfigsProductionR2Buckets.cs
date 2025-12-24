@@ -20,13 +20,13 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Name of the R2 bucket.
         /// </summary>
-        public readonly string? Name;
+        public readonly string Name;
 
         [OutputConstructor]
         private PagesProjectDeploymentConfigsProductionR2Buckets(
             string? jurisdiction,
 
-            string? name)
+            string name)
         {
             Jurisdiction = jurisdiction;
             Name = name;

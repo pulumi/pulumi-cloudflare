@@ -26,6 +26,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
+        /// The unique identifier for the test.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// How often the test will run.
         /// </summary>
         public readonly string Interval;
@@ -51,6 +55,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool enabled,
 
+            string id,
+
             string interval,
 
             string name,
@@ -64,6 +70,7 @@ namespace Pulumi.Cloudflare.Outputs
             Data = data;
             Description = description;
             Enabled = enabled;
+            Id = id;
             Interval = interval;
             Name = name;
             TargetPolicies = targetPolicies;

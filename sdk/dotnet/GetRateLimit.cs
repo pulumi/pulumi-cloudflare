@@ -87,8 +87,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Defines the unique identifier of the rate limit.
         /// </summary>
-        [Input("rateLimitId")]
-        public string? RateLimitId { get; set; }
+        [Input("rateLimitId", required: true)]
+        public string RateLimitId { get; set; } = null!;
 
         /// <summary>
         /// Defines an identifier.
@@ -107,8 +107,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Defines the unique identifier of the rate limit.
         /// </summary>
-        [Input("rateLimitId")]
-        public Input<string>? RateLimitId { get; set; }
+        [Input("rateLimitId", required: true)]
+        public Input<string> RateLimitId { get; set; } = null!;
 
         /// <summary>
         /// Defines an identifier.
@@ -157,7 +157,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Defines the unique identifier of the rate limit.
         /// </summary>
-        public readonly string? RateLimitId;
+        public readonly string RateLimitId;
         /// <summary>
         /// The threshold that will trigger the configured mitigation action. Configure this value along with the `Period` property to establish a threshold per period.
         /// </summary>
@@ -183,7 +183,7 @@ namespace Pulumi.Cloudflare
 
             double period,
 
-            string? rateLimitId,
+            string rateLimitId,
 
             double threshold,
 

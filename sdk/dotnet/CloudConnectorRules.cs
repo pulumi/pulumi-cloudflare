@@ -35,7 +35,7 @@ namespace Pulumi.Cloudflare
     ///                 {
     ///                     Host = "examplebucket.s3.eu-north-1.amazonaws.com",
     ///                 },
-    ///                 Provider = "aws_s3",
+    ///                 CloudConnectorRulesProvider = "aws_s3",
     ///             },
     ///         },
     ///     });

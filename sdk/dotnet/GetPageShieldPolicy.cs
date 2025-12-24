@@ -87,8 +87,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("policyId")]
-        public string? PolicyId { get; set; }
+        [Input("policyId", required: true)]
+        public string PolicyId { get; set; } = null!;
 
         /// <summary>
         /// Identifier
@@ -107,8 +107,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("policyId")]
-        public Input<string>? PolicyId { get; set; }
+        [Input("policyId", required: true)]
+        public Input<string> PolicyId { get; set; } = null!;
 
         /// <summary>
         /// Identifier
@@ -150,7 +150,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        public readonly string? PolicyId;
+        public readonly string PolicyId;
         /// <summary>
         /// The policy which will be applied
         /// </summary>
@@ -172,7 +172,7 @@ namespace Pulumi.Cloudflare
 
             string id,
 
-            string? policyId,
+            string policyId,
 
             string value,
 

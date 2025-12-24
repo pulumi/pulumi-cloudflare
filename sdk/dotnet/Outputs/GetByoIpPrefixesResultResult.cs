@@ -39,6 +39,10 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Cidr;
         public readonly string CreatedAt;
         /// <summary>
+        /// Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+        /// </summary>
+        public readonly bool DelegateLoaCreation;
+        /// <summary>
         /// Description of the prefix.
         /// </summary>
         public readonly string Description;
@@ -46,6 +50,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// Identifier of an IP Prefix.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// State of one kind of validation for an IP prefix.
+        /// </summary>
+        public readonly string IrrValidationState;
         /// <summary>
         /// Identifier for the uploaded LOA document.
         /// </summary>
@@ -59,6 +67,18 @@ namespace Pulumi.Cloudflare.Outputs
         /// Whether advertisement status of the prefix is locked, meaning it cannot be changed.
         /// </summary>
         public readonly bool OnDemandLocked;
+        /// <summary>
+        /// State of one kind of validation for an IP prefix.
+        /// </summary>
+        public readonly string OwnershipValidationState;
+        /// <summary>
+        /// Token provided to demonstrate ownership of the prefix.
+        /// </summary>
+        public readonly string OwnershipValidationToken;
+        /// <summary>
+        /// State of one kind of validation for an IP prefix.
+        /// </summary>
+        public readonly string RpkiValidationState;
 
         [OutputConstructor]
         private GetByoIpPrefixesResultResult(
@@ -76,9 +96,13 @@ namespace Pulumi.Cloudflare.Outputs
 
             string createdAt,
 
+            bool delegateLoaCreation,
+
             string description,
 
             string id,
+
+            string irrValidationState,
 
             string loaDocumentId,
 
@@ -86,7 +110,13 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool onDemandEnabled,
 
-            bool onDemandLocked)
+            bool onDemandLocked,
+
+            string ownershipValidationState,
+
+            string ownershipValidationToken,
+
+            string rpkiValidationState)
         {
             AccountId = accountId;
             Advertised = advertised;
@@ -95,12 +125,17 @@ namespace Pulumi.Cloudflare.Outputs
             Asn = asn;
             Cidr = cidr;
             CreatedAt = createdAt;
+            DelegateLoaCreation = delegateLoaCreation;
             Description = description;
             Id = id;
+            IrrValidationState = irrValidationState;
             LoaDocumentId = loaDocumentId;
             ModifiedAt = modifiedAt;
             OnDemandEnabled = onDemandEnabled;
             OnDemandLocked = onDemandLocked;
+            OwnershipValidationState = ownershipValidationState;
+            OwnershipValidationToken = ownershipValidationToken;
+            RpkiValidationState = rpkiValidationState;
         }
     }
 }

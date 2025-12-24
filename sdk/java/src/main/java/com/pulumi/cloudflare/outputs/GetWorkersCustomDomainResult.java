@@ -26,7 +26,11 @@ public final class GetWorkersCustomDomainResult {
     /**
      * @return Worker environment associated with the zone and hostname.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     private String environment;
     private @Nullable GetWorkersCustomDomainFilter filter;
     /**
@@ -73,7 +77,11 @@ public final class GetWorkersCustomDomainResult {
     /**
      * @return Worker environment associated with the zone and hostname.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public String environment() {
         return this.environment;
     }

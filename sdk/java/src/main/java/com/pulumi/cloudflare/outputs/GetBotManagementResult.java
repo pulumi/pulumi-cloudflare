@@ -51,7 +51,7 @@ public final class GetBotManagementResult {
      */
     private Boolean fightMode;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Identifier.
      * 
      */
     private String id;
@@ -165,7 +165,7 @@ public final class GetBotManagementResult {
         return this.fightMode;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Identifier.
      * 
      */
     public String id() {

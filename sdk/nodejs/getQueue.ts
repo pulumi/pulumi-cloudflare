@@ -38,7 +38,7 @@ export interface GetQueueArgs {
     /**
      * A Resource identifier.
      */
-    queueId?: string;
+    queueId: string;
 }
 
 /**
@@ -98,5 +98,5 @@ export interface GetQueueOutputArgs {
     /**
      * A Resource identifier.
      */
-    queueId?: pulumi.Input<string>;
+    queueId: pulumi.Input<string>;
 }

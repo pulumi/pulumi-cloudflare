@@ -243,7 +243,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The application type.
-        /// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal".
+        /// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal", "ProxyEndpoint".
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -567,7 +567,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The application type.
-        /// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal".
+        /// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal", "ProxyEndpoint".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -855,7 +855,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The application type.
-        /// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal".
+        /// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal", "ProxyEndpoint".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -21,6 +21,11 @@ public final class GetRegionalHostnamesResult {
      */
     private String hostname;
     /**
+     * @return DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
+     * 
+     */
+    private String id;
+    /**
      * @return Identifying key for the region
      * 
      */
@@ -45,6 +50,13 @@ public final class GetRegionalHostnamesResult {
      */
     public String hostname() {
         return this.hostname;
+    }
+    /**
+     * @return DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
+     * 
+     */
+    public String id() {
+        return this.id;
     }
     /**
      * @return Identifying key for the region
@@ -72,6 +84,7 @@ public final class GetRegionalHostnamesResult {
     public static final class Builder {
         private String createdOn;
         private String hostname;
+        private String id;
         private String regionKey;
         private String routing;
         public Builder() {}
@@ -79,6 +92,7 @@ public final class GetRegionalHostnamesResult {
     	      Objects.requireNonNull(defaults);
     	      this.createdOn = defaults.createdOn;
     	      this.hostname = defaults.hostname;
+    	      this.id = defaults.id;
     	      this.regionKey = defaults.regionKey;
     	      this.routing = defaults.routing;
         }
@@ -97,6 +111,14 @@ public final class GetRegionalHostnamesResult {
               throw new MissingRequiredPropertyException("GetRegionalHostnamesResult", "hostname");
             }
             this.hostname = hostname;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRegionalHostnamesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -119,6 +141,7 @@ public final class GetRegionalHostnamesResult {
             final var _resultValue = new GetRegionalHostnamesResult();
             _resultValue.createdOn = createdOn;
             _resultValue.hostname = hostname;
+            _resultValue.id = id;
             _resultValue.regionKey = regionKey;
             _resultValue.routing = routing;
             return _resultValue;

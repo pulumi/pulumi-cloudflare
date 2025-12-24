@@ -32,21 +32,6 @@ public final class GetQueueConsumerPlainArgs extends com.pulumi.resources.Invoke
      * A Resource identifier.
      * 
      */
-    @Import(name="consumerId", required=true)
-    private String consumerId;
-
-    /**
-     * @return A Resource identifier.
-     * 
-     */
-    public String consumerId() {
-        return this.consumerId;
-    }
-
-    /**
-     * A Resource identifier.
-     * 
-     */
     @Import(name="queueId", required=true)
     private String queueId;
 
@@ -62,7 +47,6 @@ public final class GetQueueConsumerPlainArgs extends com.pulumi.resources.Invoke
 
     private GetQueueConsumerPlainArgs(GetQueueConsumerPlainArgs $) {
         this.accountId = $.accountId;
-        this.consumerId = $.consumerId;
         this.queueId = $.queueId;
     }
 
@@ -96,17 +80,6 @@ public final class GetQueueConsumerPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param consumerId A Resource identifier.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder consumerId(String consumerId) {
-            $.consumerId = consumerId;
-            return this;
-        }
-
-        /**
          * @param queueId A Resource identifier.
          * 
          * @return builder
@@ -120,9 +93,6 @@ public final class GetQueueConsumerPlainArgs extends com.pulumi.resources.Invoke
         public GetQueueConsumerPlainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetQueueConsumerPlainArgs", "accountId");
-            }
-            if ($.consumerId == null) {
-                throw new MissingRequiredPropertyException("GetQueueConsumerPlainArgs", "consumerId");
             }
             if ($.queueId == null) {
                 throw new MissingRequiredPropertyException("GetQueueConsumerPlainArgs", "queueId");

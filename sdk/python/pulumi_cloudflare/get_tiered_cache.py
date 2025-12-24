@@ -55,8 +55,7 @@ class GetTieredCacheResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The identifier of the caching setting.
-        Available values: "tiered*cache*smart*topology*enable".
+        Identifier.
         """
         return pulumi.get(self, "id")
 

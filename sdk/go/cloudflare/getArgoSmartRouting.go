@@ -56,7 +56,7 @@ type LookupArgoSmartRoutingArgs struct {
 type LookupArgoSmartRoutingResult struct {
 	// Specifies if the setting is editable.
 	Editable bool `pulumi:"editable"`
-	// Specifies the identifier of the Argo Smart Routing setting.
+	// Specifies the zone associated with the API call.
 	Id string `pulumi:"id"`
 	// Specifies the time when the setting was last modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
@@ -106,7 +106,7 @@ func (o LookupArgoSmartRoutingResultOutput) Editable() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupArgoSmartRoutingResult) bool { return v.Editable }).(pulumi.BoolOutput)
 }
 
-// Specifies the identifier of the Argo Smart Routing setting.
+// Specifies the zone associated with the API call.
 func (o LookupArgoSmartRoutingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupArgoSmartRoutingResult) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -183,7 +183,7 @@ def get_queue(account_id: Optional[_builtins.str] = None,
         queue_name=pulumi.get(__ret__, 'queue_name'),
         settings=pulumi.get(__ret__, 'settings'))
 def get_queue_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                     queue_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                     queue_id: Optional[pulumi.Input[_builtins.str]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQueueResult]:
     """
     ## Example Usage

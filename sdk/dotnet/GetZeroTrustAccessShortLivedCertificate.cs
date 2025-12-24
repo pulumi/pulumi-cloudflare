@@ -154,7 +154,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Aud;
         /// <summary>
-        /// The ID of the CA.
+        /// UUID.
         /// </summary>
         public readonly string Id;
         /// <summary>

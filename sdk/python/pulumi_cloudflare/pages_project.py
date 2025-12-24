@@ -29,11 +29,12 @@ class PagesProjectArgs:
                  source: Optional[pulumi.Input['PagesProjectSourceArgs']] = None):
         """
         The set of arguments for constructing a PagesProject resource.
-        :param pulumi.Input[_builtins.str] account_id: Identifier
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] name: Name of the project.
         :param pulumi.Input[_builtins.str] production_branch: Production branch of the project. Used to identify production deployments.
         :param pulumi.Input['PagesProjectBuildConfigArgs'] build_config: Configs for the project build process.
         :param pulumi.Input['PagesProjectDeploymentConfigsArgs'] deployment_configs: Configs for deployments in a project.
+        :param pulumi.Input['PagesProjectSourceArgs'] source: Configs for the project source control.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
@@ -49,7 +50,7 @@ class PagesProjectArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -108,6 +109,9 @@ class PagesProjectArgs:
     @_builtins.property
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input['PagesProjectSourceArgs']]:
+        """
+        Configs for the project source control.
+        """
         return pulumi.get(self, "source")
 
     @source.setter
@@ -136,7 +140,7 @@ class _PagesProjectState:
                  uses_functions: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering PagesProject resources.
-        :param pulumi.Input[_builtins.str] account_id: Identifier
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input['PagesProjectBuildConfigArgs'] build_config: Configs for the project build process.
         :param pulumi.Input['PagesProjectCanonicalDeploymentArgs'] canonical_deployment: Most recent production deployment of the project.
         :param pulumi.Input[_builtins.str] created_on: When the project was created.
@@ -149,6 +153,7 @@ class _PagesProjectState:
         :param pulumi.Input[_builtins.str] preview_script_name: Name of the preview script.
         :param pulumi.Input[_builtins.str] production_branch: Production branch of the project. Used to identify production deployments.
         :param pulumi.Input[_builtins.str] production_script_name: Name of the production script.
+        :param pulumi.Input['PagesProjectSourceArgs'] source: Configs for the project source control.
         :param pulumi.Input[_builtins.str] subdomain: The Cloudflare subdomain associated with the project.
         :param pulumi.Input[_builtins.bool] uses_functions: Whether the project uses functions.
         """
@@ -189,7 +194,7 @@ class _PagesProjectState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -344,6 +349,9 @@ class _PagesProjectState:
     @_builtins.property
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input['PagesProjectSourceArgs']]:
+        """
+        Configs for the project source control.
+        """
         return pulumi.get(self, "source")
 
     @source.setter
@@ -475,15 +483,15 @@ class PagesProject(pulumi.CustomResource):
                     },
                     "r2_buckets": {
                         "R2_BINDING": {
-                            "jurisdiction": "eu",
                             "name": "some-bucket",
+                            "jurisdiction": "eu",
                         },
                     },
                     "services": {
                         "SERVICE_BINDING": {
+                            "service": "example-worker",
                             "entrypoint": "MyHandler",
                             "environment": "production",
-                            "service": "example-worker",
                         },
                     },
                     "usage_model": "standard",
@@ -557,15 +565,15 @@ class PagesProject(pulumi.CustomResource):
                     },
                     "r2_buckets": {
                         "R2_BINDING": {
-                            "jurisdiction": "eu",
                             "name": "some-bucket",
+                            "jurisdiction": "eu",
                         },
                     },
                     "services": {
                         "SERVICE_BINDING": {
+                            "service": "example-worker",
                             "entrypoint": "MyHandler",
                             "environment": "production",
-                            "service": "example-worker",
                         },
                     },
                     "usage_model": "standard",
@@ -581,6 +589,7 @@ class PagesProject(pulumi.CustomResource):
                 "config": {
                     "deployments_enabled": True,
                     "owner": "my-org",
+                    "owner_id": "12345678",
                     "path_excludes": ["string"],
                     "path_includes": ["string"],
                     "pr_comments_enabled": True,
@@ -589,6 +598,7 @@ class PagesProject(pulumi.CustomResource):
                     "preview_deployment_setting": "all",
                     "production_branch": "main",
                     "production_deployments_enabled": True,
+                    "repo_id": "12345678",
                     "repo_name": "my-repo",
                 },
                 "type": "github",
@@ -605,11 +615,12 @@ class PagesProject(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Identifier
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[Union['PagesProjectBuildConfigArgs', 'PagesProjectBuildConfigArgsDict']] build_config: Configs for the project build process.
         :param pulumi.Input[Union['PagesProjectDeploymentConfigsArgs', 'PagesProjectDeploymentConfigsArgsDict']] deployment_configs: Configs for deployments in a project.
         :param pulumi.Input[_builtins.str] name: Name of the project.
         :param pulumi.Input[_builtins.str] production_branch: Production branch of the project. Used to identify production deployments.
+        :param pulumi.Input[Union['PagesProjectSourceArgs', 'PagesProjectSourceArgsDict']] source: Configs for the project source control.
         """
         ...
     @overload
@@ -704,15 +715,15 @@ class PagesProject(pulumi.CustomResource):
                     },
                     "r2_buckets": {
                         "R2_BINDING": {
-                            "jurisdiction": "eu",
                             "name": "some-bucket",
+                            "jurisdiction": "eu",
                         },
                     },
                     "services": {
                         "SERVICE_BINDING": {
+                            "service": "example-worker",
                             "entrypoint": "MyHandler",
                             "environment": "production",
-                            "service": "example-worker",
                         },
                     },
                     "usage_model": "standard",
@@ -786,15 +797,15 @@ class PagesProject(pulumi.CustomResource):
                     },
                     "r2_buckets": {
                         "R2_BINDING": {
-                            "jurisdiction": "eu",
                             "name": "some-bucket",
+                            "jurisdiction": "eu",
                         },
                     },
                     "services": {
                         "SERVICE_BINDING": {
+                            "service": "example-worker",
                             "entrypoint": "MyHandler",
                             "environment": "production",
-                            "service": "example-worker",
                         },
                     },
                     "usage_model": "standard",
@@ -810,6 +821,7 @@ class PagesProject(pulumi.CustomResource):
                 "config": {
                     "deployments_enabled": True,
                     "owner": "my-org",
+                    "owner_id": "12345678",
                     "path_excludes": ["string"],
                     "path_includes": ["string"],
                     "pr_comments_enabled": True,
@@ -818,6 +830,7 @@ class PagesProject(pulumi.CustomResource):
                     "preview_deployment_setting": "all",
                     "production_branch": "main",
                     "production_deployments_enabled": True,
+                    "repo_id": "12345678",
                     "repo_name": "my-repo",
                 },
                 "type": "github",
@@ -917,7 +930,7 @@ class PagesProject(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Identifier
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[Union['PagesProjectBuildConfigArgs', 'PagesProjectBuildConfigArgsDict']] build_config: Configs for the project build process.
         :param pulumi.Input[Union['PagesProjectCanonicalDeploymentArgs', 'PagesProjectCanonicalDeploymentArgsDict']] canonical_deployment: Most recent production deployment of the project.
         :param pulumi.Input[_builtins.str] created_on: When the project was created.
@@ -930,6 +943,7 @@ class PagesProject(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] preview_script_name: Name of the preview script.
         :param pulumi.Input[_builtins.str] production_branch: Production branch of the project. Used to identify production deployments.
         :param pulumi.Input[_builtins.str] production_script_name: Name of the production script.
+        :param pulumi.Input[Union['PagesProjectSourceArgs', 'PagesProjectSourceArgsDict']] source: Configs for the project source control.
         :param pulumi.Input[_builtins.str] subdomain: The Cloudflare subdomain associated with the project.
         :param pulumi.Input[_builtins.bool] uses_functions: Whether the project uses functions.
         """
@@ -959,13 +973,13 @@ class PagesProject(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @_builtins.property
     @pulumi.getter(name="buildConfig")
-    def build_config(self) -> pulumi.Output['outputs.PagesProjectBuildConfig']:
+    def build_config(self) -> pulumi.Output[Optional['outputs.PagesProjectBuildConfig']]:
         """
         Configs for the project build process.
         """
@@ -1061,7 +1075,10 @@ class PagesProject(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> pulumi.Output['outputs.PagesProjectSource']:
+    def source(self) -> pulumi.Output[Optional['outputs.PagesProjectSource']]:
+        """
+        Configs for the project source control.
+        """
         return pulumi.get(self, "source")
 
     @_builtins.property

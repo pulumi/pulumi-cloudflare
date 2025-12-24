@@ -192,7 +192,7 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
     declare public readonly targetCriterias: pulumi.Output<outputs.ZeroTrustAccessApplicationTargetCriteria[] | undefined>;
     /**
      * The application type.
-     * Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal".
+     * Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal", "proxyEndpoint".
      */
     declare public readonly type: pulumi.Output<string | undefined>;
     /**
@@ -454,7 +454,7 @@ export interface ZeroTrustAccessApplicationState {
     targetCriterias?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessApplicationTargetCriteria>[]>;
     /**
      * The application type.
-     * Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal".
+     * Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal", "proxyEndpoint".
      */
     type?: pulumi.Input<string>;
     /**
@@ -612,7 +612,7 @@ export interface ZeroTrustAccessApplicationArgs {
     targetCriterias?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessApplicationTargetCriteria>[]>;
     /**
      * The application type.
-     * Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal".
+     * Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal", "proxyEndpoint".
      */
     type?: pulumi.Input<string>;
     /**

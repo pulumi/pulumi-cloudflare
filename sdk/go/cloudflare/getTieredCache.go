@@ -56,8 +56,7 @@ type LookupTieredCacheArgs struct {
 type LookupTieredCacheResult struct {
 	// Whether the setting is editable.
 	Editable bool `pulumi:"editable"`
-	// The identifier of the caching setting.
-	// Available values: "tiered*cache*smart*topology*enable".
+	// Identifier.
 	Id string `pulumi:"id"`
 	// Last time this setting was modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
@@ -107,8 +106,7 @@ func (o LookupTieredCacheResultOutput) Editable() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupTieredCacheResult) bool { return v.Editable }).(pulumi.BoolOutput)
 }
 
-// The identifier of the caching setting.
-// Available values: "tiered*cache*smart*topology*enable".
+// Identifier.
 func (o LookupTieredCacheResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTieredCacheResult) string { return v.Id }).(pulumi.StringOutput)
 }

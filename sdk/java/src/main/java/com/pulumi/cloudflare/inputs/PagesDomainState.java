@@ -18,14 +18,14 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
     public static final PagesDomainState Empty = new PagesDomainState();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -61,9 +61,17 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.domainId);
     }
 
+    /**
+     * The domain name.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return The domain name.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -153,7 +161,7 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -164,7 +172,7 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -212,11 +220,23 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
             return domainId(Output.of(domainId));
         }
 
+        /**
+         * @param name The domain name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The domain name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

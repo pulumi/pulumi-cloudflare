@@ -93,8 +93,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier of an IP Prefix.
         /// </summary>
-        [Input("prefixId")]
-        public string? PrefixId { get; set; }
+        [Input("prefixId", required: true)]
+        public string PrefixId { get; set; } = null!;
 
         public GetByoIpPrefixArgs()
         {
@@ -113,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier of an IP Prefix.
         /// </summary>
-        [Input("prefixId")]
-        public Input<string>? PrefixId { get; set; }
+        [Input("prefixId", required: true)]
+        public Input<string> PrefixId { get; set; } = null!;
 
         public GetByoIpPrefixInvokeArgs()
         {
@@ -152,6 +152,10 @@ namespace Pulumi.Cloudflare
         public readonly string Cidr;
         public readonly string CreatedAt;
         /// <summary>
+        /// Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+        /// </summary>
+        public readonly bool DelegateLoaCreation;
+        /// <summary>
         /// Description of the prefix.
         /// </summary>
         public readonly string Description;
@@ -159,6 +163,10 @@ namespace Pulumi.Cloudflare
         /// Identifier of an IP Prefix.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// State of one kind of validation for an IP prefix.
+        /// </summary>
+        public readonly string IrrValidationState;
         /// <summary>
         /// Identifier for the uploaded LOA document.
         /// </summary>
@@ -173,9 +181,21 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool OnDemandLocked;
         /// <summary>
+        /// State of one kind of validation for an IP prefix.
+        /// </summary>
+        public readonly string OwnershipValidationState;
+        /// <summary>
+        /// Token provided to demonstrate ownership of the prefix.
+        /// </summary>
+        public readonly string OwnershipValidationToken;
+        /// <summary>
         /// Identifier of an IP Prefix.
         /// </summary>
-        public readonly string? PrefixId;
+        public readonly string PrefixId;
+        /// <summary>
+        /// State of one kind of validation for an IP prefix.
+        /// </summary>
+        public readonly string RpkiValidationState;
 
         [OutputConstructor]
         private GetByoIpPrefixResult(
@@ -193,9 +213,13 @@ namespace Pulumi.Cloudflare
 
             string createdAt,
 
+            bool delegateLoaCreation,
+
             string description,
 
             string id,
+
+            string irrValidationState,
 
             string loaDocumentId,
 
@@ -205,7 +229,13 @@ namespace Pulumi.Cloudflare
 
             bool onDemandLocked,
 
-            string? prefixId)
+            string ownershipValidationState,
+
+            string ownershipValidationToken,
+
+            string prefixId,
+
+            string rpkiValidationState)
         {
             AccountId = accountId;
             Advertised = advertised;
@@ -214,13 +244,18 @@ namespace Pulumi.Cloudflare
             Asn = asn;
             Cidr = cidr;
             CreatedAt = createdAt;
+            DelegateLoaCreation = delegateLoaCreation;
             Description = description;
             Id = id;
+            IrrValidationState = irrValidationState;
             LoaDocumentId = loaDocumentId;
             ModifiedAt = modifiedAt;
             OnDemandEnabled = onDemandEnabled;
             OnDemandLocked = onDemandLocked;
+            OwnershipValidationState = ownershipValidationState;
+            OwnershipValidationToken = ownershipValidationToken;
             PrefixId = prefixId;
+            RpkiValidationState = rpkiValidationState;
         }
     }
 }

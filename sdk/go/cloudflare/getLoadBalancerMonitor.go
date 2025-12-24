@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupLoadBalancerMonitor(ctx, &cloudflare.LookupLoadBalancerMonitorArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
-//				MonitorId: pulumi.StringRef("f1aba936b94213e5b8dca0c0dbf1f9cc"),
+//				MonitorId: "f1aba936b94213e5b8dca0c0dbf1f9cc",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -50,8 +50,8 @@ func LookupLoadBalancerMonitor(ctx *pulumi.Context, args *LookupLoadBalancerMoni
 // A collection of arguments for invoking getLoadBalancerMonitor.
 type LookupLoadBalancerMonitorArgs struct {
 	// Identifier.
-	AccountId string  `pulumi:"accountId"`
-	MonitorId *string `pulumi:"monitorId"`
+	AccountId string `pulumi:"accountId"`
+	MonitorId string `pulumi:"monitorId"`
 }
 
 // A collection of values returned by getLoadBalancerMonitor.
@@ -80,9 +80,9 @@ type LookupLoadBalancerMonitorResult struct {
 	// The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations.
 	Interval int `pulumi:"interval"`
 	// The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.
-	Method     string  `pulumi:"method"`
-	ModifiedOn string  `pulumi:"modifiedOn"`
-	MonitorId  *string `pulumi:"monitorId"`
+	Method     string `pulumi:"method"`
+	ModifiedOn string `pulumi:"modifiedOn"`
+	MonitorId  string `pulumi:"monitorId"`
 	// The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.
 	Path string `pulumi:"path"`
 	// The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).
@@ -110,8 +110,8 @@ func LookupLoadBalancerMonitorOutput(ctx *pulumi.Context, args LookupLoadBalance
 // A collection of arguments for invoking getLoadBalancerMonitor.
 type LookupLoadBalancerMonitorOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput    `pulumi:"accountId"`
-	MonitorId pulumi.StringPtrInput `pulumi:"monitorId"`
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	MonitorId pulumi.StringInput `pulumi:"monitorId"`
 }
 
 func (LookupLoadBalancerMonitorOutputArgs) ElementType() reflect.Type {
@@ -201,8 +201,8 @@ func (o LookupLoadBalancerMonitorResultOutput) ModifiedOn() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupLoadBalancerMonitorResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-func (o LookupLoadBalancerMonitorResultOutput) MonitorId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupLoadBalancerMonitorResult) *string { return v.MonitorId }).(pulumi.StringPtrOutput)
+func (o LookupLoadBalancerMonitorResultOutput) MonitorId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerMonitorResult) string { return v.MonitorId }).(pulumi.StringOutput)
 }
 
 // The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.

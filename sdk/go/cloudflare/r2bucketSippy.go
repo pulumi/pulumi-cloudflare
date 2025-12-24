@@ -31,7 +31,7 @@ import (
 //				BucketName: pulumi.String("example-bucket"),
 //				Destination: &cloudflare.R2BucketSippyDestinationArgs{
 //					AccessKeyId:     pulumi.String("accessKeyId"),
-//					Provider:        "r2",
+//					CloudProvider:   pulumi.String("r2"),
 //					SecretAccessKey: pulumi.String("secretAccessKey"),
 //				},
 //				Source: &cloudflare.R2BucketSippySourceArgs{
@@ -50,6 +50,10 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ~> This resource does not currently support `pulumi import`.
 type R2BucketSippy struct {
 	pulumi.CustomResourceState
 

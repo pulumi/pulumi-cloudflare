@@ -138,9 +138,6 @@ namespace Pulumi.Cloudflare
         public readonly bool DnssecUseNsec3;
         public readonly string Ds;
         public readonly double Flags;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
         public readonly string Id;
         public readonly double KeyTag;
         public readonly string KeyType;

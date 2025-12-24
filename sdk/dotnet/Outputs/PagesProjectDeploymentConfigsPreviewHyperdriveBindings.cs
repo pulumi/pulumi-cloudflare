@@ -13,10 +13,10 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class PagesProjectDeploymentConfigsPreviewHyperdriveBindings
     {
-        public readonly string? Id;
+        public readonly string Id;
 
         [OutputConstructor]
-        private PagesProjectDeploymentConfigsPreviewHyperdriveBindings(string? id)
+        private PagesProjectDeploymentConfigsPreviewHyperdriveBindings(string id)
         {
             Id = id;
         }

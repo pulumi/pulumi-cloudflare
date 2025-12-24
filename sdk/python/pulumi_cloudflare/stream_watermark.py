@@ -414,6 +414,10 @@ class StreamWatermark(pulumi.CustomResource):
             scale=0.1)
         ```
 
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
@@ -447,6 +451,10 @@ class StreamWatermark(pulumi.CustomResource):
             position="center",
             scale=0.1)
         ```
+
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
 
         :param str resource_name: The name of the resource.
         :param StreamWatermarkInitArgs args: The arguments to use to populate this resource's properties.

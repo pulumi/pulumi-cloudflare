@@ -54,7 +54,7 @@ type LookupCloudConnectorRulesArgs struct {
 
 // A collection of values returned by getCloudConnectorRules.
 type LookupCloudConnectorRulesResult struct {
-	// The ID of this resource.
+	// Identifier.
 	Id    string                       `pulumi:"id"`
 	Rules []GetCloudConnectorRulesRule `pulumi:"rules"`
 	// Identifier.
@@ -95,7 +95,7 @@ func (o LookupCloudConnectorRulesResultOutput) ToLookupCloudConnectorRulesResult
 	return o
 }
 
-// The ID of this resource.
+// Identifier.
 func (o LookupCloudConnectorRulesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudConnectorRulesResult) string { return v.Id }).(pulumi.StringOutput)
 }

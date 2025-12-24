@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetHealthcheckPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -19,15 +17,15 @@ public final class GetHealthcheckPlainArgs extends com.pulumi.resources.InvokeAr
      * Identifier
      * 
      */
-    @Import(name="healthcheckId")
-    private @Nullable String healthcheckId;
+    @Import(name="healthcheckId", required=true)
+    private String healthcheckId;
 
     /**
      * @return Identifier
      * 
      */
-    public Optional<String> healthcheckId() {
-        return Optional.ofNullable(this.healthcheckId);
+    public String healthcheckId() {
+        return this.healthcheckId;
     }
 
     /**
@@ -76,7 +74,7 @@ public final class GetHealthcheckPlainArgs extends com.pulumi.resources.InvokeAr
          * @return builder
          * 
          */
-        public Builder healthcheckId(@Nullable String healthcheckId) {
+        public Builder healthcheckId(String healthcheckId) {
             $.healthcheckId = healthcheckId;
             return this;
         }
@@ -93,6 +91,9 @@ public final class GetHealthcheckPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         public GetHealthcheckPlainArgs build() {
+            if ($.healthcheckId == null) {
+                throw new MissingRequiredPropertyException("GetHealthcheckPlainArgs", "healthcheckId");
+            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("GetHealthcheckPlainArgs", "zoneId");
             }

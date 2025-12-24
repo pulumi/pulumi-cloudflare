@@ -70,7 +70,7 @@ class GetZeroTrustAccessMtlsCertificateResult:
 
     @_builtins.property
     @pulumi.getter(name="certificateId")
-    def certificate_id(self) -> Optional[_builtins.str]:
+    def certificate_id(self) -> _builtins.str:
         """
         UUID.
         """
@@ -168,7 +168,7 @@ def get_zero_trust_access_mtls_certificate(account_id: Optional[_builtins.str] =
         name=pulumi.get(__ret__, 'name'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_zero_trust_access_mtls_certificate_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                  certificate_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                                  certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
                                                   zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessMtlsCertificateResult]:
     """

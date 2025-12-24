@@ -55,7 +55,7 @@ class GetArgoSmartRoutingResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Specifies the identifier of the Argo Smart Routing setting.
+        Specifies the zone associated with the API call.
         """
         return pulumi.get(self, "id")
 

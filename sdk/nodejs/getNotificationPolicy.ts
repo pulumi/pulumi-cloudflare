@@ -38,7 +38,7 @@ export interface GetNotificationPolicyArgs {
     /**
      * The unique identifier of a notification policy
      */
-    policyId?: string;
+    policyId: string;
 }
 
 /**
@@ -87,7 +87,7 @@ export interface GetNotificationPolicyResult {
     /**
      * The unique identifier of a notification policy
      */
-    readonly policyId?: string;
+    readonly policyId: string;
 }
 /**
  * ## Example Usage
@@ -121,5 +121,5 @@ export interface GetNotificationPolicyOutputArgs {
     /**
      * The unique identifier of a notification policy
      */
-    policyId?: pulumi.Input<string>;
+    policyId: pulumi.Input<string>;
 }

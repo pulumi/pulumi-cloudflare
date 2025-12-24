@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetZeroTrustRiskScoringIntegrationPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -22,11 +20,11 @@ public final class GetZeroTrustRiskScoringIntegrationPlainArgs extends com.pulum
         return this.accountId;
     }
 
-    @Import(name="integrationId")
-    private @Nullable String integrationId;
+    @Import(name="integrationId", required=true)
+    private String integrationId;
 
-    public Optional<String> integrationId() {
-        return Optional.ofNullable(this.integrationId);
+    public String integrationId() {
+        return this.integrationId;
     }
 
     private GetZeroTrustRiskScoringIntegrationPlainArgs() {}
@@ -59,7 +57,7 @@ public final class GetZeroTrustRiskScoringIntegrationPlainArgs extends com.pulum
             return this;
         }
 
-        public Builder integrationId(@Nullable String integrationId) {
+        public Builder integrationId(String integrationId) {
             $.integrationId = integrationId;
             return this;
         }
@@ -67,6 +65,9 @@ public final class GetZeroTrustRiskScoringIntegrationPlainArgs extends com.pulum
         public GetZeroTrustRiskScoringIntegrationPlainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetZeroTrustRiskScoringIntegrationPlainArgs", "accountId");
+            }
+            if ($.integrationId == null) {
+                throw new MissingRequiredPropertyException("GetZeroTrustRiskScoringIntegrationPlainArgs", "integrationId");
             }
             return $;
         }

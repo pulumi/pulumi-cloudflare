@@ -22,7 +22,8 @@ public final class GetHostnameTlsSettingResult {
      */
     private String hostname;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The TLS Setting name.
+     * Available values: &#34;ciphers&#34;, &#34;min*tls*version&#34;, &#34;http2&#34;.
      * 
      */
     private String id;
@@ -69,7 +70,8 @@ public final class GetHostnameTlsSettingResult {
         return this.hostname;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The TLS Setting name.
+     * Available values: &#34;ciphers&#34;, &#34;min*tls*version&#34;, &#34;http2&#34;.
      * 
      */
     public String id() {

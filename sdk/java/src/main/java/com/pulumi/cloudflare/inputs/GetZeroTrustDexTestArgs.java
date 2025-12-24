@@ -29,15 +29,15 @@ public final class GetZeroTrustDexTestArgs extends com.pulumi.resources.InvokeAr
      * The unique identifier for the test.
      * 
      */
-    @Import(name="dexTestId")
-    private @Nullable Output<String> dexTestId;
+    @Import(name="dexTestId", required=true)
+    private Output<String> dexTestId;
 
     /**
      * @return The unique identifier for the test.
      * 
      */
-    public Optional<Output<String>> dexTestId() {
-        return Optional.ofNullable(this.dexTestId);
+    public Output<String> dexTestId() {
+        return this.dexTestId;
     }
 
     /**
@@ -96,7 +96,7 @@ public final class GetZeroTrustDexTestArgs extends com.pulumi.resources.InvokeAr
          * @return builder
          * 
          */
-        public Builder dexTestId(@Nullable Output<String> dexTestId) {
+        public Builder dexTestId(Output<String> dexTestId) {
             $.dexTestId = dexTestId;
             return this;
         }
@@ -145,6 +145,9 @@ public final class GetZeroTrustDexTestArgs extends com.pulumi.resources.InvokeAr
         public GetZeroTrustDexTestArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetZeroTrustDexTestArgs", "accountId");
+            }
+            if ($.dexTestId == null) {
+                throw new MissingRequiredPropertyException("GetZeroTrustDexTestArgs", "dexTestId");
             }
             return $;
         }

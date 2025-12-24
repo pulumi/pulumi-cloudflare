@@ -24,6 +24,9 @@ import * as utilities from "./utilities";
  *         extraPrefixes: ["string"],
  *         md5Key: "md5_key",
  *     },
+ *     customRemoteIdentities: {
+ *         fqdnId: "fqdn_id",
+ *     },
  *     customerEndpoint: "203.0.113.1",
  *     description: "Tunnel for ISP X",
  *     healthCheck: {

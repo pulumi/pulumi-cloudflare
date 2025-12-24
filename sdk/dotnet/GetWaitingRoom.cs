@@ -84,8 +84,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetWaitingRoomArgs : global::Pulumi.InvokeArgs
     {
-        [Input("waitingRoomId")]
-        public string? WaitingRoomId { get; set; }
+        [Input("waitingRoomId", required: true)]
+        public string WaitingRoomId { get; set; } = null!;
 
         /// <summary>
         /// Identifier.
@@ -101,8 +101,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetWaitingRoomInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("waitingRoomId")]
-        public Input<string>? WaitingRoomId { get; set; }
+        [Input("waitingRoomId", required: true)]
+        public Input<string> WaitingRoomId { get; set; } = null!;
 
         /// <summary>
         /// Identifier.
@@ -158,7 +158,7 @@ namespace Pulumi.Cloudflare
         public readonly int TotalActiveUsers;
         public readonly string TurnstileAction;
         public readonly string TurnstileMode;
-        public readonly string? WaitingRoomId;
+        public readonly string WaitingRoomId;
         /// <summary>
         /// Identifier.
         /// </summary>
@@ -218,7 +218,7 @@ namespace Pulumi.Cloudflare
 
             string turnstileMode,
 
-            string? waitingRoomId,
+            string waitingRoomId,
 
             string zoneId)
         {

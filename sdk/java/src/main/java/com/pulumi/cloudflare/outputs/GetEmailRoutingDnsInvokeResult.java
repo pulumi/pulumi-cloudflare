@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 public final class GetEmailRoutingDnsInvokeResult {
     private List<GetEmailRoutingDnsError> errors;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Identifier.
      * 
      */
     private String id;
@@ -48,7 +48,7 @@ public final class GetEmailRoutingDnsInvokeResult {
         return this.errors;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Identifier.
      * 
      */
     public String id() {

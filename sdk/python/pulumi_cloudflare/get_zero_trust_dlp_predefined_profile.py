@@ -27,7 +27,7 @@ class GetZeroTrustDlpPredefinedProfileResult:
     """
     A collection of values returned by getZeroTrustDlpPredefinedProfile.
     """
-    def __init__(__self__, account_id=None, ai_context_enabled=None, allowed_match_count=None, confidence_threshold=None, context_awareness=None, created_at=None, description=None, entries=None, id=None, name=None, ocr_enabled=None, open_access=None, profile_id=None, type=None, updated_at=None):
+    def __init__(__self__, account_id=None, ai_context_enabled=None, allowed_match_count=None, confidence_threshold=None, enabled_entries=None, entries=None, id=None, name=None, ocr_enabled=None, open_access=None, profile_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -40,15 +40,9 @@ class GetZeroTrustDlpPredefinedProfileResult:
         if confidence_threshold and not isinstance(confidence_threshold, str):
             raise TypeError("Expected argument 'confidence_threshold' to be a str")
         pulumi.set(__self__, "confidence_threshold", confidence_threshold)
-        if context_awareness and not isinstance(context_awareness, dict):
-            raise TypeError("Expected argument 'context_awareness' to be a dict")
-        pulumi.set(__self__, "context_awareness", context_awareness)
-        if created_at and not isinstance(created_at, str):
-            raise TypeError("Expected argument 'created_at' to be a str")
-        pulumi.set(__self__, "created_at", created_at)
-        if description and not isinstance(description, str):
-            raise TypeError("Expected argument 'description' to be a str")
-        pulumi.set(__self__, "description", description)
+        if enabled_entries and not isinstance(enabled_entries, list):
+            raise TypeError("Expected argument 'enabled_entries' to be a list")
+        pulumi.set(__self__, "enabled_entries", enabled_entries)
         if entries and not isinstance(entries, list):
             raise TypeError("Expected argument 'entries' to be a list")
         pulumi.set(__self__, "entries", entries)
@@ -67,12 +61,6 @@ class GetZeroTrustDlpPredefinedProfileResult:
         if profile_id and not isinstance(profile_id, str):
             raise TypeError("Expected argument 'profile_id' to be a str")
         pulumi.set(__self__, "profile_id", profile_id)
-        if type and not isinstance(type, str):
-            raise TypeError("Expected argument 'type' to be a str")
-        pulumi.set(__self__, "type", type)
-        if updated_at and not isinstance(updated_at, str):
-            raise TypeError("Expected argument 'updated_at' to be a str")
-        pulumi.set(__self__, "updated_at", updated_at)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -87,46 +75,21 @@ class GetZeroTrustDlpPredefinedProfileResult:
     @_builtins.property
     @pulumi.getter(name="allowedMatchCount")
     def allowed_match_count(self) -> _builtins.int:
-        """
-        Related DLP policies will trigger when the match count exceeds the number set.
-        """
         return pulumi.get(self, "allowed_match_count")
 
     @_builtins.property
     @pulumi.getter(name="confidenceThreshold")
     def confidence_threshold(self) -> _builtins.str:
-        """
-        Available values: "low", "medium", "high", "very_high".
-        """
         return pulumi.get(self, "confidence_threshold")
 
     @_builtins.property
-    @pulumi.getter(name="contextAwareness")
+    @pulumi.getter(name="enabledEntries")
+    def enabled_entries(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "enabled_entries")
+
+    @_builtins.property
+    @pulumi.getter
     @_utilities.deprecated("""This attribute is deprecated.""")
-    def context_awareness(self) -> 'outputs.GetZeroTrustDlpPredefinedProfileContextAwarenessResult':
-        """
-        Scan the context of predefined entries to only return matches surrounded by keywords.
-        """
-        return pulumi.get(self, "context_awareness")
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> _builtins.str:
-        """
-        When the profile was created.
-        """
-        return pulumi.get(self, "created_at")
-
-    @_builtins.property
-    @pulumi.getter
-    def description(self) -> _builtins.str:
-        """
-        The description of the profile.
-        """
-        return pulumi.get(self, "description")
-
-    @_builtins.property
-    @pulumi.getter
     def entries(self) -> Sequence['outputs.GetZeroTrustDlpPredefinedProfileEntryResult']:
         return pulumi.get(self, "entries")
 
@@ -134,7 +97,7 @@ class GetZeroTrustDlpPredefinedProfileResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The id of the profile (uuid).
+        The ID of this resource.
         """
         return pulumi.get(self, "id")
 
@@ -142,7 +105,7 @@ class GetZeroTrustDlpPredefinedProfileResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The name of the profile.
+        The name of the predefined profile.
         """
         return pulumi.get(self, "name")
 
@@ -164,22 +127,6 @@ class GetZeroTrustDlpPredefinedProfileResult:
     def profile_id(self) -> _builtins.str:
         return pulumi.get(self, "profile_id")
 
-    @_builtins.property
-    @pulumi.getter
-    def type(self) -> _builtins.str:
-        """
-        Available values: "custom", "predefined", "integration".
-        """
-        return pulumi.get(self, "type")
-
-    @_builtins.property
-    @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> _builtins.str:
-        """
-        When the profile was lasted updated.
-        """
-        return pulumi.get(self, "updated_at")
-
 
 class AwaitableGetZeroTrustDlpPredefinedProfileResult(GetZeroTrustDlpPredefinedProfileResult):
     # pylint: disable=using-constant-test
@@ -191,17 +138,13 @@ class AwaitableGetZeroTrustDlpPredefinedProfileResult(GetZeroTrustDlpPredefinedP
             ai_context_enabled=self.ai_context_enabled,
             allowed_match_count=self.allowed_match_count,
             confidence_threshold=self.confidence_threshold,
-            context_awareness=self.context_awareness,
-            created_at=self.created_at,
-            description=self.description,
+            enabled_entries=self.enabled_entries,
             entries=self.entries,
             id=self.id,
             name=self.name,
             ocr_enabled=self.ocr_enabled,
             open_access=self.open_access,
-            profile_id=self.profile_id,
-            type=self.type,
-            updated_at=self.updated_at)
+            profile_id=self.profile_id)
 
 
 def get_zero_trust_dlp_predefined_profile(account_id: Optional[_builtins.str] = None,
@@ -229,17 +172,13 @@ def get_zero_trust_dlp_predefined_profile(account_id: Optional[_builtins.str] = 
         ai_context_enabled=pulumi.get(__ret__, 'ai_context_enabled'),
         allowed_match_count=pulumi.get(__ret__, 'allowed_match_count'),
         confidence_threshold=pulumi.get(__ret__, 'confidence_threshold'),
-        context_awareness=pulumi.get(__ret__, 'context_awareness'),
-        created_at=pulumi.get(__ret__, 'created_at'),
-        description=pulumi.get(__ret__, 'description'),
+        enabled_entries=pulumi.get(__ret__, 'enabled_entries'),
         entries=pulumi.get(__ret__, 'entries'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         ocr_enabled=pulumi.get(__ret__, 'ocr_enabled'),
         open_access=pulumi.get(__ret__, 'open_access'),
-        profile_id=pulumi.get(__ret__, 'profile_id'),
-        type=pulumi.get(__ret__, 'type'),
-        updated_at=pulumi.get(__ret__, 'updated_at'))
+        profile_id=pulumi.get(__ret__, 'profile_id'))
 def get_zero_trust_dlp_predefined_profile_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
                                                  profile_id: Optional[pulumi.Input[_builtins.str]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDlpPredefinedProfileResult]:
@@ -264,14 +203,10 @@ def get_zero_trust_dlp_predefined_profile_output(account_id: Optional[pulumi.Inp
         ai_context_enabled=pulumi.get(__response__, 'ai_context_enabled'),
         allowed_match_count=pulumi.get(__response__, 'allowed_match_count'),
         confidence_threshold=pulumi.get(__response__, 'confidence_threshold'),
-        context_awareness=pulumi.get(__response__, 'context_awareness'),
-        created_at=pulumi.get(__response__, 'created_at'),
-        description=pulumi.get(__response__, 'description'),
+        enabled_entries=pulumi.get(__response__, 'enabled_entries'),
         entries=pulumi.get(__response__, 'entries'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         ocr_enabled=pulumi.get(__response__, 'ocr_enabled'),
         open_access=pulumi.get(__response__, 'open_access'),
-        profile_id=pulumi.get(__response__, 'profile_id'),
-        type=pulumi.get(__response__, 'type'),
-        updated_at=pulumi.get(__response__, 'updated_at')))
+        profile_id=pulumi.get(__response__, 'profile_id')))

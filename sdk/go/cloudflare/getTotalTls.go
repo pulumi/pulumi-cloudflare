@@ -59,7 +59,7 @@ type LookupTotalTlsResult struct {
 	CertificateAuthority string `pulumi:"certificateAuthority"`
 	// If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
 	Enabled bool `pulumi:"enabled"`
-	// The provider-assigned unique ID for this managed resource.
+	// Identifier.
 	Id string `pulumi:"id"`
 	// The validity period in days for the certificates ordered via Total TLS.
 	// Available values: 90.
@@ -113,7 +113,7 @@ func (o LookupTotalTlsResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupTotalTlsResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Identifier.
 func (o LookupTotalTlsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTotalTlsResult) string { return v.Id }).(pulumi.StringOutput)
 }
