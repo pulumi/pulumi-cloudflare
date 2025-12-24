@@ -231,6 +231,22 @@ func Provider() info.Provider {
 			"cloudflare_zero_trust_access_application": {
 				Aliases: alias("cloudflare:index/accessApplication:AccessApplication"),
 			},
+			"cloudflare_zero_trust_access_ai_controls_mcp_portal": {
+				Fields: map[string]*info.Schema{
+					"id": {
+						Name: "zeroTrustAccessAiControlsMcpPortalId",
+					},
+				},
+				ComputeID: delegateID("zeroTrustAccessAiControlsMcpPortalId"),
+			},
+			"cloudflare_zero_trust_access_ai_controls_mcp_server": {
+				Fields: map[string]*info.Schema{
+					"id": {
+						Name: "zeroTrustAccessAiControlsMcpServerId",
+					},
+				},
+				ComputeID: delegateID("zeroTrustAccessAiControlsMcpServerId"),
+			},
 			"cloudflare_zero_trust_access_short_lived_certificate": {
 				Aliases: alias("cloudflare:index/accessCaCertificate:AccessCaCertificate"),
 			},
