@@ -18,8 +18,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustAccessMtlsCertificate(args?: GetZeroTrustAccessMtlsCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessMtlsCertificateResult> {
-    args = args || {};
+export function getZeroTrustAccessMtlsCertificate(args: GetZeroTrustAccessMtlsCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessMtlsCertificateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustAccessMtlsCertificate:getZeroTrustAccessMtlsCertificate", {
         "accountId": args.accountId,
@@ -39,7 +38,7 @@ export interface GetZeroTrustAccessMtlsCertificateArgs {
     /**
      * UUID.
      */
-    certificateId?: string;
+    certificateId: string;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
@@ -61,7 +60,7 @@ export interface GetZeroTrustAccessMtlsCertificateResult {
     /**
      * UUID.
      */
-    readonly certificateId?: string;
+    readonly certificateId: string;
     readonly expiresOn: string;
     /**
      * The MD5 fingerprint of the certificate.
@@ -94,8 +93,7 @@ export interface GetZeroTrustAccessMtlsCertificateResult {
  * });
  * ```
  */
-export function getZeroTrustAccessMtlsCertificateOutput(args?: GetZeroTrustAccessMtlsCertificateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessMtlsCertificateResult> {
-    args = args || {};
+export function getZeroTrustAccessMtlsCertificateOutput(args: GetZeroTrustAccessMtlsCertificateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessMtlsCertificateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustAccessMtlsCertificate:getZeroTrustAccessMtlsCertificate", {
         "accountId": args.accountId,
@@ -115,7 +113,7 @@ export interface GetZeroTrustAccessMtlsCertificateOutputArgs {
     /**
      * UUID.
      */
-    certificateId?: pulumi.Input<string>;
+    certificateId: pulumi.Input<string>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */

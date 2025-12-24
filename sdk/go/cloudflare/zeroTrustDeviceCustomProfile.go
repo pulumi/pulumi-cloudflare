@@ -99,7 +99,7 @@ type ZeroTrustDeviceCustomProfile struct {
 	// If the `dnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
 	DisableAutoFallback pulumi.BoolOutput `pulumi:"disableAutoFallback"`
 	// Whether the policy will be applied to matching devices.
-	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// Whether to add Microsoft IPs to Split Tunnel exclusions.
 	ExcludeOfficeIps pulumi.BoolOutput `pulumi:"excludeOfficeIps"`
 	// List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
@@ -520,8 +520,8 @@ func (o ZeroTrustDeviceCustomProfileOutput) DisableAutoFallback() pulumi.BoolOut
 }
 
 // Whether the policy will be applied to matching devices.
-func (o ZeroTrustDeviceCustomProfileOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o ZeroTrustDeviceCustomProfileOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // Whether to add Microsoft IPs to Split Tunnel exclusions.

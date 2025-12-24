@@ -40,11 +40,6 @@ public final class GetZeroTrustTunnelCloudflaredRouteFilter {
      */
     private @Nullable String networkSuperset;
     /**
-     * @return UUID of the route.
-     * 
-     */
-    private @Nullable String routeId;
-    /**
      * @return The types of tunnels to filter by, separated by commas.
      * 
      */
@@ -97,13 +92,6 @@ public final class GetZeroTrustTunnelCloudflaredRouteFilter {
         return Optional.ofNullable(this.networkSuperset);
     }
     /**
-     * @return UUID of the route.
-     * 
-     */
-    public Optional<String> routeId() {
-        return Optional.ofNullable(this.routeId);
-    }
-    /**
      * @return The types of tunnels to filter by, separated by commas.
      * 
      */
@@ -139,7 +127,6 @@ public final class GetZeroTrustTunnelCloudflaredRouteFilter {
         private @Nullable Boolean isDeleted;
         private @Nullable String networkSubset;
         private @Nullable String networkSuperset;
-        private @Nullable String routeId;
         private @Nullable List<String> tunTypes;
         private @Nullable String tunnelId;
         private @Nullable String virtualNetworkId;
@@ -151,7 +138,6 @@ public final class GetZeroTrustTunnelCloudflaredRouteFilter {
     	      this.isDeleted = defaults.isDeleted;
     	      this.networkSubset = defaults.networkSubset;
     	      this.networkSuperset = defaults.networkSuperset;
-    	      this.routeId = defaults.routeId;
     	      this.tunTypes = defaults.tunTypes;
     	      this.tunnelId = defaults.tunnelId;
     	      this.virtualNetworkId = defaults.virtualNetworkId;
@@ -190,12 +176,6 @@ public final class GetZeroTrustTunnelCloudflaredRouteFilter {
             return this;
         }
         @CustomType.Setter
-        public Builder routeId(@Nullable String routeId) {
-
-            this.routeId = routeId;
-            return this;
-        }
-        @CustomType.Setter
         public Builder tunTypes(@Nullable List<String> tunTypes) {
 
             this.tunTypes = tunTypes;
@@ -223,7 +203,6 @@ public final class GetZeroTrustTunnelCloudflaredRouteFilter {
             _resultValue.isDeleted = isDeleted;
             _resultValue.networkSubset = networkSubset;
             _resultValue.networkSuperset = networkSuperset;
-            _resultValue.routeId = routeId;
             _resultValue.tunTypes = tunTypes;
             _resultValue.tunnelId = tunnelId;
             _resultValue.virtualNetworkId = virtualNetworkId;

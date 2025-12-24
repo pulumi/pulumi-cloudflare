@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupHyperdriveConfig(ctx, &cloudflare.LookupHyperdriveConfigArgs{
 //				AccountId:    "023e105f4ecef8ad9ca31a8372d0c353",
-//				HyperdriveId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				HyperdriveId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -52,7 +52,7 @@ type LookupHyperdriveConfigArgs struct {
 	// Define configurations using a unique string identifier.
 	AccountId string `pulumi:"accountId"`
 	// Define configurations using a unique string identifier.
-	HyperdriveId *string `pulumi:"hyperdriveId"`
+	HyperdriveId string `pulumi:"hyperdriveId"`
 }
 
 // A collection of values returned by getHyperdriveConfig.
@@ -63,7 +63,7 @@ type LookupHyperdriveConfigResult struct {
 	// Defines the creation time of the Hyperdrive configuration.
 	CreatedOn string `pulumi:"createdOn"`
 	// Define configurations using a unique string identifier.
-	HyperdriveId *string `pulumi:"hyperdriveId"`
+	HyperdriveId string `pulumi:"hyperdriveId"`
 	// Define configurations using a unique string identifier.
 	Id string `pulumi:"id"`
 	// Defines the last modified time of the Hyperdrive configuration.
@@ -89,7 +89,7 @@ type LookupHyperdriveConfigOutputArgs struct {
 	// Define configurations using a unique string identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Define configurations using a unique string identifier.
-	HyperdriveId pulumi.StringPtrInput `pulumi:"hyperdriveId"`
+	HyperdriveId pulumi.StringInput `pulumi:"hyperdriveId"`
 }
 
 func (LookupHyperdriveConfigOutputArgs) ElementType() reflect.Type {
@@ -126,8 +126,8 @@ func (o LookupHyperdriveConfigResultOutput) CreatedOn() pulumi.StringOutput {
 }
 
 // Define configurations using a unique string identifier.
-func (o LookupHyperdriveConfigResultOutput) HyperdriveId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupHyperdriveConfigResult) *string { return v.HyperdriveId }).(pulumi.StringPtrOutput)
+func (o LookupHyperdriveConfigResultOutput) HyperdriveId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHyperdriveConfigResult) string { return v.HyperdriveId }).(pulumi.StringOutput)
 }
 
 // Define configurations using a unique string identifier.

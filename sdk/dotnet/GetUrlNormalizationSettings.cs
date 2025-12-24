@@ -112,7 +112,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetUrlNormalizationSettingsResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The unique ID of the zone.
         /// </summary>
         public readonly string Id;
         /// <summary>

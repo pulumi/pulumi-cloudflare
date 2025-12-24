@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetZeroTrustDlpPredefinedEntryPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -22,11 +20,11 @@ public final class GetZeroTrustDlpPredefinedEntryPlainArgs extends com.pulumi.re
         return this.accountId;
     }
 
-    @Import(name="entryId")
-    private @Nullable String entryId;
+    @Import(name="entryId", required=true)
+    private String entryId;
 
-    public Optional<String> entryId() {
-        return Optional.ofNullable(this.entryId);
+    public String entryId() {
+        return this.entryId;
     }
 
     private GetZeroTrustDlpPredefinedEntryPlainArgs() {}
@@ -59,7 +57,7 @@ public final class GetZeroTrustDlpPredefinedEntryPlainArgs extends com.pulumi.re
             return this;
         }
 
-        public Builder entryId(@Nullable String entryId) {
+        public Builder entryId(String entryId) {
             $.entryId = entryId;
             return this;
         }
@@ -67,6 +65,9 @@ public final class GetZeroTrustDlpPredefinedEntryPlainArgs extends com.pulumi.re
         public GetZeroTrustDlpPredefinedEntryPlainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetZeroTrustDlpPredefinedEntryPlainArgs", "accountId");
+            }
+            if ($.entryId == null) {
+                throw new MissingRequiredPropertyException("GetZeroTrustDlpPredefinedEntryPlainArgs", "entryId");
             }
             return $;
         }

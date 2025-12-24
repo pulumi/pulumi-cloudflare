@@ -66,6 +66,12 @@ namespace Pulumi.Cloudflare
         [Output("interruptWindowHourOfDay")]
         public Output<double> InterruptWindowHourOfDay { get; private set; } = null!;
 
+        /// <summary>
+        /// License key for the connector. This is only returned on creation and will not be available in subsequent reads.
+        /// </summary>
+        [Output("licenseKey")]
+        public Output<string> LicenseKey { get; private set; } = null!;
+
         [Output("notes")]
         public Output<string> Notes { get; private set; } = null!;
 
@@ -95,6 +101,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "licenseKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -167,6 +177,22 @@ namespace Pulumi.Cloudflare
 
         [Input("interruptWindowHourOfDay")]
         public Input<double>? InterruptWindowHourOfDay { get; set; }
+
+        [Input("licenseKey")]
+        private Input<string>? _licenseKey;
+
+        /// <summary>
+        /// License key for the connector. This is only returned on creation and will not be available in subsequent reads.
+        /// </summary>
+        public Input<string>? LicenseKey
+        {
+            get => _licenseKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _licenseKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("notes")]
         public Input<string>? Notes { get; set; }

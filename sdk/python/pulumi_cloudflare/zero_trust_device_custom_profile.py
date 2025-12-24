@@ -1228,7 +1228,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def enabled(self) -> pulumi.Output[_builtins.bool]:
         """
         Whether the policy will be applied to matching devices.
         """

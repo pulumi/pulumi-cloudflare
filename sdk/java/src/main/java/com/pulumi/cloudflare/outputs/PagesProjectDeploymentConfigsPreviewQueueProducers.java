@@ -4,10 +4,9 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class PagesProjectDeploymentConfigsPreviewQueueProducers {
@@ -15,15 +14,15 @@ public final class PagesProjectDeploymentConfigsPreviewQueueProducers {
      * @return Name of the Queue.
      * 
      */
-    private @Nullable String name;
+    private String name;
 
     private PagesProjectDeploymentConfigsPreviewQueueProducers() {}
     /**
      * @return Name of the Queue.
      * 
      */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
     }
 
     public static Builder builder() {
@@ -35,7 +34,7 @@ public final class PagesProjectDeploymentConfigsPreviewQueueProducers {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String name;
+        private String name;
         public Builder() {}
         public Builder(PagesProjectDeploymentConfigsPreviewQueueProducers defaults) {
     	      Objects.requireNonNull(defaults);
@@ -43,8 +42,10 @@ public final class PagesProjectDeploymentConfigsPreviewQueueProducers {
         }
 
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("PagesProjectDeploymentConfigsPreviewQueueProducers", "name");
+            }
             this.name = name;
             return this;
         }

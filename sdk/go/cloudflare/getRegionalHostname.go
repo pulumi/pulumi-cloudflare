@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupRegionalHostname(ctx, &cloudflare.LookupRegionalHostnameArgs{
 //				ZoneId:   "023e105f4ecef8ad9ca31a8372d0c353",
-//				Hostname: pulumi.StringRef("foo.example.com"),
+//				Hostname: "foo.example.com",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -50,7 +50,7 @@ func LookupRegionalHostname(ctx *pulumi.Context, args *LookupRegionalHostnameArg
 // A collection of arguments for invoking getRegionalHostname.
 type LookupRegionalHostnameArgs struct {
 	// DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
-	Hostname *string `pulumi:"hostname"`
+	Hostname string `pulumi:"hostname"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -83,7 +83,7 @@ func LookupRegionalHostnameOutput(ctx *pulumi.Context, args LookupRegionalHostna
 // A collection of arguments for invoking getRegionalHostname.
 type LookupRegionalHostnameOutputArgs struct {
 	// DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
-	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	Hostname pulumi.StringInput `pulumi:"hostname"`
 	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }

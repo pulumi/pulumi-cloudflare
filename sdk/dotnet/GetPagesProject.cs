@@ -85,7 +85,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetPagesProjectArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
@@ -105,7 +105,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetPagesProjectInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -127,7 +127,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetPagesProjectResult
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string AccountId;
         /// <summary>
@@ -159,7 +159,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string FrameworkVersion;
         /// <summary>
-        /// ID of the project.
+        /// Name of the project.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -186,6 +186,9 @@ namespace Pulumi.Cloudflare
         /// Name of the project.
         /// </summary>
         public readonly string ProjectName;
+        /// <summary>
+        /// Configs for the project source control.
+        /// </summary>
         public readonly Outputs.GetPagesProjectSourceResult Source;
         /// <summary>
         /// The Cloudflare subdomain associated with the project.

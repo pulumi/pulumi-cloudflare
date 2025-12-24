@@ -23,7 +23,7 @@ public final class GetMagicWanGreTunnelResult {
      */
     private String greTunnelId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Identifier
      * 
      */
     private String id;
@@ -47,7 +47,7 @@ public final class GetMagicWanGreTunnelResult {
         return this.greTunnelId;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Identifier
      * 
      */
     public String id() {

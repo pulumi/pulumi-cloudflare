@@ -39,6 +39,10 @@ import * as utilities from "./utilities";
  *     zoneMode: "dns_only",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ~> This resource does not currently support `pulumi import`.
  */
 export class ZoneDnsSettings extends pulumi.CustomResource {
     /**

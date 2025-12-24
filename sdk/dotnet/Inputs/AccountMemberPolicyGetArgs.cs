@@ -19,12 +19,6 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("access", required: true)]
         public Input<string> Access { get; set; } = null!;
 
-        /// <summary>
-        /// Policy identifier.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
         [Input("permissionGroups", required: true)]
         private InputList<Inputs.AccountMemberPolicyPermissionGroupGetArgs>? _permissionGroups;
 

@@ -131,7 +131,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Identifier
         /// </summary>
         public readonly string Id;
         public readonly Outputs.GetMagicWanIpsecTunnelIpsecTunnelResult IpsecTunnel;

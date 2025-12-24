@@ -90,8 +90,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// API UUID.
         /// </summary>
-        [Input("networkId")]
-        public string? NetworkId { get; set; }
+        [Input("networkId", required: true)]
+        public string NetworkId { get; set; } = null!;
 
         public GetZeroTrustDeviceManagedNetworksArgs()
         {
@@ -107,8 +107,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// API UUID.
         /// </summary>
-        [Input("networkId")]
-        public Input<string>? NetworkId { get; set; }
+        [Input("networkId", required: true)]
+        public Input<string> NetworkId { get; set; } = null!;
 
         public GetZeroTrustDeviceManagedNetworksInvokeArgs()
         {

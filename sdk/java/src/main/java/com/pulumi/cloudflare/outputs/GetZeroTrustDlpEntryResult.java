@@ -5,14 +5,14 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetZeroTrustDlpEntryConfidence;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDlpEntryPattern;
+import com.pulumi.cloudflare.outputs.GetZeroTrustDlpEntryProfile;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDlpEntryVariant;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustDlpEntryResult {
@@ -27,7 +27,7 @@ public final class GetZeroTrustDlpEntryResult {
     private GetZeroTrustDlpEntryConfidence confidence;
     private String createdAt;
     private Boolean enabled;
-    private @Nullable String entryId;
+    private String entryId;
     /**
      * @return The ID of this resource.
      * 
@@ -36,6 +36,7 @@ public final class GetZeroTrustDlpEntryResult {
     private String name;
     private GetZeroTrustDlpEntryPattern pattern;
     private String profileId;
+    private List<GetZeroTrustDlpEntryProfile> profiles;
     private Boolean secret;
     /**
      * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;wordList&#34;.
@@ -43,6 +44,11 @@ public final class GetZeroTrustDlpEntryResult {
      */
     private String type;
     private String updatedAt;
+    /**
+     * @return Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;pending&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+     * 
+     */
+    private String uploadStatus;
     private GetZeroTrustDlpEntryVariant variant;
     private String wordList;
 
@@ -68,8 +74,8 @@ public final class GetZeroTrustDlpEntryResult {
     public Boolean enabled() {
         return this.enabled;
     }
-    public Optional<String> entryId() {
-        return Optional.ofNullable(this.entryId);
+    public String entryId() {
+        return this.entryId;
     }
     /**
      * @return The ID of this resource.
@@ -87,6 +93,9 @@ public final class GetZeroTrustDlpEntryResult {
     public String profileId() {
         return this.profileId;
     }
+    public List<GetZeroTrustDlpEntryProfile> profiles() {
+        return this.profiles;
+    }
     public Boolean secret() {
         return this.secret;
     }
@@ -99,6 +108,13 @@ public final class GetZeroTrustDlpEntryResult {
     }
     public String updatedAt() {
         return this.updatedAt;
+    }
+    /**
+     * @return Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;pending&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+     * 
+     */
+    public String uploadStatus() {
+        return this.uploadStatus;
     }
     public GetZeroTrustDlpEntryVariant variant() {
         return this.variant;
@@ -121,14 +137,16 @@ public final class GetZeroTrustDlpEntryResult {
         private GetZeroTrustDlpEntryConfidence confidence;
         private String createdAt;
         private Boolean enabled;
-        private @Nullable String entryId;
+        private String entryId;
         private String id;
         private String name;
         private GetZeroTrustDlpEntryPattern pattern;
         private String profileId;
+        private List<GetZeroTrustDlpEntryProfile> profiles;
         private Boolean secret;
         private String type;
         private String updatedAt;
+        private String uploadStatus;
         private GetZeroTrustDlpEntryVariant variant;
         private String wordList;
         public Builder() {}
@@ -144,9 +162,11 @@ public final class GetZeroTrustDlpEntryResult {
     	      this.name = defaults.name;
     	      this.pattern = defaults.pattern;
     	      this.profileId = defaults.profileId;
+    	      this.profiles = defaults.profiles;
     	      this.secret = defaults.secret;
     	      this.type = defaults.type;
     	      this.updatedAt = defaults.updatedAt;
+    	      this.uploadStatus = defaults.uploadStatus;
     	      this.variant = defaults.variant;
     	      this.wordList = defaults.wordList;
         }
@@ -192,8 +212,10 @@ public final class GetZeroTrustDlpEntryResult {
             return this;
         }
         @CustomType.Setter
-        public Builder entryId(@Nullable String entryId) {
-
+        public Builder entryId(String entryId) {
+            if (entryId == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDlpEntryResult", "entryId");
+            }
             this.entryId = entryId;
             return this;
         }
@@ -230,6 +252,17 @@ public final class GetZeroTrustDlpEntryResult {
             return this;
         }
         @CustomType.Setter
+        public Builder profiles(List<GetZeroTrustDlpEntryProfile> profiles) {
+            if (profiles == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDlpEntryResult", "profiles");
+            }
+            this.profiles = profiles;
+            return this;
+        }
+        public Builder profiles(GetZeroTrustDlpEntryProfile... profiles) {
+            return profiles(List.of(profiles));
+        }
+        @CustomType.Setter
         public Builder secret(Boolean secret) {
             if (secret == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustDlpEntryResult", "secret");
@@ -251,6 +284,14 @@ public final class GetZeroTrustDlpEntryResult {
               throw new MissingRequiredPropertyException("GetZeroTrustDlpEntryResult", "updatedAt");
             }
             this.updatedAt = updatedAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder uploadStatus(String uploadStatus) {
+            if (uploadStatus == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDlpEntryResult", "uploadStatus");
+            }
+            this.uploadStatus = uploadStatus;
             return this;
         }
         @CustomType.Setter
@@ -281,9 +322,11 @@ public final class GetZeroTrustDlpEntryResult {
             _resultValue.name = name;
             _resultValue.pattern = pattern;
             _resultValue.profileId = profileId;
+            _resultValue.profiles = profiles;
             _resultValue.secret = secret;
             _resultValue.type = type;
             _resultValue.updatedAt = updatedAt;
+            _resultValue.uploadStatus = uploadStatus;
             _resultValue.variant = variant;
             _resultValue.wordList = wordList;
             return _resultValue;

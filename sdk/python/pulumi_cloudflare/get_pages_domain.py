@@ -69,7 +69,7 @@ class GetPagesDomainResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -93,9 +93,9 @@ class GetPagesDomainResult:
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[_builtins.str]:
+    def domain_name(self) -> _builtins.str:
         """
-        Name of the domain.
+        The domain name.
         """
         return pulumi.get(self, "domain_name")
 
@@ -103,13 +103,16 @@ class GetPagesDomainResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Name of the domain.
+        The domain name.
         """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
+        """
+        The domain name.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -181,8 +184,8 @@ def get_pages_domain(account_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str account_id: Identifier
-    :param _builtins.str domain_name: Name of the domain.
+    :param _builtins.str account_id: Identifier.
+    :param _builtins.str domain_name: The domain name.
     :param _builtins.str project_name: Name of the project.
     """
     __args__ = dict()
@@ -206,7 +209,7 @@ def get_pages_domain(account_id: Optional[_builtins.str] = None,
         verification_data=pulumi.get(__ret__, 'verification_data'),
         zone_tag=pulumi.get(__ret__, 'zone_tag'))
 def get_pages_domain_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                            domain_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                            domain_name: Optional[pulumi.Input[_builtins.str]] = None,
                             project_name: Optional[pulumi.Input[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPagesDomainResult]:
     """
@@ -222,8 +225,8 @@ def get_pages_domain_output(account_id: Optional[pulumi.Input[_builtins.str]] = 
     ```
 
 
-    :param _builtins.str account_id: Identifier
-    :param _builtins.str domain_name: Name of the domain.
+    :param _builtins.str account_id: Identifier.
+    :param _builtins.str domain_name: The domain name.
     :param _builtins.str project_name: Name of the project.
     """
     __args__ = dict()

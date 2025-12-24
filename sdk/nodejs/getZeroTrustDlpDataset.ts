@@ -61,7 +61,7 @@ export interface GetZeroTrustDlpDatasetResult {
      */
     readonly status: string;
     /**
-     * When the dataset was last updated.
+     * Stores when the dataset was last updated.
      */
     readonly updatedAt: string;
     readonly uploads: outputs.GetZeroTrustDlpDatasetUpload[];

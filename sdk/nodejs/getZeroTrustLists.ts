@@ -39,7 +39,7 @@ export interface GetZeroTrustListsArgs {
     maxItems?: number;
     /**
      * Specify the list type.
-     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
      */
     type?: string;
 }
@@ -63,7 +63,7 @@ export interface GetZeroTrustListsResult {
     readonly results: outputs.GetZeroTrustListsResult[];
     /**
      * Specify the list type.
-     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
      */
     readonly type?: string;
 }
@@ -100,7 +100,7 @@ export interface GetZeroTrustListsOutputArgs {
     maxItems?: pulumi.Input<number>;
     /**
      * Specify the list type.
-     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
      */
     type?: pulumi.Input<string>;
 }

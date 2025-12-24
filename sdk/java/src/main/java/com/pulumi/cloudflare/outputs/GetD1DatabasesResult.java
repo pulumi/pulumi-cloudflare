@@ -16,6 +16,11 @@ public final class GetD1DatabasesResult {
      */
     private String createdAt;
     /**
+     * @return D1 database identifier (UUID).
+     * 
+     */
+    private String id;
+    /**
      * @return D1 database name.
      * 
      */
@@ -34,6 +39,13 @@ public final class GetD1DatabasesResult {
      */
     public String createdAt() {
         return this.createdAt;
+    }
+    /**
+     * @return D1 database identifier (UUID).
+     * 
+     */
+    public String id() {
+        return this.id;
     }
     /**
      * @return D1 database name.
@@ -63,6 +75,7 @@ public final class GetD1DatabasesResult {
     @CustomType.Builder
     public static final class Builder {
         private String createdAt;
+        private String id;
         private String name;
         private String uuid;
         private String version;
@@ -70,6 +83,7 @@ public final class GetD1DatabasesResult {
         public Builder(GetD1DatabasesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createdAt = defaults.createdAt;
+    	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.uuid = defaults.uuid;
     	      this.version = defaults.version;
@@ -81,6 +95,14 @@ public final class GetD1DatabasesResult {
               throw new MissingRequiredPropertyException("GetD1DatabasesResult", "createdAt");
             }
             this.createdAt = createdAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetD1DatabasesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -110,6 +132,7 @@ public final class GetD1DatabasesResult {
         public GetD1DatabasesResult build() {
             final var _resultValue = new GetD1DatabasesResult();
             _resultValue.createdAt = createdAt;
+            _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.uuid = uuid;
             _resultValue.version = version;

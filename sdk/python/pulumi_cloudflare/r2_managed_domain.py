@@ -213,6 +213,10 @@ class R2ManagedDomain(pulumi.CustomResource):
             enabled=True)
         ```
 
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account ID.
@@ -238,6 +242,10 @@ class R2ManagedDomain(pulumi.CustomResource):
             bucket_name="example-bucket",
             enabled=True)
         ```
+
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
 
         :param str resource_name: The name of the resource.
         :param R2ManagedDomainArgs args: The arguments to use to populate this resource's properties.

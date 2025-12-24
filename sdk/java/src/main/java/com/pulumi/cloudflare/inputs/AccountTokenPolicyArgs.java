@@ -9,10 +9,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class AccountTokenPolicyArgs extends com.pulumi.resources.ResourceArgs {
@@ -37,21 +34,6 @@ public final class AccountTokenPolicyArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Policy identifier.
-     * 
-     */
-    @Import(name="id")
-    private @Nullable Output<String> id;
-
-    /**
-     * @return Policy identifier.
-     * 
-     */
-    public Optional<Output<String>> id() {
-        return Optional.ofNullable(this.id);
-    }
-
-    /**
      * A set of permission groups that are specified to the policy.
      * 
      */
@@ -67,17 +49,17 @@ public final class AccountTokenPolicyArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * A list of resource names that the policy applies to.
+     * A json object representing the resources that are specified to the policy.
      * 
      */
     @Import(name="resources", required=true)
-    private Output<Map<String,String>> resources;
+    private Output<String> resources;
 
     /**
-     * @return A list of resource names that the policy applies to.
+     * @return A json object representing the resources that are specified to the policy.
      * 
      */
-    public Output<Map<String,String>> resources() {
+    public Output<String> resources() {
         return this.resources;
     }
 
@@ -85,7 +67,6 @@ public final class AccountTokenPolicyArgs extends com.pulumi.resources.ResourceA
 
     private AccountTokenPolicyArgs(AccountTokenPolicyArgs $) {
         this.effect = $.effect;
-        this.id = $.id;
         this.permissionGroups = $.permissionGroups;
         this.resources = $.resources;
     }
@@ -132,27 +113,6 @@ public final class AccountTokenPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param id Policy identifier.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder id(@Nullable Output<String> id) {
-            $.id = id;
-            return this;
-        }
-
-        /**
-         * @param id Policy identifier.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder id(String id) {
-            return id(Output.of(id));
-        }
-
-        /**
          * @param permissionGroups A set of permission groups that are specified to the policy.
          * 
          * @return builder
@@ -184,23 +144,23 @@ public final class AccountTokenPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param resources A list of resource names that the policy applies to.
+         * @param resources A json object representing the resources that are specified to the policy.
          * 
          * @return builder
          * 
          */
-        public Builder resources(Output<Map<String,String>> resources) {
+        public Builder resources(Output<String> resources) {
             $.resources = resources;
             return this;
         }
 
         /**
-         * @param resources A list of resource names that the policy applies to.
+         * @param resources A json object representing the resources that are specified to the policy.
          * 
          * @return builder
          * 
          */
-        public Builder resources(Map<String,String> resources) {
+        public Builder resources(String resources) {
             return resources(Output.of(resources));
         }
 

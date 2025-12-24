@@ -54,7 +54,7 @@ type LookupUrlNormalizationSettingsArgs struct {
 
 // A collection of values returned by getUrlNormalizationSettings.
 type LookupUrlNormalizationSettingsResult struct {
-	// The provider-assigned unique ID for this managed resource.
+	// The unique ID of the zone.
 	Id string `pulumi:"id"`
 	// The scope of the URL normalization.
 	// Available values: "incoming", "both", "none".
@@ -100,7 +100,7 @@ func (o LookupUrlNormalizationSettingsResultOutput) ToLookupUrlNormalizationSett
 	return o
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The unique ID of the zone.
 func (o LookupUrlNormalizationSettingsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUrlNormalizationSettingsResult) string { return v.Id }).(pulumi.StringOutput)
 }

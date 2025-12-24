@@ -24,9 +24,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? NotFoundHandling;
         /// <summary>
-        /// Contains a list path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
+        /// When a boolean true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script. When a list of strings, contains path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
         /// </summary>
-        public readonly ImmutableArray<string> RunWorkerFirsts;
+        public readonly object? RunWorkerFirst;
 
         [OutputConstructor]
         private WorkerVersionAssetsConfig(
@@ -34,11 +34,11 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? notFoundHandling,
 
-            ImmutableArray<string> runWorkerFirsts)
+            object? runWorkerFirst)
         {
             HtmlHandling = htmlHandling;
             NotFoundHandling = notFoundHandling;
-            RunWorkerFirsts = runWorkerFirsts;
+            RunWorkerFirst = runWorkerFirst;
         }
     }
 }

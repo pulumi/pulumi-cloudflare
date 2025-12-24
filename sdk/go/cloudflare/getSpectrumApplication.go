@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupSpectrumApplication(ctx, &cloudflare.LookupSpectrumApplicationArgs{
 //				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
-//				AppId:  "023e105f4ecef8ad9ca31a8372d0c353",
+//				AppId:  pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -50,7 +50,8 @@ func LookupSpectrumApplication(ctx *pulumi.Context, args *LookupSpectrumApplicat
 // A collection of arguments for invoking getSpectrumApplication.
 type LookupSpectrumApplicationArgs struct {
 	// App identifier.
-	AppId string `pulumi:"appId"`
+	AppId  *string                       `pulumi:"appId"`
+	Filter *GetSpectrumApplicationFilter `pulumi:"filter"`
 	// Zone identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -58,7 +59,7 @@ type LookupSpectrumApplicationArgs struct {
 // A collection of values returned by getSpectrumApplication.
 type LookupSpectrumApplicationResult struct {
 	// App identifier.
-	AppId string `pulumi:"appId"`
+	AppId *string `pulumi:"appId"`
 	// Enables Argo Smart Routing for this application.
 	// Notes: Only available for TCP applications with trafficType set to "direct".
 	ArgoSmartRouting bool `pulumi:"argoSmartRouting"`
@@ -68,6 +69,7 @@ type LookupSpectrumApplicationResult struct {
 	Dns GetSpectrumApplicationDns `pulumi:"dns"`
 	// The anycast edge IP configuration for the hostname of this application.
 	EdgeIps GetSpectrumApplicationEdgeIps `pulumi:"edgeIps"`
+	Filter  *GetSpectrumApplicationFilter `pulumi:"filter"`
 	// App identifier.
 	Id string `pulumi:"id"`
 	// Enables IP Access Rules for this application.
@@ -109,7 +111,8 @@ func LookupSpectrumApplicationOutput(ctx *pulumi.Context, args LookupSpectrumApp
 // A collection of arguments for invoking getSpectrumApplication.
 type LookupSpectrumApplicationOutputArgs struct {
 	// App identifier.
-	AppId pulumi.StringInput `pulumi:"appId"`
+	AppId  pulumi.StringPtrInput                `pulumi:"appId"`
+	Filter GetSpectrumApplicationFilterPtrInput `pulumi:"filter"`
 	// Zone identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
@@ -134,8 +137,8 @@ func (o LookupSpectrumApplicationResultOutput) ToLookupSpectrumApplicationResult
 }
 
 // App identifier.
-func (o LookupSpectrumApplicationResultOutput) AppId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSpectrumApplicationResult) string { return v.AppId }).(pulumi.StringOutput)
+func (o LookupSpectrumApplicationResultOutput) AppId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSpectrumApplicationResult) *string { return v.AppId }).(pulumi.StringPtrOutput)
 }
 
 // Enables Argo Smart Routing for this application.
@@ -157,6 +160,10 @@ func (o LookupSpectrumApplicationResultOutput) Dns() GetSpectrumApplicationDnsOu
 // The anycast edge IP configuration for the hostname of this application.
 func (o LookupSpectrumApplicationResultOutput) EdgeIps() GetSpectrumApplicationEdgeIpsOutput {
 	return o.ApplyT(func(v LookupSpectrumApplicationResult) GetSpectrumApplicationEdgeIps { return v.EdgeIps }).(GetSpectrumApplicationEdgeIpsOutput)
+}
+
+func (o LookupSpectrumApplicationResultOutput) Filter() GetSpectrumApplicationFilterPtrOutput {
+	return o.ApplyT(func(v LookupSpectrumApplicationResult) *GetSpectrumApplicationFilter { return v.Filter }).(GetSpectrumApplicationFilterPtrOutput)
 }
 
 // App identifier.

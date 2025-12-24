@@ -87,8 +87,11 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// App identifier.
         /// </summary>
-        [Input("appId", required: true)]
-        public string AppId { get; set; } = null!;
+        [Input("appId")]
+        public string? AppId { get; set; }
+
+        [Input("filter")]
+        public Inputs.GetSpectrumApplicationFilterArgs? Filter { get; set; }
 
         /// <summary>
         /// Zone identifier.
@@ -107,8 +110,11 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// App identifier.
         /// </summary>
-        [Input("appId", required: true)]
-        public Input<string> AppId { get; set; } = null!;
+        [Input("appId")]
+        public Input<string>? AppId { get; set; }
+
+        [Input("filter")]
+        public Input<Inputs.GetSpectrumApplicationFilterInputArgs>? Filter { get; set; }
 
         /// <summary>
         /// Zone identifier.
@@ -129,7 +135,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// App identifier.
         /// </summary>
-        public readonly string AppId;
+        public readonly string? AppId;
         /// <summary>
         /// Enables Argo Smart Routing for this application.
         /// Notes: Only available for TCP applications with TrafficType set to "direct".
@@ -147,6 +153,7 @@ namespace Pulumi.Cloudflare
         /// The anycast edge IP configuration for the hostname of this application.
         /// </summary>
         public readonly Outputs.GetSpectrumApplicationEdgeIpsResult EdgeIps;
+        public readonly Outputs.GetSpectrumApplicationFilterResult? Filter;
         /// <summary>
         /// App identifier.
         /// </summary>
@@ -199,7 +206,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetSpectrumApplicationResult(
-            string appId,
+            string? appId,
 
             bool argoSmartRouting,
 
@@ -208,6 +215,8 @@ namespace Pulumi.Cloudflare
             Outputs.GetSpectrumApplicationDnsResult dns,
 
             Outputs.GetSpectrumApplicationEdgeIpsResult edgeIps,
+
+            Outputs.GetSpectrumApplicationFilterResult? filter,
 
             string id,
 
@@ -236,6 +245,7 @@ namespace Pulumi.Cloudflare
             CreatedOn = createdOn;
             Dns = dns;
             EdgeIps = edgeIps;
+            Filter = filter;
             Id = id;
             IpFirewall = ipFirewall;
             ModifiedOn = modifiedOn;

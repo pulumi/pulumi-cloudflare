@@ -12,8 +12,8 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class PagesProjectDeploymentConfigsPreviewAiBindingsGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
+        [Input("projectId", required: true)]
+        public Input<string> ProjectId { get; set; } = null!;
 
         public PagesProjectDeploymentConfigsPreviewAiBindingsGetArgs()
         {

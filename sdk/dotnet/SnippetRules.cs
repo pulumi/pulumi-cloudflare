@@ -37,6 +37,10 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ~&gt; This resource does not currently support `pulumi import`.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/snippetRules:SnippetRules")]
     public partial class SnippetRules : global::Pulumi.CustomResource

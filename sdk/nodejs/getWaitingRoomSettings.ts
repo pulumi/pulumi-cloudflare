@@ -38,7 +38,7 @@ export interface GetWaitingRoomSettingsArgs {
  */
 export interface GetWaitingRoomSettingsResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Identifier.
      */
     readonly id: string;
     /**

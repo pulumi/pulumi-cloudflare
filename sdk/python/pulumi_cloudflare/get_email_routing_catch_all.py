@@ -70,7 +70,7 @@ class GetEmailRoutingCatchAllResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Routing rule identifier.
+        Identifier.
         """
         return pulumi.get(self, "id")
 

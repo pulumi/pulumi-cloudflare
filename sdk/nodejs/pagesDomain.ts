@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * const examplePagesDomain = new cloudflare.PagesDomain("example_pages_domain", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     projectName: "this-is-my-project-01",
- *     name: "example.com",
+ *     name: "this-is-my-domain-01.com",
  * });
  * ```
  *
@@ -58,7 +58,7 @@ export class PagesDomain extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
     declare public readonly accountId: pulumi.Output<string>;
     /**
@@ -67,6 +67,9 @@ export class PagesDomain extends pulumi.CustomResource {
     declare public /*out*/ readonly certificateAuthority: pulumi.Output<string>;
     declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     declare public /*out*/ readonly domainId: pulumi.Output<string>;
+    /**
+     * The domain name.
+     */
     declare public readonly name: pulumi.Output<string>;
     /**
      * Name of the project.
@@ -135,7 +138,7 @@ export class PagesDomain extends pulumi.CustomResource {
  */
 export interface PagesDomainState {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -144,6 +147,9 @@ export interface PagesDomainState {
     certificateAuthority?: pulumi.Input<string>;
     createdOn?: pulumi.Input<string>;
     domainId?: pulumi.Input<string>;
+    /**
+     * The domain name.
+     */
     name?: pulumi.Input<string>;
     /**
      * Name of the project.
@@ -163,9 +169,12 @@ export interface PagesDomainState {
  */
 export interface PagesDomainArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
+    /**
+     * The domain name.
+     */
     name: pulumi.Input<string>;
     /**
      * Name of the project.

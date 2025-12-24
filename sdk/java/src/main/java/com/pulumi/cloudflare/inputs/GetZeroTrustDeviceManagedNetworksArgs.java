@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetZeroTrustDeviceManagedNetworksArgs extends com.pulumi.resources.InvokeArgs {
@@ -27,15 +25,15 @@ public final class GetZeroTrustDeviceManagedNetworksArgs extends com.pulumi.reso
      * API UUID.
      * 
      */
-    @Import(name="networkId")
-    private @Nullable Output<String> networkId;
+    @Import(name="networkId", required=true)
+    private Output<String> networkId;
 
     /**
      * @return API UUID.
      * 
      */
-    public Optional<Output<String>> networkId() {
-        return Optional.ofNullable(this.networkId);
+    public Output<String> networkId() {
+        return this.networkId;
     }
 
     private GetZeroTrustDeviceManagedNetworksArgs() {}
@@ -78,7 +76,7 @@ public final class GetZeroTrustDeviceManagedNetworksArgs extends com.pulumi.reso
          * @return builder
          * 
          */
-        public Builder networkId(@Nullable Output<String> networkId) {
+        public Builder networkId(Output<String> networkId) {
             $.networkId = networkId;
             return this;
         }
@@ -96,6 +94,9 @@ public final class GetZeroTrustDeviceManagedNetworksArgs extends com.pulumi.reso
         public GetZeroTrustDeviceManagedNetworksArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetZeroTrustDeviceManagedNetworksArgs", "accountId");
+            }
+            if ($.networkId == null) {
+                throw new MissingRequiredPropertyException("GetZeroTrustDeviceManagedNetworksArgs", "networkId");
             }
             return $;
         }

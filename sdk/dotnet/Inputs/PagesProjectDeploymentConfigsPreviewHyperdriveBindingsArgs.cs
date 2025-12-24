@@ -12,8 +12,8 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class PagesProjectDeploymentConfigsPreviewHyperdriveBindingsArgs : global::Pulumi.ResourceArgs
     {
-        [Input("id")]
-        public Input<string>? Id { get; set; }
+        [Input("id", required: true)]
+        public Input<string> Id { get; set; } = null!;
 
         public PagesProjectDeploymentConfigsPreviewHyperdriveBindingsArgs()
         {

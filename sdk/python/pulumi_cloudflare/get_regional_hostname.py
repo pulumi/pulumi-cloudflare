@@ -140,7 +140,7 @@ def get_regional_hostname(hostname: Optional[_builtins.str] = None,
         region_key=pulumi.get(__ret__, 'region_key'),
         routing=pulumi.get(__ret__, 'routing'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_regional_hostname_output(hostname: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_regional_hostname_output(hostname: Optional[pulumi.Input[_builtins.str]] = None,
                                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionalHostnameResult]:
     """

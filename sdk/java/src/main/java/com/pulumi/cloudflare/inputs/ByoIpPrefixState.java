@@ -131,6 +131,21 @@ public final class ByoIpPrefixState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+     * 
+     */
+    @Import(name="delegateLoaCreation")
+    private @Nullable Output<Boolean> delegateLoaCreation;
+
+    /**
+     * @return Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+     * 
+     */
+    public Optional<Output<Boolean>> delegateLoaCreation() {
+        return Optional.ofNullable(this.delegateLoaCreation);
+    }
+
+    /**
      * Description of the prefix.
      * 
      */
@@ -143,6 +158,21 @@ public final class ByoIpPrefixState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * State of one kind of validation for an IP prefix.
+     * 
+     */
+    @Import(name="irrValidationState")
+    private @Nullable Output<String> irrValidationState;
+
+    /**
+     * @return State of one kind of validation for an IP prefix.
+     * 
+     */
+    public Optional<Output<String>> irrValidationState() {
+        return Optional.ofNullable(this.irrValidationState);
     }
 
     /**
@@ -213,6 +243,51 @@ public final class ByoIpPrefixState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.onDemandLocked);
     }
 
+    /**
+     * State of one kind of validation for an IP prefix.
+     * 
+     */
+    @Import(name="ownershipValidationState")
+    private @Nullable Output<String> ownershipValidationState;
+
+    /**
+     * @return State of one kind of validation for an IP prefix.
+     * 
+     */
+    public Optional<Output<String>> ownershipValidationState() {
+        return Optional.ofNullable(this.ownershipValidationState);
+    }
+
+    /**
+     * Token provided to demonstrate ownership of the prefix.
+     * 
+     */
+    @Import(name="ownershipValidationToken")
+    private @Nullable Output<String> ownershipValidationToken;
+
+    /**
+     * @return Token provided to demonstrate ownership of the prefix.
+     * 
+     */
+    public Optional<Output<String>> ownershipValidationToken() {
+        return Optional.ofNullable(this.ownershipValidationToken);
+    }
+
+    /**
+     * State of one kind of validation for an IP prefix.
+     * 
+     */
+    @Import(name="rpkiValidationState")
+    private @Nullable Output<String> rpkiValidationState;
+
+    /**
+     * @return State of one kind of validation for an IP prefix.
+     * 
+     */
+    public Optional<Output<String>> rpkiValidationState() {
+        return Optional.ofNullable(this.rpkiValidationState);
+    }
+
     private ByoIpPrefixState() {}
 
     private ByoIpPrefixState(ByoIpPrefixState $) {
@@ -223,11 +298,16 @@ public final class ByoIpPrefixState extends com.pulumi.resources.ResourceArgs {
         this.asn = $.asn;
         this.cidr = $.cidr;
         this.createdAt = $.createdAt;
+        this.delegateLoaCreation = $.delegateLoaCreation;
         this.description = $.description;
+        this.irrValidationState = $.irrValidationState;
         this.loaDocumentId = $.loaDocumentId;
         this.modifiedAt = $.modifiedAt;
         this.onDemandEnabled = $.onDemandEnabled;
         this.onDemandLocked = $.onDemandLocked;
+        this.ownershipValidationState = $.ownershipValidationState;
+        this.ownershipValidationToken = $.ownershipValidationToken;
+        this.rpkiValidationState = $.rpkiValidationState;
     }
 
     public static Builder builder() {
@@ -400,6 +480,27 @@ public final class ByoIpPrefixState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param delegateLoaCreation Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder delegateLoaCreation(@Nullable Output<Boolean> delegateLoaCreation) {
+            $.delegateLoaCreation = delegateLoaCreation;
+            return this;
+        }
+
+        /**
+         * @param delegateLoaCreation Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder delegateLoaCreation(Boolean delegateLoaCreation) {
+            return delegateLoaCreation(Output.of(delegateLoaCreation));
+        }
+
+        /**
          * @param description Description of the prefix.
          * 
          * @return builder
@@ -418,6 +519,27 @@ public final class ByoIpPrefixState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param irrValidationState State of one kind of validation for an IP prefix.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder irrValidationState(@Nullable Output<String> irrValidationState) {
+            $.irrValidationState = irrValidationState;
+            return this;
+        }
+
+        /**
+         * @param irrValidationState State of one kind of validation for an IP prefix.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder irrValidationState(String irrValidationState) {
+            return irrValidationState(Output.of(irrValidationState));
         }
 
         /**
@@ -506,6 +628,69 @@ public final class ByoIpPrefixState extends com.pulumi.resources.ResourceArgs {
         @Deprecated /* Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix. */
         public Builder onDemandLocked(Boolean onDemandLocked) {
             return onDemandLocked(Output.of(onDemandLocked));
+        }
+
+        /**
+         * @param ownershipValidationState State of one kind of validation for an IP prefix.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ownershipValidationState(@Nullable Output<String> ownershipValidationState) {
+            $.ownershipValidationState = ownershipValidationState;
+            return this;
+        }
+
+        /**
+         * @param ownershipValidationState State of one kind of validation for an IP prefix.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ownershipValidationState(String ownershipValidationState) {
+            return ownershipValidationState(Output.of(ownershipValidationState));
+        }
+
+        /**
+         * @param ownershipValidationToken Token provided to demonstrate ownership of the prefix.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ownershipValidationToken(@Nullable Output<String> ownershipValidationToken) {
+            $.ownershipValidationToken = ownershipValidationToken;
+            return this;
+        }
+
+        /**
+         * @param ownershipValidationToken Token provided to demonstrate ownership of the prefix.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ownershipValidationToken(String ownershipValidationToken) {
+            return ownershipValidationToken(Output.of(ownershipValidationToken));
+        }
+
+        /**
+         * @param rpkiValidationState State of one kind of validation for an IP prefix.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rpkiValidationState(@Nullable Output<String> rpkiValidationState) {
+            $.rpkiValidationState = rpkiValidationState;
+            return this;
+        }
+
+        /**
+         * @param rpkiValidationState State of one kind of validation for an IP prefix.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rpkiValidationState(String rpkiValidationState) {
+            return rpkiValidationState(Output.of(rpkiValidationState));
         }
 
         public ByoIpPrefixState build() {

@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetWeb3HostnameArgs extends com.pulumi.resources.InvokeArgs {
@@ -20,15 +18,15 @@ public final class GetWeb3HostnameArgs extends com.pulumi.resources.InvokeArgs {
      * Specify the identifier of the hostname.
      * 
      */
-    @Import(name="identifier")
-    private @Nullable Output<String> identifier;
+    @Import(name="identifier", required=true)
+    private Output<String> identifier;
 
     /**
      * @return Specify the identifier of the hostname.
      * 
      */
-    public Optional<Output<String>> identifier() {
-        return Optional.ofNullable(this.identifier);
+    public Output<String> identifier() {
+        return this.identifier;
     }
 
     /**
@@ -77,7 +75,7 @@ public final class GetWeb3HostnameArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder identifier(@Nullable Output<String> identifier) {
+        public Builder identifier(Output<String> identifier) {
             $.identifier = identifier;
             return this;
         }
@@ -114,6 +112,9 @@ public final class GetWeb3HostnameArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetWeb3HostnameArgs build() {
+            if ($.identifier == null) {
+                throw new MissingRequiredPropertyException("GetWeb3HostnameArgs", "identifier");
+            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("GetWeb3HostnameArgs", "zoneId");
             }

@@ -241,6 +241,16 @@
                 "current": "cloudflare:index/certificatePack:CertificatePack",
                 "majorVersion": 6,
                 "fields": {
+                    "certificates": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "hosts": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "hosts": {
                         "maxItemsOne": false
                     },
@@ -286,6 +296,23 @@
                 "fields": {
                     "labels": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudflare_connectivity_directory_service": {
+                "current": "cloudflare:index/connectivityDirectoryService:ConnectivityDirectoryService",
+                "majorVersion": 6,
+                "fields": {
+                    "host": {
+                        "fields": {
+                            "resolver_network": {
+                                "fields": {
+                                    "resolver_ips": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -1539,6 +1566,10 @@
                     }
                 }
             },
+            "cloudflare_sso_connector": {
+                "current": "cloudflare:index/ssoConnector:SsoConnector",
+                "majorVersion": 6
+            },
             "cloudflare_stream": {
                 "current": "cloudflare:index/stream:Stream",
                 "majorVersion": 6,
@@ -1589,6 +1620,52 @@
                 "current": "cloudflare:index/tieredCache:TieredCache",
                 "majorVersion": 6
             },
+            "cloudflare_token_validation_config": {
+                "current": "cloudflare:index/tokenValidationConfig:TokenValidationConfig",
+                "majorVersion": 6,
+                "fields": {
+                    "credentials": {
+                        "fields": {
+                            "keys": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "token_sources": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudflare_token_validation_rules": {
+                "current": "cloudflare:index/tokenValidationRules:TokenValidationRules",
+                "majorVersion": 6,
+                "fields": {
+                    "selector": {
+                        "fields": {
+                            "exclude": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "operation_ids": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            },
+                            "include": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "host": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "cloudflare_total_tls": {
                 "current": "cloudflare:index/totalTls:TotalTls",
                 "majorVersion": 6
@@ -1601,6 +1678,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "cloudflare_universal_ssl_setting": {
+                "current": "cloudflare:index/universalSslSetting:UniversalSslSetting",
+                "majorVersion": 6
             },
             "cloudflare_url_normalization_settings": {
                 "current": "cloudflare:index/urlNormalizationSettings:UrlNormalizationSettings",
@@ -1725,17 +1806,6 @@
                 "current": "cloudflare:index/workerVersion:WorkerVersion",
                 "majorVersion": 6,
                 "fields": {
-                    "assets": {
-                        "fields": {
-                            "config": {
-                                "fields": {
-                                    "run_worker_first": {
-                                        "maxItemsOne": false
-                                    }
-                                }
-                            }
-                        }
-                    },
                     "bindings": {
                         "maxItemsOne": false,
                         "elem": {
@@ -1984,6 +2054,37 @@
             "cloudflare_workflow": {
                 "current": "cloudflare:index/workflow:Workflow",
                 "majorVersion": 6
+            },
+            "cloudflare_zero_trust_access_ai_controls_mcp_portal": {
+                "current": "cloudflare:index/zeroTrustAccessAiControlsMcpPortal:ZeroTrustAccessAiControlsMcpPortal",
+                "majorVersion": 6,
+                "fields": {
+                    "servers": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "updated_prompts": {
+                                    "maxItemsOne": false
+                                },
+                                "updated_tools": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "cloudflare_zero_trust_access_ai_controls_mcp_server": {
+                "current": "cloudflare:index/zeroTrustAccessAiControlsMcpServer:ZeroTrustAccessAiControlsMcpServer",
+                "majorVersion": 6,
+                "fields": {
+                    "prompts": {
+                        "maxItemsOne": false
+                    },
+                    "tools": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "cloudflare_zero_trust_access_application": {
                 "current": "cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication",
@@ -2460,7 +2561,12 @@
             },
             "cloudflare_zero_trust_dlp_custom_entry": {
                 "current": "cloudflare:index/zeroTrustDlpCustomEntry:ZeroTrustDlpCustomEntry",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "profiles": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "cloudflare_zero_trust_dlp_custom_profile": {
                 "current": "cloudflare:index/zeroTrustDlpCustomProfile:ZeroTrustDlpCustomProfile",
@@ -2505,15 +2611,30 @@
             },
             "cloudflare_zero_trust_dlp_entry": {
                 "current": "cloudflare:index/zeroTrustDlpEntry:ZeroTrustDlpEntry",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "profiles": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "cloudflare_zero_trust_dlp_integration_entry": {
                 "current": "cloudflare:index/zeroTrustDlpIntegrationEntry:ZeroTrustDlpIntegrationEntry",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "profiles": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "cloudflare_zero_trust_dlp_predefined_entry": {
                 "current": "cloudflare:index/zeroTrustDlpPredefinedEntry:ZeroTrustDlpPredefinedEntry",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "profiles": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "cloudflare_zero_trust_dlp_predefined_profile": {
                 "current": "cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile",
@@ -2526,6 +2647,9 @@
                 ],
                 "majorVersion": 6,
                 "fields": {
+                    "enabled_entries": {
+                        "maxItemsOne": false
+                    },
                     "entries": {
                         "maxItemsOne": false
                     }
@@ -3479,14 +3603,72 @@
             },
             "cloudflare_certificate_pack": {
                 "current": "cloudflare:index/getCertificatePack:getCertificatePack",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "certificates": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "hosts": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "hosts": {
+                        "maxItemsOne": false
+                    },
+                    "validation_errors": {
+                        "maxItemsOne": false
+                    },
+                    "validation_records": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "emails": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "cloudflare_certificate_packs": {
                 "current": "cloudflare:index/getCertificatePacks:getCertificatePacks",
                 "majorVersion": 6,
                 "fields": {
                     "result": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "certificates": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "hosts": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "hosts": {
+                                    "maxItemsOne": false
+                                },
+                                "validation_errors": {
+                                    "maxItemsOne": false
+                                },
+                                "validation_records": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "emails": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -3521,6 +3703,47 @@
                 "fields": {
                     "result": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudflare_connectivity_directory_service": {
+                "current": "cloudflare:index/getConnectivityDirectoryService:getConnectivityDirectoryService",
+                "majorVersion": 6,
+                "fields": {
+                    "host": {
+                        "fields": {
+                            "resolver_network": {
+                                "fields": {
+                                    "resolver_ips": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "cloudflare_connectivity_directory_services": {
+                "current": "cloudflare:index/getConnectivityDirectoryServices:getConnectivityDirectoryServices",
+                "majorVersion": 6,
+                "fields": {
+                    "result": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "host": {
+                                    "fields": {
+                                        "resolver_network": {
+                                            "fields": {
+                                                "resolver_ips": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -4143,6 +4366,10 @@
             },
             "cloudflare_leaked_credential_check": {
                 "current": "cloudflare:index/getLeakedCredentialCheck:getLeakedCredentialCheck",
+                "majorVersion": 6
+            },
+            "cloudflare_leaked_credential_check_rule": {
+                "current": "cloudflare:index/getLeakedCredentialCheckRule:getLeakedCredentialCheckRule",
                 "majorVersion": 6
             },
             "cloudflare_leaked_credential_check_rules": {
@@ -5396,8 +5623,86 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
-                                "aliases": {
+                                "canonical_deployment": {
+                                    "fields": {
+                                        "aliases": {
+                                            "maxItemsOne": false
+                                        },
+                                        "source": {
+                                            "fields": {
+                                                "config": {
+                                                    "fields": {
+                                                        "path_excludes": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "path_includes": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "preview_branch_excludes": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "preview_branch_includes": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "stages": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "deployment_configs": {
+                                    "fields": {
+                                        "preview": {
+                                            "fields": {
+                                                "compatibility_flags": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        },
+                                        "production": {
+                                            "fields": {
+                                                "compatibility_flags": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "domains": {
                                     "maxItemsOne": false
+                                },
+                                "latest_deployment": {
+                                    "fields": {
+                                        "aliases": {
+                                            "maxItemsOne": false
+                                        },
+                                        "source": {
+                                            "fields": {
+                                                "config": {
+                                                    "fields": {
+                                                        "path_excludes": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "path_includes": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "preview_branch_excludes": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "preview_branch_includes": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "stages": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
                                 },
                                 "source": {
                                     "fields": {
@@ -5418,9 +5723,6 @@
                                             }
                                         }
                                     }
-                                },
-                                "stages": {
-                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -5914,6 +6216,33 @@
                 "majorVersion": 6,
                 "fields": {
                     "result": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "edge_ips": {
+                                    "fields": {
+                                        "ips": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "origin_direct": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "cloudflare_sso_connector": {
+                "current": "cloudflare:index/getSsoConnector:getSsoConnector",
+                "majorVersion": 6
+            },
+            "cloudflare_sso_connectors": {
+                "current": "cloudflare:index/getSsoConnectors:getSsoConnectors",
+                "majorVersion": 6,
+                "fields": {
+                    "result": {
                         "maxItemsOne": false
                     }
                 }
@@ -5993,6 +6322,122 @@
                 "current": "cloudflare:index/getTieredCache:getTieredCache",
                 "majorVersion": 6
             },
+            "cloudflare_token_validation_config": {
+                "current": "cloudflare:index/getTokenValidationConfig:getTokenValidationConfig",
+                "majorVersion": 6,
+                "fields": {
+                    "credentials": {
+                        "fields": {
+                            "keys": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "token_sources": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudflare_token_validation_configs": {
+                "current": "cloudflare:index/getTokenValidationConfigs:getTokenValidationConfigs",
+                "majorVersion": 6,
+                "fields": {
+                    "result": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "credentials": {
+                                    "fields": {
+                                        "keys": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "token_sources": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "cloudflare_token_validation_rules": {
+                "current": "cloudflare:index/getTokenValidationRules:getTokenValidationRules",
+                "majorVersion": 6,
+                "fields": {
+                    "filter": {
+                        "fields": {
+                            "token_configuration": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "selector": {
+                        "fields": {
+                            "exclude": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "operation_ids": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            },
+                            "include": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "host": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "cloudflare_token_validation_rules_list": {
+                "current": "cloudflare:index/getTokenValidationRulesList:getTokenValidationRulesList",
+                "majorVersion": 6,
+                "fields": {
+                    "result": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "selector": {
+                                    "fields": {
+                                        "exclude": {
+                                            "maxItemsOne": false,
+                                            "elem": {
+                                                "fields": {
+                                                    "operation_ids": {
+                                                        "maxItemsOne": false
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "include": {
+                                            "maxItemsOne": false,
+                                            "elem": {
+                                                "fields": {
+                                                    "host": {
+                                                        "maxItemsOne": false
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "token_configuration": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "cloudflare_total_tls": {
                 "current": "cloudflare:index/getTotalTls:getTotalTls",
                 "majorVersion": 6
@@ -6021,6 +6466,10 @@
                         }
                     }
                 }
+            },
+            "cloudflare_universal_ssl_setting": {
+                "current": "cloudflare:index/getUniversalSslSetting:getUniversalSslSetting",
+                "majorVersion": 6
             },
             "cloudflare_url_normalization_settings": {
                 "current": "cloudflare:index/getUrlNormalizationSettings:getUrlNormalizationSettings",
@@ -6521,6 +6970,23 @@
                                         }
                                     }
                                 },
+                                "observability": {
+                                    "fields": {
+                                        "logs": {
+                                            "fields": {
+                                                "destinations": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "routes": {
+                                    "maxItemsOne": false
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                },
                                 "tail_consumers": {
                                     "maxItemsOne": false
                                 }
@@ -6539,6 +7005,65 @@
                 "fields": {
                     "result": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudflare_zero_trust_access_ai_controls_mcp_portal": {
+                "current": "cloudflare:index/getZeroTrustAccessAiControlsMcpPortal:getZeroTrustAccessAiControlsMcpPortal",
+                "majorVersion": 6,
+                "fields": {
+                    "servers": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "prompts": {
+                                    "maxItemsOne": false
+                                },
+                                "tools": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "cloudflare_zero_trust_access_ai_controls_mcp_portals": {
+                "current": "cloudflare:index/getZeroTrustAccessAiControlsMcpPortals:getZeroTrustAccessAiControlsMcpPortals",
+                "majorVersion": 6,
+                "fields": {
+                    "result": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudflare_zero_trust_access_ai_controls_mcp_server": {
+                "current": "cloudflare:index/getZeroTrustAccessAiControlsMcpServer:getZeroTrustAccessAiControlsMcpServer",
+                "majorVersion": 6,
+                "fields": {
+                    "prompts": {
+                        "maxItemsOne": false
+                    },
+                    "tools": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudflare_zero_trust_access_ai_controls_mcp_servers": {
+                "current": "cloudflare:index/getZeroTrustAccessAiControlsMcpServers:getZeroTrustAccessAiControlsMcpServers",
+                "majorVersion": 6,
+                "fields": {
+                    "result": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "prompts": {
+                                    "maxItemsOne": false
+                                },
+                                "tools": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -7320,7 +7845,12 @@
             },
             "cloudflare_zero_trust_dlp_custom_entry": {
                 "current": "cloudflare:index/getZeroTrustDlpCustomEntry:getZeroTrustDlpCustomEntry",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "profiles": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "cloudflare_zero_trust_dlp_custom_profile": {
                 "current": "cloudflare:index/getZeroTrustDlpCustomProfile:getZeroTrustDlpCustomProfile",
@@ -7373,7 +7903,12 @@
             },
             "cloudflare_zero_trust_dlp_entry": {
                 "current": "cloudflare:index/getZeroTrustDlpEntry:getZeroTrustDlpEntry",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "profiles": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "cloudflare_zero_trust_dlp_integration_entries": {
                 "current": "cloudflare:index/getZeroTrustDlpIntegrationEntries:getZeroTrustDlpIntegrationEntries",
@@ -7386,7 +7921,12 @@
             },
             "cloudflare_zero_trust_dlp_integration_entry": {
                 "current": "cloudflare:index/getZeroTrustDlpIntegrationEntry:getZeroTrustDlpIntegrationEntry",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "profiles": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "cloudflare_zero_trust_dlp_predefined_entries": {
                 "current": "cloudflare:index/getZeroTrustDlpPredefinedEntries:getZeroTrustDlpPredefinedEntries",
@@ -7399,12 +7939,20 @@
             },
             "cloudflare_zero_trust_dlp_predefined_entry": {
                 "current": "cloudflare:index/getZeroTrustDlpPredefinedEntry:getZeroTrustDlpPredefinedEntry",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "profiles": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "cloudflare_zero_trust_dlp_predefined_profile": {
                 "current": "cloudflare:index/getZeroTrustDlpPredefinedProfile:getZeroTrustDlpPredefinedProfile",
                 "majorVersion": 6,
                 "fields": {
+                    "enabled_entries": {
+                        "maxItemsOne": false
+                    },
                     "entries": {
                         "maxItemsOne": false
                     }
@@ -7616,6 +8164,22 @@
                 "fields": {
                     "ips": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudflare_zero_trust_gateway_proxy_endpoints": {
+                "current": "cloudflare:index/getZeroTrustGatewayProxyEndpoints:getZeroTrustGatewayProxyEndpoints",
+                "majorVersion": 6,
+                "fields": {
+                    "result": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ips": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },

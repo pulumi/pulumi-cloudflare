@@ -88,8 +88,8 @@ type LookupCloudforceOneRequestMessageResult struct {
 	Content string `pulumi:"content"`
 	// Defines the message creation time.
 	Created string `pulumi:"created"`
-	// Message ID.
-	Id int `pulumi:"id"`
+	// UUID.
+	Id string `pulumi:"id"`
 	// Whether the message is a follow-on request.
 	IsFollowOnRequest bool `pulumi:"isFollowOnRequest"`
 	// Page number of results.
@@ -186,9 +186,9 @@ func (o LookupCloudforceOneRequestMessageResultOutput) Created() pulumi.StringOu
 	return o.ApplyT(func(v LookupCloudforceOneRequestMessageResult) string { return v.Created }).(pulumi.StringOutput)
 }
 
-// Message ID.
-func (o LookupCloudforceOneRequestMessageResultOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupCloudforceOneRequestMessageResult) int { return v.Id }).(pulumi.IntOutput)
+// UUID.
+func (o LookupCloudforceOneRequestMessageResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestMessageResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Whether the message is a follow-on request.

@@ -2945,10 +2945,6 @@ export interface AccountMemberPolicy {
      */
     access: string;
     /**
-     * Policy identifier.
-     */
-    id: string;
-    /**
      * A set of permission groups that are specified to the policy.
      */
     permissionGroups: outputs.AccountMemberPolicyPermissionGroup[];
@@ -3011,32 +3007,31 @@ export interface AccountSubscriptionRatePlan {
     /**
      * The currency applied to the rate plan subscription.
      */
-    currency?: string;
+    currency: string;
     /**
      * Whether this rate plan is managed externally from Cloudflare.
      */
-    externallyManaged?: boolean;
+    externallyManaged: boolean;
     /**
      * The ID of the rate plan.
-     * Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnterprise".
      */
     id?: string;
     /**
      * Whether a rate plan is enterprise-based (or newly adopted term contract).
      */
-    isContract?: boolean;
+    isContract: boolean;
     /**
      * The full name of the rate plan.
      */
-    publicName?: string;
+    publicName: string;
     /**
      * The scope that this rate plan applies to.
      */
-    scope?: string;
+    scope: string;
     /**
      * The list of sets this rate plan applies to.
      */
-    sets?: string[];
+    sets: string[];
 }
 
 export interface AccountTokenCondition {
@@ -3064,17 +3059,13 @@ export interface AccountTokenPolicy {
      */
     effect: string;
     /**
-     * Policy identifier.
-     */
-    id: string;
-    /**
      * A set of permission groups that are specified to the policy.
      */
     permissionGroups: outputs.AccountTokenPolicyPermissionGroup[];
     /**
-     * A list of resource names that the policy applies to.
+     * A json object representing the resources that are specified to the policy.
      */
-    resources: {[key: string]: string};
+    resources: string;
 }
 
 export interface AccountTokenPolicyPermissionGroup {
@@ -3082,19 +3073,6 @@ export interface AccountTokenPolicyPermissionGroup {
      * Identifier of the permission group.
      */
     id: string;
-    /**
-     * Attributes associated to the permission group.
-     */
-    meta: outputs.AccountTokenPolicyPermissionGroupMeta;
-    /**
-     * Name of the permission group.
-     */
-    name: string;
-}
-
-export interface AccountTokenPolicyPermissionGroupMeta {
-    key?: string;
-    value?: string;
 }
 
 export interface AccountUnit {
@@ -3367,17 +3345,13 @@ export interface ApiTokenPolicy {
      */
     effect: string;
     /**
-     * Policy identifier.
-     */
-    id: string;
-    /**
      * A set of permission groups that are specified to the policy.
      */
     permissionGroups: outputs.ApiTokenPolicyPermissionGroup[];
     /**
-     * A list of resource names that the policy applies to.
+     * A json object representing the resources that are specified to the policy.
      */
-    resources: {[key: string]: string};
+    resources: string;
 }
 
 export interface ApiTokenPolicyPermissionGroup {
@@ -3385,19 +3359,6 @@ export interface ApiTokenPolicyPermissionGroup {
      * Identifier of the permission group.
      */
     id: string;
-    /**
-     * Attributes associated to the permission group.
-     */
-    meta?: outputs.ApiTokenPolicyPermissionGroupMeta;
-    /**
-     * Name of the permission group.
-     */
-    name: string;
-}
-
-export interface ApiTokenPolicyPermissionGroupMeta {
-    key?: string;
-    value?: string;
 }
 
 export interface AuthenticatedOriginPullsConfig {
@@ -3444,6 +3405,64 @@ export interface BotManagementStaleZoneConfiguration {
      * Indicates that the zone's session score tracking is disabled.
      */
     suppressSessionScore: boolean;
+}
+
+export interface CertificatePackCertificate {
+    /**
+     * Certificate bundle method.
+     */
+    bundleMethod: string;
+    /**
+     * When the certificate from the authority expires.
+     */
+    expiresOn: string;
+    /**
+     * Specify the region where your private key can be held locally.
+     */
+    geoRestrictions: outputs.CertificatePackCertificateGeoRestrictions;
+    /**
+     * Hostnames covered by this certificate.
+     */
+    hosts: string[];
+    /**
+     * Certificate identifier.
+     */
+    id: string;
+    /**
+     * The certificate authority that issued the certificate.
+     */
+    issuer: string;
+    /**
+     * When the certificate was last modified.
+     */
+    modifiedOn: string;
+    /**
+     * The order/priority in which the certificate will be used.
+     */
+    priority: number;
+    /**
+     * The type of hash used for the certificate.
+     */
+    signature: string;
+    /**
+     * Certificate status.
+     */
+    status: string;
+    /**
+     * When the certificate was uploaded to Cloudflare.
+     */
+    uploadedOn: string;
+    /**
+     * Identifier.
+     */
+    zoneId: string;
+}
+
+export interface CertificatePackCertificateGeoRestrictions {
+    /**
+     * Available values: "us", "eu", "highestSecurity".
+     */
+    label: string;
 }
 
 export interface CertificatePackValidationError {
@@ -3497,6 +3516,23 @@ export interface CloudConnectorRulesRuleParameters {
      * Host to perform Cloud Connection to
      */
     host?: string;
+}
+
+export interface ConnectivityDirectoryServiceHost {
+    hostname?: string;
+    ipv4?: string;
+    ipv6?: string;
+    network?: outputs.ConnectivityDirectoryServiceHostNetwork;
+    resolverNetwork?: outputs.ConnectivityDirectoryServiceHostResolverNetwork;
+}
+
+export interface ConnectivityDirectoryServiceHostNetwork {
+    tunnelId: string;
+}
+
+export interface ConnectivityDirectoryServiceHostResolverNetwork {
+    resolverIps?: string[];
+    tunnelId: string;
 }
 
 export interface ContentScanningExpressionBody {
@@ -3843,7 +3879,7 @@ export interface DevicePostureRuleInput {
      */
     osDistroRevision?: string;
     /**
-     * Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version. (Mac, iOS, and Linux only).
+     * Additional operating system version details. For Windows, the UBR (Update Build Revision). For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version.
      */
     osVersionExtra?: string;
     /**
@@ -3897,6 +3933,10 @@ export interface DevicePostureRuleInput {
      * For more details on total score, refer to the Tanium documentation.
      */
     totalScore?: number;
+    /**
+     * Number of days that the antivirus should be updated within.
+     */
+    updateWindowDays?: number;
     /**
      * Version of OS.
      */
@@ -3968,24 +4008,6 @@ export interface DlpCustomProfileSharedEntry {
      * Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint".
      */
     entryType: string;
-}
-
-export interface DlpPredefinedProfileContextAwareness {
-    /**
-     * If true, scan the context of predefined entries to only return matches surrounded by keywords.
-     */
-    enabled: boolean;
-    /**
-     * Content types to exclude from context analysis and return all matches.
-     */
-    skip: outputs.DlpPredefinedProfileContextAwarenessSkip;
-}
-
-export interface DlpPredefinedProfileContextAwarenessSkip {
-    /**
-     * If the content type is a file, skip context analysis and return all matches.
-     */
-    files: boolean;
 }
 
 export interface DlpPredefinedProfileEntry {
@@ -4269,7 +4291,7 @@ export interface EmailRoutingDnsResultInfo {
     /**
      * Total number of results for the requested service.
      */
-    count: number;
+    emailRoutingDnsCount: number;
     /**
      * Current page within paginated list of results.
      */
@@ -5437,7 +5459,7 @@ export interface GetAccountSubscriptionRatePlan {
     externallyManaged: boolean;
     /**
      * The ID of the rate plan.
-     * Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnterprise".
+     * Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnt".
      */
     id: string;
     /**
@@ -5995,6 +6017,10 @@ export interface GetApiShieldOperationsResult {
      * RFC3986-compliant host.
      */
     host: string;
+    /**
+     * UUID.
+     */
+    id: string;
     lastUpdated: string;
     /**
      * The HTTP method used to access the endpoint.
@@ -6481,6 +6507,10 @@ export interface GetByoIpPrefixesResult {
     cidr: string;
     createdAt: string;
     /**
+     * Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+     */
+    delegateLoaCreation: boolean;
+    /**
      * Description of the prefix.
      */
     description: string;
@@ -6488,6 +6518,10 @@ export interface GetByoIpPrefixesResult {
      * Identifier of an IP Prefix.
      */
     id: string;
+    /**
+     * State of one kind of validation for an IP prefix.
+     */
+    irrValidationState: string;
     /**
      * Identifier for the uploaded LOA document.
      */
@@ -6505,6 +6539,18 @@ export interface GetByoIpPrefixesResult {
      * @deprecated Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
      */
     onDemandLocked: boolean;
+    /**
+     * State of one kind of validation for an IP prefix.
+     */
+    ownershipValidationState: string;
+    /**
+     * Token provided to demonstrate ownership of the prefix.
+     */
+    ownershipValidationToken: string;
+    /**
+     * State of one kind of validation for an IP prefix.
+     */
+    rpkiValidationState: string;
 }
 
 export interface GetCallsSfuAppsResult {
@@ -6545,7 +6591,244 @@ export interface GetCallsTurnAppsResult {
     uid: string;
 }
 
+export interface GetCertificatePackCertificate {
+    /**
+     * Certificate bundle method.
+     */
+    bundleMethod: string;
+    /**
+     * When the certificate from the authority expires.
+     */
+    expiresOn: string;
+    /**
+     * Specify the region where your private key can be held locally.
+     */
+    geoRestrictions: outputs.GetCertificatePackCertificateGeoRestrictions;
+    /**
+     * Hostnames covered by this certificate.
+     */
+    hosts: string[];
+    /**
+     * Certificate identifier.
+     */
+    id: string;
+    /**
+     * The certificate authority that issued the certificate.
+     */
+    issuer: string;
+    /**
+     * When the certificate was last modified.
+     */
+    modifiedOn: string;
+    /**
+     * The order/priority in which the certificate will be used.
+     */
+    priority: number;
+    /**
+     * The type of hash used for the certificate.
+     */
+    signature: string;
+    /**
+     * Certificate status.
+     */
+    status: string;
+    /**
+     * When the certificate was uploaded to Cloudflare.
+     */
+    uploadedOn: string;
+    /**
+     * Identifier.
+     */
+    zoneId: string;
+}
+
+export interface GetCertificatePackCertificateGeoRestrictions {
+    /**
+     * Available values: "us", "eu", "highestSecurity".
+     */
+    label: string;
+}
+
+export interface GetCertificatePackFilter {
+    /**
+     * Include Certificate Packs of all statuses, not just active ones.
+     * Available values: "all".
+     */
+    status?: string;
+}
+
+export interface GetCertificatePackValidationError {
+    /**
+     * A domain validation error.
+     */
+    message: string;
+}
+
+export interface GetCertificatePackValidationRecord {
+    /**
+     * The set of email addresses that the certificate authority (CA) will use to complete domain validation.
+     */
+    emails: string[];
+    /**
+     * The content that the certificate authority (CA) will expect to find at the httpUrl during the domain validation.
+     */
+    httpBody: string;
+    /**
+     * The url that will be checked during domain validation.
+     */
+    httpUrl: string;
+    /**
+     * The hostname that the certificate authority (CA) will check for a TXT record during domain validation .
+     */
+    txtName: string;
+    /**
+     * The TXT record that the certificate authority (CA) will check during domain validation.
+     */
+    txtValue: string;
+}
+
 export interface GetCertificatePacksResult {
+    /**
+     * Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+     * Available values: "google", "lets*encrypt", "ssl*com".
+     */
+    certificateAuthority: string;
+    /**
+     * Array of certificates in this pack.
+     */
+    certificates: outputs.GetCertificatePacksResultCertificate[];
+    /**
+     * Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
+     */
+    cloudflareBranding: boolean;
+    /**
+     * Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
+     */
+    hosts: string[];
+    /**
+     * Identifier.
+     */
+    id: string;
+    /**
+     * Identifier of the primary certificate in a pack.
+     */
+    primaryCertificate: string;
+    /**
+     * Status of certificate pack.
+     * Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
+     */
+    status: string;
+    /**
+     * Type of certificate pack.
+     * Available values: "mh*custom", "managed*hostname", "sni*custom", "universal", "advanced", "total*tls", "keyless", "legacyCustom".
+     */
+    type: string;
+    /**
+     * Domain validation errors that have been received by the certificate authority (CA).
+     */
+    validationErrors: outputs.GetCertificatePacksResultValidationError[];
+    /**
+     * Validation Method selected for the order.
+     * Available values: "txt", "http", "email".
+     */
+    validationMethod: string;
+    /**
+     * Certificates' validation records.
+     */
+    validationRecords: outputs.GetCertificatePacksResultValidationRecord[];
+    /**
+     * Validity Days selected for the order.
+     * Available values: 14, 30, 90, 365.
+     */
+    validityDays: number;
+}
+
+export interface GetCertificatePacksResultCertificate {
+    /**
+     * Certificate bundle method.
+     */
+    bundleMethod: string;
+    /**
+     * When the certificate from the authority expires.
+     */
+    expiresOn: string;
+    /**
+     * Specify the region where your private key can be held locally.
+     */
+    geoRestrictions: outputs.GetCertificatePacksResultCertificateGeoRestrictions;
+    /**
+     * Hostnames covered by this certificate.
+     */
+    hosts: string[];
+    /**
+     * Certificate identifier.
+     */
+    id: string;
+    /**
+     * The certificate authority that issued the certificate.
+     */
+    issuer: string;
+    /**
+     * When the certificate was last modified.
+     */
+    modifiedOn: string;
+    /**
+     * The order/priority in which the certificate will be used.
+     */
+    priority: number;
+    /**
+     * The type of hash used for the certificate.
+     */
+    signature: string;
+    /**
+     * Certificate status.
+     */
+    status: string;
+    /**
+     * When the certificate was uploaded to Cloudflare.
+     */
+    uploadedOn: string;
+    /**
+     * Identifier.
+     */
+    zoneId: string;
+}
+
+export interface GetCertificatePacksResultCertificateGeoRestrictions {
+    /**
+     * Available values: "us", "eu", "highestSecurity".
+     */
+    label: string;
+}
+
+export interface GetCertificatePacksResultValidationError {
+    /**
+     * A domain validation error.
+     */
+    message: string;
+}
+
+export interface GetCertificatePacksResultValidationRecord {
+    /**
+     * The set of email addresses that the certificate authority (CA) will use to complete domain validation.
+     */
+    emails: string[];
+    /**
+     * The content that the certificate authority (CA) will expect to find at the httpUrl during the domain validation.
+     */
+    httpBody: string;
+    /**
+     * The url that will be checked during domain validation.
+     */
+    httpUrl: string;
+    /**
+     * The hostname that the certificate authority (CA) will check for a TXT record during domain validation .
+     */
+    txtName: string;
+    /**
+     * The TXT record that the certificate authority (CA) will check during domain validation.
+     */
+    txtValue: string;
 }
 
 export interface GetCloudConnectorRulesRule {
@@ -6667,6 +6950,62 @@ export interface GetCloudforceOneRequestsResult {
      * Request last updated time.
      */
     updated: string;
+}
+
+export interface GetConnectivityDirectoryServiceFilter {
+    /**
+     * Available values: "http".
+     */
+    type?: string;
+}
+
+export interface GetConnectivityDirectoryServiceHost {
+    hostname: string;
+    ipv4: string;
+    ipv6: string;
+    network: outputs.GetConnectivityDirectoryServiceHostNetwork;
+    resolverNetwork: outputs.GetConnectivityDirectoryServiceHostResolverNetwork;
+}
+
+export interface GetConnectivityDirectoryServiceHostNetwork {
+    tunnelId: string;
+}
+
+export interface GetConnectivityDirectoryServiceHostResolverNetwork {
+    resolverIps: string[];
+    tunnelId: string;
+}
+
+export interface GetConnectivityDirectoryServicesResult {
+    createdAt: string;
+    host: outputs.GetConnectivityDirectoryServicesResultHost;
+    httpPort: number;
+    httpsPort: number;
+    id: string;
+    name: string;
+    serviceId: string;
+    /**
+     * Available values: "http".
+     */
+    type: string;
+    updatedAt: string;
+}
+
+export interface GetConnectivityDirectoryServicesResultHost {
+    hostname: string;
+    ipv4: string;
+    ipv6: string;
+    network: outputs.GetConnectivityDirectoryServicesResultHostNetwork;
+    resolverNetwork: outputs.GetConnectivityDirectoryServicesResultHostResolverNetwork;
+}
+
+export interface GetConnectivityDirectoryServicesResultHostNetwork {
+    tunnelId: string;
+}
+
+export interface GetConnectivityDirectoryServicesResultHostResolverNetwork {
+    resolverIps: string[];
+    tunnelId: string;
 }
 
 export interface GetContentScanningExpressionsResult {
@@ -7305,6 +7644,10 @@ export interface GetD1DatabasesResult {
      * Specifies the timestamp the resource was created as an ISO8601 string.
      */
     createdAt: string;
+    /**
+     * D1 database identifier (UUID).
+     */
+    id: string;
     /**
      * D1 database name.
      */
@@ -8225,7 +8568,7 @@ export interface GetEmailRoutingDnsResultInfo {
     /**
      * Total number of results for the requested service.
      */
-    count: number;
+    emailRoutingDnsCount: number;
     /**
      * Current page within paginated list of results.
      */
@@ -10188,7 +10531,7 @@ export interface GetLogpushJobOutputOptions {
 export interface GetLogpushJobsResult {
     /**
      * Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-     * Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+     * Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
      */
     dataset: string;
     /**
@@ -12059,6 +12402,9 @@ export interface GetPagesDomainsResult {
     createdOn: string;
     domainId: string;
     id: string;
+    /**
+     * The domain name.
+     */
     name: string;
     /**
      * Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
@@ -12101,7 +12447,7 @@ export interface GetPagesProjectBuildConfig {
      */
     buildCommand: string;
     /**
-     * Output directory of the build.
+     * Assets output directory of the build.
      */
     destinationDir: string;
     /**
@@ -12172,6 +12518,9 @@ export interface GetPagesProjectCanonicalDeployment {
      * Short Id (8 character) of the deployment.
      */
     shortId: string;
+    /**
+     * Configs for the project source control.
+     */
     source: outputs.GetPagesProjectCanonicalDeploymentSource;
     /**
      * List of past stages.
@@ -12181,6 +12530,10 @@ export interface GetPagesProjectCanonicalDeployment {
      * The live URL to view this deployment.
      */
     url: string;
+    /**
+     * Whether the deployment uses functions.
+     */
+    usesFunctions: boolean;
 }
 
 export interface GetPagesProjectCanonicalDeploymentBuildConfig {
@@ -12193,7 +12546,7 @@ export interface GetPagesProjectCanonicalDeploymentBuildConfig {
      */
     buildCommand: string;
     /**
-     * Output directory of the build.
+     * Assets output directory of the build.
      */
     destinationDir: string;
     /**
@@ -12217,7 +12570,7 @@ export interface GetPagesProjectCanonicalDeploymentDeploymentTrigger {
     metadata: outputs.GetPagesProjectCanonicalDeploymentDeploymentTriggerMetadata;
     /**
      * What caused the deployment.
-     * Available values: "push", "adHoc".
+     * Available values: "github:push", "ad*hoc", "deploy*hook".
      */
     type: string;
 }
@@ -12227,6 +12580,10 @@ export interface GetPagesProjectCanonicalDeploymentDeploymentTriggerMetadata {
      * Where the trigger happened.
      */
     branch: string;
+    /**
+     * Whether the deployment trigger commit was dirty.
+     */
+    commitDirty: boolean;
     /**
      * Hash of the deployment trigger commit.
      */
@@ -12291,6 +12648,10 @@ export interface GetPagesProjectCanonicalDeploymentSourceConfig {
      */
     owner: string;
     /**
+     * The owner ID of the repository.
+     */
+    ownerId: string;
+    /**
      * A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
      */
     pathExcludes: string[];
@@ -12323,6 +12684,10 @@ export interface GetPagesProjectCanonicalDeploymentSourceConfig {
      * Whether to trigger a production deployment on commits to the production branch.
      */
     productionDeploymentsEnabled: boolean;
+    /**
+     * The ID of the repository.
+     */
+    repoId: string;
     /**
      * The name of the repository.
      */
@@ -12813,6 +13178,9 @@ export interface GetPagesProjectLatestDeployment {
      * Short Id (8 character) of the deployment.
      */
     shortId: string;
+    /**
+     * Configs for the project source control.
+     */
     source: outputs.GetPagesProjectLatestDeploymentSource;
     /**
      * List of past stages.
@@ -12822,6 +13190,10 @@ export interface GetPagesProjectLatestDeployment {
      * The live URL to view this deployment.
      */
     url: string;
+    /**
+     * Whether the deployment uses functions.
+     */
+    usesFunctions: boolean;
 }
 
 export interface GetPagesProjectLatestDeploymentBuildConfig {
@@ -12834,7 +13206,7 @@ export interface GetPagesProjectLatestDeploymentBuildConfig {
      */
     buildCommand: string;
     /**
-     * Output directory of the build.
+     * Assets output directory of the build.
      */
     destinationDir: string;
     /**
@@ -12858,7 +13230,7 @@ export interface GetPagesProjectLatestDeploymentDeploymentTrigger {
     metadata: outputs.GetPagesProjectLatestDeploymentDeploymentTriggerMetadata;
     /**
      * What caused the deployment.
-     * Available values: "push", "adHoc".
+     * Available values: "github:push", "ad*hoc", "deploy*hook".
      */
     type: string;
 }
@@ -12868,6 +13240,10 @@ export interface GetPagesProjectLatestDeploymentDeploymentTriggerMetadata {
      * Where the trigger happened.
      */
     branch: string;
+    /**
+     * Whether the deployment trigger commit was dirty.
+     */
+    commitDirty: boolean;
     /**
      * Hash of the deployment trigger commit.
      */
@@ -12932,6 +13308,10 @@ export interface GetPagesProjectLatestDeploymentSourceConfig {
      */
     owner: string;
     /**
+     * The owner ID of the repository.
+     */
+    ownerId: string;
+    /**
      * A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
      */
     pathExcludes: string[];
@@ -12964,6 +13344,10 @@ export interface GetPagesProjectLatestDeploymentSourceConfig {
      * Whether to trigger a production deployment on commits to the production branch.
      */
     productionDeploymentsEnabled: boolean;
+    /**
+     * The ID of the repository.
+     */
+    repoId: string;
     /**
      * The name of the repository.
      */
@@ -13013,6 +13397,10 @@ export interface GetPagesProjectSourceConfig {
      */
     owner: string;
     /**
+     * The owner ID of the repository.
+     */
+    ownerId: string;
+    /**
      * A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
      */
     pathExcludes: string[];
@@ -13046,6 +13434,10 @@ export interface GetPagesProjectSourceConfig {
      */
     productionDeploymentsEnabled: boolean;
     /**
+     * The ID of the repository.
+     */
+    repoId: string;
+    /**
      * The name of the repository.
      */
     repoName: string;
@@ -13053,67 +13445,69 @@ export interface GetPagesProjectSourceConfig {
 
 export interface GetPagesProjectsResult {
     /**
-     * A list of alias URLs pointing to this deployment.
-     */
-    aliases: string[];
-    /**
      * Configs for the project build process.
      */
     buildConfig: outputs.GetPagesProjectsResultBuildConfig;
     /**
-     * When the deployment was created.
+     * Most recent production deployment of the project.
+     */
+    canonicalDeployment: outputs.GetPagesProjectsResultCanonicalDeployment;
+    /**
+     * When the project was created.
      */
     createdOn: string;
     /**
-     * Info about what caused the deployment.
+     * Configs for deployments in a project.
      */
-    deploymentTrigger: outputs.GetPagesProjectsResultDeploymentTrigger;
+    deploymentConfigs: outputs.GetPagesProjectsResultDeploymentConfigs;
     /**
-     * Environment variables used for builds and Pages Functions.
+     * A list of associated custom domains for the project.
      */
-    envVars: {[key: string]: outputs.GetPagesProjectsResultEnvVars};
+    domains: string[];
     /**
-     * Type of deploy.
-     * Available values: "preview", "production".
+     * Framework the project is using.
      */
-    environment: string;
+    framework: string;
     /**
-     * Id of the deployment.
+     * Version of the framework the project is using.
+     */
+    frameworkVersion: string;
+    /**
+     * ID of the project.
      */
     id: string;
     /**
-     * If the deployment has been skipped.
+     * Most recent deployment of the project.
      */
-    isSkipped: boolean;
-    /**
-     * The status of the deployment.
-     */
-    latestStage: outputs.GetPagesProjectsResultLatestStage;
-    /**
-     * When the deployment was last modified.
-     */
-    modifiedOn: string;
-    /**
-     * Id of the project.
-     */
-    projectId: string;
+    latestDeployment: outputs.GetPagesProjectsResultLatestDeployment;
     /**
      * Name of the project.
      */
-    projectName: string;
+    name: string;
     /**
-     * Short Id (8 character) of the deployment.
+     * Name of the preview script.
      */
-    shortId: string;
+    previewScriptName: string;
+    /**
+     * Production branch of the project. Used to identify production deployments.
+     */
+    productionBranch: string;
+    /**
+     * Name of the production script.
+     */
+    productionScriptName: string;
+    /**
+     * Configs for the project source control.
+     */
     source: outputs.GetPagesProjectsResultSource;
     /**
-     * List of past stages.
+     * The Cloudflare subdomain associated with the project.
      */
-    stages: outputs.GetPagesProjectsResultStage[];
+    subdomain: string;
     /**
-     * The live URL to view this deployment.
+     * Whether the project uses functions.
      */
-    url: string;
+    usesFunctions: boolean;
 }
 
 export interface GetPagesProjectsResultBuildConfig {
@@ -13126,7 +13520,7 @@ export interface GetPagesProjectsResultBuildConfig {
      */
     buildCommand: string;
     /**
-     * Output directory of the build.
+     * Assets output directory of the build.
      */
     destinationDir: string;
     /**
@@ -13143,23 +13537,126 @@ export interface GetPagesProjectsResultBuildConfig {
     webAnalyticsToken: string;
 }
 
-export interface GetPagesProjectsResultDeploymentTrigger {
+export interface GetPagesProjectsResultCanonicalDeployment {
+    /**
+     * A list of alias URLs pointing to this deployment.
+     */
+    aliases: string[];
+    /**
+     * Configs for the project build process.
+     */
+    buildConfig: outputs.GetPagesProjectsResultCanonicalDeploymentBuildConfig;
+    /**
+     * When the deployment was created.
+     */
+    createdOn: string;
+    /**
+     * Info about what caused the deployment.
+     */
+    deploymentTrigger: outputs.GetPagesProjectsResultCanonicalDeploymentDeploymentTrigger;
+    /**
+     * Environment variables used for builds and Pages Functions.
+     */
+    envVars: {[key: string]: outputs.GetPagesProjectsResultCanonicalDeploymentEnvVars};
+    /**
+     * Type of deploy.
+     * Available values: "preview", "production".
+     */
+    environment: string;
+    /**
+     * Id of the deployment.
+     */
+    id: string;
+    /**
+     * If the deployment has been skipped.
+     */
+    isSkipped: boolean;
+    /**
+     * The status of the deployment.
+     */
+    latestStage: outputs.GetPagesProjectsResultCanonicalDeploymentLatestStage;
+    /**
+     * When the deployment was last modified.
+     */
+    modifiedOn: string;
+    /**
+     * Id of the project.
+     */
+    projectId: string;
+    /**
+     * Name of the project.
+     */
+    projectName: string;
+    /**
+     * Short Id (8 character) of the deployment.
+     */
+    shortId: string;
+    /**
+     * Configs for the project source control.
+     */
+    source: outputs.GetPagesProjectsResultCanonicalDeploymentSource;
+    /**
+     * List of past stages.
+     */
+    stages: outputs.GetPagesProjectsResultCanonicalDeploymentStage[];
+    /**
+     * The live URL to view this deployment.
+     */
+    url: string;
+    /**
+     * Whether the deployment uses functions.
+     */
+    usesFunctions: boolean;
+}
+
+export interface GetPagesProjectsResultCanonicalDeploymentBuildConfig {
+    /**
+     * Enable build caching for the project.
+     */
+    buildCaching: boolean;
+    /**
+     * Command used to build project.
+     */
+    buildCommand: string;
+    /**
+     * Assets output directory of the build.
+     */
+    destinationDir: string;
+    /**
+     * Directory to run the command.
+     */
+    rootDir: string;
+    /**
+     * The classifying tag for analytics.
+     */
+    webAnalyticsTag: string;
+    /**
+     * The auth token for analytics.
+     */
+    webAnalyticsToken: string;
+}
+
+export interface GetPagesProjectsResultCanonicalDeploymentDeploymentTrigger {
     /**
      * Additional info about the trigger.
      */
-    metadata: outputs.GetPagesProjectsResultDeploymentTriggerMetadata;
+    metadata: outputs.GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadata;
     /**
      * What caused the deployment.
-     * Available values: "push", "adHoc".
+     * Available values: "github:push", "ad*hoc", "deploy*hook".
      */
     type: string;
 }
 
-export interface GetPagesProjectsResultDeploymentTriggerMetadata {
+export interface GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadata {
     /**
      * Where the trigger happened.
      */
     branch: string;
+    /**
+     * Whether the deployment trigger commit was dirty.
+     */
+    commitDirty: boolean;
     /**
      * Hash of the deployment trigger commit.
      */
@@ -13170,7 +13667,7 @@ export interface GetPagesProjectsResultDeploymentTriggerMetadata {
     commitMessage: string;
 }
 
-export interface GetPagesProjectsResultEnvVars {
+export interface GetPagesProjectsResultCanonicalDeploymentEnvVars {
     /**
      * Available values: "plain*text", "secret*text".
      */
@@ -13181,7 +13678,756 @@ export interface GetPagesProjectsResultEnvVars {
     value: string;
 }
 
-export interface GetPagesProjectsResultLatestStage {
+export interface GetPagesProjectsResultCanonicalDeploymentLatestStage {
+    /**
+     * When the stage ended.
+     */
+    endedOn: string;
+    /**
+     * The current build stage.
+     * Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
+     */
+    name: string;
+    /**
+     * When the stage started.
+     */
+    startedOn: string;
+    /**
+     * State of the current stage.
+     * Available values: "success", "idle", "active", "failure", "canceled".
+     */
+    status: string;
+}
+
+export interface GetPagesProjectsResultCanonicalDeploymentSource {
+    config: outputs.GetPagesProjectsResultCanonicalDeploymentSourceConfig;
+    /**
+     * The source control management provider.
+     * Available values: "github", "gitlab".
+     */
+    type: string;
+}
+
+export interface GetPagesProjectsResultCanonicalDeploymentSourceConfig {
+    /**
+     * Whether to enable automatic deployments when pushing to the source repository.
+     * When disabled, no deployments (production or preview) will be triggered automatically.
+     *
+     * @deprecated Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+     */
+    deploymentsEnabled: boolean;
+    /**
+     * The owner of the repository.
+     */
+    owner: string;
+    /**
+     * The owner ID of the repository.
+     */
+    ownerId: string;
+    /**
+     * A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
+     */
+    pathExcludes: string[];
+    /**
+     * A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
+     */
+    pathIncludes: string[];
+    /**
+     * Whether to enable PR comments.
+     */
+    prCommentsEnabled: boolean;
+    /**
+     * A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     */
+    previewBranchExcludes: string[];
+    /**
+     * A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     */
+    previewBranchIncludes: string[];
+    /**
+     * Controls whether commits to preview branches trigger a preview deployment.
+     * Available values: "all", "none", "custom".
+     */
+    previewDeploymentSetting: string;
+    /**
+     * The production branch of the repository.
+     */
+    productionBranch: string;
+    /**
+     * Whether to trigger a production deployment on commits to the production branch.
+     */
+    productionDeploymentsEnabled: boolean;
+    /**
+     * The ID of the repository.
+     */
+    repoId: string;
+    /**
+     * The name of the repository.
+     */
+    repoName: string;
+}
+
+export interface GetPagesProjectsResultCanonicalDeploymentStage {
+    /**
+     * When the stage ended.
+     */
+    endedOn: string;
+    /**
+     * The current build stage.
+     * Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
+     */
+    name: string;
+    /**
+     * When the stage started.
+     */
+    startedOn: string;
+    /**
+     * State of the current stage.
+     * Available values: "success", "idle", "active", "failure", "canceled".
+     */
+    status: string;
+}
+
+export interface GetPagesProjectsResultDeploymentConfigs {
+    /**
+     * Configs for preview deploys.
+     */
+    preview: outputs.GetPagesProjectsResultDeploymentConfigsPreview;
+    /**
+     * Configs for production deploys.
+     */
+    production: outputs.GetPagesProjectsResultDeploymentConfigsProduction;
+}
+
+export interface GetPagesProjectsResultDeploymentConfigsPreview {
+    /**
+     * Constellation bindings used for Pages Functions.
+     */
+    aiBindings: {[key: string]: outputs.GetPagesProjectsResultDeploymentConfigsPreviewAiBindings};
+    /**
+     * Whether to always use the latest compatibility date for Pages Functions.
+     */
+    alwaysUseLatestCompatibilityDate: boolean;
+    /**
+     * Analytics Engine bindings used for Pages Functions.
+     */
+    analyticsEngineDatasets: {[key: string]: outputs.GetPagesProjectsResultDeploymentConfigsPreviewAnalyticsEngineDatasets};
+    /**
+     * Browser bindings used for Pages Functions.
+     */
+    browsers: {[key: string]: outputs.GetPagesProjectsResultDeploymentConfigsPreviewBrowsers};
+    /**
+     * The major version of the build image to use for Pages Functions.
+     */
+    buildImageMajorVersion: number;
+    /**
+     * Compatibility date used for Pages Functions.
+     */
+    compatibilityDate: string;
+    /**
+     * Compatibility flags used for Pages Functions.
+     */
+    compatibilityFlags: string[];
+    /**
+     * D1 databases used for Pages Functions.
+     */
+    d1Databases: {[key: string]: outputs.GetPagesProjectsResultDeploymentConfigsPreviewD1Databases};
+    /**
+     * Durable Object namespaces used for Pages Functions.
+     */
+    durableObjectNamespaces: {[key: string]: outputs.GetPagesProjectsResultDeploymentConfigsPreviewDurableObjectNamespaces};
+    /**
+     * Environment variables used for builds and Pages Functions.
+     */
+    envVars: {[key: string]: outputs.GetPagesProjectsResultDeploymentConfigsPreviewEnvVars};
+    /**
+     * Whether to fail open when the deployment config cannot be applied.
+     */
+    failOpen: boolean;
+    /**
+     * Hyperdrive bindings used for Pages Functions.
+     */
+    hyperdriveBindings: {[key: string]: outputs.GetPagesProjectsResultDeploymentConfigsPreviewHyperdriveBindings};
+    /**
+     * KV namespaces used for Pages Functions.
+     */
+    kvNamespaces: {[key: string]: outputs.GetPagesProjectsResultDeploymentConfigsPreviewKvNamespaces};
+    /**
+     * Limits for Pages Functions.
+     */
+    limits: outputs.GetPagesProjectsResultDeploymentConfigsPreviewLimits;
+    /**
+     * mTLS bindings used for Pages Functions.
+     */
+    mtlsCertificates: {[key: string]: outputs.GetPagesProjectsResultDeploymentConfigsPreviewMtlsCertificates};
+    /**
+     * Placement setting used for Pages Functions.
+     */
+    placement: outputs.GetPagesProjectsResultDeploymentConfigsPreviewPlacement;
+    /**
+     * Queue Producer bindings used for Pages Functions.
+     */
+    queueProducers: {[key: string]: outputs.GetPagesProjectsResultDeploymentConfigsPreviewQueueProducers};
+    /**
+     * R2 buckets used for Pages Functions.
+     */
+    r2Buckets: {[key: string]: outputs.GetPagesProjectsResultDeploymentConfigsPreviewR2Buckets};
+    /**
+     * Services used for Pages Functions.
+     */
+    services: {[key: string]: outputs.GetPagesProjectsResultDeploymentConfigsPreviewServices};
+    /**
+     * The usage model for Pages Functions.
+     * Available values: "standard", "bundled", "unbound".
+     *
+     * @deprecated All new projects now use the Standard usage model.
+     */
+    usageModel: string;
+    /**
+     * Vectorize bindings used for Pages Functions.
+     */
+    vectorizeBindings: {[key: string]: outputs.GetPagesProjectsResultDeploymentConfigsPreviewVectorizeBindings};
+    /**
+     * Hash of the Wrangler configuration used for the deployment.
+     */
+    wranglerConfigHash: string;
+}
+
+export interface GetPagesProjectsResultDeploymentConfigsPreviewAiBindings {
+    projectId: string;
+}
+
+export interface GetPagesProjectsResultDeploymentConfigsPreviewAnalyticsEngineDatasets {
+    /**
+     * Name of the dataset.
+     */
+    dataset: string;
+}
+
+export interface GetPagesProjectsResultDeploymentConfigsPreviewBrowsers {
+}
+
+export interface GetPagesProjectsResultDeploymentConfigsPreviewD1Databases {
+    /**
+     * UUID of the D1 database.
+     */
+    id: string;
+}
+
+export interface GetPagesProjectsResultDeploymentConfigsPreviewDurableObjectNamespaces {
+    /**
+     * ID of the Durable Object namespace.
+     */
+    namespaceId: string;
+}
+
+export interface GetPagesProjectsResultDeploymentConfigsPreviewEnvVars {
+    /**
+     * Available values: "plain*text", "secret*text".
+     */
+    type: string;
+    /**
+     * Environment variable value.
+     */
+    value: string;
+}
+
+export interface GetPagesProjectsResultDeploymentConfigsPreviewHyperdriveBindings {
+    id: string;
+}
+
+export interface GetPagesProjectsResultDeploymentConfigsPreviewKvNamespaces {
+    /**
+     * ID of the KV namespace.
+     */
+    namespaceId: string;
+}
+
+export interface GetPagesProjectsResultDeploymentConfigsPreviewLimits {
+    /**
+     * CPU time limit in milliseconds.
+     */
+    cpuMs: number;
+}
+
+export interface GetPagesProjectsResultDeploymentConfigsPreviewMtlsCertificates {
+    certificateId: string;
+}
+
+export interface GetPagesProjectsResultDeploymentConfigsPreviewPlacement {
+    /**
+     * Placement mode.
+     */
+    mode: string;
+}
+
+export interface GetPagesProjectsResultDeploymentConfigsPreviewQueueProducers {
+    /**
+     * Name of the Queue.
+     */
+    name: string;
+}
+
+export interface GetPagesProjectsResultDeploymentConfigsPreviewR2Buckets {
+    /**
+     * Jurisdiction of the R2 bucket.
+     */
+    jurisdiction: string;
+    /**
+     * Name of the R2 bucket.
+     */
+    name: string;
+}
+
+export interface GetPagesProjectsResultDeploymentConfigsPreviewServices {
+    /**
+     * The entrypoint to bind to.
+     */
+    entrypoint: string;
+    /**
+     * The Service environment.
+     */
+    environment: string;
+    /**
+     * The Service name.
+     */
+    service: string;
+}
+
+export interface GetPagesProjectsResultDeploymentConfigsPreviewVectorizeBindings {
+    indexName: string;
+}
+
+export interface GetPagesProjectsResultDeploymentConfigsProduction {
+    /**
+     * Constellation bindings used for Pages Functions.
+     */
+    aiBindings: {[key: string]: outputs.GetPagesProjectsResultDeploymentConfigsProductionAiBindings};
+    /**
+     * Whether to always use the latest compatibility date for Pages Functions.
+     */
+    alwaysUseLatestCompatibilityDate: boolean;
+    /**
+     * Analytics Engine bindings used for Pages Functions.
+     */
+    analyticsEngineDatasets: {[key: string]: outputs.GetPagesProjectsResultDeploymentConfigsProductionAnalyticsEngineDatasets};
+    /**
+     * Browser bindings used for Pages Functions.
+     */
+    browsers: {[key: string]: outputs.GetPagesProjectsResultDeploymentConfigsProductionBrowsers};
+    /**
+     * The major version of the build image to use for Pages Functions.
+     */
+    buildImageMajorVersion: number;
+    /**
+     * Compatibility date used for Pages Functions.
+     */
+    compatibilityDate: string;
+    /**
+     * Compatibility flags used for Pages Functions.
+     */
+    compatibilityFlags: string[];
+    /**
+     * D1 databases used for Pages Functions.
+     */
+    d1Databases: {[key: string]: outputs.GetPagesProjectsResultDeploymentConfigsProductionD1Databases};
+    /**
+     * Durable Object namespaces used for Pages Functions.
+     */
+    durableObjectNamespaces: {[key: string]: outputs.GetPagesProjectsResultDeploymentConfigsProductionDurableObjectNamespaces};
+    /**
+     * Environment variables used for builds and Pages Functions.
+     */
+    envVars: {[key: string]: outputs.GetPagesProjectsResultDeploymentConfigsProductionEnvVars};
+    /**
+     * Whether to fail open when the deployment config cannot be applied.
+     */
+    failOpen: boolean;
+    /**
+     * Hyperdrive bindings used for Pages Functions.
+     */
+    hyperdriveBindings: {[key: string]: outputs.GetPagesProjectsResultDeploymentConfigsProductionHyperdriveBindings};
+    /**
+     * KV namespaces used for Pages Functions.
+     */
+    kvNamespaces: {[key: string]: outputs.GetPagesProjectsResultDeploymentConfigsProductionKvNamespaces};
+    /**
+     * Limits for Pages Functions.
+     */
+    limits: outputs.GetPagesProjectsResultDeploymentConfigsProductionLimits;
+    /**
+     * mTLS bindings used for Pages Functions.
+     */
+    mtlsCertificates: {[key: string]: outputs.GetPagesProjectsResultDeploymentConfigsProductionMtlsCertificates};
+    /**
+     * Placement setting used for Pages Functions.
+     */
+    placement: outputs.GetPagesProjectsResultDeploymentConfigsProductionPlacement;
+    /**
+     * Queue Producer bindings used for Pages Functions.
+     */
+    queueProducers: {[key: string]: outputs.GetPagesProjectsResultDeploymentConfigsProductionQueueProducers};
+    /**
+     * R2 buckets used for Pages Functions.
+     */
+    r2Buckets: {[key: string]: outputs.GetPagesProjectsResultDeploymentConfigsProductionR2Buckets};
+    /**
+     * Services used for Pages Functions.
+     */
+    services: {[key: string]: outputs.GetPagesProjectsResultDeploymentConfigsProductionServices};
+    /**
+     * The usage model for Pages Functions.
+     * Available values: "standard", "bundled", "unbound".
+     *
+     * @deprecated All new projects now use the Standard usage model.
+     */
+    usageModel: string;
+    /**
+     * Vectorize bindings used for Pages Functions.
+     */
+    vectorizeBindings: {[key: string]: outputs.GetPagesProjectsResultDeploymentConfigsProductionVectorizeBindings};
+    /**
+     * Hash of the Wrangler configuration used for the deployment.
+     */
+    wranglerConfigHash: string;
+}
+
+export interface GetPagesProjectsResultDeploymentConfigsProductionAiBindings {
+    projectId: string;
+}
+
+export interface GetPagesProjectsResultDeploymentConfigsProductionAnalyticsEngineDatasets {
+    /**
+     * Name of the dataset.
+     */
+    dataset: string;
+}
+
+export interface GetPagesProjectsResultDeploymentConfigsProductionBrowsers {
+}
+
+export interface GetPagesProjectsResultDeploymentConfigsProductionD1Databases {
+    /**
+     * UUID of the D1 database.
+     */
+    id: string;
+}
+
+export interface GetPagesProjectsResultDeploymentConfigsProductionDurableObjectNamespaces {
+    /**
+     * ID of the Durable Object namespace.
+     */
+    namespaceId: string;
+}
+
+export interface GetPagesProjectsResultDeploymentConfigsProductionEnvVars {
+    /**
+     * Available values: "plain*text", "secret*text".
+     */
+    type: string;
+    /**
+     * Environment variable value.
+     */
+    value: string;
+}
+
+export interface GetPagesProjectsResultDeploymentConfigsProductionHyperdriveBindings {
+    id: string;
+}
+
+export interface GetPagesProjectsResultDeploymentConfigsProductionKvNamespaces {
+    /**
+     * ID of the KV namespace.
+     */
+    namespaceId: string;
+}
+
+export interface GetPagesProjectsResultDeploymentConfigsProductionLimits {
+    /**
+     * CPU time limit in milliseconds.
+     */
+    cpuMs: number;
+}
+
+export interface GetPagesProjectsResultDeploymentConfigsProductionMtlsCertificates {
+    certificateId: string;
+}
+
+export interface GetPagesProjectsResultDeploymentConfigsProductionPlacement {
+    /**
+     * Placement mode.
+     */
+    mode: string;
+}
+
+export interface GetPagesProjectsResultDeploymentConfigsProductionQueueProducers {
+    /**
+     * Name of the Queue.
+     */
+    name: string;
+}
+
+export interface GetPagesProjectsResultDeploymentConfigsProductionR2Buckets {
+    /**
+     * Jurisdiction of the R2 bucket.
+     */
+    jurisdiction: string;
+    /**
+     * Name of the R2 bucket.
+     */
+    name: string;
+}
+
+export interface GetPagesProjectsResultDeploymentConfigsProductionServices {
+    /**
+     * The entrypoint to bind to.
+     */
+    entrypoint: string;
+    /**
+     * The Service environment.
+     */
+    environment: string;
+    /**
+     * The Service name.
+     */
+    service: string;
+}
+
+export interface GetPagesProjectsResultDeploymentConfigsProductionVectorizeBindings {
+    indexName: string;
+}
+
+export interface GetPagesProjectsResultLatestDeployment {
+    /**
+     * A list of alias URLs pointing to this deployment.
+     */
+    aliases: string[];
+    /**
+     * Configs for the project build process.
+     */
+    buildConfig: outputs.GetPagesProjectsResultLatestDeploymentBuildConfig;
+    /**
+     * When the deployment was created.
+     */
+    createdOn: string;
+    /**
+     * Info about what caused the deployment.
+     */
+    deploymentTrigger: outputs.GetPagesProjectsResultLatestDeploymentDeploymentTrigger;
+    /**
+     * Environment variables used for builds and Pages Functions.
+     */
+    envVars: {[key: string]: outputs.GetPagesProjectsResultLatestDeploymentEnvVars};
+    /**
+     * Type of deploy.
+     * Available values: "preview", "production".
+     */
+    environment: string;
+    /**
+     * Id of the deployment.
+     */
+    id: string;
+    /**
+     * If the deployment has been skipped.
+     */
+    isSkipped: boolean;
+    /**
+     * The status of the deployment.
+     */
+    latestStage: outputs.GetPagesProjectsResultLatestDeploymentLatestStage;
+    /**
+     * When the deployment was last modified.
+     */
+    modifiedOn: string;
+    /**
+     * Id of the project.
+     */
+    projectId: string;
+    /**
+     * Name of the project.
+     */
+    projectName: string;
+    /**
+     * Short Id (8 character) of the deployment.
+     */
+    shortId: string;
+    /**
+     * Configs for the project source control.
+     */
+    source: outputs.GetPagesProjectsResultLatestDeploymentSource;
+    /**
+     * List of past stages.
+     */
+    stages: outputs.GetPagesProjectsResultLatestDeploymentStage[];
+    /**
+     * The live URL to view this deployment.
+     */
+    url: string;
+    /**
+     * Whether the deployment uses functions.
+     */
+    usesFunctions: boolean;
+}
+
+export interface GetPagesProjectsResultLatestDeploymentBuildConfig {
+    /**
+     * Enable build caching for the project.
+     */
+    buildCaching: boolean;
+    /**
+     * Command used to build project.
+     */
+    buildCommand: string;
+    /**
+     * Assets output directory of the build.
+     */
+    destinationDir: string;
+    /**
+     * Directory to run the command.
+     */
+    rootDir: string;
+    /**
+     * The classifying tag for analytics.
+     */
+    webAnalyticsTag: string;
+    /**
+     * The auth token for analytics.
+     */
+    webAnalyticsToken: string;
+}
+
+export interface GetPagesProjectsResultLatestDeploymentDeploymentTrigger {
+    /**
+     * Additional info about the trigger.
+     */
+    metadata: outputs.GetPagesProjectsResultLatestDeploymentDeploymentTriggerMetadata;
+    /**
+     * What caused the deployment.
+     * Available values: "github:push", "ad*hoc", "deploy*hook".
+     */
+    type: string;
+}
+
+export interface GetPagesProjectsResultLatestDeploymentDeploymentTriggerMetadata {
+    /**
+     * Where the trigger happened.
+     */
+    branch: string;
+    /**
+     * Whether the deployment trigger commit was dirty.
+     */
+    commitDirty: boolean;
+    /**
+     * Hash of the deployment trigger commit.
+     */
+    commitHash: string;
+    /**
+     * Message of the deployment trigger commit.
+     */
+    commitMessage: string;
+}
+
+export interface GetPagesProjectsResultLatestDeploymentEnvVars {
+    /**
+     * Available values: "plain*text", "secret*text".
+     */
+    type: string;
+    /**
+     * Environment variable value.
+     */
+    value: string;
+}
+
+export interface GetPagesProjectsResultLatestDeploymentLatestStage {
+    /**
+     * When the stage ended.
+     */
+    endedOn: string;
+    /**
+     * The current build stage.
+     * Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
+     */
+    name: string;
+    /**
+     * When the stage started.
+     */
+    startedOn: string;
+    /**
+     * State of the current stage.
+     * Available values: "success", "idle", "active", "failure", "canceled".
+     */
+    status: string;
+}
+
+export interface GetPagesProjectsResultLatestDeploymentSource {
+    config: outputs.GetPagesProjectsResultLatestDeploymentSourceConfig;
+    /**
+     * The source control management provider.
+     * Available values: "github", "gitlab".
+     */
+    type: string;
+}
+
+export interface GetPagesProjectsResultLatestDeploymentSourceConfig {
+    /**
+     * Whether to enable automatic deployments when pushing to the source repository.
+     * When disabled, no deployments (production or preview) will be triggered automatically.
+     *
+     * @deprecated Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+     */
+    deploymentsEnabled: boolean;
+    /**
+     * The owner of the repository.
+     */
+    owner: string;
+    /**
+     * The owner ID of the repository.
+     */
+    ownerId: string;
+    /**
+     * A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
+     */
+    pathExcludes: string[];
+    /**
+     * A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
+     */
+    pathIncludes: string[];
+    /**
+     * Whether to enable PR comments.
+     */
+    prCommentsEnabled: boolean;
+    /**
+     * A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     */
+    previewBranchExcludes: string[];
+    /**
+     * A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+     */
+    previewBranchIncludes: string[];
+    /**
+     * Controls whether commits to preview branches trigger a preview deployment.
+     * Available values: "all", "none", "custom".
+     */
+    previewDeploymentSetting: string;
+    /**
+     * The production branch of the repository.
+     */
+    productionBranch: string;
+    /**
+     * Whether to trigger a production deployment on commits to the production branch.
+     */
+    productionDeploymentsEnabled: boolean;
+    /**
+     * The ID of the repository.
+     */
+    repoId: string;
+    /**
+     * The name of the repository.
+     */
+    repoName: string;
+}
+
+export interface GetPagesProjectsResultLatestDeploymentStage {
     /**
      * When the stage ended.
      */
@@ -13224,6 +14470,10 @@ export interface GetPagesProjectsResultSourceConfig {
      */
     owner: string;
     /**
+     * The owner ID of the repository.
+     */
+    ownerId: string;
+    /**
      * A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
      */
     pathExcludes: string[];
@@ -13257,30 +14507,13 @@ export interface GetPagesProjectsResultSourceConfig {
      */
     productionDeploymentsEnabled: boolean;
     /**
+     * The ID of the repository.
+     */
+    repoId: string;
+    /**
      * The name of the repository.
      */
     repoName: string;
-}
-
-export interface GetPagesProjectsResultStage {
-    /**
-     * When the stage ended.
-     */
-    endedOn: string;
-    /**
-     * The current build stage.
-     * Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
-     */
-    name: string;
-    /**
-     * When the stage started.
-     */
-    startedOn: string;
-    /**
-     * State of the current stage.
-     * Available values: "success", "idle", "active", "failure", "canceled".
-     */
-    status: string;
 }
 
 export interface GetQueueConsumer {
@@ -13415,6 +14648,7 @@ export interface GetQueuesResult {
     consumers: outputs.GetQueuesResultConsumer[];
     consumersTotalCount: number;
     createdOn: string;
+    id: string;
     modifiedOn: string;
     producers: outputs.GetQueuesResultProducer[];
     producersTotalCount: number;
@@ -13687,18 +14921,22 @@ export interface GetR2BucketSippyDestination {
     /**
      * Available values: "r2".
      */
-    provider: string;
+    r2BucketSippyProvider: string;
 }
 
 export interface GetR2BucketSippySource {
     /**
-     * Name of the bucket on the provider.
+     * Name of the bucket on the provider (AWS, GCS only).
      */
     bucket: string;
     /**
-     * Available values: "aws", "gcs".
+     * S3-compatible URL (Generic S3-compatible providers only).
      */
-    provider: string;
+    bucketUrl: string;
+    /**
+     * Available values: "aws", "gcs", "s3".
+     */
+    r2BucketSippyProvider: string;
     /**
      * Region where the bucket resides (AWS only).
      */
@@ -13932,6 +15170,10 @@ export interface GetRegionalHostnamesResult {
      * DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
      */
     hostname: string;
+    /**
+     * DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
+     */
+    id: string;
     /**
      * Identifying key for the region
      */
@@ -15033,10 +16275,6 @@ export interface GetSchemaValidationOperationSettingsListResult {
 
 export interface GetSchemaValidationSchemasFilter {
     /**
-     * Omit the source-files of schemas and only retrieve their meta-data.
-     */
-    omitSource: boolean;
-    /**
      * Filter for enabled schemas
      */
     validationEnabled?: boolean;
@@ -15044,6 +16282,10 @@ export interface GetSchemaValidationSchemasFilter {
 
 export interface GetSchemaValidationSchemasListResult {
     createdAt: string;
+    /**
+     * A unique identifier of this schema
+     */
+    id: string;
     /**
      * The kind of the schema
      * Available values: "openapiV3".
@@ -15153,6 +16395,19 @@ export interface GetSpectrumApplicationEdgeIps {
     type: string;
 }
 
+export interface GetSpectrumApplicationFilter {
+    /**
+     * Sets the direction by which results are ordered.
+     * Available values: "asc", "desc".
+     */
+    direction: string;
+    /**
+     * Application field by which results are ordered.
+     * Available values: "protocol", "app*id", "created*on", "modifiedOn", "dns".
+     */
+    order: string;
+}
+
 export interface GetSpectrumApplicationOriginDns {
     /**
      * The name of the DNS record associated with the origin.
@@ -15170,6 +16425,159 @@ export interface GetSpectrumApplicationOriginDns {
 }
 
 export interface GetSpectrumApplicationsResult {
+    /**
+     * Enables Argo Smart Routing for this application.
+     * Notes: Only available for TCP applications with trafficType set to "direct".
+     */
+    argoSmartRouting: boolean;
+    /**
+     * When the Application was created.
+     */
+    createdOn: string;
+    /**
+     * The name and type of DNS record for the Spectrum application.
+     */
+    dns: outputs.GetSpectrumApplicationsResultDns;
+    /**
+     * The anycast edge IP configuration for the hostname of this application.
+     */
+    edgeIps: outputs.GetSpectrumApplicationsResultEdgeIps;
+    /**
+     * App identifier.
+     */
+    id: string;
+    /**
+     * Enables IP Access Rules for this application.
+     * Notes: Only available for TCP applications.
+     */
+    ipFirewall: boolean;
+    /**
+     * When the Application was last modified.
+     */
+    modifiedOn: string;
+    /**
+     * List of origin IP addresses. Array may contain multiple IP addresses for load balancing.
+     */
+    originDirects: string[];
+    /**
+     * The name and type of DNS record for the Spectrum application.
+     */
+    originDns: outputs.GetSpectrumApplicationsResultOriginDns;
+    /**
+     * The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `"1000-2000"`.
+     * Notes: If specifying a port range, the number of ports in the range must match the number of ports specified in the "protocol" field.
+     */
+    originPort: any;
+    /**
+     * The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
+     */
+    protocol: string;
+    /**
+     * Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+     * Available values: "off", "v1", "v2", "simple".
+     */
+    proxyProtocol: string;
+    /**
+     * The type of TLS termination associated with the application.
+     * Available values: "off", "flexible", "full", "strict".
+     */
+    tls: string;
+    /**
+     * Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+     * Available values: "direct", "http", "https".
+     */
+    trafficType: string;
+}
+
+export interface GetSpectrumApplicationsResultDns {
+    /**
+     * The name of the DNS record associated with the application.
+     */
+    name: string;
+    /**
+     * The type of DNS record associated with the application.
+     * Available values: "CNAME", "ADDRESS".
+     */
+    type: string;
+}
+
+export interface GetSpectrumApplicationsResultEdgeIps {
+    /**
+     * The IP versions supported for inbound connections on Spectrum anycast IPs.
+     * Available values: "all", "ipv4", "ipv6".
+     */
+    connectivity: string;
+    /**
+     * The array of customer owned IPs we broadcast via anycast for this hostname and application.
+     */
+    ips: string[];
+    /**
+     * The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.
+     * Available values: "dynamic", "static".
+     */
+    type: string;
+}
+
+export interface GetSpectrumApplicationsResultOriginDns {
+    /**
+     * The name of the DNS record associated with the origin.
+     */
+    name: string;
+    /**
+     * The TTL of our resolution of your DNS record in seconds.
+     */
+    ttl: number;
+    /**
+     * The type of DNS record associated with the origin. "" is used to specify a combination of A/AAAA records.
+     * Available values: "", "A", "AAAA", "SRV".
+     */
+    type: string;
+}
+
+export interface GetSsoConnectorVerification {
+    /**
+     * DNS verification code. Add this entire string to the DNS TXT record of the email domain to validate ownership.
+     */
+    code: string;
+    /**
+     * The status of the verification code from the verification process.
+     * Available values: "awaiting", "pending", "failed", "verified".
+     */
+    status: string;
+}
+
+export interface GetSsoConnectorsResult {
+    /**
+     * Timestamp for the creation of the SSO connector
+     */
+    createdOn: string;
+    emailDomain: string;
+    enabled: boolean;
+    /**
+     * SSO Connector identifier tag.
+     */
+    id: string;
+    /**
+     * Timestamp for the last update of the SSO connector
+     */
+    updatedOn: string;
+    /**
+     * Controls the display of FedRAMP language to the user during SSO login
+     */
+    useFedrampLanguage: boolean;
+    verification: outputs.GetSsoConnectorsResultVerification;
+}
+
+export interface GetSsoConnectorsResultVerification {
+    /**
+     * DNS verification code. Add this entire string to the DNS TXT record of the email domain to validate ownership.
+     */
+    code: string;
+    /**
+     * The status of the verification code from the verification process.
+     * Available values: "awaiting", "pending", "failed", "verified".
+     */
+    status: string;
 }
 
 export interface GetStreamInput {
@@ -15573,6 +16981,221 @@ export interface GetStreamsResultWatermark {
     width: number;
 }
 
+export interface GetTokenValidationConfigCredentials {
+    keys: outputs.GetTokenValidationConfigCredentialsKey[];
+}
+
+export interface GetTokenValidationConfigCredentialsKey {
+    /**
+     * Algorithm
+     * Available values: "RS256", "RS384", "RS512", "PS256", "PS384", "PS512", "ES256", "ES384".
+     */
+    alg: string;
+    /**
+     * Curve
+     * Available values: "P-256", "P-384".
+     */
+    crv: string;
+    /**
+     * RSA exponent
+     */
+    e: string;
+    /**
+     * Key ID
+     */
+    kid: string;
+    /**
+     * Key Type
+     * Available values: "RSA", "EC".
+     */
+    kty: string;
+    /**
+     * RSA modulus
+     */
+    n: string;
+    /**
+     * X EC coordinate
+     */
+    x: string;
+    /**
+     * Y EC coordinate
+     */
+    y: string;
+}
+
+export interface GetTokenValidationConfigsResult {
+    createdAt: string;
+    credentials: outputs.GetTokenValidationConfigsResultCredentials;
+    description: string;
+    /**
+     * UUID.
+     */
+    id: string;
+    lastUpdated: string;
+    title: string;
+    tokenSources: string[];
+    /**
+     * Available values: "JWT".
+     */
+    tokenType: string;
+}
+
+export interface GetTokenValidationConfigsResultCredentials {
+    keys: outputs.GetTokenValidationConfigsResultCredentialsKey[];
+}
+
+export interface GetTokenValidationConfigsResultCredentialsKey {
+    /**
+     * Algorithm
+     * Available values: "RS256", "RS384", "RS512", "PS256", "PS384", "PS512", "ES256", "ES384".
+     */
+    alg: string;
+    /**
+     * Curve
+     * Available values: "P-256", "P-384".
+     */
+    crv: string;
+    /**
+     * RSA exponent
+     */
+    e: string;
+    /**
+     * Key ID
+     */
+    kid: string;
+    /**
+     * Key Type
+     * Available values: "RSA", "EC".
+     */
+    kty: string;
+    /**
+     * RSA modulus
+     */
+    n: string;
+    /**
+     * X EC coordinate
+     */
+    x: string;
+    /**
+     * Y EC coordinate
+     */
+    y: string;
+}
+
+export interface GetTokenValidationRulesFilter {
+    /**
+     * Action to take on requests that match operations included in `selector` and fail `expression`.
+     * Available values: "log", "block".
+     */
+    action?: string;
+    /**
+     * Toggle rule on or off.
+     */
+    enabled?: boolean;
+    /**
+     * Select rules with this host in `include`.
+     */
+    host?: string;
+    /**
+     * Select rules with this host in `include`.
+     */
+    hostname?: string;
+    /**
+     * Select rules with these IDs.
+     */
+    id?: string;
+    /**
+     * Select rules using any of these token configurations.
+     */
+    tokenConfigurations?: string[];
+}
+
+export interface GetTokenValidationRulesListResult {
+    /**
+     * Action to take on requests that match operations included in `selector` and fail `expression`.
+     * Available values: "log", "block".
+     */
+    action: string;
+    createdAt: string;
+    /**
+     * A human-readable description that gives more details than `title`.
+     */
+    description: string;
+    /**
+     * Toggle rule on or off.
+     */
+    enabled: boolean;
+    /**
+     * Rule expression. Requests that fail to match this expression will be subject to `action`.
+     */
+    expression: string;
+    /**
+     * Select rules with these IDs.
+     */
+    id: string;
+    lastUpdated: string;
+    /**
+     * Select operations covered by this rule.
+     *
+     * For details on selectors, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/).
+     */
+    selector: outputs.GetTokenValidationRulesListResultSelector;
+    /**
+     * A human-readable name for the rule.
+     */
+    title: string;
+}
+
+export interface GetTokenValidationRulesListResultSelector {
+    /**
+     * Ignore operations that were otherwise included by `include`.
+     */
+    excludes: outputs.GetTokenValidationRulesListResultSelectorExclude[];
+    /**
+     * Select all matching operations.
+     */
+    includes: outputs.GetTokenValidationRulesListResultSelectorInclude[];
+}
+
+export interface GetTokenValidationRulesListResultSelectorExclude {
+    /**
+     * Excluded operation IDs.
+     */
+    operationIds: string[];
+}
+
+export interface GetTokenValidationRulesListResultSelectorInclude {
+    /**
+     * Included hostnames.
+     */
+    hosts: string[];
+}
+
+export interface GetTokenValidationRulesSelector {
+    /**
+     * Ignore operations that were otherwise included by `include`.
+     */
+    excludes: outputs.GetTokenValidationRulesSelectorExclude[];
+    /**
+     * Select all matching operations.
+     */
+    includes: outputs.GetTokenValidationRulesSelectorInclude[];
+}
+
+export interface GetTokenValidationRulesSelectorExclude {
+    /**
+     * Excluded operation IDs.
+     */
+    operationIds: string[];
+}
+
+export interface GetTokenValidationRulesSelectorInclude {
+    /**
+     * Included hostnames.
+     */
+    hosts: string[];
+}
+
 export interface GetTurnstileWidgetFilter {
     /**
      * Direction to order widgets.
@@ -15607,6 +17230,10 @@ export interface GetTurnstileWidgetsResult {
      * Return the Ephemeral ID in /siteverify (ENT only).
      */
     ephemeralId: boolean;
+    /**
+     * Widget item identifier tag.
+     */
+    id: string;
     /**
      * Widget Mode
      * Available values: "non-interactive", "invisible", "managed".
@@ -16129,6 +17756,10 @@ export interface GetWebAnalyticsSitesResult {
      */
     autoInstall: boolean;
     created: string;
+    /**
+     * The Web Analytics site identifier.
+     */
+    id: string;
     /**
      * A list of rules.
      */
@@ -16723,6 +18354,10 @@ export interface GetWorkerVersionsResult {
      */
     source: string;
     /**
+     * Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
+     */
+    startupTimeMs: number;
+    /**
      * Usage model for the version.
      * Available values: "standard", "bundled", "unbound".
      *
@@ -17076,6 +18711,8 @@ export interface GetWorkersCustomDomainFilter {
 export interface GetWorkersCustomDomainsResult {
     /**
      * Worker environment associated with the zone and hostname.
+     *
+     * @deprecated This attribute is deprecated.
      */
     environment: string;
     /**
@@ -17125,6 +18762,10 @@ export interface GetWorkersForPlatformsDispatchNamespacesResult {
      * When the script was created.
      */
     createdOn: string;
+    /**
+     * Name of the Workers for Platforms dispatch namespace.
+     */
+    id: string;
     /**
      * Identifier.
      */
@@ -17395,6 +19036,13 @@ export interface GetWorkersRoutesResult {
     script: string;
 }
 
+export interface GetWorkersScriptFilter {
+    /**
+     * Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is 'yes' or 'no'.
+     */
+    tags?: string;
+}
+
 export interface GetWorkersScriptsResult {
     /**
      * Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
@@ -17425,7 +19073,7 @@ export interface GetWorkersScriptsResult {
      */
     hasModules: boolean;
     /**
-     * The id of the script in the Workers system. Usually the script name.
+     * The name used to identify the script.
      */
     id: string;
     /**
@@ -17449,23 +19097,37 @@ export interface GetWorkersScriptsResult {
      */
     namedHandlers: outputs.GetWorkersScriptsResultNamedHandler[];
     /**
+     * Observability settings for the Worker.
+     */
+    observability: outputs.GetWorkersScriptsResultObservability;
+    /**
      * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      */
     placement: outputs.GetWorkersScriptsResultPlacement;
     /**
-     * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * Available values: "smart".
      *
      * @deprecated This attribute is deprecated.
      */
     placementMode: string;
     /**
-     * Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
      *
      * @deprecated This attribute is deprecated.
      */
     placementStatus: string;
+    /**
+     * Routes associated with the Worker.
+     */
+    routes: outputs.GetWorkersScriptsResultRoute[];
+    /**
+     * The immutable ID of the script.
+     */
+    tag: string;
+    /**
+     * Tags associated with the Worker.
+     */
+    tags: string[];
     /**
      * List of Workers that will consume logs from the attached Worker.
      */
@@ -17488,6 +19150,44 @@ export interface GetWorkersScriptsResultNamedHandler {
     name: string;
 }
 
+export interface GetWorkersScriptsResultObservability {
+    /**
+     * Whether observability is enabled for the Worker.
+     */
+    enabled: boolean;
+    /**
+     * The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.
+     */
+    headSamplingRate: number;
+    /**
+     * Log settings for the Worker.
+     */
+    logs: outputs.GetWorkersScriptsResultObservabilityLogs;
+}
+
+export interface GetWorkersScriptsResultObservabilityLogs {
+    /**
+     * A list of destinations where logs will be exported to.
+     */
+    destinations: string[];
+    /**
+     * Whether logs are enabled for the Worker.
+     */
+    enabled: boolean;
+    /**
+     * The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.
+     */
+    headSamplingRate: number;
+    /**
+     * Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.
+     */
+    invocationLogs: boolean;
+    /**
+     * Whether log persistence is enabled for the Worker.
+     */
+    persist: boolean;
+}
+
 export interface GetWorkersScriptsResultPlacement {
     /**
      * The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
@@ -17503,6 +19203,21 @@ export interface GetWorkersScriptsResultPlacement {
      * Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
      */
     status: string;
+}
+
+export interface GetWorkersScriptsResultRoute {
+    /**
+     * Identifier.
+     */
+    id: string;
+    /**
+     * Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
+     */
+    pattern: string;
+    /**
+     * Name of the script to run if the route matches.
+     */
+    script: string;
 }
 
 export interface GetWorkersScriptsResultTailConsumer {
@@ -17558,6 +19273,84 @@ export interface GetWorkflowsResultInstances {
     terminated: number;
     waiting: number;
     waitingForPause: number;
+}
+
+export interface GetZeroTrustAccessAiControlsMcpPortalFilter {
+    /**
+     * Search by id, name, hostname
+     */
+    search?: string;
+}
+
+export interface GetZeroTrustAccessAiControlsMcpPortalServer {
+    /**
+     * Available values: "oauth", "bearer", "unauthenticated".
+     */
+    authType: string;
+    createdAt: string;
+    createdBy: string;
+    defaultDisabled: boolean;
+    description: string;
+    error: string;
+    hostname: string;
+    /**
+     * server id
+     */
+    id: string;
+    lastSynced: string;
+    modifiedAt: string;
+    modifiedBy: string;
+    name: string;
+    onBehalf: boolean;
+    prompts: {[key: string]: string}[];
+    status: string;
+    tools: {[key: string]: string}[];
+    updatedPrompts: any;
+    updatedTools: any;
+}
+
+export interface GetZeroTrustAccessAiControlsMcpPortalsResult {
+    createdAt: string;
+    createdBy: string;
+    description: string;
+    hostname: string;
+    /**
+     * portal id
+     */
+    id: string;
+    modifiedAt: string;
+    modifiedBy: string;
+    name: string;
+}
+
+export interface GetZeroTrustAccessAiControlsMcpServerFilter {
+    /**
+     * Search by id, name
+     */
+    search?: string;
+}
+
+export interface GetZeroTrustAccessAiControlsMcpServersResult {
+    /**
+     * Available values: "oauth", "bearer", "unauthenticated".
+     */
+    authType: string;
+    createdAt: string;
+    createdBy: string;
+    description: string;
+    error: string;
+    hostname: string;
+    /**
+     * server id
+     */
+    id: string;
+    lastSynced: string;
+    modifiedAt: string;
+    modifiedBy: string;
+    name: string;
+    prompts: {[key: string]: string}[];
+    status: string;
+    tools: {[key: string]: string}[];
 }
 
 export interface GetZeroTrustAccessApplicationCorsHeaders {
@@ -20158,6 +21951,10 @@ export interface GetZeroTrustAccessApplicationsResultTargetCriteria {
 }
 
 export interface GetZeroTrustAccessCustomPagesResult {
+    /**
+     * UUID.
+     */
+    id: string;
     /**
      * Custom page name.
      */
@@ -24196,6 +25993,10 @@ export interface GetZeroTrustAccessTagsResult {
     /**
      * The name of the tag
      */
+    id: string;
+    /**
+     * The name of the tag
+     */
     name: string;
 }
 
@@ -24313,6 +26114,7 @@ export interface GetZeroTrustDeviceCustomProfilesResult {
     excludes: outputs.GetZeroTrustDeviceCustomProfilesResultExclude[];
     fallbackDomains: outputs.GetZeroTrustDeviceCustomProfilesResultFallbackDomain[];
     gatewayUniqueId: string;
+    id: string;
     /**
      * List of routes included in the WARP client's tunnel.
      */
@@ -24502,6 +26304,10 @@ export interface GetZeroTrustDeviceManagedNetworksListResult {
      */
     config: outputs.GetZeroTrustDeviceManagedNetworksListResultConfig;
     /**
+     * API UUID.
+     */
+    id: string;
+    /**
      * The name of the device managed network. This name must be unique.
      */
     name: string;
@@ -24690,7 +26496,7 @@ export interface GetZeroTrustDevicePostureRuleInput {
      */
     osDistroRevision: string;
     /**
-     * Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version. (Mac, iOS, and Linux only).
+     * Additional operating system version details. For Windows, the UBR (Update Build Revision). For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version.
      */
     osVersionExtra: string;
     /**
@@ -24744,6 +26550,10 @@ export interface GetZeroTrustDevicePostureRuleInput {
      * For more details on total score, refer to the Tanium documentation.
      */
     totalScore: number;
+    /**
+     * Number of days that the antivirus should be updated within.
+     */
+    updateWindowDays: number;
     /**
      * Version of OS.
      */
@@ -24804,7 +26614,7 @@ export interface GetZeroTrustDevicePostureRulesResult {
     schedule: string;
     /**
      * The type of device posture rule.
-     * Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "serial*number", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom*s2s".
+     * Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "serial*number", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "antivirus", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom*s2s".
      */
     type: string;
 }
@@ -24918,7 +26728,7 @@ export interface GetZeroTrustDevicePostureRulesResultInput {
      */
     osDistroRevision: string;
     /**
-     * Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version. (Mac, iOS, and Linux only).
+     * Additional operating system version details. For Windows, the UBR (Update Build Revision). For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version.
      */
     osVersionExtra: string;
     /**
@@ -24972,6 +26782,10 @@ export interface GetZeroTrustDevicePostureRulesResultInput {
      * For more details on total score, refer to the Tanium documentation.
      */
     totalScore: number;
+    /**
+     * Number of days that the antivirus should be updated within.
+     */
+    updateWindowDays: number;
     /**
      * Version of OS.
      */
@@ -25045,6 +26859,10 @@ export interface GetZeroTrustDexTestsResult {
      */
     enabled: boolean;
     /**
+     * The unique identifier for the test.
+     */
+    id: string;
+    /**
      * How often the test will run.
      */
     interval: string;
@@ -25113,6 +26931,10 @@ export interface GetZeroTrustDlpCustomEntriesResult {
      */
     type: string;
     updatedAt: string;
+    /**
+     * Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+     */
+    uploadStatus: string;
     variant: outputs.GetZeroTrustDlpCustomEntriesResultVariant;
     wordList: string;
 }
@@ -25169,6 +26991,11 @@ export interface GetZeroTrustDlpCustomEntryPattern {
      * @deprecated This attribute is deprecated.
      */
     validation: string;
+}
+
+export interface GetZeroTrustDlpCustomEntryProfile {
+    id: string;
+    name: string;
 }
 
 export interface GetZeroTrustDlpCustomEntryVariant {
@@ -25295,7 +27122,7 @@ export interface GetZeroTrustDlpDatasetsResult {
      */
     status: string;
     /**
-     * When the dataset was last updated.
+     * Stores when the dataset was last updated.
      */
     updatedAt: string;
     uploads: outputs.GetZeroTrustDlpDatasetsResultUpload[];
@@ -25340,6 +27167,10 @@ export interface GetZeroTrustDlpEntriesResult {
      */
     type: string;
     updatedAt: string;
+    /**
+     * Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+     */
+    uploadStatus: string;
     variant: outputs.GetZeroTrustDlpEntriesResultVariant;
     wordList: string;
 }
@@ -25398,6 +27229,11 @@ export interface GetZeroTrustDlpEntryPattern {
     validation: string;
 }
 
+export interface GetZeroTrustDlpEntryProfile {
+    id: string;
+    name: string;
+}
+
 export interface GetZeroTrustDlpEntryVariant {
     description: string;
     /**
@@ -25430,6 +27266,10 @@ export interface GetZeroTrustDlpIntegrationEntriesResult {
      */
     type: string;
     updatedAt: string;
+    /**
+     * Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+     */
+    uploadStatus: string;
     variant: outputs.GetZeroTrustDlpIntegrationEntriesResultVariant;
     wordList: string;
 }
@@ -25488,6 +27328,11 @@ export interface GetZeroTrustDlpIntegrationEntryPattern {
     validation: string;
 }
 
+export interface GetZeroTrustDlpIntegrationEntryProfile {
+    id: string;
+    name: string;
+}
+
 export interface GetZeroTrustDlpIntegrationEntryVariant {
     description: string;
     /**
@@ -25520,6 +27365,10 @@ export interface GetZeroTrustDlpPredefinedEntriesResult {
      */
     type: string;
     updatedAt: string;
+    /**
+     * Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+     */
+    uploadStatus: string;
     variant: outputs.GetZeroTrustDlpPredefinedEntriesResultVariant;
     wordList: string;
 }
@@ -25578,6 +27427,11 @@ export interface GetZeroTrustDlpPredefinedEntryPattern {
     validation: string;
 }
 
+export interface GetZeroTrustDlpPredefinedEntryProfile {
+    id: string;
+    name: string;
+}
+
 export interface GetZeroTrustDlpPredefinedEntryVariant {
     description: string;
     /**
@@ -25588,24 +27442,6 @@ export interface GetZeroTrustDlpPredefinedEntryVariant {
      * Available values: "PromptTopic".
      */
     type: string;
-}
-
-export interface GetZeroTrustDlpPredefinedProfileContextAwareness {
-    /**
-     * If true, scan the context of predefined entries to only return matches surrounded by keywords.
-     */
-    enabled: boolean;
-    /**
-     * Content types to exclude from context analysis and return all matches.
-     */
-    skip: outputs.GetZeroTrustDlpPredefinedProfileContextAwarenessSkip;
-}
-
-export interface GetZeroTrustDlpPredefinedProfileContextAwarenessSkip {
-    /**
-     * If the content type is a file, skip context analysis and return all matches.
-     */
-    files: boolean;
 }
 
 export interface GetZeroTrustDlpPredefinedProfileEntry {
@@ -26162,6 +27998,10 @@ export interface GetZeroTrustGatewayPoliciesResultRuleSettings {
      */
     egress: outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsEgress;
     /**
+     * Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
+     */
+    forensicCopy: outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsForensicCopy;
+    /**
      * Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dnsResolver` rules.
      */
     ignoreCnameCategoryMatches: boolean;
@@ -26364,6 +28204,13 @@ export interface GetZeroTrustGatewayPoliciesResultRuleSettingsEgress {
     ipv6: string;
 }
 
+export interface GetZeroTrustGatewayPoliciesResultRuleSettingsForensicCopy {
+    /**
+     * Enable sending the copy to storage.
+     */
+    enabled: boolean;
+}
+
 export interface GetZeroTrustGatewayPoliciesResultRuleSettingsL4override {
     /**
      * Defines the IPv4 or IPv6 address.
@@ -26517,6 +28364,10 @@ export interface GetZeroTrustGatewayPolicyRuleSettings {
      * Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs. Settable only for `egress` rules.
      */
     egress: outputs.GetZeroTrustGatewayPolicyRuleSettingsEgress;
+    /**
+     * Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
+     */
+    forensicCopy: outputs.GetZeroTrustGatewayPolicyRuleSettingsForensicCopy;
     /**
      * Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dnsResolver` rules.
      */
@@ -26720,6 +28571,13 @@ export interface GetZeroTrustGatewayPolicyRuleSettingsEgress {
     ipv6: string;
 }
 
+export interface GetZeroTrustGatewayPolicyRuleSettingsForensicCopy {
+    /**
+     * Enable sending the copy to storage.
+     */
+    enabled: boolean;
+}
+
 export interface GetZeroTrustGatewayPolicyRuleSettingsL4override {
     /**
      * Defines the IPv4 or IPv6 address.
@@ -26811,6 +28669,29 @@ export interface GetZeroTrustGatewayPolicySchedule {
     timeZone: string;
     tue: string;
     wed: string;
+}
+
+export interface GetZeroTrustGatewayProxyEndpointsResult {
+    createdAt: string;
+    id: string;
+    /**
+     * Specify the list of CIDRs to restrict ingress connections.
+     */
+    ips: string[];
+    /**
+     * The proxy endpoint kind
+     * Available values: "ip", "identity".
+     */
+    kind: string;
+    /**
+     * Specify the name of the proxy endpoint.
+     */
+    name: string;
+    /**
+     * Specify the subdomain to use as the destination in the proxy client.
+     */
+    subdomain: string;
+    updatedAt: string;
 }
 
 export interface GetZeroTrustGatewaySettingsSettings {
@@ -27095,7 +28976,7 @@ export interface GetZeroTrustGatewaySettingsSettingsTlsDecrypt {
 export interface GetZeroTrustListFilter {
     /**
      * Specify the list type.
-     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
      */
     type?: string;
 }
@@ -27136,7 +29017,7 @@ export interface GetZeroTrustListsResult {
     name: string;
     /**
      * Specify the list type.
-     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
      */
     type: string;
     updatedAt: string;
@@ -27357,6 +29238,10 @@ export interface GetZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequest {
      */
     keepAliveTimeout: number;
     /**
+     * Auto configure the Hostname on the origin server certificate.
+     */
+    matchSnItoHost: boolean;
+    /**
      * Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
      */
     noHappyEyeballs: boolean;
@@ -27427,6 +29312,10 @@ export interface GetZeroTrustTunnelCloudflaredConfigConfigOriginRequest {
      * Timeout after which an idle keepalive connection can be discarded.
      */
     keepAliveTimeout: number;
+    /**
+     * Auto configure the Hostname on the origin server certificate.
+     */
+    matchSnItoHost: boolean;
     /**
      * Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
      */
@@ -27549,10 +29438,6 @@ export interface GetZeroTrustTunnelCloudflaredRouteFilter {
      * If set, only list routes that contain this IP range.
      */
     networkSuperset?: string;
-    /**
-     * UUID of the route.
-     */
-    routeId?: string;
     /**
      * The types of tunnels to filter by, separated by commas.
      */
@@ -27827,11 +29712,6 @@ export interface GetZeroTrustTunnelWarpConnectorsResult {
      */
     accountTag: string;
     /**
-     * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
-     * Available values: "local", "cloudflare".
-     */
-    configSrc: string;
-    /**
      * The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
      *
      * @deprecated This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
@@ -27865,12 +29745,6 @@ export interface GetZeroTrustTunnelWarpConnectorsResult {
      * A user-friendly name for a tunnel.
      */
     name: string;
-    /**
-     * If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
-     *
-     * @deprecated Use the configSrc field instead.
-     */
-    remoteConfig: boolean;
     /**
      * The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
      * Available values: "inactive", "degraded", "healthy", "down".
@@ -28272,7 +30146,7 @@ export interface GetZoneSubscriptionRatePlan {
     externallyManaged: boolean;
     /**
      * The ID of the rate plan.
-     * Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnterprise".
+     * Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partners*enterprise", "partners*ent".
      */
     id: string;
     /**
@@ -28564,7 +30438,7 @@ export interface HealthcheckHttpConfig {
     /**
      * A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.
      */
-    expectedBody?: string;
+    expectedBody: string;
     /**
      * The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check.
      */
@@ -29118,7 +30992,7 @@ export interface LogpushJobOutputOptions {
     /**
      * If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.
      */
-    cve202144228?: boolean;
+    cve202144228: boolean;
     /**
      * String to join fields. This field be ignored when `recordTemplate` is set.
      */
@@ -29176,6 +31050,10 @@ export interface MagicNetworkMonitoringConfigurationWarpDevice {
 
 export interface MagicTransitConnectorDevice {
     id: string;
+    /**
+     * Set to true to provision a license key for this connector. Only used during resource creation. This is a write-only field that will not be stored in state.
+     */
+    provisionLicense?: boolean;
     serialNumber: string;
 }
 
@@ -29977,27 +31855,27 @@ export interface PagesProjectBuildConfig {
     /**
      * Enable build caching for the project.
      */
-    buildCaching?: boolean;
+    buildCaching: boolean;
     /**
      * Command used to build project.
      */
-    buildCommand?: string;
+    buildCommand: string;
     /**
      * Output directory of the build.
      */
-    destinationDir?: string;
+    destinationDir: string;
     /**
      * Directory to run the command.
      */
-    rootDir?: string;
+    rootDir: string;
     /**
      * The classifying tag for analytics.
      */
-    webAnalyticsTag?: string;
+    webAnalyticsTag: string;
     /**
      * The auth token for analytics.
      */
-    webAnalyticsToken?: string;
+    webAnalyticsToken: string;
 }
 
 export interface PagesProjectCanonicalDeployment {
@@ -30054,6 +31932,9 @@ export interface PagesProjectCanonicalDeployment {
      * Short Id (8 character) of the deployment.
      */
     shortId: string;
+    /**
+     * Configs for the project source control.
+     */
     source: outputs.PagesProjectCanonicalDeploymentSource;
     /**
      * List of past stages.
@@ -30063,6 +31944,10 @@ export interface PagesProjectCanonicalDeployment {
      * The live URL to view this deployment.
      */
     url: string;
+    /**
+     * Whether the deployment uses functions.
+     */
+    usesFunctions: boolean;
 }
 
 export interface PagesProjectCanonicalDeploymentBuildConfig {
@@ -30075,7 +31960,7 @@ export interface PagesProjectCanonicalDeploymentBuildConfig {
      */
     buildCommand: string;
     /**
-     * Output directory of the build.
+     * Assets output directory of the build.
      */
     destinationDir: string;
     /**
@@ -30099,7 +31984,7 @@ export interface PagesProjectCanonicalDeploymentDeploymentTrigger {
     metadata: outputs.PagesProjectCanonicalDeploymentDeploymentTriggerMetadata;
     /**
      * What caused the deployment.
-     * Available values: "push", "adHoc".
+     * Available values: "github:push", "ad*hoc", "deploy*hook".
      */
     type: string;
 }
@@ -30109,6 +31994,10 @@ export interface PagesProjectCanonicalDeploymentDeploymentTriggerMetadata {
      * Where the trigger happened.
      */
     branch: string;
+    /**
+     * Whether the deployment trigger commit was dirty.
+     */
+    commitDirty: boolean;
     /**
      * Hash of the deployment trigger commit.
      */
@@ -30173,6 +32062,10 @@ export interface PagesProjectCanonicalDeploymentSourceConfig {
      */
     owner: string;
     /**
+     * The owner ID of the repository.
+     */
+    ownerId: string;
+    /**
      * A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
      */
     pathExcludes: string[];
@@ -30205,6 +32098,10 @@ export interface PagesProjectCanonicalDeploymentSourceConfig {
      * Whether to trigger a production deployment on commits to the production branch.
      */
     productionDeploymentsEnabled: boolean;
+    /**
+     * The ID of the repository.
+     */
+    repoId: string;
     /**
      * The name of the repository.
      */
@@ -30271,7 +32168,7 @@ export interface PagesProjectDeploymentConfigsPreview {
     /**
      * Compatibility flags used for Pages Functions.
      */
-    compatibilityFlags: string[];
+    compatibilityFlags?: string[];
     /**
      * D1 databases used for Pages Functions.
      */
@@ -30338,14 +32235,14 @@ export interface PagesProjectDeploymentConfigsPreview {
 }
 
 export interface PagesProjectDeploymentConfigsPreviewAiBindings {
-    projectId?: string;
+    projectId: string;
 }
 
 export interface PagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasets {
     /**
      * Name of the dataset.
      */
-    dataset?: string;
+    dataset: string;
 }
 
 export interface PagesProjectDeploymentConfigsPreviewBrowsers {
@@ -30355,14 +32252,14 @@ export interface PagesProjectDeploymentConfigsPreviewD1Databases {
     /**
      * UUID of the D1 database.
      */
-    id?: string;
+    id: string;
 }
 
 export interface PagesProjectDeploymentConfigsPreviewDurableObjectNamespaces {
     /**
      * ID of the Durable Object namespace.
      */
-    namespaceId?: string;
+    namespaceId: string;
 }
 
 export interface PagesProjectDeploymentConfigsPreviewEnvVars {
@@ -30377,25 +32274,25 @@ export interface PagesProjectDeploymentConfigsPreviewEnvVars {
 }
 
 export interface PagesProjectDeploymentConfigsPreviewHyperdriveBindings {
-    id?: string;
+    id: string;
 }
 
 export interface PagesProjectDeploymentConfigsPreviewKvNamespaces {
     /**
      * ID of the KV namespace.
      */
-    namespaceId?: string;
+    namespaceId: string;
 }
 
 export interface PagesProjectDeploymentConfigsPreviewLimits {
     /**
      * CPU time limit in milliseconds.
      */
-    cpuMs?: number;
+    cpuMs: number;
 }
 
 export interface PagesProjectDeploymentConfigsPreviewMtlsCertificates {
-    certificateId?: string;
+    certificateId: string;
 }
 
 export interface PagesProjectDeploymentConfigsPreviewPlacement {
@@ -30409,7 +32306,7 @@ export interface PagesProjectDeploymentConfigsPreviewQueueProducers {
     /**
      * Name of the Queue.
      */
-    name?: string;
+    name: string;
 }
 
 export interface PagesProjectDeploymentConfigsPreviewR2Buckets {
@@ -30420,7 +32317,7 @@ export interface PagesProjectDeploymentConfigsPreviewR2Buckets {
     /**
      * Name of the R2 bucket.
      */
-    name?: string;
+    name: string;
 }
 
 export interface PagesProjectDeploymentConfigsPreviewServices {
@@ -30435,11 +32332,11 @@ export interface PagesProjectDeploymentConfigsPreviewServices {
     /**
      * The Service name.
      */
-    service?: string;
+    service: string;
 }
 
 export interface PagesProjectDeploymentConfigsPreviewVectorizeBindings {
-    indexName?: string;
+    indexName: string;
 }
 
 export interface PagesProjectDeploymentConfigsProduction {
@@ -30470,7 +32367,7 @@ export interface PagesProjectDeploymentConfigsProduction {
     /**
      * Compatibility flags used for Pages Functions.
      */
-    compatibilityFlags: string[];
+    compatibilityFlags?: string[];
     /**
      * D1 databases used for Pages Functions.
      */
@@ -30537,14 +32434,14 @@ export interface PagesProjectDeploymentConfigsProduction {
 }
 
 export interface PagesProjectDeploymentConfigsProductionAiBindings {
-    projectId?: string;
+    projectId: string;
 }
 
 export interface PagesProjectDeploymentConfigsProductionAnalyticsEngineDatasets {
     /**
      * Name of the dataset.
      */
-    dataset?: string;
+    dataset: string;
 }
 
 export interface PagesProjectDeploymentConfigsProductionBrowsers {
@@ -30554,14 +32451,14 @@ export interface PagesProjectDeploymentConfigsProductionD1Databases {
     /**
      * UUID of the D1 database.
      */
-    id?: string;
+    id: string;
 }
 
 export interface PagesProjectDeploymentConfigsProductionDurableObjectNamespaces {
     /**
      * ID of the Durable Object namespace.
      */
-    namespaceId?: string;
+    namespaceId: string;
 }
 
 export interface PagesProjectDeploymentConfigsProductionEnvVars {
@@ -30576,25 +32473,25 @@ export interface PagesProjectDeploymentConfigsProductionEnvVars {
 }
 
 export interface PagesProjectDeploymentConfigsProductionHyperdriveBindings {
-    id?: string;
+    id: string;
 }
 
 export interface PagesProjectDeploymentConfigsProductionKvNamespaces {
     /**
      * ID of the KV namespace.
      */
-    namespaceId?: string;
+    namespaceId: string;
 }
 
 export interface PagesProjectDeploymentConfigsProductionLimits {
     /**
      * CPU time limit in milliseconds.
      */
-    cpuMs?: number;
+    cpuMs: number;
 }
 
 export interface PagesProjectDeploymentConfigsProductionMtlsCertificates {
-    certificateId?: string;
+    certificateId: string;
 }
 
 export interface PagesProjectDeploymentConfigsProductionPlacement {
@@ -30608,7 +32505,7 @@ export interface PagesProjectDeploymentConfigsProductionQueueProducers {
     /**
      * Name of the Queue.
      */
-    name?: string;
+    name: string;
 }
 
 export interface PagesProjectDeploymentConfigsProductionR2Buckets {
@@ -30619,7 +32516,7 @@ export interface PagesProjectDeploymentConfigsProductionR2Buckets {
     /**
      * Name of the R2 bucket.
      */
-    name?: string;
+    name: string;
 }
 
 export interface PagesProjectDeploymentConfigsProductionServices {
@@ -30634,11 +32531,11 @@ export interface PagesProjectDeploymentConfigsProductionServices {
     /**
      * The Service name.
      */
-    service?: string;
+    service: string;
 }
 
 export interface PagesProjectDeploymentConfigsProductionVectorizeBindings {
-    indexName?: string;
+    indexName: string;
 }
 
 export interface PagesProjectLatestDeployment {
@@ -30695,6 +32592,9 @@ export interface PagesProjectLatestDeployment {
      * Short Id (8 character) of the deployment.
      */
     shortId: string;
+    /**
+     * Configs for the project source control.
+     */
     source: outputs.PagesProjectLatestDeploymentSource;
     /**
      * List of past stages.
@@ -30704,6 +32604,10 @@ export interface PagesProjectLatestDeployment {
      * The live URL to view this deployment.
      */
     url: string;
+    /**
+     * Whether the deployment uses functions.
+     */
+    usesFunctions: boolean;
 }
 
 export interface PagesProjectLatestDeploymentBuildConfig {
@@ -30716,7 +32620,7 @@ export interface PagesProjectLatestDeploymentBuildConfig {
      */
     buildCommand: string;
     /**
-     * Output directory of the build.
+     * Assets output directory of the build.
      */
     destinationDir: string;
     /**
@@ -30740,7 +32644,7 @@ export interface PagesProjectLatestDeploymentDeploymentTrigger {
     metadata: outputs.PagesProjectLatestDeploymentDeploymentTriggerMetadata;
     /**
      * What caused the deployment.
-     * Available values: "push", "adHoc".
+     * Available values: "github:push", "ad*hoc", "deploy*hook".
      */
     type: string;
 }
@@ -30750,6 +32654,10 @@ export interface PagesProjectLatestDeploymentDeploymentTriggerMetadata {
      * Where the trigger happened.
      */
     branch: string;
+    /**
+     * Whether the deployment trigger commit was dirty.
+     */
+    commitDirty: boolean;
     /**
      * Hash of the deployment trigger commit.
      */
@@ -30814,6 +32722,10 @@ export interface PagesProjectLatestDeploymentSourceConfig {
      */
     owner: string;
     /**
+     * The owner ID of the repository.
+     */
+    ownerId: string;
+    /**
      * A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
      */
     pathExcludes: string[];
@@ -30847,6 +32759,10 @@ export interface PagesProjectLatestDeploymentSourceConfig {
      */
     productionDeploymentsEnabled: boolean;
     /**
+     * The ID of the repository.
+     */
+    repoId: string;
+    /**
      * The name of the repository.
      */
     repoName: string;
@@ -30879,7 +32795,7 @@ export interface PagesProjectSource {
      * The source control management provider.
      * Available values: "github", "gitlab".
      */
-    type?: string;
+    type: string;
 }
 
 export interface PagesProjectSourceConfig {
@@ -30889,11 +32805,15 @@ export interface PagesProjectSourceConfig {
      *
      * @deprecated Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
      */
-    deploymentsEnabled?: boolean;
+    deploymentsEnabled: boolean;
     /**
      * The owner of the repository.
      */
-    owner?: string;
+    owner: string;
+    /**
+     * The owner ID of the repository.
+     */
+    ownerId: string;
     /**
      * A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
      */
@@ -30905,7 +32825,7 @@ export interface PagesProjectSourceConfig {
     /**
      * Whether to enable PR comments.
      */
-    prCommentsEnabled?: boolean;
+    prCommentsEnabled: boolean;
     /**
      * A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
      */
@@ -30922,15 +32842,19 @@ export interface PagesProjectSourceConfig {
     /**
      * The production branch of the repository.
      */
-    productionBranch?: string;
+    productionBranch: string;
     /**
      * Whether to trigger a production deployment on commits to the production branch.
      */
-    productionDeploymentsEnabled?: boolean;
+    productionDeploymentsEnabled: boolean;
+    /**
+     * The ID of the repository.
+     */
+    repoId: string;
     /**
      * The name of the repository.
      */
-    repoName?: string;
+    repoName: string;
 }
 
 export interface QueueConsumer {
@@ -31207,11 +33131,15 @@ export interface R2BucketSippySource {
      */
     bucket?: string;
     /**
+     * URL to the S3-compatible API of the bucket.
+     */
+    bucketUrl?: string;
+    /**
      * Client email of an IAM credential (ideally scoped to a single GCS bucket).
      */
     clientEmail?: string;
     /**
-     * Available values: "aws", "gcs".
+     * Available values: "aws", "gcs", "s3".
      */
     cloudProvider?: string;
     /**
@@ -32375,6 +34303,18 @@ export interface SpectrumApplicationOriginDns {
     type?: string;
 }
 
+export interface SsoConnectorVerification {
+    /**
+     * DNS verification code. Add this entire string to the DNS TXT record of the email domain to validate ownership.
+     */
+    code: string;
+    /**
+     * The status of the verification code from the verification process.
+     * Available values: "awaiting", "pending", "failed", "verified".
+     */
+    status: string;
+}
+
 export interface StaticRouteScope {
     /**
      * List of colo names for the ECMP scope.
@@ -32995,6 +34935,10 @@ export interface TeamsRuleRuleSettings {
      */
     egress?: outputs.TeamsRuleRuleSettingsEgress;
     /**
+     * Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
+     */
+    forensicCopy?: outputs.TeamsRuleRuleSettingsForensicCopy;
+    /**
      * Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dnsResolver` rules.
      */
     ignoreCnameCategoryMatches: boolean;
@@ -33197,6 +35141,13 @@ export interface TeamsRuleRuleSettingsEgress {
     ipv6?: string;
 }
 
+export interface TeamsRuleRuleSettingsForensicCopy {
+    /**
+     * Enable sending the copy to storage.
+     */
+    enabled?: boolean;
+}
+
 export interface TeamsRuleRuleSettingsL4override {
     /**
      * Defines the IPv4 or IPv6 address.
@@ -33290,6 +35241,88 @@ export interface TeamsRuleSchedule {
     wed?: string;
 }
 
+export interface TokenValidationConfigCredentials {
+    keys: outputs.TokenValidationConfigCredentialsKey[];
+}
+
+export interface TokenValidationConfigCredentialsKey {
+    /**
+     * Algorithm
+     * Available values: "RS256", "RS384", "RS512", "PS256", "PS384", "PS512", "ES256", "ES384".
+     */
+    alg: string;
+    /**
+     * Curve
+     * Available values: "P-256", "P-384".
+     */
+    crv?: string;
+    /**
+     * RSA exponent
+     */
+    e?: string;
+    /**
+     * Key ID
+     */
+    kid: string;
+    /**
+     * Key Type
+     * Available values: "RSA", "EC".
+     */
+    kty: string;
+    /**
+     * RSA modulus
+     */
+    n?: string;
+    /**
+     * X EC coordinate
+     */
+    x?: string;
+    /**
+     * Y EC coordinate
+     */
+    y?: string;
+}
+
+export interface TokenValidationRulesPosition {
+    /**
+     * Move rule to after rule with this ID.
+     */
+    after?: string;
+    /**
+     * Move rule to before rule with this ID.
+     */
+    before?: string;
+    /**
+     * Move rule to this position
+     */
+    index?: number;
+}
+
+export interface TokenValidationRulesSelector {
+    /**
+     * Ignore operations that were otherwise included by `include`.
+     */
+    excludes?: outputs.TokenValidationRulesSelectorExclude[];
+    /**
+     * Select all matching operations.
+     */
+    includes?: outputs.TokenValidationRulesSelectorInclude[];
+}
+
+export interface TokenValidationRulesSelectorExclude {
+    /**
+     * Excluded operation IDs.
+     */
+    operationIds?: string[];
+}
+
+export interface TokenValidationRulesSelectorInclude {
+    /**
+     * Included hostnames.
+     */
+    hosts?: string[];
+}
+
 export interface TunnelConfigConfig {
     /**
      * List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.
@@ -33353,6 +35386,10 @@ export interface TunnelConfigConfigIngressOriginRequest {
      * Timeout after which an idle keepalive connection can be discarded.
      */
     keepAliveTimeout?: number;
+    /**
+     * Auto configure the Hostname on the origin server certificate.
+     */
+    matchSnItoHost?: boolean;
     /**
      * Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
      */
@@ -33424,6 +35461,10 @@ export interface TunnelConfigConfigOriginRequest {
      * Timeout after which an idle keepalive connection can be discarded.
      */
     keepAliveTimeout?: number;
+    /**
+     * Auto configure the Hostname on the origin server certificate.
+     */
+    matchSnItoHost?: boolean;
     /**
      * Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
      */
@@ -33803,9 +35844,9 @@ export interface WorkerScriptAssetsConfig {
      */
     redirects?: string;
     /**
-     * When true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script.
+     * When a boolean true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script. When a list of strings, contains path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
      */
-    runWorkerFirst: boolean;
+    runWorkerFirst?: any;
     /**
      * When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.
      *
@@ -33983,124 +36024,81 @@ export interface WorkerScriptLimits {
 
 export interface WorkerScriptMigrations {
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes to delete Durable Object namespaces from.
      */
     deletedClasses?: string[];
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes to create Durable Object namespaces from.
      */
     newClasses?: string[];
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes to create Durable Object namespaces with SQLite from.
      */
     newSqliteClasses?: string[];
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Tag to set as the latest migration tag.
      */
     newTag?: string;
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.
      */
     oldTag?: string;
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes with Durable Object namespaces that were renamed.
      */
     renamedClasses?: outputs.WorkerScriptMigrationsRenamedClass[];
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Migrations to apply in order.
      */
     steps?: outputs.WorkerScriptMigrationsStep[];
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
      */
     transferredClasses?: outputs.WorkerScriptMigrationsTransferredClass[];
 }
 
 export interface WorkerScriptMigrationsRenamedClass {
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     from?: string;
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     to?: string;
 }
 
 export interface WorkerScriptMigrationsStep {
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes to delete Durable Object namespaces from.
      */
     deletedClasses?: string[];
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes to create Durable Object namespaces from.
      */
     newClasses?: string[];
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes to create Durable Object namespaces with SQLite from.
      */
     newSqliteClasses?: string[];
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes with Durable Object namespaces that were renamed.
      */
     renamedClasses?: outputs.WorkerScriptMigrationsStepRenamedClass[];
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
      */
     transferredClasses?: outputs.WorkerScriptMigrationsStepTransferredClass[];
 }
 
 export interface WorkerScriptMigrationsStepRenamedClass {
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     from?: string;
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     to?: string;
 }
 
 export interface WorkerScriptMigrationsStepTransferredClass {
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     from?: string;
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     fromScript?: string;
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     to?: string;
 }
 
 export interface WorkerScriptMigrationsTransferredClass {
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     from?: string;
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     fromScript?: string;
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     to?: string;
 }
 
@@ -34226,7 +36224,7 @@ export interface WorkerVersionAssets {
     /**
      * Configuration for assets within a Worker.
      */
-    config: outputs.WorkerVersionAssetsConfig;
+    config?: outputs.WorkerVersionAssetsConfig;
     /**
      * Path to the directory containing asset files to upload.
      */
@@ -34242,16 +36240,16 @@ export interface WorkerVersionAssetsConfig {
      * Determines the redirects and rewrites of requests for HTML content.
      * Available values: "auto-trailing-slash", "force-trailing-slash", "drop-trailing-slash", "none".
      */
-    htmlHandling: string;
+    htmlHandling?: string;
     /**
      * Determines the response when a request does not match a static asset, and there is no Worker script.
      * Available values: "none", "404-page", "single-page-application".
      */
-    notFoundHandling: string;
+    notFoundHandling?: string;
     /**
-     * Contains a list path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
+     * When a boolean true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script. When a list of strings, contains path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
      */
-    runWorkerFirsts: string[];
+    runWorkerFirst?: any;
 }
 
 export interface WorkerVersionBinding {
@@ -34503,9 +36501,13 @@ export interface WorkerVersionMigrationsTransferredClass {
 
 export interface WorkerVersionModule {
     /**
+     * The base64-encoded module content.
+     */
+    contentBase64?: string;
+    /**
      * The file path of the module content.
      */
-    contentFile: string;
+    contentFile?: string;
     /**
      * The SHA-256 hash of the module content.
      */
@@ -34589,9 +36591,9 @@ export interface WorkersScriptAssetsConfig {
      */
     redirects?: string;
     /**
-     * When true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script.
+     * When a boolean true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script. When a list of strings, contains path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
      */
-    runWorkerFirst: boolean;
+    runWorkerFirst?: any;
     /**
      * When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.
      *
@@ -34769,124 +36771,81 @@ export interface WorkersScriptLimits {
 
 export interface WorkersScriptMigrations {
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes to delete Durable Object namespaces from.
      */
     deletedClasses?: string[];
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes to create Durable Object namespaces from.
      */
     newClasses?: string[];
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes to create Durable Object namespaces with SQLite from.
      */
     newSqliteClasses?: string[];
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Tag to set as the latest migration tag.
      */
     newTag?: string;
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.
      */
     oldTag?: string;
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes with Durable Object namespaces that were renamed.
      */
     renamedClasses?: outputs.WorkersScriptMigrationsRenamedClass[];
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Migrations to apply in order.
      */
     steps?: outputs.WorkersScriptMigrationsStep[];
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
      */
     transferredClasses?: outputs.WorkersScriptMigrationsTransferredClass[];
 }
 
 export interface WorkersScriptMigrationsRenamedClass {
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     from?: string;
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     to?: string;
 }
 
 export interface WorkersScriptMigrationsStep {
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes to delete Durable Object namespaces from.
      */
     deletedClasses?: string[];
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes to create Durable Object namespaces from.
      */
     newClasses?: string[];
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes to create Durable Object namespaces with SQLite from.
      */
     newSqliteClasses?: string[];
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes with Durable Object namespaces that were renamed.
      */
     renamedClasses?: outputs.WorkersScriptMigrationsStepRenamedClass[];
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
      */
     transferredClasses?: outputs.WorkersScriptMigrationsStepTransferredClass[];
 }
 
 export interface WorkersScriptMigrationsStepRenamedClass {
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     from?: string;
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     to?: string;
 }
 
 export interface WorkersScriptMigrationsStepTransferredClass {
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     from?: string;
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     fromScript?: string;
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     to?: string;
 }
 
 export interface WorkersScriptMigrationsTransferredClass {
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     from?: string;
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     fromScript?: string;
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     */
     to?: string;
 }
 
@@ -34980,6 +36939,29 @@ export interface WorkflowInstances {
     terminated: number;
     waiting: number;
     waitingForPause: number;
+}
+
+export interface ZeroTrustAccessAiControlsMcpPortalServer {
+    defaultDisabled: boolean;
+    onBehalf: boolean;
+    /**
+     * server id
+     */
+    serverId: string;
+    updatedPrompts?: outputs.ZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt[];
+    updatedTools?: outputs.ZeroTrustAccessAiControlsMcpPortalServerUpdatedTool[];
+}
+
+export interface ZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt {
+    description?: string;
+    enabled?: boolean;
+    name: string;
+}
+
+export interface ZeroTrustAccessAiControlsMcpPortalServerUpdatedTool {
+    description?: string;
+    enabled?: boolean;
+    name: string;
 }
 
 export interface ZeroTrustAccessApplicationCorsHeaders {
@@ -38097,7 +40079,7 @@ export interface ZeroTrustDevicePostureRuleInput {
      */
     osDistroRevision?: string;
     /**
-     * Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version. (Mac, iOS, and Linux only).
+     * Additional operating system version details. For Windows, the UBR (Update Build Revision). For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version.
      */
     osVersionExtra?: string;
     /**
@@ -38151,6 +40133,10 @@ export interface ZeroTrustDevicePostureRuleInput {
      * For more details on total score, refer to the Tanium documentation.
      */
     totalScore?: number;
+    /**
+     * Number of days that the antivirus should be updated within.
+     */
+    updateWindowDays?: number;
     /**
      * Version of OS.
      */
@@ -38229,6 +40215,11 @@ export interface ZeroTrustDlpCustomEntryPattern {
      * @deprecated This attribute is deprecated.
      */
     validation?: string;
+}
+
+export interface ZeroTrustDlpCustomEntryProfile {
+    id: string;
+    name: string;
 }
 
 export interface ZeroTrustDlpCustomEntryVariant {
@@ -38315,7 +40306,7 @@ export interface ZeroTrustDlpDatasetDataset {
      */
     status: string;
     /**
-     * When the dataset was last updated.
+     * Stores when the dataset was last updated.
      */
     updatedAt: string;
     uploads: outputs.ZeroTrustDlpDatasetDatasetUpload[];
@@ -38370,6 +40361,11 @@ export interface ZeroTrustDlpEntryPattern {
     validation?: string;
 }
 
+export interface ZeroTrustDlpEntryProfile {
+    id: string;
+    name: string;
+}
+
 export interface ZeroTrustDlpEntryVariant {
     description: string;
     /**
@@ -38401,6 +40397,11 @@ export interface ZeroTrustDlpIntegrationEntryPattern {
      * @deprecated This attribute is deprecated.
      */
     validation: string;
+}
+
+export interface ZeroTrustDlpIntegrationEntryProfile {
+    id: string;
+    name: string;
 }
 
 export interface ZeroTrustDlpIntegrationEntryVariant {
@@ -38436,6 +40437,11 @@ export interface ZeroTrustDlpPredefinedEntryPattern {
     validation: string;
 }
 
+export interface ZeroTrustDlpPredefinedEntryProfile {
+    id: string;
+    name: string;
+}
+
 export interface ZeroTrustDlpPredefinedEntryVariant {
     description: string;
     /**
@@ -38446,24 +40452,6 @@ export interface ZeroTrustDlpPredefinedEntryVariant {
      * Available values: "PromptTopic".
      */
     type: string;
-}
-
-export interface ZeroTrustDlpPredefinedProfileContextAwareness {
-    /**
-     * If true, scan the context of predefined entries to only return matches surrounded by keywords.
-     */
-    enabled: boolean;
-    /**
-     * Content types to exclude from context analysis and return all matches.
-     */
-    skip: outputs.ZeroTrustDlpPredefinedProfileContextAwarenessSkip;
-}
-
-export interface ZeroTrustDlpPredefinedProfileContextAwarenessSkip {
-    /**
-     * If the content type is a file, skip context analysis and return all matches.
-     */
-    files: boolean;
 }
 
 export interface ZeroTrustDlpPredefinedProfileEntry {
@@ -38658,6 +40646,10 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
      * Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs. Settable only for `egress` rules.
      */
     egress?: outputs.ZeroTrustGatewayPolicyRuleSettingsEgress;
+    /**
+     * Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
+     */
+    forensicCopy?: outputs.ZeroTrustGatewayPolicyRuleSettingsForensicCopy;
     /**
      * Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dnsResolver` rules.
      */
@@ -38859,6 +40851,13 @@ export interface ZeroTrustGatewayPolicyRuleSettingsEgress {
      * Specify the IPv6 range to use for egress.
      */
     ipv6?: string;
+}
+
+export interface ZeroTrustGatewayPolicyRuleSettingsForensicCopy {
+    /**
+     * Enable sending the copy to storage.
+     */
+    enabled?: boolean;
 }
 
 export interface ZeroTrustGatewayPolicyRuleSettingsL4override {
@@ -39365,6 +41364,10 @@ export interface ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequest {
      */
     keepAliveTimeout?: number;
     /**
+     * Auto configure the Hostname on the origin server certificate.
+     */
+    matchSnItoHost?: boolean;
+    /**
      * Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
      */
     noHappyEyeballs?: boolean;
@@ -39435,6 +41438,10 @@ export interface ZeroTrustTunnelCloudflaredConfigConfigOriginRequest {
      * Timeout after which an idle keepalive connection can be discarded.
      */
     keepAliveTimeout?: number;
+    /**
+     * Auto configure the Hostname on the origin server certificate.
+     */
+    matchSnItoHost?: boolean;
     /**
      * Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
      */
@@ -39749,32 +41756,32 @@ export interface ZoneSubscriptionRatePlan {
     /**
      * The currency applied to the rate plan subscription.
      */
-    currency?: string;
+    currency: string;
     /**
      * Whether this rate plan is managed externally from Cloudflare.
      */
-    externallyManaged?: boolean;
+    externallyManaged: boolean;
     /**
      * The ID of the rate plan.
-     * Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnterprise".
+     * Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partners*enterprise", "partners*ent".
      */
     id?: string;
     /**
      * Whether a rate plan is enterprise-based (or newly adopted term contract).
      */
-    isContract?: boolean;
+    isContract: boolean;
     /**
      * The full name of the rate plan.
      */
-    publicName?: string;
+    publicName: string;
     /**
      * The scope that this rate plan applies to.
      */
-    scope?: string;
+    scope: string;
     /**
      * The list of sets this rate plan applies to.
      */
-    sets?: string[];
+    sets: string[];
 }
 
 export interface ZoneTenant {

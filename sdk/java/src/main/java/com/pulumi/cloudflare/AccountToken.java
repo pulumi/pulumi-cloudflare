@@ -20,72 +20,6 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.AccountToken;
- * import com.pulumi.cloudflare.AccountTokenArgs;
- * import com.pulumi.cloudflare.inputs.AccountTokenPolicyArgs;
- * import com.pulumi.cloudflare.inputs.AccountTokenConditionArgs;
- * import com.pulumi.cloudflare.inputs.AccountTokenConditionRequestIpArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleAccountToken = new AccountToken("exampleAccountToken", AccountTokenArgs.builder()
- *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .name("readonly token")
- *             .policies(AccountTokenPolicyArgs.builder()
- *                 .effect("allow")
- *                 .permissionGroups(                
- *                     AccountTokenPolicyPermissionGroupArgs.builder()
- *                         .id("c8fed203ed3043cba015a93ad1616f1f")
- *                         .meta(AccountTokenPolicyPermissionGroupMetaArgs.builder()
- *                             .key("key")
- *                             .value("value")
- *                             .build())
- *                         .build(),
- *                     AccountTokenPolicyPermissionGroupArgs.builder()
- *                         .id("82e64a83756745bbbb1c9c2701bf816b")
- *                         .meta(AccountTokenPolicyPermissionGroupMetaArgs.builder()
- *                             .key("key")
- *                             .value("value")
- *                             .build())
- *                         .build())
- *                 .resources(Map.of("foo", "string"))
- *                 .build())
- *             .condition(AccountTokenConditionArgs.builder()
- *                 .requestIp(AccountTokenConditionRequestIpArgs.builder()
- *                     .ins(                    
- *                         "123.123.123.0/24",
- *                         "2606:4700::/32")
- *                     .notIns(                    
- *                         "123.123.123.100/24",
- *                         "2606:4700:4700::/48")
- *                     .build())
- *                 .build())
- *             .expiresOn("2020-01-01T00:00:00Z")
- *             .notBefore("2018-07-01T05:20:00Z")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * 
  * ## Import
  * 
  * ```sh
@@ -200,14 +134,14 @@ public class AccountToken extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.notBefore);
     }
     /**
-     * List of access policies assigned to the token.
+     * Set of access policies assigned to the token.
      * 
      */
     @Export(name="policies", refs={List.class,AccountTokenPolicy.class}, tree="[0,1]")
     private Output<List<AccountTokenPolicy>> policies;
 
     /**
-     * @return List of access policies assigned to the token.
+     * @return Set of access policies assigned to the token.
      * 
      */
     public Output<List<AccountTokenPolicy>> policies() {

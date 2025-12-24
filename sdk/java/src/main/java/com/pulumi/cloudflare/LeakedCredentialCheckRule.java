@@ -50,6 +50,12 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule example &#39;&lt;zone_id&gt;/&lt;detection_id&gt;&#39;
+ * ```
+ * 
  */
 @ResourceType(type="cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule")
 public class LeakedCredentialCheckRule extends com.pulumi.resources.CustomResource {

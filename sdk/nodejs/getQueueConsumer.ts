@@ -8,23 +8,11 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleQueueConsumer = cloudflare.getQueueConsumer({
- *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     queueId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     consumerId: "023e105f4ecef8ad9ca31a8372d0c353",
- * });
- * ```
  */
 export function getQueueConsumer(args: GetQueueConsumerArgs, opts?: pulumi.InvokeOptions): Promise<GetQueueConsumerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getQueueConsumer:getQueueConsumer", {
         "accountId": args.accountId,
-        "consumerId": args.consumerId,
         "queueId": args.queueId,
     }, opts);
 }
@@ -37,10 +25,6 @@ export interface GetQueueConsumerArgs {
      * A Resource identifier.
      */
     accountId: string;
-    /**
-     * A Resource identifier.
-     */
-    consumerId: string;
     /**
      * A Resource identifier.
      */
@@ -84,23 +68,11 @@ export interface GetQueueConsumerResult {
 }
 /**
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleQueueConsumer = cloudflare.getQueueConsumer({
- *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     queueId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     consumerId: "023e105f4ecef8ad9ca31a8372d0c353",
- * });
- * ```
  */
 export function getQueueConsumerOutput(args: GetQueueConsumerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetQueueConsumerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getQueueConsumer:getQueueConsumer", {
         "accountId": args.accountId,
-        "consumerId": args.consumerId,
         "queueId": args.queueId,
     }, opts);
 }
@@ -113,10 +85,6 @@ export interface GetQueueConsumerOutputArgs {
      * A Resource identifier.
      */
     accountId: pulumi.Input<string>;
-    /**
-     * A Resource identifier.
-     */
-    consumerId: pulumi.Input<string>;
     /**
      * A Resource identifier.
      */

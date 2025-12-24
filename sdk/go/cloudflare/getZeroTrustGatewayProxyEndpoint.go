@@ -61,6 +61,9 @@ type LookupZeroTrustGatewayProxyEndpointResult struct {
 	Id string `pulumi:"id"`
 	// Specify the list of CIDRs to restrict ingress connections.
 	Ips []string `pulumi:"ips"`
+	// The proxy endpoint kind
+	// Available values: "ip", "identity".
+	Kind string `pulumi:"kind"`
 	// Specify the name of the proxy endpoint.
 	Name            string `pulumi:"name"`
 	ProxyEndpointId string `pulumi:"proxyEndpointId"`
@@ -119,6 +122,12 @@ func (o LookupZeroTrustGatewayProxyEndpointResultOutput) Id() pulumi.StringOutpu
 // Specify the list of CIDRs to restrict ingress connections.
 func (o LookupZeroTrustGatewayProxyEndpointResultOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayProxyEndpointResult) []string { return v.Ips }).(pulumi.StringArrayOutput)
+}
+
+// The proxy endpoint kind
+// Available values: "ip", "identity".
+func (o LookupZeroTrustGatewayProxyEndpointResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustGatewayProxyEndpointResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // Specify the name of the proxy endpoint.

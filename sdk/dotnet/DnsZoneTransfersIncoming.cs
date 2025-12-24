@@ -140,8 +140,8 @@ namespace Pulumi.Cloudflare
         /// How often should a secondary zone auto refresh regardless of DNS NOTIFY.
         /// Not applicable for primary zones.
         /// </summary>
-        [Input("autoRefreshSeconds", required: true)]
-        public Input<double> AutoRefreshSeconds { get; set; } = null!;
+        [Input("autoRefreshSeconds")]
+        public Input<double>? AutoRefreshSeconds { get; set; }
 
         /// <summary>
         /// Zone name.

@@ -90,8 +90,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identify the API resource with a UUID.
         /// </summary>
-        [Input("ruleId")]
-        public string? RuleId { get; set; }
+        [Input("ruleId", required: true)]
+        public string RuleId { get; set; } = null!;
 
         public GetZeroTrustGatewayPolicyArgs()
         {
@@ -107,8 +107,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identify the API resource with a UUID.
         /// </summary>
-        [Input("ruleId")]
-        public Input<string>? RuleId { get; set; }
+        [Input("ruleId", required: true)]
+        public Input<string> RuleId { get; set; } = null!;
 
         public GetZeroTrustGatewayPolicyInvokeArgs()
         {
@@ -165,7 +165,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identify the API resource with a UUID.
         /// </summary>
-        public readonly string? RuleId;
+        public readonly string RuleId;
         public readonly Outputs.GetZeroTrustGatewayPolicyRuleSettingsResult RuleSettings;
         /// <summary>
         /// Defines the schedule for activating DNS policies. Settable only for `Dns` and `DnsResolver` rules.
@@ -220,7 +220,7 @@ namespace Pulumi.Cloudflare
 
             bool readOnly,
 
-            string? ruleId,
+            string ruleId,
 
             Outputs.GetZeroTrustGatewayPolicyRuleSettingsResult ruleSettings,
 

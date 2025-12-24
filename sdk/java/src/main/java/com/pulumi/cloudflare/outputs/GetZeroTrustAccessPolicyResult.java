@@ -14,8 +14,6 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustAccessPolicyResult {
@@ -75,7 +73,7 @@ public final class GetZeroTrustAccessPolicyResult {
      * @return The UUID of the policy
      * 
      */
-    private @Nullable String policyId;
+    private String policyId;
     /**
      * @return A custom message that will appear on the purpose justification screen.
      * 
@@ -178,8 +176,8 @@ public final class GetZeroTrustAccessPolicyResult {
      * @return The UUID of the policy
      * 
      */
-    public Optional<String> policyId() {
-        return Optional.ofNullable(this.policyId);
+    public String policyId() {
+        return this.policyId;
     }
     /**
      * @return A custom message that will appear on the purpose justification screen.
@@ -236,7 +234,7 @@ public final class GetZeroTrustAccessPolicyResult {
         private List<GetZeroTrustAccessPolicyInclude> includes;
         private Boolean isolationRequired;
         private String name;
-        private @Nullable String policyId;
+        private String policyId;
         private String purposeJustificationPrompt;
         private Boolean purposeJustificationRequired;
         private List<GetZeroTrustAccessPolicyRequire> requires;
@@ -364,8 +362,10 @@ public final class GetZeroTrustAccessPolicyResult {
             return this;
         }
         @CustomType.Setter
-        public Builder policyId(@Nullable String policyId) {
-
+        public Builder policyId(String policyId) {
+            if (policyId == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessPolicyResult", "policyId");
+            }
             this.policyId = policyId;
             return this;
         }

@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetSpectrumApplicationResult',
@@ -27,7 +28,7 @@ class GetSpectrumApplicationResult:
     """
     A collection of values returned by getSpectrumApplication.
     """
-    def __init__(__self__, app_id=None, argo_smart_routing=None, created_on=None, dns=None, edge_ips=None, id=None, ip_firewall=None, modified_on=None, origin_directs=None, origin_dns=None, origin_port=None, protocol=None, proxy_protocol=None, tls=None, traffic_type=None, zone_id=None):
+    def __init__(__self__, app_id=None, argo_smart_routing=None, created_on=None, dns=None, edge_ips=None, filter=None, id=None, ip_firewall=None, modified_on=None, origin_directs=None, origin_dns=None, origin_port=None, protocol=None, proxy_protocol=None, tls=None, traffic_type=None, zone_id=None):
         if app_id and not isinstance(app_id, str):
             raise TypeError("Expected argument 'app_id' to be a str")
         pulumi.set(__self__, "app_id", app_id)
@@ -43,6 +44,9 @@ class GetSpectrumApplicationResult:
         if edge_ips and not isinstance(edge_ips, dict):
             raise TypeError("Expected argument 'edge_ips' to be a dict")
         pulumi.set(__self__, "edge_ips", edge_ips)
+        if filter and not isinstance(filter, dict):
+            raise TypeError("Expected argument 'filter' to be a dict")
+        pulumi.set(__self__, "filter", filter)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -79,7 +83,7 @@ class GetSpectrumApplicationResult:
 
     @_builtins.property
     @pulumi.getter(name="appId")
-    def app_id(self) -> _builtins.str:
+    def app_id(self) -> Optional[_builtins.str]:
         """
         App identifier.
         """
@@ -117,6 +121,11 @@ class GetSpectrumApplicationResult:
         The anycast edge IP configuration for the hostname of this application.
         """
         return pulumi.get(self, "edge_ips")
+
+    @_builtins.property
+    @pulumi.getter
+    def filter(self) -> Optional['outputs.GetSpectrumApplicationFilterResult']:
+        return pulumi.get(self, "filter")
 
     @_builtins.property
     @pulumi.getter
@@ -223,6 +232,7 @@ class AwaitableGetSpectrumApplicationResult(GetSpectrumApplicationResult):
             created_on=self.created_on,
             dns=self.dns,
             edge_ips=self.edge_ips,
+            filter=self.filter,
             id=self.id,
             ip_firewall=self.ip_firewall,
             modified_on=self.modified_on,
@@ -237,6 +247,7 @@ class AwaitableGetSpectrumApplicationResult(GetSpectrumApplicationResult):
 
 
 def get_spectrum_application(app_id: Optional[_builtins.str] = None,
+                             filter: Optional[Union['GetSpectrumApplicationFilterArgs', 'GetSpectrumApplicationFilterArgsDict']] = None,
                              zone_id: Optional[_builtins.str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSpectrumApplicationResult:
     """
@@ -256,6 +267,7 @@ def get_spectrum_application(app_id: Optional[_builtins.str] = None,
     """
     __args__ = dict()
     __args__['appId'] = app_id
+    __args__['filter'] = filter
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getSpectrumApplication:getSpectrumApplication', __args__, opts=opts, typ=GetSpectrumApplicationResult).value
@@ -266,6 +278,7 @@ def get_spectrum_application(app_id: Optional[_builtins.str] = None,
         created_on=pulumi.get(__ret__, 'created_on'),
         dns=pulumi.get(__ret__, 'dns'),
         edge_ips=pulumi.get(__ret__, 'edge_ips'),
+        filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
         ip_firewall=pulumi.get(__ret__, 'ip_firewall'),
         modified_on=pulumi.get(__ret__, 'modified_on'),
@@ -277,7 +290,8 @@ def get_spectrum_application(app_id: Optional[_builtins.str] = None,
         tls=pulumi.get(__ret__, 'tls'),
         traffic_type=pulumi.get(__ret__, 'traffic_type'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_spectrum_application_output(app_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_spectrum_application_output(app_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                    filter: Optional[pulumi.Input[Optional[Union['GetSpectrumApplicationFilterArgs', 'GetSpectrumApplicationFilterArgsDict']]]] = None,
                                     zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSpectrumApplicationResult]:
     """
@@ -297,6 +311,7 @@ def get_spectrum_application_output(app_id: Optional[pulumi.Input[_builtins.str]
     """
     __args__ = dict()
     __args__['appId'] = app_id
+    __args__['filter'] = filter
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getSpectrumApplication:getSpectrumApplication', __args__, opts=opts, typ=GetSpectrumApplicationResult)
@@ -306,6 +321,7 @@ def get_spectrum_application_output(app_id: Optional[pulumi.Input[_builtins.str]
         created_on=pulumi.get(__response__, 'created_on'),
         dns=pulumi.get(__response__, 'dns'),
         edge_ips=pulumi.get(__response__, 'edge_ips'),
+        filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
         ip_firewall=pulumi.get(__response__, 'ip_firewall'),
         modified_on=pulumi.get(__response__, 'modified_on'),

@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupDnsZoneTransfersAcl(ctx, &cloudflare.LookupDnsZoneTransfersAclArgs{
 //				AccountId: "01a7362d577a6c3019a474fd6f485823",
-//				AclId:     pulumi.StringRef("23ff594956f20c2a721606e94745a8aa"),
+//				AclId:     "23ff594956f20c2a721606e94745a8aa",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,14 +49,14 @@ func LookupDnsZoneTransfersAcl(ctx *pulumi.Context, args *LookupDnsZoneTransfers
 
 // A collection of arguments for invoking getDnsZoneTransfersAcl.
 type LookupDnsZoneTransfersAclArgs struct {
-	AccountId string  `pulumi:"accountId"`
-	AclId     *string `pulumi:"aclId"`
+	AccountId string `pulumi:"accountId"`
+	AclId     string `pulumi:"aclId"`
 }
 
 // A collection of values returned by getDnsZoneTransfersAcl.
 type LookupDnsZoneTransfersAclResult struct {
-	AccountId string  `pulumi:"accountId"`
-	AclId     *string `pulumi:"aclId"`
+	AccountId string `pulumi:"accountId"`
+	AclId     string `pulumi:"aclId"`
 	// The ID of this resource.
 	Id string `pulumi:"id"`
 	// Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively.
@@ -76,8 +76,8 @@ func LookupDnsZoneTransfersAclOutput(ctx *pulumi.Context, args LookupDnsZoneTran
 
 // A collection of arguments for invoking getDnsZoneTransfersAcl.
 type LookupDnsZoneTransfersAclOutputArgs struct {
-	AccountId pulumi.StringInput    `pulumi:"accountId"`
-	AclId     pulumi.StringPtrInput `pulumi:"aclId"`
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AclId     pulumi.StringInput `pulumi:"aclId"`
 }
 
 func (LookupDnsZoneTransfersAclOutputArgs) ElementType() reflect.Type {
@@ -103,8 +103,8 @@ func (o LookupDnsZoneTransfersAclResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsZoneTransfersAclResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-func (o LookupDnsZoneTransfersAclResultOutput) AclId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupDnsZoneTransfersAclResult) *string { return v.AclId }).(pulumi.StringPtrOutput)
+func (o LookupDnsZoneTransfersAclResultOutput) AclId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDnsZoneTransfersAclResult) string { return v.AclId }).(pulumi.StringOutput)
 }
 
 // The ID of this resource.

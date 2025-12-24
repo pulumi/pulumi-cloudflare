@@ -27,8 +27,8 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// The Service name.
         /// </summary>
-        [Input("service")]
-        public Input<string>? Service { get; set; }
+        [Input("service", required: true)]
+        public Input<string> Service { get; set; } = null!;
 
         public PagesProjectDeploymentConfigsPreviewServicesGetArgs()
         {

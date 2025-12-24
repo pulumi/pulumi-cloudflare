@@ -12,8 +12,8 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class PagesProjectDeploymentConfigsPreviewMtlsCertificatesArgs : global::Pulumi.ResourceArgs
     {
-        [Input("certificateId")]
-        public Input<string>? CertificateId { get; set; }
+        [Input("certificateId", required: true)]
+        public Input<string> CertificateId { get; set; } = null!;
 
         public PagesProjectDeploymentConfigsPreviewMtlsCertificatesArgs()
         {

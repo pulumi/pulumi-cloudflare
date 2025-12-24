@@ -90,8 +90,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// API UUID.
         /// </summary>
-        [Input("ruleId")]
-        public string? RuleId { get; set; }
+        [Input("ruleId", required: true)]
+        public string RuleId { get; set; } = null!;
 
         public GetZeroTrustDevicePostureRuleArgs()
         {
@@ -107,8 +107,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// API UUID.
         /// </summary>
-        [Input("ruleId")]
-        public Input<string>? RuleId { get; set; }
+        [Input("ruleId", required: true)]
+        public Input<string> RuleId { get; set; } = null!;
 
         public GetZeroTrustDevicePostureRuleInvokeArgs()
         {
@@ -148,14 +148,14 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// API UUID.
         /// </summary>
-        public readonly string? RuleId;
+        public readonly string RuleId;
         /// <summary>
         /// Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
         /// </summary>
         public readonly string Schedule;
         /// <summary>
         /// The type of device posture rule.
-        /// Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "serial*number", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom*s2s".
+        /// Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "serial*number", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "antivirus", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom*s2s".
         /// </summary>
         public readonly string Type;
 
@@ -175,7 +175,7 @@ namespace Pulumi.Cloudflare
 
             string name,
 
-            string? ruleId,
+            string ruleId,
 
             string schedule,
 

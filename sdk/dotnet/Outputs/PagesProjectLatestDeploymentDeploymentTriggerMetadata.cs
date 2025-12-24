@@ -18,6 +18,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Branch;
         /// <summary>
+        /// Whether the deployment trigger commit was dirty.
+        /// </summary>
+        public readonly bool? CommitDirty;
+        /// <summary>
         /// Hash of the deployment trigger commit.
         /// </summary>
         public readonly string? CommitHash;
@@ -30,11 +34,14 @@ namespace Pulumi.Cloudflare.Outputs
         private PagesProjectLatestDeploymentDeploymentTriggerMetadata(
             string? branch,
 
+            bool? commitDirty,
+
             string? commitHash,
 
             string? commitMessage)
         {
             Branch = branch;
+            CommitDirty = commitDirty;
             CommitHash = commitHash;
             CommitMessage = commitMessage;
         }

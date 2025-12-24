@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupPageShieldPolicy(ctx, &cloudflare.LookupPageShieldPolicyArgs{
 //				ZoneId:   "023e105f4ecef8ad9ca31a8372d0c353",
-//				PolicyId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				PolicyId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -50,7 +50,7 @@ func LookupPageShieldPolicy(ctx *pulumi.Context, args *LookupPageShieldPolicyArg
 // A collection of arguments for invoking getPageShieldPolicy.
 type LookupPageShieldPolicyArgs struct {
 	// Identifier
-	PolicyId *string `pulumi:"policyId"`
+	PolicyId string `pulumi:"policyId"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -69,7 +69,7 @@ type LookupPageShieldPolicyResult struct {
 	// Identifier
 	Id string `pulumi:"id"`
 	// Identifier
-	PolicyId *string `pulumi:"policyId"`
+	PolicyId string `pulumi:"policyId"`
 	// The policy which will be applied
 	Value string `pulumi:"value"`
 	// Identifier
@@ -88,7 +88,7 @@ func LookupPageShieldPolicyOutput(ctx *pulumi.Context, args LookupPageShieldPoli
 // A collection of arguments for invoking getPageShieldPolicy.
 type LookupPageShieldPolicyOutputArgs struct {
 	// Identifier
-	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
+	PolicyId pulumi.StringInput `pulumi:"policyId"`
 	// Identifier
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
@@ -139,8 +139,8 @@ func (o LookupPageShieldPolicyResultOutput) Id() pulumi.StringOutput {
 }
 
 // Identifier
-func (o LookupPageShieldPolicyResultOutput) PolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupPageShieldPolicyResult) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
+func (o LookupPageShieldPolicyResultOutput) PolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPageShieldPolicyResult) string { return v.PolicyId }).(pulumi.StringOutput)
 }
 
 // The policy which will be applied

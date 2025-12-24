@@ -149,7 +149,7 @@ namespace Pulumi.Cloudflare
         public readonly ImmutableArray<Outputs.GetZeroTrustDeviceDefaultProfileFallbackDomainResult> FallbackDomains;
         public readonly string GatewayUniqueId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this resource.
         /// </summary>
         public readonly string Id;
         /// <summary>

@@ -10,6 +10,8 @@ import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class DnsZoneTransfersIncomingArgs extends com.pulumi.resources.ResourceArgs {
@@ -21,16 +23,16 @@ public final class DnsZoneTransfersIncomingArgs extends com.pulumi.resources.Res
      * Not applicable for primary zones.
      * 
      */
-    @Import(name="autoRefreshSeconds", required=true)
-    private Output<Double> autoRefreshSeconds;
+    @Import(name="autoRefreshSeconds")
+    private @Nullable Output<Double> autoRefreshSeconds;
 
     /**
      * @return How often should a secondary zone auto refresh regardless of DNS NOTIFY.
      * Not applicable for primary zones.
      * 
      */
-    public Output<Double> autoRefreshSeconds() {
-        return this.autoRefreshSeconds;
+    public Optional<Output<Double>> autoRefreshSeconds() {
+        return Optional.ofNullable(this.autoRefreshSeconds);
     }
 
     /**
@@ -104,7 +106,7 @@ public final class DnsZoneTransfersIncomingArgs extends com.pulumi.resources.Res
          * @return builder
          * 
          */
-        public Builder autoRefreshSeconds(Output<Double> autoRefreshSeconds) {
+        public Builder autoRefreshSeconds(@Nullable Output<Double> autoRefreshSeconds) {
             $.autoRefreshSeconds = autoRefreshSeconds;
             return this;
         }
@@ -182,9 +184,6 @@ public final class DnsZoneTransfersIncomingArgs extends com.pulumi.resources.Res
         }
 
         public DnsZoneTransfersIncomingArgs build() {
-            if ($.autoRefreshSeconds == null) {
-                throw new MissingRequiredPropertyException("DnsZoneTransfersIncomingArgs", "autoRefreshSeconds");
-            }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("DnsZoneTransfersIncomingArgs", "name");
             }

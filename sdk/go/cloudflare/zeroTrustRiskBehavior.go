@@ -43,6 +43,10 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ~> This resource does not currently support `pulumi import`.
 type ZeroTrustRiskBehavior struct {
 	pulumi.CustomResourceState
 

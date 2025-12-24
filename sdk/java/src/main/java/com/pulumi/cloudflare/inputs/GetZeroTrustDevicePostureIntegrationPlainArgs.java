@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetZeroTrustDevicePostureIntegrationPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -26,15 +24,15 @@ public final class GetZeroTrustDevicePostureIntegrationPlainArgs extends com.pul
      * API UUID.
      * 
      */
-    @Import(name="integrationId")
-    private @Nullable String integrationId;
+    @Import(name="integrationId", required=true)
+    private String integrationId;
 
     /**
      * @return API UUID.
      * 
      */
-    public Optional<String> integrationId() {
-        return Optional.ofNullable(this.integrationId);
+    public String integrationId() {
+        return this.integrationId;
     }
 
     private GetZeroTrustDevicePostureIntegrationPlainArgs() {}
@@ -73,7 +71,7 @@ public final class GetZeroTrustDevicePostureIntegrationPlainArgs extends com.pul
          * @return builder
          * 
          */
-        public Builder integrationId(@Nullable String integrationId) {
+        public Builder integrationId(String integrationId) {
             $.integrationId = integrationId;
             return this;
         }
@@ -81,6 +79,9 @@ public final class GetZeroTrustDevicePostureIntegrationPlainArgs extends com.pul
         public GetZeroTrustDevicePostureIntegrationPlainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetZeroTrustDevicePostureIntegrationPlainArgs", "accountId");
+            }
+            if ($.integrationId == null) {
+                throw new MissingRequiredPropertyException("GetZeroTrustDevicePostureIntegrationPlainArgs", "integrationId");
             }
             return $;
         }

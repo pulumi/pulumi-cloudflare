@@ -38,7 +38,7 @@ export interface GetZeroTrustAccessPolicyArgs {
     /**
      * The UUID of the policy
      */
-    policyId?: string;
+    policyId: string;
 }
 
 /**
@@ -90,7 +90,7 @@ export interface GetZeroTrustAccessPolicyResult {
     /**
      * The UUID of the policy
      */
-    readonly policyId?: string;
+    readonly policyId: string;
     /**
      * A custom message that will appear on the purpose justification screen.
      */
@@ -142,5 +142,5 @@ export interface GetZeroTrustAccessPolicyOutputArgs {
     /**
      * The UUID of the policy
      */
-    policyId?: pulumi.Input<string>;
+    policyId: pulumi.Input<string>;
 }

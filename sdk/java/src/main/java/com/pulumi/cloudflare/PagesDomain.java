@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *         var examplePagesDomain = new PagesDomain("examplePagesDomain", PagesDomainArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .projectName("this-is-my-project-01")
- *             .name("example.com")
+ *             .name("this-is-my-domain-01.com")
  *             .build());
  * 
  *     }
@@ -64,14 +64,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/pagesDomain:PagesDomain")
 public class PagesDomain extends com.pulumi.resources.CustomResource {
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -103,9 +103,17 @@ public class PagesDomain extends com.pulumi.resources.CustomResource {
     public Output<String> domainId() {
         return this.domainId;
     }
+    /**
+     * The domain name.
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return The domain name.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }

@@ -28,7 +28,7 @@ import (
 //			_, err := cloudflare.LookupMagicTransitSiteAcl(ctx, &cloudflare.LookupMagicTransitSiteAclArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				SiteId:    "023e105f4ecef8ad9ca31a8372d0c353",
-//				AclId:     pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				AclId:     "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -53,7 +53,7 @@ type LookupMagicTransitSiteAclArgs struct {
 	// Identifier
 	AccountId string `pulumi:"accountId"`
 	// Identifier
-	AclId *string `pulumi:"aclId"`
+	AclId string `pulumi:"aclId"`
 	// Identifier
 	SiteId string `pulumi:"siteId"`
 }
@@ -63,7 +63,7 @@ type LookupMagicTransitSiteAclResult struct {
 	// Identifier
 	AccountId string `pulumi:"accountId"`
 	// Identifier
-	AclId *string `pulumi:"aclId"`
+	AclId string `pulumi:"aclId"`
 	// Description for the ACL.
 	Description string `pulumi:"description"`
 	// The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false.
@@ -95,7 +95,7 @@ type LookupMagicTransitSiteAclOutputArgs struct {
 	// Identifier
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Identifier
-	AclId pulumi.StringPtrInput `pulumi:"aclId"`
+	AclId pulumi.StringInput `pulumi:"aclId"`
 	// Identifier
 	SiteId pulumi.StringInput `pulumi:"siteId"`
 }
@@ -125,8 +125,8 @@ func (o LookupMagicTransitSiteAclResultOutput) AccountId() pulumi.StringOutput {
 }
 
 // Identifier
-func (o LookupMagicTransitSiteAclResultOutput) AclId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMagicTransitSiteAclResult) *string { return v.AclId }).(pulumi.StringPtrOutput)
+func (o LookupMagicTransitSiteAclResultOutput) AclId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMagicTransitSiteAclResult) string { return v.AclId }).(pulumi.StringOutput)
 }
 
 // Description for the ACL.

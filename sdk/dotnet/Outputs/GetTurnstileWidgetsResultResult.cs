@@ -34,6 +34,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool EphemeralId;
         /// <summary>
+        /// Widget item identifier tag.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Widget Mode
         /// Available values: "non-interactive", "invisible", "managed".
         /// </summary>
@@ -74,6 +78,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool ephemeralId,
 
+            string id,
+
             string mode,
 
             string modifiedOn,
@@ -91,6 +97,7 @@ namespace Pulumi.Cloudflare.Outputs
             CreatedOn = createdOn;
             Domains = domains;
             EphemeralId = ephemeralId;
+            Id = id;
             Mode = mode;
             ModifiedOn = modifiedOn;
             Name = name;

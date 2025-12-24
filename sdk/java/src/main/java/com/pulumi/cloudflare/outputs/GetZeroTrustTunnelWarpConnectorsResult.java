@@ -6,7 +6,6 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.GetZeroTrustTunnelWarpConnectorsResultConnection;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -18,12 +17,6 @@ public final class GetZeroTrustTunnelWarpConnectorsResult {
      * 
      */
     private String accountTag;
-    /**
-     * @return Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
-     * Available values: &#34;local&#34;, &#34;cloudflare&#34;.
-     * 
-     */
-    private String configSrc;
     /**
      * @return The Cloudflare Tunnel connections between your origin and Cloudflare&#39;s edge.
      * 
@@ -69,15 +62,6 @@ public final class GetZeroTrustTunnelWarpConnectorsResult {
      */
     private String name;
     /**
-     * @return If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
-     * 
-     * @deprecated
-     * Use the configSrc field instead.
-     * 
-     */
-    @Deprecated /* Use the configSrc field instead. */
-    private Boolean remoteConfig;
-    /**
      * @return The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
      * Available values: &#34;inactive&#34;, &#34;degraded&#34;, &#34;healthy&#34;, &#34;down&#34;.
      * 
@@ -97,14 +81,6 @@ public final class GetZeroTrustTunnelWarpConnectorsResult {
      */
     public String accountTag() {
         return this.accountTag;
-    }
-    /**
-     * @return Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
-     * Available values: &#34;local&#34;, &#34;cloudflare&#34;.
-     * 
-     */
-    public String configSrc() {
-        return this.configSrc;
     }
     /**
      * @return The Cloudflare Tunnel connections between your origin and Cloudflare&#39;s edge.
@@ -167,17 +143,6 @@ public final class GetZeroTrustTunnelWarpConnectorsResult {
         return this.name;
     }
     /**
-     * @return If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
-     * 
-     * @deprecated
-     * Use the configSrc field instead.
-     * 
-     */
-    @Deprecated /* Use the configSrc field instead. */
-    public Boolean remoteConfig() {
-        return this.remoteConfig;
-    }
-    /**
      * @return The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
      * Available values: &#34;inactive&#34;, &#34;degraded&#34;, &#34;healthy&#34;, &#34;down&#34;.
      * 
@@ -204,7 +169,6 @@ public final class GetZeroTrustTunnelWarpConnectorsResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountTag;
-        private String configSrc;
         private List<GetZeroTrustTunnelWarpConnectorsResultConnection> connections;
         private String connsActiveAt;
         private String connsInactiveAt;
@@ -213,14 +177,12 @@ public final class GetZeroTrustTunnelWarpConnectorsResult {
         private String id;
         private String metadata;
         private String name;
-        private Boolean remoteConfig;
         private String status;
         private String tunType;
         public Builder() {}
         public Builder(GetZeroTrustTunnelWarpConnectorsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountTag = defaults.accountTag;
-    	      this.configSrc = defaults.configSrc;
     	      this.connections = defaults.connections;
     	      this.connsActiveAt = defaults.connsActiveAt;
     	      this.connsInactiveAt = defaults.connsInactiveAt;
@@ -229,7 +191,6 @@ public final class GetZeroTrustTunnelWarpConnectorsResult {
     	      this.id = defaults.id;
     	      this.metadata = defaults.metadata;
     	      this.name = defaults.name;
-    	      this.remoteConfig = defaults.remoteConfig;
     	      this.status = defaults.status;
     	      this.tunType = defaults.tunType;
         }
@@ -240,14 +201,6 @@ public final class GetZeroTrustTunnelWarpConnectorsResult {
               throw new MissingRequiredPropertyException("GetZeroTrustTunnelWarpConnectorsResult", "accountTag");
             }
             this.accountTag = accountTag;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder configSrc(String configSrc) {
-            if (configSrc == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustTunnelWarpConnectorsResult", "configSrc");
-            }
-            this.configSrc = configSrc;
             return this;
         }
         @CustomType.Setter
@@ -318,14 +271,6 @@ public final class GetZeroTrustTunnelWarpConnectorsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder remoteConfig(Boolean remoteConfig) {
-            if (remoteConfig == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustTunnelWarpConnectorsResult", "remoteConfig");
-            }
-            this.remoteConfig = remoteConfig;
-            return this;
-        }
-        @CustomType.Setter
         public Builder status(String status) {
             if (status == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustTunnelWarpConnectorsResult", "status");
@@ -344,7 +289,6 @@ public final class GetZeroTrustTunnelWarpConnectorsResult {
         public GetZeroTrustTunnelWarpConnectorsResult build() {
             final var _resultValue = new GetZeroTrustTunnelWarpConnectorsResult();
             _resultValue.accountTag = accountTag;
-            _resultValue.configSrc = configSrc;
             _resultValue.connections = connections;
             _resultValue.connsActiveAt = connsActiveAt;
             _resultValue.connsInactiveAt = connsInactiveAt;
@@ -353,7 +297,6 @@ public final class GetZeroTrustTunnelWarpConnectorsResult {
             _resultValue.id = id;
             _resultValue.metadata = metadata;
             _resultValue.name = name;
-            _resultValue.remoteConfig = remoteConfig;
             _resultValue.status = status;
             _resultValue.tunType = tunType;
             return _resultValue;

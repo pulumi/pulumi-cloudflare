@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetRegionalHostnameArgs extends com.pulumi.resources.InvokeArgs {
@@ -20,15 +18,15 @@ public final class GetRegionalHostnameArgs extends com.pulumi.resources.InvokeAr
      * DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
      * 
      */
-    @Import(name="hostname")
-    private @Nullable Output<String> hostname;
+    @Import(name="hostname", required=true)
+    private Output<String> hostname;
 
     /**
      * @return DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
      * 
      */
-    public Optional<Output<String>> hostname() {
-        return Optional.ofNullable(this.hostname);
+    public Output<String> hostname() {
+        return this.hostname;
     }
 
     /**
@@ -77,7 +75,7 @@ public final class GetRegionalHostnameArgs extends com.pulumi.resources.InvokeAr
          * @return builder
          * 
          */
-        public Builder hostname(@Nullable Output<String> hostname) {
+        public Builder hostname(Output<String> hostname) {
             $.hostname = hostname;
             return this;
         }
@@ -114,6 +112,9 @@ public final class GetRegionalHostnameArgs extends com.pulumi.resources.InvokeAr
         }
 
         public GetRegionalHostnameArgs build() {
+            if ($.hostname == null) {
+                throw new MissingRequiredPropertyException("GetRegionalHostnameArgs", "hostname");
+            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("GetRegionalHostnameArgs", "zoneId");
             }

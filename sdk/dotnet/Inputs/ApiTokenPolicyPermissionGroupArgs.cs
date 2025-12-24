@@ -18,18 +18,6 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
-        /// <summary>
-        /// Attributes associated to the permission group.
-        /// </summary>
-        [Input("meta")]
-        public Input<Inputs.ApiTokenPolicyPermissionGroupMetaArgs>? Meta { get; set; }
-
-        /// <summary>
-        /// Name of the permission group.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
         public ApiTokenPolicyPermissionGroupArgs()
         {
         }

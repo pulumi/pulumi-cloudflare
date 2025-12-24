@@ -106,8 +106,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier for the version, which can be ID or the literal "latest" to operate on the most recently created version.
         /// </summary>
-        [Input("versionId")]
-        public string? VersionId { get; set; }
+        [Input("versionId", required: true)]
+        public string VersionId { get; set; } = null!;
 
         /// <summary>
         /// Identifier for the Worker, which can be ID or name.
@@ -139,8 +139,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier for the version, which can be ID or the literal "latest" to operate on the most recently created version.
         /// </summary>
-        [Input("versionId")]
-        public Input<string>? VersionId { get; set; }
+        [Input("versionId", required: true)]
+        public Input<string> VersionId { get; set; } = null!;
 
         /// <summary>
         /// Identifier for the Worker, which can be ID or name.
@@ -187,11 +187,12 @@ namespace Pulumi.Cloudflare
         public readonly int Number;
         public readonly Outputs.GetWorkerVersionPlacementResult Placement;
         public readonly string Source;
+        public readonly int StartupTimeMs;
         public readonly string UsageModel;
         /// <summary>
         /// Identifier for the version, which can be ID or the literal "latest" to operate on the most recently created version.
         /// </summary>
-        public readonly string? VersionId;
+        public readonly string VersionId;
         /// <summary>
         /// Identifier for the Worker, which can be ID or name.
         /// </summary>
@@ -231,9 +232,11 @@ namespace Pulumi.Cloudflare
 
             string source,
 
+            int startupTimeMs,
+
             string usageModel,
 
-            string? versionId,
+            string versionId,
 
             string workerId)
         {
@@ -253,6 +256,7 @@ namespace Pulumi.Cloudflare
             Number = number;
             Placement = placement;
             Source = source;
+            StartupTimeMs = startupTimeMs;
             UsageModel = usageModel;
             VersionId = versionId;
             WorkerId = workerId;

@@ -40,6 +40,10 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ~> This resource does not currently support `pulumi import`.
 type User struct {
 	pulumi.CustomResourceState
 

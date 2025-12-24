@@ -82,7 +82,7 @@ class GetHyperdriveConfigResult:
 
     @_builtins.property
     @pulumi.getter(name="hyperdriveId")
-    def hyperdrive_id(self) -> Optional[_builtins.str]:
+    def hyperdrive_id(self) -> _builtins.str:
         """
         Define configurations using a unique string identifier.
         """
@@ -182,7 +182,7 @@ def get_hyperdrive_config(account_id: Optional[_builtins.str] = None,
         origin=pulumi.get(__ret__, 'origin'),
         origin_connection_limit=pulumi.get(__ret__, 'origin_connection_limit'))
 def get_hyperdrive_config_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                 hyperdrive_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                 hyperdrive_id: Optional[pulumi.Input[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHyperdriveConfigResult]:
     """
     ## Example Usage

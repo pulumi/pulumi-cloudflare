@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -34,15 +35,15 @@ public final class GetZeroTrustAccessMtlsCertificateArgs extends com.pulumi.reso
      * UUID.
      * 
      */
-    @Import(name="certificateId")
-    private @Nullable Output<String> certificateId;
+    @Import(name="certificateId", required=true)
+    private Output<String> certificateId;
 
     /**
      * @return UUID.
      * 
      */
-    public Optional<Output<String>> certificateId() {
-        return Optional.ofNullable(this.certificateId);
+    public Output<String> certificateId() {
+        return this.certificateId;
     }
 
     /**
@@ -113,7 +114,7 @@ public final class GetZeroTrustAccessMtlsCertificateArgs extends com.pulumi.reso
          * @return builder
          * 
          */
-        public Builder certificateId(@Nullable Output<String> certificateId) {
+        public Builder certificateId(Output<String> certificateId) {
             $.certificateId = certificateId;
             return this;
         }
@@ -150,6 +151,9 @@ public final class GetZeroTrustAccessMtlsCertificateArgs extends com.pulumi.reso
         }
 
         public GetZeroTrustAccessMtlsCertificateArgs build() {
+            if ($.certificateId == null) {
+                throw new MissingRequiredPropertyException("GetZeroTrustAccessMtlsCertificateArgs", "certificateId");
+            }
             return $;
         }
     }

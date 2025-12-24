@@ -80,7 +80,7 @@ export class OriginCaCertificate extends pulumi.CustomResource {
     /**
      * The Certificate Signing Request (CSR). Must be newline-encoded.
      */
-    declare public readonly csr: pulumi.Output<string | undefined>;
+    declare public readonly csr: pulumi.Output<string>;
     /**
      * When the certificate will expire.
      */
@@ -88,12 +88,12 @@ export class OriginCaCertificate extends pulumi.CustomResource {
     /**
      * Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
      */
-    declare public readonly hostnames: pulumi.Output<string[] | undefined>;
+    declare public readonly hostnames: pulumi.Output<string[]>;
     /**
      * Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
      * Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
      */
-    declare public readonly requestType: pulumi.Output<string | undefined>;
+    declare public readonly requestType: pulumi.Output<string>;
     /**
      * The number of days for which the certificate should be valid.
      * Available values: 7, 30, 90, 365, 730, 1095, 5475.
@@ -107,7 +107,7 @@ export class OriginCaCertificate extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: OriginCaCertificateArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: OriginCaCertificateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OriginCaCertificateArgs | OriginCaCertificateState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -121,6 +121,15 @@ export class OriginCaCertificate extends pulumi.CustomResource {
             resourceInputs["requestedValidity"] = state?.requestedValidity;
         } else {
             const args = argsOrState as OriginCaCertificateArgs | undefined;
+            if (args?.csr === undefined && !opts.urn) {
+                throw new Error("Missing required property 'csr'");
+            }
+            if (args?.hostnames === undefined && !opts.urn) {
+                throw new Error("Missing required property 'hostnames'");
+            }
+            if (args?.requestType === undefined && !opts.urn) {
+                throw new Error("Missing required property 'requestType'");
+            }
             resourceInputs["csr"] = args?.csr;
             resourceInputs["hostnames"] = args?.hostnames;
             resourceInputs["requestType"] = args?.requestType;
@@ -172,16 +181,16 @@ export interface OriginCaCertificateArgs {
     /**
      * The Certificate Signing Request (CSR). Must be newline-encoded.
      */
-    csr?: pulumi.Input<string>;
+    csr: pulumi.Input<string>;
     /**
      * Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
      */
-    hostnames?: pulumi.Input<pulumi.Input<string>[]>;
+    hostnames: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
      * Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
      */
-    requestType?: pulumi.Input<string>;
+    requestType: pulumi.Input<string>;
     /**
      * The number of days for which the certificate should be valid.
      * Available values: 7, 30, 90, 365, 730, 1095, 5475.

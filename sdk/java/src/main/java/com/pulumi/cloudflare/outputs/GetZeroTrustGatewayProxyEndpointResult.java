@@ -24,6 +24,12 @@ public final class GetZeroTrustGatewayProxyEndpointResult {
      */
     private List<String> ips;
     /**
+     * @return The proxy endpoint kind
+     * Available values: &#34;ip&#34;, &#34;identity&#34;.
+     * 
+     */
+    private String kind;
+    /**
      * @return Specify the name of the proxy endpoint.
      * 
      */
@@ -56,6 +62,14 @@ public final class GetZeroTrustGatewayProxyEndpointResult {
      */
     public List<String> ips() {
         return this.ips;
+    }
+    /**
+     * @return The proxy endpoint kind
+     * Available values: &#34;ip&#34;, &#34;identity&#34;.
+     * 
+     */
+    public String kind() {
+        return this.kind;
     }
     /**
      * @return Specify the name of the proxy endpoint.
@@ -91,6 +105,7 @@ public final class GetZeroTrustGatewayProxyEndpointResult {
         private String createdAt;
         private String id;
         private List<String> ips;
+        private String kind;
         private String name;
         private String proxyEndpointId;
         private String subdomain;
@@ -102,6 +117,7 @@ public final class GetZeroTrustGatewayProxyEndpointResult {
     	      this.createdAt = defaults.createdAt;
     	      this.id = defaults.id;
     	      this.ips = defaults.ips;
+    	      this.kind = defaults.kind;
     	      this.name = defaults.name;
     	      this.proxyEndpointId = defaults.proxyEndpointId;
     	      this.subdomain = defaults.subdomain;
@@ -144,6 +160,14 @@ public final class GetZeroTrustGatewayProxyEndpointResult {
             return ips(List.of(ips));
         }
         @CustomType.Setter
+        public Builder kind(String kind) {
+            if (kind == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustGatewayProxyEndpointResult", "kind");
+            }
+            this.kind = kind;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustGatewayProxyEndpointResult", "name");
@@ -181,6 +205,7 @@ public final class GetZeroTrustGatewayProxyEndpointResult {
             _resultValue.createdAt = createdAt;
             _resultValue.id = id;
             _resultValue.ips = ips;
+            _resultValue.kind = kind;
             _resultValue.name = name;
             _resultValue.proxyEndpointId = proxyEndpointId;
             _resultValue.subdomain = subdomain;

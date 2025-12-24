@@ -54,7 +54,7 @@ type LookupWaitingRoomSettingsArgs struct {
 
 // A collection of values returned by getWaitingRoomSettings.
 type LookupWaitingRoomSettingsResult struct {
-	// The provider-assigned unique ID for this managed resource.
+	// Identifier.
 	Id string `pulumi:"id"`
 	// Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
 	// Verified search engine crawlers will not be tracked or counted by the waiting room system,
@@ -98,7 +98,7 @@ func (o LookupWaitingRoomSettingsResultOutput) ToLookupWaitingRoomSettingsResult
 	return o
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Identifier.
 func (o LookupWaitingRoomSettingsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWaitingRoomSettingsResult) string { return v.Id }).(pulumi.StringOutput)
 }

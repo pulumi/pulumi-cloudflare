@@ -26,7 +26,8 @@ class PagesDomainArgs:
                  project_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a PagesDomain resource.
-        :param pulumi.Input[_builtins.str] account_id: Identifier
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] name: The domain name.
         :param pulumi.Input[_builtins.str] project_name: Name of the project.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -37,7 +38,7 @@ class PagesDomainArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -48,6 +49,9 @@ class PagesDomainArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The domain name.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -82,8 +86,9 @@ class _PagesDomainState:
                  zone_tag: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PagesDomain resources.
-        :param pulumi.Input[_builtins.str] account_id: Identifier
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] certificate_authority: Available values: "google", "lets_encrypt".
+        :param pulumi.Input[_builtins.str] name: The domain name.
         :param pulumi.Input[_builtins.str] project_name: Name of the project.
         :param pulumi.Input[_builtins.str] status: Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
         """
@@ -112,7 +117,7 @@ class _PagesDomainState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -153,6 +158,9 @@ class _PagesDomainState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The domain name.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -234,7 +242,7 @@ class PagesDomain(pulumi.CustomResource):
         example_pages_domain = cloudflare.PagesDomain("example_pages_domain",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             project_name="this-is-my-project-01",
-            name="example.com")
+            name="this-is-my-domain-01.com")
         ```
 
         ## Import
@@ -245,7 +253,8 @@ class PagesDomain(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Identifier
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] name: The domain name.
         :param pulumi.Input[_builtins.str] project_name: Name of the project.
         """
         ...
@@ -267,7 +276,7 @@ class PagesDomain(pulumi.CustomResource):
         example_pages_domain = cloudflare.PagesDomain("example_pages_domain",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             project_name="this-is-my-project-01",
-            name="example.com")
+            name="this-is-my-domain-01.com")
         ```
 
         ## Import
@@ -346,8 +355,9 @@ class PagesDomain(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Identifier
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] certificate_authority: Available values: "google", "lets_encrypt".
+        :param pulumi.Input[_builtins.str] name: The domain name.
         :param pulumi.Input[_builtins.str] project_name: Name of the project.
         :param pulumi.Input[_builtins.str] status: Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
         """
@@ -371,7 +381,7 @@ class PagesDomain(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -396,6 +406,9 @@ class PagesDomain(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        The domain name.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property

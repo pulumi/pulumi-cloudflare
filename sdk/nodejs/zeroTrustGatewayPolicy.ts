@@ -83,6 +83,9 @@ import * as utilities from "./utilities";
  *             ipv4Fallback: "192.0.2.3",
  *             ipv6: "2001:DB8::/64",
  *         },
+ *         forensicCopy: {
+ *             enabled: true,
+ *         },
  *         ignoreCnameCategoryMatches: true,
  *         insecureDisableDnssecValidation: false,
  *         ipCategories: true,

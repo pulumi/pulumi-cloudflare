@@ -55,6 +55,11 @@ public final class TunnelConfigConfigIngressOriginRequest {
      */
     private @Nullable Integer keepAliveTimeout;
     /**
+     * @return Auto configure the Hostname on the origin server certificate.
+     * 
+     */
+    private @Nullable Boolean matchSnItoHost;
+    /**
      * @return Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
      * 
      */
@@ -143,6 +148,13 @@ public final class TunnelConfigConfigIngressOriginRequest {
         return Optional.ofNullable(this.keepAliveTimeout);
     }
     /**
+     * @return Auto configure the Hostname on the origin server certificate.
+     * 
+     */
+    public Optional<Boolean> matchSnItoHost() {
+        return Optional.ofNullable(this.matchSnItoHost);
+    }
+    /**
      * @return Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
      * 
      */
@@ -202,6 +214,7 @@ public final class TunnelConfigConfigIngressOriginRequest {
         private @Nullable String httpHostHeader;
         private @Nullable Integer keepAliveConnections;
         private @Nullable Integer keepAliveTimeout;
+        private @Nullable Boolean matchSnItoHost;
         private @Nullable Boolean noHappyEyeballs;
         private @Nullable Boolean noTlsVerify;
         private @Nullable String originServerName;
@@ -219,6 +232,7 @@ public final class TunnelConfigConfigIngressOriginRequest {
     	      this.httpHostHeader = defaults.httpHostHeader;
     	      this.keepAliveConnections = defaults.keepAliveConnections;
     	      this.keepAliveTimeout = defaults.keepAliveTimeout;
+    	      this.matchSnItoHost = defaults.matchSnItoHost;
     	      this.noHappyEyeballs = defaults.noHappyEyeballs;
     	      this.noTlsVerify = defaults.noTlsVerify;
     	      this.originServerName = defaults.originServerName;
@@ -276,6 +290,12 @@ public final class TunnelConfigConfigIngressOriginRequest {
             return this;
         }
         @CustomType.Setter
+        public Builder matchSnItoHost(@Nullable Boolean matchSnItoHost) {
+
+            this.matchSnItoHost = matchSnItoHost;
+            return this;
+        }
+        @CustomType.Setter
         public Builder noHappyEyeballs(@Nullable Boolean noHappyEyeballs) {
 
             this.noHappyEyeballs = noHappyEyeballs;
@@ -321,6 +341,7 @@ public final class TunnelConfigConfigIngressOriginRequest {
             _resultValue.httpHostHeader = httpHostHeader;
             _resultValue.keepAliveConnections = keepAliveConnections;
             _resultValue.keepAliveTimeout = keepAliveTimeout;
+            _resultValue.matchSnItoHost = matchSnItoHost;
             _resultValue.noHappyEyeballs = noHappyEyeballs;
             _resultValue.noTlsVerify = noTlsVerify;
             _resultValue.originServerName = originServerName;

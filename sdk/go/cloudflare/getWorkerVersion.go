@@ -28,7 +28,7 @@ import (
 //			_, err := cloudflare.LookupWorkerVersion(ctx, &cloudflare.LookupWorkerVersionArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				WorkerId:  "worker_id",
-//				VersionId: pulumi.StringRef("version_id"),
+//				VersionId: "version_id",
 //				Include:   pulumi.StringRef("modules"),
 //			}, nil)
 //			if err != nil {
@@ -57,7 +57,7 @@ type LookupWorkerVersionArgs struct {
 	// Available values: "modules".
 	Include *string `pulumi:"include"`
 	// Identifier for the version, which can be ID or the literal "latest" to operate on the most recently created version.
-	VersionId *string `pulumi:"versionId"`
+	VersionId string `pulumi:"versionId"`
 	// Identifier for the Worker, which can be ID or name.
 	WorkerId string `pulumi:"workerId"`
 }
@@ -77,18 +77,19 @@ type LookupWorkerVersionResult struct {
 	Id                 string                    `pulumi:"id"`
 	// Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
 	// Available values: "modules".
-	Include    *string                    `pulumi:"include"`
-	Limits     GetWorkerVersionLimits     `pulumi:"limits"`
-	MainModule string                     `pulumi:"mainModule"`
-	Migrations GetWorkerVersionMigrations `pulumi:"migrations"`
-	Modules    []GetWorkerVersionModule   `pulumi:"modules"`
-	Number     int                        `pulumi:"number"`
-	Placement  GetWorkerVersionPlacement  `pulumi:"placement"`
-	Source     string                     `pulumi:"source"`
+	Include       *string                    `pulumi:"include"`
+	Limits        GetWorkerVersionLimits     `pulumi:"limits"`
+	MainModule    string                     `pulumi:"mainModule"`
+	Migrations    GetWorkerVersionMigrations `pulumi:"migrations"`
+	Modules       []GetWorkerVersionModule   `pulumi:"modules"`
+	Number        int                        `pulumi:"number"`
+	Placement     GetWorkerVersionPlacement  `pulumi:"placement"`
+	Source        string                     `pulumi:"source"`
+	StartupTimeMs int                        `pulumi:"startupTimeMs"`
 	// Deprecated: This attribute is deprecated.
 	UsageModel string `pulumi:"usageModel"`
 	// Identifier for the version, which can be ID or the literal "latest" to operate on the most recently created version.
-	VersionId *string `pulumi:"versionId"`
+	VersionId string `pulumi:"versionId"`
 	// Identifier for the Worker, which can be ID or name.
 	WorkerId string `pulumi:"workerId"`
 }
@@ -110,7 +111,7 @@ type LookupWorkerVersionOutputArgs struct {
 	// Available values: "modules".
 	Include pulumi.StringPtrInput `pulumi:"include"`
 	// Identifier for the version, which can be ID or the literal "latest" to operate on the most recently created version.
-	VersionId pulumi.StringPtrInput `pulumi:"versionId"`
+	VersionId pulumi.StringInput `pulumi:"versionId"`
 	// Identifier for the Worker, which can be ID or name.
 	WorkerId pulumi.StringInput `pulumi:"workerId"`
 }
@@ -203,14 +204,18 @@ func (o LookupWorkerVersionResultOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkerVersionResult) string { return v.Source }).(pulumi.StringOutput)
 }
 
+func (o LookupWorkerVersionResultOutput) StartupTimeMs() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupWorkerVersionResult) int { return v.StartupTimeMs }).(pulumi.IntOutput)
+}
+
 // Deprecated: This attribute is deprecated.
 func (o LookupWorkerVersionResultOutput) UsageModel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkerVersionResult) string { return v.UsageModel }).(pulumi.StringOutput)
 }
 
 // Identifier for the version, which can be ID or the literal "latest" to operate on the most recently created version.
-func (o LookupWorkerVersionResultOutput) VersionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupWorkerVersionResult) *string { return v.VersionId }).(pulumi.StringPtrOutput)
+func (o LookupWorkerVersionResultOutput) VersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkerVersionResult) string { return v.VersionId }).(pulumi.StringOutput)
 }
 
 // Identifier for the Worker, which can be ID or name.

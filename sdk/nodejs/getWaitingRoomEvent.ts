@@ -31,7 +31,7 @@ export function getWaitingRoomEvent(args: GetWaitingRoomEventArgs, opts?: pulumi
  * A collection of arguments for invoking getWaitingRoomEvent.
  */
 export interface GetWaitingRoomEventArgs {
-    eventId?: string;
+    eventId: string;
     waitingRoomId: string;
     /**
      * Identifier.
@@ -60,7 +60,7 @@ export interface GetWaitingRoomEventResult {
      * An ISO 8601 timestamp that marks the end of the event.
      */
     readonly eventEndTime: string;
-    readonly eventId?: string;
+    readonly eventId: string;
     /**
      * An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `eventEndTime`.
      */
@@ -145,7 +145,7 @@ export function getWaitingRoomEventOutput(args: GetWaitingRoomEventOutputArgs, o
  * A collection of arguments for invoking getWaitingRoomEvent.
  */
 export interface GetWaitingRoomEventOutputArgs {
-    eventId?: pulumi.Input<string>;
+    eventId: pulumi.Input<string>;
     waitingRoomId: pulumi.Input<string>;
     /**
      * Identifier.

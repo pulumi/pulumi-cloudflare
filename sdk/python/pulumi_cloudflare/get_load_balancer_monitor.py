@@ -199,7 +199,7 @@ class GetLoadBalancerMonitorResult:
 
     @_builtins.property
     @pulumi.getter(name="monitorId")
-    def monitor_id(self) -> Optional[_builtins.str]:
+    def monitor_id(self) -> _builtins.str:
         return pulumi.get(self, "monitor_id")
 
     @_builtins.property
@@ -327,7 +327,7 @@ def get_load_balancer_monitor(account_id: Optional[_builtins.str] = None,
         timeout=pulumi.get(__ret__, 'timeout'),
         type=pulumi.get(__ret__, 'type'))
 def get_load_balancer_monitor_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                     monitor_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                     monitor_id: Optional[pulumi.Input[_builtins.str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLoadBalancerMonitorResult]:
     """
     ## Example Usage

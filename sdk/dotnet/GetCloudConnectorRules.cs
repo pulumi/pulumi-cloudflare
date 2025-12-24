@@ -112,7 +112,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetCloudConnectorRulesResult
     {
         /// <summary>
-        /// The ID of this resource.
+        /// Identifier.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetCloudConnectorRulesRuleResult> Rules;

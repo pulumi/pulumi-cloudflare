@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustDevicePostureIntegrationResult {
@@ -28,7 +26,7 @@ public final class GetZeroTrustDevicePostureIntegrationResult {
      * @return API UUID.
      * 
      */
-    private @Nullable String integrationId;
+    private String integrationId;
     /**
      * @return The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
      * 
@@ -68,8 +66,8 @@ public final class GetZeroTrustDevicePostureIntegrationResult {
      * @return API UUID.
      * 
      */
-    public Optional<String> integrationId() {
-        return Optional.ofNullable(this.integrationId);
+    public String integrationId() {
+        return this.integrationId;
     }
     /**
      * @return The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
@@ -106,7 +104,7 @@ public final class GetZeroTrustDevicePostureIntegrationResult {
         private String accountId;
         private GetZeroTrustDevicePostureIntegrationConfig config;
         private String id;
-        private @Nullable String integrationId;
+        private String integrationId;
         private String interval;
         private String name;
         private String type;
@@ -147,8 +145,10 @@ public final class GetZeroTrustDevicePostureIntegrationResult {
             return this;
         }
         @CustomType.Setter
-        public Builder integrationId(@Nullable String integrationId) {
-
+        public Builder integrationId(String integrationId) {
+            if (integrationId == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDevicePostureIntegrationResult", "integrationId");
+            }
             this.integrationId = integrationId;
             return this;
         }

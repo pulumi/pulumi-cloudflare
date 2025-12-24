@@ -161,6 +161,10 @@ class ApiShieldDiscoveryOperation(pulumi.CustomResource):
             state="review")
         ```
 
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] operation_id: UUID.
@@ -188,6 +192,10 @@ class ApiShieldDiscoveryOperation(pulumi.CustomResource):
             operation_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
             state="review")
         ```
+
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
 
         :param str resource_name: The name of the resource.
         :param ApiShieldDiscoveryOperationArgs args: The arguments to use to populate this resource's properties.

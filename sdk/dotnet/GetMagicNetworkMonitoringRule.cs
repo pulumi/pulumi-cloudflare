@@ -90,8 +90,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The id of the rule. Must be unique.
         /// </summary>
-        [Input("ruleId")]
-        public string? RuleId { get; set; }
+        [Input("ruleId", required: true)]
+        public string RuleId { get; set; } = null!;
 
         public GetMagicNetworkMonitoringRuleArgs()
         {
@@ -107,8 +107,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The id of the rule. Must be unique.
         /// </summary>
-        [Input("ruleId")]
-        public Input<string>? RuleId { get; set; }
+        [Input("ruleId", required: true)]
+        public Input<string> RuleId { get; set; } = null!;
 
         public GetMagicNetworkMonitoringRuleInvokeArgs()
         {
@@ -155,7 +155,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The id of the rule. Must be unique.
         /// </summary>
-        public readonly string? RuleId;
+        public readonly string RuleId;
         /// <summary>
         /// MNM rule type.
         /// Available values: "threshold", "zscore", "AdvancedDdos".
@@ -192,7 +192,7 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<string> prefixes,
 
-            string? ruleId,
+            string ruleId,
 
             string type,
 

@@ -28,7 +28,7 @@ public final class GetZeroTrustAccessShortLivedCertificateResult {
      */
     private String aud;
     /**
-     * @return The ID of the CA.
+     * @return UUID.
      * 
      */
     private String id;
@@ -66,7 +66,7 @@ public final class GetZeroTrustAccessShortLivedCertificateResult {
         return this.aud;
     }
     /**
-     * @return The ID of the CA.
+     * @return UUID.
      * 
      */
     public String id() {

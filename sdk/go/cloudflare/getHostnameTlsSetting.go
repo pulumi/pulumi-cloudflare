@@ -62,7 +62,8 @@ type LookupHostnameTlsSettingResult struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// The hostname for which the tls settings are set.
 	Hostname string `pulumi:"hostname"`
-	// The provider-assigned unique ID for this managed resource.
+	// The TLS Setting name.
+	// Available values: "ciphers", "min*tls*version", "http2".
 	Id string `pulumi:"id"`
 	// The TLS Setting name.
 	// Available values: "ciphers", "min*tls*version", "http2".
@@ -124,7 +125,8 @@ func (o LookupHostnameTlsSettingResultOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHostnameTlsSettingResult) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The TLS Setting name.
+// Available values: "ciphers", "min*tls*version", "http2".
 func (o LookupHostnameTlsSettingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHostnameTlsSettingResult) string { return v.Id }).(pulumi.StringOutput)
 }

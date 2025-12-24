@@ -46,6 +46,23 @@ public final class ZeroTrustGatewayProxyEndpointState extends com.pulumi.resourc
     }
 
     /**
+     * The proxy endpoint kind
+     * Available values: &#34;ip&#34;, &#34;identity&#34;.
+     * 
+     */
+    @Import(name="kind")
+    private @Nullable Output<String> kind;
+
+    /**
+     * @return The proxy endpoint kind
+     * Available values: &#34;ip&#34;, &#34;identity&#34;.
+     * 
+     */
+    public Optional<Output<String>> kind() {
+        return Optional.ofNullable(this.kind);
+    }
+
+    /**
      * Specify the name of the proxy endpoint.
      * 
      */
@@ -88,6 +105,7 @@ public final class ZeroTrustGatewayProxyEndpointState extends com.pulumi.resourc
         this.accountId = $.accountId;
         this.createdAt = $.createdAt;
         this.ips = $.ips;
+        this.kind = $.kind;
         this.name = $.name;
         this.subdomain = $.subdomain;
         this.updatedAt = $.updatedAt;
@@ -158,6 +176,29 @@ public final class ZeroTrustGatewayProxyEndpointState extends com.pulumi.resourc
          */
         public Builder ips(String... ips) {
             return ips(List.of(ips));
+        }
+
+        /**
+         * @param kind The proxy endpoint kind
+         * Available values: &#34;ip&#34;, &#34;identity&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kind(@Nullable Output<String> kind) {
+            $.kind = kind;
+            return this;
+        }
+
+        /**
+         * @param kind The proxy endpoint kind
+         * Available values: &#34;ip&#34;, &#34;identity&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kind(String kind) {
+            return kind(Output.of(kind));
         }
 
         /**

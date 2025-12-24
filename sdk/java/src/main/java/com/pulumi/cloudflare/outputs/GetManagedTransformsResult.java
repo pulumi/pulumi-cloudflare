@@ -14,7 +14,7 @@ import java.util.Objects;
 @CustomType
 public final class GetManagedTransformsResult {
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The unique ID of the zone.
      * 
      */
     private String id;
@@ -36,7 +36,7 @@ public final class GetManagedTransformsResult {
 
     private GetManagedTransformsResult() {}
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The unique ID of the zone.
      * 
      */
     public String id() {

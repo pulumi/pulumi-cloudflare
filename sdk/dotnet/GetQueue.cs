@@ -93,8 +93,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// A Resource identifier.
         /// </summary>
-        [Input("queueId")]
-        public string? QueueId { get; set; }
+        [Input("queueId", required: true)]
+        public string QueueId { get; set; } = null!;
 
         public GetQueueArgs()
         {
@@ -113,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// A Resource identifier.
         /// </summary>
-        [Input("queueId")]
-        public Input<string>? QueueId { get; set; }
+        [Input("queueId", required: true)]
+        public Input<string> QueueId { get; set; } = null!;
 
         public GetQueueInvokeArgs()
         {

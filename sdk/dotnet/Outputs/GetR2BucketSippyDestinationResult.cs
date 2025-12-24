@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Available values: "r2".
         /// </summary>
-        public readonly string Provider;
+        public readonly string R2BucketSippyProvider;
 
         [OutputConstructor]
         private GetR2BucketSippyDestinationResult(
@@ -36,12 +36,12 @@ namespace Pulumi.Cloudflare.Outputs
 
             string bucket,
 
-            string provider)
+            string r2BucketSippyProvider)
         {
             AccessKeyId = accessKeyId;
             Account = account;
             Bucket = bucket;
-            Provider = provider;
+            R2BucketSippyProvider = r2BucketSippyProvider;
         }
     }
 }

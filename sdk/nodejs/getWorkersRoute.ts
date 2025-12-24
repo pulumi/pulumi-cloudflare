@@ -32,7 +32,7 @@ export interface GetWorkersRouteArgs {
     /**
      * Identifier.
      */
-    routeId?: string;
+    routeId: string;
     /**
      * Identifier.
      */
@@ -54,7 +54,7 @@ export interface GetWorkersRouteResult {
     /**
      * Identifier.
      */
-    readonly routeId?: string;
+    readonly routeId: string;
     /**
      * Name of the script to run if the route matches.
      */
@@ -92,7 +92,7 @@ export interface GetWorkersRouteOutputArgs {
     /**
      * Identifier.
      */
-    routeId?: pulumi.Input<string>;
+    routeId: pulumi.Input<string>;
     /**
      * Identifier.
      */

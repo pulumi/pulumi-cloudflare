@@ -76,7 +76,7 @@ type LookupZeroTrustDeviceDefaultProfileResult struct {
 	Excludes        []GetZeroTrustDeviceDefaultProfileExclude        `pulumi:"excludes"`
 	FallbackDomains []GetZeroTrustDeviceDefaultProfileFallbackDomain `pulumi:"fallbackDomains"`
 	GatewayUniqueId string                                           `pulumi:"gatewayUniqueId"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this resource.
 	Id string `pulumi:"id"`
 	// List of routes included in the WARP client's tunnel.
 	Includes []GetZeroTrustDeviceDefaultProfileInclude `pulumi:"includes"`
@@ -192,7 +192,7 @@ func (o LookupZeroTrustDeviceDefaultProfileResultOutput) GatewayUniqueId() pulum
 	return o.ApplyT(func(v LookupZeroTrustDeviceDefaultProfileResult) string { return v.GatewayUniqueId }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this resource.
 func (o LookupZeroTrustDeviceDefaultProfileResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDeviceDefaultProfileResult) string { return v.Id }).(pulumi.StringOutput)
 }

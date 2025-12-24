@@ -59,7 +59,7 @@ type LookupMagicWanStaticRouteArgs struct {
 type LookupMagicWanStaticRouteResult struct {
 	// Identifier
 	AccountId string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
+	// Identifier
 	Id    string                      `pulumi:"id"`
 	Route GetMagicWanStaticRouteRoute `pulumi:"route"`
 	// Identifier
@@ -107,7 +107,7 @@ func (o LookupMagicWanStaticRouteResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMagicWanStaticRouteResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Identifier
 func (o LookupMagicWanStaticRouteResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMagicWanStaticRouteResult) string { return v.Id }).(pulumi.StringOutput)
 }

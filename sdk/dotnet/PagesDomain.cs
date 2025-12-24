@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         ProjectName = "this-is-my-project-01",
-    ///         Name = "example.com",
+    ///         Name = "this-is-my-domain-01.com",
     ///     });
     /// 
     /// });
@@ -43,7 +43,7 @@ namespace Pulumi.Cloudflare
     public partial class PagesDomain : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -60,6 +60,9 @@ namespace Pulumi.Cloudflare
         [Output("domainId")]
         public Output<string> DomainId { get; private set; } = null!;
 
+        /// <summary>
+        /// The domain name.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -131,11 +134,14 @@ namespace Pulumi.Cloudflare
     public sealed class PagesDomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
+        /// <summary>
+        /// The domain name.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
@@ -154,7 +160,7 @@ namespace Pulumi.Cloudflare
     public sealed class PagesDomainState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -171,6 +177,9 @@ namespace Pulumi.Cloudflare
         [Input("domainId")]
         public Input<string>? DomainId { get; set; }
 
+        /// <summary>
+        /// The domain name.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

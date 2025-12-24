@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -22,6 +23,21 @@ public final class MagicTransitConnectorDeviceArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.id);
     }
 
+    /**
+     * Set to true to provision a license key for this connector. Only used during resource creation. This is a write-only field that will not be stored in state.
+     * 
+     */
+    @Import(name="provisionLicense")
+    private @Nullable Output<Boolean> provisionLicense;
+
+    /**
+     * @return Set to true to provision a license key for this connector. Only used during resource creation. This is a write-only field that will not be stored in state.
+     * 
+     */
+    public Optional<Output<Boolean>> provisionLicense() {
+        return Optional.ofNullable(this.provisionLicense);
+    }
+
     @Import(name="serialNumber")
     private @Nullable Output<String> serialNumber;
 
@@ -33,6 +49,7 @@ public final class MagicTransitConnectorDeviceArgs extends com.pulumi.resources.
 
     private MagicTransitConnectorDeviceArgs(MagicTransitConnectorDeviceArgs $) {
         this.id = $.id;
+        this.provisionLicense = $.provisionLicense;
         this.serialNumber = $.serialNumber;
     }
 
@@ -61,6 +78,27 @@ public final class MagicTransitConnectorDeviceArgs extends com.pulumi.resources.
 
         public Builder id(String id) {
             return id(Output.of(id));
+        }
+
+        /**
+         * @param provisionLicense Set to true to provision a license key for this connector. Only used during resource creation. This is a write-only field that will not be stored in state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionLicense(@Nullable Output<Boolean> provisionLicense) {
+            $.provisionLicense = provisionLicense;
+            return this;
+        }
+
+        /**
+         * @param provisionLicense Set to true to provision a license key for this connector. Only used during resource creation. This is a write-only field that will not be stored in state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionLicense(Boolean provisionLicense) {
+            return provisionLicense(Output.of(provisionLicense));
         }
 
         public Builder serialNumber(@Nullable Output<String> serialNumber) {

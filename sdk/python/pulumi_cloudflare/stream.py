@@ -608,6 +608,10 @@ class Stream(pulumi.CustomResource):
         example_stream = cloudflare.Stream("example_stream", account_id="023e105f4ecef8ad9ca31a8372d0c353")
         ```
 
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
@@ -636,6 +640,10 @@ class Stream(pulumi.CustomResource):
 
         example_stream = cloudflare.Stream("example_stream", account_id="023e105f4ecef8ad9ca31a8372d0c353")
         ```
+
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
 
         :param str resource_name: The name of the resource.
         :param StreamArgs args: The arguments to use to populate this resource's properties.

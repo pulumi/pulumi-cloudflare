@@ -36,6 +36,10 @@ namespace Pulumi.Cloudflare
     ///             } },
     ///             { "md5Key", "md5_key" },
     ///         },
+    ///         CustomRemoteIdentities = 
+    ///         {
+    ///             { "fqdnId", "fqdn_id" },
+    ///         },
     ///         CustomerEndpoint = "203.0.113.1",
     ///         Description = "Tunnel for ISP X",
     ///         HealthCheck = new Cloudflare.Inputs.MagicWanIpsecTunnelHealthCheckArgs

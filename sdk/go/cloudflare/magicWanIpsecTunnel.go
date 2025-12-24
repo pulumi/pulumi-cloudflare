@@ -39,6 +39,9 @@ import (
 //					},
 //					"md5Key": "md5_key",
 //				},
+//				CustomRemoteIdentities: map[string]interface{}{
+//					"fqdnId": "fqdn_id",
+//				},
 //				CustomerEndpoint: pulumi.String("203.0.113.1"),
 //				Description:      pulumi.String("Tunnel for ISP X"),
 //				HealthCheck: &cloudflare.MagicWanIpsecTunnelHealthCheckArgs{

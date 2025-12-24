@@ -25,13 +25,19 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Bucket { get; set; }
 
         /// <summary>
+        /// URL to the S3-compatible API of the bucket.
+        /// </summary>
+        [Input("bucketUrl")]
+        public Input<string>? BucketUrl { get; set; }
+
+        /// <summary>
         /// Client email of an IAM credential (ideally scoped to a single GCS bucket).
         /// </summary>
         [Input("clientEmail")]
         public Input<string>? ClientEmail { get; set; }
 
         /// <summary>
-        /// Available values: "aws", "gcs".
+        /// Available values: "aws", "gcs", "s3".
         /// </summary>
         [Input("cloudProvider")]
         public Input<string>? CloudProvider { get; set; }

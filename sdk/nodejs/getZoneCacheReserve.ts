@@ -42,8 +42,7 @@ export interface GetZoneCacheReserveResult {
      */
     readonly editable: boolean;
     /**
-     * The identifier of the caching setting.
-     * Available values: "cacheReserve".
+     * Identifier.
      */
     readonly id: string;
     /**

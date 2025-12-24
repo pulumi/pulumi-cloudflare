@@ -13,72 +13,18 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Cloudflare = Pulumi.Cloudflare;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var exampleQueueConsumer = Cloudflare.GetQueueConsumer.Invoke(new()
-        ///     {
-        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         QueueId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         ConsumerId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetQueueConsumerResult> InvokeAsync(GetQueueConsumerArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetQueueConsumerResult>("cloudflare:index/getQueueConsumer:getQueueConsumer", args ?? new GetQueueConsumerArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Cloudflare = Pulumi.Cloudflare;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var exampleQueueConsumer = Cloudflare.GetQueueConsumer.Invoke(new()
-        ///     {
-        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         QueueId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         ConsumerId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetQueueConsumerResult> Invoke(GetQueueConsumerInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetQueueConsumerResult>("cloudflare:index/getQueueConsumer:getQueueConsumer", args ?? new GetQueueConsumerInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Cloudflare = Pulumi.Cloudflare;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var exampleQueueConsumer = Cloudflare.GetQueueConsumer.Invoke(new()
-        ///     {
-        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         QueueId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         ConsumerId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetQueueConsumerResult> Invoke(GetQueueConsumerInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetQueueConsumerResult>("cloudflare:index/getQueueConsumer:getQueueConsumer", args ?? new GetQueueConsumerInvokeArgs(), options.WithDefaults());
@@ -92,12 +38,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
-
-        /// <summary>
-        /// A Resource identifier.
-        /// </summary>
-        [Input("consumerId", required: true)]
-        public string ConsumerId { get; set; } = null!;
 
         /// <summary>
         /// A Resource identifier.
@@ -118,12 +58,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
-
-        /// <summary>
-        /// A Resource identifier.
-        /// </summary>
-        [Input("consumerId", required: true)]
-        public Input<string> ConsumerId { get; set; } = null!;
 
         /// <summary>
         /// A Resource identifier.

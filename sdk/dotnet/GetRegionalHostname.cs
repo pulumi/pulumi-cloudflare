@@ -87,8 +87,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
         /// </summary>
-        [Input("hostname")]
-        public string? Hostname { get; set; }
+        [Input("hostname", required: true)]
+        public string Hostname { get; set; } = null!;
 
         /// <summary>
         /// Identifier.
@@ -107,8 +107,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
         /// </summary>
-        [Input("hostname")]
-        public Input<string>? Hostname { get; set; }
+        [Input("hostname", required: true)]
+        public Input<string> Hostname { get; set; } = null!;
 
         /// <summary>
         /// Identifier.

@@ -150,7 +150,7 @@ class GetNotificationPolicyResult:
 
     @_builtins.property
     @pulumi.getter(name="policyId")
-    def policy_id(self) -> Optional[_builtins.str]:
+    def policy_id(self) -> _builtins.str:
         """
         The unique identifier of a notification policy
         """
@@ -215,7 +215,7 @@ def get_notification_policy(account_id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         policy_id=pulumi.get(__ret__, 'policy_id'))
 def get_notification_policy_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                   policy_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                   policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNotificationPolicyResult]:
     """
     ## Example Usage

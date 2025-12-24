@@ -44,8 +44,7 @@ export interface GetZoneCacheVariantsResult {
      */
     readonly editable: boolean;
     /**
-     * The identifier of the caching setting.
-     * Available values: "variants".
+     * Identifier.
      */
     readonly id: string;
     /**

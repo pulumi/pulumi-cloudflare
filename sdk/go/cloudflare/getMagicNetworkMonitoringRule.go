@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupMagicNetworkMonitoringRule(ctx, &cloudflare.LookupMagicNetworkMonitoringRuleArgs{
 //				AccountId: "6f91088a406011ed95aed352566e8d4c",
-//				RuleId:    pulumi.StringRef("2890e6fa406311ed9b5a23f70f6fb8cf"),
+//				RuleId:    "2890e6fa406311ed9b5a23f70f6fb8cf",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,7 +51,7 @@ func LookupMagicNetworkMonitoringRule(ctx *pulumi.Context, args *LookupMagicNetw
 type LookupMagicNetworkMonitoringRuleArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// The id of the rule. Must be unique.
-	RuleId *string `pulumi:"ruleId"`
+	RuleId string `pulumi:"ruleId"`
 }
 
 // A collection of values returned by getMagicNetworkMonitoringRule.
@@ -75,7 +75,7 @@ type LookupMagicNetworkMonitoringRuleResult struct {
 	PrefixMatch string   `pulumi:"prefixMatch"`
 	Prefixes    []string `pulumi:"prefixes"`
 	// The id of the rule. Must be unique.
-	RuleId *string `pulumi:"ruleId"`
+	RuleId string `pulumi:"ruleId"`
 	// MNM rule type.
 	// Available values: "threshold", "zscore", "advancedDdos".
 	Type string `pulumi:"type"`
@@ -100,7 +100,7 @@ func LookupMagicNetworkMonitoringRuleOutput(ctx *pulumi.Context, args LookupMagi
 type LookupMagicNetworkMonitoringRuleOutputArgs struct {
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The id of the rule. Must be unique.
-	RuleId pulumi.StringPtrInput `pulumi:"ruleId"`
+	RuleId pulumi.StringInput `pulumi:"ruleId"`
 }
 
 func (LookupMagicNetworkMonitoringRuleOutputArgs) ElementType() reflect.Type {
@@ -168,8 +168,8 @@ func (o LookupMagicNetworkMonitoringRuleResultOutput) Prefixes() pulumi.StringAr
 }
 
 // The id of the rule. Must be unique.
-func (o LookupMagicNetworkMonitoringRuleResultOutput) RuleId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMagicNetworkMonitoringRuleResult) *string { return v.RuleId }).(pulumi.StringPtrOutput)
+func (o LookupMagicNetworkMonitoringRuleResultOutput) RuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMagicNetworkMonitoringRuleResult) string { return v.RuleId }).(pulumi.StringOutput)
 }
 
 // MNM rule type.

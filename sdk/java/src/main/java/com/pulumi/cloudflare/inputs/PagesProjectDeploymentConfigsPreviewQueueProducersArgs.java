@@ -5,10 +5,9 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class PagesProjectDeploymentConfigsPreviewQueueProducersArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,15 +18,15 @@ public final class PagesProjectDeploymentConfigsPreviewQueueProducersArgs extend
      * Name of the Queue.
      * 
      */
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
     /**
      * @return Name of the Queue.
      * 
      */
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
     private PagesProjectDeploymentConfigsPreviewQueueProducersArgs() {}
@@ -60,7 +59,7 @@ public final class PagesProjectDeploymentConfigsPreviewQueueProducersArgs extend
          * @return builder
          * 
          */
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
@@ -76,6 +75,9 @@ public final class PagesProjectDeploymentConfigsPreviewQueueProducersArgs extend
         }
 
         public PagesProjectDeploymentConfigsPreviewQueueProducersArgs build() {
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("PagesProjectDeploymentConfigsPreviewQueueProducersArgs", "name");
+            }
             return $;
         }
     }

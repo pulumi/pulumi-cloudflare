@@ -138,7 +138,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Expression;
         /// <summary>
-        /// The ID of the rule.
+        /// The ID of this resource.
         /// </summary>
         public readonly string Id;
         public readonly string LastUpdated;

@@ -16,85 +16,60 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _deletedClasses;
 
         /// <summary>
-        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         /// A list of classes to delete Durable Object namespaces from.
         /// </summary>
         public InputList<string> DeletedClasses
         {
             get => _deletedClasses ?? (_deletedClasses = new InputList<string>());
-            set
-            {
-                var emptySecret = Output.CreateSecret(ImmutableArray.Create<string>());
-                _deletedClasses = Output.All(value, emptySecret).Apply(v => v[0]);
-            }
+            set => _deletedClasses = value;
         }
 
         [Input("newClasses")]
         private InputList<string>? _newClasses;
 
         /// <summary>
-        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         /// A list of classes to create Durable Object namespaces from.
         /// </summary>
         public InputList<string> NewClasses
         {
             get => _newClasses ?? (_newClasses = new InputList<string>());
-            set
-            {
-                var emptySecret = Output.CreateSecret(ImmutableArray.Create<string>());
-                _newClasses = Output.All(value, emptySecret).Apply(v => v[0]);
-            }
+            set => _newClasses = value;
         }
 
         [Input("newSqliteClasses")]
         private InputList<string>? _newSqliteClasses;
 
         /// <summary>
-        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         /// A list of classes to create Durable Object namespaces with SQLite from.
         /// </summary>
         public InputList<string> NewSqliteClasses
         {
             get => _newSqliteClasses ?? (_newSqliteClasses = new InputList<string>());
-            set
-            {
-                var emptySecret = Output.CreateSecret(ImmutableArray.Create<string>());
-                _newSqliteClasses = Output.All(value, emptySecret).Apply(v => v[0]);
-            }
+            set => _newSqliteClasses = value;
         }
 
         [Input("renamedClasses")]
         private InputList<Inputs.WorkersScriptMigrationsStepRenamedClassGetArgs>? _renamedClasses;
 
         /// <summary>
-        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         /// A list of classes with Durable Object namespaces that were renamed.
         /// </summary>
         public InputList<Inputs.WorkersScriptMigrationsStepRenamedClassGetArgs> RenamedClasses
         {
             get => _renamedClasses ?? (_renamedClasses = new InputList<Inputs.WorkersScriptMigrationsStepRenamedClassGetArgs>());
-            set
-            {
-                var emptySecret = Output.CreateSecret(ImmutableArray.Create<Inputs.WorkersScriptMigrationsStepRenamedClassGetArgs>());
-                _renamedClasses = Output.All(value, emptySecret).Apply(v => v[0]);
-            }
+            set => _renamedClasses = value;
         }
 
         [Input("transferredClasses")]
         private InputList<Inputs.WorkersScriptMigrationsStepTransferredClassGetArgs>? _transferredClasses;
 
         /// <summary>
-        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         /// A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
         /// </summary>
         public InputList<Inputs.WorkersScriptMigrationsStepTransferredClassGetArgs> TransferredClasses
         {
             get => _transferredClasses ?? (_transferredClasses = new InputList<Inputs.WorkersScriptMigrationsStepTransferredClassGetArgs>());
-            set
-            {
-                var emptySecret = Output.CreateSecret(ImmutableArray.Create<Inputs.WorkersScriptMigrationsStepTransferredClassGetArgs>());
-                _transferredClasses = Output.All(value, emptySecret).Apply(v => v[0]);
-            }
+            set => _transferredClasses = value;
         }
 
         public WorkersScriptMigrationsStepGetArgs()

@@ -16,6 +16,10 @@ import * as utilities from "./utilities";
  *     zoneId: "zone_id",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ~> This resource does not currently support `pulumi import`.
  */
 export class LogpushOwnershipChallenge extends pulumi.CustomResource {
     /**

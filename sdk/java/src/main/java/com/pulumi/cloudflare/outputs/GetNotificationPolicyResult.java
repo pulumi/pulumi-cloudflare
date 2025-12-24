@@ -10,8 +10,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNotificationPolicyResult {
@@ -67,7 +65,7 @@ public final class GetNotificationPolicyResult {
      * @return The unique identifier of a notification policy
      * 
      */
-    private @Nullable String policyId;
+    private String policyId;
 
     private GetNotificationPolicyResult() {}
     /**
@@ -144,8 +142,8 @@ public final class GetNotificationPolicyResult {
      * @return The unique identifier of a notification policy
      * 
      */
-    public Optional<String> policyId() {
-        return Optional.ofNullable(this.policyId);
+    public String policyId() {
+        return this.policyId;
     }
 
     public static Builder builder() {
@@ -168,7 +166,7 @@ public final class GetNotificationPolicyResult {
         private GetNotificationPolicyMechanisms mechanisms;
         private String modified;
         private String name;
-        private @Nullable String policyId;
+        private String policyId;
         public Builder() {}
         public Builder(GetNotificationPolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -275,8 +273,10 @@ public final class GetNotificationPolicyResult {
             return this;
         }
         @CustomType.Setter
-        public Builder policyId(@Nullable String policyId) {
-
+        public Builder policyId(String policyId) {
+            if (policyId == null) {
+              throw new MissingRequiredPropertyException("GetNotificationPolicyResult", "policyId");
+            }
             this.policyId = policyId;
             return this;
         }

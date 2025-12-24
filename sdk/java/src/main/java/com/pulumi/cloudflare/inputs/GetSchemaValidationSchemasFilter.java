@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,21 +13,6 @@ import javax.annotation.Nullable;
 public final class GetSchemaValidationSchemasFilter extends com.pulumi.resources.InvokeArgs {
 
     public static final GetSchemaValidationSchemasFilter Empty = new GetSchemaValidationSchemasFilter();
-
-    /**
-     * Omit the source-files of schemas and only retrieve their meta-data.
-     * 
-     */
-    @Import(name="omitSource", required=true)
-    private Boolean omitSource;
-
-    /**
-     * @return Omit the source-files of schemas and only retrieve their meta-data.
-     * 
-     */
-    public Boolean omitSource() {
-        return this.omitSource;
-    }
 
     /**
      * Filter for enabled schemas
@@ -48,7 +32,6 @@ public final class GetSchemaValidationSchemasFilter extends com.pulumi.resources
     private GetSchemaValidationSchemasFilter() {}
 
     private GetSchemaValidationSchemasFilter(GetSchemaValidationSchemasFilter $) {
-        this.omitSource = $.omitSource;
         this.validationEnabled = $.validationEnabled;
     }
 
@@ -71,17 +54,6 @@ public final class GetSchemaValidationSchemasFilter extends com.pulumi.resources
         }
 
         /**
-         * @param omitSource Omit the source-files of schemas and only retrieve their meta-data.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder omitSource(Boolean omitSource) {
-            $.omitSource = omitSource;
-            return this;
-        }
-
-        /**
          * @param validationEnabled Filter for enabled schemas
          * 
          * @return builder
@@ -93,9 +65,6 @@ public final class GetSchemaValidationSchemasFilter extends com.pulumi.resources
         }
 
         public GetSchemaValidationSchemasFilter build() {
-            if ($.omitSource == null) {
-                throw new MissingRequiredPropertyException("GetSchemaValidationSchemasFilter", "omitSource");
-            }
             return $;
         }
     }

@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetWaitingRoomSettingsResult {
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Identifier.
      * 
      */
     private String id;
@@ -31,7 +31,7 @@ public final class GetWaitingRoomSettingsResult {
 
     private GetWaitingRoomSettingsResult() {}
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Identifier.
      * 
      */
     public String id() {

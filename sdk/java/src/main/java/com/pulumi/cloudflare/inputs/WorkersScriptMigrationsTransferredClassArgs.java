@@ -15,47 +15,23 @@ public final class WorkersScriptMigrationsTransferredClassArgs extends com.pulum
 
     public static final WorkersScriptMigrationsTransferredClassArgs Empty = new WorkersScriptMigrationsTransferredClassArgs();
 
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * 
-     */
     @Import(name="from")
     private @Nullable Output<String> from;
 
-    /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * 
-     */
     public Optional<Output<String>> from() {
         return Optional.ofNullable(this.from);
     }
 
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * 
-     */
     @Import(name="fromScript")
     private @Nullable Output<String> fromScript;
 
-    /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * 
-     */
     public Optional<Output<String>> fromScript() {
         return Optional.ofNullable(this.fromScript);
     }
 
-    /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * 
-     */
     @Import(name="to")
     private @Nullable Output<String> to;
 
-    /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * 
-     */
     public Optional<Output<String>> to() {
         return Optional.ofNullable(this.to);
     }
@@ -86,65 +62,29 @@ public final class WorkersScriptMigrationsTransferredClassArgs extends com.pulum
             $ = new WorkersScriptMigrationsTransferredClassArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param from **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * 
-         * @return builder
-         * 
-         */
         public Builder from(@Nullable Output<String> from) {
             $.from = from;
             return this;
         }
 
-        /**
-         * @param from **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * 
-         * @return builder
-         * 
-         */
         public Builder from(String from) {
             return from(Output.of(from));
         }
 
-        /**
-         * @param fromScript **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * 
-         * @return builder
-         * 
-         */
         public Builder fromScript(@Nullable Output<String> fromScript) {
             $.fromScript = fromScript;
             return this;
         }
 
-        /**
-         * @param fromScript **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * 
-         * @return builder
-         * 
-         */
         public Builder fromScript(String fromScript) {
             return fromScript(Output.of(fromScript));
         }
 
-        /**
-         * @param to **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * 
-         * @return builder
-         * 
-         */
         public Builder to(@Nullable Output<String> to) {
             $.to = to;
             return this;
         }
 
-        /**
-         * @param to **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * 
-         * @return builder
-         * 
-         */
         public Builder to(String to) {
             return to(Output.of(to));
         }

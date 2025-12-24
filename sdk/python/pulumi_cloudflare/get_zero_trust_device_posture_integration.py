@@ -73,7 +73,7 @@ class GetZeroTrustDevicePostureIntegrationResult:
 
     @_builtins.property
     @pulumi.getter(name="integrationId")
-    def integration_id(self) -> Optional[_builtins.str]:
+    def integration_id(self) -> _builtins.str:
         """
         API UUID.
         """
@@ -152,7 +152,7 @@ def get_zero_trust_device_posture_integration(account_id: Optional[_builtins.str
         name=pulumi.get(__ret__, 'name'),
         type=pulumi.get(__ret__, 'type'))
 def get_zero_trust_device_posture_integration_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                                     integration_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                                     integration_id: Optional[pulumi.Input[_builtins.str]] = None,
                                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDevicePostureIntegrationResult]:
     """
     ## Example Usage

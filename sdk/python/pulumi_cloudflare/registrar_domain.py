@@ -217,6 +217,10 @@ class RegistrarDomain(pulumi.CustomResource):
             privacy=True)
         ```
 
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier
@@ -245,6 +249,10 @@ class RegistrarDomain(pulumi.CustomResource):
             locked=False,
             privacy=True)
         ```
+
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
 
         :param str resource_name: The name of the resource.
         :param RegistrarDomainArgs args: The arguments to use to populate this resource's properties.

@@ -87,8 +87,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("healthcheckId")]
-        public string? HealthcheckId { get; set; }
+        [Input("healthcheckId", required: true)]
+        public string HealthcheckId { get; set; } = null!;
 
         /// <summary>
         /// Identifier
@@ -107,8 +107,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("healthcheckId")]
-        public Input<string>? HealthcheckId { get; set; }
+        [Input("healthcheckId", required: true)]
+        public Input<string> HealthcheckId { get; set; } = null!;
 
         /// <summary>
         /// Identifier
@@ -154,7 +154,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        public readonly string? HealthcheckId;
+        public readonly string HealthcheckId;
         /// <summary>
         /// Parameters specific to an HTTP or HTTPS health check.
         /// </summary>
@@ -218,7 +218,7 @@ namespace Pulumi.Cloudflare
 
             string failureReason,
 
-            string? healthcheckId,
+            string healthcheckId,
 
             Outputs.GetHealthcheckHttpConfigResult httpConfig,
 

@@ -37,8 +37,8 @@ import (
 //					Config: &cloudflare.WorkerVersionAssetsConfigArgs{
 //						HtmlHandling:     pulumi.String("auto-trailing-slash"),
 //						NotFoundHandling: pulumi.String("404-page"),
-//						RunWorkerFirsts: pulumi.StringArray{
-//							pulumi.String("string"),
+//						RunWorkerFirst: pulumi.Any{
+//							"string",
 //						},
 //					},
 //					Jwt: pulumi.String("jwt"),
@@ -145,6 +145,8 @@ type WorkerVersion struct {
 	Placement WorkerVersionPlacementPtrOutput `pulumi:"placement"`
 	// The client used to create the version.
 	Source pulumi.StringOutput `pulumi:"source"`
+	// Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
+	StartupTimeMs pulumi.IntOutput `pulumi:"startupTimeMs"`
 	// Usage model for the version.
 	// Available values: "standard", "bundled", "unbound".
 	//
@@ -223,6 +225,8 @@ type workerVersionState struct {
 	Placement *WorkerVersionPlacement `pulumi:"placement"`
 	// The client used to create the version.
 	Source *string `pulumi:"source"`
+	// Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
+	StartupTimeMs *int `pulumi:"startupTimeMs"`
 	// Usage model for the version.
 	// Available values: "standard", "bundled", "unbound".
 	//
@@ -266,6 +270,8 @@ type WorkerVersionState struct {
 	Placement WorkerVersionPlacementPtrInput
 	// The client used to create the version.
 	Source pulumi.StringPtrInput
+	// Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
+	StartupTimeMs pulumi.IntPtrInput
 	// Usage model for the version.
 	// Available values: "standard", "bundled", "unbound".
 	//
@@ -514,6 +520,11 @@ func (o WorkerVersionOutput) Placement() WorkerVersionPlacementPtrOutput {
 // The client used to create the version.
 func (o WorkerVersionOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerVersion) pulumi.StringOutput { return v.Source }).(pulumi.StringOutput)
+}
+
+// Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
+func (o WorkerVersionOutput) StartupTimeMs() pulumi.IntOutput {
+	return o.ApplyT(func(v *WorkerVersion) pulumi.IntOutput { return v.StartupTimeMs }).(pulumi.IntOutput)
 }
 
 // Usage model for the version.

@@ -349,6 +349,10 @@ class R2CustomDomain(pulumi.CustomResource):
             min_tls="1.0")
         ```
 
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account ID.
@@ -383,6 +387,10 @@ class R2CustomDomain(pulumi.CustomResource):
             ciphers=["string"],
             min_tls="1.0")
         ```
+
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
 
         :param str resource_name: The name of the resource.
         :param R2CustomDomainArgs args: The arguments to use to populate this resource's properties.

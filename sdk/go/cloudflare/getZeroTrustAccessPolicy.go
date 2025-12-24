@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupZeroTrustAccessPolicy(ctx, &cloudflare.LookupZeroTrustAccessPolicyArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
-//				PolicyId:  pulumi.StringRef("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
+//				PolicyId:  "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -52,7 +52,7 @@ type LookupZeroTrustAccessPolicyArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// The UUID of the policy
-	PolicyId *string `pulumi:"policyId"`
+	PolicyId string `pulumi:"policyId"`
 }
 
 // A collection of values returned by getZeroTrustAccessPolicy.
@@ -80,7 +80,7 @@ type LookupZeroTrustAccessPolicyResult struct {
 	// The name of the Access policy.
 	Name string `pulumi:"name"`
 	// The UUID of the policy
-	PolicyId *string `pulumi:"policyId"`
+	PolicyId string `pulumi:"policyId"`
 	// A custom message that will appear on the purpose justification screen.
 	PurposeJustificationPrompt string `pulumi:"purposeJustificationPrompt"`
 	// Require users to enter a justification when they log in to the application.
@@ -107,7 +107,7 @@ type LookupZeroTrustAccessPolicyOutputArgs struct {
 	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The UUID of the policy
-	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
+	PolicyId pulumi.StringInput `pulumi:"policyId"`
 }
 
 func (LookupZeroTrustAccessPolicyOutputArgs) ElementType() reflect.Type {
@@ -187,8 +187,8 @@ func (o LookupZeroTrustAccessPolicyResultOutput) Name() pulumi.StringOutput {
 }
 
 // The UUID of the policy
-func (o LookupZeroTrustAccessPolicyResultOutput) PolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupZeroTrustAccessPolicyResult) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
+func (o LookupZeroTrustAccessPolicyResultOutput) PolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessPolicyResult) string { return v.PolicyId }).(pulumi.StringOutput)
 }
 
 // A custom message that will appear on the purpose justification screen.

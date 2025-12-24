@@ -414,14 +414,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version. (Mac, iOS, and Linux only).
+     * Additional operating system version details. For Windows, the UBR (Update Build Revision). For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version.
      * 
      */
     @Import(name="osVersionExtra")
     private @Nullable Output<String> osVersionExtra;
 
     /**
-     * @return Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version. (Mac, iOS, and Linux only).
+     * @return Additional operating system version details. For Windows, the UBR (Update Build Revision). For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version.
      * 
      */
     public Optional<Output<String>> osVersionExtra() {
@@ -615,6 +615,21 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
+     * Number of days that the antivirus should be updated within.
+     * 
+     */
+    @Import(name="updateWindowDays")
+    private @Nullable Output<Double> updateWindowDays;
+
+    /**
+     * @return Number of days that the antivirus should be updated within.
+     * 
+     */
+    public Optional<Output<Double>> updateWindowDays() {
+        return Optional.ofNullable(this.updateWindowDays);
+    }
+
+    /**
      * Version of OS.
      * 
      */
@@ -688,6 +703,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         this.subjectAlternativeNames = $.subjectAlternativeNames;
         this.thumbprint = $.thumbprint;
         this.totalScore = $.totalScore;
+        this.updateWindowDays = $.updateWindowDays;
         this.version = $.version;
         this.versionOperator = $.versionOperator;
     }
@@ -1277,7 +1293,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param osVersionExtra Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version. (Mac, iOS, and Linux only).
+         * @param osVersionExtra Additional operating system version details. For Windows, the UBR (Update Build Revision). For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version.
          * 
          * @return builder
          * 
@@ -1288,7 +1304,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param osVersionExtra Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version. (Mac, iOS, and Linux only).
+         * @param osVersionExtra Additional operating system version details. For Windows, the UBR (Update Build Revision). For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version.
          * 
          * @return builder
          * 
@@ -1563,6 +1579,27 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
          */
         public Builder totalScore(Double totalScore) {
             return totalScore(Output.of(totalScore));
+        }
+
+        /**
+         * @param updateWindowDays Number of days that the antivirus should be updated within.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateWindowDays(@Nullable Output<Double> updateWindowDays) {
+            $.updateWindowDays = updateWindowDays;
+            return this;
+        }
+
+        /**
+         * @param updateWindowDays Number of days that the antivirus should be updated within.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateWindowDays(Double updateWindowDays) {
+            return updateWindowDays(Output.of(updateWindowDays));
         }
 
         /**

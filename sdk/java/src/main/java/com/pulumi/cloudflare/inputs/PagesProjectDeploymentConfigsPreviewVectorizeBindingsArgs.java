@@ -5,21 +5,20 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class PagesProjectDeploymentConfigsPreviewVectorizeBindingsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PagesProjectDeploymentConfigsPreviewVectorizeBindingsArgs Empty = new PagesProjectDeploymentConfigsPreviewVectorizeBindingsArgs();
 
-    @Import(name="indexName")
-    private @Nullable Output<String> indexName;
+    @Import(name="indexName", required=true)
+    private Output<String> indexName;
 
-    public Optional<Output<String>> indexName() {
-        return Optional.ofNullable(this.indexName);
+    public Output<String> indexName() {
+        return this.indexName;
     }
 
     private PagesProjectDeploymentConfigsPreviewVectorizeBindingsArgs() {}
@@ -46,7 +45,7 @@ public final class PagesProjectDeploymentConfigsPreviewVectorizeBindingsArgs ext
             $ = new PagesProjectDeploymentConfigsPreviewVectorizeBindingsArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder indexName(@Nullable Output<String> indexName) {
+        public Builder indexName(Output<String> indexName) {
             $.indexName = indexName;
             return this;
         }
@@ -56,6 +55,9 @@ public final class PagesProjectDeploymentConfigsPreviewVectorizeBindingsArgs ext
         }
 
         public PagesProjectDeploymentConfigsPreviewVectorizeBindingsArgs build() {
+            if ($.indexName == null) {
+                throw new MissingRequiredPropertyException("PagesProjectDeploymentConfigsPreviewVectorizeBindingsArgs", "indexName");
+            }
             return $;
         }
     }

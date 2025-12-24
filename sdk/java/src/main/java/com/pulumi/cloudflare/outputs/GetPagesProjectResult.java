@@ -18,7 +18,7 @@ import java.util.Objects;
 @CustomType
 public final class GetPagesProjectResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String accountId;
@@ -58,7 +58,7 @@ public final class GetPagesProjectResult {
      */
     private String frameworkVersion;
     /**
-     * @return ID of the project.
+     * @return Name of the project.
      * 
      */
     private String id;
@@ -92,6 +92,10 @@ public final class GetPagesProjectResult {
      * 
      */
     private String projectName;
+    /**
+     * @return Configs for the project source control.
+     * 
+     */
     private GetPagesProjectSource source;
     /**
      * @return The Cloudflare subdomain associated with the project.
@@ -106,7 +110,7 @@ public final class GetPagesProjectResult {
 
     private GetPagesProjectResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -162,7 +166,7 @@ public final class GetPagesProjectResult {
         return this.frameworkVersion;
     }
     /**
-     * @return ID of the project.
+     * @return Name of the project.
      * 
      */
     public String id() {
@@ -210,6 +214,10 @@ public final class GetPagesProjectResult {
     public String projectName() {
         return this.projectName;
     }
+    /**
+     * @return Configs for the project source control.
+     * 
+     */
     public GetPagesProjectSource source() {
         return this.source;
     }

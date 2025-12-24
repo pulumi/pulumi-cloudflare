@@ -16,6 +16,10 @@ import * as utilities from "./utilities";
  *     identifier: "ea95132c15732412d22c1476fa83f27a",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ~> This resource does not currently support `pulumi import`.
  */
 export class StreamDownload extends pulumi.CustomResource {
     /**

@@ -9,8 +9,6 @@ import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDnsZoneTransfersPeerResult {
@@ -35,7 +33,7 @@ public final class GetDnsZoneTransfersPeerResult {
      * 
      */
     private String name;
-    private @Nullable String peerId;
+    private String peerId;
     /**
      * @return DNS port of primary or secondary nameserver, depending on what zone this peer is linked to.
      * 
@@ -79,8 +77,8 @@ public final class GetDnsZoneTransfersPeerResult {
     public String name() {
         return this.name;
     }
-    public Optional<String> peerId() {
-        return Optional.ofNullable(this.peerId);
+    public String peerId() {
+        return this.peerId;
     }
     /**
      * @return DNS port of primary or secondary nameserver, depending on what zone this peer is linked to.
@@ -111,7 +109,7 @@ public final class GetDnsZoneTransfersPeerResult {
         private String ip;
         private Boolean ixfrEnable;
         private String name;
-        private @Nullable String peerId;
+        private String peerId;
         private Double port;
         private String tsigId;
         public Builder() {}
@@ -168,8 +166,10 @@ public final class GetDnsZoneTransfersPeerResult {
             return this;
         }
         @CustomType.Setter
-        public Builder peerId(@Nullable String peerId) {
-
+        public Builder peerId(String peerId) {
+            if (peerId == null) {
+              throw new MissingRequiredPropertyException("GetDnsZoneTransfersPeerResult", "peerId");
+            }
             this.peerId = peerId;
             return this;
         }

@@ -11,8 +11,6 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMagicTransitSiteAclResult {
@@ -25,7 +23,7 @@ public final class GetMagicTransitSiteAclResult {
      * @return Identifier
      * 
      */
-    private @Nullable String aclId;
+    private String aclId;
     /**
      * @return Description for the ACL.
      * 
@@ -72,8 +70,8 @@ public final class GetMagicTransitSiteAclResult {
      * @return Identifier
      * 
      */
-    public Optional<String> aclId() {
-        return Optional.ofNullable(this.aclId);
+    public String aclId() {
+        return this.aclId;
     }
     /**
      * @return Description for the ACL.
@@ -137,7 +135,7 @@ public final class GetMagicTransitSiteAclResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
-        private @Nullable String aclId;
+        private String aclId;
         private String description;
         private Boolean forwardLocally;
         private String id;
@@ -172,8 +170,10 @@ public final class GetMagicTransitSiteAclResult {
             return this;
         }
         @CustomType.Setter
-        public Builder aclId(@Nullable String aclId) {
-
+        public Builder aclId(String aclId) {
+            if (aclId == null) {
+              throw new MissingRequiredPropertyException("GetMagicTransitSiteAclResult", "aclId");
+            }
             this.aclId = aclId;
             return this;
         }

@@ -19,6 +19,7 @@ import * as utilities from "./utilities";
  * const exampleD1Database = new cloudflare.D1Database("example_d1_database", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     name: "my-database",
+ *     jurisdiction: "eu",
  *     primaryLocationHint: "wnam",
  * });
  * ```
@@ -70,6 +71,11 @@ export class D1Database extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly fileSize: pulumi.Output<number>;
     /**
+     * Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+     * Available values: "eu", "fedramp".
+     */
+    declare public readonly jurisdiction: pulumi.Output<string | undefined>;
+    /**
      * D1 database name.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -105,6 +111,7 @@ export class D1Database extends pulumi.CustomResource {
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["fileSize"] = state?.fileSize;
+            resourceInputs["jurisdiction"] = state?.jurisdiction;
             resourceInputs["name"] = state?.name;
             resourceInputs["numTables"] = state?.numTables;
             resourceInputs["primaryLocationHint"] = state?.primaryLocationHint;
@@ -120,6 +127,7 @@ export class D1Database extends pulumi.CustomResource {
                 throw new Error("Missing required property 'name'");
             }
             resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["jurisdiction"] = args?.jurisdiction;
             resourceInputs["name"] = args?.name;
             resourceInputs["primaryLocationHint"] = args?.primaryLocationHint;
             resourceInputs["readReplication"] = args?.readReplication;
@@ -151,6 +159,11 @@ export interface D1DatabaseState {
      */
     fileSize?: pulumi.Input<number>;
     /**
+     * Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+     * Available values: "eu", "fedramp".
+     */
+    jurisdiction?: pulumi.Input<string>;
+    /**
      * D1 database name.
      */
     name?: pulumi.Input<string>;
@@ -179,6 +192,11 @@ export interface D1DatabaseArgs {
      * Account identifier tag.
      */
     accountId: pulumi.Input<string>;
+    /**
+     * Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+     * Available values: "eu", "fedramp".
+     */
+    jurisdiction?: pulumi.Input<string>;
     /**
      * D1 database name.
      */

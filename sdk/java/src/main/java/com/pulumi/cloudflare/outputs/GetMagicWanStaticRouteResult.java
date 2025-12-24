@@ -17,7 +17,7 @@ public final class GetMagicWanStaticRouteResult {
      */
     private String accountId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Identifier
      * 
      */
     private String id;
@@ -37,7 +37,7 @@ public final class GetMagicWanStaticRouteResult {
         return this.accountId;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Identifier
      * 
      */
     public String id() {

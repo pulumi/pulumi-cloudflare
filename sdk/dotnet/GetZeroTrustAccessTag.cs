@@ -93,8 +93,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The name of the tag
         /// </summary>
-        [Input("tagName")]
-        public string? TagName { get; set; }
+        [Input("tagName", required: true)]
+        public string TagName { get; set; } = null!;
 
         public GetZeroTrustAccessTagArgs()
         {
@@ -113,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The name of the tag
         /// </summary>
-        [Input("tagName")]
-        public Input<string>? TagName { get; set; }
+        [Input("tagName", required: true)]
+        public Input<string> TagName { get; set; } = null!;
 
         public GetZeroTrustAccessTagInvokeArgs()
         {
@@ -141,7 +141,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The name of the tag
         /// </summary>
-        public readonly string? TagName;
+        public readonly string TagName;
 
         [OutputConstructor]
         private GetZeroTrustAccessTagResult(
@@ -151,7 +151,7 @@ namespace Pulumi.Cloudflare
 
             string name,
 
-            string? tagName)
+            string tagName)
         {
             AccountId = accountId;
             Id = id;

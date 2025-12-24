@@ -87,8 +87,8 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
-        [Input("policyId")]
-        public string? PolicyId { get; set; }
+        [Input("policyId", required: true)]
+        public string PolicyId { get; set; } = null!;
 
         public GetZeroTrustDeviceCustomProfileArgs()
         {
@@ -101,8 +101,8 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        [Input("policyId")]
-        public Input<string>? PolicyId { get; set; }
+        [Input("policyId", required: true)]
+        public Input<string> PolicyId { get; set; } = null!;
 
         public GetZeroTrustDeviceCustomProfileInvokeArgs()
         {

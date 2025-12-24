@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetZeroTrustGatewayPolicyPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -26,15 +24,15 @@ public final class GetZeroTrustGatewayPolicyPlainArgs extends com.pulumi.resourc
      * Identify the API resource with a UUID.
      * 
      */
-    @Import(name="ruleId")
-    private @Nullable String ruleId;
+    @Import(name="ruleId", required=true)
+    private String ruleId;
 
     /**
      * @return Identify the API resource with a UUID.
      * 
      */
-    public Optional<String> ruleId() {
-        return Optional.ofNullable(this.ruleId);
+    public String ruleId() {
+        return this.ruleId;
     }
 
     private GetZeroTrustGatewayPolicyPlainArgs() {}
@@ -73,7 +71,7 @@ public final class GetZeroTrustGatewayPolicyPlainArgs extends com.pulumi.resourc
          * @return builder
          * 
          */
-        public Builder ruleId(@Nullable String ruleId) {
+        public Builder ruleId(String ruleId) {
             $.ruleId = ruleId;
             return this;
         }
@@ -81,6 +79,9 @@ public final class GetZeroTrustGatewayPolicyPlainArgs extends com.pulumi.resourc
         public GetZeroTrustGatewayPolicyPlainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetZeroTrustGatewayPolicyPlainArgs", "accountId");
+            }
+            if ($.ruleId == null) {
+                throw new MissingRequiredPropertyException("GetZeroTrustGatewayPolicyPlainArgs", "ruleId");
             }
             return $;
         }

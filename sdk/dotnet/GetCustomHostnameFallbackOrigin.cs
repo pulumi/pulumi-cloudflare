@@ -120,7 +120,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<string> Errors;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Identifier.
         /// </summary>
         public readonly string Id;
         /// <summary>

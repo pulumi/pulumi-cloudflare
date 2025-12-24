@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetWorkersScriptResult',
@@ -26,10 +28,13 @@ class GetWorkersScriptResult:
     """
     A collection of values returned by getWorkersScript.
     """
-    def __init__(__self__, account_id=None, id=None, script_name=None):
+    def __init__(__self__, account_id=None, filter=None, id=None, script_name=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if filter and not isinstance(filter, dict):
+            raise TypeError("Expected argument 'filter' to be a dict")
+        pulumi.set(__self__, "filter", filter)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -47,15 +52,20 @@ class GetWorkersScriptResult:
 
     @_builtins.property
     @pulumi.getter
+    def filter(self) -> Optional['outputs.GetWorkersScriptFilterResult']:
+        return pulumi.get(self, "filter")
+
+    @_builtins.property
+    @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Name of the script, used in URLs and route configuration.
         """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="scriptName")
-    def script_name(self) -> _builtins.str:
+    def script_name(self) -> Optional[_builtins.str]:
         """
         Name of the script, used in URLs and route configuration.
         """
@@ -69,11 +79,13 @@ class AwaitableGetWorkersScriptResult(GetWorkersScriptResult):
             yield self
         return GetWorkersScriptResult(
             account_id=self.account_id,
+            filter=self.filter,
             id=self.id,
             script_name=self.script_name)
 
 
 def get_workers_script(account_id: Optional[_builtins.str] = None,
+                       filter: Optional[Union['GetWorkersScriptFilterArgs', 'GetWorkersScriptFilterArgsDict']] = None,
                        script_name: Optional[_builtins.str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkersScriptResult:
     """
@@ -93,16 +105,19 @@ def get_workers_script(account_id: Optional[_builtins.str] = None,
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['filter'] = filter
     __args__['scriptName'] = script_name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getWorkersScript:getWorkersScript', __args__, opts=opts, typ=GetWorkersScriptResult).value
 
     return AwaitableGetWorkersScriptResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
         script_name=pulumi.get(__ret__, 'script_name'))
 def get_workers_script_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                              script_name: Optional[pulumi.Input[_builtins.str]] = None,
+                              filter: Optional[pulumi.Input[Optional[Union['GetWorkersScriptFilterArgs', 'GetWorkersScriptFilterArgsDict']]]] = None,
+                              script_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkersScriptResult]:
     """
     ## Example Usage
@@ -121,10 +136,12 @@ def get_workers_script_output(account_id: Optional[pulumi.Input[_builtins.str]] 
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['filter'] = filter
     __args__['scriptName'] = script_name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getWorkersScript:getWorkersScript', __args__, opts=opts, typ=GetWorkersScriptResult)
     return __ret__.apply(lambda __response__: GetWorkersScriptResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
         script_name=pulumi.get(__response__, 'script_name')))

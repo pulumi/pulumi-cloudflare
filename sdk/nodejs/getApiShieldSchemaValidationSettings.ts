@@ -38,7 +38,7 @@ export interface GetApiShieldSchemaValidationSettingsArgs {
  */
 export interface GetApiShieldSchemaValidationSettingsResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Identifier.
      */
     readonly id: string;
     /**

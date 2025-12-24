@@ -56,8 +56,7 @@ type LookupArgoTieredCachingArgs struct {
 type LookupArgoTieredCachingResult struct {
 	// Whether the setting is editable.
 	Editable bool `pulumi:"editable"`
-	// The identifier of the caching setting.
-	// Available values: "tieredCaching".
+	// Identifier.
 	Id string `pulumi:"id"`
 	// Last time this setting was modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
@@ -107,8 +106,7 @@ func (o LookupArgoTieredCachingResultOutput) Editable() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupArgoTieredCachingResult) bool { return v.Editable }).(pulumi.BoolOutput)
 }
 
-// The identifier of the caching setting.
-// Available values: "tieredCaching".
+// Identifier.
 func (o LookupArgoTieredCachingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupArgoTieredCachingResult) string { return v.Id }).(pulumi.StringOutput)
 }

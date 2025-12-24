@@ -13,10 +13,16 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class WorkerVersionModuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The base64-encoded module content.
+        /// </summary>
+        [Input("contentBase64")]
+        public Input<string>? ContentBase64 { get; set; }
+
+        /// <summary>
         /// The file path of the module content.
         /// </summary>
-        [Input("contentFile", required: true)]
-        public Input<string> ContentFile { get; set; } = null!;
+        [Input("contentFile")]
+        public Input<string>? ContentFile { get; set; }
 
         /// <summary>
         /// The SHA-256 hash of the module content.

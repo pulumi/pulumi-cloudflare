@@ -15,8 +15,8 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// Name of the Queue.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         public PagesProjectDeploymentConfigsPreviewQueueProducersArgs()
         {

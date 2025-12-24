@@ -13,6 +13,2482 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ZeroTrustDnsLocationEndpointsDoh struct {
+	// Indicate whether the DOH endpoint is enabled for this location.
+	Enabled *bool `pulumi:"enabled"`
+	// Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
+	Networks []ZeroTrustDnsLocationEndpointsDohNetwork `pulumi:"networks"`
+	// Specify whether the DOH endpoint requires user identity authentication.
+	RequireToken *bool `pulumi:"requireToken"`
+}
+
+// ZeroTrustDnsLocationEndpointsDohInput is an input type that accepts ZeroTrustDnsLocationEndpointsDohArgs and ZeroTrustDnsLocationEndpointsDohOutput values.
+// You can construct a concrete instance of `ZeroTrustDnsLocationEndpointsDohInput` via:
+//
+//	ZeroTrustDnsLocationEndpointsDohArgs{...}
+type ZeroTrustDnsLocationEndpointsDohInput interface {
+	pulumi.Input
+
+	ToZeroTrustDnsLocationEndpointsDohOutput() ZeroTrustDnsLocationEndpointsDohOutput
+	ToZeroTrustDnsLocationEndpointsDohOutputWithContext(context.Context) ZeroTrustDnsLocationEndpointsDohOutput
+}
+
+type ZeroTrustDnsLocationEndpointsDohArgs struct {
+	// Indicate whether the DOH endpoint is enabled for this location.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
+	Networks ZeroTrustDnsLocationEndpointsDohNetworkArrayInput `pulumi:"networks"`
+	// Specify whether the DOH endpoint requires user identity authentication.
+	RequireToken pulumi.BoolPtrInput `pulumi:"requireToken"`
+}
+
+func (ZeroTrustDnsLocationEndpointsDohArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustDnsLocationEndpointsDoh)(nil)).Elem()
+}
+
+func (i ZeroTrustDnsLocationEndpointsDohArgs) ToZeroTrustDnsLocationEndpointsDohOutput() ZeroTrustDnsLocationEndpointsDohOutput {
+	return i.ToZeroTrustDnsLocationEndpointsDohOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustDnsLocationEndpointsDohArgs) ToZeroTrustDnsLocationEndpointsDohOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDohOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsDohOutput)
+}
+
+func (i ZeroTrustDnsLocationEndpointsDohArgs) ToZeroTrustDnsLocationEndpointsDohPtrOutput() ZeroTrustDnsLocationEndpointsDohPtrOutput {
+	return i.ToZeroTrustDnsLocationEndpointsDohPtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustDnsLocationEndpointsDohArgs) ToZeroTrustDnsLocationEndpointsDohPtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDohPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsDohOutput).ToZeroTrustDnsLocationEndpointsDohPtrOutputWithContext(ctx)
+}
+
+// ZeroTrustDnsLocationEndpointsDohPtrInput is an input type that accepts ZeroTrustDnsLocationEndpointsDohArgs, ZeroTrustDnsLocationEndpointsDohPtr and ZeroTrustDnsLocationEndpointsDohPtrOutput values.
+// You can construct a concrete instance of `ZeroTrustDnsLocationEndpointsDohPtrInput` via:
+//
+//	        ZeroTrustDnsLocationEndpointsDohArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustDnsLocationEndpointsDohPtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustDnsLocationEndpointsDohPtrOutput() ZeroTrustDnsLocationEndpointsDohPtrOutput
+	ToZeroTrustDnsLocationEndpointsDohPtrOutputWithContext(context.Context) ZeroTrustDnsLocationEndpointsDohPtrOutput
+}
+
+type zeroTrustDnsLocationEndpointsDohPtrType ZeroTrustDnsLocationEndpointsDohArgs
+
+func ZeroTrustDnsLocationEndpointsDohPtr(v *ZeroTrustDnsLocationEndpointsDohArgs) ZeroTrustDnsLocationEndpointsDohPtrInput {
+	return (*zeroTrustDnsLocationEndpointsDohPtrType)(v)
+}
+
+func (*zeroTrustDnsLocationEndpointsDohPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustDnsLocationEndpointsDoh)(nil)).Elem()
+}
+
+func (i *zeroTrustDnsLocationEndpointsDohPtrType) ToZeroTrustDnsLocationEndpointsDohPtrOutput() ZeroTrustDnsLocationEndpointsDohPtrOutput {
+	return i.ToZeroTrustDnsLocationEndpointsDohPtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustDnsLocationEndpointsDohPtrType) ToZeroTrustDnsLocationEndpointsDohPtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDohPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsDohPtrOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsDohOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustDnsLocationEndpointsDohOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustDnsLocationEndpointsDoh)(nil)).Elem()
+}
+
+func (o ZeroTrustDnsLocationEndpointsDohOutput) ToZeroTrustDnsLocationEndpointsDohOutput() ZeroTrustDnsLocationEndpointsDohOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsDohOutput) ToZeroTrustDnsLocationEndpointsDohOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDohOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsDohOutput) ToZeroTrustDnsLocationEndpointsDohPtrOutput() ZeroTrustDnsLocationEndpointsDohPtrOutput {
+	return o.ToZeroTrustDnsLocationEndpointsDohPtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustDnsLocationEndpointsDohOutput) ToZeroTrustDnsLocationEndpointsDohPtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDohPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustDnsLocationEndpointsDoh) *ZeroTrustDnsLocationEndpointsDoh {
+		return &v
+	}).(ZeroTrustDnsLocationEndpointsDohPtrOutput)
+}
+
+// Indicate whether the DOH endpoint is enabled for this location.
+func (o ZeroTrustDnsLocationEndpointsDohOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustDnsLocationEndpointsDoh) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
+func (o ZeroTrustDnsLocationEndpointsDohOutput) Networks() ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput {
+	return o.ApplyT(func(v ZeroTrustDnsLocationEndpointsDoh) []ZeroTrustDnsLocationEndpointsDohNetwork { return v.Networks }).(ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput)
+}
+
+// Specify whether the DOH endpoint requires user identity authentication.
+func (o ZeroTrustDnsLocationEndpointsDohOutput) RequireToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustDnsLocationEndpointsDoh) *bool { return v.RequireToken }).(pulumi.BoolPtrOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsDohPtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustDnsLocationEndpointsDohPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustDnsLocationEndpointsDoh)(nil)).Elem()
+}
+
+func (o ZeroTrustDnsLocationEndpointsDohPtrOutput) ToZeroTrustDnsLocationEndpointsDohPtrOutput() ZeroTrustDnsLocationEndpointsDohPtrOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsDohPtrOutput) ToZeroTrustDnsLocationEndpointsDohPtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDohPtrOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsDohPtrOutput) Elem() ZeroTrustDnsLocationEndpointsDohOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpointsDoh) ZeroTrustDnsLocationEndpointsDoh {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustDnsLocationEndpointsDoh
+		return ret
+	}).(ZeroTrustDnsLocationEndpointsDohOutput)
+}
+
+// Indicate whether the DOH endpoint is enabled for this location.
+func (o ZeroTrustDnsLocationEndpointsDohPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpointsDoh) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
+func (o ZeroTrustDnsLocationEndpointsDohPtrOutput) Networks() ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpointsDoh) []ZeroTrustDnsLocationEndpointsDohNetwork {
+		if v == nil {
+			return nil
+		}
+		return v.Networks
+	}).(ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput)
+}
+
+// Specify whether the DOH endpoint requires user identity authentication.
+func (o ZeroTrustDnsLocationEndpointsDohPtrOutput) RequireToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpointsDoh) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequireToken
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsDohNetwork struct {
+	// Specify the IP address or IP CIDR.
+	Network string `pulumi:"network"`
+}
+
+// ZeroTrustDnsLocationEndpointsDohNetworkInput is an input type that accepts ZeroTrustDnsLocationEndpointsDohNetworkArgs and ZeroTrustDnsLocationEndpointsDohNetworkOutput values.
+// You can construct a concrete instance of `ZeroTrustDnsLocationEndpointsDohNetworkInput` via:
+//
+//	ZeroTrustDnsLocationEndpointsDohNetworkArgs{...}
+type ZeroTrustDnsLocationEndpointsDohNetworkInput interface {
+	pulumi.Input
+
+	ToZeroTrustDnsLocationEndpointsDohNetworkOutput() ZeroTrustDnsLocationEndpointsDohNetworkOutput
+	ToZeroTrustDnsLocationEndpointsDohNetworkOutputWithContext(context.Context) ZeroTrustDnsLocationEndpointsDohNetworkOutput
+}
+
+type ZeroTrustDnsLocationEndpointsDohNetworkArgs struct {
+	// Specify the IP address or IP CIDR.
+	Network pulumi.StringInput `pulumi:"network"`
+}
+
+func (ZeroTrustDnsLocationEndpointsDohNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustDnsLocationEndpointsDohNetwork)(nil)).Elem()
+}
+
+func (i ZeroTrustDnsLocationEndpointsDohNetworkArgs) ToZeroTrustDnsLocationEndpointsDohNetworkOutput() ZeroTrustDnsLocationEndpointsDohNetworkOutput {
+	return i.ToZeroTrustDnsLocationEndpointsDohNetworkOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustDnsLocationEndpointsDohNetworkArgs) ToZeroTrustDnsLocationEndpointsDohNetworkOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDohNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsDohNetworkOutput)
+}
+
+// ZeroTrustDnsLocationEndpointsDohNetworkArrayInput is an input type that accepts ZeroTrustDnsLocationEndpointsDohNetworkArray and ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput values.
+// You can construct a concrete instance of `ZeroTrustDnsLocationEndpointsDohNetworkArrayInput` via:
+//
+//	ZeroTrustDnsLocationEndpointsDohNetworkArray{ ZeroTrustDnsLocationEndpointsDohNetworkArgs{...} }
+type ZeroTrustDnsLocationEndpointsDohNetworkArrayInput interface {
+	pulumi.Input
+
+	ToZeroTrustDnsLocationEndpointsDohNetworkArrayOutput() ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput
+	ToZeroTrustDnsLocationEndpointsDohNetworkArrayOutputWithContext(context.Context) ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput
+}
+
+type ZeroTrustDnsLocationEndpointsDohNetworkArray []ZeroTrustDnsLocationEndpointsDohNetworkInput
+
+func (ZeroTrustDnsLocationEndpointsDohNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZeroTrustDnsLocationEndpointsDohNetwork)(nil)).Elem()
+}
+
+func (i ZeroTrustDnsLocationEndpointsDohNetworkArray) ToZeroTrustDnsLocationEndpointsDohNetworkArrayOutput() ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput {
+	return i.ToZeroTrustDnsLocationEndpointsDohNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustDnsLocationEndpointsDohNetworkArray) ToZeroTrustDnsLocationEndpointsDohNetworkArrayOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsDohNetworkOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustDnsLocationEndpointsDohNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustDnsLocationEndpointsDohNetwork)(nil)).Elem()
+}
+
+func (o ZeroTrustDnsLocationEndpointsDohNetworkOutput) ToZeroTrustDnsLocationEndpointsDohNetworkOutput() ZeroTrustDnsLocationEndpointsDohNetworkOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsDohNetworkOutput) ToZeroTrustDnsLocationEndpointsDohNetworkOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDohNetworkOutput {
+	return o
+}
+
+// Specify the IP address or IP CIDR.
+func (o ZeroTrustDnsLocationEndpointsDohNetworkOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustDnsLocationEndpointsDohNetwork) string { return v.Network }).(pulumi.StringOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZeroTrustDnsLocationEndpointsDohNetwork)(nil)).Elem()
+}
+
+func (o ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput) ToZeroTrustDnsLocationEndpointsDohNetworkArrayOutput() ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput) ToZeroTrustDnsLocationEndpointsDohNetworkArrayOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput) Index(i pulumi.IntInput) ZeroTrustDnsLocationEndpointsDohNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ZeroTrustDnsLocationEndpointsDohNetwork {
+		return vs[0].([]ZeroTrustDnsLocationEndpointsDohNetwork)[vs[1].(int)]
+	}).(ZeroTrustDnsLocationEndpointsDohNetworkOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsDot struct {
+	// Indicate whether the DOT endpoint is enabled for this location.
+	Enabled *bool `pulumi:"enabled"`
+	// Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
+	Networks []ZeroTrustDnsLocationEndpointsDotNetwork `pulumi:"networks"`
+}
+
+// ZeroTrustDnsLocationEndpointsDotInput is an input type that accepts ZeroTrustDnsLocationEndpointsDotArgs and ZeroTrustDnsLocationEndpointsDotOutput values.
+// You can construct a concrete instance of `ZeroTrustDnsLocationEndpointsDotInput` via:
+//
+//	ZeroTrustDnsLocationEndpointsDotArgs{...}
+type ZeroTrustDnsLocationEndpointsDotInput interface {
+	pulumi.Input
+
+	ToZeroTrustDnsLocationEndpointsDotOutput() ZeroTrustDnsLocationEndpointsDotOutput
+	ToZeroTrustDnsLocationEndpointsDotOutputWithContext(context.Context) ZeroTrustDnsLocationEndpointsDotOutput
+}
+
+type ZeroTrustDnsLocationEndpointsDotArgs struct {
+	// Indicate whether the DOT endpoint is enabled for this location.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
+	Networks ZeroTrustDnsLocationEndpointsDotNetworkArrayInput `pulumi:"networks"`
+}
+
+func (ZeroTrustDnsLocationEndpointsDotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustDnsLocationEndpointsDot)(nil)).Elem()
+}
+
+func (i ZeroTrustDnsLocationEndpointsDotArgs) ToZeroTrustDnsLocationEndpointsDotOutput() ZeroTrustDnsLocationEndpointsDotOutput {
+	return i.ToZeroTrustDnsLocationEndpointsDotOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustDnsLocationEndpointsDotArgs) ToZeroTrustDnsLocationEndpointsDotOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsDotOutput)
+}
+
+func (i ZeroTrustDnsLocationEndpointsDotArgs) ToZeroTrustDnsLocationEndpointsDotPtrOutput() ZeroTrustDnsLocationEndpointsDotPtrOutput {
+	return i.ToZeroTrustDnsLocationEndpointsDotPtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustDnsLocationEndpointsDotArgs) ToZeroTrustDnsLocationEndpointsDotPtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDotPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsDotOutput).ToZeroTrustDnsLocationEndpointsDotPtrOutputWithContext(ctx)
+}
+
+// ZeroTrustDnsLocationEndpointsDotPtrInput is an input type that accepts ZeroTrustDnsLocationEndpointsDotArgs, ZeroTrustDnsLocationEndpointsDotPtr and ZeroTrustDnsLocationEndpointsDotPtrOutput values.
+// You can construct a concrete instance of `ZeroTrustDnsLocationEndpointsDotPtrInput` via:
+//
+//	        ZeroTrustDnsLocationEndpointsDotArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustDnsLocationEndpointsDotPtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustDnsLocationEndpointsDotPtrOutput() ZeroTrustDnsLocationEndpointsDotPtrOutput
+	ToZeroTrustDnsLocationEndpointsDotPtrOutputWithContext(context.Context) ZeroTrustDnsLocationEndpointsDotPtrOutput
+}
+
+type zeroTrustDnsLocationEndpointsDotPtrType ZeroTrustDnsLocationEndpointsDotArgs
+
+func ZeroTrustDnsLocationEndpointsDotPtr(v *ZeroTrustDnsLocationEndpointsDotArgs) ZeroTrustDnsLocationEndpointsDotPtrInput {
+	return (*zeroTrustDnsLocationEndpointsDotPtrType)(v)
+}
+
+func (*zeroTrustDnsLocationEndpointsDotPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustDnsLocationEndpointsDot)(nil)).Elem()
+}
+
+func (i *zeroTrustDnsLocationEndpointsDotPtrType) ToZeroTrustDnsLocationEndpointsDotPtrOutput() ZeroTrustDnsLocationEndpointsDotPtrOutput {
+	return i.ToZeroTrustDnsLocationEndpointsDotPtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustDnsLocationEndpointsDotPtrType) ToZeroTrustDnsLocationEndpointsDotPtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDotPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsDotPtrOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsDotOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustDnsLocationEndpointsDotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustDnsLocationEndpointsDot)(nil)).Elem()
+}
+
+func (o ZeroTrustDnsLocationEndpointsDotOutput) ToZeroTrustDnsLocationEndpointsDotOutput() ZeroTrustDnsLocationEndpointsDotOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsDotOutput) ToZeroTrustDnsLocationEndpointsDotOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDotOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsDotOutput) ToZeroTrustDnsLocationEndpointsDotPtrOutput() ZeroTrustDnsLocationEndpointsDotPtrOutput {
+	return o.ToZeroTrustDnsLocationEndpointsDotPtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustDnsLocationEndpointsDotOutput) ToZeroTrustDnsLocationEndpointsDotPtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDotPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustDnsLocationEndpointsDot) *ZeroTrustDnsLocationEndpointsDot {
+		return &v
+	}).(ZeroTrustDnsLocationEndpointsDotPtrOutput)
+}
+
+// Indicate whether the DOT endpoint is enabled for this location.
+func (o ZeroTrustDnsLocationEndpointsDotOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustDnsLocationEndpointsDot) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
+func (o ZeroTrustDnsLocationEndpointsDotOutput) Networks() ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput {
+	return o.ApplyT(func(v ZeroTrustDnsLocationEndpointsDot) []ZeroTrustDnsLocationEndpointsDotNetwork { return v.Networks }).(ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsDotPtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustDnsLocationEndpointsDotPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustDnsLocationEndpointsDot)(nil)).Elem()
+}
+
+func (o ZeroTrustDnsLocationEndpointsDotPtrOutput) ToZeroTrustDnsLocationEndpointsDotPtrOutput() ZeroTrustDnsLocationEndpointsDotPtrOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsDotPtrOutput) ToZeroTrustDnsLocationEndpointsDotPtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDotPtrOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsDotPtrOutput) Elem() ZeroTrustDnsLocationEndpointsDotOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpointsDot) ZeroTrustDnsLocationEndpointsDot {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustDnsLocationEndpointsDot
+		return ret
+	}).(ZeroTrustDnsLocationEndpointsDotOutput)
+}
+
+// Indicate whether the DOT endpoint is enabled for this location.
+func (o ZeroTrustDnsLocationEndpointsDotPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpointsDot) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
+func (o ZeroTrustDnsLocationEndpointsDotPtrOutput) Networks() ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpointsDot) []ZeroTrustDnsLocationEndpointsDotNetwork {
+		if v == nil {
+			return nil
+		}
+		return v.Networks
+	}).(ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsDotNetwork struct {
+	// Specify the IP address or IP CIDR.
+	Network string `pulumi:"network"`
+}
+
+// ZeroTrustDnsLocationEndpointsDotNetworkInput is an input type that accepts ZeroTrustDnsLocationEndpointsDotNetworkArgs and ZeroTrustDnsLocationEndpointsDotNetworkOutput values.
+// You can construct a concrete instance of `ZeroTrustDnsLocationEndpointsDotNetworkInput` via:
+//
+//	ZeroTrustDnsLocationEndpointsDotNetworkArgs{...}
+type ZeroTrustDnsLocationEndpointsDotNetworkInput interface {
+	pulumi.Input
+
+	ToZeroTrustDnsLocationEndpointsDotNetworkOutput() ZeroTrustDnsLocationEndpointsDotNetworkOutput
+	ToZeroTrustDnsLocationEndpointsDotNetworkOutputWithContext(context.Context) ZeroTrustDnsLocationEndpointsDotNetworkOutput
+}
+
+type ZeroTrustDnsLocationEndpointsDotNetworkArgs struct {
+	// Specify the IP address or IP CIDR.
+	Network pulumi.StringInput `pulumi:"network"`
+}
+
+func (ZeroTrustDnsLocationEndpointsDotNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustDnsLocationEndpointsDotNetwork)(nil)).Elem()
+}
+
+func (i ZeroTrustDnsLocationEndpointsDotNetworkArgs) ToZeroTrustDnsLocationEndpointsDotNetworkOutput() ZeroTrustDnsLocationEndpointsDotNetworkOutput {
+	return i.ToZeroTrustDnsLocationEndpointsDotNetworkOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustDnsLocationEndpointsDotNetworkArgs) ToZeroTrustDnsLocationEndpointsDotNetworkOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDotNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsDotNetworkOutput)
+}
+
+// ZeroTrustDnsLocationEndpointsDotNetworkArrayInput is an input type that accepts ZeroTrustDnsLocationEndpointsDotNetworkArray and ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput values.
+// You can construct a concrete instance of `ZeroTrustDnsLocationEndpointsDotNetworkArrayInput` via:
+//
+//	ZeroTrustDnsLocationEndpointsDotNetworkArray{ ZeroTrustDnsLocationEndpointsDotNetworkArgs{...} }
+type ZeroTrustDnsLocationEndpointsDotNetworkArrayInput interface {
+	pulumi.Input
+
+	ToZeroTrustDnsLocationEndpointsDotNetworkArrayOutput() ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput
+	ToZeroTrustDnsLocationEndpointsDotNetworkArrayOutputWithContext(context.Context) ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput
+}
+
+type ZeroTrustDnsLocationEndpointsDotNetworkArray []ZeroTrustDnsLocationEndpointsDotNetworkInput
+
+func (ZeroTrustDnsLocationEndpointsDotNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZeroTrustDnsLocationEndpointsDotNetwork)(nil)).Elem()
+}
+
+func (i ZeroTrustDnsLocationEndpointsDotNetworkArray) ToZeroTrustDnsLocationEndpointsDotNetworkArrayOutput() ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput {
+	return i.ToZeroTrustDnsLocationEndpointsDotNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustDnsLocationEndpointsDotNetworkArray) ToZeroTrustDnsLocationEndpointsDotNetworkArrayOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsDotNetworkOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustDnsLocationEndpointsDotNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustDnsLocationEndpointsDotNetwork)(nil)).Elem()
+}
+
+func (o ZeroTrustDnsLocationEndpointsDotNetworkOutput) ToZeroTrustDnsLocationEndpointsDotNetworkOutput() ZeroTrustDnsLocationEndpointsDotNetworkOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsDotNetworkOutput) ToZeroTrustDnsLocationEndpointsDotNetworkOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDotNetworkOutput {
+	return o
+}
+
+// Specify the IP address or IP CIDR.
+func (o ZeroTrustDnsLocationEndpointsDotNetworkOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustDnsLocationEndpointsDotNetwork) string { return v.Network }).(pulumi.StringOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZeroTrustDnsLocationEndpointsDotNetwork)(nil)).Elem()
+}
+
+func (o ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput) ToZeroTrustDnsLocationEndpointsDotNetworkArrayOutput() ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput) ToZeroTrustDnsLocationEndpointsDotNetworkArrayOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput) Index(i pulumi.IntInput) ZeroTrustDnsLocationEndpointsDotNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ZeroTrustDnsLocationEndpointsDotNetwork {
+		return vs[0].([]ZeroTrustDnsLocationEndpointsDotNetwork)[vs[1].(int)]
+	}).(ZeroTrustDnsLocationEndpointsDotNetworkOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsIpv4 struct {
+	// Indicate whether the IPv4 endpoint is enabled for this location.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ZeroTrustDnsLocationEndpointsIpv4Input is an input type that accepts ZeroTrustDnsLocationEndpointsIpv4Args and ZeroTrustDnsLocationEndpointsIpv4Output values.
+// You can construct a concrete instance of `ZeroTrustDnsLocationEndpointsIpv4Input` via:
+//
+//	ZeroTrustDnsLocationEndpointsIpv4Args{...}
+type ZeroTrustDnsLocationEndpointsIpv4Input interface {
+	pulumi.Input
+
+	ToZeroTrustDnsLocationEndpointsIpv4Output() ZeroTrustDnsLocationEndpointsIpv4Output
+	ToZeroTrustDnsLocationEndpointsIpv4OutputWithContext(context.Context) ZeroTrustDnsLocationEndpointsIpv4Output
+}
+
+type ZeroTrustDnsLocationEndpointsIpv4Args struct {
+	// Indicate whether the IPv4 endpoint is enabled for this location.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ZeroTrustDnsLocationEndpointsIpv4Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustDnsLocationEndpointsIpv4)(nil)).Elem()
+}
+
+func (i ZeroTrustDnsLocationEndpointsIpv4Args) ToZeroTrustDnsLocationEndpointsIpv4Output() ZeroTrustDnsLocationEndpointsIpv4Output {
+	return i.ToZeroTrustDnsLocationEndpointsIpv4OutputWithContext(context.Background())
+}
+
+func (i ZeroTrustDnsLocationEndpointsIpv4Args) ToZeroTrustDnsLocationEndpointsIpv4OutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsIpv4Output {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsIpv4Output)
+}
+
+func (i ZeroTrustDnsLocationEndpointsIpv4Args) ToZeroTrustDnsLocationEndpointsIpv4PtrOutput() ZeroTrustDnsLocationEndpointsIpv4PtrOutput {
+	return i.ToZeroTrustDnsLocationEndpointsIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustDnsLocationEndpointsIpv4Args) ToZeroTrustDnsLocationEndpointsIpv4PtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsIpv4Output).ToZeroTrustDnsLocationEndpointsIpv4PtrOutputWithContext(ctx)
+}
+
+// ZeroTrustDnsLocationEndpointsIpv4PtrInput is an input type that accepts ZeroTrustDnsLocationEndpointsIpv4Args, ZeroTrustDnsLocationEndpointsIpv4Ptr and ZeroTrustDnsLocationEndpointsIpv4PtrOutput values.
+// You can construct a concrete instance of `ZeroTrustDnsLocationEndpointsIpv4PtrInput` via:
+//
+//	        ZeroTrustDnsLocationEndpointsIpv4Args{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustDnsLocationEndpointsIpv4PtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustDnsLocationEndpointsIpv4PtrOutput() ZeroTrustDnsLocationEndpointsIpv4PtrOutput
+	ToZeroTrustDnsLocationEndpointsIpv4PtrOutputWithContext(context.Context) ZeroTrustDnsLocationEndpointsIpv4PtrOutput
+}
+
+type zeroTrustDnsLocationEndpointsIpv4PtrType ZeroTrustDnsLocationEndpointsIpv4Args
+
+func ZeroTrustDnsLocationEndpointsIpv4Ptr(v *ZeroTrustDnsLocationEndpointsIpv4Args) ZeroTrustDnsLocationEndpointsIpv4PtrInput {
+	return (*zeroTrustDnsLocationEndpointsIpv4PtrType)(v)
+}
+
+func (*zeroTrustDnsLocationEndpointsIpv4PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustDnsLocationEndpointsIpv4)(nil)).Elem()
+}
+
+func (i *zeroTrustDnsLocationEndpointsIpv4PtrType) ToZeroTrustDnsLocationEndpointsIpv4PtrOutput() ZeroTrustDnsLocationEndpointsIpv4PtrOutput {
+	return i.ToZeroTrustDnsLocationEndpointsIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustDnsLocationEndpointsIpv4PtrType) ToZeroTrustDnsLocationEndpointsIpv4PtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsIpv4PtrOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsIpv4Output struct{ *pulumi.OutputState }
+
+func (ZeroTrustDnsLocationEndpointsIpv4Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustDnsLocationEndpointsIpv4)(nil)).Elem()
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv4Output) ToZeroTrustDnsLocationEndpointsIpv4Output() ZeroTrustDnsLocationEndpointsIpv4Output {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv4Output) ToZeroTrustDnsLocationEndpointsIpv4OutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsIpv4Output {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv4Output) ToZeroTrustDnsLocationEndpointsIpv4PtrOutput() ZeroTrustDnsLocationEndpointsIpv4PtrOutput {
+	return o.ToZeroTrustDnsLocationEndpointsIpv4PtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv4Output) ToZeroTrustDnsLocationEndpointsIpv4PtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsIpv4PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustDnsLocationEndpointsIpv4) *ZeroTrustDnsLocationEndpointsIpv4 {
+		return &v
+	}).(ZeroTrustDnsLocationEndpointsIpv4PtrOutput)
+}
+
+// Indicate whether the IPv4 endpoint is enabled for this location.
+func (o ZeroTrustDnsLocationEndpointsIpv4Output) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustDnsLocationEndpointsIpv4) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsIpv4PtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustDnsLocationEndpointsIpv4PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustDnsLocationEndpointsIpv4)(nil)).Elem()
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv4PtrOutput) ToZeroTrustDnsLocationEndpointsIpv4PtrOutput() ZeroTrustDnsLocationEndpointsIpv4PtrOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv4PtrOutput) ToZeroTrustDnsLocationEndpointsIpv4PtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsIpv4PtrOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv4PtrOutput) Elem() ZeroTrustDnsLocationEndpointsIpv4Output {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpointsIpv4) ZeroTrustDnsLocationEndpointsIpv4 {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustDnsLocationEndpointsIpv4
+		return ret
+	}).(ZeroTrustDnsLocationEndpointsIpv4Output)
+}
+
+// Indicate whether the IPv4 endpoint is enabled for this location.
+func (o ZeroTrustDnsLocationEndpointsIpv4PtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpointsIpv4) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsIpv6 struct {
+	// Indicate whether the IPV6 endpoint is enabled for this location.
+	Enabled *bool `pulumi:"enabled"`
+	// Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
+	Networks []ZeroTrustDnsLocationEndpointsIpv6Network `pulumi:"networks"`
+}
+
+// ZeroTrustDnsLocationEndpointsIpv6Input is an input type that accepts ZeroTrustDnsLocationEndpointsIpv6Args and ZeroTrustDnsLocationEndpointsIpv6Output values.
+// You can construct a concrete instance of `ZeroTrustDnsLocationEndpointsIpv6Input` via:
+//
+//	ZeroTrustDnsLocationEndpointsIpv6Args{...}
+type ZeroTrustDnsLocationEndpointsIpv6Input interface {
+	pulumi.Input
+
+	ToZeroTrustDnsLocationEndpointsIpv6Output() ZeroTrustDnsLocationEndpointsIpv6Output
+	ToZeroTrustDnsLocationEndpointsIpv6OutputWithContext(context.Context) ZeroTrustDnsLocationEndpointsIpv6Output
+}
+
+type ZeroTrustDnsLocationEndpointsIpv6Args struct {
+	// Indicate whether the IPV6 endpoint is enabled for this location.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
+	Networks ZeroTrustDnsLocationEndpointsIpv6NetworkArrayInput `pulumi:"networks"`
+}
+
+func (ZeroTrustDnsLocationEndpointsIpv6Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustDnsLocationEndpointsIpv6)(nil)).Elem()
+}
+
+func (i ZeroTrustDnsLocationEndpointsIpv6Args) ToZeroTrustDnsLocationEndpointsIpv6Output() ZeroTrustDnsLocationEndpointsIpv6Output {
+	return i.ToZeroTrustDnsLocationEndpointsIpv6OutputWithContext(context.Background())
+}
+
+func (i ZeroTrustDnsLocationEndpointsIpv6Args) ToZeroTrustDnsLocationEndpointsIpv6OutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsIpv6Output {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsIpv6Output)
+}
+
+func (i ZeroTrustDnsLocationEndpointsIpv6Args) ToZeroTrustDnsLocationEndpointsIpv6PtrOutput() ZeroTrustDnsLocationEndpointsIpv6PtrOutput {
+	return i.ToZeroTrustDnsLocationEndpointsIpv6PtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustDnsLocationEndpointsIpv6Args) ToZeroTrustDnsLocationEndpointsIpv6PtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsIpv6PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsIpv6Output).ToZeroTrustDnsLocationEndpointsIpv6PtrOutputWithContext(ctx)
+}
+
+// ZeroTrustDnsLocationEndpointsIpv6PtrInput is an input type that accepts ZeroTrustDnsLocationEndpointsIpv6Args, ZeroTrustDnsLocationEndpointsIpv6Ptr and ZeroTrustDnsLocationEndpointsIpv6PtrOutput values.
+// You can construct a concrete instance of `ZeroTrustDnsLocationEndpointsIpv6PtrInput` via:
+//
+//	        ZeroTrustDnsLocationEndpointsIpv6Args{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustDnsLocationEndpointsIpv6PtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustDnsLocationEndpointsIpv6PtrOutput() ZeroTrustDnsLocationEndpointsIpv6PtrOutput
+	ToZeroTrustDnsLocationEndpointsIpv6PtrOutputWithContext(context.Context) ZeroTrustDnsLocationEndpointsIpv6PtrOutput
+}
+
+type zeroTrustDnsLocationEndpointsIpv6PtrType ZeroTrustDnsLocationEndpointsIpv6Args
+
+func ZeroTrustDnsLocationEndpointsIpv6Ptr(v *ZeroTrustDnsLocationEndpointsIpv6Args) ZeroTrustDnsLocationEndpointsIpv6PtrInput {
+	return (*zeroTrustDnsLocationEndpointsIpv6PtrType)(v)
+}
+
+func (*zeroTrustDnsLocationEndpointsIpv6PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustDnsLocationEndpointsIpv6)(nil)).Elem()
+}
+
+func (i *zeroTrustDnsLocationEndpointsIpv6PtrType) ToZeroTrustDnsLocationEndpointsIpv6PtrOutput() ZeroTrustDnsLocationEndpointsIpv6PtrOutput {
+	return i.ToZeroTrustDnsLocationEndpointsIpv6PtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustDnsLocationEndpointsIpv6PtrType) ToZeroTrustDnsLocationEndpointsIpv6PtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsIpv6PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsIpv6PtrOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsIpv6Output struct{ *pulumi.OutputState }
+
+func (ZeroTrustDnsLocationEndpointsIpv6Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustDnsLocationEndpointsIpv6)(nil)).Elem()
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv6Output) ToZeroTrustDnsLocationEndpointsIpv6Output() ZeroTrustDnsLocationEndpointsIpv6Output {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv6Output) ToZeroTrustDnsLocationEndpointsIpv6OutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsIpv6Output {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv6Output) ToZeroTrustDnsLocationEndpointsIpv6PtrOutput() ZeroTrustDnsLocationEndpointsIpv6PtrOutput {
+	return o.ToZeroTrustDnsLocationEndpointsIpv6PtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv6Output) ToZeroTrustDnsLocationEndpointsIpv6PtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsIpv6PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustDnsLocationEndpointsIpv6) *ZeroTrustDnsLocationEndpointsIpv6 {
+		return &v
+	}).(ZeroTrustDnsLocationEndpointsIpv6PtrOutput)
+}
+
+// Indicate whether the IPV6 endpoint is enabled for this location.
+func (o ZeroTrustDnsLocationEndpointsIpv6Output) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustDnsLocationEndpointsIpv6) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
+func (o ZeroTrustDnsLocationEndpointsIpv6Output) Networks() ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput {
+	return o.ApplyT(func(v ZeroTrustDnsLocationEndpointsIpv6) []ZeroTrustDnsLocationEndpointsIpv6Network {
+		return v.Networks
+	}).(ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsIpv6PtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustDnsLocationEndpointsIpv6PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustDnsLocationEndpointsIpv6)(nil)).Elem()
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv6PtrOutput) ToZeroTrustDnsLocationEndpointsIpv6PtrOutput() ZeroTrustDnsLocationEndpointsIpv6PtrOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv6PtrOutput) ToZeroTrustDnsLocationEndpointsIpv6PtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsIpv6PtrOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv6PtrOutput) Elem() ZeroTrustDnsLocationEndpointsIpv6Output {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpointsIpv6) ZeroTrustDnsLocationEndpointsIpv6 {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustDnsLocationEndpointsIpv6
+		return ret
+	}).(ZeroTrustDnsLocationEndpointsIpv6Output)
+}
+
+// Indicate whether the IPV6 endpoint is enabled for this location.
+func (o ZeroTrustDnsLocationEndpointsIpv6PtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpointsIpv6) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
+func (o ZeroTrustDnsLocationEndpointsIpv6PtrOutput) Networks() ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpointsIpv6) []ZeroTrustDnsLocationEndpointsIpv6Network {
+		if v == nil {
+			return nil
+		}
+		return v.Networks
+	}).(ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsIpv6Network struct {
+	// Specify the IPv6 address or IPv6 CIDR.
+	Network string `pulumi:"network"`
+}
+
+// ZeroTrustDnsLocationEndpointsIpv6NetworkInput is an input type that accepts ZeroTrustDnsLocationEndpointsIpv6NetworkArgs and ZeroTrustDnsLocationEndpointsIpv6NetworkOutput values.
+// You can construct a concrete instance of `ZeroTrustDnsLocationEndpointsIpv6NetworkInput` via:
+//
+//	ZeroTrustDnsLocationEndpointsIpv6NetworkArgs{...}
+type ZeroTrustDnsLocationEndpointsIpv6NetworkInput interface {
+	pulumi.Input
+
+	ToZeroTrustDnsLocationEndpointsIpv6NetworkOutput() ZeroTrustDnsLocationEndpointsIpv6NetworkOutput
+	ToZeroTrustDnsLocationEndpointsIpv6NetworkOutputWithContext(context.Context) ZeroTrustDnsLocationEndpointsIpv6NetworkOutput
+}
+
+type ZeroTrustDnsLocationEndpointsIpv6NetworkArgs struct {
+	// Specify the IPv6 address or IPv6 CIDR.
+	Network pulumi.StringInput `pulumi:"network"`
+}
+
+func (ZeroTrustDnsLocationEndpointsIpv6NetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustDnsLocationEndpointsIpv6Network)(nil)).Elem()
+}
+
+func (i ZeroTrustDnsLocationEndpointsIpv6NetworkArgs) ToZeroTrustDnsLocationEndpointsIpv6NetworkOutput() ZeroTrustDnsLocationEndpointsIpv6NetworkOutput {
+	return i.ToZeroTrustDnsLocationEndpointsIpv6NetworkOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustDnsLocationEndpointsIpv6NetworkArgs) ToZeroTrustDnsLocationEndpointsIpv6NetworkOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsIpv6NetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsIpv6NetworkOutput)
+}
+
+// ZeroTrustDnsLocationEndpointsIpv6NetworkArrayInput is an input type that accepts ZeroTrustDnsLocationEndpointsIpv6NetworkArray and ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput values.
+// You can construct a concrete instance of `ZeroTrustDnsLocationEndpointsIpv6NetworkArrayInput` via:
+//
+//	ZeroTrustDnsLocationEndpointsIpv6NetworkArray{ ZeroTrustDnsLocationEndpointsIpv6NetworkArgs{...} }
+type ZeroTrustDnsLocationEndpointsIpv6NetworkArrayInput interface {
+	pulumi.Input
+
+	ToZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput() ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput
+	ToZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutputWithContext(context.Context) ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput
+}
+
+type ZeroTrustDnsLocationEndpointsIpv6NetworkArray []ZeroTrustDnsLocationEndpointsIpv6NetworkInput
+
+func (ZeroTrustDnsLocationEndpointsIpv6NetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZeroTrustDnsLocationEndpointsIpv6Network)(nil)).Elem()
+}
+
+func (i ZeroTrustDnsLocationEndpointsIpv6NetworkArray) ToZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput() ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput {
+	return i.ToZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustDnsLocationEndpointsIpv6NetworkArray) ToZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsIpv6NetworkOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustDnsLocationEndpointsIpv6NetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustDnsLocationEndpointsIpv6Network)(nil)).Elem()
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv6NetworkOutput) ToZeroTrustDnsLocationEndpointsIpv6NetworkOutput() ZeroTrustDnsLocationEndpointsIpv6NetworkOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv6NetworkOutput) ToZeroTrustDnsLocationEndpointsIpv6NetworkOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsIpv6NetworkOutput {
+	return o
+}
+
+// Specify the IPv6 address or IPv6 CIDR.
+func (o ZeroTrustDnsLocationEndpointsIpv6NetworkOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustDnsLocationEndpointsIpv6Network) string { return v.Network }).(pulumi.StringOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZeroTrustDnsLocationEndpointsIpv6Network)(nil)).Elem()
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput) ToZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput() ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput) ToZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput) Index(i pulumi.IntInput) ZeroTrustDnsLocationEndpointsIpv6NetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ZeroTrustDnsLocationEndpointsIpv6Network {
+		return vs[0].([]ZeroTrustDnsLocationEndpointsIpv6Network)[vs[1].(int)]
+	}).(ZeroTrustDnsLocationEndpointsIpv6NetworkOutput)
+}
+
+type ZeroTrustDnsLocationNetwork struct {
+	// Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.
+	Network string `pulumi:"network"`
+}
+
+// ZeroTrustDnsLocationNetworkInput is an input type that accepts ZeroTrustDnsLocationNetworkArgs and ZeroTrustDnsLocationNetworkOutput values.
+// You can construct a concrete instance of `ZeroTrustDnsLocationNetworkInput` via:
+//
+//	ZeroTrustDnsLocationNetworkArgs{...}
+type ZeroTrustDnsLocationNetworkInput interface {
+	pulumi.Input
+
+	ToZeroTrustDnsLocationNetworkOutput() ZeroTrustDnsLocationNetworkOutput
+	ToZeroTrustDnsLocationNetworkOutputWithContext(context.Context) ZeroTrustDnsLocationNetworkOutput
+}
+
+type ZeroTrustDnsLocationNetworkArgs struct {
+	// Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.
+	Network pulumi.StringInput `pulumi:"network"`
+}
+
+func (ZeroTrustDnsLocationNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustDnsLocationNetwork)(nil)).Elem()
+}
+
+func (i ZeroTrustDnsLocationNetworkArgs) ToZeroTrustDnsLocationNetworkOutput() ZeroTrustDnsLocationNetworkOutput {
+	return i.ToZeroTrustDnsLocationNetworkOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustDnsLocationNetworkArgs) ToZeroTrustDnsLocationNetworkOutputWithContext(ctx context.Context) ZeroTrustDnsLocationNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationNetworkOutput)
+}
+
+// ZeroTrustDnsLocationNetworkArrayInput is an input type that accepts ZeroTrustDnsLocationNetworkArray and ZeroTrustDnsLocationNetworkArrayOutput values.
+// You can construct a concrete instance of `ZeroTrustDnsLocationNetworkArrayInput` via:
+//
+//	ZeroTrustDnsLocationNetworkArray{ ZeroTrustDnsLocationNetworkArgs{...} }
+type ZeroTrustDnsLocationNetworkArrayInput interface {
+	pulumi.Input
+
+	ToZeroTrustDnsLocationNetworkArrayOutput() ZeroTrustDnsLocationNetworkArrayOutput
+	ToZeroTrustDnsLocationNetworkArrayOutputWithContext(context.Context) ZeroTrustDnsLocationNetworkArrayOutput
+}
+
+type ZeroTrustDnsLocationNetworkArray []ZeroTrustDnsLocationNetworkInput
+
+func (ZeroTrustDnsLocationNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZeroTrustDnsLocationNetwork)(nil)).Elem()
+}
+
+func (i ZeroTrustDnsLocationNetworkArray) ToZeroTrustDnsLocationNetworkArrayOutput() ZeroTrustDnsLocationNetworkArrayOutput {
+	return i.ToZeroTrustDnsLocationNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustDnsLocationNetworkArray) ToZeroTrustDnsLocationNetworkArrayOutputWithContext(ctx context.Context) ZeroTrustDnsLocationNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationNetworkArrayOutput)
+}
+
+type ZeroTrustDnsLocationNetworkOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustDnsLocationNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustDnsLocationNetwork)(nil)).Elem()
+}
+
+func (o ZeroTrustDnsLocationNetworkOutput) ToZeroTrustDnsLocationNetworkOutput() ZeroTrustDnsLocationNetworkOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationNetworkOutput) ToZeroTrustDnsLocationNetworkOutputWithContext(ctx context.Context) ZeroTrustDnsLocationNetworkOutput {
+	return o
+}
+
+// Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.
+func (o ZeroTrustDnsLocationNetworkOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustDnsLocationNetwork) string { return v.Network }).(pulumi.StringOutput)
+}
+
+type ZeroTrustDnsLocationNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustDnsLocationNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZeroTrustDnsLocationNetwork)(nil)).Elem()
+}
+
+func (o ZeroTrustDnsLocationNetworkArrayOutput) ToZeroTrustDnsLocationNetworkArrayOutput() ZeroTrustDnsLocationNetworkArrayOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationNetworkArrayOutput) ToZeroTrustDnsLocationNetworkArrayOutputWithContext(ctx context.Context) ZeroTrustDnsLocationNetworkArrayOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationNetworkArrayOutput) Index(i pulumi.IntInput) ZeroTrustDnsLocationNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ZeroTrustDnsLocationNetwork {
+		return vs[0].([]ZeroTrustDnsLocationNetwork)[vs[1].(int)]
+	}).(ZeroTrustDnsLocationNetworkOutput)
+}
+
+type ZeroTrustGatewayLoggingSettingsByRuleType struct {
+	// Configure logging settings for DNS firewall.
+	Dns *ZeroTrustGatewayLoggingSettingsByRuleTypeDns `pulumi:"dns"`
+	// Configure logging settings for HTTP/HTTPS firewall.
+	Http *ZeroTrustGatewayLoggingSettingsByRuleTypeHttp `pulumi:"http"`
+	// Configure logging settings for Network firewall.
+	L4 *ZeroTrustGatewayLoggingSettingsByRuleTypeL4 `pulumi:"l4"`
+}
+
+// ZeroTrustGatewayLoggingSettingsByRuleTypeInput is an input type that accepts ZeroTrustGatewayLoggingSettingsByRuleTypeArgs and ZeroTrustGatewayLoggingSettingsByRuleTypeOutput values.
+// You can construct a concrete instance of `ZeroTrustGatewayLoggingSettingsByRuleTypeInput` via:
+//
+//	ZeroTrustGatewayLoggingSettingsByRuleTypeArgs{...}
+type ZeroTrustGatewayLoggingSettingsByRuleTypeInput interface {
+	pulumi.Input
+
+	ToZeroTrustGatewayLoggingSettingsByRuleTypeOutput() ZeroTrustGatewayLoggingSettingsByRuleTypeOutput
+	ToZeroTrustGatewayLoggingSettingsByRuleTypeOutputWithContext(context.Context) ZeroTrustGatewayLoggingSettingsByRuleTypeOutput
+}
+
+type ZeroTrustGatewayLoggingSettingsByRuleTypeArgs struct {
+	// Configure logging settings for DNS firewall.
+	Dns ZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrInput `pulumi:"dns"`
+	// Configure logging settings for HTTP/HTTPS firewall.
+	Http ZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrInput `pulumi:"http"`
+	// Configure logging settings for Network firewall.
+	L4 ZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrInput `pulumi:"l4"`
+}
+
+func (ZeroTrustGatewayLoggingSettingsByRuleTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustGatewayLoggingSettingsByRuleType)(nil)).Elem()
+}
+
+func (i ZeroTrustGatewayLoggingSettingsByRuleTypeArgs) ToZeroTrustGatewayLoggingSettingsByRuleTypeOutput() ZeroTrustGatewayLoggingSettingsByRuleTypeOutput {
+	return i.ToZeroTrustGatewayLoggingSettingsByRuleTypeOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustGatewayLoggingSettingsByRuleTypeArgs) ToZeroTrustGatewayLoggingSettingsByRuleTypeOutputWithContext(ctx context.Context) ZeroTrustGatewayLoggingSettingsByRuleTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustGatewayLoggingSettingsByRuleTypeOutput)
+}
+
+func (i ZeroTrustGatewayLoggingSettingsByRuleTypeArgs) ToZeroTrustGatewayLoggingSettingsByRuleTypePtrOutput() ZeroTrustGatewayLoggingSettingsByRuleTypePtrOutput {
+	return i.ToZeroTrustGatewayLoggingSettingsByRuleTypePtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustGatewayLoggingSettingsByRuleTypeArgs) ToZeroTrustGatewayLoggingSettingsByRuleTypePtrOutputWithContext(ctx context.Context) ZeroTrustGatewayLoggingSettingsByRuleTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustGatewayLoggingSettingsByRuleTypeOutput).ToZeroTrustGatewayLoggingSettingsByRuleTypePtrOutputWithContext(ctx)
+}
+
+// ZeroTrustGatewayLoggingSettingsByRuleTypePtrInput is an input type that accepts ZeroTrustGatewayLoggingSettingsByRuleTypeArgs, ZeroTrustGatewayLoggingSettingsByRuleTypePtr and ZeroTrustGatewayLoggingSettingsByRuleTypePtrOutput values.
+// You can construct a concrete instance of `ZeroTrustGatewayLoggingSettingsByRuleTypePtrInput` via:
+//
+//	        ZeroTrustGatewayLoggingSettingsByRuleTypeArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustGatewayLoggingSettingsByRuleTypePtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustGatewayLoggingSettingsByRuleTypePtrOutput() ZeroTrustGatewayLoggingSettingsByRuleTypePtrOutput
+	ToZeroTrustGatewayLoggingSettingsByRuleTypePtrOutputWithContext(context.Context) ZeroTrustGatewayLoggingSettingsByRuleTypePtrOutput
+}
+
+type zeroTrustGatewayLoggingSettingsByRuleTypePtrType ZeroTrustGatewayLoggingSettingsByRuleTypeArgs
+
+func ZeroTrustGatewayLoggingSettingsByRuleTypePtr(v *ZeroTrustGatewayLoggingSettingsByRuleTypeArgs) ZeroTrustGatewayLoggingSettingsByRuleTypePtrInput {
+	return (*zeroTrustGatewayLoggingSettingsByRuleTypePtrType)(v)
+}
+
+func (*zeroTrustGatewayLoggingSettingsByRuleTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustGatewayLoggingSettingsByRuleType)(nil)).Elem()
+}
+
+func (i *zeroTrustGatewayLoggingSettingsByRuleTypePtrType) ToZeroTrustGatewayLoggingSettingsByRuleTypePtrOutput() ZeroTrustGatewayLoggingSettingsByRuleTypePtrOutput {
+	return i.ToZeroTrustGatewayLoggingSettingsByRuleTypePtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustGatewayLoggingSettingsByRuleTypePtrType) ToZeroTrustGatewayLoggingSettingsByRuleTypePtrOutputWithContext(ctx context.Context) ZeroTrustGatewayLoggingSettingsByRuleTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustGatewayLoggingSettingsByRuleTypePtrOutput)
+}
+
+type ZeroTrustGatewayLoggingSettingsByRuleTypeOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustGatewayLoggingSettingsByRuleTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustGatewayLoggingSettingsByRuleType)(nil)).Elem()
+}
+
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeOutput) ToZeroTrustGatewayLoggingSettingsByRuleTypeOutput() ZeroTrustGatewayLoggingSettingsByRuleTypeOutput {
+	return o
+}
+
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeOutput) ToZeroTrustGatewayLoggingSettingsByRuleTypeOutputWithContext(ctx context.Context) ZeroTrustGatewayLoggingSettingsByRuleTypeOutput {
+	return o
+}
+
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeOutput) ToZeroTrustGatewayLoggingSettingsByRuleTypePtrOutput() ZeroTrustGatewayLoggingSettingsByRuleTypePtrOutput {
+	return o.ToZeroTrustGatewayLoggingSettingsByRuleTypePtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeOutput) ToZeroTrustGatewayLoggingSettingsByRuleTypePtrOutputWithContext(ctx context.Context) ZeroTrustGatewayLoggingSettingsByRuleTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustGatewayLoggingSettingsByRuleType) *ZeroTrustGatewayLoggingSettingsByRuleType {
+		return &v
+	}).(ZeroTrustGatewayLoggingSettingsByRuleTypePtrOutput)
+}
+
+// Configure logging settings for DNS firewall.
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeOutput) Dns() ZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayLoggingSettingsByRuleType) *ZeroTrustGatewayLoggingSettingsByRuleTypeDns {
+		return v.Dns
+	}).(ZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutput)
+}
+
+// Configure logging settings for HTTP/HTTPS firewall.
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeOutput) Http() ZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayLoggingSettingsByRuleType) *ZeroTrustGatewayLoggingSettingsByRuleTypeHttp {
+		return v.Http
+	}).(ZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutput)
+}
+
+// Configure logging settings for Network firewall.
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeOutput) L4() ZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayLoggingSettingsByRuleType) *ZeroTrustGatewayLoggingSettingsByRuleTypeL4 {
+		return v.L4
+	}).(ZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutput)
+}
+
+type ZeroTrustGatewayLoggingSettingsByRuleTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustGatewayLoggingSettingsByRuleTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustGatewayLoggingSettingsByRuleType)(nil)).Elem()
+}
+
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypePtrOutput) ToZeroTrustGatewayLoggingSettingsByRuleTypePtrOutput() ZeroTrustGatewayLoggingSettingsByRuleTypePtrOutput {
+	return o
+}
+
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypePtrOutput) ToZeroTrustGatewayLoggingSettingsByRuleTypePtrOutputWithContext(ctx context.Context) ZeroTrustGatewayLoggingSettingsByRuleTypePtrOutput {
+	return o
+}
+
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypePtrOutput) Elem() ZeroTrustGatewayLoggingSettingsByRuleTypeOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayLoggingSettingsByRuleType) ZeroTrustGatewayLoggingSettingsByRuleType {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustGatewayLoggingSettingsByRuleType
+		return ret
+	}).(ZeroTrustGatewayLoggingSettingsByRuleTypeOutput)
+}
+
+// Configure logging settings for DNS firewall.
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypePtrOutput) Dns() ZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayLoggingSettingsByRuleType) *ZeroTrustGatewayLoggingSettingsByRuleTypeDns {
+		if v == nil {
+			return nil
+		}
+		return v.Dns
+	}).(ZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutput)
+}
+
+// Configure logging settings for HTTP/HTTPS firewall.
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypePtrOutput) Http() ZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayLoggingSettingsByRuleType) *ZeroTrustGatewayLoggingSettingsByRuleTypeHttp {
+		if v == nil {
+			return nil
+		}
+		return v.Http
+	}).(ZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutput)
+}
+
+// Configure logging settings for Network firewall.
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypePtrOutput) L4() ZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayLoggingSettingsByRuleType) *ZeroTrustGatewayLoggingSettingsByRuleTypeL4 {
+		if v == nil {
+			return nil
+		}
+		return v.L4
+	}).(ZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutput)
+}
+
+type ZeroTrustGatewayLoggingSettingsByRuleTypeDns struct {
+	// Specify whether to log all requests to this service.
+	LogAll *bool `pulumi:"logAll"`
+	// Specify whether to log only blocking requests to this service.
+	LogBlocks *bool `pulumi:"logBlocks"`
+}
+
+// ZeroTrustGatewayLoggingSettingsByRuleTypeDnsInput is an input type that accepts ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs and ZeroTrustGatewayLoggingSettingsByRuleTypeDnsOutput values.
+// You can construct a concrete instance of `ZeroTrustGatewayLoggingSettingsByRuleTypeDnsInput` via:
+//
+//	ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs{...}
+type ZeroTrustGatewayLoggingSettingsByRuleTypeDnsInput interface {
+	pulumi.Input
+
+	ToZeroTrustGatewayLoggingSettingsByRuleTypeDnsOutput() ZeroTrustGatewayLoggingSettingsByRuleTypeDnsOutput
+	ToZeroTrustGatewayLoggingSettingsByRuleTypeDnsOutputWithContext(context.Context) ZeroTrustGatewayLoggingSettingsByRuleTypeDnsOutput
+}
+
+type ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs struct {
+	// Specify whether to log all requests to this service.
+	LogAll pulumi.BoolPtrInput `pulumi:"logAll"`
+	// Specify whether to log only blocking requests to this service.
+	LogBlocks pulumi.BoolPtrInput `pulumi:"logBlocks"`
+}
+
+func (ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustGatewayLoggingSettingsByRuleTypeDns)(nil)).Elem()
+}
+
+func (i ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs) ToZeroTrustGatewayLoggingSettingsByRuleTypeDnsOutput() ZeroTrustGatewayLoggingSettingsByRuleTypeDnsOutput {
+	return i.ToZeroTrustGatewayLoggingSettingsByRuleTypeDnsOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs) ToZeroTrustGatewayLoggingSettingsByRuleTypeDnsOutputWithContext(ctx context.Context) ZeroTrustGatewayLoggingSettingsByRuleTypeDnsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustGatewayLoggingSettingsByRuleTypeDnsOutput)
+}
+
+func (i ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs) ToZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutput() ZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutput {
+	return i.ToZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs) ToZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutputWithContext(ctx context.Context) ZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustGatewayLoggingSettingsByRuleTypeDnsOutput).ToZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutputWithContext(ctx)
+}
+
+// ZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrInput is an input type that accepts ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs, ZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtr and ZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutput values.
+// You can construct a concrete instance of `ZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrInput` via:
+//
+//	        ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutput() ZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutput
+	ToZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutputWithContext(context.Context) ZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutput
+}
+
+type zeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrType ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs
+
+func ZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtr(v *ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs) ZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrInput {
+	return (*zeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrType)(v)
+}
+
+func (*zeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustGatewayLoggingSettingsByRuleTypeDns)(nil)).Elem()
+}
+
+func (i *zeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrType) ToZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutput() ZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutput {
+	return i.ToZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrType) ToZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutputWithContext(ctx context.Context) ZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutput)
+}
+
+type ZeroTrustGatewayLoggingSettingsByRuleTypeDnsOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustGatewayLoggingSettingsByRuleTypeDnsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustGatewayLoggingSettingsByRuleTypeDns)(nil)).Elem()
+}
+
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeDnsOutput) ToZeroTrustGatewayLoggingSettingsByRuleTypeDnsOutput() ZeroTrustGatewayLoggingSettingsByRuleTypeDnsOutput {
+	return o
+}
+
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeDnsOutput) ToZeroTrustGatewayLoggingSettingsByRuleTypeDnsOutputWithContext(ctx context.Context) ZeroTrustGatewayLoggingSettingsByRuleTypeDnsOutput {
+	return o
+}
+
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeDnsOutput) ToZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutput() ZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutput {
+	return o.ToZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeDnsOutput) ToZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutputWithContext(ctx context.Context) ZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustGatewayLoggingSettingsByRuleTypeDns) *ZeroTrustGatewayLoggingSettingsByRuleTypeDns {
+		return &v
+	}).(ZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutput)
+}
+
+// Specify whether to log all requests to this service.
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeDnsOutput) LogAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayLoggingSettingsByRuleTypeDns) *bool { return v.LogAll }).(pulumi.BoolPtrOutput)
+}
+
+// Specify whether to log only blocking requests to this service.
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeDnsOutput) LogBlocks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayLoggingSettingsByRuleTypeDns) *bool { return v.LogBlocks }).(pulumi.BoolPtrOutput)
+}
+
+type ZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustGatewayLoggingSettingsByRuleTypeDns)(nil)).Elem()
+}
+
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutput) ToZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutput() ZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutput {
+	return o
+}
+
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutput) ToZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutputWithContext(ctx context.Context) ZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutput {
+	return o
+}
+
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutput) Elem() ZeroTrustGatewayLoggingSettingsByRuleTypeDnsOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayLoggingSettingsByRuleTypeDns) ZeroTrustGatewayLoggingSettingsByRuleTypeDns {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustGatewayLoggingSettingsByRuleTypeDns
+		return ret
+	}).(ZeroTrustGatewayLoggingSettingsByRuleTypeDnsOutput)
+}
+
+// Specify whether to log all requests to this service.
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutput) LogAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayLoggingSettingsByRuleTypeDns) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LogAll
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specify whether to log only blocking requests to this service.
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutput) LogBlocks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayLoggingSettingsByRuleTypeDns) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LogBlocks
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ZeroTrustGatewayLoggingSettingsByRuleTypeHttp struct {
+	// Specify whether to log all requests to this service.
+	LogAll *bool `pulumi:"logAll"`
+	// Specify whether to log only blocking requests to this service.
+	LogBlocks *bool `pulumi:"logBlocks"`
+}
+
+// ZeroTrustGatewayLoggingSettingsByRuleTypeHttpInput is an input type that accepts ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs and ZeroTrustGatewayLoggingSettingsByRuleTypeHttpOutput values.
+// You can construct a concrete instance of `ZeroTrustGatewayLoggingSettingsByRuleTypeHttpInput` via:
+//
+//	ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs{...}
+type ZeroTrustGatewayLoggingSettingsByRuleTypeHttpInput interface {
+	pulumi.Input
+
+	ToZeroTrustGatewayLoggingSettingsByRuleTypeHttpOutput() ZeroTrustGatewayLoggingSettingsByRuleTypeHttpOutput
+	ToZeroTrustGatewayLoggingSettingsByRuleTypeHttpOutputWithContext(context.Context) ZeroTrustGatewayLoggingSettingsByRuleTypeHttpOutput
+}
+
+type ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs struct {
+	// Specify whether to log all requests to this service.
+	LogAll pulumi.BoolPtrInput `pulumi:"logAll"`
+	// Specify whether to log only blocking requests to this service.
+	LogBlocks pulumi.BoolPtrInput `pulumi:"logBlocks"`
+}
+
+func (ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustGatewayLoggingSettingsByRuleTypeHttp)(nil)).Elem()
+}
+
+func (i ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs) ToZeroTrustGatewayLoggingSettingsByRuleTypeHttpOutput() ZeroTrustGatewayLoggingSettingsByRuleTypeHttpOutput {
+	return i.ToZeroTrustGatewayLoggingSettingsByRuleTypeHttpOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs) ToZeroTrustGatewayLoggingSettingsByRuleTypeHttpOutputWithContext(ctx context.Context) ZeroTrustGatewayLoggingSettingsByRuleTypeHttpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustGatewayLoggingSettingsByRuleTypeHttpOutput)
+}
+
+func (i ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs) ToZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutput() ZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutput {
+	return i.ToZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs) ToZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutputWithContext(ctx context.Context) ZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustGatewayLoggingSettingsByRuleTypeHttpOutput).ToZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutputWithContext(ctx)
+}
+
+// ZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrInput is an input type that accepts ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs, ZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtr and ZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutput values.
+// You can construct a concrete instance of `ZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrInput` via:
+//
+//	        ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutput() ZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutput
+	ToZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutputWithContext(context.Context) ZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutput
+}
+
+type zeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrType ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs
+
+func ZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtr(v *ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs) ZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrInput {
+	return (*zeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrType)(v)
+}
+
+func (*zeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustGatewayLoggingSettingsByRuleTypeHttp)(nil)).Elem()
+}
+
+func (i *zeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrType) ToZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutput() ZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutput {
+	return i.ToZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrType) ToZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutputWithContext(ctx context.Context) ZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutput)
+}
+
+type ZeroTrustGatewayLoggingSettingsByRuleTypeHttpOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustGatewayLoggingSettingsByRuleTypeHttpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustGatewayLoggingSettingsByRuleTypeHttp)(nil)).Elem()
+}
+
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeHttpOutput) ToZeroTrustGatewayLoggingSettingsByRuleTypeHttpOutput() ZeroTrustGatewayLoggingSettingsByRuleTypeHttpOutput {
+	return o
+}
+
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeHttpOutput) ToZeroTrustGatewayLoggingSettingsByRuleTypeHttpOutputWithContext(ctx context.Context) ZeroTrustGatewayLoggingSettingsByRuleTypeHttpOutput {
+	return o
+}
+
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeHttpOutput) ToZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutput() ZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutput {
+	return o.ToZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeHttpOutput) ToZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutputWithContext(ctx context.Context) ZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustGatewayLoggingSettingsByRuleTypeHttp) *ZeroTrustGatewayLoggingSettingsByRuleTypeHttp {
+		return &v
+	}).(ZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutput)
+}
+
+// Specify whether to log all requests to this service.
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeHttpOutput) LogAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayLoggingSettingsByRuleTypeHttp) *bool { return v.LogAll }).(pulumi.BoolPtrOutput)
+}
+
+// Specify whether to log only blocking requests to this service.
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeHttpOutput) LogBlocks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayLoggingSettingsByRuleTypeHttp) *bool { return v.LogBlocks }).(pulumi.BoolPtrOutput)
+}
+
+type ZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustGatewayLoggingSettingsByRuleTypeHttp)(nil)).Elem()
+}
+
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutput) ToZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutput() ZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutput {
+	return o
+}
+
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutput) ToZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutputWithContext(ctx context.Context) ZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutput {
+	return o
+}
+
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutput) Elem() ZeroTrustGatewayLoggingSettingsByRuleTypeHttpOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayLoggingSettingsByRuleTypeHttp) ZeroTrustGatewayLoggingSettingsByRuleTypeHttp {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustGatewayLoggingSettingsByRuleTypeHttp
+		return ret
+	}).(ZeroTrustGatewayLoggingSettingsByRuleTypeHttpOutput)
+}
+
+// Specify whether to log all requests to this service.
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutput) LogAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayLoggingSettingsByRuleTypeHttp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LogAll
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specify whether to log only blocking requests to this service.
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutput) LogBlocks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayLoggingSettingsByRuleTypeHttp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LogBlocks
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ZeroTrustGatewayLoggingSettingsByRuleTypeL4 struct {
+	// Specify whether to log all requests to this service.
+	LogAll *bool `pulumi:"logAll"`
+	// Specify whether to log only blocking requests to this service.
+	LogBlocks *bool `pulumi:"logBlocks"`
+}
+
+// ZeroTrustGatewayLoggingSettingsByRuleTypeL4Input is an input type that accepts ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args and ZeroTrustGatewayLoggingSettingsByRuleTypeL4Output values.
+// You can construct a concrete instance of `ZeroTrustGatewayLoggingSettingsByRuleTypeL4Input` via:
+//
+//	ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args{...}
+type ZeroTrustGatewayLoggingSettingsByRuleTypeL4Input interface {
+	pulumi.Input
+
+	ToZeroTrustGatewayLoggingSettingsByRuleTypeL4Output() ZeroTrustGatewayLoggingSettingsByRuleTypeL4Output
+	ToZeroTrustGatewayLoggingSettingsByRuleTypeL4OutputWithContext(context.Context) ZeroTrustGatewayLoggingSettingsByRuleTypeL4Output
+}
+
+type ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args struct {
+	// Specify whether to log all requests to this service.
+	LogAll pulumi.BoolPtrInput `pulumi:"logAll"`
+	// Specify whether to log only blocking requests to this service.
+	LogBlocks pulumi.BoolPtrInput `pulumi:"logBlocks"`
+}
+
+func (ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustGatewayLoggingSettingsByRuleTypeL4)(nil)).Elem()
+}
+
+func (i ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args) ToZeroTrustGatewayLoggingSettingsByRuleTypeL4Output() ZeroTrustGatewayLoggingSettingsByRuleTypeL4Output {
+	return i.ToZeroTrustGatewayLoggingSettingsByRuleTypeL4OutputWithContext(context.Background())
+}
+
+func (i ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args) ToZeroTrustGatewayLoggingSettingsByRuleTypeL4OutputWithContext(ctx context.Context) ZeroTrustGatewayLoggingSettingsByRuleTypeL4Output {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustGatewayLoggingSettingsByRuleTypeL4Output)
+}
+
+func (i ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args) ToZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutput() ZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutput {
+	return i.ToZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args) ToZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutputWithContext(ctx context.Context) ZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustGatewayLoggingSettingsByRuleTypeL4Output).ToZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutputWithContext(ctx)
+}
+
+// ZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrInput is an input type that accepts ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args, ZeroTrustGatewayLoggingSettingsByRuleTypeL4Ptr and ZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutput values.
+// You can construct a concrete instance of `ZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrInput` via:
+//
+//	        ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutput() ZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutput
+	ToZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutputWithContext(context.Context) ZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutput
+}
+
+type zeroTrustGatewayLoggingSettingsByRuleTypeL4PtrType ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args
+
+func ZeroTrustGatewayLoggingSettingsByRuleTypeL4Ptr(v *ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args) ZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrInput {
+	return (*zeroTrustGatewayLoggingSettingsByRuleTypeL4PtrType)(v)
+}
+
+func (*zeroTrustGatewayLoggingSettingsByRuleTypeL4PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustGatewayLoggingSettingsByRuleTypeL4)(nil)).Elem()
+}
+
+func (i *zeroTrustGatewayLoggingSettingsByRuleTypeL4PtrType) ToZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutput() ZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutput {
+	return i.ToZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustGatewayLoggingSettingsByRuleTypeL4PtrType) ToZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutputWithContext(ctx context.Context) ZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutput)
+}
+
+type ZeroTrustGatewayLoggingSettingsByRuleTypeL4Output struct{ *pulumi.OutputState }
+
+func (ZeroTrustGatewayLoggingSettingsByRuleTypeL4Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustGatewayLoggingSettingsByRuleTypeL4)(nil)).Elem()
+}
+
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeL4Output) ToZeroTrustGatewayLoggingSettingsByRuleTypeL4Output() ZeroTrustGatewayLoggingSettingsByRuleTypeL4Output {
+	return o
+}
+
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeL4Output) ToZeroTrustGatewayLoggingSettingsByRuleTypeL4OutputWithContext(ctx context.Context) ZeroTrustGatewayLoggingSettingsByRuleTypeL4Output {
+	return o
+}
+
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeL4Output) ToZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutput() ZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutput {
+	return o.ToZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeL4Output) ToZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutputWithContext(ctx context.Context) ZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustGatewayLoggingSettingsByRuleTypeL4) *ZeroTrustGatewayLoggingSettingsByRuleTypeL4 {
+		return &v
+	}).(ZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutput)
+}
+
+// Specify whether to log all requests to this service.
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeL4Output) LogAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayLoggingSettingsByRuleTypeL4) *bool { return v.LogAll }).(pulumi.BoolPtrOutput)
+}
+
+// Specify whether to log only blocking requests to this service.
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeL4Output) LogBlocks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayLoggingSettingsByRuleTypeL4) *bool { return v.LogBlocks }).(pulumi.BoolPtrOutput)
+}
+
+type ZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustGatewayLoggingSettingsByRuleTypeL4)(nil)).Elem()
+}
+
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutput) ToZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutput() ZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutput {
+	return o
+}
+
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutput) ToZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutputWithContext(ctx context.Context) ZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutput {
+	return o
+}
+
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutput) Elem() ZeroTrustGatewayLoggingSettingsByRuleTypeL4Output {
+	return o.ApplyT(func(v *ZeroTrustGatewayLoggingSettingsByRuleTypeL4) ZeroTrustGatewayLoggingSettingsByRuleTypeL4 {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustGatewayLoggingSettingsByRuleTypeL4
+		return ret
+	}).(ZeroTrustGatewayLoggingSettingsByRuleTypeL4Output)
+}
+
+// Specify whether to log all requests to this service.
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutput) LogAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayLoggingSettingsByRuleTypeL4) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LogAll
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specify whether to log only blocking requests to this service.
+func (o ZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutput) LogBlocks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayLoggingSettingsByRuleTypeL4) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LogBlocks
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ZeroTrustGatewayPolicyExpiration struct {
+	// Defines the default duration a policy active in minutes. Must set in order to use the `resetExpiration` endpoint on this rule.
+	Duration *int `pulumi:"duration"`
+	// Indicates whether the policy is expired.
+	Expired *bool `pulumi:"expired"`
+	// Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expiresAt time.
+	ExpiresAt string `pulumi:"expiresAt"`
+}
+
+// ZeroTrustGatewayPolicyExpirationInput is an input type that accepts ZeroTrustGatewayPolicyExpirationArgs and ZeroTrustGatewayPolicyExpirationOutput values.
+// You can construct a concrete instance of `ZeroTrustGatewayPolicyExpirationInput` via:
+//
+//	ZeroTrustGatewayPolicyExpirationArgs{...}
+type ZeroTrustGatewayPolicyExpirationInput interface {
+	pulumi.Input
+
+	ToZeroTrustGatewayPolicyExpirationOutput() ZeroTrustGatewayPolicyExpirationOutput
+	ToZeroTrustGatewayPolicyExpirationOutputWithContext(context.Context) ZeroTrustGatewayPolicyExpirationOutput
+}
+
+type ZeroTrustGatewayPolicyExpirationArgs struct {
+	// Defines the default duration a policy active in minutes. Must set in order to use the `resetExpiration` endpoint on this rule.
+	Duration pulumi.IntPtrInput `pulumi:"duration"`
+	// Indicates whether the policy is expired.
+	Expired pulumi.BoolPtrInput `pulumi:"expired"`
+	// Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expiresAt time.
+	ExpiresAt pulumi.StringInput `pulumi:"expiresAt"`
+}
+
+func (ZeroTrustGatewayPolicyExpirationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustGatewayPolicyExpiration)(nil)).Elem()
+}
+
+func (i ZeroTrustGatewayPolicyExpirationArgs) ToZeroTrustGatewayPolicyExpirationOutput() ZeroTrustGatewayPolicyExpirationOutput {
+	return i.ToZeroTrustGatewayPolicyExpirationOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustGatewayPolicyExpirationArgs) ToZeroTrustGatewayPolicyExpirationOutputWithContext(ctx context.Context) ZeroTrustGatewayPolicyExpirationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustGatewayPolicyExpirationOutput)
+}
+
+func (i ZeroTrustGatewayPolicyExpirationArgs) ToZeroTrustGatewayPolicyExpirationPtrOutput() ZeroTrustGatewayPolicyExpirationPtrOutput {
+	return i.ToZeroTrustGatewayPolicyExpirationPtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustGatewayPolicyExpirationArgs) ToZeroTrustGatewayPolicyExpirationPtrOutputWithContext(ctx context.Context) ZeroTrustGatewayPolicyExpirationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustGatewayPolicyExpirationOutput).ToZeroTrustGatewayPolicyExpirationPtrOutputWithContext(ctx)
+}
+
+// ZeroTrustGatewayPolicyExpirationPtrInput is an input type that accepts ZeroTrustGatewayPolicyExpirationArgs, ZeroTrustGatewayPolicyExpirationPtr and ZeroTrustGatewayPolicyExpirationPtrOutput values.
+// You can construct a concrete instance of `ZeroTrustGatewayPolicyExpirationPtrInput` via:
+//
+//	        ZeroTrustGatewayPolicyExpirationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustGatewayPolicyExpirationPtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustGatewayPolicyExpirationPtrOutput() ZeroTrustGatewayPolicyExpirationPtrOutput
+	ToZeroTrustGatewayPolicyExpirationPtrOutputWithContext(context.Context) ZeroTrustGatewayPolicyExpirationPtrOutput
+}
+
+type zeroTrustGatewayPolicyExpirationPtrType ZeroTrustGatewayPolicyExpirationArgs
+
+func ZeroTrustGatewayPolicyExpirationPtr(v *ZeroTrustGatewayPolicyExpirationArgs) ZeroTrustGatewayPolicyExpirationPtrInput {
+	return (*zeroTrustGatewayPolicyExpirationPtrType)(v)
+}
+
+func (*zeroTrustGatewayPolicyExpirationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustGatewayPolicyExpiration)(nil)).Elem()
+}
+
+func (i *zeroTrustGatewayPolicyExpirationPtrType) ToZeroTrustGatewayPolicyExpirationPtrOutput() ZeroTrustGatewayPolicyExpirationPtrOutput {
+	return i.ToZeroTrustGatewayPolicyExpirationPtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustGatewayPolicyExpirationPtrType) ToZeroTrustGatewayPolicyExpirationPtrOutputWithContext(ctx context.Context) ZeroTrustGatewayPolicyExpirationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustGatewayPolicyExpirationPtrOutput)
+}
+
+type ZeroTrustGatewayPolicyExpirationOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustGatewayPolicyExpirationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustGatewayPolicyExpiration)(nil)).Elem()
+}
+
+func (o ZeroTrustGatewayPolicyExpirationOutput) ToZeroTrustGatewayPolicyExpirationOutput() ZeroTrustGatewayPolicyExpirationOutput {
+	return o
+}
+
+func (o ZeroTrustGatewayPolicyExpirationOutput) ToZeroTrustGatewayPolicyExpirationOutputWithContext(ctx context.Context) ZeroTrustGatewayPolicyExpirationOutput {
+	return o
+}
+
+func (o ZeroTrustGatewayPolicyExpirationOutput) ToZeroTrustGatewayPolicyExpirationPtrOutput() ZeroTrustGatewayPolicyExpirationPtrOutput {
+	return o.ToZeroTrustGatewayPolicyExpirationPtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustGatewayPolicyExpirationOutput) ToZeroTrustGatewayPolicyExpirationPtrOutputWithContext(ctx context.Context) ZeroTrustGatewayPolicyExpirationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustGatewayPolicyExpiration) *ZeroTrustGatewayPolicyExpiration {
+		return &v
+	}).(ZeroTrustGatewayPolicyExpirationPtrOutput)
+}
+
+// Defines the default duration a policy active in minutes. Must set in order to use the `resetExpiration` endpoint on this rule.
+func (o ZeroTrustGatewayPolicyExpirationOutput) Duration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayPolicyExpiration) *int { return v.Duration }).(pulumi.IntPtrOutput)
+}
+
+// Indicates whether the policy is expired.
+func (o ZeroTrustGatewayPolicyExpirationOutput) Expired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayPolicyExpiration) *bool { return v.Expired }).(pulumi.BoolPtrOutput)
+}
+
+// Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expiresAt time.
+func (o ZeroTrustGatewayPolicyExpirationOutput) ExpiresAt() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayPolicyExpiration) string { return v.ExpiresAt }).(pulumi.StringOutput)
+}
+
+type ZeroTrustGatewayPolicyExpirationPtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustGatewayPolicyExpirationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustGatewayPolicyExpiration)(nil)).Elem()
+}
+
+func (o ZeroTrustGatewayPolicyExpirationPtrOutput) ToZeroTrustGatewayPolicyExpirationPtrOutput() ZeroTrustGatewayPolicyExpirationPtrOutput {
+	return o
+}
+
+func (o ZeroTrustGatewayPolicyExpirationPtrOutput) ToZeroTrustGatewayPolicyExpirationPtrOutputWithContext(ctx context.Context) ZeroTrustGatewayPolicyExpirationPtrOutput {
+	return o
+}
+
+func (o ZeroTrustGatewayPolicyExpirationPtrOutput) Elem() ZeroTrustGatewayPolicyExpirationOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyExpiration) ZeroTrustGatewayPolicyExpiration {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustGatewayPolicyExpiration
+		return ret
+	}).(ZeroTrustGatewayPolicyExpirationOutput)
+}
+
+// Defines the default duration a policy active in minutes. Must set in order to use the `resetExpiration` endpoint on this rule.
+func (o ZeroTrustGatewayPolicyExpirationPtrOutput) Duration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyExpiration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Duration
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates whether the policy is expired.
+func (o ZeroTrustGatewayPolicyExpirationPtrOutput) Expired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyExpiration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Expired
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expiresAt time.
+func (o ZeroTrustGatewayPolicyExpirationPtrOutput) ExpiresAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyExpiration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ExpiresAt
+	}).(pulumi.StringPtrOutput)
+}
+
+type ZeroTrustGatewayPolicyRuleSettings struct {
+	// Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.
+	AddHeaders map[string][]string `pulumi:"addHeaders"`
+	// Set to enable MSP children to bypass this rule. Only parent MSP accounts can set this. this rule. Settable for all types of rules.
+	AllowChildBypass *bool `pulumi:"allowChildBypass"`
+	// Define the settings for the Audit SSH action. Settable only for `l4` rules with `auditSsh` action.
+	AuditSsh *ZeroTrustGatewayPolicyRuleSettingsAuditSsh `pulumi:"auditSsh"`
+	// Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.
+	BisoAdminControls *ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls `pulumi:"bisoAdminControls"`
+	// Configure custom block page settings. If missing or null, use the account settings. Settable only for `http` rules with the action set to `block`.
+	BlockPage *ZeroTrustGatewayPolicyRuleSettingsBlockPage `pulumi:"blockPage"`
+	// Enable the custom block page. Settable only for `dns` rules with action `block`.
+	BlockPageEnabled *bool `pulumi:"blockPageEnabled"`
+	// Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.
+	BlockReason *string `pulumi:"blockReason"`
+	// Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules.
+	BypassParentRule *bool `pulumi:"bypassParentRule"`
+	// Configure session check behavior. Settable only for `l4` and `http` rules with the action set to `allow`.
+	CheckSession *ZeroTrustGatewayPolicyRuleSettingsCheckSession `pulumi:"checkSession"`
+	// Configure custom resolvers to route queries that match the resolver policy. Unused with 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' settings. DNS queries get routed to the address closest to their origin. Only valid when a rule's action set to 'resolve'. Settable only for `dnsResolver` rules.
+	DnsResolvers *ZeroTrustGatewayPolicyRuleSettingsDnsResolvers `pulumi:"dnsResolvers"`
+	// Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs. Settable only for `egress` rules.
+	Egress *ZeroTrustGatewayPolicyRuleSettingsEgress `pulumi:"egress"`
+	// Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
+	ForensicCopy *ZeroTrustGatewayPolicyRuleSettingsForensicCopy `pulumi:"forensicCopy"`
+	// Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dnsResolver` rules.
+	IgnoreCnameCategoryMatches *bool `pulumi:"ignoreCnameCategoryMatches"`
+	// Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.
+	InsecureDisableDnssecValidation *bool `pulumi:"insecureDisableDnssecValidation"`
+	// Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dnsResolver` rules.
+	IpCategories *bool `pulumi:"ipCategories"`
+	// Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dnsResolver` rules.
+	IpIndicatorFeeds *bool `pulumi:"ipIndicatorFeeds"`
+	// Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4Override`.
+	L4override *ZeroTrustGatewayPolicyRuleSettingsL4override `pulumi:"l4override"`
+	// Configure a notification to display on the user's device when this rule matched. Settable for all types of rules with the action set to `block`.
+	NotificationSettings *ZeroTrustGatewayPolicyRuleSettingsNotificationSettings `pulumi:"notificationSettings"`
+	// Defines a hostname for override, for the matching DNS queries. Settable only for `dns` rules with the action set to `override`.
+	OverrideHost *string `pulumi:"overrideHost"`
+	// Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.
+	OverrideIps []string `pulumi:"overrideIps"`
+	// Configure DLP payload logging. Settable only for `http` rules.
+	PayloadLog *ZeroTrustGatewayPolicyRuleSettingsPayloadLog `pulumi:"payloadLog"`
+	// Configure settings that apply to quarantine rules. Settable only for `http` rules.
+	Quarantine *ZeroTrustGatewayPolicyRuleSettingsQuarantine `pulumi:"quarantine"`
+	// Apply settings to redirect rules. Settable only for `http` rules with the action set to `redirect`.
+	Redirect *ZeroTrustGatewayPolicyRuleSettingsRedirect `pulumi:"redirect"`
+	// Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Not used when 'dns*resolvers' is specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dnsResolver` rules.
+	ResolveDnsInternally *ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally `pulumi:"resolveDnsInternally"`
+	// Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot set when 'dns*resolvers' specified or 'resolve*dns_internally' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dnsResolver` rules.
+	ResolveDnsThroughCloudflare *bool `pulumi:"resolveDnsThroughCloudflare"`
+	// Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.
+	UntrustedCert *ZeroTrustGatewayPolicyRuleSettingsUntrustedCert `pulumi:"untrustedCert"`
+}
+
+// ZeroTrustGatewayPolicyRuleSettingsInput is an input type that accepts ZeroTrustGatewayPolicyRuleSettingsArgs and ZeroTrustGatewayPolicyRuleSettingsOutput values.
+// You can construct a concrete instance of `ZeroTrustGatewayPolicyRuleSettingsInput` via:
+//
+//	ZeroTrustGatewayPolicyRuleSettingsArgs{...}
+type ZeroTrustGatewayPolicyRuleSettingsInput interface {
+	pulumi.Input
+
+	ToZeroTrustGatewayPolicyRuleSettingsOutput() ZeroTrustGatewayPolicyRuleSettingsOutput
+	ToZeroTrustGatewayPolicyRuleSettingsOutputWithContext(context.Context) ZeroTrustGatewayPolicyRuleSettingsOutput
+}
+
+type ZeroTrustGatewayPolicyRuleSettingsArgs struct {
+	// Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.
+	AddHeaders pulumi.StringArrayMapInput `pulumi:"addHeaders"`
+	// Set to enable MSP children to bypass this rule. Only parent MSP accounts can set this. this rule. Settable for all types of rules.
+	AllowChildBypass pulumi.BoolPtrInput `pulumi:"allowChildBypass"`
+	// Define the settings for the Audit SSH action. Settable only for `l4` rules with `auditSsh` action.
+	AuditSsh ZeroTrustGatewayPolicyRuleSettingsAuditSshPtrInput `pulumi:"auditSsh"`
+	// Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.
+	BisoAdminControls ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsPtrInput `pulumi:"bisoAdminControls"`
+	// Configure custom block page settings. If missing or null, use the account settings. Settable only for `http` rules with the action set to `block`.
+	BlockPage ZeroTrustGatewayPolicyRuleSettingsBlockPagePtrInput `pulumi:"blockPage"`
+	// Enable the custom block page. Settable only for `dns` rules with action `block`.
+	BlockPageEnabled pulumi.BoolPtrInput `pulumi:"blockPageEnabled"`
+	// Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.
+	BlockReason pulumi.StringPtrInput `pulumi:"blockReason"`
+	// Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules.
+	BypassParentRule pulumi.BoolPtrInput `pulumi:"bypassParentRule"`
+	// Configure session check behavior. Settable only for `l4` and `http` rules with the action set to `allow`.
+	CheckSession ZeroTrustGatewayPolicyRuleSettingsCheckSessionPtrInput `pulumi:"checkSession"`
+	// Configure custom resolvers to route queries that match the resolver policy. Unused with 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' settings. DNS queries get routed to the address closest to their origin. Only valid when a rule's action set to 'resolve'. Settable only for `dnsResolver` rules.
+	DnsResolvers ZeroTrustGatewayPolicyRuleSettingsDnsResolversPtrInput `pulumi:"dnsResolvers"`
+	// Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs. Settable only for `egress` rules.
+	Egress ZeroTrustGatewayPolicyRuleSettingsEgressPtrInput `pulumi:"egress"`
+	// Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
+	ForensicCopy ZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrInput `pulumi:"forensicCopy"`
+	// Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dnsResolver` rules.
+	IgnoreCnameCategoryMatches pulumi.BoolPtrInput `pulumi:"ignoreCnameCategoryMatches"`
+	// Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.
+	InsecureDisableDnssecValidation pulumi.BoolPtrInput `pulumi:"insecureDisableDnssecValidation"`
+	// Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dnsResolver` rules.
+	IpCategories pulumi.BoolPtrInput `pulumi:"ipCategories"`
+	// Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dnsResolver` rules.
+	IpIndicatorFeeds pulumi.BoolPtrInput `pulumi:"ipIndicatorFeeds"`
+	// Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4Override`.
+	L4override ZeroTrustGatewayPolicyRuleSettingsL4overridePtrInput `pulumi:"l4override"`
+	// Configure a notification to display on the user's device when this rule matched. Settable for all types of rules with the action set to `block`.
+	NotificationSettings ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsPtrInput `pulumi:"notificationSettings"`
+	// Defines a hostname for override, for the matching DNS queries. Settable only for `dns` rules with the action set to `override`.
+	OverrideHost pulumi.StringPtrInput `pulumi:"overrideHost"`
+	// Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.
+	OverrideIps pulumi.StringArrayInput `pulumi:"overrideIps"`
+	// Configure DLP payload logging. Settable only for `http` rules.
+	PayloadLog ZeroTrustGatewayPolicyRuleSettingsPayloadLogPtrInput `pulumi:"payloadLog"`
+	// Configure settings that apply to quarantine rules. Settable only for `http` rules.
+	Quarantine ZeroTrustGatewayPolicyRuleSettingsQuarantinePtrInput `pulumi:"quarantine"`
+	// Apply settings to redirect rules. Settable only for `http` rules with the action set to `redirect`.
+	Redirect ZeroTrustGatewayPolicyRuleSettingsRedirectPtrInput `pulumi:"redirect"`
+	// Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Not used when 'dns*resolvers' is specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dnsResolver` rules.
+	ResolveDnsInternally ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrInput `pulumi:"resolveDnsInternally"`
+	// Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot set when 'dns*resolvers' specified or 'resolve*dns_internally' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dnsResolver` rules.
+	ResolveDnsThroughCloudflare pulumi.BoolPtrInput `pulumi:"resolveDnsThroughCloudflare"`
+	// Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.
+	UntrustedCert ZeroTrustGatewayPolicyRuleSettingsUntrustedCertPtrInput `pulumi:"untrustedCert"`
+}
+
+func (ZeroTrustGatewayPolicyRuleSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustGatewayPolicyRuleSettings)(nil)).Elem()
+}
+
+func (i ZeroTrustGatewayPolicyRuleSettingsArgs) ToZeroTrustGatewayPolicyRuleSettingsOutput() ZeroTrustGatewayPolicyRuleSettingsOutput {
+	return i.ToZeroTrustGatewayPolicyRuleSettingsOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustGatewayPolicyRuleSettingsArgs) ToZeroTrustGatewayPolicyRuleSettingsOutputWithContext(ctx context.Context) ZeroTrustGatewayPolicyRuleSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustGatewayPolicyRuleSettingsOutput)
+}
+
+func (i ZeroTrustGatewayPolicyRuleSettingsArgs) ToZeroTrustGatewayPolicyRuleSettingsPtrOutput() ZeroTrustGatewayPolicyRuleSettingsPtrOutput {
+	return i.ToZeroTrustGatewayPolicyRuleSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustGatewayPolicyRuleSettingsArgs) ToZeroTrustGatewayPolicyRuleSettingsPtrOutputWithContext(ctx context.Context) ZeroTrustGatewayPolicyRuleSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustGatewayPolicyRuleSettingsOutput).ToZeroTrustGatewayPolicyRuleSettingsPtrOutputWithContext(ctx)
+}
+
+// ZeroTrustGatewayPolicyRuleSettingsPtrInput is an input type that accepts ZeroTrustGatewayPolicyRuleSettingsArgs, ZeroTrustGatewayPolicyRuleSettingsPtr and ZeroTrustGatewayPolicyRuleSettingsPtrOutput values.
+// You can construct a concrete instance of `ZeroTrustGatewayPolicyRuleSettingsPtrInput` via:
+//
+//	        ZeroTrustGatewayPolicyRuleSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustGatewayPolicyRuleSettingsPtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustGatewayPolicyRuleSettingsPtrOutput() ZeroTrustGatewayPolicyRuleSettingsPtrOutput
+	ToZeroTrustGatewayPolicyRuleSettingsPtrOutputWithContext(context.Context) ZeroTrustGatewayPolicyRuleSettingsPtrOutput
+}
+
+type zeroTrustGatewayPolicyRuleSettingsPtrType ZeroTrustGatewayPolicyRuleSettingsArgs
+
+func ZeroTrustGatewayPolicyRuleSettingsPtr(v *ZeroTrustGatewayPolicyRuleSettingsArgs) ZeroTrustGatewayPolicyRuleSettingsPtrInput {
+	return (*zeroTrustGatewayPolicyRuleSettingsPtrType)(v)
+}
+
+func (*zeroTrustGatewayPolicyRuleSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustGatewayPolicyRuleSettings)(nil)).Elem()
+}
+
+func (i *zeroTrustGatewayPolicyRuleSettingsPtrType) ToZeroTrustGatewayPolicyRuleSettingsPtrOutput() ZeroTrustGatewayPolicyRuleSettingsPtrOutput {
+	return i.ToZeroTrustGatewayPolicyRuleSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustGatewayPolicyRuleSettingsPtrType) ToZeroTrustGatewayPolicyRuleSettingsPtrOutputWithContext(ctx context.Context) ZeroTrustGatewayPolicyRuleSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustGatewayPolicyRuleSettingsPtrOutput)
+}
+
+type ZeroTrustGatewayPolicyRuleSettingsOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustGatewayPolicyRuleSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustGatewayPolicyRuleSettings)(nil)).Elem()
+}
+
+func (o ZeroTrustGatewayPolicyRuleSettingsOutput) ToZeroTrustGatewayPolicyRuleSettingsOutput() ZeroTrustGatewayPolicyRuleSettingsOutput {
+	return o
+}
+
+func (o ZeroTrustGatewayPolicyRuleSettingsOutput) ToZeroTrustGatewayPolicyRuleSettingsOutputWithContext(ctx context.Context) ZeroTrustGatewayPolicyRuleSettingsOutput {
+	return o
+}
+
+func (o ZeroTrustGatewayPolicyRuleSettingsOutput) ToZeroTrustGatewayPolicyRuleSettingsPtrOutput() ZeroTrustGatewayPolicyRuleSettingsPtrOutput {
+	return o.ToZeroTrustGatewayPolicyRuleSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustGatewayPolicyRuleSettingsOutput) ToZeroTrustGatewayPolicyRuleSettingsPtrOutputWithContext(ctx context.Context) ZeroTrustGatewayPolicyRuleSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustGatewayPolicyRuleSettings) *ZeroTrustGatewayPolicyRuleSettings {
+		return &v
+	}).(ZeroTrustGatewayPolicyRuleSettingsPtrOutput)
+}
+
+// Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.
+func (o ZeroTrustGatewayPolicyRuleSettingsOutput) AddHeaders() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayPolicyRuleSettings) map[string][]string { return v.AddHeaders }).(pulumi.StringArrayMapOutput)
+}
+
+// Set to enable MSP children to bypass this rule. Only parent MSP accounts can set this. this rule. Settable for all types of rules.
+func (o ZeroTrustGatewayPolicyRuleSettingsOutput) AllowChildBypass() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayPolicyRuleSettings) *bool { return v.AllowChildBypass }).(pulumi.BoolPtrOutput)
+}
+
+// Define the settings for the Audit SSH action. Settable only for `l4` rules with `auditSsh` action.
+func (o ZeroTrustGatewayPolicyRuleSettingsOutput) AuditSsh() ZeroTrustGatewayPolicyRuleSettingsAuditSshPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayPolicyRuleSettings) *ZeroTrustGatewayPolicyRuleSettingsAuditSsh {
+		return v.AuditSsh
+	}).(ZeroTrustGatewayPolicyRuleSettingsAuditSshPtrOutput)
+}
+
+// Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.
+func (o ZeroTrustGatewayPolicyRuleSettingsOutput) BisoAdminControls() ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayPolicyRuleSettings) *ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
+		return v.BisoAdminControls
+	}).(ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsPtrOutput)
+}
+
+// Configure custom block page settings. If missing or null, use the account settings. Settable only for `http` rules with the action set to `block`.
+func (o ZeroTrustGatewayPolicyRuleSettingsOutput) BlockPage() ZeroTrustGatewayPolicyRuleSettingsBlockPagePtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayPolicyRuleSettings) *ZeroTrustGatewayPolicyRuleSettingsBlockPage {
+		return v.BlockPage
+	}).(ZeroTrustGatewayPolicyRuleSettingsBlockPagePtrOutput)
+}
+
+// Enable the custom block page. Settable only for `dns` rules with action `block`.
+func (o ZeroTrustGatewayPolicyRuleSettingsOutput) BlockPageEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayPolicyRuleSettings) *bool { return v.BlockPageEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.
+func (o ZeroTrustGatewayPolicyRuleSettingsOutput) BlockReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayPolicyRuleSettings) *string { return v.BlockReason }).(pulumi.StringPtrOutput)
+}
+
+// Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules.
+func (o ZeroTrustGatewayPolicyRuleSettingsOutput) BypassParentRule() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayPolicyRuleSettings) *bool { return v.BypassParentRule }).(pulumi.BoolPtrOutput)
+}
+
+// Configure session check behavior. Settable only for `l4` and `http` rules with the action set to `allow`.
+func (o ZeroTrustGatewayPolicyRuleSettingsOutput) CheckSession() ZeroTrustGatewayPolicyRuleSettingsCheckSessionPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayPolicyRuleSettings) *ZeroTrustGatewayPolicyRuleSettingsCheckSession {
+		return v.CheckSession
+	}).(ZeroTrustGatewayPolicyRuleSettingsCheckSessionPtrOutput)
+}
+
+// Configure custom resolvers to route queries that match the resolver policy. Unused with 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' settings. DNS queries get routed to the address closest to their origin. Only valid when a rule's action set to 'resolve'. Settable only for `dnsResolver` rules.
+func (o ZeroTrustGatewayPolicyRuleSettingsOutput) DnsResolvers() ZeroTrustGatewayPolicyRuleSettingsDnsResolversPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayPolicyRuleSettings) *ZeroTrustGatewayPolicyRuleSettingsDnsResolvers {
+		return v.DnsResolvers
+	}).(ZeroTrustGatewayPolicyRuleSettingsDnsResolversPtrOutput)
+}
+
+// Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs. Settable only for `egress` rules.
+func (o ZeroTrustGatewayPolicyRuleSettingsOutput) Egress() ZeroTrustGatewayPolicyRuleSettingsEgressPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayPolicyRuleSettings) *ZeroTrustGatewayPolicyRuleSettingsEgress { return v.Egress }).(ZeroTrustGatewayPolicyRuleSettingsEgressPtrOutput)
+}
+
+// Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
+func (o ZeroTrustGatewayPolicyRuleSettingsOutput) ForensicCopy() ZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayPolicyRuleSettings) *ZeroTrustGatewayPolicyRuleSettingsForensicCopy {
+		return v.ForensicCopy
+	}).(ZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutput)
+}
+
+// Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dnsResolver` rules.
+func (o ZeroTrustGatewayPolicyRuleSettingsOutput) IgnoreCnameCategoryMatches() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayPolicyRuleSettings) *bool { return v.IgnoreCnameCategoryMatches }).(pulumi.BoolPtrOutput)
+}
+
+// Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.
+func (o ZeroTrustGatewayPolicyRuleSettingsOutput) InsecureDisableDnssecValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayPolicyRuleSettings) *bool { return v.InsecureDisableDnssecValidation }).(pulumi.BoolPtrOutput)
+}
+
+// Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dnsResolver` rules.
+func (o ZeroTrustGatewayPolicyRuleSettingsOutput) IpCategories() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayPolicyRuleSettings) *bool { return v.IpCategories }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dnsResolver` rules.
+func (o ZeroTrustGatewayPolicyRuleSettingsOutput) IpIndicatorFeeds() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayPolicyRuleSettings) *bool { return v.IpIndicatorFeeds }).(pulumi.BoolPtrOutput)
+}
+
+// Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4Override`.
+func (o ZeroTrustGatewayPolicyRuleSettingsOutput) L4override() ZeroTrustGatewayPolicyRuleSettingsL4overridePtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayPolicyRuleSettings) *ZeroTrustGatewayPolicyRuleSettingsL4override {
+		return v.L4override
+	}).(ZeroTrustGatewayPolicyRuleSettingsL4overridePtrOutput)
+}
+
+// Configure a notification to display on the user's device when this rule matched. Settable for all types of rules with the action set to `block`.
+func (o ZeroTrustGatewayPolicyRuleSettingsOutput) NotificationSettings() ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayPolicyRuleSettings) *ZeroTrustGatewayPolicyRuleSettingsNotificationSettings {
+		return v.NotificationSettings
+	}).(ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsPtrOutput)
+}
+
+// Defines a hostname for override, for the matching DNS queries. Settable only for `dns` rules with the action set to `override`.
+func (o ZeroTrustGatewayPolicyRuleSettingsOutput) OverrideHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayPolicyRuleSettings) *string { return v.OverrideHost }).(pulumi.StringPtrOutput)
+}
+
+// Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.
+func (o ZeroTrustGatewayPolicyRuleSettingsOutput) OverrideIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayPolicyRuleSettings) []string { return v.OverrideIps }).(pulumi.StringArrayOutput)
+}
+
+// Configure DLP payload logging. Settable only for `http` rules.
+func (o ZeroTrustGatewayPolicyRuleSettingsOutput) PayloadLog() ZeroTrustGatewayPolicyRuleSettingsPayloadLogPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayPolicyRuleSettings) *ZeroTrustGatewayPolicyRuleSettingsPayloadLog {
+		return v.PayloadLog
+	}).(ZeroTrustGatewayPolicyRuleSettingsPayloadLogPtrOutput)
+}
+
+// Configure settings that apply to quarantine rules. Settable only for `http` rules.
+func (o ZeroTrustGatewayPolicyRuleSettingsOutput) Quarantine() ZeroTrustGatewayPolicyRuleSettingsQuarantinePtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayPolicyRuleSettings) *ZeroTrustGatewayPolicyRuleSettingsQuarantine {
+		return v.Quarantine
+	}).(ZeroTrustGatewayPolicyRuleSettingsQuarantinePtrOutput)
+}
+
+// Apply settings to redirect rules. Settable only for `http` rules with the action set to `redirect`.
+func (o ZeroTrustGatewayPolicyRuleSettingsOutput) Redirect() ZeroTrustGatewayPolicyRuleSettingsRedirectPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayPolicyRuleSettings) *ZeroTrustGatewayPolicyRuleSettingsRedirect {
+		return v.Redirect
+	}).(ZeroTrustGatewayPolicyRuleSettingsRedirectPtrOutput)
+}
+
+// Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Not used when 'dns*resolvers' is specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dnsResolver` rules.
+func (o ZeroTrustGatewayPolicyRuleSettingsOutput) ResolveDnsInternally() ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayPolicyRuleSettings) *ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally {
+		return v.ResolveDnsInternally
+	}).(ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput)
+}
+
+// Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot set when 'dns*resolvers' specified or 'resolve*dns_internally' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dnsResolver` rules.
+func (o ZeroTrustGatewayPolicyRuleSettingsOutput) ResolveDnsThroughCloudflare() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayPolicyRuleSettings) *bool { return v.ResolveDnsThroughCloudflare }).(pulumi.BoolPtrOutput)
+}
+
+// Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.
+func (o ZeroTrustGatewayPolicyRuleSettingsOutput) UntrustedCert() ZeroTrustGatewayPolicyRuleSettingsUntrustedCertPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayPolicyRuleSettings) *ZeroTrustGatewayPolicyRuleSettingsUntrustedCert {
+		return v.UntrustedCert
+	}).(ZeroTrustGatewayPolicyRuleSettingsUntrustedCertPtrOutput)
+}
+
+type ZeroTrustGatewayPolicyRuleSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustGatewayPolicyRuleSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustGatewayPolicyRuleSettings)(nil)).Elem()
+}
+
+func (o ZeroTrustGatewayPolicyRuleSettingsPtrOutput) ToZeroTrustGatewayPolicyRuleSettingsPtrOutput() ZeroTrustGatewayPolicyRuleSettingsPtrOutput {
+	return o
+}
+
+func (o ZeroTrustGatewayPolicyRuleSettingsPtrOutput) ToZeroTrustGatewayPolicyRuleSettingsPtrOutputWithContext(ctx context.Context) ZeroTrustGatewayPolicyRuleSettingsPtrOutput {
+	return o
+}
+
+func (o ZeroTrustGatewayPolicyRuleSettingsPtrOutput) Elem() ZeroTrustGatewayPolicyRuleSettingsOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyRuleSettings) ZeroTrustGatewayPolicyRuleSettings {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustGatewayPolicyRuleSettings
+		return ret
+	}).(ZeroTrustGatewayPolicyRuleSettingsOutput)
+}
+
+// Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.
+func (o ZeroTrustGatewayPolicyRuleSettingsPtrOutput) AddHeaders() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyRuleSettings) map[string][]string {
+		if v == nil {
+			return nil
+		}
+		return v.AddHeaders
+	}).(pulumi.StringArrayMapOutput)
+}
+
+// Set to enable MSP children to bypass this rule. Only parent MSP accounts can set this. this rule. Settable for all types of rules.
+func (o ZeroTrustGatewayPolicyRuleSettingsPtrOutput) AllowChildBypass() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyRuleSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowChildBypass
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Define the settings for the Audit SSH action. Settable only for `l4` rules with `auditSsh` action.
+func (o ZeroTrustGatewayPolicyRuleSettingsPtrOutput) AuditSsh() ZeroTrustGatewayPolicyRuleSettingsAuditSshPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyRuleSettings) *ZeroTrustGatewayPolicyRuleSettingsAuditSsh {
+		if v == nil {
+			return nil
+		}
+		return v.AuditSsh
+	}).(ZeroTrustGatewayPolicyRuleSettingsAuditSshPtrOutput)
+}
+
+// Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.
+func (o ZeroTrustGatewayPolicyRuleSettingsPtrOutput) BisoAdminControls() ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyRuleSettings) *ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
+		if v == nil {
+			return nil
+		}
+		return v.BisoAdminControls
+	}).(ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsPtrOutput)
+}
+
+// Configure custom block page settings. If missing or null, use the account settings. Settable only for `http` rules with the action set to `block`.
+func (o ZeroTrustGatewayPolicyRuleSettingsPtrOutput) BlockPage() ZeroTrustGatewayPolicyRuleSettingsBlockPagePtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyRuleSettings) *ZeroTrustGatewayPolicyRuleSettingsBlockPage {
+		if v == nil {
+			return nil
+		}
+		return v.BlockPage
+	}).(ZeroTrustGatewayPolicyRuleSettingsBlockPagePtrOutput)
+}
+
+// Enable the custom block page. Settable only for `dns` rules with action `block`.
+func (o ZeroTrustGatewayPolicyRuleSettingsPtrOutput) BlockPageEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyRuleSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BlockPageEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.
+func (o ZeroTrustGatewayPolicyRuleSettingsPtrOutput) BlockReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyRuleSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BlockReason
+	}).(pulumi.StringPtrOutput)
+}
+
+// Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules.
+func (o ZeroTrustGatewayPolicyRuleSettingsPtrOutput) BypassParentRule() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyRuleSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BypassParentRule
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configure session check behavior. Settable only for `l4` and `http` rules with the action set to `allow`.
+func (o ZeroTrustGatewayPolicyRuleSettingsPtrOutput) CheckSession() ZeroTrustGatewayPolicyRuleSettingsCheckSessionPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyRuleSettings) *ZeroTrustGatewayPolicyRuleSettingsCheckSession {
+		if v == nil {
+			return nil
+		}
+		return v.CheckSession
+	}).(ZeroTrustGatewayPolicyRuleSettingsCheckSessionPtrOutput)
+}
+
+// Configure custom resolvers to route queries that match the resolver policy. Unused with 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' settings. DNS queries get routed to the address closest to their origin. Only valid when a rule's action set to 'resolve'. Settable only for `dnsResolver` rules.
+func (o ZeroTrustGatewayPolicyRuleSettingsPtrOutput) DnsResolvers() ZeroTrustGatewayPolicyRuleSettingsDnsResolversPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyRuleSettings) *ZeroTrustGatewayPolicyRuleSettingsDnsResolvers {
+		if v == nil {
+			return nil
+		}
+		return v.DnsResolvers
+	}).(ZeroTrustGatewayPolicyRuleSettingsDnsResolversPtrOutput)
+}
+
+// Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs. Settable only for `egress` rules.
+func (o ZeroTrustGatewayPolicyRuleSettingsPtrOutput) Egress() ZeroTrustGatewayPolicyRuleSettingsEgressPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyRuleSettings) *ZeroTrustGatewayPolicyRuleSettingsEgress {
+		if v == nil {
+			return nil
+		}
+		return v.Egress
+	}).(ZeroTrustGatewayPolicyRuleSettingsEgressPtrOutput)
+}
+
+// Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
+func (o ZeroTrustGatewayPolicyRuleSettingsPtrOutput) ForensicCopy() ZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyRuleSettings) *ZeroTrustGatewayPolicyRuleSettingsForensicCopy {
+		if v == nil {
+			return nil
+		}
+		return v.ForensicCopy
+	}).(ZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutput)
+}
+
+// Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dnsResolver` rules.
+func (o ZeroTrustGatewayPolicyRuleSettingsPtrOutput) IgnoreCnameCategoryMatches() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyRuleSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreCnameCategoryMatches
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.
+func (o ZeroTrustGatewayPolicyRuleSettingsPtrOutput) InsecureDisableDnssecValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyRuleSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InsecureDisableDnssecValidation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dnsResolver` rules.
+func (o ZeroTrustGatewayPolicyRuleSettingsPtrOutput) IpCategories() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyRuleSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IpCategories
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dnsResolver` rules.
+func (o ZeroTrustGatewayPolicyRuleSettingsPtrOutput) IpIndicatorFeeds() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyRuleSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IpIndicatorFeeds
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4Override`.
+func (o ZeroTrustGatewayPolicyRuleSettingsPtrOutput) L4override() ZeroTrustGatewayPolicyRuleSettingsL4overridePtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyRuleSettings) *ZeroTrustGatewayPolicyRuleSettingsL4override {
+		if v == nil {
+			return nil
+		}
+		return v.L4override
+	}).(ZeroTrustGatewayPolicyRuleSettingsL4overridePtrOutput)
+}
+
+// Configure a notification to display on the user's device when this rule matched. Settable for all types of rules with the action set to `block`.
+func (o ZeroTrustGatewayPolicyRuleSettingsPtrOutput) NotificationSettings() ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyRuleSettings) *ZeroTrustGatewayPolicyRuleSettingsNotificationSettings {
+		if v == nil {
+			return nil
+		}
+		return v.NotificationSettings
+	}).(ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsPtrOutput)
+}
+
+// Defines a hostname for override, for the matching DNS queries. Settable only for `dns` rules with the action set to `override`.
+func (o ZeroTrustGatewayPolicyRuleSettingsPtrOutput) OverrideHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyRuleSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OverrideHost
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.
+func (o ZeroTrustGatewayPolicyRuleSettingsPtrOutput) OverrideIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyRuleSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OverrideIps
+	}).(pulumi.StringArrayOutput)
+}
+
+// Configure DLP payload logging. Settable only for `http` rules.
+func (o ZeroTrustGatewayPolicyRuleSettingsPtrOutput) PayloadLog() ZeroTrustGatewayPolicyRuleSettingsPayloadLogPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyRuleSettings) *ZeroTrustGatewayPolicyRuleSettingsPayloadLog {
+		if v == nil {
+			return nil
+		}
+		return v.PayloadLog
+	}).(ZeroTrustGatewayPolicyRuleSettingsPayloadLogPtrOutput)
+}
+
+// Configure settings that apply to quarantine rules. Settable only for `http` rules.
+func (o ZeroTrustGatewayPolicyRuleSettingsPtrOutput) Quarantine() ZeroTrustGatewayPolicyRuleSettingsQuarantinePtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyRuleSettings) *ZeroTrustGatewayPolicyRuleSettingsQuarantine {
+		if v == nil {
+			return nil
+		}
+		return v.Quarantine
+	}).(ZeroTrustGatewayPolicyRuleSettingsQuarantinePtrOutput)
+}
+
+// Apply settings to redirect rules. Settable only for `http` rules with the action set to `redirect`.
+func (o ZeroTrustGatewayPolicyRuleSettingsPtrOutput) Redirect() ZeroTrustGatewayPolicyRuleSettingsRedirectPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyRuleSettings) *ZeroTrustGatewayPolicyRuleSettingsRedirect {
+		if v == nil {
+			return nil
+		}
+		return v.Redirect
+	}).(ZeroTrustGatewayPolicyRuleSettingsRedirectPtrOutput)
+}
+
+// Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Not used when 'dns*resolvers' is specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dnsResolver` rules.
+func (o ZeroTrustGatewayPolicyRuleSettingsPtrOutput) ResolveDnsInternally() ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyRuleSettings) *ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally {
+		if v == nil {
+			return nil
+		}
+		return v.ResolveDnsInternally
+	}).(ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput)
+}
+
+// Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot set when 'dns*resolvers' specified or 'resolve*dns_internally' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dnsResolver` rules.
+func (o ZeroTrustGatewayPolicyRuleSettingsPtrOutput) ResolveDnsThroughCloudflare() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyRuleSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ResolveDnsThroughCloudflare
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.
+func (o ZeroTrustGatewayPolicyRuleSettingsPtrOutput) UntrustedCert() ZeroTrustGatewayPolicyRuleSettingsUntrustedCertPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyRuleSettings) *ZeroTrustGatewayPolicyRuleSettingsUntrustedCert {
+		if v == nil {
+			return nil
+		}
+		return v.UntrustedCert
+	}).(ZeroTrustGatewayPolicyRuleSettingsUntrustedCertPtrOutput)
+}
+
 type ZeroTrustGatewayPolicyRuleSettingsAuditSsh struct {
 	// Enable SSH command logging.
 	CommandLogging *bool `pulumi:"commandLogging"`
@@ -1409,6 +3885,143 @@ func (o ZeroTrustGatewayPolicyRuleSettingsEgressPtrOutput) Ipv6() pulumi.StringP
 		}
 		return v.Ipv6
 	}).(pulumi.StringPtrOutput)
+}
+
+type ZeroTrustGatewayPolicyRuleSettingsForensicCopy struct {
+	// Enable sending the copy to storage.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ZeroTrustGatewayPolicyRuleSettingsForensicCopyInput is an input type that accepts ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs and ZeroTrustGatewayPolicyRuleSettingsForensicCopyOutput values.
+// You can construct a concrete instance of `ZeroTrustGatewayPolicyRuleSettingsForensicCopyInput` via:
+//
+//	ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs{...}
+type ZeroTrustGatewayPolicyRuleSettingsForensicCopyInput interface {
+	pulumi.Input
+
+	ToZeroTrustGatewayPolicyRuleSettingsForensicCopyOutput() ZeroTrustGatewayPolicyRuleSettingsForensicCopyOutput
+	ToZeroTrustGatewayPolicyRuleSettingsForensicCopyOutputWithContext(context.Context) ZeroTrustGatewayPolicyRuleSettingsForensicCopyOutput
+}
+
+type ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs struct {
+	// Enable sending the copy to storage.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustGatewayPolicyRuleSettingsForensicCopy)(nil)).Elem()
+}
+
+func (i ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs) ToZeroTrustGatewayPolicyRuleSettingsForensicCopyOutput() ZeroTrustGatewayPolicyRuleSettingsForensicCopyOutput {
+	return i.ToZeroTrustGatewayPolicyRuleSettingsForensicCopyOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs) ToZeroTrustGatewayPolicyRuleSettingsForensicCopyOutputWithContext(ctx context.Context) ZeroTrustGatewayPolicyRuleSettingsForensicCopyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustGatewayPolicyRuleSettingsForensicCopyOutput)
+}
+
+func (i ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs) ToZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutput() ZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutput {
+	return i.ToZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs) ToZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutputWithContext(ctx context.Context) ZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustGatewayPolicyRuleSettingsForensicCopyOutput).ToZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutputWithContext(ctx)
+}
+
+// ZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrInput is an input type that accepts ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs, ZeroTrustGatewayPolicyRuleSettingsForensicCopyPtr and ZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutput values.
+// You can construct a concrete instance of `ZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrInput` via:
+//
+//	        ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutput() ZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutput
+	ToZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutputWithContext(context.Context) ZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutput
+}
+
+type zeroTrustGatewayPolicyRuleSettingsForensicCopyPtrType ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs
+
+func ZeroTrustGatewayPolicyRuleSettingsForensicCopyPtr(v *ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs) ZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrInput {
+	return (*zeroTrustGatewayPolicyRuleSettingsForensicCopyPtrType)(v)
+}
+
+func (*zeroTrustGatewayPolicyRuleSettingsForensicCopyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustGatewayPolicyRuleSettingsForensicCopy)(nil)).Elem()
+}
+
+func (i *zeroTrustGatewayPolicyRuleSettingsForensicCopyPtrType) ToZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutput() ZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutput {
+	return i.ToZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustGatewayPolicyRuleSettingsForensicCopyPtrType) ToZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutputWithContext(ctx context.Context) ZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutput)
+}
+
+type ZeroTrustGatewayPolicyRuleSettingsForensicCopyOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustGatewayPolicyRuleSettingsForensicCopyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustGatewayPolicyRuleSettingsForensicCopy)(nil)).Elem()
+}
+
+func (o ZeroTrustGatewayPolicyRuleSettingsForensicCopyOutput) ToZeroTrustGatewayPolicyRuleSettingsForensicCopyOutput() ZeroTrustGatewayPolicyRuleSettingsForensicCopyOutput {
+	return o
+}
+
+func (o ZeroTrustGatewayPolicyRuleSettingsForensicCopyOutput) ToZeroTrustGatewayPolicyRuleSettingsForensicCopyOutputWithContext(ctx context.Context) ZeroTrustGatewayPolicyRuleSettingsForensicCopyOutput {
+	return o
+}
+
+func (o ZeroTrustGatewayPolicyRuleSettingsForensicCopyOutput) ToZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutput() ZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutput {
+	return o.ToZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustGatewayPolicyRuleSettingsForensicCopyOutput) ToZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutputWithContext(ctx context.Context) ZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustGatewayPolicyRuleSettingsForensicCopy) *ZeroTrustGatewayPolicyRuleSettingsForensicCopy {
+		return &v
+	}).(ZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutput)
+}
+
+// Enable sending the copy to storage.
+func (o ZeroTrustGatewayPolicyRuleSettingsForensicCopyOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayPolicyRuleSettingsForensicCopy) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustGatewayPolicyRuleSettingsForensicCopy)(nil)).Elem()
+}
+
+func (o ZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutput) ToZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutput() ZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutput {
+	return o
+}
+
+func (o ZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutput) ToZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutputWithContext(ctx context.Context) ZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutput {
+	return o
+}
+
+func (o ZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutput) Elem() ZeroTrustGatewayPolicyRuleSettingsForensicCopyOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyRuleSettingsForensicCopy) ZeroTrustGatewayPolicyRuleSettingsForensicCopy {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustGatewayPolicyRuleSettingsForensicCopy
+		return ret
+	}).(ZeroTrustGatewayPolicyRuleSettingsForensicCopyOutput)
+}
+
+// Enable sending the copy to storage.
+func (o ZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyRuleSettingsForensicCopy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ZeroTrustGatewayPolicyRuleSettingsL4override struct {
@@ -6766,6 +9379,8 @@ type ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequest struct {
 	KeepAliveConnections *int `pulumi:"keepAliveConnections"`
 	// Timeout after which an idle keepalive connection can be discarded.
 	KeepAliveTimeout *int `pulumi:"keepAliveTimeout"`
+	// Auto configure the Hostname on the origin server certificate.
+	MatchSnItoHost *bool `pulumi:"matchSnItoHost"`
 	// Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
 	NoHappyEyeballs *bool `pulumi:"noHappyEyeballs"`
 	// Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.
@@ -6808,6 +9423,8 @@ type ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestArgs struct {
 	KeepAliveConnections pulumi.IntPtrInput `pulumi:"keepAliveConnections"`
 	// Timeout after which an idle keepalive connection can be discarded.
 	KeepAliveTimeout pulumi.IntPtrInput `pulumi:"keepAliveTimeout"`
+	// Auto configure the Hostname on the origin server certificate.
+	MatchSnItoHost pulumi.BoolPtrInput `pulumi:"matchSnItoHost"`
 	// Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
 	NoHappyEyeballs pulumi.BoolPtrInput `pulumi:"noHappyEyeballs"`
 	// Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.
@@ -6943,6 +9560,11 @@ func (o ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestOutput) KeepAl
 	return o.ApplyT(func(v ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequest) *int { return v.KeepAliveTimeout }).(pulumi.IntPtrOutput)
 }
 
+// Auto configure the Hostname on the origin server certificate.
+func (o ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestOutput) MatchSnItoHost() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequest) *bool { return v.MatchSnItoHost }).(pulumi.BoolPtrOutput)
+}
+
 // Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
 func (o ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestOutput) NoHappyEyeballs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequest) *bool { return v.NoHappyEyeballs }).(pulumi.BoolPtrOutput)
@@ -7075,6 +9697,16 @@ func (o ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestPtrOutput) Kee
 		}
 		return v.KeepAliveTimeout
 	}).(pulumi.IntPtrOutput)
+}
+
+// Auto configure the Hostname on the origin server certificate.
+func (o ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestPtrOutput) MatchSnItoHost() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequest) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MatchSnItoHost
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
@@ -7325,6 +9957,8 @@ type ZeroTrustTunnelCloudflaredConfigConfigOriginRequest struct {
 	KeepAliveConnections *int `pulumi:"keepAliveConnections"`
 	// Timeout after which an idle keepalive connection can be discarded.
 	KeepAliveTimeout *int `pulumi:"keepAliveTimeout"`
+	// Auto configure the Hostname on the origin server certificate.
+	MatchSnItoHost *bool `pulumi:"matchSnItoHost"`
 	// Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
 	NoHappyEyeballs *bool `pulumi:"noHappyEyeballs"`
 	// Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.
@@ -7367,6 +10001,8 @@ type ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs struct {
 	KeepAliveConnections pulumi.IntPtrInput `pulumi:"keepAliveConnections"`
 	// Timeout after which an idle keepalive connection can be discarded.
 	KeepAliveTimeout pulumi.IntPtrInput `pulumi:"keepAliveTimeout"`
+	// Auto configure the Hostname on the origin server certificate.
+	MatchSnItoHost pulumi.BoolPtrInput `pulumi:"matchSnItoHost"`
 	// Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
 	NoHappyEyeballs pulumi.BoolPtrInput `pulumi:"noHappyEyeballs"`
 	// Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.
@@ -7498,6 +10134,11 @@ func (o ZeroTrustTunnelCloudflaredConfigConfigOriginRequestOutput) KeepAliveConn
 // Timeout after which an idle keepalive connection can be discarded.
 func (o ZeroTrustTunnelCloudflaredConfigConfigOriginRequestOutput) KeepAliveTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ZeroTrustTunnelCloudflaredConfigConfigOriginRequest) *int { return v.KeepAliveTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Auto configure the Hostname on the origin server certificate.
+func (o ZeroTrustTunnelCloudflaredConfigConfigOriginRequestOutput) MatchSnItoHost() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustTunnelCloudflaredConfigConfigOriginRequest) *bool { return v.MatchSnItoHost }).(pulumi.BoolPtrOutput)
 }
 
 // Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
@@ -7632,6 +10273,16 @@ func (o ZeroTrustTunnelCloudflaredConfigConfigOriginRequestPtrOutput) KeepAliveT
 		}
 		return v.KeepAliveTimeout
 	}).(pulumi.IntPtrOutput)
+}
+
+// Auto configure the Hostname on the origin server certificate.
+func (o ZeroTrustTunnelCloudflaredConfigConfigOriginRequestPtrOutput) MatchSnItoHost() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustTunnelCloudflaredConfigConfigOriginRequest) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MatchSnItoHost
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
@@ -10042,7 +12693,7 @@ type ZoneSubscriptionRatePlan struct {
 	// Whether this rate plan is managed externally from Cloudflare.
 	ExternallyManaged *bool `pulumi:"externallyManaged"`
 	// The ID of the rate plan.
-	// Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnterprise".
+	// Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partners*enterprise", "partners*ent".
 	Id *string `pulumi:"id"`
 	// Whether a rate plan is enterprise-based (or newly adopted term contract).
 	IsContract *bool `pulumi:"isContract"`
@@ -10071,7 +12722,7 @@ type ZoneSubscriptionRatePlanArgs struct {
 	// Whether this rate plan is managed externally from Cloudflare.
 	ExternallyManaged pulumi.BoolPtrInput `pulumi:"externallyManaged"`
 	// The ID of the rate plan.
-	// Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnterprise".
+	// Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partners*enterprise", "partners*ent".
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Whether a rate plan is enterprise-based (or newly adopted term contract).
 	IsContract pulumi.BoolPtrInput `pulumi:"isContract"`
@@ -10171,7 +12822,7 @@ func (o ZoneSubscriptionRatePlanOutput) ExternallyManaged() pulumi.BoolPtrOutput
 }
 
 // The ID of the rate plan.
-// Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnterprise".
+// Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partners*enterprise", "partners*ent".
 func (o ZoneSubscriptionRatePlanOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSubscriptionRatePlan) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -10241,7 +12892,7 @@ func (o ZoneSubscriptionRatePlanPtrOutput) ExternallyManaged() pulumi.BoolPtrOut
 }
 
 // The ID of the rate plan.
-// Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnterprise".
+// Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partners*enterprise", "partners*ent".
 func (o ZoneSubscriptionRatePlanPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneSubscriptionRatePlan) *string {
 		if v == nil {
@@ -18708,7 +21359,7 @@ type GetAccountSubscriptionRatePlan struct {
 	// Whether this rate plan is managed externally from Cloudflare.
 	ExternallyManaged bool `pulumi:"externallyManaged"`
 	// The ID of the rate plan.
-	// Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnterprise".
+	// Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnt".
 	Id string `pulumi:"id"`
 	// Whether a rate plan is enterprise-based (or newly adopted term contract).
 	IsContract bool `pulumi:"isContract"`
@@ -18737,7 +21388,7 @@ type GetAccountSubscriptionRatePlanArgs struct {
 	// Whether this rate plan is managed externally from Cloudflare.
 	ExternallyManaged pulumi.BoolInput `pulumi:"externallyManaged"`
 	// The ID of the rate plan.
-	// Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnterprise".
+	// Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnt".
 	Id pulumi.StringInput `pulumi:"id"`
 	// Whether a rate plan is enterprise-based (or newly adopted term contract).
 	IsContract pulumi.BoolInput `pulumi:"isContract"`
@@ -18786,7 +21437,7 @@ func (o GetAccountSubscriptionRatePlanOutput) ExternallyManaged() pulumi.BoolOut
 }
 
 // The ID of the rate plan.
-// Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnterprise".
+// Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnt".
 func (o GetAccountSubscriptionRatePlanOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountSubscriptionRatePlan) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -22164,7 +24815,9 @@ type GetApiShieldOperationsResult struct {
 	Endpoint string                               `pulumi:"endpoint"`
 	Features GetApiShieldOperationsResultFeatures `pulumi:"features"`
 	// RFC3986-compliant host.
-	Host        string `pulumi:"host"`
+	Host string `pulumi:"host"`
+	// UUID.
+	Id          string `pulumi:"id"`
 	LastUpdated string `pulumi:"lastUpdated"`
 	// The HTTP method used to access the endpoint.
 	// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
@@ -22189,7 +24842,9 @@ type GetApiShieldOperationsResultArgs struct {
 	Endpoint pulumi.StringInput                        `pulumi:"endpoint"`
 	Features GetApiShieldOperationsResultFeaturesInput `pulumi:"features"`
 	// RFC3986-compliant host.
-	Host        pulumi.StringInput `pulumi:"host"`
+	Host pulumi.StringInput `pulumi:"host"`
+	// UUID.
+	Id          pulumi.StringInput `pulumi:"id"`
 	LastUpdated pulumi.StringInput `pulumi:"lastUpdated"`
 	// The HTTP method used to access the endpoint.
 	// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
@@ -22261,6 +24916,11 @@ func (o GetApiShieldOperationsResultOutput) Features() GetApiShieldOperationsRes
 // RFC3986-compliant host.
 func (o GetApiShieldOperationsResultOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApiShieldOperationsResult) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// UUID.
+func (o GetApiShieldOperationsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApiShieldOperationsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetApiShieldOperationsResultOutput) LastUpdated() pulumi.StringOutput {
@@ -24923,10 +27583,14 @@ type GetByoIpPrefixesResult struct {
 	// IP Prefix in Classless Inter-Domain Routing format.
 	Cidr      string `pulumi:"cidr"`
 	CreatedAt string `pulumi:"createdAt"`
+	// Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+	DelegateLoaCreation bool `pulumi:"delegateLoaCreation"`
 	// Description of the prefix.
 	Description string `pulumi:"description"`
 	// Identifier of an IP Prefix.
 	Id string `pulumi:"id"`
+	// State of one kind of validation for an IP prefix.
+	IrrValidationState string `pulumi:"irrValidationState"`
 	// Identifier for the uploaded LOA document.
 	LoaDocumentId string `pulumi:"loaDocumentId"`
 	ModifiedAt    string `pulumi:"modifiedAt"`
@@ -24938,6 +27602,12 @@ type GetByoIpPrefixesResult struct {
 	//
 	// Deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
 	OnDemandLocked bool `pulumi:"onDemandLocked"`
+	// State of one kind of validation for an IP prefix.
+	OwnershipValidationState string `pulumi:"ownershipValidationState"`
+	// Token provided to demonstrate ownership of the prefix.
+	OwnershipValidationToken string `pulumi:"ownershipValidationToken"`
+	// State of one kind of validation for an IP prefix.
+	RpkiValidationState string `pulumi:"rpkiValidationState"`
 }
 
 // GetByoIpPrefixesResultInput is an input type that accepts GetByoIpPrefixesResultArgs and GetByoIpPrefixesResultOutput values.
@@ -24969,10 +27639,14 @@ type GetByoIpPrefixesResultArgs struct {
 	// IP Prefix in Classless Inter-Domain Routing format.
 	Cidr      pulumi.StringInput `pulumi:"cidr"`
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+	DelegateLoaCreation pulumi.BoolInput `pulumi:"delegateLoaCreation"`
 	// Description of the prefix.
 	Description pulumi.StringInput `pulumi:"description"`
 	// Identifier of an IP Prefix.
 	Id pulumi.StringInput `pulumi:"id"`
+	// State of one kind of validation for an IP prefix.
+	IrrValidationState pulumi.StringInput `pulumi:"irrValidationState"`
 	// Identifier for the uploaded LOA document.
 	LoaDocumentId pulumi.StringInput `pulumi:"loaDocumentId"`
 	ModifiedAt    pulumi.StringInput `pulumi:"modifiedAt"`
@@ -24984,6 +27658,12 @@ type GetByoIpPrefixesResultArgs struct {
 	//
 	// Deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
 	OnDemandLocked pulumi.BoolInput `pulumi:"onDemandLocked"`
+	// State of one kind of validation for an IP prefix.
+	OwnershipValidationState pulumi.StringInput `pulumi:"ownershipValidationState"`
+	// Token provided to demonstrate ownership of the prefix.
+	OwnershipValidationToken pulumi.StringInput `pulumi:"ownershipValidationToken"`
+	// State of one kind of validation for an IP prefix.
+	RpkiValidationState pulumi.StringInput `pulumi:"rpkiValidationState"`
 }
 
 func (GetByoIpPrefixesResultArgs) ElementType() reflect.Type {
@@ -25075,6 +27755,11 @@ func (o GetByoIpPrefixesResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetByoIpPrefixesResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+func (o GetByoIpPrefixesResultOutput) DelegateLoaCreation() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetByoIpPrefixesResult) bool { return v.DelegateLoaCreation }).(pulumi.BoolOutput)
+}
+
 // Description of the prefix.
 func (o GetByoIpPrefixesResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetByoIpPrefixesResult) string { return v.Description }).(pulumi.StringOutput)
@@ -25083,6 +27768,11 @@ func (o GetByoIpPrefixesResultOutput) Description() pulumi.StringOutput {
 // Identifier of an IP Prefix.
 func (o GetByoIpPrefixesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetByoIpPrefixesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// State of one kind of validation for an IP prefix.
+func (o GetByoIpPrefixesResultOutput) IrrValidationState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetByoIpPrefixesResult) string { return v.IrrValidationState }).(pulumi.StringOutput)
 }
 
 // Identifier for the uploaded LOA document.
@@ -25106,6 +27796,21 @@ func (o GetByoIpPrefixesResultOutput) OnDemandEnabled() pulumi.BoolOutput {
 // Deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
 func (o GetByoIpPrefixesResultOutput) OnDemandLocked() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetByoIpPrefixesResult) bool { return v.OnDemandLocked }).(pulumi.BoolOutput)
+}
+
+// State of one kind of validation for an IP prefix.
+func (o GetByoIpPrefixesResultOutput) OwnershipValidationState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetByoIpPrefixesResult) string { return v.OwnershipValidationState }).(pulumi.StringOutput)
+}
+
+// Token provided to demonstrate ownership of the prefix.
+func (o GetByoIpPrefixesResultOutput) OwnershipValidationToken() pulumi.StringOutput {
+	return o.ApplyT(func(v GetByoIpPrefixesResult) string { return v.OwnershipValidationToken }).(pulumi.StringOutput)
+}
+
+// State of one kind of validation for an IP prefix.
+func (o GetByoIpPrefixesResultOutput) RpkiValidationState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetByoIpPrefixesResult) string { return v.RpkiValidationState }).(pulumi.StringOutput)
 }
 
 type GetByoIpPrefixesResultArrayOutput struct{ *pulumi.OutputState }
@@ -25376,7 +28081,657 @@ func (o GetCallsTurnAppsResultArrayOutput) Index(i pulumi.IntInput) GetCallsTurn
 	}).(GetCallsTurnAppsResultOutput)
 }
 
+type GetCertificatePackCertificate struct {
+	// Certificate bundle method.
+	BundleMethod string `pulumi:"bundleMethod"`
+	// When the certificate from the authority expires.
+	ExpiresOn string `pulumi:"expiresOn"`
+	// Specify the region where your private key can be held locally.
+	GeoRestrictions GetCertificatePackCertificateGeoRestrictions `pulumi:"geoRestrictions"`
+	// Hostnames covered by this certificate.
+	Hosts []string `pulumi:"hosts"`
+	// Certificate identifier.
+	Id string `pulumi:"id"`
+	// The certificate authority that issued the certificate.
+	Issuer string `pulumi:"issuer"`
+	// When the certificate was last modified.
+	ModifiedOn string `pulumi:"modifiedOn"`
+	// The order/priority in which the certificate will be used.
+	Priority float64 `pulumi:"priority"`
+	// The type of hash used for the certificate.
+	Signature string `pulumi:"signature"`
+	// Certificate status.
+	Status string `pulumi:"status"`
+	// When the certificate was uploaded to Cloudflare.
+	UploadedOn string `pulumi:"uploadedOn"`
+	// Identifier.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetCertificatePackCertificateInput is an input type that accepts GetCertificatePackCertificateArgs and GetCertificatePackCertificateOutput values.
+// You can construct a concrete instance of `GetCertificatePackCertificateInput` via:
+//
+//	GetCertificatePackCertificateArgs{...}
+type GetCertificatePackCertificateInput interface {
+	pulumi.Input
+
+	ToGetCertificatePackCertificateOutput() GetCertificatePackCertificateOutput
+	ToGetCertificatePackCertificateOutputWithContext(context.Context) GetCertificatePackCertificateOutput
+}
+
+type GetCertificatePackCertificateArgs struct {
+	// Certificate bundle method.
+	BundleMethod pulumi.StringInput `pulumi:"bundleMethod"`
+	// When the certificate from the authority expires.
+	ExpiresOn pulumi.StringInput `pulumi:"expiresOn"`
+	// Specify the region where your private key can be held locally.
+	GeoRestrictions GetCertificatePackCertificateGeoRestrictionsInput `pulumi:"geoRestrictions"`
+	// Hostnames covered by this certificate.
+	Hosts pulumi.StringArrayInput `pulumi:"hosts"`
+	// Certificate identifier.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The certificate authority that issued the certificate.
+	Issuer pulumi.StringInput `pulumi:"issuer"`
+	// When the certificate was last modified.
+	ModifiedOn pulumi.StringInput `pulumi:"modifiedOn"`
+	// The order/priority in which the certificate will be used.
+	Priority pulumi.Float64Input `pulumi:"priority"`
+	// The type of hash used for the certificate.
+	Signature pulumi.StringInput `pulumi:"signature"`
+	// Certificate status.
+	Status pulumi.StringInput `pulumi:"status"`
+	// When the certificate was uploaded to Cloudflare.
+	UploadedOn pulumi.StringInput `pulumi:"uploadedOn"`
+	// Identifier.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetCertificatePackCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificatePackCertificate)(nil)).Elem()
+}
+
+func (i GetCertificatePackCertificateArgs) ToGetCertificatePackCertificateOutput() GetCertificatePackCertificateOutput {
+	return i.ToGetCertificatePackCertificateOutputWithContext(context.Background())
+}
+
+func (i GetCertificatePackCertificateArgs) ToGetCertificatePackCertificateOutputWithContext(ctx context.Context) GetCertificatePackCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatePackCertificateOutput)
+}
+
+// GetCertificatePackCertificateArrayInput is an input type that accepts GetCertificatePackCertificateArray and GetCertificatePackCertificateArrayOutput values.
+// You can construct a concrete instance of `GetCertificatePackCertificateArrayInput` via:
+//
+//	GetCertificatePackCertificateArray{ GetCertificatePackCertificateArgs{...} }
+type GetCertificatePackCertificateArrayInput interface {
+	pulumi.Input
+
+	ToGetCertificatePackCertificateArrayOutput() GetCertificatePackCertificateArrayOutput
+	ToGetCertificatePackCertificateArrayOutputWithContext(context.Context) GetCertificatePackCertificateArrayOutput
+}
+
+type GetCertificatePackCertificateArray []GetCertificatePackCertificateInput
+
+func (GetCertificatePackCertificateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCertificatePackCertificate)(nil)).Elem()
+}
+
+func (i GetCertificatePackCertificateArray) ToGetCertificatePackCertificateArrayOutput() GetCertificatePackCertificateArrayOutput {
+	return i.ToGetCertificatePackCertificateArrayOutputWithContext(context.Background())
+}
+
+func (i GetCertificatePackCertificateArray) ToGetCertificatePackCertificateArrayOutputWithContext(ctx context.Context) GetCertificatePackCertificateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatePackCertificateArrayOutput)
+}
+
+type GetCertificatePackCertificateOutput struct{ *pulumi.OutputState }
+
+func (GetCertificatePackCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificatePackCertificate)(nil)).Elem()
+}
+
+func (o GetCertificatePackCertificateOutput) ToGetCertificatePackCertificateOutput() GetCertificatePackCertificateOutput {
+	return o
+}
+
+func (o GetCertificatePackCertificateOutput) ToGetCertificatePackCertificateOutputWithContext(ctx context.Context) GetCertificatePackCertificateOutput {
+	return o
+}
+
+// Certificate bundle method.
+func (o GetCertificatePackCertificateOutput) BundleMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePackCertificate) string { return v.BundleMethod }).(pulumi.StringOutput)
+}
+
+// When the certificate from the authority expires.
+func (o GetCertificatePackCertificateOutput) ExpiresOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePackCertificate) string { return v.ExpiresOn }).(pulumi.StringOutput)
+}
+
+// Specify the region where your private key can be held locally.
+func (o GetCertificatePackCertificateOutput) GeoRestrictions() GetCertificatePackCertificateGeoRestrictionsOutput {
+	return o.ApplyT(func(v GetCertificatePackCertificate) GetCertificatePackCertificateGeoRestrictions {
+		return v.GeoRestrictions
+	}).(GetCertificatePackCertificateGeoRestrictionsOutput)
+}
+
+// Hostnames covered by this certificate.
+func (o GetCertificatePackCertificateOutput) Hosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCertificatePackCertificate) []string { return v.Hosts }).(pulumi.StringArrayOutput)
+}
+
+// Certificate identifier.
+func (o GetCertificatePackCertificateOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePackCertificate) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The certificate authority that issued the certificate.
+func (o GetCertificatePackCertificateOutput) Issuer() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePackCertificate) string { return v.Issuer }).(pulumi.StringOutput)
+}
+
+// When the certificate was last modified.
+func (o GetCertificatePackCertificateOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePackCertificate) string { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+// The order/priority in which the certificate will be used.
+func (o GetCertificatePackCertificateOutput) Priority() pulumi.Float64Output {
+	return o.ApplyT(func(v GetCertificatePackCertificate) float64 { return v.Priority }).(pulumi.Float64Output)
+}
+
+// The type of hash used for the certificate.
+func (o GetCertificatePackCertificateOutput) Signature() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePackCertificate) string { return v.Signature }).(pulumi.StringOutput)
+}
+
+// Certificate status.
+func (o GetCertificatePackCertificateOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePackCertificate) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// When the certificate was uploaded to Cloudflare.
+func (o GetCertificatePackCertificateOutput) UploadedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePackCertificate) string { return v.UploadedOn }).(pulumi.StringOutput)
+}
+
+// Identifier.
+func (o GetCertificatePackCertificateOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePackCertificate) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetCertificatePackCertificateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCertificatePackCertificateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCertificatePackCertificate)(nil)).Elem()
+}
+
+func (o GetCertificatePackCertificateArrayOutput) ToGetCertificatePackCertificateArrayOutput() GetCertificatePackCertificateArrayOutput {
+	return o
+}
+
+func (o GetCertificatePackCertificateArrayOutput) ToGetCertificatePackCertificateArrayOutputWithContext(ctx context.Context) GetCertificatePackCertificateArrayOutput {
+	return o
+}
+
+func (o GetCertificatePackCertificateArrayOutput) Index(i pulumi.IntInput) GetCertificatePackCertificateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCertificatePackCertificate {
+		return vs[0].([]GetCertificatePackCertificate)[vs[1].(int)]
+	}).(GetCertificatePackCertificateOutput)
+}
+
+type GetCertificatePackCertificateGeoRestrictions struct {
+	// Available values: "us", "eu", "highestSecurity".
+	Label string `pulumi:"label"`
+}
+
+// GetCertificatePackCertificateGeoRestrictionsInput is an input type that accepts GetCertificatePackCertificateGeoRestrictionsArgs and GetCertificatePackCertificateGeoRestrictionsOutput values.
+// You can construct a concrete instance of `GetCertificatePackCertificateGeoRestrictionsInput` via:
+//
+//	GetCertificatePackCertificateGeoRestrictionsArgs{...}
+type GetCertificatePackCertificateGeoRestrictionsInput interface {
+	pulumi.Input
+
+	ToGetCertificatePackCertificateGeoRestrictionsOutput() GetCertificatePackCertificateGeoRestrictionsOutput
+	ToGetCertificatePackCertificateGeoRestrictionsOutputWithContext(context.Context) GetCertificatePackCertificateGeoRestrictionsOutput
+}
+
+type GetCertificatePackCertificateGeoRestrictionsArgs struct {
+	// Available values: "us", "eu", "highestSecurity".
+	Label pulumi.StringInput `pulumi:"label"`
+}
+
+func (GetCertificatePackCertificateGeoRestrictionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificatePackCertificateGeoRestrictions)(nil)).Elem()
+}
+
+func (i GetCertificatePackCertificateGeoRestrictionsArgs) ToGetCertificatePackCertificateGeoRestrictionsOutput() GetCertificatePackCertificateGeoRestrictionsOutput {
+	return i.ToGetCertificatePackCertificateGeoRestrictionsOutputWithContext(context.Background())
+}
+
+func (i GetCertificatePackCertificateGeoRestrictionsArgs) ToGetCertificatePackCertificateGeoRestrictionsOutputWithContext(ctx context.Context) GetCertificatePackCertificateGeoRestrictionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatePackCertificateGeoRestrictionsOutput)
+}
+
+type GetCertificatePackCertificateGeoRestrictionsOutput struct{ *pulumi.OutputState }
+
+func (GetCertificatePackCertificateGeoRestrictionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificatePackCertificateGeoRestrictions)(nil)).Elem()
+}
+
+func (o GetCertificatePackCertificateGeoRestrictionsOutput) ToGetCertificatePackCertificateGeoRestrictionsOutput() GetCertificatePackCertificateGeoRestrictionsOutput {
+	return o
+}
+
+func (o GetCertificatePackCertificateGeoRestrictionsOutput) ToGetCertificatePackCertificateGeoRestrictionsOutputWithContext(ctx context.Context) GetCertificatePackCertificateGeoRestrictionsOutput {
+	return o
+}
+
+// Available values: "us", "eu", "highestSecurity".
+func (o GetCertificatePackCertificateGeoRestrictionsOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePackCertificateGeoRestrictions) string { return v.Label }).(pulumi.StringOutput)
+}
+
+type GetCertificatePackFilter struct {
+	// Include Certificate Packs of all statuses, not just active ones.
+	// Available values: "all".
+	Status *string `pulumi:"status"`
+}
+
+// GetCertificatePackFilterInput is an input type that accepts GetCertificatePackFilterArgs and GetCertificatePackFilterOutput values.
+// You can construct a concrete instance of `GetCertificatePackFilterInput` via:
+//
+//	GetCertificatePackFilterArgs{...}
+type GetCertificatePackFilterInput interface {
+	pulumi.Input
+
+	ToGetCertificatePackFilterOutput() GetCertificatePackFilterOutput
+	ToGetCertificatePackFilterOutputWithContext(context.Context) GetCertificatePackFilterOutput
+}
+
+type GetCertificatePackFilterArgs struct {
+	// Include Certificate Packs of all statuses, not just active ones.
+	// Available values: "all".
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetCertificatePackFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificatePackFilter)(nil)).Elem()
+}
+
+func (i GetCertificatePackFilterArgs) ToGetCertificatePackFilterOutput() GetCertificatePackFilterOutput {
+	return i.ToGetCertificatePackFilterOutputWithContext(context.Background())
+}
+
+func (i GetCertificatePackFilterArgs) ToGetCertificatePackFilterOutputWithContext(ctx context.Context) GetCertificatePackFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatePackFilterOutput)
+}
+
+func (i GetCertificatePackFilterArgs) ToGetCertificatePackFilterPtrOutput() GetCertificatePackFilterPtrOutput {
+	return i.ToGetCertificatePackFilterPtrOutputWithContext(context.Background())
+}
+
+func (i GetCertificatePackFilterArgs) ToGetCertificatePackFilterPtrOutputWithContext(ctx context.Context) GetCertificatePackFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatePackFilterOutput).ToGetCertificatePackFilterPtrOutputWithContext(ctx)
+}
+
+// GetCertificatePackFilterPtrInput is an input type that accepts GetCertificatePackFilterArgs, GetCertificatePackFilterPtr and GetCertificatePackFilterPtrOutput values.
+// You can construct a concrete instance of `GetCertificatePackFilterPtrInput` via:
+//
+//	        GetCertificatePackFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetCertificatePackFilterPtrInput interface {
+	pulumi.Input
+
+	ToGetCertificatePackFilterPtrOutput() GetCertificatePackFilterPtrOutput
+	ToGetCertificatePackFilterPtrOutputWithContext(context.Context) GetCertificatePackFilterPtrOutput
+}
+
+type getCertificatePackFilterPtrType GetCertificatePackFilterArgs
+
+func GetCertificatePackFilterPtr(v *GetCertificatePackFilterArgs) GetCertificatePackFilterPtrInput {
+	return (*getCertificatePackFilterPtrType)(v)
+}
+
+func (*getCertificatePackFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetCertificatePackFilter)(nil)).Elem()
+}
+
+func (i *getCertificatePackFilterPtrType) ToGetCertificatePackFilterPtrOutput() GetCertificatePackFilterPtrOutput {
+	return i.ToGetCertificatePackFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *getCertificatePackFilterPtrType) ToGetCertificatePackFilterPtrOutputWithContext(ctx context.Context) GetCertificatePackFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatePackFilterPtrOutput)
+}
+
+type GetCertificatePackFilterOutput struct{ *pulumi.OutputState }
+
+func (GetCertificatePackFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificatePackFilter)(nil)).Elem()
+}
+
+func (o GetCertificatePackFilterOutput) ToGetCertificatePackFilterOutput() GetCertificatePackFilterOutput {
+	return o
+}
+
+func (o GetCertificatePackFilterOutput) ToGetCertificatePackFilterOutputWithContext(ctx context.Context) GetCertificatePackFilterOutput {
+	return o
+}
+
+func (o GetCertificatePackFilterOutput) ToGetCertificatePackFilterPtrOutput() GetCertificatePackFilterPtrOutput {
+	return o.ToGetCertificatePackFilterPtrOutputWithContext(context.Background())
+}
+
+func (o GetCertificatePackFilterOutput) ToGetCertificatePackFilterPtrOutputWithContext(ctx context.Context) GetCertificatePackFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetCertificatePackFilter) *GetCertificatePackFilter {
+		return &v
+	}).(GetCertificatePackFilterPtrOutput)
+}
+
+// Include Certificate Packs of all statuses, not just active ones.
+// Available values: "all".
+func (o GetCertificatePackFilterOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCertificatePackFilter) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type GetCertificatePackFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (GetCertificatePackFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetCertificatePackFilter)(nil)).Elem()
+}
+
+func (o GetCertificatePackFilterPtrOutput) ToGetCertificatePackFilterPtrOutput() GetCertificatePackFilterPtrOutput {
+	return o
+}
+
+func (o GetCertificatePackFilterPtrOutput) ToGetCertificatePackFilterPtrOutputWithContext(ctx context.Context) GetCertificatePackFilterPtrOutput {
+	return o
+}
+
+func (o GetCertificatePackFilterPtrOutput) Elem() GetCertificatePackFilterOutput {
+	return o.ApplyT(func(v *GetCertificatePackFilter) GetCertificatePackFilter {
+		if v != nil {
+			return *v
+		}
+		var ret GetCertificatePackFilter
+		return ret
+	}).(GetCertificatePackFilterOutput)
+}
+
+// Include Certificate Packs of all statuses, not just active ones.
+// Available values: "all".
+func (o GetCertificatePackFilterPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCertificatePackFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetCertificatePackValidationError struct {
+	// A domain validation error.
+	Message string `pulumi:"message"`
+}
+
+// GetCertificatePackValidationErrorInput is an input type that accepts GetCertificatePackValidationErrorArgs and GetCertificatePackValidationErrorOutput values.
+// You can construct a concrete instance of `GetCertificatePackValidationErrorInput` via:
+//
+//	GetCertificatePackValidationErrorArgs{...}
+type GetCertificatePackValidationErrorInput interface {
+	pulumi.Input
+
+	ToGetCertificatePackValidationErrorOutput() GetCertificatePackValidationErrorOutput
+	ToGetCertificatePackValidationErrorOutputWithContext(context.Context) GetCertificatePackValidationErrorOutput
+}
+
+type GetCertificatePackValidationErrorArgs struct {
+	// A domain validation error.
+	Message pulumi.StringInput `pulumi:"message"`
+}
+
+func (GetCertificatePackValidationErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificatePackValidationError)(nil)).Elem()
+}
+
+func (i GetCertificatePackValidationErrorArgs) ToGetCertificatePackValidationErrorOutput() GetCertificatePackValidationErrorOutput {
+	return i.ToGetCertificatePackValidationErrorOutputWithContext(context.Background())
+}
+
+func (i GetCertificatePackValidationErrorArgs) ToGetCertificatePackValidationErrorOutputWithContext(ctx context.Context) GetCertificatePackValidationErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatePackValidationErrorOutput)
+}
+
+// GetCertificatePackValidationErrorArrayInput is an input type that accepts GetCertificatePackValidationErrorArray and GetCertificatePackValidationErrorArrayOutput values.
+// You can construct a concrete instance of `GetCertificatePackValidationErrorArrayInput` via:
+//
+//	GetCertificatePackValidationErrorArray{ GetCertificatePackValidationErrorArgs{...} }
+type GetCertificatePackValidationErrorArrayInput interface {
+	pulumi.Input
+
+	ToGetCertificatePackValidationErrorArrayOutput() GetCertificatePackValidationErrorArrayOutput
+	ToGetCertificatePackValidationErrorArrayOutputWithContext(context.Context) GetCertificatePackValidationErrorArrayOutput
+}
+
+type GetCertificatePackValidationErrorArray []GetCertificatePackValidationErrorInput
+
+func (GetCertificatePackValidationErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCertificatePackValidationError)(nil)).Elem()
+}
+
+func (i GetCertificatePackValidationErrorArray) ToGetCertificatePackValidationErrorArrayOutput() GetCertificatePackValidationErrorArrayOutput {
+	return i.ToGetCertificatePackValidationErrorArrayOutputWithContext(context.Background())
+}
+
+func (i GetCertificatePackValidationErrorArray) ToGetCertificatePackValidationErrorArrayOutputWithContext(ctx context.Context) GetCertificatePackValidationErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatePackValidationErrorArrayOutput)
+}
+
+type GetCertificatePackValidationErrorOutput struct{ *pulumi.OutputState }
+
+func (GetCertificatePackValidationErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificatePackValidationError)(nil)).Elem()
+}
+
+func (o GetCertificatePackValidationErrorOutput) ToGetCertificatePackValidationErrorOutput() GetCertificatePackValidationErrorOutput {
+	return o
+}
+
+func (o GetCertificatePackValidationErrorOutput) ToGetCertificatePackValidationErrorOutputWithContext(ctx context.Context) GetCertificatePackValidationErrorOutput {
+	return o
+}
+
+// A domain validation error.
+func (o GetCertificatePackValidationErrorOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePackValidationError) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type GetCertificatePackValidationErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCertificatePackValidationErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCertificatePackValidationError)(nil)).Elem()
+}
+
+func (o GetCertificatePackValidationErrorArrayOutput) ToGetCertificatePackValidationErrorArrayOutput() GetCertificatePackValidationErrorArrayOutput {
+	return o
+}
+
+func (o GetCertificatePackValidationErrorArrayOutput) ToGetCertificatePackValidationErrorArrayOutputWithContext(ctx context.Context) GetCertificatePackValidationErrorArrayOutput {
+	return o
+}
+
+func (o GetCertificatePackValidationErrorArrayOutput) Index(i pulumi.IntInput) GetCertificatePackValidationErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCertificatePackValidationError {
+		return vs[0].([]GetCertificatePackValidationError)[vs[1].(int)]
+	}).(GetCertificatePackValidationErrorOutput)
+}
+
+type GetCertificatePackValidationRecord struct {
+	// The set of email addresses that the certificate authority (CA) will use to complete domain validation.
+	Emails []string `pulumi:"emails"`
+	// The content that the certificate authority (CA) will expect to find at the httpUrl during the domain validation.
+	HttpBody string `pulumi:"httpBody"`
+	// The url that will be checked during domain validation.
+	HttpUrl string `pulumi:"httpUrl"`
+	// The hostname that the certificate authority (CA) will check for a TXT record during domain validation .
+	TxtName string `pulumi:"txtName"`
+	// The TXT record that the certificate authority (CA) will check during domain validation.
+	TxtValue string `pulumi:"txtValue"`
+}
+
+// GetCertificatePackValidationRecordInput is an input type that accepts GetCertificatePackValidationRecordArgs and GetCertificatePackValidationRecordOutput values.
+// You can construct a concrete instance of `GetCertificatePackValidationRecordInput` via:
+//
+//	GetCertificatePackValidationRecordArgs{...}
+type GetCertificatePackValidationRecordInput interface {
+	pulumi.Input
+
+	ToGetCertificatePackValidationRecordOutput() GetCertificatePackValidationRecordOutput
+	ToGetCertificatePackValidationRecordOutputWithContext(context.Context) GetCertificatePackValidationRecordOutput
+}
+
+type GetCertificatePackValidationRecordArgs struct {
+	// The set of email addresses that the certificate authority (CA) will use to complete domain validation.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// The content that the certificate authority (CA) will expect to find at the httpUrl during the domain validation.
+	HttpBody pulumi.StringInput `pulumi:"httpBody"`
+	// The url that will be checked during domain validation.
+	HttpUrl pulumi.StringInput `pulumi:"httpUrl"`
+	// The hostname that the certificate authority (CA) will check for a TXT record during domain validation .
+	TxtName pulumi.StringInput `pulumi:"txtName"`
+	// The TXT record that the certificate authority (CA) will check during domain validation.
+	TxtValue pulumi.StringInput `pulumi:"txtValue"`
+}
+
+func (GetCertificatePackValidationRecordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificatePackValidationRecord)(nil)).Elem()
+}
+
+func (i GetCertificatePackValidationRecordArgs) ToGetCertificatePackValidationRecordOutput() GetCertificatePackValidationRecordOutput {
+	return i.ToGetCertificatePackValidationRecordOutputWithContext(context.Background())
+}
+
+func (i GetCertificatePackValidationRecordArgs) ToGetCertificatePackValidationRecordOutputWithContext(ctx context.Context) GetCertificatePackValidationRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatePackValidationRecordOutput)
+}
+
+// GetCertificatePackValidationRecordArrayInput is an input type that accepts GetCertificatePackValidationRecordArray and GetCertificatePackValidationRecordArrayOutput values.
+// You can construct a concrete instance of `GetCertificatePackValidationRecordArrayInput` via:
+//
+//	GetCertificatePackValidationRecordArray{ GetCertificatePackValidationRecordArgs{...} }
+type GetCertificatePackValidationRecordArrayInput interface {
+	pulumi.Input
+
+	ToGetCertificatePackValidationRecordArrayOutput() GetCertificatePackValidationRecordArrayOutput
+	ToGetCertificatePackValidationRecordArrayOutputWithContext(context.Context) GetCertificatePackValidationRecordArrayOutput
+}
+
+type GetCertificatePackValidationRecordArray []GetCertificatePackValidationRecordInput
+
+func (GetCertificatePackValidationRecordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCertificatePackValidationRecord)(nil)).Elem()
+}
+
+func (i GetCertificatePackValidationRecordArray) ToGetCertificatePackValidationRecordArrayOutput() GetCertificatePackValidationRecordArrayOutput {
+	return i.ToGetCertificatePackValidationRecordArrayOutputWithContext(context.Background())
+}
+
+func (i GetCertificatePackValidationRecordArray) ToGetCertificatePackValidationRecordArrayOutputWithContext(ctx context.Context) GetCertificatePackValidationRecordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatePackValidationRecordArrayOutput)
+}
+
+type GetCertificatePackValidationRecordOutput struct{ *pulumi.OutputState }
+
+func (GetCertificatePackValidationRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificatePackValidationRecord)(nil)).Elem()
+}
+
+func (o GetCertificatePackValidationRecordOutput) ToGetCertificatePackValidationRecordOutput() GetCertificatePackValidationRecordOutput {
+	return o
+}
+
+func (o GetCertificatePackValidationRecordOutput) ToGetCertificatePackValidationRecordOutputWithContext(ctx context.Context) GetCertificatePackValidationRecordOutput {
+	return o
+}
+
+// The set of email addresses that the certificate authority (CA) will use to complete domain validation.
+func (o GetCertificatePackValidationRecordOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCertificatePackValidationRecord) []string { return v.Emails }).(pulumi.StringArrayOutput)
+}
+
+// The content that the certificate authority (CA) will expect to find at the httpUrl during the domain validation.
+func (o GetCertificatePackValidationRecordOutput) HttpBody() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePackValidationRecord) string { return v.HttpBody }).(pulumi.StringOutput)
+}
+
+// The url that will be checked during domain validation.
+func (o GetCertificatePackValidationRecordOutput) HttpUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePackValidationRecord) string { return v.HttpUrl }).(pulumi.StringOutput)
+}
+
+// The hostname that the certificate authority (CA) will check for a TXT record during domain validation .
+func (o GetCertificatePackValidationRecordOutput) TxtName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePackValidationRecord) string { return v.TxtName }).(pulumi.StringOutput)
+}
+
+// The TXT record that the certificate authority (CA) will check during domain validation.
+func (o GetCertificatePackValidationRecordOutput) TxtValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePackValidationRecord) string { return v.TxtValue }).(pulumi.StringOutput)
+}
+
+type GetCertificatePackValidationRecordArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCertificatePackValidationRecordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCertificatePackValidationRecord)(nil)).Elem()
+}
+
+func (o GetCertificatePackValidationRecordArrayOutput) ToGetCertificatePackValidationRecordArrayOutput() GetCertificatePackValidationRecordArrayOutput {
+	return o
+}
+
+func (o GetCertificatePackValidationRecordArrayOutput) ToGetCertificatePackValidationRecordArrayOutputWithContext(ctx context.Context) GetCertificatePackValidationRecordArrayOutput {
+	return o
+}
+
+func (o GetCertificatePackValidationRecordArrayOutput) Index(i pulumi.IntInput) GetCertificatePackValidationRecordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCertificatePackValidationRecord {
+		return vs[0].([]GetCertificatePackValidationRecord)[vs[1].(int)]
+	}).(GetCertificatePackValidationRecordOutput)
+}
+
 type GetCertificatePacksResult struct {
+	// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+	// Available values: "google", "lets*encrypt", "ssl*com".
+	CertificateAuthority string `pulumi:"certificateAuthority"`
+	// Array of certificates in this pack.
+	Certificates []GetCertificatePacksResultCertificate `pulumi:"certificates"`
+	// Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
+	CloudflareBranding bool `pulumi:"cloudflareBranding"`
+	// Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
+	Hosts []string `pulumi:"hosts"`
+	// Identifier.
+	Id string `pulumi:"id"`
+	// Identifier of the primary certificate in a pack.
+	PrimaryCertificate string `pulumi:"primaryCertificate"`
+	// Status of certificate pack.
+	// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
+	Status string `pulumi:"status"`
+	// Type of certificate pack.
+	// Available values: "mh*custom", "managed*hostname", "sni*custom", "universal", "advanced", "total*tls", "keyless", "legacyCustom".
+	Type string `pulumi:"type"`
+	// Domain validation errors that have been received by the certificate authority (CA).
+	ValidationErrors []GetCertificatePacksResultValidationError `pulumi:"validationErrors"`
+	// Validation Method selected for the order.
+	// Available values: "txt", "http", "email".
+	ValidationMethod string `pulumi:"validationMethod"`
+	// Certificates' validation records.
+	ValidationRecords []GetCertificatePacksResultValidationRecord `pulumi:"validationRecords"`
+	// Validity Days selected for the order.
+	// Available values: 14, 30, 90, 365.
+	ValidityDays int `pulumi:"validityDays"`
 }
 
 // GetCertificatePacksResultInput is an input type that accepts GetCertificatePacksResultArgs and GetCertificatePacksResultOutput values.
@@ -25391,6 +28746,35 @@ type GetCertificatePacksResultInput interface {
 }
 
 type GetCertificatePacksResultArgs struct {
+	// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+	// Available values: "google", "lets*encrypt", "ssl*com".
+	CertificateAuthority pulumi.StringInput `pulumi:"certificateAuthority"`
+	// Array of certificates in this pack.
+	Certificates GetCertificatePacksResultCertificateArrayInput `pulumi:"certificates"`
+	// Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
+	CloudflareBranding pulumi.BoolInput `pulumi:"cloudflareBranding"`
+	// Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
+	Hosts pulumi.StringArrayInput `pulumi:"hosts"`
+	// Identifier.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Identifier of the primary certificate in a pack.
+	PrimaryCertificate pulumi.StringInput `pulumi:"primaryCertificate"`
+	// Status of certificate pack.
+	// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
+	Status pulumi.StringInput `pulumi:"status"`
+	// Type of certificate pack.
+	// Available values: "mh*custom", "managed*hostname", "sni*custom", "universal", "advanced", "total*tls", "keyless", "legacyCustom".
+	Type pulumi.StringInput `pulumi:"type"`
+	// Domain validation errors that have been received by the certificate authority (CA).
+	ValidationErrors GetCertificatePacksResultValidationErrorArrayInput `pulumi:"validationErrors"`
+	// Validation Method selected for the order.
+	// Available values: "txt", "http", "email".
+	ValidationMethod pulumi.StringInput `pulumi:"validationMethod"`
+	// Certificates' validation records.
+	ValidationRecords GetCertificatePacksResultValidationRecordArrayInput `pulumi:"validationRecords"`
+	// Validity Days selected for the order.
+	// Available values: 14, 30, 90, 365.
+	ValidityDays pulumi.IntInput `pulumi:"validityDays"`
 }
 
 func (GetCertificatePacksResultArgs) ElementType() reflect.Type {
@@ -25444,6 +28828,75 @@ func (o GetCertificatePacksResultOutput) ToGetCertificatePacksResultOutputWithCo
 	return o
 }
 
+// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+// Available values: "google", "lets*encrypt", "ssl*com".
+func (o GetCertificatePacksResultOutput) CertificateAuthority() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePacksResult) string { return v.CertificateAuthority }).(pulumi.StringOutput)
+}
+
+// Array of certificates in this pack.
+func (o GetCertificatePacksResultOutput) Certificates() GetCertificatePacksResultCertificateArrayOutput {
+	return o.ApplyT(func(v GetCertificatePacksResult) []GetCertificatePacksResultCertificate { return v.Certificates }).(GetCertificatePacksResultCertificateArrayOutput)
+}
+
+// Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
+func (o GetCertificatePacksResultOutput) CloudflareBranding() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCertificatePacksResult) bool { return v.CloudflareBranding }).(pulumi.BoolOutput)
+}
+
+// Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
+func (o GetCertificatePacksResultOutput) Hosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCertificatePacksResult) []string { return v.Hosts }).(pulumi.StringArrayOutput)
+}
+
+// Identifier.
+func (o GetCertificatePacksResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePacksResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Identifier of the primary certificate in a pack.
+func (o GetCertificatePacksResultOutput) PrimaryCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePacksResult) string { return v.PrimaryCertificate }).(pulumi.StringOutput)
+}
+
+// Status of certificate pack.
+// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
+func (o GetCertificatePacksResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePacksResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Type of certificate pack.
+// Available values: "mh*custom", "managed*hostname", "sni*custom", "universal", "advanced", "total*tls", "keyless", "legacyCustom".
+func (o GetCertificatePacksResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePacksResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Domain validation errors that have been received by the certificate authority (CA).
+func (o GetCertificatePacksResultOutput) ValidationErrors() GetCertificatePacksResultValidationErrorArrayOutput {
+	return o.ApplyT(func(v GetCertificatePacksResult) []GetCertificatePacksResultValidationError {
+		return v.ValidationErrors
+	}).(GetCertificatePacksResultValidationErrorArrayOutput)
+}
+
+// Validation Method selected for the order.
+// Available values: "txt", "http", "email".
+func (o GetCertificatePacksResultOutput) ValidationMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePacksResult) string { return v.ValidationMethod }).(pulumi.StringOutput)
+}
+
+// Certificates' validation records.
+func (o GetCertificatePacksResultOutput) ValidationRecords() GetCertificatePacksResultValidationRecordArrayOutput {
+	return o.ApplyT(func(v GetCertificatePacksResult) []GetCertificatePacksResultValidationRecord {
+		return v.ValidationRecords
+	}).(GetCertificatePacksResultValidationRecordArrayOutput)
+}
+
+// Validity Days selected for the order.
+// Available values: 14, 30, 90, 365.
+func (o GetCertificatePacksResultOutput) ValidityDays() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCertificatePacksResult) int { return v.ValidityDays }).(pulumi.IntOutput)
+}
+
 type GetCertificatePacksResultArrayOutput struct{ *pulumi.OutputState }
 
 func (GetCertificatePacksResultArrayOutput) ElementType() reflect.Type {
@@ -25462,6 +28915,486 @@ func (o GetCertificatePacksResultArrayOutput) Index(i pulumi.IntInput) GetCertif
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCertificatePacksResult {
 		return vs[0].([]GetCertificatePacksResult)[vs[1].(int)]
 	}).(GetCertificatePacksResultOutput)
+}
+
+type GetCertificatePacksResultCertificate struct {
+	// Certificate bundle method.
+	BundleMethod string `pulumi:"bundleMethod"`
+	// When the certificate from the authority expires.
+	ExpiresOn string `pulumi:"expiresOn"`
+	// Specify the region where your private key can be held locally.
+	GeoRestrictions GetCertificatePacksResultCertificateGeoRestrictions `pulumi:"geoRestrictions"`
+	// Hostnames covered by this certificate.
+	Hosts []string `pulumi:"hosts"`
+	// Certificate identifier.
+	Id string `pulumi:"id"`
+	// The certificate authority that issued the certificate.
+	Issuer string `pulumi:"issuer"`
+	// When the certificate was last modified.
+	ModifiedOn string `pulumi:"modifiedOn"`
+	// The order/priority in which the certificate will be used.
+	Priority float64 `pulumi:"priority"`
+	// The type of hash used for the certificate.
+	Signature string `pulumi:"signature"`
+	// Certificate status.
+	Status string `pulumi:"status"`
+	// When the certificate was uploaded to Cloudflare.
+	UploadedOn string `pulumi:"uploadedOn"`
+	// Identifier.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetCertificatePacksResultCertificateInput is an input type that accepts GetCertificatePacksResultCertificateArgs and GetCertificatePacksResultCertificateOutput values.
+// You can construct a concrete instance of `GetCertificatePacksResultCertificateInput` via:
+//
+//	GetCertificatePacksResultCertificateArgs{...}
+type GetCertificatePacksResultCertificateInput interface {
+	pulumi.Input
+
+	ToGetCertificatePacksResultCertificateOutput() GetCertificatePacksResultCertificateOutput
+	ToGetCertificatePacksResultCertificateOutputWithContext(context.Context) GetCertificatePacksResultCertificateOutput
+}
+
+type GetCertificatePacksResultCertificateArgs struct {
+	// Certificate bundle method.
+	BundleMethod pulumi.StringInput `pulumi:"bundleMethod"`
+	// When the certificate from the authority expires.
+	ExpiresOn pulumi.StringInput `pulumi:"expiresOn"`
+	// Specify the region where your private key can be held locally.
+	GeoRestrictions GetCertificatePacksResultCertificateGeoRestrictionsInput `pulumi:"geoRestrictions"`
+	// Hostnames covered by this certificate.
+	Hosts pulumi.StringArrayInput `pulumi:"hosts"`
+	// Certificate identifier.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The certificate authority that issued the certificate.
+	Issuer pulumi.StringInput `pulumi:"issuer"`
+	// When the certificate was last modified.
+	ModifiedOn pulumi.StringInput `pulumi:"modifiedOn"`
+	// The order/priority in which the certificate will be used.
+	Priority pulumi.Float64Input `pulumi:"priority"`
+	// The type of hash used for the certificate.
+	Signature pulumi.StringInput `pulumi:"signature"`
+	// Certificate status.
+	Status pulumi.StringInput `pulumi:"status"`
+	// When the certificate was uploaded to Cloudflare.
+	UploadedOn pulumi.StringInput `pulumi:"uploadedOn"`
+	// Identifier.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetCertificatePacksResultCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificatePacksResultCertificate)(nil)).Elem()
+}
+
+func (i GetCertificatePacksResultCertificateArgs) ToGetCertificatePacksResultCertificateOutput() GetCertificatePacksResultCertificateOutput {
+	return i.ToGetCertificatePacksResultCertificateOutputWithContext(context.Background())
+}
+
+func (i GetCertificatePacksResultCertificateArgs) ToGetCertificatePacksResultCertificateOutputWithContext(ctx context.Context) GetCertificatePacksResultCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatePacksResultCertificateOutput)
+}
+
+// GetCertificatePacksResultCertificateArrayInput is an input type that accepts GetCertificatePacksResultCertificateArray and GetCertificatePacksResultCertificateArrayOutput values.
+// You can construct a concrete instance of `GetCertificatePacksResultCertificateArrayInput` via:
+//
+//	GetCertificatePacksResultCertificateArray{ GetCertificatePacksResultCertificateArgs{...} }
+type GetCertificatePacksResultCertificateArrayInput interface {
+	pulumi.Input
+
+	ToGetCertificatePacksResultCertificateArrayOutput() GetCertificatePacksResultCertificateArrayOutput
+	ToGetCertificatePacksResultCertificateArrayOutputWithContext(context.Context) GetCertificatePacksResultCertificateArrayOutput
+}
+
+type GetCertificatePacksResultCertificateArray []GetCertificatePacksResultCertificateInput
+
+func (GetCertificatePacksResultCertificateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCertificatePacksResultCertificate)(nil)).Elem()
+}
+
+func (i GetCertificatePacksResultCertificateArray) ToGetCertificatePacksResultCertificateArrayOutput() GetCertificatePacksResultCertificateArrayOutput {
+	return i.ToGetCertificatePacksResultCertificateArrayOutputWithContext(context.Background())
+}
+
+func (i GetCertificatePacksResultCertificateArray) ToGetCertificatePacksResultCertificateArrayOutputWithContext(ctx context.Context) GetCertificatePacksResultCertificateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatePacksResultCertificateArrayOutput)
+}
+
+type GetCertificatePacksResultCertificateOutput struct{ *pulumi.OutputState }
+
+func (GetCertificatePacksResultCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificatePacksResultCertificate)(nil)).Elem()
+}
+
+func (o GetCertificatePacksResultCertificateOutput) ToGetCertificatePacksResultCertificateOutput() GetCertificatePacksResultCertificateOutput {
+	return o
+}
+
+func (o GetCertificatePacksResultCertificateOutput) ToGetCertificatePacksResultCertificateOutputWithContext(ctx context.Context) GetCertificatePacksResultCertificateOutput {
+	return o
+}
+
+// Certificate bundle method.
+func (o GetCertificatePacksResultCertificateOutput) BundleMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePacksResultCertificate) string { return v.BundleMethod }).(pulumi.StringOutput)
+}
+
+// When the certificate from the authority expires.
+func (o GetCertificatePacksResultCertificateOutput) ExpiresOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePacksResultCertificate) string { return v.ExpiresOn }).(pulumi.StringOutput)
+}
+
+// Specify the region where your private key can be held locally.
+func (o GetCertificatePacksResultCertificateOutput) GeoRestrictions() GetCertificatePacksResultCertificateGeoRestrictionsOutput {
+	return o.ApplyT(func(v GetCertificatePacksResultCertificate) GetCertificatePacksResultCertificateGeoRestrictions {
+		return v.GeoRestrictions
+	}).(GetCertificatePacksResultCertificateGeoRestrictionsOutput)
+}
+
+// Hostnames covered by this certificate.
+func (o GetCertificatePacksResultCertificateOutput) Hosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCertificatePacksResultCertificate) []string { return v.Hosts }).(pulumi.StringArrayOutput)
+}
+
+// Certificate identifier.
+func (o GetCertificatePacksResultCertificateOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePacksResultCertificate) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The certificate authority that issued the certificate.
+func (o GetCertificatePacksResultCertificateOutput) Issuer() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePacksResultCertificate) string { return v.Issuer }).(pulumi.StringOutput)
+}
+
+// When the certificate was last modified.
+func (o GetCertificatePacksResultCertificateOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePacksResultCertificate) string { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+// The order/priority in which the certificate will be used.
+func (o GetCertificatePacksResultCertificateOutput) Priority() pulumi.Float64Output {
+	return o.ApplyT(func(v GetCertificatePacksResultCertificate) float64 { return v.Priority }).(pulumi.Float64Output)
+}
+
+// The type of hash used for the certificate.
+func (o GetCertificatePacksResultCertificateOutput) Signature() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePacksResultCertificate) string { return v.Signature }).(pulumi.StringOutput)
+}
+
+// Certificate status.
+func (o GetCertificatePacksResultCertificateOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePacksResultCertificate) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// When the certificate was uploaded to Cloudflare.
+func (o GetCertificatePacksResultCertificateOutput) UploadedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePacksResultCertificate) string { return v.UploadedOn }).(pulumi.StringOutput)
+}
+
+// Identifier.
+func (o GetCertificatePacksResultCertificateOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePacksResultCertificate) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetCertificatePacksResultCertificateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCertificatePacksResultCertificateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCertificatePacksResultCertificate)(nil)).Elem()
+}
+
+func (o GetCertificatePacksResultCertificateArrayOutput) ToGetCertificatePacksResultCertificateArrayOutput() GetCertificatePacksResultCertificateArrayOutput {
+	return o
+}
+
+func (o GetCertificatePacksResultCertificateArrayOutput) ToGetCertificatePacksResultCertificateArrayOutputWithContext(ctx context.Context) GetCertificatePacksResultCertificateArrayOutput {
+	return o
+}
+
+func (o GetCertificatePacksResultCertificateArrayOutput) Index(i pulumi.IntInput) GetCertificatePacksResultCertificateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCertificatePacksResultCertificate {
+		return vs[0].([]GetCertificatePacksResultCertificate)[vs[1].(int)]
+	}).(GetCertificatePacksResultCertificateOutput)
+}
+
+type GetCertificatePacksResultCertificateGeoRestrictions struct {
+	// Available values: "us", "eu", "highestSecurity".
+	Label string `pulumi:"label"`
+}
+
+// GetCertificatePacksResultCertificateGeoRestrictionsInput is an input type that accepts GetCertificatePacksResultCertificateGeoRestrictionsArgs and GetCertificatePacksResultCertificateGeoRestrictionsOutput values.
+// You can construct a concrete instance of `GetCertificatePacksResultCertificateGeoRestrictionsInput` via:
+//
+//	GetCertificatePacksResultCertificateGeoRestrictionsArgs{...}
+type GetCertificatePacksResultCertificateGeoRestrictionsInput interface {
+	pulumi.Input
+
+	ToGetCertificatePacksResultCertificateGeoRestrictionsOutput() GetCertificatePacksResultCertificateGeoRestrictionsOutput
+	ToGetCertificatePacksResultCertificateGeoRestrictionsOutputWithContext(context.Context) GetCertificatePacksResultCertificateGeoRestrictionsOutput
+}
+
+type GetCertificatePacksResultCertificateGeoRestrictionsArgs struct {
+	// Available values: "us", "eu", "highestSecurity".
+	Label pulumi.StringInput `pulumi:"label"`
+}
+
+func (GetCertificatePacksResultCertificateGeoRestrictionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificatePacksResultCertificateGeoRestrictions)(nil)).Elem()
+}
+
+func (i GetCertificatePacksResultCertificateGeoRestrictionsArgs) ToGetCertificatePacksResultCertificateGeoRestrictionsOutput() GetCertificatePacksResultCertificateGeoRestrictionsOutput {
+	return i.ToGetCertificatePacksResultCertificateGeoRestrictionsOutputWithContext(context.Background())
+}
+
+func (i GetCertificatePacksResultCertificateGeoRestrictionsArgs) ToGetCertificatePacksResultCertificateGeoRestrictionsOutputWithContext(ctx context.Context) GetCertificatePacksResultCertificateGeoRestrictionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatePacksResultCertificateGeoRestrictionsOutput)
+}
+
+type GetCertificatePacksResultCertificateGeoRestrictionsOutput struct{ *pulumi.OutputState }
+
+func (GetCertificatePacksResultCertificateGeoRestrictionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificatePacksResultCertificateGeoRestrictions)(nil)).Elem()
+}
+
+func (o GetCertificatePacksResultCertificateGeoRestrictionsOutput) ToGetCertificatePacksResultCertificateGeoRestrictionsOutput() GetCertificatePacksResultCertificateGeoRestrictionsOutput {
+	return o
+}
+
+func (o GetCertificatePacksResultCertificateGeoRestrictionsOutput) ToGetCertificatePacksResultCertificateGeoRestrictionsOutputWithContext(ctx context.Context) GetCertificatePacksResultCertificateGeoRestrictionsOutput {
+	return o
+}
+
+// Available values: "us", "eu", "highestSecurity".
+func (o GetCertificatePacksResultCertificateGeoRestrictionsOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePacksResultCertificateGeoRestrictions) string { return v.Label }).(pulumi.StringOutput)
+}
+
+type GetCertificatePacksResultValidationError struct {
+	// A domain validation error.
+	Message string `pulumi:"message"`
+}
+
+// GetCertificatePacksResultValidationErrorInput is an input type that accepts GetCertificatePacksResultValidationErrorArgs and GetCertificatePacksResultValidationErrorOutput values.
+// You can construct a concrete instance of `GetCertificatePacksResultValidationErrorInput` via:
+//
+//	GetCertificatePacksResultValidationErrorArgs{...}
+type GetCertificatePacksResultValidationErrorInput interface {
+	pulumi.Input
+
+	ToGetCertificatePacksResultValidationErrorOutput() GetCertificatePacksResultValidationErrorOutput
+	ToGetCertificatePacksResultValidationErrorOutputWithContext(context.Context) GetCertificatePacksResultValidationErrorOutput
+}
+
+type GetCertificatePacksResultValidationErrorArgs struct {
+	// A domain validation error.
+	Message pulumi.StringInput `pulumi:"message"`
+}
+
+func (GetCertificatePacksResultValidationErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificatePacksResultValidationError)(nil)).Elem()
+}
+
+func (i GetCertificatePacksResultValidationErrorArgs) ToGetCertificatePacksResultValidationErrorOutput() GetCertificatePacksResultValidationErrorOutput {
+	return i.ToGetCertificatePacksResultValidationErrorOutputWithContext(context.Background())
+}
+
+func (i GetCertificatePacksResultValidationErrorArgs) ToGetCertificatePacksResultValidationErrorOutputWithContext(ctx context.Context) GetCertificatePacksResultValidationErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatePacksResultValidationErrorOutput)
+}
+
+// GetCertificatePacksResultValidationErrorArrayInput is an input type that accepts GetCertificatePacksResultValidationErrorArray and GetCertificatePacksResultValidationErrorArrayOutput values.
+// You can construct a concrete instance of `GetCertificatePacksResultValidationErrorArrayInput` via:
+//
+//	GetCertificatePacksResultValidationErrorArray{ GetCertificatePacksResultValidationErrorArgs{...} }
+type GetCertificatePacksResultValidationErrorArrayInput interface {
+	pulumi.Input
+
+	ToGetCertificatePacksResultValidationErrorArrayOutput() GetCertificatePacksResultValidationErrorArrayOutput
+	ToGetCertificatePacksResultValidationErrorArrayOutputWithContext(context.Context) GetCertificatePacksResultValidationErrorArrayOutput
+}
+
+type GetCertificatePacksResultValidationErrorArray []GetCertificatePacksResultValidationErrorInput
+
+func (GetCertificatePacksResultValidationErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCertificatePacksResultValidationError)(nil)).Elem()
+}
+
+func (i GetCertificatePacksResultValidationErrorArray) ToGetCertificatePacksResultValidationErrorArrayOutput() GetCertificatePacksResultValidationErrorArrayOutput {
+	return i.ToGetCertificatePacksResultValidationErrorArrayOutputWithContext(context.Background())
+}
+
+func (i GetCertificatePacksResultValidationErrorArray) ToGetCertificatePacksResultValidationErrorArrayOutputWithContext(ctx context.Context) GetCertificatePacksResultValidationErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatePacksResultValidationErrorArrayOutput)
+}
+
+type GetCertificatePacksResultValidationErrorOutput struct{ *pulumi.OutputState }
+
+func (GetCertificatePacksResultValidationErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificatePacksResultValidationError)(nil)).Elem()
+}
+
+func (o GetCertificatePacksResultValidationErrorOutput) ToGetCertificatePacksResultValidationErrorOutput() GetCertificatePacksResultValidationErrorOutput {
+	return o
+}
+
+func (o GetCertificatePacksResultValidationErrorOutput) ToGetCertificatePacksResultValidationErrorOutputWithContext(ctx context.Context) GetCertificatePacksResultValidationErrorOutput {
+	return o
+}
+
+// A domain validation error.
+func (o GetCertificatePacksResultValidationErrorOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePacksResultValidationError) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type GetCertificatePacksResultValidationErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCertificatePacksResultValidationErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCertificatePacksResultValidationError)(nil)).Elem()
+}
+
+func (o GetCertificatePacksResultValidationErrorArrayOutput) ToGetCertificatePacksResultValidationErrorArrayOutput() GetCertificatePacksResultValidationErrorArrayOutput {
+	return o
+}
+
+func (o GetCertificatePacksResultValidationErrorArrayOutput) ToGetCertificatePacksResultValidationErrorArrayOutputWithContext(ctx context.Context) GetCertificatePacksResultValidationErrorArrayOutput {
+	return o
+}
+
+func (o GetCertificatePacksResultValidationErrorArrayOutput) Index(i pulumi.IntInput) GetCertificatePacksResultValidationErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCertificatePacksResultValidationError {
+		return vs[0].([]GetCertificatePacksResultValidationError)[vs[1].(int)]
+	}).(GetCertificatePacksResultValidationErrorOutput)
+}
+
+type GetCertificatePacksResultValidationRecord struct {
+	// The set of email addresses that the certificate authority (CA) will use to complete domain validation.
+	Emails []string `pulumi:"emails"`
+	// The content that the certificate authority (CA) will expect to find at the httpUrl during the domain validation.
+	HttpBody string `pulumi:"httpBody"`
+	// The url that will be checked during domain validation.
+	HttpUrl string `pulumi:"httpUrl"`
+	// The hostname that the certificate authority (CA) will check for a TXT record during domain validation .
+	TxtName string `pulumi:"txtName"`
+	// The TXT record that the certificate authority (CA) will check during domain validation.
+	TxtValue string `pulumi:"txtValue"`
+}
+
+// GetCertificatePacksResultValidationRecordInput is an input type that accepts GetCertificatePacksResultValidationRecordArgs and GetCertificatePacksResultValidationRecordOutput values.
+// You can construct a concrete instance of `GetCertificatePacksResultValidationRecordInput` via:
+//
+//	GetCertificatePacksResultValidationRecordArgs{...}
+type GetCertificatePacksResultValidationRecordInput interface {
+	pulumi.Input
+
+	ToGetCertificatePacksResultValidationRecordOutput() GetCertificatePacksResultValidationRecordOutput
+	ToGetCertificatePacksResultValidationRecordOutputWithContext(context.Context) GetCertificatePacksResultValidationRecordOutput
+}
+
+type GetCertificatePacksResultValidationRecordArgs struct {
+	// The set of email addresses that the certificate authority (CA) will use to complete domain validation.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// The content that the certificate authority (CA) will expect to find at the httpUrl during the domain validation.
+	HttpBody pulumi.StringInput `pulumi:"httpBody"`
+	// The url that will be checked during domain validation.
+	HttpUrl pulumi.StringInput `pulumi:"httpUrl"`
+	// The hostname that the certificate authority (CA) will check for a TXT record during domain validation .
+	TxtName pulumi.StringInput `pulumi:"txtName"`
+	// The TXT record that the certificate authority (CA) will check during domain validation.
+	TxtValue pulumi.StringInput `pulumi:"txtValue"`
+}
+
+func (GetCertificatePacksResultValidationRecordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificatePacksResultValidationRecord)(nil)).Elem()
+}
+
+func (i GetCertificatePacksResultValidationRecordArgs) ToGetCertificatePacksResultValidationRecordOutput() GetCertificatePacksResultValidationRecordOutput {
+	return i.ToGetCertificatePacksResultValidationRecordOutputWithContext(context.Background())
+}
+
+func (i GetCertificatePacksResultValidationRecordArgs) ToGetCertificatePacksResultValidationRecordOutputWithContext(ctx context.Context) GetCertificatePacksResultValidationRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatePacksResultValidationRecordOutput)
+}
+
+// GetCertificatePacksResultValidationRecordArrayInput is an input type that accepts GetCertificatePacksResultValidationRecordArray and GetCertificatePacksResultValidationRecordArrayOutput values.
+// You can construct a concrete instance of `GetCertificatePacksResultValidationRecordArrayInput` via:
+//
+//	GetCertificatePacksResultValidationRecordArray{ GetCertificatePacksResultValidationRecordArgs{...} }
+type GetCertificatePacksResultValidationRecordArrayInput interface {
+	pulumi.Input
+
+	ToGetCertificatePacksResultValidationRecordArrayOutput() GetCertificatePacksResultValidationRecordArrayOutput
+	ToGetCertificatePacksResultValidationRecordArrayOutputWithContext(context.Context) GetCertificatePacksResultValidationRecordArrayOutput
+}
+
+type GetCertificatePacksResultValidationRecordArray []GetCertificatePacksResultValidationRecordInput
+
+func (GetCertificatePacksResultValidationRecordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCertificatePacksResultValidationRecord)(nil)).Elem()
+}
+
+func (i GetCertificatePacksResultValidationRecordArray) ToGetCertificatePacksResultValidationRecordArrayOutput() GetCertificatePacksResultValidationRecordArrayOutput {
+	return i.ToGetCertificatePacksResultValidationRecordArrayOutputWithContext(context.Background())
+}
+
+func (i GetCertificatePacksResultValidationRecordArray) ToGetCertificatePacksResultValidationRecordArrayOutputWithContext(ctx context.Context) GetCertificatePacksResultValidationRecordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatePacksResultValidationRecordArrayOutput)
+}
+
+type GetCertificatePacksResultValidationRecordOutput struct{ *pulumi.OutputState }
+
+func (GetCertificatePacksResultValidationRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificatePacksResultValidationRecord)(nil)).Elem()
+}
+
+func (o GetCertificatePacksResultValidationRecordOutput) ToGetCertificatePacksResultValidationRecordOutput() GetCertificatePacksResultValidationRecordOutput {
+	return o
+}
+
+func (o GetCertificatePacksResultValidationRecordOutput) ToGetCertificatePacksResultValidationRecordOutputWithContext(ctx context.Context) GetCertificatePacksResultValidationRecordOutput {
+	return o
+}
+
+// The set of email addresses that the certificate authority (CA) will use to complete domain validation.
+func (o GetCertificatePacksResultValidationRecordOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCertificatePacksResultValidationRecord) []string { return v.Emails }).(pulumi.StringArrayOutput)
+}
+
+// The content that the certificate authority (CA) will expect to find at the httpUrl during the domain validation.
+func (o GetCertificatePacksResultValidationRecordOutput) HttpBody() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePacksResultValidationRecord) string { return v.HttpBody }).(pulumi.StringOutput)
+}
+
+// The url that will be checked during domain validation.
+func (o GetCertificatePacksResultValidationRecordOutput) HttpUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePacksResultValidationRecord) string { return v.HttpUrl }).(pulumi.StringOutput)
+}
+
+// The hostname that the certificate authority (CA) will check for a TXT record during domain validation .
+func (o GetCertificatePacksResultValidationRecordOutput) TxtName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePacksResultValidationRecord) string { return v.TxtName }).(pulumi.StringOutput)
+}
+
+// The TXT record that the certificate authority (CA) will check during domain validation.
+func (o GetCertificatePacksResultValidationRecordOutput) TxtValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatePacksResultValidationRecord) string { return v.TxtValue }).(pulumi.StringOutput)
+}
+
+type GetCertificatePacksResultValidationRecordArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCertificatePacksResultValidationRecordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCertificatePacksResultValidationRecord)(nil)).Elem()
+}
+
+func (o GetCertificatePacksResultValidationRecordArrayOutput) ToGetCertificatePacksResultValidationRecordArrayOutput() GetCertificatePacksResultValidationRecordArrayOutput {
+	return o
+}
+
+func (o GetCertificatePacksResultValidationRecordArrayOutput) ToGetCertificatePacksResultValidationRecordArrayOutputWithContext(ctx context.Context) GetCertificatePacksResultValidationRecordArrayOutput {
+	return o
+}
+
+func (o GetCertificatePacksResultValidationRecordArrayOutput) Index(i pulumi.IntInput) GetCertificatePacksResultValidationRecordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCertificatePacksResultValidationRecord {
+		return vs[0].([]GetCertificatePacksResultValidationRecord)[vs[1].(int)]
+	}).(GetCertificatePacksResultValidationRecordOutput)
 }
 
 type GetCloudConnectorRulesRule struct {
@@ -26165,6 +30098,652 @@ func (o GetCloudforceOneRequestsResultArrayOutput) Index(i pulumi.IntInput) GetC
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudforceOneRequestsResult {
 		return vs[0].([]GetCloudforceOneRequestsResult)[vs[1].(int)]
 	}).(GetCloudforceOneRequestsResultOutput)
+}
+
+type GetConnectivityDirectoryServiceFilter struct {
+	// Available values: "http".
+	Type *string `pulumi:"type"`
+}
+
+// GetConnectivityDirectoryServiceFilterInput is an input type that accepts GetConnectivityDirectoryServiceFilterArgs and GetConnectivityDirectoryServiceFilterOutput values.
+// You can construct a concrete instance of `GetConnectivityDirectoryServiceFilterInput` via:
+//
+//	GetConnectivityDirectoryServiceFilterArgs{...}
+type GetConnectivityDirectoryServiceFilterInput interface {
+	pulumi.Input
+
+	ToGetConnectivityDirectoryServiceFilterOutput() GetConnectivityDirectoryServiceFilterOutput
+	ToGetConnectivityDirectoryServiceFilterOutputWithContext(context.Context) GetConnectivityDirectoryServiceFilterOutput
+}
+
+type GetConnectivityDirectoryServiceFilterArgs struct {
+	// Available values: "http".
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GetConnectivityDirectoryServiceFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityDirectoryServiceFilter)(nil)).Elem()
+}
+
+func (i GetConnectivityDirectoryServiceFilterArgs) ToGetConnectivityDirectoryServiceFilterOutput() GetConnectivityDirectoryServiceFilterOutput {
+	return i.ToGetConnectivityDirectoryServiceFilterOutputWithContext(context.Background())
+}
+
+func (i GetConnectivityDirectoryServiceFilterArgs) ToGetConnectivityDirectoryServiceFilterOutputWithContext(ctx context.Context) GetConnectivityDirectoryServiceFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectivityDirectoryServiceFilterOutput)
+}
+
+func (i GetConnectivityDirectoryServiceFilterArgs) ToGetConnectivityDirectoryServiceFilterPtrOutput() GetConnectivityDirectoryServiceFilterPtrOutput {
+	return i.ToGetConnectivityDirectoryServiceFilterPtrOutputWithContext(context.Background())
+}
+
+func (i GetConnectivityDirectoryServiceFilterArgs) ToGetConnectivityDirectoryServiceFilterPtrOutputWithContext(ctx context.Context) GetConnectivityDirectoryServiceFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectivityDirectoryServiceFilterOutput).ToGetConnectivityDirectoryServiceFilterPtrOutputWithContext(ctx)
+}
+
+// GetConnectivityDirectoryServiceFilterPtrInput is an input type that accepts GetConnectivityDirectoryServiceFilterArgs, GetConnectivityDirectoryServiceFilterPtr and GetConnectivityDirectoryServiceFilterPtrOutput values.
+// You can construct a concrete instance of `GetConnectivityDirectoryServiceFilterPtrInput` via:
+//
+//	        GetConnectivityDirectoryServiceFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetConnectivityDirectoryServiceFilterPtrInput interface {
+	pulumi.Input
+
+	ToGetConnectivityDirectoryServiceFilterPtrOutput() GetConnectivityDirectoryServiceFilterPtrOutput
+	ToGetConnectivityDirectoryServiceFilterPtrOutputWithContext(context.Context) GetConnectivityDirectoryServiceFilterPtrOutput
+}
+
+type getConnectivityDirectoryServiceFilterPtrType GetConnectivityDirectoryServiceFilterArgs
+
+func GetConnectivityDirectoryServiceFilterPtr(v *GetConnectivityDirectoryServiceFilterArgs) GetConnectivityDirectoryServiceFilterPtrInput {
+	return (*getConnectivityDirectoryServiceFilterPtrType)(v)
+}
+
+func (*getConnectivityDirectoryServiceFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectivityDirectoryServiceFilter)(nil)).Elem()
+}
+
+func (i *getConnectivityDirectoryServiceFilterPtrType) ToGetConnectivityDirectoryServiceFilterPtrOutput() GetConnectivityDirectoryServiceFilterPtrOutput {
+	return i.ToGetConnectivityDirectoryServiceFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *getConnectivityDirectoryServiceFilterPtrType) ToGetConnectivityDirectoryServiceFilterPtrOutputWithContext(ctx context.Context) GetConnectivityDirectoryServiceFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectivityDirectoryServiceFilterPtrOutput)
+}
+
+type GetConnectivityDirectoryServiceFilterOutput struct{ *pulumi.OutputState }
+
+func (GetConnectivityDirectoryServiceFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityDirectoryServiceFilter)(nil)).Elem()
+}
+
+func (o GetConnectivityDirectoryServiceFilterOutput) ToGetConnectivityDirectoryServiceFilterOutput() GetConnectivityDirectoryServiceFilterOutput {
+	return o
+}
+
+func (o GetConnectivityDirectoryServiceFilterOutput) ToGetConnectivityDirectoryServiceFilterOutputWithContext(ctx context.Context) GetConnectivityDirectoryServiceFilterOutput {
+	return o
+}
+
+func (o GetConnectivityDirectoryServiceFilterOutput) ToGetConnectivityDirectoryServiceFilterPtrOutput() GetConnectivityDirectoryServiceFilterPtrOutput {
+	return o.ToGetConnectivityDirectoryServiceFilterPtrOutputWithContext(context.Background())
+}
+
+func (o GetConnectivityDirectoryServiceFilterOutput) ToGetConnectivityDirectoryServiceFilterPtrOutputWithContext(ctx context.Context) GetConnectivityDirectoryServiceFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetConnectivityDirectoryServiceFilter) *GetConnectivityDirectoryServiceFilter {
+		return &v
+	}).(GetConnectivityDirectoryServiceFilterPtrOutput)
+}
+
+// Available values: "http".
+func (o GetConnectivityDirectoryServiceFilterOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectivityDirectoryServiceFilter) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type GetConnectivityDirectoryServiceFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (GetConnectivityDirectoryServiceFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectivityDirectoryServiceFilter)(nil)).Elem()
+}
+
+func (o GetConnectivityDirectoryServiceFilterPtrOutput) ToGetConnectivityDirectoryServiceFilterPtrOutput() GetConnectivityDirectoryServiceFilterPtrOutput {
+	return o
+}
+
+func (o GetConnectivityDirectoryServiceFilterPtrOutput) ToGetConnectivityDirectoryServiceFilterPtrOutputWithContext(ctx context.Context) GetConnectivityDirectoryServiceFilterPtrOutput {
+	return o
+}
+
+func (o GetConnectivityDirectoryServiceFilterPtrOutput) Elem() GetConnectivityDirectoryServiceFilterOutput {
+	return o.ApplyT(func(v *GetConnectivityDirectoryServiceFilter) GetConnectivityDirectoryServiceFilter {
+		if v != nil {
+			return *v
+		}
+		var ret GetConnectivityDirectoryServiceFilter
+		return ret
+	}).(GetConnectivityDirectoryServiceFilterOutput)
+}
+
+// Available values: "http".
+func (o GetConnectivityDirectoryServiceFilterPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectivityDirectoryServiceFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetConnectivityDirectoryServiceHost struct {
+	Hostname        string                                             `pulumi:"hostname"`
+	Ipv4            string                                             `pulumi:"ipv4"`
+	Ipv6            string                                             `pulumi:"ipv6"`
+	Network         GetConnectivityDirectoryServiceHostNetwork         `pulumi:"network"`
+	ResolverNetwork GetConnectivityDirectoryServiceHostResolverNetwork `pulumi:"resolverNetwork"`
+}
+
+// GetConnectivityDirectoryServiceHostInput is an input type that accepts GetConnectivityDirectoryServiceHostArgs and GetConnectivityDirectoryServiceHostOutput values.
+// You can construct a concrete instance of `GetConnectivityDirectoryServiceHostInput` via:
+//
+//	GetConnectivityDirectoryServiceHostArgs{...}
+type GetConnectivityDirectoryServiceHostInput interface {
+	pulumi.Input
+
+	ToGetConnectivityDirectoryServiceHostOutput() GetConnectivityDirectoryServiceHostOutput
+	ToGetConnectivityDirectoryServiceHostOutputWithContext(context.Context) GetConnectivityDirectoryServiceHostOutput
+}
+
+type GetConnectivityDirectoryServiceHostArgs struct {
+	Hostname        pulumi.StringInput                                      `pulumi:"hostname"`
+	Ipv4            pulumi.StringInput                                      `pulumi:"ipv4"`
+	Ipv6            pulumi.StringInput                                      `pulumi:"ipv6"`
+	Network         GetConnectivityDirectoryServiceHostNetworkInput         `pulumi:"network"`
+	ResolverNetwork GetConnectivityDirectoryServiceHostResolverNetworkInput `pulumi:"resolverNetwork"`
+}
+
+func (GetConnectivityDirectoryServiceHostArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityDirectoryServiceHost)(nil)).Elem()
+}
+
+func (i GetConnectivityDirectoryServiceHostArgs) ToGetConnectivityDirectoryServiceHostOutput() GetConnectivityDirectoryServiceHostOutput {
+	return i.ToGetConnectivityDirectoryServiceHostOutputWithContext(context.Background())
+}
+
+func (i GetConnectivityDirectoryServiceHostArgs) ToGetConnectivityDirectoryServiceHostOutputWithContext(ctx context.Context) GetConnectivityDirectoryServiceHostOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectivityDirectoryServiceHostOutput)
+}
+
+type GetConnectivityDirectoryServiceHostOutput struct{ *pulumi.OutputState }
+
+func (GetConnectivityDirectoryServiceHostOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityDirectoryServiceHost)(nil)).Elem()
+}
+
+func (o GetConnectivityDirectoryServiceHostOutput) ToGetConnectivityDirectoryServiceHostOutput() GetConnectivityDirectoryServiceHostOutput {
+	return o
+}
+
+func (o GetConnectivityDirectoryServiceHostOutput) ToGetConnectivityDirectoryServiceHostOutputWithContext(ctx context.Context) GetConnectivityDirectoryServiceHostOutput {
+	return o
+}
+
+func (o GetConnectivityDirectoryServiceHostOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityDirectoryServiceHost) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+func (o GetConnectivityDirectoryServiceHostOutput) Ipv4() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityDirectoryServiceHost) string { return v.Ipv4 }).(pulumi.StringOutput)
+}
+
+func (o GetConnectivityDirectoryServiceHostOutput) Ipv6() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityDirectoryServiceHost) string { return v.Ipv6 }).(pulumi.StringOutput)
+}
+
+func (o GetConnectivityDirectoryServiceHostOutput) Network() GetConnectivityDirectoryServiceHostNetworkOutput {
+	return o.ApplyT(func(v GetConnectivityDirectoryServiceHost) GetConnectivityDirectoryServiceHostNetwork {
+		return v.Network
+	}).(GetConnectivityDirectoryServiceHostNetworkOutput)
+}
+
+func (o GetConnectivityDirectoryServiceHostOutput) ResolverNetwork() GetConnectivityDirectoryServiceHostResolverNetworkOutput {
+	return o.ApplyT(func(v GetConnectivityDirectoryServiceHost) GetConnectivityDirectoryServiceHostResolverNetwork {
+		return v.ResolverNetwork
+	}).(GetConnectivityDirectoryServiceHostResolverNetworkOutput)
+}
+
+type GetConnectivityDirectoryServiceHostNetwork struct {
+	TunnelId string `pulumi:"tunnelId"`
+}
+
+// GetConnectivityDirectoryServiceHostNetworkInput is an input type that accepts GetConnectivityDirectoryServiceHostNetworkArgs and GetConnectivityDirectoryServiceHostNetworkOutput values.
+// You can construct a concrete instance of `GetConnectivityDirectoryServiceHostNetworkInput` via:
+//
+//	GetConnectivityDirectoryServiceHostNetworkArgs{...}
+type GetConnectivityDirectoryServiceHostNetworkInput interface {
+	pulumi.Input
+
+	ToGetConnectivityDirectoryServiceHostNetworkOutput() GetConnectivityDirectoryServiceHostNetworkOutput
+	ToGetConnectivityDirectoryServiceHostNetworkOutputWithContext(context.Context) GetConnectivityDirectoryServiceHostNetworkOutput
+}
+
+type GetConnectivityDirectoryServiceHostNetworkArgs struct {
+	TunnelId pulumi.StringInput `pulumi:"tunnelId"`
+}
+
+func (GetConnectivityDirectoryServiceHostNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityDirectoryServiceHostNetwork)(nil)).Elem()
+}
+
+func (i GetConnectivityDirectoryServiceHostNetworkArgs) ToGetConnectivityDirectoryServiceHostNetworkOutput() GetConnectivityDirectoryServiceHostNetworkOutput {
+	return i.ToGetConnectivityDirectoryServiceHostNetworkOutputWithContext(context.Background())
+}
+
+func (i GetConnectivityDirectoryServiceHostNetworkArgs) ToGetConnectivityDirectoryServiceHostNetworkOutputWithContext(ctx context.Context) GetConnectivityDirectoryServiceHostNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectivityDirectoryServiceHostNetworkOutput)
+}
+
+type GetConnectivityDirectoryServiceHostNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetConnectivityDirectoryServiceHostNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityDirectoryServiceHostNetwork)(nil)).Elem()
+}
+
+func (o GetConnectivityDirectoryServiceHostNetworkOutput) ToGetConnectivityDirectoryServiceHostNetworkOutput() GetConnectivityDirectoryServiceHostNetworkOutput {
+	return o
+}
+
+func (o GetConnectivityDirectoryServiceHostNetworkOutput) ToGetConnectivityDirectoryServiceHostNetworkOutputWithContext(ctx context.Context) GetConnectivityDirectoryServiceHostNetworkOutput {
+	return o
+}
+
+func (o GetConnectivityDirectoryServiceHostNetworkOutput) TunnelId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityDirectoryServiceHostNetwork) string { return v.TunnelId }).(pulumi.StringOutput)
+}
+
+type GetConnectivityDirectoryServiceHostResolverNetwork struct {
+	ResolverIps []string `pulumi:"resolverIps"`
+	TunnelId    string   `pulumi:"tunnelId"`
+}
+
+// GetConnectivityDirectoryServiceHostResolverNetworkInput is an input type that accepts GetConnectivityDirectoryServiceHostResolverNetworkArgs and GetConnectivityDirectoryServiceHostResolverNetworkOutput values.
+// You can construct a concrete instance of `GetConnectivityDirectoryServiceHostResolverNetworkInput` via:
+//
+//	GetConnectivityDirectoryServiceHostResolverNetworkArgs{...}
+type GetConnectivityDirectoryServiceHostResolverNetworkInput interface {
+	pulumi.Input
+
+	ToGetConnectivityDirectoryServiceHostResolverNetworkOutput() GetConnectivityDirectoryServiceHostResolverNetworkOutput
+	ToGetConnectivityDirectoryServiceHostResolverNetworkOutputWithContext(context.Context) GetConnectivityDirectoryServiceHostResolverNetworkOutput
+}
+
+type GetConnectivityDirectoryServiceHostResolverNetworkArgs struct {
+	ResolverIps pulumi.StringArrayInput `pulumi:"resolverIps"`
+	TunnelId    pulumi.StringInput      `pulumi:"tunnelId"`
+}
+
+func (GetConnectivityDirectoryServiceHostResolverNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityDirectoryServiceHostResolverNetwork)(nil)).Elem()
+}
+
+func (i GetConnectivityDirectoryServiceHostResolverNetworkArgs) ToGetConnectivityDirectoryServiceHostResolverNetworkOutput() GetConnectivityDirectoryServiceHostResolverNetworkOutput {
+	return i.ToGetConnectivityDirectoryServiceHostResolverNetworkOutputWithContext(context.Background())
+}
+
+func (i GetConnectivityDirectoryServiceHostResolverNetworkArgs) ToGetConnectivityDirectoryServiceHostResolverNetworkOutputWithContext(ctx context.Context) GetConnectivityDirectoryServiceHostResolverNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectivityDirectoryServiceHostResolverNetworkOutput)
+}
+
+type GetConnectivityDirectoryServiceHostResolverNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetConnectivityDirectoryServiceHostResolverNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityDirectoryServiceHostResolverNetwork)(nil)).Elem()
+}
+
+func (o GetConnectivityDirectoryServiceHostResolverNetworkOutput) ToGetConnectivityDirectoryServiceHostResolverNetworkOutput() GetConnectivityDirectoryServiceHostResolverNetworkOutput {
+	return o
+}
+
+func (o GetConnectivityDirectoryServiceHostResolverNetworkOutput) ToGetConnectivityDirectoryServiceHostResolverNetworkOutputWithContext(ctx context.Context) GetConnectivityDirectoryServiceHostResolverNetworkOutput {
+	return o
+}
+
+func (o GetConnectivityDirectoryServiceHostResolverNetworkOutput) ResolverIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectivityDirectoryServiceHostResolverNetwork) []string { return v.ResolverIps }).(pulumi.StringArrayOutput)
+}
+
+func (o GetConnectivityDirectoryServiceHostResolverNetworkOutput) TunnelId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityDirectoryServiceHostResolverNetwork) string { return v.TunnelId }).(pulumi.StringOutput)
+}
+
+type GetConnectivityDirectoryServicesResult struct {
+	CreatedAt string                                     `pulumi:"createdAt"`
+	Host      GetConnectivityDirectoryServicesResultHost `pulumi:"host"`
+	HttpPort  int                                        `pulumi:"httpPort"`
+	HttpsPort int                                        `pulumi:"httpsPort"`
+	Id        string                                     `pulumi:"id"`
+	Name      string                                     `pulumi:"name"`
+	ServiceId string                                     `pulumi:"serviceId"`
+	// Available values: "http".
+	Type      string `pulumi:"type"`
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+// GetConnectivityDirectoryServicesResultInput is an input type that accepts GetConnectivityDirectoryServicesResultArgs and GetConnectivityDirectoryServicesResultOutput values.
+// You can construct a concrete instance of `GetConnectivityDirectoryServicesResultInput` via:
+//
+//	GetConnectivityDirectoryServicesResultArgs{...}
+type GetConnectivityDirectoryServicesResultInput interface {
+	pulumi.Input
+
+	ToGetConnectivityDirectoryServicesResultOutput() GetConnectivityDirectoryServicesResultOutput
+	ToGetConnectivityDirectoryServicesResultOutputWithContext(context.Context) GetConnectivityDirectoryServicesResultOutput
+}
+
+type GetConnectivityDirectoryServicesResultArgs struct {
+	CreatedAt pulumi.StringInput                              `pulumi:"createdAt"`
+	Host      GetConnectivityDirectoryServicesResultHostInput `pulumi:"host"`
+	HttpPort  pulumi.IntInput                                 `pulumi:"httpPort"`
+	HttpsPort pulumi.IntInput                                 `pulumi:"httpsPort"`
+	Id        pulumi.StringInput                              `pulumi:"id"`
+	Name      pulumi.StringInput                              `pulumi:"name"`
+	ServiceId pulumi.StringInput                              `pulumi:"serviceId"`
+	// Available values: "http".
+	Type      pulumi.StringInput `pulumi:"type"`
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+}
+
+func (GetConnectivityDirectoryServicesResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityDirectoryServicesResult)(nil)).Elem()
+}
+
+func (i GetConnectivityDirectoryServicesResultArgs) ToGetConnectivityDirectoryServicesResultOutput() GetConnectivityDirectoryServicesResultOutput {
+	return i.ToGetConnectivityDirectoryServicesResultOutputWithContext(context.Background())
+}
+
+func (i GetConnectivityDirectoryServicesResultArgs) ToGetConnectivityDirectoryServicesResultOutputWithContext(ctx context.Context) GetConnectivityDirectoryServicesResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectivityDirectoryServicesResultOutput)
+}
+
+// GetConnectivityDirectoryServicesResultArrayInput is an input type that accepts GetConnectivityDirectoryServicesResultArray and GetConnectivityDirectoryServicesResultArrayOutput values.
+// You can construct a concrete instance of `GetConnectivityDirectoryServicesResultArrayInput` via:
+//
+//	GetConnectivityDirectoryServicesResultArray{ GetConnectivityDirectoryServicesResultArgs{...} }
+type GetConnectivityDirectoryServicesResultArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectivityDirectoryServicesResultArrayOutput() GetConnectivityDirectoryServicesResultArrayOutput
+	ToGetConnectivityDirectoryServicesResultArrayOutputWithContext(context.Context) GetConnectivityDirectoryServicesResultArrayOutput
+}
+
+type GetConnectivityDirectoryServicesResultArray []GetConnectivityDirectoryServicesResultInput
+
+func (GetConnectivityDirectoryServicesResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectivityDirectoryServicesResult)(nil)).Elem()
+}
+
+func (i GetConnectivityDirectoryServicesResultArray) ToGetConnectivityDirectoryServicesResultArrayOutput() GetConnectivityDirectoryServicesResultArrayOutput {
+	return i.ToGetConnectivityDirectoryServicesResultArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectivityDirectoryServicesResultArray) ToGetConnectivityDirectoryServicesResultArrayOutputWithContext(ctx context.Context) GetConnectivityDirectoryServicesResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectivityDirectoryServicesResultArrayOutput)
+}
+
+type GetConnectivityDirectoryServicesResultOutput struct{ *pulumi.OutputState }
+
+func (GetConnectivityDirectoryServicesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityDirectoryServicesResult)(nil)).Elem()
+}
+
+func (o GetConnectivityDirectoryServicesResultOutput) ToGetConnectivityDirectoryServicesResultOutput() GetConnectivityDirectoryServicesResultOutput {
+	return o
+}
+
+func (o GetConnectivityDirectoryServicesResultOutput) ToGetConnectivityDirectoryServicesResultOutputWithContext(ctx context.Context) GetConnectivityDirectoryServicesResultOutput {
+	return o
+}
+
+func (o GetConnectivityDirectoryServicesResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityDirectoryServicesResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o GetConnectivityDirectoryServicesResultOutput) Host() GetConnectivityDirectoryServicesResultHostOutput {
+	return o.ApplyT(func(v GetConnectivityDirectoryServicesResult) GetConnectivityDirectoryServicesResultHost {
+		return v.Host
+	}).(GetConnectivityDirectoryServicesResultHostOutput)
+}
+
+func (o GetConnectivityDirectoryServicesResultOutput) HttpPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectivityDirectoryServicesResult) int { return v.HttpPort }).(pulumi.IntOutput)
+}
+
+func (o GetConnectivityDirectoryServicesResultOutput) HttpsPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectivityDirectoryServicesResult) int { return v.HttpsPort }).(pulumi.IntOutput)
+}
+
+func (o GetConnectivityDirectoryServicesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityDirectoryServicesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetConnectivityDirectoryServicesResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityDirectoryServicesResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetConnectivityDirectoryServicesResultOutput) ServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityDirectoryServicesResult) string { return v.ServiceId }).(pulumi.StringOutput)
+}
+
+// Available values: "http".
+func (o GetConnectivityDirectoryServicesResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityDirectoryServicesResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o GetConnectivityDirectoryServicesResultOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityDirectoryServicesResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+type GetConnectivityDirectoryServicesResultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectivityDirectoryServicesResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectivityDirectoryServicesResult)(nil)).Elem()
+}
+
+func (o GetConnectivityDirectoryServicesResultArrayOutput) ToGetConnectivityDirectoryServicesResultArrayOutput() GetConnectivityDirectoryServicesResultArrayOutput {
+	return o
+}
+
+func (o GetConnectivityDirectoryServicesResultArrayOutput) ToGetConnectivityDirectoryServicesResultArrayOutputWithContext(ctx context.Context) GetConnectivityDirectoryServicesResultArrayOutput {
+	return o
+}
+
+func (o GetConnectivityDirectoryServicesResultArrayOutput) Index(i pulumi.IntInput) GetConnectivityDirectoryServicesResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectivityDirectoryServicesResult {
+		return vs[0].([]GetConnectivityDirectoryServicesResult)[vs[1].(int)]
+	}).(GetConnectivityDirectoryServicesResultOutput)
+}
+
+type GetConnectivityDirectoryServicesResultHost struct {
+	Hostname        string                                                    `pulumi:"hostname"`
+	Ipv4            string                                                    `pulumi:"ipv4"`
+	Ipv6            string                                                    `pulumi:"ipv6"`
+	Network         GetConnectivityDirectoryServicesResultHostNetwork         `pulumi:"network"`
+	ResolverNetwork GetConnectivityDirectoryServicesResultHostResolverNetwork `pulumi:"resolverNetwork"`
+}
+
+// GetConnectivityDirectoryServicesResultHostInput is an input type that accepts GetConnectivityDirectoryServicesResultHostArgs and GetConnectivityDirectoryServicesResultHostOutput values.
+// You can construct a concrete instance of `GetConnectivityDirectoryServicesResultHostInput` via:
+//
+//	GetConnectivityDirectoryServicesResultHostArgs{...}
+type GetConnectivityDirectoryServicesResultHostInput interface {
+	pulumi.Input
+
+	ToGetConnectivityDirectoryServicesResultHostOutput() GetConnectivityDirectoryServicesResultHostOutput
+	ToGetConnectivityDirectoryServicesResultHostOutputWithContext(context.Context) GetConnectivityDirectoryServicesResultHostOutput
+}
+
+type GetConnectivityDirectoryServicesResultHostArgs struct {
+	Hostname        pulumi.StringInput                                             `pulumi:"hostname"`
+	Ipv4            pulumi.StringInput                                             `pulumi:"ipv4"`
+	Ipv6            pulumi.StringInput                                             `pulumi:"ipv6"`
+	Network         GetConnectivityDirectoryServicesResultHostNetworkInput         `pulumi:"network"`
+	ResolverNetwork GetConnectivityDirectoryServicesResultHostResolverNetworkInput `pulumi:"resolverNetwork"`
+}
+
+func (GetConnectivityDirectoryServicesResultHostArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityDirectoryServicesResultHost)(nil)).Elem()
+}
+
+func (i GetConnectivityDirectoryServicesResultHostArgs) ToGetConnectivityDirectoryServicesResultHostOutput() GetConnectivityDirectoryServicesResultHostOutput {
+	return i.ToGetConnectivityDirectoryServicesResultHostOutputWithContext(context.Background())
+}
+
+func (i GetConnectivityDirectoryServicesResultHostArgs) ToGetConnectivityDirectoryServicesResultHostOutputWithContext(ctx context.Context) GetConnectivityDirectoryServicesResultHostOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectivityDirectoryServicesResultHostOutput)
+}
+
+type GetConnectivityDirectoryServicesResultHostOutput struct{ *pulumi.OutputState }
+
+func (GetConnectivityDirectoryServicesResultHostOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityDirectoryServicesResultHost)(nil)).Elem()
+}
+
+func (o GetConnectivityDirectoryServicesResultHostOutput) ToGetConnectivityDirectoryServicesResultHostOutput() GetConnectivityDirectoryServicesResultHostOutput {
+	return o
+}
+
+func (o GetConnectivityDirectoryServicesResultHostOutput) ToGetConnectivityDirectoryServicesResultHostOutputWithContext(ctx context.Context) GetConnectivityDirectoryServicesResultHostOutput {
+	return o
+}
+
+func (o GetConnectivityDirectoryServicesResultHostOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityDirectoryServicesResultHost) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+func (o GetConnectivityDirectoryServicesResultHostOutput) Ipv4() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityDirectoryServicesResultHost) string { return v.Ipv4 }).(pulumi.StringOutput)
+}
+
+func (o GetConnectivityDirectoryServicesResultHostOutput) Ipv6() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityDirectoryServicesResultHost) string { return v.Ipv6 }).(pulumi.StringOutput)
+}
+
+func (o GetConnectivityDirectoryServicesResultHostOutput) Network() GetConnectivityDirectoryServicesResultHostNetworkOutput {
+	return o.ApplyT(func(v GetConnectivityDirectoryServicesResultHost) GetConnectivityDirectoryServicesResultHostNetwork {
+		return v.Network
+	}).(GetConnectivityDirectoryServicesResultHostNetworkOutput)
+}
+
+func (o GetConnectivityDirectoryServicesResultHostOutput) ResolverNetwork() GetConnectivityDirectoryServicesResultHostResolverNetworkOutput {
+	return o.ApplyT(func(v GetConnectivityDirectoryServicesResultHost) GetConnectivityDirectoryServicesResultHostResolverNetwork {
+		return v.ResolverNetwork
+	}).(GetConnectivityDirectoryServicesResultHostResolverNetworkOutput)
+}
+
+type GetConnectivityDirectoryServicesResultHostNetwork struct {
+	TunnelId string `pulumi:"tunnelId"`
+}
+
+// GetConnectivityDirectoryServicesResultHostNetworkInput is an input type that accepts GetConnectivityDirectoryServicesResultHostNetworkArgs and GetConnectivityDirectoryServicesResultHostNetworkOutput values.
+// You can construct a concrete instance of `GetConnectivityDirectoryServicesResultHostNetworkInput` via:
+//
+//	GetConnectivityDirectoryServicesResultHostNetworkArgs{...}
+type GetConnectivityDirectoryServicesResultHostNetworkInput interface {
+	pulumi.Input
+
+	ToGetConnectivityDirectoryServicesResultHostNetworkOutput() GetConnectivityDirectoryServicesResultHostNetworkOutput
+	ToGetConnectivityDirectoryServicesResultHostNetworkOutputWithContext(context.Context) GetConnectivityDirectoryServicesResultHostNetworkOutput
+}
+
+type GetConnectivityDirectoryServicesResultHostNetworkArgs struct {
+	TunnelId pulumi.StringInput `pulumi:"tunnelId"`
+}
+
+func (GetConnectivityDirectoryServicesResultHostNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityDirectoryServicesResultHostNetwork)(nil)).Elem()
+}
+
+func (i GetConnectivityDirectoryServicesResultHostNetworkArgs) ToGetConnectivityDirectoryServicesResultHostNetworkOutput() GetConnectivityDirectoryServicesResultHostNetworkOutput {
+	return i.ToGetConnectivityDirectoryServicesResultHostNetworkOutputWithContext(context.Background())
+}
+
+func (i GetConnectivityDirectoryServicesResultHostNetworkArgs) ToGetConnectivityDirectoryServicesResultHostNetworkOutputWithContext(ctx context.Context) GetConnectivityDirectoryServicesResultHostNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectivityDirectoryServicesResultHostNetworkOutput)
+}
+
+type GetConnectivityDirectoryServicesResultHostNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetConnectivityDirectoryServicesResultHostNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityDirectoryServicesResultHostNetwork)(nil)).Elem()
+}
+
+func (o GetConnectivityDirectoryServicesResultHostNetworkOutput) ToGetConnectivityDirectoryServicesResultHostNetworkOutput() GetConnectivityDirectoryServicesResultHostNetworkOutput {
+	return o
+}
+
+func (o GetConnectivityDirectoryServicesResultHostNetworkOutput) ToGetConnectivityDirectoryServicesResultHostNetworkOutputWithContext(ctx context.Context) GetConnectivityDirectoryServicesResultHostNetworkOutput {
+	return o
+}
+
+func (o GetConnectivityDirectoryServicesResultHostNetworkOutput) TunnelId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityDirectoryServicesResultHostNetwork) string { return v.TunnelId }).(pulumi.StringOutput)
+}
+
+type GetConnectivityDirectoryServicesResultHostResolverNetwork struct {
+	ResolverIps []string `pulumi:"resolverIps"`
+	TunnelId    string   `pulumi:"tunnelId"`
+}
+
+// GetConnectivityDirectoryServicesResultHostResolverNetworkInput is an input type that accepts GetConnectivityDirectoryServicesResultHostResolverNetworkArgs and GetConnectivityDirectoryServicesResultHostResolverNetworkOutput values.
+// You can construct a concrete instance of `GetConnectivityDirectoryServicesResultHostResolverNetworkInput` via:
+//
+//	GetConnectivityDirectoryServicesResultHostResolverNetworkArgs{...}
+type GetConnectivityDirectoryServicesResultHostResolverNetworkInput interface {
+	pulumi.Input
+
+	ToGetConnectivityDirectoryServicesResultHostResolverNetworkOutput() GetConnectivityDirectoryServicesResultHostResolverNetworkOutput
+	ToGetConnectivityDirectoryServicesResultHostResolverNetworkOutputWithContext(context.Context) GetConnectivityDirectoryServicesResultHostResolverNetworkOutput
+}
+
+type GetConnectivityDirectoryServicesResultHostResolverNetworkArgs struct {
+	ResolverIps pulumi.StringArrayInput `pulumi:"resolverIps"`
+	TunnelId    pulumi.StringInput      `pulumi:"tunnelId"`
+}
+
+func (GetConnectivityDirectoryServicesResultHostResolverNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityDirectoryServicesResultHostResolverNetwork)(nil)).Elem()
+}
+
+func (i GetConnectivityDirectoryServicesResultHostResolverNetworkArgs) ToGetConnectivityDirectoryServicesResultHostResolverNetworkOutput() GetConnectivityDirectoryServicesResultHostResolverNetworkOutput {
+	return i.ToGetConnectivityDirectoryServicesResultHostResolverNetworkOutputWithContext(context.Background())
+}
+
+func (i GetConnectivityDirectoryServicesResultHostResolverNetworkArgs) ToGetConnectivityDirectoryServicesResultHostResolverNetworkOutputWithContext(ctx context.Context) GetConnectivityDirectoryServicesResultHostResolverNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectivityDirectoryServicesResultHostResolverNetworkOutput)
+}
+
+type GetConnectivityDirectoryServicesResultHostResolverNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetConnectivityDirectoryServicesResultHostResolverNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityDirectoryServicesResultHostResolverNetwork)(nil)).Elem()
+}
+
+func (o GetConnectivityDirectoryServicesResultHostResolverNetworkOutput) ToGetConnectivityDirectoryServicesResultHostResolverNetworkOutput() GetConnectivityDirectoryServicesResultHostResolverNetworkOutput {
+	return o
+}
+
+func (o GetConnectivityDirectoryServicesResultHostResolverNetworkOutput) ToGetConnectivityDirectoryServicesResultHostResolverNetworkOutputWithContext(ctx context.Context) GetConnectivityDirectoryServicesResultHostResolverNetworkOutput {
+	return o
+}
+
+func (o GetConnectivityDirectoryServicesResultHostResolverNetworkOutput) ResolverIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectivityDirectoryServicesResultHostResolverNetwork) []string { return v.ResolverIps }).(pulumi.StringArrayOutput)
+}
+
+func (o GetConnectivityDirectoryServicesResultHostResolverNetworkOutput) TunnelId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityDirectoryServicesResultHostResolverNetwork) string { return v.TunnelId }).(pulumi.StringOutput)
 }
 
 type GetContentScanningExpressionsResult struct {
@@ -29283,6 +33862,8 @@ func (o GetD1DatabaseReadReplicationOutput) Mode() pulumi.StringOutput {
 type GetD1DatabasesResult struct {
 	// Specifies the timestamp the resource was created as an ISO8601 string.
 	CreatedAt string `pulumi:"createdAt"`
+	// D1 database identifier (UUID).
+	Id string `pulumi:"id"`
 	// D1 database name.
 	Name string `pulumi:"name"`
 	// D1 database identifier (UUID).
@@ -29304,6 +33885,8 @@ type GetD1DatabasesResultInput interface {
 type GetD1DatabasesResultArgs struct {
 	// Specifies the timestamp the resource was created as an ISO8601 string.
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// D1 database identifier (UUID).
+	Id pulumi.StringInput `pulumi:"id"`
 	// D1 database name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// D1 database identifier (UUID).
@@ -29365,6 +33948,11 @@ func (o GetD1DatabasesResultOutput) ToGetD1DatabasesResultOutputWithContext(ctx 
 // Specifies the timestamp the resource was created as an ISO8601 string.
 func (o GetD1DatabasesResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetD1DatabasesResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// D1 database identifier (UUID).
+func (o GetD1DatabasesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetD1DatabasesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // D1 database name.
@@ -34454,7 +39042,7 @@ func (o GetEmailRoutingDnsResultErrorMissingOutput) Type() pulumi.StringOutput {
 
 type GetEmailRoutingDnsResultInfo struct {
 	// Total number of results for the requested service.
-	Count float64 `pulumi:"count"`
+	EmailRoutingDnsCount float64 `pulumi:"emailRoutingDnsCount"`
 	// Current page within paginated list of results.
 	Page float64 `pulumi:"page"`
 	// Number of results per page of results.
@@ -34476,7 +39064,7 @@ type GetEmailRoutingDnsResultInfoInput interface {
 
 type GetEmailRoutingDnsResultInfoArgs struct {
 	// Total number of results for the requested service.
-	Count pulumi.Float64Input `pulumi:"count"`
+	EmailRoutingDnsCount pulumi.Float64Input `pulumi:"emailRoutingDnsCount"`
 	// Current page within paginated list of results.
 	Page pulumi.Float64Input `pulumi:"page"`
 	// Number of results per page of results.
@@ -34512,8 +39100,8 @@ func (o GetEmailRoutingDnsResultInfoOutput) ToGetEmailRoutingDnsResultInfoOutput
 }
 
 // Total number of results for the requested service.
-func (o GetEmailRoutingDnsResultInfoOutput) Count() pulumi.Float64Output {
-	return o.ApplyT(func(v GetEmailRoutingDnsResultInfo) float64 { return v.Count }).(pulumi.Float64Output)
+func (o GetEmailRoutingDnsResultInfoOutput) EmailRoutingDnsCount() pulumi.Float64Output {
+	return o.ApplyT(func(v GetEmailRoutingDnsResultInfo) float64 { return v.EmailRoutingDnsCount }).(pulumi.Float64Output)
 }
 
 // Current page within paginated list of results.
@@ -44223,7 +48811,7 @@ func (o GetLogpushJobOutputOptionsOutput) TimestampFormat() pulumi.StringOutput 
 
 type GetLogpushJobsResult struct {
 	// Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-	// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+	// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
 	Dataset string `pulumi:"dataset"`
 	// Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
 	DestinationConf string `pulumi:"destinationConf"`
@@ -44274,7 +48862,7 @@ type GetLogpushJobsResultInput interface {
 
 type GetLogpushJobsResultArgs struct {
 	// Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-	// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+	// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
 	Dataset pulumi.StringInput `pulumi:"dataset"`
 	// Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
 	DestinationConf pulumi.StringInput `pulumi:"destinationConf"`
@@ -44364,7 +48952,7 @@ func (o GetLogpushJobsResultOutput) ToGetLogpushJobsResultOutputWithContext(ctx 
 }
 
 // Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
 func (o GetLogpushJobsResultOutput) Dataset() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLogpushJobsResult) string { return v.Dataset }).(pulumi.StringOutput)
 }
@@ -54315,7 +58903,8 @@ type GetPagesDomainsResult struct {
 	CreatedOn            string `pulumi:"createdOn"`
 	DomainId             string `pulumi:"domainId"`
 	Id                   string `pulumi:"id"`
-	Name                 string `pulumi:"name"`
+	// The domain name.
+	Name string `pulumi:"name"`
 	// Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
 	Status           string                                `pulumi:"status"`
 	ValidationData   GetPagesDomainsResultValidationData   `pulumi:"validationData"`
@@ -54340,7 +58929,8 @@ type GetPagesDomainsResultArgs struct {
 	CreatedOn            pulumi.StringInput `pulumi:"createdOn"`
 	DomainId             pulumi.StringInput `pulumi:"domainId"`
 	Id                   pulumi.StringInput `pulumi:"id"`
-	Name                 pulumi.StringInput `pulumi:"name"`
+	// The domain name.
+	Name pulumi.StringInput `pulumi:"name"`
 	// Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
 	Status           pulumi.StringInput                         `pulumi:"status"`
 	ValidationData   GetPagesDomainsResultValidationDataInput   `pulumi:"validationData"`
@@ -54416,6 +59006,7 @@ func (o GetPagesDomainsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPagesDomainsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The domain name.
 func (o GetPagesDomainsResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPagesDomainsResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -54599,7 +59190,7 @@ type GetPagesProjectBuildConfig struct {
 	BuildCaching bool `pulumi:"buildCaching"`
 	// Command used to build project.
 	BuildCommand string `pulumi:"buildCommand"`
-	// Output directory of the build.
+	// Assets output directory of the build.
 	DestinationDir string `pulumi:"destinationDir"`
 	// Directory to run the command.
 	RootDir string `pulumi:"rootDir"`
@@ -54625,7 +59216,7 @@ type GetPagesProjectBuildConfigArgs struct {
 	BuildCaching pulumi.BoolInput `pulumi:"buildCaching"`
 	// Command used to build project.
 	BuildCommand pulumi.StringInput `pulumi:"buildCommand"`
-	// Output directory of the build.
+	// Assets output directory of the build.
 	DestinationDir pulumi.StringInput `pulumi:"destinationDir"`
 	// Directory to run the command.
 	RootDir pulumi.StringInput `pulumi:"rootDir"`
@@ -54671,7 +59262,7 @@ func (o GetPagesProjectBuildConfigOutput) BuildCommand() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPagesProjectBuildConfig) string { return v.BuildCommand }).(pulumi.StringOutput)
 }
 
-// Output directory of the build.
+// Assets output directory of the build.
 func (o GetPagesProjectBuildConfigOutput) DestinationDir() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPagesProjectBuildConfig) string { return v.DestinationDir }).(pulumi.StringOutput)
 }
@@ -54718,12 +59309,15 @@ type GetPagesProjectCanonicalDeployment struct {
 	// Name of the project.
 	ProjectName string `pulumi:"projectName"`
 	// Short Id (8 character) of the deployment.
-	ShortId string                                   `pulumi:"shortId"`
-	Source  GetPagesProjectCanonicalDeploymentSource `pulumi:"source"`
+	ShortId string `pulumi:"shortId"`
+	// Configs for the project source control.
+	Source GetPagesProjectCanonicalDeploymentSource `pulumi:"source"`
 	// List of past stages.
 	Stages []GetPagesProjectCanonicalDeploymentStage `pulumi:"stages"`
 	// The live URL to view this deployment.
 	Url string `pulumi:"url"`
+	// Whether the deployment uses functions.
+	UsesFunctions bool `pulumi:"usesFunctions"`
 }
 
 // GetPagesProjectCanonicalDeploymentInput is an input type that accepts GetPagesProjectCanonicalDeploymentArgs and GetPagesProjectCanonicalDeploymentOutput values.
@@ -54764,12 +59358,15 @@ type GetPagesProjectCanonicalDeploymentArgs struct {
 	// Name of the project.
 	ProjectName pulumi.StringInput `pulumi:"projectName"`
 	// Short Id (8 character) of the deployment.
-	ShortId pulumi.StringInput                            `pulumi:"shortId"`
-	Source  GetPagesProjectCanonicalDeploymentSourceInput `pulumi:"source"`
+	ShortId pulumi.StringInput `pulumi:"shortId"`
+	// Configs for the project source control.
+	Source GetPagesProjectCanonicalDeploymentSourceInput `pulumi:"source"`
 	// List of past stages.
 	Stages GetPagesProjectCanonicalDeploymentStageArrayInput `pulumi:"stages"`
 	// The live URL to view this deployment.
 	Url pulumi.StringInput `pulumi:"url"`
+	// Whether the deployment uses functions.
+	UsesFunctions pulumi.BoolInput `pulumi:"usesFunctions"`
 }
 
 func (GetPagesProjectCanonicalDeploymentArgs) ElementType() reflect.Type {
@@ -54872,6 +59469,7 @@ func (o GetPagesProjectCanonicalDeploymentOutput) ShortId() pulumi.StringOutput 
 	return o.ApplyT(func(v GetPagesProjectCanonicalDeployment) string { return v.ShortId }).(pulumi.StringOutput)
 }
 
+// Configs for the project source control.
 func (o GetPagesProjectCanonicalDeploymentOutput) Source() GetPagesProjectCanonicalDeploymentSourceOutput {
 	return o.ApplyT(func(v GetPagesProjectCanonicalDeployment) GetPagesProjectCanonicalDeploymentSource { return v.Source }).(GetPagesProjectCanonicalDeploymentSourceOutput)
 }
@@ -54886,12 +59484,17 @@ func (o GetPagesProjectCanonicalDeploymentOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPagesProjectCanonicalDeployment) string { return v.Url }).(pulumi.StringOutput)
 }
 
+// Whether the deployment uses functions.
+func (o GetPagesProjectCanonicalDeploymentOutput) UsesFunctions() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPagesProjectCanonicalDeployment) bool { return v.UsesFunctions }).(pulumi.BoolOutput)
+}
+
 type GetPagesProjectCanonicalDeploymentBuildConfig struct {
 	// Enable build caching for the project.
 	BuildCaching bool `pulumi:"buildCaching"`
 	// Command used to build project.
 	BuildCommand string `pulumi:"buildCommand"`
-	// Output directory of the build.
+	// Assets output directory of the build.
 	DestinationDir string `pulumi:"destinationDir"`
 	// Directory to run the command.
 	RootDir string `pulumi:"rootDir"`
@@ -54917,7 +59520,7 @@ type GetPagesProjectCanonicalDeploymentBuildConfigArgs struct {
 	BuildCaching pulumi.BoolInput `pulumi:"buildCaching"`
 	// Command used to build project.
 	BuildCommand pulumi.StringInput `pulumi:"buildCommand"`
-	// Output directory of the build.
+	// Assets output directory of the build.
 	DestinationDir pulumi.StringInput `pulumi:"destinationDir"`
 	// Directory to run the command.
 	RootDir pulumi.StringInput `pulumi:"rootDir"`
@@ -54963,7 +59566,7 @@ func (o GetPagesProjectCanonicalDeploymentBuildConfigOutput) BuildCommand() pulu
 	return o.ApplyT(func(v GetPagesProjectCanonicalDeploymentBuildConfig) string { return v.BuildCommand }).(pulumi.StringOutput)
 }
 
-// Output directory of the build.
+// Assets output directory of the build.
 func (o GetPagesProjectCanonicalDeploymentBuildConfigOutput) DestinationDir() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPagesProjectCanonicalDeploymentBuildConfig) string { return v.DestinationDir }).(pulumi.StringOutput)
 }
@@ -54987,7 +59590,7 @@ type GetPagesProjectCanonicalDeploymentDeploymentTrigger struct {
 	// Additional info about the trigger.
 	Metadata GetPagesProjectCanonicalDeploymentDeploymentTriggerMetadata `pulumi:"metadata"`
 	// What caused the deployment.
-	// Available values: "push", "adHoc".
+	// Available values: "github:push", "ad*hoc", "deploy*hook".
 	Type string `pulumi:"type"`
 }
 
@@ -55006,7 +59609,7 @@ type GetPagesProjectCanonicalDeploymentDeploymentTriggerArgs struct {
 	// Additional info about the trigger.
 	Metadata GetPagesProjectCanonicalDeploymentDeploymentTriggerMetadataInput `pulumi:"metadata"`
 	// What caused the deployment.
-	// Available values: "push", "adHoc".
+	// Available values: "github:push", "ad*hoc", "deploy*hook".
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -55044,7 +59647,7 @@ func (o GetPagesProjectCanonicalDeploymentDeploymentTriggerOutput) Metadata() Ge
 }
 
 // What caused the deployment.
-// Available values: "push", "adHoc".
+// Available values: "github:push", "ad*hoc", "deploy*hook".
 func (o GetPagesProjectCanonicalDeploymentDeploymentTriggerOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPagesProjectCanonicalDeploymentDeploymentTrigger) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -55052,6 +59655,8 @@ func (o GetPagesProjectCanonicalDeploymentDeploymentTriggerOutput) Type() pulumi
 type GetPagesProjectCanonicalDeploymentDeploymentTriggerMetadata struct {
 	// Where the trigger happened.
 	Branch string `pulumi:"branch"`
+	// Whether the deployment trigger commit was dirty.
+	CommitDirty bool `pulumi:"commitDirty"`
 	// Hash of the deployment trigger commit.
 	CommitHash string `pulumi:"commitHash"`
 	// Message of the deployment trigger commit.
@@ -55072,6 +59677,8 @@ type GetPagesProjectCanonicalDeploymentDeploymentTriggerMetadataInput interface 
 type GetPagesProjectCanonicalDeploymentDeploymentTriggerMetadataArgs struct {
 	// Where the trigger happened.
 	Branch pulumi.StringInput `pulumi:"branch"`
+	// Whether the deployment trigger commit was dirty.
+	CommitDirty pulumi.BoolInput `pulumi:"commitDirty"`
 	// Hash of the deployment trigger commit.
 	CommitHash pulumi.StringInput `pulumi:"commitHash"`
 	// Message of the deployment trigger commit.
@@ -55107,6 +59714,11 @@ func (o GetPagesProjectCanonicalDeploymentDeploymentTriggerMetadataOutput) ToGet
 // Where the trigger happened.
 func (o GetPagesProjectCanonicalDeploymentDeploymentTriggerMetadataOutput) Branch() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPagesProjectCanonicalDeploymentDeploymentTriggerMetadata) string { return v.Branch }).(pulumi.StringOutput)
+}
+
+// Whether the deployment trigger commit was dirty.
+func (o GetPagesProjectCanonicalDeploymentDeploymentTriggerMetadataOutput) CommitDirty() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPagesProjectCanonicalDeploymentDeploymentTriggerMetadata) bool { return v.CommitDirty }).(pulumi.BoolOutput)
 }
 
 // Hash of the deployment trigger commit.
@@ -55225,3358 +59837,35 @@ func (o GetPagesProjectCanonicalDeploymentEnvVarsMapOutput) MapIndex(k pulumi.St
 	}).(GetPagesProjectCanonicalDeploymentEnvVarsOutput)
 }
 
-type GetPagesProjectCanonicalDeploymentLatestStage struct {
-	// When the stage ended.
-	EndedOn string `pulumi:"endedOn"`
-	// The current build stage.
-	// Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
-	Name string `pulumi:"name"`
-	// When the stage started.
-	StartedOn string `pulumi:"startedOn"`
-	// State of the current stage.
-	// Available values: "success", "idle", "active", "failure", "canceled".
-	Status string `pulumi:"status"`
-}
-
-// GetPagesProjectCanonicalDeploymentLatestStageInput is an input type that accepts GetPagesProjectCanonicalDeploymentLatestStageArgs and GetPagesProjectCanonicalDeploymentLatestStageOutput values.
-// You can construct a concrete instance of `GetPagesProjectCanonicalDeploymentLatestStageInput` via:
-//
-//	GetPagesProjectCanonicalDeploymentLatestStageArgs{...}
-type GetPagesProjectCanonicalDeploymentLatestStageInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectCanonicalDeploymentLatestStageOutput() GetPagesProjectCanonicalDeploymentLatestStageOutput
-	ToGetPagesProjectCanonicalDeploymentLatestStageOutputWithContext(context.Context) GetPagesProjectCanonicalDeploymentLatestStageOutput
-}
-
-type GetPagesProjectCanonicalDeploymentLatestStageArgs struct {
-	// When the stage ended.
-	EndedOn pulumi.StringInput `pulumi:"endedOn"`
-	// The current build stage.
-	// Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
-	Name pulumi.StringInput `pulumi:"name"`
-	// When the stage started.
-	StartedOn pulumi.StringInput `pulumi:"startedOn"`
-	// State of the current stage.
-	// Available values: "success", "idle", "active", "failure", "canceled".
-	Status pulumi.StringInput `pulumi:"status"`
-}
-
-func (GetPagesProjectCanonicalDeploymentLatestStageArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectCanonicalDeploymentLatestStage)(nil)).Elem()
-}
-
-func (i GetPagesProjectCanonicalDeploymentLatestStageArgs) ToGetPagesProjectCanonicalDeploymentLatestStageOutput() GetPagesProjectCanonicalDeploymentLatestStageOutput {
-	return i.ToGetPagesProjectCanonicalDeploymentLatestStageOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectCanonicalDeploymentLatestStageArgs) ToGetPagesProjectCanonicalDeploymentLatestStageOutputWithContext(ctx context.Context) GetPagesProjectCanonicalDeploymentLatestStageOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectCanonicalDeploymentLatestStageOutput)
-}
-
-type GetPagesProjectCanonicalDeploymentLatestStageOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectCanonicalDeploymentLatestStageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectCanonicalDeploymentLatestStage)(nil)).Elem()
-}
-
-func (o GetPagesProjectCanonicalDeploymentLatestStageOutput) ToGetPagesProjectCanonicalDeploymentLatestStageOutput() GetPagesProjectCanonicalDeploymentLatestStageOutput {
-	return o
-}
-
-func (o GetPagesProjectCanonicalDeploymentLatestStageOutput) ToGetPagesProjectCanonicalDeploymentLatestStageOutputWithContext(ctx context.Context) GetPagesProjectCanonicalDeploymentLatestStageOutput {
-	return o
-}
-
-// When the stage ended.
-func (o GetPagesProjectCanonicalDeploymentLatestStageOutput) EndedOn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectCanonicalDeploymentLatestStage) string { return v.EndedOn }).(pulumi.StringOutput)
-}
-
-// The current build stage.
-// Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
-func (o GetPagesProjectCanonicalDeploymentLatestStageOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectCanonicalDeploymentLatestStage) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// When the stage started.
-func (o GetPagesProjectCanonicalDeploymentLatestStageOutput) StartedOn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectCanonicalDeploymentLatestStage) string { return v.StartedOn }).(pulumi.StringOutput)
-}
-
-// State of the current stage.
-// Available values: "success", "idle", "active", "failure", "canceled".
-func (o GetPagesProjectCanonicalDeploymentLatestStageOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectCanonicalDeploymentLatestStage) string { return v.Status }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectCanonicalDeploymentSource struct {
-	Config GetPagesProjectCanonicalDeploymentSourceConfig `pulumi:"config"`
-	// The source control management provider.
-	// Available values: "github", "gitlab".
-	Type string `pulumi:"type"`
-}
-
-// GetPagesProjectCanonicalDeploymentSourceInput is an input type that accepts GetPagesProjectCanonicalDeploymentSourceArgs and GetPagesProjectCanonicalDeploymentSourceOutput values.
-// You can construct a concrete instance of `GetPagesProjectCanonicalDeploymentSourceInput` via:
-//
-//	GetPagesProjectCanonicalDeploymentSourceArgs{...}
-type GetPagesProjectCanonicalDeploymentSourceInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectCanonicalDeploymentSourceOutput() GetPagesProjectCanonicalDeploymentSourceOutput
-	ToGetPagesProjectCanonicalDeploymentSourceOutputWithContext(context.Context) GetPagesProjectCanonicalDeploymentSourceOutput
-}
-
-type GetPagesProjectCanonicalDeploymentSourceArgs struct {
-	Config GetPagesProjectCanonicalDeploymentSourceConfigInput `pulumi:"config"`
-	// The source control management provider.
-	// Available values: "github", "gitlab".
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetPagesProjectCanonicalDeploymentSourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectCanonicalDeploymentSource)(nil)).Elem()
-}
-
-func (i GetPagesProjectCanonicalDeploymentSourceArgs) ToGetPagesProjectCanonicalDeploymentSourceOutput() GetPagesProjectCanonicalDeploymentSourceOutput {
-	return i.ToGetPagesProjectCanonicalDeploymentSourceOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectCanonicalDeploymentSourceArgs) ToGetPagesProjectCanonicalDeploymentSourceOutputWithContext(ctx context.Context) GetPagesProjectCanonicalDeploymentSourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectCanonicalDeploymentSourceOutput)
-}
-
-type GetPagesProjectCanonicalDeploymentSourceOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectCanonicalDeploymentSourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectCanonicalDeploymentSource)(nil)).Elem()
-}
-
-func (o GetPagesProjectCanonicalDeploymentSourceOutput) ToGetPagesProjectCanonicalDeploymentSourceOutput() GetPagesProjectCanonicalDeploymentSourceOutput {
-	return o
-}
-
-func (o GetPagesProjectCanonicalDeploymentSourceOutput) ToGetPagesProjectCanonicalDeploymentSourceOutputWithContext(ctx context.Context) GetPagesProjectCanonicalDeploymentSourceOutput {
-	return o
-}
-
-func (o GetPagesProjectCanonicalDeploymentSourceOutput) Config() GetPagesProjectCanonicalDeploymentSourceConfigOutput {
-	return o.ApplyT(func(v GetPagesProjectCanonicalDeploymentSource) GetPagesProjectCanonicalDeploymentSourceConfig {
-		return v.Config
-	}).(GetPagesProjectCanonicalDeploymentSourceConfigOutput)
-}
-
-// The source control management provider.
-// Available values: "github", "gitlab".
-func (o GetPagesProjectCanonicalDeploymentSourceOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectCanonicalDeploymentSource) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectCanonicalDeploymentSourceConfig struct {
-	// Whether to enable automatic deployments when pushing to the source repository.
-	// When disabled, no deployments (production or preview) will be triggered automatically.
-	//
-	// Deprecated: Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
-	DeploymentsEnabled bool `pulumi:"deploymentsEnabled"`
-	// The owner of the repository.
-	Owner string `pulumi:"owner"`
-	// A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
-	PathExcludes []string `pulumi:"pathExcludes"`
-	// A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
-	PathIncludes []string `pulumi:"pathIncludes"`
-	// Whether to enable PR comments.
-	PrCommentsEnabled bool `pulumi:"prCommentsEnabled"`
-	// A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
-	PreviewBranchExcludes []string `pulumi:"previewBranchExcludes"`
-	// A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
-	PreviewBranchIncludes []string `pulumi:"previewBranchIncludes"`
-	// Controls whether commits to preview branches trigger a preview deployment.
-	// Available values: "all", "none", "custom".
-	PreviewDeploymentSetting string `pulumi:"previewDeploymentSetting"`
-	// The production branch of the repository.
-	ProductionBranch string `pulumi:"productionBranch"`
-	// Whether to trigger a production deployment on commits to the production branch.
-	ProductionDeploymentsEnabled bool `pulumi:"productionDeploymentsEnabled"`
-	// The name of the repository.
-	RepoName string `pulumi:"repoName"`
-}
-
-// GetPagesProjectCanonicalDeploymentSourceConfigInput is an input type that accepts GetPagesProjectCanonicalDeploymentSourceConfigArgs and GetPagesProjectCanonicalDeploymentSourceConfigOutput values.
-// You can construct a concrete instance of `GetPagesProjectCanonicalDeploymentSourceConfigInput` via:
-//
-//	GetPagesProjectCanonicalDeploymentSourceConfigArgs{...}
-type GetPagesProjectCanonicalDeploymentSourceConfigInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectCanonicalDeploymentSourceConfigOutput() GetPagesProjectCanonicalDeploymentSourceConfigOutput
-	ToGetPagesProjectCanonicalDeploymentSourceConfigOutputWithContext(context.Context) GetPagesProjectCanonicalDeploymentSourceConfigOutput
-}
-
-type GetPagesProjectCanonicalDeploymentSourceConfigArgs struct {
-	// Whether to enable automatic deployments when pushing to the source repository.
-	// When disabled, no deployments (production or preview) will be triggered automatically.
-	//
-	// Deprecated: Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
-	DeploymentsEnabled pulumi.BoolInput `pulumi:"deploymentsEnabled"`
-	// The owner of the repository.
-	Owner pulumi.StringInput `pulumi:"owner"`
-	// A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
-	PathExcludes pulumi.StringArrayInput `pulumi:"pathExcludes"`
-	// A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
-	PathIncludes pulumi.StringArrayInput `pulumi:"pathIncludes"`
-	// Whether to enable PR comments.
-	PrCommentsEnabled pulumi.BoolInput `pulumi:"prCommentsEnabled"`
-	// A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
-	PreviewBranchExcludes pulumi.StringArrayInput `pulumi:"previewBranchExcludes"`
-	// A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
-	PreviewBranchIncludes pulumi.StringArrayInput `pulumi:"previewBranchIncludes"`
-	// Controls whether commits to preview branches trigger a preview deployment.
-	// Available values: "all", "none", "custom".
-	PreviewDeploymentSetting pulumi.StringInput `pulumi:"previewDeploymentSetting"`
-	// The production branch of the repository.
-	ProductionBranch pulumi.StringInput `pulumi:"productionBranch"`
-	// Whether to trigger a production deployment on commits to the production branch.
-	ProductionDeploymentsEnabled pulumi.BoolInput `pulumi:"productionDeploymentsEnabled"`
-	// The name of the repository.
-	RepoName pulumi.StringInput `pulumi:"repoName"`
-}
-
-func (GetPagesProjectCanonicalDeploymentSourceConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectCanonicalDeploymentSourceConfig)(nil)).Elem()
-}
-
-func (i GetPagesProjectCanonicalDeploymentSourceConfigArgs) ToGetPagesProjectCanonicalDeploymentSourceConfigOutput() GetPagesProjectCanonicalDeploymentSourceConfigOutput {
-	return i.ToGetPagesProjectCanonicalDeploymentSourceConfigOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectCanonicalDeploymentSourceConfigArgs) ToGetPagesProjectCanonicalDeploymentSourceConfigOutputWithContext(ctx context.Context) GetPagesProjectCanonicalDeploymentSourceConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectCanonicalDeploymentSourceConfigOutput)
-}
-
-type GetPagesProjectCanonicalDeploymentSourceConfigOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectCanonicalDeploymentSourceConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectCanonicalDeploymentSourceConfig)(nil)).Elem()
-}
-
-func (o GetPagesProjectCanonicalDeploymentSourceConfigOutput) ToGetPagesProjectCanonicalDeploymentSourceConfigOutput() GetPagesProjectCanonicalDeploymentSourceConfigOutput {
-	return o
-}
-
-func (o GetPagesProjectCanonicalDeploymentSourceConfigOutput) ToGetPagesProjectCanonicalDeploymentSourceConfigOutputWithContext(ctx context.Context) GetPagesProjectCanonicalDeploymentSourceConfigOutput {
-	return o
-}
-
-// Whether to enable automatic deployments when pushing to the source repository.
-// When disabled, no deployments (production or preview) will be triggered automatically.
-//
-// Deprecated: Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
-func (o GetPagesProjectCanonicalDeploymentSourceConfigOutput) DeploymentsEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPagesProjectCanonicalDeploymentSourceConfig) bool { return v.DeploymentsEnabled }).(pulumi.BoolOutput)
-}
-
-// The owner of the repository.
-func (o GetPagesProjectCanonicalDeploymentSourceConfigOutput) Owner() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectCanonicalDeploymentSourceConfig) string { return v.Owner }).(pulumi.StringOutput)
-}
-
-// A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
-func (o GetPagesProjectCanonicalDeploymentSourceConfigOutput) PathExcludes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetPagesProjectCanonicalDeploymentSourceConfig) []string { return v.PathExcludes }).(pulumi.StringArrayOutput)
-}
-
-// A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
-func (o GetPagesProjectCanonicalDeploymentSourceConfigOutput) PathIncludes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetPagesProjectCanonicalDeploymentSourceConfig) []string { return v.PathIncludes }).(pulumi.StringArrayOutput)
-}
-
-// Whether to enable PR comments.
-func (o GetPagesProjectCanonicalDeploymentSourceConfigOutput) PrCommentsEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPagesProjectCanonicalDeploymentSourceConfig) bool { return v.PrCommentsEnabled }).(pulumi.BoolOutput)
-}
-
-// A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
-func (o GetPagesProjectCanonicalDeploymentSourceConfigOutput) PreviewBranchExcludes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetPagesProjectCanonicalDeploymentSourceConfig) []string { return v.PreviewBranchExcludes }).(pulumi.StringArrayOutput)
-}
-
-// A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
-func (o GetPagesProjectCanonicalDeploymentSourceConfigOutput) PreviewBranchIncludes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetPagesProjectCanonicalDeploymentSourceConfig) []string { return v.PreviewBranchIncludes }).(pulumi.StringArrayOutput)
-}
-
-// Controls whether commits to preview branches trigger a preview deployment.
-// Available values: "all", "none", "custom".
-func (o GetPagesProjectCanonicalDeploymentSourceConfigOutput) PreviewDeploymentSetting() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectCanonicalDeploymentSourceConfig) string { return v.PreviewDeploymentSetting }).(pulumi.StringOutput)
-}
-
-// The production branch of the repository.
-func (o GetPagesProjectCanonicalDeploymentSourceConfigOutput) ProductionBranch() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectCanonicalDeploymentSourceConfig) string { return v.ProductionBranch }).(pulumi.StringOutput)
-}
-
-// Whether to trigger a production deployment on commits to the production branch.
-func (o GetPagesProjectCanonicalDeploymentSourceConfigOutput) ProductionDeploymentsEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPagesProjectCanonicalDeploymentSourceConfig) bool { return v.ProductionDeploymentsEnabled }).(pulumi.BoolOutput)
-}
-
-// The name of the repository.
-func (o GetPagesProjectCanonicalDeploymentSourceConfigOutput) RepoName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectCanonicalDeploymentSourceConfig) string { return v.RepoName }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectCanonicalDeploymentStage struct {
-	// When the stage ended.
-	EndedOn string `pulumi:"endedOn"`
-	// The current build stage.
-	// Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
-	Name string `pulumi:"name"`
-	// When the stage started.
-	StartedOn string `pulumi:"startedOn"`
-	// State of the current stage.
-	// Available values: "success", "idle", "active", "failure", "canceled".
-	Status string `pulumi:"status"`
-}
-
-// GetPagesProjectCanonicalDeploymentStageInput is an input type that accepts GetPagesProjectCanonicalDeploymentStageArgs and GetPagesProjectCanonicalDeploymentStageOutput values.
-// You can construct a concrete instance of `GetPagesProjectCanonicalDeploymentStageInput` via:
-//
-//	GetPagesProjectCanonicalDeploymentStageArgs{...}
-type GetPagesProjectCanonicalDeploymentStageInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectCanonicalDeploymentStageOutput() GetPagesProjectCanonicalDeploymentStageOutput
-	ToGetPagesProjectCanonicalDeploymentStageOutputWithContext(context.Context) GetPagesProjectCanonicalDeploymentStageOutput
-}
-
-type GetPagesProjectCanonicalDeploymentStageArgs struct {
-	// When the stage ended.
-	EndedOn pulumi.StringInput `pulumi:"endedOn"`
-	// The current build stage.
-	// Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
-	Name pulumi.StringInput `pulumi:"name"`
-	// When the stage started.
-	StartedOn pulumi.StringInput `pulumi:"startedOn"`
-	// State of the current stage.
-	// Available values: "success", "idle", "active", "failure", "canceled".
-	Status pulumi.StringInput `pulumi:"status"`
-}
-
-func (GetPagesProjectCanonicalDeploymentStageArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectCanonicalDeploymentStage)(nil)).Elem()
-}
-
-func (i GetPagesProjectCanonicalDeploymentStageArgs) ToGetPagesProjectCanonicalDeploymentStageOutput() GetPagesProjectCanonicalDeploymentStageOutput {
-	return i.ToGetPagesProjectCanonicalDeploymentStageOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectCanonicalDeploymentStageArgs) ToGetPagesProjectCanonicalDeploymentStageOutputWithContext(ctx context.Context) GetPagesProjectCanonicalDeploymentStageOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectCanonicalDeploymentStageOutput)
-}
-
-// GetPagesProjectCanonicalDeploymentStageArrayInput is an input type that accepts GetPagesProjectCanonicalDeploymentStageArray and GetPagesProjectCanonicalDeploymentStageArrayOutput values.
-// You can construct a concrete instance of `GetPagesProjectCanonicalDeploymentStageArrayInput` via:
-//
-//	GetPagesProjectCanonicalDeploymentStageArray{ GetPagesProjectCanonicalDeploymentStageArgs{...} }
-type GetPagesProjectCanonicalDeploymentStageArrayInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectCanonicalDeploymentStageArrayOutput() GetPagesProjectCanonicalDeploymentStageArrayOutput
-	ToGetPagesProjectCanonicalDeploymentStageArrayOutputWithContext(context.Context) GetPagesProjectCanonicalDeploymentStageArrayOutput
-}
-
-type GetPagesProjectCanonicalDeploymentStageArray []GetPagesProjectCanonicalDeploymentStageInput
-
-func (GetPagesProjectCanonicalDeploymentStageArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPagesProjectCanonicalDeploymentStage)(nil)).Elem()
-}
-
-func (i GetPagesProjectCanonicalDeploymentStageArray) ToGetPagesProjectCanonicalDeploymentStageArrayOutput() GetPagesProjectCanonicalDeploymentStageArrayOutput {
-	return i.ToGetPagesProjectCanonicalDeploymentStageArrayOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectCanonicalDeploymentStageArray) ToGetPagesProjectCanonicalDeploymentStageArrayOutputWithContext(ctx context.Context) GetPagesProjectCanonicalDeploymentStageArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectCanonicalDeploymentStageArrayOutput)
-}
-
-type GetPagesProjectCanonicalDeploymentStageOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectCanonicalDeploymentStageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectCanonicalDeploymentStage)(nil)).Elem()
-}
-
-func (o GetPagesProjectCanonicalDeploymentStageOutput) ToGetPagesProjectCanonicalDeploymentStageOutput() GetPagesProjectCanonicalDeploymentStageOutput {
-	return o
-}
-
-func (o GetPagesProjectCanonicalDeploymentStageOutput) ToGetPagesProjectCanonicalDeploymentStageOutputWithContext(ctx context.Context) GetPagesProjectCanonicalDeploymentStageOutput {
-	return o
-}
-
-// When the stage ended.
-func (o GetPagesProjectCanonicalDeploymentStageOutput) EndedOn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectCanonicalDeploymentStage) string { return v.EndedOn }).(pulumi.StringOutput)
-}
-
-// The current build stage.
-// Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
-func (o GetPagesProjectCanonicalDeploymentStageOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectCanonicalDeploymentStage) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// When the stage started.
-func (o GetPagesProjectCanonicalDeploymentStageOutput) StartedOn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectCanonicalDeploymentStage) string { return v.StartedOn }).(pulumi.StringOutput)
-}
-
-// State of the current stage.
-// Available values: "success", "idle", "active", "failure", "canceled".
-func (o GetPagesProjectCanonicalDeploymentStageOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectCanonicalDeploymentStage) string { return v.Status }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectCanonicalDeploymentStageArrayOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectCanonicalDeploymentStageArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPagesProjectCanonicalDeploymentStage)(nil)).Elem()
-}
-
-func (o GetPagesProjectCanonicalDeploymentStageArrayOutput) ToGetPagesProjectCanonicalDeploymentStageArrayOutput() GetPagesProjectCanonicalDeploymentStageArrayOutput {
-	return o
-}
-
-func (o GetPagesProjectCanonicalDeploymentStageArrayOutput) ToGetPagesProjectCanonicalDeploymentStageArrayOutputWithContext(ctx context.Context) GetPagesProjectCanonicalDeploymentStageArrayOutput {
-	return o
-}
-
-func (o GetPagesProjectCanonicalDeploymentStageArrayOutput) Index(i pulumi.IntInput) GetPagesProjectCanonicalDeploymentStageOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPagesProjectCanonicalDeploymentStage {
-		return vs[0].([]GetPagesProjectCanonicalDeploymentStage)[vs[1].(int)]
-	}).(GetPagesProjectCanonicalDeploymentStageOutput)
-}
-
-type GetPagesProjectDeploymentConfigs struct {
-	// Configs for preview deploys.
-	Preview GetPagesProjectDeploymentConfigsPreview `pulumi:"preview"`
-	// Configs for production deploys.
-	Production GetPagesProjectDeploymentConfigsProduction `pulumi:"production"`
-}
-
-// GetPagesProjectDeploymentConfigsInput is an input type that accepts GetPagesProjectDeploymentConfigsArgs and GetPagesProjectDeploymentConfigsOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsInput` via:
-//
-//	GetPagesProjectDeploymentConfigsArgs{...}
-type GetPagesProjectDeploymentConfigsInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsOutput() GetPagesProjectDeploymentConfigsOutput
-	ToGetPagesProjectDeploymentConfigsOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsOutput
-}
-
-type GetPagesProjectDeploymentConfigsArgs struct {
-	// Configs for preview deploys.
-	Preview GetPagesProjectDeploymentConfigsPreviewInput `pulumi:"preview"`
-	// Configs for production deploys.
-	Production GetPagesProjectDeploymentConfigsProductionInput `pulumi:"production"`
-}
-
-func (GetPagesProjectDeploymentConfigsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigs)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsArgs) ToGetPagesProjectDeploymentConfigsOutput() GetPagesProjectDeploymentConfigsOutput {
-	return i.ToGetPagesProjectDeploymentConfigsOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsArgs) ToGetPagesProjectDeploymentConfigsOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsOutput)
-}
-
-type GetPagesProjectDeploymentConfigsOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigs)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsOutput) ToGetPagesProjectDeploymentConfigsOutput() GetPagesProjectDeploymentConfigsOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsOutput) ToGetPagesProjectDeploymentConfigsOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsOutput {
-	return o
-}
-
-// Configs for preview deploys.
-func (o GetPagesProjectDeploymentConfigsOutput) Preview() GetPagesProjectDeploymentConfigsPreviewOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigs) GetPagesProjectDeploymentConfigsPreview { return v.Preview }).(GetPagesProjectDeploymentConfigsPreviewOutput)
-}
-
-// Configs for production deploys.
-func (o GetPagesProjectDeploymentConfigsOutput) Production() GetPagesProjectDeploymentConfigsProductionOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigs) GetPagesProjectDeploymentConfigsProduction {
-		return v.Production
-	}).(GetPagesProjectDeploymentConfigsProductionOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreview struct {
-	// Constellation bindings used for Pages Functions.
-	AiBindings map[string]GetPagesProjectDeploymentConfigsPreviewAiBindings `pulumi:"aiBindings"`
-	// Whether to always use the latest compatibility date for Pages Functions.
-	AlwaysUseLatestCompatibilityDate bool `pulumi:"alwaysUseLatestCompatibilityDate"`
-	// Analytics Engine bindings used for Pages Functions.
-	AnalyticsEngineDatasets map[string]GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasets `pulumi:"analyticsEngineDatasets"`
-	// Browser bindings used for Pages Functions.
-	Browsers map[string]GetPagesProjectDeploymentConfigsPreviewBrowsers `pulumi:"browsers"`
-	// The major version of the build image to use for Pages Functions.
-	BuildImageMajorVersion int `pulumi:"buildImageMajorVersion"`
-	// Compatibility date used for Pages Functions.
-	CompatibilityDate string `pulumi:"compatibilityDate"`
-	// Compatibility flags used for Pages Functions.
-	CompatibilityFlags []string `pulumi:"compatibilityFlags"`
-	// D1 databases used for Pages Functions.
-	D1Databases map[string]GetPagesProjectDeploymentConfigsPreviewD1Databases `pulumi:"d1Databases"`
-	// Durable Object namespaces used for Pages Functions.
-	DurableObjectNamespaces map[string]GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespaces `pulumi:"durableObjectNamespaces"`
-	// Environment variables used for builds and Pages Functions.
-	EnvVars map[string]GetPagesProjectDeploymentConfigsPreviewEnvVars `pulumi:"envVars"`
-	// Whether to fail open when the deployment config cannot be applied.
-	FailOpen bool `pulumi:"failOpen"`
-	// Hyperdrive bindings used for Pages Functions.
-	HyperdriveBindings map[string]GetPagesProjectDeploymentConfigsPreviewHyperdriveBindings `pulumi:"hyperdriveBindings"`
-	// KV namespaces used for Pages Functions.
-	KvNamespaces map[string]GetPagesProjectDeploymentConfigsPreviewKvNamespaces `pulumi:"kvNamespaces"`
-	// Limits for Pages Functions.
-	Limits GetPagesProjectDeploymentConfigsPreviewLimits `pulumi:"limits"`
-	// mTLS bindings used for Pages Functions.
-	MtlsCertificates map[string]GetPagesProjectDeploymentConfigsPreviewMtlsCertificates `pulumi:"mtlsCertificates"`
-	// Placement setting used for Pages Functions.
-	Placement GetPagesProjectDeploymentConfigsPreviewPlacement `pulumi:"placement"`
-	// Queue Producer bindings used for Pages Functions.
-	QueueProducers map[string]GetPagesProjectDeploymentConfigsPreviewQueueProducers `pulumi:"queueProducers"`
-	// R2 buckets used for Pages Functions.
-	R2Buckets map[string]GetPagesProjectDeploymentConfigsPreviewR2Buckets `pulumi:"r2Buckets"`
-	// Services used for Pages Functions.
-	Services map[string]GetPagesProjectDeploymentConfigsPreviewServices `pulumi:"services"`
-	// The usage model for Pages Functions.
-	// Available values: "standard", "bundled", "unbound".
-	//
-	// Deprecated: All new projects now use the Standard usage model.
-	UsageModel string `pulumi:"usageModel"`
-	// Vectorize bindings used for Pages Functions.
-	VectorizeBindings map[string]GetPagesProjectDeploymentConfigsPreviewVectorizeBindings `pulumi:"vectorizeBindings"`
-	// Hash of the Wrangler configuration used for the deployment.
-	WranglerConfigHash string `pulumi:"wranglerConfigHash"`
-}
-
-// GetPagesProjectDeploymentConfigsPreviewInput is an input type that accepts GetPagesProjectDeploymentConfigsPreviewArgs and GetPagesProjectDeploymentConfigsPreviewOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsPreviewInput` via:
-//
-//	GetPagesProjectDeploymentConfigsPreviewArgs{...}
-type GetPagesProjectDeploymentConfigsPreviewInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsPreviewOutput() GetPagesProjectDeploymentConfigsPreviewOutput
-	ToGetPagesProjectDeploymentConfigsPreviewOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsPreviewOutput
-}
-
-type GetPagesProjectDeploymentConfigsPreviewArgs struct {
-	// Constellation bindings used for Pages Functions.
-	AiBindings GetPagesProjectDeploymentConfigsPreviewAiBindingsMapInput `pulumi:"aiBindings"`
-	// Whether to always use the latest compatibility date for Pages Functions.
-	AlwaysUseLatestCompatibilityDate pulumi.BoolInput `pulumi:"alwaysUseLatestCompatibilityDate"`
-	// Analytics Engine bindings used for Pages Functions.
-	AnalyticsEngineDatasets GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMapInput `pulumi:"analyticsEngineDatasets"`
-	// Browser bindings used for Pages Functions.
-	Browsers GetPagesProjectDeploymentConfigsPreviewBrowsersMapInput `pulumi:"browsers"`
-	// The major version of the build image to use for Pages Functions.
-	BuildImageMajorVersion pulumi.IntInput `pulumi:"buildImageMajorVersion"`
-	// Compatibility date used for Pages Functions.
-	CompatibilityDate pulumi.StringInput `pulumi:"compatibilityDate"`
-	// Compatibility flags used for Pages Functions.
-	CompatibilityFlags pulumi.StringArrayInput `pulumi:"compatibilityFlags"`
-	// D1 databases used for Pages Functions.
-	D1Databases GetPagesProjectDeploymentConfigsPreviewD1DatabasesMapInput `pulumi:"d1Databases"`
-	// Durable Object namespaces used for Pages Functions.
-	DurableObjectNamespaces GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapInput `pulumi:"durableObjectNamespaces"`
-	// Environment variables used for builds and Pages Functions.
-	EnvVars GetPagesProjectDeploymentConfigsPreviewEnvVarsMapInput `pulumi:"envVars"`
-	// Whether to fail open when the deployment config cannot be applied.
-	FailOpen pulumi.BoolInput `pulumi:"failOpen"`
-	// Hyperdrive bindings used for Pages Functions.
-	HyperdriveBindings GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMapInput `pulumi:"hyperdriveBindings"`
-	// KV namespaces used for Pages Functions.
-	KvNamespaces GetPagesProjectDeploymentConfigsPreviewKvNamespacesMapInput `pulumi:"kvNamespaces"`
-	// Limits for Pages Functions.
-	Limits GetPagesProjectDeploymentConfigsPreviewLimitsInput `pulumi:"limits"`
-	// mTLS bindings used for Pages Functions.
-	MtlsCertificates GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMapInput `pulumi:"mtlsCertificates"`
-	// Placement setting used for Pages Functions.
-	Placement GetPagesProjectDeploymentConfigsPreviewPlacementInput `pulumi:"placement"`
-	// Queue Producer bindings used for Pages Functions.
-	QueueProducers GetPagesProjectDeploymentConfigsPreviewQueueProducersMapInput `pulumi:"queueProducers"`
-	// R2 buckets used for Pages Functions.
-	R2Buckets GetPagesProjectDeploymentConfigsPreviewR2BucketsMapInput `pulumi:"r2Buckets"`
-	// Services used for Pages Functions.
-	Services GetPagesProjectDeploymentConfigsPreviewServicesMapInput `pulumi:"services"`
-	// The usage model for Pages Functions.
-	// Available values: "standard", "bundled", "unbound".
-	//
-	// Deprecated: All new projects now use the Standard usage model.
-	UsageModel pulumi.StringInput `pulumi:"usageModel"`
-	// Vectorize bindings used for Pages Functions.
-	VectorizeBindings GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMapInput `pulumi:"vectorizeBindings"`
-	// Hash of the Wrangler configuration used for the deployment.
-	WranglerConfigHash pulumi.StringInput `pulumi:"wranglerConfigHash"`
-}
-
-func (GetPagesProjectDeploymentConfigsPreviewArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreview)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewArgs) ToGetPagesProjectDeploymentConfigsPreviewOutput() GetPagesProjectDeploymentConfigsPreviewOutput {
-	return i.ToGetPagesProjectDeploymentConfigsPreviewOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewArgs) ToGetPagesProjectDeploymentConfigsPreviewOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsPreviewOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsPreviewOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreview)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewOutput) ToGetPagesProjectDeploymentConfigsPreviewOutput() GetPagesProjectDeploymentConfigsPreviewOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewOutput) ToGetPagesProjectDeploymentConfigsPreviewOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewOutput {
-	return o
-}
-
-// Constellation bindings used for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsPreviewOutput) AiBindings() GetPagesProjectDeploymentConfigsPreviewAiBindingsMapOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreview) map[string]GetPagesProjectDeploymentConfigsPreviewAiBindings {
-		return v.AiBindings
-	}).(GetPagesProjectDeploymentConfigsPreviewAiBindingsMapOutput)
-}
-
-// Whether to always use the latest compatibility date for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsPreviewOutput) AlwaysUseLatestCompatibilityDate() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreview) bool { return v.AlwaysUseLatestCompatibilityDate }).(pulumi.BoolOutput)
-}
-
-// Analytics Engine bindings used for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsPreviewOutput) AnalyticsEngineDatasets() GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMapOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreview) map[string]GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasets {
-		return v.AnalyticsEngineDatasets
-	}).(GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMapOutput)
-}
-
-// Browser bindings used for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsPreviewOutput) Browsers() GetPagesProjectDeploymentConfigsPreviewBrowsersMapOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreview) map[string]GetPagesProjectDeploymentConfigsPreviewBrowsers {
-		return v.Browsers
-	}).(GetPagesProjectDeploymentConfigsPreviewBrowsersMapOutput)
-}
-
-// The major version of the build image to use for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsPreviewOutput) BuildImageMajorVersion() pulumi.IntOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreview) int { return v.BuildImageMajorVersion }).(pulumi.IntOutput)
-}
-
-// Compatibility date used for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsPreviewOutput) CompatibilityDate() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreview) string { return v.CompatibilityDate }).(pulumi.StringOutput)
-}
-
-// Compatibility flags used for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsPreviewOutput) CompatibilityFlags() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreview) []string { return v.CompatibilityFlags }).(pulumi.StringArrayOutput)
-}
-
-// D1 databases used for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsPreviewOutput) D1Databases() GetPagesProjectDeploymentConfigsPreviewD1DatabasesMapOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreview) map[string]GetPagesProjectDeploymentConfigsPreviewD1Databases {
-		return v.D1Databases
-	}).(GetPagesProjectDeploymentConfigsPreviewD1DatabasesMapOutput)
-}
-
-// Durable Object namespaces used for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsPreviewOutput) DurableObjectNamespaces() GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreview) map[string]GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespaces {
-		return v.DurableObjectNamespaces
-	}).(GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput)
-}
-
-// Environment variables used for builds and Pages Functions.
-func (o GetPagesProjectDeploymentConfigsPreviewOutput) EnvVars() GetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreview) map[string]GetPagesProjectDeploymentConfigsPreviewEnvVars {
-		return v.EnvVars
-	}).(GetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput)
-}
-
-// Whether to fail open when the deployment config cannot be applied.
-func (o GetPagesProjectDeploymentConfigsPreviewOutput) FailOpen() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreview) bool { return v.FailOpen }).(pulumi.BoolOutput)
-}
-
-// Hyperdrive bindings used for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsPreviewOutput) HyperdriveBindings() GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMapOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreview) map[string]GetPagesProjectDeploymentConfigsPreviewHyperdriveBindings {
-		return v.HyperdriveBindings
-	}).(GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMapOutput)
-}
-
-// KV namespaces used for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsPreviewOutput) KvNamespaces() GetPagesProjectDeploymentConfigsPreviewKvNamespacesMapOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreview) map[string]GetPagesProjectDeploymentConfigsPreviewKvNamespaces {
-		return v.KvNamespaces
-	}).(GetPagesProjectDeploymentConfigsPreviewKvNamespacesMapOutput)
-}
-
-// Limits for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsPreviewOutput) Limits() GetPagesProjectDeploymentConfigsPreviewLimitsOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreview) GetPagesProjectDeploymentConfigsPreviewLimits {
-		return v.Limits
-	}).(GetPagesProjectDeploymentConfigsPreviewLimitsOutput)
-}
-
-// mTLS bindings used for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsPreviewOutput) MtlsCertificates() GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMapOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreview) map[string]GetPagesProjectDeploymentConfigsPreviewMtlsCertificates {
-		return v.MtlsCertificates
-	}).(GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMapOutput)
-}
-
-// Placement setting used for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsPreviewOutput) Placement() GetPagesProjectDeploymentConfigsPreviewPlacementOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreview) GetPagesProjectDeploymentConfigsPreviewPlacement {
-		return v.Placement
-	}).(GetPagesProjectDeploymentConfigsPreviewPlacementOutput)
-}
-
-// Queue Producer bindings used for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsPreviewOutput) QueueProducers() GetPagesProjectDeploymentConfigsPreviewQueueProducersMapOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreview) map[string]GetPagesProjectDeploymentConfigsPreviewQueueProducers {
-		return v.QueueProducers
-	}).(GetPagesProjectDeploymentConfigsPreviewQueueProducersMapOutput)
-}
-
-// R2 buckets used for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsPreviewOutput) R2Buckets() GetPagesProjectDeploymentConfigsPreviewR2BucketsMapOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreview) map[string]GetPagesProjectDeploymentConfigsPreviewR2Buckets {
-		return v.R2Buckets
-	}).(GetPagesProjectDeploymentConfigsPreviewR2BucketsMapOutput)
-}
-
-// Services used for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsPreviewOutput) Services() GetPagesProjectDeploymentConfigsPreviewServicesMapOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreview) map[string]GetPagesProjectDeploymentConfigsPreviewServices {
-		return v.Services
-	}).(GetPagesProjectDeploymentConfigsPreviewServicesMapOutput)
-}
-
-// The usage model for Pages Functions.
-// Available values: "standard", "bundled", "unbound".
-//
-// Deprecated: All new projects now use the Standard usage model.
-func (o GetPagesProjectDeploymentConfigsPreviewOutput) UsageModel() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreview) string { return v.UsageModel }).(pulumi.StringOutput)
-}
-
-// Vectorize bindings used for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsPreviewOutput) VectorizeBindings() GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMapOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreview) map[string]GetPagesProjectDeploymentConfigsPreviewVectorizeBindings {
-		return v.VectorizeBindings
-	}).(GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMapOutput)
-}
-
-// Hash of the Wrangler configuration used for the deployment.
-func (o GetPagesProjectDeploymentConfigsPreviewOutput) WranglerConfigHash() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreview) string { return v.WranglerConfigHash }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewAiBindings struct {
-	ProjectId string `pulumi:"projectId"`
-}
-
-// GetPagesProjectDeploymentConfigsPreviewAiBindingsInput is an input type that accepts GetPagesProjectDeploymentConfigsPreviewAiBindingsArgs and GetPagesProjectDeploymentConfigsPreviewAiBindingsOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsPreviewAiBindingsInput` via:
-//
-//	GetPagesProjectDeploymentConfigsPreviewAiBindingsArgs{...}
-type GetPagesProjectDeploymentConfigsPreviewAiBindingsInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsPreviewAiBindingsOutput() GetPagesProjectDeploymentConfigsPreviewAiBindingsOutput
-	ToGetPagesProjectDeploymentConfigsPreviewAiBindingsOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsPreviewAiBindingsOutput
-}
-
-type GetPagesProjectDeploymentConfigsPreviewAiBindingsArgs struct {
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
-}
-
-func (GetPagesProjectDeploymentConfigsPreviewAiBindingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewAiBindings)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewAiBindingsArgs) ToGetPagesProjectDeploymentConfigsPreviewAiBindingsOutput() GetPagesProjectDeploymentConfigsPreviewAiBindingsOutput {
-	return i.ToGetPagesProjectDeploymentConfigsPreviewAiBindingsOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewAiBindingsArgs) ToGetPagesProjectDeploymentConfigsPreviewAiBindingsOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewAiBindingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsPreviewAiBindingsOutput)
-}
-
-// GetPagesProjectDeploymentConfigsPreviewAiBindingsMapInput is an input type that accepts GetPagesProjectDeploymentConfigsPreviewAiBindingsMap and GetPagesProjectDeploymentConfigsPreviewAiBindingsMapOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsPreviewAiBindingsMapInput` via:
-//
-//	GetPagesProjectDeploymentConfigsPreviewAiBindingsMap{ "key": GetPagesProjectDeploymentConfigsPreviewAiBindingsArgs{...} }
-type GetPagesProjectDeploymentConfigsPreviewAiBindingsMapInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsPreviewAiBindingsMapOutput() GetPagesProjectDeploymentConfigsPreviewAiBindingsMapOutput
-	ToGetPagesProjectDeploymentConfigsPreviewAiBindingsMapOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsPreviewAiBindingsMapOutput
-}
-
-type GetPagesProjectDeploymentConfigsPreviewAiBindingsMap map[string]GetPagesProjectDeploymentConfigsPreviewAiBindingsInput
-
-func (GetPagesProjectDeploymentConfigsPreviewAiBindingsMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsPreviewAiBindings)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewAiBindingsMap) ToGetPagesProjectDeploymentConfigsPreviewAiBindingsMapOutput() GetPagesProjectDeploymentConfigsPreviewAiBindingsMapOutput {
-	return i.ToGetPagesProjectDeploymentConfigsPreviewAiBindingsMapOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewAiBindingsMap) ToGetPagesProjectDeploymentConfigsPreviewAiBindingsMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewAiBindingsMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsPreviewAiBindingsMapOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewAiBindingsOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsPreviewAiBindingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewAiBindings)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewAiBindingsOutput) ToGetPagesProjectDeploymentConfigsPreviewAiBindingsOutput() GetPagesProjectDeploymentConfigsPreviewAiBindingsOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewAiBindingsOutput) ToGetPagesProjectDeploymentConfigsPreviewAiBindingsOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewAiBindingsOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewAiBindingsOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreviewAiBindings) string { return v.ProjectId }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewAiBindingsMapOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsPreviewAiBindingsMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsPreviewAiBindings)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewAiBindingsMapOutput) ToGetPagesProjectDeploymentConfigsPreviewAiBindingsMapOutput() GetPagesProjectDeploymentConfigsPreviewAiBindingsMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewAiBindingsMapOutput) ToGetPagesProjectDeploymentConfigsPreviewAiBindingsMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewAiBindingsMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewAiBindingsMapOutput) MapIndex(k pulumi.StringInput) GetPagesProjectDeploymentConfigsPreviewAiBindingsOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetPagesProjectDeploymentConfigsPreviewAiBindings {
-		return vs[0].(map[string]GetPagesProjectDeploymentConfigsPreviewAiBindings)[vs[1].(string)]
-	}).(GetPagesProjectDeploymentConfigsPreviewAiBindingsOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasets struct {
-	// Name of the dataset.
-	Dataset string `pulumi:"dataset"`
-}
-
-// GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsInput is an input type that accepts GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsArgs and GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsInput` via:
-//
-//	GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsArgs{...}
-type GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsOutput() GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsOutput
-	ToGetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsOutput
-}
-
-type GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsArgs struct {
-	// Name of the dataset.
-	Dataset pulumi.StringInput `pulumi:"dataset"`
-}
-
-func (GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasets)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsArgs) ToGetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsOutput() GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsOutput {
-	return i.ToGetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsArgs) ToGetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsOutput)
-}
-
-// GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMapInput is an input type that accepts GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMap and GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMapOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMapInput` via:
-//
-//	GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMap{ "key": GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsArgs{...} }
-type GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMapInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMapOutput() GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMapOutput
-	ToGetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMapOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMapOutput
-}
-
-type GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMap map[string]GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsInput
-
-func (GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasets)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMap) ToGetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMapOutput() GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMapOutput {
-	return i.ToGetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMapOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMap) ToGetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMapOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasets)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsOutput) ToGetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsOutput() GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsOutput) ToGetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsOutput {
-	return o
-}
-
-// Name of the dataset.
-func (o GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsOutput) Dataset() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasets) string { return v.Dataset }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMapOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasets)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMapOutput) ToGetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMapOutput() GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMapOutput) ToGetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMapOutput) MapIndex(k pulumi.StringInput) GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasets {
-		return vs[0].(map[string]GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasets)[vs[1].(string)]
-	}).(GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewBrowsers struct {
-}
-
-// GetPagesProjectDeploymentConfigsPreviewBrowsersInput is an input type that accepts GetPagesProjectDeploymentConfigsPreviewBrowsersArgs and GetPagesProjectDeploymentConfigsPreviewBrowsersOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsPreviewBrowsersInput` via:
-//
-//	GetPagesProjectDeploymentConfigsPreviewBrowsersArgs{...}
-type GetPagesProjectDeploymentConfigsPreviewBrowsersInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsPreviewBrowsersOutput() GetPagesProjectDeploymentConfigsPreviewBrowsersOutput
-	ToGetPagesProjectDeploymentConfigsPreviewBrowsersOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsPreviewBrowsersOutput
-}
-
-type GetPagesProjectDeploymentConfigsPreviewBrowsersArgs struct {
-}
-
-func (GetPagesProjectDeploymentConfigsPreviewBrowsersArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewBrowsers)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewBrowsersArgs) ToGetPagesProjectDeploymentConfigsPreviewBrowsersOutput() GetPagesProjectDeploymentConfigsPreviewBrowsersOutput {
-	return i.ToGetPagesProjectDeploymentConfigsPreviewBrowsersOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewBrowsersArgs) ToGetPagesProjectDeploymentConfigsPreviewBrowsersOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewBrowsersOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsPreviewBrowsersOutput)
-}
-
-// GetPagesProjectDeploymentConfigsPreviewBrowsersMapInput is an input type that accepts GetPagesProjectDeploymentConfigsPreviewBrowsersMap and GetPagesProjectDeploymentConfigsPreviewBrowsersMapOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsPreviewBrowsersMapInput` via:
-//
-//	GetPagesProjectDeploymentConfigsPreviewBrowsersMap{ "key": GetPagesProjectDeploymentConfigsPreviewBrowsersArgs{...} }
-type GetPagesProjectDeploymentConfigsPreviewBrowsersMapInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsPreviewBrowsersMapOutput() GetPagesProjectDeploymentConfigsPreviewBrowsersMapOutput
-	ToGetPagesProjectDeploymentConfigsPreviewBrowsersMapOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsPreviewBrowsersMapOutput
-}
-
-type GetPagesProjectDeploymentConfigsPreviewBrowsersMap map[string]GetPagesProjectDeploymentConfigsPreviewBrowsersInput
-
-func (GetPagesProjectDeploymentConfigsPreviewBrowsersMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsPreviewBrowsers)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewBrowsersMap) ToGetPagesProjectDeploymentConfigsPreviewBrowsersMapOutput() GetPagesProjectDeploymentConfigsPreviewBrowsersMapOutput {
-	return i.ToGetPagesProjectDeploymentConfigsPreviewBrowsersMapOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewBrowsersMap) ToGetPagesProjectDeploymentConfigsPreviewBrowsersMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewBrowsersMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsPreviewBrowsersMapOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewBrowsersOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsPreviewBrowsersOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewBrowsers)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewBrowsersOutput) ToGetPagesProjectDeploymentConfigsPreviewBrowsersOutput() GetPagesProjectDeploymentConfigsPreviewBrowsersOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewBrowsersOutput) ToGetPagesProjectDeploymentConfigsPreviewBrowsersOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewBrowsersOutput {
-	return o
-}
-
-type GetPagesProjectDeploymentConfigsPreviewBrowsersMapOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsPreviewBrowsersMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsPreviewBrowsers)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewBrowsersMapOutput) ToGetPagesProjectDeploymentConfigsPreviewBrowsersMapOutput() GetPagesProjectDeploymentConfigsPreviewBrowsersMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewBrowsersMapOutput) ToGetPagesProjectDeploymentConfigsPreviewBrowsersMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewBrowsersMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewBrowsersMapOutput) MapIndex(k pulumi.StringInput) GetPagesProjectDeploymentConfigsPreviewBrowsersOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetPagesProjectDeploymentConfigsPreviewBrowsers {
-		return vs[0].(map[string]GetPagesProjectDeploymentConfigsPreviewBrowsers)[vs[1].(string)]
-	}).(GetPagesProjectDeploymentConfigsPreviewBrowsersOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewD1Databases struct {
-	// UUID of the D1 database.
-	Id string `pulumi:"id"`
-}
-
-// GetPagesProjectDeploymentConfigsPreviewD1DatabasesInput is an input type that accepts GetPagesProjectDeploymentConfigsPreviewD1DatabasesArgs and GetPagesProjectDeploymentConfigsPreviewD1DatabasesOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsPreviewD1DatabasesInput` via:
-//
-//	GetPagesProjectDeploymentConfigsPreviewD1DatabasesArgs{...}
-type GetPagesProjectDeploymentConfigsPreviewD1DatabasesInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsPreviewD1DatabasesOutput() GetPagesProjectDeploymentConfigsPreviewD1DatabasesOutput
-	ToGetPagesProjectDeploymentConfigsPreviewD1DatabasesOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsPreviewD1DatabasesOutput
-}
-
-type GetPagesProjectDeploymentConfigsPreviewD1DatabasesArgs struct {
-	// UUID of the D1 database.
-	Id pulumi.StringInput `pulumi:"id"`
-}
-
-func (GetPagesProjectDeploymentConfigsPreviewD1DatabasesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewD1Databases)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewD1DatabasesArgs) ToGetPagesProjectDeploymentConfigsPreviewD1DatabasesOutput() GetPagesProjectDeploymentConfigsPreviewD1DatabasesOutput {
-	return i.ToGetPagesProjectDeploymentConfigsPreviewD1DatabasesOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewD1DatabasesArgs) ToGetPagesProjectDeploymentConfigsPreviewD1DatabasesOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewD1DatabasesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsPreviewD1DatabasesOutput)
-}
-
-// GetPagesProjectDeploymentConfigsPreviewD1DatabasesMapInput is an input type that accepts GetPagesProjectDeploymentConfigsPreviewD1DatabasesMap and GetPagesProjectDeploymentConfigsPreviewD1DatabasesMapOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsPreviewD1DatabasesMapInput` via:
-//
-//	GetPagesProjectDeploymentConfigsPreviewD1DatabasesMap{ "key": GetPagesProjectDeploymentConfigsPreviewD1DatabasesArgs{...} }
-type GetPagesProjectDeploymentConfigsPreviewD1DatabasesMapInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsPreviewD1DatabasesMapOutput() GetPagesProjectDeploymentConfigsPreviewD1DatabasesMapOutput
-	ToGetPagesProjectDeploymentConfigsPreviewD1DatabasesMapOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsPreviewD1DatabasesMapOutput
-}
-
-type GetPagesProjectDeploymentConfigsPreviewD1DatabasesMap map[string]GetPagesProjectDeploymentConfigsPreviewD1DatabasesInput
-
-func (GetPagesProjectDeploymentConfigsPreviewD1DatabasesMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsPreviewD1Databases)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewD1DatabasesMap) ToGetPagesProjectDeploymentConfigsPreviewD1DatabasesMapOutput() GetPagesProjectDeploymentConfigsPreviewD1DatabasesMapOutput {
-	return i.ToGetPagesProjectDeploymentConfigsPreviewD1DatabasesMapOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewD1DatabasesMap) ToGetPagesProjectDeploymentConfigsPreviewD1DatabasesMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewD1DatabasesMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsPreviewD1DatabasesMapOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewD1DatabasesOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsPreviewD1DatabasesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewD1Databases)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewD1DatabasesOutput) ToGetPagesProjectDeploymentConfigsPreviewD1DatabasesOutput() GetPagesProjectDeploymentConfigsPreviewD1DatabasesOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewD1DatabasesOutput) ToGetPagesProjectDeploymentConfigsPreviewD1DatabasesOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewD1DatabasesOutput {
-	return o
-}
-
-// UUID of the D1 database.
-func (o GetPagesProjectDeploymentConfigsPreviewD1DatabasesOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreviewD1Databases) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewD1DatabasesMapOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsPreviewD1DatabasesMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsPreviewD1Databases)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewD1DatabasesMapOutput) ToGetPagesProjectDeploymentConfigsPreviewD1DatabasesMapOutput() GetPagesProjectDeploymentConfigsPreviewD1DatabasesMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewD1DatabasesMapOutput) ToGetPagesProjectDeploymentConfigsPreviewD1DatabasesMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewD1DatabasesMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewD1DatabasesMapOutput) MapIndex(k pulumi.StringInput) GetPagesProjectDeploymentConfigsPreviewD1DatabasesOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetPagesProjectDeploymentConfigsPreviewD1Databases {
-		return vs[0].(map[string]GetPagesProjectDeploymentConfigsPreviewD1Databases)[vs[1].(string)]
-	}).(GetPagesProjectDeploymentConfigsPreviewD1DatabasesOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespaces struct {
-	// ID of the Durable Object namespace.
-	NamespaceId string `pulumi:"namespaceId"`
-}
-
-// GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesInput is an input type that accepts GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesArgs and GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesInput` via:
-//
-//	GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesArgs{...}
-type GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput() GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput
-	ToGetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput
-}
-
-type GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesArgs struct {
-	// ID of the Durable Object namespace.
-	NamespaceId pulumi.StringInput `pulumi:"namespaceId"`
-}
-
-func (GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespaces)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesArgs) ToGetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput() GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput {
-	return i.ToGetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesArgs) ToGetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput)
-}
-
-// GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapInput is an input type that accepts GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMap and GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapInput` via:
-//
-//	GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMap{ "key": GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesArgs{...} }
-type GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput() GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput
-	ToGetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput
-}
-
-type GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMap map[string]GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesInput
-
-func (GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespaces)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMap) ToGetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput() GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput {
-	return i.ToGetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMap) ToGetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespaces)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput) ToGetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput() GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput) ToGetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput {
-	return o
-}
-
-// ID of the Durable Object namespace.
-func (o GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput) NamespaceId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespaces) string { return v.NamespaceId }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespaces)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput) ToGetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput() GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput) ToGetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput) MapIndex(k pulumi.StringInput) GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespaces {
-		return vs[0].(map[string]GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespaces)[vs[1].(string)]
-	}).(GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewEnvVars struct {
-	// Available values: "plain*text", "secret*text".
-	Type string `pulumi:"type"`
-	// Environment variable value.
-	Value string `pulumi:"value"`
-}
-
-// GetPagesProjectDeploymentConfigsPreviewEnvVarsInput is an input type that accepts GetPagesProjectDeploymentConfigsPreviewEnvVarsArgs and GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsPreviewEnvVarsInput` via:
-//
-//	GetPagesProjectDeploymentConfigsPreviewEnvVarsArgs{...}
-type GetPagesProjectDeploymentConfigsPreviewEnvVarsInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsPreviewEnvVarsOutput() GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput
-	ToGetPagesProjectDeploymentConfigsPreviewEnvVarsOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput
-}
-
-type GetPagesProjectDeploymentConfigsPreviewEnvVarsArgs struct {
-	// Available values: "plain*text", "secret*text".
-	Type pulumi.StringInput `pulumi:"type"`
-	// Environment variable value.
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (GetPagesProjectDeploymentConfigsPreviewEnvVarsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewEnvVars)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewEnvVarsArgs) ToGetPagesProjectDeploymentConfigsPreviewEnvVarsOutput() GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput {
-	return i.ToGetPagesProjectDeploymentConfigsPreviewEnvVarsOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewEnvVarsArgs) ToGetPagesProjectDeploymentConfigsPreviewEnvVarsOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput)
-}
-
-// GetPagesProjectDeploymentConfigsPreviewEnvVarsMapInput is an input type that accepts GetPagesProjectDeploymentConfigsPreviewEnvVarsMap and GetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsPreviewEnvVarsMapInput` via:
-//
-//	GetPagesProjectDeploymentConfigsPreviewEnvVarsMap{ "key": GetPagesProjectDeploymentConfigsPreviewEnvVarsArgs{...} }
-type GetPagesProjectDeploymentConfigsPreviewEnvVarsMapInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput() GetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput
-	ToGetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput
-}
-
-type GetPagesProjectDeploymentConfigsPreviewEnvVarsMap map[string]GetPagesProjectDeploymentConfigsPreviewEnvVarsInput
-
-func (GetPagesProjectDeploymentConfigsPreviewEnvVarsMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsPreviewEnvVars)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewEnvVarsMap) ToGetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput() GetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput {
-	return i.ToGetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewEnvVarsMap) ToGetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewEnvVars)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput) ToGetPagesProjectDeploymentConfigsPreviewEnvVarsOutput() GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput) ToGetPagesProjectDeploymentConfigsPreviewEnvVarsOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput {
-	return o
-}
-
-// Available values: "plain*text", "secret*text".
-func (o GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreviewEnvVars) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Environment variable value.
-func (o GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreviewEnvVars) string { return v.Value }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsPreviewEnvVars)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput) ToGetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput() GetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput) ToGetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput) MapIndex(k pulumi.StringInput) GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetPagesProjectDeploymentConfigsPreviewEnvVars {
-		return vs[0].(map[string]GetPagesProjectDeploymentConfigsPreviewEnvVars)[vs[1].(string)]
-	}).(GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewHyperdriveBindings struct {
-	Id string `pulumi:"id"`
-}
-
-// GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsInput is an input type that accepts GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsArgs and GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsInput` via:
-//
-//	GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsArgs{...}
-type GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsOutput() GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsOutput
-	ToGetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsOutput
-}
-
-type GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsArgs struct {
-	Id pulumi.StringInput `pulumi:"id"`
-}
-
-func (GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewHyperdriveBindings)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsArgs) ToGetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsOutput() GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsOutput {
-	return i.ToGetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsArgs) ToGetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsOutput)
-}
-
-// GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMapInput is an input type that accepts GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMap and GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMapOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMapInput` via:
-//
-//	GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMap{ "key": GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsArgs{...} }
-type GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMapInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMapOutput() GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMapOutput
-	ToGetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMapOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMapOutput
-}
-
-type GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMap map[string]GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsInput
-
-func (GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsPreviewHyperdriveBindings)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMap) ToGetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMapOutput() GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMapOutput {
-	return i.ToGetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMapOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMap) ToGetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMapOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewHyperdriveBindings)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsOutput) ToGetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsOutput() GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsOutput) ToGetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreviewHyperdriveBindings) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMapOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsPreviewHyperdriveBindings)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMapOutput) ToGetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMapOutput() GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMapOutput) ToGetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMapOutput) MapIndex(k pulumi.StringInput) GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetPagesProjectDeploymentConfigsPreviewHyperdriveBindings {
-		return vs[0].(map[string]GetPagesProjectDeploymentConfigsPreviewHyperdriveBindings)[vs[1].(string)]
-	}).(GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewKvNamespaces struct {
-	// ID of the KV namespace.
-	NamespaceId string `pulumi:"namespaceId"`
-}
-
-// GetPagesProjectDeploymentConfigsPreviewKvNamespacesInput is an input type that accepts GetPagesProjectDeploymentConfigsPreviewKvNamespacesArgs and GetPagesProjectDeploymentConfigsPreviewKvNamespacesOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsPreviewKvNamespacesInput` via:
-//
-//	GetPagesProjectDeploymentConfigsPreviewKvNamespacesArgs{...}
-type GetPagesProjectDeploymentConfigsPreviewKvNamespacesInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsPreviewKvNamespacesOutput() GetPagesProjectDeploymentConfigsPreviewKvNamespacesOutput
-	ToGetPagesProjectDeploymentConfigsPreviewKvNamespacesOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsPreviewKvNamespacesOutput
-}
-
-type GetPagesProjectDeploymentConfigsPreviewKvNamespacesArgs struct {
-	// ID of the KV namespace.
-	NamespaceId pulumi.StringInput `pulumi:"namespaceId"`
-}
-
-func (GetPagesProjectDeploymentConfigsPreviewKvNamespacesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewKvNamespaces)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewKvNamespacesArgs) ToGetPagesProjectDeploymentConfigsPreviewKvNamespacesOutput() GetPagesProjectDeploymentConfigsPreviewKvNamespacesOutput {
-	return i.ToGetPagesProjectDeploymentConfigsPreviewKvNamespacesOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewKvNamespacesArgs) ToGetPagesProjectDeploymentConfigsPreviewKvNamespacesOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewKvNamespacesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsPreviewKvNamespacesOutput)
-}
-
-// GetPagesProjectDeploymentConfigsPreviewKvNamespacesMapInput is an input type that accepts GetPagesProjectDeploymentConfigsPreviewKvNamespacesMap and GetPagesProjectDeploymentConfigsPreviewKvNamespacesMapOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsPreviewKvNamespacesMapInput` via:
-//
-//	GetPagesProjectDeploymentConfigsPreviewKvNamespacesMap{ "key": GetPagesProjectDeploymentConfigsPreviewKvNamespacesArgs{...} }
-type GetPagesProjectDeploymentConfigsPreviewKvNamespacesMapInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsPreviewKvNamespacesMapOutput() GetPagesProjectDeploymentConfigsPreviewKvNamespacesMapOutput
-	ToGetPagesProjectDeploymentConfigsPreviewKvNamespacesMapOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsPreviewKvNamespacesMapOutput
-}
-
-type GetPagesProjectDeploymentConfigsPreviewKvNamespacesMap map[string]GetPagesProjectDeploymentConfigsPreviewKvNamespacesInput
-
-func (GetPagesProjectDeploymentConfigsPreviewKvNamespacesMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsPreviewKvNamespaces)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewKvNamespacesMap) ToGetPagesProjectDeploymentConfigsPreviewKvNamespacesMapOutput() GetPagesProjectDeploymentConfigsPreviewKvNamespacesMapOutput {
-	return i.ToGetPagesProjectDeploymentConfigsPreviewKvNamespacesMapOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewKvNamespacesMap) ToGetPagesProjectDeploymentConfigsPreviewKvNamespacesMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewKvNamespacesMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsPreviewKvNamespacesMapOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewKvNamespacesOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsPreviewKvNamespacesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewKvNamespaces)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewKvNamespacesOutput) ToGetPagesProjectDeploymentConfigsPreviewKvNamespacesOutput() GetPagesProjectDeploymentConfigsPreviewKvNamespacesOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewKvNamespacesOutput) ToGetPagesProjectDeploymentConfigsPreviewKvNamespacesOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewKvNamespacesOutput {
-	return o
-}
-
-// ID of the KV namespace.
-func (o GetPagesProjectDeploymentConfigsPreviewKvNamespacesOutput) NamespaceId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreviewKvNamespaces) string { return v.NamespaceId }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewKvNamespacesMapOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsPreviewKvNamespacesMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsPreviewKvNamespaces)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewKvNamespacesMapOutput) ToGetPagesProjectDeploymentConfigsPreviewKvNamespacesMapOutput() GetPagesProjectDeploymentConfigsPreviewKvNamespacesMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewKvNamespacesMapOutput) ToGetPagesProjectDeploymentConfigsPreviewKvNamespacesMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewKvNamespacesMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewKvNamespacesMapOutput) MapIndex(k pulumi.StringInput) GetPagesProjectDeploymentConfigsPreviewKvNamespacesOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetPagesProjectDeploymentConfigsPreviewKvNamespaces {
-		return vs[0].(map[string]GetPagesProjectDeploymentConfigsPreviewKvNamespaces)[vs[1].(string)]
-	}).(GetPagesProjectDeploymentConfigsPreviewKvNamespacesOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewLimits struct {
-	// CPU time limit in milliseconds.
-	CpuMs int `pulumi:"cpuMs"`
-}
-
-// GetPagesProjectDeploymentConfigsPreviewLimitsInput is an input type that accepts GetPagesProjectDeploymentConfigsPreviewLimitsArgs and GetPagesProjectDeploymentConfigsPreviewLimitsOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsPreviewLimitsInput` via:
-//
-//	GetPagesProjectDeploymentConfigsPreviewLimitsArgs{...}
-type GetPagesProjectDeploymentConfigsPreviewLimitsInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsPreviewLimitsOutput() GetPagesProjectDeploymentConfigsPreviewLimitsOutput
-	ToGetPagesProjectDeploymentConfigsPreviewLimitsOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsPreviewLimitsOutput
-}
-
-type GetPagesProjectDeploymentConfigsPreviewLimitsArgs struct {
-	// CPU time limit in milliseconds.
-	CpuMs pulumi.IntInput `pulumi:"cpuMs"`
-}
-
-func (GetPagesProjectDeploymentConfigsPreviewLimitsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewLimits)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewLimitsArgs) ToGetPagesProjectDeploymentConfigsPreviewLimitsOutput() GetPagesProjectDeploymentConfigsPreviewLimitsOutput {
-	return i.ToGetPagesProjectDeploymentConfigsPreviewLimitsOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewLimitsArgs) ToGetPagesProjectDeploymentConfigsPreviewLimitsOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewLimitsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsPreviewLimitsOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewLimitsOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsPreviewLimitsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewLimits)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewLimitsOutput) ToGetPagesProjectDeploymentConfigsPreviewLimitsOutput() GetPagesProjectDeploymentConfigsPreviewLimitsOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewLimitsOutput) ToGetPagesProjectDeploymentConfigsPreviewLimitsOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewLimitsOutput {
-	return o
-}
-
-// CPU time limit in milliseconds.
-func (o GetPagesProjectDeploymentConfigsPreviewLimitsOutput) CpuMs() pulumi.IntOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreviewLimits) int { return v.CpuMs }).(pulumi.IntOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewMtlsCertificates struct {
-	CertificateId string `pulumi:"certificateId"`
-}
-
-// GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesInput is an input type that accepts GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesArgs and GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesInput` via:
-//
-//	GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesArgs{...}
-type GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsPreviewMtlsCertificatesOutput() GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesOutput
-	ToGetPagesProjectDeploymentConfigsPreviewMtlsCertificatesOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesOutput
-}
-
-type GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesArgs struct {
-	CertificateId pulumi.StringInput `pulumi:"certificateId"`
-}
-
-func (GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewMtlsCertificates)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesArgs) ToGetPagesProjectDeploymentConfigsPreviewMtlsCertificatesOutput() GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesOutput {
-	return i.ToGetPagesProjectDeploymentConfigsPreviewMtlsCertificatesOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesArgs) ToGetPagesProjectDeploymentConfigsPreviewMtlsCertificatesOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesOutput)
-}
-
-// GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMapInput is an input type that accepts GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMap and GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMapOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMapInput` via:
-//
-//	GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMap{ "key": GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesArgs{...} }
-type GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMapInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMapOutput() GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMapOutput
-	ToGetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMapOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMapOutput
-}
-
-type GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMap map[string]GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesInput
-
-func (GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsPreviewMtlsCertificates)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMap) ToGetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMapOutput() GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMapOutput {
-	return i.ToGetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMapOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMap) ToGetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMapOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewMtlsCertificates)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesOutput) ToGetPagesProjectDeploymentConfigsPreviewMtlsCertificatesOutput() GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesOutput) ToGetPagesProjectDeploymentConfigsPreviewMtlsCertificatesOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesOutput) CertificateId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreviewMtlsCertificates) string { return v.CertificateId }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMapOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsPreviewMtlsCertificates)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMapOutput) ToGetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMapOutput() GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMapOutput) ToGetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMapOutput) MapIndex(k pulumi.StringInput) GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetPagesProjectDeploymentConfigsPreviewMtlsCertificates {
-		return vs[0].(map[string]GetPagesProjectDeploymentConfigsPreviewMtlsCertificates)[vs[1].(string)]
-	}).(GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewPlacement struct {
-	// Placement mode.
-	Mode string `pulumi:"mode"`
-}
-
-// GetPagesProjectDeploymentConfigsPreviewPlacementInput is an input type that accepts GetPagesProjectDeploymentConfigsPreviewPlacementArgs and GetPagesProjectDeploymentConfigsPreviewPlacementOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsPreviewPlacementInput` via:
-//
-//	GetPagesProjectDeploymentConfigsPreviewPlacementArgs{...}
-type GetPagesProjectDeploymentConfigsPreviewPlacementInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsPreviewPlacementOutput() GetPagesProjectDeploymentConfigsPreviewPlacementOutput
-	ToGetPagesProjectDeploymentConfigsPreviewPlacementOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsPreviewPlacementOutput
-}
-
-type GetPagesProjectDeploymentConfigsPreviewPlacementArgs struct {
-	// Placement mode.
-	Mode pulumi.StringInput `pulumi:"mode"`
-}
-
-func (GetPagesProjectDeploymentConfigsPreviewPlacementArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewPlacement)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewPlacementArgs) ToGetPagesProjectDeploymentConfigsPreviewPlacementOutput() GetPagesProjectDeploymentConfigsPreviewPlacementOutput {
-	return i.ToGetPagesProjectDeploymentConfigsPreviewPlacementOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewPlacementArgs) ToGetPagesProjectDeploymentConfigsPreviewPlacementOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewPlacementOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsPreviewPlacementOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewPlacementOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsPreviewPlacementOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewPlacement)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewPlacementOutput) ToGetPagesProjectDeploymentConfigsPreviewPlacementOutput() GetPagesProjectDeploymentConfigsPreviewPlacementOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewPlacementOutput) ToGetPagesProjectDeploymentConfigsPreviewPlacementOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewPlacementOutput {
-	return o
-}
-
-// Placement mode.
-func (o GetPagesProjectDeploymentConfigsPreviewPlacementOutput) Mode() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreviewPlacement) string { return v.Mode }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewQueueProducers struct {
-	// Name of the Queue.
-	Name string `pulumi:"name"`
-}
-
-// GetPagesProjectDeploymentConfigsPreviewQueueProducersInput is an input type that accepts GetPagesProjectDeploymentConfigsPreviewQueueProducersArgs and GetPagesProjectDeploymentConfigsPreviewQueueProducersOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsPreviewQueueProducersInput` via:
-//
-//	GetPagesProjectDeploymentConfigsPreviewQueueProducersArgs{...}
-type GetPagesProjectDeploymentConfigsPreviewQueueProducersInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsPreviewQueueProducersOutput() GetPagesProjectDeploymentConfigsPreviewQueueProducersOutput
-	ToGetPagesProjectDeploymentConfigsPreviewQueueProducersOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsPreviewQueueProducersOutput
-}
-
-type GetPagesProjectDeploymentConfigsPreviewQueueProducersArgs struct {
-	// Name of the Queue.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (GetPagesProjectDeploymentConfigsPreviewQueueProducersArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewQueueProducers)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewQueueProducersArgs) ToGetPagesProjectDeploymentConfigsPreviewQueueProducersOutput() GetPagesProjectDeploymentConfigsPreviewQueueProducersOutput {
-	return i.ToGetPagesProjectDeploymentConfigsPreviewQueueProducersOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewQueueProducersArgs) ToGetPagesProjectDeploymentConfigsPreviewQueueProducersOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewQueueProducersOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsPreviewQueueProducersOutput)
-}
-
-// GetPagesProjectDeploymentConfigsPreviewQueueProducersMapInput is an input type that accepts GetPagesProjectDeploymentConfigsPreviewQueueProducersMap and GetPagesProjectDeploymentConfigsPreviewQueueProducersMapOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsPreviewQueueProducersMapInput` via:
-//
-//	GetPagesProjectDeploymentConfigsPreviewQueueProducersMap{ "key": GetPagesProjectDeploymentConfigsPreviewQueueProducersArgs{...} }
-type GetPagesProjectDeploymentConfigsPreviewQueueProducersMapInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsPreviewQueueProducersMapOutput() GetPagesProjectDeploymentConfigsPreviewQueueProducersMapOutput
-	ToGetPagesProjectDeploymentConfigsPreviewQueueProducersMapOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsPreviewQueueProducersMapOutput
-}
-
-type GetPagesProjectDeploymentConfigsPreviewQueueProducersMap map[string]GetPagesProjectDeploymentConfigsPreviewQueueProducersInput
-
-func (GetPagesProjectDeploymentConfigsPreviewQueueProducersMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsPreviewQueueProducers)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewQueueProducersMap) ToGetPagesProjectDeploymentConfigsPreviewQueueProducersMapOutput() GetPagesProjectDeploymentConfigsPreviewQueueProducersMapOutput {
-	return i.ToGetPagesProjectDeploymentConfigsPreviewQueueProducersMapOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewQueueProducersMap) ToGetPagesProjectDeploymentConfigsPreviewQueueProducersMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewQueueProducersMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsPreviewQueueProducersMapOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewQueueProducersOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsPreviewQueueProducersOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewQueueProducers)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewQueueProducersOutput) ToGetPagesProjectDeploymentConfigsPreviewQueueProducersOutput() GetPagesProjectDeploymentConfigsPreviewQueueProducersOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewQueueProducersOutput) ToGetPagesProjectDeploymentConfigsPreviewQueueProducersOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewQueueProducersOutput {
-	return o
-}
-
-// Name of the Queue.
-func (o GetPagesProjectDeploymentConfigsPreviewQueueProducersOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreviewQueueProducers) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewQueueProducersMapOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsPreviewQueueProducersMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsPreviewQueueProducers)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewQueueProducersMapOutput) ToGetPagesProjectDeploymentConfigsPreviewQueueProducersMapOutput() GetPagesProjectDeploymentConfigsPreviewQueueProducersMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewQueueProducersMapOutput) ToGetPagesProjectDeploymentConfigsPreviewQueueProducersMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewQueueProducersMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewQueueProducersMapOutput) MapIndex(k pulumi.StringInput) GetPagesProjectDeploymentConfigsPreviewQueueProducersOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetPagesProjectDeploymentConfigsPreviewQueueProducers {
-		return vs[0].(map[string]GetPagesProjectDeploymentConfigsPreviewQueueProducers)[vs[1].(string)]
-	}).(GetPagesProjectDeploymentConfigsPreviewQueueProducersOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewR2Buckets struct {
-	// Jurisdiction of the R2 bucket.
-	Jurisdiction string `pulumi:"jurisdiction"`
-	// Name of the R2 bucket.
-	Name string `pulumi:"name"`
-}
-
-// GetPagesProjectDeploymentConfigsPreviewR2BucketsInput is an input type that accepts GetPagesProjectDeploymentConfigsPreviewR2BucketsArgs and GetPagesProjectDeploymentConfigsPreviewR2BucketsOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsPreviewR2BucketsInput` via:
-//
-//	GetPagesProjectDeploymentConfigsPreviewR2BucketsArgs{...}
-type GetPagesProjectDeploymentConfigsPreviewR2BucketsInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsPreviewR2BucketsOutput() GetPagesProjectDeploymentConfigsPreviewR2BucketsOutput
-	ToGetPagesProjectDeploymentConfigsPreviewR2BucketsOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsPreviewR2BucketsOutput
-}
-
-type GetPagesProjectDeploymentConfigsPreviewR2BucketsArgs struct {
-	// Jurisdiction of the R2 bucket.
-	Jurisdiction pulumi.StringInput `pulumi:"jurisdiction"`
-	// Name of the R2 bucket.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (GetPagesProjectDeploymentConfigsPreviewR2BucketsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewR2Buckets)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewR2BucketsArgs) ToGetPagesProjectDeploymentConfigsPreviewR2BucketsOutput() GetPagesProjectDeploymentConfigsPreviewR2BucketsOutput {
-	return i.ToGetPagesProjectDeploymentConfigsPreviewR2BucketsOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewR2BucketsArgs) ToGetPagesProjectDeploymentConfigsPreviewR2BucketsOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewR2BucketsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsPreviewR2BucketsOutput)
-}
-
-// GetPagesProjectDeploymentConfigsPreviewR2BucketsMapInput is an input type that accepts GetPagesProjectDeploymentConfigsPreviewR2BucketsMap and GetPagesProjectDeploymentConfigsPreviewR2BucketsMapOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsPreviewR2BucketsMapInput` via:
-//
-//	GetPagesProjectDeploymentConfigsPreviewR2BucketsMap{ "key": GetPagesProjectDeploymentConfigsPreviewR2BucketsArgs{...} }
-type GetPagesProjectDeploymentConfigsPreviewR2BucketsMapInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsPreviewR2BucketsMapOutput() GetPagesProjectDeploymentConfigsPreviewR2BucketsMapOutput
-	ToGetPagesProjectDeploymentConfigsPreviewR2BucketsMapOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsPreviewR2BucketsMapOutput
-}
-
-type GetPagesProjectDeploymentConfigsPreviewR2BucketsMap map[string]GetPagesProjectDeploymentConfigsPreviewR2BucketsInput
-
-func (GetPagesProjectDeploymentConfigsPreviewR2BucketsMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsPreviewR2Buckets)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewR2BucketsMap) ToGetPagesProjectDeploymentConfigsPreviewR2BucketsMapOutput() GetPagesProjectDeploymentConfigsPreviewR2BucketsMapOutput {
-	return i.ToGetPagesProjectDeploymentConfigsPreviewR2BucketsMapOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewR2BucketsMap) ToGetPagesProjectDeploymentConfigsPreviewR2BucketsMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewR2BucketsMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsPreviewR2BucketsMapOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewR2BucketsOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsPreviewR2BucketsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewR2Buckets)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewR2BucketsOutput) ToGetPagesProjectDeploymentConfigsPreviewR2BucketsOutput() GetPagesProjectDeploymentConfigsPreviewR2BucketsOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewR2BucketsOutput) ToGetPagesProjectDeploymentConfigsPreviewR2BucketsOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewR2BucketsOutput {
-	return o
-}
-
-// Jurisdiction of the R2 bucket.
-func (o GetPagesProjectDeploymentConfigsPreviewR2BucketsOutput) Jurisdiction() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreviewR2Buckets) string { return v.Jurisdiction }).(pulumi.StringOutput)
-}
-
-// Name of the R2 bucket.
-func (o GetPagesProjectDeploymentConfigsPreviewR2BucketsOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreviewR2Buckets) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewR2BucketsMapOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsPreviewR2BucketsMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsPreviewR2Buckets)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewR2BucketsMapOutput) ToGetPagesProjectDeploymentConfigsPreviewR2BucketsMapOutput() GetPagesProjectDeploymentConfigsPreviewR2BucketsMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewR2BucketsMapOutput) ToGetPagesProjectDeploymentConfigsPreviewR2BucketsMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewR2BucketsMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewR2BucketsMapOutput) MapIndex(k pulumi.StringInput) GetPagesProjectDeploymentConfigsPreviewR2BucketsOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetPagesProjectDeploymentConfigsPreviewR2Buckets {
-		return vs[0].(map[string]GetPagesProjectDeploymentConfigsPreviewR2Buckets)[vs[1].(string)]
-	}).(GetPagesProjectDeploymentConfigsPreviewR2BucketsOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewServices struct {
-	// The entrypoint to bind to.
-	Entrypoint string `pulumi:"entrypoint"`
-	// The Service environment.
-	Environment string `pulumi:"environment"`
-	// The Service name.
-	Service string `pulumi:"service"`
-}
-
-// GetPagesProjectDeploymentConfigsPreviewServicesInput is an input type that accepts GetPagesProjectDeploymentConfigsPreviewServicesArgs and GetPagesProjectDeploymentConfigsPreviewServicesOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsPreviewServicesInput` via:
-//
-//	GetPagesProjectDeploymentConfigsPreviewServicesArgs{...}
-type GetPagesProjectDeploymentConfigsPreviewServicesInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsPreviewServicesOutput() GetPagesProjectDeploymentConfigsPreviewServicesOutput
-	ToGetPagesProjectDeploymentConfigsPreviewServicesOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsPreviewServicesOutput
-}
-
-type GetPagesProjectDeploymentConfigsPreviewServicesArgs struct {
-	// The entrypoint to bind to.
-	Entrypoint pulumi.StringInput `pulumi:"entrypoint"`
-	// The Service environment.
-	Environment pulumi.StringInput `pulumi:"environment"`
-	// The Service name.
-	Service pulumi.StringInput `pulumi:"service"`
-}
-
-func (GetPagesProjectDeploymentConfigsPreviewServicesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewServices)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewServicesArgs) ToGetPagesProjectDeploymentConfigsPreviewServicesOutput() GetPagesProjectDeploymentConfigsPreviewServicesOutput {
-	return i.ToGetPagesProjectDeploymentConfigsPreviewServicesOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewServicesArgs) ToGetPagesProjectDeploymentConfigsPreviewServicesOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewServicesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsPreviewServicesOutput)
-}
-
-// GetPagesProjectDeploymentConfigsPreviewServicesMapInput is an input type that accepts GetPagesProjectDeploymentConfigsPreviewServicesMap and GetPagesProjectDeploymentConfigsPreviewServicesMapOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsPreviewServicesMapInput` via:
-//
-//	GetPagesProjectDeploymentConfigsPreviewServicesMap{ "key": GetPagesProjectDeploymentConfigsPreviewServicesArgs{...} }
-type GetPagesProjectDeploymentConfigsPreviewServicesMapInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsPreviewServicesMapOutput() GetPagesProjectDeploymentConfigsPreviewServicesMapOutput
-	ToGetPagesProjectDeploymentConfigsPreviewServicesMapOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsPreviewServicesMapOutput
-}
-
-type GetPagesProjectDeploymentConfigsPreviewServicesMap map[string]GetPagesProjectDeploymentConfigsPreviewServicesInput
-
-func (GetPagesProjectDeploymentConfigsPreviewServicesMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsPreviewServices)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewServicesMap) ToGetPagesProjectDeploymentConfigsPreviewServicesMapOutput() GetPagesProjectDeploymentConfigsPreviewServicesMapOutput {
-	return i.ToGetPagesProjectDeploymentConfigsPreviewServicesMapOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewServicesMap) ToGetPagesProjectDeploymentConfigsPreviewServicesMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewServicesMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsPreviewServicesMapOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewServicesOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsPreviewServicesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewServices)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewServicesOutput) ToGetPagesProjectDeploymentConfigsPreviewServicesOutput() GetPagesProjectDeploymentConfigsPreviewServicesOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewServicesOutput) ToGetPagesProjectDeploymentConfigsPreviewServicesOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewServicesOutput {
-	return o
-}
-
-// The entrypoint to bind to.
-func (o GetPagesProjectDeploymentConfigsPreviewServicesOutput) Entrypoint() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreviewServices) string { return v.Entrypoint }).(pulumi.StringOutput)
-}
-
-// The Service environment.
-func (o GetPagesProjectDeploymentConfigsPreviewServicesOutput) Environment() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreviewServices) string { return v.Environment }).(pulumi.StringOutput)
-}
-
-// The Service name.
-func (o GetPagesProjectDeploymentConfigsPreviewServicesOutput) Service() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreviewServices) string { return v.Service }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewServicesMapOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsPreviewServicesMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsPreviewServices)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewServicesMapOutput) ToGetPagesProjectDeploymentConfigsPreviewServicesMapOutput() GetPagesProjectDeploymentConfigsPreviewServicesMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewServicesMapOutput) ToGetPagesProjectDeploymentConfigsPreviewServicesMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewServicesMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewServicesMapOutput) MapIndex(k pulumi.StringInput) GetPagesProjectDeploymentConfigsPreviewServicesOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetPagesProjectDeploymentConfigsPreviewServices {
-		return vs[0].(map[string]GetPagesProjectDeploymentConfigsPreviewServices)[vs[1].(string)]
-	}).(GetPagesProjectDeploymentConfigsPreviewServicesOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewVectorizeBindings struct {
-	IndexName string `pulumi:"indexName"`
-}
-
-// GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsInput is an input type that accepts GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsArgs and GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsInput` via:
-//
-//	GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsArgs{...}
-type GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsPreviewVectorizeBindingsOutput() GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsOutput
-	ToGetPagesProjectDeploymentConfigsPreviewVectorizeBindingsOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsOutput
-}
-
-type GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsArgs struct {
-	IndexName pulumi.StringInput `pulumi:"indexName"`
-}
-
-func (GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewVectorizeBindings)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsArgs) ToGetPagesProjectDeploymentConfigsPreviewVectorizeBindingsOutput() GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsOutput {
-	return i.ToGetPagesProjectDeploymentConfigsPreviewVectorizeBindingsOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsArgs) ToGetPagesProjectDeploymentConfigsPreviewVectorizeBindingsOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsOutput)
-}
-
-// GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMapInput is an input type that accepts GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMap and GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMapOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMapInput` via:
-//
-//	GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMap{ "key": GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsArgs{...} }
-type GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMapInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMapOutput() GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMapOutput
-	ToGetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMapOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMapOutput
-}
-
-type GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMap map[string]GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsInput
-
-func (GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsPreviewVectorizeBindings)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMap) ToGetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMapOutput() GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMapOutput {
-	return i.ToGetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMapOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMap) ToGetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMapOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewVectorizeBindings)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsOutput) ToGetPagesProjectDeploymentConfigsPreviewVectorizeBindingsOutput() GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsOutput) ToGetPagesProjectDeploymentConfigsPreviewVectorizeBindingsOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsOutput) IndexName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreviewVectorizeBindings) string { return v.IndexName }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMapOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsPreviewVectorizeBindings)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMapOutput) ToGetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMapOutput() GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMapOutput) ToGetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMapOutput) MapIndex(k pulumi.StringInput) GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetPagesProjectDeploymentConfigsPreviewVectorizeBindings {
-		return vs[0].(map[string]GetPagesProjectDeploymentConfigsPreviewVectorizeBindings)[vs[1].(string)]
-	}).(GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsOutput)
-}
-
-type GetPagesProjectDeploymentConfigsProduction struct {
-	// Constellation bindings used for Pages Functions.
-	AiBindings map[string]GetPagesProjectDeploymentConfigsProductionAiBindings `pulumi:"aiBindings"`
-	// Whether to always use the latest compatibility date for Pages Functions.
-	AlwaysUseLatestCompatibilityDate bool `pulumi:"alwaysUseLatestCompatibilityDate"`
-	// Analytics Engine bindings used for Pages Functions.
-	AnalyticsEngineDatasets map[string]GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasets `pulumi:"analyticsEngineDatasets"`
-	// Browser bindings used for Pages Functions.
-	Browsers map[string]GetPagesProjectDeploymentConfigsProductionBrowsers `pulumi:"browsers"`
-	// The major version of the build image to use for Pages Functions.
-	BuildImageMajorVersion int `pulumi:"buildImageMajorVersion"`
-	// Compatibility date used for Pages Functions.
-	CompatibilityDate string `pulumi:"compatibilityDate"`
-	// Compatibility flags used for Pages Functions.
-	CompatibilityFlags []string `pulumi:"compatibilityFlags"`
-	// D1 databases used for Pages Functions.
-	D1Databases map[string]GetPagesProjectDeploymentConfigsProductionD1Databases `pulumi:"d1Databases"`
-	// Durable Object namespaces used for Pages Functions.
-	DurableObjectNamespaces map[string]GetPagesProjectDeploymentConfigsProductionDurableObjectNamespaces `pulumi:"durableObjectNamespaces"`
-	// Environment variables used for builds and Pages Functions.
-	EnvVars map[string]GetPagesProjectDeploymentConfigsProductionEnvVars `pulumi:"envVars"`
-	// Whether to fail open when the deployment config cannot be applied.
-	FailOpen bool `pulumi:"failOpen"`
-	// Hyperdrive bindings used for Pages Functions.
-	HyperdriveBindings map[string]GetPagesProjectDeploymentConfigsProductionHyperdriveBindings `pulumi:"hyperdriveBindings"`
-	// KV namespaces used for Pages Functions.
-	KvNamespaces map[string]GetPagesProjectDeploymentConfigsProductionKvNamespaces `pulumi:"kvNamespaces"`
-	// Limits for Pages Functions.
-	Limits GetPagesProjectDeploymentConfigsProductionLimits `pulumi:"limits"`
-	// mTLS bindings used for Pages Functions.
-	MtlsCertificates map[string]GetPagesProjectDeploymentConfigsProductionMtlsCertificates `pulumi:"mtlsCertificates"`
-	// Placement setting used for Pages Functions.
-	Placement GetPagesProjectDeploymentConfigsProductionPlacement `pulumi:"placement"`
-	// Queue Producer bindings used for Pages Functions.
-	QueueProducers map[string]GetPagesProjectDeploymentConfigsProductionQueueProducers `pulumi:"queueProducers"`
-	// R2 buckets used for Pages Functions.
-	R2Buckets map[string]GetPagesProjectDeploymentConfigsProductionR2Buckets `pulumi:"r2Buckets"`
-	// Services used for Pages Functions.
-	Services map[string]GetPagesProjectDeploymentConfigsProductionServices `pulumi:"services"`
-	// The usage model for Pages Functions.
-	// Available values: "standard", "bundled", "unbound".
-	//
-	// Deprecated: All new projects now use the Standard usage model.
-	UsageModel string `pulumi:"usageModel"`
-	// Vectorize bindings used for Pages Functions.
-	VectorizeBindings map[string]GetPagesProjectDeploymentConfigsProductionVectorizeBindings `pulumi:"vectorizeBindings"`
-	// Hash of the Wrangler configuration used for the deployment.
-	WranglerConfigHash string `pulumi:"wranglerConfigHash"`
-}
-
-// GetPagesProjectDeploymentConfigsProductionInput is an input type that accepts GetPagesProjectDeploymentConfigsProductionArgs and GetPagesProjectDeploymentConfigsProductionOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsProductionInput` via:
-//
-//	GetPagesProjectDeploymentConfigsProductionArgs{...}
-type GetPagesProjectDeploymentConfigsProductionInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsProductionOutput() GetPagesProjectDeploymentConfigsProductionOutput
-	ToGetPagesProjectDeploymentConfigsProductionOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsProductionOutput
-}
-
-type GetPagesProjectDeploymentConfigsProductionArgs struct {
-	// Constellation bindings used for Pages Functions.
-	AiBindings GetPagesProjectDeploymentConfigsProductionAiBindingsMapInput `pulumi:"aiBindings"`
-	// Whether to always use the latest compatibility date for Pages Functions.
-	AlwaysUseLatestCompatibilityDate pulumi.BoolInput `pulumi:"alwaysUseLatestCompatibilityDate"`
-	// Analytics Engine bindings used for Pages Functions.
-	AnalyticsEngineDatasets GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMapInput `pulumi:"analyticsEngineDatasets"`
-	// Browser bindings used for Pages Functions.
-	Browsers GetPagesProjectDeploymentConfigsProductionBrowsersMapInput `pulumi:"browsers"`
-	// The major version of the build image to use for Pages Functions.
-	BuildImageMajorVersion pulumi.IntInput `pulumi:"buildImageMajorVersion"`
-	// Compatibility date used for Pages Functions.
-	CompatibilityDate pulumi.StringInput `pulumi:"compatibilityDate"`
-	// Compatibility flags used for Pages Functions.
-	CompatibilityFlags pulumi.StringArrayInput `pulumi:"compatibilityFlags"`
-	// D1 databases used for Pages Functions.
-	D1Databases GetPagesProjectDeploymentConfigsProductionD1DatabasesMapInput `pulumi:"d1Databases"`
-	// Durable Object namespaces used for Pages Functions.
-	DurableObjectNamespaces GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMapInput `pulumi:"durableObjectNamespaces"`
-	// Environment variables used for builds and Pages Functions.
-	EnvVars GetPagesProjectDeploymentConfigsProductionEnvVarsMapInput `pulumi:"envVars"`
-	// Whether to fail open when the deployment config cannot be applied.
-	FailOpen pulumi.BoolInput `pulumi:"failOpen"`
-	// Hyperdrive bindings used for Pages Functions.
-	HyperdriveBindings GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMapInput `pulumi:"hyperdriveBindings"`
-	// KV namespaces used for Pages Functions.
-	KvNamespaces GetPagesProjectDeploymentConfigsProductionKvNamespacesMapInput `pulumi:"kvNamespaces"`
-	// Limits for Pages Functions.
-	Limits GetPagesProjectDeploymentConfigsProductionLimitsInput `pulumi:"limits"`
-	// mTLS bindings used for Pages Functions.
-	MtlsCertificates GetPagesProjectDeploymentConfigsProductionMtlsCertificatesMapInput `pulumi:"mtlsCertificates"`
-	// Placement setting used for Pages Functions.
-	Placement GetPagesProjectDeploymentConfigsProductionPlacementInput `pulumi:"placement"`
-	// Queue Producer bindings used for Pages Functions.
-	QueueProducers GetPagesProjectDeploymentConfigsProductionQueueProducersMapInput `pulumi:"queueProducers"`
-	// R2 buckets used for Pages Functions.
-	R2Buckets GetPagesProjectDeploymentConfigsProductionR2BucketsMapInput `pulumi:"r2Buckets"`
-	// Services used for Pages Functions.
-	Services GetPagesProjectDeploymentConfigsProductionServicesMapInput `pulumi:"services"`
-	// The usage model for Pages Functions.
-	// Available values: "standard", "bundled", "unbound".
-	//
-	// Deprecated: All new projects now use the Standard usage model.
-	UsageModel pulumi.StringInput `pulumi:"usageModel"`
-	// Vectorize bindings used for Pages Functions.
-	VectorizeBindings GetPagesProjectDeploymentConfigsProductionVectorizeBindingsMapInput `pulumi:"vectorizeBindings"`
-	// Hash of the Wrangler configuration used for the deployment.
-	WranglerConfigHash pulumi.StringInput `pulumi:"wranglerConfigHash"`
-}
-
-func (GetPagesProjectDeploymentConfigsProductionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsProduction)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionArgs) ToGetPagesProjectDeploymentConfigsProductionOutput() GetPagesProjectDeploymentConfigsProductionOutput {
-	return i.ToGetPagesProjectDeploymentConfigsProductionOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionArgs) ToGetPagesProjectDeploymentConfigsProductionOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsProductionOutput)
-}
-
-type GetPagesProjectDeploymentConfigsProductionOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsProductionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsProduction)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionOutput) ToGetPagesProjectDeploymentConfigsProductionOutput() GetPagesProjectDeploymentConfigsProductionOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionOutput) ToGetPagesProjectDeploymentConfigsProductionOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionOutput {
-	return o
-}
-
-// Constellation bindings used for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsProductionOutput) AiBindings() GetPagesProjectDeploymentConfigsProductionAiBindingsMapOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsProduction) map[string]GetPagesProjectDeploymentConfigsProductionAiBindings {
-		return v.AiBindings
-	}).(GetPagesProjectDeploymentConfigsProductionAiBindingsMapOutput)
-}
-
-// Whether to always use the latest compatibility date for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsProductionOutput) AlwaysUseLatestCompatibilityDate() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsProduction) bool { return v.AlwaysUseLatestCompatibilityDate }).(pulumi.BoolOutput)
-}
-
-// Analytics Engine bindings used for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsProductionOutput) AnalyticsEngineDatasets() GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMapOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsProduction) map[string]GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasets {
-		return v.AnalyticsEngineDatasets
-	}).(GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMapOutput)
-}
-
-// Browser bindings used for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsProductionOutput) Browsers() GetPagesProjectDeploymentConfigsProductionBrowsersMapOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsProduction) map[string]GetPagesProjectDeploymentConfigsProductionBrowsers {
-		return v.Browsers
-	}).(GetPagesProjectDeploymentConfigsProductionBrowsersMapOutput)
-}
-
-// The major version of the build image to use for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsProductionOutput) BuildImageMajorVersion() pulumi.IntOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsProduction) int { return v.BuildImageMajorVersion }).(pulumi.IntOutput)
-}
-
-// Compatibility date used for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsProductionOutput) CompatibilityDate() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsProduction) string { return v.CompatibilityDate }).(pulumi.StringOutput)
-}
-
-// Compatibility flags used for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsProductionOutput) CompatibilityFlags() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsProduction) []string { return v.CompatibilityFlags }).(pulumi.StringArrayOutput)
-}
-
-// D1 databases used for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsProductionOutput) D1Databases() GetPagesProjectDeploymentConfigsProductionD1DatabasesMapOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsProduction) map[string]GetPagesProjectDeploymentConfigsProductionD1Databases {
-		return v.D1Databases
-	}).(GetPagesProjectDeploymentConfigsProductionD1DatabasesMapOutput)
-}
-
-// Durable Object namespaces used for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsProductionOutput) DurableObjectNamespaces() GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMapOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsProduction) map[string]GetPagesProjectDeploymentConfigsProductionDurableObjectNamespaces {
-		return v.DurableObjectNamespaces
-	}).(GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMapOutput)
-}
-
-// Environment variables used for builds and Pages Functions.
-func (o GetPagesProjectDeploymentConfigsProductionOutput) EnvVars() GetPagesProjectDeploymentConfigsProductionEnvVarsMapOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsProduction) map[string]GetPagesProjectDeploymentConfigsProductionEnvVars {
-		return v.EnvVars
-	}).(GetPagesProjectDeploymentConfigsProductionEnvVarsMapOutput)
-}
-
-// Whether to fail open when the deployment config cannot be applied.
-func (o GetPagesProjectDeploymentConfigsProductionOutput) FailOpen() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsProduction) bool { return v.FailOpen }).(pulumi.BoolOutput)
-}
-
-// Hyperdrive bindings used for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsProductionOutput) HyperdriveBindings() GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMapOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsProduction) map[string]GetPagesProjectDeploymentConfigsProductionHyperdriveBindings {
-		return v.HyperdriveBindings
-	}).(GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMapOutput)
-}
-
-// KV namespaces used for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsProductionOutput) KvNamespaces() GetPagesProjectDeploymentConfigsProductionKvNamespacesMapOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsProduction) map[string]GetPagesProjectDeploymentConfigsProductionKvNamespaces {
-		return v.KvNamespaces
-	}).(GetPagesProjectDeploymentConfigsProductionKvNamespacesMapOutput)
-}
-
-// Limits for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsProductionOutput) Limits() GetPagesProjectDeploymentConfigsProductionLimitsOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsProduction) GetPagesProjectDeploymentConfigsProductionLimits {
-		return v.Limits
-	}).(GetPagesProjectDeploymentConfigsProductionLimitsOutput)
-}
-
-// mTLS bindings used for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsProductionOutput) MtlsCertificates() GetPagesProjectDeploymentConfigsProductionMtlsCertificatesMapOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsProduction) map[string]GetPagesProjectDeploymentConfigsProductionMtlsCertificates {
-		return v.MtlsCertificates
-	}).(GetPagesProjectDeploymentConfigsProductionMtlsCertificatesMapOutput)
-}
-
-// Placement setting used for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsProductionOutput) Placement() GetPagesProjectDeploymentConfigsProductionPlacementOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsProduction) GetPagesProjectDeploymentConfigsProductionPlacement {
-		return v.Placement
-	}).(GetPagesProjectDeploymentConfigsProductionPlacementOutput)
-}
-
-// Queue Producer bindings used for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsProductionOutput) QueueProducers() GetPagesProjectDeploymentConfigsProductionQueueProducersMapOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsProduction) map[string]GetPagesProjectDeploymentConfigsProductionQueueProducers {
-		return v.QueueProducers
-	}).(GetPagesProjectDeploymentConfigsProductionQueueProducersMapOutput)
-}
-
-// R2 buckets used for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsProductionOutput) R2Buckets() GetPagesProjectDeploymentConfigsProductionR2BucketsMapOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsProduction) map[string]GetPagesProjectDeploymentConfigsProductionR2Buckets {
-		return v.R2Buckets
-	}).(GetPagesProjectDeploymentConfigsProductionR2BucketsMapOutput)
-}
-
-// Services used for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsProductionOutput) Services() GetPagesProjectDeploymentConfigsProductionServicesMapOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsProduction) map[string]GetPagesProjectDeploymentConfigsProductionServices {
-		return v.Services
-	}).(GetPagesProjectDeploymentConfigsProductionServicesMapOutput)
-}
-
-// The usage model for Pages Functions.
-// Available values: "standard", "bundled", "unbound".
-//
-// Deprecated: All new projects now use the Standard usage model.
-func (o GetPagesProjectDeploymentConfigsProductionOutput) UsageModel() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsProduction) string { return v.UsageModel }).(pulumi.StringOutput)
-}
-
-// Vectorize bindings used for Pages Functions.
-func (o GetPagesProjectDeploymentConfigsProductionOutput) VectorizeBindings() GetPagesProjectDeploymentConfigsProductionVectorizeBindingsMapOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsProduction) map[string]GetPagesProjectDeploymentConfigsProductionVectorizeBindings {
-		return v.VectorizeBindings
-	}).(GetPagesProjectDeploymentConfigsProductionVectorizeBindingsMapOutput)
-}
-
-// Hash of the Wrangler configuration used for the deployment.
-func (o GetPagesProjectDeploymentConfigsProductionOutput) WranglerConfigHash() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsProduction) string { return v.WranglerConfigHash }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectDeploymentConfigsProductionAiBindings struct {
-	ProjectId string `pulumi:"projectId"`
-}
-
-// GetPagesProjectDeploymentConfigsProductionAiBindingsInput is an input type that accepts GetPagesProjectDeploymentConfigsProductionAiBindingsArgs and GetPagesProjectDeploymentConfigsProductionAiBindingsOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsProductionAiBindingsInput` via:
-//
-//	GetPagesProjectDeploymentConfigsProductionAiBindingsArgs{...}
-type GetPagesProjectDeploymentConfigsProductionAiBindingsInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsProductionAiBindingsOutput() GetPagesProjectDeploymentConfigsProductionAiBindingsOutput
-	ToGetPagesProjectDeploymentConfigsProductionAiBindingsOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsProductionAiBindingsOutput
-}
-
-type GetPagesProjectDeploymentConfigsProductionAiBindingsArgs struct {
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
-}
-
-func (GetPagesProjectDeploymentConfigsProductionAiBindingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionAiBindings)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionAiBindingsArgs) ToGetPagesProjectDeploymentConfigsProductionAiBindingsOutput() GetPagesProjectDeploymentConfigsProductionAiBindingsOutput {
-	return i.ToGetPagesProjectDeploymentConfigsProductionAiBindingsOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionAiBindingsArgs) ToGetPagesProjectDeploymentConfigsProductionAiBindingsOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionAiBindingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsProductionAiBindingsOutput)
-}
-
-// GetPagesProjectDeploymentConfigsProductionAiBindingsMapInput is an input type that accepts GetPagesProjectDeploymentConfigsProductionAiBindingsMap and GetPagesProjectDeploymentConfigsProductionAiBindingsMapOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsProductionAiBindingsMapInput` via:
-//
-//	GetPagesProjectDeploymentConfigsProductionAiBindingsMap{ "key": GetPagesProjectDeploymentConfigsProductionAiBindingsArgs{...} }
-type GetPagesProjectDeploymentConfigsProductionAiBindingsMapInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsProductionAiBindingsMapOutput() GetPagesProjectDeploymentConfigsProductionAiBindingsMapOutput
-	ToGetPagesProjectDeploymentConfigsProductionAiBindingsMapOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsProductionAiBindingsMapOutput
-}
-
-type GetPagesProjectDeploymentConfigsProductionAiBindingsMap map[string]GetPagesProjectDeploymentConfigsProductionAiBindingsInput
-
-func (GetPagesProjectDeploymentConfigsProductionAiBindingsMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsProductionAiBindings)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionAiBindingsMap) ToGetPagesProjectDeploymentConfigsProductionAiBindingsMapOutput() GetPagesProjectDeploymentConfigsProductionAiBindingsMapOutput {
-	return i.ToGetPagesProjectDeploymentConfigsProductionAiBindingsMapOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionAiBindingsMap) ToGetPagesProjectDeploymentConfigsProductionAiBindingsMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionAiBindingsMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsProductionAiBindingsMapOutput)
-}
-
-type GetPagesProjectDeploymentConfigsProductionAiBindingsOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsProductionAiBindingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionAiBindings)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionAiBindingsOutput) ToGetPagesProjectDeploymentConfigsProductionAiBindingsOutput() GetPagesProjectDeploymentConfigsProductionAiBindingsOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionAiBindingsOutput) ToGetPagesProjectDeploymentConfigsProductionAiBindingsOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionAiBindingsOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionAiBindingsOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsProductionAiBindings) string { return v.ProjectId }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectDeploymentConfigsProductionAiBindingsMapOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsProductionAiBindingsMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsProductionAiBindings)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionAiBindingsMapOutput) ToGetPagesProjectDeploymentConfigsProductionAiBindingsMapOutput() GetPagesProjectDeploymentConfigsProductionAiBindingsMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionAiBindingsMapOutput) ToGetPagesProjectDeploymentConfigsProductionAiBindingsMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionAiBindingsMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionAiBindingsMapOutput) MapIndex(k pulumi.StringInput) GetPagesProjectDeploymentConfigsProductionAiBindingsOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetPagesProjectDeploymentConfigsProductionAiBindings {
-		return vs[0].(map[string]GetPagesProjectDeploymentConfigsProductionAiBindings)[vs[1].(string)]
-	}).(GetPagesProjectDeploymentConfigsProductionAiBindingsOutput)
-}
-
-type GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasets struct {
-	// Name of the dataset.
-	Dataset string `pulumi:"dataset"`
-}
-
-// GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsInput is an input type that accepts GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsArgs and GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsInput` via:
-//
-//	GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsArgs{...}
-type GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsOutput() GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsOutput
-	ToGetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsOutput
-}
-
-type GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsArgs struct {
-	// Name of the dataset.
-	Dataset pulumi.StringInput `pulumi:"dataset"`
-}
-
-func (GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasets)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsArgs) ToGetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsOutput() GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsOutput {
-	return i.ToGetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsArgs) ToGetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsOutput)
-}
-
-// GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMapInput is an input type that accepts GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMap and GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMapOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMapInput` via:
-//
-//	GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMap{ "key": GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsArgs{...} }
-type GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMapInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMapOutput() GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMapOutput
-	ToGetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMapOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMapOutput
-}
-
-type GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMap map[string]GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsInput
-
-func (GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasets)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMap) ToGetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMapOutput() GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMapOutput {
-	return i.ToGetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMapOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMap) ToGetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMapOutput)
-}
-
-type GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasets)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsOutput) ToGetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsOutput() GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsOutput) ToGetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsOutput {
-	return o
-}
-
-// Name of the dataset.
-func (o GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsOutput) Dataset() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasets) string { return v.Dataset }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMapOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasets)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMapOutput) ToGetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMapOutput() GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMapOutput) ToGetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMapOutput) MapIndex(k pulumi.StringInput) GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasets {
-		return vs[0].(map[string]GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasets)[vs[1].(string)]
-	}).(GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsOutput)
-}
-
-type GetPagesProjectDeploymentConfigsProductionBrowsers struct {
-}
-
-// GetPagesProjectDeploymentConfigsProductionBrowsersInput is an input type that accepts GetPagesProjectDeploymentConfigsProductionBrowsersArgs and GetPagesProjectDeploymentConfigsProductionBrowsersOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsProductionBrowsersInput` via:
-//
-//	GetPagesProjectDeploymentConfigsProductionBrowsersArgs{...}
-type GetPagesProjectDeploymentConfigsProductionBrowsersInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsProductionBrowsersOutput() GetPagesProjectDeploymentConfigsProductionBrowsersOutput
-	ToGetPagesProjectDeploymentConfigsProductionBrowsersOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsProductionBrowsersOutput
-}
-
-type GetPagesProjectDeploymentConfigsProductionBrowsersArgs struct {
-}
-
-func (GetPagesProjectDeploymentConfigsProductionBrowsersArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionBrowsers)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionBrowsersArgs) ToGetPagesProjectDeploymentConfigsProductionBrowsersOutput() GetPagesProjectDeploymentConfigsProductionBrowsersOutput {
-	return i.ToGetPagesProjectDeploymentConfigsProductionBrowsersOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionBrowsersArgs) ToGetPagesProjectDeploymentConfigsProductionBrowsersOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionBrowsersOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsProductionBrowsersOutput)
-}
-
-// GetPagesProjectDeploymentConfigsProductionBrowsersMapInput is an input type that accepts GetPagesProjectDeploymentConfigsProductionBrowsersMap and GetPagesProjectDeploymentConfigsProductionBrowsersMapOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsProductionBrowsersMapInput` via:
-//
-//	GetPagesProjectDeploymentConfigsProductionBrowsersMap{ "key": GetPagesProjectDeploymentConfigsProductionBrowsersArgs{...} }
-type GetPagesProjectDeploymentConfigsProductionBrowsersMapInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsProductionBrowsersMapOutput() GetPagesProjectDeploymentConfigsProductionBrowsersMapOutput
-	ToGetPagesProjectDeploymentConfigsProductionBrowsersMapOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsProductionBrowsersMapOutput
-}
-
-type GetPagesProjectDeploymentConfigsProductionBrowsersMap map[string]GetPagesProjectDeploymentConfigsProductionBrowsersInput
-
-func (GetPagesProjectDeploymentConfigsProductionBrowsersMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsProductionBrowsers)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionBrowsersMap) ToGetPagesProjectDeploymentConfigsProductionBrowsersMapOutput() GetPagesProjectDeploymentConfigsProductionBrowsersMapOutput {
-	return i.ToGetPagesProjectDeploymentConfigsProductionBrowsersMapOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionBrowsersMap) ToGetPagesProjectDeploymentConfigsProductionBrowsersMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionBrowsersMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsProductionBrowsersMapOutput)
-}
-
-type GetPagesProjectDeploymentConfigsProductionBrowsersOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsProductionBrowsersOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionBrowsers)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionBrowsersOutput) ToGetPagesProjectDeploymentConfigsProductionBrowsersOutput() GetPagesProjectDeploymentConfigsProductionBrowsersOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionBrowsersOutput) ToGetPagesProjectDeploymentConfigsProductionBrowsersOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionBrowsersOutput {
-	return o
-}
-
-type GetPagesProjectDeploymentConfigsProductionBrowsersMapOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsProductionBrowsersMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsProductionBrowsers)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionBrowsersMapOutput) ToGetPagesProjectDeploymentConfigsProductionBrowsersMapOutput() GetPagesProjectDeploymentConfigsProductionBrowsersMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionBrowsersMapOutput) ToGetPagesProjectDeploymentConfigsProductionBrowsersMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionBrowsersMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionBrowsersMapOutput) MapIndex(k pulumi.StringInput) GetPagesProjectDeploymentConfigsProductionBrowsersOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetPagesProjectDeploymentConfigsProductionBrowsers {
-		return vs[0].(map[string]GetPagesProjectDeploymentConfigsProductionBrowsers)[vs[1].(string)]
-	}).(GetPagesProjectDeploymentConfigsProductionBrowsersOutput)
-}
-
-type GetPagesProjectDeploymentConfigsProductionD1Databases struct {
-	// UUID of the D1 database.
-	Id string `pulumi:"id"`
-}
-
-// GetPagesProjectDeploymentConfigsProductionD1DatabasesInput is an input type that accepts GetPagesProjectDeploymentConfigsProductionD1DatabasesArgs and GetPagesProjectDeploymentConfigsProductionD1DatabasesOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsProductionD1DatabasesInput` via:
-//
-//	GetPagesProjectDeploymentConfigsProductionD1DatabasesArgs{...}
-type GetPagesProjectDeploymentConfigsProductionD1DatabasesInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsProductionD1DatabasesOutput() GetPagesProjectDeploymentConfigsProductionD1DatabasesOutput
-	ToGetPagesProjectDeploymentConfigsProductionD1DatabasesOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsProductionD1DatabasesOutput
-}
-
-type GetPagesProjectDeploymentConfigsProductionD1DatabasesArgs struct {
-	// UUID of the D1 database.
-	Id pulumi.StringInput `pulumi:"id"`
-}
-
-func (GetPagesProjectDeploymentConfigsProductionD1DatabasesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionD1Databases)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionD1DatabasesArgs) ToGetPagesProjectDeploymentConfigsProductionD1DatabasesOutput() GetPagesProjectDeploymentConfigsProductionD1DatabasesOutput {
-	return i.ToGetPagesProjectDeploymentConfigsProductionD1DatabasesOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionD1DatabasesArgs) ToGetPagesProjectDeploymentConfigsProductionD1DatabasesOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionD1DatabasesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsProductionD1DatabasesOutput)
-}
-
-// GetPagesProjectDeploymentConfigsProductionD1DatabasesMapInput is an input type that accepts GetPagesProjectDeploymentConfigsProductionD1DatabasesMap and GetPagesProjectDeploymentConfigsProductionD1DatabasesMapOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsProductionD1DatabasesMapInput` via:
-//
-//	GetPagesProjectDeploymentConfigsProductionD1DatabasesMap{ "key": GetPagesProjectDeploymentConfigsProductionD1DatabasesArgs{...} }
-type GetPagesProjectDeploymentConfigsProductionD1DatabasesMapInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsProductionD1DatabasesMapOutput() GetPagesProjectDeploymentConfigsProductionD1DatabasesMapOutput
-	ToGetPagesProjectDeploymentConfigsProductionD1DatabasesMapOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsProductionD1DatabasesMapOutput
-}
-
-type GetPagesProjectDeploymentConfigsProductionD1DatabasesMap map[string]GetPagesProjectDeploymentConfigsProductionD1DatabasesInput
-
-func (GetPagesProjectDeploymentConfigsProductionD1DatabasesMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsProductionD1Databases)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionD1DatabasesMap) ToGetPagesProjectDeploymentConfigsProductionD1DatabasesMapOutput() GetPagesProjectDeploymentConfigsProductionD1DatabasesMapOutput {
-	return i.ToGetPagesProjectDeploymentConfigsProductionD1DatabasesMapOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionD1DatabasesMap) ToGetPagesProjectDeploymentConfigsProductionD1DatabasesMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionD1DatabasesMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsProductionD1DatabasesMapOutput)
-}
-
-type GetPagesProjectDeploymentConfigsProductionD1DatabasesOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsProductionD1DatabasesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionD1Databases)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionD1DatabasesOutput) ToGetPagesProjectDeploymentConfigsProductionD1DatabasesOutput() GetPagesProjectDeploymentConfigsProductionD1DatabasesOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionD1DatabasesOutput) ToGetPagesProjectDeploymentConfigsProductionD1DatabasesOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionD1DatabasesOutput {
-	return o
-}
-
-// UUID of the D1 database.
-func (o GetPagesProjectDeploymentConfigsProductionD1DatabasesOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsProductionD1Databases) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectDeploymentConfigsProductionD1DatabasesMapOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsProductionD1DatabasesMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsProductionD1Databases)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionD1DatabasesMapOutput) ToGetPagesProjectDeploymentConfigsProductionD1DatabasesMapOutput() GetPagesProjectDeploymentConfigsProductionD1DatabasesMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionD1DatabasesMapOutput) ToGetPagesProjectDeploymentConfigsProductionD1DatabasesMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionD1DatabasesMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionD1DatabasesMapOutput) MapIndex(k pulumi.StringInput) GetPagesProjectDeploymentConfigsProductionD1DatabasesOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetPagesProjectDeploymentConfigsProductionD1Databases {
-		return vs[0].(map[string]GetPagesProjectDeploymentConfigsProductionD1Databases)[vs[1].(string)]
-	}).(GetPagesProjectDeploymentConfigsProductionD1DatabasesOutput)
-}
-
-type GetPagesProjectDeploymentConfigsProductionDurableObjectNamespaces struct {
-	// ID of the Durable Object namespace.
-	NamespaceId string `pulumi:"namespaceId"`
-}
-
-// GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesInput is an input type that accepts GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesArgs and GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesInput` via:
-//
-//	GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesArgs{...}
-type GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesOutput() GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesOutput
-	ToGetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesOutput
-}
-
-type GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesArgs struct {
-	// ID of the Durable Object namespace.
-	NamespaceId pulumi.StringInput `pulumi:"namespaceId"`
-}
-
-func (GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionDurableObjectNamespaces)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesArgs) ToGetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesOutput() GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesOutput {
-	return i.ToGetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesArgs) ToGetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesOutput)
-}
-
-// GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMapInput is an input type that accepts GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMap and GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMapOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMapInput` via:
-//
-//	GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMap{ "key": GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesArgs{...} }
-type GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMapInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMapOutput() GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMapOutput
-	ToGetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMapOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMapOutput
-}
-
-type GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMap map[string]GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesInput
-
-func (GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsProductionDurableObjectNamespaces)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMap) ToGetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMapOutput() GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMapOutput {
-	return i.ToGetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMapOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMap) ToGetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMapOutput)
-}
-
-type GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionDurableObjectNamespaces)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesOutput) ToGetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesOutput() GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesOutput) ToGetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesOutput {
-	return o
-}
-
-// ID of the Durable Object namespace.
-func (o GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesOutput) NamespaceId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsProductionDurableObjectNamespaces) string { return v.NamespaceId }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMapOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsProductionDurableObjectNamespaces)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMapOutput) ToGetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMapOutput() GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMapOutput) ToGetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMapOutput) MapIndex(k pulumi.StringInput) GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetPagesProjectDeploymentConfigsProductionDurableObjectNamespaces {
-		return vs[0].(map[string]GetPagesProjectDeploymentConfigsProductionDurableObjectNamespaces)[vs[1].(string)]
-	}).(GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesOutput)
-}
-
-type GetPagesProjectDeploymentConfigsProductionEnvVars struct {
-	// Available values: "plain*text", "secret*text".
-	Type string `pulumi:"type"`
-	// Environment variable value.
-	Value string `pulumi:"value"`
-}
-
-// GetPagesProjectDeploymentConfigsProductionEnvVarsInput is an input type that accepts GetPagesProjectDeploymentConfigsProductionEnvVarsArgs and GetPagesProjectDeploymentConfigsProductionEnvVarsOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsProductionEnvVarsInput` via:
-//
-//	GetPagesProjectDeploymentConfigsProductionEnvVarsArgs{...}
-type GetPagesProjectDeploymentConfigsProductionEnvVarsInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsProductionEnvVarsOutput() GetPagesProjectDeploymentConfigsProductionEnvVarsOutput
-	ToGetPagesProjectDeploymentConfigsProductionEnvVarsOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsProductionEnvVarsOutput
-}
-
-type GetPagesProjectDeploymentConfigsProductionEnvVarsArgs struct {
-	// Available values: "plain*text", "secret*text".
-	Type pulumi.StringInput `pulumi:"type"`
-	// Environment variable value.
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (GetPagesProjectDeploymentConfigsProductionEnvVarsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionEnvVars)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionEnvVarsArgs) ToGetPagesProjectDeploymentConfigsProductionEnvVarsOutput() GetPagesProjectDeploymentConfigsProductionEnvVarsOutput {
-	return i.ToGetPagesProjectDeploymentConfigsProductionEnvVarsOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionEnvVarsArgs) ToGetPagesProjectDeploymentConfigsProductionEnvVarsOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionEnvVarsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsProductionEnvVarsOutput)
-}
-
-// GetPagesProjectDeploymentConfigsProductionEnvVarsMapInput is an input type that accepts GetPagesProjectDeploymentConfigsProductionEnvVarsMap and GetPagesProjectDeploymentConfigsProductionEnvVarsMapOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsProductionEnvVarsMapInput` via:
-//
-//	GetPagesProjectDeploymentConfigsProductionEnvVarsMap{ "key": GetPagesProjectDeploymentConfigsProductionEnvVarsArgs{...} }
-type GetPagesProjectDeploymentConfigsProductionEnvVarsMapInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsProductionEnvVarsMapOutput() GetPagesProjectDeploymentConfigsProductionEnvVarsMapOutput
-	ToGetPagesProjectDeploymentConfigsProductionEnvVarsMapOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsProductionEnvVarsMapOutput
-}
-
-type GetPagesProjectDeploymentConfigsProductionEnvVarsMap map[string]GetPagesProjectDeploymentConfigsProductionEnvVarsInput
-
-func (GetPagesProjectDeploymentConfigsProductionEnvVarsMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsProductionEnvVars)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionEnvVarsMap) ToGetPagesProjectDeploymentConfigsProductionEnvVarsMapOutput() GetPagesProjectDeploymentConfigsProductionEnvVarsMapOutput {
-	return i.ToGetPagesProjectDeploymentConfigsProductionEnvVarsMapOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionEnvVarsMap) ToGetPagesProjectDeploymentConfigsProductionEnvVarsMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionEnvVarsMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsProductionEnvVarsMapOutput)
-}
-
-type GetPagesProjectDeploymentConfigsProductionEnvVarsOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsProductionEnvVarsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionEnvVars)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionEnvVarsOutput) ToGetPagesProjectDeploymentConfigsProductionEnvVarsOutput() GetPagesProjectDeploymentConfigsProductionEnvVarsOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionEnvVarsOutput) ToGetPagesProjectDeploymentConfigsProductionEnvVarsOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionEnvVarsOutput {
-	return o
-}
-
-// Available values: "plain*text", "secret*text".
-func (o GetPagesProjectDeploymentConfigsProductionEnvVarsOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsProductionEnvVars) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Environment variable value.
-func (o GetPagesProjectDeploymentConfigsProductionEnvVarsOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsProductionEnvVars) string { return v.Value }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectDeploymentConfigsProductionEnvVarsMapOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsProductionEnvVarsMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsProductionEnvVars)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionEnvVarsMapOutput) ToGetPagesProjectDeploymentConfigsProductionEnvVarsMapOutput() GetPagesProjectDeploymentConfigsProductionEnvVarsMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionEnvVarsMapOutput) ToGetPagesProjectDeploymentConfigsProductionEnvVarsMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionEnvVarsMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionEnvVarsMapOutput) MapIndex(k pulumi.StringInput) GetPagesProjectDeploymentConfigsProductionEnvVarsOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetPagesProjectDeploymentConfigsProductionEnvVars {
-		return vs[0].(map[string]GetPagesProjectDeploymentConfigsProductionEnvVars)[vs[1].(string)]
-	}).(GetPagesProjectDeploymentConfigsProductionEnvVarsOutput)
-}
-
-type GetPagesProjectDeploymentConfigsProductionHyperdriveBindings struct {
-	Id string `pulumi:"id"`
-}
-
-// GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsInput is an input type that accepts GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsArgs and GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsInput` via:
-//
-//	GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsArgs{...}
-type GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsProductionHyperdriveBindingsOutput() GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsOutput
-	ToGetPagesProjectDeploymentConfigsProductionHyperdriveBindingsOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsOutput
-}
-
-type GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsArgs struct {
-	Id pulumi.StringInput `pulumi:"id"`
-}
-
-func (GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionHyperdriveBindings)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsArgs) ToGetPagesProjectDeploymentConfigsProductionHyperdriveBindingsOutput() GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsOutput {
-	return i.ToGetPagesProjectDeploymentConfigsProductionHyperdriveBindingsOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsArgs) ToGetPagesProjectDeploymentConfigsProductionHyperdriveBindingsOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsOutput)
-}
-
-// GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMapInput is an input type that accepts GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMap and GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMapOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMapInput` via:
-//
-//	GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMap{ "key": GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsArgs{...} }
-type GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMapInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMapOutput() GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMapOutput
-	ToGetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMapOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMapOutput
-}
-
-type GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMap map[string]GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsInput
-
-func (GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsProductionHyperdriveBindings)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMap) ToGetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMapOutput() GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMapOutput {
-	return i.ToGetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMapOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMap) ToGetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMapOutput)
-}
-
-type GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionHyperdriveBindings)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsOutput) ToGetPagesProjectDeploymentConfigsProductionHyperdriveBindingsOutput() GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsOutput) ToGetPagesProjectDeploymentConfigsProductionHyperdriveBindingsOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsProductionHyperdriveBindings) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMapOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsProductionHyperdriveBindings)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMapOutput) ToGetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMapOutput() GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMapOutput) ToGetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMapOutput) MapIndex(k pulumi.StringInput) GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetPagesProjectDeploymentConfigsProductionHyperdriveBindings {
-		return vs[0].(map[string]GetPagesProjectDeploymentConfigsProductionHyperdriveBindings)[vs[1].(string)]
-	}).(GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsOutput)
-}
-
-type GetPagesProjectDeploymentConfigsProductionKvNamespaces struct {
-	// ID of the KV namespace.
-	NamespaceId string `pulumi:"namespaceId"`
-}
-
-// GetPagesProjectDeploymentConfigsProductionKvNamespacesInput is an input type that accepts GetPagesProjectDeploymentConfigsProductionKvNamespacesArgs and GetPagesProjectDeploymentConfigsProductionKvNamespacesOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsProductionKvNamespacesInput` via:
-//
-//	GetPagesProjectDeploymentConfigsProductionKvNamespacesArgs{...}
-type GetPagesProjectDeploymentConfigsProductionKvNamespacesInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsProductionKvNamespacesOutput() GetPagesProjectDeploymentConfigsProductionKvNamespacesOutput
-	ToGetPagesProjectDeploymentConfigsProductionKvNamespacesOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsProductionKvNamespacesOutput
-}
-
-type GetPagesProjectDeploymentConfigsProductionKvNamespacesArgs struct {
-	// ID of the KV namespace.
-	NamespaceId pulumi.StringInput `pulumi:"namespaceId"`
-}
-
-func (GetPagesProjectDeploymentConfigsProductionKvNamespacesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionKvNamespaces)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionKvNamespacesArgs) ToGetPagesProjectDeploymentConfigsProductionKvNamespacesOutput() GetPagesProjectDeploymentConfigsProductionKvNamespacesOutput {
-	return i.ToGetPagesProjectDeploymentConfigsProductionKvNamespacesOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionKvNamespacesArgs) ToGetPagesProjectDeploymentConfigsProductionKvNamespacesOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionKvNamespacesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsProductionKvNamespacesOutput)
-}
-
-// GetPagesProjectDeploymentConfigsProductionKvNamespacesMapInput is an input type that accepts GetPagesProjectDeploymentConfigsProductionKvNamespacesMap and GetPagesProjectDeploymentConfigsProductionKvNamespacesMapOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsProductionKvNamespacesMapInput` via:
-//
-//	GetPagesProjectDeploymentConfigsProductionKvNamespacesMap{ "key": GetPagesProjectDeploymentConfigsProductionKvNamespacesArgs{...} }
-type GetPagesProjectDeploymentConfigsProductionKvNamespacesMapInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsProductionKvNamespacesMapOutput() GetPagesProjectDeploymentConfigsProductionKvNamespacesMapOutput
-	ToGetPagesProjectDeploymentConfigsProductionKvNamespacesMapOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsProductionKvNamespacesMapOutput
-}
-
-type GetPagesProjectDeploymentConfigsProductionKvNamespacesMap map[string]GetPagesProjectDeploymentConfigsProductionKvNamespacesInput
-
-func (GetPagesProjectDeploymentConfigsProductionKvNamespacesMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsProductionKvNamespaces)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionKvNamespacesMap) ToGetPagesProjectDeploymentConfigsProductionKvNamespacesMapOutput() GetPagesProjectDeploymentConfigsProductionKvNamespacesMapOutput {
-	return i.ToGetPagesProjectDeploymentConfigsProductionKvNamespacesMapOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionKvNamespacesMap) ToGetPagesProjectDeploymentConfigsProductionKvNamespacesMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionKvNamespacesMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsProductionKvNamespacesMapOutput)
-}
-
-type GetPagesProjectDeploymentConfigsProductionKvNamespacesOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsProductionKvNamespacesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionKvNamespaces)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionKvNamespacesOutput) ToGetPagesProjectDeploymentConfigsProductionKvNamespacesOutput() GetPagesProjectDeploymentConfigsProductionKvNamespacesOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionKvNamespacesOutput) ToGetPagesProjectDeploymentConfigsProductionKvNamespacesOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionKvNamespacesOutput {
-	return o
-}
-
-// ID of the KV namespace.
-func (o GetPagesProjectDeploymentConfigsProductionKvNamespacesOutput) NamespaceId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsProductionKvNamespaces) string { return v.NamespaceId }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectDeploymentConfigsProductionKvNamespacesMapOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsProductionKvNamespacesMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsProductionKvNamespaces)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionKvNamespacesMapOutput) ToGetPagesProjectDeploymentConfigsProductionKvNamespacesMapOutput() GetPagesProjectDeploymentConfigsProductionKvNamespacesMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionKvNamespacesMapOutput) ToGetPagesProjectDeploymentConfigsProductionKvNamespacesMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionKvNamespacesMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionKvNamespacesMapOutput) MapIndex(k pulumi.StringInput) GetPagesProjectDeploymentConfigsProductionKvNamespacesOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetPagesProjectDeploymentConfigsProductionKvNamespaces {
-		return vs[0].(map[string]GetPagesProjectDeploymentConfigsProductionKvNamespaces)[vs[1].(string)]
-	}).(GetPagesProjectDeploymentConfigsProductionKvNamespacesOutput)
-}
-
-type GetPagesProjectDeploymentConfigsProductionLimits struct {
-	// CPU time limit in milliseconds.
-	CpuMs int `pulumi:"cpuMs"`
-}
-
-// GetPagesProjectDeploymentConfigsProductionLimitsInput is an input type that accepts GetPagesProjectDeploymentConfigsProductionLimitsArgs and GetPagesProjectDeploymentConfigsProductionLimitsOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsProductionLimitsInput` via:
-//
-//	GetPagesProjectDeploymentConfigsProductionLimitsArgs{...}
-type GetPagesProjectDeploymentConfigsProductionLimitsInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsProductionLimitsOutput() GetPagesProjectDeploymentConfigsProductionLimitsOutput
-	ToGetPagesProjectDeploymentConfigsProductionLimitsOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsProductionLimitsOutput
-}
-
-type GetPagesProjectDeploymentConfigsProductionLimitsArgs struct {
-	// CPU time limit in milliseconds.
-	CpuMs pulumi.IntInput `pulumi:"cpuMs"`
-}
-
-func (GetPagesProjectDeploymentConfigsProductionLimitsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionLimits)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionLimitsArgs) ToGetPagesProjectDeploymentConfigsProductionLimitsOutput() GetPagesProjectDeploymentConfigsProductionLimitsOutput {
-	return i.ToGetPagesProjectDeploymentConfigsProductionLimitsOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionLimitsArgs) ToGetPagesProjectDeploymentConfigsProductionLimitsOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionLimitsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsProductionLimitsOutput)
-}
-
-type GetPagesProjectDeploymentConfigsProductionLimitsOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsProductionLimitsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionLimits)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionLimitsOutput) ToGetPagesProjectDeploymentConfigsProductionLimitsOutput() GetPagesProjectDeploymentConfigsProductionLimitsOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionLimitsOutput) ToGetPagesProjectDeploymentConfigsProductionLimitsOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionLimitsOutput {
-	return o
-}
-
-// CPU time limit in milliseconds.
-func (o GetPagesProjectDeploymentConfigsProductionLimitsOutput) CpuMs() pulumi.IntOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsProductionLimits) int { return v.CpuMs }).(pulumi.IntOutput)
-}
-
-type GetPagesProjectDeploymentConfigsProductionMtlsCertificates struct {
-	CertificateId string `pulumi:"certificateId"`
-}
-
-// GetPagesProjectDeploymentConfigsProductionMtlsCertificatesInput is an input type that accepts GetPagesProjectDeploymentConfigsProductionMtlsCertificatesArgs and GetPagesProjectDeploymentConfigsProductionMtlsCertificatesOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsProductionMtlsCertificatesInput` via:
-//
-//	GetPagesProjectDeploymentConfigsProductionMtlsCertificatesArgs{...}
-type GetPagesProjectDeploymentConfigsProductionMtlsCertificatesInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsProductionMtlsCertificatesOutput() GetPagesProjectDeploymentConfigsProductionMtlsCertificatesOutput
-	ToGetPagesProjectDeploymentConfigsProductionMtlsCertificatesOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsProductionMtlsCertificatesOutput
-}
-
-type GetPagesProjectDeploymentConfigsProductionMtlsCertificatesArgs struct {
-	CertificateId pulumi.StringInput `pulumi:"certificateId"`
-}
-
-func (GetPagesProjectDeploymentConfigsProductionMtlsCertificatesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionMtlsCertificates)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionMtlsCertificatesArgs) ToGetPagesProjectDeploymentConfigsProductionMtlsCertificatesOutput() GetPagesProjectDeploymentConfigsProductionMtlsCertificatesOutput {
-	return i.ToGetPagesProjectDeploymentConfigsProductionMtlsCertificatesOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionMtlsCertificatesArgs) ToGetPagesProjectDeploymentConfigsProductionMtlsCertificatesOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionMtlsCertificatesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsProductionMtlsCertificatesOutput)
-}
-
-// GetPagesProjectDeploymentConfigsProductionMtlsCertificatesMapInput is an input type that accepts GetPagesProjectDeploymentConfigsProductionMtlsCertificatesMap and GetPagesProjectDeploymentConfigsProductionMtlsCertificatesMapOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsProductionMtlsCertificatesMapInput` via:
-//
-//	GetPagesProjectDeploymentConfigsProductionMtlsCertificatesMap{ "key": GetPagesProjectDeploymentConfigsProductionMtlsCertificatesArgs{...} }
-type GetPagesProjectDeploymentConfigsProductionMtlsCertificatesMapInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsProductionMtlsCertificatesMapOutput() GetPagesProjectDeploymentConfigsProductionMtlsCertificatesMapOutput
-	ToGetPagesProjectDeploymentConfigsProductionMtlsCertificatesMapOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsProductionMtlsCertificatesMapOutput
-}
-
-type GetPagesProjectDeploymentConfigsProductionMtlsCertificatesMap map[string]GetPagesProjectDeploymentConfigsProductionMtlsCertificatesInput
-
-func (GetPagesProjectDeploymentConfigsProductionMtlsCertificatesMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsProductionMtlsCertificates)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionMtlsCertificatesMap) ToGetPagesProjectDeploymentConfigsProductionMtlsCertificatesMapOutput() GetPagesProjectDeploymentConfigsProductionMtlsCertificatesMapOutput {
-	return i.ToGetPagesProjectDeploymentConfigsProductionMtlsCertificatesMapOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsProductionMtlsCertificatesMap) ToGetPagesProjectDeploymentConfigsProductionMtlsCertificatesMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionMtlsCertificatesMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsProductionMtlsCertificatesMapOutput)
-}
-
-type GetPagesProjectDeploymentConfigsProductionMtlsCertificatesOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsProductionMtlsCertificatesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionMtlsCertificates)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionMtlsCertificatesOutput) ToGetPagesProjectDeploymentConfigsProductionMtlsCertificatesOutput() GetPagesProjectDeploymentConfigsProductionMtlsCertificatesOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionMtlsCertificatesOutput) ToGetPagesProjectDeploymentConfigsProductionMtlsCertificatesOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionMtlsCertificatesOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionMtlsCertificatesOutput) CertificateId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsProductionMtlsCertificates) string { return v.CertificateId }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectDeploymentConfigsProductionMtlsCertificatesMapOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsProductionMtlsCertificatesMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsProductionMtlsCertificates)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionMtlsCertificatesMapOutput) ToGetPagesProjectDeploymentConfigsProductionMtlsCertificatesMapOutput() GetPagesProjectDeploymentConfigsProductionMtlsCertificatesMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionMtlsCertificatesMapOutput) ToGetPagesProjectDeploymentConfigsProductionMtlsCertificatesMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsProductionMtlsCertificatesMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsProductionMtlsCertificatesMapOutput) MapIndex(k pulumi.StringInput) GetPagesProjectDeploymentConfigsProductionMtlsCertificatesOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetPagesProjectDeploymentConfigsProductionMtlsCertificates {
-		return vs[0].(map[string]GetPagesProjectDeploymentConfigsProductionMtlsCertificates)[vs[1].(string)]
-	}).(GetPagesProjectDeploymentConfigsProductionMtlsCertificatesOutput)
-}
-
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationEndpointsDohInput)(nil)).Elem(), ZeroTrustDnsLocationEndpointsDohArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationEndpointsDohPtrInput)(nil)).Elem(), ZeroTrustDnsLocationEndpointsDohArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationEndpointsDohNetworkInput)(nil)).Elem(), ZeroTrustDnsLocationEndpointsDohNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationEndpointsDohNetworkArrayInput)(nil)).Elem(), ZeroTrustDnsLocationEndpointsDohNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationEndpointsDotInput)(nil)).Elem(), ZeroTrustDnsLocationEndpointsDotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationEndpointsDotPtrInput)(nil)).Elem(), ZeroTrustDnsLocationEndpointsDotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationEndpointsDotNetworkInput)(nil)).Elem(), ZeroTrustDnsLocationEndpointsDotNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationEndpointsDotNetworkArrayInput)(nil)).Elem(), ZeroTrustDnsLocationEndpointsDotNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationEndpointsIpv4Input)(nil)).Elem(), ZeroTrustDnsLocationEndpointsIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationEndpointsIpv4PtrInput)(nil)).Elem(), ZeroTrustDnsLocationEndpointsIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationEndpointsIpv6Input)(nil)).Elem(), ZeroTrustDnsLocationEndpointsIpv6Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationEndpointsIpv6PtrInput)(nil)).Elem(), ZeroTrustDnsLocationEndpointsIpv6Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationEndpointsIpv6NetworkInput)(nil)).Elem(), ZeroTrustDnsLocationEndpointsIpv6NetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationEndpointsIpv6NetworkArrayInput)(nil)).Elem(), ZeroTrustDnsLocationEndpointsIpv6NetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationNetworkInput)(nil)).Elem(), ZeroTrustDnsLocationNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationNetworkArrayInput)(nil)).Elem(), ZeroTrustDnsLocationNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewayLoggingSettingsByRuleTypeInput)(nil)).Elem(), ZeroTrustGatewayLoggingSettingsByRuleTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewayLoggingSettingsByRuleTypePtrInput)(nil)).Elem(), ZeroTrustGatewayLoggingSettingsByRuleTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewayLoggingSettingsByRuleTypeDnsInput)(nil)).Elem(), ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrInput)(nil)).Elem(), ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewayLoggingSettingsByRuleTypeHttpInput)(nil)).Elem(), ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrInput)(nil)).Elem(), ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewayLoggingSettingsByRuleTypeL4Input)(nil)).Elem(), ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrInput)(nil)).Elem(), ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewayPolicyExpirationInput)(nil)).Elem(), ZeroTrustGatewayPolicyExpirationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewayPolicyExpirationPtrInput)(nil)).Elem(), ZeroTrustGatewayPolicyExpirationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewayPolicyRuleSettingsInput)(nil)).Elem(), ZeroTrustGatewayPolicyRuleSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewayPolicyRuleSettingsPtrInput)(nil)).Elem(), ZeroTrustGatewayPolicyRuleSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewayPolicyRuleSettingsAuditSshInput)(nil)).Elem(), ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewayPolicyRuleSettingsAuditSshPtrInput)(nil)).Elem(), ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsInput)(nil)).Elem(), ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs{})
@@ -58593,6 +59882,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6ArrayInput)(nil)).Elem(), ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewayPolicyRuleSettingsEgressInput)(nil)).Elem(), ZeroTrustGatewayPolicyRuleSettingsEgressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewayPolicyRuleSettingsEgressPtrInput)(nil)).Elem(), ZeroTrustGatewayPolicyRuleSettingsEgressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewayPolicyRuleSettingsForensicCopyInput)(nil)).Elem(), ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrInput)(nil)).Elem(), ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewayPolicyRuleSettingsL4overrideInput)(nil)).Elem(), ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewayPolicyRuleSettingsL4overridePtrInput)(nil)).Elem(), ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsInput)(nil)).Elem(), ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgs{})
@@ -58909,8 +60200,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCallsSfuAppsResultArrayInput)(nil)).Elem(), GetCallsSfuAppsResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCallsTurnAppsResultInput)(nil)).Elem(), GetCallsTurnAppsResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCallsTurnAppsResultArrayInput)(nil)).Elem(), GetCallsTurnAppsResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatePackCertificateInput)(nil)).Elem(), GetCertificatePackCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatePackCertificateArrayInput)(nil)).Elem(), GetCertificatePackCertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatePackCertificateGeoRestrictionsInput)(nil)).Elem(), GetCertificatePackCertificateGeoRestrictionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatePackFilterInput)(nil)).Elem(), GetCertificatePackFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatePackFilterPtrInput)(nil)).Elem(), GetCertificatePackFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatePackValidationErrorInput)(nil)).Elem(), GetCertificatePackValidationErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatePackValidationErrorArrayInput)(nil)).Elem(), GetCertificatePackValidationErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatePackValidationRecordInput)(nil)).Elem(), GetCertificatePackValidationRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatePackValidationRecordArrayInput)(nil)).Elem(), GetCertificatePackValidationRecordArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatePacksResultInput)(nil)).Elem(), GetCertificatePacksResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatePacksResultArrayInput)(nil)).Elem(), GetCertificatePacksResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatePacksResultCertificateInput)(nil)).Elem(), GetCertificatePacksResultCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatePacksResultCertificateArrayInput)(nil)).Elem(), GetCertificatePacksResultCertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatePacksResultCertificateGeoRestrictionsInput)(nil)).Elem(), GetCertificatePacksResultCertificateGeoRestrictionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatePacksResultValidationErrorInput)(nil)).Elem(), GetCertificatePacksResultValidationErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatePacksResultValidationErrorArrayInput)(nil)).Elem(), GetCertificatePacksResultValidationErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatePacksResultValidationRecordInput)(nil)).Elem(), GetCertificatePacksResultValidationRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatePacksResultValidationRecordArrayInput)(nil)).Elem(), GetCertificatePacksResultValidationRecordArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudConnectorRulesRuleInput)(nil)).Elem(), GetCloudConnectorRulesRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudConnectorRulesRuleArrayInput)(nil)).Elem(), GetCloudConnectorRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudConnectorRulesRuleParametersInput)(nil)).Elem(), GetCloudConnectorRulesRuleParametersArgs{})
@@ -58918,6 +60225,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudforceOneRequestFilterPtrInput)(nil)).Elem(), GetCloudforceOneRequestFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudforceOneRequestsResultInput)(nil)).Elem(), GetCloudforceOneRequestsResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudforceOneRequestsResultArrayInput)(nil)).Elem(), GetCloudforceOneRequestsResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityDirectoryServiceFilterInput)(nil)).Elem(), GetConnectivityDirectoryServiceFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityDirectoryServiceFilterPtrInput)(nil)).Elem(), GetConnectivityDirectoryServiceFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityDirectoryServiceHostInput)(nil)).Elem(), GetConnectivityDirectoryServiceHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityDirectoryServiceHostNetworkInput)(nil)).Elem(), GetConnectivityDirectoryServiceHostNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityDirectoryServiceHostResolverNetworkInput)(nil)).Elem(), GetConnectivityDirectoryServiceHostResolverNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityDirectoryServicesResultInput)(nil)).Elem(), GetConnectivityDirectoryServicesResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityDirectoryServicesResultArrayInput)(nil)).Elem(), GetConnectivityDirectoryServicesResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityDirectoryServicesResultHostInput)(nil)).Elem(), GetConnectivityDirectoryServicesResultHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityDirectoryServicesResultHostNetworkInput)(nil)).Elem(), GetConnectivityDirectoryServicesResultHostNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityDirectoryServicesResultHostResolverNetworkInput)(nil)).Elem(), GetConnectivityDirectoryServicesResultHostResolverNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetContentScanningExpressionsResultInput)(nil)).Elem(), GetContentScanningExpressionsResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetContentScanningExpressionsResultArrayInput)(nil)).Elem(), GetContentScanningExpressionsResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomHostnameFilterInput)(nil)).Elem(), GetCustomHostnameFilterArgs{})
@@ -59263,61 +60580,34 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectCanonicalDeploymentDeploymentTriggerMetadataInput)(nil)).Elem(), GetPagesProjectCanonicalDeploymentDeploymentTriggerMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectCanonicalDeploymentEnvVarsInput)(nil)).Elem(), GetPagesProjectCanonicalDeploymentEnvVarsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectCanonicalDeploymentEnvVarsMapInput)(nil)).Elem(), GetPagesProjectCanonicalDeploymentEnvVarsMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectCanonicalDeploymentLatestStageInput)(nil)).Elem(), GetPagesProjectCanonicalDeploymentLatestStageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectCanonicalDeploymentSourceInput)(nil)).Elem(), GetPagesProjectCanonicalDeploymentSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectCanonicalDeploymentSourceConfigInput)(nil)).Elem(), GetPagesProjectCanonicalDeploymentSourceConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectCanonicalDeploymentStageInput)(nil)).Elem(), GetPagesProjectCanonicalDeploymentStageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectCanonicalDeploymentStageArrayInput)(nil)).Elem(), GetPagesProjectCanonicalDeploymentStageArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewAiBindingsInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewAiBindingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewAiBindingsMapInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewAiBindingsMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMapInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewBrowsersInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewBrowsersArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewBrowsersMapInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewBrowsersMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewD1DatabasesInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewD1DatabasesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewD1DatabasesMapInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewD1DatabasesMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewEnvVarsInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewEnvVarsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewEnvVarsMapInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewEnvVarsMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMapInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewKvNamespacesInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewKvNamespacesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewKvNamespacesMapInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewKvNamespacesMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewLimitsInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewLimitsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMapInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewPlacementInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewPlacementArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewQueueProducersInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewQueueProducersArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewQueueProducersMapInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewQueueProducersMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewR2BucketsInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewR2BucketsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewR2BucketsMapInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewR2BucketsMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewServicesInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewServicesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewServicesMapInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewServicesMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMapInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsProductionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionAiBindingsInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsProductionAiBindingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionAiBindingsMapInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsProductionAiBindingsMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMapInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionBrowsersInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsProductionBrowsersArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionBrowsersMapInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsProductionBrowsersMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionD1DatabasesInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsProductionD1DatabasesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionD1DatabasesMapInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsProductionD1DatabasesMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMapInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionEnvVarsInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsProductionEnvVarsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionEnvVarsMapInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsProductionEnvVarsMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMapInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionKvNamespacesInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsProductionKvNamespacesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionKvNamespacesMapInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsProductionKvNamespacesMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionLimitsInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsProductionLimitsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionMtlsCertificatesInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsProductionMtlsCertificatesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionMtlsCertificatesMapInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsProductionMtlsCertificatesMap{})
+	pulumi.RegisterOutputType(ZeroTrustDnsLocationEndpointsDohOutput{})
+	pulumi.RegisterOutputType(ZeroTrustDnsLocationEndpointsDohPtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustDnsLocationEndpointsDohNetworkOutput{})
+	pulumi.RegisterOutputType(ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput{})
+	pulumi.RegisterOutputType(ZeroTrustDnsLocationEndpointsDotOutput{})
+	pulumi.RegisterOutputType(ZeroTrustDnsLocationEndpointsDotPtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustDnsLocationEndpointsDotNetworkOutput{})
+	pulumi.RegisterOutputType(ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput{})
+	pulumi.RegisterOutputType(ZeroTrustDnsLocationEndpointsIpv4Output{})
+	pulumi.RegisterOutputType(ZeroTrustDnsLocationEndpointsIpv4PtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustDnsLocationEndpointsIpv6Output{})
+	pulumi.RegisterOutputType(ZeroTrustDnsLocationEndpointsIpv6PtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustDnsLocationEndpointsIpv6NetworkOutput{})
+	pulumi.RegisterOutputType(ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput{})
+	pulumi.RegisterOutputType(ZeroTrustDnsLocationNetworkOutput{})
+	pulumi.RegisterOutputType(ZeroTrustDnsLocationNetworkArrayOutput{})
+	pulumi.RegisterOutputType(ZeroTrustGatewayLoggingSettingsByRuleTypeOutput{})
+	pulumi.RegisterOutputType(ZeroTrustGatewayLoggingSettingsByRuleTypePtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustGatewayLoggingSettingsByRuleTypeDnsOutput{})
+	pulumi.RegisterOutputType(ZeroTrustGatewayLoggingSettingsByRuleTypeDnsPtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustGatewayLoggingSettingsByRuleTypeHttpOutput{})
+	pulumi.RegisterOutputType(ZeroTrustGatewayLoggingSettingsByRuleTypeHttpPtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustGatewayLoggingSettingsByRuleTypeL4Output{})
+	pulumi.RegisterOutputType(ZeroTrustGatewayLoggingSettingsByRuleTypeL4PtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustGatewayPolicyExpirationOutput{})
+	pulumi.RegisterOutputType(ZeroTrustGatewayPolicyExpirationPtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustGatewayPolicyRuleSettingsOutput{})
+	pulumi.RegisterOutputType(ZeroTrustGatewayPolicyRuleSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ZeroTrustGatewayPolicyRuleSettingsAuditSshOutput{})
 	pulumi.RegisterOutputType(ZeroTrustGatewayPolicyRuleSettingsAuditSshPtrOutput{})
 	pulumi.RegisterOutputType(ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsOutput{})
@@ -59334,6 +60624,8 @@ func init() {
 	pulumi.RegisterOutputType(ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6ArrayOutput{})
 	pulumi.RegisterOutputType(ZeroTrustGatewayPolicyRuleSettingsEgressOutput{})
 	pulumi.RegisterOutputType(ZeroTrustGatewayPolicyRuleSettingsEgressPtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustGatewayPolicyRuleSettingsForensicCopyOutput{})
+	pulumi.RegisterOutputType(ZeroTrustGatewayPolicyRuleSettingsForensicCopyPtrOutput{})
 	pulumi.RegisterOutputType(ZeroTrustGatewayPolicyRuleSettingsL4overrideOutput{})
 	pulumi.RegisterOutputType(ZeroTrustGatewayPolicyRuleSettingsL4overridePtrOutput{})
 	pulumi.RegisterOutputType(ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsOutput{})
@@ -59650,8 +60942,24 @@ func init() {
 	pulumi.RegisterOutputType(GetCallsSfuAppsResultArrayOutput{})
 	pulumi.RegisterOutputType(GetCallsTurnAppsResultOutput{})
 	pulumi.RegisterOutputType(GetCallsTurnAppsResultArrayOutput{})
+	pulumi.RegisterOutputType(GetCertificatePackCertificateOutput{})
+	pulumi.RegisterOutputType(GetCertificatePackCertificateArrayOutput{})
+	pulumi.RegisterOutputType(GetCertificatePackCertificateGeoRestrictionsOutput{})
+	pulumi.RegisterOutputType(GetCertificatePackFilterOutput{})
+	pulumi.RegisterOutputType(GetCertificatePackFilterPtrOutput{})
+	pulumi.RegisterOutputType(GetCertificatePackValidationErrorOutput{})
+	pulumi.RegisterOutputType(GetCertificatePackValidationErrorArrayOutput{})
+	pulumi.RegisterOutputType(GetCertificatePackValidationRecordOutput{})
+	pulumi.RegisterOutputType(GetCertificatePackValidationRecordArrayOutput{})
 	pulumi.RegisterOutputType(GetCertificatePacksResultOutput{})
 	pulumi.RegisterOutputType(GetCertificatePacksResultArrayOutput{})
+	pulumi.RegisterOutputType(GetCertificatePacksResultCertificateOutput{})
+	pulumi.RegisterOutputType(GetCertificatePacksResultCertificateArrayOutput{})
+	pulumi.RegisterOutputType(GetCertificatePacksResultCertificateGeoRestrictionsOutput{})
+	pulumi.RegisterOutputType(GetCertificatePacksResultValidationErrorOutput{})
+	pulumi.RegisterOutputType(GetCertificatePacksResultValidationErrorArrayOutput{})
+	pulumi.RegisterOutputType(GetCertificatePacksResultValidationRecordOutput{})
+	pulumi.RegisterOutputType(GetCertificatePacksResultValidationRecordArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudConnectorRulesRuleOutput{})
 	pulumi.RegisterOutputType(GetCloudConnectorRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudConnectorRulesRuleParametersOutput{})
@@ -59659,6 +60967,16 @@ func init() {
 	pulumi.RegisterOutputType(GetCloudforceOneRequestFilterPtrOutput{})
 	pulumi.RegisterOutputType(GetCloudforceOneRequestsResultOutput{})
 	pulumi.RegisterOutputType(GetCloudforceOneRequestsResultArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectivityDirectoryServiceFilterOutput{})
+	pulumi.RegisterOutputType(GetConnectivityDirectoryServiceFilterPtrOutput{})
+	pulumi.RegisterOutputType(GetConnectivityDirectoryServiceHostOutput{})
+	pulumi.RegisterOutputType(GetConnectivityDirectoryServiceHostNetworkOutput{})
+	pulumi.RegisterOutputType(GetConnectivityDirectoryServiceHostResolverNetworkOutput{})
+	pulumi.RegisterOutputType(GetConnectivityDirectoryServicesResultOutput{})
+	pulumi.RegisterOutputType(GetConnectivityDirectoryServicesResultArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectivityDirectoryServicesResultHostOutput{})
+	pulumi.RegisterOutputType(GetConnectivityDirectoryServicesResultHostNetworkOutput{})
+	pulumi.RegisterOutputType(GetConnectivityDirectoryServicesResultHostResolverNetworkOutput{})
 	pulumi.RegisterOutputType(GetContentScanningExpressionsResultOutput{})
 	pulumi.RegisterOutputType(GetContentScanningExpressionsResultArrayOutput{})
 	pulumi.RegisterOutputType(GetCustomHostnameFilterOutput{})
@@ -60004,59 +61322,4 @@ func init() {
 	pulumi.RegisterOutputType(GetPagesProjectCanonicalDeploymentDeploymentTriggerMetadataOutput{})
 	pulumi.RegisterOutputType(GetPagesProjectCanonicalDeploymentEnvVarsOutput{})
 	pulumi.RegisterOutputType(GetPagesProjectCanonicalDeploymentEnvVarsMapOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectCanonicalDeploymentLatestStageOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectCanonicalDeploymentSourceOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectCanonicalDeploymentSourceConfigOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectCanonicalDeploymentStageOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectCanonicalDeploymentStageArrayOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewAiBindingsOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewAiBindingsMapOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMapOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewBrowsersOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewBrowsersMapOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewD1DatabasesOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewD1DatabasesMapOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewHyperdriveBindingsMapOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewKvNamespacesOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewKvNamespacesMapOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewLimitsOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewMtlsCertificatesMapOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewPlacementOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewQueueProducersOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewQueueProducersMapOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewR2BucketsOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewR2BucketsMapOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewServicesOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewServicesMapOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewVectorizeBindingsMapOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsProductionOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsProductionAiBindingsOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsProductionAiBindingsMapOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMapOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsProductionBrowsersOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsProductionBrowsersMapOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsProductionD1DatabasesOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsProductionD1DatabasesMapOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesMapOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsProductionEnvVarsOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsProductionEnvVarsMapOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsProductionHyperdriveBindingsMapOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsProductionKvNamespacesOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsProductionKvNamespacesMapOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsProductionLimitsOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsProductionMtlsCertificatesOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsProductionMtlsCertificatesMapOutput{})
 }

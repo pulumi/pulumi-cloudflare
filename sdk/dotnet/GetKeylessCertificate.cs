@@ -87,8 +87,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("keylessCertificateId")]
-        public string? KeylessCertificateId { get; set; }
+        [Input("keylessCertificateId", required: true)]
+        public string KeylessCertificateId { get; set; } = null!;
 
         /// <summary>
         /// Identifier.
@@ -107,8 +107,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("keylessCertificateId")]
-        public Input<string>? KeylessCertificateId { get; set; }
+        [Input("keylessCertificateId", required: true)]
+        public Input<string> KeylessCertificateId { get; set; } = null!;
 
         /// <summary>
         /// Identifier.
@@ -145,7 +145,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string? KeylessCertificateId;
+        public readonly string KeylessCertificateId;
         /// <summary>
         /// When the Keyless SSL was last modified.
         /// </summary>
@@ -186,7 +186,7 @@ namespace Pulumi.Cloudflare
 
             string id,
 
-            string? keylessCertificateId,
+            string keylessCertificateId,
 
             string modifiedOn,
 

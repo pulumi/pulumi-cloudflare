@@ -66,7 +66,8 @@ type ZoneSubscription struct {
 	CurrentPeriodStart pulumi.StringOutput `pulumi:"currentPeriodStart"`
 	// How often the subscription is renewed automatically.
 	// Available values: "weekly", "monthly", "quarterly", "yearly".
-	Frequency pulumi.StringPtrOutput `pulumi:"frequency"`
+	// Note: Some plans may not support frequency configuration and will return "not-applicable".
+	Frequency pulumi.StringOutput `pulumi:"frequency"`
 	// The price of the subscription that will be billed, in US dollars.
 	Price pulumi.Float64Output `pulumi:"price"`
 	// The rate plan applied to the subscription.
@@ -119,6 +120,7 @@ type zoneSubscriptionState struct {
 	CurrentPeriodStart *string `pulumi:"currentPeriodStart"`
 	// How often the subscription is renewed automatically.
 	// Available values: "weekly", "monthly", "quarterly", "yearly".
+	// Note: Some plans may not support frequency configuration and will return "not-applicable".
 	Frequency *string `pulumi:"frequency"`
 	// The price of the subscription that will be billed, in US dollars.
 	Price *float64 `pulumi:"price"`
@@ -140,6 +142,7 @@ type ZoneSubscriptionState struct {
 	CurrentPeriodStart pulumi.StringPtrInput
 	// How often the subscription is renewed automatically.
 	// Available values: "weekly", "monthly", "quarterly", "yearly".
+	// Note: Some plans may not support frequency configuration and will return "not-applicable".
 	Frequency pulumi.StringPtrInput
 	// The price of the subscription that will be billed, in US dollars.
 	Price pulumi.Float64PtrInput
@@ -159,6 +162,7 @@ func (ZoneSubscriptionState) ElementType() reflect.Type {
 type zoneSubscriptionArgs struct {
 	// How often the subscription is renewed automatically.
 	// Available values: "weekly", "monthly", "quarterly", "yearly".
+	// Note: Some plans may not support frequency configuration and will return "not-applicable".
 	Frequency *string `pulumi:"frequency"`
 	// The rate plan applied to the subscription.
 	RatePlan *ZoneSubscriptionRatePlan `pulumi:"ratePlan"`
@@ -170,6 +174,7 @@ type zoneSubscriptionArgs struct {
 type ZoneSubscriptionArgs struct {
 	// How often the subscription is renewed automatically.
 	// Available values: "weekly", "monthly", "quarterly", "yearly".
+	// Note: Some plans may not support frequency configuration and will return "not-applicable".
 	Frequency pulumi.StringPtrInput
 	// The rate plan applied to the subscription.
 	RatePlan ZoneSubscriptionRatePlanPtrInput
@@ -281,8 +286,9 @@ func (o ZoneSubscriptionOutput) CurrentPeriodStart() pulumi.StringOutput {
 
 // How often the subscription is renewed automatically.
 // Available values: "weekly", "monthly", "quarterly", "yearly".
-func (o ZoneSubscriptionOutput) Frequency() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSubscription) pulumi.StringPtrOutput { return v.Frequency }).(pulumi.StringPtrOutput)
+// Note: Some plans may not support frequency configuration and will return "not-applicable".
+func (o ZoneSubscriptionOutput) Frequency() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneSubscription) pulumi.StringOutput { return v.Frequency }).(pulumi.StringOutput)
 }
 
 // The price of the subscription that will be billed, in US dollars.

@@ -27,7 +27,7 @@ public final class GetZeroTrustAccessMtlsCertificateResult {
      * @return UUID.
      * 
      */
-    private @Nullable String certificateId;
+    private String certificateId;
     private String expiresOn;
     /**
      * @return The MD5 fingerprint of the certificate.
@@ -69,8 +69,8 @@ public final class GetZeroTrustAccessMtlsCertificateResult {
      * @return UUID.
      * 
      */
-    public Optional<String> certificateId() {
-        return Optional.ofNullable(this.certificateId);
+    public String certificateId() {
+        return this.certificateId;
     }
     public String expiresOn() {
         return this.expiresOn;
@@ -115,7 +115,7 @@ public final class GetZeroTrustAccessMtlsCertificateResult {
     public static final class Builder {
         private @Nullable String accountId;
         private List<String> associatedHostnames;
-        private @Nullable String certificateId;
+        private String certificateId;
         private String expiresOn;
         private String fingerprint;
         private String id;
@@ -152,8 +152,10 @@ public final class GetZeroTrustAccessMtlsCertificateResult {
             return associatedHostnames(List.of(associatedHostnames));
         }
         @CustomType.Setter
-        public Builder certificateId(@Nullable String certificateId) {
-
+        public Builder certificateId(String certificateId) {
+            if (certificateId == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessMtlsCertificateResult", "certificateId");
+            }
             this.certificateId = certificateId;
             return this;
         }

@@ -18,7 +18,7 @@ public final class GetWorkersCronTriggerResult {
      */
     private String accountId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Name of the script, used in URLs and route configuration.
      * 
      */
     private String id;
@@ -38,7 +38,7 @@ public final class GetWorkersCronTriggerResult {
         return this.accountId;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Name of the script, used in URLs and route configuration.
      * 
      */
     public String id() {

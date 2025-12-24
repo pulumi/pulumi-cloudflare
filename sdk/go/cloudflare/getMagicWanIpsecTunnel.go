@@ -59,7 +59,7 @@ type LookupMagicWanIpsecTunnelArgs struct {
 type LookupMagicWanIpsecTunnelResult struct {
 	// Identifier
 	AccountId string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
+	// Identifier
 	Id          string                            `pulumi:"id"`
 	IpsecTunnel GetMagicWanIpsecTunnelIpsecTunnel `pulumi:"ipsecTunnel"`
 	// Identifier
@@ -107,7 +107,7 @@ func (o LookupMagicWanIpsecTunnelResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMagicWanIpsecTunnelResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Identifier
 func (o LookupMagicWanIpsecTunnelResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMagicWanIpsecTunnelResult) string { return v.Id }).(pulumi.StringOutput)
 }

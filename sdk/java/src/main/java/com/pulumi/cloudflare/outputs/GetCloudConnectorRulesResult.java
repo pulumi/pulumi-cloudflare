@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetCloudConnectorRulesResult {
     /**
-     * @return The ID of this resource.
+     * @return Identifier.
      * 
      */
     private String id;
@@ -26,7 +26,7 @@ public final class GetCloudConnectorRulesResult {
 
     private GetCloudConnectorRulesResult() {}
     /**
-     * @return The ID of this resource.
+     * @return Identifier.
      * 
      */
     public String id() {

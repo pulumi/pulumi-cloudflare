@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupZeroTrustGatewayCertificate(ctx, &cloudflare.LookupZeroTrustGatewayCertificateArgs{
 //				AccountId:     "699d98642c564d2e855e9661899b7252",
-//				CertificateId: pulumi.StringRef("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
+//				CertificateId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,7 +51,7 @@ func LookupZeroTrustGatewayCertificate(ctx *pulumi.Context, args *LookupZeroTrus
 type LookupZeroTrustGatewayCertificateArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Identify the certificate with a UUID.
-	CertificateId *string `pulumi:"certificateId"`
+	CertificateId string `pulumi:"certificateId"`
 }
 
 // A collection of values returned by getZeroTrustGatewayCertificate.
@@ -63,9 +63,9 @@ type LookupZeroTrustGatewayCertificateResult struct {
 	// Provide the CA certificate (read-only).
 	Certificate string `pulumi:"certificate"`
 	// Identify the certificate with a UUID.
-	CertificateId *string `pulumi:"certificateId"`
-	CreatedAt     string  `pulumi:"createdAt"`
-	ExpiresOn     string  `pulumi:"expiresOn"`
+	CertificateId string `pulumi:"certificateId"`
+	CreatedAt     string `pulumi:"createdAt"`
+	ExpiresOn     string `pulumi:"expiresOn"`
 	// Provide the SHA256 fingerprint of the certificate (read-only).
 	Fingerprint string `pulumi:"fingerprint"`
 	// Identify the certificate with a UUID.
@@ -96,7 +96,7 @@ func LookupZeroTrustGatewayCertificateOutput(ctx *pulumi.Context, args LookupZer
 type LookupZeroTrustGatewayCertificateOutputArgs struct {
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Identify the certificate with a UUID.
-	CertificateId pulumi.StringPtrInput `pulumi:"certificateId"`
+	CertificateId pulumi.StringInput `pulumi:"certificateId"`
 }
 
 func (LookupZeroTrustGatewayCertificateOutputArgs) ElementType() reflect.Type {
@@ -134,8 +134,8 @@ func (o LookupZeroTrustGatewayCertificateResultOutput) Certificate() pulumi.Stri
 }
 
 // Identify the certificate with a UUID.
-func (o LookupZeroTrustGatewayCertificateResultOutput) CertificateId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupZeroTrustGatewayCertificateResult) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
+func (o LookupZeroTrustGatewayCertificateResultOutput) CertificateId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustGatewayCertificateResult) string { return v.CertificateId }).(pulumi.StringOutput)
 }
 
 func (o LookupZeroTrustGatewayCertificateResultOutput) CreatedAt() pulumi.StringOutput {

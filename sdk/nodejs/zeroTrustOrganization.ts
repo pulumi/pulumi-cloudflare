@@ -37,6 +37,10 @@ import * as utilities from "./utilities";
  *     warpAuthSessionDuration: "24h",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ~> This resource does not currently support `pulumi import`.
  */
 export class ZeroTrustOrganization extends pulumi.CustomResource {
     /**

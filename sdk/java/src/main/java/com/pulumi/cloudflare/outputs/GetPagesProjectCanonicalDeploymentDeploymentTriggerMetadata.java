@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 
@@ -15,6 +16,11 @@ public final class GetPagesProjectCanonicalDeploymentDeploymentTriggerMetadata {
      * 
      */
     private String branch;
+    /**
+     * @return Whether the deployment trigger commit was dirty.
+     * 
+     */
+    private Boolean commitDirty;
     /**
      * @return Hash of the deployment trigger commit.
      * 
@@ -33,6 +39,13 @@ public final class GetPagesProjectCanonicalDeploymentDeploymentTriggerMetadata {
      */
     public String branch() {
         return this.branch;
+    }
+    /**
+     * @return Whether the deployment trigger commit was dirty.
+     * 
+     */
+    public Boolean commitDirty() {
+        return this.commitDirty;
     }
     /**
      * @return Hash of the deployment trigger commit.
@@ -59,12 +72,14 @@ public final class GetPagesProjectCanonicalDeploymentDeploymentTriggerMetadata {
     @CustomType.Builder
     public static final class Builder {
         private String branch;
+        private Boolean commitDirty;
         private String commitHash;
         private String commitMessage;
         public Builder() {}
         public Builder(GetPagesProjectCanonicalDeploymentDeploymentTriggerMetadata defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.branch = defaults.branch;
+    	      this.commitDirty = defaults.commitDirty;
     	      this.commitHash = defaults.commitHash;
     	      this.commitMessage = defaults.commitMessage;
         }
@@ -75,6 +90,14 @@ public final class GetPagesProjectCanonicalDeploymentDeploymentTriggerMetadata {
               throw new MissingRequiredPropertyException("GetPagesProjectCanonicalDeploymentDeploymentTriggerMetadata", "branch");
             }
             this.branch = branch;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder commitDirty(Boolean commitDirty) {
+            if (commitDirty == null) {
+              throw new MissingRequiredPropertyException("GetPagesProjectCanonicalDeploymentDeploymentTriggerMetadata", "commitDirty");
+            }
+            this.commitDirty = commitDirty;
             return this;
         }
         @CustomType.Setter
@@ -96,6 +119,7 @@ public final class GetPagesProjectCanonicalDeploymentDeploymentTriggerMetadata {
         public GetPagesProjectCanonicalDeploymentDeploymentTriggerMetadata build() {
             final var _resultValue = new GetPagesProjectCanonicalDeploymentDeploymentTriggerMetadata();
             _resultValue.branch = branch;
+            _resultValue.commitDirty = commitDirty;
             _resultValue.commitHash = commitHash;
             _resultValue.commitMessage = commitMessage;
             return _resultValue;

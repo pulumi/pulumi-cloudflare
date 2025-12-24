@@ -87,8 +87,11 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("certificatePackId", required: true)]
-        public string CertificatePackId { get; set; } = null!;
+        [Input("certificatePackId")]
+        public string? CertificatePackId { get; set; }
+
+        [Input("filter")]
+        public Inputs.GetCertificatePackFilterArgs? Filter { get; set; }
 
         /// <summary>
         /// Identifier.
@@ -107,8 +110,11 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("certificatePackId", required: true)]
-        public Input<string> CertificatePackId { get; set; } = null!;
+        [Input("certificatePackId")]
+        public Input<string>? CertificatePackId { get; set; }
+
+        [Input("filter")]
+        public Input<Inputs.GetCertificatePackFilterInputArgs>? Filter { get; set; }
 
         /// <summary>
         /// Identifier.
@@ -127,13 +133,63 @@ namespace Pulumi.Cloudflare
     public sealed class GetCertificatePackResult
     {
         /// <summary>
+        /// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+        /// Available values: "google", "lets*encrypt", "ssl*com".
+        /// </summary>
+        public readonly string CertificateAuthority;
+        /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string CertificatePackId;
+        public readonly string? CertificatePackId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Array of certificates in this pack.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetCertificatePackCertificateResult> Certificates;
+        /// <summary>
+        /// Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
+        /// </summary>
+        public readonly bool CloudflareBranding;
+        public readonly Outputs.GetCertificatePackFilterResult? Filter;
+        /// <summary>
+        /// Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
+        /// </summary>
+        public readonly ImmutableArray<string> Hosts;
+        /// <summary>
+        /// Identifier.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Identifier of the primary certificate in a pack.
+        /// </summary>
+        public readonly string PrimaryCertificate;
+        /// <summary>
+        /// Status of certificate pack.
+        /// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
+        /// </summary>
+        public readonly string Status;
+        /// <summary>
+        /// Type of certificate pack.
+        /// Available values: "mh*custom", "managed*hostname", "sni*custom", "universal", "advanced", "total*tls", "keyless", "LegacyCustom".
+        /// </summary>
+        public readonly string Type;
+        /// <summary>
+        /// Domain validation errors that have been received by the certificate authority (CA).
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetCertificatePackValidationErrorResult> ValidationErrors;
+        /// <summary>
+        /// Validation Method selected for the order.
+        /// Available values: "txt", "http", "email".
+        /// </summary>
+        public readonly string ValidationMethod;
+        /// <summary>
+        /// Certificates' validation records.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetCertificatePackValidationRecordResult> ValidationRecords;
+        /// <summary>
+        /// Validity Days selected for the order.
+        /// Available values: 14, 30, 90, 365.
+        /// </summary>
+        public readonly int ValidityDays;
         /// <summary>
         /// Identifier.
         /// </summary>
@@ -141,14 +197,50 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetCertificatePackResult(
-            string certificatePackId,
+            string certificateAuthority,
+
+            string? certificatePackId,
+
+            ImmutableArray<Outputs.GetCertificatePackCertificateResult> certificates,
+
+            bool cloudflareBranding,
+
+            Outputs.GetCertificatePackFilterResult? filter,
+
+            ImmutableArray<string> hosts,
 
             string id,
 
+            string primaryCertificate,
+
+            string status,
+
+            string type,
+
+            ImmutableArray<Outputs.GetCertificatePackValidationErrorResult> validationErrors,
+
+            string validationMethod,
+
+            ImmutableArray<Outputs.GetCertificatePackValidationRecordResult> validationRecords,
+
+            int validityDays,
+
             string zoneId)
         {
+            CertificateAuthority = certificateAuthority;
             CertificatePackId = certificatePackId;
+            Certificates = certificates;
+            CloudflareBranding = cloudflareBranding;
+            Filter = filter;
+            Hosts = hosts;
             Id = id;
+            PrimaryCertificate = primaryCertificate;
+            Status = status;
+            Type = type;
+            ValidationErrors = validationErrors;
+            ValidationMethod = validationMethod;
+            ValidationRecords = validationRecords;
+            ValidityDays = validityDays;
             ZoneId = zoneId;
         }
     }

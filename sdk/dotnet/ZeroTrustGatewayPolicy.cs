@@ -115,6 +115,10 @@ namespace Pulumi.Cloudflare
     ///                 Ipv4Fallback = "192.0.2.3",
     ///                 Ipv6 = "2001:DB8::/64",
     ///             },
+    ///             ForensicCopy = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
     ///             IgnoreCnameCategoryMatches = true,
     ///             InsecureDisableDnssecValidation = false,
     ///             IpCategories = true,

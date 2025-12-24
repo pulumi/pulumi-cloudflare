@@ -22,7 +22,7 @@ public final class GetLogpushJobResult {
     private @Nullable String accountId;
     /**
      * @return Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-     * Available values: &#34;access*requests&#34;, &#34;audit*logs&#34;, &#34;audit*logs*v2&#34;, &#34;biso*user*actions&#34;, &#34;casb*findings&#34;, &#34;device*posture*results&#34;, &#34;dlp*forensic*copies&#34;, &#34;dns*firewall*logs&#34;, &#34;dns*logs&#34;, &#34;email*security*alerts&#34;, &#34;firewall*events&#34;, &#34;gateway*dns&#34;, &#34;gateway*http&#34;, &#34;gateway*network&#34;, &#34;http*requests&#34;, &#34;magic*ids*detections&#34;, &#34;nel*reports&#34;, &#34;network*analytics*logs&#34;, &#34;page*shield*events&#34;, &#34;sinkhole*http*logs&#34;, &#34;spectrum*events&#34;, &#34;ssh*logs&#34;, &#34;workers*trace*events&#34;, &#34;zaraz*events&#34;, &#34;zero*trust*network*sessions&#34;.
+     * Available values: &#34;access*requests&#34;, &#34;audit*logs&#34;, &#34;audit*logs*v2&#34;, &#34;biso*user*actions&#34;, &#34;casb*findings&#34;, &#34;device*posture*results&#34;, &#34;dex*application*tests&#34;, &#34;dex*device*state*events&#34;, &#34;dlp*forensic*copies&#34;, &#34;dns*firewall*logs&#34;, &#34;dns*logs&#34;, &#34;email*security*alerts&#34;, &#34;firewall*events&#34;, &#34;gateway*dns&#34;, &#34;gateway*http&#34;, &#34;gateway*network&#34;, &#34;http*requests&#34;, &#34;ipsec*logs&#34;, &#34;magic*ids*detections&#34;, &#34;nel*reports&#34;, &#34;network*analytics*logs&#34;, &#34;page*shield*events&#34;, &#34;sinkhole*http*logs&#34;, &#34;spectrum*events&#34;, &#34;ssh*logs&#34;, &#34;warp*config*changes&#34;, &#34;warp*toggle*changes&#34;, &#34;workers*trace*events&#34;, &#34;zaraz*events&#34;, &#34;zero*trust*network*sessions&#34;.
      * 
      */
     private String dataset;
@@ -60,7 +60,7 @@ public final class GetLogpushJobResult {
      * @return Unique id of the job.
      * 
      */
-    private @Nullable Integer jobId;
+    private Integer jobId;
     /**
      * @return The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
      * Available values: &#34;&#34;, &#34;edge&#34;.
@@ -127,7 +127,7 @@ public final class GetLogpushJobResult {
     }
     /**
      * @return Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-     * Available values: &#34;access*requests&#34;, &#34;audit*logs&#34;, &#34;audit*logs*v2&#34;, &#34;biso*user*actions&#34;, &#34;casb*findings&#34;, &#34;device*posture*results&#34;, &#34;dlp*forensic*copies&#34;, &#34;dns*firewall*logs&#34;, &#34;dns*logs&#34;, &#34;email*security*alerts&#34;, &#34;firewall*events&#34;, &#34;gateway*dns&#34;, &#34;gateway*http&#34;, &#34;gateway*network&#34;, &#34;http*requests&#34;, &#34;magic*ids*detections&#34;, &#34;nel*reports&#34;, &#34;network*analytics*logs&#34;, &#34;page*shield*events&#34;, &#34;sinkhole*http*logs&#34;, &#34;spectrum*events&#34;, &#34;ssh*logs&#34;, &#34;workers*trace*events&#34;, &#34;zaraz*events&#34;, &#34;zero*trust*network*sessions&#34;.
+     * Available values: &#34;access*requests&#34;, &#34;audit*logs&#34;, &#34;audit*logs*v2&#34;, &#34;biso*user*actions&#34;, &#34;casb*findings&#34;, &#34;device*posture*results&#34;, &#34;dex*application*tests&#34;, &#34;dex*device*state*events&#34;, &#34;dlp*forensic*copies&#34;, &#34;dns*firewall*logs&#34;, &#34;dns*logs&#34;, &#34;email*security*alerts&#34;, &#34;firewall*events&#34;, &#34;gateway*dns&#34;, &#34;gateway*http&#34;, &#34;gateway*network&#34;, &#34;http*requests&#34;, &#34;ipsec*logs&#34;, &#34;magic*ids*detections&#34;, &#34;nel*reports&#34;, &#34;network*analytics*logs&#34;, &#34;page*shield*events&#34;, &#34;sinkhole*http*logs&#34;, &#34;spectrum*events&#34;, &#34;ssh*logs&#34;, &#34;warp*config*changes&#34;, &#34;warp*toggle*changes&#34;, &#34;workers*trace*events&#34;, &#34;zaraz*events&#34;, &#34;zero*trust*network*sessions&#34;.
      * 
      */
     public String dataset() {
@@ -177,8 +177,8 @@ public final class GetLogpushJobResult {
      * @return Unique id of the job.
      * 
      */
-    public Optional<Integer> jobId() {
-        return Optional.ofNullable(this.jobId);
+    public Integer jobId() {
+        return this.jobId;
     }
     /**
      * @return The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
@@ -272,7 +272,7 @@ public final class GetLogpushJobResult {
         private String errorMessage;
         private String frequency;
         private Integer id;
-        private @Nullable Integer jobId;
+        private Integer jobId;
         private String kind;
         private String lastComplete;
         private String lastError;
@@ -361,8 +361,10 @@ public final class GetLogpushJobResult {
             return this;
         }
         @CustomType.Setter
-        public Builder jobId(@Nullable Integer jobId) {
-
+        public Builder jobId(Integer jobId) {
+            if (jobId == null) {
+              throw new MissingRequiredPropertyException("GetLogpushJobResult", "jobId");
+            }
             this.jobId = jobId;
             return this;
         }

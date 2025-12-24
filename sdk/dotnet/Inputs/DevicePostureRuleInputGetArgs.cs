@@ -184,7 +184,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? OsDistroRevision { get; set; }
 
         /// <summary>
-        /// Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version. (Mac, iOS, and Linux only).
+        /// Additional operating system version details. For Windows, the UBR (Update Build Revision). For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version.
         /// </summary>
         [Input("osVersionExtra")]
         public Input<string>? OsVersionExtra { get; set; }
@@ -269,6 +269,12 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("totalScore")]
         public Input<double>? TotalScore { get; set; }
+
+        /// <summary>
+        /// Number of days that the antivirus should be updated within.
+        /// </summary>
+        [Input("updateWindowDays")]
+        public Input<double>? UpdateWindowDays { get; set; }
 
         /// <summary>
         /// Version of OS.

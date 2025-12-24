@@ -407,6 +407,10 @@ class ZoneDnsSettings(pulumi.CustomResource):
             zone_mode="dns_only")
         ```
 
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] flatten_all_cnames: Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
@@ -459,6 +463,10 @@ class ZoneDnsSettings(pulumi.CustomResource):
             },
             zone_mode="dns_only")
         ```
+
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
 
         :param str resource_name: The name of the resource.
         :param ZoneDnsSettingsArgs args: The arguments to use to populate this resource's properties.

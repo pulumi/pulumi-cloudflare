@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -21,6 +23,7 @@ export function getCertificatePack(args: GetCertificatePackArgs, opts?: pulumi.I
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCertificatePack:getCertificatePack", {
         "certificatePackId": args.certificatePackId,
+        "filter": args.filter,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -32,7 +35,8 @@ export interface GetCertificatePackArgs {
     /**
      * Identifier.
      */
-    certificatePackId: string;
+    certificatePackId?: string;
+    filter?: inputs.GetCertificatePackFilter;
     /**
      * Identifier.
      */
@@ -44,13 +48,63 @@ export interface GetCertificatePackArgs {
  */
 export interface GetCertificatePackResult {
     /**
+     * Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+     * Available values: "google", "lets*encrypt", "ssl*com".
+     */
+    readonly certificateAuthority: string;
+    /**
      * Identifier.
      */
-    readonly certificatePackId: string;
+    readonly certificatePackId?: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Array of certificates in this pack.
+     */
+    readonly certificates: outputs.GetCertificatePackCertificate[];
+    /**
+     * Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
+     */
+    readonly cloudflareBranding: boolean;
+    readonly filter?: outputs.GetCertificatePackFilter;
+    /**
+     * Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
+     */
+    readonly hosts: string[];
+    /**
+     * Identifier.
      */
     readonly id: string;
+    /**
+     * Identifier of the primary certificate in a pack.
+     */
+    readonly primaryCertificate: string;
+    /**
+     * Status of certificate pack.
+     * Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
+     */
+    readonly status: string;
+    /**
+     * Type of certificate pack.
+     * Available values: "mh*custom", "managed*hostname", "sni*custom", "universal", "advanced", "total*tls", "keyless", "legacyCustom".
+     */
+    readonly type: string;
+    /**
+     * Domain validation errors that have been received by the certificate authority (CA).
+     */
+    readonly validationErrors: outputs.GetCertificatePackValidationError[];
+    /**
+     * Validation Method selected for the order.
+     * Available values: "txt", "http", "email".
+     */
+    readonly validationMethod: string;
+    /**
+     * Certificates' validation records.
+     */
+    readonly validationRecords: outputs.GetCertificatePackValidationRecord[];
+    /**
+     * Validity Days selected for the order.
+     * Available values: 14, 30, 90, 365.
+     */
+    readonly validityDays: number;
     /**
      * Identifier.
      */
@@ -73,6 +127,7 @@ export function getCertificatePackOutput(args: GetCertificatePackOutputArgs, opt
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCertificatePack:getCertificatePack", {
         "certificatePackId": args.certificatePackId,
+        "filter": args.filter,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -84,7 +139,8 @@ export interface GetCertificatePackOutputArgs {
     /**
      * Identifier.
      */
-    certificatePackId: pulumi.Input<string>;
+    certificatePackId?: pulumi.Input<string>;
+    filter?: pulumi.Input<inputs.GetCertificatePackFilterArgs>;
     /**
      * Identifier.
      */

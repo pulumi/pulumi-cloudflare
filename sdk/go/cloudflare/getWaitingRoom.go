@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupWaitingRoom(ctx, &cloudflare.LookupWaitingRoomArgs{
 //				ZoneId:        "023e105f4ecef8ad9ca31a8372d0c353",
-//				WaitingRoomId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
+//				WaitingRoomId: "699d98642c564d2e855e9661899b7252",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +49,7 @@ func LookupWaitingRoom(ctx *pulumi.Context, args *LookupWaitingRoomArgs, opts ..
 
 // A collection of arguments for invoking getWaitingRoom.
 type LookupWaitingRoomArgs struct {
-	WaitingRoomId *string `pulumi:"waitingRoomId"`
+	WaitingRoomId string `pulumi:"waitingRoomId"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -86,7 +86,7 @@ type LookupWaitingRoomResult struct {
 	TotalActiveUsers           int      `pulumi:"totalActiveUsers"`
 	TurnstileAction            string   `pulumi:"turnstileAction"`
 	TurnstileMode              string   `pulumi:"turnstileMode"`
-	WaitingRoomId              *string  `pulumi:"waitingRoomId"`
+	WaitingRoomId              string   `pulumi:"waitingRoomId"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -102,7 +102,7 @@ func LookupWaitingRoomOutput(ctx *pulumi.Context, args LookupWaitingRoomOutputAr
 
 // A collection of arguments for invoking getWaitingRoom.
 type LookupWaitingRoomOutputArgs struct {
-	WaitingRoomId pulumi.StringPtrInput `pulumi:"waitingRoomId"`
+	WaitingRoomId pulumi.StringInput `pulumi:"waitingRoomId"`
 	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
@@ -234,8 +234,8 @@ func (o LookupWaitingRoomResultOutput) TurnstileMode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWaitingRoomResult) string { return v.TurnstileMode }).(pulumi.StringOutput)
 }
 
-func (o LookupWaitingRoomResultOutput) WaitingRoomId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupWaitingRoomResult) *string { return v.WaitingRoomId }).(pulumi.StringPtrOutput)
+func (o LookupWaitingRoomResultOutput) WaitingRoomId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWaitingRoomResult) string { return v.WaitingRoomId }).(pulumi.StringOutput)
 }
 
 // Identifier.

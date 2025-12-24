@@ -22,11 +22,285 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZoneSetting = new Cloudflare.ZoneSetting("example_zone_setting", new()
+    ///     // Basic on/off setting
+    ///     var alwaysOnline = new Cloudflare.ZoneSetting("always_online", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         SettingId = "always_online",
     ///         Value = "on",
+    ///     });
+    /// 
+    ///     // String value with specific choices
+    ///     var minTlsVersion = new Cloudflare.ZoneSetting("min_tls_version", new()
+    ///     {
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         SettingId = "min_tls_version",
+    ///         Value = "1.2",
+    ///     });
+    /// 
+    ///     // Numeric value
+    ///     var browserCacheTtl = new Cloudflare.ZoneSetting("browser_cache_ttl", new()
+    ///     {
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         SettingId = "browser_cache_ttl",
+    ///         Value = 14400,
+    ///     });
+    /// 
+    ///     // Array/List value
+    ///     var ciphers = new Cloudflare.ZoneSetting("ciphers", new()
+    ///     {
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         SettingId = "ciphers",
+    ///         Value = new[]
+    ///         {
+    ///             "ECDHE-ECDSA-AES128-GCM-SHA256",
+    ///             "ECDHE-ECDSA-CHACHA20-POLY1305",
+    ///         },
+    ///     });
+    /// 
+    ///     // Nested object value
+    ///     var securityHeader = new Cloudflare.ZoneSetting("security_header", new()
+    ///     {
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         SettingId = "security_header",
+    ///         Value = new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["strictTransportSecurity"] = new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["enabled"] = true,
+    ///                 ["includeSubdomains"] = true,
+    ///                 ["maxAge"] = 86400,
+    ///                 ["nosniff"] = true,
+    ///                 ["preload"] = false,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // Special case: ssl_recommender uses 'enabled' instead of 'value'
+    ///     var sslRecommender = new Cloudflare.ZoneSetting("ssl_recommender", new()
+    ///     {
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         SettingId = "ssl_recommender",
+    ///         Enabled = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Additional Examples
+    /// 
+    /// ### String Value with Choices
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Minimum TLS Version
+    ///     var minTls = new Cloudflare.ZoneSetting("min_tls", new()
+    ///     {
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         SettingId = "min_tls_version",
+    ///         Value = "1.2",
+    ///     });
+    /// 
+    ///     // SSL/TLS Mode
+    ///     var ssl = new Cloudflare.ZoneSetting("ssl", new()
+    ///     {
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         SettingId = "ssl",
+    ///         Value = "strict",
+    ///     });
+    /// 
+    ///     // Security Level
+    ///     var securityLevel = new Cloudflare.ZoneSetting("security_level", new()
+    ///     {
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         SettingId = "security_level",
+    ///         Value = "medium",
+    ///     });
+    /// 
+    ///     // Cache Level
+    ///     var cacheLevel = new Cloudflare.ZoneSetting("cache_level", new()
+    ///     {
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         SettingId = "cache_level",
+    ///         Value = "aggressive",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Numeric Values
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Browser Cache TTL
+    ///     var browserCacheTtl = new Cloudflare.ZoneSetting("browser_cache_ttl", new()
+    ///     {
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         SettingId = "browser_cache_ttl",
+    ///         Value = 14400,
+    ///     });
+    /// 
+    ///     // Challenge TTL
+    ///     var challengeTtl = new Cloudflare.ZoneSetting("challenge_ttl", new()
+    ///     {
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         SettingId = "challenge_ttl",
+    ///         Value = 1800,
+    ///     });
+    /// 
+    ///     // Max Upload Size
+    ///     var maxUpload = new Cloudflare.ZoneSetting("max_upload", new()
+    ///     {
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         SettingId = "max_upload",
+    ///         Value = 100,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Special Cases
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // 0-RTT (Zero Round Trip Time)
+    ///     var zeroRtt = new Cloudflare.ZoneSetting("zero_rtt", new()
+    ///     {
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         SettingId = "0rtt",
+    ///         Value = "on",
+    ///     });
+    /// 
+    ///     // Network Error Logging (NEL)
+    ///     var nel = new Cloudflare.ZoneSetting("nel", new()
+    ///     {
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         SettingId = "nel",
+    ///         Value = new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["enabled"] = true,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Common Configuration Sets
+    /// 
+    /// ### Security Hardening Configuration
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Enable HTTPS everywhere
+    ///     var alwaysUseHttps = new Cloudflare.ZoneSetting("always_use_https", new()
+    ///     {
+    ///         ZoneId = zoneId,
+    ///         SettingId = "always_use_https",
+    ///         Value = "on",
+    ///     });
+    /// 
+    ///     // Automatic HTTPS Rewrites
+    ///     var automaticHttpsRewrites = new Cloudflare.ZoneSetting("automatic_https_rewrites", new()
+    ///     {
+    ///         ZoneId = zoneId,
+    ///         SettingId = "automatic_https_rewrites",
+    ///         Value = "on",
+    ///     });
+    /// 
+    ///     // Minimum TLS 1.2
+    ///     var minTlsVersion = new Cloudflare.ZoneSetting("min_tls_version", new()
+    ///     {
+    ///         ZoneId = zoneId,
+    ///         SettingId = "min_tls_version",
+    ///         Value = "1.2",
+    ///     });
+    /// 
+    ///     // Enable TLS 1.3
+    ///     var tls13 = new Cloudflare.ZoneSetting("tls_1_3", new()
+    ///     {
+    ///         ZoneId = zoneId,
+    ///         SettingId = "tls_1_3",
+    ///         Value = "on",
+    ///     });
+    /// 
+    ///     // Strict SSL
+    ///     var ssl = new Cloudflare.ZoneSetting("ssl", new()
+    ///     {
+    ///         ZoneId = zoneId,
+    ///         SettingId = "ssl",
+    ///         Value = "strict",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Performance Optimization Configuration
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Enable HTTP/3
+    ///     var http3 = new Cloudflare.ZoneSetting("http3", new()
+    ///     {
+    ///         ZoneId = zoneId,
+    ///         SettingId = "http3",
+    ///         Value = "on",
+    ///     });
+    /// 
+    ///     // Enable Brotli Compression
+    ///     var brotli = new Cloudflare.ZoneSetting("brotli", new()
+    ///     {
+    ///         ZoneId = zoneId,
+    ///         SettingId = "brotli",
+    ///         Value = "on",
+    ///     });
+    /// 
+    ///     // Early Hints
+    ///     var earlyHints = new Cloudflare.ZoneSetting("early_hints", new()
+    ///     {
+    ///         ZoneId = zoneId,
+    ///         SettingId = "early_hints",
+    ///         Value = "on",
+    ///     });
+    /// 
+    ///     // Aggressive Caching
+    ///     var cacheLevel = new Cloudflare.ZoneSetting("cache_level", new()
+    ///     {
+    ///         ZoneId = zoneId,
+    ///         SettingId = "cache_level",
+    ///         Value = "aggressive",
+    ///     });
+    /// 
+    ///     // Browser Cache TTL
+    ///     var browserCache = new Cloudflare.ZoneSetting("browser_cache", new()
+    ///     {
+    ///         ZoneId = zoneId,
+    ///         SettingId = "browser_cache_ttl",
+    ///         Value = 14400,
     ///     });
     /// 
     /// });

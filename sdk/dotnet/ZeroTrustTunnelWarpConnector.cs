@@ -51,13 +51,6 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountTag { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates if this is a locally or remotely configured tunnel. If `Local`, manage the tunnel using a YAML file on the origin machine. If `Cloudflare`, manage the tunnel on the Zero Trust dashboard.
-        /// Available values: "local", "cloudflare".
-        /// </summary>
-        [Output("configSrc")]
-        public Output<string> ConfigSrc { get; private set; } = null!;
-
-        /// <summary>
         /// The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
         /// </summary>
         [Output("connections")]
@@ -98,12 +91,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
-
-        /// <summary>
-        /// If `True`, the tunnel can be configured remotely from the Zero Trust dashboard. If `False`, the tunnel must be configured locally on the origin machine.
-        /// </summary>
-        [Output("remoteConfig")]
-        public Output<bool> RemoteConfig { get; private set; } = null!;
 
         /// <summary>
         /// The status of the tunnel. Valid values are `Inactive` (tunnel has never been run), `Degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `Healthy` (tunnel is active and able to serve traffic), or `Down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
@@ -223,13 +210,6 @@ namespace Pulumi.Cloudflare
         [Input("accountTag")]
         public Input<string>? AccountTag { get; set; }
 
-        /// <summary>
-        /// Indicates if this is a locally or remotely configured tunnel. If `Local`, manage the tunnel using a YAML file on the origin machine. If `Cloudflare`, manage the tunnel on the Zero Trust dashboard.
-        /// Available values: "local", "cloudflare".
-        /// </summary>
-        [Input("configSrc")]
-        public Input<string>? ConfigSrc { get; set; }
-
         [Input("connections")]
         private InputList<Inputs.ZeroTrustTunnelWarpConnectorConnectionGetArgs>? _connections;
 
@@ -278,12 +258,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// If `True`, the tunnel can be configured remotely from the Zero Trust dashboard. If `False`, the tunnel must be configured locally on the origin machine.
-        /// </summary>
-        [Input("remoteConfig")]
-        public Input<bool>? RemoteConfig { get; set; }
 
         /// <summary>
         /// The status of the tunnel. Valid values are `Inactive` (tunnel has never been run), `Degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `Healthy` (tunnel is active and able to serve traffic), or `Down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).

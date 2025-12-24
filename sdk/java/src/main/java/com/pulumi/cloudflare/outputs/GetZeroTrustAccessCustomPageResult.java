@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustAccessCustomPageResult {
@@ -26,7 +24,7 @@ public final class GetZeroTrustAccessCustomPageResult {
      * @return UUID.
      * 
      */
-    private @Nullable String customPageId;
+    private String customPageId;
     /**
      * @return UUID.
      * 
@@ -68,8 +66,8 @@ public final class GetZeroTrustAccessCustomPageResult {
      * @return UUID.
      * 
      */
-    public Optional<String> customPageId() {
-        return Optional.ofNullable(this.customPageId);
+    public String customPageId() {
+        return this.customPageId;
     }
     /**
      * @return UUID.
@@ -112,7 +110,7 @@ public final class GetZeroTrustAccessCustomPageResult {
     public static final class Builder {
         private String accountId;
         private String customHtml;
-        private @Nullable String customPageId;
+        private String customPageId;
         private String id;
         private String name;
         private String type;
@@ -146,8 +144,10 @@ public final class GetZeroTrustAccessCustomPageResult {
             return this;
         }
         @CustomType.Setter
-        public Builder customPageId(@Nullable String customPageId) {
-
+        public Builder customPageId(String customPageId) {
+            if (customPageId == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessCustomPageResult", "customPageId");
+            }
             this.customPageId = customPageId;
             return this;
         }

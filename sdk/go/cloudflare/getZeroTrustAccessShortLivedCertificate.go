@@ -66,7 +66,7 @@ type LookupZeroTrustAccessShortLivedCertificateResult struct {
 	AppId string `pulumi:"appId"`
 	// The Application Audience (AUD) tag. Identifies the application associated with the CA.
 	Aud string `pulumi:"aud"`
-	// The ID of the CA.
+	// UUID.
 	Id string `pulumi:"id"`
 	// The public key to add to your SSH server configuration.
 	PublicKey string `pulumi:"publicKey"`
@@ -127,7 +127,7 @@ func (o LookupZeroTrustAccessShortLivedCertificateResultOutput) Aud() pulumi.Str
 	return o.ApplyT(func(v LookupZeroTrustAccessShortLivedCertificateResult) string { return v.Aud }).(pulumi.StringOutput)
 }
 
-// The ID of the CA.
+// UUID.
 func (o LookupZeroTrustAccessShortLivedCertificateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessShortLivedCertificateResult) string { return v.Id }).(pulumi.StringOutput)
 }

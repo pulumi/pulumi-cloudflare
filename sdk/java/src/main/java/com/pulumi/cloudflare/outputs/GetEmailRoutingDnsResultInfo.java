@@ -14,7 +14,7 @@ public final class GetEmailRoutingDnsResultInfo {
      * @return Total number of results for the requested service.
      * 
      */
-    private Double count;
+    private Double emailRoutingDnsCount;
     /**
      * @return Current page within paginated list of results.
      * 
@@ -36,8 +36,8 @@ public final class GetEmailRoutingDnsResultInfo {
      * @return Total number of results for the requested service.
      * 
      */
-    public Double count() {
-        return this.count;
+    public Double emailRoutingDnsCount() {
+        return this.emailRoutingDnsCount;
     }
     /**
      * @return Current page within paginated list of results.
@@ -70,25 +70,25 @@ public final class GetEmailRoutingDnsResultInfo {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Double count;
+        private Double emailRoutingDnsCount;
         private Double page;
         private Double perPage;
         private Double totalCount;
         public Builder() {}
         public Builder(GetEmailRoutingDnsResultInfo defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.count = defaults.count;
+    	      this.emailRoutingDnsCount = defaults.emailRoutingDnsCount;
     	      this.page = defaults.page;
     	      this.perPage = defaults.perPage;
     	      this.totalCount = defaults.totalCount;
         }
 
         @CustomType.Setter
-        public Builder count(Double count) {
-            if (count == null) {
-              throw new MissingRequiredPropertyException("GetEmailRoutingDnsResultInfo", "count");
+        public Builder emailRoutingDnsCount(Double emailRoutingDnsCount) {
+            if (emailRoutingDnsCount == null) {
+              throw new MissingRequiredPropertyException("GetEmailRoutingDnsResultInfo", "emailRoutingDnsCount");
             }
-            this.count = count;
+            this.emailRoutingDnsCount = emailRoutingDnsCount;
             return this;
         }
         @CustomType.Setter
@@ -117,7 +117,7 @@ public final class GetEmailRoutingDnsResultInfo {
         }
         public GetEmailRoutingDnsResultInfo build() {
             final var _resultValue = new GetEmailRoutingDnsResultInfo();
-            _resultValue.count = count;
+            _resultValue.emailRoutingDnsCount = emailRoutingDnsCount;
             _resultValue.page = page;
             _resultValue.perPage = perPage;
             _resultValue.totalCount = totalCount;

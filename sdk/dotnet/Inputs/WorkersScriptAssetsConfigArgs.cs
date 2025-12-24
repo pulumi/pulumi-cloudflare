@@ -39,10 +39,10 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Redirects { get; set; }
 
         /// <summary>
-        /// When true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script.
+        /// When a boolean true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script. When a list of strings, contains path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
         /// </summary>
         [Input("runWorkerFirst")]
-        public Input<bool>? RunWorkerFirst { get; set; }
+        public Input<object>? RunWorkerFirst { get; set; }
 
         /// <summary>
         /// When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.

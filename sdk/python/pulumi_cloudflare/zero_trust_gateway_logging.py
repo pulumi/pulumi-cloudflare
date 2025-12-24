@@ -157,6 +157,10 @@ class ZeroTrustGatewayLogging(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] redact_pii: Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
@@ -193,6 +197,10 @@ class ZeroTrustGatewayLogging(pulumi.CustomResource):
                 },
             })
         ```
+
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustGatewayLoggingArgs args: The arguments to use to populate this resource's properties.

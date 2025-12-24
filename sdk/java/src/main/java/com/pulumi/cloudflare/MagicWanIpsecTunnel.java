@@ -57,6 +57,7 @@ import javax.annotation.Nullable;
  *                 Map.entry("extraPrefixes", List.of("string")),
  *                 Map.entry("md5Key", "md5_key")
  *             ))
+ *             .customRemoteIdentities(Map.of("fqdnId", "fqdn_id"))
  *             .customerEndpoint("203.0.113.1")
  *             .description("Tunnel for ISP X")
  *             .healthCheck(MagicWanIpsecTunnelHealthCheckArgs.builder()

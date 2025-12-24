@@ -3,10 +3,13 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetSpectrumApplicationFilter;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetSpectrumApplicationPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -17,15 +20,22 @@ public final class GetSpectrumApplicationPlainArgs extends com.pulumi.resources.
      * App identifier.
      * 
      */
-    @Import(name="appId", required=true)
-    private String appId;
+    @Import(name="appId")
+    private @Nullable String appId;
 
     /**
      * @return App identifier.
      * 
      */
-    public String appId() {
-        return this.appId;
+    public Optional<String> appId() {
+        return Optional.ofNullable(this.appId);
+    }
+
+    @Import(name="filter")
+    private @Nullable GetSpectrumApplicationFilter filter;
+
+    public Optional<GetSpectrumApplicationFilter> filter() {
+        return Optional.ofNullable(this.filter);
     }
 
     /**
@@ -47,6 +57,7 @@ public final class GetSpectrumApplicationPlainArgs extends com.pulumi.resources.
 
     private GetSpectrumApplicationPlainArgs(GetSpectrumApplicationPlainArgs $) {
         this.appId = $.appId;
+        this.filter = $.filter;
         this.zoneId = $.zoneId;
     }
 
@@ -74,8 +85,13 @@ public final class GetSpectrumApplicationPlainArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder appId(String appId) {
+        public Builder appId(@Nullable String appId) {
             $.appId = appId;
+            return this;
+        }
+
+        public Builder filter(@Nullable GetSpectrumApplicationFilter filter) {
+            $.filter = filter;
             return this;
         }
 
@@ -91,9 +107,6 @@ public final class GetSpectrumApplicationPlainArgs extends com.pulumi.resources.
         }
 
         public GetSpectrumApplicationPlainArgs build() {
-            if ($.appId == null) {
-                throw new MissingRequiredPropertyException("GetSpectrumApplicationPlainArgs", "appId");
-            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("GetSpectrumApplicationPlainArgs", "zoneId");
             }

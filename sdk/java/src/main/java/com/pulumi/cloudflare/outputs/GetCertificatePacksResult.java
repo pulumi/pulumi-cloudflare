@@ -3,12 +3,175 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetCertificatePacksResultCertificate;
+import com.pulumi.cloudflare.outputs.GetCertificatePacksResultValidationError;
+import com.pulumi.cloudflare.outputs.GetCertificatePacksResultValidationRecord;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
+import java.lang.Integer;
+import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetCertificatePacksResult {
+    /**
+     * @return Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+     * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
+     * 
+     */
+    private String certificateAuthority;
+    /**
+     * @return Array of certificates in this pack.
+     * 
+     */
+    private List<GetCertificatePacksResultCertificate> certificates;
+    /**
+     * @return Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
+     * 
+     */
+    private Boolean cloudflareBranding;
+    /**
+     * @return Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
+     * 
+     */
+    private List<String> hosts;
+    /**
+     * @return Identifier.
+     * 
+     */
+    private String id;
+    /**
+     * @return Identifier of the primary certificate in a pack.
+     * 
+     */
+    private String primaryCertificate;
+    /**
+     * @return Status of certificate pack.
+     * Available values: &#34;initializing&#34;, &#34;pending*validation&#34;, &#34;deleted&#34;, &#34;pending*issuance&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;pending*expiration&#34;, &#34;expired&#34;, &#34;active&#34;, &#34;initializing*timed*out&#34;, &#34;validation*timed*out&#34;, &#34;issuance*timed*out&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;, &#34;pending*cleanup&#34;, &#34;staging*deployment&#34;, &#34;staging*active&#34;, &#34;deactivating&#34;, &#34;inactive&#34;, &#34;backup*issued&#34;, &#34;holding*deployment&#34;.
+     * 
+     */
+    private String status;
+    /**
+     * @return Type of certificate pack.
+     * Available values: &#34;mh*custom&#34;, &#34;managed*hostname&#34;, &#34;sni*custom&#34;, &#34;universal&#34;, &#34;advanced&#34;, &#34;total*tls&#34;, &#34;keyless&#34;, &#34;legacyCustom&#34;.
+     * 
+     */
+    private String type;
+    /**
+     * @return Domain validation errors that have been received by the certificate authority (CA).
+     * 
+     */
+    private List<GetCertificatePacksResultValidationError> validationErrors;
+    /**
+     * @return Validation Method selected for the order.
+     * Available values: &#34;txt&#34;, &#34;http&#34;, &#34;email&#34;.
+     * 
+     */
+    private String validationMethod;
+    /**
+     * @return Certificates&#39; validation records.
+     * 
+     */
+    private List<GetCertificatePacksResultValidationRecord> validationRecords;
+    /**
+     * @return Validity Days selected for the order.
+     * Available values: 14, 30, 90, 365.
+     * 
+     */
+    private Integer validityDays;
+
     private GetCertificatePacksResult() {}
+    /**
+     * @return Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+     * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
+     * 
+     */
+    public String certificateAuthority() {
+        return this.certificateAuthority;
+    }
+    /**
+     * @return Array of certificates in this pack.
+     * 
+     */
+    public List<GetCertificatePacksResultCertificate> certificates() {
+        return this.certificates;
+    }
+    /**
+     * @return Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
+     * 
+     */
+    public Boolean cloudflareBranding() {
+        return this.cloudflareBranding;
+    }
+    /**
+     * @return Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
+     * 
+     */
+    public List<String> hosts() {
+        return this.hosts;
+    }
+    /**
+     * @return Identifier.
+     * 
+     */
+    public String id() {
+        return this.id;
+    }
+    /**
+     * @return Identifier of the primary certificate in a pack.
+     * 
+     */
+    public String primaryCertificate() {
+        return this.primaryCertificate;
+    }
+    /**
+     * @return Status of certificate pack.
+     * Available values: &#34;initializing&#34;, &#34;pending*validation&#34;, &#34;deleted&#34;, &#34;pending*issuance&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;pending*expiration&#34;, &#34;expired&#34;, &#34;active&#34;, &#34;initializing*timed*out&#34;, &#34;validation*timed*out&#34;, &#34;issuance*timed*out&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;, &#34;pending*cleanup&#34;, &#34;staging*deployment&#34;, &#34;staging*active&#34;, &#34;deactivating&#34;, &#34;inactive&#34;, &#34;backup*issued&#34;, &#34;holding*deployment&#34;.
+     * 
+     */
+    public String status() {
+        return this.status;
+    }
+    /**
+     * @return Type of certificate pack.
+     * Available values: &#34;mh*custom&#34;, &#34;managed*hostname&#34;, &#34;sni*custom&#34;, &#34;universal&#34;, &#34;advanced&#34;, &#34;total*tls&#34;, &#34;keyless&#34;, &#34;legacyCustom&#34;.
+     * 
+     */
+    public String type() {
+        return this.type;
+    }
+    /**
+     * @return Domain validation errors that have been received by the certificate authority (CA).
+     * 
+     */
+    public List<GetCertificatePacksResultValidationError> validationErrors() {
+        return this.validationErrors;
+    }
+    /**
+     * @return Validation Method selected for the order.
+     * Available values: &#34;txt&#34;, &#34;http&#34;, &#34;email&#34;.
+     * 
+     */
+    public String validationMethod() {
+        return this.validationMethod;
+    }
+    /**
+     * @return Certificates&#39; validation records.
+     * 
+     */
+    public List<GetCertificatePacksResultValidationRecord> validationRecords() {
+        return this.validationRecords;
+    }
+    /**
+     * @return Validity Days selected for the order.
+     * Available values: 14, 30, 90, 365.
+     * 
+     */
+    public Integer validityDays() {
+        return this.validityDays;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -19,13 +182,157 @@ public final class GetCertificatePacksResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String certificateAuthority;
+        private List<GetCertificatePacksResultCertificate> certificates;
+        private Boolean cloudflareBranding;
+        private List<String> hosts;
+        private String id;
+        private String primaryCertificate;
+        private String status;
+        private String type;
+        private List<GetCertificatePacksResultValidationError> validationErrors;
+        private String validationMethod;
+        private List<GetCertificatePacksResultValidationRecord> validationRecords;
+        private Integer validityDays;
         public Builder() {}
         public Builder(GetCertificatePacksResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.certificateAuthority = defaults.certificateAuthority;
+    	      this.certificates = defaults.certificates;
+    	      this.cloudflareBranding = defaults.cloudflareBranding;
+    	      this.hosts = defaults.hosts;
+    	      this.id = defaults.id;
+    	      this.primaryCertificate = defaults.primaryCertificate;
+    	      this.status = defaults.status;
+    	      this.type = defaults.type;
+    	      this.validationErrors = defaults.validationErrors;
+    	      this.validationMethod = defaults.validationMethod;
+    	      this.validationRecords = defaults.validationRecords;
+    	      this.validityDays = defaults.validityDays;
         }
 
+        @CustomType.Setter
+        public Builder certificateAuthority(String certificateAuthority) {
+            if (certificateAuthority == null) {
+              throw new MissingRequiredPropertyException("GetCertificatePacksResult", "certificateAuthority");
+            }
+            this.certificateAuthority = certificateAuthority;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder certificates(List<GetCertificatePacksResultCertificate> certificates) {
+            if (certificates == null) {
+              throw new MissingRequiredPropertyException("GetCertificatePacksResult", "certificates");
+            }
+            this.certificates = certificates;
+            return this;
+        }
+        public Builder certificates(GetCertificatePacksResultCertificate... certificates) {
+            return certificates(List.of(certificates));
+        }
+        @CustomType.Setter
+        public Builder cloudflareBranding(Boolean cloudflareBranding) {
+            if (cloudflareBranding == null) {
+              throw new MissingRequiredPropertyException("GetCertificatePacksResult", "cloudflareBranding");
+            }
+            this.cloudflareBranding = cloudflareBranding;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder hosts(List<String> hosts) {
+            if (hosts == null) {
+              throw new MissingRequiredPropertyException("GetCertificatePacksResult", "hosts");
+            }
+            this.hosts = hosts;
+            return this;
+        }
+        public Builder hosts(String... hosts) {
+            return hosts(List.of(hosts));
+        }
+        @CustomType.Setter
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCertificatePacksResult", "id");
+            }
+            this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder primaryCertificate(String primaryCertificate) {
+            if (primaryCertificate == null) {
+              throw new MissingRequiredPropertyException("GetCertificatePacksResult", "primaryCertificate");
+            }
+            this.primaryCertificate = primaryCertificate;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder status(String status) {
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetCertificatePacksResult", "status");
+            }
+            this.status = status;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder type(String type) {
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetCertificatePacksResult", "type");
+            }
+            this.type = type;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder validationErrors(List<GetCertificatePacksResultValidationError> validationErrors) {
+            if (validationErrors == null) {
+              throw new MissingRequiredPropertyException("GetCertificatePacksResult", "validationErrors");
+            }
+            this.validationErrors = validationErrors;
+            return this;
+        }
+        public Builder validationErrors(GetCertificatePacksResultValidationError... validationErrors) {
+            return validationErrors(List.of(validationErrors));
+        }
+        @CustomType.Setter
+        public Builder validationMethod(String validationMethod) {
+            if (validationMethod == null) {
+              throw new MissingRequiredPropertyException("GetCertificatePacksResult", "validationMethod");
+            }
+            this.validationMethod = validationMethod;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder validationRecords(List<GetCertificatePacksResultValidationRecord> validationRecords) {
+            if (validationRecords == null) {
+              throw new MissingRequiredPropertyException("GetCertificatePacksResult", "validationRecords");
+            }
+            this.validationRecords = validationRecords;
+            return this;
+        }
+        public Builder validationRecords(GetCertificatePacksResultValidationRecord... validationRecords) {
+            return validationRecords(List.of(validationRecords));
+        }
+        @CustomType.Setter
+        public Builder validityDays(Integer validityDays) {
+            if (validityDays == null) {
+              throw new MissingRequiredPropertyException("GetCertificatePacksResult", "validityDays");
+            }
+            this.validityDays = validityDays;
+            return this;
+        }
         public GetCertificatePacksResult build() {
             final var _resultValue = new GetCertificatePacksResult();
+            _resultValue.certificateAuthority = certificateAuthority;
+            _resultValue.certificates = certificates;
+            _resultValue.cloudflareBranding = cloudflareBranding;
+            _resultValue.hosts = hosts;
+            _resultValue.id = id;
+            _resultValue.primaryCertificate = primaryCertificate;
+            _resultValue.status = status;
+            _resultValue.type = type;
+            _resultValue.validationErrors = validationErrors;
+            _resultValue.validationMethod = validationMethod;
+            _resultValue.validationRecords = validationRecords;
+            _resultValue.validityDays = validityDays;
             return _resultValue;
         }
     }

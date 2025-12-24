@@ -32,7 +32,7 @@ export interface GetWeb3HostnameArgs {
     /**
      * Specify the identifier of the hostname.
      */
-    identifier?: string;
+    identifier: string;
     /**
      * Specify the identifier of the hostname.
      */
@@ -59,7 +59,7 @@ export interface GetWeb3HostnameResult {
     /**
      * Specify the identifier of the hostname.
      */
-    readonly identifier?: string;
+    readonly identifier: string;
     readonly modifiedOn: string;
     /**
      * Specify the hostname that points to the target gateway via CNAME.
@@ -108,7 +108,7 @@ export interface GetWeb3HostnameOutputArgs {
     /**
      * Specify the identifier of the hostname.
      */
-    identifier?: pulumi.Input<string>;
+    identifier: pulumi.Input<string>;
     /**
      * Specify the identifier of the hostname.
      */

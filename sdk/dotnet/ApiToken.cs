@@ -12,72 +12,6 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleApiToken = new Cloudflare.ApiToken("example_api_token", new()
-    ///     {
-    ///         Name = "readonly token",
-    ///         Policies = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.ApiTokenPolicyArgs
-    ///             {
-    ///                 Effect = "allow",
-    ///                 PermissionGroups = new[]
-    ///                 {
-    ///                     new Cloudflare.Inputs.ApiTokenPolicyPermissionGroupArgs
-    ///                     {
-    ///                         Id = "c8fed203ed3043cba015a93ad1616f1f",
-    ///                         Meta = new Cloudflare.Inputs.ApiTokenPolicyPermissionGroupMetaArgs
-    ///                         {
-    ///                             Key = "key",
-    ///                             Value = "value",
-    ///                         },
-    ///                     },
-    ///                     new Cloudflare.Inputs.ApiTokenPolicyPermissionGroupArgs
-    ///                     {
-    ///                         Id = "82e64a83756745bbbb1c9c2701bf816b",
-    ///                         Meta = new Cloudflare.Inputs.ApiTokenPolicyPermissionGroupMetaArgs
-    ///                         {
-    ///                             Key = "key",
-    ///                             Value = "value",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///                 Resources = 
-    ///                 {
-    ///                     { "foo", "string" },
-    ///                 },
-    ///             },
-    ///         },
-    ///         Condition = new Cloudflare.Inputs.ApiTokenConditionArgs
-    ///         {
-    ///             RequestIp = new Cloudflare.Inputs.ApiTokenConditionRequestIpArgs
-    ///             {
-    ///                 Ins = new[]
-    ///                 {
-    ///                     "123.123.123.0/24",
-    ///                     "2606:4700::/32",
-    ///                 },
-    ///                 NotIns = new[]
-    ///                 {
-    ///                     "123.123.123.100/24",
-    ///                     "2606:4700:4700::/48",
-    ///                 },
-    ///             },
-    ///         },
-    ///         ExpiresOn = "2020-01-01T00:00:00Z",
-    ///         NotBefore = "2018-07-01T05:20:00Z",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh
@@ -127,7 +61,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> NotBefore { get; private set; } = null!;
 
         /// <summary>
-        /// List of access policies assigned to the token.
+        /// Set of access policies assigned to the token.
         /// </summary>
         [Output("policies")]
         public Output<ImmutableArray<Outputs.ApiTokenPolicy>> Policies { get; private set; } = null!;
@@ -220,7 +154,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.ApiTokenPolicyArgs>? _policies;
 
         /// <summary>
-        /// List of access policies assigned to the token.
+        /// Set of access policies assigned to the token.
         /// </summary>
         public InputList<Inputs.ApiTokenPolicyArgs> Policies
         {
@@ -286,7 +220,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.ApiTokenPolicyGetArgs>? _policies;
 
         /// <summary>
-        /// List of access policies assigned to the token.
+        /// Set of access policies assigned to the token.
         /// </summary>
         public InputList<Inputs.ApiTokenPolicyGetArgs> Policies
         {

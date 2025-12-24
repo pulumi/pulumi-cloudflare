@@ -23,8 +23,10 @@ namespace Pulumi.Cloudflare
     ///     var exampleByoIpPrefix = new Cloudflare.ByoIpPrefix("example_byo_ip_prefix", new()
     ///     {
     ///         AccountId = "258def64c72dae45f3e4c8516e2111f2",
-    ///         Asn = 209242,
+    ///         Asn = 13335,
     ///         Cidr = "192.0.2.0/24",
+    ///         DelegateLoaCreation = true,
+    ///         Description = "Internal test prefix",
     ///         LoaDocumentId = "d933b1530bc56c9953cf8ce166da8004",
     ///     });
     /// 
@@ -80,16 +82,28 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+        /// </summary>
+        [Output("delegateLoaCreation")]
+        public Output<bool> DelegateLoaCreation { get; private set; } = null!;
+
+        /// <summary>
         /// Description of the prefix.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// State of one kind of validation for an IP prefix.
+        /// </summary>
+        [Output("irrValidationState")]
+        public Output<string> IrrValidationState { get; private set; } = null!;
+
+        /// <summary>
         /// Identifier for the uploaded LOA document.
         /// </summary>
         [Output("loaDocumentId")]
-        public Output<string> LoaDocumentId { get; private set; } = null!;
+        public Output<string?> LoaDocumentId { get; private set; } = null!;
 
         [Output("modifiedAt")]
         public Output<string> ModifiedAt { get; private set; } = null!;
@@ -105,6 +119,24 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("onDemandLocked")]
         public Output<bool> OnDemandLocked { get; private set; } = null!;
+
+        /// <summary>
+        /// State of one kind of validation for an IP prefix.
+        /// </summary>
+        [Output("ownershipValidationState")]
+        public Output<string> OwnershipValidationState { get; private set; } = null!;
+
+        /// <summary>
+        /// Token provided to demonstrate ownership of the prefix.
+        /// </summary>
+        [Output("ownershipValidationToken")]
+        public Output<string> OwnershipValidationToken { get; private set; } = null!;
+
+        /// <summary>
+        /// State of one kind of validation for an IP prefix.
+        /// </summary>
+        [Output("rpkiValidationState")]
+        public Output<string> RpkiValidationState { get; private set; } = null!;
 
 
         /// <summary>
@@ -171,6 +203,12 @@ namespace Pulumi.Cloudflare
         public Input<string> Cidr { get; set; } = null!;
 
         /// <summary>
+        /// Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+        /// </summary>
+        [Input("delegateLoaCreation")]
+        public Input<bool>? DelegateLoaCreation { get; set; }
+
+        /// <summary>
         /// Description of the prefix.
         /// </summary>
         [Input("description")]
@@ -179,8 +217,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier for the uploaded LOA document.
         /// </summary>
-        [Input("loaDocumentId", required: true)]
-        public Input<string> LoaDocumentId { get; set; } = null!;
+        [Input("loaDocumentId")]
+        public Input<string>? LoaDocumentId { get; set; }
 
         public ByoIpPrefixArgs()
         {
@@ -230,10 +268,22 @@ namespace Pulumi.Cloudflare
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
+        /// Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+        /// </summary>
+        [Input("delegateLoaCreation")]
+        public Input<bool>? DelegateLoaCreation { get; set; }
+
+        /// <summary>
         /// Description of the prefix.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// State of one kind of validation for an IP prefix.
+        /// </summary>
+        [Input("irrValidationState")]
+        public Input<string>? IrrValidationState { get; set; }
 
         /// <summary>
         /// Identifier for the uploaded LOA document.
@@ -255,6 +305,24 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("onDemandLocked")]
         public Input<bool>? OnDemandLocked { get; set; }
+
+        /// <summary>
+        /// State of one kind of validation for an IP prefix.
+        /// </summary>
+        [Input("ownershipValidationState")]
+        public Input<string>? OwnershipValidationState { get; set; }
+
+        /// <summary>
+        /// Token provided to demonstrate ownership of the prefix.
+        /// </summary>
+        [Input("ownershipValidationToken")]
+        public Input<string>? OwnershipValidationToken { get; set; }
+
+        /// <summary>
+        /// State of one kind of validation for an IP prefix.
+        /// </summary>
+        [Input("rpkiValidationState")]
+        public Input<string>? RpkiValidationState { get; set; }
 
         public ByoIpPrefixState()
         {

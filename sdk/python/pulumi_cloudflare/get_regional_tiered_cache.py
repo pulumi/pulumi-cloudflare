@@ -55,8 +55,7 @@ class GetRegionalTieredCacheResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The identifier of the caching setting.
-        Available values: "tc_regional".
+        Identifier.
         """
         return pulumi.get(self, "id")
 

@@ -169,7 +169,7 @@ class GetZeroTrustDnsLocationResult:
 
     @_builtins.property
     @pulumi.getter(name="locationId")
-    def location_id(self) -> Optional[_builtins.str]:
+    def location_id(self) -> _builtins.str:
         return pulumi.get(self, "location_id")
 
     @_builtins.property
@@ -256,7 +256,7 @@ def get_zero_trust_dns_location(account_id: Optional[_builtins.str] = None,
         networks=pulumi.get(__ret__, 'networks'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
 def get_zero_trust_dns_location_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                       location_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                       location_id: Optional[pulumi.Input[_builtins.str]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDnsLocationResult]:
     """
     ## Example Usage

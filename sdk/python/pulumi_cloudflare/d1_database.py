@@ -23,18 +23,23 @@ class D1DatabaseArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
+                 jurisdiction: Optional[pulumi.Input[_builtins.str]] = None,
                  primary_location_hint: Optional[pulumi.Input[_builtins.str]] = None,
                  read_replication: Optional[pulumi.Input['D1DatabaseReadReplicationArgs']] = None):
         """
         The set of arguments for constructing a D1Database resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
         :param pulumi.Input[_builtins.str] name: D1 database name.
+        :param pulumi.Input[_builtins.str] jurisdiction: Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+               Available values: "eu", "fedramp".
         :param pulumi.Input[_builtins.str] primary_location_hint: Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
                Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
         :param pulumi.Input['D1DatabaseReadReplicationArgs'] read_replication: Configuration for D1 read replication.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
+        if jurisdiction is not None:
+            pulumi.set(__self__, "jurisdiction", jurisdiction)
         if primary_location_hint is not None:
             pulumi.set(__self__, "primary_location_hint", primary_location_hint)
         if read_replication is not None:
@@ -63,6 +68,19 @@ class D1DatabaseArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def jurisdiction(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+        Available values: "eu", "fedramp".
+        """
+        return pulumi.get(self, "jurisdiction")
+
+    @jurisdiction.setter
+    def jurisdiction(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "jurisdiction", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryLocationHint")
@@ -96,6 +114,7 @@ class _D1DatabaseState:
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  file_size: Optional[pulumi.Input[_builtins.float]] = None,
+                 jurisdiction: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  num_tables: Optional[pulumi.Input[_builtins.float]] = None,
                  primary_location_hint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -107,6 +126,8 @@ class _D1DatabaseState:
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
         :param pulumi.Input[_builtins.str] created_at: Specifies the timestamp the resource was created as an ISO8601 string.
         :param pulumi.Input[_builtins.float] file_size: The D1 database's size, in bytes.
+        :param pulumi.Input[_builtins.str] jurisdiction: Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+               Available values: "eu", "fedramp".
         :param pulumi.Input[_builtins.str] name: D1 database name.
         :param pulumi.Input[_builtins.str] primary_location_hint: Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
                Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
@@ -119,6 +140,8 @@ class _D1DatabaseState:
             pulumi.set(__self__, "created_at", created_at)
         if file_size is not None:
             pulumi.set(__self__, "file_size", file_size)
+        if jurisdiction is not None:
+            pulumi.set(__self__, "jurisdiction", jurisdiction)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if num_tables is not None:
@@ -167,6 +190,19 @@ class _D1DatabaseState:
     @file_size.setter
     def file_size(self, value: Optional[pulumi.Input[_builtins.float]]):
         pulumi.set(self, "file_size", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def jurisdiction(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+        Available values: "eu", "fedramp".
+        """
+        return pulumi.get(self, "jurisdiction")
+
+    @jurisdiction.setter
+    def jurisdiction(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "jurisdiction", value)
 
     @_builtins.property
     @pulumi.getter
@@ -243,6 +279,7 @@ class D1Database(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 jurisdiction: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  primary_location_hint: Optional[pulumi.Input[_builtins.str]] = None,
                  read_replication: Optional[pulumi.Input[Union['D1DatabaseReadReplicationArgs', 'D1DatabaseReadReplicationArgsDict']]] = None,
@@ -260,6 +297,7 @@ class D1Database(pulumi.CustomResource):
         example_d1_database = cloudflare.D1Database("example_d1_database",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="my-database",
+            jurisdiction="eu",
             primary_location_hint="wnam")
         ```
 
@@ -272,6 +310,8 @@ class D1Database(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
+        :param pulumi.Input[_builtins.str] jurisdiction: Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+               Available values: "eu", "fedramp".
         :param pulumi.Input[_builtins.str] name: D1 database name.
         :param pulumi.Input[_builtins.str] primary_location_hint: Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
                Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
@@ -296,6 +336,7 @@ class D1Database(pulumi.CustomResource):
         example_d1_database = cloudflare.D1Database("example_d1_database",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="my-database",
+            jurisdiction="eu",
             primary_location_hint="wnam")
         ```
 
@@ -321,6 +362,7 @@ class D1Database(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 jurisdiction: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  primary_location_hint: Optional[pulumi.Input[_builtins.str]] = None,
                  read_replication: Optional[pulumi.Input[Union['D1DatabaseReadReplicationArgs', 'D1DatabaseReadReplicationArgsDict']]] = None,
@@ -336,6 +378,7 @@ class D1Database(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["jurisdiction"] = jurisdiction
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
@@ -359,6 +402,7 @@ class D1Database(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
             created_at: Optional[pulumi.Input[_builtins.str]] = None,
             file_size: Optional[pulumi.Input[_builtins.float]] = None,
+            jurisdiction: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             num_tables: Optional[pulumi.Input[_builtins.float]] = None,
             primary_location_hint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -375,6 +419,8 @@ class D1Database(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
         :param pulumi.Input[_builtins.str] created_at: Specifies the timestamp the resource was created as an ISO8601 string.
         :param pulumi.Input[_builtins.float] file_size: The D1 database's size, in bytes.
+        :param pulumi.Input[_builtins.str] jurisdiction: Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+               Available values: "eu", "fedramp".
         :param pulumi.Input[_builtins.str] name: D1 database name.
         :param pulumi.Input[_builtins.str] primary_location_hint: Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
                Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
@@ -388,6 +434,7 @@ class D1Database(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["file_size"] = file_size
+        __props__.__dict__["jurisdiction"] = jurisdiction
         __props__.__dict__["name"] = name
         __props__.__dict__["num_tables"] = num_tables
         __props__.__dict__["primary_location_hint"] = primary_location_hint
@@ -419,6 +466,15 @@ class D1Database(pulumi.CustomResource):
         The D1 database's size, in bytes.
         """
         return pulumi.get(self, "file_size")
+
+    @_builtins.property
+    @pulumi.getter
+    def jurisdiction(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+        Available values: "eu", "fedramp".
+        """
+        return pulumi.get(self, "jurisdiction")
 
     @_builtins.property
     @pulumi.getter

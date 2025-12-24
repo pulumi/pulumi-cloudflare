@@ -21,6 +21,10 @@ import * as utilities from "./utilities";
  *     scale: 0.1,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ~> This resource does not currently support `pulumi import`.
  */
 export class StreamWatermark extends pulumi.CustomResource {
     /**

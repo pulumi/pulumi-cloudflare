@@ -90,8 +90,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The unique identifier for the test.
         /// </summary>
-        [Input("dexTestId")]
-        public string? DexTestId { get; set; }
+        [Input("dexTestId", required: true)]
+        public string DexTestId { get; set; } = null!;
 
         [Input("targetPolicies")]
         private List<Inputs.GetZeroTrustDexTestTargetPolicyArgs>? _targetPolicies;
@@ -119,8 +119,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The unique identifier for the test.
         /// </summary>
-        [Input("dexTestId")]
-        public Input<string>? DexTestId { get; set; }
+        [Input("dexTestId", required: true)]
+        public Input<string> DexTestId { get; set; } = null!;
 
         [Input("targetPolicies")]
         private InputList<Inputs.GetZeroTrustDexTestTargetPolicyInputArgs>? _targetPolicies;
@@ -156,7 +156,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The unique identifier for the test.
         /// </summary>
-        public readonly string? DexTestId;
+        public readonly string DexTestId;
         /// <summary>
         /// Determines whether or not the test is active.
         /// </summary>
@@ -191,7 +191,7 @@ namespace Pulumi.Cloudflare
 
             string description,
 
-            string? dexTestId,
+            string dexTestId,
 
             bool enabled,
 

@@ -40,7 +40,7 @@ export interface GetMagicTransitSiteAclArgs {
     /**
      * Identifier
      */
-    aclId?: string;
+    aclId: string;
     /**
      * Identifier
      */
@@ -58,7 +58,7 @@ export interface GetMagicTransitSiteAclResult {
     /**
      * Identifier
      */
-    readonly aclId?: string;
+    readonly aclId: string;
     /**
      * Description for the ACL.
      */
@@ -121,7 +121,7 @@ export interface GetMagicTransitSiteAclOutputArgs {
     /**
      * Identifier
      */
-    aclId?: pulumi.Input<string>;
+    aclId: pulumi.Input<string>;
     /**
      * Identifier
      */

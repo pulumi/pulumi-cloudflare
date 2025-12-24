@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,24 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetSchemaValidationSchemasFilter {
     /**
-     * @return Omit the source-files of schemas and only retrieve their meta-data.
-     * 
-     */
-    private Boolean omitSource;
-    /**
      * @return Filter for enabled schemas
      * 
      */
     private @Nullable Boolean validationEnabled;
 
     private GetSchemaValidationSchemasFilter() {}
-    /**
-     * @return Omit the source-files of schemas and only retrieve their meta-data.
-     * 
-     */
-    public Boolean omitSource() {
-        return this.omitSource;
-    }
     /**
      * @return Filter for enabled schemas
      * 
@@ -48,23 +35,13 @@ public final class GetSchemaValidationSchemasFilter {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Boolean omitSource;
         private @Nullable Boolean validationEnabled;
         public Builder() {}
         public Builder(GetSchemaValidationSchemasFilter defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.omitSource = defaults.omitSource;
     	      this.validationEnabled = defaults.validationEnabled;
         }
 
-        @CustomType.Setter
-        public Builder omitSource(Boolean omitSource) {
-            if (omitSource == null) {
-              throw new MissingRequiredPropertyException("GetSchemaValidationSchemasFilter", "omitSource");
-            }
-            this.omitSource = omitSource;
-            return this;
-        }
         @CustomType.Setter
         public Builder validationEnabled(@Nullable Boolean validationEnabled) {
 
@@ -73,7 +50,6 @@ public final class GetSchemaValidationSchemasFilter {
         }
         public GetSchemaValidationSchemasFilter build() {
             final var _resultValue = new GetSchemaValidationSchemasFilter();
-            _resultValue.omitSource = omitSource;
             _resultValue.validationEnabled = validationEnabled;
             return _resultValue;
         }

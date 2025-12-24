@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetSpectrumApplicationDns;
 import com.pulumi.cloudflare.outputs.GetSpectrumApplicationEdgeIps;
+import com.pulumi.cloudflare.outputs.GetSpectrumApplicationFilter;
 import com.pulumi.cloudflare.outputs.GetSpectrumApplicationOriginDns;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -13,6 +14,8 @@ import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSpectrumApplicationResult {
@@ -20,7 +23,7 @@ public final class GetSpectrumApplicationResult {
      * @return App identifier.
      * 
      */
-    private String appId;
+    private @Nullable String appId;
     /**
      * @return Enables Argo Smart Routing for this application.
      * Notes: Only available for TCP applications with trafficType set to &#34;direct&#34;.
@@ -42,6 +45,7 @@ public final class GetSpectrumApplicationResult {
      * 
      */
     private GetSpectrumApplicationEdgeIps edgeIps;
+    private @Nullable GetSpectrumApplicationFilter filter;
     /**
      * @return App identifier.
      * 
@@ -108,8 +112,8 @@ public final class GetSpectrumApplicationResult {
      * @return App identifier.
      * 
      */
-    public String appId() {
-        return this.appId;
+    public Optional<String> appId() {
+        return Optional.ofNullable(this.appId);
     }
     /**
      * @return Enables Argo Smart Routing for this application.
@@ -139,6 +143,9 @@ public final class GetSpectrumApplicationResult {
      */
     public GetSpectrumApplicationEdgeIps edgeIps() {
         return this.edgeIps;
+    }
+    public Optional<GetSpectrumApplicationFilter> filter() {
+        return Optional.ofNullable(this.filter);
     }
     /**
      * @return App identifier.
@@ -232,11 +239,12 @@ public final class GetSpectrumApplicationResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String appId;
+        private @Nullable String appId;
         private Boolean argoSmartRouting;
         private String createdOn;
         private GetSpectrumApplicationDns dns;
         private GetSpectrumApplicationEdgeIps edgeIps;
+        private @Nullable GetSpectrumApplicationFilter filter;
         private String id;
         private Boolean ipFirewall;
         private String modifiedOn;
@@ -256,6 +264,7 @@ public final class GetSpectrumApplicationResult {
     	      this.createdOn = defaults.createdOn;
     	      this.dns = defaults.dns;
     	      this.edgeIps = defaults.edgeIps;
+    	      this.filter = defaults.filter;
     	      this.id = defaults.id;
     	      this.ipFirewall = defaults.ipFirewall;
     	      this.modifiedOn = defaults.modifiedOn;
@@ -270,10 +279,8 @@ public final class GetSpectrumApplicationResult {
         }
 
         @CustomType.Setter
-        public Builder appId(String appId) {
-            if (appId == null) {
-              throw new MissingRequiredPropertyException("GetSpectrumApplicationResult", "appId");
-            }
+        public Builder appId(@Nullable String appId) {
+
             this.appId = appId;
             return this;
         }
@@ -307,6 +314,12 @@ public final class GetSpectrumApplicationResult {
               throw new MissingRequiredPropertyException("GetSpectrumApplicationResult", "edgeIps");
             }
             this.edgeIps = edgeIps;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder filter(@Nullable GetSpectrumApplicationFilter filter) {
+
+            this.filter = filter;
             return this;
         }
         @CustomType.Setter
@@ -407,6 +420,7 @@ public final class GetSpectrumApplicationResult {
             _resultValue.createdOn = createdOn;
             _resultValue.dns = dns;
             _resultValue.edgeIps = edgeIps;
+            _resultValue.filter = filter;
             _resultValue.id = id;
             _resultValue.ipFirewall = ipFirewall;
             _resultValue.modifiedOn = modifiedOn;

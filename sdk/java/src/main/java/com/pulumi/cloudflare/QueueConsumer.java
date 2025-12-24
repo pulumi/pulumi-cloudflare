@@ -61,6 +61,10 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ## Import
+ * 
+ * ~&gt; This resource does not currently support `pulumi import`.
+ * 
  */
 @ResourceType(type="cloudflare:index/queueConsumer:QueueConsumer")
 public class QueueConsumer extends com.pulumi.resources.CustomResource {
@@ -83,14 +87,14 @@ public class QueueConsumer extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="consumerId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> consumerId;
+    private Output<String> consumerId;
 
     /**
      * @return A Resource identifier.
      * 
      */
-    public Output<Optional<String>> consumerId() {
-        return Codegen.optional(this.consumerId);
+    public Output<String> consumerId() {
+        return this.consumerId;
     }
     @Export(name="createdOn", refs={String.class}, tree="[0]")
     private Output<String> createdOn;

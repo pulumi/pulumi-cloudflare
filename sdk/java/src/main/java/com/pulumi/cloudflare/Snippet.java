@@ -66,6 +66,10 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ## Import
+ * 
+ * ~&gt; This resource does not currently support `pulumi import`.
+ * 
  */
 @ResourceType(type="cloudflare:index/snippet:Snippet")
 public class Snippet extends com.pulumi.resources.CustomResource {

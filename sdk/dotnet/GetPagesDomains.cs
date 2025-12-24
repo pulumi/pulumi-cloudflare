@@ -85,7 +85,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetPagesDomainsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
@@ -111,7 +111,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetPagesDomainsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -139,7 +139,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetPagesDomainsResult
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string AccountId;
         /// <summary>

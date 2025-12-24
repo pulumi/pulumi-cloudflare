@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetZeroTrustAccessTagPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -34,15 +32,15 @@ public final class GetZeroTrustAccessTagPlainArgs extends com.pulumi.resources.I
      * The name of the tag
      * 
      */
-    @Import(name="tagName")
-    private @Nullable String tagName;
+    @Import(name="tagName", required=true)
+    private String tagName;
 
     /**
      * @return The name of the tag
      * 
      */
-    public Optional<String> tagName() {
-        return Optional.ofNullable(this.tagName);
+    public String tagName() {
+        return this.tagName;
     }
 
     private GetZeroTrustAccessTagPlainArgs() {}
@@ -87,7 +85,7 @@ public final class GetZeroTrustAccessTagPlainArgs extends com.pulumi.resources.I
          * @return builder
          * 
          */
-        public Builder tagName(@Nullable String tagName) {
+        public Builder tagName(String tagName) {
             $.tagName = tagName;
             return this;
         }
@@ -95,6 +93,9 @@ public final class GetZeroTrustAccessTagPlainArgs extends com.pulumi.resources.I
         public GetZeroTrustAccessTagPlainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetZeroTrustAccessTagPlainArgs", "accountId");
+            }
+            if ($.tagName == null) {
+                throw new MissingRequiredPropertyException("GetZeroTrustAccessTagPlainArgs", "tagName");
             }
             return $;
         }

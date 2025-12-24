@@ -5,8 +5,8 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Object;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -51,18 +51,18 @@ public final class WorkerVersionAssetsConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Contains a list path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either &#39;/&#39; or &#39;!/&#39;. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
+     * When a boolean true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script. When a list of strings, contains path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either &#39;/&#39; or &#39;!/&#39;. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
      * 
      */
-    @Import(name="runWorkerFirsts")
-    private @Nullable Output<List<String>> runWorkerFirsts;
+    @Import(name="runWorkerFirst")
+    private @Nullable Output<Object> runWorkerFirst;
 
     /**
-     * @return Contains a list path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either &#39;/&#39; or &#39;!/&#39;. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
+     * @return When a boolean true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script. When a list of strings, contains path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either &#39;/&#39; or &#39;!/&#39;. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
      * 
      */
-    public Optional<Output<List<String>>> runWorkerFirsts() {
-        return Optional.ofNullable(this.runWorkerFirsts);
+    public Optional<Output<Object>> runWorkerFirst() {
+        return Optional.ofNullable(this.runWorkerFirst);
     }
 
     private WorkerVersionAssetsConfigArgs() {}
@@ -70,7 +70,7 @@ public final class WorkerVersionAssetsConfigArgs extends com.pulumi.resources.Re
     private WorkerVersionAssetsConfigArgs(WorkerVersionAssetsConfigArgs $) {
         this.htmlHandling = $.htmlHandling;
         this.notFoundHandling = $.notFoundHandling;
-        this.runWorkerFirsts = $.runWorkerFirsts;
+        this.runWorkerFirst = $.runWorkerFirst;
     }
 
     public static Builder builder() {
@@ -138,34 +138,24 @@ public final class WorkerVersionAssetsConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param runWorkerFirsts Contains a list path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either &#39;/&#39; or &#39;!/&#39;. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
+         * @param runWorkerFirst When a boolean true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script. When a list of strings, contains path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either &#39;/&#39; or &#39;!/&#39;. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
          * 
          * @return builder
          * 
          */
-        public Builder runWorkerFirsts(@Nullable Output<List<String>> runWorkerFirsts) {
-            $.runWorkerFirsts = runWorkerFirsts;
+        public Builder runWorkerFirst(@Nullable Output<Object> runWorkerFirst) {
+            $.runWorkerFirst = runWorkerFirst;
             return this;
         }
 
         /**
-         * @param runWorkerFirsts Contains a list path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either &#39;/&#39; or &#39;!/&#39;. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
+         * @param runWorkerFirst When a boolean true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script. When a list of strings, contains path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either &#39;/&#39; or &#39;!/&#39;. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
          * 
          * @return builder
          * 
          */
-        public Builder runWorkerFirsts(List<String> runWorkerFirsts) {
-            return runWorkerFirsts(Output.of(runWorkerFirsts));
-        }
-
-        /**
-         * @param runWorkerFirsts Contains a list path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either &#39;/&#39; or &#39;!/&#39;. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder runWorkerFirsts(String... runWorkerFirsts) {
-            return runWorkerFirsts(List.of(runWorkerFirsts));
+        public Builder runWorkerFirst(Object runWorkerFirst) {
+            return runWorkerFirst(Output.of(runWorkerFirst));
         }
 
         public WorkerVersionAssetsConfigArgs build() {

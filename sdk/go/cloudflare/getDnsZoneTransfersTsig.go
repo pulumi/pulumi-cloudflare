@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupDnsZoneTransfersTsig(ctx, &cloudflare.LookupDnsZoneTransfersTsigArgs{
 //				AccountId: "01a7362d577a6c3019a474fd6f485823",
-//				TsigId:    pulumi.StringRef("69cd1e104af3e6ed3cb344f263fd0d5a"),
+//				TsigId:    "69cd1e104af3e6ed3cb344f263fd0d5a",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,8 +49,8 @@ func LookupDnsZoneTransfersTsig(ctx *pulumi.Context, args *LookupDnsZoneTransfer
 
 // A collection of arguments for invoking getDnsZoneTransfersTsig.
 type LookupDnsZoneTransfersTsigArgs struct {
-	AccountId string  `pulumi:"accountId"`
-	TsigId    *string `pulumi:"tsigId"`
+	AccountId string `pulumi:"accountId"`
+	TsigId    string `pulumi:"tsigId"`
 }
 
 // A collection of values returned by getDnsZoneTransfersTsig.
@@ -63,8 +63,8 @@ type LookupDnsZoneTransfersTsigResult struct {
 	// TSIG key name.
 	Name string `pulumi:"name"`
 	// TSIG secret.
-	Secret string  `pulumi:"secret"`
-	TsigId *string `pulumi:"tsigId"`
+	Secret string `pulumi:"secret"`
+	TsigId string `pulumi:"tsigId"`
 }
 
 func LookupDnsZoneTransfersTsigOutput(ctx *pulumi.Context, args LookupDnsZoneTransfersTsigOutputArgs, opts ...pulumi.InvokeOption) LookupDnsZoneTransfersTsigResultOutput {
@@ -78,8 +78,8 @@ func LookupDnsZoneTransfersTsigOutput(ctx *pulumi.Context, args LookupDnsZoneTra
 
 // A collection of arguments for invoking getDnsZoneTransfersTsig.
 type LookupDnsZoneTransfersTsigOutputArgs struct {
-	AccountId pulumi.StringInput    `pulumi:"accountId"`
-	TsigId    pulumi.StringPtrInput `pulumi:"tsigId"`
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	TsigId    pulumi.StringInput `pulumi:"tsigId"`
 }
 
 func (LookupDnsZoneTransfersTsigOutputArgs) ElementType() reflect.Type {
@@ -125,8 +125,8 @@ func (o LookupDnsZoneTransfersTsigResultOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsZoneTransfersTsigResult) string { return v.Secret }).(pulumi.StringOutput)
 }
 
-func (o LookupDnsZoneTransfersTsigResultOutput) TsigId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupDnsZoneTransfersTsigResult) *string { return v.TsigId }).(pulumi.StringPtrOutput)
+func (o LookupDnsZoneTransfersTsigResultOutput) TsigId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDnsZoneTransfersTsigResult) string { return v.TsigId }).(pulumi.StringOutput)
 }
 
 func init() {

@@ -21,7 +21,8 @@ public final class GetCustomPagesResult {
     private String createdOn;
     private String description;
     /**
-     * @return The ID of this resource.
+     * @return Error Page Types
+     * Available values: &#34;1000*errors&#34;, &#34;500*errors&#34;, &#34;basic*challenge&#34;, &#34;country*challenge&#34;, &#34;ip*block&#34;, &#34;managed*challenge&#34;, &#34;ratelimit*block&#34;, &#34;under*attack&#34;, &#34;wafBlock&#34;.
      * 
      */
     private String id;
@@ -66,7 +67,8 @@ public final class GetCustomPagesResult {
         return this.description;
     }
     /**
-     * @return The ID of this resource.
+     * @return Error Page Types
+     * Available values: &#34;1000*errors&#34;, &#34;500*errors&#34;, &#34;basic*challenge&#34;, &#34;country*challenge&#34;, &#34;ip*block&#34;, &#34;managed*challenge&#34;, &#34;ratelimit*block&#34;, &#34;under*attack&#34;, &#34;wafBlock&#34;.
      * 
      */
     public String id() {

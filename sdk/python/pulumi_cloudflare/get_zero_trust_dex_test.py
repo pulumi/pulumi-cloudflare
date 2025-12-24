@@ -86,7 +86,7 @@ class GetZeroTrustDexTestResult:
 
     @_builtins.property
     @pulumi.getter(name="dexTestId")
-    def dex_test_id(self) -> Optional[_builtins.str]:
+    def dex_test_id(self) -> _builtins.str:
         """
         The unique identifier for the test.
         """
@@ -204,7 +204,7 @@ def get_zero_trust_dex_test(account_id: Optional[_builtins.str] = None,
         targeted=pulumi.get(__ret__, 'targeted'),
         test_id=pulumi.get(__ret__, 'test_id'))
 def get_zero_trust_dex_test_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                   dex_test_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                   dex_test_id: Optional[pulumi.Input[_builtins.str]] = None,
                                    target_policies: Optional[pulumi.Input[Optional[Sequence[Union['GetZeroTrustDexTestTargetPolicyArgs', 'GetZeroTrustDexTestTargetPolicyArgsDict']]]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDexTestResult]:
     """

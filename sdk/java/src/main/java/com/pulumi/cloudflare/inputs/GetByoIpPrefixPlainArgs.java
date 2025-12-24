@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetByoIpPrefixPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -34,15 +32,15 @@ public final class GetByoIpPrefixPlainArgs extends com.pulumi.resources.InvokeAr
      * Identifier of an IP Prefix.
      * 
      */
-    @Import(name="prefixId")
-    private @Nullable String prefixId;
+    @Import(name="prefixId", required=true)
+    private String prefixId;
 
     /**
      * @return Identifier of an IP Prefix.
      * 
      */
-    public Optional<String> prefixId() {
-        return Optional.ofNullable(this.prefixId);
+    public String prefixId() {
+        return this.prefixId;
     }
 
     private GetByoIpPrefixPlainArgs() {}
@@ -87,7 +85,7 @@ public final class GetByoIpPrefixPlainArgs extends com.pulumi.resources.InvokeAr
          * @return builder
          * 
          */
-        public Builder prefixId(@Nullable String prefixId) {
+        public Builder prefixId(String prefixId) {
             $.prefixId = prefixId;
             return this;
         }
@@ -95,6 +93,9 @@ public final class GetByoIpPrefixPlainArgs extends com.pulumi.resources.InvokeAr
         public GetByoIpPrefixPlainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetByoIpPrefixPlainArgs", "accountId");
+            }
+            if ($.prefixId == null) {
+                throw new MissingRequiredPropertyException("GetByoIpPrefixPlainArgs", "prefixId");
             }
             return $;
         }

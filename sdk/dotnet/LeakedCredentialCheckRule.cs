@@ -29,6 +29,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule example '&lt;zone_id&gt;/&lt;detection_id&gt;'
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule")]
     public partial class LeakedCredentialCheckRule : global::Pulumi.CustomResource

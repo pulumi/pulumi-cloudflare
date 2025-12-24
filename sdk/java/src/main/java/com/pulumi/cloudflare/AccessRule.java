@@ -158,14 +158,14 @@ public class AccessRule extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="notes", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> notes;
+    private Output<String> notes;
 
     /**
      * @return An informative summary of the rule, typically used as a reminder or explanation.
      * 
      */
-    public Output<Optional<String>> notes() {
-        return Codegen.optional(this.notes);
+    public Output<String> notes() {
+        return this.notes;
     }
     /**
      * All zones owned by the user will have the rule applied.

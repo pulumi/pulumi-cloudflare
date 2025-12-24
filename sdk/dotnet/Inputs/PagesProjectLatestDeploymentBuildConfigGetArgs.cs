@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? BuildCommand { get; set; }
 
         /// <summary>
-        /// Output directory of the build.
+        /// Assets output directory of the build.
         /// </summary>
         [Input("destinationDir")]
         public Input<string>? DestinationDir { get; set; }

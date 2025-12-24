@@ -5,6 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * > `cloudflare.ApiShieldOperationSchemaValidationSettings` is in a deprecation phase and will be removed in the future.
+ *   Instead, please utilize the cloudflare.SchemaValidationOperationSettings resource instead.
+ *
  * ## Example Usage
  *
  * ```typescript

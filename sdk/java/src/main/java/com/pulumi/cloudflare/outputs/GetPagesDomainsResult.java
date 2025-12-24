@@ -20,6 +20,10 @@ public final class GetPagesDomainsResult {
     private String createdOn;
     private String domainId;
     private String id;
+    /**
+     * @return The domain name.
+     * 
+     */
     private String name;
     /**
      * @return Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;blocked&#34;, &#34;error&#34;.
@@ -47,6 +51,10 @@ public final class GetPagesDomainsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The domain name.
+     * 
+     */
     public String name() {
         return this.name;
     }

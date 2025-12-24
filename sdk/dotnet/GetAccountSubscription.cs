@@ -133,7 +133,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Frequency;
         /// <summary>
-        /// Subscription identifier tag.
+        /// Identifier
         /// </summary>
         public readonly string Id;
         /// <summary>

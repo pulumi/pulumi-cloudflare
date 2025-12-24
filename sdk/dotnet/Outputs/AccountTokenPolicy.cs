@@ -19,30 +19,23 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Effect;
         /// <summary>
-        /// Policy identifier.
-        /// </summary>
-        public readonly string? Id;
-        /// <summary>
         /// A set of permission groups that are specified to the policy.
         /// </summary>
         public readonly ImmutableArray<Outputs.AccountTokenPolicyPermissionGroup> PermissionGroups;
         /// <summary>
-        /// A list of resource names that the policy applies to.
+        /// A json object representing the resources that are specified to the policy.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Resources;
+        public readonly string Resources;
 
         [OutputConstructor]
         private AccountTokenPolicy(
             string effect,
 
-            string? id,
-
             ImmutableArray<Outputs.AccountTokenPolicyPermissionGroup> permissionGroups,
 
-            ImmutableDictionary<string, string> resources)
+            string resources)
         {
             Effect = effect;
-            Id = id;
             PermissionGroups = permissionGroups;
             Resources = resources;
         }

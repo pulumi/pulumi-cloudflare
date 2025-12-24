@@ -36,7 +36,7 @@ export interface GetNotificationPolicyWebhooksArgs {
     /**
      * The unique identifier of a webhook
      */
-    webhookId?: string;
+    webhookId: string;
 }
 
 /**
@@ -83,7 +83,7 @@ export interface GetNotificationPolicyWebhooksResult {
     /**
      * The unique identifier of a webhook
      */
-    readonly webhookId?: string;
+    readonly webhookId: string;
 }
 /**
  * ## Example Usage
@@ -117,5 +117,5 @@ export interface GetNotificationPolicyWebhooksOutputArgs {
     /**
      * The unique identifier of a webhook
      */
-    webhookId?: pulumi.Input<string>;
+    webhookId: pulumi.Input<string>;
 }

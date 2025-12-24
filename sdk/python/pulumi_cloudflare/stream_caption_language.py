@@ -231,6 +231,10 @@ class StreamCaptionLanguage(pulumi.CustomResource):
             language="tr")
         ```
 
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -256,6 +260,10 @@ class StreamCaptionLanguage(pulumi.CustomResource):
             identifier="ea95132c15732412d22c1476fa83f27a",
             language="tr")
         ```
+
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
 
         :param str resource_name: The name of the resource.
         :param StreamCaptionLanguageArgs args: The arguments to use to populate this resource's properties.

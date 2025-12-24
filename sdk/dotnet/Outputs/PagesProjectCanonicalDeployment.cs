@@ -66,6 +66,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// Short Id (8 character) of the deployment.
         /// </summary>
         public readonly string? ShortId;
+        /// <summary>
+        /// Configs for the project source control.
+        /// </summary>
         public readonly Outputs.PagesProjectCanonicalDeploymentSource? Source;
         /// <summary>
         /// List of past stages.
@@ -75,6 +78,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// The live URL to view this deployment.
         /// </summary>
         public readonly string? Url;
+        /// <summary>
+        /// Whether the deployment uses functions.
+        /// </summary>
+        public readonly bool? UsesFunctions;
 
         [OutputConstructor]
         private PagesProjectCanonicalDeployment(
@@ -108,7 +115,9 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<Outputs.PagesProjectCanonicalDeploymentStage> stages,
 
-            string? url)
+            string? url,
+
+            bool? usesFunctions)
         {
             Aliases = aliases;
             BuildConfig = buildConfig;
@@ -126,6 +135,7 @@ namespace Pulumi.Cloudflare.Outputs
             Source = source;
             Stages = stages;
             Url = url;
+            UsesFunctions = usesFunctions;
         }
     }
 }

@@ -3,11 +3,14 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetCertificatePackFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetCertificatePackArgs extends com.pulumi.resources.InvokeArgs {
@@ -18,15 +21,22 @@ public final class GetCertificatePackArgs extends com.pulumi.resources.InvokeArg
      * Identifier.
      * 
      */
-    @Import(name="certificatePackId", required=true)
-    private Output<String> certificatePackId;
+    @Import(name="certificatePackId")
+    private @Nullable Output<String> certificatePackId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> certificatePackId() {
-        return this.certificatePackId;
+    public Optional<Output<String>> certificatePackId() {
+        return Optional.ofNullable(this.certificatePackId);
+    }
+
+    @Import(name="filter")
+    private @Nullable Output<GetCertificatePackFilterArgs> filter;
+
+    public Optional<Output<GetCertificatePackFilterArgs>> filter() {
+        return Optional.ofNullable(this.filter);
     }
 
     /**
@@ -48,6 +58,7 @@ public final class GetCertificatePackArgs extends com.pulumi.resources.InvokeArg
 
     private GetCertificatePackArgs(GetCertificatePackArgs $) {
         this.certificatePackId = $.certificatePackId;
+        this.filter = $.filter;
         this.zoneId = $.zoneId;
     }
 
@@ -75,7 +86,7 @@ public final class GetCertificatePackArgs extends com.pulumi.resources.InvokeArg
          * @return builder
          * 
          */
-        public Builder certificatePackId(Output<String> certificatePackId) {
+        public Builder certificatePackId(@Nullable Output<String> certificatePackId) {
             $.certificatePackId = certificatePackId;
             return this;
         }
@@ -88,6 +99,15 @@ public final class GetCertificatePackArgs extends com.pulumi.resources.InvokeArg
          */
         public Builder certificatePackId(String certificatePackId) {
             return certificatePackId(Output.of(certificatePackId));
+        }
+
+        public Builder filter(@Nullable Output<GetCertificatePackFilterArgs> filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        public Builder filter(GetCertificatePackFilterArgs filter) {
+            return filter(Output.of(filter));
         }
 
         /**
@@ -112,9 +132,6 @@ public final class GetCertificatePackArgs extends com.pulumi.resources.InvokeArg
         }
 
         public GetCertificatePackArgs build() {
-            if ($.certificatePackId == null) {
-                throw new MissingRequiredPropertyException("GetCertificatePackArgs", "certificatePackId");
-            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("GetCertificatePackArgs", "zoneId");
             }

@@ -227,10 +227,183 @@ class ZoneSetting(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zone_setting = cloudflare.ZoneSetting("example_zone_setting",
+        # Basic on/off setting
+        always_online = cloudflare.ZoneSetting("always_online",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="always_online",
             value="on")
+        # String value with specific choices
+        min_tls_version = cloudflare.ZoneSetting("min_tls_version",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            setting_id="min_tls_version",
+            value="1.2")
+        # Numeric value
+        browser_cache_ttl = cloudflare.ZoneSetting("browser_cache_ttl",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            setting_id="browser_cache_ttl",
+            value=14400)
+        # Array/List value
+        ciphers = cloudflare.ZoneSetting("ciphers",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            setting_id="ciphers",
+            value=[
+                "ECDHE-ECDSA-AES128-GCM-SHA256",
+                "ECDHE-ECDSA-CHACHA20-POLY1305",
+            ])
+        # Nested object value
+        security_header = cloudflare.ZoneSetting("security_header",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            setting_id="security_header",
+            value={
+                "strictTransportSecurity": {
+                    "enabled": True,
+                    "includeSubdomains": True,
+                    "maxAge": 86400,
+                    "nosniff": True,
+                    "preload": False,
+                },
+            })
+        # Special case: ssl_recommender uses 'enabled' instead of 'value'
+        ssl_recommender = cloudflare.ZoneSetting("ssl_recommender",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            setting_id="ssl_recommender",
+            enabled=True)
+        ```
+
+        ### Additional Examples
+
+        ### String Value with Choices
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Minimum TLS Version
+        min_tls = cloudflare.ZoneSetting("min_tls",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            setting_id="min_tls_version",
+            value="1.2")
+        # SSL/TLS Mode
+        ssl = cloudflare.ZoneSetting("ssl",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            setting_id="ssl",
+            value="strict")
+        # Security Level
+        security_level = cloudflare.ZoneSetting("security_level",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            setting_id="security_level",
+            value="medium")
+        # Cache Level
+        cache_level = cloudflare.ZoneSetting("cache_level",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            setting_id="cache_level",
+            value="aggressive")
+        ```
+
+        ### Numeric Values
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Browser Cache TTL
+        browser_cache_ttl = cloudflare.ZoneSetting("browser_cache_ttl",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            setting_id="browser_cache_ttl",
+            value=14400)
+        # Challenge TTL
+        challenge_ttl = cloudflare.ZoneSetting("challenge_ttl",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            setting_id="challenge_ttl",
+            value=1800)
+        # Max Upload Size
+        max_upload = cloudflare.ZoneSetting("max_upload",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            setting_id="max_upload",
+            value=100)
+        ```
+
+        ### Special Cases
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # 0-RTT (Zero Round Trip Time)
+        zero_rtt = cloudflare.ZoneSetting("zero_rtt",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            setting_id="0rtt",
+            value="on")
+        # Network Error Logging (NEL)
+        nel = cloudflare.ZoneSetting("nel",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            setting_id="nel",
+            value={
+                "enabled": True,
+            })
+        ```
+
+        ### Common Configuration Sets
+
+        ### Security Hardening Configuration
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Enable HTTPS everywhere
+        always_use_https = cloudflare.ZoneSetting("always_use_https",
+            zone_id=zone_id,
+            setting_id="always_use_https",
+            value="on")
+        # Automatic HTTPS Rewrites
+        automatic_https_rewrites = cloudflare.ZoneSetting("automatic_https_rewrites",
+            zone_id=zone_id,
+            setting_id="automatic_https_rewrites",
+            value="on")
+        # Minimum TLS 1.2
+        min_tls_version = cloudflare.ZoneSetting("min_tls_version",
+            zone_id=zone_id,
+            setting_id="min_tls_version",
+            value="1.2")
+        # Enable TLS 1.3
+        tls13 = cloudflare.ZoneSetting("tls_1_3",
+            zone_id=zone_id,
+            setting_id="tls_1_3",
+            value="on")
+        # Strict SSL
+        ssl = cloudflare.ZoneSetting("ssl",
+            zone_id=zone_id,
+            setting_id="ssl",
+            value="strict")
+        ```
+
+        ### Performance Optimization Configuration
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Enable HTTP/3
+        http3 = cloudflare.ZoneSetting("http3",
+            zone_id=zone_id,
+            setting_id="http3",
+            value="on")
+        # Enable Brotli Compression
+        brotli = cloudflare.ZoneSetting("brotli",
+            zone_id=zone_id,
+            setting_id="brotli",
+            value="on")
+        # Early Hints
+        early_hints = cloudflare.ZoneSetting("early_hints",
+            zone_id=zone_id,
+            setting_id="early_hints",
+            value="on")
+        # Aggressive Caching
+        cache_level = cloudflare.ZoneSetting("cache_level",
+            zone_id=zone_id,
+            setting_id="cache_level",
+            value="aggressive")
+        # Browser Cache TTL
+        browser_cache = cloudflare.ZoneSetting("browser_cache",
+            zone_id=zone_id,
+            setting_id="browser_cache_ttl",
+            value=14400)
         ```
 
         ## Import
@@ -261,10 +434,183 @@ class ZoneSetting(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zone_setting = cloudflare.ZoneSetting("example_zone_setting",
+        # Basic on/off setting
+        always_online = cloudflare.ZoneSetting("always_online",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="always_online",
             value="on")
+        # String value with specific choices
+        min_tls_version = cloudflare.ZoneSetting("min_tls_version",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            setting_id="min_tls_version",
+            value="1.2")
+        # Numeric value
+        browser_cache_ttl = cloudflare.ZoneSetting("browser_cache_ttl",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            setting_id="browser_cache_ttl",
+            value=14400)
+        # Array/List value
+        ciphers = cloudflare.ZoneSetting("ciphers",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            setting_id="ciphers",
+            value=[
+                "ECDHE-ECDSA-AES128-GCM-SHA256",
+                "ECDHE-ECDSA-CHACHA20-POLY1305",
+            ])
+        # Nested object value
+        security_header = cloudflare.ZoneSetting("security_header",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            setting_id="security_header",
+            value={
+                "strictTransportSecurity": {
+                    "enabled": True,
+                    "includeSubdomains": True,
+                    "maxAge": 86400,
+                    "nosniff": True,
+                    "preload": False,
+                },
+            })
+        # Special case: ssl_recommender uses 'enabled' instead of 'value'
+        ssl_recommender = cloudflare.ZoneSetting("ssl_recommender",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            setting_id="ssl_recommender",
+            enabled=True)
+        ```
+
+        ### Additional Examples
+
+        ### String Value with Choices
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Minimum TLS Version
+        min_tls = cloudflare.ZoneSetting("min_tls",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            setting_id="min_tls_version",
+            value="1.2")
+        # SSL/TLS Mode
+        ssl = cloudflare.ZoneSetting("ssl",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            setting_id="ssl",
+            value="strict")
+        # Security Level
+        security_level = cloudflare.ZoneSetting("security_level",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            setting_id="security_level",
+            value="medium")
+        # Cache Level
+        cache_level = cloudflare.ZoneSetting("cache_level",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            setting_id="cache_level",
+            value="aggressive")
+        ```
+
+        ### Numeric Values
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Browser Cache TTL
+        browser_cache_ttl = cloudflare.ZoneSetting("browser_cache_ttl",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            setting_id="browser_cache_ttl",
+            value=14400)
+        # Challenge TTL
+        challenge_ttl = cloudflare.ZoneSetting("challenge_ttl",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            setting_id="challenge_ttl",
+            value=1800)
+        # Max Upload Size
+        max_upload = cloudflare.ZoneSetting("max_upload",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            setting_id="max_upload",
+            value=100)
+        ```
+
+        ### Special Cases
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # 0-RTT (Zero Round Trip Time)
+        zero_rtt = cloudflare.ZoneSetting("zero_rtt",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            setting_id="0rtt",
+            value="on")
+        # Network Error Logging (NEL)
+        nel = cloudflare.ZoneSetting("nel",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            setting_id="nel",
+            value={
+                "enabled": True,
+            })
+        ```
+
+        ### Common Configuration Sets
+
+        ### Security Hardening Configuration
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Enable HTTPS everywhere
+        always_use_https = cloudflare.ZoneSetting("always_use_https",
+            zone_id=zone_id,
+            setting_id="always_use_https",
+            value="on")
+        # Automatic HTTPS Rewrites
+        automatic_https_rewrites = cloudflare.ZoneSetting("automatic_https_rewrites",
+            zone_id=zone_id,
+            setting_id="automatic_https_rewrites",
+            value="on")
+        # Minimum TLS 1.2
+        min_tls_version = cloudflare.ZoneSetting("min_tls_version",
+            zone_id=zone_id,
+            setting_id="min_tls_version",
+            value="1.2")
+        # Enable TLS 1.3
+        tls13 = cloudflare.ZoneSetting("tls_1_3",
+            zone_id=zone_id,
+            setting_id="tls_1_3",
+            value="on")
+        # Strict SSL
+        ssl = cloudflare.ZoneSetting("ssl",
+            zone_id=zone_id,
+            setting_id="ssl",
+            value="strict")
+        ```
+
+        ### Performance Optimization Configuration
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Enable HTTP/3
+        http3 = cloudflare.ZoneSetting("http3",
+            zone_id=zone_id,
+            setting_id="http3",
+            value="on")
+        # Enable Brotli Compression
+        brotli = cloudflare.ZoneSetting("brotli",
+            zone_id=zone_id,
+            setting_id="brotli",
+            value="on")
+        # Early Hints
+        early_hints = cloudflare.ZoneSetting("early_hints",
+            zone_id=zone_id,
+            setting_id="early_hints",
+            value="on")
+        # Aggressive Caching
+        cache_level = cloudflare.ZoneSetting("cache_level",
+            zone_id=zone_id,
+            setting_id="cache_level",
+            value="aggressive")
+        # Browser Cache TTL
+        browser_cache = cloudflare.ZoneSetting("browser_cache",
+            zone_id=zone_id,
+            setting_id="browser_cache_ttl",
+            value=14400)
         ```
 
         ## Import

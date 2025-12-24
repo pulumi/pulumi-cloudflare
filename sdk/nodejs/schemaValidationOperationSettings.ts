@@ -17,6 +17,10 @@ import * as utilities from "./utilities";
  *     mitigationAction: "block",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ~> This resource does not currently support `pulumi import`.
  */
 export class SchemaValidationOperationSettings extends pulumi.CustomResource {
     /**

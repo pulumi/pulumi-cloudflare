@@ -14,6 +14,7 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
+import java.util.List;
 import javax.annotation.Nullable;
 
 /**
@@ -108,6 +109,20 @@ public class MagicTransitConnector extends com.pulumi.resources.CustomResource {
     public Output<Double> interruptWindowHourOfDay() {
         return this.interruptWindowHourOfDay;
     }
+    /**
+     * License key for the connector. This is only returned on creation and will not be available in subsequent reads.
+     * 
+     */
+    @Export(name="licenseKey", refs={String.class}, tree="[0]")
+    private Output<String> licenseKey;
+
+    /**
+     * @return License key for the connector. This is only returned on creation and will not be available in subsequent reads.
+     * 
+     */
+    public Output<String> licenseKey() {
+        return this.licenseKey;
+    }
     @Export(name="notes", refs={String.class}, tree="[0]")
     private Output<String> notes;
 
@@ -160,6 +175,9 @@ public class MagicTransitConnector extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "licenseKey"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

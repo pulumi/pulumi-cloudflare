@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNotificationPolicyWebhooksResult {
@@ -62,7 +60,7 @@ public final class GetNotificationPolicyWebhooksResult {
      * @return The unique identifier of a webhook
      * 
      */
-    private @Nullable String webhookId;
+    private String webhookId;
 
     private GetNotificationPolicyWebhooksResult() {}
     /**
@@ -133,8 +131,8 @@ public final class GetNotificationPolicyWebhooksResult {
      * @return The unique identifier of a webhook
      * 
      */
-    public Optional<String> webhookId() {
-        return Optional.ofNullable(this.webhookId);
+    public String webhookId() {
+        return this.webhookId;
     }
 
     public static Builder builder() {
@@ -155,7 +153,7 @@ public final class GetNotificationPolicyWebhooksResult {
         private String secret;
         private String type;
         private String url;
-        private @Nullable String webhookId;
+        private String webhookId;
         public Builder() {}
         public Builder(GetNotificationPolicyWebhooksResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -244,8 +242,10 @@ public final class GetNotificationPolicyWebhooksResult {
             return this;
         }
         @CustomType.Setter
-        public Builder webhookId(@Nullable String webhookId) {
-
+        public Builder webhookId(String webhookId) {
+            if (webhookId == null) {
+              throw new MissingRequiredPropertyException("GetNotificationPolicyWebhooksResult", "webhookId");
+            }
             this.webhookId = webhookId;
             return this;
         }

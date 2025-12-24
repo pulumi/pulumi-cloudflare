@@ -56,7 +56,7 @@ type LookupZoneHoldArgs struct {
 type LookupZoneHoldResult struct {
 	Hold      bool   `pulumi:"hold"`
 	HoldAfter string `pulumi:"holdAfter"`
-	// The provider-assigned unique ID for this managed resource.
+	// Identifier.
 	Id                string `pulumi:"id"`
 	IncludeSubdomains string `pulumi:"includeSubdomains"`
 	// Identifier.
@@ -105,7 +105,7 @@ func (o LookupZoneHoldResultOutput) HoldAfter() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneHoldResult) string { return v.HoldAfter }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Identifier.
 func (o LookupZoneHoldResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneHoldResult) string { return v.Id }).(pulumi.StringOutput)
 }

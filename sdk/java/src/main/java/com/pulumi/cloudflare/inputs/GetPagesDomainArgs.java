@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetPagesDomainArgs extends com.pulumi.resources.InvokeArgs {
@@ -17,14 +15,14 @@ public final class GetPagesDomainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetPagesDomainArgs Empty = new GetPagesDomainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -32,18 +30,18 @@ public final class GetPagesDomainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Name of the domain.
+     * The domain name.
      * 
      */
-    @Import(name="domainName")
-    private @Nullable Output<String> domainName;
+    @Import(name="domainName", required=true)
+    private Output<String> domainName;
 
     /**
-     * @return Name of the domain.
+     * @return The domain name.
      * 
      */
-    public Optional<Output<String>> domainName() {
-        return Optional.ofNullable(this.domainName);
+    public Output<String> domainName() {
+        return this.domainName;
     }
 
     /**
@@ -88,7 +86,7 @@ public final class GetPagesDomainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -99,7 +97,7 @@ public final class GetPagesDomainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -109,18 +107,18 @@ public final class GetPagesDomainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param domainName Name of the domain.
+         * @param domainName The domain name.
          * 
          * @return builder
          * 
          */
-        public Builder domainName(@Nullable Output<String> domainName) {
+        public Builder domainName(Output<String> domainName) {
             $.domainName = domainName;
             return this;
         }
 
         /**
-         * @param domainName Name of the domain.
+         * @param domainName The domain name.
          * 
          * @return builder
          * 
@@ -153,6 +151,9 @@ public final class GetPagesDomainArgs extends com.pulumi.resources.InvokeArgs {
         public GetPagesDomainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetPagesDomainArgs", "accountId");
+            }
+            if ($.domainName == null) {
+                throw new MissingRequiredPropertyException("GetPagesDomainArgs", "domainName");
             }
             if ($.projectName == null) {
                 throw new MissingRequiredPropertyException("GetPagesDomainArgs", "projectName");

@@ -104,6 +104,9 @@ import (
 //						Ipv4Fallback: pulumi.String("192.0.2.3"),
 //						Ipv6:         pulumi.String("2001:DB8::/64"),
 //					},
+//					ForensicCopy: &cloudflare.ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
 //					IgnoreCnameCategoryMatches:      pulumi.Bool(true),
 //					InsecureDisableDnssecValidation: pulumi.Bool(false),
 //					IpCategories:                    pulumi.Bool(true),

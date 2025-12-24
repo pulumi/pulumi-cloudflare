@@ -5,21 +5,20 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class PagesProjectDeploymentConfigsProductionMtlsCertificatesArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PagesProjectDeploymentConfigsProductionMtlsCertificatesArgs Empty = new PagesProjectDeploymentConfigsProductionMtlsCertificatesArgs();
 
-    @Import(name="certificateId")
-    private @Nullable Output<String> certificateId;
+    @Import(name="certificateId", required=true)
+    private Output<String> certificateId;
 
-    public Optional<Output<String>> certificateId() {
-        return Optional.ofNullable(this.certificateId);
+    public Output<String> certificateId() {
+        return this.certificateId;
     }
 
     private PagesProjectDeploymentConfigsProductionMtlsCertificatesArgs() {}
@@ -46,7 +45,7 @@ public final class PagesProjectDeploymentConfigsProductionMtlsCertificatesArgs e
             $ = new PagesProjectDeploymentConfigsProductionMtlsCertificatesArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder certificateId(@Nullable Output<String> certificateId) {
+        public Builder certificateId(Output<String> certificateId) {
             $.certificateId = certificateId;
             return this;
         }
@@ -56,6 +55,9 @@ public final class PagesProjectDeploymentConfigsProductionMtlsCertificatesArgs e
         }
 
         public PagesProjectDeploymentConfigsProductionMtlsCertificatesArgs build() {
+            if ($.certificateId == null) {
+                throw new MissingRequiredPropertyException("PagesProjectDeploymentConfigsProductionMtlsCertificatesArgs", "certificateId");
+            }
             return $;
         }
     }

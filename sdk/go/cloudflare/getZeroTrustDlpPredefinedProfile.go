@@ -55,33 +55,21 @@ type LookupZeroTrustDlpPredefinedProfileArgs struct {
 
 // A collection of values returned by getZeroTrustDlpPredefinedProfile.
 type LookupZeroTrustDlpPredefinedProfileResult struct {
-	AccountId        string `pulumi:"accountId"`
-	AiContextEnabled bool   `pulumi:"aiContextEnabled"`
-	// Related DLP policies will trigger when the match count exceeds the number set.
-	AllowedMatchCount int `pulumi:"allowedMatchCount"`
-	// Available values: "low", "medium", "high", "veryHigh".
-	ConfidenceThreshold string `pulumi:"confidenceThreshold"`
-	// Scan the context of predefined entries to only return matches surrounded by keywords.
-	//
+	AccountId           string   `pulumi:"accountId"`
+	AiContextEnabled    bool     `pulumi:"aiContextEnabled"`
+	AllowedMatchCount   int      `pulumi:"allowedMatchCount"`
+	ConfidenceThreshold string   `pulumi:"confidenceThreshold"`
+	EnabledEntries      []string `pulumi:"enabledEntries"`
 	// Deprecated: This attribute is deprecated.
-	ContextAwareness GetZeroTrustDlpPredefinedProfileContextAwareness `pulumi:"contextAwareness"`
-	// When the profile was created.
-	CreatedAt string `pulumi:"createdAt"`
-	// The description of the profile.
-	Description string                                  `pulumi:"description"`
-	Entries     []GetZeroTrustDlpPredefinedProfileEntry `pulumi:"entries"`
-	// The id of the profile (uuid).
+	Entries []GetZeroTrustDlpPredefinedProfileEntry `pulumi:"entries"`
+	// The ID of this resource.
 	Id string `pulumi:"id"`
-	// The name of the profile.
+	// The name of the predefined profile.
 	Name       string `pulumi:"name"`
 	OcrEnabled bool   `pulumi:"ocrEnabled"`
 	// Whether this profile can be accessed by anyone.
 	OpenAccess bool   `pulumi:"openAccess"`
 	ProfileId  string `pulumi:"profileId"`
-	// Available values: "custom", "predefined", "integration".
-	Type string `pulumi:"type"`
-	// When the profile was lasted updated.
-	UpdatedAt string `pulumi:"updatedAt"`
 }
 
 func LookupZeroTrustDlpPredefinedProfileOutput(ctx *pulumi.Context, args LookupZeroTrustDlpPredefinedProfileOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustDlpPredefinedProfileResultOutput {
@@ -126,47 +114,31 @@ func (o LookupZeroTrustDlpPredefinedProfileResultOutput) AiContextEnabled() pulu
 	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedProfileResult) bool { return v.AiContextEnabled }).(pulumi.BoolOutput)
 }
 
-// Related DLP policies will trigger when the match count exceeds the number set.
 func (o LookupZeroTrustDlpPredefinedProfileResultOutput) AllowedMatchCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedProfileResult) int { return v.AllowedMatchCount }).(pulumi.IntOutput)
 }
 
-// Available values: "low", "medium", "high", "veryHigh".
 func (o LookupZeroTrustDlpPredefinedProfileResultOutput) ConfidenceThreshold() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedProfileResult) string { return v.ConfidenceThreshold }).(pulumi.StringOutput)
 }
 
-// Scan the context of predefined entries to only return matches surrounded by keywords.
-//
+func (o LookupZeroTrustDlpPredefinedProfileResultOutput) EnabledEntries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedProfileResult) []string { return v.EnabledEntries }).(pulumi.StringArrayOutput)
+}
+
 // Deprecated: This attribute is deprecated.
-func (o LookupZeroTrustDlpPredefinedProfileResultOutput) ContextAwareness() GetZeroTrustDlpPredefinedProfileContextAwarenessOutput {
-	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedProfileResult) GetZeroTrustDlpPredefinedProfileContextAwareness {
-		return v.ContextAwareness
-	}).(GetZeroTrustDlpPredefinedProfileContextAwarenessOutput)
-}
-
-// When the profile was created.
-func (o LookupZeroTrustDlpPredefinedProfileResultOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedProfileResult) string { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
-// The description of the profile.
-func (o LookupZeroTrustDlpPredefinedProfileResultOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedProfileResult) string { return v.Description }).(pulumi.StringOutput)
-}
-
 func (o LookupZeroTrustDlpPredefinedProfileResultOutput) Entries() GetZeroTrustDlpPredefinedProfileEntryArrayOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedProfileResult) []GetZeroTrustDlpPredefinedProfileEntry {
 		return v.Entries
 	}).(GetZeroTrustDlpPredefinedProfileEntryArrayOutput)
 }
 
-// The id of the profile (uuid).
+// The ID of this resource.
 func (o LookupZeroTrustDlpPredefinedProfileResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedProfileResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the profile.
+// The name of the predefined profile.
 func (o LookupZeroTrustDlpPredefinedProfileResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedProfileResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -182,16 +154,6 @@ func (o LookupZeroTrustDlpPredefinedProfileResultOutput) OpenAccess() pulumi.Boo
 
 func (o LookupZeroTrustDlpPredefinedProfileResultOutput) ProfileId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedProfileResult) string { return v.ProfileId }).(pulumi.StringOutput)
-}
-
-// Available values: "custom", "predefined", "integration".
-func (o LookupZeroTrustDlpPredefinedProfileResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedProfileResult) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// When the profile was lasted updated.
-func (o LookupZeroTrustDlpPredefinedProfileResultOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedProfileResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 func init() {

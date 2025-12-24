@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupMagicTransitConnector(ctx, &cloudflare.LookupMagicTransitConnectorArgs{
 //				AccountId:   "023e105f4ecef8ad9ca31a8372d0c353",
-//				ConnectorId: pulumi.StringRef("connector_id"),
+//				ConnectorId: "connector_id",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -50,8 +50,8 @@ func LookupMagicTransitConnector(ctx *pulumi.Context, args *LookupMagicTransitCo
 // A collection of arguments for invoking getMagicTransitConnector.
 type LookupMagicTransitConnectorArgs struct {
 	// Account identifier
-	AccountId   string  `pulumi:"accountId"`
-	ConnectorId *string `pulumi:"connectorId"`
+	AccountId   string `pulumi:"accountId"`
+	ConnectorId string `pulumi:"connectorId"`
 }
 
 // A collection of values returned by getMagicTransitConnector.
@@ -59,7 +59,7 @@ type LookupMagicTransitConnectorResult struct {
 	// Account identifier
 	AccountId   string                         `pulumi:"accountId"`
 	Activated   bool                           `pulumi:"activated"`
-	ConnectorId *string                        `pulumi:"connectorId"`
+	ConnectorId string                         `pulumi:"connectorId"`
 	Device      GetMagicTransitConnectorDevice `pulumi:"device"`
 	// The ID of this resource.
 	Id                           string  `pulumi:"id"`
@@ -85,8 +85,8 @@ func LookupMagicTransitConnectorOutput(ctx *pulumi.Context, args LookupMagicTran
 // A collection of arguments for invoking getMagicTransitConnector.
 type LookupMagicTransitConnectorOutputArgs struct {
 	// Account identifier
-	AccountId   pulumi.StringInput    `pulumi:"accountId"`
-	ConnectorId pulumi.StringPtrInput `pulumi:"connectorId"`
+	AccountId   pulumi.StringInput `pulumi:"accountId"`
+	ConnectorId pulumi.StringInput `pulumi:"connectorId"`
 }
 
 func (LookupMagicTransitConnectorOutputArgs) ElementType() reflect.Type {
@@ -117,8 +117,8 @@ func (o LookupMagicTransitConnectorResultOutput) Activated() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupMagicTransitConnectorResult) bool { return v.Activated }).(pulumi.BoolOutput)
 }
 
-func (o LookupMagicTransitConnectorResultOutput) ConnectorId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMagicTransitConnectorResult) *string { return v.ConnectorId }).(pulumi.StringPtrOutput)
+func (o LookupMagicTransitConnectorResultOutput) ConnectorId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMagicTransitConnectorResult) string { return v.ConnectorId }).(pulumi.StringOutput)
 }
 
 func (o LookupMagicTransitConnectorResultOutput) Device() GetMagicTransitConnectorDeviceOutput {

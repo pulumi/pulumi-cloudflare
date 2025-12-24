@@ -58,7 +58,7 @@ type LookupEmailRoutingDnsArgs struct {
 // A collection of values returned by getEmailRoutingDns.
 type LookupEmailRoutingDnsResult struct {
 	Errors []GetEmailRoutingDnsError `pulumi:"errors"`
-	// The provider-assigned unique ID for this managed resource.
+	// Identifier.
 	Id         string                       `pulumi:"id"`
 	Messages   []GetEmailRoutingDnsMessage  `pulumi:"messages"`
 	Result     GetEmailRoutingDnsResult     `pulumi:"result"`
@@ -111,7 +111,7 @@ func (o LookupEmailRoutingDnsResultOutput) Errors() GetEmailRoutingDnsErrorArray
 	return o.ApplyT(func(v LookupEmailRoutingDnsResult) []GetEmailRoutingDnsError { return v.Errors }).(GetEmailRoutingDnsErrorArrayOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Identifier.
 func (o LookupEmailRoutingDnsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailRoutingDnsResult) string { return v.Id }).(pulumi.StringOutput)
 }

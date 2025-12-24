@@ -92,7 +92,7 @@ class GetWaitingRoomRulesResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The ID of the rule.
+        The ID of this resource.
         """
         return pulumi.get(self, "id")
 

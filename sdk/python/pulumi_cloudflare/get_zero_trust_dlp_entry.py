@@ -27,7 +27,7 @@ class GetZeroTrustDlpEntryResult:
     """
     A collection of values returned by getZeroTrustDlpEntry.
     """
-    def __init__(__self__, account_id=None, case_sensitive=None, confidence=None, created_at=None, enabled=None, entry_id=None, id=None, name=None, pattern=None, profile_id=None, secret=None, type=None, updated_at=None, variant=None, word_list=None):
+    def __init__(__self__, account_id=None, case_sensitive=None, confidence=None, created_at=None, enabled=None, entry_id=None, id=None, name=None, pattern=None, profile_id=None, profiles=None, secret=None, type=None, updated_at=None, upload_status=None, variant=None, word_list=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -58,6 +58,9 @@ class GetZeroTrustDlpEntryResult:
         if profile_id and not isinstance(profile_id, str):
             raise TypeError("Expected argument 'profile_id' to be a str")
         pulumi.set(__self__, "profile_id", profile_id)
+        if profiles and not isinstance(profiles, list):
+            raise TypeError("Expected argument 'profiles' to be a list")
+        pulumi.set(__self__, "profiles", profiles)
         if secret and not isinstance(secret, bool):
             raise TypeError("Expected argument 'secret' to be a bool")
         pulumi.set(__self__, "secret", secret)
@@ -67,6 +70,9 @@ class GetZeroTrustDlpEntryResult:
         if updated_at and not isinstance(updated_at, str):
             raise TypeError("Expected argument 'updated_at' to be a str")
         pulumi.set(__self__, "updated_at", updated_at)
+        if upload_status and not isinstance(upload_status, str):
+            raise TypeError("Expected argument 'upload_status' to be a str")
+        pulumi.set(__self__, "upload_status", upload_status)
         if variant and not isinstance(variant, dict):
             raise TypeError("Expected argument 'variant' to be a dict")
         pulumi.set(__self__, "variant", variant)
@@ -106,7 +112,7 @@ class GetZeroTrustDlpEntryResult:
 
     @_builtins.property
     @pulumi.getter(name="entryId")
-    def entry_id(self) -> Optional[_builtins.str]:
+    def entry_id(self) -> _builtins.str:
         return pulumi.get(self, "entry_id")
 
     @_builtins.property
@@ -134,6 +140,11 @@ class GetZeroTrustDlpEntryResult:
 
     @_builtins.property
     @pulumi.getter
+    def profiles(self) -> Sequence['outputs.GetZeroTrustDlpEntryProfileResult']:
+        return pulumi.get(self, "profiles")
+
+    @_builtins.property
+    @pulumi.getter
     def secret(self) -> _builtins.bool:
         return pulumi.get(self, "secret")
 
@@ -149,6 +160,14 @@ class GetZeroTrustDlpEntryResult:
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> _builtins.str:
         return pulumi.get(self, "updated_at")
+
+    @_builtins.property
+    @pulumi.getter(name="uploadStatus")
+    def upload_status(self) -> _builtins.str:
+        """
+        Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+        """
+        return pulumi.get(self, "upload_status")
 
     @_builtins.property
     @pulumi.getter
@@ -177,9 +196,11 @@ class AwaitableGetZeroTrustDlpEntryResult(GetZeroTrustDlpEntryResult):
             name=self.name,
             pattern=self.pattern,
             profile_id=self.profile_id,
+            profiles=self.profiles,
             secret=self.secret,
             type=self.type,
             updated_at=self.updated_at,
+            upload_status=self.upload_status,
             variant=self.variant,
             word_list=self.word_list)
 
@@ -215,13 +236,15 @@ def get_zero_trust_dlp_entry(account_id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         pattern=pulumi.get(__ret__, 'pattern'),
         profile_id=pulumi.get(__ret__, 'profile_id'),
+        profiles=pulumi.get(__ret__, 'profiles'),
         secret=pulumi.get(__ret__, 'secret'),
         type=pulumi.get(__ret__, 'type'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
+        upload_status=pulumi.get(__ret__, 'upload_status'),
         variant=pulumi.get(__ret__, 'variant'),
         word_list=pulumi.get(__ret__, 'word_list'))
 def get_zero_trust_dlp_entry_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                    entry_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                    entry_id: Optional[pulumi.Input[_builtins.str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDlpEntryResult]:
     """
     ## Example Usage
@@ -250,8 +273,10 @@ def get_zero_trust_dlp_entry_output(account_id: Optional[pulumi.Input[_builtins.
         name=pulumi.get(__response__, 'name'),
         pattern=pulumi.get(__response__, 'pattern'),
         profile_id=pulumi.get(__response__, 'profile_id'),
+        profiles=pulumi.get(__response__, 'profiles'),
         secret=pulumi.get(__response__, 'secret'),
         type=pulumi.get(__response__, 'type'),
         updated_at=pulumi.get(__response__, 'updated_at'),
+        upload_status=pulumi.get(__response__, 'upload_status'),
         variant=pulumi.get(__response__, 'variant'),
         word_list=pulumi.get(__response__, 'word_list')))

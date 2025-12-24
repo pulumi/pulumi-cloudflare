@@ -4,18 +4,17 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class PagesProjectDeploymentConfigsPreviewMtlsCertificates {
-    private @Nullable String certificateId;
+    private String certificateId;
 
     private PagesProjectDeploymentConfigsPreviewMtlsCertificates() {}
-    public Optional<String> certificateId() {
-        return Optional.ofNullable(this.certificateId);
+    public String certificateId() {
+        return this.certificateId;
     }
 
     public static Builder builder() {
@@ -27,7 +26,7 @@ public final class PagesProjectDeploymentConfigsPreviewMtlsCertificates {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String certificateId;
+        private String certificateId;
         public Builder() {}
         public Builder(PagesProjectDeploymentConfigsPreviewMtlsCertificates defaults) {
     	      Objects.requireNonNull(defaults);
@@ -35,8 +34,10 @@ public final class PagesProjectDeploymentConfigsPreviewMtlsCertificates {
         }
 
         @CustomType.Setter
-        public Builder certificateId(@Nullable String certificateId) {
-
+        public Builder certificateId(String certificateId) {
+            if (certificateId == null) {
+              throw new MissingRequiredPropertyException("PagesProjectDeploymentConfigsPreviewMtlsCertificates", "certificateId");
+            }
             this.certificateId = certificateId;
             return this;
         }

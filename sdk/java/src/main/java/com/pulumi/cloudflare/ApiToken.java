@@ -20,71 +20,6 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ApiToken;
- * import com.pulumi.cloudflare.ApiTokenArgs;
- * import com.pulumi.cloudflare.inputs.ApiTokenPolicyArgs;
- * import com.pulumi.cloudflare.inputs.ApiTokenConditionArgs;
- * import com.pulumi.cloudflare.inputs.ApiTokenConditionRequestIpArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleApiToken = new ApiToken("exampleApiToken", ApiTokenArgs.builder()
- *             .name("readonly token")
- *             .policies(ApiTokenPolicyArgs.builder()
- *                 .effect("allow")
- *                 .permissionGroups(                
- *                     ApiTokenPolicyPermissionGroupArgs.builder()
- *                         .id("c8fed203ed3043cba015a93ad1616f1f")
- *                         .meta(ApiTokenPolicyPermissionGroupMetaArgs.builder()
- *                             .key("key")
- *                             .value("value")
- *                             .build())
- *                         .build(),
- *                     ApiTokenPolicyPermissionGroupArgs.builder()
- *                         .id("82e64a83756745bbbb1c9c2701bf816b")
- *                         .meta(ApiTokenPolicyPermissionGroupMetaArgs.builder()
- *                             .key("key")
- *                             .value("value")
- *                             .build())
- *                         .build())
- *                 .resources(Map.of("foo", "string"))
- *                 .build())
- *             .condition(ApiTokenConditionArgs.builder()
- *                 .requestIp(ApiTokenConditionRequestIpArgs.builder()
- *                     .ins(                    
- *                         "123.123.123.0/24",
- *                         "2606:4700::/32")
- *                     .notIns(                    
- *                         "123.123.123.100/24",
- *                         "2606:4700:4700::/48")
- *                     .build())
- *                 .build())
- *             .expiresOn("2020-01-01T00:00:00Z")
- *             .notBefore("2018-07-01T05:20:00Z")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * 
  * ## Import
  * 
  * ```sh
@@ -185,14 +120,14 @@ public class ApiToken extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.notBefore);
     }
     /**
-     * List of access policies assigned to the token.
+     * Set of access policies assigned to the token.
      * 
      */
     @Export(name="policies", refs={List.class,ApiTokenPolicy.class}, tree="[0,1]")
     private Output<List<ApiTokenPolicy>> policies;
 
     /**
-     * @return List of access policies assigned to the token.
+     * @return Set of access policies assigned to the token.
      * 
      */
     public Output<List<ApiTokenPolicy>> policies() {

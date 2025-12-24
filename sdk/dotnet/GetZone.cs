@@ -135,7 +135,7 @@ namespace Pulumi.Cloudflare
         public readonly string Type;
         public readonly ImmutableArray<string> VanityNameServers;
         public readonly string VerificationKey;
-        public readonly string? ZoneId;
+        public readonly string ZoneId;
 
         [OutputConstructor]
         private GetZoneResult(
@@ -187,7 +187,7 @@ namespace Pulumi.Cloudflare
 
             string verificationKey,
 
-            string? zoneId)
+            string zoneId)
         {
             Account = account;
             ActivatedOn = activatedOn;

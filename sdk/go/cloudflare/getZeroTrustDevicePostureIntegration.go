@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupZeroTrustDevicePostureIntegration(ctx, &cloudflare.LookupZeroTrustDevicePostureIntegrationArgs{
 //				AccountId:     "699d98642c564d2e855e9661899b7252",
-//				IntegrationId: pulumi.StringRef("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
+//				IntegrationId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,7 +51,7 @@ func LookupZeroTrustDevicePostureIntegration(ctx *pulumi.Context, args *LookupZe
 type LookupZeroTrustDevicePostureIntegrationArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// API UUID.
-	IntegrationId *string `pulumi:"integrationId"`
+	IntegrationId string `pulumi:"integrationId"`
 }
 
 // A collection of values returned by getZeroTrustDevicePostureIntegration.
@@ -62,7 +62,7 @@ type LookupZeroTrustDevicePostureIntegrationResult struct {
 	// API UUID.
 	Id string `pulumi:"id"`
 	// API UUID.
-	IntegrationId *string `pulumi:"integrationId"`
+	IntegrationId string `pulumi:"integrationId"`
 	// The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
 	Interval string `pulumi:"interval"`
 	// The name of the device posture integration.
@@ -85,7 +85,7 @@ func LookupZeroTrustDevicePostureIntegrationOutput(ctx *pulumi.Context, args Loo
 type LookupZeroTrustDevicePostureIntegrationOutputArgs struct {
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// API UUID.
-	IntegrationId pulumi.StringPtrInput `pulumi:"integrationId"`
+	IntegrationId pulumi.StringInput `pulumi:"integrationId"`
 }
 
 func (LookupZeroTrustDevicePostureIntegrationOutputArgs) ElementType() reflect.Type {
@@ -124,8 +124,8 @@ func (o LookupZeroTrustDevicePostureIntegrationResultOutput) Id() pulumi.StringO
 }
 
 // API UUID.
-func (o LookupZeroTrustDevicePostureIntegrationResultOutput) IntegrationId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupZeroTrustDevicePostureIntegrationResult) *string { return v.IntegrationId }).(pulumi.StringPtrOutput)
+func (o LookupZeroTrustDevicePostureIntegrationResultOutput) IntegrationId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustDevicePostureIntegrationResult) string { return v.IntegrationId }).(pulumi.StringOutput)
 }
 
 // The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).

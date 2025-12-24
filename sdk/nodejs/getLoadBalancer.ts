@@ -33,7 +33,7 @@ export function getLoadBalancer(args: GetLoadBalancerArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getLoadBalancer.
  */
 export interface GetLoadBalancerArgs {
-    loadBalancerId?: string;
+    loadBalancerId: string;
     /**
      * Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
      */
@@ -78,7 +78,7 @@ export interface GetLoadBalancerResult {
      * The ID of this resource.
      */
     readonly id: string;
-    readonly loadBalancerId?: string;
+    readonly loadBalancerId: string;
     /**
      * Controls location-based steering for non-proxied requests. See `steeringPolicy` to learn how steering is affected.
      */
@@ -162,7 +162,7 @@ export function getLoadBalancerOutput(args: GetLoadBalancerOutputArgs, opts?: pu
  * A collection of arguments for invoking getLoadBalancer.
  */
 export interface GetLoadBalancerOutputArgs {
-    loadBalancerId?: pulumi.Input<string>;
+    loadBalancerId: pulumi.Input<string>;
     /**
      * Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
      */

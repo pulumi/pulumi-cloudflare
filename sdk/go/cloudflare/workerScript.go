@@ -51,7 +51,7 @@ import (
 //						Redirects:        pulumi.String("        /foo /bar 301\n        /news/* /blog/:splat\n"),
 //						HtmlHandling:     pulumi.String("auto-trailing-slash"),
 //						NotFoundHandling: pulumi.String("none"),
-//						RunWorkerFirst:   pulumi.Bool(false),
+//						RunWorkerFirst:   pulumi.Any(false),
 //					},
 //					Jwt: pulumi.String("jwt"),
 //				},
@@ -190,7 +190,6 @@ type WorkerScript struct {
 	MainModule pulumi.StringPtrOutput `pulumi:"mainModule"`
 	// The tag of the Durable Object migration that was most recently applied for this Worker.
 	MigrationTag pulumi.StringOutput `pulumi:"migrationTag"`
-	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
 	// Migrations to apply for Durable Objects associated with this Worker.
 	Migrations WorkerScriptMigrationsPtrOutput `pulumi:"migrations"`
 	// When the script was last modified.
@@ -230,13 +229,6 @@ func NewWorkerScript(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
-	if args.Migrations != nil {
-		args.Migrations = pulumi.ToSecret(args.Migrations).(WorkerScriptMigrationsPtrInput)
-	}
-	secrets := pulumi.AdditionalSecretOutputs([]string{
-		"migrations",
-	})
-	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WorkerScript
 	err := ctx.RegisterResource("cloudflare:index/workerScript:WorkerScript", name, args, &resource, opts...)
@@ -304,7 +296,6 @@ type workerScriptState struct {
 	MainModule *string `pulumi:"mainModule"`
 	// The tag of the Durable Object migration that was most recently applied for this Worker.
 	MigrationTag *string `pulumi:"migrationTag"`
-	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
 	// Migrations to apply for Durable Objects associated with this Worker.
 	Migrations *WorkerScriptMigrations `pulumi:"migrations"`
 	// When the script was last modified.
@@ -370,7 +361,6 @@ type WorkerScriptState struct {
 	MainModule pulumi.StringPtrInput
 	// The tag of the Durable Object migration that was most recently applied for this Worker.
 	MigrationTag pulumi.StringPtrInput
-	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
 	// Migrations to apply for Durable Objects associated with this Worker.
 	Migrations WorkerScriptMigrationsPtrInput
 	// When the script was last modified.
@@ -426,7 +416,6 @@ type workerScriptArgs struct {
 	Logpush *bool `pulumi:"logpush"`
 	// Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
 	MainModule *string `pulumi:"mainModule"`
-	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
 	// Migrations to apply for Durable Objects associated with this Worker.
 	Migrations *WorkerScriptMigrations `pulumi:"migrations"`
 	// Observability settings for the Worker.
@@ -474,7 +463,6 @@ type WorkerScriptArgs struct {
 	Logpush pulumi.BoolPtrInput
 	// Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
 	MainModule pulumi.StringPtrInput
-	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
 	// Migrations to apply for Durable Objects associated with this Worker.
 	Migrations WorkerScriptMigrationsPtrInput
 	// Observability settings for the Worker.
@@ -687,7 +675,6 @@ func (o WorkerScriptOutput) MigrationTag() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerScript) pulumi.StringOutput { return v.MigrationTag }).(pulumi.StringOutput)
 }
 
-// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
 // Migrations to apply for Durable Objects associated with this Worker.
 func (o WorkerScriptOutput) Migrations() WorkerScriptMigrationsPtrOutput {
 	return o.ApplyT(func(v *WorkerScript) WorkerScriptMigrationsPtrOutput { return v.Migrations }).(WorkerScriptMigrationsPtrOutput)

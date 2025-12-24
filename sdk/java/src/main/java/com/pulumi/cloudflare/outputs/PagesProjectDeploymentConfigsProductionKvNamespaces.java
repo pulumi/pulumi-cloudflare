@@ -4,10 +4,9 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class PagesProjectDeploymentConfigsProductionKvNamespaces {
@@ -15,15 +14,15 @@ public final class PagesProjectDeploymentConfigsProductionKvNamespaces {
      * @return ID of the KV namespace.
      * 
      */
-    private @Nullable String namespaceId;
+    private String namespaceId;
 
     private PagesProjectDeploymentConfigsProductionKvNamespaces() {}
     /**
      * @return ID of the KV namespace.
      * 
      */
-    public Optional<String> namespaceId() {
-        return Optional.ofNullable(this.namespaceId);
+    public String namespaceId() {
+        return this.namespaceId;
     }
 
     public static Builder builder() {
@@ -35,7 +34,7 @@ public final class PagesProjectDeploymentConfigsProductionKvNamespaces {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String namespaceId;
+        private String namespaceId;
         public Builder() {}
         public Builder(PagesProjectDeploymentConfigsProductionKvNamespaces defaults) {
     	      Objects.requireNonNull(defaults);
@@ -43,8 +42,10 @@ public final class PagesProjectDeploymentConfigsProductionKvNamespaces {
         }
 
         @CustomType.Setter
-        public Builder namespaceId(@Nullable String namespaceId) {
-
+        public Builder namespaceId(String namespaceId) {
+            if (namespaceId == null) {
+              throw new MissingRequiredPropertyException("PagesProjectDeploymentConfigsProductionKvNamespaces", "namespaceId");
+            }
             this.namespaceId = namespaceId;
             return this;
         }

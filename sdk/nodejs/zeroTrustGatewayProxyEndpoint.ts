@@ -13,8 +13,8 @@ import * as utilities from "./utilities";
  *
  * const exampleZeroTrustGatewayProxyEndpoint = new cloudflare.ZeroTrustGatewayProxyEndpoint("example_zero_trust_gateway_proxy_endpoint", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
- *     ips: ["192.0.2.1/32"],
  *     name: "Devops team",
+ *     kind: "ip",
  * });
  * ```
  *
@@ -57,7 +57,12 @@ export class ZeroTrustGatewayProxyEndpoint extends pulumi.CustomResource {
     /**
      * Specify the list of CIDRs to restrict ingress connections.
      */
-    declare public readonly ips: pulumi.Output<string[]>;
+    declare public readonly ips: pulumi.Output<string[] | undefined>;
+    /**
+     * The proxy endpoint kind
+     * Available values: "ip", "identity".
+     */
+    declare public readonly kind: pulumi.Output<string>;
     /**
      * Specify the name of the proxy endpoint.
      */
@@ -84,6 +89,7 @@ export class ZeroTrustGatewayProxyEndpoint extends pulumi.CustomResource {
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["ips"] = state?.ips;
+            resourceInputs["kind"] = state?.kind;
             resourceInputs["name"] = state?.name;
             resourceInputs["subdomain"] = state?.subdomain;
             resourceInputs["updatedAt"] = state?.updatedAt;
@@ -92,14 +98,12 @@ export class ZeroTrustGatewayProxyEndpoint extends pulumi.CustomResource {
             if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if (args?.ips === undefined && !opts.urn) {
-                throw new Error("Missing required property 'ips'");
-            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["ips"] = args?.ips;
+            resourceInputs["kind"] = args?.kind;
             resourceInputs["name"] = args?.name;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["subdomain"] = undefined /*out*/;
@@ -123,6 +127,11 @@ export interface ZeroTrustGatewayProxyEndpointState {
      */
     ips?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The proxy endpoint kind
+     * Available values: "ip", "identity".
+     */
+    kind?: pulumi.Input<string>;
+    /**
      * Specify the name of the proxy endpoint.
      */
     name?: pulumi.Input<string>;
@@ -141,7 +150,12 @@ export interface ZeroTrustGatewayProxyEndpointArgs {
     /**
      * Specify the list of CIDRs to restrict ingress connections.
      */
-    ips: pulumi.Input<pulumi.Input<string>[]>;
+    ips?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The proxy endpoint kind
+     * Available values: "ip", "identity".
+     */
+    kind?: pulumi.Input<string>;
     /**
      * Specify the name of the proxy endpoint.
      */

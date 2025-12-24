@@ -19,12 +19,6 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("effect", required: true)]
         public Input<string> Effect { get; set; } = null!;
 
-        /// <summary>
-        /// Policy identifier.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
         [Input("permissionGroups", required: true)]
         private InputList<Inputs.AccountTokenPolicyPermissionGroupArgs>? _permissionGroups;
 
@@ -37,17 +31,11 @@ namespace Pulumi.Cloudflare.Inputs
             set => _permissionGroups = value;
         }
 
-        [Input("resources", required: true)]
-        private InputMap<string>? _resources;
-
         /// <summary>
-        /// A list of resource names that the policy applies to.
+        /// A json object representing the resources that are specified to the policy.
         /// </summary>
-        public InputMap<string> Resources
-        {
-            get => _resources ?? (_resources = new InputMap<string>());
-            set => _resources = value;
-        }
+        [Input("resources", required: true)]
+        public Input<string> Resources { get; set; } = null!;
 
         public AccountTokenPolicyArgs()
         {

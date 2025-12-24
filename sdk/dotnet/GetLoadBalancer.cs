@@ -84,8 +84,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetLoadBalancerArgs : global::Pulumi.InvokeArgs
     {
-        [Input("loadBalancerId")]
-        public string? LoadBalancerId { get; set; }
+        [Input("loadBalancerId", required: true)]
+        public string LoadBalancerId { get; set; } = null!;
 
         [Input("popPools")]
         private Dictionary<string, ImmutableArray<string>>? _popPools;
@@ -122,8 +122,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetLoadBalancerInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("loadBalancerId")]
-        public Input<string>? LoadBalancerId { get; set; }
+        [Input("loadBalancerId", required: true)]
+        public Input<string> LoadBalancerId { get; set; } = null!;
 
         [Input("popPools")]
         private InputMap<ImmutableArray<string>>? _popPools;
@@ -191,7 +191,7 @@ namespace Pulumi.Cloudflare
         /// The ID of this resource.
         /// </summary>
         public readonly string Id;
-        public readonly string? LoadBalancerId;
+        public readonly string LoadBalancerId;
         /// <summary>
         /// Controls location-based steering for non-proxied requests. See `SteeringPolicy` to learn how steering is affected.
         /// </summary>
@@ -266,7 +266,7 @@ namespace Pulumi.Cloudflare
 
             string id,
 
-            string? loadBalancerId,
+            string loadBalancerId,
 
             Outputs.GetLoadBalancerLocationStrategyResult locationStrategy,
 

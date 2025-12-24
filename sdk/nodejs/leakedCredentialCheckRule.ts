@@ -17,6 +17,12 @@ import * as utilities from "./utilities";
  *     username: "lookup_json_string(http.request.body.raw, \"user\")",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule example '<zone_id>/<detection_id>'
+ * ```
  */
 export class LeakedCredentialCheckRule extends pulumi.CustomResource {
     /**

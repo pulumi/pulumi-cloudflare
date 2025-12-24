@@ -13,8 +13,6 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustGatewayPolicyResult {
@@ -73,7 +71,7 @@ public final class GetZeroTrustGatewayPolicyResult {
      * @return Identify the API resource with a UUID.
      * 
      */
-    private @Nullable String ruleId;
+    private String ruleId;
     private GetZeroTrustGatewayPolicyRuleSettings ruleSettings;
     /**
      * @return Defines the schedule for activating DNS policies. Settable only for `dns` and `dnsResolver` rules.
@@ -187,8 +185,8 @@ public final class GetZeroTrustGatewayPolicyResult {
      * @return Identify the API resource with a UUID.
      * 
      */
-    public Optional<String> ruleId() {
-        return Optional.ofNullable(this.ruleId);
+    public String ruleId() {
+        return this.ruleId;
     }
     public GetZeroTrustGatewayPolicyRuleSettings ruleSettings() {
         return this.ruleSettings;
@@ -258,7 +256,7 @@ public final class GetZeroTrustGatewayPolicyResult {
         private String name;
         private Integer precedence;
         private Boolean readOnly;
-        private @Nullable String ruleId;
+        private String ruleId;
         private GetZeroTrustGatewayPolicyRuleSettings ruleSettings;
         private GetZeroTrustGatewayPolicySchedule schedule;
         private Boolean sharable;
@@ -411,8 +409,10 @@ public final class GetZeroTrustGatewayPolicyResult {
             return this;
         }
         @CustomType.Setter
-        public Builder ruleId(@Nullable String ruleId) {
-
+        public Builder ruleId(String ruleId) {
+            if (ruleId == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustGatewayPolicyResult", "ruleId");
+            }
             this.ruleId = ruleId;
             return this;
         }

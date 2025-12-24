@@ -90,8 +90,8 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
-        [Input("monitorId")]
-        public string? MonitorId { get; set; }
+        [Input("monitorId", required: true)]
+        public string MonitorId { get; set; } = null!;
 
         public GetLoadBalancerMonitorArgs()
         {
@@ -107,8 +107,8 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        [Input("monitorId")]
-        public Input<string>? MonitorId { get; set; }
+        [Input("monitorId", required: true)]
+        public Input<string> MonitorId { get; set; } = null!;
 
         public GetLoadBalancerMonitorInvokeArgs()
         {
@@ -170,7 +170,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Method;
         public readonly string ModifiedOn;
-        public readonly string? MonitorId;
+        public readonly string MonitorId;
         /// <summary>
         /// The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.
         /// </summary>
@@ -227,7 +227,7 @@ namespace Pulumi.Cloudflare
 
             string modifiedOn,
 
-            string? monitorId,
+            string monitorId,
 
             string path,
 

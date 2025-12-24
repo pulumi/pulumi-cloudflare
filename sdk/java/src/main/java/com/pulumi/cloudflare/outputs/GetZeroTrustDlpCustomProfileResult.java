@@ -48,7 +48,7 @@ public final class GetZeroTrustDlpCustomProfileResult {
     private String description;
     private List<GetZeroTrustDlpCustomProfileEntry> entries;
     /**
-     * @return The id of the profile (uuid).
+     * @return The ID of this resource.
      * 
      */
     private String id;
@@ -125,7 +125,7 @@ public final class GetZeroTrustDlpCustomProfileResult {
         return this.entries;
     }
     /**
-     * @return The id of the profile (uuid).
+     * @return The ID of this resource.
      * 
      */
     public String id() {

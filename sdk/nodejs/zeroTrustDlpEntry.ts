@@ -72,12 +72,17 @@ export class ZeroTrustDlpEntry extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     declare public readonly pattern: pulumi.Output<outputs.ZeroTrustDlpEntryPattern>;
     declare public readonly profileId: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly profiles: pulumi.Output<outputs.ZeroTrustDlpEntryProfile[]>;
     declare public /*out*/ readonly secret: pulumi.Output<boolean>;
     /**
      * Available values: "custom", "predefined", "integration".
      */
     declare public readonly type: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    /**
+     * Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+     */
+    declare public /*out*/ readonly uploadStatus: pulumi.Output<string>;
     declare public /*out*/ readonly variant: pulumi.Output<outputs.ZeroTrustDlpEntryVariant>;
     declare public /*out*/ readonly wordList: pulumi.Output<string>;
 
@@ -102,9 +107,11 @@ export class ZeroTrustDlpEntry extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["pattern"] = state?.pattern;
             resourceInputs["profileId"] = state?.profileId;
+            resourceInputs["profiles"] = state?.profiles;
             resourceInputs["secret"] = state?.secret;
             resourceInputs["type"] = state?.type;
             resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["uploadStatus"] = state?.uploadStatus;
             resourceInputs["variant"] = state?.variant;
             resourceInputs["wordList"] = state?.wordList;
         } else {
@@ -130,8 +137,10 @@ export class ZeroTrustDlpEntry extends pulumi.CustomResource {
             resourceInputs["caseSensitive"] = undefined /*out*/;
             resourceInputs["confidence"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["profiles"] = undefined /*out*/;
             resourceInputs["secret"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
+            resourceInputs["uploadStatus"] = undefined /*out*/;
             resourceInputs["variant"] = undefined /*out*/;
             resourceInputs["wordList"] = undefined /*out*/;
         }
@@ -157,12 +166,17 @@ export interface ZeroTrustDlpEntryState {
     name?: pulumi.Input<string>;
     pattern?: pulumi.Input<inputs.ZeroTrustDlpEntryPattern>;
     profileId?: pulumi.Input<string>;
+    profiles?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDlpEntryProfile>[]>;
     secret?: pulumi.Input<boolean>;
     /**
      * Available values: "custom", "predefined", "integration".
      */
     type?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<string>;
+    /**
+     * Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+     */
+    uploadStatus?: pulumi.Input<string>;
     variant?: pulumi.Input<inputs.ZeroTrustDlpEntryVariant>;
     wordList?: pulumi.Input<string>;
 }

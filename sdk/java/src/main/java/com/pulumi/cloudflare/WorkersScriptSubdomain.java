@@ -15,6 +15,8 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; This resource is redundant with `cloudflare.Worker` and should not be used together. When using the `cloudflare.Worker` resource, use the nested `subdomain` attribute to control subdomain settings instead.
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -50,6 +52,12 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain example &#39;&lt;account_id&gt;/&lt;script_name&gt;&#39;
+ * ```
  * 
  */
 @ResourceType(type="cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain")

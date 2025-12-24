@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupCertificatePack(ctx, &cloudflare.LookupCertificatePackArgs{
 //				ZoneId:            "023e105f4ecef8ad9ca31a8372d0c353",
-//				CertificatePackId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				CertificatePackId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -50,17 +50,46 @@ func LookupCertificatePack(ctx *pulumi.Context, args *LookupCertificatePackArgs,
 // A collection of arguments for invoking getCertificatePack.
 type LookupCertificatePackArgs struct {
 	// Identifier.
-	CertificatePackId string `pulumi:"certificatePackId"`
+	CertificatePackId *string                   `pulumi:"certificatePackId"`
+	Filter            *GetCertificatePackFilter `pulumi:"filter"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getCertificatePack.
 type LookupCertificatePackResult struct {
+	// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+	// Available values: "google", "lets*encrypt", "ssl*com".
+	CertificateAuthority string `pulumi:"certificateAuthority"`
 	// Identifier.
-	CertificatePackId string `pulumi:"certificatePackId"`
-	// The provider-assigned unique ID for this managed resource.
+	CertificatePackId *string `pulumi:"certificatePackId"`
+	// Array of certificates in this pack.
+	Certificates []GetCertificatePackCertificate `pulumi:"certificates"`
+	// Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
+	CloudflareBranding bool                      `pulumi:"cloudflareBranding"`
+	Filter             *GetCertificatePackFilter `pulumi:"filter"`
+	// Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
+	Hosts []string `pulumi:"hosts"`
+	// Identifier.
 	Id string `pulumi:"id"`
+	// Identifier of the primary certificate in a pack.
+	PrimaryCertificate string `pulumi:"primaryCertificate"`
+	// Status of certificate pack.
+	// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
+	Status string `pulumi:"status"`
+	// Type of certificate pack.
+	// Available values: "mh*custom", "managed*hostname", "sni*custom", "universal", "advanced", "total*tls", "keyless", "legacyCustom".
+	Type string `pulumi:"type"`
+	// Domain validation errors that have been received by the certificate authority (CA).
+	ValidationErrors []GetCertificatePackValidationError `pulumi:"validationErrors"`
+	// Validation Method selected for the order.
+	// Available values: "txt", "http", "email".
+	ValidationMethod string `pulumi:"validationMethod"`
+	// Certificates' validation records.
+	ValidationRecords []GetCertificatePackValidationRecord `pulumi:"validationRecords"`
+	// Validity Days selected for the order.
+	// Available values: 14, 30, 90, 365.
+	ValidityDays int `pulumi:"validityDays"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -77,7 +106,8 @@ func LookupCertificatePackOutput(ctx *pulumi.Context, args LookupCertificatePack
 // A collection of arguments for invoking getCertificatePack.
 type LookupCertificatePackOutputArgs struct {
 	// Identifier.
-	CertificatePackId pulumi.StringInput `pulumi:"certificatePackId"`
+	CertificatePackId pulumi.StringPtrInput            `pulumi:"certificatePackId"`
+	Filter            GetCertificatePackFilterPtrInput `pulumi:"filter"`
 	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
@@ -101,14 +131,78 @@ func (o LookupCertificatePackResultOutput) ToLookupCertificatePackResultOutputWi
 	return o
 }
 
-// Identifier.
-func (o LookupCertificatePackResultOutput) CertificatePackId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCertificatePackResult) string { return v.CertificatePackId }).(pulumi.StringOutput)
+// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+// Available values: "google", "lets*encrypt", "ssl*com".
+func (o LookupCertificatePackResultOutput) CertificateAuthority() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificatePackResult) string { return v.CertificateAuthority }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Identifier.
+func (o LookupCertificatePackResultOutput) CertificatePackId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCertificatePackResult) *string { return v.CertificatePackId }).(pulumi.StringPtrOutput)
+}
+
+// Array of certificates in this pack.
+func (o LookupCertificatePackResultOutput) Certificates() GetCertificatePackCertificateArrayOutput {
+	return o.ApplyT(func(v LookupCertificatePackResult) []GetCertificatePackCertificate { return v.Certificates }).(GetCertificatePackCertificateArrayOutput)
+}
+
+// Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
+func (o LookupCertificatePackResultOutput) CloudflareBranding() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupCertificatePackResult) bool { return v.CloudflareBranding }).(pulumi.BoolOutput)
+}
+
+func (o LookupCertificatePackResultOutput) Filter() GetCertificatePackFilterPtrOutput {
+	return o.ApplyT(func(v LookupCertificatePackResult) *GetCertificatePackFilter { return v.Filter }).(GetCertificatePackFilterPtrOutput)
+}
+
+// Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
+func (o LookupCertificatePackResultOutput) Hosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupCertificatePackResult) []string { return v.Hosts }).(pulumi.StringArrayOutput)
+}
+
+// Identifier.
 func (o LookupCertificatePackResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificatePackResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Identifier of the primary certificate in a pack.
+func (o LookupCertificatePackResultOutput) PrimaryCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificatePackResult) string { return v.PrimaryCertificate }).(pulumi.StringOutput)
+}
+
+// Status of certificate pack.
+// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
+func (o LookupCertificatePackResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificatePackResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Type of certificate pack.
+// Available values: "mh*custom", "managed*hostname", "sni*custom", "universal", "advanced", "total*tls", "keyless", "legacyCustom".
+func (o LookupCertificatePackResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificatePackResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Domain validation errors that have been received by the certificate authority (CA).
+func (o LookupCertificatePackResultOutput) ValidationErrors() GetCertificatePackValidationErrorArrayOutput {
+	return o.ApplyT(func(v LookupCertificatePackResult) []GetCertificatePackValidationError { return v.ValidationErrors }).(GetCertificatePackValidationErrorArrayOutput)
+}
+
+// Validation Method selected for the order.
+// Available values: "txt", "http", "email".
+func (o LookupCertificatePackResultOutput) ValidationMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificatePackResult) string { return v.ValidationMethod }).(pulumi.StringOutput)
+}
+
+// Certificates' validation records.
+func (o LookupCertificatePackResultOutput) ValidationRecords() GetCertificatePackValidationRecordArrayOutput {
+	return o.ApplyT(func(v LookupCertificatePackResult) []GetCertificatePackValidationRecord { return v.ValidationRecords }).(GetCertificatePackValidationRecordArrayOutput)
+}
+
+// Validity Days selected for the order.
+// Available values: 14, 30, 90, 365.
+func (o LookupCertificatePackResultOutput) ValidityDays() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupCertificatePackResult) int { return v.ValidityDays }).(pulumi.IntOutput)
 }
 
 // Identifier.

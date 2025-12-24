@@ -110,9 +110,6 @@ export class DnsZoneTransfersIncoming extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as DnsZoneTransfersIncomingArgs | undefined;
-            if (args?.autoRefreshSeconds === undefined && !opts.urn) {
-                throw new Error("Missing required property 'autoRefreshSeconds'");
-            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -180,7 +177,7 @@ export interface DnsZoneTransfersIncomingArgs {
      * How often should a secondary zone auto refresh regardless of DNS NOTIFY.
      * Not applicable for primary zones.
      */
-    autoRefreshSeconds: pulumi.Input<number>;
+    autoRefreshSeconds?: pulumi.Input<number>;
     /**
      * Zone name.
      */

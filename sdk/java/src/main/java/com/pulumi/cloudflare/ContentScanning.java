@@ -48,6 +48,10 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ## Import
+ * 
+ * ~&gt; This resource does not currently support `pulumi import`.
+ * 
  */
 @ResourceType(type="cloudflare:index/contentScanning:ContentScanning")
 public class ContentScanning extends com.pulumi.resources.CustomResource {

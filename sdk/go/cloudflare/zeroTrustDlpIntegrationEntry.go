@@ -60,15 +60,18 @@ type ZeroTrustDlpIntegrationEntry struct {
 	EntryId       pulumi.StringOutput                          `pulumi:"entryId"`
 	Name          pulumi.StringOutput                          `pulumi:"name"`
 	Pattern       ZeroTrustDlpIntegrationEntryPatternOutput    `pulumi:"pattern"`
-	// This field is not actually used as the owning profile for a predefined entry is already set
-	// to a predefined profile
-	ProfileId pulumi.StringPtrOutput `pulumi:"profileId"`
-	Secret    pulumi.BoolOutput      `pulumi:"secret"`
+	// This field is not used as the owning profile.
+	// For predefined entries it is already set to a predefined profile.
+	ProfileId pulumi.StringPtrOutput                         `pulumi:"profileId"`
+	Profiles  ZeroTrustDlpIntegrationEntryProfileArrayOutput `pulumi:"profiles"`
+	Secret    pulumi.BoolOutput                              `pulumi:"secret"`
 	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
-	Type      pulumi.StringOutput                       `pulumi:"type"`
-	UpdatedAt pulumi.StringOutput                       `pulumi:"updatedAt"`
-	Variant   ZeroTrustDlpIntegrationEntryVariantOutput `pulumi:"variant"`
-	WordList  pulumi.StringOutput                       `pulumi:"wordList"`
+	Type      pulumi.StringOutput `pulumi:"type"`
+	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
+	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+	UploadStatus pulumi.StringOutput                       `pulumi:"uploadStatus"`
+	Variant      ZeroTrustDlpIntegrationEntryVariantOutput `pulumi:"variant"`
+	WordList     pulumi.StringOutput                       `pulumi:"wordList"`
 }
 
 // NewZeroTrustDlpIntegrationEntry registers a new resource with the given unique name, arguments, and options.
@@ -121,15 +124,18 @@ type zeroTrustDlpIntegrationEntryState struct {
 	EntryId       *string                                 `pulumi:"entryId"`
 	Name          *string                                 `pulumi:"name"`
 	Pattern       *ZeroTrustDlpIntegrationEntryPattern    `pulumi:"pattern"`
-	// This field is not actually used as the owning profile for a predefined entry is already set
-	// to a predefined profile
-	ProfileId *string `pulumi:"profileId"`
-	Secret    *bool   `pulumi:"secret"`
+	// This field is not used as the owning profile.
+	// For predefined entries it is already set to a predefined profile.
+	ProfileId *string                               `pulumi:"profileId"`
+	Profiles  []ZeroTrustDlpIntegrationEntryProfile `pulumi:"profiles"`
+	Secret    *bool                                 `pulumi:"secret"`
 	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
-	Type      *string                              `pulumi:"type"`
-	UpdatedAt *string                              `pulumi:"updatedAt"`
-	Variant   *ZeroTrustDlpIntegrationEntryVariant `pulumi:"variant"`
-	WordList  *string                              `pulumi:"wordList"`
+	Type      *string `pulumi:"type"`
+	UpdatedAt *string `pulumi:"updatedAt"`
+	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+	UploadStatus *string                              `pulumi:"uploadStatus"`
+	Variant      *ZeroTrustDlpIntegrationEntryVariant `pulumi:"variant"`
+	WordList     *string                              `pulumi:"wordList"`
 }
 
 type ZeroTrustDlpIntegrationEntryState struct {
@@ -144,15 +150,18 @@ type ZeroTrustDlpIntegrationEntryState struct {
 	EntryId       pulumi.StringPtrInput
 	Name          pulumi.StringPtrInput
 	Pattern       ZeroTrustDlpIntegrationEntryPatternPtrInput
-	// This field is not actually used as the owning profile for a predefined entry is already set
-	// to a predefined profile
+	// This field is not used as the owning profile.
+	// For predefined entries it is already set to a predefined profile.
 	ProfileId pulumi.StringPtrInput
+	Profiles  ZeroTrustDlpIntegrationEntryProfileArrayInput
 	Secret    pulumi.BoolPtrInput
 	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
 	Type      pulumi.StringPtrInput
 	UpdatedAt pulumi.StringPtrInput
-	Variant   ZeroTrustDlpIntegrationEntryVariantPtrInput
-	WordList  pulumi.StringPtrInput
+	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+	UploadStatus pulumi.StringPtrInput
+	Variant      ZeroTrustDlpIntegrationEntryVariantPtrInput
+	WordList     pulumi.StringPtrInput
 }
 
 func (ZeroTrustDlpIntegrationEntryState) ElementType() reflect.Type {
@@ -163,8 +172,8 @@ type zeroTrustDlpIntegrationEntryArgs struct {
 	AccountId string `pulumi:"accountId"`
 	Enabled   bool   `pulumi:"enabled"`
 	EntryId   string `pulumi:"entryId"`
-	// This field is not actually used as the owning profile for a predefined entry is already set
-	// to a predefined profile
+	// This field is not used as the owning profile.
+	// For predefined entries it is already set to a predefined profile.
 	ProfileId *string `pulumi:"profileId"`
 }
 
@@ -173,8 +182,8 @@ type ZeroTrustDlpIntegrationEntryArgs struct {
 	AccountId pulumi.StringInput
 	Enabled   pulumi.BoolInput
 	EntryId   pulumi.StringInput
-	// This field is not actually used as the owning profile for a predefined entry is already set
-	// to a predefined profile
+	// This field is not used as the owning profile.
+	// For predefined entries it is already set to a predefined profile.
 	ProfileId pulumi.StringPtrInput
 }
 
@@ -302,10 +311,16 @@ func (o ZeroTrustDlpIntegrationEntryOutput) Pattern() ZeroTrustDlpIntegrationEnt
 	return o.ApplyT(func(v *ZeroTrustDlpIntegrationEntry) ZeroTrustDlpIntegrationEntryPatternOutput { return v.Pattern }).(ZeroTrustDlpIntegrationEntryPatternOutput)
 }
 
-// This field is not actually used as the owning profile for a predefined entry is already set
-// to a predefined profile
+// This field is not used as the owning profile.
+// For predefined entries it is already set to a predefined profile.
 func (o ZeroTrustDlpIntegrationEntryOutput) ProfileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpIntegrationEntry) pulumi.StringPtrOutput { return v.ProfileId }).(pulumi.StringPtrOutput)
+}
+
+func (o ZeroTrustDlpIntegrationEntryOutput) Profiles() ZeroTrustDlpIntegrationEntryProfileArrayOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpIntegrationEntry) ZeroTrustDlpIntegrationEntryProfileArrayOutput {
+		return v.Profiles
+	}).(ZeroTrustDlpIntegrationEntryProfileArrayOutput)
 }
 
 func (o ZeroTrustDlpIntegrationEntryOutput) Secret() pulumi.BoolOutput {
@@ -319,6 +334,11 @@ func (o ZeroTrustDlpIntegrationEntryOutput) Type() pulumi.StringOutput {
 
 func (o ZeroTrustDlpIntegrationEntryOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpIntegrationEntry) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+func (o ZeroTrustDlpIntegrationEntryOutput) UploadStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpIntegrationEntry) pulumi.StringOutput { return v.UploadStatus }).(pulumi.StringOutput)
 }
 
 func (o ZeroTrustDlpIntegrationEntryOutput) Variant() ZeroTrustDlpIntegrationEntryVariantOutput {

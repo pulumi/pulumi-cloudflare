@@ -22,7 +22,7 @@ public final class GetCustomHostnameFallbackOriginResult {
      */
     private List<String> errors;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Identifier.
      * 
      */
     private String id;
@@ -64,7 +64,7 @@ public final class GetCustomHostnameFallbackOriginResult {
         return this.errors;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Identifier.
      * 
      */
     public String id() {

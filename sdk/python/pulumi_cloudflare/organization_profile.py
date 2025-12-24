@@ -199,6 +199,10 @@ class OrganizationProfile(pulumi.CustomResource):
             external_metadata="external_metadata")
         ```
 
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -223,6 +227,10 @@ class OrganizationProfile(pulumi.CustomResource):
             business_phone="business_phone",
             external_metadata="external_metadata")
         ```
+
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
 
         :param str resource_name: The name of the resource.
         :param OrganizationProfileInitArgs args: The arguments to use to populate this resource's properties.

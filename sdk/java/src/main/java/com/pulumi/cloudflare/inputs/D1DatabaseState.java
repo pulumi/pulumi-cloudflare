@@ -63,6 +63,23 @@ public final class D1DatabaseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;.
+     * 
+     */
+    @Import(name="jurisdiction")
+    private @Nullable Output<String> jurisdiction;
+
+    /**
+     * @return Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;.
+     * 
+     */
+    public Optional<Output<String>> jurisdiction() {
+        return Optional.ofNullable(this.jurisdiction);
+    }
+
+    /**
      * D1 database name.
      * 
      */
@@ -144,6 +161,7 @@ public final class D1DatabaseState extends com.pulumi.resources.ResourceArgs {
         this.accountId = $.accountId;
         this.createdAt = $.createdAt;
         this.fileSize = $.fileSize;
+        this.jurisdiction = $.jurisdiction;
         this.name = $.name;
         this.numTables = $.numTables;
         this.primaryLocationHint = $.primaryLocationHint;
@@ -231,6 +249,29 @@ public final class D1DatabaseState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder fileSize(Double fileSize) {
             return fileSize(Output.of(fileSize));
+        }
+
+        /**
+         * @param jurisdiction Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+         * Available values: &#34;eu&#34;, &#34;fedramp&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jurisdiction(@Nullable Output<String> jurisdiction) {
+            $.jurisdiction = jurisdiction;
+            return this;
+        }
+
+        /**
+         * @param jurisdiction Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+         * Available values: &#34;eu&#34;, &#34;fedramp&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jurisdiction(String jurisdiction) {
+            return jurisdiction(Output.of(jurisdiction));
         }
 
         /**

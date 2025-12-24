@@ -18,6 +18,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.GetZeroTrustDeviceManagedNetworksListResultConfigResult Config;
         /// <summary>
+        /// API UUID.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The name of the device managed network. This name must be unique.
         /// </summary>
         public readonly string Name;
@@ -35,6 +39,8 @@ namespace Pulumi.Cloudflare.Outputs
         private GetZeroTrustDeviceManagedNetworksListResultResult(
             Outputs.GetZeroTrustDeviceManagedNetworksListResultConfigResult config,
 
+            string id,
+
             string name,
 
             string networkId,
@@ -42,6 +48,7 @@ namespace Pulumi.Cloudflare.Outputs
             string type)
         {
             Config = config;
+            Id = id;
             Name = name;
             NetworkId = networkId;
             Type = type;

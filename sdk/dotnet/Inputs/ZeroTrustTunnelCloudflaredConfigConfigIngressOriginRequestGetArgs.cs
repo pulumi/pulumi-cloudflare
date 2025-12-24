@@ -61,6 +61,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<int>? KeepAliveTimeout { get; set; }
 
         /// <summary>
+        /// Auto configure the Hostname on the origin server certificate.
+        /// </summary>
+        [Input("matchSnItoHost")]
+        public Input<bool>? MatchSnItoHost { get; set; }
+
+        /// <summary>
         /// Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
         /// </summary>
         [Input("noHappyEyeballs")]

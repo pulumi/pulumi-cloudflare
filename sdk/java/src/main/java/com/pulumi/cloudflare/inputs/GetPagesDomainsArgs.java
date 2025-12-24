@@ -18,14 +18,14 @@ public final class GetPagesDomainsArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetPagesDomainsArgs Empty = new GetPagesDomainsArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -89,7 +89,7 @@ public final class GetPagesDomainsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class GetPagesDomainsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

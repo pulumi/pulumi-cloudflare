@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetZeroTrustAccessCustomPagePlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -34,15 +32,15 @@ public final class GetZeroTrustAccessCustomPagePlainArgs extends com.pulumi.reso
      * UUID.
      * 
      */
-    @Import(name="customPageId")
-    private @Nullable String customPageId;
+    @Import(name="customPageId", required=true)
+    private String customPageId;
 
     /**
      * @return UUID.
      * 
      */
-    public Optional<String> customPageId() {
-        return Optional.ofNullable(this.customPageId);
+    public String customPageId() {
+        return this.customPageId;
     }
 
     private GetZeroTrustAccessCustomPagePlainArgs() {}
@@ -87,7 +85,7 @@ public final class GetZeroTrustAccessCustomPagePlainArgs extends com.pulumi.reso
          * @return builder
          * 
          */
-        public Builder customPageId(@Nullable String customPageId) {
+        public Builder customPageId(String customPageId) {
             $.customPageId = customPageId;
             return this;
         }
@@ -95,6 +93,9 @@ public final class GetZeroTrustAccessCustomPagePlainArgs extends com.pulumi.reso
         public GetZeroTrustAccessCustomPagePlainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetZeroTrustAccessCustomPagePlainArgs", "accountId");
+            }
+            if ($.customPageId == null) {
+                throw new MissingRequiredPropertyException("GetZeroTrustAccessCustomPagePlainArgs", "customPageId");
             }
             return $;
         }

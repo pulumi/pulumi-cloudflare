@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -63,6 +64,21 @@ public final class ByoIpPrefixArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+     * 
+     */
+    @Import(name="delegateLoaCreation")
+    private @Nullable Output<Boolean> delegateLoaCreation;
+
+    /**
+     * @return Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+     * 
+     */
+    public Optional<Output<Boolean>> delegateLoaCreation() {
+        return Optional.ofNullable(this.delegateLoaCreation);
+    }
+
+    /**
      * Description of the prefix.
      * 
      */
@@ -81,15 +97,15 @@ public final class ByoIpPrefixArgs extends com.pulumi.resources.ResourceArgs {
      * Identifier for the uploaded LOA document.
      * 
      */
-    @Import(name="loaDocumentId", required=true)
-    private Output<String> loaDocumentId;
+    @Import(name="loaDocumentId")
+    private @Nullable Output<String> loaDocumentId;
 
     /**
      * @return Identifier for the uploaded LOA document.
      * 
      */
-    public Output<String> loaDocumentId() {
-        return this.loaDocumentId;
+    public Optional<Output<String>> loaDocumentId() {
+        return Optional.ofNullable(this.loaDocumentId);
     }
 
     private ByoIpPrefixArgs() {}
@@ -98,6 +114,7 @@ public final class ByoIpPrefixArgs extends com.pulumi.resources.ResourceArgs {
         this.accountId = $.accountId;
         this.asn = $.asn;
         this.cidr = $.cidr;
+        this.delegateLoaCreation = $.delegateLoaCreation;
         this.description = $.description;
         this.loaDocumentId = $.loaDocumentId;
     }
@@ -184,6 +201,27 @@ public final class ByoIpPrefixArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param delegateLoaCreation Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder delegateLoaCreation(@Nullable Output<Boolean> delegateLoaCreation) {
+            $.delegateLoaCreation = delegateLoaCreation;
+            return this;
+        }
+
+        /**
+         * @param delegateLoaCreation Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder delegateLoaCreation(Boolean delegateLoaCreation) {
+            return delegateLoaCreation(Output.of(delegateLoaCreation));
+        }
+
+        /**
          * @param description Description of the prefix.
          * 
          * @return builder
@@ -210,7 +248,7 @@ public final class ByoIpPrefixArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder loaDocumentId(Output<String> loaDocumentId) {
+        public Builder loaDocumentId(@Nullable Output<String> loaDocumentId) {
             $.loaDocumentId = loaDocumentId;
             return this;
         }
@@ -234,9 +272,6 @@ public final class ByoIpPrefixArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.cidr == null) {
                 throw new MissingRequiredPropertyException("ByoIpPrefixArgs", "cidr");
-            }
-            if ($.loaDocumentId == null) {
-                throw new MissingRequiredPropertyException("ByoIpPrefixArgs", "loaDocumentId");
             }
             return $;
         }

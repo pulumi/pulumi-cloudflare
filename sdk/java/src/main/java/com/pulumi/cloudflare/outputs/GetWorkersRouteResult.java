@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWorkersRouteResult {
@@ -26,7 +24,7 @@ public final class GetWorkersRouteResult {
      * @return Identifier.
      * 
      */
-    private @Nullable String routeId;
+    private String routeId;
     /**
      * @return Name of the script to run if the route matches.
      * 
@@ -57,8 +55,8 @@ public final class GetWorkersRouteResult {
      * @return Identifier.
      * 
      */
-    public Optional<String> routeId() {
-        return Optional.ofNullable(this.routeId);
+    public String routeId() {
+        return this.routeId;
     }
     /**
      * @return Name of the script to run if the route matches.
@@ -86,7 +84,7 @@ public final class GetWorkersRouteResult {
     public static final class Builder {
         private String id;
         private String pattern;
-        private @Nullable String routeId;
+        private String routeId;
         private String script;
         private String zoneId;
         public Builder() {}
@@ -116,8 +114,10 @@ public final class GetWorkersRouteResult {
             return this;
         }
         @CustomType.Setter
-        public Builder routeId(@Nullable String routeId) {
-
+        public Builder routeId(String routeId) {
+            if (routeId == null) {
+              throw new MissingRequiredPropertyException("GetWorkersRouteResult", "routeId");
+            }
             this.routeId = routeId;
             return this;
         }

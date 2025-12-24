@@ -110,7 +110,7 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
     }
     /**
      * Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-     * Available values: &#34;access*requests&#34;, &#34;audit*logs&#34;, &#34;audit*logs*v2&#34;, &#34;biso*user*actions&#34;, &#34;casb*findings&#34;, &#34;device*posture*results&#34;, &#34;dlp*forensic*copies&#34;, &#34;dns*firewall*logs&#34;, &#34;dns*logs&#34;, &#34;email*security*alerts&#34;, &#34;firewall*events&#34;, &#34;gateway*dns&#34;, &#34;gateway*http&#34;, &#34;gateway*network&#34;, &#34;http*requests&#34;, &#34;magic*ids*detections&#34;, &#34;nel*reports&#34;, &#34;network*analytics*logs&#34;, &#34;page*shield*events&#34;, &#34;sinkhole*http*logs&#34;, &#34;spectrum*events&#34;, &#34;ssh*logs&#34;, &#34;workers*trace*events&#34;, &#34;zaraz*events&#34;, &#34;zero*trust*network*sessions&#34;.
+     * Available values: &#34;access*requests&#34;, &#34;audit*logs&#34;, &#34;audit*logs*v2&#34;, &#34;biso*user*actions&#34;, &#34;casb*findings&#34;, &#34;device*posture*results&#34;, &#34;dex*application*tests&#34;, &#34;dex*device*state*events&#34;, &#34;dlp*forensic*copies&#34;, &#34;dns*firewall*logs&#34;, &#34;dns*logs&#34;, &#34;email*security*alerts&#34;, &#34;firewall*events&#34;, &#34;gateway*dns&#34;, &#34;gateway*http&#34;, &#34;gateway*network&#34;, &#34;http*requests&#34;, &#34;ipsec*logs&#34;, &#34;magic*ids*detections&#34;, &#34;nel*reports&#34;, &#34;network*analytics*logs&#34;, &#34;page*shield*events&#34;, &#34;sinkhole*http*logs&#34;, &#34;spectrum*events&#34;, &#34;ssh*logs&#34;, &#34;warp*config*changes&#34;, &#34;warp*toggle*changes&#34;, &#34;workers*trace*events&#34;, &#34;zaraz*events&#34;, &#34;zero*trust*network*sessions&#34;.
      * 
      */
     @Export(name="dataset", refs={String.class}, tree="[0]")
@@ -118,7 +118,7 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-     * Available values: &#34;access*requests&#34;, &#34;audit*logs&#34;, &#34;audit*logs*v2&#34;, &#34;biso*user*actions&#34;, &#34;casb*findings&#34;, &#34;device*posture*results&#34;, &#34;dlp*forensic*copies&#34;, &#34;dns*firewall*logs&#34;, &#34;dns*logs&#34;, &#34;email*security*alerts&#34;, &#34;firewall*events&#34;, &#34;gateway*dns&#34;, &#34;gateway*http&#34;, &#34;gateway*network&#34;, &#34;http*requests&#34;, &#34;magic*ids*detections&#34;, &#34;nel*reports&#34;, &#34;network*analytics*logs&#34;, &#34;page*shield*events&#34;, &#34;sinkhole*http*logs&#34;, &#34;spectrum*events&#34;, &#34;ssh*logs&#34;, &#34;workers*trace*events&#34;, &#34;zaraz*events&#34;, &#34;zero*trust*network*sessions&#34;.
+     * Available values: &#34;access*requests&#34;, &#34;audit*logs&#34;, &#34;audit*logs*v2&#34;, &#34;biso*user*actions&#34;, &#34;casb*findings&#34;, &#34;device*posture*results&#34;, &#34;dex*application*tests&#34;, &#34;dex*device*state*events&#34;, &#34;dlp*forensic*copies&#34;, &#34;dns*firewall*logs&#34;, &#34;dns*logs&#34;, &#34;email*security*alerts&#34;, &#34;firewall*events&#34;, &#34;gateway*dns&#34;, &#34;gateway*http&#34;, &#34;gateway*network&#34;, &#34;http*requests&#34;, &#34;ipsec*logs&#34;, &#34;magic*ids*detections&#34;, &#34;nel*reports&#34;, &#34;network*analytics*logs&#34;, &#34;page*shield*events&#34;, &#34;sinkhole*http*logs&#34;, &#34;spectrum*events&#34;, &#34;ssh*logs&#34;, &#34;warp*config*changes&#34;, &#34;warp*toggle*changes&#34;, &#34;workers*trace*events&#34;, &#34;zaraz*events&#34;, &#34;zero*trust*network*sessions&#34;.
      * 
      */
     public Output<String> dataset() {
@@ -171,14 +171,14 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="filter", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> filter;
+    private Output<String> filter;
 
     /**
      * @return The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
      * 
      */
-    public Output<Optional<String>> filter() {
-        return Codegen.optional(this.filter);
+    public Output<String> filter() {
+        return this.filter;
     }
     /**
      * This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
@@ -253,70 +253,70 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
      */
     @Deprecated /* This attribute is deprecated. */
     @Export(name="logpullOptions", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> logpullOptions;
+    private Output<String> logpullOptions;
 
     /**
      * @return This field is deprecated. Use `outputOptions` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
      * 
      */
-    public Output<Optional<String>> logpullOptions() {
-        return Codegen.optional(this.logpullOptions);
+    public Output<String> logpullOptions() {
+        return this.logpullOptions;
     }
     /**
      * The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
      * 
      */
     @Export(name="maxUploadBytes", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> maxUploadBytes;
+    private Output<Integer> maxUploadBytes;
 
     /**
      * @return The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
      * 
      */
-    public Output<Optional<Integer>> maxUploadBytes() {
-        return Codegen.optional(this.maxUploadBytes);
+    public Output<Integer> maxUploadBytes() {
+        return this.maxUploadBytes;
     }
     /**
      * The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
      * 
      */
     @Export(name="maxUploadIntervalSeconds", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> maxUploadIntervalSeconds;
+    private Output<Integer> maxUploadIntervalSeconds;
 
     /**
      * @return The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
      * 
      */
-    public Output<Optional<Integer>> maxUploadIntervalSeconds() {
-        return Codegen.optional(this.maxUploadIntervalSeconds);
+    public Output<Integer> maxUploadIntervalSeconds() {
+        return this.maxUploadIntervalSeconds;
     }
     /**
      * The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
      * 
      */
     @Export(name="maxUploadRecords", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> maxUploadRecords;
+    private Output<Integer> maxUploadRecords;
 
     /**
      * @return The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
      * 
      */
-    public Output<Optional<Integer>> maxUploadRecords() {
-        return Codegen.optional(this.maxUploadRecords);
+    public Output<Integer> maxUploadRecords() {
+        return this.maxUploadRecords;
     }
     /**
      * Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> name;
+    private Output<String> name;
 
     /**
      * @return Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
      * 
      */
-    public Output<Optional<String>> name() {
-        return Codegen.optional(this.name);
+    public Output<String> name() {
+        return this.name;
     }
     /**
      * The structured replacement for `logpullOptions`. When including this field, the `logpullOption` field will be ignored.

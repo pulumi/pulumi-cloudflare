@@ -36,7 +36,7 @@ export interface GetZeroTrustAccessTagArgs {
     /**
      * The name of the tag
      */
-    tagName?: string;
+    tagName: string;
 }
 
 /**
@@ -58,7 +58,7 @@ export interface GetZeroTrustAccessTagResult {
     /**
      * The name of the tag
      */
-    readonly tagName?: string;
+    readonly tagName: string;
 }
 /**
  * ## Example Usage
@@ -92,5 +92,5 @@ export interface GetZeroTrustAccessTagOutputArgs {
     /**
      * The name of the tag
      */
-    tagName?: pulumi.Input<string>;
+    tagName: pulumi.Input<string>;
 }

@@ -65,7 +65,7 @@ type LookupWaitingRoomRulesResult struct {
 	Enabled bool `pulumi:"enabled"`
 	// Criteria defining when there is a match for the current rule.
 	Expression string `pulumi:"expression"`
-	// The ID of the rule.
+	// The ID of this resource.
 	Id          string `pulumi:"id"`
 	LastUpdated string `pulumi:"lastUpdated"`
 	// The version of the rule.
@@ -131,7 +131,7 @@ func (o LookupWaitingRoomRulesResultOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWaitingRoomRulesResult) string { return v.Expression }).(pulumi.StringOutput)
 }
 
-// The ID of the rule.
+// The ID of this resource.
 func (o LookupWaitingRoomRulesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWaitingRoomRulesResult) string { return v.Id }).(pulumi.StringOutput)
 }

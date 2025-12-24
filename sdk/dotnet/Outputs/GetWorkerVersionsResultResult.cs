@@ -75,6 +75,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Source;
         /// <summary>
+        /// Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
+        /// </summary>
+        public readonly int StartupTimeMs;
+        /// <summary>
         /// Usage model for the version.
         /// Available values: "standard", "bundled", "unbound".
         /// </summary>
@@ -110,6 +114,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string source,
 
+            int startupTimeMs,
+
             string usageModel)
         {
             Annotations = annotations;
@@ -126,6 +132,7 @@ namespace Pulumi.Cloudflare.Outputs
             Number = number;
             Placement = placement;
             Source = source;
+            StartupTimeMs = startupTimeMs;
             UsageModel = usageModel;
         }
     }

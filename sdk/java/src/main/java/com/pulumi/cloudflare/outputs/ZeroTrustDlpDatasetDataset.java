@@ -35,7 +35,7 @@ public final class ZeroTrustDlpDatasetDataset {
      */
     private @Nullable String status;
     /**
-     * @return When the dataset was last updated.
+     * @return Stores when the dataset was last updated.
      * 
      */
     private @Nullable String updatedAt;
@@ -81,7 +81,7 @@ public final class ZeroTrustDlpDatasetDataset {
         return Optional.ofNullable(this.status);
     }
     /**
-     * @return When the dataset was last updated.
+     * @return Stores when the dataset was last updated.
      * 
      */
     public Optional<String> updatedAt() {

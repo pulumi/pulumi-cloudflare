@@ -23,14 +23,14 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
     public static final PagesProjectState Empty = new PagesProjectState();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -217,9 +217,17 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.productionScriptName);
     }
 
+    /**
+     * Configs for the project source control.
+     * 
+     */
     @Import(name="source")
     private @Nullable Output<PagesProjectSourceArgs> source;
 
+    /**
+     * @return Configs for the project source control.
+     * 
+     */
     public Optional<Output<PagesProjectSourceArgs>> source() {
         return Optional.ofNullable(this.source);
     }
@@ -294,7 +302,7 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -305,7 +313,7 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -576,11 +584,23 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
             return productionScriptName(Output.of(productionScriptName));
         }
 
+        /**
+         * @param source Configs for the project source control.
+         * 
+         * @return builder
+         * 
+         */
         public Builder source(@Nullable Output<PagesProjectSourceArgs> source) {
             $.source = source;
             return this;
         }
 
+        /**
+         * @param source Configs for the project source control.
+         * 
+         * @return builder
+         * 
+         */
         public Builder source(PagesProjectSourceArgs source) {
             return source(Output.of(source));
         }

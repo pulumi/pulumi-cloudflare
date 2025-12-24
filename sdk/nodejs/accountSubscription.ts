@@ -82,7 +82,7 @@ export class AccountSubscription extends pulumi.CustomResource {
      * How often the subscription is renewed automatically.
      * Available values: "weekly", "monthly", "quarterly", "yearly".
      */
-    declare public readonly frequency: pulumi.Output<string | undefined>;
+    declare public readonly frequency: pulumi.Output<string>;
     /**
      * The price of the subscription that will be billed, in US dollars.
      */

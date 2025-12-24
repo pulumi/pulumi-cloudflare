@@ -27,10 +27,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewByoIpPrefix(ctx, "example_byo_ip_prefix", &cloudflare.ByoIpPrefixArgs{
-//				AccountId:     pulumi.String("258def64c72dae45f3e4c8516e2111f2"),
-//				Asn:           pulumi.Int(209242),
-//				Cidr:          pulumi.String("192.0.2.0/24"),
-//				LoaDocumentId: pulumi.String("d933b1530bc56c9953cf8ce166da8004"),
+//				AccountId:           pulumi.String("258def64c72dae45f3e4c8516e2111f2"),
+//				Asn:                 pulumi.Int(13335),
+//				Cidr:                pulumi.String("192.0.2.0/24"),
+//				DelegateLoaCreation: pulumi.Bool(true),
+//				Description:         pulumi.String("Internal test prefix"),
+//				LoaDocumentId:       pulumi.String("d933b1530bc56c9953cf8ce166da8004"),
 //			})
 //			if err != nil {
 //				return err
@@ -66,11 +68,15 @@ type ByoIpPrefix struct {
 	// IP Prefix in Classless Inter-Domain Routing format.
 	Cidr      pulumi.StringOutput `pulumi:"cidr"`
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+	DelegateLoaCreation pulumi.BoolOutput `pulumi:"delegateLoaCreation"`
 	// Description of the prefix.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// State of one kind of validation for an IP prefix.
+	IrrValidationState pulumi.StringOutput `pulumi:"irrValidationState"`
 	// Identifier for the uploaded LOA document.
-	LoaDocumentId pulumi.StringOutput `pulumi:"loaDocumentId"`
-	ModifiedAt    pulumi.StringOutput `pulumi:"modifiedAt"`
+	LoaDocumentId pulumi.StringPtrOutput `pulumi:"loaDocumentId"`
+	ModifiedAt    pulumi.StringOutput    `pulumi:"modifiedAt"`
 	// Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
 	//
 	// Deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
@@ -79,6 +85,12 @@ type ByoIpPrefix struct {
 	//
 	// Deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
 	OnDemandLocked pulumi.BoolOutput `pulumi:"onDemandLocked"`
+	// State of one kind of validation for an IP prefix.
+	OwnershipValidationState pulumi.StringOutput `pulumi:"ownershipValidationState"`
+	// Token provided to demonstrate ownership of the prefix.
+	OwnershipValidationToken pulumi.StringOutput `pulumi:"ownershipValidationToken"`
+	// State of one kind of validation for an IP prefix.
+	RpkiValidationState pulumi.StringOutput `pulumi:"rpkiValidationState"`
 }
 
 // NewByoIpPrefix registers a new resource with the given unique name, arguments, and options.
@@ -96,9 +108,6 @@ func NewByoIpPrefix(ctx *pulumi.Context,
 	}
 	if args.Cidr == nil {
 		return nil, errors.New("invalid value for required argument 'Cidr'")
-	}
-	if args.LoaDocumentId == nil {
-		return nil, errors.New("invalid value for required argument 'LoaDocumentId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ByoIpPrefix
@@ -140,8 +149,12 @@ type byoIpPrefixState struct {
 	// IP Prefix in Classless Inter-Domain Routing format.
 	Cidr      *string `pulumi:"cidr"`
 	CreatedAt *string `pulumi:"createdAt"`
+	// Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+	DelegateLoaCreation *bool `pulumi:"delegateLoaCreation"`
 	// Description of the prefix.
 	Description *string `pulumi:"description"`
+	// State of one kind of validation for an IP prefix.
+	IrrValidationState *string `pulumi:"irrValidationState"`
 	// Identifier for the uploaded LOA document.
 	LoaDocumentId *string `pulumi:"loaDocumentId"`
 	ModifiedAt    *string `pulumi:"modifiedAt"`
@@ -153,6 +166,12 @@ type byoIpPrefixState struct {
 	//
 	// Deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
 	OnDemandLocked *bool `pulumi:"onDemandLocked"`
+	// State of one kind of validation for an IP prefix.
+	OwnershipValidationState *string `pulumi:"ownershipValidationState"`
+	// Token provided to demonstrate ownership of the prefix.
+	OwnershipValidationToken *string `pulumi:"ownershipValidationToken"`
+	// State of one kind of validation for an IP prefix.
+	RpkiValidationState *string `pulumi:"rpkiValidationState"`
 }
 
 type ByoIpPrefixState struct {
@@ -173,8 +192,12 @@ type ByoIpPrefixState struct {
 	// IP Prefix in Classless Inter-Domain Routing format.
 	Cidr      pulumi.StringPtrInput
 	CreatedAt pulumi.StringPtrInput
+	// Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+	DelegateLoaCreation pulumi.BoolPtrInput
 	// Description of the prefix.
 	Description pulumi.StringPtrInput
+	// State of one kind of validation for an IP prefix.
+	IrrValidationState pulumi.StringPtrInput
 	// Identifier for the uploaded LOA document.
 	LoaDocumentId pulumi.StringPtrInput
 	ModifiedAt    pulumi.StringPtrInput
@@ -186,6 +209,12 @@ type ByoIpPrefixState struct {
 	//
 	// Deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
 	OnDemandLocked pulumi.BoolPtrInput
+	// State of one kind of validation for an IP prefix.
+	OwnershipValidationState pulumi.StringPtrInput
+	// Token provided to demonstrate ownership of the prefix.
+	OwnershipValidationToken pulumi.StringPtrInput
+	// State of one kind of validation for an IP prefix.
+	RpkiValidationState pulumi.StringPtrInput
 }
 
 func (ByoIpPrefixState) ElementType() reflect.Type {
@@ -199,10 +228,12 @@ type byoIpPrefixArgs struct {
 	Asn int `pulumi:"asn"`
 	// IP Prefix in Classless Inter-Domain Routing format.
 	Cidr string `pulumi:"cidr"`
+	// Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+	DelegateLoaCreation *bool `pulumi:"delegateLoaCreation"`
 	// Description of the prefix.
 	Description *string `pulumi:"description"`
 	// Identifier for the uploaded LOA document.
-	LoaDocumentId string `pulumi:"loaDocumentId"`
+	LoaDocumentId *string `pulumi:"loaDocumentId"`
 }
 
 // The set of arguments for constructing a ByoIpPrefix resource.
@@ -213,10 +244,12 @@ type ByoIpPrefixArgs struct {
 	Asn pulumi.IntInput
 	// IP Prefix in Classless Inter-Domain Routing format.
 	Cidr pulumi.StringInput
+	// Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+	DelegateLoaCreation pulumi.BoolPtrInput
 	// Description of the prefix.
 	Description pulumi.StringPtrInput
 	// Identifier for the uploaded LOA document.
-	LoaDocumentId pulumi.StringInput
+	LoaDocumentId pulumi.StringPtrInput
 }
 
 func (ByoIpPrefixArgs) ElementType() reflect.Type {
@@ -344,14 +377,24 @@ func (o ByoIpPrefixOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ByoIpPrefix) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+func (o ByoIpPrefixOutput) DelegateLoaCreation() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ByoIpPrefix) pulumi.BoolOutput { return v.DelegateLoaCreation }).(pulumi.BoolOutput)
+}
+
 // Description of the prefix.
 func (o ByoIpPrefixOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ByoIpPrefix) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// State of one kind of validation for an IP prefix.
+func (o ByoIpPrefixOutput) IrrValidationState() pulumi.StringOutput {
+	return o.ApplyT(func(v *ByoIpPrefix) pulumi.StringOutput { return v.IrrValidationState }).(pulumi.StringOutput)
+}
+
 // Identifier for the uploaded LOA document.
-func (o ByoIpPrefixOutput) LoaDocumentId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ByoIpPrefix) pulumi.StringOutput { return v.LoaDocumentId }).(pulumi.StringOutput)
+func (o ByoIpPrefixOutput) LoaDocumentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ByoIpPrefix) pulumi.StringPtrOutput { return v.LoaDocumentId }).(pulumi.StringPtrOutput)
 }
 
 func (o ByoIpPrefixOutput) ModifiedAt() pulumi.StringOutput {
@@ -370,6 +413,21 @@ func (o ByoIpPrefixOutput) OnDemandEnabled() pulumi.BoolOutput {
 // Deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
 func (o ByoIpPrefixOutput) OnDemandLocked() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ByoIpPrefix) pulumi.BoolOutput { return v.OnDemandLocked }).(pulumi.BoolOutput)
+}
+
+// State of one kind of validation for an IP prefix.
+func (o ByoIpPrefixOutput) OwnershipValidationState() pulumi.StringOutput {
+	return o.ApplyT(func(v *ByoIpPrefix) pulumi.StringOutput { return v.OwnershipValidationState }).(pulumi.StringOutput)
+}
+
+// Token provided to demonstrate ownership of the prefix.
+func (o ByoIpPrefixOutput) OwnershipValidationToken() pulumi.StringOutput {
+	return o.ApplyT(func(v *ByoIpPrefix) pulumi.StringOutput { return v.OwnershipValidationToken }).(pulumi.StringOutput)
+}
+
+// State of one kind of validation for an IP prefix.
+func (o ByoIpPrefixOutput) RpkiValidationState() pulumi.StringOutput {
+	return o.ApplyT(func(v *ByoIpPrefix) pulumi.StringOutput { return v.RpkiValidationState }).(pulumi.StringOutput)
 }
 
 type ByoIpPrefixArrayOutput struct{ *pulumi.OutputState }

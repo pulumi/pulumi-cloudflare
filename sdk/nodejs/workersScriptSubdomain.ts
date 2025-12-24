@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * > This resource is redundant with `cloudflare.Worker` and should not be used together. When using the `cloudflare.Worker` resource, use the nested `subdomain` attribute to control subdomain settings instead.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -17,6 +19,12 @@ import * as utilities from "./utilities";
  *     enabled: true,
  *     previewsEnabled: false,
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain example '<account_id>/<script_name>'
  * ```
  */
 export class WorkersScriptSubdomain extends pulumi.CustomResource {

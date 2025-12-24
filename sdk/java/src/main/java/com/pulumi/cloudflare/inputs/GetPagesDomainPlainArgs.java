@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetPagesDomainPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -16,14 +14,14 @@ public final class GetPagesDomainPlainArgs extends com.pulumi.resources.InvokeAr
     public static final GetPagesDomainPlainArgs Empty = new GetPagesDomainPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -31,18 +29,18 @@ public final class GetPagesDomainPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Name of the domain.
+     * The domain name.
      * 
      */
-    @Import(name="domainName")
-    private @Nullable String domainName;
+    @Import(name="domainName", required=true)
+    private String domainName;
 
     /**
-     * @return Name of the domain.
+     * @return The domain name.
      * 
      */
-    public Optional<String> domainName() {
-        return Optional.ofNullable(this.domainName);
+    public String domainName() {
+        return this.domainName;
     }
 
     /**
@@ -87,7 +85,7 @@ public final class GetPagesDomainPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -98,12 +96,12 @@ public final class GetPagesDomainPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param domainName Name of the domain.
+         * @param domainName The domain name.
          * 
          * @return builder
          * 
          */
-        public Builder domainName(@Nullable String domainName) {
+        public Builder domainName(String domainName) {
             $.domainName = domainName;
             return this;
         }
@@ -122,6 +120,9 @@ public final class GetPagesDomainPlainArgs extends com.pulumi.resources.InvokeAr
         public GetPagesDomainPlainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetPagesDomainPlainArgs", "accountId");
+            }
+            if ($.domainName == null) {
+                throw new MissingRequiredPropertyException("GetPagesDomainPlainArgs", "domainName");
             }
             if ($.projectName == null) {
                 throw new MissingRequiredPropertyException("GetPagesDomainPlainArgs", "projectName");

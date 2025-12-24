@@ -221,9 +221,17 @@ public final class PagesProjectCanonicalDeploymentArgs extends com.pulumi.resour
         return Optional.ofNullable(this.shortId);
     }
 
+    /**
+     * Configs for the project source control.
+     * 
+     */
     @Import(name="source")
     private @Nullable Output<PagesProjectCanonicalDeploymentSourceArgs> source;
 
+    /**
+     * @return Configs for the project source control.
+     * 
+     */
     public Optional<Output<PagesProjectCanonicalDeploymentSourceArgs>> source() {
         return Optional.ofNullable(this.source);
     }
@@ -258,6 +266,21 @@ public final class PagesProjectCanonicalDeploymentArgs extends com.pulumi.resour
         return Optional.ofNullable(this.url);
     }
 
+    /**
+     * Whether the deployment uses functions.
+     * 
+     */
+    @Import(name="usesFunctions")
+    private @Nullable Output<Boolean> usesFunctions;
+
+    /**
+     * @return Whether the deployment uses functions.
+     * 
+     */
+    public Optional<Output<Boolean>> usesFunctions() {
+        return Optional.ofNullable(this.usesFunctions);
+    }
+
     private PagesProjectCanonicalDeploymentArgs() {}
 
     private PagesProjectCanonicalDeploymentArgs(PagesProjectCanonicalDeploymentArgs $) {
@@ -277,6 +300,7 @@ public final class PagesProjectCanonicalDeploymentArgs extends com.pulumi.resour
         this.source = $.source;
         this.stages = $.stages;
         this.url = $.url;
+        this.usesFunctions = $.usesFunctions;
     }
 
     public static Builder builder() {
@@ -582,11 +606,23 @@ public final class PagesProjectCanonicalDeploymentArgs extends com.pulumi.resour
             return shortId(Output.of(shortId));
         }
 
+        /**
+         * @param source Configs for the project source control.
+         * 
+         * @return builder
+         * 
+         */
         public Builder source(@Nullable Output<PagesProjectCanonicalDeploymentSourceArgs> source) {
             $.source = source;
             return this;
         }
 
+        /**
+         * @param source Configs for the project source control.
+         * 
+         * @return builder
+         * 
+         */
         public Builder source(PagesProjectCanonicalDeploymentSourceArgs source) {
             return source(Output.of(source));
         }
@@ -641,6 +677,27 @@ public final class PagesProjectCanonicalDeploymentArgs extends com.pulumi.resour
          */
         public Builder url(String url) {
             return url(Output.of(url));
+        }
+
+        /**
+         * @param usesFunctions Whether the deployment uses functions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usesFunctions(@Nullable Output<Boolean> usesFunctions) {
+            $.usesFunctions = usesFunctions;
+            return this;
+        }
+
+        /**
+         * @param usesFunctions Whether the deployment uses functions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usesFunctions(Boolean usesFunctions) {
+            return usesFunctions(Output.of(usesFunctions));
         }
 
         public PagesProjectCanonicalDeploymentArgs build() {

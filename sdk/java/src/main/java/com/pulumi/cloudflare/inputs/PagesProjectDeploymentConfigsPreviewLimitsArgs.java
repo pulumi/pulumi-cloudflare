@@ -5,10 +5,9 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class PagesProjectDeploymentConfigsPreviewLimitsArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,15 +18,15 @@ public final class PagesProjectDeploymentConfigsPreviewLimitsArgs extends com.pu
      * CPU time limit in milliseconds.
      * 
      */
-    @Import(name="cpuMs")
-    private @Nullable Output<Integer> cpuMs;
+    @Import(name="cpuMs", required=true)
+    private Output<Integer> cpuMs;
 
     /**
      * @return CPU time limit in milliseconds.
      * 
      */
-    public Optional<Output<Integer>> cpuMs() {
-        return Optional.ofNullable(this.cpuMs);
+    public Output<Integer> cpuMs() {
+        return this.cpuMs;
     }
 
     private PagesProjectDeploymentConfigsPreviewLimitsArgs() {}
@@ -60,7 +59,7 @@ public final class PagesProjectDeploymentConfigsPreviewLimitsArgs extends com.pu
          * @return builder
          * 
          */
-        public Builder cpuMs(@Nullable Output<Integer> cpuMs) {
+        public Builder cpuMs(Output<Integer> cpuMs) {
             $.cpuMs = cpuMs;
             return this;
         }
@@ -76,6 +75,9 @@ public final class PagesProjectDeploymentConfigsPreviewLimitsArgs extends com.pu
         }
 
         public PagesProjectDeploymentConfigsPreviewLimitsArgs build() {
+            if ($.cpuMs == null) {
+                throw new MissingRequiredPropertyException("PagesProjectDeploymentConfigsPreviewLimitsArgs", "cpuMs");
+            }
             return $;
         }
     }

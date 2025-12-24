@@ -85,6 +85,10 @@ public final class GetPagesProjectLatestDeployment {
      * 
      */
     private String shortId;
+    /**
+     * @return Configs for the project source control.
+     * 
+     */
     private GetPagesProjectLatestDeploymentSource source;
     /**
      * @return List of past stages.
@@ -96,6 +100,11 @@ public final class GetPagesProjectLatestDeployment {
      * 
      */
     private String url;
+    /**
+     * @return Whether the deployment uses functions.
+     * 
+     */
+    private Boolean usesFunctions;
 
     private GetPagesProjectLatestDeployment() {}
     /**
@@ -190,6 +199,10 @@ public final class GetPagesProjectLatestDeployment {
     public String shortId() {
         return this.shortId;
     }
+    /**
+     * @return Configs for the project source control.
+     * 
+     */
     public GetPagesProjectLatestDeploymentSource source() {
         return this.source;
     }
@@ -206,6 +219,13 @@ public final class GetPagesProjectLatestDeployment {
      */
     public String url() {
         return this.url;
+    }
+    /**
+     * @return Whether the deployment uses functions.
+     * 
+     */
+    public Boolean usesFunctions() {
+        return this.usesFunctions;
     }
 
     public static Builder builder() {
@@ -233,6 +253,7 @@ public final class GetPagesProjectLatestDeployment {
         private GetPagesProjectLatestDeploymentSource source;
         private List<GetPagesProjectLatestDeploymentStage> stages;
         private String url;
+        private Boolean usesFunctions;
         public Builder() {}
         public Builder(GetPagesProjectLatestDeployment defaults) {
     	      Objects.requireNonNull(defaults);
@@ -252,6 +273,7 @@ public final class GetPagesProjectLatestDeployment {
     	      this.source = defaults.source;
     	      this.stages = defaults.stages;
     	      this.url = defaults.url;
+    	      this.usesFunctions = defaults.usesFunctions;
         }
 
         @CustomType.Setter
@@ -388,6 +410,14 @@ public final class GetPagesProjectLatestDeployment {
             this.url = url;
             return this;
         }
+        @CustomType.Setter
+        public Builder usesFunctions(Boolean usesFunctions) {
+            if (usesFunctions == null) {
+              throw new MissingRequiredPropertyException("GetPagesProjectLatestDeployment", "usesFunctions");
+            }
+            this.usesFunctions = usesFunctions;
+            return this;
+        }
         public GetPagesProjectLatestDeployment build() {
             final var _resultValue = new GetPagesProjectLatestDeployment();
             _resultValue.aliases = aliases;
@@ -406,6 +436,7 @@ public final class GetPagesProjectLatestDeployment {
             _resultValue.source = source;
             _resultValue.stages = stages;
             _resultValue.url = url;
+            _resultValue.usesFunctions = usesFunctions;
             return _resultValue;
         }
     }

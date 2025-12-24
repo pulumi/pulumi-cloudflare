@@ -33,7 +33,7 @@ export interface GetMagicNetworkMonitoringRuleArgs {
     /**
      * The id of the rule. Must be unique.
      */
-    ruleId?: string;
+    ruleId: string;
 }
 
 /**
@@ -75,7 +75,7 @@ export interface GetMagicNetworkMonitoringRuleResult {
     /**
      * The id of the rule. Must be unique.
      */
-    readonly ruleId?: string;
+    readonly ruleId: string;
     /**
      * MNM rule type.
      * Available values: "threshold", "zscore", "advancedDdos".
@@ -121,5 +121,5 @@ export interface GetMagicNetworkMonitoringRuleOutputArgs {
     /**
      * The id of the rule. Must be unique.
      */
-    ruleId?: pulumi.Input<string>;
+    ruleId: pulumi.Input<string>;
 }

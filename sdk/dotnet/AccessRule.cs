@@ -85,7 +85,7 @@ namespace Pulumi.Cloudflare
         /// An informative summary of the rule, typically used as a reminder or explanation.
         /// </summary>
         [Output("notes")]
-        public Output<string?> Notes { get; private set; } = null!;
+        public Output<string> Notes { get; private set; } = null!;
 
         /// <summary>
         /// All zones owned by the user will have the rule applied.

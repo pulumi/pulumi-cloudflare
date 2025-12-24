@@ -14,12 +14,20 @@ import * as utilities from "./utilities";
  * const exampleZeroTrustDeviceSettings = new cloudflare.ZeroTrustDeviceSettings("example_zero_trust_device_settings", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     disableForTime: 0,
+ *     externalEmergencySignalEnabled: true,
+ *     externalEmergencySignalFingerprint: "abcd1234567890abcd1234567890abcd1234567890abcd1234567890abcd1234",
+ *     externalEmergencySignalInterval: "5m",
+ *     externalEmergencySignalUrl: "https://192.0.2.1/signal",
  *     gatewayProxyEnabled: true,
  *     gatewayUdpProxyEnabled: true,
  *     rootCertificateInstallationEnabled: true,
  *     useZtVirtualIp: true,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ~> This resource does not currently support `pulumi import`.
  */
 export class ZeroTrustDeviceSettings extends pulumi.CustomResource {
     /**
@@ -55,6 +63,22 @@ export class ZeroTrustDeviceSettings extends pulumi.CustomResource {
      */
     declare public readonly disableForTime: pulumi.Output<number | undefined>;
     /**
+     * Controls whether the external emergency disconnect feature is enabled.
+     */
+    declare public readonly externalEmergencySignalEnabled: pulumi.Output<boolean | undefined>;
+    /**
+     * The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
+     */
+    declare public readonly externalEmergencySignalFingerprint: pulumi.Output<string | undefined>;
+    /**
+     * The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds.
+     */
+    declare public readonly externalEmergencySignalInterval: pulumi.Output<string | undefined>;
+    /**
+     * The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
+     */
+    declare public readonly externalEmergencySignalUrl: pulumi.Output<string | undefined>;
+    /**
      * Enable gateway proxy filtering on TCP.
      */
     declare public readonly gatewayProxyEnabled: pulumi.Output<boolean | undefined>;
@@ -86,6 +110,10 @@ export class ZeroTrustDeviceSettings extends pulumi.CustomResource {
             const state = argsOrState as ZeroTrustDeviceSettingsState | undefined;
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["disableForTime"] = state?.disableForTime;
+            resourceInputs["externalEmergencySignalEnabled"] = state?.externalEmergencySignalEnabled;
+            resourceInputs["externalEmergencySignalFingerprint"] = state?.externalEmergencySignalFingerprint;
+            resourceInputs["externalEmergencySignalInterval"] = state?.externalEmergencySignalInterval;
+            resourceInputs["externalEmergencySignalUrl"] = state?.externalEmergencySignalUrl;
             resourceInputs["gatewayProxyEnabled"] = state?.gatewayProxyEnabled;
             resourceInputs["gatewayUdpProxyEnabled"] = state?.gatewayUdpProxyEnabled;
             resourceInputs["rootCertificateInstallationEnabled"] = state?.rootCertificateInstallationEnabled;
@@ -97,6 +125,10 @@ export class ZeroTrustDeviceSettings extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["disableForTime"] = args?.disableForTime;
+            resourceInputs["externalEmergencySignalEnabled"] = args?.externalEmergencySignalEnabled;
+            resourceInputs["externalEmergencySignalFingerprint"] = args?.externalEmergencySignalFingerprint;
+            resourceInputs["externalEmergencySignalInterval"] = args?.externalEmergencySignalInterval;
+            resourceInputs["externalEmergencySignalUrl"] = args?.externalEmergencySignalUrl;
             resourceInputs["gatewayProxyEnabled"] = args?.gatewayProxyEnabled;
             resourceInputs["gatewayUdpProxyEnabled"] = args?.gatewayUdpProxyEnabled;
             resourceInputs["rootCertificateInstallationEnabled"] = args?.rootCertificateInstallationEnabled;
@@ -116,6 +148,22 @@ export interface ZeroTrustDeviceSettingsState {
      * Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
      */
     disableForTime?: pulumi.Input<number>;
+    /**
+     * Controls whether the external emergency disconnect feature is enabled.
+     */
+    externalEmergencySignalEnabled?: pulumi.Input<boolean>;
+    /**
+     * The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
+     */
+    externalEmergencySignalFingerprint?: pulumi.Input<string>;
+    /**
+     * The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds.
+     */
+    externalEmergencySignalInterval?: pulumi.Input<string>;
+    /**
+     * The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
+     */
+    externalEmergencySignalUrl?: pulumi.Input<string>;
     /**
      * Enable gateway proxy filtering on TCP.
      */
@@ -143,6 +191,22 @@ export interface ZeroTrustDeviceSettingsArgs {
      * Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
      */
     disableForTime?: pulumi.Input<number>;
+    /**
+     * Controls whether the external emergency disconnect feature is enabled.
+     */
+    externalEmergencySignalEnabled?: pulumi.Input<boolean>;
+    /**
+     * The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
+     */
+    externalEmergencySignalFingerprint?: pulumi.Input<string>;
+    /**
+     * The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds.
+     */
+    externalEmergencySignalInterval?: pulumi.Input<string>;
+    /**
+     * The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
+     */
+    externalEmergencySignalUrl?: pulumi.Input<string>;
     /**
      * Enable gateway proxy filtering on TCP.
      */

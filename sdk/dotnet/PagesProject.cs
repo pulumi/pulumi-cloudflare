@@ -130,17 +130,17 @@ namespace Pulumi.Cloudflare
     ///                 {
     ///                     { "R2_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsPreviewR2BucketsArgs
     ///                     {
-    ///                         Jurisdiction = "eu",
     ///                         Name = "some-bucket",
+    ///                         Jurisdiction = "eu",
     ///                     } },
     ///                 },
     ///                 Services = 
     ///                 {
     ///                     { "SERVICE_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsPreviewServicesArgs
     ///                     {
+    ///                         Service = "example-worker",
     ///                         Entrypoint = "MyHandler",
     ///                         Environment = "production",
-    ///                         Service = "example-worker",
     ///                     } },
     ///                 },
     ///                 UsageModel = "standard",
@@ -243,17 +243,17 @@ namespace Pulumi.Cloudflare
     ///                 {
     ///                     { "R2_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsProductionR2BucketsArgs
     ///                     {
-    ///                         Jurisdiction = "eu",
     ///                         Name = "some-bucket",
+    ///                         Jurisdiction = "eu",
     ///                     } },
     ///                 },
     ///                 Services = 
     ///                 {
     ///                     { "SERVICE_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsProductionServicesArgs
     ///                     {
+    ///                         Service = "example-worker",
     ///                         Entrypoint = "MyHandler",
     ///                         Environment = "production",
-    ///                         Service = "example-worker",
     ///                     } },
     ///                 },
     ///                 UsageModel = "standard",
@@ -273,6 +273,7 @@ namespace Pulumi.Cloudflare
     ///             {
     ///                 DeploymentsEnabled = true,
     ///                 Owner = "my-org",
+    ///                 OwnerId = "12345678",
     ///                 PathExcludes = new[]
     ///                 {
     ///                     "string",
@@ -293,6 +294,7 @@ namespace Pulumi.Cloudflare
     ///                 PreviewDeploymentSetting = "all",
     ///                 ProductionBranch = "main",
     ///                 ProductionDeploymentsEnabled = true,
+    ///                 RepoId = "12345678",
     ///                 RepoName = "my-repo",
     ///             },
     ///             Type = "github",
@@ -314,7 +316,7 @@ namespace Pulumi.Cloudflare
     public partial class PagesProject : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -323,7 +325,7 @@ namespace Pulumi.Cloudflare
         /// Configs for the project build process.
         /// </summary>
         [Output("buildConfig")]
-        public Output<Outputs.PagesProjectBuildConfig> BuildConfig { get; private set; } = null!;
+        public Output<Outputs.PagesProjectBuildConfig?> BuildConfig { get; private set; } = null!;
 
         /// <summary>
         /// Most recent production deployment of the project.
@@ -391,8 +393,11 @@ namespace Pulumi.Cloudflare
         [Output("productionScriptName")]
         public Output<string> ProductionScriptName { get; private set; } = null!;
 
+        /// <summary>
+        /// Configs for the project source control.
+        /// </summary>
         [Output("source")]
-        public Output<Outputs.PagesProjectSource> Source { get; private set; } = null!;
+        public Output<Outputs.PagesProjectSource?> Source { get; private set; } = null!;
 
         /// <summary>
         /// The Cloudflare subdomain associated with the project.
@@ -453,7 +458,7 @@ namespace Pulumi.Cloudflare
     public sealed class PagesProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -482,6 +487,9 @@ namespace Pulumi.Cloudflare
         [Input("productionBranch", required: true)]
         public Input<string> ProductionBranch { get; set; } = null!;
 
+        /// <summary>
+        /// Configs for the project source control.
+        /// </summary>
         [Input("source")]
         public Input<Inputs.PagesProjectSourceArgs>? Source { get; set; }
 
@@ -494,7 +502,7 @@ namespace Pulumi.Cloudflare
     public sealed class PagesProjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -577,6 +585,9 @@ namespace Pulumi.Cloudflare
         [Input("productionScriptName")]
         public Input<string>? ProductionScriptName { get; set; }
 
+        /// <summary>
+        /// Configs for the project source control.
+        /// </summary>
         [Input("source")]
         public Input<Inputs.PagesProjectSourceGetArgs>? Source { get; set; }
 

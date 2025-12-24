@@ -169,10 +169,10 @@ public class ZeroTrustDexTest extends com.pulumi.resources.CustomResource {
         return this.targetPolicies;
     }
     @Export(name="targeted", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> targeted;
+    private Output<Boolean> targeted;
 
-    public Output<Optional<Boolean>> targeted() {
-        return Codegen.optional(this.targeted);
+    public Output<Boolean> targeted() {
+        return this.targeted;
     }
     /**
      * The unique identifier for the test.

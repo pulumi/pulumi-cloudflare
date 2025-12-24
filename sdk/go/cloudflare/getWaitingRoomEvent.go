@@ -28,7 +28,7 @@ import (
 //			_, err := cloudflare.LookupWaitingRoomEvent(ctx, &cloudflare.LookupWaitingRoomEventArgs{
 //				ZoneId:        "023e105f4ecef8ad9ca31a8372d0c353",
 //				WaitingRoomId: "699d98642c564d2e855e9661899b7252",
-//				EventId:       pulumi.StringRef("25756b2dfe6e378a06b033b670413757"),
+//				EventId:       "25756b2dfe6e378a06b033b670413757",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -50,8 +50,8 @@ func LookupWaitingRoomEvent(ctx *pulumi.Context, args *LookupWaitingRoomEventArg
 
 // A collection of arguments for invoking getWaitingRoomEvent.
 type LookupWaitingRoomEventArgs struct {
-	EventId       *string `pulumi:"eventId"`
-	WaitingRoomId string  `pulumi:"waitingRoomId"`
+	EventId       string `pulumi:"eventId"`
+	WaitingRoomId string `pulumi:"waitingRoomId"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -66,8 +66,8 @@ type LookupWaitingRoomEventResult struct {
 	// If set, the event will override the waiting room's `disableSessionRenewal` property while it is active. If null, the event will inherit it.
 	DisableSessionRenewal bool `pulumi:"disableSessionRenewal"`
 	// An ISO 8601 timestamp that marks the end of the event.
-	EventEndTime string  `pulumi:"eventEndTime"`
-	EventId      *string `pulumi:"eventId"`
+	EventEndTime string `pulumi:"eventEndTime"`
+	EventId      string `pulumi:"eventId"`
 	// An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `eventEndTime`.
 	EventStartTime string `pulumi:"eventStartTime"`
 	// The ID of this resource.
@@ -111,8 +111,8 @@ func LookupWaitingRoomEventOutput(ctx *pulumi.Context, args LookupWaitingRoomEve
 
 // A collection of arguments for invoking getWaitingRoomEvent.
 type LookupWaitingRoomEventOutputArgs struct {
-	EventId       pulumi.StringPtrInput `pulumi:"eventId"`
-	WaitingRoomId pulumi.StringInput    `pulumi:"waitingRoomId"`
+	EventId       pulumi.StringInput `pulumi:"eventId"`
+	WaitingRoomId pulumi.StringInput `pulumi:"waitingRoomId"`
 	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
@@ -160,8 +160,8 @@ func (o LookupWaitingRoomEventResultOutput) EventEndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWaitingRoomEventResult) string { return v.EventEndTime }).(pulumi.StringOutput)
 }
 
-func (o LookupWaitingRoomEventResultOutput) EventId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupWaitingRoomEventResult) *string { return v.EventId }).(pulumi.StringPtrOutput)
+func (o LookupWaitingRoomEventResultOutput) EventId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWaitingRoomEventResult) string { return v.EventId }).(pulumi.StringOutput)
 }
 
 // An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `eventEndTime`.

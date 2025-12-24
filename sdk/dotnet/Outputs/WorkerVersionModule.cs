@@ -14,9 +14,13 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class WorkerVersionModule
     {
         /// <summary>
+        /// The base64-encoded module content.
+        /// </summary>
+        public readonly string? ContentBase64;
+        /// <summary>
         /// The file path of the module content.
         /// </summary>
-        public readonly string ContentFile;
+        public readonly string? ContentFile;
         /// <summary>
         /// The SHA-256 hash of the module content.
         /// </summary>
@@ -32,7 +36,9 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private WorkerVersionModule(
-            string contentFile,
+            string? contentBase64,
+
+            string? contentFile,
 
             string? contentSha256,
 
@@ -40,6 +46,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string name)
         {
+            ContentBase64 = contentBase64;
             ContentFile = contentFile;
             ContentSha256 = contentSha256;
             ContentType = contentType;

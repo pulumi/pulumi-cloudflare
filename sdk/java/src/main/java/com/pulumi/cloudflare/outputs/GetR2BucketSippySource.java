@@ -11,15 +11,20 @@ import java.util.Objects;
 @CustomType
 public final class GetR2BucketSippySource {
     /**
-     * @return Name of the bucket on the provider.
+     * @return Name of the bucket on the provider (AWS, GCS only).
      * 
      */
     private String bucket;
     /**
-     * @return Available values: &#34;aws&#34;, &#34;gcs&#34;.
+     * @return S3-compatible URL (Generic S3-compatible providers only).
      * 
      */
-    private String provider;
+    private String bucketUrl;
+    /**
+     * @return Available values: &#34;aws&#34;, &#34;gcs&#34;, &#34;s3&#34;.
+     * 
+     */
+    private String r2BucketSippyProvider;
     /**
      * @return Region where the bucket resides (AWS only).
      * 
@@ -28,18 +33,25 @@ public final class GetR2BucketSippySource {
 
     private GetR2BucketSippySource() {}
     /**
-     * @return Name of the bucket on the provider.
+     * @return Name of the bucket on the provider (AWS, GCS only).
      * 
      */
     public String bucket() {
         return this.bucket;
     }
     /**
-     * @return Available values: &#34;aws&#34;, &#34;gcs&#34;.
+     * @return S3-compatible URL (Generic S3-compatible providers only).
      * 
      */
-    public String provider() {
-        return this.provider;
+    public String bucketUrl() {
+        return this.bucketUrl;
+    }
+    /**
+     * @return Available values: &#34;aws&#34;, &#34;gcs&#34;, &#34;s3&#34;.
+     * 
+     */
+    public String r2BucketSippyProvider() {
+        return this.r2BucketSippyProvider;
     }
     /**
      * @return Region where the bucket resides (AWS only).
@@ -59,13 +71,15 @@ public final class GetR2BucketSippySource {
     @CustomType.Builder
     public static final class Builder {
         private String bucket;
-        private String provider;
+        private String bucketUrl;
+        private String r2BucketSippyProvider;
         private String region;
         public Builder() {}
         public Builder(GetR2BucketSippySource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucket = defaults.bucket;
-    	      this.provider = defaults.provider;
+    	      this.bucketUrl = defaults.bucketUrl;
+    	      this.r2BucketSippyProvider = defaults.r2BucketSippyProvider;
     	      this.region = defaults.region;
         }
 
@@ -78,11 +92,19 @@ public final class GetR2BucketSippySource {
             return this;
         }
         @CustomType.Setter
-        public Builder provider(String provider) {
-            if (provider == null) {
-              throw new MissingRequiredPropertyException("GetR2BucketSippySource", "provider");
+        public Builder bucketUrl(String bucketUrl) {
+            if (bucketUrl == null) {
+              throw new MissingRequiredPropertyException("GetR2BucketSippySource", "bucketUrl");
             }
-            this.provider = provider;
+            this.bucketUrl = bucketUrl;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder r2BucketSippyProvider(String r2BucketSippyProvider) {
+            if (r2BucketSippyProvider == null) {
+              throw new MissingRequiredPropertyException("GetR2BucketSippySource", "r2BucketSippyProvider");
+            }
+            this.r2BucketSippyProvider = r2BucketSippyProvider;
             return this;
         }
         @CustomType.Setter
@@ -96,7 +118,8 @@ public final class GetR2BucketSippySource {
         public GetR2BucketSippySource build() {
             final var _resultValue = new GetR2BucketSippySource();
             _resultValue.bucket = bucket;
-            _resultValue.provider = provider;
+            _resultValue.bucketUrl = bucketUrl;
+            _resultValue.r2BucketSippyProvider = r2BucketSippyProvider;
             _resultValue.region = region;
             return _resultValue;
         }

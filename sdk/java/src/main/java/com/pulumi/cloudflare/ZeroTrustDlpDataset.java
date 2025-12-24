@@ -59,6 +59,10 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ## Import
+ * 
+ * ~&gt; This resource does not currently support `pulumi import`.
+ * 
  */
 @ResourceType(type="cloudflare:index/zeroTrustDlpDataset:ZeroTrustDlpDataset")
 public class ZeroTrustDlpDataset extends com.pulumi.resources.CustomResource {
@@ -191,7 +195,7 @@ public class ZeroTrustDlpDataset extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * When the dataset was last updated.
+     * Stores when the dataset was last updated.
      * 
      * This includes name or description changes as well as uploads.
      * 
@@ -200,7 +204,7 @@ public class ZeroTrustDlpDataset extends com.pulumi.resources.CustomResource {
     private Output<String> updatedAt;
 
     /**
-     * @return When the dataset was last updated.
+     * @return Stores when the dataset was last updated.
      * 
      * This includes name or description changes as well as uploads.
      * 

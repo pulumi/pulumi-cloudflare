@@ -195,7 +195,7 @@ export class AccessApplication extends pulumi.CustomResource {
     declare public readonly targetCriterias: pulumi.Output<outputs.AccessApplicationTargetCriteria[] | undefined>;
     /**
      * The application type.
-     * Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal".
+     * Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal", "proxyEndpoint".
      */
     declare public readonly type: pulumi.Output<string | undefined>;
     /**
@@ -460,7 +460,7 @@ export interface AccessApplicationState {
     targetCriterias?: pulumi.Input<pulumi.Input<inputs.AccessApplicationTargetCriteria>[]>;
     /**
      * The application type.
-     * Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal".
+     * Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal", "proxyEndpoint".
      */
     type?: pulumi.Input<string>;
     /**
@@ -618,7 +618,7 @@ export interface AccessApplicationArgs {
     targetCriterias?: pulumi.Input<pulumi.Input<inputs.AccessApplicationTargetCriteria>[]>;
     /**
      * The application type.
-     * Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal".
+     * Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal", "proxyEndpoint".
      */
     type?: pulumi.Input<string>;
     /**

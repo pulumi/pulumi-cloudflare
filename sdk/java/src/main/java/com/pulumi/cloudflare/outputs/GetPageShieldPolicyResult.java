@@ -8,8 +8,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPageShieldPolicyResult {
@@ -43,7 +41,7 @@ public final class GetPageShieldPolicyResult {
      * @return Identifier
      * 
      */
-    private @Nullable String policyId;
+    private String policyId;
     /**
      * @return The policy which will be applied
      * 
@@ -96,8 +94,8 @@ public final class GetPageShieldPolicyResult {
      * @return Identifier
      * 
      */
-    public Optional<String> policyId() {
-        return Optional.ofNullable(this.policyId);
+    public String policyId() {
+        return this.policyId;
     }
     /**
      * @return The policy which will be applied
@@ -128,7 +126,7 @@ public final class GetPageShieldPolicyResult {
         private Boolean enabled;
         private String expression;
         private String id;
-        private @Nullable String policyId;
+        private String policyId;
         private String value;
         private String zoneId;
         public Builder() {}
@@ -185,8 +183,10 @@ public final class GetPageShieldPolicyResult {
             return this;
         }
         @CustomType.Setter
-        public Builder policyId(@Nullable String policyId) {
-
+        public Builder policyId(String policyId) {
+            if (policyId == null) {
+              throw new MissingRequiredPropertyException("GetPageShieldPolicyResult", "policyId");
+            }
             this.policyId = policyId;
             return this;
         }

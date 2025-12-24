@@ -71,13 +71,12 @@ type LookupZoneDnssecResult struct {
 	DnssecUseNsec3    bool    `pulumi:"dnssecUseNsec3"`
 	Ds                string  `pulumi:"ds"`
 	Flags             float64 `pulumi:"flags"`
-	// The provider-assigned unique ID for this managed resource.
-	Id         string  `pulumi:"id"`
-	KeyTag     float64 `pulumi:"keyTag"`
-	KeyType    string  `pulumi:"keyType"`
-	ModifiedOn string  `pulumi:"modifiedOn"`
-	PublicKey  string  `pulumi:"publicKey"`
-	Status     string  `pulumi:"status"`
+	Id                string  `pulumi:"id"`
+	KeyTag            float64 `pulumi:"keyTag"`
+	KeyType           string  `pulumi:"keyType"`
+	ModifiedOn        string  `pulumi:"modifiedOn"`
+	PublicKey         string  `pulumi:"publicKey"`
+	Status            string  `pulumi:"status"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -160,7 +159,6 @@ func (o LookupZoneDnssecResultOutput) Flags() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupZoneDnssecResult) float64 { return v.Flags }).(pulumi.Float64Output)
 }
 
-// The provider-assigned unique ID for this managed resource.
 func (o LookupZoneDnssecResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneDnssecResult) string { return v.Id }).(pulumi.StringOutput)
 }

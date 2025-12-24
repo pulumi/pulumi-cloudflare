@@ -72,7 +72,7 @@ see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresour
     readonly type: string;
     readonly vanityNameServers: string[];
     readonly verificationKey: string;
-    readonly zoneId?: string;
+    readonly zoneId: string;
 }
 /**
  * ## Example Usage

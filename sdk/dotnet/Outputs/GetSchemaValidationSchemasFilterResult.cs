@@ -14,21 +14,13 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetSchemaValidationSchemasFilterResult
     {
         /// <summary>
-        /// Omit the source-files of schemas and only retrieve their meta-data.
-        /// </summary>
-        public readonly bool OmitSource;
-        /// <summary>
         /// Filter for enabled schemas
         /// </summary>
         public readonly bool? ValidationEnabled;
 
         [OutputConstructor]
-        private GetSchemaValidationSchemasFilterResult(
-            bool omitSource,
-
-            bool? validationEnabled)
+        private GetSchemaValidationSchemasFilterResult(bool? validationEnabled)
         {
-            OmitSource = omitSource;
             ValidationEnabled = validationEnabled;
         }
     }

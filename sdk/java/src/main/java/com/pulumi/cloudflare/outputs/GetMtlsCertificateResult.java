@@ -8,8 +8,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMtlsCertificateResult {
@@ -47,7 +45,7 @@ public final class GetMtlsCertificateResult {
      * @return Identifier.
      * 
      */
-    private @Nullable String mtlsCertificateId;
+    private String mtlsCertificateId;
     /**
      * @return Optional unique name for the certificate. Only used for human readability.
      * 
@@ -116,8 +114,8 @@ public final class GetMtlsCertificateResult {
      * @return Identifier.
      * 
      */
-    public Optional<String> mtlsCertificateId() {
-        return Optional.ofNullable(this.mtlsCertificateId);
+    public String mtlsCertificateId() {
+        return this.mtlsCertificateId;
     }
     /**
      * @return Optional unique name for the certificate. Only used for human readability.
@@ -163,7 +161,7 @@ public final class GetMtlsCertificateResult {
         private String expiresOn;
         private String id;
         private String issuer;
-        private @Nullable String mtlsCertificateId;
+        private String mtlsCertificateId;
         private String name;
         private String serialNumber;
         private String signature;
@@ -233,8 +231,10 @@ public final class GetMtlsCertificateResult {
             return this;
         }
         @CustomType.Setter
-        public Builder mtlsCertificateId(@Nullable String mtlsCertificateId) {
-
+        public Builder mtlsCertificateId(String mtlsCertificateId) {
+            if (mtlsCertificateId == null) {
+              throw new MissingRequiredPropertyException("GetMtlsCertificateResult", "mtlsCertificateId");
+            }
             this.mtlsCertificateId = mtlsCertificateId;
             return this;
         }

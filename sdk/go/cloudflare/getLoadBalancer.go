@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupLoadBalancer(ctx, &cloudflare.LookupLoadBalancerArgs{
 //				ZoneId:         "699d98642c564d2e855e9661899b7252",
-//				LoadBalancerId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
+//				LoadBalancerId: "699d98642c564d2e855e9661899b7252",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +49,7 @@ func LookupLoadBalancer(ctx *pulumi.Context, args *LookupLoadBalancerArgs, opts 
 
 // A collection of arguments for invoking getLoadBalancer.
 type LookupLoadBalancerArgs struct {
-	LoadBalancerId *string `pulumi:"loadBalancerId"`
+	LoadBalancerId string `pulumi:"loadBalancerId"`
 	// Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
 	PopPools map[string][]string `pulumi:"popPools"`
 	// A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
@@ -73,8 +73,8 @@ type LookupLoadBalancerResult struct {
 	// The pool ID to use when all other pools are detected as unhealthy.
 	FallbackPool string `pulumi:"fallbackPool"`
 	// The ID of this resource.
-	Id             string  `pulumi:"id"`
-	LoadBalancerId *string `pulumi:"loadBalancerId"`
+	Id             string `pulumi:"id"`
+	LoadBalancerId string `pulumi:"loadBalancerId"`
 	// Controls location-based steering for non-proxied requests. See `steeringPolicy` to learn how steering is affected.
 	LocationStrategy GetLoadBalancerLocationStrategy `pulumi:"locationStrategy"`
 	ModifiedOn       string                          `pulumi:"modifiedOn"`
@@ -117,7 +117,7 @@ func LookupLoadBalancerOutput(ctx *pulumi.Context, args LookupLoadBalancerOutput
 
 // A collection of arguments for invoking getLoadBalancer.
 type LookupLoadBalancerOutputArgs struct {
-	LoadBalancerId pulumi.StringPtrInput `pulumi:"loadBalancerId"`
+	LoadBalancerId pulumi.StringInput `pulumi:"loadBalancerId"`
 	// Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
 	PopPools pulumi.StringArrayMapInput `pulumi:"popPools"`
 	// A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
@@ -183,8 +183,8 @@ func (o LookupLoadBalancerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o LookupLoadBalancerResultOutput) LoadBalancerId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupLoadBalancerResult) *string { return v.LoadBalancerId }).(pulumi.StringPtrOutput)
+func (o LookupLoadBalancerResultOutput) LoadBalancerId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.LoadBalancerId }).(pulumi.StringOutput)
 }
 
 // Controls location-based steering for non-proxied requests. See `steeringPolicy` to learn how steering is affected.

@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupZeroTrustAccessCustomPage(ctx, &cloudflare.LookupZeroTrustAccessCustomPageArgs{
 //				AccountId:    "023e105f4ecef8ad9ca31a8372d0c353",
-//				CustomPageId: pulumi.StringRef("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
+//				CustomPageId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -52,7 +52,7 @@ type LookupZeroTrustAccessCustomPageArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// UUID.
-	CustomPageId *string `pulumi:"customPageId"`
+	CustomPageId string `pulumi:"customPageId"`
 }
 
 // A collection of values returned by getZeroTrustAccessCustomPage.
@@ -62,7 +62,7 @@ type LookupZeroTrustAccessCustomPageResult struct {
 	// Custom page HTML.
 	CustomHtml string `pulumi:"customHtml"`
 	// UUID.
-	CustomPageId *string `pulumi:"customPageId"`
+	CustomPageId string `pulumi:"customPageId"`
 	// UUID.
 	Id string `pulumi:"id"`
 	// Custom page name.
@@ -88,7 +88,7 @@ type LookupZeroTrustAccessCustomPageOutputArgs struct {
 	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// UUID.
-	CustomPageId pulumi.StringPtrInput `pulumi:"customPageId"`
+	CustomPageId pulumi.StringInput `pulumi:"customPageId"`
 }
 
 func (LookupZeroTrustAccessCustomPageOutputArgs) ElementType() reflect.Type {
@@ -121,8 +121,8 @@ func (o LookupZeroTrustAccessCustomPageResultOutput) CustomHtml() pulumi.StringO
 }
 
 // UUID.
-func (o LookupZeroTrustAccessCustomPageResultOutput) CustomPageId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupZeroTrustAccessCustomPageResult) *string { return v.CustomPageId }).(pulumi.StringPtrOutput)
+func (o LookupZeroTrustAccessCustomPageResultOutput) CustomPageId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessCustomPageResult) string { return v.CustomPageId }).(pulumi.StringOutput)
 }
 
 // UUID.

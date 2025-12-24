@@ -57,6 +57,10 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ## Import
+ * 
+ * ~&gt; This resource does not currently support `pulumi import`.
+ * 
  */
 @ResourceType(type="cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls")
 public class AuthenticatedOriginPulls extends com.pulumi.resources.CustomResource {

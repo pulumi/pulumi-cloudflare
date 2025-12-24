@@ -148,7 +148,7 @@ public final class DevicePostureRuleInput {
      */
     private @Nullable String osDistroRevision;
     /**
-     * @return Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version. (Mac, iOS, and Linux only).
+     * @return Additional operating system version details. For Windows, the UBR (Update Build Revision). For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version.
      * 
      */
     private @Nullable String osVersionExtra;
@@ -215,6 +215,11 @@ public final class DevicePostureRuleInput {
      * 
      */
     private @Nullable Double totalScore;
+    /**
+     * @return Number of days that the antivirus should be updated within.
+     * 
+     */
+    private @Nullable Double updateWindowDays;
     /**
      * @return Version of OS.
      * 
@@ -413,7 +418,7 @@ public final class DevicePostureRuleInput {
         return Optional.ofNullable(this.osDistroRevision);
     }
     /**
-     * @return Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version. (Mac, iOS, and Linux only).
+     * @return Additional operating system version details. For Windows, the UBR (Update Build Revision). For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version.
      * 
      */
     public Optional<String> osVersionExtra() {
@@ -507,6 +512,13 @@ public final class DevicePostureRuleInput {
         return Optional.ofNullable(this.totalScore);
     }
     /**
+     * @return Number of days that the antivirus should be updated within.
+     * 
+     */
+    public Optional<Double> updateWindowDays() {
+        return Optional.ofNullable(this.updateWindowDays);
+    }
+    /**
      * @return Version of OS.
      * 
      */
@@ -570,6 +582,7 @@ public final class DevicePostureRuleInput {
         private @Nullable List<String> subjectAlternativeNames;
         private @Nullable String thumbprint;
         private @Nullable Double totalScore;
+        private @Nullable Double updateWindowDays;
         private @Nullable String version;
         private @Nullable String versionOperator;
         public Builder() {}
@@ -614,6 +627,7 @@ public final class DevicePostureRuleInput {
     	      this.subjectAlternativeNames = defaults.subjectAlternativeNames;
     	      this.thumbprint = defaults.thumbprint;
     	      this.totalScore = defaults.totalScore;
+    	      this.updateWindowDays = defaults.updateWindowDays;
     	      this.version = defaults.version;
     	      this.versionOperator = defaults.versionOperator;
         }
@@ -862,6 +876,12 @@ public final class DevicePostureRuleInput {
             return this;
         }
         @CustomType.Setter
+        public Builder updateWindowDays(@Nullable Double updateWindowDays) {
+
+            this.updateWindowDays = updateWindowDays;
+            return this;
+        }
+        @CustomType.Setter
         public Builder version(@Nullable String version) {
 
             this.version = version;
@@ -914,6 +934,7 @@ public final class DevicePostureRuleInput {
             _resultValue.subjectAlternativeNames = subjectAlternativeNames;
             _resultValue.thumbprint = thumbprint;
             _resultValue.totalScore = totalScore;
+            _resultValue.updateWindowDays = updateWindowDays;
             _resultValue.version = version;
             _resultValue.versionOperator = versionOperator;
             return _resultValue;

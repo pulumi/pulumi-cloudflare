@@ -75,6 +75,7 @@ class GetWorkersCustomDomainResult:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def environment(self) -> _builtins.str:
         """
         Worker environment associated with the zone and hostname.

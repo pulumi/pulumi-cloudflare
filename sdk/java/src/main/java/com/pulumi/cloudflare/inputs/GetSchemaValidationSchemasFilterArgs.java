@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,21 +14,6 @@ import javax.annotation.Nullable;
 public final class GetSchemaValidationSchemasFilterArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GetSchemaValidationSchemasFilterArgs Empty = new GetSchemaValidationSchemasFilterArgs();
-
-    /**
-     * Omit the source-files of schemas and only retrieve their meta-data.
-     * 
-     */
-    @Import(name="omitSource", required=true)
-    private Output<Boolean> omitSource;
-
-    /**
-     * @return Omit the source-files of schemas and only retrieve their meta-data.
-     * 
-     */
-    public Output<Boolean> omitSource() {
-        return this.omitSource;
-    }
 
     /**
      * Filter for enabled schemas
@@ -49,7 +33,6 @@ public final class GetSchemaValidationSchemasFilterArgs extends com.pulumi.resou
     private GetSchemaValidationSchemasFilterArgs() {}
 
     private GetSchemaValidationSchemasFilterArgs(GetSchemaValidationSchemasFilterArgs $) {
-        this.omitSource = $.omitSource;
         this.validationEnabled = $.validationEnabled;
     }
 
@@ -69,27 +52,6 @@ public final class GetSchemaValidationSchemasFilterArgs extends com.pulumi.resou
 
         public Builder(GetSchemaValidationSchemasFilterArgs defaults) {
             $ = new GetSchemaValidationSchemasFilterArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param omitSource Omit the source-files of schemas and only retrieve their meta-data.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder omitSource(Output<Boolean> omitSource) {
-            $.omitSource = omitSource;
-            return this;
-        }
-
-        /**
-         * @param omitSource Omit the source-files of schemas and only retrieve their meta-data.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder omitSource(Boolean omitSource) {
-            return omitSource(Output.of(omitSource));
         }
 
         /**
@@ -114,9 +76,6 @@ public final class GetSchemaValidationSchemasFilterArgs extends com.pulumi.resou
         }
 
         public GetSchemaValidationSchemasFilterArgs build() {
-            if ($.omitSource == null) {
-                throw new MissingRequiredPropertyException("GetSchemaValidationSchemasFilterArgs", "omitSource");
-            }
             return $;
         }
     }

@@ -58,6 +58,21 @@ public final class PagesProjectSourceConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * The owner ID of the repository.
+     * 
+     */
+    @Import(name="ownerId")
+    private @Nullable Output<String> ownerId;
+
+    /**
+     * @return The owner ID of the repository.
+     * 
+     */
+    public Optional<Output<String>> ownerId() {
+        return Optional.ofNullable(this.ownerId);
+    }
+
+    /**
      * A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
      * 
      */
@@ -180,6 +195,21 @@ public final class PagesProjectSourceConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * The ID of the repository.
+     * 
+     */
+    @Import(name="repoId")
+    private @Nullable Output<String> repoId;
+
+    /**
+     * @return The ID of the repository.
+     * 
+     */
+    public Optional<Output<String>> repoId() {
+        return Optional.ofNullable(this.repoId);
+    }
+
+    /**
      * The name of the repository.
      * 
      */
@@ -199,6 +229,7 @@ public final class PagesProjectSourceConfigArgs extends com.pulumi.resources.Res
     private PagesProjectSourceConfigArgs(PagesProjectSourceConfigArgs $) {
         this.deploymentsEnabled = $.deploymentsEnabled;
         this.owner = $.owner;
+        this.ownerId = $.ownerId;
         this.pathExcludes = $.pathExcludes;
         this.pathIncludes = $.pathIncludes;
         this.prCommentsEnabled = $.prCommentsEnabled;
@@ -207,6 +238,7 @@ public final class PagesProjectSourceConfigArgs extends com.pulumi.resources.Res
         this.previewDeploymentSetting = $.previewDeploymentSetting;
         this.productionBranch = $.productionBranch;
         this.productionDeploymentsEnabled = $.productionDeploymentsEnabled;
+        this.repoId = $.repoId;
         this.repoName = $.repoName;
     }
 
@@ -278,6 +310,27 @@ public final class PagesProjectSourceConfigArgs extends com.pulumi.resources.Res
          */
         public Builder owner(String owner) {
             return owner(Output.of(owner));
+        }
+
+        /**
+         * @param ownerId The owner ID of the repository.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ownerId(@Nullable Output<String> ownerId) {
+            $.ownerId = ownerId;
+            return this;
+        }
+
+        /**
+         * @param ownerId The owner ID of the repository.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ownerId(String ownerId) {
+            return ownerId(Output.of(ownerId));
         }
 
         /**
@@ -488,6 +541,27 @@ public final class PagesProjectSourceConfigArgs extends com.pulumi.resources.Res
          */
         public Builder productionDeploymentsEnabled(Boolean productionDeploymentsEnabled) {
             return productionDeploymentsEnabled(Output.of(productionDeploymentsEnabled));
+        }
+
+        /**
+         * @param repoId The ID of the repository.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repoId(@Nullable Output<String> repoId) {
+            $.repoId = repoId;
+            return this;
+        }
+
+        /**
+         * @param repoId The ID of the repository.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repoId(String repoId) {
+            return repoId(Output.of(repoId));
         }
 
         /**

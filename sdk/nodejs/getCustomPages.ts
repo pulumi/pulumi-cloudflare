@@ -57,7 +57,8 @@ export interface GetCustomPagesResult {
     readonly createdOn: string;
     readonly description: string;
     /**
-     * The ID of this resource.
+     * Error Page Types
+     * Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "wafBlock".
      */
     readonly id: string;
     /**

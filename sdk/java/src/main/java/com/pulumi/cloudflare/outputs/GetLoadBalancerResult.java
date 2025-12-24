@@ -16,8 +16,6 @@ import java.lang.String;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetLoadBalancerResult {
@@ -57,7 +55,7 @@ public final class GetLoadBalancerResult {
      * 
      */
     private String id;
-    private @Nullable String loadBalancerId;
+    private String loadBalancerId;
     /**
      * @return Controls location-based steering for non-proxied requests. See `steeringPolicy` to learn how steering is affected.
      * 
@@ -180,8 +178,8 @@ public final class GetLoadBalancerResult {
     public String id() {
         return this.id;
     }
-    public Optional<String> loadBalancerId() {
-        return Optional.ofNullable(this.loadBalancerId);
+    public String loadBalancerId() {
+        return this.loadBalancerId;
     }
     /**
      * @return Controls location-based steering for non-proxied requests. See `steeringPolicy` to learn how steering is affected.
@@ -299,7 +297,7 @@ public final class GetLoadBalancerResult {
         private Boolean enabled;
         private String fallbackPool;
         private String id;
-        private @Nullable String loadBalancerId;
+        private String loadBalancerId;
         private GetLoadBalancerLocationStrategy locationStrategy;
         private String modifiedOn;
         private String name;
@@ -412,8 +410,10 @@ public final class GetLoadBalancerResult {
             return this;
         }
         @CustomType.Setter
-        public Builder loadBalancerId(@Nullable String loadBalancerId) {
-
+        public Builder loadBalancerId(String loadBalancerId) {
+            if (loadBalancerId == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerResult", "loadBalancerId");
+            }
             this.loadBalancerId = loadBalancerId;
             return this;
         }

@@ -57,6 +57,10 @@ import (
 //
 // ```
 //
+// ## Import
+//
+// ~> This resource does not currently support `pulumi import`.
+//
 // Deprecated: cloudflare.index/accessorganization.AccessOrganization has been deprecated in favor of cloudflare.index/zerotrustorganization.ZeroTrustOrganization
 type AccessOrganization struct {
 	pulumi.CustomResourceState

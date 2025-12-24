@@ -28,6 +28,10 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ~&gt; This resource does not currently support `pulumi import`.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/callsTurnApp:CallsTurnApp")]
     public partial class CallsTurnApp : global::Pulumi.CustomResource

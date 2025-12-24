@@ -12,6 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > Certificate packs are not able to be updated in place. If
+// you require a zero downtime rotation, you can create multiple
+// resources using a 2-phase change where you have both resources
+// live at once and you remove the old one once you've confirmed
+// the certificate is available.
+//
 // ## Example Usage
 //
 // ```go
@@ -63,10 +69,14 @@ type CertificatePack struct {
 	// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
 	// Available values: "google", "lets*encrypt", "ssl*com".
 	CertificateAuthority pulumi.StringOutput `pulumi:"certificateAuthority"`
+	// Array of certificates in this pack.
+	Certificates CertificatePackCertificateArrayOutput `pulumi:"certificates"`
 	// Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
 	CloudflareBranding pulumi.BoolPtrOutput `pulumi:"cloudflareBranding"`
 	// Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
 	Hosts pulumi.StringArrayOutput `pulumi:"hosts"`
+	// Identifier of the primary certificate in a pack.
+	PrimaryCertificate pulumi.StringOutput `pulumi:"primaryCertificate"`
 	// Status of certificate pack.
 	// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -78,7 +88,7 @@ type CertificatePack struct {
 	// Validation Method selected for the order.
 	// Available values: "txt", "http", "email".
 	ValidationMethod pulumi.StringOutput `pulumi:"validationMethod"`
-	// Certificates' validation records. Only present when certificate pack is in "pending*validation" status
+	// Certificates' validation records.
 	ValidationRecords CertificatePackValidationRecordArrayOutput `pulumi:"validationRecords"`
 	// Validity Days selected for the order.
 	// Available values: 14, 30, 90, 365.
@@ -96,9 +106,6 @@ func NewCertificatePack(ctx *pulumi.Context,
 
 	if args.CertificateAuthority == nil {
 		return nil, errors.New("invalid value for required argument 'CertificateAuthority'")
-	}
-	if args.Hosts == nil {
-		return nil, errors.New("invalid value for required argument 'Hosts'")
 	}
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
@@ -138,10 +145,14 @@ type certificatePackState struct {
 	// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
 	// Available values: "google", "lets*encrypt", "ssl*com".
 	CertificateAuthority *string `pulumi:"certificateAuthority"`
+	// Array of certificates in this pack.
+	Certificates []CertificatePackCertificate `pulumi:"certificates"`
 	// Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
 	CloudflareBranding *bool `pulumi:"cloudflareBranding"`
 	// Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
 	Hosts []string `pulumi:"hosts"`
+	// Identifier of the primary certificate in a pack.
+	PrimaryCertificate *string `pulumi:"primaryCertificate"`
 	// Status of certificate pack.
 	// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
 	Status *string `pulumi:"status"`
@@ -153,7 +164,7 @@ type certificatePackState struct {
 	// Validation Method selected for the order.
 	// Available values: "txt", "http", "email".
 	ValidationMethod *string `pulumi:"validationMethod"`
-	// Certificates' validation records. Only present when certificate pack is in "pending*validation" status
+	// Certificates' validation records.
 	ValidationRecords []CertificatePackValidationRecord `pulumi:"validationRecords"`
 	// Validity Days selected for the order.
 	// Available values: 14, 30, 90, 365.
@@ -166,10 +177,14 @@ type CertificatePackState struct {
 	// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
 	// Available values: "google", "lets*encrypt", "ssl*com".
 	CertificateAuthority pulumi.StringPtrInput
+	// Array of certificates in this pack.
+	Certificates CertificatePackCertificateArrayInput
 	// Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
 	CloudflareBranding pulumi.BoolPtrInput
 	// Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
 	Hosts pulumi.StringArrayInput
+	// Identifier of the primary certificate in a pack.
+	PrimaryCertificate pulumi.StringPtrInput
 	// Status of certificate pack.
 	// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
 	Status pulumi.StringPtrInput
@@ -181,7 +196,7 @@ type CertificatePackState struct {
 	// Validation Method selected for the order.
 	// Available values: "txt", "http", "email".
 	ValidationMethod pulumi.StringPtrInput
-	// Certificates' validation records. Only present when certificate pack is in "pending*validation" status
+	// Certificates' validation records.
 	ValidationRecords CertificatePackValidationRecordArrayInput
 	// Validity Days selected for the order.
 	// Available values: 14, 30, 90, 365.
@@ -330,6 +345,11 @@ func (o CertificatePackOutput) CertificateAuthority() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificatePack) pulumi.StringOutput { return v.CertificateAuthority }).(pulumi.StringOutput)
 }
 
+// Array of certificates in this pack.
+func (o CertificatePackOutput) Certificates() CertificatePackCertificateArrayOutput {
+	return o.ApplyT(func(v *CertificatePack) CertificatePackCertificateArrayOutput { return v.Certificates }).(CertificatePackCertificateArrayOutput)
+}
+
 // Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
 func (o CertificatePackOutput) CloudflareBranding() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CertificatePack) pulumi.BoolPtrOutput { return v.CloudflareBranding }).(pulumi.BoolPtrOutput)
@@ -338,6 +358,11 @@ func (o CertificatePackOutput) CloudflareBranding() pulumi.BoolPtrOutput {
 // Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
 func (o CertificatePackOutput) Hosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CertificatePack) pulumi.StringArrayOutput { return v.Hosts }).(pulumi.StringArrayOutput)
+}
+
+// Identifier of the primary certificate in a pack.
+func (o CertificatePackOutput) PrimaryCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificatePack) pulumi.StringOutput { return v.PrimaryCertificate }).(pulumi.StringOutput)
 }
 
 // Status of certificate pack.
@@ -363,7 +388,7 @@ func (o CertificatePackOutput) ValidationMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificatePack) pulumi.StringOutput { return v.ValidationMethod }).(pulumi.StringOutput)
 }
 
-// Certificates' validation records. Only present when certificate pack is in "pending*validation" status
+// Certificates' validation records.
 func (o CertificatePackOutput) ValidationRecords() CertificatePackValidationRecordArrayOutput {
 	return o.ApplyT(func(v *CertificatePack) CertificatePackValidationRecordArrayOutput { return v.ValidationRecords }).(CertificatePackValidationRecordArrayOutput)
 }

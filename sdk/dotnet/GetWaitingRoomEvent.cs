@@ -87,8 +87,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetWaitingRoomEventArgs : global::Pulumi.InvokeArgs
     {
-        [Input("eventId")]
-        public string? EventId { get; set; }
+        [Input("eventId", required: true)]
+        public string EventId { get; set; } = null!;
 
         [Input("waitingRoomId", required: true)]
         public string WaitingRoomId { get; set; } = null!;
@@ -107,8 +107,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetWaitingRoomEventInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("eventId")]
-        public Input<string>? EventId { get; set; }
+        [Input("eventId", required: true)]
+        public Input<string> EventId { get; set; } = null!;
 
         [Input("waitingRoomId", required: true)]
         public Input<string> WaitingRoomId { get; set; } = null!;
@@ -146,7 +146,7 @@ namespace Pulumi.Cloudflare
         /// An ISO 8601 timestamp that marks the end of the event.
         /// </summary>
         public readonly string EventEndTime;
-        public readonly string? EventId;
+        public readonly string EventId;
         /// <summary>
         /// An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `EventEndTime`.
         /// </summary>
@@ -216,7 +216,7 @@ namespace Pulumi.Cloudflare
 
             string eventEndTime,
 
-            string? eventId,
+            string eventId,
 
             string eventStartTime,
 

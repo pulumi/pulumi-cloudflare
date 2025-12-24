@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupRateLimit(ctx, &cloudflare.LookupRateLimitArgs{
 //				ZoneId:      "023e105f4ecef8ad9ca31a8372d0c353",
-//				RateLimitId: pulumi.StringRef("372e67954025e0ba6aaa6d586b9e0b59"),
+//				RateLimitId: "372e67954025e0ba6aaa6d586b9e0b59",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -50,7 +50,7 @@ func LookupRateLimit(ctx *pulumi.Context, args *LookupRateLimitArgs, opts ...pul
 // A collection of arguments for invoking getRateLimit.
 type LookupRateLimitArgs struct {
 	// Defines the unique identifier of the rate limit.
-	RateLimitId *string `pulumi:"rateLimitId"`
+	RateLimitId string `pulumi:"rateLimitId"`
 	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -72,7 +72,7 @@ type LookupRateLimitResult struct {
 	// The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
 	Period float64 `pulumi:"period"`
 	// Defines the unique identifier of the rate limit.
-	RateLimitId *string `pulumi:"rateLimitId"`
+	RateLimitId string `pulumi:"rateLimitId"`
 	// The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
 	Threshold float64 `pulumi:"threshold"`
 	// Defines an identifier.
@@ -91,7 +91,7 @@ func LookupRateLimitOutput(ctx *pulumi.Context, args LookupRateLimitOutputArgs, 
 // A collection of arguments for invoking getRateLimit.
 type LookupRateLimitOutputArgs struct {
 	// Defines the unique identifier of the rate limit.
-	RateLimitId pulumi.StringPtrInput `pulumi:"rateLimitId"`
+	RateLimitId pulumi.StringInput `pulumi:"rateLimitId"`
 	// Defines an identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
@@ -151,8 +151,8 @@ func (o LookupRateLimitResultOutput) Period() pulumi.Float64Output {
 }
 
 // Defines the unique identifier of the rate limit.
-func (o LookupRateLimitResultOutput) RateLimitId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupRateLimitResult) *string { return v.RateLimitId }).(pulumi.StringPtrOutput)
+func (o LookupRateLimitResultOutput) RateLimitId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRateLimitResult) string { return v.RateLimitId }).(pulumi.StringOutput)
 }
 
 // The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.

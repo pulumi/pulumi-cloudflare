@@ -22,7 +22,7 @@ public final class GetEmailRoutingSettingsResult {
      */
     private Boolean enabled;
     /**
-     * @return Email Routing settings identifier.
+     * @return Identifier.
      * 
      */
     private String id;
@@ -78,7 +78,7 @@ public final class GetEmailRoutingSettingsResult {
         return this.enabled;
     }
     /**
-     * @return Email Routing settings identifier.
+     * @return Identifier.
      * 
      */
     public String id() {

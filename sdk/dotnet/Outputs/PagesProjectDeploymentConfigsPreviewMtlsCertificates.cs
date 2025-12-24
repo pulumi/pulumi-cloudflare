@@ -13,10 +13,10 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class PagesProjectDeploymentConfigsPreviewMtlsCertificates
     {
-        public readonly string? CertificateId;
+        public readonly string CertificateId;
 
         [OutputConstructor]
-        private PagesProjectDeploymentConfigsPreviewMtlsCertificates(string? certificateId)
+        private PagesProjectDeploymentConfigsPreviewMtlsCertificates(string certificateId)
         {
             CertificateId = certificateId;
         }

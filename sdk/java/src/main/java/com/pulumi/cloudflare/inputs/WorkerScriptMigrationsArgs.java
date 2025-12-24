@@ -20,7 +20,6 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
     public static final WorkerScriptMigrationsArgs Empty = new WorkerScriptMigrationsArgs();
 
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes to delete Durable Object namespaces from.
      * 
      */
@@ -28,8 +27,7 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
     private @Nullable Output<List<String>> deletedClasses;
 
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * A list of classes to delete Durable Object namespaces from.
+     * @return A list of classes to delete Durable Object namespaces from.
      * 
      */
     public Optional<Output<List<String>>> deletedClasses() {
@@ -37,7 +35,6 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes to create Durable Object namespaces from.
      * 
      */
@@ -45,8 +42,7 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
     private @Nullable Output<List<String>> newClasses;
 
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * A list of classes to create Durable Object namespaces from.
+     * @return A list of classes to create Durable Object namespaces from.
      * 
      */
     public Optional<Output<List<String>>> newClasses() {
@@ -54,7 +50,6 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes to create Durable Object namespaces with SQLite from.
      * 
      */
@@ -62,8 +57,7 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
     private @Nullable Output<List<String>> newSqliteClasses;
 
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * A list of classes to create Durable Object namespaces with SQLite from.
+     * @return A list of classes to create Durable Object namespaces with SQLite from.
      * 
      */
     public Optional<Output<List<String>>> newSqliteClasses() {
@@ -71,7 +65,6 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Tag to set as the latest migration tag.
      * 
      */
@@ -79,8 +72,7 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
     private @Nullable Output<String> newTag;
 
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * Tag to set as the latest migration tag.
+     * @return Tag to set as the latest migration tag.
      * 
      */
     public Optional<Output<String>> newTag() {
@@ -88,7 +80,6 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Tag used to verify against the latest migration tag for this Worker. If they don&#39;t match, the upload is rejected.
      * 
      */
@@ -96,8 +87,7 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
     private @Nullable Output<String> oldTag;
 
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * Tag used to verify against the latest migration tag for this Worker. If they don&#39;t match, the upload is rejected.
+     * @return Tag used to verify against the latest migration tag for this Worker. If they don&#39;t match, the upload is rejected.
      * 
      */
     public Optional<Output<String>> oldTag() {
@@ -105,7 +95,6 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of classes with Durable Object namespaces that were renamed.
      * 
      */
@@ -113,8 +102,7 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
     private @Nullable Output<List<WorkerScriptMigrationsRenamedClassArgs>> renamedClasses;
 
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * A list of classes with Durable Object namespaces that were renamed.
+     * @return A list of classes with Durable Object namespaces that were renamed.
      * 
      */
     public Optional<Output<List<WorkerScriptMigrationsRenamedClassArgs>>> renamedClasses() {
@@ -122,7 +110,6 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Migrations to apply in order.
      * 
      */
@@ -130,8 +117,7 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
     private @Nullable Output<List<WorkerScriptMigrationsStepArgs>> steps;
 
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * Migrations to apply in order.
+     * @return Migrations to apply in order.
      * 
      */
     public Optional<Output<List<WorkerScriptMigrationsStepArgs>>> steps() {
@@ -139,7 +125,6 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
      * 
      */
@@ -147,8 +132,7 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
     private @Nullable Output<List<WorkerScriptMigrationsTransferredClassArgs>> transferredClasses;
 
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+     * @return A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
      * 
      */
     public Optional<Output<List<WorkerScriptMigrationsTransferredClassArgs>>> transferredClasses() {
@@ -187,8 +171,7 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param deletedClasses **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * A list of classes to delete Durable Object namespaces from.
+         * @param deletedClasses A list of classes to delete Durable Object namespaces from.
          * 
          * @return builder
          * 
@@ -199,8 +182,7 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param deletedClasses **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * A list of classes to delete Durable Object namespaces from.
+         * @param deletedClasses A list of classes to delete Durable Object namespaces from.
          * 
          * @return builder
          * 
@@ -210,8 +192,7 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param deletedClasses **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * A list of classes to delete Durable Object namespaces from.
+         * @param deletedClasses A list of classes to delete Durable Object namespaces from.
          * 
          * @return builder
          * 
@@ -221,8 +202,7 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param newClasses **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * A list of classes to create Durable Object namespaces from.
+         * @param newClasses A list of classes to create Durable Object namespaces from.
          * 
          * @return builder
          * 
@@ -233,8 +213,7 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param newClasses **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * A list of classes to create Durable Object namespaces from.
+         * @param newClasses A list of classes to create Durable Object namespaces from.
          * 
          * @return builder
          * 
@@ -244,8 +223,7 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param newClasses **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * A list of classes to create Durable Object namespaces from.
+         * @param newClasses A list of classes to create Durable Object namespaces from.
          * 
          * @return builder
          * 
@@ -255,8 +233,7 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param newSqliteClasses **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * A list of classes to create Durable Object namespaces with SQLite from.
+         * @param newSqliteClasses A list of classes to create Durable Object namespaces with SQLite from.
          * 
          * @return builder
          * 
@@ -267,8 +244,7 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param newSqliteClasses **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * A list of classes to create Durable Object namespaces with SQLite from.
+         * @param newSqliteClasses A list of classes to create Durable Object namespaces with SQLite from.
          * 
          * @return builder
          * 
@@ -278,8 +254,7 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param newSqliteClasses **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * A list of classes to create Durable Object namespaces with SQLite from.
+         * @param newSqliteClasses A list of classes to create Durable Object namespaces with SQLite from.
          * 
          * @return builder
          * 
@@ -289,8 +264,7 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param newTag **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * Tag to set as the latest migration tag.
+         * @param newTag Tag to set as the latest migration tag.
          * 
          * @return builder
          * 
@@ -301,8 +275,7 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param newTag **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * Tag to set as the latest migration tag.
+         * @param newTag Tag to set as the latest migration tag.
          * 
          * @return builder
          * 
@@ -312,8 +285,7 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param oldTag **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * Tag used to verify against the latest migration tag for this Worker. If they don&#39;t match, the upload is rejected.
+         * @param oldTag Tag used to verify against the latest migration tag for this Worker. If they don&#39;t match, the upload is rejected.
          * 
          * @return builder
          * 
@@ -324,8 +296,7 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param oldTag **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * Tag used to verify against the latest migration tag for this Worker. If they don&#39;t match, the upload is rejected.
+         * @param oldTag Tag used to verify against the latest migration tag for this Worker. If they don&#39;t match, the upload is rejected.
          * 
          * @return builder
          * 
@@ -335,8 +306,7 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param renamedClasses **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * A list of classes with Durable Object namespaces that were renamed.
+         * @param renamedClasses A list of classes with Durable Object namespaces that were renamed.
          * 
          * @return builder
          * 
@@ -347,8 +317,7 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param renamedClasses **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * A list of classes with Durable Object namespaces that were renamed.
+         * @param renamedClasses A list of classes with Durable Object namespaces that were renamed.
          * 
          * @return builder
          * 
@@ -358,8 +327,7 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param renamedClasses **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * A list of classes with Durable Object namespaces that were renamed.
+         * @param renamedClasses A list of classes with Durable Object namespaces that were renamed.
          * 
          * @return builder
          * 
@@ -369,8 +337,7 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param steps **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * Migrations to apply in order.
+         * @param steps Migrations to apply in order.
          * 
          * @return builder
          * 
@@ -381,8 +348,7 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param steps **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * Migrations to apply in order.
+         * @param steps Migrations to apply in order.
          * 
          * @return builder
          * 
@@ -392,8 +358,7 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param steps **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * Migrations to apply in order.
+         * @param steps Migrations to apply in order.
          * 
          * @return builder
          * 
@@ -403,8 +368,7 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param transferredClasses **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+         * @param transferredClasses A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
          * 
          * @return builder
          * 
@@ -415,8 +379,7 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param transferredClasses **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+         * @param transferredClasses A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
          * 
          * @return builder
          * 
@@ -426,8 +389,7 @@ public final class WorkerScriptMigrationsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param transferredClasses **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+         * @param transferredClasses A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
          * 
          * @return builder
          * 

@@ -16,10 +16,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Name of the dataset.
         /// </summary>
-        public readonly string? Dataset;
+        public readonly string Dataset;
 
         [OutputConstructor]
-        private PagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasets(string? dataset)
+        private PagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasets(string dataset)
         {
             Dataset = dataset;
         }

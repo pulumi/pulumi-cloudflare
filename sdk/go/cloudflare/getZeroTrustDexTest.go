@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupZeroTrustDexTest(ctx, &cloudflare.LookupZeroTrustDexTestArgs{
 //				AccountId: "01a7362d577a6c3019a474fd6f485823",
-//				DexTestId: pulumi.StringRef("372e67954025e0ba6aaa6d586b9e0b59"),
+//				DexTestId: "372e67954025e0ba6aaa6d586b9e0b59",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,7 +51,7 @@ func LookupZeroTrustDexTest(ctx *pulumi.Context, args *LookupZeroTrustDexTestArg
 type LookupZeroTrustDexTestArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// The unique identifier for the test.
-	DexTestId *string `pulumi:"dexTestId"`
+	DexTestId string `pulumi:"dexTestId"`
 	// DEX rules targeted by this test
 	TargetPolicies []GetZeroTrustDexTestTargetPolicy `pulumi:"targetPolicies"`
 }
@@ -64,7 +64,7 @@ type LookupZeroTrustDexTestResult struct {
 	// Additional details about the test.
 	Description string `pulumi:"description"`
 	// The unique identifier for the test.
-	DexTestId *string `pulumi:"dexTestId"`
+	DexTestId string `pulumi:"dexTestId"`
 	// Determines whether or not the test is active.
 	Enabled bool `pulumi:"enabled"`
 	// The unique identifier for the test.
@@ -93,7 +93,7 @@ func LookupZeroTrustDexTestOutput(ctx *pulumi.Context, args LookupZeroTrustDexTe
 type LookupZeroTrustDexTestOutputArgs struct {
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The unique identifier for the test.
-	DexTestId pulumi.StringPtrInput `pulumi:"dexTestId"`
+	DexTestId pulumi.StringInput `pulumi:"dexTestId"`
 	// DEX rules targeted by this test
 	TargetPolicies GetZeroTrustDexTestTargetPolicyArrayInput `pulumi:"targetPolicies"`
 }
@@ -132,8 +132,8 @@ func (o LookupZeroTrustDexTestResultOutput) Description() pulumi.StringOutput {
 }
 
 // The unique identifier for the test.
-func (o LookupZeroTrustDexTestResultOutput) DexTestId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupZeroTrustDexTestResult) *string { return v.DexTestId }).(pulumi.StringPtrOutput)
+func (o LookupZeroTrustDexTestResultOutput) DexTestId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustDexTestResult) string { return v.DexTestId }).(pulumi.StringOutput)
 }
 
 // Determines whether or not the test is active.

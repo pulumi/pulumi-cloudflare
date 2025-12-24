@@ -16,6 +16,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly ImmutableArray<Outputs.GetQueuesResultConsumerResult> Consumers;
         public readonly double ConsumersTotalCount;
         public readonly string CreatedOn;
+        public readonly string Id;
         public readonly string ModifiedOn;
         public readonly ImmutableArray<Outputs.GetQueuesResultProducerResult> Producers;
         public readonly double ProducersTotalCount;
@@ -30,6 +31,8 @@ namespace Pulumi.Cloudflare.Outputs
             double consumersTotalCount,
 
             string createdOn,
+
+            string id,
 
             string modifiedOn,
 
@@ -46,6 +49,7 @@ namespace Pulumi.Cloudflare.Outputs
             Consumers = consumers;
             ConsumersTotalCount = consumersTotalCount;
             CreatedOn = createdOn;
+            Id = id;
             ModifiedOn = modifiedOn;
             Producers = producers;
             ProducersTotalCount = producersTotalCount;

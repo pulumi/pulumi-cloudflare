@@ -12,6 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Import
+//
+// ~> This resource does not currently support `pulumi import`.
 type Snippets struct {
 	pulumi.CustomResourceState
 

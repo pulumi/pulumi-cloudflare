@@ -54,6 +54,7 @@ public final class GetWorkerVersionResult {
     private Integer number;
     private GetWorkerVersionPlacement placement;
     private String source;
+    private Integer startupTimeMs;
     /**
      * @deprecated
      * This attribute is deprecated.
@@ -65,7 +66,7 @@ public final class GetWorkerVersionResult {
      * @return Identifier for the version, which can be ID or the literal &#34;latest&#34; to operate on the most recently created version.
      * 
      */
-    private @Nullable String versionId;
+    private String versionId;
     /**
      * @return Identifier for the Worker, which can be ID or name.
      * 
@@ -138,6 +139,9 @@ public final class GetWorkerVersionResult {
     public String source() {
         return this.source;
     }
+    public Integer startupTimeMs() {
+        return this.startupTimeMs;
+    }
     /**
      * @deprecated
      * This attribute is deprecated.
@@ -151,8 +155,8 @@ public final class GetWorkerVersionResult {
      * @return Identifier for the version, which can be ID or the literal &#34;latest&#34; to operate on the most recently created version.
      * 
      */
-    public Optional<String> versionId() {
-        return Optional.ofNullable(this.versionId);
+    public String versionId() {
+        return this.versionId;
     }
     /**
      * @return Identifier for the Worker, which can be ID or name.
@@ -187,8 +191,9 @@ public final class GetWorkerVersionResult {
         private Integer number;
         private GetWorkerVersionPlacement placement;
         private String source;
+        private Integer startupTimeMs;
         private String usageModel;
-        private @Nullable String versionId;
+        private String versionId;
         private String workerId;
         public Builder() {}
         public Builder(GetWorkerVersionResult defaults) {
@@ -209,6 +214,7 @@ public final class GetWorkerVersionResult {
     	      this.number = defaults.number;
     	      this.placement = defaults.placement;
     	      this.source = defaults.source;
+    	      this.startupTimeMs = defaults.startupTimeMs;
     	      this.usageModel = defaults.usageModel;
     	      this.versionId = defaults.versionId;
     	      this.workerId = defaults.workerId;
@@ -350,6 +356,14 @@ public final class GetWorkerVersionResult {
             return this;
         }
         @CustomType.Setter
+        public Builder startupTimeMs(Integer startupTimeMs) {
+            if (startupTimeMs == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionResult", "startupTimeMs");
+            }
+            this.startupTimeMs = startupTimeMs;
+            return this;
+        }
+        @CustomType.Setter
         public Builder usageModel(String usageModel) {
             if (usageModel == null) {
               throw new MissingRequiredPropertyException("GetWorkerVersionResult", "usageModel");
@@ -358,8 +372,10 @@ public final class GetWorkerVersionResult {
             return this;
         }
         @CustomType.Setter
-        public Builder versionId(@Nullable String versionId) {
-
+        public Builder versionId(String versionId) {
+            if (versionId == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionResult", "versionId");
+            }
             this.versionId = versionId;
             return this;
         }
@@ -389,6 +405,7 @@ public final class GetWorkerVersionResult {
             _resultValue.number = number;
             _resultValue.placement = placement;
             _resultValue.source = source;
+            _resultValue.startupTimeMs = startupTimeMs;
             _resultValue.usageModel = usageModel;
             _resultValue.versionId = versionId;
             _resultValue.workerId = workerId;

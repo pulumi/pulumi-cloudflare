@@ -120,7 +120,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// Email Routing settings identifier.
+        /// Identifier.
         /// </summary>
         public readonly string Id;
         /// <summary>

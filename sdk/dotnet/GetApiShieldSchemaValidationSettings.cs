@@ -112,7 +112,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetApiShieldSchemaValidationSettingsResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Identifier.
         /// </summary>
         public readonly string Id;
         /// <summary>

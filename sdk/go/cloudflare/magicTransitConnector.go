@@ -30,7 +30,7 @@ import (
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Device: &cloudflare.MagicTransitConnectorDeviceArgs{
 //					Id:               pulumi.String("id"),
-//					ProvisionLicense: true,
+//					ProvisionLicense: pulumi.Bool(true),
 //					SerialNumber:     pulumi.String("serial_number"),
 //				},
 //				Activated:                    pulumi.Bool(true),
@@ -62,8 +62,10 @@ type MagicTransitConnector struct {
 	Device                       MagicTransitConnectorDeviceOutput `pulumi:"device"`
 	InterruptWindowDurationHours pulumi.Float64Output              `pulumi:"interruptWindowDurationHours"`
 	InterruptWindowHourOfDay     pulumi.Float64Output              `pulumi:"interruptWindowHourOfDay"`
-	Notes                        pulumi.StringOutput               `pulumi:"notes"`
-	Timezone                     pulumi.StringOutput               `pulumi:"timezone"`
+	// License key for the connector. This is only returned on creation and will not be available in subsequent reads.
+	LicenseKey pulumi.StringOutput `pulumi:"licenseKey"`
+	Notes      pulumi.StringOutput `pulumi:"notes"`
+	Timezone   pulumi.StringOutput `pulumi:"timezone"`
 }
 
 // NewMagicTransitConnector registers a new resource with the given unique name, arguments, and options.
@@ -79,6 +81,10 @@ func NewMagicTransitConnector(ctx *pulumi.Context,
 	if args.Device == nil {
 		return nil, errors.New("invalid value for required argument 'Device'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"licenseKey",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MagicTransitConnector
 	err := ctx.RegisterResource("cloudflare:index/magicTransitConnector:MagicTransitConnector", name, args, &resource, opts...)
@@ -108,8 +114,10 @@ type magicTransitConnectorState struct {
 	Device                       *MagicTransitConnectorDevice `pulumi:"device"`
 	InterruptWindowDurationHours *float64                     `pulumi:"interruptWindowDurationHours"`
 	InterruptWindowHourOfDay     *float64                     `pulumi:"interruptWindowHourOfDay"`
-	Notes                        *string                      `pulumi:"notes"`
-	Timezone                     *string                      `pulumi:"timezone"`
+	// License key for the connector. This is only returned on creation and will not be available in subsequent reads.
+	LicenseKey *string `pulumi:"licenseKey"`
+	Notes      *string `pulumi:"notes"`
+	Timezone   *string `pulumi:"timezone"`
 }
 
 type MagicTransitConnectorState struct {
@@ -119,8 +127,10 @@ type MagicTransitConnectorState struct {
 	Device                       MagicTransitConnectorDevicePtrInput
 	InterruptWindowDurationHours pulumi.Float64PtrInput
 	InterruptWindowHourOfDay     pulumi.Float64PtrInput
-	Notes                        pulumi.StringPtrInput
-	Timezone                     pulumi.StringPtrInput
+	// License key for the connector. This is only returned on creation and will not be available in subsequent reads.
+	LicenseKey pulumi.StringPtrInput
+	Notes      pulumi.StringPtrInput
+	Timezone   pulumi.StringPtrInput
 }
 
 func (MagicTransitConnectorState) ElementType() reflect.Type {
@@ -256,6 +266,11 @@ func (o MagicTransitConnectorOutput) InterruptWindowDurationHours() pulumi.Float
 
 func (o MagicTransitConnectorOutput) InterruptWindowHourOfDay() pulumi.Float64Output {
 	return o.ApplyT(func(v *MagicTransitConnector) pulumi.Float64Output { return v.InterruptWindowHourOfDay }).(pulumi.Float64Output)
+}
+
+// License key for the connector. This is only returned on creation and will not be available in subsequent reads.
+func (o MagicTransitConnectorOutput) LicenseKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *MagicTransitConnector) pulumi.StringOutput { return v.LicenseKey }).(pulumi.StringOutput)
 }
 
 func (o MagicTransitConnectorOutput) Notes() pulumi.StringOutput {

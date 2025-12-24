@@ -22,6 +22,11 @@ public final class GetApiShieldOperationsResult {
      * 
      */
     private String host;
+    /**
+     * @return UUID.
+     * 
+     */
+    private String id;
     private String lastUpdated;
     /**
      * @return The HTTP method used to access the endpoint.
@@ -52,6 +57,13 @@ public final class GetApiShieldOperationsResult {
      */
     public String host() {
         return this.host;
+    }
+    /**
+     * @return UUID.
+     * 
+     */
+    public String id() {
+        return this.id;
     }
     public String lastUpdated() {
         return this.lastUpdated;
@@ -84,6 +96,7 @@ public final class GetApiShieldOperationsResult {
         private String endpoint;
         private GetApiShieldOperationsResultFeatures features;
         private String host;
+        private String id;
         private String lastUpdated;
         private String method;
         private String operationId;
@@ -93,6 +106,7 @@ public final class GetApiShieldOperationsResult {
     	      this.endpoint = defaults.endpoint;
     	      this.features = defaults.features;
     	      this.host = defaults.host;
+    	      this.id = defaults.id;
     	      this.lastUpdated = defaults.lastUpdated;
     	      this.method = defaults.method;
     	      this.operationId = defaults.operationId;
@@ -120,6 +134,14 @@ public final class GetApiShieldOperationsResult {
               throw new MissingRequiredPropertyException("GetApiShieldOperationsResult", "host");
             }
             this.host = host;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetApiShieldOperationsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -151,6 +173,7 @@ public final class GetApiShieldOperationsResult {
             _resultValue.endpoint = endpoint;
             _resultValue.features = features;
             _resultValue.host = host;
+            _resultValue.id = id;
             _resultValue.lastUpdated = lastUpdated;
             _resultValue.method = method;
             _resultValue.operationId = operationId;

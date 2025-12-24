@@ -132,7 +132,7 @@ namespace Pulumi.Cloudflare
         /// Whether the policy will be applied to matching devices.
         /// </summary>
         [Output("enabled")]
-        public Output<bool?> Enabled { get; private set; } = null!;
+        public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
         /// Whether to add Microsoft IPs to Split Tunnel exclusions.

@@ -52,8 +52,7 @@ export interface GetZoneSettingResult {
      */
     readonly enabled: boolean;
     /**
-     * ID of the zone setting.
-     * Available values: "0rtt", "advanced*ddos", "aegis", "always*online", "always*use*https", "automatic*https*rewrites", "brotli", "browser*cache*ttl", "browser*check", "cache*level", "challenge*ttl", "china*network*enabled", "ciphers", "cname*flattening", "development*mode", "early*hints", "edge*cache*ttl", "email*obfuscation", "h2*prioritization", "hotlink*protection", "http2", "http3", "image*resizing", "ip*geolocation", "ipv6", "max*upload", "min*tls*version", "mirage", "nel", "opportunistic*encryption", "opportunistic*onion", "orange*to*orange", "origin*error*page*pass*thru", "origin*h2*max*streams", "origin*max*http*version", "polish", "prefetch*preload", "privacy*pass", "proxy*read*timeout", "pseudo*ipv4", "replace*insecure*js", "response*buffering", "rocket*loader", "automatic*platform*optimization", "security*header", "security*level", "server*side*exclude", "sha1*support", "sort*query*string*for*cache", "ssl", "ssl*recommender", "tls*1*2*only", "tls*1*3", "tls*client*auth", "transformations", "transformations*allowed*origins", "true*client*ip_header", "waf", "webp", "websockets".
+     * Setting name
      */
     readonly id: string;
     /**

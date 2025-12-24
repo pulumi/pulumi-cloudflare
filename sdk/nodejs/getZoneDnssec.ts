@@ -64,9 +64,6 @@ export interface GetZoneDnssecResult {
     readonly dnssecUseNsec3: boolean;
     readonly ds: string;
     readonly flags: number;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
     readonly id: string;
     readonly keyTag: number;
     readonly keyType: string;

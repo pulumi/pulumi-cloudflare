@@ -3,14 +3,11 @@
 
 package com.pulumi.cloudflare.inputs;
 
-import com.pulumi.cloudflare.inputs.ApiTokenPolicyPermissionGroupMetaArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class ApiTokenPolicyPermissionGroupArgs extends com.pulumi.resources.ResourceArgs {
@@ -32,42 +29,10 @@ public final class ApiTokenPolicyPermissionGroupArgs extends com.pulumi.resource
         return this.id;
     }
 
-    /**
-     * Attributes associated to the permission group.
-     * 
-     */
-    @Import(name="meta")
-    private @Nullable Output<ApiTokenPolicyPermissionGroupMetaArgs> meta;
-
-    /**
-     * @return Attributes associated to the permission group.
-     * 
-     */
-    public Optional<Output<ApiTokenPolicyPermissionGroupMetaArgs>> meta() {
-        return Optional.ofNullable(this.meta);
-    }
-
-    /**
-     * Name of the permission group.
-     * 
-     */
-    @Import(name="name")
-    private @Nullable Output<String> name;
-
-    /**
-     * @return Name of the permission group.
-     * 
-     */
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
-    }
-
     private ApiTokenPolicyPermissionGroupArgs() {}
 
     private ApiTokenPolicyPermissionGroupArgs(ApiTokenPolicyPermissionGroupArgs $) {
         this.id = $.id;
-        this.meta = $.meta;
-        this.name = $.name;
     }
 
     public static Builder builder() {
@@ -107,48 +72,6 @@ public final class ApiTokenPolicyPermissionGroupArgs extends com.pulumi.resource
          */
         public Builder id(String id) {
             return id(Output.of(id));
-        }
-
-        /**
-         * @param meta Attributes associated to the permission group.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder meta(@Nullable Output<ApiTokenPolicyPermissionGroupMetaArgs> meta) {
-            $.meta = meta;
-            return this;
-        }
-
-        /**
-         * @param meta Attributes associated to the permission group.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder meta(ApiTokenPolicyPermissionGroupMetaArgs meta) {
-            return meta(Output.of(meta));
-        }
-
-        /**
-         * @param name Name of the permission group.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder name(@Nullable Output<String> name) {
-            $.name = name;
-            return this;
-        }
-
-        /**
-         * @param name Name of the permission group.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder name(String name) {
-            return name(Output.of(name));
         }
 
         public ApiTokenPolicyPermissionGroupArgs build() {

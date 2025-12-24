@@ -48,6 +48,10 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ## Import
+ * 
+ * ~&gt; This resource does not currently support `pulumi import`.
+ * 
  */
 @ResourceType(type="cloudflare:index/streamDownload:StreamDownload")
 public class StreamDownload extends com.pulumi.resources.CustomResource {

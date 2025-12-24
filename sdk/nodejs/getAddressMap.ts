@@ -38,7 +38,7 @@ export interface GetAddressMapArgs {
     /**
      * Identifier of an Address Map.
      */
-    addressMapId?: string;
+    addressMapId: string;
 }
 
 /**
@@ -52,7 +52,7 @@ export interface GetAddressMapResult {
     /**
      * Identifier of an Address Map.
      */
-    readonly addressMapId?: string;
+    readonly addressMapId: string;
     /**
      * If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
      */
@@ -120,5 +120,5 @@ export interface GetAddressMapOutputArgs {
     /**
      * Identifier of an Address Map.
      */
-    addressMapId?: pulumi.Input<string>;
+    addressMapId: pulumi.Input<string>;
 }

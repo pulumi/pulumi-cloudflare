@@ -74,6 +74,9 @@ namespace Pulumi.Cloudflare
         [Output("profileId")]
         public Output<string?> ProfileId { get; private set; } = null!;
 
+        [Output("profiles")]
+        public Output<ImmutableArray<Outputs.ZeroTrustDlpEntryProfile>> Profiles { get; private set; } = null!;
+
         [Output("secret")]
         public Output<bool> Secret { get; private set; } = null!;
 
@@ -85,6 +88,12 @@ namespace Pulumi.Cloudflare
 
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+        /// </summary>
+        [Output("uploadStatus")]
+        public Output<string> UploadStatus { get; private set; } = null!;
 
         [Output("variant")]
         public Output<Outputs.ZeroTrustDlpEntryVariant> Variant { get; private set; } = null!;
@@ -196,6 +205,14 @@ namespace Pulumi.Cloudflare
         [Input("profileId")]
         public Input<string>? ProfileId { get; set; }
 
+        [Input("profiles")]
+        private InputList<Inputs.ZeroTrustDlpEntryProfileGetArgs>? _profiles;
+        public InputList<Inputs.ZeroTrustDlpEntryProfileGetArgs> Profiles
+        {
+            get => _profiles ?? (_profiles = new InputList<Inputs.ZeroTrustDlpEntryProfileGetArgs>());
+            set => _profiles = value;
+        }
+
         [Input("secret")]
         public Input<bool>? Secret { get; set; }
 
@@ -207,6 +224,12 @@ namespace Pulumi.Cloudflare
 
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
+
+        /// <summary>
+        /// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+        /// </summary>
+        [Input("uploadStatus")]
+        public Input<string>? UploadStatus { get; set; }
 
         [Input("variant")]
         public Input<Inputs.ZeroTrustDlpEntryVariantGetArgs>? Variant { get; set; }

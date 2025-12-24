@@ -93,8 +93,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Name of the Workers for Platforms dispatch namespace.
         /// </summary>
-        [Input("dispatchNamespace")]
-        public string? DispatchNamespace { get; set; }
+        [Input("dispatchNamespace", required: true)]
+        public string DispatchNamespace { get; set; } = null!;
 
         public GetWorkersForPlatformsDispatchNamespaceArgs()
         {
@@ -113,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Name of the Workers for Platforms dispatch namespace.
         /// </summary>
-        [Input("dispatchNamespace")]
-        public Input<string>? DispatchNamespace { get; set; }
+        [Input("dispatchNamespace", required: true)]
+        public Input<string> DispatchNamespace { get; set; } = null!;
 
         public GetWorkersForPlatformsDispatchNamespaceInvokeArgs()
         {
@@ -141,7 +141,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Name of the Workers for Platforms dispatch namespace.
         /// </summary>
-        public readonly string? DispatchNamespace;
+        public readonly string DispatchNamespace;
         /// <summary>
         /// Name of the Workers for Platforms dispatch namespace.
         /// </summary>
@@ -179,7 +179,7 @@ namespace Pulumi.Cloudflare
 
             string createdOn,
 
-            string? dispatchNamespace,
+            string dispatchNamespace,
 
             string id,
 

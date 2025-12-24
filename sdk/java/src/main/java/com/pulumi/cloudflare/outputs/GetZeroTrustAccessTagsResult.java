@@ -14,9 +14,21 @@ public final class GetZeroTrustAccessTagsResult {
      * @return The name of the tag
      * 
      */
+    private String id;
+    /**
+     * @return The name of the tag
+     * 
+     */
     private String name;
 
     private GetZeroTrustAccessTagsResult() {}
+    /**
+     * @return The name of the tag
+     * 
+     */
+    public String id() {
+        return this.id;
+    }
     /**
      * @return The name of the tag
      * 
@@ -34,13 +46,23 @@ public final class GetZeroTrustAccessTagsResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String id;
         private String name;
         public Builder() {}
         public Builder(GetZeroTrustAccessTagsResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.id = defaults.id;
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessTagsResult", "id");
+            }
+            this.id = id;
+            return this;
+        }
         @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
@@ -51,6 +73,7 @@ public final class GetZeroTrustAccessTagsResult {
         }
         public GetZeroTrustAccessTagsResult build() {
             final var _resultValue = new GetZeroTrustAccessTagsResult();
+            _resultValue.id = id;
             _resultValue.name = name;
             return _resultValue;
         }

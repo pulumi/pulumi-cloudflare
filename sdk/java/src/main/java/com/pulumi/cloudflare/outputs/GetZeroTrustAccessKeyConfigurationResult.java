@@ -22,7 +22,7 @@ public final class GetZeroTrustAccessKeyConfigurationResult {
      */
     private Double daysUntilNextRotation;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Identifier.
      * 
      */
     private String id;
@@ -53,7 +53,7 @@ public final class GetZeroTrustAccessKeyConfigurationResult {
         return this.daysUntilNextRotation;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Identifier.
      * 
      */
     public String id() {

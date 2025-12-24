@@ -83,7 +83,7 @@ type LookupZoneResult struct {
 	Type              string            `pulumi:"type"`
 	VanityNameServers []string          `pulumi:"vanityNameServers"`
 	VerificationKey   string            `pulumi:"verificationKey"`
-	ZoneId            *string           `pulumi:"zoneId"`
+	ZoneId            string            `pulumi:"zoneId"`
 }
 
 func LookupZoneOutput(ctx *pulumi.Context, args LookupZoneOutputArgs, opts ...pulumi.InvokeOption) LookupZoneResultOutput {
@@ -221,8 +221,8 @@ func (o LookupZoneResultOutput) VerificationKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneResult) string { return v.VerificationKey }).(pulumi.StringOutput)
 }
 
-func (o LookupZoneResultOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupZoneResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
+func (o LookupZoneResultOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZoneResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 func init() {

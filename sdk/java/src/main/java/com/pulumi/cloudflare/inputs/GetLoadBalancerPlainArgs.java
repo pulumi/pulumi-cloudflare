@@ -17,11 +17,11 @@ public final class GetLoadBalancerPlainArgs extends com.pulumi.resources.InvokeA
 
     public static final GetLoadBalancerPlainArgs Empty = new GetLoadBalancerPlainArgs();
 
-    @Import(name="loadBalancerId")
-    private @Nullable String loadBalancerId;
+    @Import(name="loadBalancerId", required=true)
+    private String loadBalancerId;
 
-    public Optional<String> loadBalancerId() {
-        return Optional.ofNullable(this.loadBalancerId);
+    public String loadBalancerId() {
+        return this.loadBalancerId;
     }
 
     /**
@@ -88,7 +88,7 @@ public final class GetLoadBalancerPlainArgs extends com.pulumi.resources.InvokeA
             $ = new GetLoadBalancerPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder loadBalancerId(@Nullable String loadBalancerId) {
+        public Builder loadBalancerId(String loadBalancerId) {
             $.loadBalancerId = loadBalancerId;
             return this;
         }
@@ -121,6 +121,9 @@ public final class GetLoadBalancerPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         public GetLoadBalancerPlainArgs build() {
+            if ($.loadBalancerId == null) {
+                throw new MissingRequiredPropertyException("GetLoadBalancerPlainArgs", "loadBalancerId");
+            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("GetLoadBalancerPlainArgs", "zoneId");
             }

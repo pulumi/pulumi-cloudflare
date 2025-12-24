@@ -69,16 +69,21 @@ export class ZeroTrustDlpIntegrationEntry extends pulumi.CustomResource {
     declare public /*out*/ readonly name: pulumi.Output<string>;
     declare public /*out*/ readonly pattern: pulumi.Output<outputs.ZeroTrustDlpIntegrationEntryPattern>;
     /**
-     * This field is not actually used as the owning profile for a predefined entry is already set
-     * to a predefined profile
+     * This field is not used as the owning profile.
+     * For predefined entries it is already set to a predefined profile.
      */
     declare public readonly profileId: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly profiles: pulumi.Output<outputs.ZeroTrustDlpIntegrationEntryProfile[]>;
     declare public /*out*/ readonly secret: pulumi.Output<boolean>;
     /**
      * Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    /**
+     * Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+     */
+    declare public /*out*/ readonly uploadStatus: pulumi.Output<string>;
     declare public /*out*/ readonly variant: pulumi.Output<outputs.ZeroTrustDlpIntegrationEntryVariant>;
     declare public /*out*/ readonly wordList: pulumi.Output<string>;
 
@@ -104,9 +109,11 @@ export class ZeroTrustDlpIntegrationEntry extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["pattern"] = state?.pattern;
             resourceInputs["profileId"] = state?.profileId;
+            resourceInputs["profiles"] = state?.profiles;
             resourceInputs["secret"] = state?.secret;
             resourceInputs["type"] = state?.type;
             resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["uploadStatus"] = state?.uploadStatus;
             resourceInputs["variant"] = state?.variant;
             resourceInputs["wordList"] = state?.wordList;
         } else {
@@ -129,9 +136,11 @@ export class ZeroTrustDlpIntegrationEntry extends pulumi.CustomResource {
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pattern"] = undefined /*out*/;
+            resourceInputs["profiles"] = undefined /*out*/;
             resourceInputs["secret"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
+            resourceInputs["uploadStatus"] = undefined /*out*/;
             resourceInputs["variant"] = undefined /*out*/;
             resourceInputs["wordList"] = undefined /*out*/;
         }
@@ -158,16 +167,21 @@ export interface ZeroTrustDlpIntegrationEntryState {
     name?: pulumi.Input<string>;
     pattern?: pulumi.Input<inputs.ZeroTrustDlpIntegrationEntryPattern>;
     /**
-     * This field is not actually used as the owning profile for a predefined entry is already set
-     * to a predefined profile
+     * This field is not used as the owning profile.
+     * For predefined entries it is already set to a predefined profile.
      */
     profileId?: pulumi.Input<string>;
+    profiles?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDlpIntegrationEntryProfile>[]>;
     secret?: pulumi.Input<boolean>;
     /**
      * Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
      */
     type?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<string>;
+    /**
+     * Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+     */
+    uploadStatus?: pulumi.Input<string>;
     variant?: pulumi.Input<inputs.ZeroTrustDlpIntegrationEntryVariant>;
     wordList?: pulumi.Input<string>;
 }
@@ -180,8 +194,8 @@ export interface ZeroTrustDlpIntegrationEntryArgs {
     enabled: pulumi.Input<boolean>;
     entryId: pulumi.Input<string>;
     /**
-     * This field is not actually used as the owning profile for a predefined entry is already set
-     * to a predefined profile
+     * This field is not used as the owning profile.
+     * For predefined entries it is already set to a predefined profile.
      */
     profileId?: pulumi.Input<string>;
 }

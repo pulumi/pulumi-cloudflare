@@ -35,7 +35,7 @@ export interface GetZeroTrustDevicePostureIntegrationArgs {
     /**
      * API UUID.
      */
-    integrationId?: string;
+    integrationId: string;
 }
 
 /**
@@ -54,7 +54,7 @@ export interface GetZeroTrustDevicePostureIntegrationResult {
     /**
      * API UUID.
      */
-    readonly integrationId?: string;
+    readonly integrationId: string;
     /**
      * The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
      */
@@ -98,5 +98,5 @@ export interface GetZeroTrustDevicePostureIntegrationOutputArgs {
     /**
      * API UUID.
      */
-    integrationId?: pulumi.Input<string>;
+    integrationId: pulumi.Input<string>;
 }

@@ -62,11 +62,6 @@ export class ZeroTrustTunnelWarpConnector extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly accountTag: pulumi.Output<string>;
     /**
-     * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
-     * Available values: "local", "cloudflare".
-     */
-    declare public /*out*/ readonly configSrc: pulumi.Output<string>;
-    /**
      * The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
      *
      * @deprecated This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
@@ -97,12 +92,6 @@ export class ZeroTrustTunnelWarpConnector extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
-     *
-     * @deprecated Use the configSrc field instead.
-     */
-    declare public /*out*/ readonly remoteConfig: pulumi.Output<boolean>;
-    /**
      * The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
      * Available values: "inactive", "degraded", "healthy", "down".
      */
@@ -132,7 +121,6 @@ export class ZeroTrustTunnelWarpConnector extends pulumi.CustomResource {
             const state = argsOrState as ZeroTrustTunnelWarpConnectorState | undefined;
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["accountTag"] = state?.accountTag;
-            resourceInputs["configSrc"] = state?.configSrc;
             resourceInputs["connections"] = state?.connections;
             resourceInputs["connsActiveAt"] = state?.connsActiveAt;
             resourceInputs["connsInactiveAt"] = state?.connsInactiveAt;
@@ -140,7 +128,6 @@ export class ZeroTrustTunnelWarpConnector extends pulumi.CustomResource {
             resourceInputs["deletedAt"] = state?.deletedAt;
             resourceInputs["metadata"] = state?.metadata;
             resourceInputs["name"] = state?.name;
-            resourceInputs["remoteConfig"] = state?.remoteConfig;
             resourceInputs["status"] = state?.status;
             resourceInputs["tunType"] = state?.tunType;
             resourceInputs["tunnelSecret"] = state?.tunnelSecret;
@@ -156,14 +143,12 @@ export class ZeroTrustTunnelWarpConnector extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["tunnelSecret"] = args?.tunnelSecret ? pulumi.secret(args.tunnelSecret) : undefined;
             resourceInputs["accountTag"] = undefined /*out*/;
-            resourceInputs["configSrc"] = undefined /*out*/;
             resourceInputs["connections"] = undefined /*out*/;
             resourceInputs["connsActiveAt"] = undefined /*out*/;
             resourceInputs["connsInactiveAt"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["deletedAt"] = undefined /*out*/;
             resourceInputs["metadata"] = undefined /*out*/;
-            resourceInputs["remoteConfig"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["tunType"] = undefined /*out*/;
         }
@@ -186,11 +171,6 @@ export interface ZeroTrustTunnelWarpConnectorState {
      * Cloudflare account ID
      */
     accountTag?: pulumi.Input<string>;
-    /**
-     * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
-     * Available values: "local", "cloudflare".
-     */
-    configSrc?: pulumi.Input<string>;
     /**
      * The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
      *
@@ -221,12 +201,6 @@ export interface ZeroTrustTunnelWarpConnectorState {
      * A user-friendly name for a tunnel.
      */
     name?: pulumi.Input<string>;
-    /**
-     * If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
-     *
-     * @deprecated Use the configSrc field instead.
-     */
-    remoteConfig?: pulumi.Input<boolean>;
     /**
      * The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
      * Available values: "inactive", "degraded", "healthy", "down".

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// &gt; `cloudflare.ApiShieldSchemaValidationSettings` is in a deprecation phase and will be removed in the future.
+    ///   Instead, please utilize the cloudflare.SchemaValidationSettings resource instead.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

@@ -48,7 +48,7 @@ class GetPagesDomainsResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -114,7 +114,7 @@ def get_pages_domains(account_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str account_id: Identifier
+    :param _builtins.str account_id: Identifier.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str project_name: Name of the project.
     """
@@ -147,7 +147,7 @@ def get_pages_domains_output(account_id: Optional[pulumi.Input[_builtins.str]] =
     ```
 
 
-    :param _builtins.str account_id: Identifier
+    :param _builtins.str account_id: Identifier.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str project_name: Name of the project.
     """

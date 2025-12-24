@@ -38,7 +38,7 @@ export interface GetWorkerArgs {
     /**
      * Identifier for the Worker, which can be ID or name.
      */
-    workerId?: string;
+    workerId: string;
 }
 
 /**
@@ -92,7 +92,7 @@ export interface GetWorkerResult {
     /**
      * Identifier for the Worker, which can be ID or name.
      */
-    readonly workerId?: string;
+    readonly workerId: string;
 }
 /**
  * ## Example Usage
@@ -126,5 +126,5 @@ export interface GetWorkerOutputArgs {
     /**
      * Identifier for the Worker, which can be ID or name.
      */
-    workerId?: pulumi.Input<string>;
+    workerId: pulumi.Input<string>;
 }

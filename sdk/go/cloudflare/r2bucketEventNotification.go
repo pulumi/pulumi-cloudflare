@@ -50,6 +50,10 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ~> This resource does not currently support `pulumi import`.
 type R2BucketEventNotification struct {
 	pulumi.CustomResourceState
 

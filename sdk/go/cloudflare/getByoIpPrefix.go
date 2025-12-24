@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupByoIpPrefix(ctx, &cloudflare.LookupByoIpPrefixArgs{
 //				AccountId: "258def64c72dae45f3e4c8516e2111f2",
-//				PrefixId:  pulumi.StringRef("2af39739cc4e3b5910c918468bb89828"),
+//				PrefixId:  "2af39739cc4e3b5910c918468bb89828",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -52,7 +52,7 @@ type LookupByoIpPrefixArgs struct {
 	// Identifier of a Cloudflare account.
 	AccountId string `pulumi:"accountId"`
 	// Identifier of an IP Prefix.
-	PrefixId *string `pulumi:"prefixId"`
+	PrefixId string `pulumi:"prefixId"`
 }
 
 // A collection of values returned by getByoIpPrefix.
@@ -74,10 +74,14 @@ type LookupByoIpPrefixResult struct {
 	// IP Prefix in Classless Inter-Domain Routing format.
 	Cidr      string `pulumi:"cidr"`
 	CreatedAt string `pulumi:"createdAt"`
+	// Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+	DelegateLoaCreation bool `pulumi:"delegateLoaCreation"`
 	// Description of the prefix.
 	Description string `pulumi:"description"`
 	// Identifier of an IP Prefix.
 	Id string `pulumi:"id"`
+	// State of one kind of validation for an IP prefix.
+	IrrValidationState string `pulumi:"irrValidationState"`
 	// Identifier for the uploaded LOA document.
 	LoaDocumentId string `pulumi:"loaDocumentId"`
 	ModifiedAt    string `pulumi:"modifiedAt"`
@@ -89,8 +93,14 @@ type LookupByoIpPrefixResult struct {
 	//
 	// Deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
 	OnDemandLocked bool `pulumi:"onDemandLocked"`
+	// State of one kind of validation for an IP prefix.
+	OwnershipValidationState string `pulumi:"ownershipValidationState"`
+	// Token provided to demonstrate ownership of the prefix.
+	OwnershipValidationToken string `pulumi:"ownershipValidationToken"`
 	// Identifier of an IP Prefix.
-	PrefixId *string `pulumi:"prefixId"`
+	PrefixId string `pulumi:"prefixId"`
+	// State of one kind of validation for an IP prefix.
+	RpkiValidationState string `pulumi:"rpkiValidationState"`
 }
 
 func LookupByoIpPrefixOutput(ctx *pulumi.Context, args LookupByoIpPrefixOutputArgs, opts ...pulumi.InvokeOption) LookupByoIpPrefixResultOutput {
@@ -107,7 +117,7 @@ type LookupByoIpPrefixOutputArgs struct {
 	// Identifier of a Cloudflare account.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Identifier of an IP Prefix.
-	PrefixId pulumi.StringPtrInput `pulumi:"prefixId"`
+	PrefixId pulumi.StringInput `pulumi:"prefixId"`
 }
 
 func (LookupByoIpPrefixOutputArgs) ElementType() reflect.Type {
@@ -167,6 +177,11 @@ func (o LookupByoIpPrefixResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupByoIpPrefixResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
+func (o LookupByoIpPrefixResultOutput) DelegateLoaCreation() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupByoIpPrefixResult) bool { return v.DelegateLoaCreation }).(pulumi.BoolOutput)
+}
+
 // Description of the prefix.
 func (o LookupByoIpPrefixResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupByoIpPrefixResult) string { return v.Description }).(pulumi.StringOutput)
@@ -175,6 +190,11 @@ func (o LookupByoIpPrefixResultOutput) Description() pulumi.StringOutput {
 // Identifier of an IP Prefix.
 func (o LookupByoIpPrefixResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupByoIpPrefixResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// State of one kind of validation for an IP prefix.
+func (o LookupByoIpPrefixResultOutput) IrrValidationState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupByoIpPrefixResult) string { return v.IrrValidationState }).(pulumi.StringOutput)
 }
 
 // Identifier for the uploaded LOA document.
@@ -200,9 +220,24 @@ func (o LookupByoIpPrefixResultOutput) OnDemandLocked() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupByoIpPrefixResult) bool { return v.OnDemandLocked }).(pulumi.BoolOutput)
 }
 
+// State of one kind of validation for an IP prefix.
+func (o LookupByoIpPrefixResultOutput) OwnershipValidationState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupByoIpPrefixResult) string { return v.OwnershipValidationState }).(pulumi.StringOutput)
+}
+
+// Token provided to demonstrate ownership of the prefix.
+func (o LookupByoIpPrefixResultOutput) OwnershipValidationToken() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupByoIpPrefixResult) string { return v.OwnershipValidationToken }).(pulumi.StringOutput)
+}
+
 // Identifier of an IP Prefix.
-func (o LookupByoIpPrefixResultOutput) PrefixId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupByoIpPrefixResult) *string { return v.PrefixId }).(pulumi.StringPtrOutput)
+func (o LookupByoIpPrefixResultOutput) PrefixId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupByoIpPrefixResult) string { return v.PrefixId }).(pulumi.StringOutput)
+}
+
+// State of one kind of validation for an IP prefix.
+func (o LookupByoIpPrefixResultOutput) RpkiValidationState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupByoIpPrefixResult) string { return v.RpkiValidationState }).(pulumi.StringOutput)
 }
 
 func init() {

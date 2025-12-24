@@ -13,12 +13,6 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class GetSchemaValidationSchemasFilterInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Omit the source-files of schemas and only retrieve their meta-data.
-        /// </summary>
-        [Input("omitSource", required: true)]
-        public Input<bool> OmitSource { get; set; } = null!;
-
-        /// <summary>
         /// Filter for enabled schemas
         /// </summary>
         [Input("validationEnabled")]

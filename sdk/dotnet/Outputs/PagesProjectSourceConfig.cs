@@ -23,6 +23,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Owner;
         /// <summary>
+        /// The owner ID of the repository.
+        /// </summary>
+        public readonly string? OwnerId;
+        /// <summary>
         /// A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
         /// </summary>
         public readonly ImmutableArray<string> PathExcludes;
@@ -56,6 +60,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? ProductionDeploymentsEnabled;
         /// <summary>
+        /// The ID of the repository.
+        /// </summary>
+        public readonly string? RepoId;
+        /// <summary>
         /// The name of the repository.
         /// </summary>
         public readonly string? RepoName;
@@ -65,6 +73,8 @@ namespace Pulumi.Cloudflare.Outputs
             bool? deploymentsEnabled,
 
             string? owner,
+
+            string? ownerId,
 
             ImmutableArray<string> pathExcludes,
 
@@ -82,10 +92,13 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool? productionDeploymentsEnabled,
 
+            string? repoId,
+
             string? repoName)
         {
             DeploymentsEnabled = deploymentsEnabled;
             Owner = owner;
+            OwnerId = ownerId;
             PathExcludes = pathExcludes;
             PathIncludes = pathIncludes;
             PrCommentsEnabled = prCommentsEnabled;
@@ -94,6 +107,7 @@ namespace Pulumi.Cloudflare.Outputs
             PreviewDeploymentSetting = previewDeploymentSetting;
             ProductionBranch = productionBranch;
             ProductionDeploymentsEnabled = productionDeploymentsEnabled;
+            RepoId = repoId;
             RepoName = repoName;
         }
     }

@@ -47,7 +47,7 @@ export interface GetEmailRoutingDnsArgs {
 export interface GetEmailRoutingDnsResult {
     readonly errors: outputs.GetEmailRoutingDnsError[];
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Identifier.
      */
     readonly id: string;
     readonly messages: outputs.GetEmailRoutingDnsMessage[];

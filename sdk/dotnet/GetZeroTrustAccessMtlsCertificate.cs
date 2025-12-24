@@ -32,7 +32,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZeroTrustAccessMtlsCertificateResult> InvokeAsync(GetZeroTrustAccessMtlsCertificateArgs? args = null, InvokeOptions? options = null)
+        public static Task<GetZeroTrustAccessMtlsCertificateResult> InvokeAsync(GetZeroTrustAccessMtlsCertificateArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustAccessMtlsCertificateResult>("cloudflare:index/getZeroTrustAccessMtlsCertificate:getZeroTrustAccessMtlsCertificate", args ?? new GetZeroTrustAccessMtlsCertificateArgs(), options.WithDefaults());
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZeroTrustAccessMtlsCertificateResult> Invoke(GetZeroTrustAccessMtlsCertificateInvokeArgs? args = null, InvokeOptions? options = null)
+        public static Output<GetZeroTrustAccessMtlsCertificateResult> Invoke(GetZeroTrustAccessMtlsCertificateInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustAccessMtlsCertificateResult>("cloudflare:index/getZeroTrustAccessMtlsCertificate:getZeroTrustAccessMtlsCertificate", args ?? new GetZeroTrustAccessMtlsCertificateInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -96,8 +96,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// UUID.
         /// </summary>
-        [Input("certificateId")]
-        public string? CertificateId { get; set; }
+        [Input("certificateId", required: true)]
+        public string CertificateId { get; set; } = null!;
 
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -122,8 +122,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// UUID.
         /// </summary>
-        [Input("certificateId")]
-        public Input<string>? CertificateId { get; set; }
+        [Input("certificateId", required: true)]
+        public Input<string> CertificateId { get; set; } = null!;
 
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -152,7 +152,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// UUID.
         /// </summary>
-        public readonly string? CertificateId;
+        public readonly string CertificateId;
         public readonly string ExpiresOn;
         /// <summary>
         /// The MD5 fingerprint of the certificate.
@@ -177,7 +177,7 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<string> associatedHostnames,
 
-            string? certificateId,
+            string certificateId,
 
             string expiresOn,
 

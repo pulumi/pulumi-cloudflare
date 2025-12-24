@@ -41,7 +41,7 @@ public final class GetZeroTrustListsArgs extends com.pulumi.resources.InvokeArgs
 
     /**
      * Specify the list type.
-     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
+     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;, &#34;CATEGORY&#34;, &#34;LOCATION&#34;, &#34;DEVICE&#34;.
      * 
      */
     @Import(name="type")
@@ -49,7 +49,7 @@ public final class GetZeroTrustListsArgs extends com.pulumi.resources.InvokeArgs
 
     /**
      * @return Specify the list type.
-     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
+     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;, &#34;CATEGORY&#34;, &#34;LOCATION&#34;, &#34;DEVICE&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -114,7 +114,7 @@ public final class GetZeroTrustListsArgs extends com.pulumi.resources.InvokeArgs
 
         /**
          * @param type Specify the list type.
-         * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
+         * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;, &#34;CATEGORY&#34;, &#34;LOCATION&#34;, &#34;DEVICE&#34;.
          * 
          * @return builder
          * 
@@ -126,7 +126,7 @@ public final class GetZeroTrustListsArgs extends com.pulumi.resources.InvokeArgs
 
         /**
          * @param type Specify the list type.
-         * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
+         * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;, &#34;CATEGORY&#34;, &#34;LOCATION&#34;, &#34;DEVICE&#34;.
          * 
          * @return builder
          * 

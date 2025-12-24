@@ -36,7 +36,7 @@ export interface GetWorkersForPlatformsDispatchNamespaceArgs {
     /**
      * Name of the Workers for Platforms dispatch namespace.
      */
-    dispatchNamespace?: string;
+    dispatchNamespace: string;
 }
 
 /**
@@ -58,7 +58,7 @@ export interface GetWorkersForPlatformsDispatchNamespaceResult {
     /**
      * Name of the Workers for Platforms dispatch namespace.
      */
-    readonly dispatchNamespace?: string;
+    readonly dispatchNamespace: string;
     /**
      * Name of the Workers for Platforms dispatch namespace.
      */
@@ -120,5 +120,5 @@ export interface GetWorkersForPlatformsDispatchNamespaceOutputArgs {
     /**
      * Name of the Workers for Platforms dispatch namespace.
      */
-    dispatchNamespace?: pulumi.Input<string>;
+    dispatchNamespace: pulumi.Input<string>;
 }

@@ -74,7 +74,7 @@ class GetZeroTrustAccessShortLivedCertificateResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The ID of the CA.
+        UUID.
         """
         return pulumi.get(self, "id")
 

@@ -17,18 +17,33 @@ public final class WorkerVersionModuleArgs extends com.pulumi.resources.Resource
     public static final WorkerVersionModuleArgs Empty = new WorkerVersionModuleArgs();
 
     /**
+     * The base64-encoded module content.
+     * 
+     */
+    @Import(name="contentBase64")
+    private @Nullable Output<String> contentBase64;
+
+    /**
+     * @return The base64-encoded module content.
+     * 
+     */
+    public Optional<Output<String>> contentBase64() {
+        return Optional.ofNullable(this.contentBase64);
+    }
+
+    /**
      * The file path of the module content.
      * 
      */
-    @Import(name="contentFile", required=true)
-    private Output<String> contentFile;
+    @Import(name="contentFile")
+    private @Nullable Output<String> contentFile;
 
     /**
      * @return The file path of the module content.
      * 
      */
-    public Output<String> contentFile() {
-        return this.contentFile;
+    public Optional<Output<String>> contentFile() {
+        return Optional.ofNullable(this.contentFile);
     }
 
     /**
@@ -79,6 +94,7 @@ public final class WorkerVersionModuleArgs extends com.pulumi.resources.Resource
     private WorkerVersionModuleArgs() {}
 
     private WorkerVersionModuleArgs(WorkerVersionModuleArgs $) {
+        this.contentBase64 = $.contentBase64;
         this.contentFile = $.contentFile;
         this.contentSha256 = $.contentSha256;
         this.contentType = $.contentType;
@@ -104,12 +120,33 @@ public final class WorkerVersionModuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
+         * @param contentBase64 The base64-encoded module content.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contentBase64(@Nullable Output<String> contentBase64) {
+            $.contentBase64 = contentBase64;
+            return this;
+        }
+
+        /**
+         * @param contentBase64 The base64-encoded module content.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contentBase64(String contentBase64) {
+            return contentBase64(Output.of(contentBase64));
+        }
+
+        /**
          * @param contentFile The file path of the module content.
          * 
          * @return builder
          * 
          */
-        public Builder contentFile(Output<String> contentFile) {
+        public Builder contentFile(@Nullable Output<String> contentFile) {
             $.contentFile = contentFile;
             return this;
         }
@@ -188,9 +225,6 @@ public final class WorkerVersionModuleArgs extends com.pulumi.resources.Resource
         }
 
         public WorkerVersionModuleArgs build() {
-            if ($.contentFile == null) {
-                throw new MissingRequiredPropertyException("WorkerVersionModuleArgs", "contentFile");
-            }
             if ($.contentType == null) {
                 throw new MissingRequiredPropertyException("WorkerVersionModuleArgs", "contentType");
             }

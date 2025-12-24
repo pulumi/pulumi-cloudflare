@@ -26,12 +26,11 @@ class ZeroTrustDlpPredefinedProfileArgs:
                  ai_context_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  allowed_match_count: Optional[pulumi.Input[_builtins.int]] = None,
                  confidence_threshold: Optional[pulumi.Input[_builtins.str]] = None,
-                 context_awareness: Optional[pulumi.Input['ZeroTrustDlpPredefinedProfileContextAwarenessArgs']] = None,
+                 enabled_entries: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  entries: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpPredefinedProfileEntryArgs']]]] = None,
                  ocr_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ZeroTrustDlpPredefinedProfile resource.
-        :param pulumi.Input['ZeroTrustDlpPredefinedProfileContextAwarenessArgs'] context_awareness: Scan the context of predefined entries to only return matches surrounded by keywords.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "profile_id", profile_id)
@@ -41,11 +40,8 @@ class ZeroTrustDlpPredefinedProfileArgs:
             pulumi.set(__self__, "allowed_match_count", allowed_match_count)
         if confidence_threshold is not None:
             pulumi.set(__self__, "confidence_threshold", confidence_threshold)
-        if context_awareness is not None:
-            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""context_awareness is deprecated: This attribute is deprecated.""")
-        if context_awareness is not None:
-            pulumi.set(__self__, "context_awareness", context_awareness)
+        if enabled_entries is not None:
+            pulumi.set(__self__, "enabled_entries", enabled_entries)
         if entries is not None:
             warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
             pulumi.log.warn("""entries is deprecated: This attribute is deprecated.""")
@@ -100,17 +96,13 @@ class ZeroTrustDlpPredefinedProfileArgs:
         pulumi.set(self, "confidence_threshold", value)
 
     @_builtins.property
-    @pulumi.getter(name="contextAwareness")
-    @_utilities.deprecated("""This attribute is deprecated.""")
-    def context_awareness(self) -> Optional[pulumi.Input['ZeroTrustDlpPredefinedProfileContextAwarenessArgs']]:
-        """
-        Scan the context of predefined entries to only return matches surrounded by keywords.
-        """
-        return pulumi.get(self, "context_awareness")
+    @pulumi.getter(name="enabledEntries")
+    def enabled_entries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "enabled_entries")
 
-    @context_awareness.setter
-    def context_awareness(self, value: Optional[pulumi.Input['ZeroTrustDlpPredefinedProfileContextAwarenessArgs']]):
-        pulumi.set(self, "context_awareness", value)
+    @enabled_entries.setter
+    def enabled_entries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "enabled_entries", value)
 
     @_builtins.property
     @pulumi.getter
@@ -139,25 +131,16 @@ class _ZeroTrustDlpPredefinedProfileState:
                  ai_context_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  allowed_match_count: Optional[pulumi.Input[_builtins.int]] = None,
                  confidence_threshold: Optional[pulumi.Input[_builtins.str]] = None,
-                 context_awareness: Optional[pulumi.Input['ZeroTrustDlpPredefinedProfileContextAwarenessArgs']] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 enabled_entries: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  entries: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpPredefinedProfileEntryArgs']]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  ocr_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  open_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 profile_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None):
+                 profile_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustDlpPredefinedProfile resources.
-        :param pulumi.Input['ZeroTrustDlpPredefinedProfileContextAwarenessArgs'] context_awareness: Scan the context of predefined entries to only return matches surrounded by keywords.
-        :param pulumi.Input[_builtins.str] created_at: When the profile was created.
-        :param pulumi.Input[_builtins.str] description: The description of the profile.
-        :param pulumi.Input[_builtins.str] name: The name of the profile.
+        :param pulumi.Input[_builtins.str] name: The name of the predefined profile.
         :param pulumi.Input[_builtins.bool] open_access: Whether this profile can be accessed by anyone.
-        :param pulumi.Input[_builtins.str] type: Available values: "custom", "predefined", "integration".
-        :param pulumi.Input[_builtins.str] updated_at: When the profile was lasted updated.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -167,15 +150,8 @@ class _ZeroTrustDlpPredefinedProfileState:
             pulumi.set(__self__, "allowed_match_count", allowed_match_count)
         if confidence_threshold is not None:
             pulumi.set(__self__, "confidence_threshold", confidence_threshold)
-        if context_awareness is not None:
-            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""context_awareness is deprecated: This attribute is deprecated.""")
-        if context_awareness is not None:
-            pulumi.set(__self__, "context_awareness", context_awareness)
-        if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
+        if enabled_entries is not None:
+            pulumi.set(__self__, "enabled_entries", enabled_entries)
         if entries is not None:
             warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
             pulumi.log.warn("""entries is deprecated: This attribute is deprecated.""")
@@ -189,10 +165,6 @@ class _ZeroTrustDlpPredefinedProfileState:
             pulumi.set(__self__, "open_access", open_access)
         if profile_id is not None:
             pulumi.set(__self__, "profile_id", profile_id)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-        if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -231,41 +203,13 @@ class _ZeroTrustDlpPredefinedProfileState:
         pulumi.set(self, "confidence_threshold", value)
 
     @_builtins.property
-    @pulumi.getter(name="contextAwareness")
-    @_utilities.deprecated("""This attribute is deprecated.""")
-    def context_awareness(self) -> Optional[pulumi.Input['ZeroTrustDlpPredefinedProfileContextAwarenessArgs']]:
-        """
-        Scan the context of predefined entries to only return matches surrounded by keywords.
-        """
-        return pulumi.get(self, "context_awareness")
+    @pulumi.getter(name="enabledEntries")
+    def enabled_entries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "enabled_entries")
 
-    @context_awareness.setter
-    def context_awareness(self, value: Optional[pulumi.Input['ZeroTrustDlpPredefinedProfileContextAwarenessArgs']]):
-        pulumi.set(self, "context_awareness", value)
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        When the profile was created.
-        """
-        return pulumi.get(self, "created_at")
-
-    @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "created_at", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The description of the profile.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "description", value)
+    @enabled_entries.setter
+    def enabled_entries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "enabled_entries", value)
 
     @_builtins.property
     @pulumi.getter
@@ -281,7 +225,7 @@ class _ZeroTrustDlpPredefinedProfileState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the profile.
+        The name of the predefined profile.
         """
         return pulumi.get(self, "name")
 
@@ -319,30 +263,6 @@ class _ZeroTrustDlpPredefinedProfileState:
     def profile_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "profile_id", value)
 
-    @_builtins.property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Available values: "custom", "predefined", "integration".
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "type", value)
-
-    @_builtins.property
-    @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        When the profile was lasted updated.
-        """
-        return pulumi.get(self, "updated_at")
-
-    @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "updated_at", value)
-
 
 @pulumi.type_token("cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile")
 class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
@@ -354,7 +274,7 @@ class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
                  ai_context_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  allowed_match_count: Optional[pulumi.Input[_builtins.int]] = None,
                  confidence_threshold: Optional[pulumi.Input[_builtins.str]] = None,
-                 context_awareness: Optional[pulumi.Input[Union['ZeroTrustDlpPredefinedProfileContextAwarenessArgs', 'ZeroTrustDlpPredefinedProfileContextAwarenessArgsDict']]] = None,
+                 enabled_entries: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDlpPredefinedProfileEntryArgs', 'ZeroTrustDlpPredefinedProfileEntryArgsDict']]]]] = None,
                  ocr_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  profile_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -372,12 +292,7 @@ class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
             ai_context_enabled=True,
             allowed_match_count=5,
             confidence_threshold="confidence_threshold",
-            context_awareness={
-                "enabled": True,
-                "skip": {
-                    "files": True,
-                },
-            },
+            enabled_entries=["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
             entries=[{
                 "id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 "enabled": True,
@@ -393,7 +308,6 @@ class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ZeroTrustDlpPredefinedProfileContextAwarenessArgs', 'ZeroTrustDlpPredefinedProfileContextAwarenessArgsDict']] context_awareness: Scan the context of predefined entries to only return matches surrounded by keywords.
         """
         ...
     @overload
@@ -414,12 +328,7 @@ class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
             ai_context_enabled=True,
             allowed_match_count=5,
             confidence_threshold="confidence_threshold",
-            context_awareness={
-                "enabled": True,
-                "skip": {
-                    "files": True,
-                },
-            },
+            enabled_entries=["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
             entries=[{
                 "id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 "enabled": True,
@@ -452,7 +361,7 @@ class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
                  ai_context_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  allowed_match_count: Optional[pulumi.Input[_builtins.int]] = None,
                  confidence_threshold: Optional[pulumi.Input[_builtins.str]] = None,
-                 context_awareness: Optional[pulumi.Input[Union['ZeroTrustDlpPredefinedProfileContextAwarenessArgs', 'ZeroTrustDlpPredefinedProfileContextAwarenessArgsDict']]] = None,
+                 enabled_entries: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDlpPredefinedProfileEntryArgs', 'ZeroTrustDlpPredefinedProfileEntryArgsDict']]]]] = None,
                  ocr_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  profile_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -471,18 +380,14 @@ class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
             __props__.__dict__["ai_context_enabled"] = ai_context_enabled
             __props__.__dict__["allowed_match_count"] = allowed_match_count
             __props__.__dict__["confidence_threshold"] = confidence_threshold
-            __props__.__dict__["context_awareness"] = context_awareness
+            __props__.__dict__["enabled_entries"] = enabled_entries
             __props__.__dict__["entries"] = entries
             __props__.__dict__["ocr_enabled"] = ocr_enabled
             if profile_id is None and not opts.urn:
                 raise TypeError("Missing required property 'profile_id'")
             __props__.__dict__["profile_id"] = profile_id
-            __props__.__dict__["created_at"] = None
-            __props__.__dict__["description"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["open_access"] = None
-            __props__.__dict__["type"] = None
-            __props__.__dict__["updated_at"] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/dlpPredefinedProfile:DlpPredefinedProfile")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ZeroTrustDlpPredefinedProfile, __self__).__init__(
@@ -499,16 +404,12 @@ class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
             ai_context_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             allowed_match_count: Optional[pulumi.Input[_builtins.int]] = None,
             confidence_threshold: Optional[pulumi.Input[_builtins.str]] = None,
-            context_awareness: Optional[pulumi.Input[Union['ZeroTrustDlpPredefinedProfileContextAwarenessArgs', 'ZeroTrustDlpPredefinedProfileContextAwarenessArgsDict']]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
+            enabled_entries: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDlpPredefinedProfileEntryArgs', 'ZeroTrustDlpPredefinedProfileEntryArgsDict']]]]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             ocr_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             open_access: Optional[pulumi.Input[_builtins.bool]] = None,
-            profile_id: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZeroTrustDlpPredefinedProfile':
+            profile_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZeroTrustDlpPredefinedProfile':
         """
         Get an existing ZeroTrustDlpPredefinedProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -516,13 +417,8 @@ class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ZeroTrustDlpPredefinedProfileContextAwarenessArgs', 'ZeroTrustDlpPredefinedProfileContextAwarenessArgsDict']] context_awareness: Scan the context of predefined entries to only return matches surrounded by keywords.
-        :param pulumi.Input[_builtins.str] created_at: When the profile was created.
-        :param pulumi.Input[_builtins.str] description: The description of the profile.
-        :param pulumi.Input[_builtins.str] name: The name of the profile.
+        :param pulumi.Input[_builtins.str] name: The name of the predefined profile.
         :param pulumi.Input[_builtins.bool] open_access: Whether this profile can be accessed by anyone.
-        :param pulumi.Input[_builtins.str] type: Available values: "custom", "predefined", "integration".
-        :param pulumi.Input[_builtins.str] updated_at: When the profile was lasted updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -532,16 +428,12 @@ class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
         __props__.__dict__["ai_context_enabled"] = ai_context_enabled
         __props__.__dict__["allowed_match_count"] = allowed_match_count
         __props__.__dict__["confidence_threshold"] = confidence_threshold
-        __props__.__dict__["context_awareness"] = context_awareness
-        __props__.__dict__["created_at"] = created_at
-        __props__.__dict__["description"] = description
+        __props__.__dict__["enabled_entries"] = enabled_entries
         __props__.__dict__["entries"] = entries
         __props__.__dict__["name"] = name
         __props__.__dict__["ocr_enabled"] = ocr_enabled
         __props__.__dict__["open_access"] = open_access
         __props__.__dict__["profile_id"] = profile_id
-        __props__.__dict__["type"] = type
-        __props__.__dict__["updated_at"] = updated_at
         return ZeroTrustDlpPredefinedProfile(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -565,41 +457,21 @@ class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
         return pulumi.get(self, "confidence_threshold")
 
     @_builtins.property
-    @pulumi.getter(name="contextAwareness")
-    @_utilities.deprecated("""This attribute is deprecated.""")
-    def context_awareness(self) -> pulumi.Output[Optional['outputs.ZeroTrustDlpPredefinedProfileContextAwareness']]:
-        """
-        Scan the context of predefined entries to only return matches surrounded by keywords.
-        """
-        return pulumi.get(self, "context_awareness")
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> pulumi.Output[_builtins.str]:
-        """
-        When the profile was created.
-        """
-        return pulumi.get(self, "created_at")
-
-    @_builtins.property
-    @pulumi.getter
-    def description(self) -> pulumi.Output[_builtins.str]:
-        """
-        The description of the profile.
-        """
-        return pulumi.get(self, "description")
+    @pulumi.getter(name="enabledEntries")
+    def enabled_entries(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        return pulumi.get(self, "enabled_entries")
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""This attribute is deprecated.""")
-    def entries(self) -> pulumi.Output[Optional[Sequence['outputs.ZeroTrustDlpPredefinedProfileEntry']]]:
+    def entries(self) -> pulumi.Output[Sequence['outputs.ZeroTrustDlpPredefinedProfileEntry']]:
         return pulumi.get(self, "entries")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the profile.
+        The name of the predefined profile.
         """
         return pulumi.get(self, "name")
 
@@ -620,20 +492,4 @@ class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
     @pulumi.getter(name="profileId")
     def profile_id(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "profile_id")
-
-    @_builtins.property
-    @pulumi.getter
-    def type(self) -> pulumi.Output[_builtins.str]:
-        """
-        Available values: "custom", "predefined", "integration".
-        """
-        return pulumi.get(self, "type")
-
-    @_builtins.property
-    @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> pulumi.Output[_builtins.str]:
-        """
-        When the profile was lasted updated.
-        """
-        return pulumi.get(self, "updated_at")
 

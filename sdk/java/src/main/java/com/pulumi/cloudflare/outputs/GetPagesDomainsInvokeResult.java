@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetPagesDomainsInvokeResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String accountId;
@@ -43,7 +43,7 @@ public final class GetPagesDomainsInvokeResult {
 
     private GetPagesDomainsInvokeResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {

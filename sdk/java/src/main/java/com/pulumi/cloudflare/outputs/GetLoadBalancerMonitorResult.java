@@ -11,8 +11,6 @@ import java.lang.String;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetLoadBalancerMonitorResult {
@@ -78,7 +76,7 @@ public final class GetLoadBalancerMonitorResult {
      */
     private String method;
     private String modifiedOn;
-    private @Nullable String monitorId;
+    private String monitorId;
     /**
      * @return The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.
      * 
@@ -202,8 +200,8 @@ public final class GetLoadBalancerMonitorResult {
     public String modifiedOn() {
         return this.modifiedOn;
     }
-    public Optional<String> monitorId() {
-        return Optional.ofNullable(this.monitorId);
+    public String monitorId() {
+        return this.monitorId;
     }
     /**
      * @return The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.
@@ -272,7 +270,7 @@ public final class GetLoadBalancerMonitorResult {
         private Integer interval;
         private String method;
         private String modifiedOn;
-        private @Nullable String monitorId;
+        private String monitorId;
         private String path;
         private Integer port;
         private String probeZone;
@@ -418,8 +416,10 @@ public final class GetLoadBalancerMonitorResult {
             return this;
         }
         @CustomType.Setter
-        public Builder monitorId(@Nullable String monitorId) {
-
+        public Builder monitorId(String monitorId) {
+            if (monitorId == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerMonitorResult", "monitorId");
+            }
             this.monitorId = monitorId;
             return this;
         }

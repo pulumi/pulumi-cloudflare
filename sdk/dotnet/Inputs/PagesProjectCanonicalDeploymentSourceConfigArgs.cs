@@ -25,6 +25,12 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
+        /// <summary>
+        /// The owner ID of the repository.
+        /// </summary>
+        [Input("ownerId")]
+        public Input<string>? OwnerId { get; set; }
+
         [Input("pathExcludes")]
         private InputList<string>? _pathExcludes;
 
@@ -97,6 +103,12 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("productionDeploymentsEnabled")]
         public Input<bool>? ProductionDeploymentsEnabled { get; set; }
+
+        /// <summary>
+        /// The ID of the repository.
+        /// </summary>
+        [Input("repoId")]
+        public Input<string>? RepoId { get; set; }
 
         /// <summary>
         /// The name of the repository.

@@ -64,7 +64,7 @@ see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresour
     private String type;
     private List<String> vanityNameServers;
     private String verificationKey;
-    private @Nullable String zoneId;
+    private String zoneId;
 
     private GetZoneResult() {}
     public GetZoneAccount account() {
@@ -157,8 +157,8 @@ see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresour
     public String verificationKey() {
         return this.verificationKey;
     }
-    public Optional<String> zoneId() {
-        return Optional.ofNullable(this.zoneId);
+    public String zoneId() {
+        return this.zoneId;
     }
 
     public static Builder builder() {
@@ -194,7 +194,7 @@ see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresour
         private String type;
         private List<String> vanityNameServers;
         private String verificationKey;
-        private @Nullable String zoneId;
+        private String zoneId;
         public Builder() {}
         public Builder(GetZoneResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -428,8 +428,10 @@ see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresour
             return this;
         }
         @CustomType.Setter
-        public Builder zoneId(@Nullable String zoneId) {
-
+        public Builder zoneId(String zoneId) {
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetZoneResult", "zoneId");
+            }
             this.zoneId = zoneId;
             return this;
         }

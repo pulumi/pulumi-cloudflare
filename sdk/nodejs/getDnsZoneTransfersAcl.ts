@@ -30,7 +30,7 @@ export function getDnsZoneTransfersAcl(args: GetDnsZoneTransfersAclArgs, opts?: 
  */
 export interface GetDnsZoneTransfersAclArgs {
     accountId: string;
-    aclId?: string;
+    aclId: string;
 }
 
 /**
@@ -38,7 +38,7 @@ export interface GetDnsZoneTransfersAclArgs {
  */
 export interface GetDnsZoneTransfersAclResult {
     readonly accountId: string;
-    readonly aclId?: string;
+    readonly aclId: string;
     /**
      * The ID of this resource.
      */
@@ -78,5 +78,5 @@ export function getDnsZoneTransfersAclOutput(args: GetDnsZoneTransfersAclOutputA
  */
 export interface GetDnsZoneTransfersAclOutputArgs {
     accountId: pulumi.Input<string>;
-    aclId?: pulumi.Input<string>;
+    aclId: pulumi.Input<string>;
 }

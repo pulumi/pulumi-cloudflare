@@ -28,6 +28,10 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ~&gt; This resource does not currently support `pulumi import`.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck")]
     public partial class LeakedCredentialCheck : global::Pulumi.CustomResource

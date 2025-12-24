@@ -243,9 +243,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Created;
         /// <summary>
-        /// Message ID.
+        /// UUID.
         /// </summary>
-        public readonly int Id;
+        public readonly string Id;
         /// <summary>
         /// Whether the message is a follow-on request.
         /// </summary>
@@ -290,7 +290,7 @@ namespace Pulumi.Cloudflare
 
             string created,
 
-            int id,
+            string id,
 
             bool isFollowOnRequest,
 

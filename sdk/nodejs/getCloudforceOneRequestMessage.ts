@@ -105,9 +105,9 @@ export interface GetCloudforceOneRequestMessageResult {
      */
     readonly created: string;
     /**
-     * Message ID.
+     * UUID.
      */
-    readonly id: number;
+    readonly id: string;
     /**
      * Whether the message is a follow-on request.
      */

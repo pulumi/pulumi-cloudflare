@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetQueuePlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -34,15 +32,15 @@ public final class GetQueuePlainArgs extends com.pulumi.resources.InvokeArgs {
      * A Resource identifier.
      * 
      */
-    @Import(name="queueId")
-    private @Nullable String queueId;
+    @Import(name="queueId", required=true)
+    private String queueId;
 
     /**
      * @return A Resource identifier.
      * 
      */
-    public Optional<String> queueId() {
-        return Optional.ofNullable(this.queueId);
+    public String queueId() {
+        return this.queueId;
     }
 
     private GetQueuePlainArgs() {}
@@ -87,7 +85,7 @@ public final class GetQueuePlainArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder queueId(@Nullable String queueId) {
+        public Builder queueId(String queueId) {
             $.queueId = queueId;
             return this;
         }
@@ -95,6 +93,9 @@ public final class GetQueuePlainArgs extends com.pulumi.resources.InvokeArgs {
         public GetQueuePlainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetQueuePlainArgs", "accountId");
+            }
+            if ($.queueId == null) {
+                throw new MissingRequiredPropertyException("GetQueuePlainArgs", "queueId");
             }
             return $;
         }

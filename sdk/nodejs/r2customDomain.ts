@@ -23,6 +23,10 @@ import * as utilities from "./utilities";
  *     minTls: "1.0",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ~> This resource does not currently support `pulumi import`.
  */
 export class R2CustomDomain extends pulumi.CustomResource {
     /**

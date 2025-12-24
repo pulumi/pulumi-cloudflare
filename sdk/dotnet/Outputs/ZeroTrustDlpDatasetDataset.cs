@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Status;
         /// <summary>
-        /// When the dataset was last updated.
+        /// Stores when the dataset was last updated.
         /// </summary>
         public readonly string? UpdatedAt;
         public readonly ImmutableArray<Outputs.ZeroTrustDlpDatasetDatasetUpload> Uploads;

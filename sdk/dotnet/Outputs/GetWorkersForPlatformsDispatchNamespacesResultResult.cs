@@ -22,6 +22,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string CreatedOn;
         /// <summary>
+        /// Name of the Workers for Platforms dispatch namespace.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Identifier.
         /// </summary>
         public readonly string ModifiedBy;
@@ -52,6 +56,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string createdOn,
 
+            string id,
+
             string modifiedBy,
 
             string modifiedOn,
@@ -66,6 +72,7 @@ namespace Pulumi.Cloudflare.Outputs
         {
             CreatedBy = createdBy;
             CreatedOn = createdOn;
+            Id = id;
             ModifiedBy = modifiedBy;
             ModifiedOn = modifiedOn;
             NamespaceId = namespaceId;

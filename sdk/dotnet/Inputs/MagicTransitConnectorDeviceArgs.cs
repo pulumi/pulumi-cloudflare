@@ -15,6 +15,12 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("id")]
         public Input<string>? Id { get; set; }
 
+        /// <summary>
+        /// Set to true to provision a license key for this connector. Only used during resource creation. This is a write-only field that will not be stored in state.
+        /// </summary>
+        [Input("provisionLicense")]
+        public Input<bool>? ProvisionLicense { get; set; }
+
         [Input("serialNumber")]
         public Input<string>? SerialNumber { get; set; }
 

@@ -131,14 +131,14 @@ public final class AccountTokenState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of access policies assigned to the token.
+     * Set of access policies assigned to the token.
      * 
      */
     @Import(name="policies")
     private @Nullable Output<List<AccountTokenPolicyArgs>> policies;
 
     /**
-     * @return List of access policies assigned to the token.
+     * @return Set of access policies assigned to the token.
      * 
      */
     public Optional<Output<List<AccountTokenPolicyArgs>>> policies() {
@@ -368,7 +368,7 @@ public final class AccountTokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policies List of access policies assigned to the token.
+         * @param policies Set of access policies assigned to the token.
          * 
          * @return builder
          * 
@@ -379,7 +379,7 @@ public final class AccountTokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policies List of access policies assigned to the token.
+         * @param policies Set of access policies assigned to the token.
          * 
          * @return builder
          * 
@@ -389,7 +389,7 @@ public final class AccountTokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policies List of access policies assigned to the token.
+         * @param policies Set of access policies assigned to the token.
          * 
          * @return builder
          * 

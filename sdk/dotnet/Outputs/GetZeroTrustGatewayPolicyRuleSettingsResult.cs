@@ -58,6 +58,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewayPolicyRuleSettingsEgressResult Egress;
         /// <summary>
+        /// Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
+        /// </summary>
+        public readonly Outputs.GetZeroTrustGatewayPolicyRuleSettingsForensicCopyResult ForensicCopy;
+        /// <summary>
         /// Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `Dns` and `DnsResolver` rules.
         /// </summary>
         public readonly bool IgnoreCnameCategoryMatches;
@@ -138,6 +142,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.GetZeroTrustGatewayPolicyRuleSettingsEgressResult egress,
 
+            Outputs.GetZeroTrustGatewayPolicyRuleSettingsForensicCopyResult forensicCopy,
+
             bool ignoreCnameCategoryMatches,
 
             bool insecureDisableDnssecValidation,
@@ -177,6 +183,7 @@ namespace Pulumi.Cloudflare.Outputs
             CheckSession = checkSession;
             DnsResolvers = dnsResolvers;
             Egress = egress;
+            ForensicCopy = forensicCopy;
             IgnoreCnameCategoryMatches = ignoreCnameCategoryMatches;
             InsecureDisableDnssecValidation = insecureDisableDnssecValidation;
             IpCategories = ipCategories;

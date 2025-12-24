@@ -39,16 +39,16 @@ public final class ZeroTrustDlpPredefinedEntryArgs extends com.pulumi.resources.
     }
 
     /**
-     * This field is not actually used as the owning profile for a predefined entry is already set
-     * to a predefined profile
+     * This field is not used as the owning profile.
+     * For predefined entries it is already set to a predefined profile.
      * 
      */
     @Import(name="profileId")
     private @Nullable Output<String> profileId;
 
     /**
-     * @return This field is not actually used as the owning profile for a predefined entry is already set
-     * to a predefined profile
+     * @return This field is not used as the owning profile.
+     * For predefined entries it is already set to a predefined profile.
      * 
      */
     public Optional<Output<String>> profileId() {
@@ -110,8 +110,8 @@ public final class ZeroTrustDlpPredefinedEntryArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param profileId This field is not actually used as the owning profile for a predefined entry is already set
-         * to a predefined profile
+         * @param profileId This field is not used as the owning profile.
+         * For predefined entries it is already set to a predefined profile.
          * 
          * @return builder
          * 
@@ -122,8 +122,8 @@ public final class ZeroTrustDlpPredefinedEntryArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param profileId This field is not actually used as the owning profile for a predefined entry is already set
-         * to a predefined profile
+         * @param profileId This field is not used as the owning profile.
+         * For predefined entries it is already set to a predefined profile.
          * 
          * @return builder
          * 

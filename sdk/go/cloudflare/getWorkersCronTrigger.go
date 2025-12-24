@@ -59,7 +59,7 @@ type LookupWorkersCronTriggerArgs struct {
 type LookupWorkersCronTriggerResult struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
+	// Name of the script, used in URLs and route configuration.
 	Id        string                          `pulumi:"id"`
 	Schedules []GetWorkersCronTriggerSchedule `pulumi:"schedules"`
 	// Name of the script, used in URLs and route configuration.
@@ -107,7 +107,7 @@ func (o LookupWorkersCronTriggerResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersCronTriggerResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Name of the script, used in URLs and route configuration.
 func (o LookupWorkersCronTriggerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersCronTriggerResult) string { return v.Id }).(pulumi.StringOutput)
 }

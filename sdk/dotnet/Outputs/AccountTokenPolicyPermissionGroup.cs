@@ -17,26 +17,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// Identifier of the permission group.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Attributes associated to the permission group.
-        /// </summary>
-        public readonly Outputs.AccountTokenPolicyPermissionGroupMeta? Meta;
-        /// <summary>
-        /// Name of the permission group.
-        /// </summary>
-        public readonly string? Name;
 
         [OutputConstructor]
-        private AccountTokenPolicyPermissionGroup(
-            string id,
-
-            Outputs.AccountTokenPolicyPermissionGroupMeta? meta,
-
-            string? name)
+        private AccountTokenPolicyPermissionGroup(string id)
         {
             Id = id;
-            Meta = meta;
-            Name = name;
         }
     }
 }

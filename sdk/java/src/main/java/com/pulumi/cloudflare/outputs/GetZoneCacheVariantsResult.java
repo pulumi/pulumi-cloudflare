@@ -18,8 +18,7 @@ public final class GetZoneCacheVariantsResult {
      */
     private Boolean editable;
     /**
-     * @return The identifier of the caching setting.
-     * Available values: &#34;variants&#34;.
+     * @return Identifier.
      * 
      */
     private String id;
@@ -48,8 +47,7 @@ public final class GetZoneCacheVariantsResult {
         return this.editable;
     }
     /**
-     * @return The identifier of the caching setting.
-     * Available values: &#34;variants&#34;.
+     * @return Identifier.
      * 
      */
     public String id() {

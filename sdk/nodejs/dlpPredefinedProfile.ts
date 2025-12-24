@@ -19,12 +19,7 @@ import * as utilities from "./utilities";
  *     aiContextEnabled: true,
  *     allowedMatchCount: 5,
  *     confidenceThreshold: "confidence_threshold",
- *     contextAwareness: {
- *         enabled: true,
- *         skip: {
- *             files: true,
- *         },
- *     },
+ *     enabledEntries: ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
  *     entries: [{
  *         id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  *         enabled: true,
@@ -74,26 +69,13 @@ export class DlpPredefinedProfile extends pulumi.CustomResource {
     declare public readonly aiContextEnabled: pulumi.Output<boolean>;
     declare public readonly allowedMatchCount: pulumi.Output<number>;
     declare public readonly confidenceThreshold: pulumi.Output<string>;
-    /**
-     * Scan the context of predefined entries to only return matches surrounded by keywords.
-     *
-     * @deprecated This attribute is deprecated.
-     */
-    declare public readonly contextAwareness: pulumi.Output<outputs.DlpPredefinedProfileContextAwareness | undefined>;
-    /**
-     * When the profile was created.
-     */
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
-    /**
-     * The description of the profile.
-     */
-    declare public /*out*/ readonly description: pulumi.Output<string>;
+    declare public readonly enabledEntries: pulumi.Output<string[] | undefined>;
     /**
      * @deprecated This attribute is deprecated.
      */
-    declare public readonly entries: pulumi.Output<outputs.DlpPredefinedProfileEntry[] | undefined>;
+    declare public readonly entries: pulumi.Output<outputs.DlpPredefinedProfileEntry[]>;
     /**
-     * The name of the profile.
+     * The name of the predefined profile.
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     declare public readonly ocrEnabled: pulumi.Output<boolean>;
@@ -102,14 +84,6 @@ export class DlpPredefinedProfile extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly openAccess: pulumi.Output<boolean>;
     declare public readonly profileId: pulumi.Output<string>;
-    /**
-     * Available values: "custom", "predefined", "integration".
-     */
-    declare public /*out*/ readonly type: pulumi.Output<string>;
-    /**
-     * When the profile was lasted updated.
-     */
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a DlpPredefinedProfile resource with the given unique name, arguments, and options.
@@ -131,16 +105,12 @@ export class DlpPredefinedProfile extends pulumi.CustomResource {
             resourceInputs["aiContextEnabled"] = state?.aiContextEnabled;
             resourceInputs["allowedMatchCount"] = state?.allowedMatchCount;
             resourceInputs["confidenceThreshold"] = state?.confidenceThreshold;
-            resourceInputs["contextAwareness"] = state?.contextAwareness;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["description"] = state?.description;
+            resourceInputs["enabledEntries"] = state?.enabledEntries;
             resourceInputs["entries"] = state?.entries;
             resourceInputs["name"] = state?.name;
             resourceInputs["ocrEnabled"] = state?.ocrEnabled;
             resourceInputs["openAccess"] = state?.openAccess;
             resourceInputs["profileId"] = state?.profileId;
-            resourceInputs["type"] = state?.type;
-            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as DlpPredefinedProfileArgs | undefined;
             if (args?.accountId === undefined && !opts.urn) {
@@ -153,16 +123,12 @@ export class DlpPredefinedProfile extends pulumi.CustomResource {
             resourceInputs["aiContextEnabled"] = args?.aiContextEnabled;
             resourceInputs["allowedMatchCount"] = args?.allowedMatchCount;
             resourceInputs["confidenceThreshold"] = args?.confidenceThreshold;
-            resourceInputs["contextAwareness"] = args?.contextAwareness;
+            resourceInputs["enabledEntries"] = args?.enabledEntries;
             resourceInputs["entries"] = args?.entries;
             resourceInputs["ocrEnabled"] = args?.ocrEnabled;
             resourceInputs["profileId"] = args?.profileId;
-            resourceInputs["createdAt"] = undefined /*out*/;
-            resourceInputs["description"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["openAccess"] = undefined /*out*/;
-            resourceInputs["type"] = undefined /*out*/;
-            resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/dlpPredefinedProfile:DlpPredefinedProfile" }] };
@@ -179,26 +145,13 @@ export interface DlpPredefinedProfileState {
     aiContextEnabled?: pulumi.Input<boolean>;
     allowedMatchCount?: pulumi.Input<number>;
     confidenceThreshold?: pulumi.Input<string>;
-    /**
-     * Scan the context of predefined entries to only return matches surrounded by keywords.
-     *
-     * @deprecated This attribute is deprecated.
-     */
-    contextAwareness?: pulumi.Input<inputs.DlpPredefinedProfileContextAwareness>;
-    /**
-     * When the profile was created.
-     */
-    createdAt?: pulumi.Input<string>;
-    /**
-     * The description of the profile.
-     */
-    description?: pulumi.Input<string>;
+    enabledEntries?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * @deprecated This attribute is deprecated.
      */
     entries?: pulumi.Input<pulumi.Input<inputs.DlpPredefinedProfileEntry>[]>;
     /**
-     * The name of the profile.
+     * The name of the predefined profile.
      */
     name?: pulumi.Input<string>;
     ocrEnabled?: pulumi.Input<boolean>;
@@ -207,14 +160,6 @@ export interface DlpPredefinedProfileState {
      */
     openAccess?: pulumi.Input<boolean>;
     profileId?: pulumi.Input<string>;
-    /**
-     * Available values: "custom", "predefined", "integration".
-     */
-    type?: pulumi.Input<string>;
-    /**
-     * When the profile was lasted updated.
-     */
-    updatedAt?: pulumi.Input<string>;
 }
 
 /**
@@ -225,12 +170,7 @@ export interface DlpPredefinedProfileArgs {
     aiContextEnabled?: pulumi.Input<boolean>;
     allowedMatchCount?: pulumi.Input<number>;
     confidenceThreshold?: pulumi.Input<string>;
-    /**
-     * Scan the context of predefined entries to only return matches surrounded by keywords.
-     *
-     * @deprecated This attribute is deprecated.
-     */
-    contextAwareness?: pulumi.Input<inputs.DlpPredefinedProfileContextAwareness>;
+    enabledEntries?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * @deprecated This attribute is deprecated.
      */

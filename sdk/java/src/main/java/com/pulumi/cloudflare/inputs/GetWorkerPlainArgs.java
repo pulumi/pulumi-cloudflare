@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetWorkerPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -34,15 +32,15 @@ public final class GetWorkerPlainArgs extends com.pulumi.resources.InvokeArgs {
      * Identifier for the Worker, which can be ID or name.
      * 
      */
-    @Import(name="workerId")
-    private @Nullable String workerId;
+    @Import(name="workerId", required=true)
+    private String workerId;
 
     /**
      * @return Identifier for the Worker, which can be ID or name.
      * 
      */
-    public Optional<String> workerId() {
-        return Optional.ofNullable(this.workerId);
+    public String workerId() {
+        return this.workerId;
     }
 
     private GetWorkerPlainArgs() {}
@@ -87,7 +85,7 @@ public final class GetWorkerPlainArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder workerId(@Nullable String workerId) {
+        public Builder workerId(String workerId) {
             $.workerId = workerId;
             return this;
         }
@@ -95,6 +93,9 @@ public final class GetWorkerPlainArgs extends com.pulumi.resources.InvokeArgs {
         public GetWorkerPlainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetWorkerPlainArgs", "accountId");
+            }
+            if ($.workerId == null) {
+                throw new MissingRequiredPropertyException("GetWorkerPlainArgs", "workerId");
             }
             return $;
         }

@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupZeroTrustDeviceCustomProfile(ctx, &cloudflare.LookupZeroTrustDeviceCustomProfileArgs{
 //				AccountId: "699d98642c564d2e855e9661899b7252",
-//				PolicyId:  pulumi.StringRef("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
+//				PolicyId:  "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,8 +49,8 @@ func LookupZeroTrustDeviceCustomProfile(ctx *pulumi.Context, args *LookupZeroTru
 
 // A collection of arguments for invoking getZeroTrustDeviceCustomProfile.
 type LookupZeroTrustDeviceCustomProfileArgs struct {
-	AccountId string  `pulumi:"accountId"`
-	PolicyId  *string `pulumi:"policyId"`
+	AccountId string `pulumi:"accountId"`
+	PolicyId  string `pulumi:"policyId"`
 }
 
 // A collection of values returned by getZeroTrustDeviceCustomProfile.
@@ -120,8 +120,8 @@ func LookupZeroTrustDeviceCustomProfileOutput(ctx *pulumi.Context, args LookupZe
 
 // A collection of arguments for invoking getZeroTrustDeviceCustomProfile.
 type LookupZeroTrustDeviceCustomProfileOutputArgs struct {
-	AccountId pulumi.StringInput    `pulumi:"accountId"`
-	PolicyId  pulumi.StringPtrInput `pulumi:"policyId"`
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	PolicyId  pulumi.StringInput `pulumi:"policyId"`
 }
 
 func (LookupZeroTrustDeviceCustomProfileOutputArgs) ElementType() reflect.Type {

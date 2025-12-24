@@ -31,6 +31,10 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ~&gt; This resource does not currently support `pulumi import`.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/registrarDomain:RegistrarDomain")]
     public partial class RegistrarDomain : global::Pulumi.CustomResource

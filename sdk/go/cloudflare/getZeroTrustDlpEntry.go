@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupZeroTrustDlpEntry(ctx, &cloudflare.LookupZeroTrustDlpEntryArgs{
 //				AccountId: "account_id",
-//				EntryId:   pulumi.StringRef("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
+//				EntryId:   "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,8 +49,8 @@ func LookupZeroTrustDlpEntry(ctx *pulumi.Context, args *LookupZeroTrustDlpEntryA
 
 // A collection of arguments for invoking getZeroTrustDlpEntry.
 type LookupZeroTrustDlpEntryArgs struct {
-	AccountId string  `pulumi:"accountId"`
-	EntryId   *string `pulumi:"entryId"`
+	AccountId string `pulumi:"accountId"`
+	EntryId   string `pulumi:"entryId"`
 }
 
 // A collection of values returned by getZeroTrustDlpEntry.
@@ -63,18 +63,21 @@ type LookupZeroTrustDlpEntryResult struct {
 	Confidence    GetZeroTrustDlpEntryConfidence `pulumi:"confidence"`
 	CreatedAt     string                         `pulumi:"createdAt"`
 	Enabled       bool                           `pulumi:"enabled"`
-	EntryId       *string                        `pulumi:"entryId"`
+	EntryId       string                         `pulumi:"entryId"`
 	// The ID of this resource.
-	Id        string                      `pulumi:"id"`
-	Name      string                      `pulumi:"name"`
-	Pattern   GetZeroTrustDlpEntryPattern `pulumi:"pattern"`
-	ProfileId string                      `pulumi:"profileId"`
-	Secret    bool                        `pulumi:"secret"`
+	Id        string                        `pulumi:"id"`
+	Name      string                        `pulumi:"name"`
+	Pattern   GetZeroTrustDlpEntryPattern   `pulumi:"pattern"`
+	ProfileId string                        `pulumi:"profileId"`
+	Profiles  []GetZeroTrustDlpEntryProfile `pulumi:"profiles"`
+	Secret    bool                          `pulumi:"secret"`
 	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
-	Type      string                      `pulumi:"type"`
-	UpdatedAt string                      `pulumi:"updatedAt"`
-	Variant   GetZeroTrustDlpEntryVariant `pulumi:"variant"`
-	WordList  string                      `pulumi:"wordList"`
+	Type      string `pulumi:"type"`
+	UpdatedAt string `pulumi:"updatedAt"`
+	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+	UploadStatus string                      `pulumi:"uploadStatus"`
+	Variant      GetZeroTrustDlpEntryVariant `pulumi:"variant"`
+	WordList     string                      `pulumi:"wordList"`
 }
 
 func LookupZeroTrustDlpEntryOutput(ctx *pulumi.Context, args LookupZeroTrustDlpEntryOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustDlpEntryResultOutput {
@@ -88,8 +91,8 @@ func LookupZeroTrustDlpEntryOutput(ctx *pulumi.Context, args LookupZeroTrustDlpE
 
 // A collection of arguments for invoking getZeroTrustDlpEntry.
 type LookupZeroTrustDlpEntryOutputArgs struct {
-	AccountId pulumi.StringInput    `pulumi:"accountId"`
-	EntryId   pulumi.StringPtrInput `pulumi:"entryId"`
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	EntryId   pulumi.StringInput `pulumi:"entryId"`
 }
 
 func (LookupZeroTrustDlpEntryOutputArgs) ElementType() reflect.Type {
@@ -134,8 +137,8 @@ func (o LookupZeroTrustDlpEntryResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpEntryResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-func (o LookupZeroTrustDlpEntryResultOutput) EntryId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupZeroTrustDlpEntryResult) *string { return v.EntryId }).(pulumi.StringPtrOutput)
+func (o LookupZeroTrustDlpEntryResultOutput) EntryId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustDlpEntryResult) string { return v.EntryId }).(pulumi.StringOutput)
 }
 
 // The ID of this resource.
@@ -155,6 +158,10 @@ func (o LookupZeroTrustDlpEntryResultOutput) ProfileId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpEntryResult) string { return v.ProfileId }).(pulumi.StringOutput)
 }
 
+func (o LookupZeroTrustDlpEntryResultOutput) Profiles() GetZeroTrustDlpEntryProfileArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustDlpEntryResult) []GetZeroTrustDlpEntryProfile { return v.Profiles }).(GetZeroTrustDlpEntryProfileArrayOutput)
+}
+
 func (o LookupZeroTrustDlpEntryResultOutput) Secret() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpEntryResult) bool { return v.Secret }).(pulumi.BoolOutput)
 }
@@ -166,6 +173,11 @@ func (o LookupZeroTrustDlpEntryResultOutput) Type() pulumi.StringOutput {
 
 func (o LookupZeroTrustDlpEntryResultOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpEntryResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+func (o LookupZeroTrustDlpEntryResultOutput) UploadStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustDlpEntryResult) string { return v.UploadStatus }).(pulumi.StringOutput)
 }
 
 func (o LookupZeroTrustDlpEntryResultOutput) Variant() GetZeroTrustDlpEntryVariantOutput {

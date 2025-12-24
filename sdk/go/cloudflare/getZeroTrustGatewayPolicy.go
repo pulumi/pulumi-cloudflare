@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupZeroTrustGatewayPolicy(ctx, &cloudflare.LookupZeroTrustGatewayPolicyArgs{
 //				AccountId: "699d98642c564d2e855e9661899b7252",
-//				RuleId:    pulumi.StringRef("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
+//				RuleId:    "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,7 +51,7 @@ func LookupZeroTrustGatewayPolicy(ctx *pulumi.Context, args *LookupZeroTrustGate
 type LookupZeroTrustGatewayPolicyArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Identify the API resource with a UUID.
-	RuleId *string `pulumi:"ruleId"`
+	RuleId string `pulumi:"ruleId"`
 }
 
 // A collection of values returned by getZeroTrustGatewayPolicy.
@@ -81,7 +81,7 @@ type LookupZeroTrustGatewayPolicyResult struct {
 	// Indicate that this rule is shared via the Orgs API and read only.
 	ReadOnly bool `pulumi:"readOnly"`
 	// Identify the API resource with a UUID.
-	RuleId       *string                               `pulumi:"ruleId"`
+	RuleId       string                                `pulumi:"ruleId"`
 	RuleSettings GetZeroTrustGatewayPolicyRuleSettings `pulumi:"ruleSettings"`
 	// Defines the schedule for activating DNS policies. Settable only for `dns` and `dnsResolver` rules.
 	Schedule GetZeroTrustGatewayPolicySchedule `pulumi:"schedule"`
@@ -110,7 +110,7 @@ func LookupZeroTrustGatewayPolicyOutput(ctx *pulumi.Context, args LookupZeroTrus
 type LookupZeroTrustGatewayPolicyOutputArgs struct {
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Identify the API resource with a UUID.
-	RuleId pulumi.StringPtrInput `pulumi:"ruleId"`
+	RuleId pulumi.StringInput `pulumi:"ruleId"`
 }
 
 func (LookupZeroTrustGatewayPolicyOutputArgs) ElementType() reflect.Type {
@@ -199,8 +199,8 @@ func (o LookupZeroTrustGatewayPolicyResultOutput) ReadOnly() pulumi.BoolOutput {
 }
 
 // Identify the API resource with a UUID.
-func (o LookupZeroTrustGatewayPolicyResultOutput) RuleId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) *string { return v.RuleId }).(pulumi.StringPtrOutput)
+func (o LookupZeroTrustGatewayPolicyResultOutput) RuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.RuleId }).(pulumi.StringOutput)
 }
 
 func (o LookupZeroTrustGatewayPolicyResultOutput) RuleSettings() GetZeroTrustGatewayPolicyRuleSettingsOutput {

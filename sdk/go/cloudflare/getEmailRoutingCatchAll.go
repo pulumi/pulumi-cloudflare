@@ -58,7 +58,7 @@ type LookupEmailRoutingCatchAllResult struct {
 	Actions []GetEmailRoutingCatchAllAction `pulumi:"actions"`
 	// Routing rule status.
 	Enabled bool `pulumi:"enabled"`
-	// Routing rule identifier.
+	// Identifier.
 	Id string `pulumi:"id"`
 	// List of matchers for the catch-all routing rule.
 	Matchers []GetEmailRoutingCatchAllMatcher `pulumi:"matchers"`
@@ -116,7 +116,7 @@ func (o LookupEmailRoutingCatchAllResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupEmailRoutingCatchAllResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Routing rule identifier.
+// Identifier.
 func (o LookupEmailRoutingCatchAllResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailRoutingCatchAllResult) string { return v.Id }).(pulumi.StringOutput)
 }

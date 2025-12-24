@@ -50,7 +50,7 @@ public final class GetListResult {
      * @return The unique ID of the list.
      * 
      */
-    private @Nullable String listId;
+    private String listId;
     /**
      * @return The RFC 3339 timestamp of when the list was last modified.
      * 
@@ -125,8 +125,8 @@ public final class GetListResult {
      * @return The unique ID of the list.
      * 
      */
-    public Optional<String> listId() {
-        return Optional.ofNullable(this.listId);
+    public String listId() {
+        return this.listId;
     }
     /**
      * @return The RFC 3339 timestamp of when the list was last modified.
@@ -179,7 +179,7 @@ public final class GetListResult {
         private String id;
         private List<GetListItem> items;
         private String kind;
-        private @Nullable String listId;
+        private String listId;
         private String modifiedOn;
         private String name;
         private Double numItems;
@@ -254,8 +254,10 @@ public final class GetListResult {
             return this;
         }
         @CustomType.Setter
-        public Builder listId(@Nullable String listId) {
-
+        public Builder listId(String listId) {
+            if (listId == null) {
+              throw new MissingRequiredPropertyException("GetListResult", "listId");
+            }
             this.listId = listId;
             return this;
         }

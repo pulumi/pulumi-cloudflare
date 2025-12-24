@@ -90,8 +90,8 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
-        [Input("connectorId")]
-        public string? ConnectorId { get; set; }
+        [Input("connectorId", required: true)]
+        public string ConnectorId { get; set; } = null!;
 
         public GetMagicTransitConnectorArgs()
         {
@@ -107,8 +107,8 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        [Input("connectorId")]
-        public Input<string>? ConnectorId { get; set; }
+        [Input("connectorId", required: true)]
+        public Input<string> ConnectorId { get; set; } = null!;
 
         public GetMagicTransitConnectorInvokeArgs()
         {
@@ -125,7 +125,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string AccountId;
         public readonly bool Activated;
-        public readonly string? ConnectorId;
+        public readonly string ConnectorId;
         public readonly Outputs.GetMagicTransitConnectorDeviceResult Device;
         /// <summary>
         /// The ID of this resource.
@@ -146,7 +146,7 @@ namespace Pulumi.Cloudflare
 
             bool activated,
 
-            string? connectorId,
+            string connectorId,
 
             Outputs.GetMagicTransitConnectorDeviceResult device,
 

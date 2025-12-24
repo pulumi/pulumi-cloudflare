@@ -13,7 +13,6 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -101,14 +100,14 @@ public class OriginCaCertificate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="csr", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> csr;
+    private Output<String> csr;
 
     /**
      * @return The Certificate Signing Request (CSR). Must be newline-encoded.
      * 
      */
-    public Output<Optional<String>> csr() {
-        return Codegen.optional(this.csr);
+    public Output<String> csr() {
+        return this.csr;
     }
     /**
      * When the certificate will expire.
@@ -129,14 +128,14 @@ public class OriginCaCertificate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="hostnames", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> hostnames;
+    private Output<List<String>> hostnames;
 
     /**
      * @return Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
      * 
      */
-    public Output<Optional<List<String>>> hostnames() {
-        return Codegen.optional(this.hostnames);
+    public Output<List<String>> hostnames() {
+        return this.hostnames;
     }
     /**
      * Signature type desired on certificate (&#34;origin-rsa&#34; (rsa), &#34;origin-ecc&#34; (ecdsa), or &#34;keyless-certificate&#34; (for Keyless SSL servers).
@@ -144,15 +143,15 @@ public class OriginCaCertificate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="requestType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> requestType;
+    private Output<String> requestType;
 
     /**
      * @return Signature type desired on certificate (&#34;origin-rsa&#34; (rsa), &#34;origin-ecc&#34; (ecdsa), or &#34;keyless-certificate&#34; (for Keyless SSL servers).
      * Available values: &#34;origin-rsa&#34;, &#34;origin-ecc&#34;, &#34;keyless-certificate&#34;.
      * 
      */
-    public Output<Optional<String>> requestType() {
-        return Codegen.optional(this.requestType);
+    public Output<String> requestType() {
+        return this.requestType;
     }
     /**
      * The number of days for which the certificate should be valid.
@@ -183,7 +182,7 @@ public class OriginCaCertificate extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public OriginCaCertificate(java.lang.String name, @Nullable OriginCaCertificateArgs args) {
+    public OriginCaCertificate(java.lang.String name, OriginCaCertificateArgs args) {
         this(name, args, null);
     }
     /**
@@ -192,7 +191,7 @@ public class OriginCaCertificate extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public OriginCaCertificate(java.lang.String name, @Nullable OriginCaCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public OriginCaCertificate(java.lang.String name, OriginCaCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/originCaCertificate:OriginCaCertificate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -200,7 +199,7 @@ public class OriginCaCertificate extends com.pulumi.resources.CustomResource {
         super("cloudflare:index/originCaCertificate:OriginCaCertificate", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static OriginCaCertificateArgs makeArgs(@Nullable OriginCaCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static OriginCaCertificateArgs makeArgs(OriginCaCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

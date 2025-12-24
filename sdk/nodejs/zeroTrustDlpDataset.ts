@@ -22,6 +22,10 @@ import * as utilities from "./utilities";
  *     secret: true,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ~> This resource does not currently support `pulumi import`.
  */
 export class ZeroTrustDlpDataset extends pulumi.CustomResource {
     /**
@@ -85,7 +89,7 @@ export class ZeroTrustDlpDataset extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * When the dataset was last updated.
+     * Stores when the dataset was last updated.
      *
      * This includes name or description changes as well as uploads.
      */
@@ -193,7 +197,7 @@ export interface ZeroTrustDlpDatasetState {
      */
     status?: pulumi.Input<string>;
     /**
-     * When the dataset was last updated.
+     * Stores when the dataset was last updated.
      *
      * This includes name or description changes as well as uploads.
      */

@@ -141,11 +141,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string AccountTag;
         /// <summary>
-        /// Indicates if this is a locally or remotely configured tunnel. If `Local`, manage the tunnel using a YAML file on the origin machine. If `Cloudflare`, manage the tunnel on the Zero Trust dashboard.
-        /// Available values: "local", "cloudflare".
-        /// </summary>
-        public readonly string ConfigSrc;
-        /// <summary>
         /// The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetZeroTrustTunnelWarpConnectorConnectionResult> Connections;
@@ -179,10 +174,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// If `True`, the tunnel can be configured remotely from the Zero Trust dashboard. If `False`, the tunnel must be configured locally on the origin machine.
-        /// </summary>
-        public readonly bool RemoteConfig;
-        /// <summary>
         /// The status of the tunnel. Valid values are `Inactive` (tunnel has never been run), `Degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `Healthy` (tunnel is active and able to serve traffic), or `Down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
         /// Available values: "inactive", "degraded", "healthy", "down".
         /// </summary>
@@ -203,8 +194,6 @@ namespace Pulumi.Cloudflare
 
             string accountTag,
 
-            string configSrc,
-
             ImmutableArray<Outputs.GetZeroTrustTunnelWarpConnectorConnectionResult> connections,
 
             string connsActiveAt,
@@ -223,8 +212,6 @@ namespace Pulumi.Cloudflare
 
             string name,
 
-            bool remoteConfig,
-
             string status,
 
             string tunType,
@@ -233,7 +220,6 @@ namespace Pulumi.Cloudflare
         {
             AccountId = accountId;
             AccountTag = accountTag;
-            ConfigSrc = configSrc;
             Connections = connections;
             ConnsActiveAt = connsActiveAt;
             ConnsInactiveAt = connsInactiveAt;
@@ -243,7 +229,6 @@ namespace Pulumi.Cloudflare
             Id = id;
             Metadata = metadata;
             Name = name;
-            RemoteConfig = remoteConfig;
             Status = status;
             TunType = tunType;
             TunnelId = tunnelId;

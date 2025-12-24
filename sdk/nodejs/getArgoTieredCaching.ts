@@ -42,8 +42,7 @@ export interface GetArgoTieredCachingResult {
      */
     readonly editable: boolean;
     /**
-     * The identifier of the caching setting.
-     * Available values: "tieredCaching".
+     * Identifier.
      */
     readonly id: string;
     /**

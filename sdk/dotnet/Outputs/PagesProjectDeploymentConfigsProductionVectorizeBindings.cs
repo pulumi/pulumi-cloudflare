@@ -13,10 +13,10 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class PagesProjectDeploymentConfigsProductionVectorizeBindings
     {
-        public readonly string? IndexName;
+        public readonly string IndexName;
 
         [OutputConstructor]
-        private PagesProjectDeploymentConfigsProductionVectorizeBindings(string? indexName)
+        private PagesProjectDeploymentConfigsProductionVectorizeBindings(string indexName)
         {
             IndexName = indexName;
         }

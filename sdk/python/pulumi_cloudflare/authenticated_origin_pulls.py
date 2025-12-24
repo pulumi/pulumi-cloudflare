@@ -374,6 +374,10 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
             }])
         ```
 
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] hostname: The hostname on the origin for which the client certificate uploaded will be used.
@@ -400,6 +404,10 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
                 "hostname": "app.example.com",
             }])
         ```
+
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
 
         :param str resource_name: The name of the resource.
         :param AuthenticatedOriginPullsArgs args: The arguments to use to populate this resource's properties.

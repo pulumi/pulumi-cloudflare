@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupQueue(ctx, &cloudflare.LookupQueueArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
-//				QueueId:   pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				QueueId:   "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -52,7 +52,7 @@ type LookupQueueArgs struct {
 	// A Resource identifier.
 	AccountId string `pulumi:"accountId"`
 	// A Resource identifier.
-	QueueId *string `pulumi:"queueId"`
+	QueueId string `pulumi:"queueId"`
 }
 
 // A collection of values returned by getQueue.
@@ -87,7 +87,7 @@ type LookupQueueOutputArgs struct {
 	// A Resource identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// A Resource identifier.
-	QueueId pulumi.StringPtrInput `pulumi:"queueId"`
+	QueueId pulumi.StringInput `pulumi:"queueId"`
 }
 
 func (LookupQueueOutputArgs) ElementType() reflect.Type {

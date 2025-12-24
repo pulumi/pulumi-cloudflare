@@ -85,6 +85,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.ZeroTrustGatewayPolicyRuleSettingsEgressArgs>? Egress { get; set; }
 
         /// <summary>
+        /// Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
+        /// </summary>
+        [Input("forensicCopy")]
+        public Input<Inputs.ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs>? ForensicCopy { get; set; }
+
+        /// <summary>
         /// Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `Dns` and `DnsResolver` rules.
         /// </summary>
         [Input("ignoreCnameCategoryMatches")]

@@ -68,6 +68,10 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ~> This resource does not currently support `pulumi import`.
 type R2BucketLifecycle struct {
 	pulumi.CustomResourceState
 

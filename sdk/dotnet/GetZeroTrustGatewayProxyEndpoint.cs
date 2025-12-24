@@ -125,6 +125,11 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<string> Ips;
         /// <summary>
+        /// The proxy endpoint kind
+        /// Available values: "ip", "identity".
+        /// </summary>
+        public readonly string Kind;
+        /// <summary>
         /// Specify the name of the proxy endpoint.
         /// </summary>
         public readonly string Name;
@@ -145,6 +150,8 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<string> ips,
 
+            string kind,
+
             string name,
 
             string proxyEndpointId,
@@ -157,6 +164,7 @@ namespace Pulumi.Cloudflare
             CreatedAt = createdAt;
             Id = id;
             Ips = ips;
+            Kind = kind;
             Name = name;
             ProxyEndpointId = proxyEndpointId;
             Subdomain = subdomain;

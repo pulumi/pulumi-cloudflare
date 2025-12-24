@@ -468,7 +468,6 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
         return this.migrationTag;
     }
     /**
-     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Migrations to apply for Durable Objects associated with this Worker.
      * 
      */
@@ -476,8 +475,7 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ WorkerScriptMigrations> migrations;
 
     /**
-     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * Migrations to apply for Durable Objects associated with this Worker.
+     * @return Migrations to apply for Durable Objects associated with this Worker.
      * 
      */
     public Output<Optional<WorkerScriptMigrations>> migrations() {
@@ -631,9 +629,6 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
             .version(Utilities.getVersion())
             .aliases(List.of(
                 Output.of(Alias.builder().type("cloudflare:index/workerScript:WorkerScript").build())
-            ))
-            .additionalSecretOutputs(List.of(
-                "migrations"
             ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);

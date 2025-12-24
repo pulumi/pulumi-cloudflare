@@ -150,6 +150,12 @@ class LeakedCredentialCheckRule(pulumi.CustomResource):
             username="lookup_json_string(http.request.body.raw, \\"user\\")")
         ```
 
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule example '<zone_id>/<detection_id>'
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] password: Defines ehe ruleset expression to use in matching the password in a request.
@@ -173,6 +179,12 @@ class LeakedCredentialCheckRule(pulumi.CustomResource):
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             password="lookup_json_string(http.request.body.raw, \\"secret\\")",
             username="lookup_json_string(http.request.body.raw, \\"user\\")")
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule example '<zone_id>/<detection_id>'
         ```
 
         :param str resource_name: The name of the resource.

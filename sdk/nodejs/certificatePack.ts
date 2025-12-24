@@ -7,6 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * > Certificate packs are not able to be updated in place. If
+ * you require a zero downtime rotation, you can create multiple
+ * resources using a 2-phase change where you have both resources
+ * live at once and you remove the old one once you've confirmed
+ * the certificate is available.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -72,6 +78,10 @@ export class CertificatePack extends pulumi.CustomResource {
      */
     declare public readonly certificateAuthority: pulumi.Output<string>;
     /**
+     * Array of certificates in this pack.
+     */
+    declare public /*out*/ readonly certificates: pulumi.Output<outputs.CertificatePackCertificate[]>;
+    /**
      * Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
      */
     declare public readonly cloudflareBranding: pulumi.Output<boolean | undefined>;
@@ -79,6 +89,10 @@ export class CertificatePack extends pulumi.CustomResource {
      * Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
      */
     declare public readonly hosts: pulumi.Output<string[]>;
+    /**
+     * Identifier of the primary certificate in a pack.
+     */
+    declare public /*out*/ readonly primaryCertificate: pulumi.Output<string>;
     /**
      * Status of certificate pack.
      * Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
@@ -99,7 +113,7 @@ export class CertificatePack extends pulumi.CustomResource {
      */
     declare public readonly validationMethod: pulumi.Output<string>;
     /**
-     * Certificates' validation records. Only present when certificate pack is in "pending*validation" status
+     * Certificates' validation records.
      */
     declare public /*out*/ readonly validationRecords: pulumi.Output<outputs.CertificatePackValidationRecord[]>;
     /**
@@ -126,8 +140,10 @@ export class CertificatePack extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as CertificatePackState | undefined;
             resourceInputs["certificateAuthority"] = state?.certificateAuthority;
+            resourceInputs["certificates"] = state?.certificates;
             resourceInputs["cloudflareBranding"] = state?.cloudflareBranding;
             resourceInputs["hosts"] = state?.hosts;
+            resourceInputs["primaryCertificate"] = state?.primaryCertificate;
             resourceInputs["status"] = state?.status;
             resourceInputs["type"] = state?.type;
             resourceInputs["validationErrors"] = state?.validationErrors;
@@ -139,9 +155,6 @@ export class CertificatePack extends pulumi.CustomResource {
             const args = argsOrState as CertificatePackArgs | undefined;
             if (args?.certificateAuthority === undefined && !opts.urn) {
                 throw new Error("Missing required property 'certificateAuthority'");
-            }
-            if (args?.hosts === undefined && !opts.urn) {
-                throw new Error("Missing required property 'hosts'");
             }
             if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
@@ -162,6 +175,8 @@ export class CertificatePack extends pulumi.CustomResource {
             resourceInputs["validationMethod"] = args?.validationMethod;
             resourceInputs["validityDays"] = args?.validityDays;
             resourceInputs["zoneId"] = args?.zoneId;
+            resourceInputs["certificates"] = undefined /*out*/;
+            resourceInputs["primaryCertificate"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["validationErrors"] = undefined /*out*/;
             resourceInputs["validationRecords"] = undefined /*out*/;
@@ -181,6 +196,10 @@ export interface CertificatePackState {
      */
     certificateAuthority?: pulumi.Input<string>;
     /**
+     * Array of certificates in this pack.
+     */
+    certificates?: pulumi.Input<pulumi.Input<inputs.CertificatePackCertificate>[]>;
+    /**
      * Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
      */
     cloudflareBranding?: pulumi.Input<boolean>;
@@ -188,6 +207,10 @@ export interface CertificatePackState {
      * Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
      */
     hosts?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Identifier of the primary certificate in a pack.
+     */
+    primaryCertificate?: pulumi.Input<string>;
     /**
      * Status of certificate pack.
      * Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
@@ -208,7 +231,7 @@ export interface CertificatePackState {
      */
     validationMethod?: pulumi.Input<string>;
     /**
-     * Certificates' validation records. Only present when certificate pack is in "pending*validation" status
+     * Certificates' validation records.
      */
     validationRecords?: pulumi.Input<pulumi.Input<inputs.CertificatePackValidationRecord>[]>;
     /**
@@ -238,7 +261,7 @@ export interface CertificatePackArgs {
     /**
      * Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
      */
-    hosts: pulumi.Input<pulumi.Input<string>[]>;
+    hosts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Type of certificate pack.
      * Available values: "advanced".

@@ -131,7 +131,7 @@ class GetZeroTrustListResult:
     def type(self) -> _builtins.str:
         """
         Specify the list type.
-        Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+        Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
         """
         return pulumi.get(self, "type")
 

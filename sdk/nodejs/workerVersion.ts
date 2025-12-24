@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  *         config: {
  *             htmlHandling: "auto-trailing-slash",
  *             notFoundHandling: "404-page",
- *             runWorkerFirsts: ["string"],
+ *             runWorkerFirst: ["string"],
  *         },
  *         jwt: "jwt",
  *     },
@@ -162,6 +162,10 @@ export class WorkerVersion extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly source: pulumi.Output<string>;
     /**
+     * Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
+     */
+    declare public /*out*/ readonly startupTimeMs: pulumi.Output<number>;
+    /**
      * Usage model for the version.
      * Available values: "standard", "bundled", "unbound".
      *
@@ -200,6 +204,7 @@ export class WorkerVersion extends pulumi.CustomResource {
             resourceInputs["number"] = state?.number;
             resourceInputs["placement"] = state?.placement;
             resourceInputs["source"] = state?.source;
+            resourceInputs["startupTimeMs"] = state?.startupTimeMs;
             resourceInputs["usageModel"] = state?.usageModel;
             resourceInputs["workerId"] = state?.workerId;
         } else {
@@ -226,6 +231,7 @@ export class WorkerVersion extends pulumi.CustomResource {
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["number"] = undefined /*out*/;
             resourceInputs["source"] = undefined /*out*/;
+            resourceInputs["startupTimeMs"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WorkerVersion.__pulumiType, name, resourceInputs, opts);
@@ -297,6 +303,10 @@ export interface WorkerVersionState {
      * The client used to create the version.
      */
     source?: pulumi.Input<string>;
+    /**
+     * Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
+     */
+    startupTimeMs?: pulumi.Input<number>;
     /**
      * Usage model for the version.
      * Available values: "standard", "bundled", "unbound".

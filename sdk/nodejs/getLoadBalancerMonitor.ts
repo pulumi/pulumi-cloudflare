@@ -33,7 +33,7 @@ export interface GetLoadBalancerMonitorArgs {
      * Identifier.
      */
     accountId: string;
-    monitorId?: string;
+    monitorId: string;
 }
 
 /**
@@ -90,7 +90,7 @@ export interface GetLoadBalancerMonitorResult {
      */
     readonly method: string;
     readonly modifiedOn: string;
-    readonly monitorId?: string;
+    readonly monitorId: string;
     /**
      * The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.
      */
@@ -146,5 +146,5 @@ export interface GetLoadBalancerMonitorOutputArgs {
      * Identifier.
      */
     accountId: pulumi.Input<string>;
-    monitorId?: pulumi.Input<string>;
+    monitorId: pulumi.Input<string>;
 }

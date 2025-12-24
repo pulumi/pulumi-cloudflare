@@ -55,8 +55,7 @@ class GetZoneCacheReserveResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The identifier of the caching setting.
-        Available values: "cache_reserve".
+        Identifier.
         """
         return pulumi.get(self, "id")
 

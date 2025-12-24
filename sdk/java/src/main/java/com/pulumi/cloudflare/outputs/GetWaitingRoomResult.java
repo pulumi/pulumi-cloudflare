@@ -12,8 +12,6 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWaitingRoomResult {
@@ -59,7 +57,7 @@ public final class GetWaitingRoomResult {
     private Integer totalActiveUsers;
     private String turnstileAction;
     private String turnstileMode;
-    private @Nullable String waitingRoomId;
+    private String waitingRoomId;
     /**
      * @return Identifier.
      * 
@@ -161,8 +159,8 @@ public final class GetWaitingRoomResult {
     public String turnstileMode() {
         return this.turnstileMode;
     }
-    public Optional<String> waitingRoomId() {
-        return Optional.ofNullable(this.waitingRoomId);
+    public String waitingRoomId() {
+        return this.waitingRoomId;
     }
     /**
      * @return Identifier.
@@ -207,7 +205,7 @@ public final class GetWaitingRoomResult {
         private Integer totalActiveUsers;
         private String turnstileAction;
         private String turnstileMode;
-        private @Nullable String waitingRoomId;
+        private String waitingRoomId;
         private String zoneId;
         public Builder() {}
         public Builder(GetWaitingRoomResult defaults) {
@@ -457,8 +455,10 @@ public final class GetWaitingRoomResult {
             return this;
         }
         @CustomType.Setter
-        public Builder waitingRoomId(@Nullable String waitingRoomId) {
-
+        public Builder waitingRoomId(String waitingRoomId) {
+            if (waitingRoomId == null) {
+              throw new MissingRequiredPropertyException("GetWaitingRoomResult", "waitingRoomId");
+            }
             this.waitingRoomId = waitingRoomId;
             return this;
         }

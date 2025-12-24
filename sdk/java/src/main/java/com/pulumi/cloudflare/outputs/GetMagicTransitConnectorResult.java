@@ -10,8 +10,6 @@ import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMagicTransitConnectorResult {
@@ -21,7 +19,7 @@ public final class GetMagicTransitConnectorResult {
      */
     private String accountId;
     private Boolean activated;
-    private @Nullable String connectorId;
+    private String connectorId;
     private GetMagicTransitConnectorDevice device;
     /**
      * @return The ID of this resource.
@@ -48,8 +46,8 @@ public final class GetMagicTransitConnectorResult {
     public Boolean activated() {
         return this.activated;
     }
-    public Optional<String> connectorId() {
-        return Optional.ofNullable(this.connectorId);
+    public String connectorId() {
+        return this.connectorId;
     }
     public GetMagicTransitConnectorDevice device() {
         return this.device;
@@ -97,7 +95,7 @@ public final class GetMagicTransitConnectorResult {
     public static final class Builder {
         private String accountId;
         private Boolean activated;
-        private @Nullable String connectorId;
+        private String connectorId;
         private GetMagicTransitConnectorDevice device;
         private String id;
         private Double interruptWindowDurationHours;
@@ -143,8 +141,10 @@ public final class GetMagicTransitConnectorResult {
             return this;
         }
         @CustomType.Setter
-        public Builder connectorId(@Nullable String connectorId) {
-
+        public Builder connectorId(String connectorId) {
+            if (connectorId == null) {
+              throw new MissingRequiredPropertyException("GetMagicTransitConnectorResult", "connectorId");
+            }
             this.connectorId = connectorId;
             return this;
         }

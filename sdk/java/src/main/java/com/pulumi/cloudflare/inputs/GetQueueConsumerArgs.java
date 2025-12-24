@@ -33,21 +33,6 @@ public final class GetQueueConsumerArgs extends com.pulumi.resources.InvokeArgs 
      * A Resource identifier.
      * 
      */
-    @Import(name="consumerId", required=true)
-    private Output<String> consumerId;
-
-    /**
-     * @return A Resource identifier.
-     * 
-     */
-    public Output<String> consumerId() {
-        return this.consumerId;
-    }
-
-    /**
-     * A Resource identifier.
-     * 
-     */
     @Import(name="queueId", required=true)
     private Output<String> queueId;
 
@@ -63,7 +48,6 @@ public final class GetQueueConsumerArgs extends com.pulumi.resources.InvokeArgs 
 
     private GetQueueConsumerArgs(GetQueueConsumerArgs $) {
         this.accountId = $.accountId;
-        this.consumerId = $.consumerId;
         this.queueId = $.queueId;
     }
 
@@ -107,27 +91,6 @@ public final class GetQueueConsumerArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param consumerId A Resource identifier.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder consumerId(Output<String> consumerId) {
-            $.consumerId = consumerId;
-            return this;
-        }
-
-        /**
-         * @param consumerId A Resource identifier.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder consumerId(String consumerId) {
-            return consumerId(Output.of(consumerId));
-        }
-
-        /**
          * @param queueId A Resource identifier.
          * 
          * @return builder
@@ -151,9 +114,6 @@ public final class GetQueueConsumerArgs extends com.pulumi.resources.InvokeArgs 
         public GetQueueConsumerArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetQueueConsumerArgs", "accountId");
-            }
-            if ($.consumerId == null) {
-                throw new MissingRequiredPropertyException("GetQueueConsumerArgs", "consumerId");
             }
             if ($.queueId == null) {
                 throw new MissingRequiredPropertyException("GetQueueConsumerArgs", "queueId");

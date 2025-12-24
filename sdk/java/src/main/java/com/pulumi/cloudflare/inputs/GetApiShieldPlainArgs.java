@@ -5,13 +5,31 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetApiShieldPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetApiShieldPlainArgs Empty = new GetApiShieldPlainArgs();
+
+    /**
+     * Ensures that the configuration is written or retrieved in normalized fashion
+     * 
+     */
+    @Import(name="normalize")
+    private @Nullable Boolean normalize;
+
+    /**
+     * @return Ensures that the configuration is written or retrieved in normalized fashion
+     * 
+     */
+    public Optional<Boolean> normalize() {
+        return Optional.ofNullable(this.normalize);
+    }
 
     /**
      * Identifier.
@@ -31,6 +49,7 @@ public final class GetApiShieldPlainArgs extends com.pulumi.resources.InvokeArgs
     private GetApiShieldPlainArgs() {}
 
     private GetApiShieldPlainArgs(GetApiShieldPlainArgs $) {
+        this.normalize = $.normalize;
         this.zoneId = $.zoneId;
     }
 
@@ -50,6 +69,17 @@ public final class GetApiShieldPlainArgs extends com.pulumi.resources.InvokeArgs
 
         public Builder(GetApiShieldPlainArgs defaults) {
             $ = new GetApiShieldPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param normalize Ensures that the configuration is written or retrieved in normalized fashion
+         * 
+         * @return builder
+         * 
+         */
+        public Builder normalize(@Nullable Boolean normalize) {
+            $.normalize = normalize;
+            return this;
         }
 
         /**

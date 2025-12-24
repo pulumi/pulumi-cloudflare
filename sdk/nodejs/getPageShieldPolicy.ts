@@ -32,7 +32,7 @@ export interface GetPageShieldPolicyArgs {
     /**
      * Identifier
      */
-    policyId?: string;
+    policyId: string;
     /**
      * Identifier
      */
@@ -67,7 +67,7 @@ export interface GetPageShieldPolicyResult {
     /**
      * Identifier
      */
-    readonly policyId?: string;
+    readonly policyId: string;
     /**
      * The policy which will be applied
      */
@@ -105,7 +105,7 @@ export interface GetPageShieldPolicyOutputArgs {
     /**
      * Identifier
      */
-    policyId?: pulumi.Input<string>;
+    policyId: pulumi.Input<string>;
     /**
      * Identifier
      */

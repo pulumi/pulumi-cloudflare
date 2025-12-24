@@ -23,7 +23,7 @@ public final class GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult {
      */
     private List<String> dnsServers;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this resource.
      * 
      */
     private String id;
@@ -52,7 +52,7 @@ public final class GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult {
         return this.dnsServers;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this resource.
      * 
      */
     public String id() {

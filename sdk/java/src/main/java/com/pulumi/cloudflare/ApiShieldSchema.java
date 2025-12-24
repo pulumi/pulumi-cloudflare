@@ -17,6 +17,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; `cloudflare.ApiShieldSchema` is in a deprecation phase and will be removed in the future.
+ *   Instead, please utilize the cloudflare.SchemaValidationSchemas resource instead.
+ * 
  * ## Example Usage
  * 
  * <pre>

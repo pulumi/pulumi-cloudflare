@@ -23,7 +23,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool ExternallyManaged;
         /// <summary>
         /// The ID of the rate plan.
-        /// Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "PartnersEnterprise".
+        /// Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "PartnersEnt".
         /// </summary>
         public readonly string Id;
         /// <summary>

@@ -40,7 +40,7 @@ export interface GetCloudConnectorRulesArgs {
  */
 export interface GetCloudConnectorRulesResult {
     /**
-     * The ID of this resource.
+     * Identifier.
      */
     readonly id: string;
     readonly rules: outputs.GetCloudConnectorRulesRule[];

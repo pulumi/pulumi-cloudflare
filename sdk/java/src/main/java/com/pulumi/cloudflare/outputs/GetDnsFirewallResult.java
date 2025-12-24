@@ -11,8 +11,6 @@ import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDnsFirewallResult {
@@ -35,7 +33,7 @@ public final class GetDnsFirewallResult {
      * @return Identifier.
      * 
      */
-    private @Nullable String dnsFirewallId;
+    private String dnsFirewallId;
     private List<String> dnsFirewallIps;
     /**
      * @return Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
@@ -89,8 +87,8 @@ public final class GetDnsFirewallResult {
      * @return Identifier.
      * 
      */
-    public Optional<String> dnsFirewallId() {
-        return Optional.ofNullable(this.dnsFirewallId);
+    public String dnsFirewallId() {
+        return this.dnsFirewallId;
     }
     public List<String> dnsFirewallIps() {
         return this.dnsFirewallIps;
@@ -153,7 +151,7 @@ public final class GetDnsFirewallResult {
         private String accountId;
         private GetDnsFirewallAttackMitigation attackMitigation;
         private Boolean deprecateAnyRequests;
-        private @Nullable String dnsFirewallId;
+        private String dnsFirewallId;
         private List<String> dnsFirewallIps;
         private Boolean ecsFallback;
         private String id;
@@ -210,8 +208,10 @@ public final class GetDnsFirewallResult {
             return this;
         }
         @CustomType.Setter
-        public Builder dnsFirewallId(@Nullable String dnsFirewallId) {
-
+        public Builder dnsFirewallId(String dnsFirewallId) {
+            if (dnsFirewallId == null) {
+              throw new MissingRequiredPropertyException("GetDnsFirewallResult", "dnsFirewallId");
+            }
             this.dnsFirewallId = dnsFirewallId;
             return this;
         }

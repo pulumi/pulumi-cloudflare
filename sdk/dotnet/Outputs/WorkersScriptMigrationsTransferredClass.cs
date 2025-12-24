@@ -13,17 +13,8 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class WorkersScriptMigrationsTransferredClass
     {
-        /// <summary>
-        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        /// </summary>
         public readonly string? From;
-        /// <summary>
-        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        /// </summary>
         public readonly string? FromScript;
-        /// <summary>
-        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        /// </summary>
         public readonly string? To;
 
         [OutputConstructor]

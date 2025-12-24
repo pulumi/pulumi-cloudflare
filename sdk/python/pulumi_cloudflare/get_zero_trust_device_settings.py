@@ -26,13 +26,25 @@ class GetZeroTrustDeviceSettingsResult:
     """
     A collection of values returned by getZeroTrustDeviceSettings.
     """
-    def __init__(__self__, account_id=None, disable_for_time=None, gateway_proxy_enabled=None, gateway_udp_proxy_enabled=None, id=None, root_certificate_installation_enabled=None, use_zt_virtual_ip=None):
+    def __init__(__self__, account_id=None, disable_for_time=None, external_emergency_signal_enabled=None, external_emergency_signal_fingerprint=None, external_emergency_signal_interval=None, external_emergency_signal_url=None, gateway_proxy_enabled=None, gateway_udp_proxy_enabled=None, id=None, root_certificate_installation_enabled=None, use_zt_virtual_ip=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if disable_for_time and not isinstance(disable_for_time, float):
             raise TypeError("Expected argument 'disable_for_time' to be a float")
         pulumi.set(__self__, "disable_for_time", disable_for_time)
+        if external_emergency_signal_enabled and not isinstance(external_emergency_signal_enabled, bool):
+            raise TypeError("Expected argument 'external_emergency_signal_enabled' to be a bool")
+        pulumi.set(__self__, "external_emergency_signal_enabled", external_emergency_signal_enabled)
+        if external_emergency_signal_fingerprint and not isinstance(external_emergency_signal_fingerprint, str):
+            raise TypeError("Expected argument 'external_emergency_signal_fingerprint' to be a str")
+        pulumi.set(__self__, "external_emergency_signal_fingerprint", external_emergency_signal_fingerprint)
+        if external_emergency_signal_interval and not isinstance(external_emergency_signal_interval, str):
+            raise TypeError("Expected argument 'external_emergency_signal_interval' to be a str")
+        pulumi.set(__self__, "external_emergency_signal_interval", external_emergency_signal_interval)
+        if external_emergency_signal_url and not isinstance(external_emergency_signal_url, str):
+            raise TypeError("Expected argument 'external_emergency_signal_url' to be a str")
+        pulumi.set(__self__, "external_emergency_signal_url", external_emergency_signal_url)
         if gateway_proxy_enabled and not isinstance(gateway_proxy_enabled, bool):
             raise TypeError("Expected argument 'gateway_proxy_enabled' to be a bool")
         pulumi.set(__self__, "gateway_proxy_enabled", gateway_proxy_enabled)
@@ -61,6 +73,38 @@ class GetZeroTrustDeviceSettingsResult:
         Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
         """
         return pulumi.get(self, "disable_for_time")
+
+    @_builtins.property
+    @pulumi.getter(name="externalEmergencySignalEnabled")
+    def external_emergency_signal_enabled(self) -> _builtins.bool:
+        """
+        Controls whether the external emergency disconnect feature is enabled.
+        """
+        return pulumi.get(self, "external_emergency_signal_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="externalEmergencySignalFingerprint")
+    def external_emergency_signal_fingerprint(self) -> _builtins.str:
+        """
+        The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
+        """
+        return pulumi.get(self, "external_emergency_signal_fingerprint")
+
+    @_builtins.property
+    @pulumi.getter(name="externalEmergencySignalInterval")
+    def external_emergency_signal_interval(self) -> _builtins.str:
+        """
+        The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds.
+        """
+        return pulumi.get(self, "external_emergency_signal_interval")
+
+    @_builtins.property
+    @pulumi.getter(name="externalEmergencySignalUrl")
+    def external_emergency_signal_url(self) -> _builtins.str:
+        """
+        The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
+        """
+        return pulumi.get(self, "external_emergency_signal_url")
 
     @_builtins.property
     @pulumi.getter(name="gatewayProxyEnabled")
@@ -111,6 +155,10 @@ class AwaitableGetZeroTrustDeviceSettingsResult(GetZeroTrustDeviceSettingsResult
         return GetZeroTrustDeviceSettingsResult(
             account_id=self.account_id,
             disable_for_time=self.disable_for_time,
+            external_emergency_signal_enabled=self.external_emergency_signal_enabled,
+            external_emergency_signal_fingerprint=self.external_emergency_signal_fingerprint,
+            external_emergency_signal_interval=self.external_emergency_signal_interval,
+            external_emergency_signal_url=self.external_emergency_signal_url,
             gateway_proxy_enabled=self.gateway_proxy_enabled,
             gateway_udp_proxy_enabled=self.gateway_udp_proxy_enabled,
             id=self.id,
@@ -138,6 +186,10 @@ def get_zero_trust_device_settings(account_id: Optional[_builtins.str] = None,
     return AwaitableGetZeroTrustDeviceSettingsResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         disable_for_time=pulumi.get(__ret__, 'disable_for_time'),
+        external_emergency_signal_enabled=pulumi.get(__ret__, 'external_emergency_signal_enabled'),
+        external_emergency_signal_fingerprint=pulumi.get(__ret__, 'external_emergency_signal_fingerprint'),
+        external_emergency_signal_interval=pulumi.get(__ret__, 'external_emergency_signal_interval'),
+        external_emergency_signal_url=pulumi.get(__ret__, 'external_emergency_signal_url'),
         gateway_proxy_enabled=pulumi.get(__ret__, 'gateway_proxy_enabled'),
         gateway_udp_proxy_enabled=pulumi.get(__ret__, 'gateway_udp_proxy_enabled'),
         id=pulumi.get(__ret__, 'id'),
@@ -162,6 +214,10 @@ def get_zero_trust_device_settings_output(account_id: Optional[pulumi.Input[_bui
     return __ret__.apply(lambda __response__: GetZeroTrustDeviceSettingsResult(
         account_id=pulumi.get(__response__, 'account_id'),
         disable_for_time=pulumi.get(__response__, 'disable_for_time'),
+        external_emergency_signal_enabled=pulumi.get(__response__, 'external_emergency_signal_enabled'),
+        external_emergency_signal_fingerprint=pulumi.get(__response__, 'external_emergency_signal_fingerprint'),
+        external_emergency_signal_interval=pulumi.get(__response__, 'external_emergency_signal_interval'),
+        external_emergency_signal_url=pulumi.get(__response__, 'external_emergency_signal_url'),
         gateway_proxy_enabled=pulumi.get(__response__, 'gateway_proxy_enabled'),
         gateway_udp_proxy_enabled=pulumi.get(__response__, 'gateway_udp_proxy_enabled'),
         id=pulumi.get(__response__, 'id'),

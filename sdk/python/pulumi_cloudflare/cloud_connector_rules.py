@@ -115,7 +115,7 @@ class CloudConnectorRules(pulumi.CustomResource):
                 "parameters": {
                     "host": "examplebucket.s3.eu-north-1.amazonaws.com",
                 },
-                "provider": "aws_s3",
+                "cloud_connector_rules_provider": "aws_s3",
             }])
         ```
 
@@ -152,7 +152,7 @@ class CloudConnectorRules(pulumi.CustomResource):
                 "parameters": {
                     "host": "examplebucket.s3.eu-north-1.amazonaws.com",
                 },
-                "provider": "aws_s3",
+                "cloud_connector_rules_provider": "aws_s3",
             }])
         ```
 

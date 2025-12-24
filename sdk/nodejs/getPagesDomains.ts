@@ -33,7 +33,7 @@ export function getPagesDomains(args: GetPagesDomainsArgs, opts?: pulumi.InvokeO
  */
 export interface GetPagesDomainsArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
     /**
@@ -51,7 +51,7 @@ export interface GetPagesDomainsArgs {
  */
 export interface GetPagesDomainsResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
@@ -98,7 +98,7 @@ export function getPagesDomainsOutput(args: GetPagesDomainsOutputArgs, opts?: pu
  */
 export interface GetPagesDomainsOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

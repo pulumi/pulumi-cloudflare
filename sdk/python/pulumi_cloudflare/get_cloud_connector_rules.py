@@ -42,7 +42,7 @@ class GetCloudConnectorRulesResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The ID of this resource.
+        Identifier.
         """
         return pulumi.get(self, "id")
 

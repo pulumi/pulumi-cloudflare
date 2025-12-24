@@ -15,12 +15,14 @@ import * as utilities from "./utilities";
  *
  * const exampleApiShield = cloudflare.getApiShield({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     normalize: true,
  * });
  * ```
  */
 export function getApiShield(args: GetApiShieldArgs, opts?: pulumi.InvokeOptions): Promise<GetApiShieldResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getApiShield:getApiShield", {
+        "normalize": args.normalize,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -29,6 +31,10 @@ export function getApiShield(args: GetApiShieldArgs, opts?: pulumi.InvokeOptions
  * A collection of arguments for invoking getApiShield.
  */
 export interface GetApiShieldArgs {
+    /**
+     * Ensures that the configuration is written or retrieved in normalized fashion
+     */
+    normalize?: boolean;
     /**
      * Identifier.
      */
@@ -41,9 +47,13 @@ export interface GetApiShieldArgs {
 export interface GetApiShieldResult {
     readonly authIdCharacteristics: outputs.GetApiShieldAuthIdCharacteristic[];
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Identifier.
      */
     readonly id: string;
+    /**
+     * Ensures that the configuration is written or retrieved in normalized fashion
+     */
+    readonly normalize?: boolean;
     /**
      * Identifier.
      */
@@ -58,12 +68,14 @@ export interface GetApiShieldResult {
  *
  * const exampleApiShield = cloudflare.getApiShield({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     normalize: true,
  * });
  * ```
  */
 export function getApiShieldOutput(args: GetApiShieldOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApiShieldResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getApiShield:getApiShield", {
+        "normalize": args.normalize,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -72,6 +84,10 @@ export function getApiShieldOutput(args: GetApiShieldOutputArgs, opts?: pulumi.I
  * A collection of arguments for invoking getApiShield.
  */
 export interface GetApiShieldOutputArgs {
+    /**
+     * Ensures that the configuration is written or retrieved in normalized fashion
+     */
+    normalize?: pulumi.Input<boolean>;
     /**
      * Identifier.
      */

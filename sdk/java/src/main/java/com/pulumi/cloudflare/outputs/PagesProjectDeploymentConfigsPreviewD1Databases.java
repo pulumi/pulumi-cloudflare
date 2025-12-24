@@ -4,10 +4,9 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class PagesProjectDeploymentConfigsPreviewD1Databases {
@@ -15,15 +14,15 @@ public final class PagesProjectDeploymentConfigsPreviewD1Databases {
      * @return UUID of the D1 database.
      * 
      */
-    private @Nullable String id;
+    private String id;
 
     private PagesProjectDeploymentConfigsPreviewD1Databases() {}
     /**
      * @return UUID of the D1 database.
      * 
      */
-    public Optional<String> id() {
-        return Optional.ofNullable(this.id);
+    public String id() {
+        return this.id;
     }
 
     public static Builder builder() {
@@ -35,7 +34,7 @@ public final class PagesProjectDeploymentConfigsPreviewD1Databases {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String id;
+        private String id;
         public Builder() {}
         public Builder(PagesProjectDeploymentConfigsPreviewD1Databases defaults) {
     	      Objects.requireNonNull(defaults);
@@ -43,8 +42,10 @@ public final class PagesProjectDeploymentConfigsPreviewD1Databases {
         }
 
         @CustomType.Setter
-        public Builder id(@Nullable String id) {
-
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("PagesProjectDeploymentConfigsPreviewD1Databases", "id");
+            }
             this.id = id;
             return this;
         }

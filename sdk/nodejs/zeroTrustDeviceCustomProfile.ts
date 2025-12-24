@@ -119,7 +119,7 @@ export class ZeroTrustDeviceCustomProfile extends pulumi.CustomResource {
     /**
      * Whether the policy will be applied to matching devices.
      */
-    declare public readonly enabled: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * Whether to add Microsoft IPs to Split Tunnel exclusions.
      */

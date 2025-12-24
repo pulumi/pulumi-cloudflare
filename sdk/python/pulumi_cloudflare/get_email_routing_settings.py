@@ -75,7 +75,7 @@ class GetEmailRoutingSettingsResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Email Routing settings identifier.
+        Identifier.
         """
         return pulumi.get(self, "id")
 

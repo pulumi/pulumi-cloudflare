@@ -36,7 +36,7 @@ export interface GetMtlsCertificateArgs {
     /**
      * Identifier.
      */
-    mtlsCertificateId?: string;
+    mtlsCertificateId: string;
 }
 
 /**
@@ -70,7 +70,7 @@ export interface GetMtlsCertificateResult {
     /**
      * Identifier.
      */
-    readonly mtlsCertificateId?: string;
+    readonly mtlsCertificateId: string;
     /**
      * Optional unique name for the certificate. Only used for human readability.
      */
@@ -120,5 +120,5 @@ export interface GetMtlsCertificateOutputArgs {
     /**
      * Identifier.
      */
-    mtlsCertificateId?: pulumi.Input<string>;
+    mtlsCertificateId: pulumi.Input<string>;
 }

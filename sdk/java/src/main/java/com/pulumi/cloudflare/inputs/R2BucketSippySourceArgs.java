@@ -46,6 +46,21 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * URL to the S3-compatible API of the bucket.
+     * 
+     */
+    @Import(name="bucketUrl")
+    private @Nullable Output<String> bucketUrl;
+
+    /**
+     * @return URL to the S3-compatible API of the bucket.
+     * 
+     */
+    public Optional<Output<String>> bucketUrl() {
+        return Optional.ofNullable(this.bucketUrl);
+    }
+
+    /**
      * Client email of an IAM credential (ideally scoped to a single GCS bucket).
      * 
      */
@@ -61,14 +76,14 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Available values: &#34;aws&#34;, &#34;gcs&#34;.
+     * Available values: &#34;aws&#34;, &#34;gcs&#34;, &#34;s3&#34;.
      * 
      */
     @Import(name="cloudProvider")
     private @Nullable Output<String> cloudProvider;
 
     /**
-     * @return Available values: &#34;aws&#34;, &#34;gcs&#34;.
+     * @return Available values: &#34;aws&#34;, &#34;gcs&#34;, &#34;s3&#34;.
      * 
      */
     public Optional<Output<String>> cloudProvider() {
@@ -125,6 +140,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
     private R2BucketSippySourceArgs(R2BucketSippySourceArgs $) {
         this.accessKeyId = $.accessKeyId;
         this.bucket = $.bucket;
+        this.bucketUrl = $.bucketUrl;
         this.clientEmail = $.clientEmail;
         this.cloudProvider = $.cloudProvider;
         this.privateKey = $.privateKey;
@@ -193,6 +209,27 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
+         * @param bucketUrl URL to the S3-compatible API of the bucket.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bucketUrl(@Nullable Output<String> bucketUrl) {
+            $.bucketUrl = bucketUrl;
+            return this;
+        }
+
+        /**
+         * @param bucketUrl URL to the S3-compatible API of the bucket.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bucketUrl(String bucketUrl) {
+            return bucketUrl(Output.of(bucketUrl));
+        }
+
+        /**
          * @param clientEmail Client email of an IAM credential (ideally scoped to a single GCS bucket).
          * 
          * @return builder
@@ -214,7 +251,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param cloudProvider Available values: &#34;aws&#34;, &#34;gcs&#34;.
+         * @param cloudProvider Available values: &#34;aws&#34;, &#34;gcs&#34;, &#34;s3&#34;.
          * 
          * @return builder
          * 
@@ -225,7 +262,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param cloudProvider Available values: &#34;aws&#34;, &#34;gcs&#34;.
+         * @param cloudProvider Available values: &#34;aws&#34;, &#34;gcs&#34;, &#34;s3&#34;.
          * 
          * @return builder
          * 

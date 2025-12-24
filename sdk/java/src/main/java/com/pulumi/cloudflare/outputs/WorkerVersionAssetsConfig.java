@@ -4,8 +4,8 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Object;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -25,10 +25,10 @@ public final class WorkerVersionAssetsConfig {
      */
     private @Nullable String notFoundHandling;
     /**
-     * @return Contains a list path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either &#39;/&#39; or &#39;!/&#39;. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
+     * @return When a boolean true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script. When a list of strings, contains path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either &#39;/&#39; or &#39;!/&#39;. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
      * 
      */
-    private @Nullable List<String> runWorkerFirsts;
+    private @Nullable Object runWorkerFirst;
 
     private WorkerVersionAssetsConfig() {}
     /**
@@ -48,11 +48,11 @@ public final class WorkerVersionAssetsConfig {
         return Optional.ofNullable(this.notFoundHandling);
     }
     /**
-     * @return Contains a list path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either &#39;/&#39; or &#39;!/&#39;. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
+     * @return When a boolean true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script. When a list of strings, contains path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either &#39;/&#39; or &#39;!/&#39;. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
      * 
      */
-    public List<String> runWorkerFirsts() {
-        return this.runWorkerFirsts == null ? List.of() : this.runWorkerFirsts;
+    public Optional<Object> runWorkerFirst() {
+        return Optional.ofNullable(this.runWorkerFirst);
     }
 
     public static Builder builder() {
@@ -66,13 +66,13 @@ public final class WorkerVersionAssetsConfig {
     public static final class Builder {
         private @Nullable String htmlHandling;
         private @Nullable String notFoundHandling;
-        private @Nullable List<String> runWorkerFirsts;
+        private @Nullable Object runWorkerFirst;
         public Builder() {}
         public Builder(WorkerVersionAssetsConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.htmlHandling = defaults.htmlHandling;
     	      this.notFoundHandling = defaults.notFoundHandling;
-    	      this.runWorkerFirsts = defaults.runWorkerFirsts;
+    	      this.runWorkerFirst = defaults.runWorkerFirst;
         }
 
         @CustomType.Setter
@@ -88,19 +88,16 @@ public final class WorkerVersionAssetsConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder runWorkerFirsts(@Nullable List<String> runWorkerFirsts) {
+        public Builder runWorkerFirst(@Nullable Object runWorkerFirst) {
 
-            this.runWorkerFirsts = runWorkerFirsts;
+            this.runWorkerFirst = runWorkerFirst;
             return this;
-        }
-        public Builder runWorkerFirsts(String... runWorkerFirsts) {
-            return runWorkerFirsts(List.of(runWorkerFirsts));
         }
         public WorkerVersionAssetsConfig build() {
             final var _resultValue = new WorkerVersionAssetsConfig();
             _resultValue.htmlHandling = htmlHandling;
             _resultValue.notFoundHandling = notFoundHandling;
-            _resultValue.runWorkerFirsts = runWorkerFirsts;
+            _resultValue.runWorkerFirst = runWorkerFirst;
             return _resultValue;
         }
     }

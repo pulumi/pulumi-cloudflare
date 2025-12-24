@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.ZeroTrustDlpPredefinedEntryArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDlpPredefinedEntryState;
 import com.pulumi.cloudflare.outputs.ZeroTrustDlpPredefinedEntryConfidence;
 import com.pulumi.cloudflare.outputs.ZeroTrustDlpPredefinedEntryPattern;
+import com.pulumi.cloudflare.outputs.ZeroTrustDlpPredefinedEntryProfile;
 import com.pulumi.cloudflare.outputs.ZeroTrustDlpPredefinedEntryVariant;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -15,6 +16,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import javax.annotation.Nullable;
 
 /**
@@ -124,20 +126,26 @@ public class ZeroTrustDlpPredefinedEntry extends com.pulumi.resources.CustomReso
         return this.pattern;
     }
     /**
-     * This field is not actually used as the owning profile for a predefined entry is already set
-     * to a predefined profile
+     * This field is not used as the owning profile.
+     * For predefined entries it is already set to a predefined profile.
      * 
      */
     @Export(name="profileId", refs={String.class}, tree="[0]")
     private Output<String> profileId;
 
     /**
-     * @return This field is not actually used as the owning profile for a predefined entry is already set
-     * to a predefined profile
+     * @return This field is not used as the owning profile.
+     * For predefined entries it is already set to a predefined profile.
      * 
      */
     public Output<String> profileId() {
         return this.profileId;
+    }
+    @Export(name="profiles", refs={List.class,ZeroTrustDlpPredefinedEntryProfile.class}, tree="[0,1]")
+    private Output<List<ZeroTrustDlpPredefinedEntryProfile>> profiles;
+
+    public Output<List<ZeroTrustDlpPredefinedEntryProfile>> profiles() {
+        return this.profiles;
     }
     @Export(name="secret", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> secret;
@@ -164,6 +172,20 @@ public class ZeroTrustDlpPredefinedEntry extends com.pulumi.resources.CustomReso
 
     public Output<String> updatedAt() {
         return this.updatedAt;
+    }
+    /**
+     * Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;pending&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+     * 
+     */
+    @Export(name="uploadStatus", refs={String.class}, tree="[0]")
+    private Output<String> uploadStatus;
+
+    /**
+     * @return Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;pending&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+     * 
+     */
+    public Output<String> uploadStatus() {
+        return this.uploadStatus;
     }
     @Export(name="variant", refs={ZeroTrustDlpPredefinedEntryVariant.class}, tree="[0]")
     private Output<ZeroTrustDlpPredefinedEntryVariant> variant;

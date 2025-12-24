@@ -27,8 +27,7 @@ class ZeroTrustDexTestArgs:
                  interval: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDexTestTargetPolicyArgs']]]] = None,
-                 targeted: Optional[pulumi.Input[_builtins.bool]] = None):
+                 target_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDexTestTargetPolicyArgs']]]] = None):
         """
         The set of arguments for constructing a ZeroTrustDexTest resource.
         :param pulumi.Input['ZeroTrustDexTestDataArgs'] data: The configuration object which contains the details for the WARP client to conduct the test.
@@ -47,8 +46,6 @@ class ZeroTrustDexTestArgs:
             pulumi.set(__self__, "description", description)
         if target_policies is not None:
             pulumi.set(__self__, "target_policies", target_policies)
-        if targeted is not None:
-            pulumi.set(__self__, "targeted", targeted)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -130,15 +127,6 @@ class ZeroTrustDexTestArgs:
     @target_policies.setter
     def target_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDexTestTargetPolicyArgs']]]]):
         pulumi.set(self, "target_policies", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def targeted(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        return pulumi.get(self, "targeted")
-
-    @targeted.setter
-    def targeted(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "targeted", value)
 
 
 @pulumi.input_type
@@ -298,7 +286,6 @@ class ZeroTrustDexTest(pulumi.CustomResource):
                  interval: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  target_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDexTestTargetPolicyArgs', 'ZeroTrustDexTestTargetPolicyArgsDict']]]]] = None,
-                 targeted: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -401,7 +388,6 @@ class ZeroTrustDexTest(pulumi.CustomResource):
                  interval: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  target_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDexTestTargetPolicyArgs', 'ZeroTrustDexTestTargetPolicyArgsDict']]]]] = None,
-                 targeted: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -428,7 +414,7 @@ class ZeroTrustDexTest(pulumi.CustomResource):
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["target_policies"] = target_policies
-            __props__.__dict__["targeted"] = targeted
+            __props__.__dict__["targeted"] = None
             __props__.__dict__["test_id"] = None
         super(ZeroTrustDexTest, __self__).__init__(
             'cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest',
@@ -534,7 +520,7 @@ class ZeroTrustDexTest(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def targeted(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def targeted(self) -> pulumi.Output[_builtins.bool]:
         return pulumi.get(self, "targeted")
 
     @_builtins.property

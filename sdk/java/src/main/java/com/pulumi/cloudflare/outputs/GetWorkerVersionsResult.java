@@ -95,6 +95,11 @@ public final class GetWorkerVersionsResult {
      */
     private String source;
     /**
+     * @return Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
+     * 
+     */
+    private Integer startupTimeMs;
+    /**
      * @return Usage model for the version.
      * Available values: &#34;standard&#34;, &#34;bundled&#34;, &#34;unbound&#34;.
      * 
@@ -210,6 +215,13 @@ public final class GetWorkerVersionsResult {
         return this.source;
     }
     /**
+     * @return Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
+     * 
+     */
+    public Integer startupTimeMs() {
+        return this.startupTimeMs;
+    }
+    /**
      * @return Usage model for the version.
      * Available values: &#34;standard&#34;, &#34;bundled&#34;, &#34;unbound&#34;.
      * 
@@ -245,6 +257,7 @@ public final class GetWorkerVersionsResult {
         private Integer number;
         private GetWorkerVersionsResultPlacement placement;
         private String source;
+        private Integer startupTimeMs;
         private String usageModel;
         public Builder() {}
         public Builder(GetWorkerVersionsResult defaults) {
@@ -263,6 +276,7 @@ public final class GetWorkerVersionsResult {
     	      this.number = defaults.number;
     	      this.placement = defaults.placement;
     	      this.source = defaults.source;
+    	      this.startupTimeMs = defaults.startupTimeMs;
     	      this.usageModel = defaults.usageModel;
         }
 
@@ -388,6 +402,14 @@ public final class GetWorkerVersionsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder startupTimeMs(Integer startupTimeMs) {
+            if (startupTimeMs == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionsResult", "startupTimeMs");
+            }
+            this.startupTimeMs = startupTimeMs;
+            return this;
+        }
+        @CustomType.Setter
         public Builder usageModel(String usageModel) {
             if (usageModel == null) {
               throw new MissingRequiredPropertyException("GetWorkerVersionsResult", "usageModel");
@@ -411,6 +433,7 @@ public final class GetWorkerVersionsResult {
             _resultValue.number = number;
             _resultValue.placement = placement;
             _resultValue.source = source;
+            _resultValue.startupTimeMs = startupTimeMs;
             _resultValue.usageModel = usageModel;
             return _resultValue;
         }

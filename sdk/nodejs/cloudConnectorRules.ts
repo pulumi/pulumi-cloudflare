@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  *         parameters: {
  *             host: "examplebucket.s3.eu-north-1.amazonaws.com",
  *         },
- *         provider: "aws_s3",
+ *         cloudConnectorRulesProvider: "aws_s3",
  *     }],
  * });
  * ```

@@ -62,6 +62,10 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ## Import
+ * 
+ * ~&gt; This resource does not currently support `pulumi import`.
+ * 
  */
 @ResourceType(type="cloudflare:index/r2BucketLock:R2BucketLock")
 public class R2BucketLock extends com.pulumi.resources.CustomResource {

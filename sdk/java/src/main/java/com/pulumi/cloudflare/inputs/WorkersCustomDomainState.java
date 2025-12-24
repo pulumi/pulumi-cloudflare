@@ -33,14 +33,22 @@ public final class WorkersCustomDomainState extends com.pulumi.resources.Resourc
     /**
      * Worker environment associated with the zone and hostname.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     @Import(name="environment")
     private @Nullable Output<String> environment;
 
     /**
      * @return Worker environment associated with the zone and hostname.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<Output<String>> environment() {
         return Optional.ofNullable(this.environment);
     }
@@ -160,7 +168,11 @@ public final class WorkersCustomDomainState extends com.pulumi.resources.Resourc
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder environment(@Nullable Output<String> environment) {
             $.environment = environment;
             return this;
@@ -171,7 +183,11 @@ public final class WorkersCustomDomainState extends com.pulumi.resources.Resourc
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder environment(String environment) {
             return environment(Output.of(environment));
         }

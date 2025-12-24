@@ -72,7 +72,7 @@ class GetMagicTransitSiteAclResult:
 
     @_builtins.property
     @pulumi.getter(name="aclId")
-    def acl_id(self) -> Optional[_builtins.str]:
+    def acl_id(self) -> _builtins.str:
         """
         Identifier
         """
@@ -202,7 +202,7 @@ def get_magic_transit_site_acl(account_id: Optional[_builtins.str] = None,
         site_id=pulumi.get(__ret__, 'site_id'),
         unidirectional=pulumi.get(__ret__, 'unidirectional'))
 def get_magic_transit_site_acl_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                      acl_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                      acl_id: Optional[pulumi.Input[_builtins.str]] = None,
                                       site_id: Optional[pulumi.Input[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMagicTransitSiteAclResult]:
     """

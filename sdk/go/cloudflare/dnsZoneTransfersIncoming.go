@@ -77,9 +77,6 @@ func NewDnsZoneTransfersIncoming(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AutoRefreshSeconds == nil {
-		return nil, errors.New("invalid value for required argument 'AutoRefreshSeconds'")
-	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -156,7 +153,7 @@ func (DnsZoneTransfersIncomingState) ElementType() reflect.Type {
 type dnsZoneTransfersIncomingArgs struct {
 	// How often should a secondary zone auto refresh regardless of DNS NOTIFY.
 	// Not applicable for primary zones.
-	AutoRefreshSeconds float64 `pulumi:"autoRefreshSeconds"`
+	AutoRefreshSeconds *float64 `pulumi:"autoRefreshSeconds"`
 	// Zone name.
 	Name string `pulumi:"name"`
 	// A list of peer tags.
@@ -168,7 +165,7 @@ type dnsZoneTransfersIncomingArgs struct {
 type DnsZoneTransfersIncomingArgs struct {
 	// How often should a secondary zone auto refresh regardless of DNS NOTIFY.
 	// Not applicable for primary zones.
-	AutoRefreshSeconds pulumi.Float64Input
+	AutoRefreshSeconds pulumi.Float64PtrInput
 	// Zone name.
 	Name pulumi.StringInput
 	// A list of peer tags.

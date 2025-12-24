@@ -33,7 +33,7 @@ import (
 //			_, err := cloudflare.NewPagesDomain(ctx, "example_pages_domain", &cloudflare.PagesDomainArgs{
 //				AccountId:   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ProjectName: pulumi.String("this-is-my-project-01"),
-//				Name:        pulumi.String("example.com"),
+//				Name:        pulumi.String("this-is-my-domain-01.com"),
 //			})
 //			if err != nil {
 //				return err
@@ -52,13 +52,14 @@ import (
 type PagesDomain struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Available values: "google", "letsEncrypt".
 	CertificateAuthority pulumi.StringOutput `pulumi:"certificateAuthority"`
 	CreatedOn            pulumi.StringOutput `pulumi:"createdOn"`
 	DomainId             pulumi.StringOutput `pulumi:"domainId"`
-	Name                 pulumi.StringOutput `pulumi:"name"`
+	// The domain name.
+	Name pulumi.StringOutput `pulumi:"name"`
 	// Name of the project.
 	ProjectName pulumi.StringOutput `pulumi:"projectName"`
 	// Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
@@ -107,13 +108,14 @@ func GetPagesDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PagesDomain resources.
 type pagesDomainState struct {
-	// Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// Available values: "google", "letsEncrypt".
 	CertificateAuthority *string `pulumi:"certificateAuthority"`
 	CreatedOn            *string `pulumi:"createdOn"`
 	DomainId             *string `pulumi:"domainId"`
-	Name                 *string `pulumi:"name"`
+	// The domain name.
+	Name *string `pulumi:"name"`
 	// Name of the project.
 	ProjectName *string `pulumi:"projectName"`
 	// Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
@@ -124,13 +126,14 @@ type pagesDomainState struct {
 }
 
 type PagesDomainState struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
 	// Available values: "google", "letsEncrypt".
 	CertificateAuthority pulumi.StringPtrInput
 	CreatedOn            pulumi.StringPtrInput
 	DomainId             pulumi.StringPtrInput
-	Name                 pulumi.StringPtrInput
+	// The domain name.
+	Name pulumi.StringPtrInput
 	// Name of the project.
 	ProjectName pulumi.StringPtrInput
 	// Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
@@ -145,18 +148,20 @@ func (PagesDomainState) ElementType() reflect.Type {
 }
 
 type pagesDomainArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
-	Name      string `pulumi:"name"`
+	// The domain name.
+	Name string `pulumi:"name"`
 	// Name of the project.
 	ProjectName string `pulumi:"projectName"`
 }
 
 // The set of arguments for constructing a PagesDomain resource.
 type PagesDomainArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput
-	Name      pulumi.StringInput
+	// The domain name.
+	Name pulumi.StringInput
 	// Name of the project.
 	ProjectName pulumi.StringInput
 }
@@ -248,7 +253,7 @@ func (o PagesDomainOutput) ToPagesDomainOutputWithContext(ctx context.Context) P
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o PagesDomainOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesDomain) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -266,6 +271,7 @@ func (o PagesDomainOutput) DomainId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesDomain) pulumi.StringOutput { return v.DomainId }).(pulumi.StringOutput)
 }
 
+// The domain name.
 func (o PagesDomainOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesDomain) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

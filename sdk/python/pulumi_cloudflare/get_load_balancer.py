@@ -164,7 +164,7 @@ class GetLoadBalancerResult:
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerId")
-    def load_balancer_id(self) -> Optional[_builtins.str]:
+    def load_balancer_id(self) -> _builtins.str:
         return pulumi.get(self, "load_balancer_id")
 
     @_builtins.property
@@ -368,7 +368,7 @@ def get_load_balancer(load_balancer_id: Optional[_builtins.str] = None,
         steering_policy=pulumi.get(__ret__, 'steering_policy'),
         ttl=pulumi.get(__ret__, 'ttl'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_load_balancer_output(load_balancer_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_load_balancer_output(load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
                              pop_pools: Optional[pulumi.Input[Optional[Mapping[str, Sequence[_builtins.str]]]]] = None,
                              region_pools: Optional[pulumi.Input[Optional[Mapping[str, Sequence[_builtins.str]]]]] = None,
                              zone_id: Optional[pulumi.Input[_builtins.str]] = None,

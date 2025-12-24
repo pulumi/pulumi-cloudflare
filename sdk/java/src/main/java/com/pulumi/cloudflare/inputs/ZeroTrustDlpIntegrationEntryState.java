@@ -5,11 +5,13 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.ZeroTrustDlpIntegrationEntryConfidenceArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDlpIntegrationEntryPatternArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustDlpIntegrationEntryProfileArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDlpIntegrationEntryVariantArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -88,20 +90,27 @@ public final class ZeroTrustDlpIntegrationEntryState extends com.pulumi.resource
     }
 
     /**
-     * This field is not actually used as the owning profile for a predefined entry is already set
-     * to a predefined profile
+     * This field is not used as the owning profile.
+     * For predefined entries it is already set to a predefined profile.
      * 
      */
     @Import(name="profileId")
     private @Nullable Output<String> profileId;
 
     /**
-     * @return This field is not actually used as the owning profile for a predefined entry is already set
-     * to a predefined profile
+     * @return This field is not used as the owning profile.
+     * For predefined entries it is already set to a predefined profile.
      * 
      */
     public Optional<Output<String>> profileId() {
         return Optional.ofNullable(this.profileId);
+    }
+
+    @Import(name="profiles")
+    private @Nullable Output<List<ZeroTrustDlpIntegrationEntryProfileArgs>> profiles;
+
+    public Optional<Output<List<ZeroTrustDlpIntegrationEntryProfileArgs>>> profiles() {
+        return Optional.ofNullable(this.profiles);
     }
 
     @Import(name="secret")
@@ -133,6 +142,21 @@ public final class ZeroTrustDlpIntegrationEntryState extends com.pulumi.resource
         return Optional.ofNullable(this.updatedAt);
     }
 
+    /**
+     * Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;pending&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+     * 
+     */
+    @Import(name="uploadStatus")
+    private @Nullable Output<String> uploadStatus;
+
+    /**
+     * @return Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;pending&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+     * 
+     */
+    public Optional<Output<String>> uploadStatus() {
+        return Optional.ofNullable(this.uploadStatus);
+    }
+
     @Import(name="variant")
     private @Nullable Output<ZeroTrustDlpIntegrationEntryVariantArgs> variant;
 
@@ -159,9 +183,11 @@ public final class ZeroTrustDlpIntegrationEntryState extends com.pulumi.resource
         this.name = $.name;
         this.pattern = $.pattern;
         this.profileId = $.profileId;
+        this.profiles = $.profiles;
         this.secret = $.secret;
         this.type = $.type;
         this.updatedAt = $.updatedAt;
+        this.uploadStatus = $.uploadStatus;
         this.variant = $.variant;
         this.wordList = $.wordList;
     }
@@ -273,8 +299,8 @@ public final class ZeroTrustDlpIntegrationEntryState extends com.pulumi.resource
         }
 
         /**
-         * @param profileId This field is not actually used as the owning profile for a predefined entry is already set
-         * to a predefined profile
+         * @param profileId This field is not used as the owning profile.
+         * For predefined entries it is already set to a predefined profile.
          * 
          * @return builder
          * 
@@ -285,14 +311,27 @@ public final class ZeroTrustDlpIntegrationEntryState extends com.pulumi.resource
         }
 
         /**
-         * @param profileId This field is not actually used as the owning profile for a predefined entry is already set
-         * to a predefined profile
+         * @param profileId This field is not used as the owning profile.
+         * For predefined entries it is already set to a predefined profile.
          * 
          * @return builder
          * 
          */
         public Builder profileId(String profileId) {
             return profileId(Output.of(profileId));
+        }
+
+        public Builder profiles(@Nullable Output<List<ZeroTrustDlpIntegrationEntryProfileArgs>> profiles) {
+            $.profiles = profiles;
+            return this;
+        }
+
+        public Builder profiles(List<ZeroTrustDlpIntegrationEntryProfileArgs> profiles) {
+            return profiles(Output.of(profiles));
+        }
+
+        public Builder profiles(ZeroTrustDlpIntegrationEntryProfileArgs... profiles) {
+            return profiles(List.of(profiles));
         }
 
         public Builder secret(@Nullable Output<Boolean> secret) {
@@ -332,6 +371,27 @@ public final class ZeroTrustDlpIntegrationEntryState extends com.pulumi.resource
 
         public Builder updatedAt(String updatedAt) {
             return updatedAt(Output.of(updatedAt));
+        }
+
+        /**
+         * @param uploadStatus Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;pending&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uploadStatus(@Nullable Output<String> uploadStatus) {
+            $.uploadStatus = uploadStatus;
+            return this;
+        }
+
+        /**
+         * @param uploadStatus Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;pending&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uploadStatus(String uploadStatus) {
+            return uploadStatus(Output.of(uploadStatus));
         }
 
         public Builder variant(@Nullable Output<ZeroTrustDlpIntegrationEntryVariantArgs> variant) {

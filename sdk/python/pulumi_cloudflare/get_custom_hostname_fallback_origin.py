@@ -69,7 +69,7 @@ class GetCustomHostnameFallbackOriginResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Identifier.
         """
         return pulumi.get(self, "id")
 

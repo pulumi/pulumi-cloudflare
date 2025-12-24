@@ -53,7 +53,7 @@ class GetWorkersCronTriggerResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Name of the script, used in URLs and route configuration.
         """
         return pulumi.get(self, "id")
 

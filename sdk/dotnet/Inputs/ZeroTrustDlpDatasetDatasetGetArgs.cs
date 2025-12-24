@@ -54,7 +54,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// When the dataset was last updated.
+        /// Stores when the dataset was last updated.
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }

@@ -35,7 +35,7 @@ export interface GetMagicTransitConnectorArgs {
      * Account identifier
      */
     accountId: string;
-    connectorId?: string;
+    connectorId: string;
 }
 
 /**
@@ -47,7 +47,7 @@ export interface GetMagicTransitConnectorResult {
      */
     readonly accountId: string;
     readonly activated: boolean;
-    readonly connectorId?: string;
+    readonly connectorId: string;
     readonly device: outputs.GetMagicTransitConnectorDevice;
     /**
      * The ID of this resource.
@@ -91,5 +91,5 @@ export interface GetMagicTransitConnectorOutputArgs {
      * Account identifier
      */
     accountId: pulumi.Input<string>;
-    connectorId?: pulumi.Input<string>;
+    connectorId: pulumi.Input<string>;
 }

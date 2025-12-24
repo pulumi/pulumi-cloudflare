@@ -419,7 +419,7 @@ def get_zero_trust_device_custom_profile(account_id: Optional[_builtins.str] = N
         target_tests=pulumi.get(__ret__, 'target_tests'),
         tunnel_protocol=pulumi.get(__ret__, 'tunnel_protocol'))
 def get_zero_trust_device_custom_profile_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                                policy_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                                policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDeviceCustomProfileResult]:
     """
     ## Example Usage

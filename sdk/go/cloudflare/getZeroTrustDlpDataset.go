@@ -70,7 +70,7 @@ type LookupZeroTrustDlpDatasetResult struct {
 	Secret   bool   `pulumi:"secret"`
 	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	Status string `pulumi:"status"`
-	// When the dataset was last updated.
+	// Stores when the dataset was last updated.
 	UpdatedAt string                         `pulumi:"updatedAt"`
 	Uploads   []GetZeroTrustDlpDatasetUpload `pulumi:"uploads"`
 }
@@ -160,7 +160,7 @@ func (o LookupZeroTrustDlpDatasetResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpDatasetResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// When the dataset was last updated.
+// Stores when the dataset was last updated.
 func (o LookupZeroTrustDlpDatasetResultOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpDatasetResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }

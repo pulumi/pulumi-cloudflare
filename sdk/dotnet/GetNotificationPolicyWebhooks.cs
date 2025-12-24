@@ -93,8 +93,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The unique identifier of a webhook
         /// </summary>
-        [Input("webhookId")]
-        public string? WebhookId { get; set; }
+        [Input("webhookId", required: true)]
+        public string WebhookId { get; set; } = null!;
 
         public GetNotificationPolicyWebhooksArgs()
         {
@@ -113,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The unique identifier of a webhook
         /// </summary>
-        [Input("webhookId")]
-        public Input<string>? WebhookId { get; set; }
+        [Input("webhookId", required: true)]
+        public Input<string> WebhookId { get; set; } = null!;
 
         public GetNotificationPolicyWebhooksInvokeArgs()
         {
@@ -166,7 +166,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The unique identifier of a webhook
         /// </summary>
-        public readonly string? WebhookId;
+        public readonly string WebhookId;
 
         [OutputConstructor]
         private GetNotificationPolicyWebhooksResult(
@@ -188,7 +188,7 @@ namespace Pulumi.Cloudflare
 
             string url,
 
-            string? webhookId)
+            string webhookId)
         {
             AccountId = accountId;
             CreatedAt = createdAt;

@@ -114,7 +114,7 @@ class GetZeroTrustDevicePostureRuleResult:
 
     @_builtins.property
     @pulumi.getter(name="ruleId")
-    def rule_id(self) -> Optional[_builtins.str]:
+    def rule_id(self) -> _builtins.str:
         """
         API UUID.
         """
@@ -133,7 +133,7 @@ class GetZeroTrustDevicePostureRuleResult:
     def type(self) -> _builtins.str:
         """
         The type of device posture rule.
-        Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "serial*number", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom*s2s".
+        Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "serial*number", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "antivirus", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom*s2s".
         """
         return pulumi.get(self, "type")
 
@@ -191,7 +191,7 @@ def get_zero_trust_device_posture_rule(account_id: Optional[_builtins.str] = Non
         schedule=pulumi.get(__ret__, 'schedule'),
         type=pulumi.get(__ret__, 'type'))
 def get_zero_trust_device_posture_rule_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                              rule_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                              rule_id: Optional[pulumi.Input[_builtins.str]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDevicePostureRuleResult]:
     """
     ## Example Usage

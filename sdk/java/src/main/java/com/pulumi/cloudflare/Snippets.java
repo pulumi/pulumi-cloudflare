@@ -15,6 +15,12 @@ import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
 
+/**
+ * ## Import
+ * 
+ * ~&gt; This resource does not currently support `pulumi import`.
+ * 
+ */
 @ResourceType(type="cloudflare:index/snippets:Snippets")
 public class Snippets extends com.pulumi.resources.CustomResource {
     /**

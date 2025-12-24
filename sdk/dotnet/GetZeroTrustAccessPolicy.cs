@@ -93,8 +93,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The UUID of the policy
         /// </summary>
-        [Input("policyId")]
-        public string? PolicyId { get; set; }
+        [Input("policyId", required: true)]
+        public string PolicyId { get; set; } = null!;
 
         public GetZeroTrustAccessPolicyArgs()
         {
@@ -113,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The UUID of the policy
         /// </summary>
-        [Input("policyId")]
-        public Input<string>? PolicyId { get; set; }
+        [Input("policyId", required: true)]
+        public Input<string> PolicyId { get; set; } = null!;
 
         public GetZeroTrustAccessPolicyInvokeArgs()
         {
@@ -171,7 +171,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The UUID of the policy
         /// </summary>
-        public readonly string? PolicyId;
+        public readonly string PolicyId;
         /// <summary>
         /// A custom message that will appear on the purpose justification screen.
         /// </summary>
@@ -215,7 +215,7 @@ namespace Pulumi.Cloudflare
 
             string name,
 
-            string? policyId,
+            string policyId,
 
             string purposeJustificationPrompt,
 

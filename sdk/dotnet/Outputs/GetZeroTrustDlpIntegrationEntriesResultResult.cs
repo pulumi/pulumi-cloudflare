@@ -32,6 +32,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Type;
         public readonly string UpdatedAt;
+        /// <summary>
+        /// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+        /// </summary>
+        public readonly string UploadStatus;
         public readonly Outputs.GetZeroTrustDlpIntegrationEntriesResultVariantResult Variant;
         public readonly string WordList;
 
@@ -59,6 +63,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string updatedAt,
 
+            string uploadStatus,
+
             Outputs.GetZeroTrustDlpIntegrationEntriesResultVariantResult variant,
 
             string wordList)
@@ -74,6 +80,7 @@ namespace Pulumi.Cloudflare.Outputs
             Secret = secret;
             Type = type;
             UpdatedAt = updatedAt;
+            UploadStatus = uploadStatus;
             Variant = variant;
             WordList = wordList;
         }

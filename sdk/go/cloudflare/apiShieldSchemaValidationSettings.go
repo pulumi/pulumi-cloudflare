@@ -12,6 +12,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > `ApiShieldSchemaValidationSettings` is in a deprecation phase and will be removed in the future.
+//
+//	Instead, please utilize the SchemaValidationSettings resource instead.
+//
 // ## Example Usage
 //
 // ```go

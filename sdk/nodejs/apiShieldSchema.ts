@@ -7,6 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * > `cloudflare.ApiShieldSchema` is in a deprecation phase and will be removed in the future.
+ *   Instead, please utilize the cloudflare.SchemaValidationSchemas resource instead.
+ *
  * ## Example Usage
  *
  * ```typescript

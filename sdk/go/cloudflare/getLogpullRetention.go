@@ -56,7 +56,7 @@ type LookupLogpullRetentionArgs struct {
 type LookupLogpullRetentionResult struct {
 	// The log retention flag for Logpull API.
 	Flag bool `pulumi:"flag"`
-	// The provider-assigned unique ID for this managed resource.
+	// Identifier.
 	Id string `pulumi:"id"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
@@ -101,7 +101,7 @@ func (o LookupLogpullRetentionResultOutput) Flag() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupLogpullRetentionResult) bool { return v.Flag }).(pulumi.BoolOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Identifier.
 func (o LookupLogpullRetentionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLogpullRetentionResult) string { return v.Id }).(pulumi.StringOutput)
 }

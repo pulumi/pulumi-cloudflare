@@ -40,6 +40,22 @@ export interface GetZeroTrustDeviceSettingsResult {
      */
     readonly disableForTime: number;
     /**
+     * Controls whether the external emergency disconnect feature is enabled.
+     */
+    readonly externalEmergencySignalEnabled: boolean;
+    /**
+     * The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
+     */
+    readonly externalEmergencySignalFingerprint: string;
+    /**
+     * The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds.
+     */
+    readonly externalEmergencySignalInterval: string;
+    /**
+     * The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
+     */
+    readonly externalEmergencySignalUrl: string;
+    /**
      * Enable gateway proxy filtering on TCP.
      */
     readonly gatewayProxyEnabled: boolean;

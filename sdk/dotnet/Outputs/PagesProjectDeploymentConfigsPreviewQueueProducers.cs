@@ -16,10 +16,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Name of the Queue.
         /// </summary>
-        public readonly string? Name;
+        public readonly string Name;
 
         [OutputConstructor]
-        private PagesProjectDeploymentConfigsPreviewQueueProducers(string? name)
+        private PagesProjectDeploymentConfigsPreviewQueueProducers(string name)
         {
             Name = name;
         }

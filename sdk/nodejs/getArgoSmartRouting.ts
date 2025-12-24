@@ -42,7 +42,7 @@ export interface GetArgoSmartRoutingResult {
      */
     readonly editable: boolean;
     /**
-     * Specifies the identifier of the Argo Smart Routing setting.
+     * Specifies the zone associated with the API call.
      */
     readonly id: string;
     /**

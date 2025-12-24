@@ -23,6 +23,7 @@ export function getSpectrumApplication(args: GetSpectrumApplicationArgs, opts?: 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getSpectrumApplication:getSpectrumApplication", {
         "appId": args.appId,
+        "filter": args.filter,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -34,7 +35,8 @@ export interface GetSpectrumApplicationArgs {
     /**
      * App identifier.
      */
-    appId: string;
+    appId?: string;
+    filter?: inputs.GetSpectrumApplicationFilter;
     /**
      * Zone identifier.
      */
@@ -48,7 +50,7 @@ export interface GetSpectrumApplicationResult {
     /**
      * App identifier.
      */
-    readonly appId: string;
+    readonly appId?: string;
     /**
      * Enables Argo Smart Routing for this application.
      * Notes: Only available for TCP applications with trafficType set to "direct".
@@ -66,6 +68,7 @@ export interface GetSpectrumApplicationResult {
      * The anycast edge IP configuration for the hostname of this application.
      */
     readonly edgeIps: outputs.GetSpectrumApplicationEdgeIps;
+    readonly filter?: outputs.GetSpectrumApplicationFilter;
     /**
      * App identifier.
      */
@@ -133,6 +136,7 @@ export function getSpectrumApplicationOutput(args: GetSpectrumApplicationOutputA
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getSpectrumApplication:getSpectrumApplication", {
         "appId": args.appId,
+        "filter": args.filter,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -144,7 +148,8 @@ export interface GetSpectrumApplicationOutputArgs {
     /**
      * App identifier.
      */
-    appId: pulumi.Input<string>;
+    appId?: pulumi.Input<string>;
+    filter?: pulumi.Input<inputs.GetSpectrumApplicationFilterArgs>;
     /**
      * Zone identifier.
      */

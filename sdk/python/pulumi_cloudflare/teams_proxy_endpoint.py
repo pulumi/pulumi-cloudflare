@@ -20,16 +20,22 @@ __all__ = ['TeamsProxyEndpointArgs', 'TeamsProxyEndpoint']
 class TeamsProxyEndpointArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
-                 ips: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 name: pulumi.Input[_builtins.str]):
+                 name: pulumi.Input[_builtins.str],
+                 ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 kind: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TeamsProxyEndpoint resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ips: Specify the list of CIDRs to restrict ingress connections.
         :param pulumi.Input[_builtins.str] name: Specify the name of the proxy endpoint.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ips: Specify the list of CIDRs to restrict ingress connections.
+        :param pulumi.Input[_builtins.str] kind: The proxy endpoint kind
+               Available values: "ip", "identity".
         """
         pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "ips", ips)
         pulumi.set(__self__, "name", name)
+        if ips is not None:
+            pulumi.set(__self__, "ips", ips)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -39,18 +45,6 @@ class TeamsProxyEndpointArgs:
     @account_id.setter
     def account_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "account_id", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def ips(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        Specify the list of CIDRs to restrict ingress connections.
-        """
-        return pulumi.get(self, "ips")
-
-    @ips.setter
-    def ips(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
-        pulumi.set(self, "ips", value)
 
     @_builtins.property
     @pulumi.getter
@@ -64,6 +58,31 @@ class TeamsProxyEndpointArgs:
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Specify the list of CIDRs to restrict ingress connections.
+        """
+        return pulumi.get(self, "ips")
+
+    @ips.setter
+    def ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "ips", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The proxy endpoint kind
+        Available values: "ip", "identity".
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "kind", value)
+
 
 @pulumi.input_type
 class _TeamsProxyEndpointState:
@@ -71,12 +90,15 @@ class _TeamsProxyEndpointState:
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 kind: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  subdomain: Optional[pulumi.Input[_builtins.str]] = None,
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TeamsProxyEndpoint resources.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ips: Specify the list of CIDRs to restrict ingress connections.
+        :param pulumi.Input[_builtins.str] kind: The proxy endpoint kind
+               Available values: "ip", "identity".
         :param pulumi.Input[_builtins.str] name: Specify the name of the proxy endpoint.
         :param pulumi.Input[_builtins.str] subdomain: Specify the subdomain to use as the destination in the proxy client.
         """
@@ -86,6 +108,8 @@ class _TeamsProxyEndpointState:
             pulumi.set(__self__, "created_at", created_at)
         if ips is not None:
             pulumi.set(__self__, "ips", ips)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if subdomain is not None:
@@ -122,6 +146,19 @@ class _TeamsProxyEndpointState:
     @ips.setter
     def ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ips", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The proxy endpoint kind
+        Available values: "ip", "identity".
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "kind", value)
 
     @_builtins.property
     @pulumi.getter
@@ -170,6 +207,7 @@ class TeamsProxyEndpoint(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 kind: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -181,8 +219,8 @@ class TeamsProxyEndpoint(pulumi.CustomResource):
 
         example_zero_trust_gateway_proxy_endpoint = cloudflare.ZeroTrustGatewayProxyEndpoint("example_zero_trust_gateway_proxy_endpoint",
             account_id="699d98642c564d2e855e9661899b7252",
-            ips=["192.0.2.1/32"],
-            name="Devops team")
+            name="Devops team",
+            kind="ip")
         ```
 
         ## Import
@@ -194,6 +232,8 @@ class TeamsProxyEndpoint(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ips: Specify the list of CIDRs to restrict ingress connections.
+        :param pulumi.Input[_builtins.str] kind: The proxy endpoint kind
+               Available values: "ip", "identity".
         :param pulumi.Input[_builtins.str] name: Specify the name of the proxy endpoint.
         """
         ...
@@ -211,8 +251,8 @@ class TeamsProxyEndpoint(pulumi.CustomResource):
 
         example_zero_trust_gateway_proxy_endpoint = cloudflare.ZeroTrustGatewayProxyEndpoint("example_zero_trust_gateway_proxy_endpoint",
             account_id="699d98642c564d2e855e9661899b7252",
-            ips=["192.0.2.1/32"],
-            name="Devops team")
+            name="Devops team",
+            kind="ip")
         ```
 
         ## Import
@@ -238,6 +278,7 @@ class TeamsProxyEndpoint(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 kind: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         pulumi.log.warn("""TeamsProxyEndpoint is deprecated: cloudflare.index/teamsproxyendpoint.TeamsProxyEndpoint has been deprecated in favor of cloudflare.index/zerotrustgatewayproxyendpoint.ZeroTrustGatewayProxyEndpoint""")
@@ -252,9 +293,8 @@ class TeamsProxyEndpoint(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
-            if ips is None and not opts.urn:
-                raise TypeError("Missing required property 'ips'")
             __props__.__dict__["ips"] = ips
+            __props__.__dict__["kind"] = kind
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
@@ -276,6 +316,7 @@ class TeamsProxyEndpoint(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
             created_at: Optional[pulumi.Input[_builtins.str]] = None,
             ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            kind: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             subdomain: Optional[pulumi.Input[_builtins.str]] = None,
             updated_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'TeamsProxyEndpoint':
@@ -287,6 +328,8 @@ class TeamsProxyEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ips: Specify the list of CIDRs to restrict ingress connections.
+        :param pulumi.Input[_builtins.str] kind: The proxy endpoint kind
+               Available values: "ip", "identity".
         :param pulumi.Input[_builtins.str] name: Specify the name of the proxy endpoint.
         :param pulumi.Input[_builtins.str] subdomain: Specify the subdomain to use as the destination in the proxy client.
         """
@@ -297,6 +340,7 @@ class TeamsProxyEndpoint(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["ips"] = ips
+        __props__.__dict__["kind"] = kind
         __props__.__dict__["name"] = name
         __props__.__dict__["subdomain"] = subdomain
         __props__.__dict__["updated_at"] = updated_at
@@ -314,11 +358,20 @@ class TeamsProxyEndpoint(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def ips(self) -> pulumi.Output[Sequence[_builtins.str]]:
+    def ips(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
         Specify the list of CIDRs to restrict ingress connections.
         """
         return pulumi.get(self, "ips")
+
+    @_builtins.property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[_builtins.str]:
+        """
+        The proxy endpoint kind
+        Available values: "ip", "identity".
+        """
+        return pulumi.get(self, "kind")
 
     @_builtins.property
     @pulumi.getter

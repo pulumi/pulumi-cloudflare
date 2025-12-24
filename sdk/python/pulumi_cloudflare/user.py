@@ -345,6 +345,10 @@ class User(pulumi.CustomResource):
             zipcode="12345")
         ```
 
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] country: The country in which the user lives.
@@ -373,6 +377,10 @@ class User(pulumi.CustomResource):
             telephone="+1 123-123-1234",
             zipcode="12345")
         ```
+
+        ## Import
+
+        ~> This resource does not currently support `pulumi import`.
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.

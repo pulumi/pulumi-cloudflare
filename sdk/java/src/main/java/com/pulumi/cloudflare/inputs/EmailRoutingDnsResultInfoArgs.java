@@ -19,15 +19,15 @@ public final class EmailRoutingDnsResultInfoArgs extends com.pulumi.resources.Re
      * Total number of results for the requested service.
      * 
      */
-    @Import(name="count")
-    private @Nullable Output<Double> count;
+    @Import(name="emailRoutingDnsCount")
+    private @Nullable Output<Double> emailRoutingDnsCount;
 
     /**
      * @return Total number of results for the requested service.
      * 
      */
-    public Optional<Output<Double>> count() {
-        return Optional.ofNullable(this.count);
+    public Optional<Output<Double>> emailRoutingDnsCount() {
+        return Optional.ofNullable(this.emailRoutingDnsCount);
     }
 
     /**
@@ -78,7 +78,7 @@ public final class EmailRoutingDnsResultInfoArgs extends com.pulumi.resources.Re
     private EmailRoutingDnsResultInfoArgs() {}
 
     private EmailRoutingDnsResultInfoArgs(EmailRoutingDnsResultInfoArgs $) {
-        this.count = $.count;
+        this.emailRoutingDnsCount = $.emailRoutingDnsCount;
         this.page = $.page;
         this.perPage = $.perPage;
         this.totalCount = $.totalCount;
@@ -103,24 +103,24 @@ public final class EmailRoutingDnsResultInfoArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param count Total number of results for the requested service.
+         * @param emailRoutingDnsCount Total number of results for the requested service.
          * 
          * @return builder
          * 
          */
-        public Builder count(@Nullable Output<Double> count) {
-            $.count = count;
+        public Builder emailRoutingDnsCount(@Nullable Output<Double> emailRoutingDnsCount) {
+            $.emailRoutingDnsCount = emailRoutingDnsCount;
             return this;
         }
 
         /**
-         * @param count Total number of results for the requested service.
+         * @param emailRoutingDnsCount Total number of results for the requested service.
          * 
          * @return builder
          * 
          */
-        public Builder count(Double count) {
-            return count(Output.of(count));
+        public Builder emailRoutingDnsCount(Double emailRoutingDnsCount) {
+            return emailRoutingDnsCount(Output.of(emailRoutingDnsCount));
         }
 
         /**

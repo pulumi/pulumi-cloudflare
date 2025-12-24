@@ -19,9 +19,9 @@ __all__ = ['OriginCaCertificateArgs', 'OriginCaCertificate']
 @pulumi.input_type
 class OriginCaCertificateArgs:
     def __init__(__self__, *,
-                 csr: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 request_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 csr: pulumi.Input[_builtins.str],
+                 hostnames: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 request_type: pulumi.Input[_builtins.str],
                  requested_validity: Optional[pulumi.Input[_builtins.float]] = None):
         """
         The set of arguments for constructing a OriginCaCertificate resource.
@@ -32,42 +32,39 @@ class OriginCaCertificateArgs:
         :param pulumi.Input[_builtins.float] requested_validity: The number of days for which the certificate should be valid.
                Available values: 7, 30, 90, 365, 730, 1095, 5475.
         """
-        if csr is not None:
-            pulumi.set(__self__, "csr", csr)
-        if hostnames is not None:
-            pulumi.set(__self__, "hostnames", hostnames)
-        if request_type is not None:
-            pulumi.set(__self__, "request_type", request_type)
+        pulumi.set(__self__, "csr", csr)
+        pulumi.set(__self__, "hostnames", hostnames)
+        pulumi.set(__self__, "request_type", request_type)
         if requested_validity is not None:
             pulumi.set(__self__, "requested_validity", requested_validity)
 
     @_builtins.property
     @pulumi.getter
-    def csr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def csr(self) -> pulumi.Input[_builtins.str]:
         """
         The Certificate Signing Request (CSR). Must be newline-encoded.
         """
         return pulumi.get(self, "csr")
 
     @csr.setter
-    def csr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def csr(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "csr", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostnames(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def hostnames(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
         Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
         """
         return pulumi.get(self, "hostnames")
 
     @hostnames.setter
-    def hostnames(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def hostnames(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         pulumi.set(self, "hostnames", value)
 
     @_builtins.property
     @pulumi.getter(name="requestType")
-    def request_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_type(self) -> pulumi.Input[_builtins.str]:
         """
         Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
         Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
@@ -75,7 +72,7 @@ class OriginCaCertificateArgs:
         return pulumi.get(self, "request_type")
 
     @request_type.setter
-    def request_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "request_type", value)
 
     @_builtins.property
@@ -264,7 +261,7 @@ class OriginCaCertificate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[OriginCaCertificateArgs] = None,
+                 args: OriginCaCertificateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -334,8 +331,14 @@ class OriginCaCertificate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OriginCaCertificateArgs.__new__(OriginCaCertificateArgs)
 
+            if csr is None and not opts.urn:
+                raise TypeError("Missing required property 'csr'")
             __props__.__dict__["csr"] = csr
+            if hostnames is None and not opts.urn:
+                raise TypeError("Missing required property 'hostnames'")
             __props__.__dict__["hostnames"] = hostnames
+            if request_type is None and not opts.urn:
+                raise TypeError("Missing required property 'request_type'")
             __props__.__dict__["request_type"] = request_type
             __props__.__dict__["requested_validity"] = requested_validity
             __props__.__dict__["certificate"] = None
@@ -394,7 +397,7 @@ class OriginCaCertificate(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def csr(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def csr(self) -> pulumi.Output[_builtins.str]:
         """
         The Certificate Signing Request (CSR). Must be newline-encoded.
         """
@@ -410,7 +413,7 @@ class OriginCaCertificate(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def hostnames(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+    def hostnames(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
         Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
         """
@@ -418,7 +421,7 @@ class OriginCaCertificate(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="requestType")
-    def request_type(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def request_type(self) -> pulumi.Output[_builtins.str]:
         """
         Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
         Available values: "origin-rsa", "origin-ecc", "keyless-certificate".

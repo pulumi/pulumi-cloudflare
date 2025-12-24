@@ -147,7 +147,7 @@ public final class GetZeroTrustDevicePostureRuleInput {
      */
     private String osDistroRevision;
     /**
-     * @return Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version. (Mac, iOS, and Linux only).
+     * @return Additional operating system version details. For Windows, the UBR (Update Build Revision). For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version.
      * 
      */
     private String osVersionExtra;
@@ -214,6 +214,11 @@ public final class GetZeroTrustDevicePostureRuleInput {
      * 
      */
     private Double totalScore;
+    /**
+     * @return Number of days that the antivirus should be updated within.
+     * 
+     */
+    private Double updateWindowDays;
     /**
      * @return Version of OS.
      * 
@@ -412,7 +417,7 @@ public final class GetZeroTrustDevicePostureRuleInput {
         return this.osDistroRevision;
     }
     /**
-     * @return Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version. (Mac, iOS, and Linux only).
+     * @return Additional operating system version details. For Windows, the UBR (Update Build Revision). For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version.
      * 
      */
     public String osVersionExtra() {
@@ -506,6 +511,13 @@ public final class GetZeroTrustDevicePostureRuleInput {
         return this.totalScore;
     }
     /**
+     * @return Number of days that the antivirus should be updated within.
+     * 
+     */
+    public Double updateWindowDays() {
+        return this.updateWindowDays;
+    }
+    /**
      * @return Version of OS.
      * 
      */
@@ -569,6 +581,7 @@ public final class GetZeroTrustDevicePostureRuleInput {
         private List<String> subjectAlternativeNames;
         private String thumbprint;
         private Double totalScore;
+        private Double updateWindowDays;
         private String version;
         private String versionOperator;
         public Builder() {}
@@ -613,6 +626,7 @@ public final class GetZeroTrustDevicePostureRuleInput {
     	      this.subjectAlternativeNames = defaults.subjectAlternativeNames;
     	      this.thumbprint = defaults.thumbprint;
     	      this.totalScore = defaults.totalScore;
+    	      this.updateWindowDays = defaults.updateWindowDays;
     	      this.version = defaults.version;
     	      this.versionOperator = defaults.versionOperator;
         }
@@ -939,6 +953,14 @@ public final class GetZeroTrustDevicePostureRuleInput {
             return this;
         }
         @CustomType.Setter
+        public Builder updateWindowDays(Double updateWindowDays) {
+            if (updateWindowDays == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDevicePostureRuleInput", "updateWindowDays");
+            }
+            this.updateWindowDays = updateWindowDays;
+            return this;
+        }
+        @CustomType.Setter
         public Builder version(String version) {
             if (version == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustDevicePostureRuleInput", "version");
@@ -995,6 +1017,7 @@ public final class GetZeroTrustDevicePostureRuleInput {
             _resultValue.subjectAlternativeNames = subjectAlternativeNames;
             _resultValue.thumbprint = thumbprint;
             _resultValue.totalScore = totalScore;
+            _resultValue.updateWindowDays = updateWindowDays;
             _resultValue.version = version;
             _resultValue.versionOperator = versionOperator;
             return _resultValue;

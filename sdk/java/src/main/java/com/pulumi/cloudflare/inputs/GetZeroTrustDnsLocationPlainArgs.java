@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetZeroTrustDnsLocationPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -22,11 +20,11 @@ public final class GetZeroTrustDnsLocationPlainArgs extends com.pulumi.resources
         return this.accountId;
     }
 
-    @Import(name="locationId")
-    private @Nullable String locationId;
+    @Import(name="locationId", required=true)
+    private String locationId;
 
-    public Optional<String> locationId() {
-        return Optional.ofNullable(this.locationId);
+    public String locationId() {
+        return this.locationId;
     }
 
     private GetZeroTrustDnsLocationPlainArgs() {}
@@ -59,7 +57,7 @@ public final class GetZeroTrustDnsLocationPlainArgs extends com.pulumi.resources
             return this;
         }
 
-        public Builder locationId(@Nullable String locationId) {
+        public Builder locationId(String locationId) {
             $.locationId = locationId;
             return this;
         }
@@ -67,6 +65,9 @@ public final class GetZeroTrustDnsLocationPlainArgs extends com.pulumi.resources
         public GetZeroTrustDnsLocationPlainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetZeroTrustDnsLocationPlainArgs", "accountId");
+            }
+            if ($.locationId == null) {
+                throw new MissingRequiredPropertyException("GetZeroTrustDnsLocationPlainArgs", "locationId");
             }
             return $;
         }

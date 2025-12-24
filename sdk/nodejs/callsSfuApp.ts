@@ -16,6 +16,10 @@ import * as utilities from "./utilities";
  *     name: "production-realtime-app",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ~> This resource does not currently support `pulumi import`.
  */
 export class CallsSfuApp extends pulumi.CustomResource {
     /**

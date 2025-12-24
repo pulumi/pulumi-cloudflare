@@ -215,6 +215,11 @@ export type CloudforceOneRequestPriority = import("./cloudforceOneRequestPriorit
 export const CloudforceOneRequestPriority: typeof import("./cloudforceOneRequestPriority").CloudforceOneRequestPriority = null as any;
 utilities.lazyLoad(exports, ["CloudforceOneRequestPriority"], () => require("./cloudforceOneRequestPriority"));
 
+export { ConnectivityDirectoryServiceArgs, ConnectivityDirectoryServiceState } from "./connectivityDirectoryService";
+export type ConnectivityDirectoryService = import("./connectivityDirectoryService").ConnectivityDirectoryService;
+export const ConnectivityDirectoryService: typeof import("./connectivityDirectoryService").ConnectivityDirectoryService = null as any;
+utilities.lazyLoad(exports, ["ConnectivityDirectoryService"], () => require("./connectivityDirectoryService"));
+
 export { ContentScanningArgs, ContentScanningState } from "./contentScanning";
 export type ContentScanning = import("./contentScanning").ContentScanning;
 export const ContentScanning: typeof import("./contentScanning").ContentScanning = null as any;
@@ -625,6 +630,16 @@ export const getCloudforceOneRequests: typeof import("./getCloudforceOneRequests
 export const getCloudforceOneRequestsOutput: typeof import("./getCloudforceOneRequests").getCloudforceOneRequestsOutput = null as any;
 utilities.lazyLoad(exports, ["getCloudforceOneRequests","getCloudforceOneRequestsOutput"], () => require("./getCloudforceOneRequests"));
 
+export { GetConnectivityDirectoryServiceArgs, GetConnectivityDirectoryServiceResult, GetConnectivityDirectoryServiceOutputArgs } from "./getConnectivityDirectoryService";
+export const getConnectivityDirectoryService: typeof import("./getConnectivityDirectoryService").getConnectivityDirectoryService = null as any;
+export const getConnectivityDirectoryServiceOutput: typeof import("./getConnectivityDirectoryService").getConnectivityDirectoryServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectivityDirectoryService","getConnectivityDirectoryServiceOutput"], () => require("./getConnectivityDirectoryService"));
+
+export { GetConnectivityDirectoryServicesArgs, GetConnectivityDirectoryServicesResult, GetConnectivityDirectoryServicesOutputArgs } from "./getConnectivityDirectoryServices";
+export const getConnectivityDirectoryServices: typeof import("./getConnectivityDirectoryServices").getConnectivityDirectoryServices = null as any;
+export const getConnectivityDirectoryServicesOutput: typeof import("./getConnectivityDirectoryServices").getConnectivityDirectoryServicesOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectivityDirectoryServices","getConnectivityDirectoryServicesOutput"], () => require("./getConnectivityDirectoryServices"));
+
 export { GetContentScanningArgs, GetContentScanningResult, GetContentScanningOutputArgs } from "./getContentScanning";
 export const getContentScanning: typeof import("./getContentScanning").getContentScanning = null as any;
 export const getContentScanningOutput: typeof import("./getContentScanning").getContentScanningOutput = null as any;
@@ -889,6 +904,11 @@ export { GetLeakedCredentialCheckArgs, GetLeakedCredentialCheckResult, GetLeaked
 export const getLeakedCredentialCheck: typeof import("./getLeakedCredentialCheck").getLeakedCredentialCheck = null as any;
 export const getLeakedCredentialCheckOutput: typeof import("./getLeakedCredentialCheck").getLeakedCredentialCheckOutput = null as any;
 utilities.lazyLoad(exports, ["getLeakedCredentialCheck","getLeakedCredentialCheckOutput"], () => require("./getLeakedCredentialCheck"));
+
+export { GetLeakedCredentialCheckRuleArgs, GetLeakedCredentialCheckRuleResult, GetLeakedCredentialCheckRuleOutputArgs } from "./getLeakedCredentialCheckRule";
+export const getLeakedCredentialCheckRule: typeof import("./getLeakedCredentialCheckRule").getLeakedCredentialCheckRule = null as any;
+export const getLeakedCredentialCheckRuleOutput: typeof import("./getLeakedCredentialCheckRule").getLeakedCredentialCheckRuleOutput = null as any;
+utilities.lazyLoad(exports, ["getLeakedCredentialCheckRule","getLeakedCredentialCheckRuleOutput"], () => require("./getLeakedCredentialCheckRule"));
 
 export { GetLeakedCredentialCheckRulesArgs, GetLeakedCredentialCheckRulesResult, GetLeakedCredentialCheckRulesOutputArgs } from "./getLeakedCredentialCheckRules";
 export const getLeakedCredentialCheckRules: typeof import("./getLeakedCredentialCheckRules").getLeakedCredentialCheckRules = null as any;
@@ -1350,6 +1370,16 @@ export const getSpectrumApplications: typeof import("./getSpectrumApplications")
 export const getSpectrumApplicationsOutput: typeof import("./getSpectrumApplications").getSpectrumApplicationsOutput = null as any;
 utilities.lazyLoad(exports, ["getSpectrumApplications","getSpectrumApplicationsOutput"], () => require("./getSpectrumApplications"));
 
+export { GetSsoConnectorArgs, GetSsoConnectorResult, GetSsoConnectorOutputArgs } from "./getSsoConnector";
+export const getSsoConnector: typeof import("./getSsoConnector").getSsoConnector = null as any;
+export const getSsoConnectorOutput: typeof import("./getSsoConnector").getSsoConnectorOutput = null as any;
+utilities.lazyLoad(exports, ["getSsoConnector","getSsoConnectorOutput"], () => require("./getSsoConnector"));
+
+export { GetSsoConnectorsArgs, GetSsoConnectorsResult, GetSsoConnectorsOutputArgs } from "./getSsoConnectors";
+export const getSsoConnectors: typeof import("./getSsoConnectors").getSsoConnectors = null as any;
+export const getSsoConnectorsOutput: typeof import("./getSsoConnectors").getSsoConnectorsOutput = null as any;
+utilities.lazyLoad(exports, ["getSsoConnectors","getSsoConnectorsOutput"], () => require("./getSsoConnectors"));
+
 export { GetStreamArgs, GetStreamResult, GetStreamOutputArgs } from "./getStream";
 export const getStream: typeof import("./getStream").getStream = null as any;
 export const getStreamOutput: typeof import("./getStream").getStreamOutput = null as any;
@@ -1405,6 +1435,26 @@ export const getTieredCache: typeof import("./getTieredCache").getTieredCache = 
 export const getTieredCacheOutput: typeof import("./getTieredCache").getTieredCacheOutput = null as any;
 utilities.lazyLoad(exports, ["getTieredCache","getTieredCacheOutput"], () => require("./getTieredCache"));
 
+export { GetTokenValidationConfigArgs, GetTokenValidationConfigResult, GetTokenValidationConfigOutputArgs } from "./getTokenValidationConfig";
+export const getTokenValidationConfig: typeof import("./getTokenValidationConfig").getTokenValidationConfig = null as any;
+export const getTokenValidationConfigOutput: typeof import("./getTokenValidationConfig").getTokenValidationConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getTokenValidationConfig","getTokenValidationConfigOutput"], () => require("./getTokenValidationConfig"));
+
+export { GetTokenValidationConfigsArgs, GetTokenValidationConfigsResult, GetTokenValidationConfigsOutputArgs } from "./getTokenValidationConfigs";
+export const getTokenValidationConfigs: typeof import("./getTokenValidationConfigs").getTokenValidationConfigs = null as any;
+export const getTokenValidationConfigsOutput: typeof import("./getTokenValidationConfigs").getTokenValidationConfigsOutput = null as any;
+utilities.lazyLoad(exports, ["getTokenValidationConfigs","getTokenValidationConfigsOutput"], () => require("./getTokenValidationConfigs"));
+
+export { GetTokenValidationRulesArgs, GetTokenValidationRulesResult, GetTokenValidationRulesOutputArgs } from "./getTokenValidationRules";
+export const getTokenValidationRules: typeof import("./getTokenValidationRules").getTokenValidationRules = null as any;
+export const getTokenValidationRulesOutput: typeof import("./getTokenValidationRules").getTokenValidationRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getTokenValidationRules","getTokenValidationRulesOutput"], () => require("./getTokenValidationRules"));
+
+export { GetTokenValidationRulesListArgs, GetTokenValidationRulesListResult, GetTokenValidationRulesListOutputArgs } from "./getTokenValidationRulesList";
+export const getTokenValidationRulesList: typeof import("./getTokenValidationRulesList").getTokenValidationRulesList = null as any;
+export const getTokenValidationRulesListOutput: typeof import("./getTokenValidationRulesList").getTokenValidationRulesListOutput = null as any;
+utilities.lazyLoad(exports, ["getTokenValidationRulesList","getTokenValidationRulesListOutput"], () => require("./getTokenValidationRulesList"));
+
 export { GetTotalTlsArgs, GetTotalTlsResult, GetTotalTlsOutputArgs } from "./getTotalTls";
 export const getTotalTls: typeof import("./getTotalTls").getTotalTls = null as any;
 export const getTotalTlsOutput: typeof import("./getTotalTls").getTotalTlsOutput = null as any;
@@ -1419,6 +1469,11 @@ export { GetTurnstileWidgetsArgs, GetTurnstileWidgetsResult, GetTurnstileWidgets
 export const getTurnstileWidgets: typeof import("./getTurnstileWidgets").getTurnstileWidgets = null as any;
 export const getTurnstileWidgetsOutput: typeof import("./getTurnstileWidgets").getTurnstileWidgetsOutput = null as any;
 utilities.lazyLoad(exports, ["getTurnstileWidgets","getTurnstileWidgetsOutput"], () => require("./getTurnstileWidgets"));
+
+export { GetUniversalSslSettingArgs, GetUniversalSslSettingResult, GetUniversalSslSettingOutputArgs } from "./getUniversalSslSetting";
+export const getUniversalSslSetting: typeof import("./getUniversalSslSetting").getUniversalSslSetting = null as any;
+export const getUniversalSslSettingOutput: typeof import("./getUniversalSslSetting").getUniversalSslSettingOutput = null as any;
+utilities.lazyLoad(exports, ["getUniversalSslSetting","getUniversalSslSettingOutput"], () => require("./getUniversalSslSetting"));
 
 export { GetUrlNormalizationSettingsArgs, GetUrlNormalizationSettingsResult, GetUrlNormalizationSettingsOutputArgs } from "./getUrlNormalizationSettings";
 export const getUrlNormalizationSettings: typeof import("./getUrlNormalizationSettings").getUrlNormalizationSettings = null as any;
@@ -1589,6 +1644,26 @@ export { GetWorkflowsArgs, GetWorkflowsResult, GetWorkflowsOutputArgs } from "./
 export const getWorkflows: typeof import("./getWorkflows").getWorkflows = null as any;
 export const getWorkflowsOutput: typeof import("./getWorkflows").getWorkflowsOutput = null as any;
 utilities.lazyLoad(exports, ["getWorkflows","getWorkflowsOutput"], () => require("./getWorkflows"));
+
+export { GetZeroTrustAccessAiControlsMcpPortalArgs, GetZeroTrustAccessAiControlsMcpPortalResult, GetZeroTrustAccessAiControlsMcpPortalOutputArgs } from "./getZeroTrustAccessAiControlsMcpPortal";
+export const getZeroTrustAccessAiControlsMcpPortal: typeof import("./getZeroTrustAccessAiControlsMcpPortal").getZeroTrustAccessAiControlsMcpPortal = null as any;
+export const getZeroTrustAccessAiControlsMcpPortalOutput: typeof import("./getZeroTrustAccessAiControlsMcpPortal").getZeroTrustAccessAiControlsMcpPortalOutput = null as any;
+utilities.lazyLoad(exports, ["getZeroTrustAccessAiControlsMcpPortal","getZeroTrustAccessAiControlsMcpPortalOutput"], () => require("./getZeroTrustAccessAiControlsMcpPortal"));
+
+export { GetZeroTrustAccessAiControlsMcpPortalsArgs, GetZeroTrustAccessAiControlsMcpPortalsResult, GetZeroTrustAccessAiControlsMcpPortalsOutputArgs } from "./getZeroTrustAccessAiControlsMcpPortals";
+export const getZeroTrustAccessAiControlsMcpPortals: typeof import("./getZeroTrustAccessAiControlsMcpPortals").getZeroTrustAccessAiControlsMcpPortals = null as any;
+export const getZeroTrustAccessAiControlsMcpPortalsOutput: typeof import("./getZeroTrustAccessAiControlsMcpPortals").getZeroTrustAccessAiControlsMcpPortalsOutput = null as any;
+utilities.lazyLoad(exports, ["getZeroTrustAccessAiControlsMcpPortals","getZeroTrustAccessAiControlsMcpPortalsOutput"], () => require("./getZeroTrustAccessAiControlsMcpPortals"));
+
+export { GetZeroTrustAccessAiControlsMcpServerArgs, GetZeroTrustAccessAiControlsMcpServerResult, GetZeroTrustAccessAiControlsMcpServerOutputArgs } from "./getZeroTrustAccessAiControlsMcpServer";
+export const getZeroTrustAccessAiControlsMcpServer: typeof import("./getZeroTrustAccessAiControlsMcpServer").getZeroTrustAccessAiControlsMcpServer = null as any;
+export const getZeroTrustAccessAiControlsMcpServerOutput: typeof import("./getZeroTrustAccessAiControlsMcpServer").getZeroTrustAccessAiControlsMcpServerOutput = null as any;
+utilities.lazyLoad(exports, ["getZeroTrustAccessAiControlsMcpServer","getZeroTrustAccessAiControlsMcpServerOutput"], () => require("./getZeroTrustAccessAiControlsMcpServer"));
+
+export { GetZeroTrustAccessAiControlsMcpServersArgs, GetZeroTrustAccessAiControlsMcpServersResult, GetZeroTrustAccessAiControlsMcpServersOutputArgs } from "./getZeroTrustAccessAiControlsMcpServers";
+export const getZeroTrustAccessAiControlsMcpServers: typeof import("./getZeroTrustAccessAiControlsMcpServers").getZeroTrustAccessAiControlsMcpServers = null as any;
+export const getZeroTrustAccessAiControlsMcpServersOutput: typeof import("./getZeroTrustAccessAiControlsMcpServers").getZeroTrustAccessAiControlsMcpServersOutput = null as any;
+utilities.lazyLoad(exports, ["getZeroTrustAccessAiControlsMcpServers","getZeroTrustAccessAiControlsMcpServersOutput"], () => require("./getZeroTrustAccessAiControlsMcpServers"));
 
 export { GetZeroTrustAccessApplicationArgs, GetZeroTrustAccessApplicationResult, GetZeroTrustAccessApplicationOutputArgs } from "./getZeroTrustAccessApplication";
 export const getZeroTrustAccessApplication: typeof import("./getZeroTrustAccessApplication").getZeroTrustAccessApplication = null as any;
@@ -1884,6 +1959,11 @@ export { GetZeroTrustGatewayProxyEndpointArgs, GetZeroTrustGatewayProxyEndpointR
 export const getZeroTrustGatewayProxyEndpoint: typeof import("./getZeroTrustGatewayProxyEndpoint").getZeroTrustGatewayProxyEndpoint = null as any;
 export const getZeroTrustGatewayProxyEndpointOutput: typeof import("./getZeroTrustGatewayProxyEndpoint").getZeroTrustGatewayProxyEndpointOutput = null as any;
 utilities.lazyLoad(exports, ["getZeroTrustGatewayProxyEndpoint","getZeroTrustGatewayProxyEndpointOutput"], () => require("./getZeroTrustGatewayProxyEndpoint"));
+
+export { GetZeroTrustGatewayProxyEndpointsArgs, GetZeroTrustGatewayProxyEndpointsResult, GetZeroTrustGatewayProxyEndpointsOutputArgs } from "./getZeroTrustGatewayProxyEndpoints";
+export const getZeroTrustGatewayProxyEndpoints: typeof import("./getZeroTrustGatewayProxyEndpoints").getZeroTrustGatewayProxyEndpoints = null as any;
+export const getZeroTrustGatewayProxyEndpointsOutput: typeof import("./getZeroTrustGatewayProxyEndpoints").getZeroTrustGatewayProxyEndpointsOutput = null as any;
+utilities.lazyLoad(exports, ["getZeroTrustGatewayProxyEndpoints","getZeroTrustGatewayProxyEndpointsOutput"], () => require("./getZeroTrustGatewayProxyEndpoints"));
 
 export { GetZeroTrustGatewaySettingsArgs, GetZeroTrustGatewaySettingsResult, GetZeroTrustGatewaySettingsOutputArgs } from "./getZeroTrustGatewaySettings";
 export const getZeroTrustGatewaySettings: typeof import("./getZeroTrustGatewaySettings").getZeroTrustGatewaySettings = null as any;
@@ -2358,6 +2438,11 @@ export type SpectrumApplication = import("./spectrumApplication").SpectrumApplic
 export const SpectrumApplication: typeof import("./spectrumApplication").SpectrumApplication = null as any;
 utilities.lazyLoad(exports, ["SpectrumApplication"], () => require("./spectrumApplication"));
 
+export { SsoConnectorArgs, SsoConnectorState } from "./ssoConnector";
+export type SsoConnector = import("./ssoConnector").SsoConnector;
+export const SsoConnector: typeof import("./ssoConnector").SsoConnector = null as any;
+utilities.lazyLoad(exports, ["SsoConnector"], () => require("./ssoConnector"));
+
 export { StaticRouteArgs, StaticRouteState } from "./staticRoute";
 export type StaticRoute = import("./staticRoute").StaticRoute;
 export const StaticRoute: typeof import("./staticRoute").StaticRoute = null as any;
@@ -2433,6 +2518,16 @@ export type TieredCache = import("./tieredCache").TieredCache;
 export const TieredCache: typeof import("./tieredCache").TieredCache = null as any;
 utilities.lazyLoad(exports, ["TieredCache"], () => require("./tieredCache"));
 
+export { TokenValidationConfigArgs, TokenValidationConfigState } from "./tokenValidationConfig";
+export type TokenValidationConfig = import("./tokenValidationConfig").TokenValidationConfig;
+export const TokenValidationConfig: typeof import("./tokenValidationConfig").TokenValidationConfig = null as any;
+utilities.lazyLoad(exports, ["TokenValidationConfig"], () => require("./tokenValidationConfig"));
+
+export { TokenValidationRulesArgs, TokenValidationRulesState } from "./tokenValidationRules";
+export type TokenValidationRules = import("./tokenValidationRules").TokenValidationRules;
+export const TokenValidationRules: typeof import("./tokenValidationRules").TokenValidationRules = null as any;
+utilities.lazyLoad(exports, ["TokenValidationRules"], () => require("./tokenValidationRules"));
+
 export { TotalTlsArgs, TotalTlsState } from "./totalTls";
 export type TotalTls = import("./totalTls").TotalTls;
 export const TotalTls: typeof import("./totalTls").TotalTls = null as any;
@@ -2462,6 +2557,11 @@ export { TurnstileWidgetArgs, TurnstileWidgetState } from "./turnstileWidget";
 export type TurnstileWidget = import("./turnstileWidget").TurnstileWidget;
 export const TurnstileWidget: typeof import("./turnstileWidget").TurnstileWidget = null as any;
 utilities.lazyLoad(exports, ["TurnstileWidget"], () => require("./turnstileWidget"));
+
+export { UniversalSslSettingArgs, UniversalSslSettingState } from "./universalSslSetting";
+export type UniversalSslSetting = import("./universalSslSetting").UniversalSslSetting;
+export const UniversalSslSetting: typeof import("./universalSslSetting").UniversalSslSetting = null as any;
+utilities.lazyLoad(exports, ["UniversalSslSetting"], () => require("./universalSslSetting"));
 
 export { UrlNormalizationSettingsArgs, UrlNormalizationSettingsState } from "./urlNormalizationSettings";
 export type UrlNormalizationSettings = import("./urlNormalizationSettings").UrlNormalizationSettings;
@@ -2592,6 +2692,16 @@ export { WorkflowArgs, WorkflowState } from "./workflow";
 export type Workflow = import("./workflow").Workflow;
 export const Workflow: typeof import("./workflow").Workflow = null as any;
 utilities.lazyLoad(exports, ["Workflow"], () => require("./workflow"));
+
+export { ZeroTrustAccessAiControlsMcpPortalArgs, ZeroTrustAccessAiControlsMcpPortalState } from "./zeroTrustAccessAiControlsMcpPortal";
+export type ZeroTrustAccessAiControlsMcpPortal = import("./zeroTrustAccessAiControlsMcpPortal").ZeroTrustAccessAiControlsMcpPortal;
+export const ZeroTrustAccessAiControlsMcpPortal: typeof import("./zeroTrustAccessAiControlsMcpPortal").ZeroTrustAccessAiControlsMcpPortal = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustAccessAiControlsMcpPortal"], () => require("./zeroTrustAccessAiControlsMcpPortal"));
+
+export { ZeroTrustAccessAiControlsMcpServerArgs, ZeroTrustAccessAiControlsMcpServerState } from "./zeroTrustAccessAiControlsMcpServer";
+export type ZeroTrustAccessAiControlsMcpServer = import("./zeroTrustAccessAiControlsMcpServer").ZeroTrustAccessAiControlsMcpServer;
+export const ZeroTrustAccessAiControlsMcpServer: typeof import("./zeroTrustAccessAiControlsMcpServer").ZeroTrustAccessAiControlsMcpServer = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustAccessAiControlsMcpServer"], () => require("./zeroTrustAccessAiControlsMcpServer"));
 
 export { ZeroTrustAccessApplicationArgs, ZeroTrustAccessApplicationState } from "./zeroTrustAccessApplication";
 export type ZeroTrustAccessApplication = import("./zeroTrustAccessApplication").ZeroTrustAccessApplication;
@@ -2966,6 +3076,8 @@ const _module = {
                 return new CloudforceOneRequestMessage(name, <any>undefined, { urn })
             case "cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority":
                 return new CloudforceOneRequestPriority(name, <any>undefined, { urn })
+            case "cloudflare:index/connectivityDirectoryService:ConnectivityDirectoryService":
+                return new ConnectivityDirectoryService(name, <any>undefined, { urn })
             case "cloudflare:index/contentScanning:ContentScanning":
                 return new ContentScanning(name, <any>undefined, { urn })
             case "cloudflare:index/contentScanningExpression:ContentScanningExpression":
@@ -3150,6 +3262,8 @@ const _module = {
                 return new Snippets(name, <any>undefined, { urn })
             case "cloudflare:index/spectrumApplication:SpectrumApplication":
                 return new SpectrumApplication(name, <any>undefined, { urn })
+            case "cloudflare:index/ssoConnector:SsoConnector":
+                return new SsoConnector(name, <any>undefined, { urn })
             case "cloudflare:index/staticRoute:StaticRoute":
                 return new StaticRoute(name, <any>undefined, { urn })
             case "cloudflare:index/stream:Stream":
@@ -3180,6 +3294,10 @@ const _module = {
                 return new TeamsRule(name, <any>undefined, { urn })
             case "cloudflare:index/tieredCache:TieredCache":
                 return new TieredCache(name, <any>undefined, { urn })
+            case "cloudflare:index/tokenValidationConfig:TokenValidationConfig":
+                return new TokenValidationConfig(name, <any>undefined, { urn })
+            case "cloudflare:index/tokenValidationRules:TokenValidationRules":
+                return new TokenValidationRules(name, <any>undefined, { urn })
             case "cloudflare:index/totalTls:TotalTls":
                 return new TotalTls(name, <any>undefined, { urn })
             case "cloudflare:index/tunnel:Tunnel":
@@ -3192,6 +3310,8 @@ const _module = {
                 return new TunnelVirtualNetwork(name, <any>undefined, { urn })
             case "cloudflare:index/turnstileWidget:TurnstileWidget":
                 return new TurnstileWidget(name, <any>undefined, { urn })
+            case "cloudflare:index/universalSslSetting:UniversalSslSetting":
+                return new UniversalSslSetting(name, <any>undefined, { urn })
             case "cloudflare:index/urlNormalizationSettings:UrlNormalizationSettings":
                 return new UrlNormalizationSettings(name, <any>undefined, { urn })
             case "cloudflare:index/user:User":
@@ -3244,6 +3364,10 @@ const _module = {
                 return new WorkersScriptSubdomain(name, <any>undefined, { urn })
             case "cloudflare:index/workflow:Workflow":
                 return new Workflow(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustAccessAiControlsMcpPortal:ZeroTrustAccessAiControlsMcpPortal":
+                return new ZeroTrustAccessAiControlsMcpPortal(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustAccessAiControlsMcpServer:ZeroTrustAccessAiControlsMcpServer":
+                return new ZeroTrustAccessAiControlsMcpServer(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication":
                 return new ZeroTrustAccessApplication(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage":
@@ -3401,6 +3525,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/cloudforceOneRequest"
 pulumi.runtime.registerResourceModule("cloudflare", "index/cloudforceOneRequestAsset", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/cloudforceOneRequestMessage", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/cloudforceOneRequestPriority", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/connectivityDirectoryService", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/contentScanning", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/contentScanningExpression", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customHostname", _module)
@@ -3493,6 +3618,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/snippet", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/snippetRules", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/snippets", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/spectrumApplication", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/ssoConnector", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/staticRoute", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/stream", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/streamAudioTrack", _module)
@@ -3508,12 +3634,15 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/teamsLocation", _modu
 pulumi.runtime.registerResourceModule("cloudflare", "index/teamsProxyEndpoint", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/teamsRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/tieredCache", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/tokenValidationConfig", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/tokenValidationRules", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/totalTls", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/tunnel", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/tunnelConfig", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/tunnelRoute", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/tunnelVirtualNetwork", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/turnstileWidget", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/universalSslSetting", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/urlNormalizationSettings", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/user", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/userAgentBlockingRule", _module)
@@ -3540,6 +3669,8 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/workersRoute", _modul
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersScript", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersScriptSubdomain", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workflow", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustAccessAiControlsMcpPortal", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustAccessAiControlsMcpServer", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustAccessApplication", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustAccessCustomPage", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustAccessGroup", _module)

@@ -155,7 +155,7 @@ class GetWorkerResult:
 
     @_builtins.property
     @pulumi.getter(name="workerId")
-    def worker_id(self) -> Optional[_builtins.str]:
+    def worker_id(self) -> _builtins.str:
         """
         Identifier for the Worker, which can be ID or name.
         """
@@ -220,7 +220,7 @@ def get_worker(account_id: Optional[_builtins.str] = None,
         updated_on=pulumi.get(__ret__, 'updated_on'),
         worker_id=pulumi.get(__ret__, 'worker_id'))
 def get_worker_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                      worker_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                      worker_id: Optional[pulumi.Input[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkerResult]:
     """
     ## Example Usage

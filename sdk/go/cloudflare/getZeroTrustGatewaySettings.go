@@ -55,7 +55,7 @@ type LookupZeroTrustGatewaySettingsArgs struct {
 type LookupZeroTrustGatewaySettingsResult struct {
 	AccountId string `pulumi:"accountId"`
 	CreatedAt string `pulumi:"createdAt"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this resource.
 	Id string `pulumi:"id"`
 	// Specify account settings.
 	Settings  GetZeroTrustGatewaySettingsSettings `pulumi:"settings"`
@@ -103,7 +103,7 @@ func (o LookupZeroTrustGatewaySettingsResultOutput) CreatedAt() pulumi.StringOut
 	return o.ApplyT(func(v LookupZeroTrustGatewaySettingsResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this resource.
 func (o LookupZeroTrustGatewaySettingsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewaySettingsResult) string { return v.Id }).(pulumi.StringOutput)
 }

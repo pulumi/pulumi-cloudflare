@@ -28,10 +28,10 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewWorkersCustomDomain(ctx, "example_workers_custom_domain", &cloudflare.WorkersCustomDomainArgs{
 //				AccountId:   pulumi.String("9a7806061c88ada191ed06f989cc3dac"),
-//				Environment: pulumi.String("production"),
 //				Hostname:    pulumi.String("foo.example.com"),
 //				Service:     pulumi.String("foo"),
 //				ZoneId:      pulumi.String("593c9c94de529bbbfaac7c53ced0447d"),
+//				Environment: pulumi.String("production"),
 //			})
 //			if err != nil {
 //				return err
@@ -55,7 +55,9 @@ type WorkerDomain struct {
 	// Identifer of the account.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Worker environment associated with the zone and hostname.
-	Environment pulumi.StringOutput `pulumi:"environment"`
+	//
+	// Deprecated: This attribute is deprecated.
+	Environment pulumi.StringPtrOutput `pulumi:"environment"`
 	// Hostname of the Worker Domain.
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
 	// Worker service associated with the zone and hostname.
@@ -75,9 +77,6 @@ func NewWorkerDomain(ctx *pulumi.Context,
 
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
-	if args.Environment == nil {
-		return nil, errors.New("invalid value for required argument 'Environment'")
 	}
 	if args.Hostname == nil {
 		return nil, errors.New("invalid value for required argument 'Hostname'")
@@ -120,6 +119,8 @@ type workerDomainState struct {
 	// Identifer of the account.
 	AccountId *string `pulumi:"accountId"`
 	// Worker environment associated with the zone and hostname.
+	//
+	// Deprecated: This attribute is deprecated.
 	Environment *string `pulumi:"environment"`
 	// Hostname of the Worker Domain.
 	Hostname *string `pulumi:"hostname"`
@@ -135,6 +136,8 @@ type WorkerDomainState struct {
 	// Identifer of the account.
 	AccountId pulumi.StringPtrInput
 	// Worker environment associated with the zone and hostname.
+	//
+	// Deprecated: This attribute is deprecated.
 	Environment pulumi.StringPtrInput
 	// Hostname of the Worker Domain.
 	Hostname pulumi.StringPtrInput
@@ -154,7 +157,9 @@ type workerDomainArgs struct {
 	// Identifer of the account.
 	AccountId string `pulumi:"accountId"`
 	// Worker environment associated with the zone and hostname.
-	Environment string `pulumi:"environment"`
+	//
+	// Deprecated: This attribute is deprecated.
+	Environment *string `pulumi:"environment"`
 	// Hostname of the Worker Domain.
 	Hostname string `pulumi:"hostname"`
 	// Worker service associated with the zone and hostname.
@@ -168,7 +173,9 @@ type WorkerDomainArgs struct {
 	// Identifer of the account.
 	AccountId pulumi.StringInput
 	// Worker environment associated with the zone and hostname.
-	Environment pulumi.StringInput
+	//
+	// Deprecated: This attribute is deprecated.
+	Environment pulumi.StringPtrInput
 	// Hostname of the Worker Domain.
 	Hostname pulumi.StringInput
 	// Worker service associated with the zone and hostname.
@@ -270,8 +277,10 @@ func (o WorkerDomainOutput) AccountId() pulumi.StringOutput {
 }
 
 // Worker environment associated with the zone and hostname.
-func (o WorkerDomainOutput) Environment() pulumi.StringOutput {
-	return o.ApplyT(func(v *WorkerDomain) pulumi.StringOutput { return v.Environment }).(pulumi.StringOutput)
+//
+// Deprecated: This attribute is deprecated.
+func (o WorkerDomainOutput) Environment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerDomain) pulumi.StringPtrOutput { return v.Environment }).(pulumi.StringPtrOutput)
 }
 
 // Hostname of the Worker Domain.

@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupDnsZoneTransfersPeer(ctx, &cloudflare.LookupDnsZoneTransfersPeerArgs{
 //				AccountId: "01a7362d577a6c3019a474fd6f485823",
-//				PeerId:    pulumi.StringRef("23ff594956f20c2a721606e94745a8aa"),
+//				PeerId:    "23ff594956f20c2a721606e94745a8aa",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,8 +49,8 @@ func LookupDnsZoneTransfersPeer(ctx *pulumi.Context, args *LookupDnsZoneTransfer
 
 // A collection of arguments for invoking getDnsZoneTransfersPeer.
 type LookupDnsZoneTransfersPeerArgs struct {
-	AccountId string  `pulumi:"accountId"`
-	PeerId    *string `pulumi:"peerId"`
+	AccountId string `pulumi:"accountId"`
+	PeerId    string `pulumi:"peerId"`
 }
 
 // A collection of values returned by getDnsZoneTransfersPeer.
@@ -63,8 +63,8 @@ type LookupDnsZoneTransfersPeerResult struct {
 	// Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones.
 	IxfrEnable bool `pulumi:"ixfrEnable"`
 	// The name of the peer.
-	Name   string  `pulumi:"name"`
-	PeerId *string `pulumi:"peerId"`
+	Name   string `pulumi:"name"`
+	PeerId string `pulumi:"peerId"`
 	// DNS port of primary or secondary nameserver, depending on what zone this peer is linked to.
 	Port float64 `pulumi:"port"`
 	// TSIG authentication will be used for zone transfer if configured.
@@ -82,8 +82,8 @@ func LookupDnsZoneTransfersPeerOutput(ctx *pulumi.Context, args LookupDnsZoneTra
 
 // A collection of arguments for invoking getDnsZoneTransfersPeer.
 type LookupDnsZoneTransfersPeerOutputArgs struct {
-	AccountId pulumi.StringInput    `pulumi:"accountId"`
-	PeerId    pulumi.StringPtrInput `pulumi:"peerId"`
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	PeerId    pulumi.StringInput `pulumi:"peerId"`
 }
 
 func (LookupDnsZoneTransfersPeerOutputArgs) ElementType() reflect.Type {
@@ -129,8 +129,8 @@ func (o LookupDnsZoneTransfersPeerResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsZoneTransfersPeerResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o LookupDnsZoneTransfersPeerResultOutput) PeerId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupDnsZoneTransfersPeerResult) *string { return v.PeerId }).(pulumi.StringPtrOutput)
+func (o LookupDnsZoneTransfersPeerResultOutput) PeerId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDnsZoneTransfersPeerResult) string { return v.PeerId }).(pulumi.StringOutput)
 }
 
 // DNS port of primary or secondary nameserver, depending on what zone this peer is linked to.

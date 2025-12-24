@@ -16,6 +16,10 @@ import * as utilities from "./utilities";
  *     notificationUrl: "https://example.com",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ~> This resource does not currently support `pulumi import`.
  */
 export class StreamWebhook extends pulumi.CustomResource {
     /**

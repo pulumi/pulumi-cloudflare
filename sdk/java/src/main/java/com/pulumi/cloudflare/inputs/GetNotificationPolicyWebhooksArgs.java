@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetNotificationPolicyWebhooksArgs extends com.pulumi.resources.InvokeArgs {
@@ -35,15 +33,15 @@ public final class GetNotificationPolicyWebhooksArgs extends com.pulumi.resource
      * The unique identifier of a webhook
      * 
      */
-    @Import(name="webhookId")
-    private @Nullable Output<String> webhookId;
+    @Import(name="webhookId", required=true)
+    private Output<String> webhookId;
 
     /**
      * @return The unique identifier of a webhook
      * 
      */
-    public Optional<Output<String>> webhookId() {
-        return Optional.ofNullable(this.webhookId);
+    public Output<String> webhookId() {
+        return this.webhookId;
     }
 
     private GetNotificationPolicyWebhooksArgs() {}
@@ -98,7 +96,7 @@ public final class GetNotificationPolicyWebhooksArgs extends com.pulumi.resource
          * @return builder
          * 
          */
-        public Builder webhookId(@Nullable Output<String> webhookId) {
+        public Builder webhookId(Output<String> webhookId) {
             $.webhookId = webhookId;
             return this;
         }
@@ -116,6 +114,9 @@ public final class GetNotificationPolicyWebhooksArgs extends com.pulumi.resource
         public GetNotificationPolicyWebhooksArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetNotificationPolicyWebhooksArgs", "accountId");
+            }
+            if ($.webhookId == null) {
+                throw new MissingRequiredPropertyException("GetNotificationPolicyWebhooksArgs", "webhookId");
             }
             return $;
         }

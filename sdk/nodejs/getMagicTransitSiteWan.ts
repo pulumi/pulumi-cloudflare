@@ -44,7 +44,7 @@ export interface GetMagicTransitSiteWanArgs {
     /**
      * Identifier
      */
-    wanId?: string;
+    wanId: string;
 }
 
 /**
@@ -85,7 +85,7 @@ export interface GetMagicTransitSiteWanResult {
     /**
      * Identifier
      */
-    readonly wanId?: string;
+    readonly wanId: string;
 }
 /**
  * ## Example Usage
@@ -125,5 +125,5 @@ export interface GetMagicTransitSiteWanOutputArgs {
     /**
      * Identifier
      */
-    wanId?: pulumi.Input<string>;
+    wanId: pulumi.Input<string>;
 }

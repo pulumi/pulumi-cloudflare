@@ -48,13 +48,17 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ~> This resource does not currently support `pulumi import`.
 type QueueConsumer struct {
 	pulumi.CustomResourceState
 
 	// A Resource identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// A Resource identifier.
-	ConsumerId      pulumi.StringPtrOutput `pulumi:"consumerId"`
+	ConsumerId      pulumi.StringOutput    `pulumi:"consumerId"`
 	CreatedOn       pulumi.StringOutput    `pulumi:"createdOn"`
 	DeadLetterQueue pulumi.StringPtrOutput `pulumi:"deadLetterQueue"`
 	// A Resource identifier.
@@ -145,9 +149,7 @@ func (QueueConsumerState) ElementType() reflect.Type {
 
 type queueConsumerArgs struct {
 	// A Resource identifier.
-	AccountId string `pulumi:"accountId"`
-	// A Resource identifier.
-	ConsumerId      *string `pulumi:"consumerId"`
+	AccountId       string  `pulumi:"accountId"`
 	DeadLetterQueue *string `pulumi:"deadLetterQueue"`
 	// A Resource identifier.
 	QueueId string `pulumi:"queueId"`
@@ -161,9 +163,7 @@ type queueConsumerArgs struct {
 // The set of arguments for constructing a QueueConsumer resource.
 type QueueConsumerArgs struct {
 	// A Resource identifier.
-	AccountId pulumi.StringInput
-	// A Resource identifier.
-	ConsumerId      pulumi.StringPtrInput
+	AccountId       pulumi.StringInput
 	DeadLetterQueue pulumi.StringPtrInput
 	// A Resource identifier.
 	QueueId pulumi.StringInput
@@ -267,8 +267,8 @@ func (o QueueConsumerOutput) AccountId() pulumi.StringOutput {
 }
 
 // A Resource identifier.
-func (o QueueConsumerOutput) ConsumerId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *QueueConsumer) pulumi.StringPtrOutput { return v.ConsumerId }).(pulumi.StringPtrOutput)
+func (o QueueConsumerOutput) ConsumerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *QueueConsumer) pulumi.StringOutput { return v.ConsumerId }).(pulumi.StringOutput)
 }
 
 func (o QueueConsumerOutput) CreatedOn() pulumi.StringOutput {

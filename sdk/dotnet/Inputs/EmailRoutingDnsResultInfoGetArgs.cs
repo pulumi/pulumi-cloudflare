@@ -15,8 +15,8 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// Total number of results for the requested service.
         /// </summary>
-        [Input("count")]
-        public Input<double>? Count { get; set; }
+        [Input("emailRoutingDnsCount")]
+        public Input<double>? EmailRoutingDnsCount { get; set; }
 
         /// <summary>
         /// Current page within paginated list of results.

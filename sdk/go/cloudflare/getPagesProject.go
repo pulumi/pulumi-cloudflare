@@ -49,7 +49,7 @@ func LookupPagesProject(ctx *pulumi.Context, args *LookupPagesProjectArgs, opts 
 
 // A collection of arguments for invoking getPagesProject.
 type LookupPagesProjectArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Name of the project.
 	ProjectName string `pulumi:"projectName"`
@@ -57,7 +57,7 @@ type LookupPagesProjectArgs struct {
 
 // A collection of values returned by getPagesProject.
 type LookupPagesProjectResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Configs for the project build process.
 	BuildConfig GetPagesProjectBuildConfig `pulumi:"buildConfig"`
@@ -73,7 +73,7 @@ type LookupPagesProjectResult struct {
 	Framework string `pulumi:"framework"`
 	// Version of the framework the project is using.
 	FrameworkVersion string `pulumi:"frameworkVersion"`
-	// ID of the project.
+	// Name of the project.
 	Id string `pulumi:"id"`
 	// Most recent deployment of the project.
 	LatestDeployment GetPagesProjectLatestDeployment `pulumi:"latestDeployment"`
@@ -86,8 +86,9 @@ type LookupPagesProjectResult struct {
 	// Name of the production script.
 	ProductionScriptName string `pulumi:"productionScriptName"`
 	// Name of the project.
-	ProjectName string                `pulumi:"projectName"`
-	Source      GetPagesProjectSource `pulumi:"source"`
+	ProjectName string `pulumi:"projectName"`
+	// Configs for the project source control.
+	Source GetPagesProjectSource `pulumi:"source"`
 	// The Cloudflare subdomain associated with the project.
 	Subdomain string `pulumi:"subdomain"`
 	// Whether the project uses functions.
@@ -105,7 +106,7 @@ func LookupPagesProjectOutput(ctx *pulumi.Context, args LookupPagesProjectOutput
 
 // A collection of arguments for invoking getPagesProject.
 type LookupPagesProjectOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Name of the project.
 	ProjectName pulumi.StringInput `pulumi:"projectName"`
@@ -130,7 +131,7 @@ func (o LookupPagesProjectResultOutput) ToLookupPagesProjectResultOutputWithCont
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupPagesProjectResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPagesProjectResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -170,7 +171,7 @@ func (o LookupPagesProjectResultOutput) FrameworkVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPagesProjectResult) string { return v.FrameworkVersion }).(pulumi.StringOutput)
 }
 
-// ID of the project.
+// Name of the project.
 func (o LookupPagesProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPagesProjectResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -205,6 +206,7 @@ func (o LookupPagesProjectResultOutput) ProjectName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPagesProjectResult) string { return v.ProjectName }).(pulumi.StringOutput)
 }
 
+// Configs for the project source control.
 func (o LookupPagesProjectResultOutput) Source() GetPagesProjectSourceOutput {
 	return o.ApplyT(func(v LookupPagesProjectResult) GetPagesProjectSource { return v.Source }).(GetPagesProjectSourceOutput)
 }

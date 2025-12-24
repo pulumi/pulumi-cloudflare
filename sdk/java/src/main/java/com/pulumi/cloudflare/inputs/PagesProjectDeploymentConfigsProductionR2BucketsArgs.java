@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -34,15 +35,15 @@ public final class PagesProjectDeploymentConfigsProductionR2BucketsArgs extends 
      * Name of the R2 bucket.
      * 
      */
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
     /**
      * @return Name of the R2 bucket.
      * 
      */
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
     private PagesProjectDeploymentConfigsProductionR2BucketsArgs() {}
@@ -97,7 +98,7 @@ public final class PagesProjectDeploymentConfigsProductionR2BucketsArgs extends 
          * @return builder
          * 
          */
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
@@ -113,6 +114,9 @@ public final class PagesProjectDeploymentConfigsProductionR2BucketsArgs extends 
         }
 
         public PagesProjectDeploymentConfigsProductionR2BucketsArgs build() {
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("PagesProjectDeploymentConfigsProductionR2BucketsArgs", "name");
+            }
             return $;
         }
     }

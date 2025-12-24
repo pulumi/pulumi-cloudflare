@@ -93,8 +93,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("dnsFirewallId")]
-        public string? DnsFirewallId { get; set; }
+        [Input("dnsFirewallId", required: true)]
+        public string DnsFirewallId { get; set; } = null!;
 
         public GetDnsFirewallArgs()
         {
@@ -113,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("dnsFirewallId")]
-        public Input<string>? DnsFirewallId { get; set; }
+        [Input("dnsFirewallId", required: true)]
+        public Input<string> DnsFirewallId { get; set; } = null!;
 
         public GetDnsFirewallInvokeArgs()
         {
@@ -141,7 +141,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string? DnsFirewallId;
+        public readonly string DnsFirewallId;
         public readonly ImmutableArray<string> DnsFirewallIps;
         /// <summary>
         /// Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
@@ -174,7 +174,7 @@ namespace Pulumi.Cloudflare
 
             bool deprecateAnyRequests,
 
-            string? dnsFirewallId,
+            string dnsFirewallId,
 
             ImmutableArray<string> dnsFirewallIps,
 

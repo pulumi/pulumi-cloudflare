@@ -58,7 +58,7 @@ type LookupImageVariantArgs struct {
 type LookupImageVariantResult struct {
 	// Account identifier tag.
 	AccountId string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this resource.
 	Id        string                 `pulumi:"id"`
 	Variant   GetImageVariantVariant `pulumi:"variant"`
 	VariantId string                 `pulumi:"variantId"`
@@ -104,7 +104,7 @@ func (o LookupImageVariantResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageVariantResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this resource.
 func (o LookupImageVariantResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageVariantResult) string { return v.Id }).(pulumi.StringOutput)
 }

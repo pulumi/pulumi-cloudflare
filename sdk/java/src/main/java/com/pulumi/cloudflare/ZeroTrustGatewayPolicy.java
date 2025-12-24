@@ -41,6 +41,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsEgressArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsPayloadLogArgs;
@@ -130,6 +131,9 @@ import javax.annotation.Nullable;
  *                     .ipv4("192.0.2.2")
  *                     .ipv4Fallback("192.0.2.3")
  *                     .ipv6("2001:DB8::/64")
+ *                     .build())
+ *                 .forensicCopy(ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs.builder()
+ *                     .enabled(true)
  *                     .build())
  *                 .ignoreCnameCategoryMatches(true)
  *                 .insecureDisableDnssecValidation(false)

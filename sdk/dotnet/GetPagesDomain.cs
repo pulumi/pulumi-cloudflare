@@ -88,16 +88,16 @@ namespace Pulumi.Cloudflare
     public sealed class GetPagesDomainArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Name of the domain.
+        /// The domain name.
         /// </summary>
-        [Input("domainName")]
-        public string? DomainName { get; set; }
+        [Input("domainName", required: true)]
+        public string DomainName { get; set; } = null!;
 
         /// <summary>
         /// Name of the project.
@@ -114,16 +114,16 @@ namespace Pulumi.Cloudflare
     public sealed class GetPagesDomainInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Name of the domain.
+        /// The domain name.
         /// </summary>
-        [Input("domainName")]
-        public Input<string>? DomainName { get; set; }
+        [Input("domainName", required: true)]
+        public Input<string> DomainName { get; set; } = null!;
 
         /// <summary>
         /// Name of the project.
@@ -142,7 +142,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetPagesDomainResult
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string AccountId;
         /// <summary>
@@ -152,13 +152,16 @@ namespace Pulumi.Cloudflare
         public readonly string CreatedOn;
         public readonly string DomainId;
         /// <summary>
-        /// Name of the domain.
+        /// The domain name.
         /// </summary>
-        public readonly string? DomainName;
+        public readonly string DomainName;
         /// <summary>
-        /// Name of the domain.
+        /// The domain name.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The domain name.
+        /// </summary>
         public readonly string Name;
         /// <summary>
         /// Name of the project.
@@ -182,7 +185,7 @@ namespace Pulumi.Cloudflare
 
             string domainId,
 
-            string? domainName,
+            string domainName,
 
             string id,
 

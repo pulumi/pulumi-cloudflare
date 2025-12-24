@@ -135,6 +135,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// The Warp Connector Token is used as a mechanism to authenticate the operation of a tunnel.
+        /// </summary>
+        public readonly string Token;
+        /// <summary>
         /// UUID of the tunnel.
         /// </summary>
         public readonly string TunnelId;
@@ -145,10 +149,13 @@ namespace Pulumi.Cloudflare
 
             string id,
 
+            string token,
+
             string tunnelId)
         {
             AccountId = accountId;
             Id = id;
+            Token = token;
             TunnelId = tunnelId;
         }
     }

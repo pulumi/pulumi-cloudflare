@@ -45,8 +45,8 @@ class GetCloudforceOneRequestMessageResult:
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
         pulumi.set(__self__, "created", created)
-        if id and not isinstance(id, int):
-            raise TypeError("Expected argument 'id' to be a int")
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if is_follow_on_request and not isinstance(is_follow_on_request, bool):
             raise TypeError("Expected argument 'is_follow_on_request' to be a bool")
@@ -120,9 +120,9 @@ class GetCloudforceOneRequestMessageResult:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> _builtins.int:
+    def id(self) -> _builtins.str:
         """
-        Message ID.
+        UUID.
         """
         return pulumi.get(self, "id")
 

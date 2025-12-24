@@ -71,7 +71,7 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
     private List<GetZeroTrustDeviceDefaultProfileFallbackDomain> fallbackDomains;
     private String gatewayUniqueId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this resource.
      * 
      */
     private String id;
@@ -188,7 +188,7 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
         return this.gatewayUniqueId;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this resource.
      * 
      */
     public String id() {

@@ -15,6 +15,10 @@ import * as utilities from "./utilities";
  *
  * const exampleStream = new cloudflare.Stream("example_stream", {accountId: "023e105f4ecef8ad9ca31a8372d0c353"});
  * ```
+ *
+ * ## Import
+ *
+ * ~> This resource does not currently support `pulumi import`.
  */
 export class Stream extends pulumi.CustomResource {
     /**

@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// What caused the deployment.
-        /// Available values: "push", "AdHoc".
+        /// Available values: "github:push", "ad*hoc", "deploy*hook".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

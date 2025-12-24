@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupWorker(ctx, &cloudflare.LookupWorkerArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
-//				WorkerId:  pulumi.StringRef("worker_id"),
+//				WorkerId:  "worker_id",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -52,7 +52,7 @@ type LookupWorkerArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Identifier for the Worker, which can be ID or name.
-	WorkerId *string `pulumi:"workerId"`
+	WorkerId string `pulumi:"workerId"`
 }
 
 // A collection of values returned by getWorker.
@@ -80,7 +80,7 @@ type LookupWorkerResult struct {
 	// When the Worker was most recently updated.
 	UpdatedOn string `pulumi:"updatedOn"`
 	// Identifier for the Worker, which can be ID or name.
-	WorkerId *string `pulumi:"workerId"`
+	WorkerId string `pulumi:"workerId"`
 }
 
 func LookupWorkerOutput(ctx *pulumi.Context, args LookupWorkerOutputArgs, opts ...pulumi.InvokeOption) LookupWorkerResultOutput {
@@ -97,7 +97,7 @@ type LookupWorkerOutputArgs struct {
 	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Identifier for the Worker, which can be ID or name.
-	WorkerId pulumi.StringPtrInput `pulumi:"workerId"`
+	WorkerId pulumi.StringInput `pulumi:"workerId"`
 }
 
 func (LookupWorkerOutputArgs) ElementType() reflect.Type {
@@ -175,8 +175,8 @@ func (o LookupWorkerResultOutput) UpdatedOn() pulumi.StringOutput {
 }
 
 // Identifier for the Worker, which can be ID or name.
-func (o LookupWorkerResultOutput) WorkerId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupWorkerResult) *string { return v.WorkerId }).(pulumi.StringPtrOutput)
+func (o LookupWorkerResultOutput) WorkerId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkerResult) string { return v.WorkerId }).(pulumi.StringOutput)
 }
 
 func init() {

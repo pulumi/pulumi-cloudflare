@@ -16,6 +16,10 @@ import * as utilities from "./utilities";
  *     name: "my-turn-key",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ~> This resource does not currently support `pulumi import`.
  */
 export class CallsTurnApp extends pulumi.CustomResource {
     /**

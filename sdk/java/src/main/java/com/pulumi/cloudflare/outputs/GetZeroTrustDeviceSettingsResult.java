@@ -19,6 +19,26 @@ public final class GetZeroTrustDeviceSettingsResult {
      */
     private Double disableForTime;
     /**
+     * @return Controls whether the external emergency disconnect feature is enabled.
+     * 
+     */
+    private Boolean externalEmergencySignalEnabled;
+    /**
+     * @return The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server&#39;s identity. The device will ignore any response if the server&#39;s certificate fingerprint does not exactly match this value.
+     * 
+     */
+    private String externalEmergencySignalFingerprint;
+    /**
+     * @return The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., &#34;5m&#34;, &#34;2m30s&#34;, &#34;1h&#34;). Minimum 30 seconds.
+     * 
+     */
+    private String externalEmergencySignalInterval;
+    /**
+     * @return The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
+     * 
+     */
+    private String externalEmergencySignalUrl;
+    /**
      * @return Enable gateway proxy filtering on TCP.
      * 
      */
@@ -54,6 +74,34 @@ public final class GetZeroTrustDeviceSettingsResult {
      */
     public Double disableForTime() {
         return this.disableForTime;
+    }
+    /**
+     * @return Controls whether the external emergency disconnect feature is enabled.
+     * 
+     */
+    public Boolean externalEmergencySignalEnabled() {
+        return this.externalEmergencySignalEnabled;
+    }
+    /**
+     * @return The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server&#39;s identity. The device will ignore any response if the server&#39;s certificate fingerprint does not exactly match this value.
+     * 
+     */
+    public String externalEmergencySignalFingerprint() {
+        return this.externalEmergencySignalFingerprint;
+    }
+    /**
+     * @return The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., &#34;5m&#34;, &#34;2m30s&#34;, &#34;1h&#34;). Minimum 30 seconds.
+     * 
+     */
+    public String externalEmergencySignalInterval() {
+        return this.externalEmergencySignalInterval;
+    }
+    /**
+     * @return The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
+     * 
+     */
+    public String externalEmergencySignalUrl() {
+        return this.externalEmergencySignalUrl;
     }
     /**
      * @return Enable gateway proxy filtering on TCP.
@@ -102,6 +150,10 @@ public final class GetZeroTrustDeviceSettingsResult {
     public static final class Builder {
         private String accountId;
         private Double disableForTime;
+        private Boolean externalEmergencySignalEnabled;
+        private String externalEmergencySignalFingerprint;
+        private String externalEmergencySignalInterval;
+        private String externalEmergencySignalUrl;
         private Boolean gatewayProxyEnabled;
         private Boolean gatewayUdpProxyEnabled;
         private String id;
@@ -112,6 +164,10 @@ public final class GetZeroTrustDeviceSettingsResult {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.disableForTime = defaults.disableForTime;
+    	      this.externalEmergencySignalEnabled = defaults.externalEmergencySignalEnabled;
+    	      this.externalEmergencySignalFingerprint = defaults.externalEmergencySignalFingerprint;
+    	      this.externalEmergencySignalInterval = defaults.externalEmergencySignalInterval;
+    	      this.externalEmergencySignalUrl = defaults.externalEmergencySignalUrl;
     	      this.gatewayProxyEnabled = defaults.gatewayProxyEnabled;
     	      this.gatewayUdpProxyEnabled = defaults.gatewayUdpProxyEnabled;
     	      this.id = defaults.id;
@@ -133,6 +189,38 @@ public final class GetZeroTrustDeviceSettingsResult {
               throw new MissingRequiredPropertyException("GetZeroTrustDeviceSettingsResult", "disableForTime");
             }
             this.disableForTime = disableForTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder externalEmergencySignalEnabled(Boolean externalEmergencySignalEnabled) {
+            if (externalEmergencySignalEnabled == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDeviceSettingsResult", "externalEmergencySignalEnabled");
+            }
+            this.externalEmergencySignalEnabled = externalEmergencySignalEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder externalEmergencySignalFingerprint(String externalEmergencySignalFingerprint) {
+            if (externalEmergencySignalFingerprint == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDeviceSettingsResult", "externalEmergencySignalFingerprint");
+            }
+            this.externalEmergencySignalFingerprint = externalEmergencySignalFingerprint;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder externalEmergencySignalInterval(String externalEmergencySignalInterval) {
+            if (externalEmergencySignalInterval == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDeviceSettingsResult", "externalEmergencySignalInterval");
+            }
+            this.externalEmergencySignalInterval = externalEmergencySignalInterval;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder externalEmergencySignalUrl(String externalEmergencySignalUrl) {
+            if (externalEmergencySignalUrl == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDeviceSettingsResult", "externalEmergencySignalUrl");
+            }
+            this.externalEmergencySignalUrl = externalEmergencySignalUrl;
             return this;
         }
         @CustomType.Setter
@@ -179,6 +267,10 @@ public final class GetZeroTrustDeviceSettingsResult {
             final var _resultValue = new GetZeroTrustDeviceSettingsResult();
             _resultValue.accountId = accountId;
             _resultValue.disableForTime = disableForTime;
+            _resultValue.externalEmergencySignalEnabled = externalEmergencySignalEnabled;
+            _resultValue.externalEmergencySignalFingerprint = externalEmergencySignalFingerprint;
+            _resultValue.externalEmergencySignalInterval = externalEmergencySignalInterval;
+            _resultValue.externalEmergencySignalUrl = externalEmergencySignalUrl;
             _resultValue.gatewayProxyEnabled = gatewayProxyEnabled;
             _resultValue.gatewayUdpProxyEnabled = gatewayUdpProxyEnabled;
             _resultValue.id = id;

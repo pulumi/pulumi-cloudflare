@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
@@ -21,30 +22,30 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
      * The Certificate Signing Request (CSR). Must be newline-encoded.
      * 
      */
-    @Import(name="csr")
-    private @Nullable Output<String> csr;
+    @Import(name="csr", required=true)
+    private Output<String> csr;
 
     /**
      * @return The Certificate Signing Request (CSR). Must be newline-encoded.
      * 
      */
-    public Optional<Output<String>> csr() {
-        return Optional.ofNullable(this.csr);
+    public Output<String> csr() {
+        return this.csr;
     }
 
     /**
      * Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
      * 
      */
-    @Import(name="hostnames")
-    private @Nullable Output<List<String>> hostnames;
+    @Import(name="hostnames", required=true)
+    private Output<List<String>> hostnames;
 
     /**
      * @return Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
      * 
      */
-    public Optional<Output<List<String>>> hostnames() {
-        return Optional.ofNullable(this.hostnames);
+    public Output<List<String>> hostnames() {
+        return this.hostnames;
     }
 
     /**
@@ -52,16 +53,16 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
      * Available values: &#34;origin-rsa&#34;, &#34;origin-ecc&#34;, &#34;keyless-certificate&#34;.
      * 
      */
-    @Import(name="requestType")
-    private @Nullable Output<String> requestType;
+    @Import(name="requestType", required=true)
+    private Output<String> requestType;
 
     /**
      * @return Signature type desired on certificate (&#34;origin-rsa&#34; (rsa), &#34;origin-ecc&#34; (ecdsa), or &#34;keyless-certificate&#34; (for Keyless SSL servers).
      * Available values: &#34;origin-rsa&#34;, &#34;origin-ecc&#34;, &#34;keyless-certificate&#34;.
      * 
      */
-    public Optional<Output<String>> requestType() {
-        return Optional.ofNullable(this.requestType);
+    public Output<String> requestType() {
+        return this.requestType;
     }
 
     /**
@@ -114,7 +115,7 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder csr(@Nullable Output<String> csr) {
+        public Builder csr(Output<String> csr) {
             $.csr = csr;
             return this;
         }
@@ -135,7 +136,7 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder hostnames(@Nullable Output<List<String>> hostnames) {
+        public Builder hostnames(Output<List<String>> hostnames) {
             $.hostnames = hostnames;
             return this;
         }
@@ -167,7 +168,7 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder requestType(@Nullable Output<String> requestType) {
+        public Builder requestType(Output<String> requestType) {
             $.requestType = requestType;
             return this;
         }
@@ -207,6 +208,15 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
         }
 
         public OriginCaCertificateArgs build() {
+            if ($.csr == null) {
+                throw new MissingRequiredPropertyException("OriginCaCertificateArgs", "csr");
+            }
+            if ($.hostnames == null) {
+                throw new MissingRequiredPropertyException("OriginCaCertificateArgs", "hostnames");
+            }
+            if ($.requestType == null) {
+                throw new MissingRequiredPropertyException("OriginCaCertificateArgs", "requestType");
+            }
             return $;
         }
     }

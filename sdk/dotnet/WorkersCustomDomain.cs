@@ -23,10 +23,10 @@ namespace Pulumi.Cloudflare
     ///     var exampleWorkersCustomDomain = new Cloudflare.WorkersCustomDomain("example_workers_custom_domain", new()
     ///     {
     ///         AccountId = "9a7806061c88ada191ed06f989cc3dac",
-    ///         Environment = "production",
     ///         Hostname = "foo.example.com",
     ///         Service = "foo",
     ///         ZoneId = "593c9c94de529bbbfaac7c53ced0447d",
+    ///         Environment = "production",
     ///     });
     /// 
     /// });
@@ -51,7 +51,7 @@ namespace Pulumi.Cloudflare
         /// Worker environment associated with the zone and hostname.
         /// </summary>
         [Output("environment")]
-        public Output<string> Environment { get; private set; } = null!;
+        public Output<string?> Environment { get; private set; } = null!;
 
         /// <summary>
         /// Hostname of the Worker Domain.
@@ -136,8 +136,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Worker environment associated with the zone and hostname.
         /// </summary>
-        [Input("environment", required: true)]
-        public Input<string> Environment { get; set; } = null!;
+        [Input("environment")]
+        public Input<string>? Environment { get; set; }
 
         /// <summary>
         /// Hostname of the Worker Domain.

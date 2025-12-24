@@ -8,8 +8,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustRiskScoringIntegrationResult {
@@ -34,7 +32,7 @@ public final class GetZeroTrustRiskScoringIntegrationResult {
      * 
      */
     private String id;
-    private @Nullable String integrationId;
+    private String integrationId;
     /**
      * @return Available values: &#34;Okta&#34;.
      * 
@@ -90,8 +88,8 @@ public final class GetZeroTrustRiskScoringIntegrationResult {
     public String id() {
         return this.id;
     }
-    public Optional<String> integrationId() {
-        return Optional.ofNullable(this.integrationId);
+    public String integrationId() {
+        return this.integrationId;
     }
     /**
      * @return Available values: &#34;Okta&#34;.
@@ -138,7 +136,7 @@ public final class GetZeroTrustRiskScoringIntegrationResult {
         private Boolean active;
         private String createdAt;
         private String id;
-        private @Nullable String integrationId;
+        private String integrationId;
         private String integrationType;
         private String referenceId;
         private String tenantUrl;
@@ -199,8 +197,10 @@ public final class GetZeroTrustRiskScoringIntegrationResult {
             return this;
         }
         @CustomType.Setter
-        public Builder integrationId(@Nullable String integrationId) {
-
+        public Builder integrationId(String integrationId) {
+            if (integrationId == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustRiskScoringIntegrationResult", "integrationId");
+            }
             this.integrationId = integrationId;
             return this;
         }

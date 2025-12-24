@@ -75,6 +75,7 @@ public final class GetZeroTrustDeviceCustomProfilesResult {
     private List<GetZeroTrustDeviceCustomProfilesResultExclude> excludes;
     private List<GetZeroTrustDeviceCustomProfilesResultFallbackDomain> fallbackDomains;
     private String gatewayUniqueId;
+    private String id;
     /**
      * @return List of routes included in the WARP client&#39;s tunnel.
      * 
@@ -218,6 +219,9 @@ public final class GetZeroTrustDeviceCustomProfilesResult {
     public String gatewayUniqueId() {
         return this.gatewayUniqueId;
     }
+    public String id() {
+        return this.id;
+    }
     /**
      * @return List of routes included in the WARP client&#39;s tunnel.
      * 
@@ -327,6 +331,7 @@ public final class GetZeroTrustDeviceCustomProfilesResult {
         private List<GetZeroTrustDeviceCustomProfilesResultExclude> excludes;
         private List<GetZeroTrustDeviceCustomProfilesResultFallbackDomain> fallbackDomains;
         private String gatewayUniqueId;
+        private String id;
         private List<GetZeroTrustDeviceCustomProfilesResultInclude> includes;
         private Double lanAllowMinutes;
         private Double lanAllowSubnetSize;
@@ -357,6 +362,7 @@ public final class GetZeroTrustDeviceCustomProfilesResult {
     	      this.excludes = defaults.excludes;
     	      this.fallbackDomains = defaults.fallbackDomains;
     	      this.gatewayUniqueId = defaults.gatewayUniqueId;
+    	      this.id = defaults.id;
     	      this.includes = defaults.includes;
     	      this.lanAllowMinutes = defaults.lanAllowMinutes;
     	      this.lanAllowSubnetSize = defaults.lanAllowSubnetSize;
@@ -481,6 +487,14 @@ public final class GetZeroTrustDeviceCustomProfilesResult {
               throw new MissingRequiredPropertyException("GetZeroTrustDeviceCustomProfilesResult", "gatewayUniqueId");
             }
             this.gatewayUniqueId = gatewayUniqueId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDeviceCustomProfilesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -616,6 +630,7 @@ public final class GetZeroTrustDeviceCustomProfilesResult {
             _resultValue.excludes = excludes;
             _resultValue.fallbackDomains = fallbackDomains;
             _resultValue.gatewayUniqueId = gatewayUniqueId;
+            _resultValue.id = id;
             _resultValue.includes = includes;
             _resultValue.lanAllowMinutes = lanAllowMinutes;
             _resultValue.lanAllowSubnetSize = lanAllowSubnetSize;

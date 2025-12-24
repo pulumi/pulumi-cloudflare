@@ -9,8 +9,6 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWaitingRoomEventResult {
@@ -35,7 +33,7 @@ public final class GetWaitingRoomEventResult {
      * 
      */
     private String eventEndTime;
-    private @Nullable String eventId;
+    private String eventId;
     /**
      * @return An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event&#39;s configuration. The start time must be at least one minute before `eventEndTime`.
      * 
@@ -138,8 +136,8 @@ public final class GetWaitingRoomEventResult {
     public String eventEndTime() {
         return this.eventEndTime;
     }
-    public Optional<String> eventId() {
-        return Optional.ofNullable(this.eventId);
+    public String eventId() {
+        return this.eventId;
     }
     /**
      * @return An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event&#39;s configuration. The start time must be at least one minute before `eventEndTime`.
@@ -255,7 +253,7 @@ public final class GetWaitingRoomEventResult {
         private String description;
         private Boolean disableSessionRenewal;
         private String eventEndTime;
-        private @Nullable String eventId;
+        private String eventId;
         private String eventStartTime;
         private String id;
         private String modifiedOn;
@@ -338,8 +336,10 @@ public final class GetWaitingRoomEventResult {
             return this;
         }
         @CustomType.Setter
-        public Builder eventId(@Nullable String eventId) {
-
+        public Builder eventId(String eventId) {
+            if (eventId == null) {
+              throw new MissingRequiredPropertyException("GetWaitingRoomEventResult", "eventId");
+            }
             this.eventId = eventId;
             return this;
         }

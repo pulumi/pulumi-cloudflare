@@ -22,6 +22,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// RFC3986-compliant host.
         /// </summary>
         public readonly string Host;
+        /// <summary>
+        /// UUID.
+        /// </summary>
+        public readonly string Id;
         public readonly string LastUpdated;
         /// <summary>
         /// The HTTP method used to access the endpoint.
@@ -41,6 +45,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string host,
 
+            string id,
+
             string lastUpdated,
 
             string method,
@@ -50,6 +56,7 @@ namespace Pulumi.Cloudflare.Outputs
             Endpoint = endpoint;
             Features = features;
             Host = host;
+            Id = id;
             LastUpdated = lastUpdated;
             Method = method;
             OperationId = operationId;

@@ -30,7 +30,7 @@ class ZeroTrustListArgs:
         The set of arguments for constructing a ZeroTrustList resource.
         :param pulumi.Input[_builtins.str] name: Specify the list name.
         :param pulumi.Input[_builtins.str] type: Specify the list type.
-               Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+               Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
         :param pulumi.Input[_builtins.str] description: Provide the list description.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustListItemArgs']]] items: Add items to the list.
         """
@@ -68,7 +68,7 @@ class ZeroTrustListArgs:
     def type(self) -> pulumi.Input[_builtins.str]:
         """
         Specify the list type.
-        Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+        Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
         """
         return pulumi.get(self, "type")
 
@@ -119,7 +119,7 @@ class _ZeroTrustListState:
         :param pulumi.Input[_builtins.float] list_count: Indicate the number of items in the list.
         :param pulumi.Input[_builtins.str] name: Specify the list name.
         :param pulumi.Input[_builtins.str] type: Specify the list type.
-               Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+               Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -209,7 +209,7 @@ class _ZeroTrustListState:
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specify the list type.
-        Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+        Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
         """
         return pulumi.get(self, "type")
 
@@ -269,7 +269,7 @@ class ZeroTrustList(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustListItemArgs', 'ZeroTrustListItemArgsDict']]]] items: Add items to the list.
         :param pulumi.Input[_builtins.str] name: Specify the list name.
         :param pulumi.Input[_builtins.str] type: Specify the list type.
-               Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+               Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
         """
         ...
     @overload
@@ -376,7 +376,7 @@ class ZeroTrustList(pulumi.CustomResource):
         :param pulumi.Input[_builtins.float] list_count: Indicate the number of items in the list.
         :param pulumi.Input[_builtins.str] name: Specify the list name.
         :param pulumi.Input[_builtins.str] type: Specify the list type.
-               Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+               Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -439,7 +439,7 @@ class ZeroTrustList(pulumi.CustomResource):
     def type(self) -> pulumi.Output[_builtins.str]:
         """
         Specify the list type.
-        Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+        Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
         """
         return pulumi.get(self, "type")
 

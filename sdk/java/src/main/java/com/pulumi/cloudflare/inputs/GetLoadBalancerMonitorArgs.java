@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetLoadBalancerMonitorArgs extends com.pulumi.resources.InvokeArgs {
@@ -31,11 +29,11 @@ public final class GetLoadBalancerMonitorArgs extends com.pulumi.resources.Invok
         return this.accountId;
     }
 
-    @Import(name="monitorId")
-    private @Nullable Output<String> monitorId;
+    @Import(name="monitorId", required=true)
+    private Output<String> monitorId;
 
-    public Optional<Output<String>> monitorId() {
-        return Optional.ofNullable(this.monitorId);
+    public Output<String> monitorId() {
+        return this.monitorId;
     }
 
     private GetLoadBalancerMonitorArgs() {}
@@ -84,7 +82,7 @@ public final class GetLoadBalancerMonitorArgs extends com.pulumi.resources.Invok
             return accountId(Output.of(accountId));
         }
 
-        public Builder monitorId(@Nullable Output<String> monitorId) {
+        public Builder monitorId(Output<String> monitorId) {
             $.monitorId = monitorId;
             return this;
         }
@@ -96,6 +94,9 @@ public final class GetLoadBalancerMonitorArgs extends com.pulumi.resources.Invok
         public GetLoadBalancerMonitorArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetLoadBalancerMonitorArgs", "accountId");
+            }
+            if ($.monitorId == null) {
+                throw new MissingRequiredPropertyException("GetLoadBalancerMonitorArgs", "monitorId");
             }
             return $;
         }

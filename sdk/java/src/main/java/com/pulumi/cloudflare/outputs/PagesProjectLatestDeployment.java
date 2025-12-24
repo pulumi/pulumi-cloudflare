@@ -86,6 +86,10 @@ public final class PagesProjectLatestDeployment {
      * 
      */
     private @Nullable String shortId;
+    /**
+     * @return Configs for the project source control.
+     * 
+     */
     private @Nullable PagesProjectLatestDeploymentSource source;
     /**
      * @return List of past stages.
@@ -97,6 +101,11 @@ public final class PagesProjectLatestDeployment {
      * 
      */
     private @Nullable String url;
+    /**
+     * @return Whether the deployment uses functions.
+     * 
+     */
+    private @Nullable Boolean usesFunctions;
 
     private PagesProjectLatestDeployment() {}
     /**
@@ -191,6 +200,10 @@ public final class PagesProjectLatestDeployment {
     public Optional<String> shortId() {
         return Optional.ofNullable(this.shortId);
     }
+    /**
+     * @return Configs for the project source control.
+     * 
+     */
     public Optional<PagesProjectLatestDeploymentSource> source() {
         return Optional.ofNullable(this.source);
     }
@@ -207,6 +220,13 @@ public final class PagesProjectLatestDeployment {
      */
     public Optional<String> url() {
         return Optional.ofNullable(this.url);
+    }
+    /**
+     * @return Whether the deployment uses functions.
+     * 
+     */
+    public Optional<Boolean> usesFunctions() {
+        return Optional.ofNullable(this.usesFunctions);
     }
 
     public static Builder builder() {
@@ -234,6 +254,7 @@ public final class PagesProjectLatestDeployment {
         private @Nullable PagesProjectLatestDeploymentSource source;
         private @Nullable List<PagesProjectLatestDeploymentStage> stages;
         private @Nullable String url;
+        private @Nullable Boolean usesFunctions;
         public Builder() {}
         public Builder(PagesProjectLatestDeployment defaults) {
     	      Objects.requireNonNull(defaults);
@@ -253,6 +274,7 @@ public final class PagesProjectLatestDeployment {
     	      this.source = defaults.source;
     	      this.stages = defaults.stages;
     	      this.url = defaults.url;
+    	      this.usesFunctions = defaults.usesFunctions;
         }
 
         @CustomType.Setter
@@ -357,6 +379,12 @@ public final class PagesProjectLatestDeployment {
             this.url = url;
             return this;
         }
+        @CustomType.Setter
+        public Builder usesFunctions(@Nullable Boolean usesFunctions) {
+
+            this.usesFunctions = usesFunctions;
+            return this;
+        }
         public PagesProjectLatestDeployment build() {
             final var _resultValue = new PagesProjectLatestDeployment();
             _resultValue.aliases = aliases;
@@ -375,6 +403,7 @@ public final class PagesProjectLatestDeployment {
             _resultValue.source = source;
             _resultValue.stages = stages;
             _resultValue.url = url;
+            _resultValue.usesFunctions = usesFunctions;
             return _resultValue;
         }
     }

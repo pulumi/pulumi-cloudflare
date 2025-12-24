@@ -80,7 +80,7 @@ namespace Pulumi.Cloudflare
         /// Available values: "weekly", "monthly", "quarterly", "yearly".
         /// </summary>
         [Output("frequency")]
-        public Output<string?> Frequency { get; private set; } = null!;
+        public Output<string> Frequency { get; private set; } = null!;
 
         /// <summary>
         /// The price of the subscription that will be billed, in US dollars.

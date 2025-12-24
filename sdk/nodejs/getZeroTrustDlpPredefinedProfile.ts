@@ -41,35 +41,19 @@ export interface GetZeroTrustDlpPredefinedProfileArgs {
 export interface GetZeroTrustDlpPredefinedProfileResult {
     readonly accountId: string;
     readonly aiContextEnabled: boolean;
-    /**
-     * Related DLP policies will trigger when the match count exceeds the number set.
-     */
     readonly allowedMatchCount: number;
-    /**
-     * Available values: "low", "medium", "high", "veryHigh".
-     */
     readonly confidenceThreshold: string;
+    readonly enabledEntries: string[];
     /**
-     * Scan the context of predefined entries to only return matches surrounded by keywords.
-     *
      * @deprecated This attribute is deprecated.
      */
-    readonly contextAwareness: outputs.GetZeroTrustDlpPredefinedProfileContextAwareness;
-    /**
-     * When the profile was created.
-     */
-    readonly createdAt: string;
-    /**
-     * The description of the profile.
-     */
-    readonly description: string;
     readonly entries: outputs.GetZeroTrustDlpPredefinedProfileEntry[];
     /**
-     * The id of the profile (uuid).
+     * The ID of this resource.
      */
     readonly id: string;
     /**
-     * The name of the profile.
+     * The name of the predefined profile.
      */
     readonly name: string;
     readonly ocrEnabled: boolean;
@@ -78,14 +62,6 @@ export interface GetZeroTrustDlpPredefinedProfileResult {
      */
     readonly openAccess: boolean;
     readonly profileId: string;
-    /**
-     * Available values: "custom", "predefined", "integration".
-     */
-    readonly type: string;
-    /**
-     * When the profile was lasted updated.
-     */
-    readonly updatedAt: string;
 }
 /**
  * ## Example Usage

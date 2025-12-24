@@ -171,7 +171,7 @@ class GetZeroTrustAccessPolicyResult:
 
     @_builtins.property
     @pulumi.getter(name="policyId")
-    def policy_id(self) -> Optional[_builtins.str]:
+    def policy_id(self) -> _builtins.str:
         """
         The UUID of the policy
         """
@@ -290,7 +290,7 @@ def get_zero_trust_access_policy(account_id: Optional[_builtins.str] = None,
         session_duration=pulumi.get(__ret__, 'session_duration'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
 def get_zero_trust_access_policy_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                        policy_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                        policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessPolicyResult]:
     """
     ## Example Usage
