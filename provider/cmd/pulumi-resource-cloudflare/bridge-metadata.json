@@ -848,11 +848,29 @@
             },
             "cloudflare_magic_wan_gre_tunnel": {
                 "current": "cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "bgp": {
+                        "fields": {
+                            "extra_prefixes": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
             },
             "cloudflare_magic_wan_ipsec_tunnel": {
                 "current": "cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "bgp": {
+                        "fields": {
+                            "extra_prefixes": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
             },
             "cloudflare_magic_wan_static_route": {
                 "current": "cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute",
