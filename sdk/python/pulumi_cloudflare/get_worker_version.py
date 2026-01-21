@@ -27,7 +27,7 @@ class GetWorkerVersionResult:
     """
     A collection of values returned by getWorkerVersion.
     """
-    def __init__(__self__, account_id=None, annotations=None, assets=None, bindings=None, compatibility_date=None, compatibility_flags=None, created_on=None, id=None, include=None, limits=None, main_module=None, migrations=None, modules=None, number=None, placement=None, source=None, startup_time_ms=None, usage_model=None, version_id=None, worker_id=None):
+    def __init__(__self__, account_id=None, annotations=None, assets=None, bindings=None, compatibility_date=None, compatibility_flags=None, created_on=None, id=None, include=None, limits=None, main_module=None, main_script_base64=None, migrations=None, modules=None, number=None, placement=None, source=None, startup_time_ms=None, usage_model=None, version_id=None, worker_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -61,6 +61,9 @@ class GetWorkerVersionResult:
         if main_module and not isinstance(main_module, str):
             raise TypeError("Expected argument 'main_module' to be a str")
         pulumi.set(__self__, "main_module", main_module)
+        if main_script_base64 and not isinstance(main_script_base64, str):
+            raise TypeError("Expected argument 'main_script_base64' to be a str")
+        pulumi.set(__self__, "main_script_base64", main_script_base64)
         if migrations and not isinstance(migrations, dict):
             raise TypeError("Expected argument 'migrations' to be a dict")
         pulumi.set(__self__, "migrations", migrations)
@@ -158,6 +161,11 @@ class GetWorkerVersionResult:
         return pulumi.get(self, "main_module")
 
     @_builtins.property
+    @pulumi.getter(name="mainScriptBase64")
+    def main_script_base64(self) -> _builtins.str:
+        return pulumi.get(self, "main_script_base64")
+
+    @_builtins.property
     @pulumi.getter
     def migrations(self) -> 'outputs.GetWorkerVersionMigrationsResult':
         return pulumi.get(self, "migrations")
@@ -227,6 +235,7 @@ class AwaitableGetWorkerVersionResult(GetWorkerVersionResult):
             include=self.include,
             limits=self.limits,
             main_module=self.main_module,
+            main_script_base64=self.main_script_base64,
             migrations=self.migrations,
             modules=self.modules,
             number=self.number,
@@ -283,6 +292,7 @@ def get_worker_version(account_id: Optional[_builtins.str] = None,
         include=pulumi.get(__ret__, 'include'),
         limits=pulumi.get(__ret__, 'limits'),
         main_module=pulumi.get(__ret__, 'main_module'),
+        main_script_base64=pulumi.get(__ret__, 'main_script_base64'),
         migrations=pulumi.get(__ret__, 'migrations'),
         modules=pulumi.get(__ret__, 'modules'),
         number=pulumi.get(__ret__, 'number'),
@@ -336,6 +346,7 @@ def get_worker_version_output(account_id: Optional[pulumi.Input[_builtins.str]] 
         include=pulumi.get(__response__, 'include'),
         limits=pulumi.get(__response__, 'limits'),
         main_module=pulumi.get(__response__, 'main_module'),
+        main_script_base64=pulumi.get(__response__, 'main_script_base64'),
         migrations=pulumi.get(__response__, 'migrations'),
         modules=pulumi.get(__response__, 'modules'),
         number=pulumi.get(__response__, 'number'),

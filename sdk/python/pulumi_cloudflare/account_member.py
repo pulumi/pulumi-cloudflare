@@ -31,7 +31,7 @@ class AccountMemberArgs:
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
         :param pulumi.Input[_builtins.str] email: The contact email address of the user.
         :param pulumi.Input[Sequence[pulumi.Input['AccountMemberPolicyArgs']]] policies: Array of policies associated with this member.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] roles: Array of roles associated with this member.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] roles: Set of roles associated with this member.
         :param pulumi.Input[_builtins.str] status: Available values: "accepted", "pending".
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -83,7 +83,7 @@ class AccountMemberArgs:
     @pulumi.getter
     def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Array of roles associated with this member.
+        Set of roles associated with this member.
         """
         return pulumi.get(self, "roles")
 
@@ -118,7 +118,7 @@ class _AccountMemberState:
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
         :param pulumi.Input[_builtins.str] email: The contact email address of the user.
         :param pulumi.Input[Sequence[pulumi.Input['AccountMemberPolicyArgs']]] policies: Array of policies associated with this member.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] roles: Array of roles associated with this member.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] roles: Set of roles associated with this member.
         :param pulumi.Input[_builtins.str] status: Available values: "accepted", "pending".
         :param pulumi.Input['AccountMemberUserArgs'] user: Details of the user associated to the membership.
         """
@@ -175,7 +175,7 @@ class _AccountMemberState:
     @pulumi.getter
     def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Array of roles associated with this member.
+        Set of roles associated with this member.
         """
         return pulumi.get(self, "roles")
 
@@ -245,7 +245,7 @@ class AccountMember(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
         :param pulumi.Input[_builtins.str] email: The contact email address of the user.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AccountMemberPolicyArgs', 'AccountMemberPolicyArgsDict']]]] policies: Array of policies associated with this member.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] roles: Array of roles associated with this member.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] roles: Set of roles associated with this member.
         :param pulumi.Input[_builtins.str] status: Available values: "accepted", "pending".
         """
         ...
@@ -339,7 +339,7 @@ class AccountMember(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
         :param pulumi.Input[_builtins.str] email: The contact email address of the user.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AccountMemberPolicyArgs', 'AccountMemberPolicyArgsDict']]]] policies: Array of policies associated with this member.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] roles: Array of roles associated with this member.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] roles: Set of roles associated with this member.
         :param pulumi.Input[_builtins.str] status: Available values: "accepted", "pending".
         :param pulumi.Input[Union['AccountMemberUserArgs', 'AccountMemberUserArgsDict']] user: Details of the user associated to the membership.
         """
@@ -381,9 +381,9 @@ class AccountMember(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def roles(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+    def roles(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        Array of roles associated with this member.
+        Set of roles associated with this member.
         """
         return pulumi.get(self, "roles")
 

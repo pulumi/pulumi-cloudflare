@@ -49,6 +49,7 @@ public final class GetWorkerVersionResult {
     private @Nullable String include;
     private GetWorkerVersionLimits limits;
     private String mainModule;
+    private String mainScriptBase64;
     private GetWorkerVersionMigrations migrations;
     private List<GetWorkerVersionModule> modules;
     private Integer number;
@@ -124,6 +125,9 @@ public final class GetWorkerVersionResult {
     public String mainModule() {
         return this.mainModule;
     }
+    public String mainScriptBase64() {
+        return this.mainScriptBase64;
+    }
     public GetWorkerVersionMigrations migrations() {
         return this.migrations;
     }
@@ -186,6 +190,7 @@ public final class GetWorkerVersionResult {
         private @Nullable String include;
         private GetWorkerVersionLimits limits;
         private String mainModule;
+        private String mainScriptBase64;
         private GetWorkerVersionMigrations migrations;
         private List<GetWorkerVersionModule> modules;
         private Integer number;
@@ -209,6 +214,7 @@ public final class GetWorkerVersionResult {
     	      this.include = defaults.include;
     	      this.limits = defaults.limits;
     	      this.mainModule = defaults.mainModule;
+    	      this.mainScriptBase64 = defaults.mainScriptBase64;
     	      this.migrations = defaults.migrations;
     	      this.modules = defaults.modules;
     	      this.number = defaults.number;
@@ -313,6 +319,14 @@ public final class GetWorkerVersionResult {
             return this;
         }
         @CustomType.Setter
+        public Builder mainScriptBase64(String mainScriptBase64) {
+            if (mainScriptBase64 == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionResult", "mainScriptBase64");
+            }
+            this.mainScriptBase64 = mainScriptBase64;
+            return this;
+        }
+        @CustomType.Setter
         public Builder migrations(GetWorkerVersionMigrations migrations) {
             if (migrations == null) {
               throw new MissingRequiredPropertyException("GetWorkerVersionResult", "migrations");
@@ -400,6 +414,7 @@ public final class GetWorkerVersionResult {
             _resultValue.include = include;
             _resultValue.limits = limits;
             _resultValue.mainModule = mainModule;
+            _resultValue.mainScriptBase64 = mainScriptBase64;
             _resultValue.migrations = migrations;
             _resultValue.modules = modules;
             _resultValue.number = number;

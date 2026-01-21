@@ -160,6 +160,21 @@ public final class WorkerVersionState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
+     * 
+     */
+    @Import(name="mainScriptBase64")
+    private @Nullable Output<String> mainScriptBase64;
+
+    /**
+     * @return The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
+     * 
+     */
+    public Optional<Output<String>> mainScriptBase64() {
+        return Optional.ofNullable(this.mainScriptBase64);
+    }
+
+    /**
      * Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
      * 
      */
@@ -311,6 +326,7 @@ public final class WorkerVersionState extends com.pulumi.resources.ResourceArgs 
         this.createdOn = $.createdOn;
         this.limits = $.limits;
         this.mainModule = $.mainModule;
+        this.mainScriptBase64 = $.mainScriptBase64;
         this.migrations = $.migrations;
         this.modules = $.modules;
         this.number = $.number;
@@ -546,6 +562,27 @@ public final class WorkerVersionState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder mainModule(String mainModule) {
             return mainModule(Output.of(mainModule));
+        }
+
+        /**
+         * @param mainScriptBase64 The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mainScriptBase64(@Nullable Output<String> mainScriptBase64) {
+            $.mainScriptBase64 = mainScriptBase64;
+            return this;
+        }
+
+        /**
+         * @param mainScriptBase64 The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mainScriptBase64(String mainScriptBase64) {
+            return mainScriptBase64(Output.of(mainScriptBase64));
         }
 
         /**

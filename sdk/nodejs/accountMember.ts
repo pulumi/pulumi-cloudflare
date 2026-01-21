@@ -68,9 +68,9 @@ export class AccountMember extends pulumi.CustomResource {
      */
     declare public readonly policies: pulumi.Output<outputs.AccountMemberPolicy[]>;
     /**
-     * Array of roles associated with this member.
+     * Set of roles associated with this member.
      */
-    declare public readonly roles: pulumi.Output<string[] | undefined>;
+    declare public readonly roles: pulumi.Output<string[]>;
     /**
      * Available values: "accepted", "pending".
      */
@@ -136,7 +136,7 @@ export interface AccountMemberState {
      */
     policies?: pulumi.Input<pulumi.Input<inputs.AccountMemberPolicy>[]>;
     /**
-     * Array of roles associated with this member.
+     * Set of roles associated with this member.
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -166,7 +166,7 @@ export interface AccountMemberArgs {
      */
     policies?: pulumi.Input<pulumi.Input<inputs.AccountMemberPolicy>[]>;
     /**
-     * Array of roles associated with this member.
+     * Set of roles associated with this member.
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
     /**

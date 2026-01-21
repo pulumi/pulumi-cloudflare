@@ -31,7 +31,7 @@ class R2BucketArgs:
         :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction where objects in this bucket are guaranteed to be stored.
                Available values: "default", "eu", "fedramp".
         :param pulumi.Input[_builtins.str] location: Location of the bucket.
-               Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
+               Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".  Note: `location` is only honored the first time a bucket with a given name is created. If you delete and recreate a bucket with the same name, the original bucket location will be used. It is also a best-effort, not a guarantee, of bucket location.
         :param pulumi.Input[_builtins.str] storage_class: Storage class for newly uploaded objects, unless specified otherwise.
                Available values: "Standard", "InfrequentAccess".
         """
@@ -86,7 +86,7 @@ class R2BucketArgs:
     def location(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Location of the bucket.
-        Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
+        Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".  Note: `location` is only honored the first time a bucket with a given name is created. If you delete and recreate a bucket with the same name, the original bucket location will be used. It is also a best-effort, not a guarantee, of bucket location.
         """
         return pulumi.get(self, "location")
 
@@ -124,7 +124,7 @@ class _R2BucketState:
         :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction where objects in this bucket are guaranteed to be stored.
                Available values: "default", "eu", "fedramp".
         :param pulumi.Input[_builtins.str] location: Location of the bucket.
-               Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
+               Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".  Note: `location` is only honored the first time a bucket with a given name is created. If you delete and recreate a bucket with the same name, the original bucket location will be used. It is also a best-effort, not a guarantee, of bucket location.
         :param pulumi.Input[_builtins.str] name: Name of the bucket.
         :param pulumi.Input[_builtins.str] storage_class: Storage class for newly uploaded objects, unless specified otherwise.
                Available values: "Standard", "InfrequentAccess".
@@ -184,7 +184,7 @@ class _R2BucketState:
     def location(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Location of the bucket.
-        Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
+        Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".  Note: `location` is only honored the first time a bucket with a given name is created. If you delete and recreate a bucket with the same name, the original bucket location will be used. It is also a best-effort, not a guarantee, of bucket location.
         """
         return pulumi.get(self, "location")
 
@@ -256,7 +256,7 @@ class R2Bucket(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction where objects in this bucket are guaranteed to be stored.
                Available values: "default", "eu", "fedramp".
         :param pulumi.Input[_builtins.str] location: Location of the bucket.
-               Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
+               Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".  Note: `location` is only honored the first time a bucket with a given name is created. If you delete and recreate a bucket with the same name, the original bucket location will be used. It is also a best-effort, not a guarantee, of bucket location.
         :param pulumi.Input[_builtins.str] name: Name of the bucket.
         :param pulumi.Input[_builtins.str] storage_class: Storage class for newly uploaded objects, unless specified otherwise.
                Available values: "Standard", "InfrequentAccess".
@@ -354,7 +354,7 @@ class R2Bucket(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction where objects in this bucket are guaranteed to be stored.
                Available values: "default", "eu", "fedramp".
         :param pulumi.Input[_builtins.str] location: Location of the bucket.
-               Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
+               Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".  Note: `location` is only honored the first time a bucket with a given name is created. If you delete and recreate a bucket with the same name, the original bucket location will be used. It is also a best-effort, not a guarantee, of bucket location.
         :param pulumi.Input[_builtins.str] name: Name of the bucket.
         :param pulumi.Input[_builtins.str] storage_class: Storage class for newly uploaded objects, unless specified otherwise.
                Available values: "Standard", "InfrequentAccess".
@@ -401,7 +401,7 @@ class R2Bucket(pulumi.CustomResource):
     def location(self) -> pulumi.Output[_builtins.str]:
         """
         Location of the bucket.
-        Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
+        Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".  Note: `location` is only honored the first time a bucket with a given name is created. If you delete and recreate a bucket with the same name, the original bucket location will be used. It is also a best-effort, not a guarantee, of bucket location.
         """
         return pulumi.get(self, "location")
 

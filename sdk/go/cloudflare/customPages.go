@@ -54,7 +54,7 @@ type CustomPages struct {
 	CreatedOn   pulumi.StringOutput    `pulumi:"createdOn"`
 	Description pulumi.StringOutput    `pulumi:"description"`
 	// Error Page Types
-	// Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "wafBlock".
+	// Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
 	Identifier     pulumi.StringOutput      `pulumi:"identifier"`
 	ModifiedOn     pulumi.StringOutput      `pulumi:"modifiedOn"`
 	PreviewTarget  pulumi.StringOutput      `pulumi:"previewTarget"`
@@ -109,7 +109,7 @@ type customPagesState struct {
 	CreatedOn   *string `pulumi:"createdOn"`
 	Description *string `pulumi:"description"`
 	// Error Page Types
-	// Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "wafBlock".
+	// Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
 	Identifier     *string  `pulumi:"identifier"`
 	ModifiedOn     *string  `pulumi:"modifiedOn"`
 	PreviewTarget  *string  `pulumi:"previewTarget"`
@@ -129,7 +129,7 @@ type CustomPagesState struct {
 	CreatedOn   pulumi.StringPtrInput
 	Description pulumi.StringPtrInput
 	// Error Page Types
-	// Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "wafBlock".
+	// Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
 	Identifier     pulumi.StringPtrInput
 	ModifiedOn     pulumi.StringPtrInput
 	PreviewTarget  pulumi.StringPtrInput
@@ -151,7 +151,7 @@ type customPagesArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
 	// Error Page Types
-	// Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "wafBlock".
+	// Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
 	Identifier string `pulumi:"identifier"`
 	// The custom page state.
 	// Available values: "default", "customized".
@@ -167,7 +167,7 @@ type CustomPagesArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
 	// Error Page Types
-	// Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "wafBlock".
+	// Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
 	Identifier pulumi.StringInput
 	// The custom page state.
 	// Available values: "default", "customized".
@@ -279,7 +279,7 @@ func (o CustomPagesOutput) Description() pulumi.StringOutput {
 }
 
 // Error Page Types
-// Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "wafBlock".
+// Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
 func (o CustomPagesOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomPages) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
 }

@@ -90,7 +90,7 @@ export class AccountSubscription extends pulumi.CustomResource {
     /**
      * The rate plan applied to the subscription.
      */
-    declare public readonly ratePlan: pulumi.Output<outputs.AccountSubscriptionRatePlan | undefined>;
+    declare public readonly ratePlan: pulumi.Output<outputs.AccountSubscriptionRatePlan>;
     /**
      * The state that the subscription is in.
      * Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".

@@ -619,6 +619,23 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
+     * The request body buffering mode to configure.
+     * Available values: &#34;none&#34;, &#34;standard&#34;, &#34;full&#34;.
+     * 
+     */
+    @Import(name="requestBodyBuffering")
+    private @Nullable Output<String> requestBodyBuffering;
+
+    /**
+     * @return The request body buffering mode to configure.
+     * Available values: &#34;none&#34;, &#34;standard&#34;, &#34;full&#34;.
+     * 
+     */
+    public Optional<Output<String>> requestBodyBuffering() {
+        return Optional.ofNullable(this.requestBodyBuffering);
+    }
+
+    /**
      * The raw request fields to log.
      * 
      */
@@ -661,6 +678,23 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
      */
     public Optional<Output<RulesetRuleActionParametersResponseArgs>> response() {
         return Optional.ofNullable(this.response);
+    }
+
+    /**
+     * The response body buffering mode to configure.
+     * Available values: &#34;none&#34;, &#34;standard&#34;.
+     * 
+     */
+    @Import(name="responseBodyBuffering")
+    private @Nullable Output<String> responseBodyBuffering;
+
+    /**
+     * @return The response body buffering mode to configure.
+     * Available values: &#34;none&#34;, &#34;standard&#34;.
+     * 
+     */
+    public Optional<Output<String>> responseBodyBuffering() {
+        return Optional.ofNullable(this.responseBodyBuffering);
     }
 
     /**
@@ -920,9 +954,11 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         this.products = $.products;
         this.rawResponseFields = $.rawResponseFields;
         this.readTimeout = $.readTimeout;
+        this.requestBodyBuffering = $.requestBodyBuffering;
         this.requestFields = $.requestFields;
         this.respectStrongEtags = $.respectStrongEtags;
         this.response = $.response;
+        this.responseBodyBuffering = $.responseBodyBuffering;
         this.responseFields = $.responseFields;
         this.rocketLoader = $.rocketLoader;
         this.rules = $.rules;
@@ -1826,6 +1862,29 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
+         * @param requestBodyBuffering The request body buffering mode to configure.
+         * Available values: &#34;none&#34;, &#34;standard&#34;, &#34;full&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestBodyBuffering(@Nullable Output<String> requestBodyBuffering) {
+            $.requestBodyBuffering = requestBodyBuffering;
+            return this;
+        }
+
+        /**
+         * @param requestBodyBuffering The request body buffering mode to configure.
+         * Available values: &#34;none&#34;, &#34;standard&#34;, &#34;full&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestBodyBuffering(String requestBodyBuffering) {
+            return requestBodyBuffering(Output.of(requestBodyBuffering));
+        }
+
+        /**
          * @param requestFields The raw request fields to log.
          * 
          * @return builder
@@ -1896,6 +1955,29 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
          */
         public Builder response(RulesetRuleActionParametersResponseArgs response) {
             return response(Output.of(response));
+        }
+
+        /**
+         * @param responseBodyBuffering The response body buffering mode to configure.
+         * Available values: &#34;none&#34;, &#34;standard&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder responseBodyBuffering(@Nullable Output<String> responseBodyBuffering) {
+            $.responseBodyBuffering = responseBodyBuffering;
+            return this;
+        }
+
+        /**
+         * @param responseBodyBuffering The response body buffering mode to configure.
+         * Available values: &#34;none&#34;, &#34;standard&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder responseBodyBuffering(String responseBodyBuffering) {
+            return responseBodyBuffering(Output.of(responseBodyBuffering));
         }
 
         /**

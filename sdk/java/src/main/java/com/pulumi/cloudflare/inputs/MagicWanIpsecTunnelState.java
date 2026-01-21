@@ -3,6 +3,9 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.MagicWanIpsecTunnelBgpArgs;
+import com.pulumi.cloudflare.inputs.MagicWanIpsecTunnelBgpStatusArgs;
+import com.pulumi.cloudflare.inputs.MagicWanIpsecTunnelCustomRemoteIdentitiesArgs;
 import com.pulumi.cloudflare.inputs.MagicWanIpsecTunnelHealthCheckArgs;
 import com.pulumi.cloudflare.inputs.MagicWanIpsecTunnelPskMetadataArgs;
 import com.pulumi.core.Output;
@@ -49,6 +52,35 @@ public final class MagicWanIpsecTunnelState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+     * 
+     */
+    @Import(name="automaticReturnRouting")
+    private @Nullable Output<Boolean> automaticReturnRouting;
+
+    /**
+     * @return True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+     * 
+     */
+    public Optional<Output<Boolean>> automaticReturnRouting() {
+        return Optional.ofNullable(this.automaticReturnRouting);
+    }
+
+    @Import(name="bgp")
+    private @Nullable Output<MagicWanIpsecTunnelBgpArgs> bgp;
+
+    public Optional<Output<MagicWanIpsecTunnelBgpArgs>> bgp() {
+        return Optional.ofNullable(this.bgp);
+    }
+
+    @Import(name="bgpStatus")
+    private @Nullable Output<MagicWanIpsecTunnelBgpStatusArgs> bgpStatus;
+
+    public Optional<Output<MagicWanIpsecTunnelBgpStatusArgs>> bgpStatus() {
+        return Optional.ofNullable(this.bgpStatus);
+    }
+
+    /**
      * The IP address assigned to the Cloudflare side of the IPsec tunnel.
      * 
      */
@@ -76,6 +108,13 @@ public final class MagicWanIpsecTunnelState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> createdOn() {
         return Optional.ofNullable(this.createdOn);
+    }
+
+    @Import(name="customRemoteIdentities")
+    private @Nullable Output<MagicWanIpsecTunnelCustomRemoteIdentitiesArgs> customRemoteIdentities;
+
+    public Optional<Output<MagicWanIpsecTunnelCustomRemoteIdentitiesArgs>> customRemoteIdentities() {
+        return Optional.ofNullable(this.customRemoteIdentities);
     }
 
     /**
@@ -225,8 +264,12 @@ public final class MagicWanIpsecTunnelState extends com.pulumi.resources.Resourc
     private MagicWanIpsecTunnelState(MagicWanIpsecTunnelState $) {
         this.accountId = $.accountId;
         this.allowNullCipher = $.allowNullCipher;
+        this.automaticReturnRouting = $.automaticReturnRouting;
+        this.bgp = $.bgp;
+        this.bgpStatus = $.bgpStatus;
         this.cloudflareEndpoint = $.cloudflareEndpoint;
         this.createdOn = $.createdOn;
+        this.customRemoteIdentities = $.customRemoteIdentities;
         this.customerEndpoint = $.customerEndpoint;
         this.description = $.description;
         this.healthCheck = $.healthCheck;
@@ -300,6 +343,45 @@ public final class MagicWanIpsecTunnelState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param automaticReturnRouting True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder automaticReturnRouting(@Nullable Output<Boolean> automaticReturnRouting) {
+            $.automaticReturnRouting = automaticReturnRouting;
+            return this;
+        }
+
+        /**
+         * @param automaticReturnRouting True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder automaticReturnRouting(Boolean automaticReturnRouting) {
+            return automaticReturnRouting(Output.of(automaticReturnRouting));
+        }
+
+        public Builder bgp(@Nullable Output<MagicWanIpsecTunnelBgpArgs> bgp) {
+            $.bgp = bgp;
+            return this;
+        }
+
+        public Builder bgp(MagicWanIpsecTunnelBgpArgs bgp) {
+            return bgp(Output.of(bgp));
+        }
+
+        public Builder bgpStatus(@Nullable Output<MagicWanIpsecTunnelBgpStatusArgs> bgpStatus) {
+            $.bgpStatus = bgpStatus;
+            return this;
+        }
+
+        public Builder bgpStatus(MagicWanIpsecTunnelBgpStatusArgs bgpStatus) {
+            return bgpStatus(Output.of(bgpStatus));
+        }
+
+        /**
          * @param cloudflareEndpoint The IP address assigned to the Cloudflare side of the IPsec tunnel.
          * 
          * @return builder
@@ -339,6 +421,15 @@ public final class MagicWanIpsecTunnelState extends com.pulumi.resources.Resourc
          */
         public Builder createdOn(String createdOn) {
             return createdOn(Output.of(createdOn));
+        }
+
+        public Builder customRemoteIdentities(@Nullable Output<MagicWanIpsecTunnelCustomRemoteIdentitiesArgs> customRemoteIdentities) {
+            $.customRemoteIdentities = customRemoteIdentities;
+            return this;
+        }
+
+        public Builder customRemoteIdentities(MagicWanIpsecTunnelCustomRemoteIdentitiesArgs customRemoteIdentities) {
+            return customRemoteIdentities(Output.of(customRemoteIdentities));
         }
 
         /**

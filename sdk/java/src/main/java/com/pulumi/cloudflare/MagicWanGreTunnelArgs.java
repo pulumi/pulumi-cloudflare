@@ -3,10 +3,12 @@
 
 package com.pulumi.cloudflare;
 
+import com.pulumi.cloudflare.inputs.MagicWanGreTunnelBgpArgs;
 import com.pulumi.cloudflare.inputs.MagicWanGreTunnelHealthCheckArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -31,6 +33,28 @@ public final class MagicWanGreTunnelArgs extends com.pulumi.resources.ResourceAr
      */
     public Output<String> accountId() {
         return this.accountId;
+    }
+
+    /**
+     * True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+     * 
+     */
+    @Import(name="automaticReturnRouting")
+    private @Nullable Output<Boolean> automaticReturnRouting;
+
+    /**
+     * @return True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+     * 
+     */
+    public Optional<Output<Boolean>> automaticReturnRouting() {
+        return Optional.ofNullable(this.automaticReturnRouting);
+    }
+
+    @Import(name="bgp")
+    private @Nullable Output<MagicWanGreTunnelBgpArgs> bgp;
+
+    public Optional<Output<MagicWanGreTunnelBgpArgs>> bgp() {
+        return Optional.ofNullable(this.bgp);
     }
 
     /**
@@ -164,6 +188,8 @@ public final class MagicWanGreTunnelArgs extends com.pulumi.resources.ResourceAr
 
     private MagicWanGreTunnelArgs(MagicWanGreTunnelArgs $) {
         this.accountId = $.accountId;
+        this.automaticReturnRouting = $.automaticReturnRouting;
+        this.bgp = $.bgp;
         this.cloudflareGreEndpoint = $.cloudflareGreEndpoint;
         this.customerGreEndpoint = $.customerGreEndpoint;
         this.description = $.description;
@@ -212,6 +238,36 @@ public final class MagicWanGreTunnelArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param automaticReturnRouting True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder automaticReturnRouting(@Nullable Output<Boolean> automaticReturnRouting) {
+            $.automaticReturnRouting = automaticReturnRouting;
+            return this;
+        }
+
+        /**
+         * @param automaticReturnRouting True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder automaticReturnRouting(Boolean automaticReturnRouting) {
+            return automaticReturnRouting(Output.of(automaticReturnRouting));
+        }
+
+        public Builder bgp(@Nullable Output<MagicWanGreTunnelBgpArgs> bgp) {
+            $.bgp = bgp;
+            return this;
+        }
+
+        public Builder bgp(MagicWanGreTunnelBgpArgs bgp) {
+            return bgp(Output.of(bgp));
         }
 
         /**

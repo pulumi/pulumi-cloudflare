@@ -57,7 +57,7 @@ type AccountMember struct {
 	Email pulumi.StringOutput `pulumi:"email"`
 	// Array of policies associated with this member.
 	Policies AccountMemberPolicyArrayOutput `pulumi:"policies"`
-	// Array of roles associated with this member.
+	// Set of roles associated with this member.
 	Roles pulumi.StringArrayOutput `pulumi:"roles"`
 	// Available values: "accepted", "pending".
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -107,7 +107,7 @@ type accountMemberState struct {
 	Email *string `pulumi:"email"`
 	// Array of policies associated with this member.
 	Policies []AccountMemberPolicy `pulumi:"policies"`
-	// Array of roles associated with this member.
+	// Set of roles associated with this member.
 	Roles []string `pulumi:"roles"`
 	// Available values: "accepted", "pending".
 	Status *string `pulumi:"status"`
@@ -122,7 +122,7 @@ type AccountMemberState struct {
 	Email pulumi.StringPtrInput
 	// Array of policies associated with this member.
 	Policies AccountMemberPolicyArrayInput
-	// Array of roles associated with this member.
+	// Set of roles associated with this member.
 	Roles pulumi.StringArrayInput
 	// Available values: "accepted", "pending".
 	Status pulumi.StringPtrInput
@@ -141,7 +141,7 @@ type accountMemberArgs struct {
 	Email string `pulumi:"email"`
 	// Array of policies associated with this member.
 	Policies []AccountMemberPolicy `pulumi:"policies"`
-	// Array of roles associated with this member.
+	// Set of roles associated with this member.
 	Roles []string `pulumi:"roles"`
 	// Available values: "accepted", "pending".
 	Status *string `pulumi:"status"`
@@ -155,7 +155,7 @@ type AccountMemberArgs struct {
 	Email pulumi.StringInput
 	// Array of policies associated with this member.
 	Policies AccountMemberPolicyArrayInput
-	// Array of roles associated with this member.
+	// Set of roles associated with this member.
 	Roles pulumi.StringArrayInput
 	// Available values: "accepted", "pending".
 	Status pulumi.StringPtrInput
@@ -263,7 +263,7 @@ func (o AccountMemberOutput) Policies() AccountMemberPolicyArrayOutput {
 	return o.ApplyT(func(v *AccountMember) AccountMemberPolicyArrayOutput { return v.Policies }).(AccountMemberPolicyArrayOutput)
 }
 
-// Array of roles associated with this member.
+// Set of roles associated with this member.
 func (o AccountMemberOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccountMember) pulumi.StringArrayOutput { return v.Roles }).(pulumi.StringArrayOutput)
 }

@@ -24,7 +24,6 @@ class ZeroTrustDeviceCustomProfileArgs:
                  account_id: pulumi.Input[_builtins.str],
                  match: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 precedence: pulumi.Input[_builtins.float],
                  allow_mode_switch: Optional[pulumi.Input[_builtins.bool]] = None,
                  allow_updates: Optional[pulumi.Input[_builtins.bool]] = None,
                  allowed_to_leave: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -38,6 +37,7 @@ class ZeroTrustDeviceCustomProfileArgs:
                  includes: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceCustomProfileIncludeArgs']]]] = None,
                  lan_allow_minutes: Optional[pulumi.Input[_builtins.float]] = None,
                  lan_allow_subnet_size: Optional[pulumi.Input[_builtins.float]] = None,
+                 precedence: Optional[pulumi.Input[_builtins.float]] = None,
                  register_interface_ip_with_dns: Optional[pulumi.Input[_builtins.bool]] = None,
                  sccm_vpn_boundary_support: Optional[pulumi.Input[_builtins.bool]] = None,
                  service_mode_v2: Optional[pulumi.Input['ZeroTrustDeviceCustomProfileServiceModeV2Args']] = None,
@@ -48,7 +48,6 @@ class ZeroTrustDeviceCustomProfileArgs:
         The set of arguments for constructing a ZeroTrustDeviceCustomProfile resource.
         :param pulumi.Input[_builtins.str] match: The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
         :param pulumi.Input[_builtins.str] name: The name of the device settings profile.
-        :param pulumi.Input[_builtins.float] precedence: The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
         :param pulumi.Input[_builtins.bool] allow_mode_switch: Whether to allow the user to switch WARP between modes.
         :param pulumi.Input[_builtins.bool] allow_updates: Whether to receive update notifications when a new version of the client is available.
         :param pulumi.Input[_builtins.bool] allowed_to_leave: Whether to allow devices to leave the organization.
@@ -62,6 +61,7 @@ class ZeroTrustDeviceCustomProfileArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceCustomProfileIncludeArgs']]] includes: List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
         :param pulumi.Input[_builtins.float] lan_allow_minutes: The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
         :param pulumi.Input[_builtins.float] lan_allow_subnet_size: The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
+        :param pulumi.Input[_builtins.float] precedence: The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
         :param pulumi.Input[_builtins.bool] register_interface_ip_with_dns: Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
         :param pulumi.Input[_builtins.bool] sccm_vpn_boundary_support: Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
         :param pulumi.Input[_builtins.str] support_url: The URL to launch when the Send Feedback button is clicked.
@@ -71,7 +71,6 @@ class ZeroTrustDeviceCustomProfileArgs:
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "match", match)
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "precedence", precedence)
         if allow_mode_switch is not None:
             pulumi.set(__self__, "allow_mode_switch", allow_mode_switch)
         if allow_updates is not None:
@@ -98,6 +97,8 @@ class ZeroTrustDeviceCustomProfileArgs:
             pulumi.set(__self__, "lan_allow_minutes", lan_allow_minutes)
         if lan_allow_subnet_size is not None:
             pulumi.set(__self__, "lan_allow_subnet_size", lan_allow_subnet_size)
+        if precedence is not None:
+            pulumi.set(__self__, "precedence", precedence)
         if register_interface_ip_with_dns is not None:
             pulumi.set(__self__, "register_interface_ip_with_dns", register_interface_ip_with_dns)
         if sccm_vpn_boundary_support is not None:
@@ -143,18 +144,6 @@ class ZeroTrustDeviceCustomProfileArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def precedence(self) -> pulumi.Input[_builtins.float]:
-        """
-        The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
-        """
-        return pulumi.get(self, "precedence")
-
-    @precedence.setter
-    def precedence(self, value: pulumi.Input[_builtins.float]):
-        pulumi.set(self, "precedence", value)
 
     @_builtins.property
     @pulumi.getter(name="allowModeSwitch")
@@ -311,6 +300,18 @@ class ZeroTrustDeviceCustomProfileArgs:
     @lan_allow_subnet_size.setter
     def lan_allow_subnet_size(self, value: Optional[pulumi.Input[_builtins.float]]):
         pulumi.set(self, "lan_allow_subnet_size", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def precedence(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
+        """
+        return pulumi.get(self, "precedence")
+
+    @precedence.setter
+    def precedence(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "precedence", value)
 
     @_builtins.property
     @pulumi.getter(name="registerInterfaceIpWithDns")
@@ -1039,8 +1040,6 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
-            if precedence is None and not opts.urn:
-                raise TypeError("Missing required property 'precedence'")
             __props__.__dict__["precedence"] = precedence
             __props__.__dict__["register_interface_ip_with_dns"] = register_interface_ip_with_dns
             __props__.__dict__["sccm_vpn_boundary_support"] = sccm_vpn_boundary_support

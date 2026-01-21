@@ -230,6 +230,12 @@ public final class GetRulesetRuleActionParameters {
      */
     private Integer readTimeout;
     /**
+     * @return The request body buffering mode to configure.
+     * Available values: &#34;none&#34;, &#34;standard&#34;, &#34;full&#34;.
+     * 
+     */
+    private String requestBodyBuffering;
+    /**
      * @return The raw request fields to log.
      * 
      */
@@ -244,6 +250,12 @@ public final class GetRulesetRuleActionParameters {
      * 
      */
     private GetRulesetRuleActionParametersResponse response;
+    /**
+     * @return The response body buffering mode to configure.
+     * Available values: &#34;none&#34;, &#34;standard&#34;.
+     * 
+     */
+    private String responseBodyBuffering;
     /**
      * @return The transformed response fields to log.
      * 
@@ -590,6 +602,14 @@ public final class GetRulesetRuleActionParameters {
         return this.readTimeout;
     }
     /**
+     * @return The request body buffering mode to configure.
+     * Available values: &#34;none&#34;, &#34;standard&#34;, &#34;full&#34;.
+     * 
+     */
+    public String requestBodyBuffering() {
+        return this.requestBodyBuffering;
+    }
+    /**
      * @return The raw request fields to log.
      * 
      */
@@ -609,6 +629,14 @@ public final class GetRulesetRuleActionParameters {
      */
     public GetRulesetRuleActionParametersResponse response() {
         return this.response;
+    }
+    /**
+     * @return The response body buffering mode to configure.
+     * Available values: &#34;none&#34;, &#34;standard&#34;.
+     * 
+     */
+    public String responseBodyBuffering() {
+        return this.responseBodyBuffering;
     }
     /**
      * @return The transformed response fields to log.
@@ -759,9 +787,11 @@ public final class GetRulesetRuleActionParameters {
         private List<String> products;
         private List<GetRulesetRuleActionParametersRawResponseField> rawResponseFields;
         private Integer readTimeout;
+        private String requestBodyBuffering;
         private List<GetRulesetRuleActionParametersRequestField> requestFields;
         private Boolean respectStrongEtags;
         private GetRulesetRuleActionParametersResponse response;
+        private String responseBodyBuffering;
         private List<GetRulesetRuleActionParametersResponseField> responseFields;
         private Boolean rocketLoader;
         private Map<String,List<String>> rules;
@@ -817,9 +847,11 @@ public final class GetRulesetRuleActionParameters {
     	      this.products = defaults.products;
     	      this.rawResponseFields = defaults.rawResponseFields;
     	      this.readTimeout = defaults.readTimeout;
+    	      this.requestBodyBuffering = defaults.requestBodyBuffering;
     	      this.requestFields = defaults.requestFields;
     	      this.respectStrongEtags = defaults.respectStrongEtags;
     	      this.response = defaults.response;
+    	      this.responseBodyBuffering = defaults.responseBodyBuffering;
     	      this.responseFields = defaults.responseFields;
     	      this.rocketLoader = defaults.rocketLoader;
     	      this.rules = defaults.rules;
@@ -1159,6 +1191,14 @@ public final class GetRulesetRuleActionParameters {
             return this;
         }
         @CustomType.Setter
+        public Builder requestBodyBuffering(String requestBodyBuffering) {
+            if (requestBodyBuffering == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "requestBodyBuffering");
+            }
+            this.requestBodyBuffering = requestBodyBuffering;
+            return this;
+        }
+        @CustomType.Setter
         public Builder requestFields(List<GetRulesetRuleActionParametersRequestField> requestFields) {
             if (requestFields == null) {
               throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "requestFields");
@@ -1183,6 +1223,14 @@ public final class GetRulesetRuleActionParameters {
               throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "response");
             }
             this.response = response;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder responseBodyBuffering(String responseBodyBuffering) {
+            if (responseBodyBuffering == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "responseBodyBuffering");
+            }
+            this.responseBodyBuffering = responseBodyBuffering;
             return this;
         }
         @CustomType.Setter
@@ -1346,9 +1394,11 @@ public final class GetRulesetRuleActionParameters {
             _resultValue.products = products;
             _resultValue.rawResponseFields = rawResponseFields;
             _resultValue.readTimeout = readTimeout;
+            _resultValue.requestBodyBuffering = requestBodyBuffering;
             _resultValue.requestFields = requestFields;
             _resultValue.respectStrongEtags = respectStrongEtags;
             _resultValue.response = response;
+            _resultValue.responseBodyBuffering = responseBodyBuffering;
             _resultValue.responseFields = responseFields;
             _resultValue.rocketLoader = rocketLoader;
             _resultValue.rules = rules;

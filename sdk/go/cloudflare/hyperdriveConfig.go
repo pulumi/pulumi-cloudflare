@@ -72,8 +72,9 @@ type HyperdriveConfig struct {
 	// Defines the last modified time of the Hyperdrive configuration.
 	ModifiedOn pulumi.StringOutput           `pulumi:"modifiedOn"`
 	Mtls       HyperdriveConfigMtlsPtrOutput `pulumi:"mtls"`
-	Name       pulumi.StringOutput           `pulumi:"name"`
-	Origin     HyperdriveConfigOriginOutput  `pulumi:"origin"`
+	// The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+	Name   pulumi.StringOutput          `pulumi:"name"`
+	Origin HyperdriveConfigOriginOutput `pulumi:"origin"`
 	// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
 	OriginConnectionLimit pulumi.IntPtrOutput `pulumi:"originConnectionLimit"`
 }
@@ -123,10 +124,11 @@ type hyperdriveConfigState struct {
 	// Defines the creation time of the Hyperdrive configuration.
 	CreatedOn *string `pulumi:"createdOn"`
 	// Defines the last modified time of the Hyperdrive configuration.
-	ModifiedOn *string                 `pulumi:"modifiedOn"`
-	Mtls       *HyperdriveConfigMtls   `pulumi:"mtls"`
-	Name       *string                 `pulumi:"name"`
-	Origin     *HyperdriveConfigOrigin `pulumi:"origin"`
+	ModifiedOn *string               `pulumi:"modifiedOn"`
+	Mtls       *HyperdriveConfigMtls `pulumi:"mtls"`
+	// The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+	Name   *string                 `pulumi:"name"`
+	Origin *HyperdriveConfigOrigin `pulumi:"origin"`
 	// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
 	OriginConnectionLimit *int `pulumi:"originConnectionLimit"`
 }
@@ -140,8 +142,9 @@ type HyperdriveConfigState struct {
 	// Defines the last modified time of the Hyperdrive configuration.
 	ModifiedOn pulumi.StringPtrInput
 	Mtls       HyperdriveConfigMtlsPtrInput
-	Name       pulumi.StringPtrInput
-	Origin     HyperdriveConfigOriginPtrInput
+	// The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+	Name   pulumi.StringPtrInput
+	Origin HyperdriveConfigOriginPtrInput
 	// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
 	OriginConnectionLimit pulumi.IntPtrInput
 }
@@ -155,8 +158,9 @@ type hyperdriveConfigArgs struct {
 	AccountId string                   `pulumi:"accountId"`
 	Caching   *HyperdriveConfigCaching `pulumi:"caching"`
 	Mtls      *HyperdriveConfigMtls    `pulumi:"mtls"`
-	Name      string                   `pulumi:"name"`
-	Origin    HyperdriveConfigOrigin   `pulumi:"origin"`
+	// The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+	Name   string                 `pulumi:"name"`
+	Origin HyperdriveConfigOrigin `pulumi:"origin"`
 	// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
 	OriginConnectionLimit *int `pulumi:"originConnectionLimit"`
 }
@@ -167,8 +171,9 @@ type HyperdriveConfigArgs struct {
 	AccountId pulumi.StringInput
 	Caching   HyperdriveConfigCachingPtrInput
 	Mtls      HyperdriveConfigMtlsPtrInput
-	Name      pulumi.StringInput
-	Origin    HyperdriveConfigOriginInput
+	// The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+	Name   pulumi.StringInput
+	Origin HyperdriveConfigOriginInput
 	// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
 	OriginConnectionLimit pulumi.IntPtrInput
 }
@@ -283,6 +288,7 @@ func (o HyperdriveConfigOutput) Mtls() HyperdriveConfigMtlsPtrOutput {
 	return o.ApplyT(func(v *HyperdriveConfig) HyperdriveConfigMtlsPtrOutput { return v.Mtls }).(HyperdriveConfigMtlsPtrOutput)
 }
 
+// The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
 func (o HyperdriveConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *HyperdriveConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

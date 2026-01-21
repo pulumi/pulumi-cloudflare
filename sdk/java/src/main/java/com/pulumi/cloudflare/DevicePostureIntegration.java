@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *             .accountId("699d98642c564d2e855e9661899b7252")
  *             .config(ZeroTrustDevicePostureIntegrationConfigArgs.builder()
  *                 .apiUrl("https://as123.awmdm.com/API")
- *                 .authUrl("https://na.uemauth.vmwservices.com/connect/token")
+ *                 .authUrl("https://na.uemauth.workspaceone.com/connect/token")
  *                 .clientId("example client id")
  *                 .clientSecret("example client secret")
  *                 .build())

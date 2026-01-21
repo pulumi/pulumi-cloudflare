@@ -311,7 +311,7 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.WorkerScriptObservability?> Observability { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        /// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
         /// </summary>
         [Output("placement")]
         public Output<Outputs.WorkerScriptPlacement> Placement { get; private set; } = null!;
@@ -509,7 +509,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.WorkerScriptObservabilityArgs>? Observability { get; set; }
 
         /// <summary>
-        /// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        /// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
         /// </summary>
         [Input("placement")]
         public Input<Inputs.WorkerScriptPlacementArgs>? Placement { get; set; }
@@ -734,7 +734,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.WorkerScriptObservabilityGetArgs>? Observability { get; set; }
 
         /// <summary>
-        /// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        /// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
         /// </summary>
         [Input("placement")]
         public Input<Inputs.WorkerScriptPlacementGetArgs>? Placement { get; set; }

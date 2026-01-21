@@ -31,16 +31,16 @@ import (
 //				CloudflareEndpoint:     pulumi.String("203.0.113.1"),
 //				InterfaceAddress:       pulumi.String("192.0.2.0/31"),
 //				Name:                   pulumi.String("IPsec_1"),
-//				AutomaticReturnRouting: true,
-//				Bgp: map[string]interface{}{
-//					"customerAsn": 0,
-//					"extraPrefixes": []string{
-//						"string",
+//				AutomaticReturnRouting: pulumi.Bool(true),
+//				Bgp: &cloudflare.MagicWanIpsecTunnelBgpArgs{
+//					CustomerAsn: pulumi.Int(0),
+//					ExtraPrefixes: pulumi.StringArray{
+//						pulumi.String("string"),
 //					},
-//					"md5Key": "md5_key",
+//					Md5Key: pulumi.String("md5_key"),
 //				},
-//				CustomRemoteIdentities: map[string]interface{}{
-//					"fqdnId": "fqdn_id",
+//				CustomRemoteIdentities: &cloudflare.MagicWanIpsecTunnelCustomRemoteIdentitiesArgs{
+//					FqdnId: pulumi.String("fqdn_id"),
 //				},
 //				CustomerEndpoint: pulumi.String("203.0.113.1"),
 //				Description:      pulumi.String("Tunnel for ISP X"),
@@ -78,10 +78,15 @@ type MagicWanIpsecTunnel struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
 	AllowNullCipher pulumi.BoolOutput `pulumi:"allowNullCipher"`
+	// True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+	AutomaticReturnRouting pulumi.BoolOutput                  `pulumi:"automaticReturnRouting"`
+	Bgp                    MagicWanIpsecTunnelBgpPtrOutput    `pulumi:"bgp"`
+	BgpStatus              MagicWanIpsecTunnelBgpStatusOutput `pulumi:"bgpStatus"`
 	// The IP address assigned to the Cloudflare side of the IPsec tunnel.
 	CloudflareEndpoint pulumi.StringOutput `pulumi:"cloudflareEndpoint"`
 	// The date and time the tunnel was created.
-	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
+	CreatedOn              pulumi.StringOutput                                `pulumi:"createdOn"`
+	CustomRemoteIdentities MagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutput `pulumi:"customRemoteIdentities"`
 	// The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
 	CustomerEndpoint pulumi.StringPtrOutput `pulumi:"customerEndpoint"`
 	// An optional description forthe IPsec tunnel.
@@ -162,10 +167,15 @@ type magicWanIpsecTunnelState struct {
 	AccountId *string `pulumi:"accountId"`
 	// When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
 	AllowNullCipher *bool `pulumi:"allowNullCipher"`
+	// True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+	AutomaticReturnRouting *bool                         `pulumi:"automaticReturnRouting"`
+	Bgp                    *MagicWanIpsecTunnelBgp       `pulumi:"bgp"`
+	BgpStatus              *MagicWanIpsecTunnelBgpStatus `pulumi:"bgpStatus"`
 	// The IP address assigned to the Cloudflare side of the IPsec tunnel.
 	CloudflareEndpoint *string `pulumi:"cloudflareEndpoint"`
 	// The date and time the tunnel was created.
-	CreatedOn *string `pulumi:"createdOn"`
+	CreatedOn              *string                                    `pulumi:"createdOn"`
+	CustomRemoteIdentities *MagicWanIpsecTunnelCustomRemoteIdentities `pulumi:"customRemoteIdentities"`
 	// The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
 	CustomerEndpoint *string `pulumi:"customerEndpoint"`
 	// An optional description forthe IPsec tunnel.
@@ -192,10 +202,15 @@ type MagicWanIpsecTunnelState struct {
 	AccountId pulumi.StringPtrInput
 	// When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
 	AllowNullCipher pulumi.BoolPtrInput
+	// True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+	AutomaticReturnRouting pulumi.BoolPtrInput
+	Bgp                    MagicWanIpsecTunnelBgpPtrInput
+	BgpStatus              MagicWanIpsecTunnelBgpStatusPtrInput
 	// The IP address assigned to the Cloudflare side of the IPsec tunnel.
 	CloudflareEndpoint pulumi.StringPtrInput
 	// The date and time the tunnel was created.
-	CreatedOn pulumi.StringPtrInput
+	CreatedOn              pulumi.StringPtrInput
+	CustomRemoteIdentities MagicWanIpsecTunnelCustomRemoteIdentitiesPtrInput
 	// The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
 	CustomerEndpoint pulumi.StringPtrInput
 	// An optional description forthe IPsec tunnel.
@@ -224,8 +239,12 @@ func (MagicWanIpsecTunnelState) ElementType() reflect.Type {
 type magicWanIpsecTunnelArgs struct {
 	// Identifier
 	AccountId string `pulumi:"accountId"`
+	// True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+	AutomaticReturnRouting *bool                   `pulumi:"automaticReturnRouting"`
+	Bgp                    *MagicWanIpsecTunnelBgp `pulumi:"bgp"`
 	// The IP address assigned to the Cloudflare side of the IPsec tunnel.
-	CloudflareEndpoint string `pulumi:"cloudflareEndpoint"`
+	CloudflareEndpoint     string                                     `pulumi:"cloudflareEndpoint"`
+	CustomRemoteIdentities *MagicWanIpsecTunnelCustomRemoteIdentities `pulumi:"customRemoteIdentities"`
 	// The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
 	CustomerEndpoint *string `pulumi:"customerEndpoint"`
 	// An optional description forthe IPsec tunnel.
@@ -247,8 +266,12 @@ type magicWanIpsecTunnelArgs struct {
 type MagicWanIpsecTunnelArgs struct {
 	// Identifier
 	AccountId pulumi.StringInput
+	// True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+	AutomaticReturnRouting pulumi.BoolPtrInput
+	Bgp                    MagicWanIpsecTunnelBgpPtrInput
 	// The IP address assigned to the Cloudflare side of the IPsec tunnel.
-	CloudflareEndpoint pulumi.StringInput
+	CloudflareEndpoint     pulumi.StringInput
+	CustomRemoteIdentities MagicWanIpsecTunnelCustomRemoteIdentitiesPtrInput
 	// The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
 	CustomerEndpoint pulumi.StringPtrInput
 	// An optional description forthe IPsec tunnel.
@@ -363,6 +386,19 @@ func (o MagicWanIpsecTunnelOutput) AllowNullCipher() pulumi.BoolOutput {
 	return o.ApplyT(func(v *MagicWanIpsecTunnel) pulumi.BoolOutput { return v.AllowNullCipher }).(pulumi.BoolOutput)
 }
 
+// True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+func (o MagicWanIpsecTunnelOutput) AutomaticReturnRouting() pulumi.BoolOutput {
+	return o.ApplyT(func(v *MagicWanIpsecTunnel) pulumi.BoolOutput { return v.AutomaticReturnRouting }).(pulumi.BoolOutput)
+}
+
+func (o MagicWanIpsecTunnelOutput) Bgp() MagicWanIpsecTunnelBgpPtrOutput {
+	return o.ApplyT(func(v *MagicWanIpsecTunnel) MagicWanIpsecTunnelBgpPtrOutput { return v.Bgp }).(MagicWanIpsecTunnelBgpPtrOutput)
+}
+
+func (o MagicWanIpsecTunnelOutput) BgpStatus() MagicWanIpsecTunnelBgpStatusOutput {
+	return o.ApplyT(func(v *MagicWanIpsecTunnel) MagicWanIpsecTunnelBgpStatusOutput { return v.BgpStatus }).(MagicWanIpsecTunnelBgpStatusOutput)
+}
+
 // The IP address assigned to the Cloudflare side of the IPsec tunnel.
 func (o MagicWanIpsecTunnelOutput) CloudflareEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *MagicWanIpsecTunnel) pulumi.StringOutput { return v.CloudflareEndpoint }).(pulumi.StringOutput)
@@ -371,6 +407,12 @@ func (o MagicWanIpsecTunnelOutput) CloudflareEndpoint() pulumi.StringOutput {
 // The date and time the tunnel was created.
 func (o MagicWanIpsecTunnelOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *MagicWanIpsecTunnel) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+func (o MagicWanIpsecTunnelOutput) CustomRemoteIdentities() MagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutput {
+	return o.ApplyT(func(v *MagicWanIpsecTunnel) MagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutput {
+		return v.CustomRemoteIdentities
+	}).(MagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutput)
 }
 
 // The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.

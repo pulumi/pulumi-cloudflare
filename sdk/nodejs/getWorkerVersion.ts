@@ -82,6 +82,7 @@ export interface GetWorkerVersionResult {
     readonly include?: string;
     readonly limits: outputs.GetWorkerVersionLimits;
     readonly mainModule: string;
+    readonly mainScriptBase64: string;
     readonly migrations: outputs.GetWorkerVersionMigrations;
     readonly modules: outputs.GetWorkerVersionModule[];
     readonly number: number;

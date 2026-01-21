@@ -3029,7 +3029,7 @@ export interface AccountSubscriptionRatePlan {
      */
     scope: string;
     /**
-     * The list of sets this rate plan applies to.
+     * The list of sets this rate plan applies to. Returns array of strings.
      */
     sets: string[];
 }
@@ -3096,7 +3096,7 @@ export interface AddressMapMembership {
 
 export interface ApiShieldAuthIdCharacteristic {
     /**
-     * The name of the characteristic field, i.e., the header or cookie name.
+     * The name of the characteristic field, i.e., the header or cookie name. When using type "jwt", this must be a claim location expressed as `$(token_config_id):$(json_path)`, where `tokenConfigId` is the ID of the token configuration used in validating the JWT, and `jsonPath` is a RFC 9535 JSONPath expression.
      */
     name: string;
     /**
@@ -5475,7 +5475,7 @@ export interface GetAccountSubscriptionRatePlan {
      */
     scope: string;
     /**
-     * The list of sets this rate plan applies to.
+     * The list of sets this rate plan applies to. Returns array of strings.
      */
     sets: string[];
 }
@@ -9102,11 +9102,11 @@ export interface GetHyperdriveConfigCaching {
      */
     disabled: boolean;
     /**
-     * Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).
+     * Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
      */
     maxAge: number;
     /**
-     * Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).
+     * Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
      */
     staleWhileRevalidate: number;
 }
@@ -9148,7 +9148,7 @@ export interface GetHyperdriveConfigOrigin {
      */
     password: string;
     /**
-     * Defines the port (default: 5432 for Postgres) of your origin database.
+     * Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.
      */
     port: number;
     /**
@@ -9177,6 +9177,9 @@ export interface GetHyperdriveConfigsResult {
      */
     modifiedOn: string;
     mtls: outputs.GetHyperdriveConfigsResultMtls;
+    /**
+     * The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+     */
     name: string;
     origin: outputs.GetHyperdriveConfigsResultOrigin;
     /**
@@ -9191,11 +9194,11 @@ export interface GetHyperdriveConfigsResultCaching {
      */
     disabled: boolean;
     /**
-     * Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).
+     * Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
      */
     maxAge: number;
     /**
-     * Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).
+     * Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
      */
     staleWhileRevalidate: number;
 }
@@ -9237,7 +9240,7 @@ export interface GetHyperdriveConfigsResultOrigin {
      */
     password: string;
     /**
-     * Defines the port (default: 5432 for Postgres) of your origin database.
+     * Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.
      */
     port: number;
     /**
@@ -15593,6 +15596,11 @@ export interface GetRulesetRuleActionParameters {
      */
     readTimeout: number;
     /**
+     * The request body buffering mode to configure.
+     * Available values: "none", "standard", "full".
+     */
+    requestBodyBuffering: string;
+    /**
      * The raw request fields to log.
      */
     requestFields: outputs.GetRulesetRuleActionParametersRequestField[];
@@ -15604,6 +15612,11 @@ export interface GetRulesetRuleActionParameters {
      * The response to show when the block is applied.
      */
     response: outputs.GetRulesetRuleActionParametersResponse;
+    /**
+     * The response body buffering mode to configure.
+     * Available values: "none", "standard".
+     */
+    responseBodyBuffering: string;
     /**
      * The transformed response fields to log.
      */
@@ -18329,6 +18342,10 @@ export interface GetWorkerVersionsResult {
      */
     mainModule: string;
     /**
+     * The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules).
+     */
+    mainScriptBase64: string;
+    /**
      * Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
      */
     migrations: outputs.GetWorkerVersionsResultMigrations;
@@ -19101,7 +19118,7 @@ export interface GetWorkersScriptsResult {
      */
     observability: outputs.GetWorkersScriptsResultObservability;
     /**
-     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
      */
     placement: outputs.GetWorkersScriptsResultPlacement;
     /**
@@ -19190,6 +19207,14 @@ export interface GetWorkersScriptsResultObservabilityLogs {
 
 export interface GetWorkersScriptsResultPlacement {
     /**
+     * TCP host and port for targeted placement.
+     */
+    host: string;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname: string;
+    /**
      * The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      */
     lastAnalyzedAt: string;
@@ -19198,6 +19223,10 @@ export interface GetWorkersScriptsResultPlacement {
      * Available values: "smart".
      */
     mode: string;
+    /**
+     * Cloud region for targeted placement in format 'provider:region'.
+     */
+    region: string;
     /**
      * Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
@@ -30162,7 +30191,7 @@ export interface GetZoneSubscriptionRatePlan {
      */
     scope: string;
     /**
-     * The list of sets this rate plan applies to.
+     * The list of sets this rate plan applies to. Returns array of strings.
      */
     sets: string[];
 }
@@ -30484,11 +30513,11 @@ export interface HyperdriveConfigCaching {
      */
     disabled: boolean;
     /**
-     * Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).
+     * Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
      */
     maxAge?: number;
     /**
-     * Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).
+     * Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
      */
     staleWhileRevalidate?: number;
 }
@@ -30530,7 +30559,7 @@ export interface HyperdriveConfigOrigin {
      */
     password: string;
     /**
-     * Defines the port (default: 5432 for Postgres) of your origin database.
+     * Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.
      */
     port?: number;
     /**
@@ -31199,6 +31228,35 @@ export interface MagicTransitSiteWanStaticAddressing {
     secondaryAddress?: string;
 }
 
+export interface MagicWanGreTunnelBgp {
+    /**
+     * ASN used on the customer end of the BGP session
+     */
+    customerAsn: number;
+    /**
+     * Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
+     */
+    extraPrefixes: string[];
+    /**
+     * MD5 key to use for session authentication.
+     */
+    md5Key?: string;
+}
+
+export interface MagicWanGreTunnelBgpStatus {
+    bgpState: string;
+    cfSpeakerIp: string;
+    cfSpeakerPort: number;
+    customerSpeakerIp: string;
+    customerSpeakerPort: number;
+    /**
+     * Available values: "BGP*DOWN", "BGP*UP", "BGP_ESTABLISHING".
+     */
+    state: string;
+    tcpEstablished: boolean;
+    updatedAt: string;
+}
+
 export interface MagicWanGreTunnelHealthCheck {
     /**
      * The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
@@ -31234,6 +31292,43 @@ export interface MagicWanGreTunnelHealthCheckTarget {
      * The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
      */
     saved?: string;
+}
+
+export interface MagicWanIpsecTunnelBgp {
+    /**
+     * ASN used on the customer end of the BGP session
+     */
+    customerAsn: number;
+    /**
+     * Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
+     */
+    extraPrefixes: string[];
+    /**
+     * MD5 key to use for session authentication.
+     */
+    md5Key?: string;
+}
+
+export interface MagicWanIpsecTunnelBgpStatus {
+    bgpState: string;
+    cfSpeakerIp: string;
+    cfSpeakerPort: number;
+    customerSpeakerIp: string;
+    customerSpeakerPort: number;
+    /**
+     * Available values: "BGP*DOWN", "BGP*UP", "BGP_ESTABLISHING".
+     */
+    state: string;
+    tcpEstablished: boolean;
+    updatedAt: string;
+}
+
+export interface MagicWanIpsecTunnelCustomRemoteIdentities {
+    /**
+     * A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The
+     * generated IKE IDs can still be used even if this custom value is specified.
+     */
+    fqdnId?: string;
 }
 
 export interface MagicWanIpsecTunnelHealthCheck {
@@ -33628,6 +33723,11 @@ export interface RulesetRuleActionParameters {
      */
     readTimeout?: number;
     /**
+     * The request body buffering mode to configure.
+     * Available values: "none", "standard", "full".
+     */
+    requestBodyBuffering?: string;
+    /**
      * The raw request fields to log.
      */
     requestFields?: outputs.RulesetRuleActionParametersRequestField[];
@@ -33639,6 +33739,11 @@ export interface RulesetRuleActionParameters {
      * The response to show when the block is applied.
      */
     response?: outputs.RulesetRuleActionParametersResponse;
+    /**
+     * The response body buffering mode to configure.
+     * Available values: "none", "standard".
+     */
+    responseBodyBuffering?: string;
     /**
      * The transformed response fields to log.
      */
@@ -36153,6 +36258,14 @@ export interface WorkerScriptObservabilityLogs {
 
 export interface WorkerScriptPlacement {
     /**
+     * TCP host and port for targeted placement.
+     */
+    host: string;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname: string;
+    /**
      * The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      */
     lastAnalyzedAt: string;
@@ -36161,6 +36274,10 @@ export interface WorkerScriptPlacement {
      * Available values: "smart".
      */
     mode?: string;
+    /**
+     * Cloud region for targeted placement in format 'provider:region'.
+     */
+    region: string;
     /**
      * Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
@@ -36900,6 +37017,14 @@ export interface WorkersScriptObservabilityLogs {
 
 export interface WorkersScriptPlacement {
     /**
+     * TCP host and port for targeted placement.
+     */
+    host: string;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname: string;
+    /**
      * The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      */
     lastAnalyzedAt: string;
@@ -36908,6 +37033,10 @@ export interface WorkersScriptPlacement {
      * Available values: "smart".
      */
     mode?: string;
+    /**
+     * Cloud region for targeted placement in format 'provider:region'.
+     */
+    region: string;
     /**
      * Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
@@ -41779,7 +41908,7 @@ export interface ZoneSubscriptionRatePlan {
      */
     scope: string;
     /**
-     * The list of sets this rate plan applies to.
+     * The list of sets this rate plan applies to. Returns array of strings.
      */
     sets: string[];
 }

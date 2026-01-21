@@ -44,7 +44,7 @@ public final class GetAccountSubscriptionRatePlan {
      */
     private String scope;
     /**
-     * @return The list of sets this rate plan applies to.
+     * @return The list of sets this rate plan applies to. Returns array of strings.
      * 
      */
     private List<String> sets;
@@ -94,7 +94,7 @@ public final class GetAccountSubscriptionRatePlan {
         return this.scope;
     }
     /**
-     * @return The list of sets this rate plan applies to.
+     * @return The list of sets this rate plan applies to. Returns array of strings.
      * 
      */
     public List<String> sets() {

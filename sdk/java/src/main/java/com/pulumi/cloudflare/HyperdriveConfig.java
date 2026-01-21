@@ -136,9 +136,17 @@ public class HyperdriveConfig extends com.pulumi.resources.CustomResource {
     public Output<Optional<HyperdriveConfigMtls>> mtls() {
         return Codegen.optional(this.mtls);
     }
+    /**
+     * The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }

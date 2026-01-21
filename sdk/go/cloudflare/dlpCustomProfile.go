@@ -26,27 +26,30 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustDlpCustomProfile(ctx, "example_zero_trust_dlp_custom_profile", &cloudflare.ZeroTrustDlpCustomProfileArgs{
-//				AccountId:           pulumi.String("account_id"),
-//				Name:                pulumi.String("name"),
-//				AiContextEnabled:    pulumi.Bool(true),
-//				AllowedMatchCount:   pulumi.Int(5),
-//				ConfidenceThreshold: pulumi.String("confidence_threshold"),
-//				ContextAwareness: &cloudflare.ZeroTrustDlpCustomProfileContextAwarenessArgs{
-//					Enabled: pulumi.Bool(true),
-//					Skip: &cloudflare.ZeroTrustDlpCustomProfileContextAwarenessSkipArgs{
-//						Files: pulumi.Bool(true),
-//					},
-//				},
-//				Description: pulumi.String("description"),
-//				OcrEnabled:  pulumi.Bool(true),
+//			exampleZeroTrustDlpCustomProfile, err := cloudflare.NewZeroTrustDlpCustomProfile(ctx, "example_zero_trust_dlp_custom_profile", &cloudflare.ZeroTrustDlpCustomProfileArgs{
+//				Name:        pulumi.String("name"),
+//				AccountId:   pulumi.String("account_id"),
+//				Description: pulumi.String("Custom profile with entries"),
 //				SharedEntries: cloudflare.ZeroTrustDlpCustomProfileSharedEntryArray{
 //					&cloudflare.ZeroTrustDlpCustomProfileSharedEntryArgs{
+//						EntryId:   pulumi.String("56a8c060-01bb-4f89-ba1e-3ad42770a342"),
+//						EntryType: pulumi.String("predefined"),
 //						Enabled:   pulumi.Bool(true),
-//						EntryId:   pulumi.String("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
-//						EntryType: pulumi.String("custom"),
 //					},
 //				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Custom entry that is a part of this new profile
+//			_, err = cloudflare.NewZeroTrustDlpCustomEntry(ctx, "example_custom_entry", &cloudflare.ZeroTrustDlpCustomEntryArgs{
+//				Name:      pulumi.String("custom"),
+//				AccountId: pulumi.String("account_id"),
+//				ProfileId: exampleZeroTrustDlpCustomProfile.ID(),
+//				Pattern: &cloudflare.ZeroTrustDlpCustomEntryPatternArgs{
+//					Regex: pulumi.String("customentryregex"),
+//				},
+//				Enabled: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

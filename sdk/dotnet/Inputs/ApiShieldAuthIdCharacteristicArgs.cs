@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ApiShieldAuthIdCharacteristicArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the characteristic field, i.e., the header or cookie name.
+        /// The name of the characteristic field, i.e., the header or cookie name. When using type "jwt", this must be a claim location expressed as `$(token_config_id):$(json_path)`, where `TokenConfigId` is the ID of the token configuration used in validating the JWT, and `JsonPath` is a RFC 9535 JSONPath expression.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

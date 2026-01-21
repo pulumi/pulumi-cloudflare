@@ -70,7 +70,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.GetWorkersScriptsResultObservabilityResult Observability;
         /// <summary>
-        /// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        /// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
         /// </summary>
         public readonly Outputs.GetWorkersScriptsResultPlacementResult Placement;
         /// <summary>

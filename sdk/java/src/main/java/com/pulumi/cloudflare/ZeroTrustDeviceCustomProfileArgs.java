@@ -258,15 +258,15 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
      * The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
      * 
      */
-    @Import(name="precedence", required=true)
-    private Output<Double> precedence;
+    @Import(name="precedence")
+    private @Nullable Output<Double> precedence;
 
     /**
      * @return The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
      * 
      */
-    public Output<Double> precedence() {
-        return this.precedence;
+    public Optional<Output<Double>> precedence() {
+        return Optional.ofNullable(this.precedence);
     }
 
     /**
@@ -747,7 +747,7 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder precedence(Output<Double> precedence) {
+        public Builder precedence(@Nullable Output<Double> precedence) {
             $.precedence = precedence;
             return this;
         }
@@ -885,9 +885,6 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
             }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustDeviceCustomProfileArgs", "name");
-            }
-            if ($.precedence == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustDeviceCustomProfileArgs", "precedence");
             }
             return $;
         }

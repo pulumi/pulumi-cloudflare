@@ -85,7 +85,7 @@ class GetZoneSubscriptionResult:
     def frequency(self) -> _builtins.str:
         """
         How often the subscription is renewed automatically.
-        Available values: "weekly", "monthly", "quarterly", "yearly".
+        Available values: "weekly", "monthly", "quarterly", "yearly", "not-applicable".
         """
         return pulumi.get(self, "frequency")
 
@@ -93,7 +93,7 @@ class GetZoneSubscriptionResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Subscription identifier tag.
+        Identifier
         """
         return pulumi.get(self, "id")
 
@@ -126,7 +126,7 @@ class GetZoneSubscriptionResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> _builtins.str:
         """
-        Subscription identifier tag.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -157,11 +157,11 @@ def get_zone_subscription(zone_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zone_subscription = cloudflare.get_zone_subscription(zone_id="506e3185e9c882d175a2d0cb0093d9f2")
+    example_zone_subscription = cloudflare.get_zone_subscription(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
-    :param _builtins.str zone_id: Subscription identifier tag.
+    :param _builtins.str zone_id: Identifier
     """
     __args__ = dict()
     __args__['zoneId'] = zone_id
@@ -187,11 +187,11 @@ def get_zone_subscription_output(zone_id: Optional[pulumi.Input[_builtins.str]] 
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zone_subscription = cloudflare.get_zone_subscription(zone_id="506e3185e9c882d175a2d0cb0093d9f2")
+    example_zone_subscription = cloudflare.get_zone_subscription(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
-    :param _builtins.str zone_id: Subscription identifier tag.
+    :param _builtins.str zone_id: Identifier
     """
     __args__ = dict()
     __args__['zoneId'] = zone_id

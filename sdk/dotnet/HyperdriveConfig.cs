@@ -82,6 +82,9 @@ namespace Pulumi.Cloudflare
         [Output("mtls")]
         public Output<Outputs.HyperdriveConfigMtls?> Mtls { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -152,6 +155,9 @@ namespace Pulumi.Cloudflare
         [Input("mtls")]
         public Input<Inputs.HyperdriveConfigMtlsArgs>? Mtls { get; set; }
 
+        /// <summary>
+        /// The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
@@ -196,6 +202,9 @@ namespace Pulumi.Cloudflare
         [Input("mtls")]
         public Input<Inputs.HyperdriveConfigMtlsGetArgs>? Mtls { get; set; }
 
+        /// <summary>
+        /// The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

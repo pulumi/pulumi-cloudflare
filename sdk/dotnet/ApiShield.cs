@@ -10,6 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Manages API Shield configuration properties for a zone, specifically auth ID characteristics.
+    /// 
+    /// When using `type = "jwt"` for auth ID characteristics, the `Name` field must be a claim location expressed as `$(token_config_id):$(json_path)`, where:
+    /// - `TokenConfigId` is the ID of the token configuration used in validating the JWT
+    /// - `JsonPath` is a [RFC 9535](https://www.rfc-editor.org/rfc/rfc9535.html) [JSONPath](https://goessner.net/articles/JsonPath/) expression that returns a singleton value (interpreted as a string)
+    /// 
+    /// The JSONPath expression may be in dot or bracket notation and may only specify literal keys or array indexes.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

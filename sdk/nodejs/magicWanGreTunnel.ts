@@ -80,6 +80,12 @@ export class MagicWanGreTunnel extends pulumi.CustomResource {
      */
     declare public readonly accountId: pulumi.Output<string>;
     /**
+     * True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+     */
+    declare public readonly automaticReturnRouting: pulumi.Output<boolean>;
+    declare public readonly bgp: pulumi.Output<outputs.MagicWanGreTunnelBgp | undefined>;
+    declare public /*out*/ readonly bgpStatus: pulumi.Output<outputs.MagicWanGreTunnelBgpStatus>;
+    /**
      * The IP address assigned to the Cloudflare side of the GRE tunnel.
      */
     declare public readonly cloudflareGreEndpoint: pulumi.Output<string>;
@@ -135,6 +141,9 @@ export class MagicWanGreTunnel extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as MagicWanGreTunnelState | undefined;
             resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["automaticReturnRouting"] = state?.automaticReturnRouting;
+            resourceInputs["bgp"] = state?.bgp;
+            resourceInputs["bgpStatus"] = state?.bgpStatus;
             resourceInputs["cloudflareGreEndpoint"] = state?.cloudflareGreEndpoint;
             resourceInputs["createdOn"] = state?.createdOn;
             resourceInputs["customerGreEndpoint"] = state?.customerGreEndpoint;
@@ -164,6 +173,8 @@ export class MagicWanGreTunnel extends pulumi.CustomResource {
                 throw new Error("Missing required property 'name'");
             }
             resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["automaticReturnRouting"] = args?.automaticReturnRouting;
+            resourceInputs["bgp"] = args?.bgp;
             resourceInputs["cloudflareGreEndpoint"] = args?.cloudflareGreEndpoint;
             resourceInputs["customerGreEndpoint"] = args?.customerGreEndpoint;
             resourceInputs["description"] = args?.description;
@@ -173,6 +184,7 @@ export class MagicWanGreTunnel extends pulumi.CustomResource {
             resourceInputs["mtu"] = args?.mtu;
             resourceInputs["name"] = args?.name;
             resourceInputs["ttl"] = args?.ttl;
+            resourceInputs["bgpStatus"] = undefined /*out*/;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
         }
@@ -191,6 +203,12 @@ export interface MagicWanGreTunnelState {
      * Identifier
      */
     accountId?: pulumi.Input<string>;
+    /**
+     * True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+     */
+    automaticReturnRouting?: pulumi.Input<boolean>;
+    bgp?: pulumi.Input<inputs.MagicWanGreTunnelBgp>;
+    bgpStatus?: pulumi.Input<inputs.MagicWanGreTunnelBgpStatus>;
     /**
      * The IP address assigned to the Cloudflare side of the GRE tunnel.
      */
@@ -242,6 +260,11 @@ export interface MagicWanGreTunnelArgs {
      * Identifier
      */
     accountId: pulumi.Input<string>;
+    /**
+     * True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+     */
+    automaticReturnRouting?: pulumi.Input<boolean>;
+    bgp?: pulumi.Input<inputs.MagicWanGreTunnelBgp>;
     /**
      * The IP address assigned to the Cloudflare side of the GRE tunnel.
      */

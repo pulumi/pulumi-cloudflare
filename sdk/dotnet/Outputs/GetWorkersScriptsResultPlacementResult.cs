@@ -14,6 +14,14 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetWorkersScriptsResultPlacementResult
     {
         /// <summary>
+        /// TCP host and port for targeted placement.
+        /// </summary>
+        public readonly string Host;
+        /// <summary>
+        /// HTTP hostname for targeted placement.
+        /// </summary>
+        public readonly string Hostname;
+        /// <summary>
         /// The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
         /// </summary>
         public readonly string LastAnalyzedAt;
@@ -23,6 +31,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Mode;
         /// <summary>
+        /// Cloud region for targeted placement in format 'provider:region'.
+        /// </summary>
+        public readonly string Region;
+        /// <summary>
         /// Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
         /// Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
         /// </summary>
@@ -30,14 +42,23 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private GetWorkersScriptsResultPlacementResult(
+            string host,
+
+            string hostname,
+
             string lastAnalyzedAt,
 
             string mode,
 
+            string region,
+
             string status)
         {
+            Host = host;
+            Hostname = hostname;
             LastAnalyzedAt = lastAnalyzedAt;
             Mode = mode;
+            Region = region;
             Status = status;
         }
     }

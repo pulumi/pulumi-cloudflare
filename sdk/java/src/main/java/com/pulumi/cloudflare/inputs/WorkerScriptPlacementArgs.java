@@ -16,6 +16,36 @@ public final class WorkerScriptPlacementArgs extends com.pulumi.resources.Resour
     public static final WorkerScriptPlacementArgs Empty = new WorkerScriptPlacementArgs();
 
     /**
+     * TCP host and port for targeted placement.
+     * 
+     */
+    @Import(name="host")
+    private @Nullable Output<String> host;
+
+    /**
+     * @return TCP host and port for targeted placement.
+     * 
+     */
+    public Optional<Output<String>> host() {
+        return Optional.ofNullable(this.host);
+    }
+
+    /**
+     * HTTP hostname for targeted placement.
+     * 
+     */
+    @Import(name="hostname")
+    private @Nullable Output<String> hostname;
+
+    /**
+     * @return HTTP hostname for targeted placement.
+     * 
+     */
+    public Optional<Output<String>> hostname() {
+        return Optional.ofNullable(this.hostname);
+    }
+
+    /**
      * The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * 
      */
@@ -48,6 +78,21 @@ public final class WorkerScriptPlacementArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * Cloud region for targeted placement in format &#39;provider:region&#39;.
+     * 
+     */
+    @Import(name="region")
+    private @Nullable Output<String> region;
+
+    /**
+     * @return Cloud region for targeted placement in format &#39;provider:region&#39;.
+     * 
+     */
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
+    }
+
+    /**
      * Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
      * 
@@ -67,8 +112,11 @@ public final class WorkerScriptPlacementArgs extends com.pulumi.resources.Resour
     private WorkerScriptPlacementArgs() {}
 
     private WorkerScriptPlacementArgs(WorkerScriptPlacementArgs $) {
+        this.host = $.host;
+        this.hostname = $.hostname;
         this.lastAnalyzedAt = $.lastAnalyzedAt;
         this.mode = $.mode;
+        this.region = $.region;
         this.status = $.status;
     }
 
@@ -88,6 +136,48 @@ public final class WorkerScriptPlacementArgs extends com.pulumi.resources.Resour
 
         public Builder(WorkerScriptPlacementArgs defaults) {
             $ = new WorkerScriptPlacementArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param host TCP host and port for targeted placement.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder host(@Nullable Output<String> host) {
+            $.host = host;
+            return this;
+        }
+
+        /**
+         * @param host TCP host and port for targeted placement.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder host(String host) {
+            return host(Output.of(host));
+        }
+
+        /**
+         * @param hostname HTTP hostname for targeted placement.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostname(@Nullable Output<String> hostname) {
+            $.hostname = hostname;
+            return this;
+        }
+
+        /**
+         * @param hostname HTTP hostname for targeted placement.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostname(String hostname) {
+            return hostname(Output.of(hostname));
         }
 
         /**
@@ -132,6 +222,27 @@ public final class WorkerScriptPlacementArgs extends com.pulumi.resources.Resour
          */
         public Builder mode(String mode) {
             return mode(Output.of(mode));
+        }
+
+        /**
+         * @param region Cloud region for targeted placement in format &#39;provider:region&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable Output<String> region) {
+            $.region = region;
+            return this;
+        }
+
+        /**
+         * @param region Cloud region for targeted placement in format &#39;provider:region&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(String region) {
+            return region(Output.of(region));
         }
 
         /**

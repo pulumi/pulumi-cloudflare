@@ -72,7 +72,7 @@ type AccountSubscription struct {
 	// The price of the subscription that will be billed, in US dollars.
 	Price pulumi.Float64Output `pulumi:"price"`
 	// The rate plan applied to the subscription.
-	RatePlan AccountSubscriptionRatePlanPtrOutput `pulumi:"ratePlan"`
+	RatePlan AccountSubscriptionRatePlanOutput `pulumi:"ratePlan"`
 	// The state that the subscription is in.
 	// Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
 	State pulumi.StringOutput `pulumi:"state"`
@@ -296,8 +296,8 @@ func (o AccountSubscriptionOutput) Price() pulumi.Float64Output {
 }
 
 // The rate plan applied to the subscription.
-func (o AccountSubscriptionOutput) RatePlan() AccountSubscriptionRatePlanPtrOutput {
-	return o.ApplyT(func(v *AccountSubscription) AccountSubscriptionRatePlanPtrOutput { return v.RatePlan }).(AccountSubscriptionRatePlanPtrOutput)
+func (o AccountSubscriptionOutput) RatePlan() AccountSubscriptionRatePlanOutput {
+	return o.ApplyT(func(v *AccountSubscription) AccountSubscriptionRatePlanOutput { return v.RatePlan }).(AccountSubscriptionRatePlanOutput)
 }
 
 // The state that the subscription is in.

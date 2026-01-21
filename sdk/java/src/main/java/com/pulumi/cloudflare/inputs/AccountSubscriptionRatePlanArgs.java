@@ -108,14 +108,14 @@ public final class AccountSubscriptionRatePlanArgs extends com.pulumi.resources.
     }
 
     /**
-     * The list of sets this rate plan applies to.
+     * The list of sets this rate plan applies to. Returns array of strings.
      * 
      */
     @Import(name="sets")
     private @Nullable Output<List<String>> sets;
 
     /**
-     * @return The list of sets this rate plan applies to.
+     * @return The list of sets this rate plan applies to. Returns array of strings.
      * 
      */
     public Optional<Output<List<String>>> sets() {
@@ -279,7 +279,7 @@ public final class AccountSubscriptionRatePlanArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sets The list of sets this rate plan applies to.
+         * @param sets The list of sets this rate plan applies to. Returns array of strings.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class AccountSubscriptionRatePlanArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sets The list of sets this rate plan applies to.
+         * @param sets The list of sets this rate plan applies to. Returns array of strings.
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class AccountSubscriptionRatePlanArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sets The list of sets this rate plan applies to.
+         * @param sets The list of sets this rate plan applies to. Returns array of strings.
          * 
          * @return builder
          * 

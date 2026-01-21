@@ -182,6 +182,7 @@ namespace Pulumi.Cloudflare
         public readonly string? Include;
         public readonly Outputs.GetWorkerVersionLimitsResult Limits;
         public readonly string MainModule;
+        public readonly string MainScriptBase64;
         public readonly Outputs.GetWorkerVersionMigrationsResult Migrations;
         public readonly ImmutableArray<Outputs.GetWorkerVersionModuleResult> Modules;
         public readonly int Number;
@@ -222,6 +223,8 @@ namespace Pulumi.Cloudflare
 
             string mainModule,
 
+            string mainScriptBase64,
+
             Outputs.GetWorkerVersionMigrationsResult migrations,
 
             ImmutableArray<Outputs.GetWorkerVersionModuleResult> modules,
@@ -251,6 +254,7 @@ namespace Pulumi.Cloudflare
             Include = include;
             Limits = limits;
             MainModule = mainModule;
+            MainScriptBase64 = mainScriptBase64;
             Migrations = migrations;
             Modules = modules;
             Number = number;

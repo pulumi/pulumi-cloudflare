@@ -63,7 +63,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Defines the port (default: 5432 for Postgres) of your origin database.
+        /// Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }

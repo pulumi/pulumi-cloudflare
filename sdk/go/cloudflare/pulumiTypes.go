@@ -40664,7 +40664,7 @@ type AccountSubscriptionRatePlan struct {
 	PublicName *string `pulumi:"publicName"`
 	// The scope that this rate plan applies to.
 	Scope *string `pulumi:"scope"`
-	// The list of sets this rate plan applies to.
+	// The list of sets this rate plan applies to. Returns array of strings.
 	Sets []string `pulumi:"sets"`
 }
 
@@ -40692,7 +40692,7 @@ type AccountSubscriptionRatePlanArgs struct {
 	PublicName pulumi.StringPtrInput `pulumi:"publicName"`
 	// The scope that this rate plan applies to.
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
-	// The list of sets this rate plan applies to.
+	// The list of sets this rate plan applies to. Returns array of strings.
 	Sets pulumi.StringArrayInput `pulumi:"sets"`
 }
 
@@ -40803,7 +40803,7 @@ func (o AccountSubscriptionRatePlanOutput) Scope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountSubscriptionRatePlan) *string { return v.Scope }).(pulumi.StringPtrOutput)
 }
 
-// The list of sets this rate plan applies to.
+// The list of sets this rate plan applies to. Returns array of strings.
 func (o AccountSubscriptionRatePlanOutput) Sets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccountSubscriptionRatePlan) []string { return v.Sets }).(pulumi.StringArrayOutput)
 }
@@ -40892,7 +40892,7 @@ func (o AccountSubscriptionRatePlanPtrOutput) Scope() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The list of sets this rate plan applies to.
+// The list of sets this rate plan applies to. Returns array of strings.
 func (o AccountSubscriptionRatePlanPtrOutput) Sets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccountSubscriptionRatePlan) []string {
 		if v == nil {
@@ -41657,7 +41657,7 @@ func (o AddressMapMembershipArrayOutput) Index(i pulumi.IntInput) AddressMapMemb
 }
 
 type ApiShieldAuthIdCharacteristic struct {
-	// The name of the characteristic field, i.e., the header or cookie name.
+	// The name of the characteristic field, i.e., the header or cookie name. When using type "jwt", this must be a claim location expressed as `$(token_config_id):$(json_path)`, where `tokenConfigId` is the ID of the token configuration used in validating the JWT, and `jsonPath` is a RFC 9535 JSONPath expression.
 	Name string `pulumi:"name"`
 	// The type of characteristic.
 	// Available values: "header", "cookie", "jwt".
@@ -41676,7 +41676,7 @@ type ApiShieldAuthIdCharacteristicInput interface {
 }
 
 type ApiShieldAuthIdCharacteristicArgs struct {
-	// The name of the characteristic field, i.e., the header or cookie name.
+	// The name of the characteristic field, i.e., the header or cookie name. When using type "jwt", this must be a claim location expressed as `$(token_config_id):$(json_path)`, where `tokenConfigId` is the ID of the token configuration used in validating the JWT, and `jsonPath` is a RFC 9535 JSONPath expression.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The type of characteristic.
 	// Available values: "header", "cookie", "jwt".
@@ -41734,7 +41734,7 @@ func (o ApiShieldAuthIdCharacteristicOutput) ToApiShieldAuthIdCharacteristicOutp
 	return o
 }
 
-// The name of the characteristic field, i.e., the header or cookie name.
+// The name of the characteristic field, i.e., the header or cookie name. When using type "jwt", this must be a claim location expressed as `$(token_config_id):$(json_path)`, where `tokenConfigId` is the ID of the token configuration used in validating the JWT, and `jsonPath` is a RFC 9535 JSONPath expression.
 func (o ApiShieldAuthIdCharacteristicOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiShieldAuthIdCharacteristic) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -55084,9 +55084,9 @@ func (o HealthcheckTcpConfigPtrOutput) Port() pulumi.IntPtrOutput {
 type HyperdriveConfigCaching struct {
 	// Set to true to disable caching of SQL responses. Default is false.
 	Disabled *bool `pulumi:"disabled"`
-	// Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).
+	// Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
 	MaxAge *int `pulumi:"maxAge"`
-	// Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).
+	// Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
 	StaleWhileRevalidate *int `pulumi:"staleWhileRevalidate"`
 }
 
@@ -55104,9 +55104,9 @@ type HyperdriveConfigCachingInput interface {
 type HyperdriveConfigCachingArgs struct {
 	// Set to true to disable caching of SQL responses. Default is false.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).
+	// Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
 	MaxAge pulumi.IntPtrInput `pulumi:"maxAge"`
-	// Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).
+	// Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
 	StaleWhileRevalidate pulumi.IntPtrInput `pulumi:"staleWhileRevalidate"`
 }
 
@@ -55192,12 +55192,12 @@ func (o HyperdriveConfigCachingOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v HyperdriveConfigCaching) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).
+// Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
 func (o HyperdriveConfigCachingOutput) MaxAge() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HyperdriveConfigCaching) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
 }
 
-// Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).
+// Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
 func (o HyperdriveConfigCachingOutput) StaleWhileRevalidate() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HyperdriveConfigCaching) *int { return v.StaleWhileRevalidate }).(pulumi.IntPtrOutput)
 }
@@ -55236,7 +55236,7 @@ func (o HyperdriveConfigCachingPtrOutput) Disabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).
+// Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
 func (o HyperdriveConfigCachingPtrOutput) MaxAge() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HyperdriveConfigCaching) *int {
 		if v == nil {
@@ -55246,7 +55246,7 @@ func (o HyperdriveConfigCachingPtrOutput) MaxAge() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).
+// Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
 func (o HyperdriveConfigCachingPtrOutput) StaleWhileRevalidate() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HyperdriveConfigCaching) *int {
 		if v == nil {
@@ -55442,7 +55442,7 @@ type HyperdriveConfigOrigin struct {
 	Host string `pulumi:"host"`
 	// Set the password needed to access your origin database. The API never returns this write-only value.
 	Password string `pulumi:"password"`
-	// Defines the port (default: 5432 for Postgres) of your origin database.
+	// Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.
 	Port *int `pulumi:"port"`
 	// Specifies the URL scheme used to connect to your origin database.
 	// Available values: "postgres", "postgresql", "mysql".
@@ -55473,7 +55473,7 @@ type HyperdriveConfigOriginArgs struct {
 	Host pulumi.StringInput `pulumi:"host"`
 	// Set the password needed to access your origin database. The API never returns this write-only value.
 	Password pulumi.StringInput `pulumi:"password"`
-	// Defines the port (default: 5432 for Postgres) of your origin database.
+	// Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Specifies the URL scheme used to connect to your origin database.
 	// Available values: "postgres", "postgresql", "mysql".
@@ -55584,7 +55584,7 @@ func (o HyperdriveConfigOriginOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v HyperdriveConfigOrigin) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// Defines the port (default: 5432 for Postgres) of your origin database.
+// Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.
 func (o HyperdriveConfigOriginOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HyperdriveConfigOrigin) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -55674,7 +55674,7 @@ func (o HyperdriveConfigOriginPtrOutput) Password() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Defines the port (default: 5432 for Postgres) of your origin database.
+// Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.
 func (o HyperdriveConfigOriginPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HyperdriveConfigOrigin) *int {
 		if v == nil {
@@ -62490,6 +62490,423 @@ func (o MagicTransitSiteWanStaticAddressingPtrOutput) SecondaryAddress() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+type MagicWanGreTunnelBgp struct {
+	// ASN used on the customer end of the BGP session
+	CustomerAsn int `pulumi:"customerAsn"`
+	// Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
+	ExtraPrefixes []string `pulumi:"extraPrefixes"`
+	// MD5 key to use for session authentication.
+	Md5Key *string `pulumi:"md5Key"`
+}
+
+// MagicWanGreTunnelBgpInput is an input type that accepts MagicWanGreTunnelBgpArgs and MagicWanGreTunnelBgpOutput values.
+// You can construct a concrete instance of `MagicWanGreTunnelBgpInput` via:
+//
+//	MagicWanGreTunnelBgpArgs{...}
+type MagicWanGreTunnelBgpInput interface {
+	pulumi.Input
+
+	ToMagicWanGreTunnelBgpOutput() MagicWanGreTunnelBgpOutput
+	ToMagicWanGreTunnelBgpOutputWithContext(context.Context) MagicWanGreTunnelBgpOutput
+}
+
+type MagicWanGreTunnelBgpArgs struct {
+	// ASN used on the customer end of the BGP session
+	CustomerAsn pulumi.IntInput `pulumi:"customerAsn"`
+	// Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
+	ExtraPrefixes pulumi.StringArrayInput `pulumi:"extraPrefixes"`
+	// MD5 key to use for session authentication.
+	Md5Key pulumi.StringPtrInput `pulumi:"md5Key"`
+}
+
+func (MagicWanGreTunnelBgpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MagicWanGreTunnelBgp)(nil)).Elem()
+}
+
+func (i MagicWanGreTunnelBgpArgs) ToMagicWanGreTunnelBgpOutput() MagicWanGreTunnelBgpOutput {
+	return i.ToMagicWanGreTunnelBgpOutputWithContext(context.Background())
+}
+
+func (i MagicWanGreTunnelBgpArgs) ToMagicWanGreTunnelBgpOutputWithContext(ctx context.Context) MagicWanGreTunnelBgpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MagicWanGreTunnelBgpOutput)
+}
+
+func (i MagicWanGreTunnelBgpArgs) ToMagicWanGreTunnelBgpPtrOutput() MagicWanGreTunnelBgpPtrOutput {
+	return i.ToMagicWanGreTunnelBgpPtrOutputWithContext(context.Background())
+}
+
+func (i MagicWanGreTunnelBgpArgs) ToMagicWanGreTunnelBgpPtrOutputWithContext(ctx context.Context) MagicWanGreTunnelBgpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MagicWanGreTunnelBgpOutput).ToMagicWanGreTunnelBgpPtrOutputWithContext(ctx)
+}
+
+// MagicWanGreTunnelBgpPtrInput is an input type that accepts MagicWanGreTunnelBgpArgs, MagicWanGreTunnelBgpPtr and MagicWanGreTunnelBgpPtrOutput values.
+// You can construct a concrete instance of `MagicWanGreTunnelBgpPtrInput` via:
+//
+//	        MagicWanGreTunnelBgpArgs{...}
+//
+//	or:
+//
+//	        nil
+type MagicWanGreTunnelBgpPtrInput interface {
+	pulumi.Input
+
+	ToMagicWanGreTunnelBgpPtrOutput() MagicWanGreTunnelBgpPtrOutput
+	ToMagicWanGreTunnelBgpPtrOutputWithContext(context.Context) MagicWanGreTunnelBgpPtrOutput
+}
+
+type magicWanGreTunnelBgpPtrType MagicWanGreTunnelBgpArgs
+
+func MagicWanGreTunnelBgpPtr(v *MagicWanGreTunnelBgpArgs) MagicWanGreTunnelBgpPtrInput {
+	return (*magicWanGreTunnelBgpPtrType)(v)
+}
+
+func (*magicWanGreTunnelBgpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MagicWanGreTunnelBgp)(nil)).Elem()
+}
+
+func (i *magicWanGreTunnelBgpPtrType) ToMagicWanGreTunnelBgpPtrOutput() MagicWanGreTunnelBgpPtrOutput {
+	return i.ToMagicWanGreTunnelBgpPtrOutputWithContext(context.Background())
+}
+
+func (i *magicWanGreTunnelBgpPtrType) ToMagicWanGreTunnelBgpPtrOutputWithContext(ctx context.Context) MagicWanGreTunnelBgpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MagicWanGreTunnelBgpPtrOutput)
+}
+
+type MagicWanGreTunnelBgpOutput struct{ *pulumi.OutputState }
+
+func (MagicWanGreTunnelBgpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MagicWanGreTunnelBgp)(nil)).Elem()
+}
+
+func (o MagicWanGreTunnelBgpOutput) ToMagicWanGreTunnelBgpOutput() MagicWanGreTunnelBgpOutput {
+	return o
+}
+
+func (o MagicWanGreTunnelBgpOutput) ToMagicWanGreTunnelBgpOutputWithContext(ctx context.Context) MagicWanGreTunnelBgpOutput {
+	return o
+}
+
+func (o MagicWanGreTunnelBgpOutput) ToMagicWanGreTunnelBgpPtrOutput() MagicWanGreTunnelBgpPtrOutput {
+	return o.ToMagicWanGreTunnelBgpPtrOutputWithContext(context.Background())
+}
+
+func (o MagicWanGreTunnelBgpOutput) ToMagicWanGreTunnelBgpPtrOutputWithContext(ctx context.Context) MagicWanGreTunnelBgpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MagicWanGreTunnelBgp) *MagicWanGreTunnelBgp {
+		return &v
+	}).(MagicWanGreTunnelBgpPtrOutput)
+}
+
+// ASN used on the customer end of the BGP session
+func (o MagicWanGreTunnelBgpOutput) CustomerAsn() pulumi.IntOutput {
+	return o.ApplyT(func(v MagicWanGreTunnelBgp) int { return v.CustomerAsn }).(pulumi.IntOutput)
+}
+
+// Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
+func (o MagicWanGreTunnelBgpOutput) ExtraPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MagicWanGreTunnelBgp) []string { return v.ExtraPrefixes }).(pulumi.StringArrayOutput)
+}
+
+// MD5 key to use for session authentication.
+func (o MagicWanGreTunnelBgpOutput) Md5Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MagicWanGreTunnelBgp) *string { return v.Md5Key }).(pulumi.StringPtrOutput)
+}
+
+type MagicWanGreTunnelBgpPtrOutput struct{ *pulumi.OutputState }
+
+func (MagicWanGreTunnelBgpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MagicWanGreTunnelBgp)(nil)).Elem()
+}
+
+func (o MagicWanGreTunnelBgpPtrOutput) ToMagicWanGreTunnelBgpPtrOutput() MagicWanGreTunnelBgpPtrOutput {
+	return o
+}
+
+func (o MagicWanGreTunnelBgpPtrOutput) ToMagicWanGreTunnelBgpPtrOutputWithContext(ctx context.Context) MagicWanGreTunnelBgpPtrOutput {
+	return o
+}
+
+func (o MagicWanGreTunnelBgpPtrOutput) Elem() MagicWanGreTunnelBgpOutput {
+	return o.ApplyT(func(v *MagicWanGreTunnelBgp) MagicWanGreTunnelBgp {
+		if v != nil {
+			return *v
+		}
+		var ret MagicWanGreTunnelBgp
+		return ret
+	}).(MagicWanGreTunnelBgpOutput)
+}
+
+// ASN used on the customer end of the BGP session
+func (o MagicWanGreTunnelBgpPtrOutput) CustomerAsn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MagicWanGreTunnelBgp) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.CustomerAsn
+	}).(pulumi.IntPtrOutput)
+}
+
+// Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
+func (o MagicWanGreTunnelBgpPtrOutput) ExtraPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MagicWanGreTunnelBgp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExtraPrefixes
+	}).(pulumi.StringArrayOutput)
+}
+
+// MD5 key to use for session authentication.
+func (o MagicWanGreTunnelBgpPtrOutput) Md5Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicWanGreTunnelBgp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Md5Key
+	}).(pulumi.StringPtrOutput)
+}
+
+type MagicWanGreTunnelBgpStatus struct {
+	BgpState            *string `pulumi:"bgpState"`
+	CfSpeakerIp         *string `pulumi:"cfSpeakerIp"`
+	CfSpeakerPort       *int    `pulumi:"cfSpeakerPort"`
+	CustomerSpeakerIp   *string `pulumi:"customerSpeakerIp"`
+	CustomerSpeakerPort *int    `pulumi:"customerSpeakerPort"`
+	// Available values: "BGP*DOWN", "BGP*UP", "BGP_ESTABLISHING".
+	State          *string `pulumi:"state"`
+	TcpEstablished *bool   `pulumi:"tcpEstablished"`
+	UpdatedAt      *string `pulumi:"updatedAt"`
+}
+
+// MagicWanGreTunnelBgpStatusInput is an input type that accepts MagicWanGreTunnelBgpStatusArgs and MagicWanGreTunnelBgpStatusOutput values.
+// You can construct a concrete instance of `MagicWanGreTunnelBgpStatusInput` via:
+//
+//	MagicWanGreTunnelBgpStatusArgs{...}
+type MagicWanGreTunnelBgpStatusInput interface {
+	pulumi.Input
+
+	ToMagicWanGreTunnelBgpStatusOutput() MagicWanGreTunnelBgpStatusOutput
+	ToMagicWanGreTunnelBgpStatusOutputWithContext(context.Context) MagicWanGreTunnelBgpStatusOutput
+}
+
+type MagicWanGreTunnelBgpStatusArgs struct {
+	BgpState            pulumi.StringPtrInput `pulumi:"bgpState"`
+	CfSpeakerIp         pulumi.StringPtrInput `pulumi:"cfSpeakerIp"`
+	CfSpeakerPort       pulumi.IntPtrInput    `pulumi:"cfSpeakerPort"`
+	CustomerSpeakerIp   pulumi.StringPtrInput `pulumi:"customerSpeakerIp"`
+	CustomerSpeakerPort pulumi.IntPtrInput    `pulumi:"customerSpeakerPort"`
+	// Available values: "BGP*DOWN", "BGP*UP", "BGP_ESTABLISHING".
+	State          pulumi.StringPtrInput `pulumi:"state"`
+	TcpEstablished pulumi.BoolPtrInput   `pulumi:"tcpEstablished"`
+	UpdatedAt      pulumi.StringPtrInput `pulumi:"updatedAt"`
+}
+
+func (MagicWanGreTunnelBgpStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MagicWanGreTunnelBgpStatus)(nil)).Elem()
+}
+
+func (i MagicWanGreTunnelBgpStatusArgs) ToMagicWanGreTunnelBgpStatusOutput() MagicWanGreTunnelBgpStatusOutput {
+	return i.ToMagicWanGreTunnelBgpStatusOutputWithContext(context.Background())
+}
+
+func (i MagicWanGreTunnelBgpStatusArgs) ToMagicWanGreTunnelBgpStatusOutputWithContext(ctx context.Context) MagicWanGreTunnelBgpStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MagicWanGreTunnelBgpStatusOutput)
+}
+
+func (i MagicWanGreTunnelBgpStatusArgs) ToMagicWanGreTunnelBgpStatusPtrOutput() MagicWanGreTunnelBgpStatusPtrOutput {
+	return i.ToMagicWanGreTunnelBgpStatusPtrOutputWithContext(context.Background())
+}
+
+func (i MagicWanGreTunnelBgpStatusArgs) ToMagicWanGreTunnelBgpStatusPtrOutputWithContext(ctx context.Context) MagicWanGreTunnelBgpStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MagicWanGreTunnelBgpStatusOutput).ToMagicWanGreTunnelBgpStatusPtrOutputWithContext(ctx)
+}
+
+// MagicWanGreTunnelBgpStatusPtrInput is an input type that accepts MagicWanGreTunnelBgpStatusArgs, MagicWanGreTunnelBgpStatusPtr and MagicWanGreTunnelBgpStatusPtrOutput values.
+// You can construct a concrete instance of `MagicWanGreTunnelBgpStatusPtrInput` via:
+//
+//	        MagicWanGreTunnelBgpStatusArgs{...}
+//
+//	or:
+//
+//	        nil
+type MagicWanGreTunnelBgpStatusPtrInput interface {
+	pulumi.Input
+
+	ToMagicWanGreTunnelBgpStatusPtrOutput() MagicWanGreTunnelBgpStatusPtrOutput
+	ToMagicWanGreTunnelBgpStatusPtrOutputWithContext(context.Context) MagicWanGreTunnelBgpStatusPtrOutput
+}
+
+type magicWanGreTunnelBgpStatusPtrType MagicWanGreTunnelBgpStatusArgs
+
+func MagicWanGreTunnelBgpStatusPtr(v *MagicWanGreTunnelBgpStatusArgs) MagicWanGreTunnelBgpStatusPtrInput {
+	return (*magicWanGreTunnelBgpStatusPtrType)(v)
+}
+
+func (*magicWanGreTunnelBgpStatusPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MagicWanGreTunnelBgpStatus)(nil)).Elem()
+}
+
+func (i *magicWanGreTunnelBgpStatusPtrType) ToMagicWanGreTunnelBgpStatusPtrOutput() MagicWanGreTunnelBgpStatusPtrOutput {
+	return i.ToMagicWanGreTunnelBgpStatusPtrOutputWithContext(context.Background())
+}
+
+func (i *magicWanGreTunnelBgpStatusPtrType) ToMagicWanGreTunnelBgpStatusPtrOutputWithContext(ctx context.Context) MagicWanGreTunnelBgpStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MagicWanGreTunnelBgpStatusPtrOutput)
+}
+
+type MagicWanGreTunnelBgpStatusOutput struct{ *pulumi.OutputState }
+
+func (MagicWanGreTunnelBgpStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MagicWanGreTunnelBgpStatus)(nil)).Elem()
+}
+
+func (o MagicWanGreTunnelBgpStatusOutput) ToMagicWanGreTunnelBgpStatusOutput() MagicWanGreTunnelBgpStatusOutput {
+	return o
+}
+
+func (o MagicWanGreTunnelBgpStatusOutput) ToMagicWanGreTunnelBgpStatusOutputWithContext(ctx context.Context) MagicWanGreTunnelBgpStatusOutput {
+	return o
+}
+
+func (o MagicWanGreTunnelBgpStatusOutput) ToMagicWanGreTunnelBgpStatusPtrOutput() MagicWanGreTunnelBgpStatusPtrOutput {
+	return o.ToMagicWanGreTunnelBgpStatusPtrOutputWithContext(context.Background())
+}
+
+func (o MagicWanGreTunnelBgpStatusOutput) ToMagicWanGreTunnelBgpStatusPtrOutputWithContext(ctx context.Context) MagicWanGreTunnelBgpStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MagicWanGreTunnelBgpStatus) *MagicWanGreTunnelBgpStatus {
+		return &v
+	}).(MagicWanGreTunnelBgpStatusPtrOutput)
+}
+
+func (o MagicWanGreTunnelBgpStatusOutput) BgpState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MagicWanGreTunnelBgpStatus) *string { return v.BgpState }).(pulumi.StringPtrOutput)
+}
+
+func (o MagicWanGreTunnelBgpStatusOutput) CfSpeakerIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MagicWanGreTunnelBgpStatus) *string { return v.CfSpeakerIp }).(pulumi.StringPtrOutput)
+}
+
+func (o MagicWanGreTunnelBgpStatusOutput) CfSpeakerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MagicWanGreTunnelBgpStatus) *int { return v.CfSpeakerPort }).(pulumi.IntPtrOutput)
+}
+
+func (o MagicWanGreTunnelBgpStatusOutput) CustomerSpeakerIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MagicWanGreTunnelBgpStatus) *string { return v.CustomerSpeakerIp }).(pulumi.StringPtrOutput)
+}
+
+func (o MagicWanGreTunnelBgpStatusOutput) CustomerSpeakerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MagicWanGreTunnelBgpStatus) *int { return v.CustomerSpeakerPort }).(pulumi.IntPtrOutput)
+}
+
+// Available values: "BGP*DOWN", "BGP*UP", "BGP_ESTABLISHING".
+func (o MagicWanGreTunnelBgpStatusOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MagicWanGreTunnelBgpStatus) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+func (o MagicWanGreTunnelBgpStatusOutput) TcpEstablished() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MagicWanGreTunnelBgpStatus) *bool { return v.TcpEstablished }).(pulumi.BoolPtrOutput)
+}
+
+func (o MagicWanGreTunnelBgpStatusOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MagicWanGreTunnelBgpStatus) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+}
+
+type MagicWanGreTunnelBgpStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (MagicWanGreTunnelBgpStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MagicWanGreTunnelBgpStatus)(nil)).Elem()
+}
+
+func (o MagicWanGreTunnelBgpStatusPtrOutput) ToMagicWanGreTunnelBgpStatusPtrOutput() MagicWanGreTunnelBgpStatusPtrOutput {
+	return o
+}
+
+func (o MagicWanGreTunnelBgpStatusPtrOutput) ToMagicWanGreTunnelBgpStatusPtrOutputWithContext(ctx context.Context) MagicWanGreTunnelBgpStatusPtrOutput {
+	return o
+}
+
+func (o MagicWanGreTunnelBgpStatusPtrOutput) Elem() MagicWanGreTunnelBgpStatusOutput {
+	return o.ApplyT(func(v *MagicWanGreTunnelBgpStatus) MagicWanGreTunnelBgpStatus {
+		if v != nil {
+			return *v
+		}
+		var ret MagicWanGreTunnelBgpStatus
+		return ret
+	}).(MagicWanGreTunnelBgpStatusOutput)
+}
+
+func (o MagicWanGreTunnelBgpStatusPtrOutput) BgpState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicWanGreTunnelBgpStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BgpState
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MagicWanGreTunnelBgpStatusPtrOutput) CfSpeakerIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicWanGreTunnelBgpStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CfSpeakerIp
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MagicWanGreTunnelBgpStatusPtrOutput) CfSpeakerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MagicWanGreTunnelBgpStatus) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CfSpeakerPort
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o MagicWanGreTunnelBgpStatusPtrOutput) CustomerSpeakerIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicWanGreTunnelBgpStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomerSpeakerIp
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MagicWanGreTunnelBgpStatusPtrOutput) CustomerSpeakerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MagicWanGreTunnelBgpStatus) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CustomerSpeakerPort
+	}).(pulumi.IntPtrOutput)
+}
+
+// Available values: "BGP*DOWN", "BGP*UP", "BGP_ESTABLISHING".
+func (o MagicWanGreTunnelBgpStatusPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicWanGreTunnelBgpStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MagicWanGreTunnelBgpStatusPtrOutput) TcpEstablished() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MagicWanGreTunnelBgpStatus) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TcpEstablished
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o MagicWanGreTunnelBgpStatusPtrOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicWanGreTunnelBgpStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedAt
+	}).(pulumi.StringPtrOutput)
+}
+
 type MagicWanGreTunnelHealthCheck struct {
 	// The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
 	// Available values: "unidirectional", "bidirectional".
@@ -62868,6 +63285,564 @@ func (o MagicWanGreTunnelHealthCheckTargetPtrOutput) Saved() pulumi.StringPtrOut
 			return nil
 		}
 		return v.Saved
+	}).(pulumi.StringPtrOutput)
+}
+
+type MagicWanIpsecTunnelBgp struct {
+	// ASN used on the customer end of the BGP session
+	CustomerAsn int `pulumi:"customerAsn"`
+	// Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
+	ExtraPrefixes []string `pulumi:"extraPrefixes"`
+	// MD5 key to use for session authentication.
+	Md5Key *string `pulumi:"md5Key"`
+}
+
+// MagicWanIpsecTunnelBgpInput is an input type that accepts MagicWanIpsecTunnelBgpArgs and MagicWanIpsecTunnelBgpOutput values.
+// You can construct a concrete instance of `MagicWanIpsecTunnelBgpInput` via:
+//
+//	MagicWanIpsecTunnelBgpArgs{...}
+type MagicWanIpsecTunnelBgpInput interface {
+	pulumi.Input
+
+	ToMagicWanIpsecTunnelBgpOutput() MagicWanIpsecTunnelBgpOutput
+	ToMagicWanIpsecTunnelBgpOutputWithContext(context.Context) MagicWanIpsecTunnelBgpOutput
+}
+
+type MagicWanIpsecTunnelBgpArgs struct {
+	// ASN used on the customer end of the BGP session
+	CustomerAsn pulumi.IntInput `pulumi:"customerAsn"`
+	// Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
+	ExtraPrefixes pulumi.StringArrayInput `pulumi:"extraPrefixes"`
+	// MD5 key to use for session authentication.
+	Md5Key pulumi.StringPtrInput `pulumi:"md5Key"`
+}
+
+func (MagicWanIpsecTunnelBgpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MagicWanIpsecTunnelBgp)(nil)).Elem()
+}
+
+func (i MagicWanIpsecTunnelBgpArgs) ToMagicWanIpsecTunnelBgpOutput() MagicWanIpsecTunnelBgpOutput {
+	return i.ToMagicWanIpsecTunnelBgpOutputWithContext(context.Background())
+}
+
+func (i MagicWanIpsecTunnelBgpArgs) ToMagicWanIpsecTunnelBgpOutputWithContext(ctx context.Context) MagicWanIpsecTunnelBgpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelBgpOutput)
+}
+
+func (i MagicWanIpsecTunnelBgpArgs) ToMagicWanIpsecTunnelBgpPtrOutput() MagicWanIpsecTunnelBgpPtrOutput {
+	return i.ToMagicWanIpsecTunnelBgpPtrOutputWithContext(context.Background())
+}
+
+func (i MagicWanIpsecTunnelBgpArgs) ToMagicWanIpsecTunnelBgpPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelBgpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelBgpOutput).ToMagicWanIpsecTunnelBgpPtrOutputWithContext(ctx)
+}
+
+// MagicWanIpsecTunnelBgpPtrInput is an input type that accepts MagicWanIpsecTunnelBgpArgs, MagicWanIpsecTunnelBgpPtr and MagicWanIpsecTunnelBgpPtrOutput values.
+// You can construct a concrete instance of `MagicWanIpsecTunnelBgpPtrInput` via:
+//
+//	        MagicWanIpsecTunnelBgpArgs{...}
+//
+//	or:
+//
+//	        nil
+type MagicWanIpsecTunnelBgpPtrInput interface {
+	pulumi.Input
+
+	ToMagicWanIpsecTunnelBgpPtrOutput() MagicWanIpsecTunnelBgpPtrOutput
+	ToMagicWanIpsecTunnelBgpPtrOutputWithContext(context.Context) MagicWanIpsecTunnelBgpPtrOutput
+}
+
+type magicWanIpsecTunnelBgpPtrType MagicWanIpsecTunnelBgpArgs
+
+func MagicWanIpsecTunnelBgpPtr(v *MagicWanIpsecTunnelBgpArgs) MagicWanIpsecTunnelBgpPtrInput {
+	return (*magicWanIpsecTunnelBgpPtrType)(v)
+}
+
+func (*magicWanIpsecTunnelBgpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MagicWanIpsecTunnelBgp)(nil)).Elem()
+}
+
+func (i *magicWanIpsecTunnelBgpPtrType) ToMagicWanIpsecTunnelBgpPtrOutput() MagicWanIpsecTunnelBgpPtrOutput {
+	return i.ToMagicWanIpsecTunnelBgpPtrOutputWithContext(context.Background())
+}
+
+func (i *magicWanIpsecTunnelBgpPtrType) ToMagicWanIpsecTunnelBgpPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelBgpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelBgpPtrOutput)
+}
+
+type MagicWanIpsecTunnelBgpOutput struct{ *pulumi.OutputState }
+
+func (MagicWanIpsecTunnelBgpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MagicWanIpsecTunnelBgp)(nil)).Elem()
+}
+
+func (o MagicWanIpsecTunnelBgpOutput) ToMagicWanIpsecTunnelBgpOutput() MagicWanIpsecTunnelBgpOutput {
+	return o
+}
+
+func (o MagicWanIpsecTunnelBgpOutput) ToMagicWanIpsecTunnelBgpOutputWithContext(ctx context.Context) MagicWanIpsecTunnelBgpOutput {
+	return o
+}
+
+func (o MagicWanIpsecTunnelBgpOutput) ToMagicWanIpsecTunnelBgpPtrOutput() MagicWanIpsecTunnelBgpPtrOutput {
+	return o.ToMagicWanIpsecTunnelBgpPtrOutputWithContext(context.Background())
+}
+
+func (o MagicWanIpsecTunnelBgpOutput) ToMagicWanIpsecTunnelBgpPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelBgpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MagicWanIpsecTunnelBgp) *MagicWanIpsecTunnelBgp {
+		return &v
+	}).(MagicWanIpsecTunnelBgpPtrOutput)
+}
+
+// ASN used on the customer end of the BGP session
+func (o MagicWanIpsecTunnelBgpOutput) CustomerAsn() pulumi.IntOutput {
+	return o.ApplyT(func(v MagicWanIpsecTunnelBgp) int { return v.CustomerAsn }).(pulumi.IntOutput)
+}
+
+// Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
+func (o MagicWanIpsecTunnelBgpOutput) ExtraPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MagicWanIpsecTunnelBgp) []string { return v.ExtraPrefixes }).(pulumi.StringArrayOutput)
+}
+
+// MD5 key to use for session authentication.
+func (o MagicWanIpsecTunnelBgpOutput) Md5Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MagicWanIpsecTunnelBgp) *string { return v.Md5Key }).(pulumi.StringPtrOutput)
+}
+
+type MagicWanIpsecTunnelBgpPtrOutput struct{ *pulumi.OutputState }
+
+func (MagicWanIpsecTunnelBgpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MagicWanIpsecTunnelBgp)(nil)).Elem()
+}
+
+func (o MagicWanIpsecTunnelBgpPtrOutput) ToMagicWanIpsecTunnelBgpPtrOutput() MagicWanIpsecTunnelBgpPtrOutput {
+	return o
+}
+
+func (o MagicWanIpsecTunnelBgpPtrOutput) ToMagicWanIpsecTunnelBgpPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelBgpPtrOutput {
+	return o
+}
+
+func (o MagicWanIpsecTunnelBgpPtrOutput) Elem() MagicWanIpsecTunnelBgpOutput {
+	return o.ApplyT(func(v *MagicWanIpsecTunnelBgp) MagicWanIpsecTunnelBgp {
+		if v != nil {
+			return *v
+		}
+		var ret MagicWanIpsecTunnelBgp
+		return ret
+	}).(MagicWanIpsecTunnelBgpOutput)
+}
+
+// ASN used on the customer end of the BGP session
+func (o MagicWanIpsecTunnelBgpPtrOutput) CustomerAsn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MagicWanIpsecTunnelBgp) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.CustomerAsn
+	}).(pulumi.IntPtrOutput)
+}
+
+// Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
+func (o MagicWanIpsecTunnelBgpPtrOutput) ExtraPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MagicWanIpsecTunnelBgp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExtraPrefixes
+	}).(pulumi.StringArrayOutput)
+}
+
+// MD5 key to use for session authentication.
+func (o MagicWanIpsecTunnelBgpPtrOutput) Md5Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicWanIpsecTunnelBgp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Md5Key
+	}).(pulumi.StringPtrOutput)
+}
+
+type MagicWanIpsecTunnelBgpStatus struct {
+	BgpState            *string `pulumi:"bgpState"`
+	CfSpeakerIp         *string `pulumi:"cfSpeakerIp"`
+	CfSpeakerPort       *int    `pulumi:"cfSpeakerPort"`
+	CustomerSpeakerIp   *string `pulumi:"customerSpeakerIp"`
+	CustomerSpeakerPort *int    `pulumi:"customerSpeakerPort"`
+	// Available values: "BGP*DOWN", "BGP*UP", "BGP_ESTABLISHING".
+	State          *string `pulumi:"state"`
+	TcpEstablished *bool   `pulumi:"tcpEstablished"`
+	UpdatedAt      *string `pulumi:"updatedAt"`
+}
+
+// MagicWanIpsecTunnelBgpStatusInput is an input type that accepts MagicWanIpsecTunnelBgpStatusArgs and MagicWanIpsecTunnelBgpStatusOutput values.
+// You can construct a concrete instance of `MagicWanIpsecTunnelBgpStatusInput` via:
+//
+//	MagicWanIpsecTunnelBgpStatusArgs{...}
+type MagicWanIpsecTunnelBgpStatusInput interface {
+	pulumi.Input
+
+	ToMagicWanIpsecTunnelBgpStatusOutput() MagicWanIpsecTunnelBgpStatusOutput
+	ToMagicWanIpsecTunnelBgpStatusOutputWithContext(context.Context) MagicWanIpsecTunnelBgpStatusOutput
+}
+
+type MagicWanIpsecTunnelBgpStatusArgs struct {
+	BgpState            pulumi.StringPtrInput `pulumi:"bgpState"`
+	CfSpeakerIp         pulumi.StringPtrInput `pulumi:"cfSpeakerIp"`
+	CfSpeakerPort       pulumi.IntPtrInput    `pulumi:"cfSpeakerPort"`
+	CustomerSpeakerIp   pulumi.StringPtrInput `pulumi:"customerSpeakerIp"`
+	CustomerSpeakerPort pulumi.IntPtrInput    `pulumi:"customerSpeakerPort"`
+	// Available values: "BGP*DOWN", "BGP*UP", "BGP_ESTABLISHING".
+	State          pulumi.StringPtrInput `pulumi:"state"`
+	TcpEstablished pulumi.BoolPtrInput   `pulumi:"tcpEstablished"`
+	UpdatedAt      pulumi.StringPtrInput `pulumi:"updatedAt"`
+}
+
+func (MagicWanIpsecTunnelBgpStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MagicWanIpsecTunnelBgpStatus)(nil)).Elem()
+}
+
+func (i MagicWanIpsecTunnelBgpStatusArgs) ToMagicWanIpsecTunnelBgpStatusOutput() MagicWanIpsecTunnelBgpStatusOutput {
+	return i.ToMagicWanIpsecTunnelBgpStatusOutputWithContext(context.Background())
+}
+
+func (i MagicWanIpsecTunnelBgpStatusArgs) ToMagicWanIpsecTunnelBgpStatusOutputWithContext(ctx context.Context) MagicWanIpsecTunnelBgpStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelBgpStatusOutput)
+}
+
+func (i MagicWanIpsecTunnelBgpStatusArgs) ToMagicWanIpsecTunnelBgpStatusPtrOutput() MagicWanIpsecTunnelBgpStatusPtrOutput {
+	return i.ToMagicWanIpsecTunnelBgpStatusPtrOutputWithContext(context.Background())
+}
+
+func (i MagicWanIpsecTunnelBgpStatusArgs) ToMagicWanIpsecTunnelBgpStatusPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelBgpStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelBgpStatusOutput).ToMagicWanIpsecTunnelBgpStatusPtrOutputWithContext(ctx)
+}
+
+// MagicWanIpsecTunnelBgpStatusPtrInput is an input type that accepts MagicWanIpsecTunnelBgpStatusArgs, MagicWanIpsecTunnelBgpStatusPtr and MagicWanIpsecTunnelBgpStatusPtrOutput values.
+// You can construct a concrete instance of `MagicWanIpsecTunnelBgpStatusPtrInput` via:
+//
+//	        MagicWanIpsecTunnelBgpStatusArgs{...}
+//
+//	or:
+//
+//	        nil
+type MagicWanIpsecTunnelBgpStatusPtrInput interface {
+	pulumi.Input
+
+	ToMagicWanIpsecTunnelBgpStatusPtrOutput() MagicWanIpsecTunnelBgpStatusPtrOutput
+	ToMagicWanIpsecTunnelBgpStatusPtrOutputWithContext(context.Context) MagicWanIpsecTunnelBgpStatusPtrOutput
+}
+
+type magicWanIpsecTunnelBgpStatusPtrType MagicWanIpsecTunnelBgpStatusArgs
+
+func MagicWanIpsecTunnelBgpStatusPtr(v *MagicWanIpsecTunnelBgpStatusArgs) MagicWanIpsecTunnelBgpStatusPtrInput {
+	return (*magicWanIpsecTunnelBgpStatusPtrType)(v)
+}
+
+func (*magicWanIpsecTunnelBgpStatusPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MagicWanIpsecTunnelBgpStatus)(nil)).Elem()
+}
+
+func (i *magicWanIpsecTunnelBgpStatusPtrType) ToMagicWanIpsecTunnelBgpStatusPtrOutput() MagicWanIpsecTunnelBgpStatusPtrOutput {
+	return i.ToMagicWanIpsecTunnelBgpStatusPtrOutputWithContext(context.Background())
+}
+
+func (i *magicWanIpsecTunnelBgpStatusPtrType) ToMagicWanIpsecTunnelBgpStatusPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelBgpStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelBgpStatusPtrOutput)
+}
+
+type MagicWanIpsecTunnelBgpStatusOutput struct{ *pulumi.OutputState }
+
+func (MagicWanIpsecTunnelBgpStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MagicWanIpsecTunnelBgpStatus)(nil)).Elem()
+}
+
+func (o MagicWanIpsecTunnelBgpStatusOutput) ToMagicWanIpsecTunnelBgpStatusOutput() MagicWanIpsecTunnelBgpStatusOutput {
+	return o
+}
+
+func (o MagicWanIpsecTunnelBgpStatusOutput) ToMagicWanIpsecTunnelBgpStatusOutputWithContext(ctx context.Context) MagicWanIpsecTunnelBgpStatusOutput {
+	return o
+}
+
+func (o MagicWanIpsecTunnelBgpStatusOutput) ToMagicWanIpsecTunnelBgpStatusPtrOutput() MagicWanIpsecTunnelBgpStatusPtrOutput {
+	return o.ToMagicWanIpsecTunnelBgpStatusPtrOutputWithContext(context.Background())
+}
+
+func (o MagicWanIpsecTunnelBgpStatusOutput) ToMagicWanIpsecTunnelBgpStatusPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelBgpStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MagicWanIpsecTunnelBgpStatus) *MagicWanIpsecTunnelBgpStatus {
+		return &v
+	}).(MagicWanIpsecTunnelBgpStatusPtrOutput)
+}
+
+func (o MagicWanIpsecTunnelBgpStatusOutput) BgpState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MagicWanIpsecTunnelBgpStatus) *string { return v.BgpState }).(pulumi.StringPtrOutput)
+}
+
+func (o MagicWanIpsecTunnelBgpStatusOutput) CfSpeakerIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MagicWanIpsecTunnelBgpStatus) *string { return v.CfSpeakerIp }).(pulumi.StringPtrOutput)
+}
+
+func (o MagicWanIpsecTunnelBgpStatusOutput) CfSpeakerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MagicWanIpsecTunnelBgpStatus) *int { return v.CfSpeakerPort }).(pulumi.IntPtrOutput)
+}
+
+func (o MagicWanIpsecTunnelBgpStatusOutput) CustomerSpeakerIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MagicWanIpsecTunnelBgpStatus) *string { return v.CustomerSpeakerIp }).(pulumi.StringPtrOutput)
+}
+
+func (o MagicWanIpsecTunnelBgpStatusOutput) CustomerSpeakerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MagicWanIpsecTunnelBgpStatus) *int { return v.CustomerSpeakerPort }).(pulumi.IntPtrOutput)
+}
+
+// Available values: "BGP*DOWN", "BGP*UP", "BGP_ESTABLISHING".
+func (o MagicWanIpsecTunnelBgpStatusOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MagicWanIpsecTunnelBgpStatus) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+func (o MagicWanIpsecTunnelBgpStatusOutput) TcpEstablished() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MagicWanIpsecTunnelBgpStatus) *bool { return v.TcpEstablished }).(pulumi.BoolPtrOutput)
+}
+
+func (o MagicWanIpsecTunnelBgpStatusOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MagicWanIpsecTunnelBgpStatus) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+}
+
+type MagicWanIpsecTunnelBgpStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (MagicWanIpsecTunnelBgpStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MagicWanIpsecTunnelBgpStatus)(nil)).Elem()
+}
+
+func (o MagicWanIpsecTunnelBgpStatusPtrOutput) ToMagicWanIpsecTunnelBgpStatusPtrOutput() MagicWanIpsecTunnelBgpStatusPtrOutput {
+	return o
+}
+
+func (o MagicWanIpsecTunnelBgpStatusPtrOutput) ToMagicWanIpsecTunnelBgpStatusPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelBgpStatusPtrOutput {
+	return o
+}
+
+func (o MagicWanIpsecTunnelBgpStatusPtrOutput) Elem() MagicWanIpsecTunnelBgpStatusOutput {
+	return o.ApplyT(func(v *MagicWanIpsecTunnelBgpStatus) MagicWanIpsecTunnelBgpStatus {
+		if v != nil {
+			return *v
+		}
+		var ret MagicWanIpsecTunnelBgpStatus
+		return ret
+	}).(MagicWanIpsecTunnelBgpStatusOutput)
+}
+
+func (o MagicWanIpsecTunnelBgpStatusPtrOutput) BgpState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicWanIpsecTunnelBgpStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BgpState
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MagicWanIpsecTunnelBgpStatusPtrOutput) CfSpeakerIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicWanIpsecTunnelBgpStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CfSpeakerIp
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MagicWanIpsecTunnelBgpStatusPtrOutput) CfSpeakerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MagicWanIpsecTunnelBgpStatus) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CfSpeakerPort
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o MagicWanIpsecTunnelBgpStatusPtrOutput) CustomerSpeakerIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicWanIpsecTunnelBgpStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomerSpeakerIp
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MagicWanIpsecTunnelBgpStatusPtrOutput) CustomerSpeakerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MagicWanIpsecTunnelBgpStatus) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CustomerSpeakerPort
+	}).(pulumi.IntPtrOutput)
+}
+
+// Available values: "BGP*DOWN", "BGP*UP", "BGP_ESTABLISHING".
+func (o MagicWanIpsecTunnelBgpStatusPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicWanIpsecTunnelBgpStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MagicWanIpsecTunnelBgpStatusPtrOutput) TcpEstablished() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MagicWanIpsecTunnelBgpStatus) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TcpEstablished
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o MagicWanIpsecTunnelBgpStatusPtrOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicWanIpsecTunnelBgpStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+type MagicWanIpsecTunnelCustomRemoteIdentities struct {
+	// A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The
+	// generated IKE IDs can still be used even if this custom value is specified.
+	FqdnId *string `pulumi:"fqdnId"`
+}
+
+// MagicWanIpsecTunnelCustomRemoteIdentitiesInput is an input type that accepts MagicWanIpsecTunnelCustomRemoteIdentitiesArgs and MagicWanIpsecTunnelCustomRemoteIdentitiesOutput values.
+// You can construct a concrete instance of `MagicWanIpsecTunnelCustomRemoteIdentitiesInput` via:
+//
+//	MagicWanIpsecTunnelCustomRemoteIdentitiesArgs{...}
+type MagicWanIpsecTunnelCustomRemoteIdentitiesInput interface {
+	pulumi.Input
+
+	ToMagicWanIpsecTunnelCustomRemoteIdentitiesOutput() MagicWanIpsecTunnelCustomRemoteIdentitiesOutput
+	ToMagicWanIpsecTunnelCustomRemoteIdentitiesOutputWithContext(context.Context) MagicWanIpsecTunnelCustomRemoteIdentitiesOutput
+}
+
+type MagicWanIpsecTunnelCustomRemoteIdentitiesArgs struct {
+	// A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The
+	// generated IKE IDs can still be used even if this custom value is specified.
+	FqdnId pulumi.StringPtrInput `pulumi:"fqdnId"`
+}
+
+func (MagicWanIpsecTunnelCustomRemoteIdentitiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MagicWanIpsecTunnelCustomRemoteIdentities)(nil)).Elem()
+}
+
+func (i MagicWanIpsecTunnelCustomRemoteIdentitiesArgs) ToMagicWanIpsecTunnelCustomRemoteIdentitiesOutput() MagicWanIpsecTunnelCustomRemoteIdentitiesOutput {
+	return i.ToMagicWanIpsecTunnelCustomRemoteIdentitiesOutputWithContext(context.Background())
+}
+
+func (i MagicWanIpsecTunnelCustomRemoteIdentitiesArgs) ToMagicWanIpsecTunnelCustomRemoteIdentitiesOutputWithContext(ctx context.Context) MagicWanIpsecTunnelCustomRemoteIdentitiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelCustomRemoteIdentitiesOutput)
+}
+
+func (i MagicWanIpsecTunnelCustomRemoteIdentitiesArgs) ToMagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutput() MagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutput {
+	return i.ToMagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutputWithContext(context.Background())
+}
+
+func (i MagicWanIpsecTunnelCustomRemoteIdentitiesArgs) ToMagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelCustomRemoteIdentitiesOutput).ToMagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutputWithContext(ctx)
+}
+
+// MagicWanIpsecTunnelCustomRemoteIdentitiesPtrInput is an input type that accepts MagicWanIpsecTunnelCustomRemoteIdentitiesArgs, MagicWanIpsecTunnelCustomRemoteIdentitiesPtr and MagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutput values.
+// You can construct a concrete instance of `MagicWanIpsecTunnelCustomRemoteIdentitiesPtrInput` via:
+//
+//	        MagicWanIpsecTunnelCustomRemoteIdentitiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type MagicWanIpsecTunnelCustomRemoteIdentitiesPtrInput interface {
+	pulumi.Input
+
+	ToMagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutput() MagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutput
+	ToMagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutputWithContext(context.Context) MagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutput
+}
+
+type magicWanIpsecTunnelCustomRemoteIdentitiesPtrType MagicWanIpsecTunnelCustomRemoteIdentitiesArgs
+
+func MagicWanIpsecTunnelCustomRemoteIdentitiesPtr(v *MagicWanIpsecTunnelCustomRemoteIdentitiesArgs) MagicWanIpsecTunnelCustomRemoteIdentitiesPtrInput {
+	return (*magicWanIpsecTunnelCustomRemoteIdentitiesPtrType)(v)
+}
+
+func (*magicWanIpsecTunnelCustomRemoteIdentitiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MagicWanIpsecTunnelCustomRemoteIdentities)(nil)).Elem()
+}
+
+func (i *magicWanIpsecTunnelCustomRemoteIdentitiesPtrType) ToMagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutput() MagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutput {
+	return i.ToMagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutputWithContext(context.Background())
+}
+
+func (i *magicWanIpsecTunnelCustomRemoteIdentitiesPtrType) ToMagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutput)
+}
+
+type MagicWanIpsecTunnelCustomRemoteIdentitiesOutput struct{ *pulumi.OutputState }
+
+func (MagicWanIpsecTunnelCustomRemoteIdentitiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MagicWanIpsecTunnelCustomRemoteIdentities)(nil)).Elem()
+}
+
+func (o MagicWanIpsecTunnelCustomRemoteIdentitiesOutput) ToMagicWanIpsecTunnelCustomRemoteIdentitiesOutput() MagicWanIpsecTunnelCustomRemoteIdentitiesOutput {
+	return o
+}
+
+func (o MagicWanIpsecTunnelCustomRemoteIdentitiesOutput) ToMagicWanIpsecTunnelCustomRemoteIdentitiesOutputWithContext(ctx context.Context) MagicWanIpsecTunnelCustomRemoteIdentitiesOutput {
+	return o
+}
+
+func (o MagicWanIpsecTunnelCustomRemoteIdentitiesOutput) ToMagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutput() MagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutput {
+	return o.ToMagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutputWithContext(context.Background())
+}
+
+func (o MagicWanIpsecTunnelCustomRemoteIdentitiesOutput) ToMagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MagicWanIpsecTunnelCustomRemoteIdentities) *MagicWanIpsecTunnelCustomRemoteIdentities {
+		return &v
+	}).(MagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutput)
+}
+
+// A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The
+// generated IKE IDs can still be used even if this custom value is specified.
+func (o MagicWanIpsecTunnelCustomRemoteIdentitiesOutput) FqdnId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MagicWanIpsecTunnelCustomRemoteIdentities) *string { return v.FqdnId }).(pulumi.StringPtrOutput)
+}
+
+type MagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutput struct{ *pulumi.OutputState }
+
+func (MagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MagicWanIpsecTunnelCustomRemoteIdentities)(nil)).Elem()
+}
+
+func (o MagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutput) ToMagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutput() MagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutput {
+	return o
+}
+
+func (o MagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutput) ToMagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutput {
+	return o
+}
+
+func (o MagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutput) Elem() MagicWanIpsecTunnelCustomRemoteIdentitiesOutput {
+	return o.ApplyT(func(v *MagicWanIpsecTunnelCustomRemoteIdentities) MagicWanIpsecTunnelCustomRemoteIdentities {
+		if v != nil {
+			return *v
+		}
+		var ret MagicWanIpsecTunnelCustomRemoteIdentities
+		return ret
+	}).(MagicWanIpsecTunnelCustomRemoteIdentitiesOutput)
+}
+
+// A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The
+// generated IKE IDs can still be used even if this custom value is specified.
+func (o MagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutput) FqdnId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicWanIpsecTunnelCustomRemoteIdentities) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FqdnId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -81120,986 +82095,6 @@ func (o R2BucketLockRuleConditionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v R2BucketLockRuleCondition) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type R2BucketSippyDestination struct {
-	// ID of a Cloudflare API token.
-	// This is the value labelled "Access Key ID" when creating an API.
-	// token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
-	AccessKeyId *string `pulumi:"accessKeyId"`
-	// Available values: "r2".
-	CloudProvider *string `pulumi:"cloudProvider"`
-	// Value of a Cloudflare API token.
-	// This is the value labelled "Secret Access Key" when creating an API.
-	// token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
-	//
-	// Sippy will use this token when writing objects to R2, so it is
-	// best to scope this token to the bucket you're enabling Sippy for.
-	SecretAccessKey *string `pulumi:"secretAccessKey"`
-}
-
-// R2BucketSippyDestinationInput is an input type that accepts R2BucketSippyDestinationArgs and R2BucketSippyDestinationOutput values.
-// You can construct a concrete instance of `R2BucketSippyDestinationInput` via:
-//
-//	R2BucketSippyDestinationArgs{...}
-type R2BucketSippyDestinationInput interface {
-	pulumi.Input
-
-	ToR2BucketSippyDestinationOutput() R2BucketSippyDestinationOutput
-	ToR2BucketSippyDestinationOutputWithContext(context.Context) R2BucketSippyDestinationOutput
-}
-
-type R2BucketSippyDestinationArgs struct {
-	// ID of a Cloudflare API token.
-	// This is the value labelled "Access Key ID" when creating an API.
-	// token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
-	AccessKeyId pulumi.StringPtrInput `pulumi:"accessKeyId"`
-	// Available values: "r2".
-	CloudProvider pulumi.StringPtrInput `pulumi:"cloudProvider"`
-	// Value of a Cloudflare API token.
-	// This is the value labelled "Secret Access Key" when creating an API.
-	// token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
-	//
-	// Sippy will use this token when writing objects to R2, so it is
-	// best to scope this token to the bucket you're enabling Sippy for.
-	SecretAccessKey pulumi.StringPtrInput `pulumi:"secretAccessKey"`
-}
-
-func (R2BucketSippyDestinationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*R2BucketSippyDestination)(nil)).Elem()
-}
-
-func (i R2BucketSippyDestinationArgs) ToR2BucketSippyDestinationOutput() R2BucketSippyDestinationOutput {
-	return i.ToR2BucketSippyDestinationOutputWithContext(context.Background())
-}
-
-func (i R2BucketSippyDestinationArgs) ToR2BucketSippyDestinationOutputWithContext(ctx context.Context) R2BucketSippyDestinationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2BucketSippyDestinationOutput)
-}
-
-func (i R2BucketSippyDestinationArgs) ToR2BucketSippyDestinationPtrOutput() R2BucketSippyDestinationPtrOutput {
-	return i.ToR2BucketSippyDestinationPtrOutputWithContext(context.Background())
-}
-
-func (i R2BucketSippyDestinationArgs) ToR2BucketSippyDestinationPtrOutputWithContext(ctx context.Context) R2BucketSippyDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2BucketSippyDestinationOutput).ToR2BucketSippyDestinationPtrOutputWithContext(ctx)
-}
-
-// R2BucketSippyDestinationPtrInput is an input type that accepts R2BucketSippyDestinationArgs, R2BucketSippyDestinationPtr and R2BucketSippyDestinationPtrOutput values.
-// You can construct a concrete instance of `R2BucketSippyDestinationPtrInput` via:
-//
-//	        R2BucketSippyDestinationArgs{...}
-//
-//	or:
-//
-//	        nil
-type R2BucketSippyDestinationPtrInput interface {
-	pulumi.Input
-
-	ToR2BucketSippyDestinationPtrOutput() R2BucketSippyDestinationPtrOutput
-	ToR2BucketSippyDestinationPtrOutputWithContext(context.Context) R2BucketSippyDestinationPtrOutput
-}
-
-type r2bucketSippyDestinationPtrType R2BucketSippyDestinationArgs
-
-func R2BucketSippyDestinationPtr(v *R2BucketSippyDestinationArgs) R2BucketSippyDestinationPtrInput {
-	return (*r2bucketSippyDestinationPtrType)(v)
-}
-
-func (*r2bucketSippyDestinationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**R2BucketSippyDestination)(nil)).Elem()
-}
-
-func (i *r2bucketSippyDestinationPtrType) ToR2BucketSippyDestinationPtrOutput() R2BucketSippyDestinationPtrOutput {
-	return i.ToR2BucketSippyDestinationPtrOutputWithContext(context.Background())
-}
-
-func (i *r2bucketSippyDestinationPtrType) ToR2BucketSippyDestinationPtrOutputWithContext(ctx context.Context) R2BucketSippyDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2BucketSippyDestinationPtrOutput)
-}
-
-type R2BucketSippyDestinationOutput struct{ *pulumi.OutputState }
-
-func (R2BucketSippyDestinationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*R2BucketSippyDestination)(nil)).Elem()
-}
-
-func (o R2BucketSippyDestinationOutput) ToR2BucketSippyDestinationOutput() R2BucketSippyDestinationOutput {
-	return o
-}
-
-func (o R2BucketSippyDestinationOutput) ToR2BucketSippyDestinationOutputWithContext(ctx context.Context) R2BucketSippyDestinationOutput {
-	return o
-}
-
-func (o R2BucketSippyDestinationOutput) ToR2BucketSippyDestinationPtrOutput() R2BucketSippyDestinationPtrOutput {
-	return o.ToR2BucketSippyDestinationPtrOutputWithContext(context.Background())
-}
-
-func (o R2BucketSippyDestinationOutput) ToR2BucketSippyDestinationPtrOutputWithContext(ctx context.Context) R2BucketSippyDestinationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v R2BucketSippyDestination) *R2BucketSippyDestination {
-		return &v
-	}).(R2BucketSippyDestinationPtrOutput)
-}
-
-// ID of a Cloudflare API token.
-// This is the value labelled "Access Key ID" when creating an API.
-// token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
-func (o R2BucketSippyDestinationOutput) AccessKeyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v R2BucketSippyDestination) *string { return v.AccessKeyId }).(pulumi.StringPtrOutput)
-}
-
-// Available values: "r2".
-func (o R2BucketSippyDestinationOutput) CloudProvider() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v R2BucketSippyDestination) *string { return v.CloudProvider }).(pulumi.StringPtrOutput)
-}
-
-// Value of a Cloudflare API token.
-// This is the value labelled "Secret Access Key" when creating an API.
-// token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
-//
-// Sippy will use this token when writing objects to R2, so it is
-// best to scope this token to the bucket you're enabling Sippy for.
-func (o R2BucketSippyDestinationOutput) SecretAccessKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v R2BucketSippyDestination) *string { return v.SecretAccessKey }).(pulumi.StringPtrOutput)
-}
-
-type R2BucketSippyDestinationPtrOutput struct{ *pulumi.OutputState }
-
-func (R2BucketSippyDestinationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**R2BucketSippyDestination)(nil)).Elem()
-}
-
-func (o R2BucketSippyDestinationPtrOutput) ToR2BucketSippyDestinationPtrOutput() R2BucketSippyDestinationPtrOutput {
-	return o
-}
-
-func (o R2BucketSippyDestinationPtrOutput) ToR2BucketSippyDestinationPtrOutputWithContext(ctx context.Context) R2BucketSippyDestinationPtrOutput {
-	return o
-}
-
-func (o R2BucketSippyDestinationPtrOutput) Elem() R2BucketSippyDestinationOutput {
-	return o.ApplyT(func(v *R2BucketSippyDestination) R2BucketSippyDestination {
-		if v != nil {
-			return *v
-		}
-		var ret R2BucketSippyDestination
-		return ret
-	}).(R2BucketSippyDestinationOutput)
-}
-
-// ID of a Cloudflare API token.
-// This is the value labelled "Access Key ID" when creating an API.
-// token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
-func (o R2BucketSippyDestinationPtrOutput) AccessKeyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *R2BucketSippyDestination) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AccessKeyId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Available values: "r2".
-func (o R2BucketSippyDestinationPtrOutput) CloudProvider() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *R2BucketSippyDestination) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CloudProvider
-	}).(pulumi.StringPtrOutput)
-}
-
-// Value of a Cloudflare API token.
-// This is the value labelled "Secret Access Key" when creating an API.
-// token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
-//
-// Sippy will use this token when writing objects to R2, so it is
-// best to scope this token to the bucket you're enabling Sippy for.
-func (o R2BucketSippyDestinationPtrOutput) SecretAccessKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *R2BucketSippyDestination) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretAccessKey
-	}).(pulumi.StringPtrOutput)
-}
-
-type R2BucketSippySource struct {
-	// Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
-	AccessKeyId *string `pulumi:"accessKeyId"`
-	// Name of the AWS S3 bucket.
-	Bucket *string `pulumi:"bucket"`
-	// URL to the S3-compatible API of the bucket.
-	BucketUrl *string `pulumi:"bucketUrl"`
-	// Client email of an IAM credential (ideally scoped to a single GCS bucket).
-	ClientEmail *string `pulumi:"clientEmail"`
-	// Available values: "aws", "gcs", "s3".
-	CloudProvider *string `pulumi:"cloudProvider"`
-	// Private Key of an IAM credential (ideally scoped to a single GCS bucket).
-	PrivateKey *string `pulumi:"privateKey"`
-	// Name of the AWS availability zone.
-	Region *string `pulumi:"region"`
-	// Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
-	SecretAccessKey *string `pulumi:"secretAccessKey"`
-}
-
-// R2BucketSippySourceInput is an input type that accepts R2BucketSippySourceArgs and R2BucketSippySourceOutput values.
-// You can construct a concrete instance of `R2BucketSippySourceInput` via:
-//
-//	R2BucketSippySourceArgs{...}
-type R2BucketSippySourceInput interface {
-	pulumi.Input
-
-	ToR2BucketSippySourceOutput() R2BucketSippySourceOutput
-	ToR2BucketSippySourceOutputWithContext(context.Context) R2BucketSippySourceOutput
-}
-
-type R2BucketSippySourceArgs struct {
-	// Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
-	AccessKeyId pulumi.StringPtrInput `pulumi:"accessKeyId"`
-	// Name of the AWS S3 bucket.
-	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
-	// URL to the S3-compatible API of the bucket.
-	BucketUrl pulumi.StringPtrInput `pulumi:"bucketUrl"`
-	// Client email of an IAM credential (ideally scoped to a single GCS bucket).
-	ClientEmail pulumi.StringPtrInput `pulumi:"clientEmail"`
-	// Available values: "aws", "gcs", "s3".
-	CloudProvider pulumi.StringPtrInput `pulumi:"cloudProvider"`
-	// Private Key of an IAM credential (ideally scoped to a single GCS bucket).
-	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
-	// Name of the AWS availability zone.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
-	SecretAccessKey pulumi.StringPtrInput `pulumi:"secretAccessKey"`
-}
-
-func (R2BucketSippySourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*R2BucketSippySource)(nil)).Elem()
-}
-
-func (i R2BucketSippySourceArgs) ToR2BucketSippySourceOutput() R2BucketSippySourceOutput {
-	return i.ToR2BucketSippySourceOutputWithContext(context.Background())
-}
-
-func (i R2BucketSippySourceArgs) ToR2BucketSippySourceOutputWithContext(ctx context.Context) R2BucketSippySourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2BucketSippySourceOutput)
-}
-
-func (i R2BucketSippySourceArgs) ToR2BucketSippySourcePtrOutput() R2BucketSippySourcePtrOutput {
-	return i.ToR2BucketSippySourcePtrOutputWithContext(context.Background())
-}
-
-func (i R2BucketSippySourceArgs) ToR2BucketSippySourcePtrOutputWithContext(ctx context.Context) R2BucketSippySourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2BucketSippySourceOutput).ToR2BucketSippySourcePtrOutputWithContext(ctx)
-}
-
-// R2BucketSippySourcePtrInput is an input type that accepts R2BucketSippySourceArgs, R2BucketSippySourcePtr and R2BucketSippySourcePtrOutput values.
-// You can construct a concrete instance of `R2BucketSippySourcePtrInput` via:
-//
-//	        R2BucketSippySourceArgs{...}
-//
-//	or:
-//
-//	        nil
-type R2BucketSippySourcePtrInput interface {
-	pulumi.Input
-
-	ToR2BucketSippySourcePtrOutput() R2BucketSippySourcePtrOutput
-	ToR2BucketSippySourcePtrOutputWithContext(context.Context) R2BucketSippySourcePtrOutput
-}
-
-type r2bucketSippySourcePtrType R2BucketSippySourceArgs
-
-func R2BucketSippySourcePtr(v *R2BucketSippySourceArgs) R2BucketSippySourcePtrInput {
-	return (*r2bucketSippySourcePtrType)(v)
-}
-
-func (*r2bucketSippySourcePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**R2BucketSippySource)(nil)).Elem()
-}
-
-func (i *r2bucketSippySourcePtrType) ToR2BucketSippySourcePtrOutput() R2BucketSippySourcePtrOutput {
-	return i.ToR2BucketSippySourcePtrOutputWithContext(context.Background())
-}
-
-func (i *r2bucketSippySourcePtrType) ToR2BucketSippySourcePtrOutputWithContext(ctx context.Context) R2BucketSippySourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2BucketSippySourcePtrOutput)
-}
-
-type R2BucketSippySourceOutput struct{ *pulumi.OutputState }
-
-func (R2BucketSippySourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*R2BucketSippySource)(nil)).Elem()
-}
-
-func (o R2BucketSippySourceOutput) ToR2BucketSippySourceOutput() R2BucketSippySourceOutput {
-	return o
-}
-
-func (o R2BucketSippySourceOutput) ToR2BucketSippySourceOutputWithContext(ctx context.Context) R2BucketSippySourceOutput {
-	return o
-}
-
-func (o R2BucketSippySourceOutput) ToR2BucketSippySourcePtrOutput() R2BucketSippySourcePtrOutput {
-	return o.ToR2BucketSippySourcePtrOutputWithContext(context.Background())
-}
-
-func (o R2BucketSippySourceOutput) ToR2BucketSippySourcePtrOutputWithContext(ctx context.Context) R2BucketSippySourcePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v R2BucketSippySource) *R2BucketSippySource {
-		return &v
-	}).(R2BucketSippySourcePtrOutput)
-}
-
-// Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
-func (o R2BucketSippySourceOutput) AccessKeyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v R2BucketSippySource) *string { return v.AccessKeyId }).(pulumi.StringPtrOutput)
-}
-
-// Name of the AWS S3 bucket.
-func (o R2BucketSippySourceOutput) Bucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v R2BucketSippySource) *string { return v.Bucket }).(pulumi.StringPtrOutput)
-}
-
-// URL to the S3-compatible API of the bucket.
-func (o R2BucketSippySourceOutput) BucketUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v R2BucketSippySource) *string { return v.BucketUrl }).(pulumi.StringPtrOutput)
-}
-
-// Client email of an IAM credential (ideally scoped to a single GCS bucket).
-func (o R2BucketSippySourceOutput) ClientEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v R2BucketSippySource) *string { return v.ClientEmail }).(pulumi.StringPtrOutput)
-}
-
-// Available values: "aws", "gcs", "s3".
-func (o R2BucketSippySourceOutput) CloudProvider() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v R2BucketSippySource) *string { return v.CloudProvider }).(pulumi.StringPtrOutput)
-}
-
-// Private Key of an IAM credential (ideally scoped to a single GCS bucket).
-func (o R2BucketSippySourceOutput) PrivateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v R2BucketSippySource) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
-}
-
-// Name of the AWS availability zone.
-func (o R2BucketSippySourceOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v R2BucketSippySource) *string { return v.Region }).(pulumi.StringPtrOutput)
-}
-
-// Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
-func (o R2BucketSippySourceOutput) SecretAccessKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v R2BucketSippySource) *string { return v.SecretAccessKey }).(pulumi.StringPtrOutput)
-}
-
-type R2BucketSippySourcePtrOutput struct{ *pulumi.OutputState }
-
-func (R2BucketSippySourcePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**R2BucketSippySource)(nil)).Elem()
-}
-
-func (o R2BucketSippySourcePtrOutput) ToR2BucketSippySourcePtrOutput() R2BucketSippySourcePtrOutput {
-	return o
-}
-
-func (o R2BucketSippySourcePtrOutput) ToR2BucketSippySourcePtrOutputWithContext(ctx context.Context) R2BucketSippySourcePtrOutput {
-	return o
-}
-
-func (o R2BucketSippySourcePtrOutput) Elem() R2BucketSippySourceOutput {
-	return o.ApplyT(func(v *R2BucketSippySource) R2BucketSippySource {
-		if v != nil {
-			return *v
-		}
-		var ret R2BucketSippySource
-		return ret
-	}).(R2BucketSippySourceOutput)
-}
-
-// Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
-func (o R2BucketSippySourcePtrOutput) AccessKeyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *R2BucketSippySource) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AccessKeyId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name of the AWS S3 bucket.
-func (o R2BucketSippySourcePtrOutput) Bucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *R2BucketSippySource) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Bucket
-	}).(pulumi.StringPtrOutput)
-}
-
-// URL to the S3-compatible API of the bucket.
-func (o R2BucketSippySourcePtrOutput) BucketUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *R2BucketSippySource) *string {
-		if v == nil {
-			return nil
-		}
-		return v.BucketUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-// Client email of an IAM credential (ideally scoped to a single GCS bucket).
-func (o R2BucketSippySourcePtrOutput) ClientEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *R2BucketSippySource) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClientEmail
-	}).(pulumi.StringPtrOutput)
-}
-
-// Available values: "aws", "gcs", "s3".
-func (o R2BucketSippySourcePtrOutput) CloudProvider() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *R2BucketSippySource) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CloudProvider
-	}).(pulumi.StringPtrOutput)
-}
-
-// Private Key of an IAM credential (ideally scoped to a single GCS bucket).
-func (o R2BucketSippySourcePtrOutput) PrivateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *R2BucketSippySource) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PrivateKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name of the AWS availability zone.
-func (o R2BucketSippySourcePtrOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *R2BucketSippySource) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Region
-	}).(pulumi.StringPtrOutput)
-}
-
-// Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
-func (o R2BucketSippySourcePtrOutput) SecretAccessKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *R2BucketSippySource) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretAccessKey
-	}).(pulumi.StringPtrOutput)
-}
-
-type R2CustomDomainStatus struct {
-	// Ownership status of the domain.
-	// Available values: "pending", "active", "deactivated", "blocked", "error", "unknown".
-	Ownership *string `pulumi:"ownership"`
-	// SSL certificate status.
-	// Available values: "initializing", "pending", "active", "deactivated", "error", "unknown".
-	Ssl *string `pulumi:"ssl"`
-}
-
-// R2CustomDomainStatusInput is an input type that accepts R2CustomDomainStatusArgs and R2CustomDomainStatusOutput values.
-// You can construct a concrete instance of `R2CustomDomainStatusInput` via:
-//
-//	R2CustomDomainStatusArgs{...}
-type R2CustomDomainStatusInput interface {
-	pulumi.Input
-
-	ToR2CustomDomainStatusOutput() R2CustomDomainStatusOutput
-	ToR2CustomDomainStatusOutputWithContext(context.Context) R2CustomDomainStatusOutput
-}
-
-type R2CustomDomainStatusArgs struct {
-	// Ownership status of the domain.
-	// Available values: "pending", "active", "deactivated", "blocked", "error", "unknown".
-	Ownership pulumi.StringPtrInput `pulumi:"ownership"`
-	// SSL certificate status.
-	// Available values: "initializing", "pending", "active", "deactivated", "error", "unknown".
-	Ssl pulumi.StringPtrInput `pulumi:"ssl"`
-}
-
-func (R2CustomDomainStatusArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*R2CustomDomainStatus)(nil)).Elem()
-}
-
-func (i R2CustomDomainStatusArgs) ToR2CustomDomainStatusOutput() R2CustomDomainStatusOutput {
-	return i.ToR2CustomDomainStatusOutputWithContext(context.Background())
-}
-
-func (i R2CustomDomainStatusArgs) ToR2CustomDomainStatusOutputWithContext(ctx context.Context) R2CustomDomainStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2CustomDomainStatusOutput)
-}
-
-func (i R2CustomDomainStatusArgs) ToR2CustomDomainStatusPtrOutput() R2CustomDomainStatusPtrOutput {
-	return i.ToR2CustomDomainStatusPtrOutputWithContext(context.Background())
-}
-
-func (i R2CustomDomainStatusArgs) ToR2CustomDomainStatusPtrOutputWithContext(ctx context.Context) R2CustomDomainStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2CustomDomainStatusOutput).ToR2CustomDomainStatusPtrOutputWithContext(ctx)
-}
-
-// R2CustomDomainStatusPtrInput is an input type that accepts R2CustomDomainStatusArgs, R2CustomDomainStatusPtr and R2CustomDomainStatusPtrOutput values.
-// You can construct a concrete instance of `R2CustomDomainStatusPtrInput` via:
-//
-//	        R2CustomDomainStatusArgs{...}
-//
-//	or:
-//
-//	        nil
-type R2CustomDomainStatusPtrInput interface {
-	pulumi.Input
-
-	ToR2CustomDomainStatusPtrOutput() R2CustomDomainStatusPtrOutput
-	ToR2CustomDomainStatusPtrOutputWithContext(context.Context) R2CustomDomainStatusPtrOutput
-}
-
-type r2customDomainStatusPtrType R2CustomDomainStatusArgs
-
-func R2CustomDomainStatusPtr(v *R2CustomDomainStatusArgs) R2CustomDomainStatusPtrInput {
-	return (*r2customDomainStatusPtrType)(v)
-}
-
-func (*r2customDomainStatusPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**R2CustomDomainStatus)(nil)).Elem()
-}
-
-func (i *r2customDomainStatusPtrType) ToR2CustomDomainStatusPtrOutput() R2CustomDomainStatusPtrOutput {
-	return i.ToR2CustomDomainStatusPtrOutputWithContext(context.Background())
-}
-
-func (i *r2customDomainStatusPtrType) ToR2CustomDomainStatusPtrOutputWithContext(ctx context.Context) R2CustomDomainStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2CustomDomainStatusPtrOutput)
-}
-
-type R2CustomDomainStatusOutput struct{ *pulumi.OutputState }
-
-func (R2CustomDomainStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*R2CustomDomainStatus)(nil)).Elem()
-}
-
-func (o R2CustomDomainStatusOutput) ToR2CustomDomainStatusOutput() R2CustomDomainStatusOutput {
-	return o
-}
-
-func (o R2CustomDomainStatusOutput) ToR2CustomDomainStatusOutputWithContext(ctx context.Context) R2CustomDomainStatusOutput {
-	return o
-}
-
-func (o R2CustomDomainStatusOutput) ToR2CustomDomainStatusPtrOutput() R2CustomDomainStatusPtrOutput {
-	return o.ToR2CustomDomainStatusPtrOutputWithContext(context.Background())
-}
-
-func (o R2CustomDomainStatusOutput) ToR2CustomDomainStatusPtrOutputWithContext(ctx context.Context) R2CustomDomainStatusPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v R2CustomDomainStatus) *R2CustomDomainStatus {
-		return &v
-	}).(R2CustomDomainStatusPtrOutput)
-}
-
-// Ownership status of the domain.
-// Available values: "pending", "active", "deactivated", "blocked", "error", "unknown".
-func (o R2CustomDomainStatusOutput) Ownership() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v R2CustomDomainStatus) *string { return v.Ownership }).(pulumi.StringPtrOutput)
-}
-
-// SSL certificate status.
-// Available values: "initializing", "pending", "active", "deactivated", "error", "unknown".
-func (o R2CustomDomainStatusOutput) Ssl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v R2CustomDomainStatus) *string { return v.Ssl }).(pulumi.StringPtrOutput)
-}
-
-type R2CustomDomainStatusPtrOutput struct{ *pulumi.OutputState }
-
-func (R2CustomDomainStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**R2CustomDomainStatus)(nil)).Elem()
-}
-
-func (o R2CustomDomainStatusPtrOutput) ToR2CustomDomainStatusPtrOutput() R2CustomDomainStatusPtrOutput {
-	return o
-}
-
-func (o R2CustomDomainStatusPtrOutput) ToR2CustomDomainStatusPtrOutputWithContext(ctx context.Context) R2CustomDomainStatusPtrOutput {
-	return o
-}
-
-func (o R2CustomDomainStatusPtrOutput) Elem() R2CustomDomainStatusOutput {
-	return o.ApplyT(func(v *R2CustomDomainStatus) R2CustomDomainStatus {
-		if v != nil {
-			return *v
-		}
-		var ret R2CustomDomainStatus
-		return ret
-	}).(R2CustomDomainStatusOutput)
-}
-
-// Ownership status of the domain.
-// Available values: "pending", "active", "deactivated", "blocked", "error", "unknown".
-func (o R2CustomDomainStatusPtrOutput) Ownership() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *R2CustomDomainStatus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Ownership
-	}).(pulumi.StringPtrOutput)
-}
-
-// SSL certificate status.
-// Available values: "initializing", "pending", "active", "deactivated", "error", "unknown".
-func (o R2CustomDomainStatusPtrOutput) Ssl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *R2CustomDomainStatus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Ssl
-	}).(pulumi.StringPtrOutput)
-}
-
-type RateLimitAction struct {
-	// The action to perform.
-	// Available values: "simulate", "ban", "challenge", "js*challenge", "managed*challenge".
-	Mode *string `pulumi:"mode"`
-	// A custom content type and reponse to return when the threshold is exceeded. The custom response configured in this object will override the custom error for the zone. This object is optional.
-	// Notes: If you omit this object, Cloudflare will use the default HTML error page. If "mode" is "challenge", "managed*challenge", or "js*challenge", Cloudflare will use the zone challenge pages and you should not provide the "response" object.
-	Response *RateLimitActionResponse `pulumi:"response"`
-	// The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period.
-	// Notes: If "mode" is "challenge", "managed*challenge", or "js*challenge", Cloudflare will use the zone's Challenge Passage time and you should not provide this value.
-	Timeout *float64 `pulumi:"timeout"`
-}
-
-// RateLimitActionInput is an input type that accepts RateLimitActionArgs and RateLimitActionOutput values.
-// You can construct a concrete instance of `RateLimitActionInput` via:
-//
-//	RateLimitActionArgs{...}
-type RateLimitActionInput interface {
-	pulumi.Input
-
-	ToRateLimitActionOutput() RateLimitActionOutput
-	ToRateLimitActionOutputWithContext(context.Context) RateLimitActionOutput
-}
-
-type RateLimitActionArgs struct {
-	// The action to perform.
-	// Available values: "simulate", "ban", "challenge", "js*challenge", "managed*challenge".
-	Mode pulumi.StringPtrInput `pulumi:"mode"`
-	// A custom content type and reponse to return when the threshold is exceeded. The custom response configured in this object will override the custom error for the zone. This object is optional.
-	// Notes: If you omit this object, Cloudflare will use the default HTML error page. If "mode" is "challenge", "managed*challenge", or "js*challenge", Cloudflare will use the zone challenge pages and you should not provide the "response" object.
-	Response RateLimitActionResponsePtrInput `pulumi:"response"`
-	// The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period.
-	// Notes: If "mode" is "challenge", "managed*challenge", or "js*challenge", Cloudflare will use the zone's Challenge Passage time and you should not provide this value.
-	Timeout pulumi.Float64PtrInput `pulumi:"timeout"`
-}
-
-func (RateLimitActionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RateLimitAction)(nil)).Elem()
-}
-
-func (i RateLimitActionArgs) ToRateLimitActionOutput() RateLimitActionOutput {
-	return i.ToRateLimitActionOutputWithContext(context.Background())
-}
-
-func (i RateLimitActionArgs) ToRateLimitActionOutputWithContext(ctx context.Context) RateLimitActionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RateLimitActionOutput)
-}
-
-func (i RateLimitActionArgs) ToRateLimitActionPtrOutput() RateLimitActionPtrOutput {
-	return i.ToRateLimitActionPtrOutputWithContext(context.Background())
-}
-
-func (i RateLimitActionArgs) ToRateLimitActionPtrOutputWithContext(ctx context.Context) RateLimitActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RateLimitActionOutput).ToRateLimitActionPtrOutputWithContext(ctx)
-}
-
-// RateLimitActionPtrInput is an input type that accepts RateLimitActionArgs, RateLimitActionPtr and RateLimitActionPtrOutput values.
-// You can construct a concrete instance of `RateLimitActionPtrInput` via:
-//
-//	        RateLimitActionArgs{...}
-//
-//	or:
-//
-//	        nil
-type RateLimitActionPtrInput interface {
-	pulumi.Input
-
-	ToRateLimitActionPtrOutput() RateLimitActionPtrOutput
-	ToRateLimitActionPtrOutputWithContext(context.Context) RateLimitActionPtrOutput
-}
-
-type rateLimitActionPtrType RateLimitActionArgs
-
-func RateLimitActionPtr(v *RateLimitActionArgs) RateLimitActionPtrInput {
-	return (*rateLimitActionPtrType)(v)
-}
-
-func (*rateLimitActionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RateLimitAction)(nil)).Elem()
-}
-
-func (i *rateLimitActionPtrType) ToRateLimitActionPtrOutput() RateLimitActionPtrOutput {
-	return i.ToRateLimitActionPtrOutputWithContext(context.Background())
-}
-
-func (i *rateLimitActionPtrType) ToRateLimitActionPtrOutputWithContext(ctx context.Context) RateLimitActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RateLimitActionPtrOutput)
-}
-
-type RateLimitActionOutput struct{ *pulumi.OutputState }
-
-func (RateLimitActionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RateLimitAction)(nil)).Elem()
-}
-
-func (o RateLimitActionOutput) ToRateLimitActionOutput() RateLimitActionOutput {
-	return o
-}
-
-func (o RateLimitActionOutput) ToRateLimitActionOutputWithContext(ctx context.Context) RateLimitActionOutput {
-	return o
-}
-
-func (o RateLimitActionOutput) ToRateLimitActionPtrOutput() RateLimitActionPtrOutput {
-	return o.ToRateLimitActionPtrOutputWithContext(context.Background())
-}
-
-func (o RateLimitActionOutput) ToRateLimitActionPtrOutputWithContext(ctx context.Context) RateLimitActionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RateLimitAction) *RateLimitAction {
-		return &v
-	}).(RateLimitActionPtrOutput)
-}
-
-// The action to perform.
-// Available values: "simulate", "ban", "challenge", "js*challenge", "managed*challenge".
-func (o RateLimitActionOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RateLimitAction) *string { return v.Mode }).(pulumi.StringPtrOutput)
-}
-
-// A custom content type and reponse to return when the threshold is exceeded. The custom response configured in this object will override the custom error for the zone. This object is optional.
-// Notes: If you omit this object, Cloudflare will use the default HTML error page. If "mode" is "challenge", "managed*challenge", or "js*challenge", Cloudflare will use the zone challenge pages and you should not provide the "response" object.
-func (o RateLimitActionOutput) Response() RateLimitActionResponsePtrOutput {
-	return o.ApplyT(func(v RateLimitAction) *RateLimitActionResponse { return v.Response }).(RateLimitActionResponsePtrOutput)
-}
-
-// The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period.
-// Notes: If "mode" is "challenge", "managed*challenge", or "js*challenge", Cloudflare will use the zone's Challenge Passage time and you should not provide this value.
-func (o RateLimitActionOutput) Timeout() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v RateLimitAction) *float64 { return v.Timeout }).(pulumi.Float64PtrOutput)
-}
-
-type RateLimitActionPtrOutput struct{ *pulumi.OutputState }
-
-func (RateLimitActionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RateLimitAction)(nil)).Elem()
-}
-
-func (o RateLimitActionPtrOutput) ToRateLimitActionPtrOutput() RateLimitActionPtrOutput {
-	return o
-}
-
-func (o RateLimitActionPtrOutput) ToRateLimitActionPtrOutputWithContext(ctx context.Context) RateLimitActionPtrOutput {
-	return o
-}
-
-func (o RateLimitActionPtrOutput) Elem() RateLimitActionOutput {
-	return o.ApplyT(func(v *RateLimitAction) RateLimitAction {
-		if v != nil {
-			return *v
-		}
-		var ret RateLimitAction
-		return ret
-	}).(RateLimitActionOutput)
-}
-
-// The action to perform.
-// Available values: "simulate", "ban", "challenge", "js*challenge", "managed*challenge".
-func (o RateLimitActionPtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RateLimitAction) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Mode
-	}).(pulumi.StringPtrOutput)
-}
-
-// A custom content type and reponse to return when the threshold is exceeded. The custom response configured in this object will override the custom error for the zone. This object is optional.
-// Notes: If you omit this object, Cloudflare will use the default HTML error page. If "mode" is "challenge", "managed*challenge", or "js*challenge", Cloudflare will use the zone challenge pages and you should not provide the "response" object.
-func (o RateLimitActionPtrOutput) Response() RateLimitActionResponsePtrOutput {
-	return o.ApplyT(func(v *RateLimitAction) *RateLimitActionResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Response
-	}).(RateLimitActionResponsePtrOutput)
-}
-
-// The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period.
-// Notes: If "mode" is "challenge", "managed*challenge", or "js*challenge", Cloudflare will use the zone's Challenge Passage time and you should not provide this value.
-func (o RateLimitActionPtrOutput) Timeout() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *RateLimitAction) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.Timeout
-	}).(pulumi.Float64PtrOutput)
-}
-
-type RateLimitActionResponse struct {
-	// The response body to return. The value must conform to the configured content type.
-	Body *string `pulumi:"body"`
-	// The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.
-	ContentType *string `pulumi:"contentType"`
-}
-
-// RateLimitActionResponseInput is an input type that accepts RateLimitActionResponseArgs and RateLimitActionResponseOutput values.
-// You can construct a concrete instance of `RateLimitActionResponseInput` via:
-//
-//	RateLimitActionResponseArgs{...}
-type RateLimitActionResponseInput interface {
-	pulumi.Input
-
-	ToRateLimitActionResponseOutput() RateLimitActionResponseOutput
-	ToRateLimitActionResponseOutputWithContext(context.Context) RateLimitActionResponseOutput
-}
-
-type RateLimitActionResponseArgs struct {
-	// The response body to return. The value must conform to the configured content type.
-	Body pulumi.StringPtrInput `pulumi:"body"`
-	// The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.
-	ContentType pulumi.StringPtrInput `pulumi:"contentType"`
-}
-
-func (RateLimitActionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RateLimitActionResponse)(nil)).Elem()
-}
-
-func (i RateLimitActionResponseArgs) ToRateLimitActionResponseOutput() RateLimitActionResponseOutput {
-	return i.ToRateLimitActionResponseOutputWithContext(context.Background())
-}
-
-func (i RateLimitActionResponseArgs) ToRateLimitActionResponseOutputWithContext(ctx context.Context) RateLimitActionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RateLimitActionResponseOutput)
-}
-
-func (i RateLimitActionResponseArgs) ToRateLimitActionResponsePtrOutput() RateLimitActionResponsePtrOutput {
-	return i.ToRateLimitActionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i RateLimitActionResponseArgs) ToRateLimitActionResponsePtrOutputWithContext(ctx context.Context) RateLimitActionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RateLimitActionResponseOutput).ToRateLimitActionResponsePtrOutputWithContext(ctx)
-}
-
-// RateLimitActionResponsePtrInput is an input type that accepts RateLimitActionResponseArgs, RateLimitActionResponsePtr and RateLimitActionResponsePtrOutput values.
-// You can construct a concrete instance of `RateLimitActionResponsePtrInput` via:
-//
-//	        RateLimitActionResponseArgs{...}
-//
-//	or:
-//
-//	        nil
-type RateLimitActionResponsePtrInput interface {
-	pulumi.Input
-
-	ToRateLimitActionResponsePtrOutput() RateLimitActionResponsePtrOutput
-	ToRateLimitActionResponsePtrOutputWithContext(context.Context) RateLimitActionResponsePtrOutput
-}
-
-type rateLimitActionResponsePtrType RateLimitActionResponseArgs
-
-func RateLimitActionResponsePtr(v *RateLimitActionResponseArgs) RateLimitActionResponsePtrInput {
-	return (*rateLimitActionResponsePtrType)(v)
-}
-
-func (*rateLimitActionResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RateLimitActionResponse)(nil)).Elem()
-}
-
-func (i *rateLimitActionResponsePtrType) ToRateLimitActionResponsePtrOutput() RateLimitActionResponsePtrOutput {
-	return i.ToRateLimitActionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *rateLimitActionResponsePtrType) ToRateLimitActionResponsePtrOutputWithContext(ctx context.Context) RateLimitActionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RateLimitActionResponsePtrOutput)
-}
-
-type RateLimitActionResponseOutput struct{ *pulumi.OutputState }
-
-func (RateLimitActionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RateLimitActionResponse)(nil)).Elem()
-}
-
-func (o RateLimitActionResponseOutput) ToRateLimitActionResponseOutput() RateLimitActionResponseOutput {
-	return o
-}
-
-func (o RateLimitActionResponseOutput) ToRateLimitActionResponseOutputWithContext(ctx context.Context) RateLimitActionResponseOutput {
-	return o
-}
-
-func (o RateLimitActionResponseOutput) ToRateLimitActionResponsePtrOutput() RateLimitActionResponsePtrOutput {
-	return o.ToRateLimitActionResponsePtrOutputWithContext(context.Background())
-}
-
-func (o RateLimitActionResponseOutput) ToRateLimitActionResponsePtrOutputWithContext(ctx context.Context) RateLimitActionResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RateLimitActionResponse) *RateLimitActionResponse {
-		return &v
-	}).(RateLimitActionResponsePtrOutput)
-}
-
-// The response body to return. The value must conform to the configured content type.
-func (o RateLimitActionResponseOutput) Body() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RateLimitActionResponse) *string { return v.Body }).(pulumi.StringPtrOutput)
-}
-
-// The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.
-func (o RateLimitActionResponseOutput) ContentType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RateLimitActionResponse) *string { return v.ContentType }).(pulumi.StringPtrOutput)
-}
-
-type RateLimitActionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RateLimitActionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RateLimitActionResponse)(nil)).Elem()
-}
-
-func (o RateLimitActionResponsePtrOutput) ToRateLimitActionResponsePtrOutput() RateLimitActionResponsePtrOutput {
-	return o
-}
-
-func (o RateLimitActionResponsePtrOutput) ToRateLimitActionResponsePtrOutputWithContext(ctx context.Context) RateLimitActionResponsePtrOutput {
-	return o
-}
-
-func (o RateLimitActionResponsePtrOutput) Elem() RateLimitActionResponseOutput {
-	return o.ApplyT(func(v *RateLimitActionResponse) RateLimitActionResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RateLimitActionResponse
-		return ret
-	}).(RateLimitActionResponseOutput)
-}
-
-// The response body to return. The value must conform to the configured content type.
-func (o RateLimitActionResponsePtrOutput) Body() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RateLimitActionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Body
-	}).(pulumi.StringPtrOutput)
-}
-
-// The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.
-func (o RateLimitActionResponsePtrOutput) ContentType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RateLimitActionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ContentType
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationCorsHeadersInput)(nil)).Elem(), AccessApplicationCorsHeadersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationCorsHeadersPtrInput)(nil)).Elem(), AccessApplicationCorsHeadersArgs{})
@@ -82876,10 +82871,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicTransitSiteLocationPtrInput)(nil)).Elem(), MagicTransitSiteLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicTransitSiteWanStaticAddressingInput)(nil)).Elem(), MagicTransitSiteWanStaticAddressingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicTransitSiteWanStaticAddressingPtrInput)(nil)).Elem(), MagicTransitSiteWanStaticAddressingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanGreTunnelBgpInput)(nil)).Elem(), MagicWanGreTunnelBgpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanGreTunnelBgpPtrInput)(nil)).Elem(), MagicWanGreTunnelBgpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanGreTunnelBgpStatusInput)(nil)).Elem(), MagicWanGreTunnelBgpStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanGreTunnelBgpStatusPtrInput)(nil)).Elem(), MagicWanGreTunnelBgpStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanGreTunnelHealthCheckInput)(nil)).Elem(), MagicWanGreTunnelHealthCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanGreTunnelHealthCheckPtrInput)(nil)).Elem(), MagicWanGreTunnelHealthCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanGreTunnelHealthCheckTargetInput)(nil)).Elem(), MagicWanGreTunnelHealthCheckTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanGreTunnelHealthCheckTargetPtrInput)(nil)).Elem(), MagicWanGreTunnelHealthCheckTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelBgpInput)(nil)).Elem(), MagicWanIpsecTunnelBgpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelBgpPtrInput)(nil)).Elem(), MagicWanIpsecTunnelBgpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelBgpStatusInput)(nil)).Elem(), MagicWanIpsecTunnelBgpStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelBgpStatusPtrInput)(nil)).Elem(), MagicWanIpsecTunnelBgpStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelCustomRemoteIdentitiesInput)(nil)).Elem(), MagicWanIpsecTunnelCustomRemoteIdentitiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelCustomRemoteIdentitiesPtrInput)(nil)).Elem(), MagicWanIpsecTunnelCustomRemoteIdentitiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelHealthCheckInput)(nil)).Elem(), MagicWanIpsecTunnelHealthCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelHealthCheckPtrInput)(nil)).Elem(), MagicWanIpsecTunnelHealthCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelHealthCheckTargetInput)(nil)).Elem(), MagicWanIpsecTunnelHealthCheckTargetArgs{})
@@ -83086,16 +83091,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketLockRuleInput)(nil)).Elem(), R2BucketLockRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketLockRuleArrayInput)(nil)).Elem(), R2BucketLockRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketLockRuleConditionInput)(nil)).Elem(), R2BucketLockRuleConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketSippyDestinationInput)(nil)).Elem(), R2BucketSippyDestinationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketSippyDestinationPtrInput)(nil)).Elem(), R2BucketSippyDestinationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketSippySourceInput)(nil)).Elem(), R2BucketSippySourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketSippySourcePtrInput)(nil)).Elem(), R2BucketSippySourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*R2CustomDomainStatusInput)(nil)).Elem(), R2CustomDomainStatusArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*R2CustomDomainStatusPtrInput)(nil)).Elem(), R2CustomDomainStatusArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitActionInput)(nil)).Elem(), RateLimitActionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitActionPtrInput)(nil)).Elem(), RateLimitActionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitActionResponseInput)(nil)).Elem(), RateLimitActionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitActionResponsePtrInput)(nil)).Elem(), RateLimitActionResponseArgs{})
 	pulumi.RegisterOutputType(AccessApplicationCorsHeadersOutput{})
 	pulumi.RegisterOutputType(AccessApplicationCorsHeadersPtrOutput{})
 	pulumi.RegisterOutputType(AccessApplicationDestinationOutput{})
@@ -83871,10 +83866,20 @@ func init() {
 	pulumi.RegisterOutputType(MagicTransitSiteLocationPtrOutput{})
 	pulumi.RegisterOutputType(MagicTransitSiteWanStaticAddressingOutput{})
 	pulumi.RegisterOutputType(MagicTransitSiteWanStaticAddressingPtrOutput{})
+	pulumi.RegisterOutputType(MagicWanGreTunnelBgpOutput{})
+	pulumi.RegisterOutputType(MagicWanGreTunnelBgpPtrOutput{})
+	pulumi.RegisterOutputType(MagicWanGreTunnelBgpStatusOutput{})
+	pulumi.RegisterOutputType(MagicWanGreTunnelBgpStatusPtrOutput{})
 	pulumi.RegisterOutputType(MagicWanGreTunnelHealthCheckOutput{})
 	pulumi.RegisterOutputType(MagicWanGreTunnelHealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(MagicWanGreTunnelHealthCheckTargetOutput{})
 	pulumi.RegisterOutputType(MagicWanGreTunnelHealthCheckTargetPtrOutput{})
+	pulumi.RegisterOutputType(MagicWanIpsecTunnelBgpOutput{})
+	pulumi.RegisterOutputType(MagicWanIpsecTunnelBgpPtrOutput{})
+	pulumi.RegisterOutputType(MagicWanIpsecTunnelBgpStatusOutput{})
+	pulumi.RegisterOutputType(MagicWanIpsecTunnelBgpStatusPtrOutput{})
+	pulumi.RegisterOutputType(MagicWanIpsecTunnelCustomRemoteIdentitiesOutput{})
+	pulumi.RegisterOutputType(MagicWanIpsecTunnelCustomRemoteIdentitiesPtrOutput{})
 	pulumi.RegisterOutputType(MagicWanIpsecTunnelHealthCheckOutput{})
 	pulumi.RegisterOutputType(MagicWanIpsecTunnelHealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(MagicWanIpsecTunnelHealthCheckTargetOutput{})
@@ -84081,14 +84086,4 @@ func init() {
 	pulumi.RegisterOutputType(R2BucketLockRuleOutput{})
 	pulumi.RegisterOutputType(R2BucketLockRuleArrayOutput{})
 	pulumi.RegisterOutputType(R2BucketLockRuleConditionOutput{})
-	pulumi.RegisterOutputType(R2BucketSippyDestinationOutput{})
-	pulumi.RegisterOutputType(R2BucketSippyDestinationPtrOutput{})
-	pulumi.RegisterOutputType(R2BucketSippySourceOutput{})
-	pulumi.RegisterOutputType(R2BucketSippySourcePtrOutput{})
-	pulumi.RegisterOutputType(R2CustomDomainStatusOutput{})
-	pulumi.RegisterOutputType(R2CustomDomainStatusPtrOutput{})
-	pulumi.RegisterOutputType(RateLimitActionOutput{})
-	pulumi.RegisterOutputType(RateLimitActionPtrOutput{})
-	pulumi.RegisterOutputType(RateLimitActionResponseOutput{})
-	pulumi.RegisterOutputType(RateLimitActionResponsePtrOutput{})
 }

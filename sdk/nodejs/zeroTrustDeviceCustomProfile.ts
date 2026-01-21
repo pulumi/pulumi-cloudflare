@@ -230,9 +230,6 @@ export class ZeroTrustDeviceCustomProfile extends pulumi.CustomResource {
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if (args?.precedence === undefined && !opts.urn) {
-                throw new Error("Missing required property 'precedence'");
-            }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["allowModeSwitch"] = args?.allowModeSwitch;
             resourceInputs["allowUpdates"] = args?.allowUpdates;
@@ -437,7 +434,7 @@ export interface ZeroTrustDeviceCustomProfileArgs {
     /**
      * The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
      */
-    precedence: pulumi.Input<number>;
+    precedence?: pulumi.Input<number>;
     /**
      * Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
      */

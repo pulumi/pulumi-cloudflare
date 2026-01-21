@@ -27,21 +27,24 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewZeroTrustDlpPredefinedProfile(ctx, "example_zero_trust_dlp_predefined_profile", &cloudflare.ZeroTrustDlpPredefinedProfileArgs{
-//				AccountId:           pulumi.String("account_id"),
-//				ProfileId:           pulumi.String("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
-//				AiContextEnabled:    pulumi.Bool(true),
-//				AllowedMatchCount:   pulumi.Int(5),
-//				ConfidenceThreshold: pulumi.String("confidence_threshold"),
-//				EnabledEntries: pulumi.StringArray{
-//					pulumi.String("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
-//				},
-//				Entries: cloudflare.ZeroTrustDlpPredefinedProfileEntryArray{
-//					&cloudflare.ZeroTrustDlpPredefinedProfileEntryArgs{
-//						Id:      pulumi.String("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
-//						Enabled: pulumi.Bool(true),
-//					},
-//				},
+//				ProfileId:  pulumi.String("e91a2360-da51-4fdf-9711-bcdecd462614"),
+//				AccountId:  pulumi.String("account_id"),
 //				OcrEnabled: pulumi.Bool(true),
+//				EnabledEntries: pulumi.StringArray{
+//					pulumi.String("56a8c060-01bb-4f89-ba1e-3ad42770a342"),
+//					pulumi.String("7f575e6d-039a-465e-85cf-175bda88d4f2"),
+//					pulumi.String("03ebabfd-ce7e-45ed-8061-65e28f0a6e53"),
+//					pulumi.String("2d9c356d-b5a3-482a-b01e-0363e0de7458"),
+//					pulumi.String("2f3657af-c39b-4899-9a98-22f7d187dd28"),
+//					pulumi.String("753a16f9-f533-4208-a5b8-6319b201e9fb"),
+//					pulumi.String("ebcea2c4-335a-457c-853b-f7ae7cc74e07"),
+//					pulumi.String("3f5c4c83-f34c-4d17-81c7-3028385737b3"),
+//					pulumi.String("d1a84fde-c375-4d3c-8a27-8c4eaa33cf60"),
+//					pulumi.String("6dbe5604-d3a3-4c3e-905c-57985704bea7"),
+//					pulumi.String("55ba2c6c-8ef4-4b2e-9148-e75e8b6ccac1"),
+//					pulumi.String("5b1d5035-8c53-4bc9-a151-404eb32b34b4"),
+//					pulumi.String("acf28d88-2daf-4bc4-aa36-5ac1fac0540a"),
+//				},
 //			})
 //			if err != nil {
 //				return err

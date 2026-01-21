@@ -149,9 +149,6 @@ func NewZeroTrustDeviceCustomProfile(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
-	if args.Precedence == nil {
-		return nil, errors.New("invalid value for required argument 'Precedence'")
-	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy"),
@@ -326,7 +323,7 @@ type zeroTrustDeviceCustomProfileArgs struct {
 	// The name of the device settings profile.
 	Name string `pulumi:"name"`
 	// The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
-	Precedence float64 `pulumi:"precedence"`
+	Precedence *float64 `pulumi:"precedence"`
 	// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
 	RegisterInterfaceIpWithDns *bool `pulumi:"registerInterfaceIpWithDns"`
 	// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
@@ -374,7 +371,7 @@ type ZeroTrustDeviceCustomProfileArgs struct {
 	// The name of the device settings profile.
 	Name pulumi.StringInput
 	// The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
-	Precedence pulumi.Float64Input
+	Precedence pulumi.Float64PtrInput
 	// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
 	RegisterInterfaceIpWithDns pulumi.BoolPtrInput
 	// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).

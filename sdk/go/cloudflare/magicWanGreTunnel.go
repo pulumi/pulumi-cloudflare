@@ -32,13 +32,13 @@ import (
 //				CustomerGreEndpoint:    pulumi.String("203.0.113.1"),
 //				InterfaceAddress:       pulumi.String("192.0.2.0/31"),
 //				Name:                   pulumi.String("GRE_1"),
-//				AutomaticReturnRouting: true,
-//				Bgp: map[string]interface{}{
-//					"customerAsn": 0,
-//					"extraPrefixes": []string{
-//						"string",
+//				AutomaticReturnRouting: pulumi.Bool(true),
+//				Bgp: &cloudflare.MagicWanGreTunnelBgpArgs{
+//					CustomerAsn: pulumi.Int(0),
+//					ExtraPrefixes: pulumi.StringArray{
+//						pulumi.String("string"),
 //					},
-//					"md5Key": "md5_key",
+//					Md5Key: pulumi.String("md5_key"),
 //				},
 //				Description: pulumi.String("Tunnel for ISP X"),
 //				HealthCheck: &cloudflare.MagicWanGreTunnelHealthCheckArgs{
@@ -73,6 +73,10 @@ type MagicWanGreTunnel struct {
 
 	// Identifier
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+	AutomaticReturnRouting pulumi.BoolOutput                `pulumi:"automaticReturnRouting"`
+	Bgp                    MagicWanGreTunnelBgpPtrOutput    `pulumi:"bgp"`
+	BgpStatus              MagicWanGreTunnelBgpStatusOutput `pulumi:"bgpStatus"`
 	// The IP address assigned to the Cloudflare side of the GRE tunnel.
 	CloudflareGreEndpoint pulumi.StringOutput `pulumi:"cloudflareGreEndpoint"`
 	// The date and time the tunnel was created.
@@ -149,6 +153,10 @@ func GetMagicWanGreTunnel(ctx *pulumi.Context,
 type magicWanGreTunnelState struct {
 	// Identifier
 	AccountId *string `pulumi:"accountId"`
+	// True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+	AutomaticReturnRouting *bool                       `pulumi:"automaticReturnRouting"`
+	Bgp                    *MagicWanGreTunnelBgp       `pulumi:"bgp"`
+	BgpStatus              *MagicWanGreTunnelBgpStatus `pulumi:"bgpStatus"`
 	// The IP address assigned to the Cloudflare side of the GRE tunnel.
 	CloudflareGreEndpoint *string `pulumi:"cloudflareGreEndpoint"`
 	// The date and time the tunnel was created.
@@ -175,6 +183,10 @@ type magicWanGreTunnelState struct {
 type MagicWanGreTunnelState struct {
 	// Identifier
 	AccountId pulumi.StringPtrInput
+	// True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+	AutomaticReturnRouting pulumi.BoolPtrInput
+	Bgp                    MagicWanGreTunnelBgpPtrInput
+	BgpStatus              MagicWanGreTunnelBgpStatusPtrInput
 	// The IP address assigned to the Cloudflare side of the GRE tunnel.
 	CloudflareGreEndpoint pulumi.StringPtrInput
 	// The date and time the tunnel was created.
@@ -205,6 +217,9 @@ func (MagicWanGreTunnelState) ElementType() reflect.Type {
 type magicWanGreTunnelArgs struct {
 	// Identifier
 	AccountId string `pulumi:"accountId"`
+	// True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+	AutomaticReturnRouting *bool                 `pulumi:"automaticReturnRouting"`
+	Bgp                    *MagicWanGreTunnelBgp `pulumi:"bgp"`
 	// The IP address assigned to the Cloudflare side of the GRE tunnel.
 	CloudflareGreEndpoint string `pulumi:"cloudflareGreEndpoint"`
 	// The IP address assigned to the customer side of the GRE tunnel.
@@ -228,6 +243,9 @@ type magicWanGreTunnelArgs struct {
 type MagicWanGreTunnelArgs struct {
 	// Identifier
 	AccountId pulumi.StringInput
+	// True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+	AutomaticReturnRouting pulumi.BoolPtrInput
+	Bgp                    MagicWanGreTunnelBgpPtrInput
 	// The IP address assigned to the Cloudflare side of the GRE tunnel.
 	CloudflareGreEndpoint pulumi.StringInput
 	// The IP address assigned to the customer side of the GRE tunnel.
@@ -337,6 +355,19 @@ func (o MagicWanGreTunnelOutput) ToMagicWanGreTunnelOutputWithContext(ctx contex
 // Identifier
 func (o MagicWanGreTunnelOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MagicWanGreTunnel) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+func (o MagicWanGreTunnelOutput) AutomaticReturnRouting() pulumi.BoolOutput {
+	return o.ApplyT(func(v *MagicWanGreTunnel) pulumi.BoolOutput { return v.AutomaticReturnRouting }).(pulumi.BoolOutput)
+}
+
+func (o MagicWanGreTunnelOutput) Bgp() MagicWanGreTunnelBgpPtrOutput {
+	return o.ApplyT(func(v *MagicWanGreTunnel) MagicWanGreTunnelBgpPtrOutput { return v.Bgp }).(MagicWanGreTunnelBgpPtrOutput)
+}
+
+func (o MagicWanGreTunnelOutput) BgpStatus() MagicWanGreTunnelBgpStatusOutput {
+	return o.ApplyT(func(v *MagicWanGreTunnel) MagicWanGreTunnelBgpStatusOutput { return v.BgpStatus }).(MagicWanGreTunnelBgpStatusOutput)
 }
 
 // The IP address assigned to the Cloudflare side of the GRE tunnel.

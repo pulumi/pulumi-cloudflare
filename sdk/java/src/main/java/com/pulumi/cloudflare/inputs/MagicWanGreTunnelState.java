@@ -3,9 +3,12 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.MagicWanGreTunnelBgpArgs;
+import com.pulumi.cloudflare.inputs.MagicWanGreTunnelBgpStatusArgs;
 import com.pulumi.cloudflare.inputs.MagicWanGreTunnelHealthCheckArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -30,6 +33,35 @@ public final class MagicWanGreTunnelState extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
+    }
+
+    /**
+     * True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+     * 
+     */
+    @Import(name="automaticReturnRouting")
+    private @Nullable Output<Boolean> automaticReturnRouting;
+
+    /**
+     * @return True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+     * 
+     */
+    public Optional<Output<Boolean>> automaticReturnRouting() {
+        return Optional.ofNullable(this.automaticReturnRouting);
+    }
+
+    @Import(name="bgp")
+    private @Nullable Output<MagicWanGreTunnelBgpArgs> bgp;
+
+    public Optional<Output<MagicWanGreTunnelBgpArgs>> bgp() {
+        return Optional.ofNullable(this.bgp);
+    }
+
+    @Import(name="bgpStatus")
+    private @Nullable Output<MagicWanGreTunnelBgpStatusArgs> bgpStatus;
+
+    public Optional<Output<MagicWanGreTunnelBgpStatusArgs>> bgpStatus() {
+        return Optional.ofNullable(this.bgpStatus);
     }
 
     /**
@@ -193,6 +225,9 @@ public final class MagicWanGreTunnelState extends com.pulumi.resources.ResourceA
 
     private MagicWanGreTunnelState(MagicWanGreTunnelState $) {
         this.accountId = $.accountId;
+        this.automaticReturnRouting = $.automaticReturnRouting;
+        this.bgp = $.bgp;
+        this.bgpStatus = $.bgpStatus;
         this.cloudflareGreEndpoint = $.cloudflareGreEndpoint;
         this.createdOn = $.createdOn;
         this.customerGreEndpoint = $.customerGreEndpoint;
@@ -243,6 +278,45 @@ public final class MagicWanGreTunnelState extends com.pulumi.resources.ResourceA
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param automaticReturnRouting True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder automaticReturnRouting(@Nullable Output<Boolean> automaticReturnRouting) {
+            $.automaticReturnRouting = automaticReturnRouting;
+            return this;
+        }
+
+        /**
+         * @param automaticReturnRouting True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder automaticReturnRouting(Boolean automaticReturnRouting) {
+            return automaticReturnRouting(Output.of(automaticReturnRouting));
+        }
+
+        public Builder bgp(@Nullable Output<MagicWanGreTunnelBgpArgs> bgp) {
+            $.bgp = bgp;
+            return this;
+        }
+
+        public Builder bgp(MagicWanGreTunnelBgpArgs bgp) {
+            return bgp(Output.of(bgp));
+        }
+
+        public Builder bgpStatus(@Nullable Output<MagicWanGreTunnelBgpStatusArgs> bgpStatus) {
+            $.bgpStatus = bgpStatus;
+            return this;
+        }
+
+        public Builder bgpStatus(MagicWanGreTunnelBgpStatusArgs bgpStatus) {
+            return bgpStatus(Output.of(bgpStatus));
         }
 
         /**

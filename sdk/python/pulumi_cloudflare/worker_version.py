@@ -260,6 +260,7 @@ class _WorkerVersionState:
                  created_on: Optional[pulumi.Input[_builtins.str]] = None,
                  limits: Optional[pulumi.Input['WorkerVersionLimitsArgs']] = None,
                  main_module: Optional[pulumi.Input[_builtins.str]] = None,
+                 main_script_base64: Optional[pulumi.Input[_builtins.str]] = None,
                  migrations: Optional[pulumi.Input['WorkerVersionMigrationsArgs']] = None,
                  modules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerVersionModuleArgs']]]] = None,
                  number: Optional[pulumi.Input[_builtins.int]] = None,
@@ -279,6 +280,7 @@ class _WorkerVersionState:
         :param pulumi.Input[_builtins.str] created_on: When the version was created.
         :param pulumi.Input['WorkerVersionLimitsArgs'] limits: Resource limits enforced at runtime.
         :param pulumi.Input[_builtins.str] main_module: The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
+        :param pulumi.Input[_builtins.str] main_script_base64: The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
         :param pulumi.Input['WorkerVersionMigrationsArgs'] migrations: Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerVersionModuleArgs']]] modules: Code, sourcemaps, and other content used at runtime.
                
@@ -312,6 +314,8 @@ class _WorkerVersionState:
             pulumi.set(__self__, "limits", limits)
         if main_module is not None:
             pulumi.set(__self__, "main_module", main_module)
+        if main_script_base64 is not None:
+            pulumi.set(__self__, "main_script_base64", main_script_base64)
         if migrations is not None:
             pulumi.set(__self__, "migrations", migrations)
         if modules is not None:
@@ -439,6 +443,18 @@ class _WorkerVersionState:
     @main_module.setter
     def main_module(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "main_module", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mainScriptBase64")
+    def main_script_base64(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
+        """
+        return pulumi.get(self, "main_script_base64")
+
+    @main_script_base64.setter
+    def main_script_base64(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "main_script_base64", value)
 
     @_builtins.property
     @pulumi.getter
@@ -777,6 +793,7 @@ class WorkerVersion(pulumi.CustomResource):
                 raise TypeError("Missing required property 'worker_id'")
             __props__.__dict__["worker_id"] = worker_id
             __props__.__dict__["created_on"] = None
+            __props__.__dict__["main_script_base64"] = None
             __props__.__dict__["number"] = None
             __props__.__dict__["source"] = None
             __props__.__dict__["startup_time_ms"] = None
@@ -799,6 +816,7 @@ class WorkerVersion(pulumi.CustomResource):
             created_on: Optional[pulumi.Input[_builtins.str]] = None,
             limits: Optional[pulumi.Input[Union['WorkerVersionLimitsArgs', 'WorkerVersionLimitsArgsDict']]] = None,
             main_module: Optional[pulumi.Input[_builtins.str]] = None,
+            main_script_base64: Optional[pulumi.Input[_builtins.str]] = None,
             migrations: Optional[pulumi.Input[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict']]] = None,
             modules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionModuleArgs', 'WorkerVersionModuleArgsDict']]]]] = None,
             number: Optional[pulumi.Input[_builtins.int]] = None,
@@ -823,6 +841,7 @@ class WorkerVersion(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created_on: When the version was created.
         :param pulumi.Input[Union['WorkerVersionLimitsArgs', 'WorkerVersionLimitsArgsDict']] limits: Resource limits enforced at runtime.
         :param pulumi.Input[_builtins.str] main_module: The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
+        :param pulumi.Input[_builtins.str] main_script_base64: The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
         :param pulumi.Input[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict']] migrations: Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionModuleArgs', 'WorkerVersionModuleArgsDict']]]] modules: Code, sourcemaps, and other content used at runtime.
                
@@ -851,6 +870,7 @@ class WorkerVersion(pulumi.CustomResource):
         __props__.__dict__["created_on"] = created_on
         __props__.__dict__["limits"] = limits
         __props__.__dict__["main_module"] = main_module
+        __props__.__dict__["main_script_base64"] = main_script_base64
         __props__.__dict__["migrations"] = migrations
         __props__.__dict__["modules"] = modules
         __props__.__dict__["number"] = number
@@ -932,6 +952,14 @@ class WorkerVersion(pulumi.CustomResource):
         The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
         """
         return pulumi.get(self, "main_module")
+
+    @_builtins.property
+    @pulumi.getter(name="mainScriptBase64")
+    def main_script_base64(self) -> pulumi.Output[_builtins.str]:
+        """
+        The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
+        """
+        return pulumi.get(self, "main_script_base64")
 
     @_builtins.property
     @pulumi.getter

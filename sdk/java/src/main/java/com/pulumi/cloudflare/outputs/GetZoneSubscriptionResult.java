@@ -29,12 +29,12 @@ public final class GetZoneSubscriptionResult {
     private String currentPeriodStart;
     /**
      * @return How often the subscription is renewed automatically.
-     * Available values: &#34;weekly&#34;, &#34;monthly&#34;, &#34;quarterly&#34;, &#34;yearly&#34;.
+     * Available values: &#34;weekly&#34;, &#34;monthly&#34;, &#34;quarterly&#34;, &#34;yearly&#34;, &#34;not-applicable&#34;.
      * 
      */
     private String frequency;
     /**
-     * @return Subscription identifier tag.
+     * @return Identifier
      * 
      */
     private String id;
@@ -55,7 +55,7 @@ public final class GetZoneSubscriptionResult {
      */
     private String state;
     /**
-     * @return Subscription identifier tag.
+     * @return Identifier
      * 
      */
     private String zoneId;
@@ -84,14 +84,14 @@ public final class GetZoneSubscriptionResult {
     }
     /**
      * @return How often the subscription is renewed automatically.
-     * Available values: &#34;weekly&#34;, &#34;monthly&#34;, &#34;quarterly&#34;, &#34;yearly&#34;.
+     * Available values: &#34;weekly&#34;, &#34;monthly&#34;, &#34;quarterly&#34;, &#34;yearly&#34;, &#34;not-applicable&#34;.
      * 
      */
     public String frequency() {
         return this.frequency;
     }
     /**
-     * @return Subscription identifier tag.
+     * @return Identifier
      * 
      */
     public String id() {
@@ -120,7 +120,7 @@ public final class GetZoneSubscriptionResult {
         return this.state;
     }
     /**
-     * @return Subscription identifier tag.
+     * @return Identifier
      * 
      */
     public String zoneId() {

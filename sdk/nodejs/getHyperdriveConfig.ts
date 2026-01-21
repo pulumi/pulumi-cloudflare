@@ -67,6 +67,9 @@ export interface GetHyperdriveConfigResult {
      */
     readonly modifiedOn: string;
     readonly mtls: outputs.GetHyperdriveConfigMtls;
+    /**
+     * The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+     */
     readonly name: string;
     readonly origin: outputs.GetHyperdriveConfigOrigin;
     /**

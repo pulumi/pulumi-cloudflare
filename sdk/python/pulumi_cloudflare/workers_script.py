@@ -62,7 +62,7 @@ class WorkersScriptArgs:
         :param pulumi.Input[_builtins.str] main_module: Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
         :param pulumi.Input['WorkersScriptMigrationsArgs'] migrations: Migrations to apply for Durable Objects associated with this Worker.
         :param pulumi.Input['WorkersScriptObservabilityArgs'] observability: Observability settings for the Worker.
-        :param pulumi.Input['WorkersScriptPlacementArgs'] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        :param pulumi.Input['WorkersScriptPlacementArgs'] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
         :param pulumi.Input[Sequence[pulumi.Input['WorkersScriptTailConsumerArgs']]] tail_consumers: List of Workers that will consume logs from the attached Worker.
         :param pulumi.Input[_builtins.str] usage_model: Usage model for the Worker invocations.
                Available values: "standard", "bundled", "unbound".
@@ -328,7 +328,7 @@ class WorkersScriptArgs:
     @pulumi.getter
     def placement(self) -> Optional[pulumi.Input['WorkersScriptPlacementArgs']]:
         """
-        Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
         """
         return pulumi.get(self, "placement")
 
@@ -424,7 +424,7 @@ class _WorkersScriptState:
         :param pulumi.Input[_builtins.str] modified_on: When the script was last modified.
         :param pulumi.Input[Sequence[pulumi.Input['WorkersScriptNamedHandlerArgs']]] named_handlers: Named exports, such as Durable Object class implementations and named entrypoints.
         :param pulumi.Input['WorkersScriptObservabilityArgs'] observability: Observability settings for the Worker.
-        :param pulumi.Input['WorkersScriptPlacementArgs'] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        :param pulumi.Input['WorkersScriptPlacementArgs'] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
         :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
         :param pulumi.Input[Sequence[pulumi.Input['WorkersScriptTailConsumerArgs']]] tail_consumers: List of Workers that will consume logs from the attached Worker.
         :param pulumi.Input[_builtins.str] usage_model: Usage model for the Worker invocations.
@@ -809,7 +809,7 @@ class _WorkersScriptState:
     @pulumi.getter
     def placement(self) -> Optional[pulumi.Input['WorkersScriptPlacementArgs']]:
         """
-        Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
         """
         return pulumi.get(self, "placement")
 
@@ -1000,7 +1000,7 @@ class WorkersScript(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] main_module: Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
         :param pulumi.Input[Union['WorkersScriptMigrationsArgs', 'WorkersScriptMigrationsArgsDict']] migrations: Migrations to apply for Durable Objects associated with this Worker.
         :param pulumi.Input[Union['WorkersScriptObservabilityArgs', 'WorkersScriptObservabilityArgsDict']] observability: Observability settings for the Worker.
-        :param pulumi.Input[Union['WorkersScriptPlacementArgs', 'WorkersScriptPlacementArgsDict']] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        :param pulumi.Input[Union['WorkersScriptPlacementArgs', 'WorkersScriptPlacementArgsDict']] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
         :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptTailConsumerArgs', 'WorkersScriptTailConsumerArgsDict']]]] tail_consumers: List of Workers that will consume logs from the attached Worker.
         :param pulumi.Input[_builtins.str] usage_model: Usage model for the Worker invocations.
@@ -1257,7 +1257,7 @@ class WorkersScript(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] modified_on: When the script was last modified.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptNamedHandlerArgs', 'WorkersScriptNamedHandlerArgsDict']]]] named_handlers: Named exports, such as Durable Object class implementations and named entrypoints.
         :param pulumi.Input[Union['WorkersScriptObservabilityArgs', 'WorkersScriptObservabilityArgsDict']] observability: Observability settings for the Worker.
-        :param pulumi.Input[Union['WorkersScriptPlacementArgs', 'WorkersScriptPlacementArgsDict']] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        :param pulumi.Input[Union['WorkersScriptPlacementArgs', 'WorkersScriptPlacementArgsDict']] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
         :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptTailConsumerArgs', 'WorkersScriptTailConsumerArgsDict']]]] tail_consumers: List of Workers that will consume logs from the attached Worker.
         :param pulumi.Input[_builtins.str] usage_model: Usage model for the Worker invocations.
@@ -1512,7 +1512,7 @@ class WorkersScript(pulumi.CustomResource):
     @pulumi.getter
     def placement(self) -> pulumi.Output['outputs.WorkersScriptPlacement']:
         """
-        Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
         """
         return pulumi.get(self, "placement")
 

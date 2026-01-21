@@ -68,7 +68,7 @@ export class R2Bucket extends pulumi.CustomResource {
     declare public readonly jurisdiction: pulumi.Output<string>;
     /**
      * Location of the bucket.
-     * Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
+     * Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".  Note: `location` is only honored the first time a bucket with a given name is created. If you delete and recreate a bucket with the same name, the original bucket location will be used. It is also a best-effort, not a guarantee, of bucket location.
      */
     declare public readonly location: pulumi.Output<string>;
     /**
@@ -139,7 +139,7 @@ export interface R2BucketState {
     jurisdiction?: pulumi.Input<string>;
     /**
      * Location of the bucket.
-     * Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
+     * Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".  Note: `location` is only honored the first time a bucket with a given name is created. If you delete and recreate a bucket with the same name, the original bucket location will be used. It is also a best-effort, not a guarantee, of bucket location.
      */
     location?: pulumi.Input<string>;
     /**
@@ -168,7 +168,7 @@ export interface R2BucketArgs {
     jurisdiction?: pulumi.Input<string>;
     /**
      * Location of the bucket.
-     * Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
+     * Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".  Note: `location` is only honored the first time a bucket with a given name is created. If you delete and recreate a bucket with the same name, the original bucket location will be used. It is also a best-effort, not a guarantee, of bucket location.
      */
     location?: pulumi.Input<string>;
     /**

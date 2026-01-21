@@ -170,6 +170,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly int? ReadTimeout;
         /// <summary>
+        /// The request body buffering mode to configure.
+        /// Available values: "none", "standard", "full".
+        /// </summary>
+        public readonly string? RequestBodyBuffering;
+        /// <summary>
         /// The raw request fields to log.
         /// </summary>
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersRequestField> RequestFields;
@@ -181,6 +186,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// The response to show when the block is applied.
         /// </summary>
         public readonly Outputs.RulesetRuleActionParametersResponse? Response;
+        /// <summary>
+        /// The response body buffering mode to configure.
+        /// Available values: "none", "standard".
+        /// </summary>
+        public readonly string? ResponseBodyBuffering;
         /// <summary>
         /// The transformed response fields to log.
         /// </summary>
@@ -319,11 +329,15 @@ namespace Pulumi.Cloudflare.Outputs
 
             int? readTimeout,
 
+            string? requestBodyBuffering,
+
             ImmutableArray<Outputs.RulesetRuleActionParametersRequestField> requestFields,
 
             bool? respectStrongEtags,
 
             Outputs.RulesetRuleActionParametersResponse? response,
+
+            string? responseBodyBuffering,
 
             ImmutableArray<Outputs.RulesetRuleActionParametersResponseField> responseFields,
 
@@ -391,9 +405,11 @@ namespace Pulumi.Cloudflare.Outputs
             Products = products;
             RawResponseFields = rawResponseFields;
             ReadTimeout = readTimeout;
+            RequestBodyBuffering = requestBodyBuffering;
             RequestFields = requestFields;
             RespectStrongEtags = respectStrongEtags;
             Response = response;
+            ResponseBodyBuffering = responseBodyBuffering;
             ResponseFields = responseFields;
             RocketLoader = rocketLoader;
             Rules = rules;

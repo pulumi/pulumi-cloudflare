@@ -50,6 +50,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string MainModule;
         /// <summary>
+        /// The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules).
+        /// </summary>
+        public readonly string MainScriptBase64;
+        /// <summary>
         /// Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
         /// </summary>
         public readonly Outputs.GetWorkerVersionsResultMigrationsResult Migrations;
@@ -104,6 +108,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string mainModule,
 
+            string mainScriptBase64,
+
             Outputs.GetWorkerVersionsResultMigrationsResult migrations,
 
             ImmutableArray<Outputs.GetWorkerVersionsResultModuleResult> modules,
@@ -127,6 +133,7 @@ namespace Pulumi.Cloudflare.Outputs
             Id = id;
             Limits = limits;
             MainModule = mainModule;
+            MainScriptBase64 = mainScriptBase64;
             Migrations = migrations;
             Modules = modules;
             Number = number;

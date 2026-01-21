@@ -18,12 +18,12 @@ public final class HyperdriveConfigCaching {
      */
     private @Nullable Boolean disabled;
     /**
-     * @return Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).
+     * @return Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
      * 
      */
     private @Nullable Integer maxAge;
     /**
-     * @return Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).
+     * @return Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
      * 
      */
     private @Nullable Integer staleWhileRevalidate;
@@ -37,14 +37,14 @@ public final class HyperdriveConfigCaching {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).
+     * @return Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
      * 
      */
     public Optional<Integer> maxAge() {
         return Optional.ofNullable(this.maxAge);
     }
     /**
-     * @return Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).
+     * @return Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
      * 
      */
     public Optional<Integer> staleWhileRevalidate() {

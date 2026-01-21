@@ -14,24 +14,24 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleZeroTrustDlpCustomProfile = new cloudflare.ZeroTrustDlpCustomProfile("example_zero_trust_dlp_custom_profile", {
- *     accountId: "account_id",
  *     name: "name",
- *     aiContextEnabled: true,
- *     allowedMatchCount: 5,
- *     confidenceThreshold: "confidence_threshold",
- *     contextAwareness: {
- *         enabled: true,
- *         skip: {
- *             files: true,
- *         },
- *     },
- *     description: "description",
- *     ocrEnabled: true,
+ *     accountId: "account_id",
+ *     description: "Custom profile with entries",
  *     sharedEntries: [{
+ *         entryId: "56a8c060-01bb-4f89-ba1e-3ad42770a342",
+ *         entryType: "predefined",
  *         enabled: true,
- *         entryId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
- *         entryType: "custom",
  *     }],
+ * });
+ * // Custom entry that is a part of this new profile
+ * const exampleCustomEntry = new cloudflare.ZeroTrustDlpCustomEntry("example_custom_entry", {
+ *     name: "custom",
+ *     accountId: "account_id",
+ *     profileId: exampleZeroTrustDlpCustomProfile.id,
+ *     pattern: {
+ *         regex: "customentryregex",
+ *     },
+ *     enabled: true,
  * });
  * ```
  *

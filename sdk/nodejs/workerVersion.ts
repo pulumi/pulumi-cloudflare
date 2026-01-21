@@ -137,6 +137,10 @@ export class WorkerVersion extends pulumi.CustomResource {
      */
     declare public readonly mainModule: pulumi.Output<string | undefined>;
     /**
+     * The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
+     */
+    declare public /*out*/ readonly mainScriptBase64: pulumi.Output<string>;
+    /**
      * Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
      */
     declare public readonly migrations: pulumi.Output<outputs.WorkerVersionMigrations | undefined>;
@@ -199,6 +203,7 @@ export class WorkerVersion extends pulumi.CustomResource {
             resourceInputs["createdOn"] = state?.createdOn;
             resourceInputs["limits"] = state?.limits;
             resourceInputs["mainModule"] = state?.mainModule;
+            resourceInputs["mainScriptBase64"] = state?.mainScriptBase64;
             resourceInputs["migrations"] = state?.migrations;
             resourceInputs["modules"] = state?.modules;
             resourceInputs["number"] = state?.number;
@@ -229,6 +234,7 @@ export class WorkerVersion extends pulumi.CustomResource {
             resourceInputs["usageModel"] = args?.usageModel;
             resourceInputs["workerId"] = args?.workerId;
             resourceInputs["createdOn"] = undefined /*out*/;
+            resourceInputs["mainScriptBase64"] = undefined /*out*/;
             resourceInputs["number"] = undefined /*out*/;
             resourceInputs["source"] = undefined /*out*/;
             resourceInputs["startupTimeMs"] = undefined /*out*/;
@@ -278,6 +284,10 @@ export interface WorkerVersionState {
      * The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
      */
     mainModule?: pulumi.Input<string>;
+    /**
+     * The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
+     */
+    mainScriptBase64?: pulumi.Input<string>;
     /**
      * Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
      */

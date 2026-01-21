@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleZoneSubscription = cloudflare.getZoneSubscription({
- *     zoneId: "506e3185e9c882d175a2d0cb0093d9f2",
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
@@ -30,7 +30,7 @@ export function getZoneSubscription(args: GetZoneSubscriptionArgs, opts?: pulumi
  */
 export interface GetZoneSubscriptionArgs {
     /**
-     * Subscription identifier tag.
+     * Identifier
      */
     zoneId: string;
 }
@@ -53,11 +53,11 @@ export interface GetZoneSubscriptionResult {
     readonly currentPeriodStart: string;
     /**
      * How often the subscription is renewed automatically.
-     * Available values: "weekly", "monthly", "quarterly", "yearly".
+     * Available values: "weekly", "monthly", "quarterly", "yearly", "not-applicable".
      */
     readonly frequency: string;
     /**
-     * Subscription identifier tag.
+     * Identifier
      */
     readonly id: string;
     /**
@@ -74,7 +74,7 @@ export interface GetZoneSubscriptionResult {
      */
     readonly state: string;
     /**
-     * Subscription identifier tag.
+     * Identifier
      */
     readonly zoneId: string;
 }
@@ -86,7 +86,7 @@ export interface GetZoneSubscriptionResult {
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleZoneSubscription = cloudflare.getZoneSubscription({
- *     zoneId: "506e3185e9c882d175a2d0cb0093d9f2",
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
@@ -102,7 +102,7 @@ export function getZoneSubscriptionOutput(args: GetZoneSubscriptionOutputArgs, o
  */
 export interface GetZoneSubscriptionOutputArgs {
     /**
-     * Subscription identifier tag.
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

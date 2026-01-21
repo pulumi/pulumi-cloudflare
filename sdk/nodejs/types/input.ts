@@ -3029,7 +3029,7 @@ export interface AccountSubscriptionRatePlan {
      */
     scope?: pulumi.Input<string>;
     /**
-     * The list of sets this rate plan applies to.
+     * The list of sets this rate plan applies to. Returns array of strings.
      */
     sets?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -3096,7 +3096,7 @@ export interface AddressMapMembership {
 
 export interface ApiShieldAuthIdCharacteristic {
     /**
-     * The name of the characteristic field, i.e., the header or cookie name.
+     * The name of the characteristic field, i.e., the header or cookie name. When using type "jwt", this must be a claim location expressed as `$(token_config_id):$(json_path)`, where `tokenConfigId` is the ID of the token configuration used in validating the JWT, and `jsonPath` is a RFC 9535 JSONPath expression.
      */
     name: pulumi.Input<string>;
     /**
@@ -7178,11 +7178,11 @@ export interface HyperdriveConfigCaching {
      */
     disabled?: pulumi.Input<boolean>;
     /**
-     * Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).
+     * Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
      */
     maxAge?: pulumi.Input<number>;
     /**
-     * Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).
+     * Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
      */
     staleWhileRevalidate?: pulumi.Input<number>;
 }
@@ -7224,7 +7224,7 @@ export interface HyperdriveConfigOrigin {
      */
     password: pulumi.Input<string>;
     /**
-     * Defines the port (default: 5432 for Postgres) of your origin database.
+     * Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.
      */
     port?: pulumi.Input<number>;
     /**
@@ -7893,6 +7893,35 @@ export interface MagicTransitSiteWanStaticAddressing {
     secondaryAddress?: pulumi.Input<string>;
 }
 
+export interface MagicWanGreTunnelBgp {
+    /**
+     * ASN used on the customer end of the BGP session
+     */
+    customerAsn: pulumi.Input<number>;
+    /**
+     * Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
+     */
+    extraPrefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * MD5 key to use for session authentication.
+     */
+    md5Key?: pulumi.Input<string>;
+}
+
+export interface MagicWanGreTunnelBgpStatus {
+    bgpState?: pulumi.Input<string>;
+    cfSpeakerIp?: pulumi.Input<string>;
+    cfSpeakerPort?: pulumi.Input<number>;
+    customerSpeakerIp?: pulumi.Input<string>;
+    customerSpeakerPort?: pulumi.Input<number>;
+    /**
+     * Available values: "BGP*DOWN", "BGP*UP", "BGP_ESTABLISHING".
+     */
+    state?: pulumi.Input<string>;
+    tcpEstablished?: pulumi.Input<boolean>;
+    updatedAt?: pulumi.Input<string>;
+}
+
 export interface MagicWanGreTunnelHealthCheck {
     /**
      * The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
@@ -7928,6 +7957,43 @@ export interface MagicWanGreTunnelHealthCheckTarget {
      * The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
      */
     saved?: pulumi.Input<string>;
+}
+
+export interface MagicWanIpsecTunnelBgp {
+    /**
+     * ASN used on the customer end of the BGP session
+     */
+    customerAsn: pulumi.Input<number>;
+    /**
+     * Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
+     */
+    extraPrefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * MD5 key to use for session authentication.
+     */
+    md5Key?: pulumi.Input<string>;
+}
+
+export interface MagicWanIpsecTunnelBgpStatus {
+    bgpState?: pulumi.Input<string>;
+    cfSpeakerIp?: pulumi.Input<string>;
+    cfSpeakerPort?: pulumi.Input<number>;
+    customerSpeakerIp?: pulumi.Input<string>;
+    customerSpeakerPort?: pulumi.Input<number>;
+    /**
+     * Available values: "BGP*DOWN", "BGP*UP", "BGP_ESTABLISHING".
+     */
+    state?: pulumi.Input<string>;
+    tcpEstablished?: pulumi.Input<boolean>;
+    updatedAt?: pulumi.Input<string>;
+}
+
+export interface MagicWanIpsecTunnelCustomRemoteIdentities {
+    /**
+     * A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The
+     * generated IKE IDs can still be used even if this custom value is specified.
+     */
+    fqdnId?: pulumi.Input<string>;
 }
 
 export interface MagicWanIpsecTunnelHealthCheck {
@@ -10322,6 +10388,11 @@ export interface RulesetRuleActionParameters {
      */
     readTimeout?: pulumi.Input<number>;
     /**
+     * The request body buffering mode to configure.
+     * Available values: "none", "standard", "full".
+     */
+    requestBodyBuffering?: pulumi.Input<string>;
+    /**
      * The raw request fields to log.
      */
     requestFields?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersRequestField>[]>;
@@ -10333,6 +10404,11 @@ export interface RulesetRuleActionParameters {
      * The response to show when the block is applied.
      */
     response?: pulumi.Input<inputs.RulesetRuleActionParametersResponse>;
+    /**
+     * The response body buffering mode to configure.
+     * Available values: "none", "standard".
+     */
+    responseBodyBuffering?: pulumi.Input<string>;
     /**
      * The transformed response fields to log.
      */
@@ -12847,6 +12923,14 @@ export interface WorkerScriptObservabilityLogs {
 
 export interface WorkerScriptPlacement {
     /**
+     * TCP host and port for targeted placement.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname?: pulumi.Input<string>;
+    /**
      * The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      */
     lastAnalyzedAt?: pulumi.Input<string>;
@@ -12855,6 +12939,10 @@ export interface WorkerScriptPlacement {
      * Available values: "smart".
      */
     mode?: pulumi.Input<string>;
+    /**
+     * Cloud region for targeted placement in format 'provider:region'.
+     */
+    region?: pulumi.Input<string>;
     /**
      * Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
@@ -13594,6 +13682,14 @@ export interface WorkersScriptObservabilityLogs {
 
 export interface WorkersScriptPlacement {
     /**
+     * TCP host and port for targeted placement.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname?: pulumi.Input<string>;
+    /**
      * The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      */
     lastAnalyzedAt?: pulumi.Input<string>;
@@ -13602,6 +13698,10 @@ export interface WorkersScriptPlacement {
      * Available values: "smart".
      */
     mode?: pulumi.Input<string>;
+    /**
+     * Cloud region for targeted placement in format 'provider:region'.
+     */
+    region?: pulumi.Input<string>;
     /**
      * Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
@@ -18473,7 +18573,7 @@ export interface ZoneSubscriptionRatePlan {
      */
     scope?: pulumi.Input<string>;
     /**
-     * The list of sets this rate plan applies to.
+     * The list of sets this rate plan applies to. Returns array of strings.
      */
     sets?: pulumi.Input<pulumi.Input<string>[]>;
 }

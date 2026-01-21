@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupZoneSubscription(ctx, &cloudflare.LookupZoneSubscriptionArgs{
-//				ZoneId: "506e3185e9c882d175a2d0cb0093d9f2",
+//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -48,7 +48,7 @@ func LookupZoneSubscription(ctx *pulumi.Context, args *LookupZoneSubscriptionArg
 
 // A collection of arguments for invoking getZoneSubscription.
 type LookupZoneSubscriptionArgs struct {
-	// Subscription identifier tag.
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -61,9 +61,9 @@ type LookupZoneSubscriptionResult struct {
 	// When the current billing period started. May match initial*period*start if this is the first period.
 	CurrentPeriodStart string `pulumi:"currentPeriodStart"`
 	// How often the subscription is renewed automatically.
-	// Available values: "weekly", "monthly", "quarterly", "yearly".
+	// Available values: "weekly", "monthly", "quarterly", "yearly", "not-applicable".
 	Frequency string `pulumi:"frequency"`
-	// Subscription identifier tag.
+	// Identifier
 	Id string `pulumi:"id"`
 	// The price of the subscription that will be billed, in US dollars.
 	Price float64 `pulumi:"price"`
@@ -72,7 +72,7 @@ type LookupZoneSubscriptionResult struct {
 	// The state that the subscription is in.
 	// Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
 	State string `pulumi:"state"`
-	// Subscription identifier tag.
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -87,7 +87,7 @@ func LookupZoneSubscriptionOutput(ctx *pulumi.Context, args LookupZoneSubscripti
 
 // A collection of arguments for invoking getZoneSubscription.
 type LookupZoneSubscriptionOutputArgs struct {
-	// Subscription identifier tag.
+	// Identifier
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -126,12 +126,12 @@ func (o LookupZoneSubscriptionResultOutput) CurrentPeriodStart() pulumi.StringOu
 }
 
 // How often the subscription is renewed automatically.
-// Available values: "weekly", "monthly", "quarterly", "yearly".
+// Available values: "weekly", "monthly", "quarterly", "yearly", "not-applicable".
 func (o LookupZoneSubscriptionResultOutput) Frequency() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneSubscriptionResult) string { return v.Frequency }).(pulumi.StringOutput)
 }
 
-// Subscription identifier tag.
+// Identifier
 func (o LookupZoneSubscriptionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneSubscriptionResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -152,7 +152,7 @@ func (o LookupZoneSubscriptionResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneSubscriptionResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Subscription identifier tag.
+// Identifier
 func (o LookupZoneSubscriptionResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneSubscriptionResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

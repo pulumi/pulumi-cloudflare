@@ -52,14 +52,14 @@ public final class ZoneSubscriptionArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Subscription identifier tag.
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return Subscription identifier tag.
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -139,7 +139,7 @@ public final class ZoneSubscriptionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param zoneId Subscription identifier tag.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -150,7 +150,7 @@ public final class ZoneSubscriptionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param zoneId Subscription identifier tag.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

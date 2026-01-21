@@ -13,6 +13,18 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class WorkerScriptPlacementGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// TCP host and port for targeted placement.
+        /// </summary>
+        [Input("host")]
+        public Input<string>? Host { get; set; }
+
+        /// <summary>
+        /// HTTP hostname for targeted placement.
+        /// </summary>
+        [Input("hostname")]
+        public Input<string>? Hostname { get; set; }
+
+        /// <summary>
         /// The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
         /// </summary>
         [Input("lastAnalyzedAt")]
@@ -24,6 +36,12 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
+
+        /// <summary>
+        /// Cloud region for targeted placement in format 'provider:region'.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).

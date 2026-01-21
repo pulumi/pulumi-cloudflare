@@ -12,6 +12,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkerScriptPlacement {
     /**
+     * @return TCP host and port for targeted placement.
+     * 
+     */
+    private @Nullable String host;
+    /**
+     * @return HTTP hostname for targeted placement.
+     * 
+     */
+    private @Nullable String hostname;
+    /**
      * @return The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * 
      */
@@ -23,6 +33,11 @@ public final class WorkerScriptPlacement {
      */
     private @Nullable String mode;
     /**
+     * @return Cloud region for targeted placement in format &#39;provider:region&#39;.
+     * 
+     */
+    private @Nullable String region;
+    /**
      * @return Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
      * 
@@ -30,6 +45,20 @@ public final class WorkerScriptPlacement {
     private @Nullable String status;
 
     private WorkerScriptPlacement() {}
+    /**
+     * @return TCP host and port for targeted placement.
+     * 
+     */
+    public Optional<String> host() {
+        return Optional.ofNullable(this.host);
+    }
+    /**
+     * @return HTTP hostname for targeted placement.
+     * 
+     */
+    public Optional<String> hostname() {
+        return Optional.ofNullable(this.hostname);
+    }
     /**
      * @return The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * 
@@ -44,6 +73,13 @@ public final class WorkerScriptPlacement {
      */
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
+    }
+    /**
+     * @return Cloud region for targeted placement in format &#39;provider:region&#39;.
+     * 
+     */
+    public Optional<String> region() {
+        return Optional.ofNullable(this.region);
     }
     /**
      * @return Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
@@ -63,17 +99,35 @@ public final class WorkerScriptPlacement {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String host;
+        private @Nullable String hostname;
         private @Nullable String lastAnalyzedAt;
         private @Nullable String mode;
+        private @Nullable String region;
         private @Nullable String status;
         public Builder() {}
         public Builder(WorkerScriptPlacement defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.host = defaults.host;
+    	      this.hostname = defaults.hostname;
     	      this.lastAnalyzedAt = defaults.lastAnalyzedAt;
     	      this.mode = defaults.mode;
+    	      this.region = defaults.region;
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
+        public Builder host(@Nullable String host) {
+
+            this.host = host;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder hostname(@Nullable String hostname) {
+
+            this.hostname = hostname;
+            return this;
+        }
         @CustomType.Setter
         public Builder lastAnalyzedAt(@Nullable String lastAnalyzedAt) {
 
@@ -87,6 +141,12 @@ public final class WorkerScriptPlacement {
             return this;
         }
         @CustomType.Setter
+        public Builder region(@Nullable String region) {
+
+            this.region = region;
+            return this;
+        }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
 
             this.status = status;
@@ -94,8 +154,11 @@ public final class WorkerScriptPlacement {
         }
         public WorkerScriptPlacement build() {
             final var _resultValue = new WorkerScriptPlacement();
+            _resultValue.host = host;
+            _resultValue.hostname = hostname;
             _resultValue.lastAnalyzedAt = lastAnalyzedAt;
             _resultValue.mode = mode;
+            _resultValue.region = region;
             _resultValue.status = status;
             return _resultValue;
         }
