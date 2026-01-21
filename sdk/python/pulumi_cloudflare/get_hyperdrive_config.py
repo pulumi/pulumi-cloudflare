@@ -112,6 +112,9 @@ class GetHyperdriveConfigResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
+        """
+        The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property

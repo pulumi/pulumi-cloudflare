@@ -71823,7 +71823,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleZoneSubscription = CloudflareFunctions.getZoneSubscription(GetZoneSubscriptionArgs.builder()
-     *             .zoneId("506e3185e9c882d175a2d0cb0093d9f2")
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
      *     }
@@ -71861,7 +71861,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleZoneSubscription = CloudflareFunctions.getZoneSubscription(GetZoneSubscriptionArgs.builder()
-     *             .zoneId("506e3185e9c882d175a2d0cb0093d9f2")
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
      *     }
@@ -71899,7 +71899,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleZoneSubscription = CloudflareFunctions.getZoneSubscription(GetZoneSubscriptionArgs.builder()
-     *             .zoneId("506e3185e9c882d175a2d0cb0093d9f2")
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
      *     }
@@ -71937,7 +71937,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleZoneSubscription = CloudflareFunctions.getZoneSubscription(GetZoneSubscriptionArgs.builder()
-     *             .zoneId("506e3185e9c882d175a2d0cb0093d9f2")
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
      *     }
@@ -71975,7 +71975,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleZoneSubscription = CloudflareFunctions.getZoneSubscription(GetZoneSubscriptionArgs.builder()
-     *             .zoneId("506e3185e9c882d175a2d0cb0093d9f2")
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
      *     }

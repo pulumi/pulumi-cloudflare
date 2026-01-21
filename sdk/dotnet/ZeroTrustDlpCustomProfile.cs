@@ -22,30 +22,31 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var exampleZeroTrustDlpCustomProfile = new Cloudflare.ZeroTrustDlpCustomProfile("example_zero_trust_dlp_custom_profile", new()
     ///     {
-    ///         AccountId = "account_id",
     ///         Name = "name",
-    ///         AiContextEnabled = true,
-    ///         AllowedMatchCount = 5,
-    ///         ConfidenceThreshold = "confidence_threshold",
-    ///         ContextAwareness = new Cloudflare.Inputs.ZeroTrustDlpCustomProfileContextAwarenessArgs
-    ///         {
-    ///             Enabled = true,
-    ///             Skip = new Cloudflare.Inputs.ZeroTrustDlpCustomProfileContextAwarenessSkipArgs
-    ///             {
-    ///                 Files = true,
-    ///             },
-    ///         },
-    ///         Description = "description",
-    ///         OcrEnabled = true,
+    ///         AccountId = "account_id",
+    ///         Description = "Custom profile with entries",
     ///         SharedEntries = new[]
     ///         {
     ///             new Cloudflare.Inputs.ZeroTrustDlpCustomProfileSharedEntryArgs
     ///             {
+    ///                 EntryId = "56a8c060-01bb-4f89-ba1e-3ad42770a342",
+    ///                 EntryType = "predefined",
     ///                 Enabled = true,
-    ///                 EntryId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-    ///                 EntryType = "custom",
     ///             },
     ///         },
+    ///     });
+    /// 
+    ///     // Custom entry that is a part of this new profile
+    ///     var exampleCustomEntry = new Cloudflare.ZeroTrustDlpCustomEntry("example_custom_entry", new()
+    ///     {
+    ///         Name = "custom",
+    ///         AccountId = "account_id",
+    ///         ProfileId = exampleZeroTrustDlpCustomProfile.Id,
+    ///         Pattern = new Cloudflare.Inputs.ZeroTrustDlpCustomEntryPatternArgs
+    ///         {
+    ///             Regex = "customentryregex",
+    ///         },
+    ///         Enabled = true,
     ///     });
     /// 
     /// });

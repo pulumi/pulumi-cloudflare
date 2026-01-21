@@ -84,6 +84,9 @@ export class HyperdriveConfig extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     declare public readonly mtls: pulumi.Output<outputs.HyperdriveConfigMtls | undefined>;
+    /**
+     * The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+     */
     declare public readonly name: pulumi.Output<string>;
     declare public readonly origin: pulumi.Output<outputs.HyperdriveConfigOrigin>;
     /**
@@ -155,6 +158,9 @@ export interface HyperdriveConfigState {
      */
     modifiedOn?: pulumi.Input<string>;
     mtls?: pulumi.Input<inputs.HyperdriveConfigMtls>;
+    /**
+     * The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+     */
     name?: pulumi.Input<string>;
     origin?: pulumi.Input<inputs.HyperdriveConfigOrigin>;
     /**
@@ -173,6 +179,9 @@ export interface HyperdriveConfigArgs {
     accountId: pulumi.Input<string>;
     caching?: pulumi.Input<inputs.HyperdriveConfigCaching>;
     mtls?: pulumi.Input<inputs.HyperdriveConfigMtls>;
+    /**
+     * The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+     */
     name: pulumi.Input<string>;
     origin: pulumi.Input<inputs.HyperdriveConfigOrigin>;
     /**

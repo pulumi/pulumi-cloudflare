@@ -14,7 +14,6 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -106,18 +105,18 @@ public class AccountMember extends com.pulumi.resources.CustomResource {
         return this.policies;
     }
     /**
-     * Array of roles associated with this member.
+     * Set of roles associated with this member.
      * 
      */
     @Export(name="roles", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> roles;
+    private Output<List<String>> roles;
 
     /**
-     * @return Array of roles associated with this member.
+     * @return Set of roles associated with this member.
      * 
      */
-    public Output<Optional<List<String>>> roles() {
-        return Codegen.optional(this.roles);
+    public Output<List<String>> roles() {
+        return this.roles;
     }
     /**
      * Available values: &#34;accepted&#34;, &#34;pending&#34;.

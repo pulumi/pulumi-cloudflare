@@ -13,6 +13,311 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethod struct {
+	// The ID of an identity provider.
+	Id string `pulumi:"id"`
+}
+
+// GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodInput is an input type that accepts GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodArgs and GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodInput` via:
+//
+//	GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodArgs{...}
+type GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodOutput() GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodOutput
+	ToGetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodOutputWithContext(context.Context) GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodOutput
+}
+
+type GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodArgs struct {
+	// The ID of an identity provider.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethod)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodArgs) ToGetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodOutput() GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodOutput {
+	return i.ToGetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodArgs) ToGetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodOutput)
+}
+
+type GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethod)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodOutput) ToGetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodOutput() GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodOutput) ToGetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodOutput {
+	return o
+}
+
+// The ID of an identity provider.
+func (o GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethod) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessApplicationsResultPolicyIncludeOidc struct {
+	// The name of the OIDC claim.
+	ClaimName string `pulumi:"claimName"`
+	// The OIDC claim value to look for.
+	ClaimValue string `pulumi:"claimValue"`
+	// The ID of your OIDC identity provider.
+	IdentityProviderId string `pulumi:"identityProviderId"`
+}
+
+// GetZeroTrustAccessApplicationsResultPolicyIncludeOidcInput is an input type that accepts GetZeroTrustAccessApplicationsResultPolicyIncludeOidcArgs and GetZeroTrustAccessApplicationsResultPolicyIncludeOidcOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessApplicationsResultPolicyIncludeOidcInput` via:
+//
+//	GetZeroTrustAccessApplicationsResultPolicyIncludeOidcArgs{...}
+type GetZeroTrustAccessApplicationsResultPolicyIncludeOidcInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessApplicationsResultPolicyIncludeOidcOutput() GetZeroTrustAccessApplicationsResultPolicyIncludeOidcOutput
+	ToGetZeroTrustAccessApplicationsResultPolicyIncludeOidcOutputWithContext(context.Context) GetZeroTrustAccessApplicationsResultPolicyIncludeOidcOutput
+}
+
+type GetZeroTrustAccessApplicationsResultPolicyIncludeOidcArgs struct {
+	// The name of the OIDC claim.
+	ClaimName pulumi.StringInput `pulumi:"claimName"`
+	// The OIDC claim value to look for.
+	ClaimValue pulumi.StringInput `pulumi:"claimValue"`
+	// The ID of your OIDC identity provider.
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+}
+
+func (GetZeroTrustAccessApplicationsResultPolicyIncludeOidcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyIncludeOidc)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessApplicationsResultPolicyIncludeOidcArgs) ToGetZeroTrustAccessApplicationsResultPolicyIncludeOidcOutput() GetZeroTrustAccessApplicationsResultPolicyIncludeOidcOutput {
+	return i.ToGetZeroTrustAccessApplicationsResultPolicyIncludeOidcOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessApplicationsResultPolicyIncludeOidcArgs) ToGetZeroTrustAccessApplicationsResultPolicyIncludeOidcOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationsResultPolicyIncludeOidcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationsResultPolicyIncludeOidcOutput)
+}
+
+type GetZeroTrustAccessApplicationsResultPolicyIncludeOidcOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessApplicationsResultPolicyIncludeOidcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyIncludeOidc)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessApplicationsResultPolicyIncludeOidcOutput) ToGetZeroTrustAccessApplicationsResultPolicyIncludeOidcOutput() GetZeroTrustAccessApplicationsResultPolicyIncludeOidcOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessApplicationsResultPolicyIncludeOidcOutput) ToGetZeroTrustAccessApplicationsResultPolicyIncludeOidcOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationsResultPolicyIncludeOidcOutput {
+	return o
+}
+
+// The name of the OIDC claim.
+func (o GetZeroTrustAccessApplicationsResultPolicyIncludeOidcOutput) ClaimName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessApplicationsResultPolicyIncludeOidc) string { return v.ClaimName }).(pulumi.StringOutput)
+}
+
+// The OIDC claim value to look for.
+func (o GetZeroTrustAccessApplicationsResultPolicyIncludeOidcOutput) ClaimValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessApplicationsResultPolicyIncludeOidc) string { return v.ClaimValue }).(pulumi.StringOutput)
+}
+
+// The ID of your OIDC identity provider.
+func (o GetZeroTrustAccessApplicationsResultPolicyIncludeOidcOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessApplicationsResultPolicyIncludeOidc) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessApplicationsResultPolicyIncludeOkta struct {
+	// The ID of your Okta identity provider.
+	IdentityProviderId string `pulumi:"identityProviderId"`
+	// The name of the Okta group.
+	Name string `pulumi:"name"`
+}
+
+// GetZeroTrustAccessApplicationsResultPolicyIncludeOktaInput is an input type that accepts GetZeroTrustAccessApplicationsResultPolicyIncludeOktaArgs and GetZeroTrustAccessApplicationsResultPolicyIncludeOktaOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessApplicationsResultPolicyIncludeOktaInput` via:
+//
+//	GetZeroTrustAccessApplicationsResultPolicyIncludeOktaArgs{...}
+type GetZeroTrustAccessApplicationsResultPolicyIncludeOktaInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessApplicationsResultPolicyIncludeOktaOutput() GetZeroTrustAccessApplicationsResultPolicyIncludeOktaOutput
+	ToGetZeroTrustAccessApplicationsResultPolicyIncludeOktaOutputWithContext(context.Context) GetZeroTrustAccessApplicationsResultPolicyIncludeOktaOutput
+}
+
+type GetZeroTrustAccessApplicationsResultPolicyIncludeOktaArgs struct {
+	// The ID of your Okta identity provider.
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+	// The name of the Okta group.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetZeroTrustAccessApplicationsResultPolicyIncludeOktaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyIncludeOkta)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessApplicationsResultPolicyIncludeOktaArgs) ToGetZeroTrustAccessApplicationsResultPolicyIncludeOktaOutput() GetZeroTrustAccessApplicationsResultPolicyIncludeOktaOutput {
+	return i.ToGetZeroTrustAccessApplicationsResultPolicyIncludeOktaOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessApplicationsResultPolicyIncludeOktaArgs) ToGetZeroTrustAccessApplicationsResultPolicyIncludeOktaOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationsResultPolicyIncludeOktaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationsResultPolicyIncludeOktaOutput)
+}
+
+type GetZeroTrustAccessApplicationsResultPolicyIncludeOktaOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessApplicationsResultPolicyIncludeOktaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyIncludeOkta)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessApplicationsResultPolicyIncludeOktaOutput) ToGetZeroTrustAccessApplicationsResultPolicyIncludeOktaOutput() GetZeroTrustAccessApplicationsResultPolicyIncludeOktaOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessApplicationsResultPolicyIncludeOktaOutput) ToGetZeroTrustAccessApplicationsResultPolicyIncludeOktaOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationsResultPolicyIncludeOktaOutput {
+	return o
+}
+
+// The ID of your Okta identity provider.
+func (o GetZeroTrustAccessApplicationsResultPolicyIncludeOktaOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessApplicationsResultPolicyIncludeOkta) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+// The name of the Okta group.
+func (o GetZeroTrustAccessApplicationsResultPolicyIncludeOktaOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessApplicationsResultPolicyIncludeOkta) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessApplicationsResultPolicyIncludeSaml struct {
+	// The name of the SAML attribute.
+	AttributeName string `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue string `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
+	IdentityProviderId string `pulumi:"identityProviderId"`
+}
+
+// GetZeroTrustAccessApplicationsResultPolicyIncludeSamlInput is an input type that accepts GetZeroTrustAccessApplicationsResultPolicyIncludeSamlArgs and GetZeroTrustAccessApplicationsResultPolicyIncludeSamlOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessApplicationsResultPolicyIncludeSamlInput` via:
+//
+//	GetZeroTrustAccessApplicationsResultPolicyIncludeSamlArgs{...}
+type GetZeroTrustAccessApplicationsResultPolicyIncludeSamlInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessApplicationsResultPolicyIncludeSamlOutput() GetZeroTrustAccessApplicationsResultPolicyIncludeSamlOutput
+	ToGetZeroTrustAccessApplicationsResultPolicyIncludeSamlOutputWithContext(context.Context) GetZeroTrustAccessApplicationsResultPolicyIncludeSamlOutput
+}
+
+type GetZeroTrustAccessApplicationsResultPolicyIncludeSamlArgs struct {
+	// The name of the SAML attribute.
+	AttributeName pulumi.StringInput `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue pulumi.StringInput `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+}
+
+func (GetZeroTrustAccessApplicationsResultPolicyIncludeSamlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyIncludeSaml)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessApplicationsResultPolicyIncludeSamlArgs) ToGetZeroTrustAccessApplicationsResultPolicyIncludeSamlOutput() GetZeroTrustAccessApplicationsResultPolicyIncludeSamlOutput {
+	return i.ToGetZeroTrustAccessApplicationsResultPolicyIncludeSamlOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessApplicationsResultPolicyIncludeSamlArgs) ToGetZeroTrustAccessApplicationsResultPolicyIncludeSamlOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationsResultPolicyIncludeSamlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationsResultPolicyIncludeSamlOutput)
+}
+
+type GetZeroTrustAccessApplicationsResultPolicyIncludeSamlOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessApplicationsResultPolicyIncludeSamlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyIncludeSaml)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessApplicationsResultPolicyIncludeSamlOutput) ToGetZeroTrustAccessApplicationsResultPolicyIncludeSamlOutput() GetZeroTrustAccessApplicationsResultPolicyIncludeSamlOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessApplicationsResultPolicyIncludeSamlOutput) ToGetZeroTrustAccessApplicationsResultPolicyIncludeSamlOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationsResultPolicyIncludeSamlOutput {
+	return o
+}
+
+// The name of the SAML attribute.
+func (o GetZeroTrustAccessApplicationsResultPolicyIncludeSamlOutput) AttributeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessApplicationsResultPolicyIncludeSaml) string { return v.AttributeName }).(pulumi.StringOutput)
+}
+
+// The SAML attribute value to look for.
+func (o GetZeroTrustAccessApplicationsResultPolicyIncludeSamlOutput) AttributeValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessApplicationsResultPolicyIncludeSaml) string { return v.AttributeValue }).(pulumi.StringOutput)
+}
+
+// The ID of your SAML identity provider.
+func (o GetZeroTrustAccessApplicationsResultPolicyIncludeSamlOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessApplicationsResultPolicyIncludeSaml) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessApplicationsResultPolicyIncludeServiceToken struct {
+	// The ID of a Service Token.
+	TokenId string `pulumi:"tokenId"`
+}
+
+// GetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenInput is an input type that accepts GetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenArgs and GetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenInput` via:
+//
+//	GetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenArgs{...}
+type GetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenOutput() GetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenOutput
+	ToGetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenOutputWithContext(context.Context) GetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenOutput
+}
+
+type GetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenArgs struct {
+	// The ID of a Service Token.
+	TokenId pulumi.StringInput `pulumi:"tokenId"`
+}
+
+func (GetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyIncludeServiceToken)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenArgs) ToGetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenOutput() GetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenOutput {
+	return i.ToGetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenArgs) ToGetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenOutput)
+}
+
+type GetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyIncludeServiceToken)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenOutput) ToGetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenOutput() GetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenOutput) ToGetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenOutput {
+	return o
+}
+
+// The ID of a Service Token.
+func (o GetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenOutput) TokenId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessApplicationsResultPolicyIncludeServiceToken) string { return v.TokenId }).(pulumi.StringOutput)
+}
+
 type GetZeroTrustAccessApplicationsResultPolicyRequire struct {
 	// An empty object which matches on all service tokens.
 	AnyValidServiceToken GetZeroTrustAccessApplicationsResultPolicyRequireAnyValidServiceToken `pulumi:"anyValidServiceToken"`
@@ -37624,403 +37929,12 @@ func (o GetZeroTrustDlpPredefinedProfileEntryVariantOutput) Type() pulumi.String
 	return o.ApplyT(func(v GetZeroTrustDlpPredefinedProfileEntryVariant) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type GetZeroTrustDnsLocationEndpoints struct {
-	Doh  GetZeroTrustDnsLocationEndpointsDoh  `pulumi:"doh"`
-	Dot  GetZeroTrustDnsLocationEndpointsDot  `pulumi:"dot"`
-	Ipv4 GetZeroTrustDnsLocationEndpointsIpv4 `pulumi:"ipv4"`
-	Ipv6 GetZeroTrustDnsLocationEndpointsIpv6 `pulumi:"ipv6"`
-}
-
-// GetZeroTrustDnsLocationEndpointsInput is an input type that accepts GetZeroTrustDnsLocationEndpointsArgs and GetZeroTrustDnsLocationEndpointsOutput values.
-// You can construct a concrete instance of `GetZeroTrustDnsLocationEndpointsInput` via:
-//
-//	GetZeroTrustDnsLocationEndpointsArgs{...}
-type GetZeroTrustDnsLocationEndpointsInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustDnsLocationEndpointsOutput() GetZeroTrustDnsLocationEndpointsOutput
-	ToGetZeroTrustDnsLocationEndpointsOutputWithContext(context.Context) GetZeroTrustDnsLocationEndpointsOutput
-}
-
-type GetZeroTrustDnsLocationEndpointsArgs struct {
-	Doh  GetZeroTrustDnsLocationEndpointsDohInput  `pulumi:"doh"`
-	Dot  GetZeroTrustDnsLocationEndpointsDotInput  `pulumi:"dot"`
-	Ipv4 GetZeroTrustDnsLocationEndpointsIpv4Input `pulumi:"ipv4"`
-	Ipv6 GetZeroTrustDnsLocationEndpointsIpv6Input `pulumi:"ipv6"`
-}
-
-func (GetZeroTrustDnsLocationEndpointsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustDnsLocationEndpoints)(nil)).Elem()
-}
-
-func (i GetZeroTrustDnsLocationEndpointsArgs) ToGetZeroTrustDnsLocationEndpointsOutput() GetZeroTrustDnsLocationEndpointsOutput {
-	return i.ToGetZeroTrustDnsLocationEndpointsOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustDnsLocationEndpointsArgs) ToGetZeroTrustDnsLocationEndpointsOutputWithContext(ctx context.Context) GetZeroTrustDnsLocationEndpointsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDnsLocationEndpointsOutput)
-}
-
-type GetZeroTrustDnsLocationEndpointsOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustDnsLocationEndpointsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustDnsLocationEndpoints)(nil)).Elem()
-}
-
-func (o GetZeroTrustDnsLocationEndpointsOutput) ToGetZeroTrustDnsLocationEndpointsOutput() GetZeroTrustDnsLocationEndpointsOutput {
-	return o
-}
-
-func (o GetZeroTrustDnsLocationEndpointsOutput) ToGetZeroTrustDnsLocationEndpointsOutputWithContext(ctx context.Context) GetZeroTrustDnsLocationEndpointsOutput {
-	return o
-}
-
-func (o GetZeroTrustDnsLocationEndpointsOutput) Doh() GetZeroTrustDnsLocationEndpointsDohOutput {
-	return o.ApplyT(func(v GetZeroTrustDnsLocationEndpoints) GetZeroTrustDnsLocationEndpointsDoh { return v.Doh }).(GetZeroTrustDnsLocationEndpointsDohOutput)
-}
-
-func (o GetZeroTrustDnsLocationEndpointsOutput) Dot() GetZeroTrustDnsLocationEndpointsDotOutput {
-	return o.ApplyT(func(v GetZeroTrustDnsLocationEndpoints) GetZeroTrustDnsLocationEndpointsDot { return v.Dot }).(GetZeroTrustDnsLocationEndpointsDotOutput)
-}
-
-func (o GetZeroTrustDnsLocationEndpointsOutput) Ipv4() GetZeroTrustDnsLocationEndpointsIpv4Output {
-	return o.ApplyT(func(v GetZeroTrustDnsLocationEndpoints) GetZeroTrustDnsLocationEndpointsIpv4 { return v.Ipv4 }).(GetZeroTrustDnsLocationEndpointsIpv4Output)
-}
-
-func (o GetZeroTrustDnsLocationEndpointsOutput) Ipv6() GetZeroTrustDnsLocationEndpointsIpv6Output {
-	return o.ApplyT(func(v GetZeroTrustDnsLocationEndpoints) GetZeroTrustDnsLocationEndpointsIpv6 { return v.Ipv6 }).(GetZeroTrustDnsLocationEndpointsIpv6Output)
-}
-
-type GetZeroTrustDnsLocationEndpointsDoh struct {
-	// Indicate whether the DOH endpoint is enabled for this location.
-	Enabled bool `pulumi:"enabled"`
-	// Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
-	Networks []GetZeroTrustDnsLocationEndpointsDohNetwork `pulumi:"networks"`
-	// Specify whether the DOH endpoint requires user identity authentication.
-	RequireToken bool `pulumi:"requireToken"`
-}
-
-// GetZeroTrustDnsLocationEndpointsDohInput is an input type that accepts GetZeroTrustDnsLocationEndpointsDohArgs and GetZeroTrustDnsLocationEndpointsDohOutput values.
-// You can construct a concrete instance of `GetZeroTrustDnsLocationEndpointsDohInput` via:
-//
-//	GetZeroTrustDnsLocationEndpointsDohArgs{...}
-type GetZeroTrustDnsLocationEndpointsDohInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustDnsLocationEndpointsDohOutput() GetZeroTrustDnsLocationEndpointsDohOutput
-	ToGetZeroTrustDnsLocationEndpointsDohOutputWithContext(context.Context) GetZeroTrustDnsLocationEndpointsDohOutput
-}
-
-type GetZeroTrustDnsLocationEndpointsDohArgs struct {
-	// Indicate whether the DOH endpoint is enabled for this location.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
-	Networks GetZeroTrustDnsLocationEndpointsDohNetworkArrayInput `pulumi:"networks"`
-	// Specify whether the DOH endpoint requires user identity authentication.
-	RequireToken pulumi.BoolInput `pulumi:"requireToken"`
-}
-
-func (GetZeroTrustDnsLocationEndpointsDohArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustDnsLocationEndpointsDoh)(nil)).Elem()
-}
-
-func (i GetZeroTrustDnsLocationEndpointsDohArgs) ToGetZeroTrustDnsLocationEndpointsDohOutput() GetZeroTrustDnsLocationEndpointsDohOutput {
-	return i.ToGetZeroTrustDnsLocationEndpointsDohOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustDnsLocationEndpointsDohArgs) ToGetZeroTrustDnsLocationEndpointsDohOutputWithContext(ctx context.Context) GetZeroTrustDnsLocationEndpointsDohOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDnsLocationEndpointsDohOutput)
-}
-
-type GetZeroTrustDnsLocationEndpointsDohOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustDnsLocationEndpointsDohOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustDnsLocationEndpointsDoh)(nil)).Elem()
-}
-
-func (o GetZeroTrustDnsLocationEndpointsDohOutput) ToGetZeroTrustDnsLocationEndpointsDohOutput() GetZeroTrustDnsLocationEndpointsDohOutput {
-	return o
-}
-
-func (o GetZeroTrustDnsLocationEndpointsDohOutput) ToGetZeroTrustDnsLocationEndpointsDohOutputWithContext(ctx context.Context) GetZeroTrustDnsLocationEndpointsDohOutput {
-	return o
-}
-
-// Indicate whether the DOH endpoint is enabled for this location.
-func (o GetZeroTrustDnsLocationEndpointsDohOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetZeroTrustDnsLocationEndpointsDoh) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
-func (o GetZeroTrustDnsLocationEndpointsDohOutput) Networks() GetZeroTrustDnsLocationEndpointsDohNetworkArrayOutput {
-	return o.ApplyT(func(v GetZeroTrustDnsLocationEndpointsDoh) []GetZeroTrustDnsLocationEndpointsDohNetwork {
-		return v.Networks
-	}).(GetZeroTrustDnsLocationEndpointsDohNetworkArrayOutput)
-}
-
-// Specify whether the DOH endpoint requires user identity authentication.
-func (o GetZeroTrustDnsLocationEndpointsDohOutput) RequireToken() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetZeroTrustDnsLocationEndpointsDoh) bool { return v.RequireToken }).(pulumi.BoolOutput)
-}
-
-type GetZeroTrustDnsLocationEndpointsDohNetwork struct {
-	// Specify the IP address or IP CIDR.
-	Network string `pulumi:"network"`
-}
-
-// GetZeroTrustDnsLocationEndpointsDohNetworkInput is an input type that accepts GetZeroTrustDnsLocationEndpointsDohNetworkArgs and GetZeroTrustDnsLocationEndpointsDohNetworkOutput values.
-// You can construct a concrete instance of `GetZeroTrustDnsLocationEndpointsDohNetworkInput` via:
-//
-//	GetZeroTrustDnsLocationEndpointsDohNetworkArgs{...}
-type GetZeroTrustDnsLocationEndpointsDohNetworkInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustDnsLocationEndpointsDohNetworkOutput() GetZeroTrustDnsLocationEndpointsDohNetworkOutput
-	ToGetZeroTrustDnsLocationEndpointsDohNetworkOutputWithContext(context.Context) GetZeroTrustDnsLocationEndpointsDohNetworkOutput
-}
-
-type GetZeroTrustDnsLocationEndpointsDohNetworkArgs struct {
-	// Specify the IP address or IP CIDR.
-	Network pulumi.StringInput `pulumi:"network"`
-}
-
-func (GetZeroTrustDnsLocationEndpointsDohNetworkArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustDnsLocationEndpointsDohNetwork)(nil)).Elem()
-}
-
-func (i GetZeroTrustDnsLocationEndpointsDohNetworkArgs) ToGetZeroTrustDnsLocationEndpointsDohNetworkOutput() GetZeroTrustDnsLocationEndpointsDohNetworkOutput {
-	return i.ToGetZeroTrustDnsLocationEndpointsDohNetworkOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustDnsLocationEndpointsDohNetworkArgs) ToGetZeroTrustDnsLocationEndpointsDohNetworkOutputWithContext(ctx context.Context) GetZeroTrustDnsLocationEndpointsDohNetworkOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDnsLocationEndpointsDohNetworkOutput)
-}
-
-// GetZeroTrustDnsLocationEndpointsDohNetworkArrayInput is an input type that accepts GetZeroTrustDnsLocationEndpointsDohNetworkArray and GetZeroTrustDnsLocationEndpointsDohNetworkArrayOutput values.
-// You can construct a concrete instance of `GetZeroTrustDnsLocationEndpointsDohNetworkArrayInput` via:
-//
-//	GetZeroTrustDnsLocationEndpointsDohNetworkArray{ GetZeroTrustDnsLocationEndpointsDohNetworkArgs{...} }
-type GetZeroTrustDnsLocationEndpointsDohNetworkArrayInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustDnsLocationEndpointsDohNetworkArrayOutput() GetZeroTrustDnsLocationEndpointsDohNetworkArrayOutput
-	ToGetZeroTrustDnsLocationEndpointsDohNetworkArrayOutputWithContext(context.Context) GetZeroTrustDnsLocationEndpointsDohNetworkArrayOutput
-}
-
-type GetZeroTrustDnsLocationEndpointsDohNetworkArray []GetZeroTrustDnsLocationEndpointsDohNetworkInput
-
-func (GetZeroTrustDnsLocationEndpointsDohNetworkArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetZeroTrustDnsLocationEndpointsDohNetwork)(nil)).Elem()
-}
-
-func (i GetZeroTrustDnsLocationEndpointsDohNetworkArray) ToGetZeroTrustDnsLocationEndpointsDohNetworkArrayOutput() GetZeroTrustDnsLocationEndpointsDohNetworkArrayOutput {
-	return i.ToGetZeroTrustDnsLocationEndpointsDohNetworkArrayOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustDnsLocationEndpointsDohNetworkArray) ToGetZeroTrustDnsLocationEndpointsDohNetworkArrayOutputWithContext(ctx context.Context) GetZeroTrustDnsLocationEndpointsDohNetworkArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDnsLocationEndpointsDohNetworkArrayOutput)
-}
-
-type GetZeroTrustDnsLocationEndpointsDohNetworkOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustDnsLocationEndpointsDohNetworkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustDnsLocationEndpointsDohNetwork)(nil)).Elem()
-}
-
-func (o GetZeroTrustDnsLocationEndpointsDohNetworkOutput) ToGetZeroTrustDnsLocationEndpointsDohNetworkOutput() GetZeroTrustDnsLocationEndpointsDohNetworkOutput {
-	return o
-}
-
-func (o GetZeroTrustDnsLocationEndpointsDohNetworkOutput) ToGetZeroTrustDnsLocationEndpointsDohNetworkOutputWithContext(ctx context.Context) GetZeroTrustDnsLocationEndpointsDohNetworkOutput {
-	return o
-}
-
-// Specify the IP address or IP CIDR.
-func (o GetZeroTrustDnsLocationEndpointsDohNetworkOutput) Network() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustDnsLocationEndpointsDohNetwork) string { return v.Network }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustDnsLocationEndpointsDohNetworkArrayOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustDnsLocationEndpointsDohNetworkArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetZeroTrustDnsLocationEndpointsDohNetwork)(nil)).Elem()
-}
-
-func (o GetZeroTrustDnsLocationEndpointsDohNetworkArrayOutput) ToGetZeroTrustDnsLocationEndpointsDohNetworkArrayOutput() GetZeroTrustDnsLocationEndpointsDohNetworkArrayOutput {
-	return o
-}
-
-func (o GetZeroTrustDnsLocationEndpointsDohNetworkArrayOutput) ToGetZeroTrustDnsLocationEndpointsDohNetworkArrayOutputWithContext(ctx context.Context) GetZeroTrustDnsLocationEndpointsDohNetworkArrayOutput {
-	return o
-}
-
-func (o GetZeroTrustDnsLocationEndpointsDohNetworkArrayOutput) Index(i pulumi.IntInput) GetZeroTrustDnsLocationEndpointsDohNetworkOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZeroTrustDnsLocationEndpointsDohNetwork {
-		return vs[0].([]GetZeroTrustDnsLocationEndpointsDohNetwork)[vs[1].(int)]
-	}).(GetZeroTrustDnsLocationEndpointsDohNetworkOutput)
-}
-
-type GetZeroTrustDnsLocationEndpointsDot struct {
-	// Indicate whether the DOT endpoint is enabled for this location.
-	Enabled bool `pulumi:"enabled"`
-	// Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
-	Networks []GetZeroTrustDnsLocationEndpointsDotNetwork `pulumi:"networks"`
-}
-
-// GetZeroTrustDnsLocationEndpointsDotInput is an input type that accepts GetZeroTrustDnsLocationEndpointsDotArgs and GetZeroTrustDnsLocationEndpointsDotOutput values.
-// You can construct a concrete instance of `GetZeroTrustDnsLocationEndpointsDotInput` via:
-//
-//	GetZeroTrustDnsLocationEndpointsDotArgs{...}
-type GetZeroTrustDnsLocationEndpointsDotInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustDnsLocationEndpointsDotOutput() GetZeroTrustDnsLocationEndpointsDotOutput
-	ToGetZeroTrustDnsLocationEndpointsDotOutputWithContext(context.Context) GetZeroTrustDnsLocationEndpointsDotOutput
-}
-
-type GetZeroTrustDnsLocationEndpointsDotArgs struct {
-	// Indicate whether the DOT endpoint is enabled for this location.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
-	Networks GetZeroTrustDnsLocationEndpointsDotNetworkArrayInput `pulumi:"networks"`
-}
-
-func (GetZeroTrustDnsLocationEndpointsDotArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustDnsLocationEndpointsDot)(nil)).Elem()
-}
-
-func (i GetZeroTrustDnsLocationEndpointsDotArgs) ToGetZeroTrustDnsLocationEndpointsDotOutput() GetZeroTrustDnsLocationEndpointsDotOutput {
-	return i.ToGetZeroTrustDnsLocationEndpointsDotOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustDnsLocationEndpointsDotArgs) ToGetZeroTrustDnsLocationEndpointsDotOutputWithContext(ctx context.Context) GetZeroTrustDnsLocationEndpointsDotOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDnsLocationEndpointsDotOutput)
-}
-
-type GetZeroTrustDnsLocationEndpointsDotOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustDnsLocationEndpointsDotOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustDnsLocationEndpointsDot)(nil)).Elem()
-}
-
-func (o GetZeroTrustDnsLocationEndpointsDotOutput) ToGetZeroTrustDnsLocationEndpointsDotOutput() GetZeroTrustDnsLocationEndpointsDotOutput {
-	return o
-}
-
-func (o GetZeroTrustDnsLocationEndpointsDotOutput) ToGetZeroTrustDnsLocationEndpointsDotOutputWithContext(ctx context.Context) GetZeroTrustDnsLocationEndpointsDotOutput {
-	return o
-}
-
-// Indicate whether the DOT endpoint is enabled for this location.
-func (o GetZeroTrustDnsLocationEndpointsDotOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetZeroTrustDnsLocationEndpointsDot) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
-func (o GetZeroTrustDnsLocationEndpointsDotOutput) Networks() GetZeroTrustDnsLocationEndpointsDotNetworkArrayOutput {
-	return o.ApplyT(func(v GetZeroTrustDnsLocationEndpointsDot) []GetZeroTrustDnsLocationEndpointsDotNetwork {
-		return v.Networks
-	}).(GetZeroTrustDnsLocationEndpointsDotNetworkArrayOutput)
-}
-
-type GetZeroTrustDnsLocationEndpointsDotNetwork struct {
-	// Specify the IP address or IP CIDR.
-	Network string `pulumi:"network"`
-}
-
-// GetZeroTrustDnsLocationEndpointsDotNetworkInput is an input type that accepts GetZeroTrustDnsLocationEndpointsDotNetworkArgs and GetZeroTrustDnsLocationEndpointsDotNetworkOutput values.
-// You can construct a concrete instance of `GetZeroTrustDnsLocationEndpointsDotNetworkInput` via:
-//
-//	GetZeroTrustDnsLocationEndpointsDotNetworkArgs{...}
-type GetZeroTrustDnsLocationEndpointsDotNetworkInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustDnsLocationEndpointsDotNetworkOutput() GetZeroTrustDnsLocationEndpointsDotNetworkOutput
-	ToGetZeroTrustDnsLocationEndpointsDotNetworkOutputWithContext(context.Context) GetZeroTrustDnsLocationEndpointsDotNetworkOutput
-}
-
-type GetZeroTrustDnsLocationEndpointsDotNetworkArgs struct {
-	// Specify the IP address or IP CIDR.
-	Network pulumi.StringInput `pulumi:"network"`
-}
-
-func (GetZeroTrustDnsLocationEndpointsDotNetworkArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustDnsLocationEndpointsDotNetwork)(nil)).Elem()
-}
-
-func (i GetZeroTrustDnsLocationEndpointsDotNetworkArgs) ToGetZeroTrustDnsLocationEndpointsDotNetworkOutput() GetZeroTrustDnsLocationEndpointsDotNetworkOutput {
-	return i.ToGetZeroTrustDnsLocationEndpointsDotNetworkOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustDnsLocationEndpointsDotNetworkArgs) ToGetZeroTrustDnsLocationEndpointsDotNetworkOutputWithContext(ctx context.Context) GetZeroTrustDnsLocationEndpointsDotNetworkOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDnsLocationEndpointsDotNetworkOutput)
-}
-
-// GetZeroTrustDnsLocationEndpointsDotNetworkArrayInput is an input type that accepts GetZeroTrustDnsLocationEndpointsDotNetworkArray and GetZeroTrustDnsLocationEndpointsDotNetworkArrayOutput values.
-// You can construct a concrete instance of `GetZeroTrustDnsLocationEndpointsDotNetworkArrayInput` via:
-//
-//	GetZeroTrustDnsLocationEndpointsDotNetworkArray{ GetZeroTrustDnsLocationEndpointsDotNetworkArgs{...} }
-type GetZeroTrustDnsLocationEndpointsDotNetworkArrayInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustDnsLocationEndpointsDotNetworkArrayOutput() GetZeroTrustDnsLocationEndpointsDotNetworkArrayOutput
-	ToGetZeroTrustDnsLocationEndpointsDotNetworkArrayOutputWithContext(context.Context) GetZeroTrustDnsLocationEndpointsDotNetworkArrayOutput
-}
-
-type GetZeroTrustDnsLocationEndpointsDotNetworkArray []GetZeroTrustDnsLocationEndpointsDotNetworkInput
-
-func (GetZeroTrustDnsLocationEndpointsDotNetworkArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetZeroTrustDnsLocationEndpointsDotNetwork)(nil)).Elem()
-}
-
-func (i GetZeroTrustDnsLocationEndpointsDotNetworkArray) ToGetZeroTrustDnsLocationEndpointsDotNetworkArrayOutput() GetZeroTrustDnsLocationEndpointsDotNetworkArrayOutput {
-	return i.ToGetZeroTrustDnsLocationEndpointsDotNetworkArrayOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustDnsLocationEndpointsDotNetworkArray) ToGetZeroTrustDnsLocationEndpointsDotNetworkArrayOutputWithContext(ctx context.Context) GetZeroTrustDnsLocationEndpointsDotNetworkArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDnsLocationEndpointsDotNetworkArrayOutput)
-}
-
-type GetZeroTrustDnsLocationEndpointsDotNetworkOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustDnsLocationEndpointsDotNetworkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustDnsLocationEndpointsDotNetwork)(nil)).Elem()
-}
-
-func (o GetZeroTrustDnsLocationEndpointsDotNetworkOutput) ToGetZeroTrustDnsLocationEndpointsDotNetworkOutput() GetZeroTrustDnsLocationEndpointsDotNetworkOutput {
-	return o
-}
-
-func (o GetZeroTrustDnsLocationEndpointsDotNetworkOutput) ToGetZeroTrustDnsLocationEndpointsDotNetworkOutputWithContext(ctx context.Context) GetZeroTrustDnsLocationEndpointsDotNetworkOutput {
-	return o
-}
-
-// Specify the IP address or IP CIDR.
-func (o GetZeroTrustDnsLocationEndpointsDotNetworkOutput) Network() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustDnsLocationEndpointsDotNetwork) string { return v.Network }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustDnsLocationEndpointsDotNetworkArrayOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustDnsLocationEndpointsDotNetworkArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetZeroTrustDnsLocationEndpointsDotNetwork)(nil)).Elem()
-}
-
-func (o GetZeroTrustDnsLocationEndpointsDotNetworkArrayOutput) ToGetZeroTrustDnsLocationEndpointsDotNetworkArrayOutput() GetZeroTrustDnsLocationEndpointsDotNetworkArrayOutput {
-	return o
-}
-
-func (o GetZeroTrustDnsLocationEndpointsDotNetworkArrayOutput) ToGetZeroTrustDnsLocationEndpointsDotNetworkArrayOutputWithContext(ctx context.Context) GetZeroTrustDnsLocationEndpointsDotNetworkArrayOutput {
-	return o
-}
-
-func (o GetZeroTrustDnsLocationEndpointsDotNetworkArrayOutput) Index(i pulumi.IntInput) GetZeroTrustDnsLocationEndpointsDotNetworkOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZeroTrustDnsLocationEndpointsDotNetwork {
-		return vs[0].([]GetZeroTrustDnsLocationEndpointsDotNetwork)[vs[1].(int)]
-	}).(GetZeroTrustDnsLocationEndpointsDotNetworkOutput)
-}
-
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodInput)(nil)).Elem(), GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyIncludeOidcInput)(nil)).Elem(), GetZeroTrustAccessApplicationsResultPolicyIncludeOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyIncludeOktaInput)(nil)).Elem(), GetZeroTrustAccessApplicationsResultPolicyIncludeOktaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyIncludeSamlInput)(nil)).Elem(), GetZeroTrustAccessApplicationsResultPolicyIncludeSamlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenInput)(nil)).Elem(), GetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyRequireInput)(nil)).Elem(), GetZeroTrustAccessApplicationsResultPolicyRequireArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyRequireArrayInput)(nil)).Elem(), GetZeroTrustAccessApplicationsResultPolicyRequireArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyRequireAnyValidServiceTokenInput)(nil)).Elem(), GetZeroTrustAccessApplicationsResultPolicyRequireAnyValidServiceTokenArgs{})
@@ -38588,13 +38502,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpPredefinedProfileEntryConfidenceInput)(nil)).Elem(), GetZeroTrustDlpPredefinedProfileEntryConfidenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpPredefinedProfileEntryPatternInput)(nil)).Elem(), GetZeroTrustDlpPredefinedProfileEntryPatternArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpPredefinedProfileEntryVariantInput)(nil)).Elem(), GetZeroTrustDlpPredefinedProfileEntryVariantArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDnsLocationEndpointsInput)(nil)).Elem(), GetZeroTrustDnsLocationEndpointsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDnsLocationEndpointsDohInput)(nil)).Elem(), GetZeroTrustDnsLocationEndpointsDohArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDnsLocationEndpointsDohNetworkInput)(nil)).Elem(), GetZeroTrustDnsLocationEndpointsDohNetworkArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDnsLocationEndpointsDohNetworkArrayInput)(nil)).Elem(), GetZeroTrustDnsLocationEndpointsDohNetworkArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDnsLocationEndpointsDotInput)(nil)).Elem(), GetZeroTrustDnsLocationEndpointsDotArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDnsLocationEndpointsDotNetworkInput)(nil)).Elem(), GetZeroTrustDnsLocationEndpointsDotNetworkArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDnsLocationEndpointsDotNetworkArrayInput)(nil)).Elem(), GetZeroTrustDnsLocationEndpointsDotNetworkArray{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationsResultPolicyIncludeOidcOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationsResultPolicyIncludeOktaOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationsResultPolicyIncludeSamlOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationsResultPolicyRequireOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationsResultPolicyRequireArrayOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationsResultPolicyRequireAnyValidServiceTokenOutput{})
@@ -39162,11 +39074,4 @@ func init() {
 	pulumi.RegisterOutputType(GetZeroTrustDlpPredefinedProfileEntryConfidenceOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustDlpPredefinedProfileEntryPatternOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustDlpPredefinedProfileEntryVariantOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustDnsLocationEndpointsOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustDnsLocationEndpointsDohOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustDnsLocationEndpointsDohNetworkOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustDnsLocationEndpointsDohNetworkArrayOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustDnsLocationEndpointsDotOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustDnsLocationEndpointsDotNetworkOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustDnsLocationEndpointsDotNetworkArrayOutput{})
 }

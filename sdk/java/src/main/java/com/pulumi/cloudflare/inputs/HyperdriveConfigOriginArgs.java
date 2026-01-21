@@ -93,14 +93,14 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Defines the port (default: 5432 for Postgres) of your origin database.
+     * Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return Defines the port (default: 5432 for Postgres) of your origin database.
+     * @return Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -276,7 +276,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param port Defines the port (default: 5432 for Postgres) of your origin database.
+         * @param port Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.
          * 
          * @return builder
          * 
@@ -287,7 +287,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param port Defines the port (default: 5432 for Postgres) of your origin database.
+         * @param port Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.
          * 
          * @return builder
          * 

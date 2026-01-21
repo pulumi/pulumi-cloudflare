@@ -27,7 +27,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewZoneSubscription(ctx, "example_zone_subscription", &cloudflare.ZoneSubscriptionArgs{
-//				ZoneId:    pulumi.String("506e3185e9c882d175a2d0cb0093d9f2"),
+//				ZoneId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Frequency: pulumi.String("monthly"),
 //				RatePlan: &cloudflare.ZoneSubscriptionRatePlanArgs{
 //					Id:                pulumi.String("free"),
@@ -71,11 +71,11 @@ type ZoneSubscription struct {
 	// The price of the subscription that will be billed, in US dollars.
 	Price pulumi.Float64Output `pulumi:"price"`
 	// The rate plan applied to the subscription.
-	RatePlan ZoneSubscriptionRatePlanPtrOutput `pulumi:"ratePlan"`
+	RatePlan ZoneSubscriptionRatePlanOutput `pulumi:"ratePlan"`
 	// The state that the subscription is in.
 	// Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
 	State pulumi.StringOutput `pulumi:"state"`
-	// Subscription identifier tag.
+	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -129,7 +129,7 @@ type zoneSubscriptionState struct {
 	// The state that the subscription is in.
 	// Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
 	State *string `pulumi:"state"`
-	// Subscription identifier tag.
+	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -151,7 +151,7 @@ type ZoneSubscriptionState struct {
 	// The state that the subscription is in.
 	// Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
 	State pulumi.StringPtrInput
-	// Subscription identifier tag.
+	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -166,7 +166,7 @@ type zoneSubscriptionArgs struct {
 	Frequency *string `pulumi:"frequency"`
 	// The rate plan applied to the subscription.
 	RatePlan *ZoneSubscriptionRatePlan `pulumi:"ratePlan"`
-	// Subscription identifier tag.
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -178,7 +178,7 @@ type ZoneSubscriptionArgs struct {
 	Frequency pulumi.StringPtrInput
 	// The rate plan applied to the subscription.
 	RatePlan ZoneSubscriptionRatePlanPtrInput
-	// Subscription identifier tag.
+	// Identifier
 	ZoneId pulumi.StringInput
 }
 
@@ -297,8 +297,8 @@ func (o ZoneSubscriptionOutput) Price() pulumi.Float64Output {
 }
 
 // The rate plan applied to the subscription.
-func (o ZoneSubscriptionOutput) RatePlan() ZoneSubscriptionRatePlanPtrOutput {
-	return o.ApplyT(func(v *ZoneSubscription) ZoneSubscriptionRatePlanPtrOutput { return v.RatePlan }).(ZoneSubscriptionRatePlanPtrOutput)
+func (o ZoneSubscriptionOutput) RatePlan() ZoneSubscriptionRatePlanOutput {
+	return o.ApplyT(func(v *ZoneSubscription) ZoneSubscriptionRatePlanOutput { return v.RatePlan }).(ZoneSubscriptionRatePlanOutput)
 }
 
 // The state that the subscription is in.
@@ -307,7 +307,7 @@ func (o ZoneSubscriptionOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneSubscription) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Subscription identifier tag.
+// Identifier
 func (o ZoneSubscriptionOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneSubscription) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

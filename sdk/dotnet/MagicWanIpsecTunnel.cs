@@ -27,18 +27,18 @@ namespace Pulumi.Cloudflare
     ///         InterfaceAddress = "192.0.2.0/31",
     ///         Name = "IPsec_1",
     ///         AutomaticReturnRouting = true,
-    ///         Bgp = 
+    ///         Bgp = new Cloudflare.Inputs.MagicWanIpsecTunnelBgpArgs
     ///         {
-    ///             { "customerAsn", 0 },
-    ///             { "extraPrefixes", new[]
+    ///             CustomerAsn = 0,
+    ///             ExtraPrefixes = new[]
     ///             {
     ///                 "string",
-    ///             } },
-    ///             { "md5Key", "md5_key" },
+    ///             },
+    ///             Md5Key = "md5_key",
     ///         },
-    ///         CustomRemoteIdentities = 
+    ///         CustomRemoteIdentities = new Cloudflare.Inputs.MagicWanIpsecTunnelCustomRemoteIdentitiesArgs
     ///         {
-    ///             { "fqdnId", "fqdn_id" },
+    ///             FqdnId = "fqdn_id",
     ///         },
     ///         CustomerEndpoint = "203.0.113.1",
     ///         Description = "Tunnel for ISP X",
@@ -83,6 +83,18 @@ namespace Pulumi.Cloudflare
         public Output<bool> AllowNullCipher { get; private set; } = null!;
 
         /// <summary>
+        /// True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+        /// </summary>
+        [Output("automaticReturnRouting")]
+        public Output<bool> AutomaticReturnRouting { get; private set; } = null!;
+
+        [Output("bgp")]
+        public Output<Outputs.MagicWanIpsecTunnelBgp?> Bgp { get; private set; } = null!;
+
+        [Output("bgpStatus")]
+        public Output<Outputs.MagicWanIpsecTunnelBgpStatus> BgpStatus { get; private set; } = null!;
+
+        /// <summary>
         /// The IP address assigned to the Cloudflare side of the IPsec tunnel.
         /// </summary>
         [Output("cloudflareEndpoint")]
@@ -93,6 +105,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("createdOn")]
         public Output<string> CreatedOn { get; private set; } = null!;
+
+        [Output("customRemoteIdentities")]
+        public Output<Outputs.MagicWanIpsecTunnelCustomRemoteIdentities?> CustomRemoteIdentities { get; private set; } = null!;
 
         /// <summary>
         /// The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
@@ -212,10 +227,22 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
+        /// True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+        /// </summary>
+        [Input("automaticReturnRouting")]
+        public Input<bool>? AutomaticReturnRouting { get; set; }
+
+        [Input("bgp")]
+        public Input<Inputs.MagicWanIpsecTunnelBgpArgs>? Bgp { get; set; }
+
+        /// <summary>
         /// The IP address assigned to the Cloudflare side of the IPsec tunnel.
         /// </summary>
         [Input("cloudflareEndpoint", required: true)]
         public Input<string> CloudflareEndpoint { get; set; } = null!;
+
+        [Input("customRemoteIdentities")]
+        public Input<Inputs.MagicWanIpsecTunnelCustomRemoteIdentitiesArgs>? CustomRemoteIdentities { get; set; }
 
         /// <summary>
         /// The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
@@ -293,6 +320,18 @@ namespace Pulumi.Cloudflare
         public Input<bool>? AllowNullCipher { get; set; }
 
         /// <summary>
+        /// True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+        /// </summary>
+        [Input("automaticReturnRouting")]
+        public Input<bool>? AutomaticReturnRouting { get; set; }
+
+        [Input("bgp")]
+        public Input<Inputs.MagicWanIpsecTunnelBgpGetArgs>? Bgp { get; set; }
+
+        [Input("bgpStatus")]
+        public Input<Inputs.MagicWanIpsecTunnelBgpStatusGetArgs>? BgpStatus { get; set; }
+
+        /// <summary>
         /// The IP address assigned to the Cloudflare side of the IPsec tunnel.
         /// </summary>
         [Input("cloudflareEndpoint")]
@@ -303,6 +342,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("createdOn")]
         public Input<string>? CreatedOn { get; set; }
+
+        [Input("customRemoteIdentities")]
+        public Input<Inputs.MagicWanIpsecTunnelCustomRemoteIdentitiesGetArgs>? CustomRemoteIdentities { get; set; }
 
         /// <summary>
         /// The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.

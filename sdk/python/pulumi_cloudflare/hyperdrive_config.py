@@ -30,6 +30,7 @@ class HyperdriveConfigArgs:
         """
         The set of arguments for constructing a HyperdriveConfig resource.
         :param pulumi.Input[_builtins.str] account_id: Define configurations using a unique string identifier.
+        :param pulumi.Input[_builtins.str] name: The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
         :param pulumi.Input[_builtins.int] origin_connection_limit: The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -57,6 +58,9 @@ class HyperdriveConfigArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -119,6 +123,7 @@ class _HyperdriveConfigState:
         :param pulumi.Input[_builtins.str] account_id: Define configurations using a unique string identifier.
         :param pulumi.Input[_builtins.str] created_on: Defines the creation time of the Hyperdrive configuration.
         :param pulumi.Input[_builtins.str] modified_on: Defines the last modified time of the Hyperdrive configuration.
+        :param pulumi.Input[_builtins.str] name: The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
         :param pulumi.Input[_builtins.int] origin_connection_limit: The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
         """
         if account_id is not None:
@@ -195,6 +200,9 @@ class _HyperdriveConfigState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -274,6 +282,7 @@ class HyperdriveConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Define configurations using a unique string identifier.
+        :param pulumi.Input[_builtins.str] name: The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
         :param pulumi.Input[_builtins.int] origin_connection_limit: The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
         """
         ...
@@ -389,6 +398,7 @@ class HyperdriveConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Define configurations using a unique string identifier.
         :param pulumi.Input[_builtins.str] created_on: Defines the creation time of the Hyperdrive configuration.
         :param pulumi.Input[_builtins.str] modified_on: Defines the last modified time of the Hyperdrive configuration.
+        :param pulumi.Input[_builtins.str] name: The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
         :param pulumi.Input[_builtins.int] origin_connection_limit: The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -442,6 +452,9 @@ class HyperdriveConfig(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property

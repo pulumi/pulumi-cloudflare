@@ -15,14 +15,14 @@ public final class ApiShieldAuthIdCharacteristicArgs extends com.pulumi.resource
     public static final ApiShieldAuthIdCharacteristicArgs Empty = new ApiShieldAuthIdCharacteristicArgs();
 
     /**
-     * The name of the characteristic field, i.e., the header or cookie name.
+     * The name of the characteristic field, i.e., the header or cookie name. When using type &#34;jwt&#34;, this must be a claim location expressed as `$(token_config_id):$(json_path)`, where `tokenConfigId` is the ID of the token configuration used in validating the JWT, and `jsonPath` is a RFC 9535 JSONPath expression.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the characteristic field, i.e., the header or cookie name.
+     * @return The name of the characteristic field, i.e., the header or cookie name. When using type &#34;jwt&#34;, this must be a claim location expressed as `$(token_config_id):$(json_path)`, where `tokenConfigId` is the ID of the token configuration used in validating the JWT, and `jsonPath` is a RFC 9535 JSONPath expression.
      * 
      */
     public Output<String> name() {
@@ -72,7 +72,7 @@ public final class ApiShieldAuthIdCharacteristicArgs extends com.pulumi.resource
         }
 
         /**
-         * @param name The name of the characteristic field, i.e., the header or cookie name.
+         * @param name The name of the characteristic field, i.e., the header or cookie name. When using type &#34;jwt&#34;, this must be a claim location expressed as `$(token_config_id):$(json_path)`, where `tokenConfigId` is the ID of the token configuration used in validating the JWT, and `jsonPath` is a RFC 9535 JSONPath expression.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ApiShieldAuthIdCharacteristicArgs extends com.pulumi.resource
         }
 
         /**
-         * @param name The name of the characteristic field, i.e., the header or cookie name.
+         * @param name The name of the characteristic field, i.e., the header or cookie name. When using type &#34;jwt&#34;, this must be a claim location expressed as `$(token_config_id):$(json_path)`, where `tokenConfigId` is the ID of the token configuration used in validating the JWT, and `jsonPath` is a RFC 9535 JSONPath expression.
          * 
          * @return builder
          * 

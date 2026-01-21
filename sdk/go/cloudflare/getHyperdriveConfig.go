@@ -67,10 +67,11 @@ type LookupHyperdriveConfigResult struct {
 	// Define configurations using a unique string identifier.
 	Id string `pulumi:"id"`
 	// Defines the last modified time of the Hyperdrive configuration.
-	ModifiedOn string                    `pulumi:"modifiedOn"`
-	Mtls       GetHyperdriveConfigMtls   `pulumi:"mtls"`
-	Name       string                    `pulumi:"name"`
-	Origin     GetHyperdriveConfigOrigin `pulumi:"origin"`
+	ModifiedOn string                  `pulumi:"modifiedOn"`
+	Mtls       GetHyperdriveConfigMtls `pulumi:"mtls"`
+	// The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+	Name   string                    `pulumi:"name"`
+	Origin GetHyperdriveConfigOrigin `pulumi:"origin"`
 	// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
 	OriginConnectionLimit int `pulumi:"originConnectionLimit"`
 }
@@ -144,6 +145,7 @@ func (o LookupHyperdriveConfigResultOutput) Mtls() GetHyperdriveConfigMtlsOutput
 	return o.ApplyT(func(v LookupHyperdriveConfigResult) GetHyperdriveConfigMtls { return v.Mtls }).(GetHyperdriveConfigMtlsOutput)
 }
 
+// The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
 func (o LookupHyperdriveConfigResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHyperdriveConfigResult) string { return v.Name }).(pulumi.StringOutput)
 }

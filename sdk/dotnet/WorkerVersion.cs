@@ -177,6 +177,12 @@ namespace Pulumi.Cloudflare
         public Output<string?> MainModule { get; private set; } = null!;
 
         /// <summary>
+        /// The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
+        /// </summary>
+        [Output("mainScriptBase64")]
+        public Output<string> MainScriptBase64 { get; private set; } = null!;
+
+        /// <summary>
         /// Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
         /// </summary>
         [Output("migrations")]
@@ -451,6 +457,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("mainModule")]
         public Input<string>? MainModule { get; set; }
+
+        /// <summary>
+        /// The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
+        /// </summary>
+        [Input("mainScriptBase64")]
+        public Input<string>? MainScriptBase64 { get; set; }
 
         /// <summary>
         /// Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.

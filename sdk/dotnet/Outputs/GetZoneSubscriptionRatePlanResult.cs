@@ -39,7 +39,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Scope;
         /// <summary>
-        /// The list of sets this rate plan applies to.
+        /// The list of sets this rate plan applies to. Returns array of strings.
         /// </summary>
         public readonly ImmutableArray<string> Sets;
 

@@ -93,14 +93,14 @@ public class DevicePostureRule extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
-    private Output<String> description;
+    private Output</* @Nullable */ String> description;
 
     /**
      * @return The description of the device posture rule.
      * 
      */
-    public Output<String> description() {
-        return this.description;
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
     }
     /**
      * Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.

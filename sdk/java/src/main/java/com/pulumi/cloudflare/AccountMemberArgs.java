@@ -64,14 +64,14 @@ public final class AccountMemberArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Array of roles associated with this member.
+     * Set of roles associated with this member.
      * 
      */
     @Import(name="roles")
     private @Nullable Output<List<String>> roles;
 
     /**
-     * @return Array of roles associated with this member.
+     * @return Set of roles associated with this member.
      * 
      */
     public Optional<Output<List<String>>> roles() {
@@ -195,7 +195,7 @@ public final class AccountMemberArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roles Array of roles associated with this member.
+         * @param roles Set of roles associated with this member.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class AccountMemberArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roles Array of roles associated with this member.
+         * @param roles Set of roles associated with this member.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class AccountMemberArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roles Array of roles associated with this member.
+         * @param roles Set of roles associated with this member.
          * 
          * @return builder
          * 

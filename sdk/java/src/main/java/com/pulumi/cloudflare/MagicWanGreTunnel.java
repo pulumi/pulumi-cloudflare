@@ -6,12 +6,15 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.MagicWanGreTunnelArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.MagicWanGreTunnelState;
+import com.pulumi.cloudflare.outputs.MagicWanGreTunnelBgp;
+import com.pulumi.cloudflare.outputs.MagicWanGreTunnelBgpStatus;
 import com.pulumi.cloudflare.outputs.MagicWanGreTunnelHealthCheck;
 import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -30,6 +33,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.MagicWanGreTunnel;
  * import com.pulumi.cloudflare.MagicWanGreTunnelArgs;
+ * import com.pulumi.cloudflare.inputs.MagicWanGreTunnelBgpArgs;
  * import com.pulumi.cloudflare.inputs.MagicWanGreTunnelHealthCheckArgs;
  * import com.pulumi.cloudflare.inputs.MagicWanGreTunnelHealthCheckTargetArgs;
  * import java.util.List;
@@ -52,11 +56,11 @@ import javax.annotation.Nullable;
  *             .interfaceAddress("192.0.2.0/31")
  *             .name("GRE_1")
  *             .automaticReturnRouting(true)
- *             .bgp(Map.ofEntries(
- *                 Map.entry("customerAsn", 0),
- *                 Map.entry("extraPrefixes", List.of("string")),
- *                 Map.entry("md5Key", "md5_key")
- *             ))
+ *             .bgp(MagicWanGreTunnelBgpArgs.builder()
+ *                 .customerAsn(0)
+ *                 .extraPrefixes("string")
+ *                 .md5Key("md5_key")
+ *                 .build())
  *             .description("Tunnel for ISP X")
  *             .healthCheck(MagicWanGreTunnelHealthCheckArgs.builder()
  *                 .direction("bidirectional")
@@ -99,6 +103,32 @@ public class MagicWanGreTunnel extends com.pulumi.resources.CustomResource {
      */
     public Output<String> accountId() {
         return this.accountId;
+    }
+    /**
+     * True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+     * 
+     */
+    @Export(name="automaticReturnRouting", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> automaticReturnRouting;
+
+    /**
+     * @return True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+     * 
+     */
+    public Output<Boolean> automaticReturnRouting() {
+        return this.automaticReturnRouting;
+    }
+    @Export(name="bgp", refs={MagicWanGreTunnelBgp.class}, tree="[0]")
+    private Output</* @Nullable */ MagicWanGreTunnelBgp> bgp;
+
+    public Output<Optional<MagicWanGreTunnelBgp>> bgp() {
+        return Codegen.optional(this.bgp);
+    }
+    @Export(name="bgpStatus", refs={MagicWanGreTunnelBgpStatus.class}, tree="[0]")
+    private Output<MagicWanGreTunnelBgpStatus> bgpStatus;
+
+    public Output<MagicWanGreTunnelBgpStatus> bgpStatus() {
+        return this.bgpStatus;
     }
     /**
      * The IP address assigned to the Cloudflare side of the GRE tunnel.

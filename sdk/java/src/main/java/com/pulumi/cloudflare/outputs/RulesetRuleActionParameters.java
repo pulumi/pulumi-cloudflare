@@ -231,6 +231,12 @@ public final class RulesetRuleActionParameters {
      */
     private @Nullable Integer readTimeout;
     /**
+     * @return The request body buffering mode to configure.
+     * Available values: &#34;none&#34;, &#34;standard&#34;, &#34;full&#34;.
+     * 
+     */
+    private @Nullable String requestBodyBuffering;
+    /**
      * @return The raw request fields to log.
      * 
      */
@@ -245,6 +251,12 @@ public final class RulesetRuleActionParameters {
      * 
      */
     private @Nullable RulesetRuleActionParametersResponse response;
+    /**
+     * @return The response body buffering mode to configure.
+     * Available values: &#34;none&#34;, &#34;standard&#34;.
+     * 
+     */
+    private @Nullable String responseBodyBuffering;
     /**
      * @return The transformed response fields to log.
      * 
@@ -591,6 +603,14 @@ public final class RulesetRuleActionParameters {
         return Optional.ofNullable(this.readTimeout);
     }
     /**
+     * @return The request body buffering mode to configure.
+     * Available values: &#34;none&#34;, &#34;standard&#34;, &#34;full&#34;.
+     * 
+     */
+    public Optional<String> requestBodyBuffering() {
+        return Optional.ofNullable(this.requestBodyBuffering);
+    }
+    /**
      * @return The raw request fields to log.
      * 
      */
@@ -610,6 +630,14 @@ public final class RulesetRuleActionParameters {
      */
     public Optional<RulesetRuleActionParametersResponse> response() {
         return Optional.ofNullable(this.response);
+    }
+    /**
+     * @return The response body buffering mode to configure.
+     * Available values: &#34;none&#34;, &#34;standard&#34;.
+     * 
+     */
+    public Optional<String> responseBodyBuffering() {
+        return Optional.ofNullable(this.responseBodyBuffering);
     }
     /**
      * @return The transformed response fields to log.
@@ -760,9 +788,11 @@ public final class RulesetRuleActionParameters {
         private @Nullable List<String> products;
         private @Nullable List<RulesetRuleActionParametersRawResponseField> rawResponseFields;
         private @Nullable Integer readTimeout;
+        private @Nullable String requestBodyBuffering;
         private @Nullable List<RulesetRuleActionParametersRequestField> requestFields;
         private @Nullable Boolean respectStrongEtags;
         private @Nullable RulesetRuleActionParametersResponse response;
+        private @Nullable String responseBodyBuffering;
         private @Nullable List<RulesetRuleActionParametersResponseField> responseFields;
         private @Nullable Boolean rocketLoader;
         private @Nullable Map<String,List<String>> rules;
@@ -818,9 +848,11 @@ public final class RulesetRuleActionParameters {
     	      this.products = defaults.products;
     	      this.rawResponseFields = defaults.rawResponseFields;
     	      this.readTimeout = defaults.readTimeout;
+    	      this.requestBodyBuffering = defaults.requestBodyBuffering;
     	      this.requestFields = defaults.requestFields;
     	      this.respectStrongEtags = defaults.respectStrongEtags;
     	      this.response = defaults.response;
+    	      this.responseBodyBuffering = defaults.responseBodyBuffering;
     	      this.responseFields = defaults.responseFields;
     	      this.rocketLoader = defaults.rocketLoader;
     	      this.rules = defaults.rules;
@@ -1084,6 +1116,12 @@ public final class RulesetRuleActionParameters {
             return this;
         }
         @CustomType.Setter
+        public Builder requestBodyBuffering(@Nullable String requestBodyBuffering) {
+
+            this.requestBodyBuffering = requestBodyBuffering;
+            return this;
+        }
+        @CustomType.Setter
         public Builder requestFields(@Nullable List<RulesetRuleActionParametersRequestField> requestFields) {
 
             this.requestFields = requestFields;
@@ -1102,6 +1140,12 @@ public final class RulesetRuleActionParameters {
         public Builder response(@Nullable RulesetRuleActionParametersResponse response) {
 
             this.response = response;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder responseBodyBuffering(@Nullable String responseBodyBuffering) {
+
+            this.responseBodyBuffering = responseBodyBuffering;
             return this;
         }
         @CustomType.Setter
@@ -1237,9 +1281,11 @@ public final class RulesetRuleActionParameters {
             _resultValue.products = products;
             _resultValue.rawResponseFields = rawResponseFields;
             _resultValue.readTimeout = readTimeout;
+            _resultValue.requestBodyBuffering = requestBodyBuffering;
             _resultValue.requestFields = requestFields;
             _resultValue.respectStrongEtags = respectStrongEtags;
             _resultValue.response = response;
+            _resultValue.responseBodyBuffering = responseBodyBuffering;
             _resultValue.responseFields = responseFields;
             _resultValue.rocketLoader = rocketLoader;
             _resultValue.rules = rules;

@@ -15,14 +15,14 @@ public final class GetZoneSubscriptionArgs extends com.pulumi.resources.InvokeAr
     public static final GetZoneSubscriptionArgs Empty = new GetZoneSubscriptionArgs();
 
     /**
-     * Subscription identifier tag.
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return Subscription identifier tag.
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -54,7 +54,7 @@ public final class GetZoneSubscriptionArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param zoneId Subscription identifier tag.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class GetZoneSubscriptionArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param zoneId Subscription identifier tag.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

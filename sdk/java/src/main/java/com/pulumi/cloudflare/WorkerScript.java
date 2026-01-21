@@ -524,14 +524,14 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.observability);
     }
     /**
-     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
      * 
      */
     @Export(name="placement", refs={WorkerScriptPlacement.class}, tree="[0]")
     private Output<WorkerScriptPlacement> placement;
 
     /**
-     * @return Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * @return Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
      * 
      */
     public Output<WorkerScriptPlacement> placement() {

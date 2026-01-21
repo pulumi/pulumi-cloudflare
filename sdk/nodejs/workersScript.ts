@@ -231,7 +231,7 @@ export class WorkersScript extends pulumi.CustomResource {
      */
     declare public readonly observability: pulumi.Output<outputs.WorkersScriptObservability | undefined>;
     /**
-     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
      */
     declare public readonly placement: pulumi.Output<outputs.WorkersScriptPlacement>;
     /**
@@ -449,7 +449,7 @@ export interface WorkersScriptState {
      */
     observability?: pulumi.Input<inputs.WorkersScriptObservability>;
     /**
-     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
      */
     placement?: pulumi.Input<inputs.WorkersScriptPlacement>;
     /**
@@ -541,7 +541,7 @@ export interface WorkersScriptArgs {
      */
     observability?: pulumi.Input<inputs.WorkersScriptObservability>;
     /**
-     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
      */
     placement?: pulumi.Input<inputs.WorkersScriptPlacement>;
     /**

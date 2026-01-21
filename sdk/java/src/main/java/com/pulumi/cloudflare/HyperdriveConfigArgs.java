@@ -49,9 +49,17 @@ public final class HyperdriveConfigArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.mtls);
     }
 
+    /**
+     * The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
@@ -146,11 +154,23 @@ public final class HyperdriveConfigArgs extends com.pulumi.resources.ResourceArg
             return mtls(Output.of(mtls));
         }
 
+        /**
+         * @param name The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

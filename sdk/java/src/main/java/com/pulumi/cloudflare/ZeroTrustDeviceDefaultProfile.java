@@ -231,14 +231,14 @@ public class ZeroTrustDeviceDefaultProfile extends com.pulumi.resources.CustomRe
      * 
      */
     @Export(name="excludes", refs={List.class,ZeroTrustDeviceDefaultProfileExclude.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ZeroTrustDeviceDefaultProfileExclude>> excludes;
+    private Output<List<ZeroTrustDeviceDefaultProfileExclude>> excludes;
 
     /**
      * @return List of routes excluded in the WARP client&#39;s tunnel. Both &#39;exclude&#39; and &#39;include&#39; cannot be set in the same request.
      * 
      */
-    public Output<Optional<List<ZeroTrustDeviceDefaultProfileExclude>>> excludes() {
-        return Codegen.optional(this.excludes);
+    public Output<List<ZeroTrustDeviceDefaultProfileExclude>> excludes() {
+        return this.excludes;
     }
     @Export(name="fallbackDomains", refs={List.class,ZeroTrustDeviceDefaultProfileFallbackDomain.class}, tree="[0,1]")
     private Output<List<ZeroTrustDeviceDefaultProfileFallbackDomain>> fallbackDomains;
@@ -257,14 +257,14 @@ public class ZeroTrustDeviceDefaultProfile extends com.pulumi.resources.CustomRe
      * 
      */
     @Export(name="includes", refs={List.class,ZeroTrustDeviceDefaultProfileInclude.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ZeroTrustDeviceDefaultProfileInclude>> includes;
+    private Output<List<ZeroTrustDeviceDefaultProfileInclude>> includes;
 
     /**
      * @return List of routes included in the WARP client&#39;s tunnel. Both &#39;exclude&#39; and &#39;include&#39; cannot be set in the same request.
      * 
      */
-    public Output<Optional<List<ZeroTrustDeviceDefaultProfileInclude>>> includes() {
-        return Codegen.optional(this.includes);
+    public Output<List<ZeroTrustDeviceDefaultProfileInclude>> includes() {
+        return this.includes;
     }
     /**
      * The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.

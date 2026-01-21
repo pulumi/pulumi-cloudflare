@@ -129,14 +129,14 @@ public final class ZoneSubscriptionState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Subscription identifier tag.
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return Subscription identifier tag.
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -328,7 +328,7 @@ public final class ZoneSubscriptionState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param zoneId Subscription identifier tag.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -339,7 +339,7 @@ public final class ZoneSubscriptionState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param zoneId Subscription identifier tag.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

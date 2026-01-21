@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleZoneSubscription = new cloudflare.ZoneSubscription("example_zone_subscription", {
- *     zoneId: "506e3185e9c882d175a2d0cb0093d9f2",
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     frequency: "monthly",
  *     ratePlan: {
  *         id: "free",
@@ -87,14 +87,14 @@ export class ZoneSubscription extends pulumi.CustomResource {
     /**
      * The rate plan applied to the subscription.
      */
-    declare public readonly ratePlan: pulumi.Output<outputs.ZoneSubscriptionRatePlan | undefined>;
+    declare public readonly ratePlan: pulumi.Output<outputs.ZoneSubscriptionRatePlan>;
     /**
      * The state that the subscription is in.
      * Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
-     * Subscription identifier tag.
+     * Identifier
      */
     declare public readonly zoneId: pulumi.Output<string>;
 
@@ -174,7 +174,7 @@ export interface ZoneSubscriptionState {
      */
     state?: pulumi.Input<string>;
     /**
-     * Subscription identifier tag.
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -194,7 +194,7 @@ export interface ZoneSubscriptionArgs {
      */
     ratePlan?: pulumi.Input<inputs.ZoneSubscriptionRatePlan>;
     /**
-     * Subscription identifier tag.
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

@@ -52,7 +52,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _sets;
 
         /// <summary>
-        /// The list of sets this rate plan applies to.
+        /// The list of sets this rate plan applies to. Returns array of strings.
         /// </summary>
         public InputList<string> Sets
         {

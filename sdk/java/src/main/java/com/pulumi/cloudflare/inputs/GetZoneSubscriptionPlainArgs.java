@@ -14,14 +14,14 @@ public final class GetZoneSubscriptionPlainArgs extends com.pulumi.resources.Inv
     public static final GetZoneSubscriptionPlainArgs Empty = new GetZoneSubscriptionPlainArgs();
 
     /**
-     * Subscription identifier tag.
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return Subscription identifier tag.
+     * @return Identifier
      * 
      */
     public String zoneId() {
@@ -53,7 +53,7 @@ public final class GetZoneSubscriptionPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param zoneId Subscription identifier tag.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

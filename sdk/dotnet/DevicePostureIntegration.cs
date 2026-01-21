@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare
     ///         Config = new Cloudflare.Inputs.ZeroTrustDevicePostureIntegrationConfigArgs
     ///         {
     ///             ApiUrl = "https://as123.awmdm.com/API",
-    ///             AuthUrl = "https://na.uemauth.vmwservices.com/connect/token",
+    ///             AuthUrl = "https://na.uemauth.workspaceone.com/connect/token",
     ///             ClientId = "example client id",
     ///             ClientSecret = "example client secret",
     ///         },

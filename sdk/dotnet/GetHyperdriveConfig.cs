@@ -148,6 +148,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string ModifiedOn;
         public readonly Outputs.GetHyperdriveConfigMtlsResult Mtls;
+        /// <summary>
+        /// The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+        /// </summary>
         public readonly string Name;
         public readonly Outputs.GetHyperdriveConfigOriginResult Origin;
         /// <summary>

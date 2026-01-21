@@ -64,7 +64,7 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Location of the bucket.
-     * Available values: &#34;apac&#34;, &#34;eeur&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;wnam&#34;, &#34;oc&#34;.
+     * Available values: &#34;apac&#34;, &#34;eeur&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;wnam&#34;, &#34;oc&#34;.  Note: `location` is only honored the first time a bucket with a given name is created. If you delete and recreate a bucket with the same name, the original bucket location will be used. It is also a best-effort, not a guarantee, of bucket location.
      * 
      */
     @Import(name="location")
@@ -72,7 +72,7 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Location of the bucket.
-     * Available values: &#34;apac&#34;, &#34;eeur&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;wnam&#34;, &#34;oc&#34;.
+     * Available values: &#34;apac&#34;, &#34;eeur&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;wnam&#34;, &#34;oc&#34;.  Note: `location` is only honored the first time a bucket with a given name is created. If you delete and recreate a bucket with the same name, the original bucket location will be used. It is also a best-effort, not a guarantee, of bucket location.
      * 
      */
     public Optional<Output<String>> location() {
@@ -207,7 +207,7 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location Location of the bucket.
-         * Available values: &#34;apac&#34;, &#34;eeur&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;wnam&#34;, &#34;oc&#34;.
+         * Available values: &#34;apac&#34;, &#34;eeur&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;wnam&#34;, &#34;oc&#34;.  Note: `location` is only honored the first time a bucket with a given name is created. If you delete and recreate a bucket with the same name, the original bucket location will be used. It is also a best-effort, not a guarantee, of bucket location.
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location Location of the bucket.
-         * Available values: &#34;apac&#34;, &#34;eeur&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;wnam&#34;, &#34;oc&#34;.
+         * Available values: &#34;apac&#34;, &#34;eeur&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;wnam&#34;, &#34;oc&#34;.  Note: `location` is only honored the first time a bucket with a given name is created. If you delete and recreate a bucket with the same name, the original bucket location will be used. It is also a best-effort, not a guarantee, of bucket location.
          * 
          * @return builder
          * 

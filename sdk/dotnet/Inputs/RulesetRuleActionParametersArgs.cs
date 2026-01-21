@@ -286,6 +286,13 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("readTimeout")]
         public Input<int>? ReadTimeout { get; set; }
 
+        /// <summary>
+        /// The request body buffering mode to configure.
+        /// Available values: "none", "standard", "full".
+        /// </summary>
+        [Input("requestBodyBuffering")]
+        public Input<string>? RequestBodyBuffering { get; set; }
+
         [Input("requestFields")]
         private InputList<Inputs.RulesetRuleActionParametersRequestFieldArgs>? _requestFields;
 
@@ -309,6 +316,13 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("response")]
         public Input<Inputs.RulesetRuleActionParametersResponseArgs>? Response { get; set; }
+
+        /// <summary>
+        /// The response body buffering mode to configure.
+        /// Available values: "none", "standard".
+        /// </summary>
+        [Input("responseBodyBuffering")]
+        public Input<string>? ResponseBodyBuffering { get; set; }
 
         [Input("responseFields")]
         private InputList<Inputs.RulesetRuleActionParametersResponseFieldArgs>? _responseFields;

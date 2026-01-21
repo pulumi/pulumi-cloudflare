@@ -57,7 +57,7 @@ type R2Bucket struct {
 	// Available values: "default", "eu", "fedramp".
 	Jurisdiction pulumi.StringOutput `pulumi:"jurisdiction"`
 	// Location of the bucket.
-	// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
+	// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".  Note: `location` is only honored the first time a bucket with a given name is created. If you delete and recreate a bucket with the same name, the original bucket location will be used. It is also a best-effort, not a guarantee, of bucket location.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Name of the bucket.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -110,7 +110,7 @@ type r2bucketState struct {
 	// Available values: "default", "eu", "fedramp".
 	Jurisdiction *string `pulumi:"jurisdiction"`
 	// Location of the bucket.
-	// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
+	// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".  Note: `location` is only honored the first time a bucket with a given name is created. If you delete and recreate a bucket with the same name, the original bucket location will be used. It is also a best-effort, not a guarantee, of bucket location.
 	Location *string `pulumi:"location"`
 	// Name of the bucket.
 	Name *string `pulumi:"name"`
@@ -128,7 +128,7 @@ type R2BucketState struct {
 	// Available values: "default", "eu", "fedramp".
 	Jurisdiction pulumi.StringPtrInput
 	// Location of the bucket.
-	// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
+	// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".  Note: `location` is only honored the first time a bucket with a given name is created. If you delete and recreate a bucket with the same name, the original bucket location will be used. It is also a best-effort, not a guarantee, of bucket location.
 	Location pulumi.StringPtrInput
 	// Name of the bucket.
 	Name pulumi.StringPtrInput
@@ -148,7 +148,7 @@ type r2bucketArgs struct {
 	// Available values: "default", "eu", "fedramp".
 	Jurisdiction *string `pulumi:"jurisdiction"`
 	// Location of the bucket.
-	// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
+	// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".  Note: `location` is only honored the first time a bucket with a given name is created. If you delete and recreate a bucket with the same name, the original bucket location will be used. It is also a best-effort, not a guarantee, of bucket location.
 	Location *string `pulumi:"location"`
 	// Name of the bucket.
 	Name string `pulumi:"name"`
@@ -165,7 +165,7 @@ type R2BucketArgs struct {
 	// Available values: "default", "eu", "fedramp".
 	Jurisdiction pulumi.StringPtrInput
 	// Location of the bucket.
-	// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
+	// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".  Note: `location` is only honored the first time a bucket with a given name is created. If you delete and recreate a bucket with the same name, the original bucket location will be used. It is also a best-effort, not a guarantee, of bucket location.
 	Location pulumi.StringPtrInput
 	// Name of the bucket.
 	Name pulumi.StringInput
@@ -278,7 +278,7 @@ func (o R2BucketOutput) Jurisdiction() pulumi.StringOutput {
 }
 
 // Location of the bucket.
-// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
+// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".  Note: `location` is only honored the first time a bucket with a given name is created. If you delete and recreate a bucket with the same name, the original bucket location will be used. It is also a best-effort, not a guarantee, of bucket location.
 func (o R2BucketOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2Bucket) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

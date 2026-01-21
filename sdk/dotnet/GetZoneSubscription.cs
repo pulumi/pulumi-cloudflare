@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleZoneSubscription = Cloudflare.GetZoneSubscription.Invoke(new()
         ///     {
-        ///         ZoneId = "506e3185e9c882d175a2d0cb0093d9f2",
+        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
         /// 
         /// });
@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleZoneSubscription = Cloudflare.GetZoneSubscription.Invoke(new()
         ///     {
-        ///         ZoneId = "506e3185e9c882d175a2d0cb0093d9f2",
+        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
         /// 
         /// });
@@ -68,7 +68,7 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleZoneSubscription = Cloudflare.GetZoneSubscription.Invoke(new()
         ///     {
-        ///         ZoneId = "506e3185e9c882d175a2d0cb0093d9f2",
+        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
         /// 
         /// });
@@ -82,7 +82,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetZoneSubscriptionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Subscription identifier tag.
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -96,7 +96,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetZoneSubscriptionInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Subscription identifier tag.
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -125,11 +125,11 @@ namespace Pulumi.Cloudflare
         public readonly string CurrentPeriodStart;
         /// <summary>
         /// How often the subscription is renewed automatically.
-        /// Available values: "weekly", "monthly", "quarterly", "yearly".
+        /// Available values: "weekly", "monthly", "quarterly", "yearly", "not-applicable".
         /// </summary>
         public readonly string Frequency;
         /// <summary>
-        /// Subscription identifier tag.
+        /// Identifier
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -146,7 +146,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// Subscription identifier tag.
+        /// Identifier
         /// </summary>
         public readonly string ZoneId;
 

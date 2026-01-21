@@ -11,6 +11,16 @@ import java.util.Objects;
 @CustomType
 public final class GetWorkersScriptsResultPlacement {
     /**
+     * @return TCP host and port for targeted placement.
+     * 
+     */
+    private String host;
+    /**
+     * @return HTTP hostname for targeted placement.
+     * 
+     */
+    private String hostname;
+    /**
      * @return The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * 
      */
@@ -22,6 +32,11 @@ public final class GetWorkersScriptsResultPlacement {
      */
     private String mode;
     /**
+     * @return Cloud region for targeted placement in format &#39;provider:region&#39;.
+     * 
+     */
+    private String region;
+    /**
      * @return Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
      * 
@@ -29,6 +44,20 @@ public final class GetWorkersScriptsResultPlacement {
     private String status;
 
     private GetWorkersScriptsResultPlacement() {}
+    /**
+     * @return TCP host and port for targeted placement.
+     * 
+     */
+    public String host() {
+        return this.host;
+    }
+    /**
+     * @return HTTP hostname for targeted placement.
+     * 
+     */
+    public String hostname() {
+        return this.hostname;
+    }
     /**
      * @return The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * 
@@ -43,6 +72,13 @@ public final class GetWorkersScriptsResultPlacement {
      */
     public String mode() {
         return this.mode;
+    }
+    /**
+     * @return Cloud region for targeted placement in format &#39;provider:region&#39;.
+     * 
+     */
+    public String region() {
+        return this.region;
     }
     /**
      * @return Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
@@ -62,17 +98,39 @@ public final class GetWorkersScriptsResultPlacement {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String host;
+        private String hostname;
         private String lastAnalyzedAt;
         private String mode;
+        private String region;
         private String status;
         public Builder() {}
         public Builder(GetWorkersScriptsResultPlacement defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.host = defaults.host;
+    	      this.hostname = defaults.hostname;
     	      this.lastAnalyzedAt = defaults.lastAnalyzedAt;
     	      this.mode = defaults.mode;
+    	      this.region = defaults.region;
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
+        public Builder host(String host) {
+            if (host == null) {
+              throw new MissingRequiredPropertyException("GetWorkersScriptsResultPlacement", "host");
+            }
+            this.host = host;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder hostname(String hostname) {
+            if (hostname == null) {
+              throw new MissingRequiredPropertyException("GetWorkersScriptsResultPlacement", "hostname");
+            }
+            this.hostname = hostname;
+            return this;
+        }
         @CustomType.Setter
         public Builder lastAnalyzedAt(String lastAnalyzedAt) {
             if (lastAnalyzedAt == null) {
@@ -90,6 +148,14 @@ public final class GetWorkersScriptsResultPlacement {
             return this;
         }
         @CustomType.Setter
+        public Builder region(String region) {
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetWorkersScriptsResultPlacement", "region");
+            }
+            this.region = region;
+            return this;
+        }
+        @CustomType.Setter
         public Builder status(String status) {
             if (status == null) {
               throw new MissingRequiredPropertyException("GetWorkersScriptsResultPlacement", "status");
@@ -99,8 +165,11 @@ public final class GetWorkersScriptsResultPlacement {
         }
         public GetWorkersScriptsResultPlacement build() {
             final var _resultValue = new GetWorkersScriptsResultPlacement();
+            _resultValue.host = host;
+            _resultValue.hostname = hostname;
             _resultValue.lastAnalyzedAt = lastAnalyzedAt;
             _resultValue.mode = mode;
+            _resultValue.region = region;
             _resultValue.status = status;
             return _resultValue;
         }

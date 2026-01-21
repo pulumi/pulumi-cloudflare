@@ -30,7 +30,7 @@ import (
 //				AccountId: pulumi.String("699d98642c564d2e855e9661899b7252"),
 //				Config: &cloudflare.ZeroTrustDevicePostureIntegrationConfigArgs{
 //					ApiUrl:       pulumi.String("https://as123.awmdm.com/API"),
-//					AuthUrl:      pulumi.String("https://na.uemauth.vmwservices.com/connect/token"),
+//					AuthUrl:      pulumi.String("https://na.uemauth.workspaceone.com/connect/token"),
 //					ClientId:     pulumi.String("example client id"),
 //					ClientSecret: pulumi.String("example client secret"),
 //				},

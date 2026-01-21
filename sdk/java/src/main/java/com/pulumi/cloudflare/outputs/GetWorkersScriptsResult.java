@@ -88,7 +88,7 @@ public final class GetWorkersScriptsResult {
      */
     private GetWorkersScriptsResultObservability observability;
     /**
-     * @return Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * @return Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
      * 
      */
     private GetWorkersScriptsResultPlacement placement;
@@ -237,7 +237,7 @@ public final class GetWorkersScriptsResult {
         return this.observability;
     }
     /**
-     * @return Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * @return Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
      * 
      */
     public GetWorkersScriptsResultPlacement placement() {

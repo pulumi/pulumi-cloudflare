@@ -33,9 +33,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.ZeroTrustDlpCustomProfile;
  * import com.pulumi.cloudflare.ZeroTrustDlpCustomProfileArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomProfileContextAwarenessArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomProfileContextAwarenessSkipArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomProfileSharedEntryArgs;
+ * import com.pulumi.cloudflare.ZeroTrustDlpCustomEntry;
+ * import com.pulumi.cloudflare.ZeroTrustDlpCustomEntryArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomEntryPatternArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -50,24 +51,25 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleZeroTrustDlpCustomProfile = new ZeroTrustDlpCustomProfile("exampleZeroTrustDlpCustomProfile", ZeroTrustDlpCustomProfileArgs.builder()
- *             .accountId("account_id")
  *             .name("name")
- *             .aiContextEnabled(true)
- *             .allowedMatchCount(5)
- *             .confidenceThreshold("confidence_threshold")
- *             .contextAwareness(ZeroTrustDlpCustomProfileContextAwarenessArgs.builder()
- *                 .enabled(true)
- *                 .skip(ZeroTrustDlpCustomProfileContextAwarenessSkipArgs.builder()
- *                     .files(true)
- *                     .build())
- *                 .build())
- *             .description("description")
- *             .ocrEnabled(true)
+ *             .accountId("account_id")
+ *             .description("Custom profile with entries")
  *             .sharedEntries(ZeroTrustDlpCustomProfileSharedEntryArgs.builder()
+ *                 .entryId("56a8c060-01bb-4f89-ba1e-3ad42770a342")
+ *                 .entryType("predefined")
  *                 .enabled(true)
- *                 .entryId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
- *                 .entryType("custom")
  *                 .build())
+ *             .build());
+ * 
+ *         // Custom entry that is a part of this new profile
+ *         var exampleCustomEntry = new ZeroTrustDlpCustomEntry("exampleCustomEntry", ZeroTrustDlpCustomEntryArgs.builder()
+ *             .name("custom")
+ *             .accountId("account_id")
+ *             .profileId(exampleZeroTrustDlpCustomProfile.id())
+ *             .pattern(ZeroTrustDlpCustomEntryPatternArgs.builder()
+ *                 .regex("customentryregex")
+ *                 .build())
+ *             .enabled(true)
  *             .build());
  * 
  *     }

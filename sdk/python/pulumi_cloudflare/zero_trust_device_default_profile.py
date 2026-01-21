@@ -1018,7 +1018,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def excludes(self) -> pulumi.Output[Optional[Sequence['outputs.ZeroTrustDeviceDefaultProfileExclude']]]:
+    def excludes(self) -> pulumi.Output[Sequence['outputs.ZeroTrustDeviceDefaultProfileExclude']]:
         """
         List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
         """
@@ -1036,7 +1036,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def includes(self) -> pulumi.Output[Optional[Sequence['outputs.ZeroTrustDeviceDefaultProfileInclude']]]:
+    def includes(self) -> pulumi.Output[Sequence['outputs.ZeroTrustDeviceDefaultProfileInclude']]:
         """
         List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
         """

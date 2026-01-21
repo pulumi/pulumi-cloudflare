@@ -44,7 +44,7 @@ public final class AccountSubscriptionRatePlan {
      */
     private @Nullable String scope;
     /**
-     * @return The list of sets this rate plan applies to.
+     * @return The list of sets this rate plan applies to. Returns array of strings.
      * 
      */
     private @Nullable List<String> sets;
@@ -93,7 +93,7 @@ public final class AccountSubscriptionRatePlan {
         return Optional.ofNullable(this.scope);
     }
     /**
-     * @return The list of sets this rate plan applies to.
+     * @return The list of sets this rate plan applies to. Returns array of strings.
      * 
      */
     public List<String> sets() {

@@ -25,6 +25,9 @@ class MagicWanIpsecTunnelArgs:
                  cloudflare_endpoint: pulumi.Input[_builtins.str],
                  interface_address: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
+                 automatic_return_routing: Optional[pulumi.Input[_builtins.bool]] = None,
+                 bgp: Optional[pulumi.Input['MagicWanIpsecTunnelBgpArgs']] = None,
+                 custom_remote_identities: Optional[pulumi.Input['MagicWanIpsecTunnelCustomRemoteIdentitiesArgs']] = None,
                  customer_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  health_check: Optional[pulumi.Input['MagicWanIpsecTunnelHealthCheckArgs']] = None,
@@ -37,6 +40,7 @@ class MagicWanIpsecTunnelArgs:
         :param pulumi.Input[_builtins.str] cloudflare_endpoint: The IP address assigned to the Cloudflare side of the IPsec tunnel.
         :param pulumi.Input[_builtins.str] interface_address: A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
         :param pulumi.Input[_builtins.str] name: The name of the IPsec tunnel. The name cannot share a name with other tunnels.
+        :param pulumi.Input[_builtins.bool] automatic_return_routing: True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
         :param pulumi.Input[_builtins.str] customer_endpoint: The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
         :param pulumi.Input[_builtins.str] description: An optional description forthe IPsec tunnel.
         :param pulumi.Input[_builtins.str] interface_address6: A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
@@ -47,6 +51,12 @@ class MagicWanIpsecTunnelArgs:
         pulumi.set(__self__, "cloudflare_endpoint", cloudflare_endpoint)
         pulumi.set(__self__, "interface_address", interface_address)
         pulumi.set(__self__, "name", name)
+        if automatic_return_routing is not None:
+            pulumi.set(__self__, "automatic_return_routing", automatic_return_routing)
+        if bgp is not None:
+            pulumi.set(__self__, "bgp", bgp)
+        if custom_remote_identities is not None:
+            pulumi.set(__self__, "custom_remote_identities", custom_remote_identities)
         if customer_endpoint is not None:
             pulumi.set(__self__, "customer_endpoint", customer_endpoint)
         if description is not None:
@@ -107,6 +117,36 @@ class MagicWanIpsecTunnelArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="automaticReturnRouting")
+    def automatic_return_routing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+        """
+        return pulumi.get(self, "automatic_return_routing")
+
+    @automatic_return_routing.setter
+    def automatic_return_routing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "automatic_return_routing", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def bgp(self) -> Optional[pulumi.Input['MagicWanIpsecTunnelBgpArgs']]:
+        return pulumi.get(self, "bgp")
+
+    @bgp.setter
+    def bgp(self, value: Optional[pulumi.Input['MagicWanIpsecTunnelBgpArgs']]):
+        pulumi.set(self, "bgp", value)
+
+    @_builtins.property
+    @pulumi.getter(name="customRemoteIdentities")
+    def custom_remote_identities(self) -> Optional[pulumi.Input['MagicWanIpsecTunnelCustomRemoteIdentitiesArgs']]:
+        return pulumi.get(self, "custom_remote_identities")
+
+    @custom_remote_identities.setter
+    def custom_remote_identities(self, value: Optional[pulumi.Input['MagicWanIpsecTunnelCustomRemoteIdentitiesArgs']]):
+        pulumi.set(self, "custom_remote_identities", value)
 
     @_builtins.property
     @pulumi.getter(name="customerEndpoint")
@@ -183,8 +223,12 @@ class _MagicWanIpsecTunnelState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  allow_null_cipher: Optional[pulumi.Input[_builtins.bool]] = None,
+                 automatic_return_routing: Optional[pulumi.Input[_builtins.bool]] = None,
+                 bgp: Optional[pulumi.Input['MagicWanIpsecTunnelBgpArgs']] = None,
+                 bgp_status: Optional[pulumi.Input['MagicWanIpsecTunnelBgpStatusArgs']] = None,
                  cloudflare_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  created_on: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_remote_identities: Optional[pulumi.Input['MagicWanIpsecTunnelCustomRemoteIdentitiesArgs']] = None,
                  customer_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  health_check: Optional[pulumi.Input['MagicWanIpsecTunnelHealthCheckArgs']] = None,
@@ -199,6 +243,7 @@ class _MagicWanIpsecTunnelState:
         Input properties used for looking up and filtering MagicWanIpsecTunnel resources.
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.bool] allow_null_cipher: When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
+        :param pulumi.Input[_builtins.bool] automatic_return_routing: True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
         :param pulumi.Input[_builtins.str] cloudflare_endpoint: The IP address assigned to the Cloudflare side of the IPsec tunnel.
         :param pulumi.Input[_builtins.str] created_on: The date and time the tunnel was created.
         :param pulumi.Input[_builtins.str] customer_endpoint: The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
@@ -215,10 +260,18 @@ class _MagicWanIpsecTunnelState:
             pulumi.set(__self__, "account_id", account_id)
         if allow_null_cipher is not None:
             pulumi.set(__self__, "allow_null_cipher", allow_null_cipher)
+        if automatic_return_routing is not None:
+            pulumi.set(__self__, "automatic_return_routing", automatic_return_routing)
+        if bgp is not None:
+            pulumi.set(__self__, "bgp", bgp)
+        if bgp_status is not None:
+            pulumi.set(__self__, "bgp_status", bgp_status)
         if cloudflare_endpoint is not None:
             pulumi.set(__self__, "cloudflare_endpoint", cloudflare_endpoint)
         if created_on is not None:
             pulumi.set(__self__, "created_on", created_on)
+        if custom_remote_identities is not None:
+            pulumi.set(__self__, "custom_remote_identities", custom_remote_identities)
         if customer_endpoint is not None:
             pulumi.set(__self__, "customer_endpoint", customer_endpoint)
         if description is not None:
@@ -265,6 +318,36 @@ class _MagicWanIpsecTunnelState:
         pulumi.set(self, "allow_null_cipher", value)
 
     @_builtins.property
+    @pulumi.getter(name="automaticReturnRouting")
+    def automatic_return_routing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+        """
+        return pulumi.get(self, "automatic_return_routing")
+
+    @automatic_return_routing.setter
+    def automatic_return_routing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "automatic_return_routing", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def bgp(self) -> Optional[pulumi.Input['MagicWanIpsecTunnelBgpArgs']]:
+        return pulumi.get(self, "bgp")
+
+    @bgp.setter
+    def bgp(self, value: Optional[pulumi.Input['MagicWanIpsecTunnelBgpArgs']]):
+        pulumi.set(self, "bgp", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bgpStatus")
+    def bgp_status(self) -> Optional[pulumi.Input['MagicWanIpsecTunnelBgpStatusArgs']]:
+        return pulumi.get(self, "bgp_status")
+
+    @bgp_status.setter
+    def bgp_status(self, value: Optional[pulumi.Input['MagicWanIpsecTunnelBgpStatusArgs']]):
+        pulumi.set(self, "bgp_status", value)
+
+    @_builtins.property
     @pulumi.getter(name="cloudflareEndpoint")
     def cloudflare_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -287,6 +370,15 @@ class _MagicWanIpsecTunnelState:
     @created_on.setter
     def created_on(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "created_on", value)
+
+    @_builtins.property
+    @pulumi.getter(name="customRemoteIdentities")
+    def custom_remote_identities(self) -> Optional[pulumi.Input['MagicWanIpsecTunnelCustomRemoteIdentitiesArgs']]:
+        return pulumi.get(self, "custom_remote_identities")
+
+    @custom_remote_identities.setter
+    def custom_remote_identities(self, value: Optional[pulumi.Input['MagicWanIpsecTunnelCustomRemoteIdentitiesArgs']]):
+        pulumi.set(self, "custom_remote_identities", value)
 
     @_builtins.property
     @pulumi.getter(name="customerEndpoint")
@@ -413,7 +505,10 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 automatic_return_routing: Optional[pulumi.Input[_builtins.bool]] = None,
+                 bgp: Optional[pulumi.Input[Union['MagicWanIpsecTunnelBgpArgs', 'MagicWanIpsecTunnelBgpArgsDict']]] = None,
                  cloudflare_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_remote_identities: Optional[pulumi.Input[Union['MagicWanIpsecTunnelCustomRemoteIdentitiesArgs', 'MagicWanIpsecTunnelCustomRemoteIdentitiesArgsDict']]] = None,
                  customer_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  health_check: Optional[pulumi.Input[Union['MagicWanIpsecTunnelHealthCheckArgs', 'MagicWanIpsecTunnelHealthCheckArgsDict']]] = None,
@@ -437,12 +532,12 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
             name="IPsec_1",
             automatic_return_routing=True,
             bgp={
-                "customerAsn": 0,
-                "extraPrefixes": ["string"],
-                "md5Key": "md5_key",
+                "customer_asn": 0,
+                "extra_prefixes": ["string"],
+                "md5_key": "md5_key",
             },
             custom_remote_identities={
-                "fqdnId": "fqdn_id",
+                "fqdn_id": "fqdn_id",
             },
             customer_endpoint="203.0.113.1",
             description="Tunnel for ISP X",
@@ -469,6 +564,7 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier
+        :param pulumi.Input[_builtins.bool] automatic_return_routing: True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
         :param pulumi.Input[_builtins.str] cloudflare_endpoint: The IP address assigned to the Cloudflare side of the IPsec tunnel.
         :param pulumi.Input[_builtins.str] customer_endpoint: The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
         :param pulumi.Input[_builtins.str] description: An optional description forthe IPsec tunnel.
@@ -498,12 +594,12 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
             name="IPsec_1",
             automatic_return_routing=True,
             bgp={
-                "customerAsn": 0,
-                "extraPrefixes": ["string"],
-                "md5Key": "md5_key",
+                "customer_asn": 0,
+                "extra_prefixes": ["string"],
+                "md5_key": "md5_key",
             },
             custom_remote_identities={
-                "fqdnId": "fqdn_id",
+                "fqdn_id": "fqdn_id",
             },
             customer_endpoint="203.0.113.1",
             description="Tunnel for ISP X",
@@ -543,7 +639,10 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 automatic_return_routing: Optional[pulumi.Input[_builtins.bool]] = None,
+                 bgp: Optional[pulumi.Input[Union['MagicWanIpsecTunnelBgpArgs', 'MagicWanIpsecTunnelBgpArgsDict']]] = None,
                  cloudflare_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_remote_identities: Optional[pulumi.Input[Union['MagicWanIpsecTunnelCustomRemoteIdentitiesArgs', 'MagicWanIpsecTunnelCustomRemoteIdentitiesArgsDict']]] = None,
                  customer_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  health_check: Optional[pulumi.Input[Union['MagicWanIpsecTunnelHealthCheckArgs', 'MagicWanIpsecTunnelHealthCheckArgsDict']]] = None,
@@ -564,9 +663,12 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["automatic_return_routing"] = automatic_return_routing
+            __props__.__dict__["bgp"] = bgp
             if cloudflare_endpoint is None and not opts.urn:
                 raise TypeError("Missing required property 'cloudflare_endpoint'")
             __props__.__dict__["cloudflare_endpoint"] = cloudflare_endpoint
+            __props__.__dict__["custom_remote_identities"] = custom_remote_identities
             __props__.__dict__["customer_endpoint"] = customer_endpoint
             __props__.__dict__["description"] = description
             __props__.__dict__["health_check"] = health_check
@@ -580,6 +682,7 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
             __props__.__dict__["psk"] = None if psk is None else pulumi.Output.secret(psk)
             __props__.__dict__["replay_protection"] = replay_protection
             __props__.__dict__["allow_null_cipher"] = None
+            __props__.__dict__["bgp_status"] = None
             __props__.__dict__["created_on"] = None
             __props__.__dict__["modified_on"] = None
             __props__.__dict__["psk_metadata"] = None
@@ -599,8 +702,12 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
             allow_null_cipher: Optional[pulumi.Input[_builtins.bool]] = None,
+            automatic_return_routing: Optional[pulumi.Input[_builtins.bool]] = None,
+            bgp: Optional[pulumi.Input[Union['MagicWanIpsecTunnelBgpArgs', 'MagicWanIpsecTunnelBgpArgsDict']]] = None,
+            bgp_status: Optional[pulumi.Input[Union['MagicWanIpsecTunnelBgpStatusArgs', 'MagicWanIpsecTunnelBgpStatusArgsDict']]] = None,
             cloudflare_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
             created_on: Optional[pulumi.Input[_builtins.str]] = None,
+            custom_remote_identities: Optional[pulumi.Input[Union['MagicWanIpsecTunnelCustomRemoteIdentitiesArgs', 'MagicWanIpsecTunnelCustomRemoteIdentitiesArgsDict']]] = None,
             customer_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             health_check: Optional[pulumi.Input[Union['MagicWanIpsecTunnelHealthCheckArgs', 'MagicWanIpsecTunnelHealthCheckArgsDict']]] = None,
@@ -620,6 +727,7 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.bool] allow_null_cipher: When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
+        :param pulumi.Input[_builtins.bool] automatic_return_routing: True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
         :param pulumi.Input[_builtins.str] cloudflare_endpoint: The IP address assigned to the Cloudflare side of the IPsec tunnel.
         :param pulumi.Input[_builtins.str] created_on: The date and time the tunnel was created.
         :param pulumi.Input[_builtins.str] customer_endpoint: The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
@@ -638,8 +746,12 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["allow_null_cipher"] = allow_null_cipher
+        __props__.__dict__["automatic_return_routing"] = automatic_return_routing
+        __props__.__dict__["bgp"] = bgp
+        __props__.__dict__["bgp_status"] = bgp_status
         __props__.__dict__["cloudflare_endpoint"] = cloudflare_endpoint
         __props__.__dict__["created_on"] = created_on
+        __props__.__dict__["custom_remote_identities"] = custom_remote_identities
         __props__.__dict__["customer_endpoint"] = customer_endpoint
         __props__.__dict__["description"] = description
         __props__.__dict__["health_check"] = health_check
@@ -669,6 +781,24 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
         return pulumi.get(self, "allow_null_cipher")
 
     @_builtins.property
+    @pulumi.getter(name="automaticReturnRouting")
+    def automatic_return_routing(self) -> pulumi.Output[_builtins.bool]:
+        """
+        True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+        """
+        return pulumi.get(self, "automatic_return_routing")
+
+    @_builtins.property
+    @pulumi.getter
+    def bgp(self) -> pulumi.Output[Optional['outputs.MagicWanIpsecTunnelBgp']]:
+        return pulumi.get(self, "bgp")
+
+    @_builtins.property
+    @pulumi.getter(name="bgpStatus")
+    def bgp_status(self) -> pulumi.Output['outputs.MagicWanIpsecTunnelBgpStatus']:
+        return pulumi.get(self, "bgp_status")
+
+    @_builtins.property
     @pulumi.getter(name="cloudflareEndpoint")
     def cloudflare_endpoint(self) -> pulumi.Output[_builtins.str]:
         """
@@ -683,6 +813,11 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
         The date and time the tunnel was created.
         """
         return pulumi.get(self, "created_on")
+
+    @_builtins.property
+    @pulumi.getter(name="customRemoteIdentities")
+    def custom_remote_identities(self) -> pulumi.Output[Optional['outputs.MagicWanIpsecTunnelCustomRemoteIdentities']]:
+        return pulumi.get(self, "custom_remote_identities")
 
     @_builtins.property
     @pulumi.getter(name="customerEndpoint")

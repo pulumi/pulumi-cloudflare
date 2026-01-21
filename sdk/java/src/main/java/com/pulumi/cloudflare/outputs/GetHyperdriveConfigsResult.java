@@ -31,6 +31,10 @@ public final class GetHyperdriveConfigsResult {
      */
     private String modifiedOn;
     private GetHyperdriveConfigsResultMtls mtls;
+    /**
+     * @return The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+     * 
+     */
     private String name;
     private GetHyperdriveConfigsResultOrigin origin;
     /**
@@ -67,6 +71,10 @@ public final class GetHyperdriveConfigsResult {
     public GetHyperdriveConfigsResultMtls mtls() {
         return this.mtls;
     }
+    /**
+     * @return The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+     * 
+     */
     public String name() {
         return this.name;
     }

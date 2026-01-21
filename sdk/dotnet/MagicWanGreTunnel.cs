@@ -28,14 +28,14 @@ namespace Pulumi.Cloudflare
     ///         InterfaceAddress = "192.0.2.0/31",
     ///         Name = "GRE_1",
     ///         AutomaticReturnRouting = true,
-    ///         Bgp = 
+    ///         Bgp = new Cloudflare.Inputs.MagicWanGreTunnelBgpArgs
     ///         {
-    ///             { "customerAsn", 0 },
-    ///             { "extraPrefixes", new[]
+    ///             CustomerAsn = 0,
+    ///             ExtraPrefixes = new[]
     ///             {
     ///                 "string",
-    ///             } },
-    ///             { "md5Key", "md5_key" },
+    ///             },
+    ///             Md5Key = "md5_key",
     ///         },
     ///         Description = "Tunnel for ISP X",
     ///         HealthCheck = new Cloudflare.Inputs.MagicWanGreTunnelHealthCheckArgs
@@ -71,6 +71,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
+
+        /// <summary>
+        /// True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+        /// </summary>
+        [Output("automaticReturnRouting")]
+        public Output<bool> AutomaticReturnRouting { get; private set; } = null!;
+
+        [Output("bgp")]
+        public Output<Outputs.MagicWanGreTunnelBgp?> Bgp { get; private set; } = null!;
+
+        [Output("bgpStatus")]
+        public Output<Outputs.MagicWanGreTunnelBgpStatus> BgpStatus { get; private set; } = null!;
 
         /// <summary>
         /// The IP address assigned to the Cloudflare side of the GRE tunnel.
@@ -192,6 +204,15 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
+        /// True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+        /// </summary>
+        [Input("automaticReturnRouting")]
+        public Input<bool>? AutomaticReturnRouting { get; set; }
+
+        [Input("bgp")]
+        public Input<Inputs.MagicWanGreTunnelBgpArgs>? Bgp { get; set; }
+
+        /// <summary>
         /// The IP address assigned to the Cloudflare side of the GRE tunnel.
         /// </summary>
         [Input("cloudflareGreEndpoint", required: true)]
@@ -255,6 +276,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+        /// </summary>
+        [Input("automaticReturnRouting")]
+        public Input<bool>? AutomaticReturnRouting { get; set; }
+
+        [Input("bgp")]
+        public Input<Inputs.MagicWanGreTunnelBgpGetArgs>? Bgp { get; set; }
+
+        [Input("bgpStatus")]
+        public Input<Inputs.MagicWanGreTunnelBgpStatusGetArgs>? BgpStatus { get; set; }
 
         /// <summary>
         /// The IP address assigned to the Cloudflare side of the GRE tunnel.

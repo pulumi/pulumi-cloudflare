@@ -198,7 +198,7 @@ type WorkerScript struct {
 	NamedHandlers WorkerScriptNamedHandlerArrayOutput `pulumi:"namedHandlers"`
 	// Observability settings for the Worker.
 	Observability WorkerScriptObservabilityPtrOutput `pulumi:"observability"`
-	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
 	Placement WorkerScriptPlacementOutput `pulumi:"placement"`
 	// Name of the script, used in URLs and route configuration.
 	ScriptName    pulumi.StringOutput `pulumi:"scriptName"`
@@ -304,7 +304,7 @@ type workerScriptState struct {
 	NamedHandlers []WorkerScriptNamedHandler `pulumi:"namedHandlers"`
 	// Observability settings for the Worker.
 	Observability *WorkerScriptObservability `pulumi:"observability"`
-	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
 	Placement *WorkerScriptPlacement `pulumi:"placement"`
 	// Name of the script, used in URLs and route configuration.
 	ScriptName    *string `pulumi:"scriptName"`
@@ -369,7 +369,7 @@ type WorkerScriptState struct {
 	NamedHandlers WorkerScriptNamedHandlerArrayInput
 	// Observability settings for the Worker.
 	Observability WorkerScriptObservabilityPtrInput
-	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
 	Placement WorkerScriptPlacementPtrInput
 	// Name of the script, used in URLs and route configuration.
 	ScriptName    pulumi.StringPtrInput
@@ -420,7 +420,7 @@ type workerScriptArgs struct {
 	Migrations *WorkerScriptMigrations `pulumi:"migrations"`
 	// Observability settings for the Worker.
 	Observability *WorkerScriptObservability `pulumi:"observability"`
-	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
 	Placement *WorkerScriptPlacement `pulumi:"placement"`
 	// Name of the script, used in URLs and route configuration.
 	ScriptName string `pulumi:"scriptName"`
@@ -467,7 +467,7 @@ type WorkerScriptArgs struct {
 	Migrations WorkerScriptMigrationsPtrInput
 	// Observability settings for the Worker.
 	Observability WorkerScriptObservabilityPtrInput
-	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
 	Placement WorkerScriptPlacementPtrInput
 	// Name of the script, used in URLs and route configuration.
 	ScriptName pulumi.StringInput
@@ -695,7 +695,7 @@ func (o WorkerScriptOutput) Observability() WorkerScriptObservabilityPtrOutput {
 	return o.ApplyT(func(v *WorkerScript) WorkerScriptObservabilityPtrOutput { return v.Observability }).(WorkerScriptObservabilityPtrOutput)
 }
 
-// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
 func (o WorkerScriptOutput) Placement() WorkerScriptPlacementOutput {
 	return o.ApplyT(func(v *WorkerScript) WorkerScriptPlacementOutput { return v.Placement }).(WorkerScriptPlacementOutput)
 }

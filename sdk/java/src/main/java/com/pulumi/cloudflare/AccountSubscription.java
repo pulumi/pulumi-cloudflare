@@ -13,7 +13,6 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Double;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -161,14 +160,14 @@ public class AccountSubscription extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="ratePlan", refs={AccountSubscriptionRatePlan.class}, tree="[0]")
-    private Output</* @Nullable */ AccountSubscriptionRatePlan> ratePlan;
+    private Output<AccountSubscriptionRatePlan> ratePlan;
 
     /**
      * @return The rate plan applied to the subscription.
      * 
      */
-    public Output<Optional<AccountSubscriptionRatePlan>> ratePlan() {
-        return Codegen.optional(this.ratePlan);
+    public Output<AccountSubscriptionRatePlan> ratePlan() {
+        return this.ratePlan;
     }
     /**
      * The state that the subscription is in.

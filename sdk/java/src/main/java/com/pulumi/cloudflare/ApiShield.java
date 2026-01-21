@@ -16,6 +16,14 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
+ * Manages API Shield configuration properties for a zone, specifically auth ID characteristics.
+ * 
+ * When using `type = &#34;jwt&#34;` for auth ID characteristics, the `name` field must be a claim location expressed as `$(token_config_id):$(json_path)`, where:
+ * - `tokenConfigId` is the ID of the token configuration used in validating the JWT
+ * - `jsonPath` is a [RFC 9535](https://www.rfc-editor.org/rfc/rfc9535.html) [JSONPath](https://goessner.net/articles/JsonPath/) expression that returns a singleton value (interpreted as a string)
+ * 
+ * The JSONPath expression may be in dot or bracket notation and may only specify literal keys or array indexes.
+ * 
  * ## Example Usage
  * 
  * <pre>

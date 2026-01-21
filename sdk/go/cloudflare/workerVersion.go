@@ -130,6 +130,8 @@ type WorkerVersion struct {
 	Limits WorkerVersionLimitsOutput `pulumi:"limits"`
 	// The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
 	MainModule pulumi.StringPtrOutput `pulumi:"mainModule"`
+	// The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
+	MainScriptBase64 pulumi.StringOutput `pulumi:"mainScriptBase64"`
 	// Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
 	Migrations WorkerVersionMigrationsPtrOutput `pulumi:"migrations"`
 	// Code, sourcemaps, and other content used at runtime.
@@ -210,6 +212,8 @@ type workerVersionState struct {
 	Limits *WorkerVersionLimits `pulumi:"limits"`
 	// The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
 	MainModule *string `pulumi:"mainModule"`
+	// The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
+	MainScriptBase64 *string `pulumi:"mainScriptBase64"`
 	// Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
 	Migrations *WorkerVersionMigrations `pulumi:"migrations"`
 	// Code, sourcemaps, and other content used at runtime.
@@ -255,6 +259,8 @@ type WorkerVersionState struct {
 	Limits WorkerVersionLimitsPtrInput
 	// The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
 	MainModule pulumi.StringPtrInput
+	// The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
+	MainScriptBase64 pulumi.StringPtrInput
 	// Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
 	Migrations WorkerVersionMigrationsPtrInput
 	// Code, sourcemaps, and other content used at runtime.
@@ -490,6 +496,11 @@ func (o WorkerVersionOutput) Limits() WorkerVersionLimitsOutput {
 // The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
 func (o WorkerVersionOutput) MainModule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkerVersion) pulumi.StringPtrOutput { return v.MainModule }).(pulumi.StringPtrOutput)
+}
+
+// The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
+func (o WorkerVersionOutput) MainScriptBase64() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerVersion) pulumi.StringOutput { return v.MainScriptBase64 }).(pulumi.StringOutput)
 }
 
 // Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.

@@ -37,7 +37,7 @@ export interface GetCustomPagesArgs {
     accountId?: string;
     /**
      * Error Page Types
-     * Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "wafBlock".
+     * Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
      */
     identifier: string;
     /**
@@ -58,12 +58,12 @@ export interface GetCustomPagesResult {
     readonly description: string;
     /**
      * Error Page Types
-     * Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "wafBlock".
+     * Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
      */
     readonly id: string;
     /**
      * Error Page Types
-     * Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "wafBlock".
+     * Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
      */
     readonly identifier: string;
     readonly modifiedOn: string;
@@ -116,7 +116,7 @@ export interface GetCustomPagesOutputArgs {
     accountId?: pulumi.Input<string>;
     /**
      * Error Page Types
-     * Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "wafBlock".
+     * Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
      */
     identifier: pulumi.Input<string>;
     /**

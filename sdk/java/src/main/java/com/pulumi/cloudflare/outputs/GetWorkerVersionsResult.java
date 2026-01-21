@@ -65,6 +65,11 @@ public final class GetWorkerVersionsResult {
      */
     private String mainModule;
     /**
+     * @return The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules).
+     * 
+     */
+    private String mainScriptBase64;
+    /**
      * @return Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
      * 
      */
@@ -175,6 +180,13 @@ public final class GetWorkerVersionsResult {
         return this.mainModule;
     }
     /**
+     * @return The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules).
+     * 
+     */
+    public String mainScriptBase64() {
+        return this.mainScriptBase64;
+    }
+    /**
      * @return Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
      * 
      */
@@ -252,6 +264,7 @@ public final class GetWorkerVersionsResult {
         private String id;
         private GetWorkerVersionsResultLimits limits;
         private String mainModule;
+        private String mainScriptBase64;
         private GetWorkerVersionsResultMigrations migrations;
         private List<GetWorkerVersionsResultModule> modules;
         private Integer number;
@@ -271,6 +284,7 @@ public final class GetWorkerVersionsResult {
     	      this.id = defaults.id;
     	      this.limits = defaults.limits;
     	      this.mainModule = defaults.mainModule;
+    	      this.mainScriptBase64 = defaults.mainScriptBase64;
     	      this.migrations = defaults.migrations;
     	      this.modules = defaults.modules;
     	      this.number = defaults.number;
@@ -359,6 +373,14 @@ public final class GetWorkerVersionsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder mainScriptBase64(String mainScriptBase64) {
+            if (mainScriptBase64 == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionsResult", "mainScriptBase64");
+            }
+            this.mainScriptBase64 = mainScriptBase64;
+            return this;
+        }
+        @CustomType.Setter
         public Builder migrations(GetWorkerVersionsResultMigrations migrations) {
             if (migrations == null) {
               throw new MissingRequiredPropertyException("GetWorkerVersionsResult", "migrations");
@@ -428,6 +450,7 @@ public final class GetWorkerVersionsResult {
             _resultValue.id = id;
             _resultValue.limits = limits;
             _resultValue.mainModule = mainModule;
+            _resultValue.mainScriptBase64 = mainScriptBase64;
             _resultValue.migrations = migrations;
             _resultValue.modules = modules;
             _resultValue.number = number;

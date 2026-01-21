@@ -13,7 +13,6 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Double;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -43,7 +42,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleZoneSubscription = new ZoneSubscription("exampleZoneSubscription", ZoneSubscriptionArgs.builder()
- *             .zoneId("506e3185e9c882d175a2d0cb0093d9f2")
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .frequency("monthly")
  *             .ratePlan(ZoneSubscriptionRatePlanArgs.builder()
  *                 .id("free")
@@ -149,14 +148,14 @@ public class ZoneSubscription extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="ratePlan", refs={ZoneSubscriptionRatePlan.class}, tree="[0]")
-    private Output</* @Nullable */ ZoneSubscriptionRatePlan> ratePlan;
+    private Output<ZoneSubscriptionRatePlan> ratePlan;
 
     /**
      * @return The rate plan applied to the subscription.
      * 
      */
-    public Output<Optional<ZoneSubscriptionRatePlan>> ratePlan() {
-        return Codegen.optional(this.ratePlan);
+    public Output<ZoneSubscriptionRatePlan> ratePlan() {
+        return this.ratePlan;
     }
     /**
      * The state that the subscription is in.
@@ -175,14 +174,14 @@ public class ZoneSubscription extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
-     * Subscription identifier tag.
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return Subscription identifier tag.
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

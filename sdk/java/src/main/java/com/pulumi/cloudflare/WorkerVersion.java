@@ -249,6 +249,20 @@ public class WorkerVersion extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.mainModule);
     }
     /**
+     * The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
+     * 
+     */
+    @Export(name="mainScriptBase64", refs={String.class}, tree="[0]")
+    private Output<String> mainScriptBase64;
+
+    /**
+     * @return The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
+     * 
+     */
+    public Output<String> mainScriptBase64() {
+        return this.mainScriptBase64;
+    }
+    /**
      * Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
      * 
      */

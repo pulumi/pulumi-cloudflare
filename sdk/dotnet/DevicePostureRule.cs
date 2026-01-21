@@ -65,7 +65,7 @@ namespace Pulumi.Cloudflare
         /// The description of the device posture rule.
         /// </summary>
         [Output("description")]
-        public Output<string> Description { get; private set; } = null!;
+        public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
         /// Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.

@@ -87,6 +87,12 @@ export class MagicWanIpsecTunnel extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly allowNullCipher: pulumi.Output<boolean>;
     /**
+     * True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+     */
+    declare public readonly automaticReturnRouting: pulumi.Output<boolean>;
+    declare public readonly bgp: pulumi.Output<outputs.MagicWanIpsecTunnelBgp | undefined>;
+    declare public /*out*/ readonly bgpStatus: pulumi.Output<outputs.MagicWanIpsecTunnelBgpStatus>;
+    /**
      * The IP address assigned to the Cloudflare side of the IPsec tunnel.
      */
     declare public readonly cloudflareEndpoint: pulumi.Output<string>;
@@ -94,6 +100,7 @@ export class MagicWanIpsecTunnel extends pulumi.CustomResource {
      * The date and time the tunnel was created.
      */
     declare public /*out*/ readonly createdOn: pulumi.Output<string>;
+    declare public readonly customRemoteIdentities: pulumi.Output<outputs.MagicWanIpsecTunnelCustomRemoteIdentities | undefined>;
     /**
      * The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
      */
@@ -147,8 +154,12 @@ export class MagicWanIpsecTunnel extends pulumi.CustomResource {
             const state = argsOrState as MagicWanIpsecTunnelState | undefined;
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["allowNullCipher"] = state?.allowNullCipher;
+            resourceInputs["automaticReturnRouting"] = state?.automaticReturnRouting;
+            resourceInputs["bgp"] = state?.bgp;
+            resourceInputs["bgpStatus"] = state?.bgpStatus;
             resourceInputs["cloudflareEndpoint"] = state?.cloudflareEndpoint;
             resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["customRemoteIdentities"] = state?.customRemoteIdentities;
             resourceInputs["customerEndpoint"] = state?.customerEndpoint;
             resourceInputs["description"] = state?.description;
             resourceInputs["healthCheck"] = state?.healthCheck;
@@ -174,7 +185,10 @@ export class MagicWanIpsecTunnel extends pulumi.CustomResource {
                 throw new Error("Missing required property 'name'");
             }
             resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["automaticReturnRouting"] = args?.automaticReturnRouting;
+            resourceInputs["bgp"] = args?.bgp;
             resourceInputs["cloudflareEndpoint"] = args?.cloudflareEndpoint;
+            resourceInputs["customRemoteIdentities"] = args?.customRemoteIdentities;
             resourceInputs["customerEndpoint"] = args?.customerEndpoint;
             resourceInputs["description"] = args?.description;
             resourceInputs["healthCheck"] = args?.healthCheck;
@@ -184,6 +198,7 @@ export class MagicWanIpsecTunnel extends pulumi.CustomResource {
             resourceInputs["psk"] = args?.psk ? pulumi.secret(args.psk) : undefined;
             resourceInputs["replayProtection"] = args?.replayProtection;
             resourceInputs["allowNullCipher"] = undefined /*out*/;
+            resourceInputs["bgpStatus"] = undefined /*out*/;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
             resourceInputs["pskMetadata"] = undefined /*out*/;
@@ -210,6 +225,12 @@ export interface MagicWanIpsecTunnelState {
      */
     allowNullCipher?: pulumi.Input<boolean>;
     /**
+     * True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+     */
+    automaticReturnRouting?: pulumi.Input<boolean>;
+    bgp?: pulumi.Input<inputs.MagicWanIpsecTunnelBgp>;
+    bgpStatus?: pulumi.Input<inputs.MagicWanIpsecTunnelBgpStatus>;
+    /**
      * The IP address assigned to the Cloudflare side of the IPsec tunnel.
      */
     cloudflareEndpoint?: pulumi.Input<string>;
@@ -217,6 +238,7 @@ export interface MagicWanIpsecTunnelState {
      * The date and time the tunnel was created.
      */
     createdOn?: pulumi.Input<string>;
+    customRemoteIdentities?: pulumi.Input<inputs.MagicWanIpsecTunnelCustomRemoteIdentities>;
     /**
      * The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
      */
@@ -265,9 +287,15 @@ export interface MagicWanIpsecTunnelArgs {
      */
     accountId: pulumi.Input<string>;
     /**
+     * True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+     */
+    automaticReturnRouting?: pulumi.Input<boolean>;
+    bgp?: pulumi.Input<inputs.MagicWanIpsecTunnelBgp>;
+    /**
      * The IP address assigned to the Cloudflare side of the IPsec tunnel.
      */
     cloudflareEndpoint: pulumi.Input<string>;
+    customRemoteIdentities?: pulumi.Input<inputs.MagicWanIpsecTunnelCustomRemoteIdentities>;
     /**
      * The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
      */

@@ -417,14 +417,14 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
      * 
      */
     @Import(name="placement")
     private @Nullable Output<WorkerScriptPlacementArgs> placement;
 
     /**
-     * @return Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * @return Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
      * 
      */
     public Optional<Output<WorkerScriptPlacementArgs>> placement() {
@@ -1136,7 +1136,7 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param placement Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+         * @param placement Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
          * 
          * @return builder
          * 
@@ -1147,7 +1147,7 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param placement Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+         * @param placement Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
          * 
          * @return builder
          * 

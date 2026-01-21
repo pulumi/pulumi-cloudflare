@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class ApiShieldAuthIdCharacteristic {
     /**
-     * @return The name of the characteristic field, i.e., the header or cookie name.
+     * @return The name of the characteristic field, i.e., the header or cookie name. When using type &#34;jwt&#34;, this must be a claim location expressed as `$(token_config_id):$(json_path)`, where `tokenConfigId` is the ID of the token configuration used in validating the JWT, and `jsonPath` is a RFC 9535 JSONPath expression.
      * 
      */
     private String name;
@@ -24,7 +24,7 @@ public final class ApiShieldAuthIdCharacteristic {
 
     private ApiShieldAuthIdCharacteristic() {}
     /**
-     * @return The name of the characteristic field, i.e., the header or cookie name.
+     * @return The name of the characteristic field, i.e., the header or cookie name. When using type &#34;jwt&#34;, this must be a claim location expressed as `$(token_config_id):$(json_path)`, where `tokenConfigId` is the ID of the token configuration used in validating the JWT, and `jsonPath` is a RFC 9535 JSONPath expression.
      * 
      */
     public String name() {

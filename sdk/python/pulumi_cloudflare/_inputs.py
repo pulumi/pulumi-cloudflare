@@ -791,10 +791,20 @@ __all__ = [
     'MagicTransitSiteLocationArgsDict',
     'MagicTransitSiteWanStaticAddressingArgs',
     'MagicTransitSiteWanStaticAddressingArgsDict',
+    'MagicWanGreTunnelBgpArgs',
+    'MagicWanGreTunnelBgpArgsDict',
+    'MagicWanGreTunnelBgpStatusArgs',
+    'MagicWanGreTunnelBgpStatusArgsDict',
     'MagicWanGreTunnelHealthCheckArgs',
     'MagicWanGreTunnelHealthCheckArgsDict',
     'MagicWanGreTunnelHealthCheckTargetArgs',
     'MagicWanGreTunnelHealthCheckTargetArgsDict',
+    'MagicWanIpsecTunnelBgpArgs',
+    'MagicWanIpsecTunnelBgpArgsDict',
+    'MagicWanIpsecTunnelBgpStatusArgs',
+    'MagicWanIpsecTunnelBgpStatusArgsDict',
+    'MagicWanIpsecTunnelCustomRemoteIdentitiesArgs',
+    'MagicWanIpsecTunnelCustomRemoteIdentitiesArgsDict',
     'MagicWanIpsecTunnelHealthCheckArgs',
     'MagicWanIpsecTunnelHealthCheckArgsDict',
     'MagicWanIpsecTunnelHealthCheckTargetArgs',
@@ -17828,7 +17838,7 @@ if not MYPY:
         """
         sets: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
-        The list of sets this rate plan applies to.
+        The list of sets this rate plan applies to. Returns array of strings.
         """
 elif False:
     AccountSubscriptionRatePlanArgsDict: TypeAlias = Mapping[str, Any]
@@ -17850,7 +17860,7 @@ class AccountSubscriptionRatePlanArgs:
         :param pulumi.Input[_builtins.bool] is_contract: Whether a rate plan is enterprise-based (or newly adopted term contract).
         :param pulumi.Input[_builtins.str] public_name: The full name of the rate plan.
         :param pulumi.Input[_builtins.str] scope: The scope that this rate plan applies to.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sets: The list of sets this rate plan applies to.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sets: The list of sets this rate plan applies to. Returns array of strings.
         """
         if currency is not None:
             pulumi.set(__self__, "currency", currency)
@@ -17943,7 +17953,7 @@ class AccountSubscriptionRatePlanArgs:
     @pulumi.getter
     def sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The list of sets this rate plan applies to.
+        The list of sets this rate plan applies to. Returns array of strings.
         """
         return pulumi.get(self, "sets")
 
@@ -18230,7 +18240,7 @@ if not MYPY:
     class ApiShieldAuthIdCharacteristicArgsDict(TypedDict):
         name: pulumi.Input[_builtins.str]
         """
-        The name of the characteristic field, i.e., the header or cookie name.
+        The name of the characteristic field, i.e., the header or cookie name. When using type "jwt", this must be a claim location expressed as `$(token_config_id):$(json_path)`, where `token_config_id` is the ID of the token configuration used in validating the JWT, and `json_path` is a RFC 9535 JSONPath expression.
         """
         type: pulumi.Input[_builtins.str]
         """
@@ -18246,7 +18256,7 @@ class ApiShieldAuthIdCharacteristicArgs:
                  name: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] name: The name of the characteristic field, i.e., the header or cookie name.
+        :param pulumi.Input[_builtins.str] name: The name of the characteristic field, i.e., the header or cookie name. When using type "jwt", this must be a claim location expressed as `$(token_config_id):$(json_path)`, where `token_config_id` is the ID of the token configuration used in validating the JWT, and `json_path` is a RFC 9535 JSONPath expression.
         :param pulumi.Input[_builtins.str] type: The type of characteristic.
                Available values: "header", "cookie", "jwt".
         """
@@ -18257,7 +18267,7 @@ class ApiShieldAuthIdCharacteristicArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the characteristic field, i.e., the header or cookie name.
+        The name of the characteristic field, i.e., the header or cookie name. When using type "jwt", this must be a claim location expressed as `$(token_config_id):$(json_path)`, where `token_config_id` is the ID of the token configuration used in validating the JWT, and `json_path` is a RFC 9535 JSONPath expression.
         """
         return pulumi.get(self, "name")
 
@@ -25285,11 +25295,11 @@ if not MYPY:
         """
         max_age: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).
+        Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
         """
         stale_while_revalidate: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).
+        Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
         """
 elif False:
     HyperdriveConfigCachingArgsDict: TypeAlias = Mapping[str, Any]
@@ -25302,8 +25312,8 @@ class HyperdriveConfigCachingArgs:
                  stale_while_revalidate: Optional[pulumi.Input[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.bool] disabled: Set to true to disable caching of SQL responses. Default is false.
-        :param pulumi.Input[_builtins.int] max_age: Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).
-        :param pulumi.Input[_builtins.int] stale_while_revalidate: Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).
+        :param pulumi.Input[_builtins.int] max_age: Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
+        :param pulumi.Input[_builtins.int] stale_while_revalidate: Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
         """
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
@@ -25328,7 +25338,7 @@ class HyperdriveConfigCachingArgs:
     @pulumi.getter(name="maxAge")
     def max_age(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).
+        Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
         """
         return pulumi.get(self, "max_age")
 
@@ -25340,7 +25350,7 @@ class HyperdriveConfigCachingArgs:
     @pulumi.getter(name="staleWhileRevalidate")
     def stale_while_revalidate(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).
+        Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
         """
         return pulumi.get(self, "stale_while_revalidate")
 
@@ -25454,7 +25464,7 @@ if not MYPY:
         """
         port: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Defines the port (default: 5432 for Postgres) of your origin database.
+        Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.
         """
 elif False:
     HyperdriveConfigOriginArgsDict: TypeAlias = Mapping[str, Any]
@@ -25479,7 +25489,7 @@ class HyperdriveConfigOriginArgs:
         :param pulumi.Input[_builtins.str] user: Set the user of your origin database.
         :param pulumi.Input[_builtins.str] access_client_id: Defines the Client ID of the Access token to use when connecting to the origin database.
         :param pulumi.Input[_builtins.str] access_client_secret: Defines the Client Secret of the Access Token to use when connecting to the origin database. The API never returns this write-only value.
-        :param pulumi.Input[_builtins.int] port: Defines the port (default: 5432 for Postgres) of your origin database.
+        :param pulumi.Input[_builtins.int] port: Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "host", host)
@@ -25582,7 +25592,7 @@ class HyperdriveConfigOriginArgs:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Defines the port (default: 5432 for Postgres) of your origin database.
+        Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.
         """
         return pulumi.get(self, "port")
 
@@ -28816,6 +28826,200 @@ class MagicTransitSiteWanStaticAddressingArgs:
 
 
 if not MYPY:
+    class MagicWanGreTunnelBgpArgsDict(TypedDict):
+        customer_asn: pulumi.Input[_builtins.int]
+        """
+        ASN used on the customer end of the BGP session
+        """
+        extra_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
+        """
+        md5_key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        MD5 key to use for session authentication.
+        """
+elif False:
+    MagicWanGreTunnelBgpArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MagicWanGreTunnelBgpArgs:
+    def __init__(__self__, *,
+                 customer_asn: pulumi.Input[_builtins.int],
+                 extra_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 md5_key: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] customer_asn: ASN used on the customer end of the BGP session
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] extra_prefixes: Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
+        :param pulumi.Input[_builtins.str] md5_key: MD5 key to use for session authentication.
+        """
+        pulumi.set(__self__, "customer_asn", customer_asn)
+        if extra_prefixes is not None:
+            pulumi.set(__self__, "extra_prefixes", extra_prefixes)
+        if md5_key is not None:
+            pulumi.set(__self__, "md5_key", md5_key)
+
+    @_builtins.property
+    @pulumi.getter(name="customerAsn")
+    def customer_asn(self) -> pulumi.Input[_builtins.int]:
+        """
+        ASN used on the customer end of the BGP session
+        """
+        return pulumi.get(self, "customer_asn")
+
+    @customer_asn.setter
+    def customer_asn(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "customer_asn", value)
+
+    @_builtins.property
+    @pulumi.getter(name="extraPrefixes")
+    def extra_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
+        """
+        return pulumi.get(self, "extra_prefixes")
+
+    @extra_prefixes.setter
+    def extra_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "extra_prefixes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="md5Key")
+    def md5_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        MD5 key to use for session authentication.
+        """
+        return pulumi.get(self, "md5_key")
+
+    @md5_key.setter
+    def md5_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "md5_key", value)
+
+
+if not MYPY:
+    class MagicWanGreTunnelBgpStatusArgsDict(TypedDict):
+        bgp_state: NotRequired[pulumi.Input[_builtins.str]]
+        cf_speaker_ip: NotRequired[pulumi.Input[_builtins.str]]
+        cf_speaker_port: NotRequired[pulumi.Input[_builtins.int]]
+        customer_speaker_ip: NotRequired[pulumi.Input[_builtins.str]]
+        customer_speaker_port: NotRequired[pulumi.Input[_builtins.int]]
+        state: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Available values: "BGP*DOWN", "BGP*UP", "BGP_ESTABLISHING".
+        """
+        tcp_established: NotRequired[pulumi.Input[_builtins.bool]]
+        updated_at: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    MagicWanGreTunnelBgpStatusArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MagicWanGreTunnelBgpStatusArgs:
+    def __init__(__self__, *,
+                 bgp_state: Optional[pulumi.Input[_builtins.str]] = None,
+                 cf_speaker_ip: Optional[pulumi.Input[_builtins.str]] = None,
+                 cf_speaker_port: Optional[pulumi.Input[_builtins.int]] = None,
+                 customer_speaker_ip: Optional[pulumi.Input[_builtins.str]] = None,
+                 customer_speaker_port: Optional[pulumi.Input[_builtins.int]] = None,
+                 state: Optional[pulumi.Input[_builtins.str]] = None,
+                 tcp_established: Optional[pulumi.Input[_builtins.bool]] = None,
+                 updated_at: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] state: Available values: "BGP*DOWN", "BGP*UP", "BGP_ESTABLISHING".
+        """
+        if bgp_state is not None:
+            pulumi.set(__self__, "bgp_state", bgp_state)
+        if cf_speaker_ip is not None:
+            pulumi.set(__self__, "cf_speaker_ip", cf_speaker_ip)
+        if cf_speaker_port is not None:
+            pulumi.set(__self__, "cf_speaker_port", cf_speaker_port)
+        if customer_speaker_ip is not None:
+            pulumi.set(__self__, "customer_speaker_ip", customer_speaker_ip)
+        if customer_speaker_port is not None:
+            pulumi.set(__self__, "customer_speaker_port", customer_speaker_port)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if tcp_established is not None:
+            pulumi.set(__self__, "tcp_established", tcp_established)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter(name="bgpState")
+    def bgp_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "bgp_state")
+
+    @bgp_state.setter
+    def bgp_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "bgp_state", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cfSpeakerIp")
+    def cf_speaker_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "cf_speaker_ip")
+
+    @cf_speaker_ip.setter
+    def cf_speaker_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cf_speaker_ip", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cfSpeakerPort")
+    def cf_speaker_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "cf_speaker_port")
+
+    @cf_speaker_port.setter
+    def cf_speaker_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "cf_speaker_port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="customerSpeakerIp")
+    def customer_speaker_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "customer_speaker_ip")
+
+    @customer_speaker_ip.setter
+    def customer_speaker_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "customer_speaker_ip", value)
+
+    @_builtins.property
+    @pulumi.getter(name="customerSpeakerPort")
+    def customer_speaker_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "customer_speaker_port")
+
+    @customer_speaker_port.setter
+    def customer_speaker_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "customer_speaker_port", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Available values: "BGP*DOWN", "BGP*UP", "BGP_ESTABLISHING".
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "state", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tcpEstablished")
+    def tcp_established(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "tcp_established")
+
+    @tcp_established.setter
+    def tcp_established(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "tcp_established", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+
+if not MYPY:
     class MagicWanGreTunnelHealthCheckArgsDict(TypedDict):
         direction: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -28986,6 +29190,235 @@ class MagicWanGreTunnelHealthCheckTargetArgs:
     @saved.setter
     def saved(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "saved", value)
+
+
+if not MYPY:
+    class MagicWanIpsecTunnelBgpArgsDict(TypedDict):
+        customer_asn: pulumi.Input[_builtins.int]
+        """
+        ASN used on the customer end of the BGP session
+        """
+        extra_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
+        """
+        md5_key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        MD5 key to use for session authentication.
+        """
+elif False:
+    MagicWanIpsecTunnelBgpArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MagicWanIpsecTunnelBgpArgs:
+    def __init__(__self__, *,
+                 customer_asn: pulumi.Input[_builtins.int],
+                 extra_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 md5_key: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] customer_asn: ASN used on the customer end of the BGP session
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] extra_prefixes: Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
+        :param pulumi.Input[_builtins.str] md5_key: MD5 key to use for session authentication.
+        """
+        pulumi.set(__self__, "customer_asn", customer_asn)
+        if extra_prefixes is not None:
+            pulumi.set(__self__, "extra_prefixes", extra_prefixes)
+        if md5_key is not None:
+            pulumi.set(__self__, "md5_key", md5_key)
+
+    @_builtins.property
+    @pulumi.getter(name="customerAsn")
+    def customer_asn(self) -> pulumi.Input[_builtins.int]:
+        """
+        ASN used on the customer end of the BGP session
+        """
+        return pulumi.get(self, "customer_asn")
+
+    @customer_asn.setter
+    def customer_asn(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "customer_asn", value)
+
+    @_builtins.property
+    @pulumi.getter(name="extraPrefixes")
+    def extra_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
+        """
+        return pulumi.get(self, "extra_prefixes")
+
+    @extra_prefixes.setter
+    def extra_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "extra_prefixes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="md5Key")
+    def md5_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        MD5 key to use for session authentication.
+        """
+        return pulumi.get(self, "md5_key")
+
+    @md5_key.setter
+    def md5_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "md5_key", value)
+
+
+if not MYPY:
+    class MagicWanIpsecTunnelBgpStatusArgsDict(TypedDict):
+        bgp_state: NotRequired[pulumi.Input[_builtins.str]]
+        cf_speaker_ip: NotRequired[pulumi.Input[_builtins.str]]
+        cf_speaker_port: NotRequired[pulumi.Input[_builtins.int]]
+        customer_speaker_ip: NotRequired[pulumi.Input[_builtins.str]]
+        customer_speaker_port: NotRequired[pulumi.Input[_builtins.int]]
+        state: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Available values: "BGP*DOWN", "BGP*UP", "BGP_ESTABLISHING".
+        """
+        tcp_established: NotRequired[pulumi.Input[_builtins.bool]]
+        updated_at: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    MagicWanIpsecTunnelBgpStatusArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MagicWanIpsecTunnelBgpStatusArgs:
+    def __init__(__self__, *,
+                 bgp_state: Optional[pulumi.Input[_builtins.str]] = None,
+                 cf_speaker_ip: Optional[pulumi.Input[_builtins.str]] = None,
+                 cf_speaker_port: Optional[pulumi.Input[_builtins.int]] = None,
+                 customer_speaker_ip: Optional[pulumi.Input[_builtins.str]] = None,
+                 customer_speaker_port: Optional[pulumi.Input[_builtins.int]] = None,
+                 state: Optional[pulumi.Input[_builtins.str]] = None,
+                 tcp_established: Optional[pulumi.Input[_builtins.bool]] = None,
+                 updated_at: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] state: Available values: "BGP*DOWN", "BGP*UP", "BGP_ESTABLISHING".
+        """
+        if bgp_state is not None:
+            pulumi.set(__self__, "bgp_state", bgp_state)
+        if cf_speaker_ip is not None:
+            pulumi.set(__self__, "cf_speaker_ip", cf_speaker_ip)
+        if cf_speaker_port is not None:
+            pulumi.set(__self__, "cf_speaker_port", cf_speaker_port)
+        if customer_speaker_ip is not None:
+            pulumi.set(__self__, "customer_speaker_ip", customer_speaker_ip)
+        if customer_speaker_port is not None:
+            pulumi.set(__self__, "customer_speaker_port", customer_speaker_port)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if tcp_established is not None:
+            pulumi.set(__self__, "tcp_established", tcp_established)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter(name="bgpState")
+    def bgp_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "bgp_state")
+
+    @bgp_state.setter
+    def bgp_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "bgp_state", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cfSpeakerIp")
+    def cf_speaker_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "cf_speaker_ip")
+
+    @cf_speaker_ip.setter
+    def cf_speaker_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cf_speaker_ip", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cfSpeakerPort")
+    def cf_speaker_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "cf_speaker_port")
+
+    @cf_speaker_port.setter
+    def cf_speaker_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "cf_speaker_port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="customerSpeakerIp")
+    def customer_speaker_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "customer_speaker_ip")
+
+    @customer_speaker_ip.setter
+    def customer_speaker_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "customer_speaker_ip", value)
+
+    @_builtins.property
+    @pulumi.getter(name="customerSpeakerPort")
+    def customer_speaker_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "customer_speaker_port")
+
+    @customer_speaker_port.setter
+    def customer_speaker_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "customer_speaker_port", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Available values: "BGP*DOWN", "BGP*UP", "BGP_ESTABLISHING".
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "state", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tcpEstablished")
+    def tcp_established(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "tcp_established")
+
+    @tcp_established.setter
+    def tcp_established(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "tcp_established", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+
+if not MYPY:
+    class MagicWanIpsecTunnelCustomRemoteIdentitiesArgsDict(TypedDict):
+        fqdn_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The
+        generated IKE IDs can still be used even if this custom value is specified.
+        """
+elif False:
+    MagicWanIpsecTunnelCustomRemoteIdentitiesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MagicWanIpsecTunnelCustomRemoteIdentitiesArgs:
+    def __init__(__self__, *,
+                 fqdn_id: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] fqdn_id: A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The
+               generated IKE IDs can still be used even if this custom value is specified.
+        """
+        if fqdn_id is not None:
+            pulumi.set(__self__, "fqdn_id", fqdn_id)
+
+    @_builtins.property
+    @pulumi.getter(name="fqdnId")
+    def fqdn_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The
+        generated IKE IDs can still be used even if this custom value is specified.
+        """
+        return pulumi.get(self, "fqdn_id")
+
+    @fqdn_id.setter
+    def fqdn_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "fqdn_id", value)
 
 
 if not MYPY:
@@ -40529,6 +40962,11 @@ if not MYPY:
         """
         A timeout value between two successive read operations to use for your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
         """
+        request_body_buffering: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The request body buffering mode to configure.
+        Available values: "none", "standard", "full".
+        """
         request_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersRequestFieldArgsDict']]]]
         """
         The raw request fields to log.
@@ -40540,6 +40978,11 @@ if not MYPY:
         response: NotRequired[pulumi.Input['RulesetRuleActionParametersResponseArgsDict']]
         """
         The response to show when the block is applied.
+        """
+        response_body_buffering: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The response body buffering mode to configure.
+        Available values: "none", "standard".
         """
         response_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersResponseFieldArgsDict']]]]
         """
@@ -40644,9 +41087,11 @@ class RulesetRuleActionParametersArgs:
                  products: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  raw_response_fields: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersRawResponseFieldArgs']]]] = None,
                  read_timeout: Optional[pulumi.Input[_builtins.int]] = None,
+                 request_body_buffering: Optional[pulumi.Input[_builtins.str]] = None,
                  request_fields: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersRequestFieldArgs']]]] = None,
                  respect_strong_etags: Optional[pulumi.Input[_builtins.bool]] = None,
                  response: Optional[pulumi.Input['RulesetRuleActionParametersResponseArgs']] = None,
+                 response_body_buffering: Optional[pulumi.Input[_builtins.str]] = None,
                  response_fields: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersResponseFieldArgs']]]] = None,
                  rocket_loader: Optional[pulumi.Input[_builtins.bool]] = None,
                  rules: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
@@ -40704,9 +41149,13 @@ class RulesetRuleActionParametersArgs:
                Available values: "bic", "hot", "rateLimit", "securityLevel", "uaBlock", "waf", "zoneLockdown".
         :param pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersRawResponseFieldArgs']]] raw_response_fields: The raw response fields to log.
         :param pulumi.Input[_builtins.int] read_timeout: A timeout value between two successive read operations to use for your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
+        :param pulumi.Input[_builtins.str] request_body_buffering: The request body buffering mode to configure.
+               Available values: "none", "standard", "full".
         :param pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersRequestFieldArgs']]] request_fields: The raw request fields to log.
         :param pulumi.Input[_builtins.bool] respect_strong_etags: Whether Cloudflare should respect strong ETag (entity tag) headers. If false, Cloudflare converts strong ETag headers to weak ETag headers.
         :param pulumi.Input['RulesetRuleActionParametersResponseArgs'] response: The response to show when the block is applied.
+        :param pulumi.Input[_builtins.str] response_body_buffering: The response body buffering mode to configure.
+               Available values: "none", "standard".
         :param pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersResponseFieldArgs']]] response_fields: The transformed response fields to log.
         :param pulumi.Input[_builtins.bool] rocket_loader: Whether to enable Rocket Loader.
         :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] rules: A mapping of ruleset IDs to a list of rule IDs in that ruleset to skip the execution of. This option is incompatible with the ruleset option.
@@ -40801,12 +41250,16 @@ class RulesetRuleActionParametersArgs:
             pulumi.set(__self__, "raw_response_fields", raw_response_fields)
         if read_timeout is not None:
             pulumi.set(__self__, "read_timeout", read_timeout)
+        if request_body_buffering is not None:
+            pulumi.set(__self__, "request_body_buffering", request_body_buffering)
         if request_fields is not None:
             pulumi.set(__self__, "request_fields", request_fields)
         if respect_strong_etags is not None:
             pulumi.set(__self__, "respect_strong_etags", respect_strong_etags)
         if response is not None:
             pulumi.set(__self__, "response", response)
+        if response_body_buffering is not None:
+            pulumi.set(__self__, "response_body_buffering", response_body_buffering)
         if response_fields is not None:
             pulumi.set(__self__, "response_fields", response_fields)
         if rocket_loader is not None:
@@ -41297,6 +41750,19 @@ class RulesetRuleActionParametersArgs:
         pulumi.set(self, "read_timeout", value)
 
     @_builtins.property
+    @pulumi.getter(name="requestBodyBuffering")
+    def request_body_buffering(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The request body buffering mode to configure.
+        Available values: "none", "standard", "full".
+        """
+        return pulumi.get(self, "request_body_buffering")
+
+    @request_body_buffering.setter
+    def request_body_buffering(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "request_body_buffering", value)
+
+    @_builtins.property
     @pulumi.getter(name="requestFields")
     def request_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersRequestFieldArgs']]]]:
         """
@@ -41331,6 +41797,19 @@ class RulesetRuleActionParametersArgs:
     @response.setter
     def response(self, value: Optional[pulumi.Input['RulesetRuleActionParametersResponseArgs']]):
         pulumi.set(self, "response", value)
+
+    @_builtins.property
+    @pulumi.getter(name="responseBodyBuffering")
+    def response_body_buffering(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The response body buffering mode to configure.
+        Available values: "none", "standard".
+        """
+        return pulumi.get(self, "response_body_buffering")
+
+    @response_body_buffering.setter
+    def response_body_buffering(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "response_body_buffering", value)
 
     @_builtins.property
     @pulumi.getter(name="responseFields")
@@ -53425,6 +53904,14 @@ class WorkerScriptObservabilityLogsArgs:
 
 if not MYPY:
     class WorkerScriptPlacementArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        TCP host and port for targeted placement.
+        """
+        hostname: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        HTTP hostname for targeted placement.
+        """
         last_analyzed_at: NotRequired[pulumi.Input[_builtins.str]]
         """
         The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
@@ -53433,6 +53920,10 @@ if not MYPY:
         """
         Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
         Available values: "smart".
+        """
+        region: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Cloud region for targeted placement in format 'provider:region'.
         """
         status: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -53445,22 +53936,58 @@ elif False:
 @pulumi.input_type
 class WorkerScriptPlacementArgs:
     def __init__(__self__, *,
+                 host: Optional[pulumi.Input[_builtins.str]] = None,
+                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
                  last_analyzed_at: Optional[pulumi.Input[_builtins.str]] = None,
                  mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
+        :param pulumi.Input[_builtins.str] host: TCP host and port for targeted placement.
+        :param pulumi.Input[_builtins.str] hostname: HTTP hostname for targeted placement.
         :param pulumi.Input[_builtins.str] last_analyzed_at: The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
         :param pulumi.Input[_builtins.str] mode: Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
                Available values: "smart".
+        :param pulumi.Input[_builtins.str] region: Cloud region for targeted placement in format 'provider:region'.
         :param pulumi.Input[_builtins.str] status: Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
                Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
         """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
         if last_analyzed_at is not None:
             pulumi.set(__self__, "last_analyzed_at", last_analyzed_at)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if status is not None:
             pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        TCP host and port for targeted placement.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "host", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        HTTP hostname for targeted placement.
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="lastAnalyzedAt")
@@ -53486,6 +54013,18 @@ class WorkerScriptPlacementArgs:
     @mode.setter
     def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "mode", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Cloud region for targeted placement in format 'provider:region'.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
@@ -57182,6 +57721,14 @@ class WorkersScriptObservabilityLogsArgs:
 
 if not MYPY:
     class WorkersScriptPlacementArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        TCP host and port for targeted placement.
+        """
+        hostname: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        HTTP hostname for targeted placement.
+        """
         last_analyzed_at: NotRequired[pulumi.Input[_builtins.str]]
         """
         The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
@@ -57190,6 +57737,10 @@ if not MYPY:
         """
         Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
         Available values: "smart".
+        """
+        region: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Cloud region for targeted placement in format 'provider:region'.
         """
         status: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -57202,22 +57753,58 @@ elif False:
 @pulumi.input_type
 class WorkersScriptPlacementArgs:
     def __init__(__self__, *,
+                 host: Optional[pulumi.Input[_builtins.str]] = None,
+                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
                  last_analyzed_at: Optional[pulumi.Input[_builtins.str]] = None,
                  mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
+        :param pulumi.Input[_builtins.str] host: TCP host and port for targeted placement.
+        :param pulumi.Input[_builtins.str] hostname: HTTP hostname for targeted placement.
         :param pulumi.Input[_builtins.str] last_analyzed_at: The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
         :param pulumi.Input[_builtins.str] mode: Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
                Available values: "smart".
+        :param pulumi.Input[_builtins.str] region: Cloud region for targeted placement in format 'provider:region'.
         :param pulumi.Input[_builtins.str] status: Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
                Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
         """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
         if last_analyzed_at is not None:
             pulumi.set(__self__, "last_analyzed_at", last_analyzed_at)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if status is not None:
             pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        TCP host and port for targeted placement.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "host", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        HTTP hostname for targeted placement.
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="lastAnalyzedAt")
@@ -57243,6 +57830,18 @@ class WorkersScriptPlacementArgs:
     @mode.setter
     def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "mode", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Cloud region for targeted placement in format 'provider:region'.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
@@ -82164,7 +82763,7 @@ if not MYPY:
         """
         sets: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
-        The list of sets this rate plan applies to.
+        The list of sets this rate plan applies to. Returns array of strings.
         """
 elif False:
     ZoneSubscriptionRatePlanArgsDict: TypeAlias = Mapping[str, Any]
@@ -82187,7 +82786,7 @@ class ZoneSubscriptionRatePlanArgs:
         :param pulumi.Input[_builtins.bool] is_contract: Whether a rate plan is enterprise-based (or newly adopted term contract).
         :param pulumi.Input[_builtins.str] public_name: The full name of the rate plan.
         :param pulumi.Input[_builtins.str] scope: The scope that this rate plan applies to.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sets: The list of sets this rate plan applies to.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sets: The list of sets this rate plan applies to. Returns array of strings.
         """
         if currency is not None:
             pulumi.set(__self__, "currency", currency)
@@ -82281,7 +82880,7 @@ class ZoneSubscriptionRatePlanArgs:
     @pulumi.getter
     def sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The list of sets this rate plan applies to.
+        The list of sets this rate plan applies to. Returns array of strings.
         """
         return pulumi.get(self, "sets")
 

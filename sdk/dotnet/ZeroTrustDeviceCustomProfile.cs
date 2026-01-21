@@ -386,8 +386,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
         /// </summary>
-        [Input("precedence", required: true)]
-        public Input<double> Precedence { get; set; } = null!;
+        [Input("precedence")]
+        public Input<double>? Precedence { get; set; }
 
         /// <summary>
         /// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.

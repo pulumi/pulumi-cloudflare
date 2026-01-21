@@ -118,13 +118,13 @@ export class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
     /**
      * List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
      */
-    declare public readonly excludes: pulumi.Output<outputs.ZeroTrustDeviceDefaultProfileExclude[] | undefined>;
+    declare public readonly excludes: pulumi.Output<outputs.ZeroTrustDeviceDefaultProfileExclude[]>;
     declare public /*out*/ readonly fallbackDomains: pulumi.Output<outputs.ZeroTrustDeviceDefaultProfileFallbackDomain[]>;
     declare public /*out*/ readonly gatewayUniqueId: pulumi.Output<string>;
     /**
      * List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
      */
-    declare public readonly includes: pulumi.Output<outputs.ZeroTrustDeviceDefaultProfileInclude[] | undefined>;
+    declare public readonly includes: pulumi.Output<outputs.ZeroTrustDeviceDefaultProfileInclude[]>;
     /**
      * The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
      */

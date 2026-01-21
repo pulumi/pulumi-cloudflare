@@ -77,15 +77,16 @@ type LookupWorkerVersionResult struct {
 	Id                 string                    `pulumi:"id"`
 	// Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
 	// Available values: "modules".
-	Include       *string                    `pulumi:"include"`
-	Limits        GetWorkerVersionLimits     `pulumi:"limits"`
-	MainModule    string                     `pulumi:"mainModule"`
-	Migrations    GetWorkerVersionMigrations `pulumi:"migrations"`
-	Modules       []GetWorkerVersionModule   `pulumi:"modules"`
-	Number        int                        `pulumi:"number"`
-	Placement     GetWorkerVersionPlacement  `pulumi:"placement"`
-	Source        string                     `pulumi:"source"`
-	StartupTimeMs int                        `pulumi:"startupTimeMs"`
+	Include          *string                    `pulumi:"include"`
+	Limits           GetWorkerVersionLimits     `pulumi:"limits"`
+	MainModule       string                     `pulumi:"mainModule"`
+	MainScriptBase64 string                     `pulumi:"mainScriptBase64"`
+	Migrations       GetWorkerVersionMigrations `pulumi:"migrations"`
+	Modules          []GetWorkerVersionModule   `pulumi:"modules"`
+	Number           int                        `pulumi:"number"`
+	Placement        GetWorkerVersionPlacement  `pulumi:"placement"`
+	Source           string                     `pulumi:"source"`
+	StartupTimeMs    int                        `pulumi:"startupTimeMs"`
 	// Deprecated: This attribute is deprecated.
 	UsageModel string `pulumi:"usageModel"`
 	// Identifier for the version, which can be ID or the literal "latest" to operate on the most recently created version.
@@ -182,6 +183,10 @@ func (o LookupWorkerVersionResultOutput) Limits() GetWorkerVersionLimitsOutput {
 
 func (o LookupWorkerVersionResultOutput) MainModule() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkerVersionResult) string { return v.MainModule }).(pulumi.StringOutput)
+}
+
+func (o LookupWorkerVersionResultOutput) MainScriptBase64() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkerVersionResult) string { return v.MainScriptBase64 }).(pulumi.StringOutput)
 }
 
 func (o LookupWorkerVersionResultOutput) Migrations() GetWorkerVersionMigrationsOutput {

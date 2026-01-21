@@ -26,7 +26,7 @@ class ZoneSubscriptionArgs:
                  rate_plan: Optional[pulumi.Input['ZoneSubscriptionRatePlanArgs']] = None):
         """
         The set of arguments for constructing a ZoneSubscription resource.
-        :param pulumi.Input[_builtins.str] zone_id: Subscription identifier tag.
+        :param pulumi.Input[_builtins.str] zone_id: Identifier
         :param pulumi.Input[_builtins.str] frequency: How often the subscription is renewed automatically.
                Available values: "weekly", "monthly", "quarterly", "yearly".
                Note: Some plans may not support frequency configuration and will return "not-applicable".
@@ -42,7 +42,7 @@ class ZoneSubscriptionArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Subscription identifier tag.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -100,7 +100,7 @@ class _ZoneSubscriptionState:
         :param pulumi.Input['ZoneSubscriptionRatePlanArgs'] rate_plan: The rate plan applied to the subscription.
         :param pulumi.Input[_builtins.str] state: The state that the subscription is in.
                Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
-        :param pulumi.Input[_builtins.str] zone_id: Subscription identifier tag.
+        :param pulumi.Input[_builtins.str] zone_id: Identifier
         """
         if currency is not None:
             pulumi.set(__self__, "currency", currency)
@@ -210,7 +210,7 @@ class _ZoneSubscriptionState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subscription identifier tag.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -237,7 +237,7 @@ class ZoneSubscription(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example_zone_subscription = cloudflare.ZoneSubscription("example_zone_subscription",
-            zone_id="506e3185e9c882d175a2d0cb0093d9f2",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             frequency="monthly",
             rate_plan={
                 "id": "free",
@@ -262,7 +262,7 @@ class ZoneSubscription(pulumi.CustomResource):
                Available values: "weekly", "monthly", "quarterly", "yearly".
                Note: Some plans may not support frequency configuration and will return "not-applicable".
         :param pulumi.Input[Union['ZoneSubscriptionRatePlanArgs', 'ZoneSubscriptionRatePlanArgsDict']] rate_plan: The rate plan applied to the subscription.
-        :param pulumi.Input[_builtins.str] zone_id: Subscription identifier tag.
+        :param pulumi.Input[_builtins.str] zone_id: Identifier
         """
         ...
     @overload
@@ -278,7 +278,7 @@ class ZoneSubscription(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example_zone_subscription = cloudflare.ZoneSubscription("example_zone_subscription",
-            zone_id="506e3185e9c882d175a2d0cb0093d9f2",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             frequency="monthly",
             rate_plan={
                 "id": "free",
@@ -369,7 +369,7 @@ class ZoneSubscription(pulumi.CustomResource):
         :param pulumi.Input[Union['ZoneSubscriptionRatePlanArgs', 'ZoneSubscriptionRatePlanArgsDict']] rate_plan: The rate plan applied to the subscription.
         :param pulumi.Input[_builtins.str] state: The state that the subscription is in.
                Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
-        :param pulumi.Input[_builtins.str] zone_id: Subscription identifier tag.
+        :param pulumi.Input[_builtins.str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -429,7 +429,7 @@ class ZoneSubscription(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="ratePlan")
-    def rate_plan(self) -> pulumi.Output[Optional['outputs.ZoneSubscriptionRatePlan']]:
+    def rate_plan(self) -> pulumi.Output['outputs.ZoneSubscriptionRatePlan']:
         """
         The rate plan applied to the subscription.
         """
@@ -448,7 +448,7 @@ class ZoneSubscription(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Subscription identifier tag.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 

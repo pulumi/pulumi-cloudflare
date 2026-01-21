@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var exampleZoneSubscription = new Cloudflare.ZoneSubscription("example_zone_subscription", new()
     ///     {
-    ///         ZoneId = "506e3185e9c882d175a2d0cb0093d9f2",
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Frequency = "monthly",
     ///         RatePlan = new Cloudflare.Inputs.ZoneSubscriptionRatePlanArgs
     ///         {
@@ -87,7 +87,7 @@ namespace Pulumi.Cloudflare
         /// The rate plan applied to the subscription.
         /// </summary>
         [Output("ratePlan")]
-        public Output<Outputs.ZoneSubscriptionRatePlan?> RatePlan { get; private set; } = null!;
+        public Output<Outputs.ZoneSubscriptionRatePlan> RatePlan { get; private set; } = null!;
 
         /// <summary>
         /// The state that the subscription is in.
@@ -97,7 +97,7 @@ namespace Pulumi.Cloudflare
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Subscription identifier tag.
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -163,7 +163,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.ZoneSubscriptionRatePlanArgs>? RatePlan { get; set; }
 
         /// <summary>
-        /// Subscription identifier tag.
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -222,7 +222,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Subscription identifier tag.
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

@@ -6,6 +6,9 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.MagicWanIpsecTunnelArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.MagicWanIpsecTunnelState;
+import com.pulumi.cloudflare.outputs.MagicWanIpsecTunnelBgp;
+import com.pulumi.cloudflare.outputs.MagicWanIpsecTunnelBgpStatus;
+import com.pulumi.cloudflare.outputs.MagicWanIpsecTunnelCustomRemoteIdentities;
 import com.pulumi.cloudflare.outputs.MagicWanIpsecTunnelHealthCheck;
 import com.pulumi.cloudflare.outputs.MagicWanIpsecTunnelPskMetadata;
 import com.pulumi.core.Alias;
@@ -31,6 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.MagicWanIpsecTunnel;
  * import com.pulumi.cloudflare.MagicWanIpsecTunnelArgs;
+ * import com.pulumi.cloudflare.inputs.MagicWanIpsecTunnelBgpArgs;
+ * import com.pulumi.cloudflare.inputs.MagicWanIpsecTunnelCustomRemoteIdentitiesArgs;
  * import com.pulumi.cloudflare.inputs.MagicWanIpsecTunnelHealthCheckArgs;
  * import com.pulumi.cloudflare.inputs.MagicWanIpsecTunnelHealthCheckTargetArgs;
  * import java.util.List;
@@ -52,12 +57,14 @@ import javax.annotation.Nullable;
  *             .interfaceAddress("192.0.2.0/31")
  *             .name("IPsec_1")
  *             .automaticReturnRouting(true)
- *             .bgp(Map.ofEntries(
- *                 Map.entry("customerAsn", 0),
- *                 Map.entry("extraPrefixes", List.of("string")),
- *                 Map.entry("md5Key", "md5_key")
- *             ))
- *             .customRemoteIdentities(Map.of("fqdnId", "fqdn_id"))
+ *             .bgp(MagicWanIpsecTunnelBgpArgs.builder()
+ *                 .customerAsn(0)
+ *                 .extraPrefixes("string")
+ *                 .md5Key("md5_key")
+ *                 .build())
+ *             .customRemoteIdentities(MagicWanIpsecTunnelCustomRemoteIdentitiesArgs.builder()
+ *                 .fqdnId("fqdn_id")
+ *                 .build())
  *             .customerEndpoint("203.0.113.1")
  *             .description("Tunnel for ISP X")
  *             .healthCheck(MagicWanIpsecTunnelHealthCheckArgs.builder()
@@ -117,6 +124,32 @@ public class MagicWanIpsecTunnel extends com.pulumi.resources.CustomResource {
         return this.allowNullCipher;
     }
     /**
+     * True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+     * 
+     */
+    @Export(name="automaticReturnRouting", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> automaticReturnRouting;
+
+    /**
+     * @return True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+     * 
+     */
+    public Output<Boolean> automaticReturnRouting() {
+        return this.automaticReturnRouting;
+    }
+    @Export(name="bgp", refs={MagicWanIpsecTunnelBgp.class}, tree="[0]")
+    private Output</* @Nullable */ MagicWanIpsecTunnelBgp> bgp;
+
+    public Output<Optional<MagicWanIpsecTunnelBgp>> bgp() {
+        return Codegen.optional(this.bgp);
+    }
+    @Export(name="bgpStatus", refs={MagicWanIpsecTunnelBgpStatus.class}, tree="[0]")
+    private Output<MagicWanIpsecTunnelBgpStatus> bgpStatus;
+
+    public Output<MagicWanIpsecTunnelBgpStatus> bgpStatus() {
+        return this.bgpStatus;
+    }
+    /**
      * The IP address assigned to the Cloudflare side of the IPsec tunnel.
      * 
      */
@@ -143,6 +176,12 @@ public class MagicWanIpsecTunnel extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createdOn() {
         return this.createdOn;
+    }
+    @Export(name="customRemoteIdentities", refs={MagicWanIpsecTunnelCustomRemoteIdentities.class}, tree="[0]")
+    private Output</* @Nullable */ MagicWanIpsecTunnelCustomRemoteIdentities> customRemoteIdentities;
+
+    public Output<Optional<MagicWanIpsecTunnelCustomRemoteIdentities>> customRemoteIdentities() {
+        return Codegen.optional(this.customRemoteIdentities);
     }
     /**
      * The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.

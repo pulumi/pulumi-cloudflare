@@ -62,7 +62,7 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.AccountMemberPolicy>> Policies { get; private set; } = null!;
 
         /// <summary>
-        /// Array of roles associated with this member.
+        /// Set of roles associated with this member.
         /// </summary>
         [Output("roles")]
         public Output<ImmutableArray<string>> Roles { get; private set; } = null!;
@@ -153,7 +153,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _roles;
 
         /// <summary>
-        /// Array of roles associated with this member.
+        /// Set of roles associated with this member.
         /// </summary>
         public InputList<string> Roles
         {
@@ -203,7 +203,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _roles;
 
         /// <summary>
-        /// Array of roles associated with this member.
+        /// Set of roles associated with this member.
         /// </summary>
         public InputList<string> Roles
         {
