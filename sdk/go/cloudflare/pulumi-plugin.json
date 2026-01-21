@@ -1,5 +1,5 @@
 {
   "resource": true,
   "name": "cloudflare",
-  "version": "6.0.0-alpha.0+dev"
+  "version": "6.13.0"
 }
