@@ -71,7 +71,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// ~&gt; This resource does not currently support `pulumi import`.
+    /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/r2BucketLifecycle:R2BucketLifecycle")]
     public partial class R2BucketLifecycle : global::Pulumi.CustomResource

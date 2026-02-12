@@ -63,7 +63,7 @@ import (
 //
 // ## Import
 //
-// ~> This resource does not currently support `pulumi import`.
+// > This resource does not currently support `pulumi import`.
 type AccountDnsSettings struct {
 	pulumi.CustomResourceState
 

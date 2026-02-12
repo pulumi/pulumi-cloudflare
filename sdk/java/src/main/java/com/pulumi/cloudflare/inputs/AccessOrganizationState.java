@@ -85,9 +85,17 @@ public final class AccessOrganizationState extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.customPages);
     }
 
+    /**
+     * Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
+     * 
+     */
     @Import(name="isUiReadOnly")
     private @Nullable Output<Boolean> isUiReadOnly;
 
+    /**
+     * @return Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
+     * 
+     */
     public Optional<Output<Boolean>> isUiReadOnly() {
         return Optional.ofNullable(this.isUiReadOnly);
     }
@@ -318,11 +326,23 @@ public final class AccessOrganizationState extends com.pulumi.resources.Resource
             return customPages(Output.of(customPages));
         }
 
+        /**
+         * @param isUiReadOnly Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isUiReadOnly(@Nullable Output<Boolean> isUiReadOnly) {
             $.isUiReadOnly = isUiReadOnly;
             return this;
         }
 
+        /**
+         * @param isUiReadOnly Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isUiReadOnly(Boolean isUiReadOnly) {
             return isUiReadOnly(Output.of(isUiReadOnly));
         }

@@ -260,9 +260,17 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
+    /**
+     * Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+     * 
+     */
     @Export(name="devicePosture", refs={String.class}, tree="[0]")
     private Output<String> devicePosture;
 
+    /**
+     * @return Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+     * 
+     */
     public Output<String> devicePosture() {
         return this.devicePosture;
     }
@@ -308,9 +316,17 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> filters() {
         return Codegen.optional(this.filters);
     }
+    /**
+     * Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+     * 
+     */
     @Export(name="identity", refs={String.class}, tree="[0]")
     private Output<String> identity;
 
+    /**
+     * @return Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+     * 
+     */
     public Output<String> identity() {
         return this.identity;
     }
@@ -328,9 +344,17 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to Order of enforcement to manage precedence via Terraform.
+     * 
+     */
     @Export(name="precedence", refs={Integer.class}, tree="[0]")
     private Output<Integer> precedence;
 
+    /**
+     * @return Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to Order of enforcement to manage precedence via Terraform.
+     * 
+     */
     public Output<Integer> precedence() {
         return this.precedence;
     }
@@ -348,9 +372,17 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
     public Output<Boolean> readOnly() {
         return this.readOnly;
     }
+    /**
+     * Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
+     * 
+     */
     @Export(name="ruleSettings", refs={TeamsRuleRuleSettings.class}, tree="[0]")
     private Output<TeamsRuleRuleSettings> ruleSettings;
 
+    /**
+     * @return Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
+     * 
+     */
     public Output<TeamsRuleRuleSettings> ruleSettings() {
         return this.ruleSettings;
     }
@@ -396,9 +428,17 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
     public Output<String> sourceAccount() {
         return this.sourceAccount;
     }
+    /**
+     * Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+     * 
+     */
     @Export(name="traffic", refs={String.class}, tree="[0]")
     private Output<String> traffic;
 
+    /**
+     * @return Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+     * 
+     */
     public Output<String> traffic() {
         return this.traffic;
     }

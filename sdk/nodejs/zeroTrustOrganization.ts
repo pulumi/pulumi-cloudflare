@@ -40,7 +40,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * ~> This resource does not currently support `pulumi import`.
+ * > This resource does not currently support `pulumi import`.
  */
 export class ZeroTrustOrganization extends pulumi.CustomResource {
     /**
@@ -87,6 +87,9 @@ export class ZeroTrustOrganization extends pulumi.CustomResource {
      */
     declare public readonly autoRedirectToIdentity: pulumi.Output<boolean>;
     declare public readonly customPages: pulumi.Output<outputs.ZeroTrustOrganizationCustomPages | undefined>;
+    /**
+     * Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
+     */
     declare public readonly isUiReadOnly: pulumi.Output<boolean>;
     declare public readonly loginDesign: pulumi.Output<outputs.ZeroTrustOrganizationLoginDesign | undefined>;
     /**
@@ -184,6 +187,9 @@ export interface ZeroTrustOrganizationState {
      */
     autoRedirectToIdentity?: pulumi.Input<boolean>;
     customPages?: pulumi.Input<inputs.ZeroTrustOrganizationCustomPages>;
+    /**
+     * Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
+     */
     isUiReadOnly?: pulumi.Input<boolean>;
     loginDesign?: pulumi.Input<inputs.ZeroTrustOrganizationLoginDesign>;
     /**
@@ -233,6 +239,9 @@ export interface ZeroTrustOrganizationArgs {
      */
     autoRedirectToIdentity?: pulumi.Input<boolean>;
     customPages?: pulumi.Input<inputs.ZeroTrustOrganizationCustomPages>;
+    /**
+     * Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
+     */
     isUiReadOnly?: pulumi.Input<boolean>;
     loginDesign?: pulumi.Input<inputs.ZeroTrustOrganizationLoginDesign>;
     /**

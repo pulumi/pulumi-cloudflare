@@ -45,7 +45,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// ~&gt; This resource does not currently support `pulumi import`.
+    /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/r2BucketSippy:R2BucketSippy")]
     public partial class R2BucketSippy : global::Pulumi.CustomResource

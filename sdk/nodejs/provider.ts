@@ -45,6 +45,9 @@ export class Provider extends pulumi.ProviderResource {
      * A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment variable. Required when using `apiKey`. Conflicts with `apiToken`.
      */
     declare public readonly email: pulumi.Output<string | undefined>;
+    /**
+     * A value to append to the HTTP User Agent for all API calls. This value is not something most users need to modify however, if you are using a non-standard provider or operator configuration, this is recommended to assist in uniquely identifying your traffic. **Setting this value will remove the Terraform version from the HTTP User Agent string and may have unintended consequences**. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX` environment variable.
+     */
     declare public readonly userAgentOperatorSuffix: pulumi.Output<string | undefined>;
 
     /**
@@ -105,6 +108,9 @@ export interface ProviderArgs {
      * A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment variable. Required when using `apiKey`. Conflicts with `apiToken`.
      */
     email?: pulumi.Input<string>;
+    /**
+     * A value to append to the HTTP User Agent for all API calls. This value is not something most users need to modify however, if you are using a non-standard provider or operator configuration, this is recommended to assist in uniquely identifying your traffic. **Setting this value will remove the Terraform version from the HTTP User Agent string and may have unintended consequences**. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX` environment variable.
+     */
     userAgentOperatorSuffix?: pulumi.Input<string>;
 }
 

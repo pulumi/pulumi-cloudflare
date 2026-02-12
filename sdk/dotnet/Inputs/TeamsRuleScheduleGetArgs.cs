@@ -12,18 +12,33 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class TeamsRuleScheduleGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specify the time intervals when the rule is active on Fridays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Fridays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+        /// </summary>
         [Input("fri")]
         public Input<string>? Fri { get; set; }
 
+        /// <summary>
+        /// Specify the time intervals when the rule is active on Mondays, in the increasing order from 00:00-24:00(capped at maximum of 6 time splits). If this parameter omitted, the rule is deactivated on Mondays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+        /// </summary>
         [Input("mon")]
         public Input<string>? Mon { get; set; }
 
+        /// <summary>
+        /// Specify the time intervals when the rule is active on Saturdays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Saturdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+        /// </summary>
         [Input("sat")]
         public Input<string>? Sat { get; set; }
 
+        /// <summary>
+        /// Specify the time intervals when the rule is active on Sundays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Sundays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+        /// </summary>
         [Input("sun")]
         public Input<string>? Sun { get; set; }
 
+        /// <summary>
+        /// Specify the time intervals when the rule is active on Thursdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Thursdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+        /// </summary>
         [Input("thu")]
         public Input<string>? Thu { get; set; }
 
@@ -33,9 +48,15 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("timeZone")]
         public Input<string>? TimeZone { get; set; }
 
+        /// <summary>
+        /// Specify the time intervals when the rule is active on Tuesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Tuesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+        /// </summary>
         [Input("tue")]
         public Input<string>? Tue { get; set; }
 
+        /// <summary>
+        /// Specify the time intervals when the rule is active on Wednesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Wednesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+        /// </summary>
         [Input("wed")]
         public Input<string>? Wed { get; set; }
 

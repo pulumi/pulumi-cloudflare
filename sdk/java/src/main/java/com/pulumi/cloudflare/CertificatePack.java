@@ -76,7 +76,6 @@ import javax.annotation.Nullable;
  * ```
  * 
  * While supported, importing isn&#39;t recommended and it is advised to replace the
- * 
  * certificate entirely instead.
  * 
  */

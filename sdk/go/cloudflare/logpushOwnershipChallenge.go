@@ -41,7 +41,7 @@ import (
 //
 // ## Import
 //
-// ~> This resource does not currently support `pulumi import`.
+// > This resource does not currently support `pulumi import`.
 type LogpushOwnershipChallenge struct {
 	pulumi.CustomResourceState
 

@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ~&gt; This resource does not currently support `pulumi import`.
+ * &gt; This resource does not currently support `pulumi import`.
  * 
  * @deprecated
  * cloudflare.index/riskbehavior.RiskBehavior has been deprecated in favor of cloudflare.index/zerotrustriskbehavior.ZeroTrustRiskBehavior

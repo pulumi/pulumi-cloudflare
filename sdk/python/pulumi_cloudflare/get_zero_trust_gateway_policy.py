@@ -136,6 +136,9 @@ class GetZeroTrustGatewayPolicyResult:
     @_builtins.property
     @pulumi.getter(name="devicePosture")
     def device_posture(self) -> _builtins.str:
+        """
+        Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+        """
         return pulumi.get(self, "device_posture")
 
     @_builtins.property
@@ -173,6 +176,9 @@ class GetZeroTrustGatewayPolicyResult:
     @_builtins.property
     @pulumi.getter
     def identity(self) -> _builtins.str:
+        """
+        Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+        """
         return pulumi.get(self, "identity")
 
     @_builtins.property
@@ -186,6 +192,9 @@ class GetZeroTrustGatewayPolicyResult:
     @_builtins.property
     @pulumi.getter
     def precedence(self) -> _builtins.int:
+        """
+        Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to Order of enforcement to manage precedence via Terraform.
+        """
         return pulumi.get(self, "precedence")
 
     @_builtins.property
@@ -207,6 +216,9 @@ class GetZeroTrustGatewayPolicyResult:
     @_builtins.property
     @pulumi.getter(name="ruleSettings")
     def rule_settings(self) -> 'outputs.GetZeroTrustGatewayPolicyRuleSettingsResult':
+        """
+        Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
+        """
         return pulumi.get(self, "rule_settings")
 
     @_builtins.property
@@ -236,6 +248,9 @@ class GetZeroTrustGatewayPolicyResult:
     @_builtins.property
     @pulumi.getter
     def traffic(self) -> _builtins.str:
+        """
+        Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+        """
         return pulumi.get(self, "traffic")
 
     @_builtins.property

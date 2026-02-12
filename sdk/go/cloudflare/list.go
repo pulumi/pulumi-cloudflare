@@ -12,7 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
+// > The `List` resource supports defining list items in line with the
+//
+//	`items` attribute. The provider also has a `ListItem` resource for
+//	managing items as independent resources. Using both in line `items` definitions
+//	_and_ `getListItems` on the same list is not supported and will cause
+//	Terraform into an irreconcilable state.
 //
 // ## Import
 //

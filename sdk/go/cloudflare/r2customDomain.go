@@ -48,7 +48,7 @@ import (
 //
 // ## Import
 //
-// ~> This resource does not currently support `pulumi import`.
+// > This resource does not currently support `pulumi import`.
 type R2CustomDomain struct {
 	pulumi.CustomResourceState
 

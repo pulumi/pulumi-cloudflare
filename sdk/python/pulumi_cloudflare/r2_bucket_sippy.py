@@ -246,7 +246,7 @@ class R2BucketSippy(pulumi.CustomResource):
 
         ## Import
 
-        ~> This resource does not currently support `pulumi import`.
+        > This resource does not currently support `pulumi import`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -288,7 +288,7 @@ class R2BucketSippy(pulumi.CustomResource):
 
         ## Import
 
-        ~> This resource does not currently support `pulumi import`.
+        > This resource does not currently support `pulumi import`.
 
         :param str resource_name: The name of the resource.
         :param R2BucketSippyArgs args: The arguments to use to populate this resource's properties.

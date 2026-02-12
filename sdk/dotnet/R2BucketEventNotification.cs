@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// ~&gt; This resource does not currently support `pulumi import`.
+    /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/r2BucketEventNotification:R2BucketEventNotification")]
     public partial class R2BucketEventNotification : global::Pulumi.CustomResource

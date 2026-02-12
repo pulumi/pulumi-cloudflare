@@ -67,6 +67,9 @@ export interface GetZeroTrustOrganizationResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
+     */
     readonly isUiReadOnly: boolean;
     readonly loginDesign: outputs.GetZeroTrustOrganizationLoginDesign;
     /**

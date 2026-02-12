@@ -41,6 +41,9 @@ namespace Pulumi.Cloudflare
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether to activate the certificate on Cloudflare's edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `BindingStatus` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic
+        /// </summary>
         [Output("activate")]
         public Output<bool?> Activate { get; private set; } = null!;
 
@@ -155,6 +158,9 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
+        /// <summary>
+        /// Whether to activate the certificate on Cloudflare's edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `BindingStatus` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic
+        /// </summary>
         [Input("activate")]
         public Input<bool>? Activate { get; set; }
 
@@ -175,6 +181,9 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        /// <summary>
+        /// Whether to activate the certificate on Cloudflare's edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `BindingStatus` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic
+        /// </summary>
         [Input("activate")]
         public Input<bool>? Activate { get; set; }
 

@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * ~> This resource does not currently support `pulumi import`.
+ * > This resource does not currently support `pulumi import`.
  *
  * @deprecated cloudflare.index/riskbehavior.RiskBehavior has been deprecated in favor of cloudflare.index/zerotrustriskbehavior.ZeroTrustRiskBehavior
  */

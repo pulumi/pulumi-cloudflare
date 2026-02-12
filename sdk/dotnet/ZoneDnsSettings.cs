@@ -55,7 +55,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// ~&gt; This resource does not currently support `pulumi import`.
+    /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zoneDnsSettings:ZoneDnsSettings")]
     public partial class ZoneDnsSettings : global::Pulumi.CustomResource

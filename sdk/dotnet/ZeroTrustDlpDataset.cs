@@ -35,7 +35,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// ~&gt; This resource does not currently support `pulumi import`.
+    /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zeroTrustDlpDataset:ZeroTrustDlpDataset")]
     public partial class ZeroTrustDlpDataset : global::Pulumi.CustomResource

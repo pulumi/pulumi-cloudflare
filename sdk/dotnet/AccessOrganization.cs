@@ -52,7 +52,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// ~&gt; This resource does not currently support `pulumi import`.
+    /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
     [Obsolete(@"cloudflare.index/accessorganization.AccessOrganization has been deprecated in favor of cloudflare.index/zerotrustorganization.ZeroTrustOrganization")]
     [CloudflareResourceType("cloudflare:index/accessOrganization:AccessOrganization")]
@@ -85,6 +85,9 @@ namespace Pulumi.Cloudflare
         [Output("customPages")]
         public Output<Outputs.AccessOrganizationCustomPages?> CustomPages { get; private set; } = null!;
 
+        /// <summary>
+        /// Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
+        /// </summary>
         [Output("isUiReadOnly")]
         public Output<bool> IsUiReadOnly { get; private set; } = null!;
 
@@ -204,6 +207,9 @@ namespace Pulumi.Cloudflare
         [Input("customPages")]
         public Input<Inputs.AccessOrganizationCustomPagesArgs>? CustomPages { get; set; }
 
+        /// <summary>
+        /// Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
+        /// </summary>
         [Input("isUiReadOnly")]
         public Input<bool>? IsUiReadOnly { get; set; }
 
@@ -281,6 +287,9 @@ namespace Pulumi.Cloudflare
         [Input("customPages")]
         public Input<Inputs.AccessOrganizationCustomPagesGetArgs>? CustomPages { get; set; }
 
+        /// <summary>
+        /// Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
+        /// </summary>
         [Input("isUiReadOnly")]
         public Input<bool>? IsUiReadOnly { get; set; }
 

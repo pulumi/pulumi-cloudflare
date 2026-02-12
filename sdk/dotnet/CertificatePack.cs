@@ -52,7 +52,6 @@ namespace Pulumi.Cloudflare
     /// ```
     /// 
     /// While supported, importing isn't recommended and it is advised to replace the
-    /// 
     /// certificate entirely instead.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/certificatePack:CertificatePack")]

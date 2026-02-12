@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ~&gt; This resource does not currently support `pulumi import`.
+ * &gt; This resource does not currently support `pulumi import`.
  * 
  */
 @ResourceType(type="cloudflare:index/zeroTrustOrganization:ZeroTrustOrganization")
@@ -144,9 +144,17 @@ public class ZeroTrustOrganization extends com.pulumi.resources.CustomResource {
     public Output<Optional<ZeroTrustOrganizationCustomPages>> customPages() {
         return Codegen.optional(this.customPages);
     }
+    /**
+     * Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
+     * 
+     */
     @Export(name="isUiReadOnly", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isUiReadOnly;
 
+    /**
+     * @return Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
+     * 
+     */
     public Output<Boolean> isUiReadOnly() {
         return this.isUiReadOnly;
     }

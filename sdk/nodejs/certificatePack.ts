@@ -41,7 +41,6 @@ import * as utilities from "./utilities";
  * ```
  *
  * While supported, importing isn't recommended and it is advised to replace the
- *
  * certificate entirely instead.
  */
 export class CertificatePack extends pulumi.CustomResource {

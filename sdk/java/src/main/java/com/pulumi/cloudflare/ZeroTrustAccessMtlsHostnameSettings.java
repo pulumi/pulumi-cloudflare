@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ~&gt; This resource does not currently support `pulumi import`.
+ * &gt; This resource does not currently support `pulumi import`.
  * 
  */
 @ResourceType(type="cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings")

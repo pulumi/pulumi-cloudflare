@@ -147,6 +147,9 @@ namespace Pulumi.Cloudflare
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
+        /// </summary>
         public readonly bool IsUiReadOnly;
         public readonly Outputs.GetZeroTrustOrganizationLoginDesignResult LoginDesign;
         /// <summary>

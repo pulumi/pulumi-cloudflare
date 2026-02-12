@@ -57,7 +57,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// ~&gt; This resource does not currently support `pulumi import`.
+    /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/accountDnsSettings:AccountDnsSettings")]
     public partial class AccountDnsSettings : global::Pulumi.CustomResource

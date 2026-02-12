@@ -188,6 +188,9 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
      * Specify the rule description.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
+    /**
+     * Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+     */
     declare public readonly devicePosture: pulumi.Output<string>;
     /**
      * Specify whether the rule is enabled.
@@ -201,16 +204,25 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
      * Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
      */
     declare public readonly filters: pulumi.Output<string[] | undefined>;
+    /**
+     * Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+     */
     declare public readonly identity: pulumi.Output<string>;
     /**
      * Specify the rule name.
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to Order of enforcement to manage precedence via Terraform.
+     */
     declare public readonly precedence: pulumi.Output<number>;
     /**
      * Indicate that this rule is shared via the Orgs API and read only.
      */
     declare public /*out*/ readonly readOnly: pulumi.Output<boolean>;
+    /**
+     * Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
+     */
     declare public readonly ruleSettings: pulumi.Output<outputs.ZeroTrustGatewayPolicyRuleSettings>;
     /**
      * Defines the schedule for activating DNS policies. Settable only for `dns` and `dnsResolver` rules.
@@ -224,6 +236,9 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
      * Provide the account tag of the account that created the rule.
      */
     declare public /*out*/ readonly sourceAccount: pulumi.Output<string>;
+    /**
+     * Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+     */
     declare public readonly traffic: pulumi.Output<string>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
@@ -328,6 +343,9 @@ export interface ZeroTrustGatewayPolicyState {
      * Specify the rule description.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+     */
     devicePosture?: pulumi.Input<string>;
     /**
      * Specify whether the rule is enabled.
@@ -341,16 +359,25 @@ export interface ZeroTrustGatewayPolicyState {
      * Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
      */
     filters?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+     */
     identity?: pulumi.Input<string>;
     /**
      * Specify the rule name.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to Order of enforcement to manage precedence via Terraform.
+     */
     precedence?: pulumi.Input<number>;
     /**
      * Indicate that this rule is shared via the Orgs API and read only.
      */
     readOnly?: pulumi.Input<boolean>;
+    /**
+     * Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
+     */
     ruleSettings?: pulumi.Input<inputs.ZeroTrustGatewayPolicyRuleSettings>;
     /**
      * Defines the schedule for activating DNS policies. Settable only for `dns` and `dnsResolver` rules.
@@ -364,6 +391,9 @@ export interface ZeroTrustGatewayPolicyState {
      * Provide the account tag of the account that created the rule.
      */
     sourceAccount?: pulumi.Input<string>;
+    /**
+     * Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+     */
     traffic?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<string>;
     /**
@@ -390,6 +420,9 @@ export interface ZeroTrustGatewayPolicyArgs {
      * Specify the rule description.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+     */
     devicePosture?: pulumi.Input<string>;
     /**
      * Specify whether the rule is enabled.
@@ -403,16 +436,28 @@ export interface ZeroTrustGatewayPolicyArgs {
      * Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
      */
     filters?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+     */
     identity?: pulumi.Input<string>;
     /**
      * Specify the rule name.
      */
     name: pulumi.Input<string>;
+    /**
+     * Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to Order of enforcement to manage precedence via Terraform.
+     */
     precedence?: pulumi.Input<number>;
+    /**
+     * Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
+     */
     ruleSettings?: pulumi.Input<inputs.ZeroTrustGatewayPolicyRuleSettings>;
     /**
      * Defines the schedule for activating DNS policies. Settable only for `dns` and `dnsResolver` rules.
      */
     schedule?: pulumi.Input<inputs.ZeroTrustGatewayPolicySchedule>;
+    /**
+     * Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+     */
     traffic?: pulumi.Input<string>;
 }

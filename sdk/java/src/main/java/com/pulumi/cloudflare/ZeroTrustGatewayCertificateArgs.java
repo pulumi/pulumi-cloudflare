@@ -25,9 +25,17 @@ public final class ZeroTrustGatewayCertificateArgs extends com.pulumi.resources.
         return this.accountId;
     }
 
+    /**
+     * Whether to activate the certificate on Cloudflare&#39;s edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `bindingStatus` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic
+     * 
+     */
     @Import(name="activate")
     private @Nullable Output<Boolean> activate;
 
+    /**
+     * @return Whether to activate the certificate on Cloudflare&#39;s edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `bindingStatus` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic
+     * 
+     */
     public Optional<Output<Boolean>> activate() {
         return Optional.ofNullable(this.activate);
     }
@@ -82,11 +90,23 @@ public final class ZeroTrustGatewayCertificateArgs extends com.pulumi.resources.
             return accountId(Output.of(accountId));
         }
 
+        /**
+         * @param activate Whether to activate the certificate on Cloudflare&#39;s edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `bindingStatus` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic
+         * 
+         * @return builder
+         * 
+         */
         public Builder activate(@Nullable Output<Boolean> activate) {
             $.activate = activate;
             return this;
         }
 
+        /**
+         * @param activate Whether to activate the certificate on Cloudflare&#39;s edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `bindingStatus` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic
+         * 
+         * @return builder
+         * 
+         */
         public Builder activate(Boolean activate) {
             return activate(Output.of(activate));
         }

@@ -52,6 +52,9 @@ export class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
     }
 
     declare public readonly accountId: pulumi.Output<string>;
+    /**
+     * Whether to activate the certificate on Cloudflare's edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `bindingStatus` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic
+     */
     declare public readonly activate: pulumi.Output<boolean | undefined>;
     /**
      * Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.
@@ -149,6 +152,9 @@ export class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
  */
 export interface ZeroTrustGatewayCertificateState {
     accountId?: pulumi.Input<string>;
+    /**
+     * Whether to activate the certificate on Cloudflare's edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `bindingStatus` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic
+     */
     activate?: pulumi.Input<boolean>;
     /**
      * Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.
@@ -195,6 +201,9 @@ export interface ZeroTrustGatewayCertificateState {
  */
 export interface ZeroTrustGatewayCertificateArgs {
     accountId: pulumi.Input<string>;
+    /**
+     * Whether to activate the certificate on Cloudflare's edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `bindingStatus` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic
+     */
     activate?: pulumi.Input<boolean>;
     /**
      * Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.

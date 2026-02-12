@@ -66,9 +66,17 @@ public class ZeroTrustGatewayCertificate extends com.pulumi.resources.CustomReso
     public Output<String> accountId() {
         return this.accountId;
     }
+    /**
+     * Whether to activate the certificate on Cloudflare&#39;s edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `bindingStatus` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic
+     * 
+     */
     @Export(name="activate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> activate;
 
+    /**
+     * @return Whether to activate the certificate on Cloudflare&#39;s edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `bindingStatus` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic
+     * 
+     */
     public Output<Optional<Boolean>> activate() {
         return Codegen.optional(this.activate);
     }
