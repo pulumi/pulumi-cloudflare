@@ -15,37 +15,77 @@ public final class ZeroTrustGatewayPolicyScheduleArgs extends com.pulumi.resourc
 
     public static final ZeroTrustGatewayPolicyScheduleArgs Empty = new ZeroTrustGatewayPolicyScheduleArgs();
 
+    /**
+     * Specify the time intervals when the rule is active on Fridays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Fridays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     @Import(name="fri")
     private @Nullable Output<String> fri;
 
+    /**
+     * @return Specify the time intervals when the rule is active on Fridays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Fridays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     public Optional<Output<String>> fri() {
         return Optional.ofNullable(this.fri);
     }
 
+    /**
+     * Specify the time intervals when the rule is active on Mondays, in the increasing order from 00:00-24:00(capped at maximum of 6 time splits). If this parameter omitted, the rule is deactivated on Mondays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     @Import(name="mon")
     private @Nullable Output<String> mon;
 
+    /**
+     * @return Specify the time intervals when the rule is active on Mondays, in the increasing order from 00:00-24:00(capped at maximum of 6 time splits). If this parameter omitted, the rule is deactivated on Mondays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     public Optional<Output<String>> mon() {
         return Optional.ofNullable(this.mon);
     }
 
+    /**
+     * Specify the time intervals when the rule is active on Saturdays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Saturdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     @Import(name="sat")
     private @Nullable Output<String> sat;
 
+    /**
+     * @return Specify the time intervals when the rule is active on Saturdays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Saturdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     public Optional<Output<String>> sat() {
         return Optional.ofNullable(this.sat);
     }
 
+    /**
+     * Specify the time intervals when the rule is active on Sundays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Sundays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     @Import(name="sun")
     private @Nullable Output<String> sun;
 
+    /**
+     * @return Specify the time intervals when the rule is active on Sundays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Sundays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     public Optional<Output<String>> sun() {
         return Optional.ofNullable(this.sun);
     }
 
+    /**
+     * Specify the time intervals when the rule is active on Thursdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Thursdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     @Import(name="thu")
     private @Nullable Output<String> thu;
 
+    /**
+     * @return Specify the time intervals when the rule is active on Thursdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Thursdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     public Optional<Output<String>> thu() {
         return Optional.ofNullable(this.thu);
     }
@@ -65,16 +105,32 @@ public final class ZeroTrustGatewayPolicyScheduleArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.timeZone);
     }
 
+    /**
+     * Specify the time intervals when the rule is active on Tuesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Tuesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     @Import(name="tue")
     private @Nullable Output<String> tue;
 
+    /**
+     * @return Specify the time intervals when the rule is active on Tuesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Tuesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     public Optional<Output<String>> tue() {
         return Optional.ofNullable(this.tue);
     }
 
+    /**
+     * Specify the time intervals when the rule is active on Wednesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Wednesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     @Import(name="wed")
     private @Nullable Output<String> wed;
 
+    /**
+     * @return Specify the time intervals when the rule is active on Wednesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Wednesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     public Optional<Output<String>> wed() {
         return Optional.ofNullable(this.wed);
     }
@@ -110,47 +166,107 @@ public final class ZeroTrustGatewayPolicyScheduleArgs extends com.pulumi.resourc
             $ = new ZeroTrustGatewayPolicyScheduleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param fri Specify the time intervals when the rule is active on Fridays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Fridays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fri(@Nullable Output<String> fri) {
             $.fri = fri;
             return this;
         }
 
+        /**
+         * @param fri Specify the time intervals when the rule is active on Fridays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Fridays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fri(String fri) {
             return fri(Output.of(fri));
         }
 
+        /**
+         * @param mon Specify the time intervals when the rule is active on Mondays, in the increasing order from 00:00-24:00(capped at maximum of 6 time splits). If this parameter omitted, the rule is deactivated on Mondays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mon(@Nullable Output<String> mon) {
             $.mon = mon;
             return this;
         }
 
+        /**
+         * @param mon Specify the time intervals when the rule is active on Mondays, in the increasing order from 00:00-24:00(capped at maximum of 6 time splits). If this parameter omitted, the rule is deactivated on Mondays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mon(String mon) {
             return mon(Output.of(mon));
         }
 
+        /**
+         * @param sat Specify the time intervals when the rule is active on Saturdays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Saturdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sat(@Nullable Output<String> sat) {
             $.sat = sat;
             return this;
         }
 
+        /**
+         * @param sat Specify the time intervals when the rule is active on Saturdays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Saturdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sat(String sat) {
             return sat(Output.of(sat));
         }
 
+        /**
+         * @param sun Specify the time intervals when the rule is active on Sundays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Sundays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sun(@Nullable Output<String> sun) {
             $.sun = sun;
             return this;
         }
 
+        /**
+         * @param sun Specify the time intervals when the rule is active on Sundays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Sundays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sun(String sun) {
             return sun(Output.of(sun));
         }
 
+        /**
+         * @param thu Specify the time intervals when the rule is active on Thursdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Thursdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder thu(@Nullable Output<String> thu) {
             $.thu = thu;
             return this;
         }
 
+        /**
+         * @param thu Specify the time intervals when the rule is active on Thursdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Thursdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder thu(String thu) {
             return thu(Output.of(thu));
         }
@@ -176,20 +292,44 @@ public final class ZeroTrustGatewayPolicyScheduleArgs extends com.pulumi.resourc
             return timeZone(Output.of(timeZone));
         }
 
+        /**
+         * @param tue Specify the time intervals when the rule is active on Tuesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Tuesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tue(@Nullable Output<String> tue) {
             $.tue = tue;
             return this;
         }
 
+        /**
+         * @param tue Specify the time intervals when the rule is active on Tuesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Tuesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tue(String tue) {
             return tue(Output.of(tue));
         }
 
+        /**
+         * @param wed Specify the time intervals when the rule is active on Wednesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Wednesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder wed(@Nullable Output<String> wed) {
             $.wed = wed;
             return this;
         }
 
+        /**
+         * @param wed Specify the time intervals when the rule is active on Wednesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Wednesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder wed(String wed) {
             return wed(Output.of(wed));
         }

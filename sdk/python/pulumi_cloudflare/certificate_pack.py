@@ -399,7 +399,6 @@ class CertificatePack(pulumi.CustomResource):
         ```
 
         While supported, importing isn't recommended and it is advised to replace the
-
         certificate entirely instead.
 
         :param str resource_name: The name of the resource.
@@ -456,7 +455,6 @@ class CertificatePack(pulumi.CustomResource):
         ```
 
         While supported, importing isn't recommended and it is advised to replace the
-
         certificate entirely instead.
 
         :param str resource_name: The name of the resource.

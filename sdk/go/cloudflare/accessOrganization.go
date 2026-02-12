@@ -59,7 +59,7 @@ import (
 //
 // ## Import
 //
-// ~> This resource does not currently support `pulumi import`.
+// > This resource does not currently support `pulumi import`.
 //
 // Deprecated: cloudflare.index/accessorganization.AccessOrganization has been deprecated in favor of cloudflare.index/zerotrustorganization.ZeroTrustOrganization
 type AccessOrganization struct {
@@ -74,8 +74,9 @@ type AccessOrganization struct {
 	// When set to `true`, users skip the identity provider selection step during login.
 	AutoRedirectToIdentity pulumi.BoolOutput                      `pulumi:"autoRedirectToIdentity"`
 	CustomPages            AccessOrganizationCustomPagesPtrOutput `pulumi:"customPages"`
-	IsUiReadOnly           pulumi.BoolOutput                      `pulumi:"isUiReadOnly"`
-	LoginDesign            AccessOrganizationLoginDesignPtrOutput `pulumi:"loginDesign"`
+	// Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
+	IsUiReadOnly pulumi.BoolOutput                      `pulumi:"isUiReadOnly"`
+	LoginDesign  AccessOrganizationLoginDesignPtrOutput `pulumi:"loginDesign"`
 	// The name of your Zero Trust organization.
 	Name pulumi.StringPtrOutput `pulumi:"name"`
 	// The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
@@ -135,8 +136,9 @@ type accessOrganizationState struct {
 	// When set to `true`, users skip the identity provider selection step during login.
 	AutoRedirectToIdentity *bool                          `pulumi:"autoRedirectToIdentity"`
 	CustomPages            *AccessOrganizationCustomPages `pulumi:"customPages"`
-	IsUiReadOnly           *bool                          `pulumi:"isUiReadOnly"`
-	LoginDesign            *AccessOrganizationLoginDesign `pulumi:"loginDesign"`
+	// Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
+	IsUiReadOnly *bool                          `pulumi:"isUiReadOnly"`
+	LoginDesign  *AccessOrganizationLoginDesign `pulumi:"loginDesign"`
 	// The name of your Zero Trust organization.
 	Name *string `pulumi:"name"`
 	// The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
@@ -161,8 +163,9 @@ type AccessOrganizationState struct {
 	// When set to `true`, users skip the identity provider selection step during login.
 	AutoRedirectToIdentity pulumi.BoolPtrInput
 	CustomPages            AccessOrganizationCustomPagesPtrInput
-	IsUiReadOnly           pulumi.BoolPtrInput
-	LoginDesign            AccessOrganizationLoginDesignPtrInput
+	// Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
+	IsUiReadOnly pulumi.BoolPtrInput
+	LoginDesign  AccessOrganizationLoginDesignPtrInput
 	// The name of your Zero Trust organization.
 	Name pulumi.StringPtrInput
 	// The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
@@ -191,8 +194,9 @@ type accessOrganizationArgs struct {
 	// When set to `true`, users skip the identity provider selection step during login.
 	AutoRedirectToIdentity *bool                          `pulumi:"autoRedirectToIdentity"`
 	CustomPages            *AccessOrganizationCustomPages `pulumi:"customPages"`
-	IsUiReadOnly           *bool                          `pulumi:"isUiReadOnly"`
-	LoginDesign            *AccessOrganizationLoginDesign `pulumi:"loginDesign"`
+	// Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
+	IsUiReadOnly *bool                          `pulumi:"isUiReadOnly"`
+	LoginDesign  *AccessOrganizationLoginDesign `pulumi:"loginDesign"`
 	// The name of your Zero Trust organization.
 	Name *string `pulumi:"name"`
 	// The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
@@ -218,8 +222,9 @@ type AccessOrganizationArgs struct {
 	// When set to `true`, users skip the identity provider selection step during login.
 	AutoRedirectToIdentity pulumi.BoolPtrInput
 	CustomPages            AccessOrganizationCustomPagesPtrInput
-	IsUiReadOnly           pulumi.BoolPtrInput
-	LoginDesign            AccessOrganizationLoginDesignPtrInput
+	// Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
+	IsUiReadOnly pulumi.BoolPtrInput
+	LoginDesign  AccessOrganizationLoginDesignPtrInput
 	// The name of your Zero Trust organization.
 	Name pulumi.StringPtrInput
 	// The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
@@ -345,6 +350,7 @@ func (o AccessOrganizationOutput) CustomPages() AccessOrganizationCustomPagesPtr
 	return o.ApplyT(func(v *AccessOrganization) AccessOrganizationCustomPagesPtrOutput { return v.CustomPages }).(AccessOrganizationCustomPagesPtrOutput)
 }
 
+// Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
 func (o AccessOrganizationOutput) IsUiReadOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AccessOrganization) pulumi.BoolOutput { return v.IsUiReadOnly }).(pulumi.BoolOutput)
 }

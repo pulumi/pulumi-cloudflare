@@ -49,7 +49,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// ~&gt; This resource does not currently support `pulumi import`.
+    /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging")]
     public partial class ZeroTrustGatewayLogging : global::Pulumi.CustomResource

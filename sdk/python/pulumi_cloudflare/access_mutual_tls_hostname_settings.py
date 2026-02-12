@@ -202,7 +202,7 @@ class AccessMutualTlsHostnameSettings(pulumi.CustomResource):
 
         ## Import
 
-        ~> This resource does not currently support `pulumi import`.
+        > This resource does not currently support `pulumi import`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -233,7 +233,7 @@ class AccessMutualTlsHostnameSettings(pulumi.CustomResource):
 
         ## Import
 
-        ~> This resource does not currently support `pulumi import`.
+        > This resource does not currently support `pulumi import`.
 
         :param str resource_name: The name of the resource.
         :param AccessMutualTlsHostnameSettingsArgs args: The arguments to use to populate this resource's properties.

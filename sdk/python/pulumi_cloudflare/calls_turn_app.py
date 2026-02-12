@@ -215,7 +215,7 @@ class CallsTurnApp(pulumi.CustomResource):
 
         ## Import
 
-        ~> This resource does not currently support `pulumi import`.
+        > This resource does not currently support `pulumi import`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -243,7 +243,7 @@ class CallsTurnApp(pulumi.CustomResource):
 
         ## Import
 
-        ~> This resource does not currently support `pulumi import`.
+        > This resource does not currently support `pulumi import`.
 
         :param str resource_name: The name of the resource.
         :param CallsTurnAppArgs args: The arguments to use to populate this resource's properties.

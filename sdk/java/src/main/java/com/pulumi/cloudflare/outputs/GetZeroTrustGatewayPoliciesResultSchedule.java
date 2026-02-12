@@ -10,32 +10,80 @@ import java.util.Objects;
 
 @CustomType
 public final class GetZeroTrustGatewayPoliciesResultSchedule {
+    /**
+     * @return Specify the time intervals when the rule is active on Fridays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Fridays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     private String fri;
+    /**
+     * @return Specify the time intervals when the rule is active on Mondays, in the increasing order from 00:00-24:00(capped at maximum of 6 time splits). If this parameter omitted, the rule is deactivated on Mondays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     private String mon;
+    /**
+     * @return Specify the time intervals when the rule is active on Saturdays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Saturdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     private String sat;
+    /**
+     * @return Specify the time intervals when the rule is active on Sundays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Sundays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     private String sun;
+    /**
+     * @return Specify the time intervals when the rule is active on Thursdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Thursdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     private String thu;
     /**
      * @return Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user&#39;s IP address. Colo time zone is used when the user&#39;s IP address does not resolve to a location.
      * 
      */
     private String timeZone;
+    /**
+     * @return Specify the time intervals when the rule is active on Tuesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Tuesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     private String tue;
+    /**
+     * @return Specify the time intervals when the rule is active on Wednesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Wednesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     private String wed;
 
     private GetZeroTrustGatewayPoliciesResultSchedule() {}
+    /**
+     * @return Specify the time intervals when the rule is active on Fridays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Fridays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     public String fri() {
         return this.fri;
     }
+    /**
+     * @return Specify the time intervals when the rule is active on Mondays, in the increasing order from 00:00-24:00(capped at maximum of 6 time splits). If this parameter omitted, the rule is deactivated on Mondays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     public String mon() {
         return this.mon;
     }
+    /**
+     * @return Specify the time intervals when the rule is active on Saturdays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Saturdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     public String sat() {
         return this.sat;
     }
+    /**
+     * @return Specify the time intervals when the rule is active on Sundays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Sundays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     public String sun() {
         return this.sun;
     }
+    /**
+     * @return Specify the time intervals when the rule is active on Thursdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Thursdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     public String thu() {
         return this.thu;
     }
@@ -46,9 +94,17 @@ public final class GetZeroTrustGatewayPoliciesResultSchedule {
     public String timeZone() {
         return this.timeZone;
     }
+    /**
+     * @return Specify the time intervals when the rule is active on Tuesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Tuesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     public String tue() {
         return this.tue;
     }
+    /**
+     * @return Specify the time intervals when the rule is active on Wednesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Wednesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     public String wed() {
         return this.wed;
     }

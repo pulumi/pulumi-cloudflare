@@ -67,7 +67,8 @@ type LookupZeroTrustOrganizationResult struct {
 	AutoRedirectToIdentity bool                                `pulumi:"autoRedirectToIdentity"`
 	CustomPages            GetZeroTrustOrganizationCustomPages `pulumi:"customPages"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string                              `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
 	IsUiReadOnly bool                                `pulumi:"isUiReadOnly"`
 	LoginDesign  GetZeroTrustOrganizationLoginDesign `pulumi:"loginDesign"`
 	// The name of your Zero Trust organization.
@@ -149,6 +150,7 @@ func (o LookupZeroTrustOrganizationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
 func (o LookupZeroTrustOrganizationResultOutput) IsUiReadOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) bool { return v.IsUiReadOnly }).(pulumi.BoolOutput)
 }

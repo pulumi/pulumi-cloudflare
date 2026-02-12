@@ -119,6 +119,9 @@ class GetZeroTrustOrganizationResult:
     @_builtins.property
     @pulumi.getter(name="isUiReadOnly")
     def is_ui_read_only(self) -> _builtins.bool:
+        """
+        Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
+        """
         return pulumi.get(self, "is_ui_read_only")
 
     @_builtins.property

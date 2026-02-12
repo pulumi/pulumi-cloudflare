@@ -32,7 +32,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// ~&gt; This resource does not currently support `pulumi import`.
+    /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/apiShieldDiscoveryOperation:ApiShieldDiscoveryOperation")]
     public partial class ApiShieldDiscoveryOperation : global::Pulumi.CustomResource

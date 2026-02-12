@@ -187,20 +187,24 @@ type TeamsRule struct {
 	// Indicate the date of deletion, if any.
 	DeletedAt pulumi.StringOutput `pulumi:"deletedAt"`
 	// Specify the rule description.
-	Description   pulumi.StringPtrOutput `pulumi:"description"`
-	DevicePosture pulumi.StringOutput    `pulumi:"devicePosture"`
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+	DevicePosture pulumi.StringOutput `pulumi:"devicePosture"`
 	// Specify whether the rule is enabled.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
 	Expiration TeamsRuleExpirationOutput `pulumi:"expiration"`
 	// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
-	Filters  pulumi.StringArrayOutput `pulumi:"filters"`
-	Identity pulumi.StringOutput      `pulumi:"identity"`
+	Filters pulumi.StringArrayOutput `pulumi:"filters"`
+	// Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+	Identity pulumi.StringOutput `pulumi:"identity"`
 	// Specify the rule name.
-	Name       pulumi.StringOutput `pulumi:"name"`
-	Precedence pulumi.IntOutput    `pulumi:"precedence"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to Order of enforcement to manage precedence via Terraform.
+	Precedence pulumi.IntOutput `pulumi:"precedence"`
 	// Indicate that this rule is shared via the Orgs API and read only.
-	ReadOnly     pulumi.BoolOutput           `pulumi:"readOnly"`
+	ReadOnly pulumi.BoolOutput `pulumi:"readOnly"`
+	// Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
 	RuleSettings TeamsRuleRuleSettingsOutput `pulumi:"ruleSettings"`
 	// Defines the schedule for activating DNS policies. Settable only for `dns` and `dnsResolver` rules.
 	Schedule TeamsRuleScheduleOutput `pulumi:"schedule"`
@@ -208,8 +212,9 @@ type TeamsRule struct {
 	Sharable pulumi.BoolOutput `pulumi:"sharable"`
 	// Provide the account tag of the account that created the rule.
 	SourceAccount pulumi.StringOutput `pulumi:"sourceAccount"`
-	Traffic       pulumi.StringOutput `pulumi:"traffic"`
-	UpdatedAt     pulumi.StringOutput `pulumi:"updatedAt"`
+	// Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+	Traffic   pulumi.StringOutput `pulumi:"traffic"`
+	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 	// Indicate the version number of the rule(read-only).
 	Version pulumi.IntOutput `pulumi:"version"`
 	// Indicate a warning for a misconfigured rule, if any.
@@ -269,20 +274,24 @@ type teamsRuleState struct {
 	// Indicate the date of deletion, if any.
 	DeletedAt *string `pulumi:"deletedAt"`
 	// Specify the rule description.
-	Description   *string `pulumi:"description"`
+	Description *string `pulumi:"description"`
+	// Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
 	DevicePosture *string `pulumi:"devicePosture"`
 	// Specify whether the rule is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
 	Expiration *TeamsRuleExpiration `pulumi:"expiration"`
 	// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
-	Filters  []string `pulumi:"filters"`
-	Identity *string  `pulumi:"identity"`
+	Filters []string `pulumi:"filters"`
+	// Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+	Identity *string `pulumi:"identity"`
 	// Specify the rule name.
-	Name       *string `pulumi:"name"`
-	Precedence *int    `pulumi:"precedence"`
+	Name *string `pulumi:"name"`
+	// Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to Order of enforcement to manage precedence via Terraform.
+	Precedence *int `pulumi:"precedence"`
 	// Indicate that this rule is shared via the Orgs API and read only.
-	ReadOnly     *bool                  `pulumi:"readOnly"`
+	ReadOnly *bool `pulumi:"readOnly"`
+	// Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
 	RuleSettings *TeamsRuleRuleSettings `pulumi:"ruleSettings"`
 	// Defines the schedule for activating DNS policies. Settable only for `dns` and `dnsResolver` rules.
 	Schedule *TeamsRuleSchedule `pulumi:"schedule"`
@@ -290,8 +299,9 @@ type teamsRuleState struct {
 	Sharable *bool `pulumi:"sharable"`
 	// Provide the account tag of the account that created the rule.
 	SourceAccount *string `pulumi:"sourceAccount"`
-	Traffic       *string `pulumi:"traffic"`
-	UpdatedAt     *string `pulumi:"updatedAt"`
+	// Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+	Traffic   *string `pulumi:"traffic"`
+	UpdatedAt *string `pulumi:"updatedAt"`
 	// Indicate the version number of the rule(read-only).
 	Version *int `pulumi:"version"`
 	// Indicate a warning for a misconfigured rule, if any.
@@ -307,20 +317,24 @@ type TeamsRuleState struct {
 	// Indicate the date of deletion, if any.
 	DeletedAt pulumi.StringPtrInput
 	// Specify the rule description.
-	Description   pulumi.StringPtrInput
+	Description pulumi.StringPtrInput
+	// Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
 	DevicePosture pulumi.StringPtrInput
 	// Specify whether the rule is enabled.
 	Enabled pulumi.BoolPtrInput
 	// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
 	Expiration TeamsRuleExpirationPtrInput
 	// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
-	Filters  pulumi.StringArrayInput
+	Filters pulumi.StringArrayInput
+	// Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
 	Identity pulumi.StringPtrInput
 	// Specify the rule name.
-	Name       pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to Order of enforcement to manage precedence via Terraform.
 	Precedence pulumi.IntPtrInput
 	// Indicate that this rule is shared via the Orgs API and read only.
-	ReadOnly     pulumi.BoolPtrInput
+	ReadOnly pulumi.BoolPtrInput
+	// Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
 	RuleSettings TeamsRuleRuleSettingsPtrInput
 	// Defines the schedule for activating DNS policies. Settable only for `dns` and `dnsResolver` rules.
 	Schedule TeamsRuleSchedulePtrInput
@@ -328,8 +342,9 @@ type TeamsRuleState struct {
 	Sharable pulumi.BoolPtrInput
 	// Provide the account tag of the account that created the rule.
 	SourceAccount pulumi.StringPtrInput
-	Traffic       pulumi.StringPtrInput
-	UpdatedAt     pulumi.StringPtrInput
+	// Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+	Traffic   pulumi.StringPtrInput
+	UpdatedAt pulumi.StringPtrInput
 	// Indicate the version number of the rule(read-only).
 	Version pulumi.IntPtrInput
 	// Indicate a warning for a misconfigured rule, if any.
@@ -346,22 +361,27 @@ type teamsRuleArgs struct {
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 	Action string `pulumi:"action"`
 	// Specify the rule description.
-	Description   *string `pulumi:"description"`
+	Description *string `pulumi:"description"`
+	// Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
 	DevicePosture *string `pulumi:"devicePosture"`
 	// Specify whether the rule is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
 	Expiration *TeamsRuleExpiration `pulumi:"expiration"`
 	// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
-	Filters  []string `pulumi:"filters"`
-	Identity *string  `pulumi:"identity"`
+	Filters []string `pulumi:"filters"`
+	// Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+	Identity *string `pulumi:"identity"`
 	// Specify the rule name.
-	Name         string                 `pulumi:"name"`
-	Precedence   *int                   `pulumi:"precedence"`
+	Name string `pulumi:"name"`
+	// Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to Order of enforcement to manage precedence via Terraform.
+	Precedence *int `pulumi:"precedence"`
+	// Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
 	RuleSettings *TeamsRuleRuleSettings `pulumi:"ruleSettings"`
 	// Defines the schedule for activating DNS policies. Settable only for `dns` and `dnsResolver` rules.
 	Schedule *TeamsRuleSchedule `pulumi:"schedule"`
-	Traffic  *string            `pulumi:"traffic"`
+	// Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+	Traffic *string `pulumi:"traffic"`
 }
 
 // The set of arguments for constructing a TeamsRule resource.
@@ -371,22 +391,27 @@ type TeamsRuleArgs struct {
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 	Action pulumi.StringInput
 	// Specify the rule description.
-	Description   pulumi.StringPtrInput
+	Description pulumi.StringPtrInput
+	// Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
 	DevicePosture pulumi.StringPtrInput
 	// Specify whether the rule is enabled.
 	Enabled pulumi.BoolPtrInput
 	// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
 	Expiration TeamsRuleExpirationPtrInput
 	// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
-	Filters  pulumi.StringArrayInput
+	Filters pulumi.StringArrayInput
+	// Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
 	Identity pulumi.StringPtrInput
 	// Specify the rule name.
-	Name         pulumi.StringInput
-	Precedence   pulumi.IntPtrInput
+	Name pulumi.StringInput
+	// Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to Order of enforcement to manage precedence via Terraform.
+	Precedence pulumi.IntPtrInput
+	// Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
 	RuleSettings TeamsRuleRuleSettingsPtrInput
 	// Defines the schedule for activating DNS policies. Settable only for `dns` and `dnsResolver` rules.
 	Schedule TeamsRuleSchedulePtrInput
-	Traffic  pulumi.StringPtrInput
+	// Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+	Traffic pulumi.StringPtrInput
 }
 
 func (TeamsRuleArgs) ElementType() reflect.Type {
@@ -500,6 +525,7 @@ func (o TeamsRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
 func (o TeamsRuleOutput) DevicePosture() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.DevicePosture }).(pulumi.StringOutput)
 }
@@ -519,6 +545,7 @@ func (o TeamsRuleOutput) Filters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.StringArrayOutput { return v.Filters }).(pulumi.StringArrayOutput)
 }
 
+// Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
 func (o TeamsRuleOutput) Identity() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.Identity }).(pulumi.StringOutput)
 }
@@ -528,6 +555,7 @@ func (o TeamsRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to Order of enforcement to manage precedence via Terraform.
 func (o TeamsRuleOutput) Precedence() pulumi.IntOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.IntOutput { return v.Precedence }).(pulumi.IntOutput)
 }
@@ -537,6 +565,7 @@ func (o TeamsRuleOutput) ReadOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.BoolOutput { return v.ReadOnly }).(pulumi.BoolOutput)
 }
 
+// Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
 func (o TeamsRuleOutput) RuleSettings() TeamsRuleRuleSettingsOutput {
 	return o.ApplyT(func(v *TeamsRule) TeamsRuleRuleSettingsOutput { return v.RuleSettings }).(TeamsRuleRuleSettingsOutput)
 }
@@ -556,6 +585,7 @@ func (o TeamsRuleOutput) SourceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.SourceAccount }).(pulumi.StringOutput)
 }
 
+// Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
 func (o TeamsRuleOutput) Traffic() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.Traffic }).(pulumi.StringOutput)
 }

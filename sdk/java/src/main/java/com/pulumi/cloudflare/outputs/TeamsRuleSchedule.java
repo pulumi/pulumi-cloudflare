@@ -11,32 +11,80 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class TeamsRuleSchedule {
+    /**
+     * @return Specify the time intervals when the rule is active on Fridays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Fridays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     private @Nullable String fri;
+    /**
+     * @return Specify the time intervals when the rule is active on Mondays, in the increasing order from 00:00-24:00(capped at maximum of 6 time splits). If this parameter omitted, the rule is deactivated on Mondays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     private @Nullable String mon;
+    /**
+     * @return Specify the time intervals when the rule is active on Saturdays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Saturdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     private @Nullable String sat;
+    /**
+     * @return Specify the time intervals when the rule is active on Sundays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Sundays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     private @Nullable String sun;
+    /**
+     * @return Specify the time intervals when the rule is active on Thursdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Thursdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     private @Nullable String thu;
     /**
      * @return Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user&#39;s IP address. Colo time zone is used when the user&#39;s IP address does not resolve to a location.
      * 
      */
     private @Nullable String timeZone;
+    /**
+     * @return Specify the time intervals when the rule is active on Tuesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Tuesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     private @Nullable String tue;
+    /**
+     * @return Specify the time intervals when the rule is active on Wednesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Wednesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     private @Nullable String wed;
 
     private TeamsRuleSchedule() {}
+    /**
+     * @return Specify the time intervals when the rule is active on Fridays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Fridays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     public Optional<String> fri() {
         return Optional.ofNullable(this.fri);
     }
+    /**
+     * @return Specify the time intervals when the rule is active on Mondays, in the increasing order from 00:00-24:00(capped at maximum of 6 time splits). If this parameter omitted, the rule is deactivated on Mondays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     public Optional<String> mon() {
         return Optional.ofNullable(this.mon);
     }
+    /**
+     * @return Specify the time intervals when the rule is active on Saturdays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Saturdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     public Optional<String> sat() {
         return Optional.ofNullable(this.sat);
     }
+    /**
+     * @return Specify the time intervals when the rule is active on Sundays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Sundays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     public Optional<String> sun() {
         return Optional.ofNullable(this.sun);
     }
+    /**
+     * @return Specify the time intervals when the rule is active on Thursdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Thursdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     public Optional<String> thu() {
         return Optional.ofNullable(this.thu);
     }
@@ -47,9 +95,17 @@ public final class TeamsRuleSchedule {
     public Optional<String> timeZone() {
         return Optional.ofNullable(this.timeZone);
     }
+    /**
+     * @return Specify the time intervals when the rule is active on Tuesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Tuesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     public Optional<String> tue() {
         return Optional.ofNullable(this.tue);
     }
+    /**
+     * @return Specify the time intervals when the rule is active on Wednesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Wednesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+     * 
+     */
     public Optional<String> wed() {
         return Optional.ofNullable(this.wed);
     }

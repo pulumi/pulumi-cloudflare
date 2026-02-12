@@ -40,7 +40,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * ~> This resource does not currently support `pulumi import`.
+ * > This resource does not currently support `pulumi import`.
  *
  * @deprecated cloudflare.index/accessorganization.AccessOrganization has been deprecated in favor of cloudflare.index/zerotrustorganization.ZeroTrustOrganization
  */
@@ -90,6 +90,9 @@ export class AccessOrganization extends pulumi.CustomResource {
      */
     declare public readonly autoRedirectToIdentity: pulumi.Output<boolean>;
     declare public readonly customPages: pulumi.Output<outputs.AccessOrganizationCustomPages | undefined>;
+    /**
+     * Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
+     */
     declare public readonly isUiReadOnly: pulumi.Output<boolean>;
     declare public readonly loginDesign: pulumi.Output<outputs.AccessOrganizationLoginDesign | undefined>;
     /**
@@ -190,6 +193,9 @@ export interface AccessOrganizationState {
      */
     autoRedirectToIdentity?: pulumi.Input<boolean>;
     customPages?: pulumi.Input<inputs.AccessOrganizationCustomPages>;
+    /**
+     * Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
+     */
     isUiReadOnly?: pulumi.Input<boolean>;
     loginDesign?: pulumi.Input<inputs.AccessOrganizationLoginDesign>;
     /**
@@ -239,6 +245,9 @@ export interface AccessOrganizationArgs {
      */
     autoRedirectToIdentity?: pulumi.Input<boolean>;
     customPages?: pulumi.Input<inputs.AccessOrganizationCustomPages>;
+    /**
+     * Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
+     */
     isUiReadOnly?: pulumi.Input<boolean>;
     loginDesign?: pulumi.Input<inputs.AccessOrganizationLoginDesign>;
     /**

@@ -61,9 +61,17 @@ public final class ZeroTrustGatewayPolicyArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+     * 
+     */
     @Import(name="devicePosture")
     private @Nullable Output<String> devicePosture;
 
+    /**
+     * @return Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+     * 
+     */
     public Optional<Output<String>> devicePosture() {
         return Optional.ofNullable(this.devicePosture);
     }
@@ -113,9 +121,17 @@ public final class ZeroTrustGatewayPolicyArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.filters);
     }
 
+    /**
+     * Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+     * 
+     */
     @Import(name="identity")
     private @Nullable Output<String> identity;
 
+    /**
+     * @return Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+     * 
+     */
     public Optional<Output<String>> identity() {
         return Optional.ofNullable(this.identity);
     }
@@ -135,16 +151,32 @@ public final class ZeroTrustGatewayPolicyArgs extends com.pulumi.resources.Resou
         return this.name;
     }
 
+    /**
+     * Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to Order of enforcement to manage precedence via Terraform.
+     * 
+     */
     @Import(name="precedence")
     private @Nullable Output<Integer> precedence;
 
+    /**
+     * @return Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to Order of enforcement to manage precedence via Terraform.
+     * 
+     */
     public Optional<Output<Integer>> precedence() {
         return Optional.ofNullable(this.precedence);
     }
 
+    /**
+     * Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
+     * 
+     */
     @Import(name="ruleSettings")
     private @Nullable Output<ZeroTrustGatewayPolicyRuleSettingsArgs> ruleSettings;
 
+    /**
+     * @return Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
+     * 
+     */
     public Optional<Output<ZeroTrustGatewayPolicyRuleSettingsArgs>> ruleSettings() {
         return Optional.ofNullable(this.ruleSettings);
     }
@@ -164,9 +196,17 @@ public final class ZeroTrustGatewayPolicyArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.schedule);
     }
 
+    /**
+     * Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+     * 
+     */
     @Import(name="traffic")
     private @Nullable Output<String> traffic;
 
+    /**
+     * @return Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+     * 
+     */
     public Optional<Output<String>> traffic() {
         return Optional.ofNullable(this.traffic);
     }
@@ -260,11 +300,23 @@ public final class ZeroTrustGatewayPolicyArgs extends com.pulumi.resources.Resou
             return description(Output.of(description));
         }
 
+        /**
+         * @param devicePosture Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+         * 
+         * @return builder
+         * 
+         */
         public Builder devicePosture(@Nullable Output<String> devicePosture) {
             $.devicePosture = devicePosture;
             return this;
         }
 
+        /**
+         * @param devicePosture Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+         * 
+         * @return builder
+         * 
+         */
         public Builder devicePosture(String devicePosture) {
             return devicePosture(Output.of(devicePosture));
         }
@@ -342,11 +394,23 @@ public final class ZeroTrustGatewayPolicyArgs extends com.pulumi.resources.Resou
             return filters(List.of(filters));
         }
 
+        /**
+         * @param identity Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identity(@Nullable Output<String> identity) {
             $.identity = identity;
             return this;
         }
 
+        /**
+         * @param identity Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identity(String identity) {
             return identity(Output.of(identity));
         }
@@ -372,20 +436,44 @@ public final class ZeroTrustGatewayPolicyArgs extends com.pulumi.resources.Resou
             return name(Output.of(name));
         }
 
+        /**
+         * @param precedence Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to Order of enforcement to manage precedence via Terraform.
+         * 
+         * @return builder
+         * 
+         */
         public Builder precedence(@Nullable Output<Integer> precedence) {
             $.precedence = precedence;
             return this;
         }
 
+        /**
+         * @param precedence Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to Order of enforcement to manage precedence via Terraform.
+         * 
+         * @return builder
+         * 
+         */
         public Builder precedence(Integer precedence) {
             return precedence(Output.of(precedence));
         }
 
+        /**
+         * @param ruleSettings Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ruleSettings(@Nullable Output<ZeroTrustGatewayPolicyRuleSettingsArgs> ruleSettings) {
             $.ruleSettings = ruleSettings;
             return this;
         }
 
+        /**
+         * @param ruleSettings Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ruleSettings(ZeroTrustGatewayPolicyRuleSettingsArgs ruleSettings) {
             return ruleSettings(Output.of(ruleSettings));
         }
@@ -411,11 +499,23 @@ public final class ZeroTrustGatewayPolicyArgs extends com.pulumi.resources.Resou
             return schedule(Output.of(schedule));
         }
 
+        /**
+         * @param traffic Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+         * 
+         * @return builder
+         * 
+         */
         public Builder traffic(@Nullable Output<String> traffic) {
             $.traffic = traffic;
             return this;
         }
 
+        /**
+         * @param traffic Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+         * 
+         * @return builder
+         * 
+         */
         public Builder traffic(String traffic) {
             return traffic(Output.of(traffic));
         }

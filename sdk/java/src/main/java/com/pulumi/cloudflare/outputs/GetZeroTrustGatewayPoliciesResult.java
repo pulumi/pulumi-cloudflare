@@ -33,6 +33,10 @@ public final class GetZeroTrustGatewayPoliciesResult {
      * 
      */
     private String description;
+    /**
+     * @return Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+     * 
+     */
     private String devicePosture;
     /**
      * @return Specify whether the rule is enabled.
@@ -54,18 +58,30 @@ public final class GetZeroTrustGatewayPoliciesResult {
      * 
      */
     private String id;
+    /**
+     * @return Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+     * 
+     */
     private String identity;
     /**
      * @return Specify the rule name.
      * 
      */
     private String name;
+    /**
+     * @return Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to Order of enforcement to manage precedence via Terraform.
+     * 
+     */
     private Integer precedence;
     /**
      * @return Indicate that this rule is shared via the Orgs API and read only.
      * 
      */
     private Boolean readOnly;
+    /**
+     * @return Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
+     * 
+     */
     private GetZeroTrustGatewayPoliciesResultRuleSettings ruleSettings;
     /**
      * @return Defines the schedule for activating DNS policies. Settable only for `dns` and `dnsResolver` rules.
@@ -82,6 +98,10 @@ public final class GetZeroTrustGatewayPoliciesResult {
      * 
      */
     private String sourceAccount;
+    /**
+     * @return Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+     * 
+     */
     private String traffic;
     private String updatedAt;
     /**
@@ -121,6 +141,10 @@ public final class GetZeroTrustGatewayPoliciesResult {
     public String description() {
         return this.description;
     }
+    /**
+     * @return Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+     * 
+     */
     public String devicePosture() {
         return this.devicePosture;
     }
@@ -152,6 +176,10 @@ public final class GetZeroTrustGatewayPoliciesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+     * 
+     */
     public String identity() {
         return this.identity;
     }
@@ -162,6 +190,10 @@ public final class GetZeroTrustGatewayPoliciesResult {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to Order of enforcement to manage precedence via Terraform.
+     * 
+     */
     public Integer precedence() {
         return this.precedence;
     }
@@ -172,6 +204,10 @@ public final class GetZeroTrustGatewayPoliciesResult {
     public Boolean readOnly() {
         return this.readOnly;
     }
+    /**
+     * @return Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
+     * 
+     */
     public GetZeroTrustGatewayPoliciesResultRuleSettings ruleSettings() {
         return this.ruleSettings;
     }
@@ -196,6 +232,10 @@ public final class GetZeroTrustGatewayPoliciesResult {
     public String sourceAccount() {
         return this.sourceAccount;
     }
+    /**
+     * @return Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+     * 
+     */
     public String traffic() {
         return this.traffic;
     }

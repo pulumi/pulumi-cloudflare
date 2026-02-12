@@ -47,7 +47,7 @@ import (
 //
 // ## Import
 //
-// ~> This resource does not currently support `pulumi import`.
+// > This resource does not currently support `pulumi import`.
 //
 // Deprecated: cloudflare.index/accessmutualtlshostnamesettings.AccessMutualTlsHostnameSettings has been deprecated in favor of cloudflare.index/zerotrustaccessmtlshostnamesettings.ZeroTrustAccessMtlsHostnameSettings
 type AccessMutualTlsHostnameSettings struct {

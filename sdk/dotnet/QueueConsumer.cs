@@ -42,7 +42,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// ~&gt; This resource does not currently support `pulumi import`.
+    /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/queueConsumer:QueueConsumer")]
     public partial class QueueConsumer : global::Pulumi.CustomResource

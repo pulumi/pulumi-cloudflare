@@ -41,6 +41,10 @@ public final class GetZeroTrustOrganizationResult {
      * 
      */
     private String id;
+    /**
+     * @return Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
+     * 
+     */
     private Boolean isUiReadOnly;
     private GetZeroTrustOrganizationLoginDesign loginDesign;
     /**
@@ -113,6 +117,10 @@ public final class GetZeroTrustOrganizationResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
+     * 
+     */
     public Boolean isUiReadOnly() {
         return this.isUiReadOnly;
     }

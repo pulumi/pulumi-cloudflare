@@ -135,6 +135,9 @@ namespace Pulumi.Cloudflare
         /// Specify the rule description.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+        /// </summary>
         public readonly string DevicePosture;
         /// <summary>
         /// Specify whether the rule is enabled.
@@ -152,11 +155,17 @@ namespace Pulumi.Cloudflare
         /// Identify the API resource with a UUID.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+        /// </summary>
         public readonly string Identity;
         /// <summary>
         /// Specify the rule name.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to Order of enforcement to manage precedence via Terraform.
+        /// </summary>
         public readonly int Precedence;
         /// <summary>
         /// Indicate that this rule is shared via the Orgs API and read only.
@@ -166,6 +175,9 @@ namespace Pulumi.Cloudflare
         /// Identify the API resource with a UUID.
         /// </summary>
         public readonly string RuleId;
+        /// <summary>
+        /// Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
+        /// </summary>
         public readonly Outputs.GetZeroTrustGatewayPolicyRuleSettingsResult RuleSettings;
         /// <summary>
         /// Defines the schedule for activating DNS policies. Settable only for `Dns` and `DnsResolver` rules.
@@ -179,6 +191,9 @@ namespace Pulumi.Cloudflare
         /// Provide the account tag of the account that created the rule.
         /// </summary>
         public readonly string SourceAccount;
+        /// <summary>
+        /// Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+        /// </summary>
         public readonly string Traffic;
         public readonly string UpdatedAt;
         /// <summary>

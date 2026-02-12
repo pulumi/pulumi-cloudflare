@@ -39,7 +39,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// ~&gt; This resource does not currently support `pulumi import`.
+    /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings")]
     public partial class ZeroTrustDeviceSettings : global::Pulumi.CustomResource

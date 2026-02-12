@@ -21231,15 +21231,22 @@ func (o TeamsRuleRuleSettingsUntrustedCertPtrOutput) Action() pulumi.StringPtrOu
 }
 
 type TeamsRuleSchedule struct {
+	// Specify the time intervals when the rule is active on Fridays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Fridays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 	Fri *string `pulumi:"fri"`
+	// Specify the time intervals when the rule is active on Mondays, in the increasing order from 00:00-24:00(capped at maximum of 6 time splits). If this parameter omitted, the rule is deactivated on Mondays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 	Mon *string `pulumi:"mon"`
+	// Specify the time intervals when the rule is active on Saturdays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Saturdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 	Sat *string `pulumi:"sat"`
+	// Specify the time intervals when the rule is active on Sundays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Sundays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 	Sun *string `pulumi:"sun"`
+	// Specify the time intervals when the rule is active on Thursdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Thursdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 	Thu *string `pulumi:"thu"`
 	// Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.
 	TimeZone *string `pulumi:"timeZone"`
-	Tue      *string `pulumi:"tue"`
-	Wed      *string `pulumi:"wed"`
+	// Specify the time intervals when the rule is active on Tuesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Tuesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+	Tue *string `pulumi:"tue"`
+	// Specify the time intervals when the rule is active on Wednesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Wednesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+	Wed *string `pulumi:"wed"`
 }
 
 // TeamsRuleScheduleInput is an input type that accepts TeamsRuleScheduleArgs and TeamsRuleScheduleOutput values.
@@ -21254,15 +21261,22 @@ type TeamsRuleScheduleInput interface {
 }
 
 type TeamsRuleScheduleArgs struct {
+	// Specify the time intervals when the rule is active on Fridays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Fridays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 	Fri pulumi.StringPtrInput `pulumi:"fri"`
+	// Specify the time intervals when the rule is active on Mondays, in the increasing order from 00:00-24:00(capped at maximum of 6 time splits). If this parameter omitted, the rule is deactivated on Mondays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 	Mon pulumi.StringPtrInput `pulumi:"mon"`
+	// Specify the time intervals when the rule is active on Saturdays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Saturdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 	Sat pulumi.StringPtrInput `pulumi:"sat"`
+	// Specify the time intervals when the rule is active on Sundays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Sundays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 	Sun pulumi.StringPtrInput `pulumi:"sun"`
+	// Specify the time intervals when the rule is active on Thursdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Thursdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 	Thu pulumi.StringPtrInput `pulumi:"thu"`
 	// Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.
 	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
-	Tue      pulumi.StringPtrInput `pulumi:"tue"`
-	Wed      pulumi.StringPtrInput `pulumi:"wed"`
+	// Specify the time intervals when the rule is active on Tuesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Tuesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+	Tue pulumi.StringPtrInput `pulumi:"tue"`
+	// Specify the time intervals when the rule is active on Wednesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Wednesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+	Wed pulumi.StringPtrInput `pulumi:"wed"`
 }
 
 func (TeamsRuleScheduleArgs) ElementType() reflect.Type {
@@ -21342,22 +21356,27 @@ func (o TeamsRuleScheduleOutput) ToTeamsRuleSchedulePtrOutputWithContext(ctx con
 	}).(TeamsRuleSchedulePtrOutput)
 }
 
+// Specify the time intervals when the rule is active on Fridays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Fridays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 func (o TeamsRuleScheduleOutput) Fri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TeamsRuleSchedule) *string { return v.Fri }).(pulumi.StringPtrOutput)
 }
 
+// Specify the time intervals when the rule is active on Mondays, in the increasing order from 00:00-24:00(capped at maximum of 6 time splits). If this parameter omitted, the rule is deactivated on Mondays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 func (o TeamsRuleScheduleOutput) Mon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TeamsRuleSchedule) *string { return v.Mon }).(pulumi.StringPtrOutput)
 }
 
+// Specify the time intervals when the rule is active on Saturdays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Saturdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 func (o TeamsRuleScheduleOutput) Sat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TeamsRuleSchedule) *string { return v.Sat }).(pulumi.StringPtrOutput)
 }
 
+// Specify the time intervals when the rule is active on Sundays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Sundays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 func (o TeamsRuleScheduleOutput) Sun() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TeamsRuleSchedule) *string { return v.Sun }).(pulumi.StringPtrOutput)
 }
 
+// Specify the time intervals when the rule is active on Thursdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Thursdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 func (o TeamsRuleScheduleOutput) Thu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TeamsRuleSchedule) *string { return v.Thu }).(pulumi.StringPtrOutput)
 }
@@ -21367,10 +21386,12 @@ func (o TeamsRuleScheduleOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TeamsRuleSchedule) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
 }
 
+// Specify the time intervals when the rule is active on Tuesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Tuesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 func (o TeamsRuleScheduleOutput) Tue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TeamsRuleSchedule) *string { return v.Tue }).(pulumi.StringPtrOutput)
 }
 
+// Specify the time intervals when the rule is active on Wednesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Wednesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 func (o TeamsRuleScheduleOutput) Wed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TeamsRuleSchedule) *string { return v.Wed }).(pulumi.StringPtrOutput)
 }
@@ -21399,6 +21420,7 @@ func (o TeamsRuleSchedulePtrOutput) Elem() TeamsRuleScheduleOutput {
 	}).(TeamsRuleScheduleOutput)
 }
 
+// Specify the time intervals when the rule is active on Fridays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Fridays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 func (o TeamsRuleSchedulePtrOutput) Fri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TeamsRuleSchedule) *string {
 		if v == nil {
@@ -21408,6 +21430,7 @@ func (o TeamsRuleSchedulePtrOutput) Fri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specify the time intervals when the rule is active on Mondays, in the increasing order from 00:00-24:00(capped at maximum of 6 time splits). If this parameter omitted, the rule is deactivated on Mondays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 func (o TeamsRuleSchedulePtrOutput) Mon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TeamsRuleSchedule) *string {
 		if v == nil {
@@ -21417,6 +21440,7 @@ func (o TeamsRuleSchedulePtrOutput) Mon() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specify the time intervals when the rule is active on Saturdays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Saturdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 func (o TeamsRuleSchedulePtrOutput) Sat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TeamsRuleSchedule) *string {
 		if v == nil {
@@ -21426,6 +21450,7 @@ func (o TeamsRuleSchedulePtrOutput) Sat() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specify the time intervals when the rule is active on Sundays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Sundays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 func (o TeamsRuleSchedulePtrOutput) Sun() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TeamsRuleSchedule) *string {
 		if v == nil {
@@ -21435,6 +21460,7 @@ func (o TeamsRuleSchedulePtrOutput) Sun() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specify the time intervals when the rule is active on Thursdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Thursdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 func (o TeamsRuleSchedulePtrOutput) Thu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TeamsRuleSchedule) *string {
 		if v == nil {
@@ -21454,6 +21480,7 @@ func (o TeamsRuleSchedulePtrOutput) TimeZone() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specify the time intervals when the rule is active on Tuesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Tuesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 func (o TeamsRuleSchedulePtrOutput) Tue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TeamsRuleSchedule) *string {
 		if v == nil {
@@ -21463,6 +21490,7 @@ func (o TeamsRuleSchedulePtrOutput) Tue() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specify the time intervals when the rule is active on Wednesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Wednesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 func (o TeamsRuleSchedulePtrOutput) Wed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TeamsRuleSchedule) *string {
 		if v == nil {

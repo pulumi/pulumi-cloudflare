@@ -272,7 +272,11 @@ class List(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        ## Example Usage
+        > The `List` resource supports defining list items in line with the
+          `items` attribute. The provider also has a `ListItem` resource for
+          managing items as independent resources. Using both in line `items` definitions
+          _and_ `get_list_items` on the same list is not supported and will cause
+          Terraform into an irreconcilable state.
 
         ## Import
 
@@ -296,7 +300,11 @@ class List(pulumi.CustomResource):
                  args: ListArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
+        > The `List` resource supports defining list items in line with the
+          `items` attribute. The provider also has a `ListItem` resource for
+          managing items as independent resources. Using both in line `items` definitions
+          _and_ `get_list_items` on the same list is not supported and will cause
+          Terraform into an irreconcilable state.
 
         ## Import
 

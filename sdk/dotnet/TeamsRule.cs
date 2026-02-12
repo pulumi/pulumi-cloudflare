@@ -221,6 +221,9 @@ namespace Pulumi.Cloudflare
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+        /// </summary>
         [Output("devicePosture")]
         public Output<string> DevicePosture { get; private set; } = null!;
 
@@ -242,6 +245,9 @@ namespace Pulumi.Cloudflare
         [Output("filters")]
         public Output<ImmutableArray<string>> Filters { get; private set; } = null!;
 
+        /// <summary>
+        /// Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+        /// </summary>
         [Output("identity")]
         public Output<string> Identity { get; private set; } = null!;
 
@@ -251,6 +257,9 @@ namespace Pulumi.Cloudflare
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to Order of enforcement to manage precedence via Terraform.
+        /// </summary>
         [Output("precedence")]
         public Output<int> Precedence { get; private set; } = null!;
 
@@ -260,6 +269,9 @@ namespace Pulumi.Cloudflare
         [Output("readOnly")]
         public Output<bool> ReadOnly { get; private set; } = null!;
 
+        /// <summary>
+        /// Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
+        /// </summary>
         [Output("ruleSettings")]
         public Output<Outputs.TeamsRuleRuleSettings> RuleSettings { get; private set; } = null!;
 
@@ -281,6 +293,9 @@ namespace Pulumi.Cloudflare
         [Output("sourceAccount")]
         public Output<string> SourceAccount { get; private set; } = null!;
 
+        /// <summary>
+        /// Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+        /// </summary>
         [Output("traffic")]
         public Output<string> Traffic { get; private set; } = null!;
 
@@ -365,6 +380,9 @@ namespace Pulumi.Cloudflare
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+        /// </summary>
         [Input("devicePosture")]
         public Input<string>? DevicePosture { get; set; }
 
@@ -392,6 +410,9 @@ namespace Pulumi.Cloudflare
             set => _filters = value;
         }
 
+        /// <summary>
+        /// Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+        /// </summary>
         [Input("identity")]
         public Input<string>? Identity { get; set; }
 
@@ -401,9 +422,15 @@ namespace Pulumi.Cloudflare
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to Order of enforcement to manage precedence via Terraform.
+        /// </summary>
         [Input("precedence")]
         public Input<int>? Precedence { get; set; }
 
+        /// <summary>
+        /// Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
+        /// </summary>
         [Input("ruleSettings")]
         public Input<Inputs.TeamsRuleRuleSettingsArgs>? RuleSettings { get; set; }
 
@@ -413,6 +440,9 @@ namespace Pulumi.Cloudflare
         [Input("schedule")]
         public Input<Inputs.TeamsRuleScheduleArgs>? Schedule { get; set; }
 
+        /// <summary>
+        /// Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+        /// </summary>
         [Input("traffic")]
         public Input<string>? Traffic { get; set; }
 
@@ -449,6 +479,9 @@ namespace Pulumi.Cloudflare
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+        /// </summary>
         [Input("devicePosture")]
         public Input<string>? DevicePosture { get; set; }
 
@@ -476,6 +509,9 @@ namespace Pulumi.Cloudflare
             set => _filters = value;
         }
 
+        /// <summary>
+        /// Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+        /// </summary>
         [Input("identity")]
         public Input<string>? Identity { get; set; }
 
@@ -485,6 +521,9 @@ namespace Pulumi.Cloudflare
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to Order of enforcement to manage precedence via Terraform.
+        /// </summary>
         [Input("precedence")]
         public Input<int>? Precedence { get; set; }
 
@@ -494,6 +533,9 @@ namespace Pulumi.Cloudflare
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
+        /// <summary>
+        /// Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
+        /// </summary>
         [Input("ruleSettings")]
         public Input<Inputs.TeamsRuleRuleSettingsGetArgs>? RuleSettings { get; set; }
 
@@ -515,6 +557,9 @@ namespace Pulumi.Cloudflare
         [Input("sourceAccount")]
         public Input<string>? SourceAccount { get; set; }
 
+        /// <summary>
+        /// Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+        /// </summary>
         [Input("traffic")]
         public Input<string>? Traffic { get; set; }
 

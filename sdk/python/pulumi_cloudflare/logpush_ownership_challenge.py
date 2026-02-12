@@ -187,7 +187,7 @@ class LogpushOwnershipChallenge(pulumi.CustomResource):
 
         ## Import
 
-        ~> This resource does not currently support `pulumi import`.
+        > This resource does not currently support `pulumi import`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -215,7 +215,7 @@ class LogpushOwnershipChallenge(pulumi.CustomResource):
 
         ## Import
 
-        ~> This resource does not currently support `pulumi import`.
+        > This resource does not currently support `pulumi import`.
 
         :param str resource_name: The name of the resource.
         :param LogpushOwnershipChallengeArgs args: The arguments to use to populate this resource's properties.

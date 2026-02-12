@@ -27,7 +27,8 @@ type Provider struct {
 	// Value to override the default HTTP client base URL. Alternatively, can be configured using the `baseUrl` environment variable.
 	BaseUrl pulumi.StringPtrOutput `pulumi:"baseUrl"`
 	// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment variable. Required when using `apiKey`. Conflicts with `apiToken`.
-	Email                   pulumi.StringPtrOutput `pulumi:"email"`
+	Email pulumi.StringPtrOutput `pulumi:"email"`
+	// A value to append to the HTTP User Agent for all API calls. This value is not something most users need to modify however, if you are using a non-standard provider or operator configuration, this is recommended to assist in uniquely identifying your traffic. **Setting this value will remove the Terraform version from the HTTP User Agent string and may have unintended consequences**. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX` environment variable.
 	UserAgentOperatorSuffix pulumi.StringPtrOutput `pulumi:"userAgentOperatorSuffix"`
 }
 
@@ -72,7 +73,8 @@ type providerArgs struct {
 	// Value to override the default HTTP client base URL. Alternatively, can be configured using the `baseUrl` environment variable.
 	BaseUrl *string `pulumi:"baseUrl"`
 	// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment variable. Required when using `apiKey`. Conflicts with `apiToken`.
-	Email                   *string `pulumi:"email"`
+	Email *string `pulumi:"email"`
+	// A value to append to the HTTP User Agent for all API calls. This value is not something most users need to modify however, if you are using a non-standard provider or operator configuration, this is recommended to assist in uniquely identifying your traffic. **Setting this value will remove the Terraform version from the HTTP User Agent string and may have unintended consequences**. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX` environment variable.
 	UserAgentOperatorSuffix *string `pulumi:"userAgentOperatorSuffix"`
 }
 
@@ -87,7 +89,8 @@ type ProviderArgs struct {
 	// Value to override the default HTTP client base URL. Alternatively, can be configured using the `baseUrl` environment variable.
 	BaseUrl pulumi.StringPtrInput
 	// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment variable. Required when using `apiKey`. Conflicts with `apiToken`.
-	Email                   pulumi.StringPtrInput
+	Email pulumi.StringPtrInput
+	// A value to append to the HTTP User Agent for all API calls. This value is not something most users need to modify however, if you are using a non-standard provider or operator configuration, this is recommended to assist in uniquely identifying your traffic. **Setting this value will remove the Terraform version from the HTTP User Agent string and may have unintended consequences**. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX` environment variable.
 	UserAgentOperatorSuffix pulumi.StringPtrInput
 }
 
@@ -176,6 +179,7 @@ func (o ProviderOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Email }).(pulumi.StringPtrOutput)
 }
 
+// A value to append to the HTTP User Agent for all API calls. This value is not something most users need to modify however, if you are using a non-standard provider or operator configuration, this is recommended to assist in uniquely identifying your traffic. **Setting this value will remove the Terraform version from the HTTP User Agent string and may have unintended consequences**. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX` environment variable.
 func (o ProviderOutput) UserAgentOperatorSuffix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.UserAgentOperatorSuffix }).(pulumi.StringPtrOutput)
 }

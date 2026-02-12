@@ -10,7 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// ## Example Usage
+    /// &gt; The `cloudflare.List` resource supports defining list items in line with the
+    ///   `Items` attribute. The provider also has a `cloudflare.ListItem` resource for
+    ///   managing items as independent resources. Using both in line `Items` definitions
+    ///   _and_ `cloudflare.getListItems` on the same list is not supported and will cause
+    ///   Terraform into an irreconcilable state.
     /// 
     /// ## Import
     /// 

@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * ~> This resource does not currently support `pulumi import`.
+ * > This resource does not currently support `pulumi import`.
  */
 export class Snippets extends pulumi.CustomResource {
     /**

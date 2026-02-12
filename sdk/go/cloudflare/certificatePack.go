@@ -61,7 +61,6 @@ import (
 // ```
 //
 // While supported, importing isn't recommended and it is advised to replace the
-//
 // certificate entirely instead.
 type CertificatePack struct {
 	pulumi.CustomResourceState

@@ -64,7 +64,8 @@ type LookupZeroTrustGatewayPolicyResult struct {
 	// Indicate the date of deletion, if any.
 	DeletedAt string `pulumi:"deletedAt"`
 	// Specify the rule description.
-	Description   string `pulumi:"description"`
+	Description string `pulumi:"description"`
+	// Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
 	DevicePosture string `pulumi:"devicePosture"`
 	// Specify whether the rule is enabled.
 	Enabled bool `pulumi:"enabled"`
@@ -73,15 +74,18 @@ type LookupZeroTrustGatewayPolicyResult struct {
 	// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
 	Filters []string `pulumi:"filters"`
 	// Identify the API resource with a UUID.
-	Id       string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
 	Identity string `pulumi:"identity"`
 	// Specify the rule name.
-	Name       string `pulumi:"name"`
-	Precedence int    `pulumi:"precedence"`
+	Name string `pulumi:"name"`
+	// Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to Order of enforcement to manage precedence via Terraform.
+	Precedence int `pulumi:"precedence"`
 	// Indicate that this rule is shared via the Orgs API and read only.
 	ReadOnly bool `pulumi:"readOnly"`
 	// Identify the API resource with a UUID.
-	RuleId       string                                `pulumi:"ruleId"`
+	RuleId string `pulumi:"ruleId"`
+	// Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
 	RuleSettings GetZeroTrustGatewayPolicyRuleSettings `pulumi:"ruleSettings"`
 	// Defines the schedule for activating DNS policies. Settable only for `dns` and `dnsResolver` rules.
 	Schedule GetZeroTrustGatewayPolicySchedule `pulumi:"schedule"`
@@ -89,8 +93,9 @@ type LookupZeroTrustGatewayPolicyResult struct {
 	Sharable bool `pulumi:"sharable"`
 	// Provide the account tag of the account that created the rule.
 	SourceAccount string `pulumi:"sourceAccount"`
-	Traffic       string `pulumi:"traffic"`
-	UpdatedAt     string `pulumi:"updatedAt"`
+	// Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+	Traffic   string `pulumi:"traffic"`
+	UpdatedAt string `pulumi:"updatedAt"`
 	// Indicate the version number of the rule(read-only).
 	Version int `pulumi:"version"`
 	// Indicate a warning for a misconfigured rule, if any.
@@ -156,6 +161,7 @@ func (o LookupZeroTrustGatewayPolicyResultOutput) Description() pulumi.StringOut
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
 func (o LookupZeroTrustGatewayPolicyResultOutput) DevicePosture() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.DevicePosture }).(pulumi.StringOutput)
 }
@@ -180,6 +186,7 @@ func (o LookupZeroTrustGatewayPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
 func (o LookupZeroTrustGatewayPolicyResultOutput) Identity() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.Identity }).(pulumi.StringOutput)
 }
@@ -189,6 +196,7 @@ func (o LookupZeroTrustGatewayPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to Order of enforcement to manage precedence via Terraform.
 func (o LookupZeroTrustGatewayPolicyResultOutput) Precedence() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) int { return v.Precedence }).(pulumi.IntOutput)
 }
@@ -203,6 +211,7 @@ func (o LookupZeroTrustGatewayPolicyResultOutput) RuleId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.RuleId }).(pulumi.StringOutput)
 }
 
+// Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
 func (o LookupZeroTrustGatewayPolicyResultOutput) RuleSettings() GetZeroTrustGatewayPolicyRuleSettingsOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) GetZeroTrustGatewayPolicyRuleSettings {
 		return v.RuleSettings
@@ -224,6 +233,7 @@ func (o LookupZeroTrustGatewayPolicyResultOutput) SourceAccount() pulumi.StringO
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.SourceAccount }).(pulumi.StringOutput)
 }
 
+// Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
 func (o LookupZeroTrustGatewayPolicyResultOutput) Traffic() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.Traffic }).(pulumi.StringOutput)
 }

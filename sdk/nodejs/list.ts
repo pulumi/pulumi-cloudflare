@@ -7,7 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * ## Example Usage
+ * > The `cloudflare.List` resource supports defining list items in line with the
+ *   `items` attribute. The provider also has a `cloudflare.ListItem` resource for
+ *   managing items as independent resources. Using both in line `items` definitions
+ *   _and_ `cloudflare.getListItems` on the same list is not supported and will cause
+ *   Terraform into an irreconcilable state.
  *
  * ## Import
  *

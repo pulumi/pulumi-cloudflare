@@ -2506,7 +2506,8 @@ type GetZeroTrustGatewayPoliciesResult struct {
 	// Indicate the date of deletion, if any.
 	DeletedAt string `pulumi:"deletedAt"`
 	// Specify the rule description.
-	Description   string `pulumi:"description"`
+	Description string `pulumi:"description"`
+	// Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
 	DevicePosture string `pulumi:"devicePosture"`
 	// Specify whether the rule is enabled.
 	Enabled bool `pulumi:"enabled"`
@@ -2515,13 +2516,16 @@ type GetZeroTrustGatewayPoliciesResult struct {
 	// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
 	Filters []string `pulumi:"filters"`
 	// Identify the API resource with a UUID.
-	Id       string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
 	Identity string `pulumi:"identity"`
 	// Specify the rule name.
-	Name       string `pulumi:"name"`
-	Precedence int    `pulumi:"precedence"`
+	Name string `pulumi:"name"`
+	// Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to Order of enforcement to manage precedence via Terraform.
+	Precedence int `pulumi:"precedence"`
 	// Indicate that this rule is shared via the Orgs API and read only.
-	ReadOnly     bool                                          `pulumi:"readOnly"`
+	ReadOnly bool `pulumi:"readOnly"`
+	// Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
 	RuleSettings GetZeroTrustGatewayPoliciesResultRuleSettings `pulumi:"ruleSettings"`
 	// Defines the schedule for activating DNS policies. Settable only for `dns` and `dnsResolver` rules.
 	Schedule GetZeroTrustGatewayPoliciesResultSchedule `pulumi:"schedule"`
@@ -2529,8 +2533,9 @@ type GetZeroTrustGatewayPoliciesResult struct {
 	Sharable bool `pulumi:"sharable"`
 	// Provide the account tag of the account that created the rule.
 	SourceAccount string `pulumi:"sourceAccount"`
-	Traffic       string `pulumi:"traffic"`
-	UpdatedAt     string `pulumi:"updatedAt"`
+	// Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+	Traffic   string `pulumi:"traffic"`
+	UpdatedAt string `pulumi:"updatedAt"`
 	// Indicate the version number of the rule(read-only).
 	Version int `pulumi:"version"`
 	// Indicate a warning for a misconfigured rule, if any.
@@ -2556,7 +2561,8 @@ type GetZeroTrustGatewayPoliciesResultArgs struct {
 	// Indicate the date of deletion, if any.
 	DeletedAt pulumi.StringInput `pulumi:"deletedAt"`
 	// Specify the rule description.
-	Description   pulumi.StringInput `pulumi:"description"`
+	Description pulumi.StringInput `pulumi:"description"`
+	// Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
 	DevicePosture pulumi.StringInput `pulumi:"devicePosture"`
 	// Specify whether the rule is enabled.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
@@ -2565,13 +2571,16 @@ type GetZeroTrustGatewayPoliciesResultArgs struct {
 	// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
 	Filters pulumi.StringArrayInput `pulumi:"filters"`
 	// Identify the API resource with a UUID.
-	Id       pulumi.StringInput `pulumi:"id"`
+	Id pulumi.StringInput `pulumi:"id"`
+	// Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
 	Identity pulumi.StringInput `pulumi:"identity"`
 	// Specify the rule name.
-	Name       pulumi.StringInput `pulumi:"name"`
-	Precedence pulumi.IntInput    `pulumi:"precedence"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to Order of enforcement to manage precedence via Terraform.
+	Precedence pulumi.IntInput `pulumi:"precedence"`
 	// Indicate that this rule is shared via the Orgs API and read only.
-	ReadOnly     pulumi.BoolInput                                   `pulumi:"readOnly"`
+	ReadOnly pulumi.BoolInput `pulumi:"readOnly"`
+	// Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
 	RuleSettings GetZeroTrustGatewayPoliciesResultRuleSettingsInput `pulumi:"ruleSettings"`
 	// Defines the schedule for activating DNS policies. Settable only for `dns` and `dnsResolver` rules.
 	Schedule GetZeroTrustGatewayPoliciesResultScheduleInput `pulumi:"schedule"`
@@ -2579,8 +2588,9 @@ type GetZeroTrustGatewayPoliciesResultArgs struct {
 	Sharable pulumi.BoolInput `pulumi:"sharable"`
 	// Provide the account tag of the account that created the rule.
 	SourceAccount pulumi.StringInput `pulumi:"sourceAccount"`
-	Traffic       pulumi.StringInput `pulumi:"traffic"`
-	UpdatedAt     pulumi.StringInput `pulumi:"updatedAt"`
+	// Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
+	Traffic   pulumi.StringInput `pulumi:"traffic"`
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
 	// Indicate the version number of the rule(read-only).
 	Version pulumi.IntInput `pulumi:"version"`
 	// Indicate a warning for a misconfigured rule, if any.
@@ -2658,6 +2668,7 @@ func (o GetZeroTrustGatewayPoliciesResultOutput) Description() pulumi.StringOutp
 	return o.ApplyT(func(v GetZeroTrustGatewayPoliciesResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
 func (o GetZeroTrustGatewayPoliciesResultOutput) DevicePosture() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustGatewayPoliciesResult) string { return v.DevicePosture }).(pulumi.StringOutput)
 }
@@ -2684,6 +2695,7 @@ func (o GetZeroTrustGatewayPoliciesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustGatewayPoliciesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
 func (o GetZeroTrustGatewayPoliciesResultOutput) Identity() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustGatewayPoliciesResult) string { return v.Identity }).(pulumi.StringOutput)
 }
@@ -2693,6 +2705,7 @@ func (o GetZeroTrustGatewayPoliciesResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustGatewayPoliciesResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to Order of enforcement to manage precedence via Terraform.
 func (o GetZeroTrustGatewayPoliciesResultOutput) Precedence() pulumi.IntOutput {
 	return o.ApplyT(func(v GetZeroTrustGatewayPoliciesResult) int { return v.Precedence }).(pulumi.IntOutput)
 }
@@ -2702,6 +2715,7 @@ func (o GetZeroTrustGatewayPoliciesResultOutput) ReadOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetZeroTrustGatewayPoliciesResult) bool { return v.ReadOnly }).(pulumi.BoolOutput)
 }
 
+// Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
 func (o GetZeroTrustGatewayPoliciesResultOutput) RuleSettings() GetZeroTrustGatewayPoliciesResultRuleSettingsOutput {
 	return o.ApplyT(func(v GetZeroTrustGatewayPoliciesResult) GetZeroTrustGatewayPoliciesResultRuleSettings {
 		return v.RuleSettings
@@ -2723,6 +2737,7 @@ func (o GetZeroTrustGatewayPoliciesResultOutput) SourceAccount() pulumi.StringOu
 	return o.ApplyT(func(v GetZeroTrustGatewayPoliciesResult) string { return v.SourceAccount }).(pulumi.StringOutput)
 }
 
+// Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
 func (o GetZeroTrustGatewayPoliciesResultOutput) Traffic() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustGatewayPoliciesResult) string { return v.Traffic }).(pulumi.StringOutput)
 }
@@ -4351,15 +4366,22 @@ func (o GetZeroTrustGatewayPoliciesResultRuleSettingsUntrustedCertOutput) Action
 }
 
 type GetZeroTrustGatewayPoliciesResultSchedule struct {
+	// Specify the time intervals when the rule is active on Fridays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Fridays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 	Fri string `pulumi:"fri"`
+	// Specify the time intervals when the rule is active on Mondays, in the increasing order from 00:00-24:00(capped at maximum of 6 time splits). If this parameter omitted, the rule is deactivated on Mondays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 	Mon string `pulumi:"mon"`
+	// Specify the time intervals when the rule is active on Saturdays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Saturdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 	Sat string `pulumi:"sat"`
+	// Specify the time intervals when the rule is active on Sundays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Sundays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 	Sun string `pulumi:"sun"`
+	// Specify the time intervals when the rule is active on Thursdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Thursdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 	Thu string `pulumi:"thu"`
 	// Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.
 	TimeZone string `pulumi:"timeZone"`
-	Tue      string `pulumi:"tue"`
-	Wed      string `pulumi:"wed"`
+	// Specify the time intervals when the rule is active on Tuesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Tuesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+	Tue string `pulumi:"tue"`
+	// Specify the time intervals when the rule is active on Wednesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Wednesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+	Wed string `pulumi:"wed"`
 }
 
 // GetZeroTrustGatewayPoliciesResultScheduleInput is an input type that accepts GetZeroTrustGatewayPoliciesResultScheduleArgs and GetZeroTrustGatewayPoliciesResultScheduleOutput values.
@@ -4374,15 +4396,22 @@ type GetZeroTrustGatewayPoliciesResultScheduleInput interface {
 }
 
 type GetZeroTrustGatewayPoliciesResultScheduleArgs struct {
+	// Specify the time intervals when the rule is active on Fridays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Fridays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 	Fri pulumi.StringInput `pulumi:"fri"`
+	// Specify the time intervals when the rule is active on Mondays, in the increasing order from 00:00-24:00(capped at maximum of 6 time splits). If this parameter omitted, the rule is deactivated on Mondays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 	Mon pulumi.StringInput `pulumi:"mon"`
+	// Specify the time intervals when the rule is active on Saturdays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Saturdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 	Sat pulumi.StringInput `pulumi:"sat"`
+	// Specify the time intervals when the rule is active on Sundays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Sundays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 	Sun pulumi.StringInput `pulumi:"sun"`
+	// Specify the time intervals when the rule is active on Thursdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Thursdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 	Thu pulumi.StringInput `pulumi:"thu"`
 	// Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.
 	TimeZone pulumi.StringInput `pulumi:"timeZone"`
-	Tue      pulumi.StringInput `pulumi:"tue"`
-	Wed      pulumi.StringInput `pulumi:"wed"`
+	// Specify the time intervals when the rule is active on Tuesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Tuesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+	Tue pulumi.StringInput `pulumi:"tue"`
+	// Specify the time intervals when the rule is active on Wednesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Wednesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+	Wed pulumi.StringInput `pulumi:"wed"`
 }
 
 func (GetZeroTrustGatewayPoliciesResultScheduleArgs) ElementType() reflect.Type {
@@ -4411,22 +4440,27 @@ func (o GetZeroTrustGatewayPoliciesResultScheduleOutput) ToGetZeroTrustGatewayPo
 	return o
 }
 
+// Specify the time intervals when the rule is active on Fridays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Fridays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 func (o GetZeroTrustGatewayPoliciesResultScheduleOutput) Fri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustGatewayPoliciesResultSchedule) string { return v.Fri }).(pulumi.StringOutput)
 }
 
+// Specify the time intervals when the rule is active on Mondays, in the increasing order from 00:00-24:00(capped at maximum of 6 time splits). If this parameter omitted, the rule is deactivated on Mondays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 func (o GetZeroTrustGatewayPoliciesResultScheduleOutput) Mon() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustGatewayPoliciesResultSchedule) string { return v.Mon }).(pulumi.StringOutput)
 }
 
+// Specify the time intervals when the rule is active on Saturdays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Saturdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 func (o GetZeroTrustGatewayPoliciesResultScheduleOutput) Sat() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustGatewayPoliciesResultSchedule) string { return v.Sat }).(pulumi.StringOutput)
 }
 
+// Specify the time intervals when the rule is active on Sundays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Sundays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 func (o GetZeroTrustGatewayPoliciesResultScheduleOutput) Sun() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustGatewayPoliciesResultSchedule) string { return v.Sun }).(pulumi.StringOutput)
 }
 
+// Specify the time intervals when the rule is active on Thursdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Thursdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 func (o GetZeroTrustGatewayPoliciesResultScheduleOutput) Thu() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustGatewayPoliciesResultSchedule) string { return v.Thu }).(pulumi.StringOutput)
 }
@@ -4436,10 +4470,12 @@ func (o GetZeroTrustGatewayPoliciesResultScheduleOutput) TimeZone() pulumi.Strin
 	return o.ApplyT(func(v GetZeroTrustGatewayPoliciesResultSchedule) string { return v.TimeZone }).(pulumi.StringOutput)
 }
 
+// Specify the time intervals when the rule is active on Tuesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Tuesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 func (o GetZeroTrustGatewayPoliciesResultScheduleOutput) Tue() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustGatewayPoliciesResultSchedule) string { return v.Tue }).(pulumi.StringOutput)
 }
 
+// Specify the time intervals when the rule is active on Wednesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Wednesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 func (o GetZeroTrustGatewayPoliciesResultScheduleOutput) Wed() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustGatewayPoliciesResultSchedule) string { return v.Wed }).(pulumi.StringOutput)
 }
@@ -6032,15 +6068,22 @@ func (o GetZeroTrustGatewayPolicyRuleSettingsUntrustedCertOutput) Action() pulum
 }
 
 type GetZeroTrustGatewayPolicySchedule struct {
+	// Specify the time intervals when the rule is active on Fridays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Fridays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 	Fri string `pulumi:"fri"`
+	// Specify the time intervals when the rule is active on Mondays, in the increasing order from 00:00-24:00(capped at maximum of 6 time splits). If this parameter omitted, the rule is deactivated on Mondays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 	Mon string `pulumi:"mon"`
+	// Specify the time intervals when the rule is active on Saturdays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Saturdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 	Sat string `pulumi:"sat"`
+	// Specify the time intervals when the rule is active on Sundays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Sundays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 	Sun string `pulumi:"sun"`
+	// Specify the time intervals when the rule is active on Thursdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Thursdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 	Thu string `pulumi:"thu"`
 	// Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.
 	TimeZone string `pulumi:"timeZone"`
-	Tue      string `pulumi:"tue"`
-	Wed      string `pulumi:"wed"`
+	// Specify the time intervals when the rule is active on Tuesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Tuesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+	Tue string `pulumi:"tue"`
+	// Specify the time intervals when the rule is active on Wednesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Wednesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+	Wed string `pulumi:"wed"`
 }
 
 // GetZeroTrustGatewayPolicyScheduleInput is an input type that accepts GetZeroTrustGatewayPolicyScheduleArgs and GetZeroTrustGatewayPolicyScheduleOutput values.
@@ -6055,15 +6098,22 @@ type GetZeroTrustGatewayPolicyScheduleInput interface {
 }
 
 type GetZeroTrustGatewayPolicyScheduleArgs struct {
+	// Specify the time intervals when the rule is active on Fridays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Fridays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 	Fri pulumi.StringInput `pulumi:"fri"`
+	// Specify the time intervals when the rule is active on Mondays, in the increasing order from 00:00-24:00(capped at maximum of 6 time splits). If this parameter omitted, the rule is deactivated on Mondays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 	Mon pulumi.StringInput `pulumi:"mon"`
+	// Specify the time intervals when the rule is active on Saturdays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Saturdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 	Sat pulumi.StringInput `pulumi:"sat"`
+	// Specify the time intervals when the rule is active on Sundays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Sundays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 	Sun pulumi.StringInput `pulumi:"sun"`
+	// Specify the time intervals when the rule is active on Thursdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Thursdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 	Thu pulumi.StringInput `pulumi:"thu"`
 	// Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.
 	TimeZone pulumi.StringInput `pulumi:"timeZone"`
-	Tue      pulumi.StringInput `pulumi:"tue"`
-	Wed      pulumi.StringInput `pulumi:"wed"`
+	// Specify the time intervals when the rule is active on Tuesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Tuesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+	Tue pulumi.StringInput `pulumi:"tue"`
+	// Specify the time intervals when the rule is active on Wednesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Wednesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
+	Wed pulumi.StringInput `pulumi:"wed"`
 }
 
 func (GetZeroTrustGatewayPolicyScheduleArgs) ElementType() reflect.Type {
@@ -6092,22 +6142,27 @@ func (o GetZeroTrustGatewayPolicyScheduleOutput) ToGetZeroTrustGatewayPolicySche
 	return o
 }
 
+// Specify the time intervals when the rule is active on Fridays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Fridays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 func (o GetZeroTrustGatewayPolicyScheduleOutput) Fri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustGatewayPolicySchedule) string { return v.Fri }).(pulumi.StringOutput)
 }
 
+// Specify the time intervals when the rule is active on Mondays, in the increasing order from 00:00-24:00(capped at maximum of 6 time splits). If this parameter omitted, the rule is deactivated on Mondays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 func (o GetZeroTrustGatewayPolicyScheduleOutput) Mon() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustGatewayPolicySchedule) string { return v.Mon }).(pulumi.StringOutput)
 }
 
+// Specify the time intervals when the rule is active on Saturdays, in the increasing order from 00:00-24:00.  If this parameter omitted, the rule is deactivated on Saturdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 func (o GetZeroTrustGatewayPolicyScheduleOutput) Sat() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustGatewayPolicySchedule) string { return v.Sat }).(pulumi.StringOutput)
 }
 
+// Specify the time intervals when the rule is active on Sundays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Sundays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 func (o GetZeroTrustGatewayPolicyScheduleOutput) Sun() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustGatewayPolicySchedule) string { return v.Sun }).(pulumi.StringOutput)
 }
 
+// Specify the time intervals when the rule is active on Thursdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Thursdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 func (o GetZeroTrustGatewayPolicyScheduleOutput) Thu() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustGatewayPolicySchedule) string { return v.Thu }).(pulumi.StringOutput)
 }
@@ -6117,10 +6172,12 @@ func (o GetZeroTrustGatewayPolicyScheduleOutput) TimeZone() pulumi.StringOutput 
 	return o.ApplyT(func(v GetZeroTrustGatewayPolicySchedule) string { return v.TimeZone }).(pulumi.StringOutput)
 }
 
+// Specify the time intervals when the rule is active on Tuesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Tuesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 func (o GetZeroTrustGatewayPolicyScheduleOutput) Tue() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustGatewayPolicySchedule) string { return v.Tue }).(pulumi.StringOutput)
 }
 
+// Specify the time intervals when the rule is active on Wednesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Wednesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used.
 func (o GetZeroTrustGatewayPolicyScheduleOutput) Wed() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustGatewayPolicySchedule) string { return v.Wed }).(pulumi.StringOutput)
 }
