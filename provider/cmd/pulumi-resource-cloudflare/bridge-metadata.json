@@ -104,6 +104,47 @@
                     }
                 }
             },
+            "cloudflare_ai_search_instance": {
+                "current": "cloudflare:index/aiSearchInstance:AiSearchInstance",
+                "majorVersion": 6,
+                "fields": {
+                    "custom_metadata": {
+                        "maxItemsOne": false
+                    },
+                    "public_endpoint_params": {
+                        "fields": {
+                            "authorized_hosts": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "source_params": {
+                        "fields": {
+                            "exclude_items": {
+                                "maxItemsOne": false
+                            },
+                            "include_items": {
+                                "maxItemsOne": false
+                            },
+                            "web_crawler": {
+                                "fields": {
+                                    "parse_options": {
+                                        "fields": {
+                                            "specific_sitemaps": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "cloudflare_ai_search_token": {
+                "current": "cloudflare:index/aiSearchToken:AiSearchToken",
+                "majorVersion": 6
+            },
             "cloudflare_api_shield": {
                 "current": "cloudflare:index/apiShield:ApiShield",
                 "majorVersion": 6,
@@ -215,6 +256,10 @@
             },
             "cloudflare_authenticated_origin_pulls_certificate": {
                 "current": "cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate",
+                "majorVersion": 6
+            },
+            "cloudflare_authenticated_origin_pulls_hostname_certificate": {
+                "current": "cloudflare:index/authenticatedOriginPullsHostnameCertificate:AuthenticatedOriginPullsHostnameCertificate",
                 "majorVersion": 6
             },
             "cloudflare_authenticated_origin_pulls_settings": {
@@ -1893,6 +1938,13 @@
                     },
                     "modules": {
                         "maxItemsOne": false
+                    },
+                    "placement": {
+                        "fields": {
+                            "target": {
+                                "maxItemsOne": false
+                            }
+                        }
                     }
                 }
             },
@@ -2057,6 +2109,13 @@
                                         "maxItemsOne": false
                                     }
                                 }
+                            }
+                        }
+                    },
+                    "placement": {
+                        "fields": {
+                            "target": {
+                                "maxItemsOne": false
                             }
                         }
                     },
@@ -2823,7 +2882,12 @@
                         "majorVersion": 6
                     }
                 ],
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "deny_unmatched_requests_exempted_zone_names": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "cloudflare_zero_trust_risk_behavior": {
                 "current": "cloudflare:index/zeroTrustRiskBehavior:ZeroTrustRiskBehavior",
@@ -3072,7 +3136,19 @@
             },
             "cloudflare_account_api_token_permission_groups": {
                 "current": "cloudflare:index/getAccountApiTokenPermissionGroups:getAccountApiTokenPermissionGroups",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "permission_groups": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "scopes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "cloudflare_account_api_token_permission_groups_list": {
                 "current": "cloudflare:index/getAccountApiTokenPermissionGroupsList:getAccountApiTokenPermissionGroupsList",
@@ -3334,6 +3410,100 @@
                     }
                 }
             },
+            "cloudflare_ai_search_instance": {
+                "current": "cloudflare:index/getAiSearchInstance:getAiSearchInstance",
+                "majorVersion": 6,
+                "fields": {
+                    "custom_metadata": {
+                        "maxItemsOne": false
+                    },
+                    "public_endpoint_params": {
+                        "fields": {
+                            "authorized_hosts": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "source_params": {
+                        "fields": {
+                            "exclude_items": {
+                                "maxItemsOne": false
+                            },
+                            "include_items": {
+                                "maxItemsOne": false
+                            },
+                            "web_crawler": {
+                                "fields": {
+                                    "parse_options": {
+                                        "fields": {
+                                            "specific_sitemaps": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "cloudflare_ai_search_instances": {
+                "current": "cloudflare:index/getAiSearchInstances:getAiSearchInstances",
+                "majorVersion": 6,
+                "fields": {
+                    "result": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "custom_metadata": {
+                                    "maxItemsOne": false
+                                },
+                                "public_endpoint_params": {
+                                    "fields": {
+                                        "authorized_hosts": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "source_params": {
+                                    "fields": {
+                                        "exclude_items": {
+                                            "maxItemsOne": false
+                                        },
+                                        "include_items": {
+                                            "maxItemsOne": false
+                                        },
+                                        "web_crawler": {
+                                            "fields": {
+                                                "parse_options": {
+                                                    "fields": {
+                                                        "specific_sitemaps": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "cloudflare_ai_search_token": {
+                "current": "cloudflare:index/getAiSearchToken:getAiSearchToken",
+                "majorVersion": 6
+            },
+            "cloudflare_ai_search_tokens": {
+                "current": "cloudflare:index/getAiSearchTokens:getAiSearchTokens",
+                "majorVersion": 6,
+                "fields": {
+                    "result": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "cloudflare_api_shield": {
                 "current": "cloudflare:index/getApiShield:getApiShield",
                 "majorVersion": 6,
@@ -3561,6 +3731,19 @@
             },
             "cloudflare_authenticated_origin_pulls_certificates": {
                 "current": "cloudflare:index/getAuthenticatedOriginPullsCertificates:getAuthenticatedOriginPullsCertificates",
+                "majorVersion": 6,
+                "fields": {
+                    "result": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudflare_authenticated_origin_pulls_hostname_certificate": {
+                "current": "cloudflare:index/getAuthenticatedOriginPullsHostnameCertificate:getAuthenticatedOriginPullsHostnameCertificate",
+                "majorVersion": 6
+            },
+            "cloudflare_authenticated_origin_pulls_hostname_certificates": {
+                "current": "cloudflare:index/getAuthenticatedOriginPullsHostnameCertificates:getAuthenticatedOriginPullsHostnameCertificates",
                 "majorVersion": 6,
                 "fields": {
                     "result": {
@@ -6747,6 +6930,13 @@
                     },
                     "modules": {
                         "maxItemsOne": false
+                    },
+                    "placement": {
+                        "fields": {
+                            "target": {
+                                "maxItemsOne": false
+                            }
+                        }
                     }
                 }
             },
@@ -6838,6 +7028,13 @@
                                 },
                                 "modules": {
                                     "maxItemsOne": false
+                                },
+                                "placement": {
+                                    "fields": {
+                                        "target": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -6996,6 +7193,13 @@
                                                     "maxItemsOne": false
                                                 }
                                             }
+                                        }
+                                    }
+                                },
+                                "placement": {
+                                    "fields": {
+                                        "target": {
+                                            "maxItemsOne": false
                                         }
                                     }
                                 },
@@ -8245,7 +8449,12 @@
             },
             "cloudflare_zero_trust_organization": {
                 "current": "cloudflare:index/getZeroTrustOrganization:getZeroTrustOrganization",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "deny_unmatched_requests_exempted_zone_names": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "cloudflare_zero_trust_risk_behavior": {
                 "current": "cloudflare:index/getZeroTrustRiskBehavior:getZeroTrustRiskBehavior",

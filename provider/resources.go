@@ -94,6 +94,15 @@ func Provider() info.Provider {
 		},
 
 		Resources: map[string]*info.Resource{
+			"cloudflare_ai_search_instance": {
+				Fields: map[string]*info.Schema{
+					"id": {
+						Name: "aiSearchId",
+					},
+				},
+				ComputeID: delegateID("aiSearchId"),
+			},
+
 			// We cannot use TF's ID field as Pulumi's ID field automatically,
 			// since it can (theoretically) be set by the user.
 			//
