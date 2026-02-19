@@ -13,11 +13,41 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class WorkerVersionPlacementArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Placement mode for the version.
-        /// Available values: "smart".
+        /// TCP host and port for targeted placement.
+        /// </summary>
+        [Input("host")]
+        public Input<string>? Host { get; set; }
+
+        /// <summary>
+        /// HTTP hostname for targeted placement.
+        /// </summary>
+        [Input("hostname")]
+        public Input<string>? Hostname { get; set; }
+
+        /// <summary>
+        /// Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        /// Available values: "smart", "targeted".
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
+
+        /// <summary>
+        /// Cloud region for targeted placement in format 'provider:region'.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        [Input("targets")]
+        private InputList<Inputs.WorkerVersionPlacementTargetArgs>? _targets;
+
+        /// <summary>
+        /// Array of placement targets (currently limited to single target).
+        /// </summary>
+        public InputList<Inputs.WorkerVersionPlacementTargetArgs> Targets
+        {
+            get => _targets ?? (_targets = new InputList<Inputs.WorkerVersionPlacementTargetArgs>());
+            set => _targets = value;
+        }
 
         public WorkerVersionPlacementArgs()
         {

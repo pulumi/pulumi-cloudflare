@@ -24,6 +24,7 @@ public final class GetWorkersScriptResult {
      * 
      */
     private String id;
+    private String script;
     /**
      * @return Name of the script, used in URLs and route configuration.
      * 
@@ -48,6 +49,9 @@ public final class GetWorkersScriptResult {
     public String id() {
         return this.id;
     }
+    public String script() {
+        return this.script;
+    }
     /**
      * @return Name of the script, used in URLs and route configuration.
      * 
@@ -68,6 +72,7 @@ public final class GetWorkersScriptResult {
         private String accountId;
         private @Nullable GetWorkersScriptFilter filter;
         private String id;
+        private String script;
         private @Nullable String scriptName;
         public Builder() {}
         public Builder(GetWorkersScriptResult defaults) {
@@ -75,6 +80,7 @@ public final class GetWorkersScriptResult {
     	      this.accountId = defaults.accountId;
     	      this.filter = defaults.filter;
     	      this.id = defaults.id;
+    	      this.script = defaults.script;
     	      this.scriptName = defaults.scriptName;
         }
 
@@ -101,6 +107,14 @@ public final class GetWorkersScriptResult {
             return this;
         }
         @CustomType.Setter
+        public Builder script(String script) {
+            if (script == null) {
+              throw new MissingRequiredPropertyException("GetWorkersScriptResult", "script");
+            }
+            this.script = script;
+            return this;
+        }
+        @CustomType.Setter
         public Builder scriptName(@Nullable String scriptName) {
 
             this.scriptName = scriptName;
@@ -111,6 +125,7 @@ public final class GetWorkersScriptResult {
             _resultValue.accountId = accountId;
             _resultValue.filter = filter;
             _resultValue.id = id;
+            _resultValue.script = script;
             _resultValue.scriptName = scriptName;
             return _resultValue;
         }

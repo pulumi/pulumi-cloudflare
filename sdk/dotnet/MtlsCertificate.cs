@@ -60,7 +60,7 @@ namespace Pulumi.Cloudflare
         public Output<bool> Ca { get; private set; } = null!;
 
         /// <summary>
-        /// The uploaded root CA certificate.
+        /// The uploaded root CA certificate or certificate chain. Certificates must be provided in PEM format with the certificate matching the PrivateKey first in the chain.
         /// </summary>
         [Output("certificates")]
         public Output<string> Certificates { get; private set; } = null!;
@@ -176,7 +176,7 @@ namespace Pulumi.Cloudflare
         public Input<bool> Ca { get; set; } = null!;
 
         /// <summary>
-        /// The uploaded root CA certificate.
+        /// The uploaded root CA certificate or certificate chain. Certificates must be provided in PEM format with the certificate matching the PrivateKey first in the chain.
         /// </summary>
         [Input("certificates", required: true)]
         public Input<string> Certificates { get; set; } = null!;
@@ -224,7 +224,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Ca { get; set; }
 
         /// <summary>
-        /// The uploaded root CA certificate.
+        /// The uploaded root CA certificate or certificate chain. Certificates must be provided in PEM format with the certificate matching the PrivateKey first in the chain.
         /// </summary>
         [Input("certificates")]
         public Input<string>? Certificates { get; set; }

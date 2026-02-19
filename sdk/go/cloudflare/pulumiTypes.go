@@ -41656,6 +41656,1770 @@ func (o AddressMapMembershipArrayOutput) Index(i pulumi.IntInput) AddressMapMemb
 	}).(AddressMapMembershipOutput)
 }
 
+type AiSearchInstanceCustomMetadata struct {
+	// Available values: "text", "number", "boolean".
+	DataType  string `pulumi:"dataType"`
+	FieldName string `pulumi:"fieldName"`
+}
+
+// AiSearchInstanceCustomMetadataInput is an input type that accepts AiSearchInstanceCustomMetadataArgs and AiSearchInstanceCustomMetadataOutput values.
+// You can construct a concrete instance of `AiSearchInstanceCustomMetadataInput` via:
+//
+//	AiSearchInstanceCustomMetadataArgs{...}
+type AiSearchInstanceCustomMetadataInput interface {
+	pulumi.Input
+
+	ToAiSearchInstanceCustomMetadataOutput() AiSearchInstanceCustomMetadataOutput
+	ToAiSearchInstanceCustomMetadataOutputWithContext(context.Context) AiSearchInstanceCustomMetadataOutput
+}
+
+type AiSearchInstanceCustomMetadataArgs struct {
+	// Available values: "text", "number", "boolean".
+	DataType  pulumi.StringInput `pulumi:"dataType"`
+	FieldName pulumi.StringInput `pulumi:"fieldName"`
+}
+
+func (AiSearchInstanceCustomMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchInstanceCustomMetadata)(nil)).Elem()
+}
+
+func (i AiSearchInstanceCustomMetadataArgs) ToAiSearchInstanceCustomMetadataOutput() AiSearchInstanceCustomMetadataOutput {
+	return i.ToAiSearchInstanceCustomMetadataOutputWithContext(context.Background())
+}
+
+func (i AiSearchInstanceCustomMetadataArgs) ToAiSearchInstanceCustomMetadataOutputWithContext(ctx context.Context) AiSearchInstanceCustomMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstanceCustomMetadataOutput)
+}
+
+// AiSearchInstanceCustomMetadataArrayInput is an input type that accepts AiSearchInstanceCustomMetadataArray and AiSearchInstanceCustomMetadataArrayOutput values.
+// You can construct a concrete instance of `AiSearchInstanceCustomMetadataArrayInput` via:
+//
+//	AiSearchInstanceCustomMetadataArray{ AiSearchInstanceCustomMetadataArgs{...} }
+type AiSearchInstanceCustomMetadataArrayInput interface {
+	pulumi.Input
+
+	ToAiSearchInstanceCustomMetadataArrayOutput() AiSearchInstanceCustomMetadataArrayOutput
+	ToAiSearchInstanceCustomMetadataArrayOutputWithContext(context.Context) AiSearchInstanceCustomMetadataArrayOutput
+}
+
+type AiSearchInstanceCustomMetadataArray []AiSearchInstanceCustomMetadataInput
+
+func (AiSearchInstanceCustomMetadataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiSearchInstanceCustomMetadata)(nil)).Elem()
+}
+
+func (i AiSearchInstanceCustomMetadataArray) ToAiSearchInstanceCustomMetadataArrayOutput() AiSearchInstanceCustomMetadataArrayOutput {
+	return i.ToAiSearchInstanceCustomMetadataArrayOutputWithContext(context.Background())
+}
+
+func (i AiSearchInstanceCustomMetadataArray) ToAiSearchInstanceCustomMetadataArrayOutputWithContext(ctx context.Context) AiSearchInstanceCustomMetadataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstanceCustomMetadataArrayOutput)
+}
+
+type AiSearchInstanceCustomMetadataOutput struct{ *pulumi.OutputState }
+
+func (AiSearchInstanceCustomMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchInstanceCustomMetadata)(nil)).Elem()
+}
+
+func (o AiSearchInstanceCustomMetadataOutput) ToAiSearchInstanceCustomMetadataOutput() AiSearchInstanceCustomMetadataOutput {
+	return o
+}
+
+func (o AiSearchInstanceCustomMetadataOutput) ToAiSearchInstanceCustomMetadataOutputWithContext(ctx context.Context) AiSearchInstanceCustomMetadataOutput {
+	return o
+}
+
+// Available values: "text", "number", "boolean".
+func (o AiSearchInstanceCustomMetadataOutput) DataType() pulumi.StringOutput {
+	return o.ApplyT(func(v AiSearchInstanceCustomMetadata) string { return v.DataType }).(pulumi.StringOutput)
+}
+
+func (o AiSearchInstanceCustomMetadataOutput) FieldName() pulumi.StringOutput {
+	return o.ApplyT(func(v AiSearchInstanceCustomMetadata) string { return v.FieldName }).(pulumi.StringOutput)
+}
+
+type AiSearchInstanceCustomMetadataArrayOutput struct{ *pulumi.OutputState }
+
+func (AiSearchInstanceCustomMetadataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiSearchInstanceCustomMetadata)(nil)).Elem()
+}
+
+func (o AiSearchInstanceCustomMetadataArrayOutput) ToAiSearchInstanceCustomMetadataArrayOutput() AiSearchInstanceCustomMetadataArrayOutput {
+	return o
+}
+
+func (o AiSearchInstanceCustomMetadataArrayOutput) ToAiSearchInstanceCustomMetadataArrayOutputWithContext(ctx context.Context) AiSearchInstanceCustomMetadataArrayOutput {
+	return o
+}
+
+func (o AiSearchInstanceCustomMetadataArrayOutput) Index(i pulumi.IntInput) AiSearchInstanceCustomMetadataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiSearchInstanceCustomMetadata {
+		return vs[0].([]AiSearchInstanceCustomMetadata)[vs[1].(int)]
+	}).(AiSearchInstanceCustomMetadataOutput)
+}
+
+type AiSearchInstanceMetadata struct {
+	CreatedFromAisearchWizard *bool   `pulumi:"createdFromAisearchWizard"`
+	WorkerDomain              *string `pulumi:"workerDomain"`
+}
+
+// AiSearchInstanceMetadataInput is an input type that accepts AiSearchInstanceMetadataArgs and AiSearchInstanceMetadataOutput values.
+// You can construct a concrete instance of `AiSearchInstanceMetadataInput` via:
+//
+//	AiSearchInstanceMetadataArgs{...}
+type AiSearchInstanceMetadataInput interface {
+	pulumi.Input
+
+	ToAiSearchInstanceMetadataOutput() AiSearchInstanceMetadataOutput
+	ToAiSearchInstanceMetadataOutputWithContext(context.Context) AiSearchInstanceMetadataOutput
+}
+
+type AiSearchInstanceMetadataArgs struct {
+	CreatedFromAisearchWizard pulumi.BoolPtrInput   `pulumi:"createdFromAisearchWizard"`
+	WorkerDomain              pulumi.StringPtrInput `pulumi:"workerDomain"`
+}
+
+func (AiSearchInstanceMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchInstanceMetadata)(nil)).Elem()
+}
+
+func (i AiSearchInstanceMetadataArgs) ToAiSearchInstanceMetadataOutput() AiSearchInstanceMetadataOutput {
+	return i.ToAiSearchInstanceMetadataOutputWithContext(context.Background())
+}
+
+func (i AiSearchInstanceMetadataArgs) ToAiSearchInstanceMetadataOutputWithContext(ctx context.Context) AiSearchInstanceMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstanceMetadataOutput)
+}
+
+func (i AiSearchInstanceMetadataArgs) ToAiSearchInstanceMetadataPtrOutput() AiSearchInstanceMetadataPtrOutput {
+	return i.ToAiSearchInstanceMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i AiSearchInstanceMetadataArgs) ToAiSearchInstanceMetadataPtrOutputWithContext(ctx context.Context) AiSearchInstanceMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstanceMetadataOutput).ToAiSearchInstanceMetadataPtrOutputWithContext(ctx)
+}
+
+// AiSearchInstanceMetadataPtrInput is an input type that accepts AiSearchInstanceMetadataArgs, AiSearchInstanceMetadataPtr and AiSearchInstanceMetadataPtrOutput values.
+// You can construct a concrete instance of `AiSearchInstanceMetadataPtrInput` via:
+//
+//	        AiSearchInstanceMetadataArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiSearchInstanceMetadataPtrInput interface {
+	pulumi.Input
+
+	ToAiSearchInstanceMetadataPtrOutput() AiSearchInstanceMetadataPtrOutput
+	ToAiSearchInstanceMetadataPtrOutputWithContext(context.Context) AiSearchInstanceMetadataPtrOutput
+}
+
+type aiSearchInstanceMetadataPtrType AiSearchInstanceMetadataArgs
+
+func AiSearchInstanceMetadataPtr(v *AiSearchInstanceMetadataArgs) AiSearchInstanceMetadataPtrInput {
+	return (*aiSearchInstanceMetadataPtrType)(v)
+}
+
+func (*aiSearchInstanceMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchInstanceMetadata)(nil)).Elem()
+}
+
+func (i *aiSearchInstanceMetadataPtrType) ToAiSearchInstanceMetadataPtrOutput() AiSearchInstanceMetadataPtrOutput {
+	return i.ToAiSearchInstanceMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *aiSearchInstanceMetadataPtrType) ToAiSearchInstanceMetadataPtrOutputWithContext(ctx context.Context) AiSearchInstanceMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstanceMetadataPtrOutput)
+}
+
+type AiSearchInstanceMetadataOutput struct{ *pulumi.OutputState }
+
+func (AiSearchInstanceMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchInstanceMetadata)(nil)).Elem()
+}
+
+func (o AiSearchInstanceMetadataOutput) ToAiSearchInstanceMetadataOutput() AiSearchInstanceMetadataOutput {
+	return o
+}
+
+func (o AiSearchInstanceMetadataOutput) ToAiSearchInstanceMetadataOutputWithContext(ctx context.Context) AiSearchInstanceMetadataOutput {
+	return o
+}
+
+func (o AiSearchInstanceMetadataOutput) ToAiSearchInstanceMetadataPtrOutput() AiSearchInstanceMetadataPtrOutput {
+	return o.ToAiSearchInstanceMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o AiSearchInstanceMetadataOutput) ToAiSearchInstanceMetadataPtrOutputWithContext(ctx context.Context) AiSearchInstanceMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiSearchInstanceMetadata) *AiSearchInstanceMetadata {
+		return &v
+	}).(AiSearchInstanceMetadataPtrOutput)
+}
+
+func (o AiSearchInstanceMetadataOutput) CreatedFromAisearchWizard() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiSearchInstanceMetadata) *bool { return v.CreatedFromAisearchWizard }).(pulumi.BoolPtrOutput)
+}
+
+func (o AiSearchInstanceMetadataOutput) WorkerDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiSearchInstanceMetadata) *string { return v.WorkerDomain }).(pulumi.StringPtrOutput)
+}
+
+type AiSearchInstanceMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (AiSearchInstanceMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchInstanceMetadata)(nil)).Elem()
+}
+
+func (o AiSearchInstanceMetadataPtrOutput) ToAiSearchInstanceMetadataPtrOutput() AiSearchInstanceMetadataPtrOutput {
+	return o
+}
+
+func (o AiSearchInstanceMetadataPtrOutput) ToAiSearchInstanceMetadataPtrOutputWithContext(ctx context.Context) AiSearchInstanceMetadataPtrOutput {
+	return o
+}
+
+func (o AiSearchInstanceMetadataPtrOutput) Elem() AiSearchInstanceMetadataOutput {
+	return o.ApplyT(func(v *AiSearchInstanceMetadata) AiSearchInstanceMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret AiSearchInstanceMetadata
+		return ret
+	}).(AiSearchInstanceMetadataOutput)
+}
+
+func (o AiSearchInstanceMetadataPtrOutput) CreatedFromAisearchWizard() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiSearchInstanceMetadata) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedFromAisearchWizard
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o AiSearchInstanceMetadataPtrOutput) WorkerDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiSearchInstanceMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkerDomain
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiSearchInstancePublicEndpointParams struct {
+	AuthorizedHosts         []string                                                     `pulumi:"authorizedHosts"`
+	ChatCompletionsEndpoint *AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint `pulumi:"chatCompletionsEndpoint"`
+	Enabled                 *bool                                                        `pulumi:"enabled"`
+	Mcp                     *AiSearchInstancePublicEndpointParamsMcp                     `pulumi:"mcp"`
+	RateLimit               *AiSearchInstancePublicEndpointParamsRateLimit               `pulumi:"rateLimit"`
+	SearchEndpoint          *AiSearchInstancePublicEndpointParamsSearchEndpoint          `pulumi:"searchEndpoint"`
+}
+
+// AiSearchInstancePublicEndpointParamsInput is an input type that accepts AiSearchInstancePublicEndpointParamsArgs and AiSearchInstancePublicEndpointParamsOutput values.
+// You can construct a concrete instance of `AiSearchInstancePublicEndpointParamsInput` via:
+//
+//	AiSearchInstancePublicEndpointParamsArgs{...}
+type AiSearchInstancePublicEndpointParamsInput interface {
+	pulumi.Input
+
+	ToAiSearchInstancePublicEndpointParamsOutput() AiSearchInstancePublicEndpointParamsOutput
+	ToAiSearchInstancePublicEndpointParamsOutputWithContext(context.Context) AiSearchInstancePublicEndpointParamsOutput
+}
+
+type AiSearchInstancePublicEndpointParamsArgs struct {
+	AuthorizedHosts         pulumi.StringArrayInput                                             `pulumi:"authorizedHosts"`
+	ChatCompletionsEndpoint AiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrInput `pulumi:"chatCompletionsEndpoint"`
+	Enabled                 pulumi.BoolPtrInput                                                 `pulumi:"enabled"`
+	Mcp                     AiSearchInstancePublicEndpointParamsMcpPtrInput                     `pulumi:"mcp"`
+	RateLimit               AiSearchInstancePublicEndpointParamsRateLimitPtrInput               `pulumi:"rateLimit"`
+	SearchEndpoint          AiSearchInstancePublicEndpointParamsSearchEndpointPtrInput          `pulumi:"searchEndpoint"`
+}
+
+func (AiSearchInstancePublicEndpointParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchInstancePublicEndpointParams)(nil)).Elem()
+}
+
+func (i AiSearchInstancePublicEndpointParamsArgs) ToAiSearchInstancePublicEndpointParamsOutput() AiSearchInstancePublicEndpointParamsOutput {
+	return i.ToAiSearchInstancePublicEndpointParamsOutputWithContext(context.Background())
+}
+
+func (i AiSearchInstancePublicEndpointParamsArgs) ToAiSearchInstancePublicEndpointParamsOutputWithContext(ctx context.Context) AiSearchInstancePublicEndpointParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstancePublicEndpointParamsOutput)
+}
+
+func (i AiSearchInstancePublicEndpointParamsArgs) ToAiSearchInstancePublicEndpointParamsPtrOutput() AiSearchInstancePublicEndpointParamsPtrOutput {
+	return i.ToAiSearchInstancePublicEndpointParamsPtrOutputWithContext(context.Background())
+}
+
+func (i AiSearchInstancePublicEndpointParamsArgs) ToAiSearchInstancePublicEndpointParamsPtrOutputWithContext(ctx context.Context) AiSearchInstancePublicEndpointParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstancePublicEndpointParamsOutput).ToAiSearchInstancePublicEndpointParamsPtrOutputWithContext(ctx)
+}
+
+// AiSearchInstancePublicEndpointParamsPtrInput is an input type that accepts AiSearchInstancePublicEndpointParamsArgs, AiSearchInstancePublicEndpointParamsPtr and AiSearchInstancePublicEndpointParamsPtrOutput values.
+// You can construct a concrete instance of `AiSearchInstancePublicEndpointParamsPtrInput` via:
+//
+//	        AiSearchInstancePublicEndpointParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiSearchInstancePublicEndpointParamsPtrInput interface {
+	pulumi.Input
+
+	ToAiSearchInstancePublicEndpointParamsPtrOutput() AiSearchInstancePublicEndpointParamsPtrOutput
+	ToAiSearchInstancePublicEndpointParamsPtrOutputWithContext(context.Context) AiSearchInstancePublicEndpointParamsPtrOutput
+}
+
+type aiSearchInstancePublicEndpointParamsPtrType AiSearchInstancePublicEndpointParamsArgs
+
+func AiSearchInstancePublicEndpointParamsPtr(v *AiSearchInstancePublicEndpointParamsArgs) AiSearchInstancePublicEndpointParamsPtrInput {
+	return (*aiSearchInstancePublicEndpointParamsPtrType)(v)
+}
+
+func (*aiSearchInstancePublicEndpointParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchInstancePublicEndpointParams)(nil)).Elem()
+}
+
+func (i *aiSearchInstancePublicEndpointParamsPtrType) ToAiSearchInstancePublicEndpointParamsPtrOutput() AiSearchInstancePublicEndpointParamsPtrOutput {
+	return i.ToAiSearchInstancePublicEndpointParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *aiSearchInstancePublicEndpointParamsPtrType) ToAiSearchInstancePublicEndpointParamsPtrOutputWithContext(ctx context.Context) AiSearchInstancePublicEndpointParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstancePublicEndpointParamsPtrOutput)
+}
+
+type AiSearchInstancePublicEndpointParamsOutput struct{ *pulumi.OutputState }
+
+func (AiSearchInstancePublicEndpointParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchInstancePublicEndpointParams)(nil)).Elem()
+}
+
+func (o AiSearchInstancePublicEndpointParamsOutput) ToAiSearchInstancePublicEndpointParamsOutput() AiSearchInstancePublicEndpointParamsOutput {
+	return o
+}
+
+func (o AiSearchInstancePublicEndpointParamsOutput) ToAiSearchInstancePublicEndpointParamsOutputWithContext(ctx context.Context) AiSearchInstancePublicEndpointParamsOutput {
+	return o
+}
+
+func (o AiSearchInstancePublicEndpointParamsOutput) ToAiSearchInstancePublicEndpointParamsPtrOutput() AiSearchInstancePublicEndpointParamsPtrOutput {
+	return o.ToAiSearchInstancePublicEndpointParamsPtrOutputWithContext(context.Background())
+}
+
+func (o AiSearchInstancePublicEndpointParamsOutput) ToAiSearchInstancePublicEndpointParamsPtrOutputWithContext(ctx context.Context) AiSearchInstancePublicEndpointParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiSearchInstancePublicEndpointParams) *AiSearchInstancePublicEndpointParams {
+		return &v
+	}).(AiSearchInstancePublicEndpointParamsPtrOutput)
+}
+
+func (o AiSearchInstancePublicEndpointParamsOutput) AuthorizedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiSearchInstancePublicEndpointParams) []string { return v.AuthorizedHosts }).(pulumi.StringArrayOutput)
+}
+
+func (o AiSearchInstancePublicEndpointParamsOutput) ChatCompletionsEndpoint() AiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutput {
+	return o.ApplyT(func(v AiSearchInstancePublicEndpointParams) *AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint {
+		return v.ChatCompletionsEndpoint
+	}).(AiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutput)
+}
+
+func (o AiSearchInstancePublicEndpointParamsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiSearchInstancePublicEndpointParams) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o AiSearchInstancePublicEndpointParamsOutput) Mcp() AiSearchInstancePublicEndpointParamsMcpPtrOutput {
+	return o.ApplyT(func(v AiSearchInstancePublicEndpointParams) *AiSearchInstancePublicEndpointParamsMcp { return v.Mcp }).(AiSearchInstancePublicEndpointParamsMcpPtrOutput)
+}
+
+func (o AiSearchInstancePublicEndpointParamsOutput) RateLimit() AiSearchInstancePublicEndpointParamsRateLimitPtrOutput {
+	return o.ApplyT(func(v AiSearchInstancePublicEndpointParams) *AiSearchInstancePublicEndpointParamsRateLimit {
+		return v.RateLimit
+	}).(AiSearchInstancePublicEndpointParamsRateLimitPtrOutput)
+}
+
+func (o AiSearchInstancePublicEndpointParamsOutput) SearchEndpoint() AiSearchInstancePublicEndpointParamsSearchEndpointPtrOutput {
+	return o.ApplyT(func(v AiSearchInstancePublicEndpointParams) *AiSearchInstancePublicEndpointParamsSearchEndpoint {
+		return v.SearchEndpoint
+	}).(AiSearchInstancePublicEndpointParamsSearchEndpointPtrOutput)
+}
+
+type AiSearchInstancePublicEndpointParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (AiSearchInstancePublicEndpointParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchInstancePublicEndpointParams)(nil)).Elem()
+}
+
+func (o AiSearchInstancePublicEndpointParamsPtrOutput) ToAiSearchInstancePublicEndpointParamsPtrOutput() AiSearchInstancePublicEndpointParamsPtrOutput {
+	return o
+}
+
+func (o AiSearchInstancePublicEndpointParamsPtrOutput) ToAiSearchInstancePublicEndpointParamsPtrOutputWithContext(ctx context.Context) AiSearchInstancePublicEndpointParamsPtrOutput {
+	return o
+}
+
+func (o AiSearchInstancePublicEndpointParamsPtrOutput) Elem() AiSearchInstancePublicEndpointParamsOutput {
+	return o.ApplyT(func(v *AiSearchInstancePublicEndpointParams) AiSearchInstancePublicEndpointParams {
+		if v != nil {
+			return *v
+		}
+		var ret AiSearchInstancePublicEndpointParams
+		return ret
+	}).(AiSearchInstancePublicEndpointParamsOutput)
+}
+
+func (o AiSearchInstancePublicEndpointParamsPtrOutput) AuthorizedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiSearchInstancePublicEndpointParams) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthorizedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o AiSearchInstancePublicEndpointParamsPtrOutput) ChatCompletionsEndpoint() AiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutput {
+	return o.ApplyT(func(v *AiSearchInstancePublicEndpointParams) *AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint {
+		if v == nil {
+			return nil
+		}
+		return v.ChatCompletionsEndpoint
+	}).(AiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutput)
+}
+
+func (o AiSearchInstancePublicEndpointParamsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiSearchInstancePublicEndpointParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o AiSearchInstancePublicEndpointParamsPtrOutput) Mcp() AiSearchInstancePublicEndpointParamsMcpPtrOutput {
+	return o.ApplyT(func(v *AiSearchInstancePublicEndpointParams) *AiSearchInstancePublicEndpointParamsMcp {
+		if v == nil {
+			return nil
+		}
+		return v.Mcp
+	}).(AiSearchInstancePublicEndpointParamsMcpPtrOutput)
+}
+
+func (o AiSearchInstancePublicEndpointParamsPtrOutput) RateLimit() AiSearchInstancePublicEndpointParamsRateLimitPtrOutput {
+	return o.ApplyT(func(v *AiSearchInstancePublicEndpointParams) *AiSearchInstancePublicEndpointParamsRateLimit {
+		if v == nil {
+			return nil
+		}
+		return v.RateLimit
+	}).(AiSearchInstancePublicEndpointParamsRateLimitPtrOutput)
+}
+
+func (o AiSearchInstancePublicEndpointParamsPtrOutput) SearchEndpoint() AiSearchInstancePublicEndpointParamsSearchEndpointPtrOutput {
+	return o.ApplyT(func(v *AiSearchInstancePublicEndpointParams) *AiSearchInstancePublicEndpointParamsSearchEndpoint {
+		if v == nil {
+			return nil
+		}
+		return v.SearchEndpoint
+	}).(AiSearchInstancePublicEndpointParamsSearchEndpointPtrOutput)
+}
+
+type AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint struct {
+	// Disable chat completions endpoint for this public endpoint
+	Disabled *bool `pulumi:"disabled"`
+}
+
+// AiSearchInstancePublicEndpointParamsChatCompletionsEndpointInput is an input type that accepts AiSearchInstancePublicEndpointParamsChatCompletionsEndpointArgs and AiSearchInstancePublicEndpointParamsChatCompletionsEndpointOutput values.
+// You can construct a concrete instance of `AiSearchInstancePublicEndpointParamsChatCompletionsEndpointInput` via:
+//
+//	AiSearchInstancePublicEndpointParamsChatCompletionsEndpointArgs{...}
+type AiSearchInstancePublicEndpointParamsChatCompletionsEndpointInput interface {
+	pulumi.Input
+
+	ToAiSearchInstancePublicEndpointParamsChatCompletionsEndpointOutput() AiSearchInstancePublicEndpointParamsChatCompletionsEndpointOutput
+	ToAiSearchInstancePublicEndpointParamsChatCompletionsEndpointOutputWithContext(context.Context) AiSearchInstancePublicEndpointParamsChatCompletionsEndpointOutput
+}
+
+type AiSearchInstancePublicEndpointParamsChatCompletionsEndpointArgs struct {
+	// Disable chat completions endpoint for this public endpoint
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+}
+
+func (AiSearchInstancePublicEndpointParamsChatCompletionsEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint)(nil)).Elem()
+}
+
+func (i AiSearchInstancePublicEndpointParamsChatCompletionsEndpointArgs) ToAiSearchInstancePublicEndpointParamsChatCompletionsEndpointOutput() AiSearchInstancePublicEndpointParamsChatCompletionsEndpointOutput {
+	return i.ToAiSearchInstancePublicEndpointParamsChatCompletionsEndpointOutputWithContext(context.Background())
+}
+
+func (i AiSearchInstancePublicEndpointParamsChatCompletionsEndpointArgs) ToAiSearchInstancePublicEndpointParamsChatCompletionsEndpointOutputWithContext(ctx context.Context) AiSearchInstancePublicEndpointParamsChatCompletionsEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstancePublicEndpointParamsChatCompletionsEndpointOutput)
+}
+
+func (i AiSearchInstancePublicEndpointParamsChatCompletionsEndpointArgs) ToAiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutput() AiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutput {
+	return i.ToAiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i AiSearchInstancePublicEndpointParamsChatCompletionsEndpointArgs) ToAiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutputWithContext(ctx context.Context) AiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstancePublicEndpointParamsChatCompletionsEndpointOutput).ToAiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutputWithContext(ctx)
+}
+
+// AiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrInput is an input type that accepts AiSearchInstancePublicEndpointParamsChatCompletionsEndpointArgs, AiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtr and AiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutput values.
+// You can construct a concrete instance of `AiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrInput` via:
+//
+//	        AiSearchInstancePublicEndpointParamsChatCompletionsEndpointArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrInput interface {
+	pulumi.Input
+
+	ToAiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutput() AiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutput
+	ToAiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutputWithContext(context.Context) AiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutput
+}
+
+type aiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrType AiSearchInstancePublicEndpointParamsChatCompletionsEndpointArgs
+
+func AiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtr(v *AiSearchInstancePublicEndpointParamsChatCompletionsEndpointArgs) AiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrInput {
+	return (*aiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrType)(v)
+}
+
+func (*aiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint)(nil)).Elem()
+}
+
+func (i *aiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrType) ToAiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutput() AiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutput {
+	return i.ToAiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *aiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrType) ToAiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutputWithContext(ctx context.Context) AiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutput)
+}
+
+type AiSearchInstancePublicEndpointParamsChatCompletionsEndpointOutput struct{ *pulumi.OutputState }
+
+func (AiSearchInstancePublicEndpointParamsChatCompletionsEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint)(nil)).Elem()
+}
+
+func (o AiSearchInstancePublicEndpointParamsChatCompletionsEndpointOutput) ToAiSearchInstancePublicEndpointParamsChatCompletionsEndpointOutput() AiSearchInstancePublicEndpointParamsChatCompletionsEndpointOutput {
+	return o
+}
+
+func (o AiSearchInstancePublicEndpointParamsChatCompletionsEndpointOutput) ToAiSearchInstancePublicEndpointParamsChatCompletionsEndpointOutputWithContext(ctx context.Context) AiSearchInstancePublicEndpointParamsChatCompletionsEndpointOutput {
+	return o
+}
+
+func (o AiSearchInstancePublicEndpointParamsChatCompletionsEndpointOutput) ToAiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutput() AiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutput {
+	return o.ToAiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutputWithContext(context.Background())
+}
+
+func (o AiSearchInstancePublicEndpointParamsChatCompletionsEndpointOutput) ToAiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutputWithContext(ctx context.Context) AiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint) *AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint {
+		return &v
+	}).(AiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutput)
+}
+
+// Disable chat completions endpoint for this public endpoint
+func (o AiSearchInstancePublicEndpointParamsChatCompletionsEndpointOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+type AiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutput struct{ *pulumi.OutputState }
+
+func (AiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint)(nil)).Elem()
+}
+
+func (o AiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutput) ToAiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutput() AiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutput {
+	return o
+}
+
+func (o AiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutput) ToAiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutputWithContext(ctx context.Context) AiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutput {
+	return o
+}
+
+func (o AiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutput) Elem() AiSearchInstancePublicEndpointParamsChatCompletionsEndpointOutput {
+	return o.ApplyT(func(v *AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint) AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint
+		return ret
+	}).(AiSearchInstancePublicEndpointParamsChatCompletionsEndpointOutput)
+}
+
+// Disable chat completions endpoint for this public endpoint
+func (o AiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AiSearchInstancePublicEndpointParamsMcp struct {
+	// Disable MCP endpoint for this public endpoint
+	Disabled *bool `pulumi:"disabled"`
+}
+
+// AiSearchInstancePublicEndpointParamsMcpInput is an input type that accepts AiSearchInstancePublicEndpointParamsMcpArgs and AiSearchInstancePublicEndpointParamsMcpOutput values.
+// You can construct a concrete instance of `AiSearchInstancePublicEndpointParamsMcpInput` via:
+//
+//	AiSearchInstancePublicEndpointParamsMcpArgs{...}
+type AiSearchInstancePublicEndpointParamsMcpInput interface {
+	pulumi.Input
+
+	ToAiSearchInstancePublicEndpointParamsMcpOutput() AiSearchInstancePublicEndpointParamsMcpOutput
+	ToAiSearchInstancePublicEndpointParamsMcpOutputWithContext(context.Context) AiSearchInstancePublicEndpointParamsMcpOutput
+}
+
+type AiSearchInstancePublicEndpointParamsMcpArgs struct {
+	// Disable MCP endpoint for this public endpoint
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+}
+
+func (AiSearchInstancePublicEndpointParamsMcpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchInstancePublicEndpointParamsMcp)(nil)).Elem()
+}
+
+func (i AiSearchInstancePublicEndpointParamsMcpArgs) ToAiSearchInstancePublicEndpointParamsMcpOutput() AiSearchInstancePublicEndpointParamsMcpOutput {
+	return i.ToAiSearchInstancePublicEndpointParamsMcpOutputWithContext(context.Background())
+}
+
+func (i AiSearchInstancePublicEndpointParamsMcpArgs) ToAiSearchInstancePublicEndpointParamsMcpOutputWithContext(ctx context.Context) AiSearchInstancePublicEndpointParamsMcpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstancePublicEndpointParamsMcpOutput)
+}
+
+func (i AiSearchInstancePublicEndpointParamsMcpArgs) ToAiSearchInstancePublicEndpointParamsMcpPtrOutput() AiSearchInstancePublicEndpointParamsMcpPtrOutput {
+	return i.ToAiSearchInstancePublicEndpointParamsMcpPtrOutputWithContext(context.Background())
+}
+
+func (i AiSearchInstancePublicEndpointParamsMcpArgs) ToAiSearchInstancePublicEndpointParamsMcpPtrOutputWithContext(ctx context.Context) AiSearchInstancePublicEndpointParamsMcpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstancePublicEndpointParamsMcpOutput).ToAiSearchInstancePublicEndpointParamsMcpPtrOutputWithContext(ctx)
+}
+
+// AiSearchInstancePublicEndpointParamsMcpPtrInput is an input type that accepts AiSearchInstancePublicEndpointParamsMcpArgs, AiSearchInstancePublicEndpointParamsMcpPtr and AiSearchInstancePublicEndpointParamsMcpPtrOutput values.
+// You can construct a concrete instance of `AiSearchInstancePublicEndpointParamsMcpPtrInput` via:
+//
+//	        AiSearchInstancePublicEndpointParamsMcpArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiSearchInstancePublicEndpointParamsMcpPtrInput interface {
+	pulumi.Input
+
+	ToAiSearchInstancePublicEndpointParamsMcpPtrOutput() AiSearchInstancePublicEndpointParamsMcpPtrOutput
+	ToAiSearchInstancePublicEndpointParamsMcpPtrOutputWithContext(context.Context) AiSearchInstancePublicEndpointParamsMcpPtrOutput
+}
+
+type aiSearchInstancePublicEndpointParamsMcpPtrType AiSearchInstancePublicEndpointParamsMcpArgs
+
+func AiSearchInstancePublicEndpointParamsMcpPtr(v *AiSearchInstancePublicEndpointParamsMcpArgs) AiSearchInstancePublicEndpointParamsMcpPtrInput {
+	return (*aiSearchInstancePublicEndpointParamsMcpPtrType)(v)
+}
+
+func (*aiSearchInstancePublicEndpointParamsMcpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchInstancePublicEndpointParamsMcp)(nil)).Elem()
+}
+
+func (i *aiSearchInstancePublicEndpointParamsMcpPtrType) ToAiSearchInstancePublicEndpointParamsMcpPtrOutput() AiSearchInstancePublicEndpointParamsMcpPtrOutput {
+	return i.ToAiSearchInstancePublicEndpointParamsMcpPtrOutputWithContext(context.Background())
+}
+
+func (i *aiSearchInstancePublicEndpointParamsMcpPtrType) ToAiSearchInstancePublicEndpointParamsMcpPtrOutputWithContext(ctx context.Context) AiSearchInstancePublicEndpointParamsMcpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstancePublicEndpointParamsMcpPtrOutput)
+}
+
+type AiSearchInstancePublicEndpointParamsMcpOutput struct{ *pulumi.OutputState }
+
+func (AiSearchInstancePublicEndpointParamsMcpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchInstancePublicEndpointParamsMcp)(nil)).Elem()
+}
+
+func (o AiSearchInstancePublicEndpointParamsMcpOutput) ToAiSearchInstancePublicEndpointParamsMcpOutput() AiSearchInstancePublicEndpointParamsMcpOutput {
+	return o
+}
+
+func (o AiSearchInstancePublicEndpointParamsMcpOutput) ToAiSearchInstancePublicEndpointParamsMcpOutputWithContext(ctx context.Context) AiSearchInstancePublicEndpointParamsMcpOutput {
+	return o
+}
+
+func (o AiSearchInstancePublicEndpointParamsMcpOutput) ToAiSearchInstancePublicEndpointParamsMcpPtrOutput() AiSearchInstancePublicEndpointParamsMcpPtrOutput {
+	return o.ToAiSearchInstancePublicEndpointParamsMcpPtrOutputWithContext(context.Background())
+}
+
+func (o AiSearchInstancePublicEndpointParamsMcpOutput) ToAiSearchInstancePublicEndpointParamsMcpPtrOutputWithContext(ctx context.Context) AiSearchInstancePublicEndpointParamsMcpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiSearchInstancePublicEndpointParamsMcp) *AiSearchInstancePublicEndpointParamsMcp {
+		return &v
+	}).(AiSearchInstancePublicEndpointParamsMcpPtrOutput)
+}
+
+// Disable MCP endpoint for this public endpoint
+func (o AiSearchInstancePublicEndpointParamsMcpOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiSearchInstancePublicEndpointParamsMcp) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+type AiSearchInstancePublicEndpointParamsMcpPtrOutput struct{ *pulumi.OutputState }
+
+func (AiSearchInstancePublicEndpointParamsMcpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchInstancePublicEndpointParamsMcp)(nil)).Elem()
+}
+
+func (o AiSearchInstancePublicEndpointParamsMcpPtrOutput) ToAiSearchInstancePublicEndpointParamsMcpPtrOutput() AiSearchInstancePublicEndpointParamsMcpPtrOutput {
+	return o
+}
+
+func (o AiSearchInstancePublicEndpointParamsMcpPtrOutput) ToAiSearchInstancePublicEndpointParamsMcpPtrOutputWithContext(ctx context.Context) AiSearchInstancePublicEndpointParamsMcpPtrOutput {
+	return o
+}
+
+func (o AiSearchInstancePublicEndpointParamsMcpPtrOutput) Elem() AiSearchInstancePublicEndpointParamsMcpOutput {
+	return o.ApplyT(func(v *AiSearchInstancePublicEndpointParamsMcp) AiSearchInstancePublicEndpointParamsMcp {
+		if v != nil {
+			return *v
+		}
+		var ret AiSearchInstancePublicEndpointParamsMcp
+		return ret
+	}).(AiSearchInstancePublicEndpointParamsMcpOutput)
+}
+
+// Disable MCP endpoint for this public endpoint
+func (o AiSearchInstancePublicEndpointParamsMcpPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiSearchInstancePublicEndpointParamsMcp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AiSearchInstancePublicEndpointParamsRateLimit struct {
+	PeriodMs *int `pulumi:"periodMs"`
+	Requests *int `pulumi:"requests"`
+	// Available values: "fixed", "sliding".
+	Technique *string `pulumi:"technique"`
+}
+
+// AiSearchInstancePublicEndpointParamsRateLimitInput is an input type that accepts AiSearchInstancePublicEndpointParamsRateLimitArgs and AiSearchInstancePublicEndpointParamsRateLimitOutput values.
+// You can construct a concrete instance of `AiSearchInstancePublicEndpointParamsRateLimitInput` via:
+//
+//	AiSearchInstancePublicEndpointParamsRateLimitArgs{...}
+type AiSearchInstancePublicEndpointParamsRateLimitInput interface {
+	pulumi.Input
+
+	ToAiSearchInstancePublicEndpointParamsRateLimitOutput() AiSearchInstancePublicEndpointParamsRateLimitOutput
+	ToAiSearchInstancePublicEndpointParamsRateLimitOutputWithContext(context.Context) AiSearchInstancePublicEndpointParamsRateLimitOutput
+}
+
+type AiSearchInstancePublicEndpointParamsRateLimitArgs struct {
+	PeriodMs pulumi.IntPtrInput `pulumi:"periodMs"`
+	Requests pulumi.IntPtrInput `pulumi:"requests"`
+	// Available values: "fixed", "sliding".
+	Technique pulumi.StringPtrInput `pulumi:"technique"`
+}
+
+func (AiSearchInstancePublicEndpointParamsRateLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchInstancePublicEndpointParamsRateLimit)(nil)).Elem()
+}
+
+func (i AiSearchInstancePublicEndpointParamsRateLimitArgs) ToAiSearchInstancePublicEndpointParamsRateLimitOutput() AiSearchInstancePublicEndpointParamsRateLimitOutput {
+	return i.ToAiSearchInstancePublicEndpointParamsRateLimitOutputWithContext(context.Background())
+}
+
+func (i AiSearchInstancePublicEndpointParamsRateLimitArgs) ToAiSearchInstancePublicEndpointParamsRateLimitOutputWithContext(ctx context.Context) AiSearchInstancePublicEndpointParamsRateLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstancePublicEndpointParamsRateLimitOutput)
+}
+
+func (i AiSearchInstancePublicEndpointParamsRateLimitArgs) ToAiSearchInstancePublicEndpointParamsRateLimitPtrOutput() AiSearchInstancePublicEndpointParamsRateLimitPtrOutput {
+	return i.ToAiSearchInstancePublicEndpointParamsRateLimitPtrOutputWithContext(context.Background())
+}
+
+func (i AiSearchInstancePublicEndpointParamsRateLimitArgs) ToAiSearchInstancePublicEndpointParamsRateLimitPtrOutputWithContext(ctx context.Context) AiSearchInstancePublicEndpointParamsRateLimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstancePublicEndpointParamsRateLimitOutput).ToAiSearchInstancePublicEndpointParamsRateLimitPtrOutputWithContext(ctx)
+}
+
+// AiSearchInstancePublicEndpointParamsRateLimitPtrInput is an input type that accepts AiSearchInstancePublicEndpointParamsRateLimitArgs, AiSearchInstancePublicEndpointParamsRateLimitPtr and AiSearchInstancePublicEndpointParamsRateLimitPtrOutput values.
+// You can construct a concrete instance of `AiSearchInstancePublicEndpointParamsRateLimitPtrInput` via:
+//
+//	        AiSearchInstancePublicEndpointParamsRateLimitArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiSearchInstancePublicEndpointParamsRateLimitPtrInput interface {
+	pulumi.Input
+
+	ToAiSearchInstancePublicEndpointParamsRateLimitPtrOutput() AiSearchInstancePublicEndpointParamsRateLimitPtrOutput
+	ToAiSearchInstancePublicEndpointParamsRateLimitPtrOutputWithContext(context.Context) AiSearchInstancePublicEndpointParamsRateLimitPtrOutput
+}
+
+type aiSearchInstancePublicEndpointParamsRateLimitPtrType AiSearchInstancePublicEndpointParamsRateLimitArgs
+
+func AiSearchInstancePublicEndpointParamsRateLimitPtr(v *AiSearchInstancePublicEndpointParamsRateLimitArgs) AiSearchInstancePublicEndpointParamsRateLimitPtrInput {
+	return (*aiSearchInstancePublicEndpointParamsRateLimitPtrType)(v)
+}
+
+func (*aiSearchInstancePublicEndpointParamsRateLimitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchInstancePublicEndpointParamsRateLimit)(nil)).Elem()
+}
+
+func (i *aiSearchInstancePublicEndpointParamsRateLimitPtrType) ToAiSearchInstancePublicEndpointParamsRateLimitPtrOutput() AiSearchInstancePublicEndpointParamsRateLimitPtrOutput {
+	return i.ToAiSearchInstancePublicEndpointParamsRateLimitPtrOutputWithContext(context.Background())
+}
+
+func (i *aiSearchInstancePublicEndpointParamsRateLimitPtrType) ToAiSearchInstancePublicEndpointParamsRateLimitPtrOutputWithContext(ctx context.Context) AiSearchInstancePublicEndpointParamsRateLimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstancePublicEndpointParamsRateLimitPtrOutput)
+}
+
+type AiSearchInstancePublicEndpointParamsRateLimitOutput struct{ *pulumi.OutputState }
+
+func (AiSearchInstancePublicEndpointParamsRateLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchInstancePublicEndpointParamsRateLimit)(nil)).Elem()
+}
+
+func (o AiSearchInstancePublicEndpointParamsRateLimitOutput) ToAiSearchInstancePublicEndpointParamsRateLimitOutput() AiSearchInstancePublicEndpointParamsRateLimitOutput {
+	return o
+}
+
+func (o AiSearchInstancePublicEndpointParamsRateLimitOutput) ToAiSearchInstancePublicEndpointParamsRateLimitOutputWithContext(ctx context.Context) AiSearchInstancePublicEndpointParamsRateLimitOutput {
+	return o
+}
+
+func (o AiSearchInstancePublicEndpointParamsRateLimitOutput) ToAiSearchInstancePublicEndpointParamsRateLimitPtrOutput() AiSearchInstancePublicEndpointParamsRateLimitPtrOutput {
+	return o.ToAiSearchInstancePublicEndpointParamsRateLimitPtrOutputWithContext(context.Background())
+}
+
+func (o AiSearchInstancePublicEndpointParamsRateLimitOutput) ToAiSearchInstancePublicEndpointParamsRateLimitPtrOutputWithContext(ctx context.Context) AiSearchInstancePublicEndpointParamsRateLimitPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiSearchInstancePublicEndpointParamsRateLimit) *AiSearchInstancePublicEndpointParamsRateLimit {
+		return &v
+	}).(AiSearchInstancePublicEndpointParamsRateLimitPtrOutput)
+}
+
+func (o AiSearchInstancePublicEndpointParamsRateLimitOutput) PeriodMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiSearchInstancePublicEndpointParamsRateLimit) *int { return v.PeriodMs }).(pulumi.IntPtrOutput)
+}
+
+func (o AiSearchInstancePublicEndpointParamsRateLimitOutput) Requests() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiSearchInstancePublicEndpointParamsRateLimit) *int { return v.Requests }).(pulumi.IntPtrOutput)
+}
+
+// Available values: "fixed", "sliding".
+func (o AiSearchInstancePublicEndpointParamsRateLimitOutput) Technique() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiSearchInstancePublicEndpointParamsRateLimit) *string { return v.Technique }).(pulumi.StringPtrOutput)
+}
+
+type AiSearchInstancePublicEndpointParamsRateLimitPtrOutput struct{ *pulumi.OutputState }
+
+func (AiSearchInstancePublicEndpointParamsRateLimitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchInstancePublicEndpointParamsRateLimit)(nil)).Elem()
+}
+
+func (o AiSearchInstancePublicEndpointParamsRateLimitPtrOutput) ToAiSearchInstancePublicEndpointParamsRateLimitPtrOutput() AiSearchInstancePublicEndpointParamsRateLimitPtrOutput {
+	return o
+}
+
+func (o AiSearchInstancePublicEndpointParamsRateLimitPtrOutput) ToAiSearchInstancePublicEndpointParamsRateLimitPtrOutputWithContext(ctx context.Context) AiSearchInstancePublicEndpointParamsRateLimitPtrOutput {
+	return o
+}
+
+func (o AiSearchInstancePublicEndpointParamsRateLimitPtrOutput) Elem() AiSearchInstancePublicEndpointParamsRateLimitOutput {
+	return o.ApplyT(func(v *AiSearchInstancePublicEndpointParamsRateLimit) AiSearchInstancePublicEndpointParamsRateLimit {
+		if v != nil {
+			return *v
+		}
+		var ret AiSearchInstancePublicEndpointParamsRateLimit
+		return ret
+	}).(AiSearchInstancePublicEndpointParamsRateLimitOutput)
+}
+
+func (o AiSearchInstancePublicEndpointParamsRateLimitPtrOutput) PeriodMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiSearchInstancePublicEndpointParamsRateLimit) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodMs
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o AiSearchInstancePublicEndpointParamsRateLimitPtrOutput) Requests() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiSearchInstancePublicEndpointParamsRateLimit) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Requests
+	}).(pulumi.IntPtrOutput)
+}
+
+// Available values: "fixed", "sliding".
+func (o AiSearchInstancePublicEndpointParamsRateLimitPtrOutput) Technique() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiSearchInstancePublicEndpointParamsRateLimit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Technique
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiSearchInstancePublicEndpointParamsSearchEndpoint struct {
+	// Disable search endpoint for this public endpoint
+	Disabled *bool `pulumi:"disabled"`
+}
+
+// AiSearchInstancePublicEndpointParamsSearchEndpointInput is an input type that accepts AiSearchInstancePublicEndpointParamsSearchEndpointArgs and AiSearchInstancePublicEndpointParamsSearchEndpointOutput values.
+// You can construct a concrete instance of `AiSearchInstancePublicEndpointParamsSearchEndpointInput` via:
+//
+//	AiSearchInstancePublicEndpointParamsSearchEndpointArgs{...}
+type AiSearchInstancePublicEndpointParamsSearchEndpointInput interface {
+	pulumi.Input
+
+	ToAiSearchInstancePublicEndpointParamsSearchEndpointOutput() AiSearchInstancePublicEndpointParamsSearchEndpointOutput
+	ToAiSearchInstancePublicEndpointParamsSearchEndpointOutputWithContext(context.Context) AiSearchInstancePublicEndpointParamsSearchEndpointOutput
+}
+
+type AiSearchInstancePublicEndpointParamsSearchEndpointArgs struct {
+	// Disable search endpoint for this public endpoint
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+}
+
+func (AiSearchInstancePublicEndpointParamsSearchEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchInstancePublicEndpointParamsSearchEndpoint)(nil)).Elem()
+}
+
+func (i AiSearchInstancePublicEndpointParamsSearchEndpointArgs) ToAiSearchInstancePublicEndpointParamsSearchEndpointOutput() AiSearchInstancePublicEndpointParamsSearchEndpointOutput {
+	return i.ToAiSearchInstancePublicEndpointParamsSearchEndpointOutputWithContext(context.Background())
+}
+
+func (i AiSearchInstancePublicEndpointParamsSearchEndpointArgs) ToAiSearchInstancePublicEndpointParamsSearchEndpointOutputWithContext(ctx context.Context) AiSearchInstancePublicEndpointParamsSearchEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstancePublicEndpointParamsSearchEndpointOutput)
+}
+
+func (i AiSearchInstancePublicEndpointParamsSearchEndpointArgs) ToAiSearchInstancePublicEndpointParamsSearchEndpointPtrOutput() AiSearchInstancePublicEndpointParamsSearchEndpointPtrOutput {
+	return i.ToAiSearchInstancePublicEndpointParamsSearchEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i AiSearchInstancePublicEndpointParamsSearchEndpointArgs) ToAiSearchInstancePublicEndpointParamsSearchEndpointPtrOutputWithContext(ctx context.Context) AiSearchInstancePublicEndpointParamsSearchEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstancePublicEndpointParamsSearchEndpointOutput).ToAiSearchInstancePublicEndpointParamsSearchEndpointPtrOutputWithContext(ctx)
+}
+
+// AiSearchInstancePublicEndpointParamsSearchEndpointPtrInput is an input type that accepts AiSearchInstancePublicEndpointParamsSearchEndpointArgs, AiSearchInstancePublicEndpointParamsSearchEndpointPtr and AiSearchInstancePublicEndpointParamsSearchEndpointPtrOutput values.
+// You can construct a concrete instance of `AiSearchInstancePublicEndpointParamsSearchEndpointPtrInput` via:
+//
+//	        AiSearchInstancePublicEndpointParamsSearchEndpointArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiSearchInstancePublicEndpointParamsSearchEndpointPtrInput interface {
+	pulumi.Input
+
+	ToAiSearchInstancePublicEndpointParamsSearchEndpointPtrOutput() AiSearchInstancePublicEndpointParamsSearchEndpointPtrOutput
+	ToAiSearchInstancePublicEndpointParamsSearchEndpointPtrOutputWithContext(context.Context) AiSearchInstancePublicEndpointParamsSearchEndpointPtrOutput
+}
+
+type aiSearchInstancePublicEndpointParamsSearchEndpointPtrType AiSearchInstancePublicEndpointParamsSearchEndpointArgs
+
+func AiSearchInstancePublicEndpointParamsSearchEndpointPtr(v *AiSearchInstancePublicEndpointParamsSearchEndpointArgs) AiSearchInstancePublicEndpointParamsSearchEndpointPtrInput {
+	return (*aiSearchInstancePublicEndpointParamsSearchEndpointPtrType)(v)
+}
+
+func (*aiSearchInstancePublicEndpointParamsSearchEndpointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchInstancePublicEndpointParamsSearchEndpoint)(nil)).Elem()
+}
+
+func (i *aiSearchInstancePublicEndpointParamsSearchEndpointPtrType) ToAiSearchInstancePublicEndpointParamsSearchEndpointPtrOutput() AiSearchInstancePublicEndpointParamsSearchEndpointPtrOutput {
+	return i.ToAiSearchInstancePublicEndpointParamsSearchEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *aiSearchInstancePublicEndpointParamsSearchEndpointPtrType) ToAiSearchInstancePublicEndpointParamsSearchEndpointPtrOutputWithContext(ctx context.Context) AiSearchInstancePublicEndpointParamsSearchEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstancePublicEndpointParamsSearchEndpointPtrOutput)
+}
+
+type AiSearchInstancePublicEndpointParamsSearchEndpointOutput struct{ *pulumi.OutputState }
+
+func (AiSearchInstancePublicEndpointParamsSearchEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchInstancePublicEndpointParamsSearchEndpoint)(nil)).Elem()
+}
+
+func (o AiSearchInstancePublicEndpointParamsSearchEndpointOutput) ToAiSearchInstancePublicEndpointParamsSearchEndpointOutput() AiSearchInstancePublicEndpointParamsSearchEndpointOutput {
+	return o
+}
+
+func (o AiSearchInstancePublicEndpointParamsSearchEndpointOutput) ToAiSearchInstancePublicEndpointParamsSearchEndpointOutputWithContext(ctx context.Context) AiSearchInstancePublicEndpointParamsSearchEndpointOutput {
+	return o
+}
+
+func (o AiSearchInstancePublicEndpointParamsSearchEndpointOutput) ToAiSearchInstancePublicEndpointParamsSearchEndpointPtrOutput() AiSearchInstancePublicEndpointParamsSearchEndpointPtrOutput {
+	return o.ToAiSearchInstancePublicEndpointParamsSearchEndpointPtrOutputWithContext(context.Background())
+}
+
+func (o AiSearchInstancePublicEndpointParamsSearchEndpointOutput) ToAiSearchInstancePublicEndpointParamsSearchEndpointPtrOutputWithContext(ctx context.Context) AiSearchInstancePublicEndpointParamsSearchEndpointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiSearchInstancePublicEndpointParamsSearchEndpoint) *AiSearchInstancePublicEndpointParamsSearchEndpoint {
+		return &v
+	}).(AiSearchInstancePublicEndpointParamsSearchEndpointPtrOutput)
+}
+
+// Disable search endpoint for this public endpoint
+func (o AiSearchInstancePublicEndpointParamsSearchEndpointOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiSearchInstancePublicEndpointParamsSearchEndpoint) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+type AiSearchInstancePublicEndpointParamsSearchEndpointPtrOutput struct{ *pulumi.OutputState }
+
+func (AiSearchInstancePublicEndpointParamsSearchEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchInstancePublicEndpointParamsSearchEndpoint)(nil)).Elem()
+}
+
+func (o AiSearchInstancePublicEndpointParamsSearchEndpointPtrOutput) ToAiSearchInstancePublicEndpointParamsSearchEndpointPtrOutput() AiSearchInstancePublicEndpointParamsSearchEndpointPtrOutput {
+	return o
+}
+
+func (o AiSearchInstancePublicEndpointParamsSearchEndpointPtrOutput) ToAiSearchInstancePublicEndpointParamsSearchEndpointPtrOutputWithContext(ctx context.Context) AiSearchInstancePublicEndpointParamsSearchEndpointPtrOutput {
+	return o
+}
+
+func (o AiSearchInstancePublicEndpointParamsSearchEndpointPtrOutput) Elem() AiSearchInstancePublicEndpointParamsSearchEndpointOutput {
+	return o.ApplyT(func(v *AiSearchInstancePublicEndpointParamsSearchEndpoint) AiSearchInstancePublicEndpointParamsSearchEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret AiSearchInstancePublicEndpointParamsSearchEndpoint
+		return ret
+	}).(AiSearchInstancePublicEndpointParamsSearchEndpointOutput)
+}
+
+// Disable search endpoint for this public endpoint
+func (o AiSearchInstancePublicEndpointParamsSearchEndpointPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiSearchInstancePublicEndpointParamsSearchEndpoint) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AiSearchInstanceSourceParams struct {
+	// List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
+	ExcludeItems []string `pulumi:"excludeItems"`
+	// List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
+	IncludeItems   []string                                `pulumi:"includeItems"`
+	Prefix         *string                                 `pulumi:"prefix"`
+	R2Jurisdiction *string                                 `pulumi:"r2Jurisdiction"`
+	WebCrawler     *AiSearchInstanceSourceParamsWebCrawler `pulumi:"webCrawler"`
+}
+
+// AiSearchInstanceSourceParamsInput is an input type that accepts AiSearchInstanceSourceParamsArgs and AiSearchInstanceSourceParamsOutput values.
+// You can construct a concrete instance of `AiSearchInstanceSourceParamsInput` via:
+//
+//	AiSearchInstanceSourceParamsArgs{...}
+type AiSearchInstanceSourceParamsInput interface {
+	pulumi.Input
+
+	ToAiSearchInstanceSourceParamsOutput() AiSearchInstanceSourceParamsOutput
+	ToAiSearchInstanceSourceParamsOutputWithContext(context.Context) AiSearchInstanceSourceParamsOutput
+}
+
+type AiSearchInstanceSourceParamsArgs struct {
+	// List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
+	ExcludeItems pulumi.StringArrayInput `pulumi:"excludeItems"`
+	// List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
+	IncludeItems   pulumi.StringArrayInput                        `pulumi:"includeItems"`
+	Prefix         pulumi.StringPtrInput                          `pulumi:"prefix"`
+	R2Jurisdiction pulumi.StringPtrInput                          `pulumi:"r2Jurisdiction"`
+	WebCrawler     AiSearchInstanceSourceParamsWebCrawlerPtrInput `pulumi:"webCrawler"`
+}
+
+func (AiSearchInstanceSourceParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchInstanceSourceParams)(nil)).Elem()
+}
+
+func (i AiSearchInstanceSourceParamsArgs) ToAiSearchInstanceSourceParamsOutput() AiSearchInstanceSourceParamsOutput {
+	return i.ToAiSearchInstanceSourceParamsOutputWithContext(context.Background())
+}
+
+func (i AiSearchInstanceSourceParamsArgs) ToAiSearchInstanceSourceParamsOutputWithContext(ctx context.Context) AiSearchInstanceSourceParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstanceSourceParamsOutput)
+}
+
+func (i AiSearchInstanceSourceParamsArgs) ToAiSearchInstanceSourceParamsPtrOutput() AiSearchInstanceSourceParamsPtrOutput {
+	return i.ToAiSearchInstanceSourceParamsPtrOutputWithContext(context.Background())
+}
+
+func (i AiSearchInstanceSourceParamsArgs) ToAiSearchInstanceSourceParamsPtrOutputWithContext(ctx context.Context) AiSearchInstanceSourceParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstanceSourceParamsOutput).ToAiSearchInstanceSourceParamsPtrOutputWithContext(ctx)
+}
+
+// AiSearchInstanceSourceParamsPtrInput is an input type that accepts AiSearchInstanceSourceParamsArgs, AiSearchInstanceSourceParamsPtr and AiSearchInstanceSourceParamsPtrOutput values.
+// You can construct a concrete instance of `AiSearchInstanceSourceParamsPtrInput` via:
+//
+//	        AiSearchInstanceSourceParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiSearchInstanceSourceParamsPtrInput interface {
+	pulumi.Input
+
+	ToAiSearchInstanceSourceParamsPtrOutput() AiSearchInstanceSourceParamsPtrOutput
+	ToAiSearchInstanceSourceParamsPtrOutputWithContext(context.Context) AiSearchInstanceSourceParamsPtrOutput
+}
+
+type aiSearchInstanceSourceParamsPtrType AiSearchInstanceSourceParamsArgs
+
+func AiSearchInstanceSourceParamsPtr(v *AiSearchInstanceSourceParamsArgs) AiSearchInstanceSourceParamsPtrInput {
+	return (*aiSearchInstanceSourceParamsPtrType)(v)
+}
+
+func (*aiSearchInstanceSourceParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchInstanceSourceParams)(nil)).Elem()
+}
+
+func (i *aiSearchInstanceSourceParamsPtrType) ToAiSearchInstanceSourceParamsPtrOutput() AiSearchInstanceSourceParamsPtrOutput {
+	return i.ToAiSearchInstanceSourceParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *aiSearchInstanceSourceParamsPtrType) ToAiSearchInstanceSourceParamsPtrOutputWithContext(ctx context.Context) AiSearchInstanceSourceParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstanceSourceParamsPtrOutput)
+}
+
+type AiSearchInstanceSourceParamsOutput struct{ *pulumi.OutputState }
+
+func (AiSearchInstanceSourceParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchInstanceSourceParams)(nil)).Elem()
+}
+
+func (o AiSearchInstanceSourceParamsOutput) ToAiSearchInstanceSourceParamsOutput() AiSearchInstanceSourceParamsOutput {
+	return o
+}
+
+func (o AiSearchInstanceSourceParamsOutput) ToAiSearchInstanceSourceParamsOutputWithContext(ctx context.Context) AiSearchInstanceSourceParamsOutput {
+	return o
+}
+
+func (o AiSearchInstanceSourceParamsOutput) ToAiSearchInstanceSourceParamsPtrOutput() AiSearchInstanceSourceParamsPtrOutput {
+	return o.ToAiSearchInstanceSourceParamsPtrOutputWithContext(context.Background())
+}
+
+func (o AiSearchInstanceSourceParamsOutput) ToAiSearchInstanceSourceParamsPtrOutputWithContext(ctx context.Context) AiSearchInstanceSourceParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiSearchInstanceSourceParams) *AiSearchInstanceSourceParams {
+		return &v
+	}).(AiSearchInstanceSourceParamsPtrOutput)
+}
+
+// List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
+func (o AiSearchInstanceSourceParamsOutput) ExcludeItems() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiSearchInstanceSourceParams) []string { return v.ExcludeItems }).(pulumi.StringArrayOutput)
+}
+
+// List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
+func (o AiSearchInstanceSourceParamsOutput) IncludeItems() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiSearchInstanceSourceParams) []string { return v.IncludeItems }).(pulumi.StringArrayOutput)
+}
+
+func (o AiSearchInstanceSourceParamsOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiSearchInstanceSourceParams) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+func (o AiSearchInstanceSourceParamsOutput) R2Jurisdiction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiSearchInstanceSourceParams) *string { return v.R2Jurisdiction }).(pulumi.StringPtrOutput)
+}
+
+func (o AiSearchInstanceSourceParamsOutput) WebCrawler() AiSearchInstanceSourceParamsWebCrawlerPtrOutput {
+	return o.ApplyT(func(v AiSearchInstanceSourceParams) *AiSearchInstanceSourceParamsWebCrawler { return v.WebCrawler }).(AiSearchInstanceSourceParamsWebCrawlerPtrOutput)
+}
+
+type AiSearchInstanceSourceParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (AiSearchInstanceSourceParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchInstanceSourceParams)(nil)).Elem()
+}
+
+func (o AiSearchInstanceSourceParamsPtrOutput) ToAiSearchInstanceSourceParamsPtrOutput() AiSearchInstanceSourceParamsPtrOutput {
+	return o
+}
+
+func (o AiSearchInstanceSourceParamsPtrOutput) ToAiSearchInstanceSourceParamsPtrOutputWithContext(ctx context.Context) AiSearchInstanceSourceParamsPtrOutput {
+	return o
+}
+
+func (o AiSearchInstanceSourceParamsPtrOutput) Elem() AiSearchInstanceSourceParamsOutput {
+	return o.ApplyT(func(v *AiSearchInstanceSourceParams) AiSearchInstanceSourceParams {
+		if v != nil {
+			return *v
+		}
+		var ret AiSearchInstanceSourceParams
+		return ret
+	}).(AiSearchInstanceSourceParamsOutput)
+}
+
+// List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
+func (o AiSearchInstanceSourceParamsPtrOutput) ExcludeItems() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiSearchInstanceSourceParams) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeItems
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
+func (o AiSearchInstanceSourceParamsPtrOutput) IncludeItems() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiSearchInstanceSourceParams) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeItems
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o AiSearchInstanceSourceParamsPtrOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiSearchInstanceSourceParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AiSearchInstanceSourceParamsPtrOutput) R2Jurisdiction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiSearchInstanceSourceParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.R2Jurisdiction
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AiSearchInstanceSourceParamsPtrOutput) WebCrawler() AiSearchInstanceSourceParamsWebCrawlerPtrOutput {
+	return o.ApplyT(func(v *AiSearchInstanceSourceParams) *AiSearchInstanceSourceParamsWebCrawler {
+		if v == nil {
+			return nil
+		}
+		return v.WebCrawler
+	}).(AiSearchInstanceSourceParamsWebCrawlerPtrOutput)
+}
+
+type AiSearchInstanceSourceParamsWebCrawler struct {
+	ParseOptions *AiSearchInstanceSourceParamsWebCrawlerParseOptions `pulumi:"parseOptions"`
+	// Available values: "sitemap", "feed-rss".
+	ParseType    *string                                             `pulumi:"parseType"`
+	StoreOptions *AiSearchInstanceSourceParamsWebCrawlerStoreOptions `pulumi:"storeOptions"`
+}
+
+// AiSearchInstanceSourceParamsWebCrawlerInput is an input type that accepts AiSearchInstanceSourceParamsWebCrawlerArgs and AiSearchInstanceSourceParamsWebCrawlerOutput values.
+// You can construct a concrete instance of `AiSearchInstanceSourceParamsWebCrawlerInput` via:
+//
+//	AiSearchInstanceSourceParamsWebCrawlerArgs{...}
+type AiSearchInstanceSourceParamsWebCrawlerInput interface {
+	pulumi.Input
+
+	ToAiSearchInstanceSourceParamsWebCrawlerOutput() AiSearchInstanceSourceParamsWebCrawlerOutput
+	ToAiSearchInstanceSourceParamsWebCrawlerOutputWithContext(context.Context) AiSearchInstanceSourceParamsWebCrawlerOutput
+}
+
+type AiSearchInstanceSourceParamsWebCrawlerArgs struct {
+	ParseOptions AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrInput `pulumi:"parseOptions"`
+	// Available values: "sitemap", "feed-rss".
+	ParseType    pulumi.StringPtrInput                                      `pulumi:"parseType"`
+	StoreOptions AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrInput `pulumi:"storeOptions"`
+}
+
+func (AiSearchInstanceSourceParamsWebCrawlerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchInstanceSourceParamsWebCrawler)(nil)).Elem()
+}
+
+func (i AiSearchInstanceSourceParamsWebCrawlerArgs) ToAiSearchInstanceSourceParamsWebCrawlerOutput() AiSearchInstanceSourceParamsWebCrawlerOutput {
+	return i.ToAiSearchInstanceSourceParamsWebCrawlerOutputWithContext(context.Background())
+}
+
+func (i AiSearchInstanceSourceParamsWebCrawlerArgs) ToAiSearchInstanceSourceParamsWebCrawlerOutputWithContext(ctx context.Context) AiSearchInstanceSourceParamsWebCrawlerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstanceSourceParamsWebCrawlerOutput)
+}
+
+func (i AiSearchInstanceSourceParamsWebCrawlerArgs) ToAiSearchInstanceSourceParamsWebCrawlerPtrOutput() AiSearchInstanceSourceParamsWebCrawlerPtrOutput {
+	return i.ToAiSearchInstanceSourceParamsWebCrawlerPtrOutputWithContext(context.Background())
+}
+
+func (i AiSearchInstanceSourceParamsWebCrawlerArgs) ToAiSearchInstanceSourceParamsWebCrawlerPtrOutputWithContext(ctx context.Context) AiSearchInstanceSourceParamsWebCrawlerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstanceSourceParamsWebCrawlerOutput).ToAiSearchInstanceSourceParamsWebCrawlerPtrOutputWithContext(ctx)
+}
+
+// AiSearchInstanceSourceParamsWebCrawlerPtrInput is an input type that accepts AiSearchInstanceSourceParamsWebCrawlerArgs, AiSearchInstanceSourceParamsWebCrawlerPtr and AiSearchInstanceSourceParamsWebCrawlerPtrOutput values.
+// You can construct a concrete instance of `AiSearchInstanceSourceParamsWebCrawlerPtrInput` via:
+//
+//	        AiSearchInstanceSourceParamsWebCrawlerArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiSearchInstanceSourceParamsWebCrawlerPtrInput interface {
+	pulumi.Input
+
+	ToAiSearchInstanceSourceParamsWebCrawlerPtrOutput() AiSearchInstanceSourceParamsWebCrawlerPtrOutput
+	ToAiSearchInstanceSourceParamsWebCrawlerPtrOutputWithContext(context.Context) AiSearchInstanceSourceParamsWebCrawlerPtrOutput
+}
+
+type aiSearchInstanceSourceParamsWebCrawlerPtrType AiSearchInstanceSourceParamsWebCrawlerArgs
+
+func AiSearchInstanceSourceParamsWebCrawlerPtr(v *AiSearchInstanceSourceParamsWebCrawlerArgs) AiSearchInstanceSourceParamsWebCrawlerPtrInput {
+	return (*aiSearchInstanceSourceParamsWebCrawlerPtrType)(v)
+}
+
+func (*aiSearchInstanceSourceParamsWebCrawlerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchInstanceSourceParamsWebCrawler)(nil)).Elem()
+}
+
+func (i *aiSearchInstanceSourceParamsWebCrawlerPtrType) ToAiSearchInstanceSourceParamsWebCrawlerPtrOutput() AiSearchInstanceSourceParamsWebCrawlerPtrOutput {
+	return i.ToAiSearchInstanceSourceParamsWebCrawlerPtrOutputWithContext(context.Background())
+}
+
+func (i *aiSearchInstanceSourceParamsWebCrawlerPtrType) ToAiSearchInstanceSourceParamsWebCrawlerPtrOutputWithContext(ctx context.Context) AiSearchInstanceSourceParamsWebCrawlerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstanceSourceParamsWebCrawlerPtrOutput)
+}
+
+type AiSearchInstanceSourceParamsWebCrawlerOutput struct{ *pulumi.OutputState }
+
+func (AiSearchInstanceSourceParamsWebCrawlerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchInstanceSourceParamsWebCrawler)(nil)).Elem()
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerOutput) ToAiSearchInstanceSourceParamsWebCrawlerOutput() AiSearchInstanceSourceParamsWebCrawlerOutput {
+	return o
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerOutput) ToAiSearchInstanceSourceParamsWebCrawlerOutputWithContext(ctx context.Context) AiSearchInstanceSourceParamsWebCrawlerOutput {
+	return o
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerOutput) ToAiSearchInstanceSourceParamsWebCrawlerPtrOutput() AiSearchInstanceSourceParamsWebCrawlerPtrOutput {
+	return o.ToAiSearchInstanceSourceParamsWebCrawlerPtrOutputWithContext(context.Background())
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerOutput) ToAiSearchInstanceSourceParamsWebCrawlerPtrOutputWithContext(ctx context.Context) AiSearchInstanceSourceParamsWebCrawlerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiSearchInstanceSourceParamsWebCrawler) *AiSearchInstanceSourceParamsWebCrawler {
+		return &v
+	}).(AiSearchInstanceSourceParamsWebCrawlerPtrOutput)
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerOutput) ParseOptions() AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput {
+	return o.ApplyT(func(v AiSearchInstanceSourceParamsWebCrawler) *AiSearchInstanceSourceParamsWebCrawlerParseOptions {
+		return v.ParseOptions
+	}).(AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput)
+}
+
+// Available values: "sitemap", "feed-rss".
+func (o AiSearchInstanceSourceParamsWebCrawlerOutput) ParseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiSearchInstanceSourceParamsWebCrawler) *string { return v.ParseType }).(pulumi.StringPtrOutput)
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerOutput) StoreOptions() AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput {
+	return o.ApplyT(func(v AiSearchInstanceSourceParamsWebCrawler) *AiSearchInstanceSourceParamsWebCrawlerStoreOptions {
+		return v.StoreOptions
+	}).(AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput)
+}
+
+type AiSearchInstanceSourceParamsWebCrawlerPtrOutput struct{ *pulumi.OutputState }
+
+func (AiSearchInstanceSourceParamsWebCrawlerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchInstanceSourceParamsWebCrawler)(nil)).Elem()
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerPtrOutput) ToAiSearchInstanceSourceParamsWebCrawlerPtrOutput() AiSearchInstanceSourceParamsWebCrawlerPtrOutput {
+	return o
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerPtrOutput) ToAiSearchInstanceSourceParamsWebCrawlerPtrOutputWithContext(ctx context.Context) AiSearchInstanceSourceParamsWebCrawlerPtrOutput {
+	return o
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerPtrOutput) Elem() AiSearchInstanceSourceParamsWebCrawlerOutput {
+	return o.ApplyT(func(v *AiSearchInstanceSourceParamsWebCrawler) AiSearchInstanceSourceParamsWebCrawler {
+		if v != nil {
+			return *v
+		}
+		var ret AiSearchInstanceSourceParamsWebCrawler
+		return ret
+	}).(AiSearchInstanceSourceParamsWebCrawlerOutput)
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerPtrOutput) ParseOptions() AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput {
+	return o.ApplyT(func(v *AiSearchInstanceSourceParamsWebCrawler) *AiSearchInstanceSourceParamsWebCrawlerParseOptions {
+		if v == nil {
+			return nil
+		}
+		return v.ParseOptions
+	}).(AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput)
+}
+
+// Available values: "sitemap", "feed-rss".
+func (o AiSearchInstanceSourceParamsWebCrawlerPtrOutput) ParseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiSearchInstanceSourceParamsWebCrawler) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ParseType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerPtrOutput) StoreOptions() AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput {
+	return o.ApplyT(func(v *AiSearchInstanceSourceParamsWebCrawler) *AiSearchInstanceSourceParamsWebCrawlerStoreOptions {
+		if v == nil {
+			return nil
+		}
+		return v.StoreOptions
+	}).(AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput)
+}
+
+type AiSearchInstanceSourceParamsWebCrawlerParseOptions struct {
+	IncludeHeaders map[string]string `pulumi:"includeHeaders"`
+	IncludeImages  *bool             `pulumi:"includeImages"`
+	// List of specific sitemap URLs to use for crawling. Only valid when parseType is 'sitemap'.
+	SpecificSitemaps    []string `pulumi:"specificSitemaps"`
+	UseBrowserRendering *bool    `pulumi:"useBrowserRendering"`
+}
+
+// AiSearchInstanceSourceParamsWebCrawlerParseOptionsInput is an input type that accepts AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs and AiSearchInstanceSourceParamsWebCrawlerParseOptionsOutput values.
+// You can construct a concrete instance of `AiSearchInstanceSourceParamsWebCrawlerParseOptionsInput` via:
+//
+//	AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs{...}
+type AiSearchInstanceSourceParamsWebCrawlerParseOptionsInput interface {
+	pulumi.Input
+
+	ToAiSearchInstanceSourceParamsWebCrawlerParseOptionsOutput() AiSearchInstanceSourceParamsWebCrawlerParseOptionsOutput
+	ToAiSearchInstanceSourceParamsWebCrawlerParseOptionsOutputWithContext(context.Context) AiSearchInstanceSourceParamsWebCrawlerParseOptionsOutput
+}
+
+type AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs struct {
+	IncludeHeaders pulumi.StringMapInput `pulumi:"includeHeaders"`
+	IncludeImages  pulumi.BoolPtrInput   `pulumi:"includeImages"`
+	// List of specific sitemap URLs to use for crawling. Only valid when parseType is 'sitemap'.
+	SpecificSitemaps    pulumi.StringArrayInput `pulumi:"specificSitemaps"`
+	UseBrowserRendering pulumi.BoolPtrInput     `pulumi:"useBrowserRendering"`
+}
+
+func (AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchInstanceSourceParamsWebCrawlerParseOptions)(nil)).Elem()
+}
+
+func (i AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs) ToAiSearchInstanceSourceParamsWebCrawlerParseOptionsOutput() AiSearchInstanceSourceParamsWebCrawlerParseOptionsOutput {
+	return i.ToAiSearchInstanceSourceParamsWebCrawlerParseOptionsOutputWithContext(context.Background())
+}
+
+func (i AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs) ToAiSearchInstanceSourceParamsWebCrawlerParseOptionsOutputWithContext(ctx context.Context) AiSearchInstanceSourceParamsWebCrawlerParseOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstanceSourceParamsWebCrawlerParseOptionsOutput)
+}
+
+func (i AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs) ToAiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput() AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput {
+	return i.ToAiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs) ToAiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutputWithContext(ctx context.Context) AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstanceSourceParamsWebCrawlerParseOptionsOutput).ToAiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutputWithContext(ctx)
+}
+
+// AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrInput is an input type that accepts AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs, AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtr and AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput values.
+// You can construct a concrete instance of `AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrInput` via:
+//
+//	        AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrInput interface {
+	pulumi.Input
+
+	ToAiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput() AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput
+	ToAiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutputWithContext(context.Context) AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput
+}
+
+type aiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrType AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs
+
+func AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtr(v *AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs) AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrInput {
+	return (*aiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrType)(v)
+}
+
+func (*aiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchInstanceSourceParamsWebCrawlerParseOptions)(nil)).Elem()
+}
+
+func (i *aiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrType) ToAiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput() AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput {
+	return i.ToAiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *aiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrType) ToAiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutputWithContext(ctx context.Context) AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput)
+}
+
+type AiSearchInstanceSourceParamsWebCrawlerParseOptionsOutput struct{ *pulumi.OutputState }
+
+func (AiSearchInstanceSourceParamsWebCrawlerParseOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchInstanceSourceParamsWebCrawlerParseOptions)(nil)).Elem()
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerParseOptionsOutput) ToAiSearchInstanceSourceParamsWebCrawlerParseOptionsOutput() AiSearchInstanceSourceParamsWebCrawlerParseOptionsOutput {
+	return o
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerParseOptionsOutput) ToAiSearchInstanceSourceParamsWebCrawlerParseOptionsOutputWithContext(ctx context.Context) AiSearchInstanceSourceParamsWebCrawlerParseOptionsOutput {
+	return o
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerParseOptionsOutput) ToAiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput() AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput {
+	return o.ToAiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerParseOptionsOutput) ToAiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutputWithContext(ctx context.Context) AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiSearchInstanceSourceParamsWebCrawlerParseOptions) *AiSearchInstanceSourceParamsWebCrawlerParseOptions {
+		return &v
+	}).(AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput)
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerParseOptionsOutput) IncludeHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AiSearchInstanceSourceParamsWebCrawlerParseOptions) map[string]string { return v.IncludeHeaders }).(pulumi.StringMapOutput)
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerParseOptionsOutput) IncludeImages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiSearchInstanceSourceParamsWebCrawlerParseOptions) *bool { return v.IncludeImages }).(pulumi.BoolPtrOutput)
+}
+
+// List of specific sitemap URLs to use for crawling. Only valid when parseType is 'sitemap'.
+func (o AiSearchInstanceSourceParamsWebCrawlerParseOptionsOutput) SpecificSitemaps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiSearchInstanceSourceParamsWebCrawlerParseOptions) []string { return v.SpecificSitemaps }).(pulumi.StringArrayOutput)
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerParseOptionsOutput) UseBrowserRendering() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiSearchInstanceSourceParamsWebCrawlerParseOptions) *bool { return v.UseBrowserRendering }).(pulumi.BoolPtrOutput)
+}
+
+type AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchInstanceSourceParamsWebCrawlerParseOptions)(nil)).Elem()
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput) ToAiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput() AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput {
+	return o
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput) ToAiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutputWithContext(ctx context.Context) AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput {
+	return o
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput) Elem() AiSearchInstanceSourceParamsWebCrawlerParseOptionsOutput {
+	return o.ApplyT(func(v *AiSearchInstanceSourceParamsWebCrawlerParseOptions) AiSearchInstanceSourceParamsWebCrawlerParseOptions {
+		if v != nil {
+			return *v
+		}
+		var ret AiSearchInstanceSourceParamsWebCrawlerParseOptions
+		return ret
+	}).(AiSearchInstanceSourceParamsWebCrawlerParseOptionsOutput)
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput) IncludeHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiSearchInstanceSourceParamsWebCrawlerParseOptions) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeHeaders
+	}).(pulumi.StringMapOutput)
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput) IncludeImages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiSearchInstanceSourceParamsWebCrawlerParseOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeImages
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of specific sitemap URLs to use for crawling. Only valid when parseType is 'sitemap'.
+func (o AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput) SpecificSitemaps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiSearchInstanceSourceParamsWebCrawlerParseOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecificSitemaps
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput) UseBrowserRendering() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiSearchInstanceSourceParamsWebCrawlerParseOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseBrowserRendering
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AiSearchInstanceSourceParamsWebCrawlerStoreOptions struct {
+	R2Jurisdiction *string `pulumi:"r2Jurisdiction"`
+	StorageId      string  `pulumi:"storageId"`
+	// Available values: "r2".
+	StorageType *string `pulumi:"storageType"`
+}
+
+// AiSearchInstanceSourceParamsWebCrawlerStoreOptionsInput is an input type that accepts AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs and AiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput values.
+// You can construct a concrete instance of `AiSearchInstanceSourceParamsWebCrawlerStoreOptionsInput` via:
+//
+//	AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs{...}
+type AiSearchInstanceSourceParamsWebCrawlerStoreOptionsInput interface {
+	pulumi.Input
+
+	ToAiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput() AiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput
+	ToAiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutputWithContext(context.Context) AiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput
+}
+
+type AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs struct {
+	R2Jurisdiction pulumi.StringPtrInput `pulumi:"r2Jurisdiction"`
+	StorageId      pulumi.StringInput    `pulumi:"storageId"`
+	// Available values: "r2".
+	StorageType pulumi.StringPtrInput `pulumi:"storageType"`
+}
+
+func (AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchInstanceSourceParamsWebCrawlerStoreOptions)(nil)).Elem()
+}
+
+func (i AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs) ToAiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput() AiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput {
+	return i.ToAiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutputWithContext(context.Background())
+}
+
+func (i AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs) ToAiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutputWithContext(ctx context.Context) AiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput)
+}
+
+func (i AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs) ToAiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput() AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput {
+	return i.ToAiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs) ToAiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutputWithContext(ctx context.Context) AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput).ToAiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutputWithContext(ctx)
+}
+
+// AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrInput is an input type that accepts AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs, AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtr and AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput values.
+// You can construct a concrete instance of `AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrInput` via:
+//
+//	        AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrInput interface {
+	pulumi.Input
+
+	ToAiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput() AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput
+	ToAiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutputWithContext(context.Context) AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput
+}
+
+type aiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrType AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs
+
+func AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtr(v *AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs) AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrInput {
+	return (*aiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrType)(v)
+}
+
+func (*aiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchInstanceSourceParamsWebCrawlerStoreOptions)(nil)).Elem()
+}
+
+func (i *aiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrType) ToAiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput() AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput {
+	return i.ToAiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *aiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrType) ToAiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutputWithContext(ctx context.Context) AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput)
+}
+
+type AiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput struct{ *pulumi.OutputState }
+
+func (AiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchInstanceSourceParamsWebCrawlerStoreOptions)(nil)).Elem()
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput) ToAiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput() AiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput {
+	return o
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput) ToAiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutputWithContext(ctx context.Context) AiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput {
+	return o
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput) ToAiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput() AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput {
+	return o.ToAiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput) ToAiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutputWithContext(ctx context.Context) AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiSearchInstanceSourceParamsWebCrawlerStoreOptions) *AiSearchInstanceSourceParamsWebCrawlerStoreOptions {
+		return &v
+	}).(AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput)
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput) R2Jurisdiction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiSearchInstanceSourceParamsWebCrawlerStoreOptions) *string { return v.R2Jurisdiction }).(pulumi.StringPtrOutput)
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput) StorageId() pulumi.StringOutput {
+	return o.ApplyT(func(v AiSearchInstanceSourceParamsWebCrawlerStoreOptions) string { return v.StorageId }).(pulumi.StringOutput)
+}
+
+// Available values: "r2".
+func (o AiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput) StorageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiSearchInstanceSourceParamsWebCrawlerStoreOptions) *string { return v.StorageType }).(pulumi.StringPtrOutput)
+}
+
+type AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchInstanceSourceParamsWebCrawlerStoreOptions)(nil)).Elem()
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput) ToAiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput() AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput {
+	return o
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput) ToAiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutputWithContext(ctx context.Context) AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput {
+	return o
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput) Elem() AiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput {
+	return o.ApplyT(func(v *AiSearchInstanceSourceParamsWebCrawlerStoreOptions) AiSearchInstanceSourceParamsWebCrawlerStoreOptions {
+		if v != nil {
+			return *v
+		}
+		var ret AiSearchInstanceSourceParamsWebCrawlerStoreOptions
+		return ret
+	}).(AiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput)
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput) R2Jurisdiction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiSearchInstanceSourceParamsWebCrawlerStoreOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.R2Jurisdiction
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput) StorageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiSearchInstanceSourceParamsWebCrawlerStoreOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StorageId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Available values: "r2".
+func (o AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput) StorageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiSearchInstanceSourceParamsWebCrawlerStoreOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageType
+	}).(pulumi.StringPtrOutput)
+}
+
 type ApiShieldAuthIdCharacteristic struct {
 	// The name of the characteristic field, i.e., the header or cookie name. When using type "jwt", this must be a claim location expressed as `$(token_config_id):$(json_path)`, where `tokenConfigId` is the ID of the token configuration used in validating the JWT, and `jsonPath` is a RFC 9535 JSONPath expression.
 	Name string `pulumi:"name"`
@@ -80814,1287 +82578,6 @@ func (o R2BucketCorsRuleAllowedOutput) Origins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v R2BucketCorsRuleAllowed) []string { return v.Origins }).(pulumi.StringArrayOutput)
 }
 
-type R2BucketEventNotificationRule struct {
-	// Array of R2 object actions that will trigger notifications.
-	Actions []string `pulumi:"actions"`
-	// A description that can be used to identify the event notification rule after creation.
-	Description *string `pulumi:"description"`
-	// Notifications will be sent only for objects with this prefix.
-	Prefix *string `pulumi:"prefix"`
-	// Notifications will be sent only for objects with this suffix.
-	Suffix *string `pulumi:"suffix"`
-}
-
-// R2BucketEventNotificationRuleInput is an input type that accepts R2BucketEventNotificationRuleArgs and R2BucketEventNotificationRuleOutput values.
-// You can construct a concrete instance of `R2BucketEventNotificationRuleInput` via:
-//
-//	R2BucketEventNotificationRuleArgs{...}
-type R2BucketEventNotificationRuleInput interface {
-	pulumi.Input
-
-	ToR2BucketEventNotificationRuleOutput() R2BucketEventNotificationRuleOutput
-	ToR2BucketEventNotificationRuleOutputWithContext(context.Context) R2BucketEventNotificationRuleOutput
-}
-
-type R2BucketEventNotificationRuleArgs struct {
-	// Array of R2 object actions that will trigger notifications.
-	Actions pulumi.StringArrayInput `pulumi:"actions"`
-	// A description that can be used to identify the event notification rule after creation.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Notifications will be sent only for objects with this prefix.
-	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-	// Notifications will be sent only for objects with this suffix.
-	Suffix pulumi.StringPtrInput `pulumi:"suffix"`
-}
-
-func (R2BucketEventNotificationRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*R2BucketEventNotificationRule)(nil)).Elem()
-}
-
-func (i R2BucketEventNotificationRuleArgs) ToR2BucketEventNotificationRuleOutput() R2BucketEventNotificationRuleOutput {
-	return i.ToR2BucketEventNotificationRuleOutputWithContext(context.Background())
-}
-
-func (i R2BucketEventNotificationRuleArgs) ToR2BucketEventNotificationRuleOutputWithContext(ctx context.Context) R2BucketEventNotificationRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2BucketEventNotificationRuleOutput)
-}
-
-// R2BucketEventNotificationRuleArrayInput is an input type that accepts R2BucketEventNotificationRuleArray and R2BucketEventNotificationRuleArrayOutput values.
-// You can construct a concrete instance of `R2BucketEventNotificationRuleArrayInput` via:
-//
-//	R2BucketEventNotificationRuleArray{ R2BucketEventNotificationRuleArgs{...} }
-type R2BucketEventNotificationRuleArrayInput interface {
-	pulumi.Input
-
-	ToR2BucketEventNotificationRuleArrayOutput() R2BucketEventNotificationRuleArrayOutput
-	ToR2BucketEventNotificationRuleArrayOutputWithContext(context.Context) R2BucketEventNotificationRuleArrayOutput
-}
-
-type R2BucketEventNotificationRuleArray []R2BucketEventNotificationRuleInput
-
-func (R2BucketEventNotificationRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]R2BucketEventNotificationRule)(nil)).Elem()
-}
-
-func (i R2BucketEventNotificationRuleArray) ToR2BucketEventNotificationRuleArrayOutput() R2BucketEventNotificationRuleArrayOutput {
-	return i.ToR2BucketEventNotificationRuleArrayOutputWithContext(context.Background())
-}
-
-func (i R2BucketEventNotificationRuleArray) ToR2BucketEventNotificationRuleArrayOutputWithContext(ctx context.Context) R2BucketEventNotificationRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2BucketEventNotificationRuleArrayOutput)
-}
-
-type R2BucketEventNotificationRuleOutput struct{ *pulumi.OutputState }
-
-func (R2BucketEventNotificationRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*R2BucketEventNotificationRule)(nil)).Elem()
-}
-
-func (o R2BucketEventNotificationRuleOutput) ToR2BucketEventNotificationRuleOutput() R2BucketEventNotificationRuleOutput {
-	return o
-}
-
-func (o R2BucketEventNotificationRuleOutput) ToR2BucketEventNotificationRuleOutputWithContext(ctx context.Context) R2BucketEventNotificationRuleOutput {
-	return o
-}
-
-// Array of R2 object actions that will trigger notifications.
-func (o R2BucketEventNotificationRuleOutput) Actions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v R2BucketEventNotificationRule) []string { return v.Actions }).(pulumi.StringArrayOutput)
-}
-
-// A description that can be used to identify the event notification rule after creation.
-func (o R2BucketEventNotificationRuleOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v R2BucketEventNotificationRule) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Notifications will be sent only for objects with this prefix.
-func (o R2BucketEventNotificationRuleOutput) Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v R2BucketEventNotificationRule) *string { return v.Prefix }).(pulumi.StringPtrOutput)
-}
-
-// Notifications will be sent only for objects with this suffix.
-func (o R2BucketEventNotificationRuleOutput) Suffix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v R2BucketEventNotificationRule) *string { return v.Suffix }).(pulumi.StringPtrOutput)
-}
-
-type R2BucketEventNotificationRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (R2BucketEventNotificationRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]R2BucketEventNotificationRule)(nil)).Elem()
-}
-
-func (o R2BucketEventNotificationRuleArrayOutput) ToR2BucketEventNotificationRuleArrayOutput() R2BucketEventNotificationRuleArrayOutput {
-	return o
-}
-
-func (o R2BucketEventNotificationRuleArrayOutput) ToR2BucketEventNotificationRuleArrayOutputWithContext(ctx context.Context) R2BucketEventNotificationRuleArrayOutput {
-	return o
-}
-
-func (o R2BucketEventNotificationRuleArrayOutput) Index(i pulumi.IntInput) R2BucketEventNotificationRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) R2BucketEventNotificationRule {
-		return vs[0].([]R2BucketEventNotificationRule)[vs[1].(int)]
-	}).(R2BucketEventNotificationRuleOutput)
-}
-
-type R2BucketLifecycleRule struct {
-	// Transition to abort ongoing multipart uploads.
-	AbortMultipartUploadsTransition *R2BucketLifecycleRuleAbortMultipartUploadsTransition `pulumi:"abortMultipartUploadsTransition"`
-	// Conditions that apply to all transitions of this rule.
-	Conditions R2BucketLifecycleRuleConditions `pulumi:"conditions"`
-	// Transition to delete objects.
-	DeleteObjectsTransition *R2BucketLifecycleRuleDeleteObjectsTransition `pulumi:"deleteObjectsTransition"`
-	// Whether or not this rule is in effect.
-	Enabled bool `pulumi:"enabled"`
-	// Unique identifier for this rule.
-	Id string `pulumi:"id"`
-	// Transitions to change the storage class of objects.
-	StorageClassTransitions []R2BucketLifecycleRuleStorageClassTransition `pulumi:"storageClassTransitions"`
-}
-
-// R2BucketLifecycleRuleInput is an input type that accepts R2BucketLifecycleRuleArgs and R2BucketLifecycleRuleOutput values.
-// You can construct a concrete instance of `R2BucketLifecycleRuleInput` via:
-//
-//	R2BucketLifecycleRuleArgs{...}
-type R2BucketLifecycleRuleInput interface {
-	pulumi.Input
-
-	ToR2BucketLifecycleRuleOutput() R2BucketLifecycleRuleOutput
-	ToR2BucketLifecycleRuleOutputWithContext(context.Context) R2BucketLifecycleRuleOutput
-}
-
-type R2BucketLifecycleRuleArgs struct {
-	// Transition to abort ongoing multipart uploads.
-	AbortMultipartUploadsTransition R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrInput `pulumi:"abortMultipartUploadsTransition"`
-	// Conditions that apply to all transitions of this rule.
-	Conditions R2BucketLifecycleRuleConditionsInput `pulumi:"conditions"`
-	// Transition to delete objects.
-	DeleteObjectsTransition R2BucketLifecycleRuleDeleteObjectsTransitionPtrInput `pulumi:"deleteObjectsTransition"`
-	// Whether or not this rule is in effect.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// Unique identifier for this rule.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Transitions to change the storage class of objects.
-	StorageClassTransitions R2BucketLifecycleRuleStorageClassTransitionArrayInput `pulumi:"storageClassTransitions"`
-}
-
-func (R2BucketLifecycleRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*R2BucketLifecycleRule)(nil)).Elem()
-}
-
-func (i R2BucketLifecycleRuleArgs) ToR2BucketLifecycleRuleOutput() R2BucketLifecycleRuleOutput {
-	return i.ToR2BucketLifecycleRuleOutputWithContext(context.Background())
-}
-
-func (i R2BucketLifecycleRuleArgs) ToR2BucketLifecycleRuleOutputWithContext(ctx context.Context) R2BucketLifecycleRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2BucketLifecycleRuleOutput)
-}
-
-// R2BucketLifecycleRuleArrayInput is an input type that accepts R2BucketLifecycleRuleArray and R2BucketLifecycleRuleArrayOutput values.
-// You can construct a concrete instance of `R2BucketLifecycleRuleArrayInput` via:
-//
-//	R2BucketLifecycleRuleArray{ R2BucketLifecycleRuleArgs{...} }
-type R2BucketLifecycleRuleArrayInput interface {
-	pulumi.Input
-
-	ToR2BucketLifecycleRuleArrayOutput() R2BucketLifecycleRuleArrayOutput
-	ToR2BucketLifecycleRuleArrayOutputWithContext(context.Context) R2BucketLifecycleRuleArrayOutput
-}
-
-type R2BucketLifecycleRuleArray []R2BucketLifecycleRuleInput
-
-func (R2BucketLifecycleRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]R2BucketLifecycleRule)(nil)).Elem()
-}
-
-func (i R2BucketLifecycleRuleArray) ToR2BucketLifecycleRuleArrayOutput() R2BucketLifecycleRuleArrayOutput {
-	return i.ToR2BucketLifecycleRuleArrayOutputWithContext(context.Background())
-}
-
-func (i R2BucketLifecycleRuleArray) ToR2BucketLifecycleRuleArrayOutputWithContext(ctx context.Context) R2BucketLifecycleRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2BucketLifecycleRuleArrayOutput)
-}
-
-type R2BucketLifecycleRuleOutput struct{ *pulumi.OutputState }
-
-func (R2BucketLifecycleRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*R2BucketLifecycleRule)(nil)).Elem()
-}
-
-func (o R2BucketLifecycleRuleOutput) ToR2BucketLifecycleRuleOutput() R2BucketLifecycleRuleOutput {
-	return o
-}
-
-func (o R2BucketLifecycleRuleOutput) ToR2BucketLifecycleRuleOutputWithContext(ctx context.Context) R2BucketLifecycleRuleOutput {
-	return o
-}
-
-// Transition to abort ongoing multipart uploads.
-func (o R2BucketLifecycleRuleOutput) AbortMultipartUploadsTransition() R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutput {
-	return o.ApplyT(func(v R2BucketLifecycleRule) *R2BucketLifecycleRuleAbortMultipartUploadsTransition {
-		return v.AbortMultipartUploadsTransition
-	}).(R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutput)
-}
-
-// Conditions that apply to all transitions of this rule.
-func (o R2BucketLifecycleRuleOutput) Conditions() R2BucketLifecycleRuleConditionsOutput {
-	return o.ApplyT(func(v R2BucketLifecycleRule) R2BucketLifecycleRuleConditions { return v.Conditions }).(R2BucketLifecycleRuleConditionsOutput)
-}
-
-// Transition to delete objects.
-func (o R2BucketLifecycleRuleOutput) DeleteObjectsTransition() R2BucketLifecycleRuleDeleteObjectsTransitionPtrOutput {
-	return o.ApplyT(func(v R2BucketLifecycleRule) *R2BucketLifecycleRuleDeleteObjectsTransition {
-		return v.DeleteObjectsTransition
-	}).(R2BucketLifecycleRuleDeleteObjectsTransitionPtrOutput)
-}
-
-// Whether or not this rule is in effect.
-func (o R2BucketLifecycleRuleOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v R2BucketLifecycleRule) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// Unique identifier for this rule.
-func (o R2BucketLifecycleRuleOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v R2BucketLifecycleRule) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Transitions to change the storage class of objects.
-func (o R2BucketLifecycleRuleOutput) StorageClassTransitions() R2BucketLifecycleRuleStorageClassTransitionArrayOutput {
-	return o.ApplyT(func(v R2BucketLifecycleRule) []R2BucketLifecycleRuleStorageClassTransition {
-		return v.StorageClassTransitions
-	}).(R2BucketLifecycleRuleStorageClassTransitionArrayOutput)
-}
-
-type R2BucketLifecycleRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (R2BucketLifecycleRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]R2BucketLifecycleRule)(nil)).Elem()
-}
-
-func (o R2BucketLifecycleRuleArrayOutput) ToR2BucketLifecycleRuleArrayOutput() R2BucketLifecycleRuleArrayOutput {
-	return o
-}
-
-func (o R2BucketLifecycleRuleArrayOutput) ToR2BucketLifecycleRuleArrayOutputWithContext(ctx context.Context) R2BucketLifecycleRuleArrayOutput {
-	return o
-}
-
-func (o R2BucketLifecycleRuleArrayOutput) Index(i pulumi.IntInput) R2BucketLifecycleRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) R2BucketLifecycleRule {
-		return vs[0].([]R2BucketLifecycleRule)[vs[1].(int)]
-	}).(R2BucketLifecycleRuleOutput)
-}
-
-type R2BucketLifecycleRuleAbortMultipartUploadsTransition struct {
-	// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
-	Condition *R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition `pulumi:"condition"`
-}
-
-// R2BucketLifecycleRuleAbortMultipartUploadsTransitionInput is an input type that accepts R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs and R2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput values.
-// You can construct a concrete instance of `R2BucketLifecycleRuleAbortMultipartUploadsTransitionInput` via:
-//
-//	R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs{...}
-type R2BucketLifecycleRuleAbortMultipartUploadsTransitionInput interface {
-	pulumi.Input
-
-	ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput() R2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput
-	ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutputWithContext(context.Context) R2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput
-}
-
-type R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs struct {
-	// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
-	Condition R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrInput `pulumi:"condition"`
-}
-
-func (R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*R2BucketLifecycleRuleAbortMultipartUploadsTransition)(nil)).Elem()
-}
-
-func (i R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs) ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput() R2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput {
-	return i.ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutputWithContext(context.Background())
-}
-
-func (i R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs) ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutputWithContext(ctx context.Context) R2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput)
-}
-
-func (i R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs) ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutput() R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutput {
-	return i.ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutputWithContext(context.Background())
-}
-
-func (i R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs) ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutputWithContext(ctx context.Context) R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput).ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutputWithContext(ctx)
-}
-
-// R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrInput is an input type that accepts R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs, R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtr and R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutput values.
-// You can construct a concrete instance of `R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrInput` via:
-//
-//	        R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs{...}
-//
-//	or:
-//
-//	        nil
-type R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrInput interface {
-	pulumi.Input
-
-	ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutput() R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutput
-	ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutputWithContext(context.Context) R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutput
-}
-
-type r2bucketLifecycleRuleAbortMultipartUploadsTransitionPtrType R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs
-
-func R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtr(v *R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs) R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrInput {
-	return (*r2bucketLifecycleRuleAbortMultipartUploadsTransitionPtrType)(v)
-}
-
-func (*r2bucketLifecycleRuleAbortMultipartUploadsTransitionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**R2BucketLifecycleRuleAbortMultipartUploadsTransition)(nil)).Elem()
-}
-
-func (i *r2bucketLifecycleRuleAbortMultipartUploadsTransitionPtrType) ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutput() R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutput {
-	return i.ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutputWithContext(context.Background())
-}
-
-func (i *r2bucketLifecycleRuleAbortMultipartUploadsTransitionPtrType) ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutputWithContext(ctx context.Context) R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutput)
-}
-
-type R2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput struct{ *pulumi.OutputState }
-
-func (R2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*R2BucketLifecycleRuleAbortMultipartUploadsTransition)(nil)).Elem()
-}
-
-func (o R2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput) ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput() R2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput {
-	return o
-}
-
-func (o R2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput) ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutputWithContext(ctx context.Context) R2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput {
-	return o
-}
-
-func (o R2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput) ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutput() R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutput {
-	return o.ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutputWithContext(context.Background())
-}
-
-func (o R2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput) ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutputWithContext(ctx context.Context) R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v R2BucketLifecycleRuleAbortMultipartUploadsTransition) *R2BucketLifecycleRuleAbortMultipartUploadsTransition {
-		return &v
-	}).(R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutput)
-}
-
-// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
-func (o R2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput) Condition() R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutput {
-	return o.ApplyT(func(v R2BucketLifecycleRuleAbortMultipartUploadsTransition) *R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition {
-		return v.Condition
-	}).(R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutput)
-}
-
-type R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutput struct{ *pulumi.OutputState }
-
-func (R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**R2BucketLifecycleRuleAbortMultipartUploadsTransition)(nil)).Elem()
-}
-
-func (o R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutput) ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutput() R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutput {
-	return o
-}
-
-func (o R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutput) ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutputWithContext(ctx context.Context) R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutput {
-	return o
-}
-
-func (o R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutput) Elem() R2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput {
-	return o.ApplyT(func(v *R2BucketLifecycleRuleAbortMultipartUploadsTransition) R2BucketLifecycleRuleAbortMultipartUploadsTransition {
-		if v != nil {
-			return *v
-		}
-		var ret R2BucketLifecycleRuleAbortMultipartUploadsTransition
-		return ret
-	}).(R2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput)
-}
-
-// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
-func (o R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutput) Condition() R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutput {
-	return o.ApplyT(func(v *R2BucketLifecycleRuleAbortMultipartUploadsTransition) *R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition {
-		if v == nil {
-			return nil
-		}
-		return v.Condition
-	}).(R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutput)
-}
-
-type R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition struct {
-	MaxAge int `pulumi:"maxAge"`
-	// Available values: "Age".
-	Type string `pulumi:"type"`
-}
-
-// R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionInput is an input type that accepts R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs and R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput values.
-// You can construct a concrete instance of `R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionInput` via:
-//
-//	R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs{...}
-type R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionInput interface {
-	pulumi.Input
-
-	ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput() R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput
-	ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutputWithContext(context.Context) R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput
-}
-
-type R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs struct {
-	MaxAge pulumi.IntInput `pulumi:"maxAge"`
-	// Available values: "Age".
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition)(nil)).Elem()
-}
-
-func (i R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs) ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput() R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput {
-	return i.ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutputWithContext(context.Background())
-}
-
-func (i R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs) ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutputWithContext(ctx context.Context) R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput)
-}
-
-func (i R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs) ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutput() R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutput {
-	return i.ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutputWithContext(context.Background())
-}
-
-func (i R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs) ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutputWithContext(ctx context.Context) R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput).ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutputWithContext(ctx)
-}
-
-// R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrInput is an input type that accepts R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs, R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtr and R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutput values.
-// You can construct a concrete instance of `R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrInput` via:
-//
-//	        R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs{...}
-//
-//	or:
-//
-//	        nil
-type R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrInput interface {
-	pulumi.Input
-
-	ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutput() R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutput
-	ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutputWithContext(context.Context) R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutput
-}
-
-type r2bucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrType R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs
-
-func R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtr(v *R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs) R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrInput {
-	return (*r2bucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrType)(v)
-}
-
-func (*r2bucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition)(nil)).Elem()
-}
-
-func (i *r2bucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrType) ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutput() R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutput {
-	return i.ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutputWithContext(context.Background())
-}
-
-func (i *r2bucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrType) ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutputWithContext(ctx context.Context) R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutput)
-}
-
-type R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput struct{ *pulumi.OutputState }
-
-func (R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition)(nil)).Elem()
-}
-
-func (o R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput) ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput() R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput {
-	return o
-}
-
-func (o R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput) ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutputWithContext(ctx context.Context) R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput {
-	return o
-}
-
-func (o R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput) ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutput() R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutput {
-	return o.ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutputWithContext(context.Background())
-}
-
-func (o R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput) ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutputWithContext(ctx context.Context) R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition) *R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition {
-		return &v
-	}).(R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutput)
-}
-
-func (o R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput) MaxAge() pulumi.IntOutput {
-	return o.ApplyT(func(v R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition) int { return v.MaxAge }).(pulumi.IntOutput)
-}
-
-// Available values: "Age".
-func (o R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutput struct{ *pulumi.OutputState }
-
-func (R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition)(nil)).Elem()
-}
-
-func (o R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutput) ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutput() R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutput {
-	return o
-}
-
-func (o R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutput) ToR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutputWithContext(ctx context.Context) R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutput {
-	return o
-}
-
-func (o R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutput) Elem() R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput {
-	return o.ApplyT(func(v *R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition) R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition {
-		if v != nil {
-			return *v
-		}
-		var ret R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition
-		return ret
-	}).(R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput)
-}
-
-func (o R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutput) MaxAge() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MaxAge
-	}).(pulumi.IntPtrOutput)
-}
-
-// Available values: "Age".
-func (o R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-type R2BucketLifecycleRuleConditions struct {
-	// Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
-	Prefix string `pulumi:"prefix"`
-}
-
-// R2BucketLifecycleRuleConditionsInput is an input type that accepts R2BucketLifecycleRuleConditionsArgs and R2BucketLifecycleRuleConditionsOutput values.
-// You can construct a concrete instance of `R2BucketLifecycleRuleConditionsInput` via:
-//
-//	R2BucketLifecycleRuleConditionsArgs{...}
-type R2BucketLifecycleRuleConditionsInput interface {
-	pulumi.Input
-
-	ToR2BucketLifecycleRuleConditionsOutput() R2BucketLifecycleRuleConditionsOutput
-	ToR2BucketLifecycleRuleConditionsOutputWithContext(context.Context) R2BucketLifecycleRuleConditionsOutput
-}
-
-type R2BucketLifecycleRuleConditionsArgs struct {
-	// Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
-	Prefix pulumi.StringInput `pulumi:"prefix"`
-}
-
-func (R2BucketLifecycleRuleConditionsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*R2BucketLifecycleRuleConditions)(nil)).Elem()
-}
-
-func (i R2BucketLifecycleRuleConditionsArgs) ToR2BucketLifecycleRuleConditionsOutput() R2BucketLifecycleRuleConditionsOutput {
-	return i.ToR2BucketLifecycleRuleConditionsOutputWithContext(context.Background())
-}
-
-func (i R2BucketLifecycleRuleConditionsArgs) ToR2BucketLifecycleRuleConditionsOutputWithContext(ctx context.Context) R2BucketLifecycleRuleConditionsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2BucketLifecycleRuleConditionsOutput)
-}
-
-type R2BucketLifecycleRuleConditionsOutput struct{ *pulumi.OutputState }
-
-func (R2BucketLifecycleRuleConditionsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*R2BucketLifecycleRuleConditions)(nil)).Elem()
-}
-
-func (o R2BucketLifecycleRuleConditionsOutput) ToR2BucketLifecycleRuleConditionsOutput() R2BucketLifecycleRuleConditionsOutput {
-	return o
-}
-
-func (o R2BucketLifecycleRuleConditionsOutput) ToR2BucketLifecycleRuleConditionsOutputWithContext(ctx context.Context) R2BucketLifecycleRuleConditionsOutput {
-	return o
-}
-
-// Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
-func (o R2BucketLifecycleRuleConditionsOutput) Prefix() pulumi.StringOutput {
-	return o.ApplyT(func(v R2BucketLifecycleRuleConditions) string { return v.Prefix }).(pulumi.StringOutput)
-}
-
-type R2BucketLifecycleRuleDeleteObjectsTransition struct {
-	// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
-	Condition *R2BucketLifecycleRuleDeleteObjectsTransitionCondition `pulumi:"condition"`
-}
-
-// R2BucketLifecycleRuleDeleteObjectsTransitionInput is an input type that accepts R2BucketLifecycleRuleDeleteObjectsTransitionArgs and R2BucketLifecycleRuleDeleteObjectsTransitionOutput values.
-// You can construct a concrete instance of `R2BucketLifecycleRuleDeleteObjectsTransitionInput` via:
-//
-//	R2BucketLifecycleRuleDeleteObjectsTransitionArgs{...}
-type R2BucketLifecycleRuleDeleteObjectsTransitionInput interface {
-	pulumi.Input
-
-	ToR2BucketLifecycleRuleDeleteObjectsTransitionOutput() R2BucketLifecycleRuleDeleteObjectsTransitionOutput
-	ToR2BucketLifecycleRuleDeleteObjectsTransitionOutputWithContext(context.Context) R2BucketLifecycleRuleDeleteObjectsTransitionOutput
-}
-
-type R2BucketLifecycleRuleDeleteObjectsTransitionArgs struct {
-	// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
-	Condition R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrInput `pulumi:"condition"`
-}
-
-func (R2BucketLifecycleRuleDeleteObjectsTransitionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*R2BucketLifecycleRuleDeleteObjectsTransition)(nil)).Elem()
-}
-
-func (i R2BucketLifecycleRuleDeleteObjectsTransitionArgs) ToR2BucketLifecycleRuleDeleteObjectsTransitionOutput() R2BucketLifecycleRuleDeleteObjectsTransitionOutput {
-	return i.ToR2BucketLifecycleRuleDeleteObjectsTransitionOutputWithContext(context.Background())
-}
-
-func (i R2BucketLifecycleRuleDeleteObjectsTransitionArgs) ToR2BucketLifecycleRuleDeleteObjectsTransitionOutputWithContext(ctx context.Context) R2BucketLifecycleRuleDeleteObjectsTransitionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2BucketLifecycleRuleDeleteObjectsTransitionOutput)
-}
-
-func (i R2BucketLifecycleRuleDeleteObjectsTransitionArgs) ToR2BucketLifecycleRuleDeleteObjectsTransitionPtrOutput() R2BucketLifecycleRuleDeleteObjectsTransitionPtrOutput {
-	return i.ToR2BucketLifecycleRuleDeleteObjectsTransitionPtrOutputWithContext(context.Background())
-}
-
-func (i R2BucketLifecycleRuleDeleteObjectsTransitionArgs) ToR2BucketLifecycleRuleDeleteObjectsTransitionPtrOutputWithContext(ctx context.Context) R2BucketLifecycleRuleDeleteObjectsTransitionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2BucketLifecycleRuleDeleteObjectsTransitionOutput).ToR2BucketLifecycleRuleDeleteObjectsTransitionPtrOutputWithContext(ctx)
-}
-
-// R2BucketLifecycleRuleDeleteObjectsTransitionPtrInput is an input type that accepts R2BucketLifecycleRuleDeleteObjectsTransitionArgs, R2BucketLifecycleRuleDeleteObjectsTransitionPtr and R2BucketLifecycleRuleDeleteObjectsTransitionPtrOutput values.
-// You can construct a concrete instance of `R2BucketLifecycleRuleDeleteObjectsTransitionPtrInput` via:
-//
-//	        R2BucketLifecycleRuleDeleteObjectsTransitionArgs{...}
-//
-//	or:
-//
-//	        nil
-type R2BucketLifecycleRuleDeleteObjectsTransitionPtrInput interface {
-	pulumi.Input
-
-	ToR2BucketLifecycleRuleDeleteObjectsTransitionPtrOutput() R2BucketLifecycleRuleDeleteObjectsTransitionPtrOutput
-	ToR2BucketLifecycleRuleDeleteObjectsTransitionPtrOutputWithContext(context.Context) R2BucketLifecycleRuleDeleteObjectsTransitionPtrOutput
-}
-
-type r2bucketLifecycleRuleDeleteObjectsTransitionPtrType R2BucketLifecycleRuleDeleteObjectsTransitionArgs
-
-func R2BucketLifecycleRuleDeleteObjectsTransitionPtr(v *R2BucketLifecycleRuleDeleteObjectsTransitionArgs) R2BucketLifecycleRuleDeleteObjectsTransitionPtrInput {
-	return (*r2bucketLifecycleRuleDeleteObjectsTransitionPtrType)(v)
-}
-
-func (*r2bucketLifecycleRuleDeleteObjectsTransitionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**R2BucketLifecycleRuleDeleteObjectsTransition)(nil)).Elem()
-}
-
-func (i *r2bucketLifecycleRuleDeleteObjectsTransitionPtrType) ToR2BucketLifecycleRuleDeleteObjectsTransitionPtrOutput() R2BucketLifecycleRuleDeleteObjectsTransitionPtrOutput {
-	return i.ToR2BucketLifecycleRuleDeleteObjectsTransitionPtrOutputWithContext(context.Background())
-}
-
-func (i *r2bucketLifecycleRuleDeleteObjectsTransitionPtrType) ToR2BucketLifecycleRuleDeleteObjectsTransitionPtrOutputWithContext(ctx context.Context) R2BucketLifecycleRuleDeleteObjectsTransitionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2BucketLifecycleRuleDeleteObjectsTransitionPtrOutput)
-}
-
-type R2BucketLifecycleRuleDeleteObjectsTransitionOutput struct{ *pulumi.OutputState }
-
-func (R2BucketLifecycleRuleDeleteObjectsTransitionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*R2BucketLifecycleRuleDeleteObjectsTransition)(nil)).Elem()
-}
-
-func (o R2BucketLifecycleRuleDeleteObjectsTransitionOutput) ToR2BucketLifecycleRuleDeleteObjectsTransitionOutput() R2BucketLifecycleRuleDeleteObjectsTransitionOutput {
-	return o
-}
-
-func (o R2BucketLifecycleRuleDeleteObjectsTransitionOutput) ToR2BucketLifecycleRuleDeleteObjectsTransitionOutputWithContext(ctx context.Context) R2BucketLifecycleRuleDeleteObjectsTransitionOutput {
-	return o
-}
-
-func (o R2BucketLifecycleRuleDeleteObjectsTransitionOutput) ToR2BucketLifecycleRuleDeleteObjectsTransitionPtrOutput() R2BucketLifecycleRuleDeleteObjectsTransitionPtrOutput {
-	return o.ToR2BucketLifecycleRuleDeleteObjectsTransitionPtrOutputWithContext(context.Background())
-}
-
-func (o R2BucketLifecycleRuleDeleteObjectsTransitionOutput) ToR2BucketLifecycleRuleDeleteObjectsTransitionPtrOutputWithContext(ctx context.Context) R2BucketLifecycleRuleDeleteObjectsTransitionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v R2BucketLifecycleRuleDeleteObjectsTransition) *R2BucketLifecycleRuleDeleteObjectsTransition {
-		return &v
-	}).(R2BucketLifecycleRuleDeleteObjectsTransitionPtrOutput)
-}
-
-// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
-func (o R2BucketLifecycleRuleDeleteObjectsTransitionOutput) Condition() R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput {
-	return o.ApplyT(func(v R2BucketLifecycleRuleDeleteObjectsTransition) *R2BucketLifecycleRuleDeleteObjectsTransitionCondition {
-		return v.Condition
-	}).(R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput)
-}
-
-type R2BucketLifecycleRuleDeleteObjectsTransitionPtrOutput struct{ *pulumi.OutputState }
-
-func (R2BucketLifecycleRuleDeleteObjectsTransitionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**R2BucketLifecycleRuleDeleteObjectsTransition)(nil)).Elem()
-}
-
-func (o R2BucketLifecycleRuleDeleteObjectsTransitionPtrOutput) ToR2BucketLifecycleRuleDeleteObjectsTransitionPtrOutput() R2BucketLifecycleRuleDeleteObjectsTransitionPtrOutput {
-	return o
-}
-
-func (o R2BucketLifecycleRuleDeleteObjectsTransitionPtrOutput) ToR2BucketLifecycleRuleDeleteObjectsTransitionPtrOutputWithContext(ctx context.Context) R2BucketLifecycleRuleDeleteObjectsTransitionPtrOutput {
-	return o
-}
-
-func (o R2BucketLifecycleRuleDeleteObjectsTransitionPtrOutput) Elem() R2BucketLifecycleRuleDeleteObjectsTransitionOutput {
-	return o.ApplyT(func(v *R2BucketLifecycleRuleDeleteObjectsTransition) R2BucketLifecycleRuleDeleteObjectsTransition {
-		if v != nil {
-			return *v
-		}
-		var ret R2BucketLifecycleRuleDeleteObjectsTransition
-		return ret
-	}).(R2BucketLifecycleRuleDeleteObjectsTransitionOutput)
-}
-
-// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
-func (o R2BucketLifecycleRuleDeleteObjectsTransitionPtrOutput) Condition() R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput {
-	return o.ApplyT(func(v *R2BucketLifecycleRuleDeleteObjectsTransition) *R2BucketLifecycleRuleDeleteObjectsTransitionCondition {
-		if v == nil {
-			return nil
-		}
-		return v.Condition
-	}).(R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput)
-}
-
-type R2BucketLifecycleRuleDeleteObjectsTransitionCondition struct {
-	Date   *string `pulumi:"date"`
-	MaxAge *int    `pulumi:"maxAge"`
-	// Available values: "Age", "Date".
-	Type string `pulumi:"type"`
-}
-
-// R2BucketLifecycleRuleDeleteObjectsTransitionConditionInput is an input type that accepts R2BucketLifecycleRuleDeleteObjectsTransitionConditionArgs and R2BucketLifecycleRuleDeleteObjectsTransitionConditionOutput values.
-// You can construct a concrete instance of `R2BucketLifecycleRuleDeleteObjectsTransitionConditionInput` via:
-//
-//	R2BucketLifecycleRuleDeleteObjectsTransitionConditionArgs{...}
-type R2BucketLifecycleRuleDeleteObjectsTransitionConditionInput interface {
-	pulumi.Input
-
-	ToR2BucketLifecycleRuleDeleteObjectsTransitionConditionOutput() R2BucketLifecycleRuleDeleteObjectsTransitionConditionOutput
-	ToR2BucketLifecycleRuleDeleteObjectsTransitionConditionOutputWithContext(context.Context) R2BucketLifecycleRuleDeleteObjectsTransitionConditionOutput
-}
-
-type R2BucketLifecycleRuleDeleteObjectsTransitionConditionArgs struct {
-	Date   pulumi.StringPtrInput `pulumi:"date"`
-	MaxAge pulumi.IntPtrInput    `pulumi:"maxAge"`
-	// Available values: "Age", "Date".
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (R2BucketLifecycleRuleDeleteObjectsTransitionConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*R2BucketLifecycleRuleDeleteObjectsTransitionCondition)(nil)).Elem()
-}
-
-func (i R2BucketLifecycleRuleDeleteObjectsTransitionConditionArgs) ToR2BucketLifecycleRuleDeleteObjectsTransitionConditionOutput() R2BucketLifecycleRuleDeleteObjectsTransitionConditionOutput {
-	return i.ToR2BucketLifecycleRuleDeleteObjectsTransitionConditionOutputWithContext(context.Background())
-}
-
-func (i R2BucketLifecycleRuleDeleteObjectsTransitionConditionArgs) ToR2BucketLifecycleRuleDeleteObjectsTransitionConditionOutputWithContext(ctx context.Context) R2BucketLifecycleRuleDeleteObjectsTransitionConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2BucketLifecycleRuleDeleteObjectsTransitionConditionOutput)
-}
-
-func (i R2BucketLifecycleRuleDeleteObjectsTransitionConditionArgs) ToR2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput() R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput {
-	return i.ToR2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutputWithContext(context.Background())
-}
-
-func (i R2BucketLifecycleRuleDeleteObjectsTransitionConditionArgs) ToR2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutputWithContext(ctx context.Context) R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2BucketLifecycleRuleDeleteObjectsTransitionConditionOutput).ToR2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutputWithContext(ctx)
-}
-
-// R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrInput is an input type that accepts R2BucketLifecycleRuleDeleteObjectsTransitionConditionArgs, R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtr and R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput values.
-// You can construct a concrete instance of `R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrInput` via:
-//
-//	        R2BucketLifecycleRuleDeleteObjectsTransitionConditionArgs{...}
-//
-//	or:
-//
-//	        nil
-type R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrInput interface {
-	pulumi.Input
-
-	ToR2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput() R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput
-	ToR2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutputWithContext(context.Context) R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput
-}
-
-type r2bucketLifecycleRuleDeleteObjectsTransitionConditionPtrType R2BucketLifecycleRuleDeleteObjectsTransitionConditionArgs
-
-func R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtr(v *R2BucketLifecycleRuleDeleteObjectsTransitionConditionArgs) R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrInput {
-	return (*r2bucketLifecycleRuleDeleteObjectsTransitionConditionPtrType)(v)
-}
-
-func (*r2bucketLifecycleRuleDeleteObjectsTransitionConditionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**R2BucketLifecycleRuleDeleteObjectsTransitionCondition)(nil)).Elem()
-}
-
-func (i *r2bucketLifecycleRuleDeleteObjectsTransitionConditionPtrType) ToR2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput() R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput {
-	return i.ToR2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutputWithContext(context.Background())
-}
-
-func (i *r2bucketLifecycleRuleDeleteObjectsTransitionConditionPtrType) ToR2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutputWithContext(ctx context.Context) R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput)
-}
-
-type R2BucketLifecycleRuleDeleteObjectsTransitionConditionOutput struct{ *pulumi.OutputState }
-
-func (R2BucketLifecycleRuleDeleteObjectsTransitionConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*R2BucketLifecycleRuleDeleteObjectsTransitionCondition)(nil)).Elem()
-}
-
-func (o R2BucketLifecycleRuleDeleteObjectsTransitionConditionOutput) ToR2BucketLifecycleRuleDeleteObjectsTransitionConditionOutput() R2BucketLifecycleRuleDeleteObjectsTransitionConditionOutput {
-	return o
-}
-
-func (o R2BucketLifecycleRuleDeleteObjectsTransitionConditionOutput) ToR2BucketLifecycleRuleDeleteObjectsTransitionConditionOutputWithContext(ctx context.Context) R2BucketLifecycleRuleDeleteObjectsTransitionConditionOutput {
-	return o
-}
-
-func (o R2BucketLifecycleRuleDeleteObjectsTransitionConditionOutput) ToR2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput() R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput {
-	return o.ToR2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutputWithContext(context.Background())
-}
-
-func (o R2BucketLifecycleRuleDeleteObjectsTransitionConditionOutput) ToR2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutputWithContext(ctx context.Context) R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v R2BucketLifecycleRuleDeleteObjectsTransitionCondition) *R2BucketLifecycleRuleDeleteObjectsTransitionCondition {
-		return &v
-	}).(R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput)
-}
-
-func (o R2BucketLifecycleRuleDeleteObjectsTransitionConditionOutput) Date() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v R2BucketLifecycleRuleDeleteObjectsTransitionCondition) *string { return v.Date }).(pulumi.StringPtrOutput)
-}
-
-func (o R2BucketLifecycleRuleDeleteObjectsTransitionConditionOutput) MaxAge() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v R2BucketLifecycleRuleDeleteObjectsTransitionCondition) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
-}
-
-// Available values: "Age", "Date".
-func (o R2BucketLifecycleRuleDeleteObjectsTransitionConditionOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v R2BucketLifecycleRuleDeleteObjectsTransitionCondition) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput struct{ *pulumi.OutputState }
-
-func (R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**R2BucketLifecycleRuleDeleteObjectsTransitionCondition)(nil)).Elem()
-}
-
-func (o R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput) ToR2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput() R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput {
-	return o
-}
-
-func (o R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput) ToR2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutputWithContext(ctx context.Context) R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput {
-	return o
-}
-
-func (o R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput) Elem() R2BucketLifecycleRuleDeleteObjectsTransitionConditionOutput {
-	return o.ApplyT(func(v *R2BucketLifecycleRuleDeleteObjectsTransitionCondition) R2BucketLifecycleRuleDeleteObjectsTransitionCondition {
-		if v != nil {
-			return *v
-		}
-		var ret R2BucketLifecycleRuleDeleteObjectsTransitionCondition
-		return ret
-	}).(R2BucketLifecycleRuleDeleteObjectsTransitionConditionOutput)
-}
-
-func (o R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput) Date() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *R2BucketLifecycleRuleDeleteObjectsTransitionCondition) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Date
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput) MaxAge() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *R2BucketLifecycleRuleDeleteObjectsTransitionCondition) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MaxAge
-	}).(pulumi.IntPtrOutput)
-}
-
-// Available values: "Age", "Date".
-func (o R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *R2BucketLifecycleRuleDeleteObjectsTransitionCondition) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-type R2BucketLifecycleRuleStorageClassTransition struct {
-	// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
-	Condition R2BucketLifecycleRuleStorageClassTransitionCondition `pulumi:"condition"`
-	// Available values: "InfrequentAccess".
-	StorageClass string `pulumi:"storageClass"`
-}
-
-// R2BucketLifecycleRuleStorageClassTransitionInput is an input type that accepts R2BucketLifecycleRuleStorageClassTransitionArgs and R2BucketLifecycleRuleStorageClassTransitionOutput values.
-// You can construct a concrete instance of `R2BucketLifecycleRuleStorageClassTransitionInput` via:
-//
-//	R2BucketLifecycleRuleStorageClassTransitionArgs{...}
-type R2BucketLifecycleRuleStorageClassTransitionInput interface {
-	pulumi.Input
-
-	ToR2BucketLifecycleRuleStorageClassTransitionOutput() R2BucketLifecycleRuleStorageClassTransitionOutput
-	ToR2BucketLifecycleRuleStorageClassTransitionOutputWithContext(context.Context) R2BucketLifecycleRuleStorageClassTransitionOutput
-}
-
-type R2BucketLifecycleRuleStorageClassTransitionArgs struct {
-	// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
-	Condition R2BucketLifecycleRuleStorageClassTransitionConditionInput `pulumi:"condition"`
-	// Available values: "InfrequentAccess".
-	StorageClass pulumi.StringInput `pulumi:"storageClass"`
-}
-
-func (R2BucketLifecycleRuleStorageClassTransitionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*R2BucketLifecycleRuleStorageClassTransition)(nil)).Elem()
-}
-
-func (i R2BucketLifecycleRuleStorageClassTransitionArgs) ToR2BucketLifecycleRuleStorageClassTransitionOutput() R2BucketLifecycleRuleStorageClassTransitionOutput {
-	return i.ToR2BucketLifecycleRuleStorageClassTransitionOutputWithContext(context.Background())
-}
-
-func (i R2BucketLifecycleRuleStorageClassTransitionArgs) ToR2BucketLifecycleRuleStorageClassTransitionOutputWithContext(ctx context.Context) R2BucketLifecycleRuleStorageClassTransitionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2BucketLifecycleRuleStorageClassTransitionOutput)
-}
-
-// R2BucketLifecycleRuleStorageClassTransitionArrayInput is an input type that accepts R2BucketLifecycleRuleStorageClassTransitionArray and R2BucketLifecycleRuleStorageClassTransitionArrayOutput values.
-// You can construct a concrete instance of `R2BucketLifecycleRuleStorageClassTransitionArrayInput` via:
-//
-//	R2BucketLifecycleRuleStorageClassTransitionArray{ R2BucketLifecycleRuleStorageClassTransitionArgs{...} }
-type R2BucketLifecycleRuleStorageClassTransitionArrayInput interface {
-	pulumi.Input
-
-	ToR2BucketLifecycleRuleStorageClassTransitionArrayOutput() R2BucketLifecycleRuleStorageClassTransitionArrayOutput
-	ToR2BucketLifecycleRuleStorageClassTransitionArrayOutputWithContext(context.Context) R2BucketLifecycleRuleStorageClassTransitionArrayOutput
-}
-
-type R2BucketLifecycleRuleStorageClassTransitionArray []R2BucketLifecycleRuleStorageClassTransitionInput
-
-func (R2BucketLifecycleRuleStorageClassTransitionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]R2BucketLifecycleRuleStorageClassTransition)(nil)).Elem()
-}
-
-func (i R2BucketLifecycleRuleStorageClassTransitionArray) ToR2BucketLifecycleRuleStorageClassTransitionArrayOutput() R2BucketLifecycleRuleStorageClassTransitionArrayOutput {
-	return i.ToR2BucketLifecycleRuleStorageClassTransitionArrayOutputWithContext(context.Background())
-}
-
-func (i R2BucketLifecycleRuleStorageClassTransitionArray) ToR2BucketLifecycleRuleStorageClassTransitionArrayOutputWithContext(ctx context.Context) R2BucketLifecycleRuleStorageClassTransitionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2BucketLifecycleRuleStorageClassTransitionArrayOutput)
-}
-
-type R2BucketLifecycleRuleStorageClassTransitionOutput struct{ *pulumi.OutputState }
-
-func (R2BucketLifecycleRuleStorageClassTransitionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*R2BucketLifecycleRuleStorageClassTransition)(nil)).Elem()
-}
-
-func (o R2BucketLifecycleRuleStorageClassTransitionOutput) ToR2BucketLifecycleRuleStorageClassTransitionOutput() R2BucketLifecycleRuleStorageClassTransitionOutput {
-	return o
-}
-
-func (o R2BucketLifecycleRuleStorageClassTransitionOutput) ToR2BucketLifecycleRuleStorageClassTransitionOutputWithContext(ctx context.Context) R2BucketLifecycleRuleStorageClassTransitionOutput {
-	return o
-}
-
-// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
-func (o R2BucketLifecycleRuleStorageClassTransitionOutput) Condition() R2BucketLifecycleRuleStorageClassTransitionConditionOutput {
-	return o.ApplyT(func(v R2BucketLifecycleRuleStorageClassTransition) R2BucketLifecycleRuleStorageClassTransitionCondition {
-		return v.Condition
-	}).(R2BucketLifecycleRuleStorageClassTransitionConditionOutput)
-}
-
-// Available values: "InfrequentAccess".
-func (o R2BucketLifecycleRuleStorageClassTransitionOutput) StorageClass() pulumi.StringOutput {
-	return o.ApplyT(func(v R2BucketLifecycleRuleStorageClassTransition) string { return v.StorageClass }).(pulumi.StringOutput)
-}
-
-type R2BucketLifecycleRuleStorageClassTransitionArrayOutput struct{ *pulumi.OutputState }
-
-func (R2BucketLifecycleRuleStorageClassTransitionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]R2BucketLifecycleRuleStorageClassTransition)(nil)).Elem()
-}
-
-func (o R2BucketLifecycleRuleStorageClassTransitionArrayOutput) ToR2BucketLifecycleRuleStorageClassTransitionArrayOutput() R2BucketLifecycleRuleStorageClassTransitionArrayOutput {
-	return o
-}
-
-func (o R2BucketLifecycleRuleStorageClassTransitionArrayOutput) ToR2BucketLifecycleRuleStorageClassTransitionArrayOutputWithContext(ctx context.Context) R2BucketLifecycleRuleStorageClassTransitionArrayOutput {
-	return o
-}
-
-func (o R2BucketLifecycleRuleStorageClassTransitionArrayOutput) Index(i pulumi.IntInput) R2BucketLifecycleRuleStorageClassTransitionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) R2BucketLifecycleRuleStorageClassTransition {
-		return vs[0].([]R2BucketLifecycleRuleStorageClassTransition)[vs[1].(int)]
-	}).(R2BucketLifecycleRuleStorageClassTransitionOutput)
-}
-
-type R2BucketLifecycleRuleStorageClassTransitionCondition struct {
-	Date   *string `pulumi:"date"`
-	MaxAge *int    `pulumi:"maxAge"`
-	// Available values: "Age", "Date".
-	Type string `pulumi:"type"`
-}
-
-// R2BucketLifecycleRuleStorageClassTransitionConditionInput is an input type that accepts R2BucketLifecycleRuleStorageClassTransitionConditionArgs and R2BucketLifecycleRuleStorageClassTransitionConditionOutput values.
-// You can construct a concrete instance of `R2BucketLifecycleRuleStorageClassTransitionConditionInput` via:
-//
-//	R2BucketLifecycleRuleStorageClassTransitionConditionArgs{...}
-type R2BucketLifecycleRuleStorageClassTransitionConditionInput interface {
-	pulumi.Input
-
-	ToR2BucketLifecycleRuleStorageClassTransitionConditionOutput() R2BucketLifecycleRuleStorageClassTransitionConditionOutput
-	ToR2BucketLifecycleRuleStorageClassTransitionConditionOutputWithContext(context.Context) R2BucketLifecycleRuleStorageClassTransitionConditionOutput
-}
-
-type R2BucketLifecycleRuleStorageClassTransitionConditionArgs struct {
-	Date   pulumi.StringPtrInput `pulumi:"date"`
-	MaxAge pulumi.IntPtrInput    `pulumi:"maxAge"`
-	// Available values: "Age", "Date".
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (R2BucketLifecycleRuleStorageClassTransitionConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*R2BucketLifecycleRuleStorageClassTransitionCondition)(nil)).Elem()
-}
-
-func (i R2BucketLifecycleRuleStorageClassTransitionConditionArgs) ToR2BucketLifecycleRuleStorageClassTransitionConditionOutput() R2BucketLifecycleRuleStorageClassTransitionConditionOutput {
-	return i.ToR2BucketLifecycleRuleStorageClassTransitionConditionOutputWithContext(context.Background())
-}
-
-func (i R2BucketLifecycleRuleStorageClassTransitionConditionArgs) ToR2BucketLifecycleRuleStorageClassTransitionConditionOutputWithContext(ctx context.Context) R2BucketLifecycleRuleStorageClassTransitionConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2BucketLifecycleRuleStorageClassTransitionConditionOutput)
-}
-
-type R2BucketLifecycleRuleStorageClassTransitionConditionOutput struct{ *pulumi.OutputState }
-
-func (R2BucketLifecycleRuleStorageClassTransitionConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*R2BucketLifecycleRuleStorageClassTransitionCondition)(nil)).Elem()
-}
-
-func (o R2BucketLifecycleRuleStorageClassTransitionConditionOutput) ToR2BucketLifecycleRuleStorageClassTransitionConditionOutput() R2BucketLifecycleRuleStorageClassTransitionConditionOutput {
-	return o
-}
-
-func (o R2BucketLifecycleRuleStorageClassTransitionConditionOutput) ToR2BucketLifecycleRuleStorageClassTransitionConditionOutputWithContext(ctx context.Context) R2BucketLifecycleRuleStorageClassTransitionConditionOutput {
-	return o
-}
-
-func (o R2BucketLifecycleRuleStorageClassTransitionConditionOutput) Date() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v R2BucketLifecycleRuleStorageClassTransitionCondition) *string { return v.Date }).(pulumi.StringPtrOutput)
-}
-
-func (o R2BucketLifecycleRuleStorageClassTransitionConditionOutput) MaxAge() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v R2BucketLifecycleRuleStorageClassTransitionCondition) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
-}
-
-// Available values: "Age", "Date".
-func (o R2BucketLifecycleRuleStorageClassTransitionConditionOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v R2BucketLifecycleRuleStorageClassTransitionCondition) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type R2BucketLockRule struct {
-	// Condition to apply a lock rule to an object for how long in seconds.
-	Condition R2BucketLockRuleCondition `pulumi:"condition"`
-	// Whether or not this rule is in effect.
-	Enabled bool `pulumi:"enabled"`
-	// Unique identifier for this rule.
-	Id string `pulumi:"id"`
-	// Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
-	Prefix *string `pulumi:"prefix"`
-}
-
-// R2BucketLockRuleInput is an input type that accepts R2BucketLockRuleArgs and R2BucketLockRuleOutput values.
-// You can construct a concrete instance of `R2BucketLockRuleInput` via:
-//
-//	R2BucketLockRuleArgs{...}
-type R2BucketLockRuleInput interface {
-	pulumi.Input
-
-	ToR2BucketLockRuleOutput() R2BucketLockRuleOutput
-	ToR2BucketLockRuleOutputWithContext(context.Context) R2BucketLockRuleOutput
-}
-
-type R2BucketLockRuleArgs struct {
-	// Condition to apply a lock rule to an object for how long in seconds.
-	Condition R2BucketLockRuleConditionInput `pulumi:"condition"`
-	// Whether or not this rule is in effect.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// Unique identifier for this rule.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
-	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-}
-
-func (R2BucketLockRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*R2BucketLockRule)(nil)).Elem()
-}
-
-func (i R2BucketLockRuleArgs) ToR2BucketLockRuleOutput() R2BucketLockRuleOutput {
-	return i.ToR2BucketLockRuleOutputWithContext(context.Background())
-}
-
-func (i R2BucketLockRuleArgs) ToR2BucketLockRuleOutputWithContext(ctx context.Context) R2BucketLockRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2BucketLockRuleOutput)
-}
-
-// R2BucketLockRuleArrayInput is an input type that accepts R2BucketLockRuleArray and R2BucketLockRuleArrayOutput values.
-// You can construct a concrete instance of `R2BucketLockRuleArrayInput` via:
-//
-//	R2BucketLockRuleArray{ R2BucketLockRuleArgs{...} }
-type R2BucketLockRuleArrayInput interface {
-	pulumi.Input
-
-	ToR2BucketLockRuleArrayOutput() R2BucketLockRuleArrayOutput
-	ToR2BucketLockRuleArrayOutputWithContext(context.Context) R2BucketLockRuleArrayOutput
-}
-
-type R2BucketLockRuleArray []R2BucketLockRuleInput
-
-func (R2BucketLockRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]R2BucketLockRule)(nil)).Elem()
-}
-
-func (i R2BucketLockRuleArray) ToR2BucketLockRuleArrayOutput() R2BucketLockRuleArrayOutput {
-	return i.ToR2BucketLockRuleArrayOutputWithContext(context.Background())
-}
-
-func (i R2BucketLockRuleArray) ToR2BucketLockRuleArrayOutputWithContext(ctx context.Context) R2BucketLockRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2BucketLockRuleArrayOutput)
-}
-
-type R2BucketLockRuleOutput struct{ *pulumi.OutputState }
-
-func (R2BucketLockRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*R2BucketLockRule)(nil)).Elem()
-}
-
-func (o R2BucketLockRuleOutput) ToR2BucketLockRuleOutput() R2BucketLockRuleOutput {
-	return o
-}
-
-func (o R2BucketLockRuleOutput) ToR2BucketLockRuleOutputWithContext(ctx context.Context) R2BucketLockRuleOutput {
-	return o
-}
-
-// Condition to apply a lock rule to an object for how long in seconds.
-func (o R2BucketLockRuleOutput) Condition() R2BucketLockRuleConditionOutput {
-	return o.ApplyT(func(v R2BucketLockRule) R2BucketLockRuleCondition { return v.Condition }).(R2BucketLockRuleConditionOutput)
-}
-
-// Whether or not this rule is in effect.
-func (o R2BucketLockRuleOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v R2BucketLockRule) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// Unique identifier for this rule.
-func (o R2BucketLockRuleOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v R2BucketLockRule) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
-func (o R2BucketLockRuleOutput) Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v R2BucketLockRule) *string { return v.Prefix }).(pulumi.StringPtrOutput)
-}
-
-type R2BucketLockRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (R2BucketLockRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]R2BucketLockRule)(nil)).Elem()
-}
-
-func (o R2BucketLockRuleArrayOutput) ToR2BucketLockRuleArrayOutput() R2BucketLockRuleArrayOutput {
-	return o
-}
-
-func (o R2BucketLockRuleArrayOutput) ToR2BucketLockRuleArrayOutputWithContext(ctx context.Context) R2BucketLockRuleArrayOutput {
-	return o
-}
-
-func (o R2BucketLockRuleArrayOutput) Index(i pulumi.IntInput) R2BucketLockRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) R2BucketLockRule {
-		return vs[0].([]R2BucketLockRule)[vs[1].(int)]
-	}).(R2BucketLockRuleOutput)
-}
-
-type R2BucketLockRuleCondition struct {
-	Date          *string `pulumi:"date"`
-	MaxAgeSeconds *int    `pulumi:"maxAgeSeconds"`
-	// Available values: "Age", "Date", "Indefinite".
-	Type string `pulumi:"type"`
-}
-
-// R2BucketLockRuleConditionInput is an input type that accepts R2BucketLockRuleConditionArgs and R2BucketLockRuleConditionOutput values.
-// You can construct a concrete instance of `R2BucketLockRuleConditionInput` via:
-//
-//	R2BucketLockRuleConditionArgs{...}
-type R2BucketLockRuleConditionInput interface {
-	pulumi.Input
-
-	ToR2BucketLockRuleConditionOutput() R2BucketLockRuleConditionOutput
-	ToR2BucketLockRuleConditionOutputWithContext(context.Context) R2BucketLockRuleConditionOutput
-}
-
-type R2BucketLockRuleConditionArgs struct {
-	Date          pulumi.StringPtrInput `pulumi:"date"`
-	MaxAgeSeconds pulumi.IntPtrInput    `pulumi:"maxAgeSeconds"`
-	// Available values: "Age", "Date", "Indefinite".
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (R2BucketLockRuleConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*R2BucketLockRuleCondition)(nil)).Elem()
-}
-
-func (i R2BucketLockRuleConditionArgs) ToR2BucketLockRuleConditionOutput() R2BucketLockRuleConditionOutput {
-	return i.ToR2BucketLockRuleConditionOutputWithContext(context.Background())
-}
-
-func (i R2BucketLockRuleConditionArgs) ToR2BucketLockRuleConditionOutputWithContext(ctx context.Context) R2BucketLockRuleConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2BucketLockRuleConditionOutput)
-}
-
-type R2BucketLockRuleConditionOutput struct{ *pulumi.OutputState }
-
-func (R2BucketLockRuleConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*R2BucketLockRuleCondition)(nil)).Elem()
-}
-
-func (o R2BucketLockRuleConditionOutput) ToR2BucketLockRuleConditionOutput() R2BucketLockRuleConditionOutput {
-	return o
-}
-
-func (o R2BucketLockRuleConditionOutput) ToR2BucketLockRuleConditionOutputWithContext(ctx context.Context) R2BucketLockRuleConditionOutput {
-	return o
-}
-
-func (o R2BucketLockRuleConditionOutput) Date() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v R2BucketLockRuleCondition) *string { return v.Date }).(pulumi.StringPtrOutput)
-}
-
-func (o R2BucketLockRuleConditionOutput) MaxAgeSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v R2BucketLockRuleCondition) *int { return v.MaxAgeSeconds }).(pulumi.IntPtrOutput)
-}
-
-// Available values: "Age", "Date", "Indefinite".
-func (o R2BucketLockRuleConditionOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v R2BucketLockRuleCondition) string { return v.Type }).(pulumi.StringOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationCorsHeadersInput)(nil)).Elem(), AccessApplicationCorsHeadersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationCorsHeadersPtrInput)(nil)).Elem(), AccessApplicationCorsHeadersArgs{})
@@ -82638,6 +83121,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountUnitPtrInput)(nil)).Elem(), AccountUnitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AddressMapMembershipInput)(nil)).Elem(), AddressMapMembershipArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AddressMapMembershipArrayInput)(nil)).Elem(), AddressMapMembershipArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstanceCustomMetadataInput)(nil)).Elem(), AiSearchInstanceCustomMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstanceCustomMetadataArrayInput)(nil)).Elem(), AiSearchInstanceCustomMetadataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstanceMetadataInput)(nil)).Elem(), AiSearchInstanceMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstanceMetadataPtrInput)(nil)).Elem(), AiSearchInstanceMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstancePublicEndpointParamsInput)(nil)).Elem(), AiSearchInstancePublicEndpointParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstancePublicEndpointParamsPtrInput)(nil)).Elem(), AiSearchInstancePublicEndpointParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstancePublicEndpointParamsChatCompletionsEndpointInput)(nil)).Elem(), AiSearchInstancePublicEndpointParamsChatCompletionsEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrInput)(nil)).Elem(), AiSearchInstancePublicEndpointParamsChatCompletionsEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstancePublicEndpointParamsMcpInput)(nil)).Elem(), AiSearchInstancePublicEndpointParamsMcpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstancePublicEndpointParamsMcpPtrInput)(nil)).Elem(), AiSearchInstancePublicEndpointParamsMcpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstancePublicEndpointParamsRateLimitInput)(nil)).Elem(), AiSearchInstancePublicEndpointParamsRateLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstancePublicEndpointParamsRateLimitPtrInput)(nil)).Elem(), AiSearchInstancePublicEndpointParamsRateLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstancePublicEndpointParamsSearchEndpointInput)(nil)).Elem(), AiSearchInstancePublicEndpointParamsSearchEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstancePublicEndpointParamsSearchEndpointPtrInput)(nil)).Elem(), AiSearchInstancePublicEndpointParamsSearchEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstanceSourceParamsInput)(nil)).Elem(), AiSearchInstanceSourceParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstanceSourceParamsPtrInput)(nil)).Elem(), AiSearchInstanceSourceParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstanceSourceParamsWebCrawlerInput)(nil)).Elem(), AiSearchInstanceSourceParamsWebCrawlerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstanceSourceParamsWebCrawlerPtrInput)(nil)).Elem(), AiSearchInstanceSourceParamsWebCrawlerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstanceSourceParamsWebCrawlerParseOptionsInput)(nil)).Elem(), AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrInput)(nil)).Elem(), AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstanceSourceParamsWebCrawlerStoreOptionsInput)(nil)).Elem(), AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrInput)(nil)).Elem(), AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiShieldAuthIdCharacteristicInput)(nil)).Elem(), ApiShieldAuthIdCharacteristicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiShieldAuthIdCharacteristicArrayInput)(nil)).Elem(), ApiShieldAuthIdCharacteristicArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiShieldOperationFeaturesInput)(nil)).Elem(), ApiShieldOperationFeaturesArgs{})
@@ -83072,25 +83577,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketCorsRuleInput)(nil)).Elem(), R2BucketCorsRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketCorsRuleArrayInput)(nil)).Elem(), R2BucketCorsRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketCorsRuleAllowedInput)(nil)).Elem(), R2BucketCorsRuleAllowedArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketEventNotificationRuleInput)(nil)).Elem(), R2BucketEventNotificationRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketEventNotificationRuleArrayInput)(nil)).Elem(), R2BucketEventNotificationRuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketLifecycleRuleInput)(nil)).Elem(), R2BucketLifecycleRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketLifecycleRuleArrayInput)(nil)).Elem(), R2BucketLifecycleRuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketLifecycleRuleAbortMultipartUploadsTransitionInput)(nil)).Elem(), R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrInput)(nil)).Elem(), R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionInput)(nil)).Elem(), R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrInput)(nil)).Elem(), R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketLifecycleRuleConditionsInput)(nil)).Elem(), R2BucketLifecycleRuleConditionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketLifecycleRuleDeleteObjectsTransitionInput)(nil)).Elem(), R2BucketLifecycleRuleDeleteObjectsTransitionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketLifecycleRuleDeleteObjectsTransitionPtrInput)(nil)).Elem(), R2BucketLifecycleRuleDeleteObjectsTransitionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketLifecycleRuleDeleteObjectsTransitionConditionInput)(nil)).Elem(), R2BucketLifecycleRuleDeleteObjectsTransitionConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrInput)(nil)).Elem(), R2BucketLifecycleRuleDeleteObjectsTransitionConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketLifecycleRuleStorageClassTransitionInput)(nil)).Elem(), R2BucketLifecycleRuleStorageClassTransitionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketLifecycleRuleStorageClassTransitionArrayInput)(nil)).Elem(), R2BucketLifecycleRuleStorageClassTransitionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketLifecycleRuleStorageClassTransitionConditionInput)(nil)).Elem(), R2BucketLifecycleRuleStorageClassTransitionConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketLockRuleInput)(nil)).Elem(), R2BucketLockRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketLockRuleArrayInput)(nil)).Elem(), R2BucketLockRuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketLockRuleConditionInput)(nil)).Elem(), R2BucketLockRuleConditionArgs{})
 	pulumi.RegisterOutputType(AccessApplicationCorsHeadersOutput{})
 	pulumi.RegisterOutputType(AccessApplicationCorsHeadersPtrOutput{})
 	pulumi.RegisterOutputType(AccessApplicationDestinationOutput{})
@@ -83633,6 +84119,28 @@ func init() {
 	pulumi.RegisterOutputType(AccountUnitPtrOutput{})
 	pulumi.RegisterOutputType(AddressMapMembershipOutput{})
 	pulumi.RegisterOutputType(AddressMapMembershipArrayOutput{})
+	pulumi.RegisterOutputType(AiSearchInstanceCustomMetadataOutput{})
+	pulumi.RegisterOutputType(AiSearchInstanceCustomMetadataArrayOutput{})
+	pulumi.RegisterOutputType(AiSearchInstanceMetadataOutput{})
+	pulumi.RegisterOutputType(AiSearchInstanceMetadataPtrOutput{})
+	pulumi.RegisterOutputType(AiSearchInstancePublicEndpointParamsOutput{})
+	pulumi.RegisterOutputType(AiSearchInstancePublicEndpointParamsPtrOutput{})
+	pulumi.RegisterOutputType(AiSearchInstancePublicEndpointParamsChatCompletionsEndpointOutput{})
+	pulumi.RegisterOutputType(AiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrOutput{})
+	pulumi.RegisterOutputType(AiSearchInstancePublicEndpointParamsMcpOutput{})
+	pulumi.RegisterOutputType(AiSearchInstancePublicEndpointParamsMcpPtrOutput{})
+	pulumi.RegisterOutputType(AiSearchInstancePublicEndpointParamsRateLimitOutput{})
+	pulumi.RegisterOutputType(AiSearchInstancePublicEndpointParamsRateLimitPtrOutput{})
+	pulumi.RegisterOutputType(AiSearchInstancePublicEndpointParamsSearchEndpointOutput{})
+	pulumi.RegisterOutputType(AiSearchInstancePublicEndpointParamsSearchEndpointPtrOutput{})
+	pulumi.RegisterOutputType(AiSearchInstanceSourceParamsOutput{})
+	pulumi.RegisterOutputType(AiSearchInstanceSourceParamsPtrOutput{})
+	pulumi.RegisterOutputType(AiSearchInstanceSourceParamsWebCrawlerOutput{})
+	pulumi.RegisterOutputType(AiSearchInstanceSourceParamsWebCrawlerPtrOutput{})
+	pulumi.RegisterOutputType(AiSearchInstanceSourceParamsWebCrawlerParseOptionsOutput{})
+	pulumi.RegisterOutputType(AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput{})
+	pulumi.RegisterOutputType(AiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput{})
+	pulumi.RegisterOutputType(AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ApiShieldAuthIdCharacteristicOutput{})
 	pulumi.RegisterOutputType(ApiShieldAuthIdCharacteristicArrayOutput{})
 	pulumi.RegisterOutputType(ApiShieldOperationFeaturesOutput{})
@@ -84067,23 +84575,4 @@ func init() {
 	pulumi.RegisterOutputType(R2BucketCorsRuleOutput{})
 	pulumi.RegisterOutputType(R2BucketCorsRuleArrayOutput{})
 	pulumi.RegisterOutputType(R2BucketCorsRuleAllowedOutput{})
-	pulumi.RegisterOutputType(R2BucketEventNotificationRuleOutput{})
-	pulumi.RegisterOutputType(R2BucketEventNotificationRuleArrayOutput{})
-	pulumi.RegisterOutputType(R2BucketLifecycleRuleOutput{})
-	pulumi.RegisterOutputType(R2BucketLifecycleRuleArrayOutput{})
-	pulumi.RegisterOutputType(R2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput{})
-	pulumi.RegisterOutputType(R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutput{})
-	pulumi.RegisterOutputType(R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput{})
-	pulumi.RegisterOutputType(R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutput{})
-	pulumi.RegisterOutputType(R2BucketLifecycleRuleConditionsOutput{})
-	pulumi.RegisterOutputType(R2BucketLifecycleRuleDeleteObjectsTransitionOutput{})
-	pulumi.RegisterOutputType(R2BucketLifecycleRuleDeleteObjectsTransitionPtrOutput{})
-	pulumi.RegisterOutputType(R2BucketLifecycleRuleDeleteObjectsTransitionConditionOutput{})
-	pulumi.RegisterOutputType(R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput{})
-	pulumi.RegisterOutputType(R2BucketLifecycleRuleStorageClassTransitionOutput{})
-	pulumi.RegisterOutputType(R2BucketLifecycleRuleStorageClassTransitionArrayOutput{})
-	pulumi.RegisterOutputType(R2BucketLifecycleRuleStorageClassTransitionConditionOutput{})
-	pulumi.RegisterOutputType(R2BucketLockRuleOutput{})
-	pulumi.RegisterOutputType(R2BucketLockRuleArrayOutput{})
-	pulumi.RegisterOutputType(R2BucketLockRuleConditionOutput{})
 }

@@ -105,6 +105,16 @@ export type AddressMap = import("./addressMap").AddressMap;
 export const AddressMap: typeof import("./addressMap").AddressMap = null as any;
 utilities.lazyLoad(exports, ["AddressMap"], () => require("./addressMap"));
 
+export { AiSearchInstanceArgs, AiSearchInstanceState } from "./aiSearchInstance";
+export type AiSearchInstance = import("./aiSearchInstance").AiSearchInstance;
+export const AiSearchInstance: typeof import("./aiSearchInstance").AiSearchInstance = null as any;
+utilities.lazyLoad(exports, ["AiSearchInstance"], () => require("./aiSearchInstance"));
+
+export { AiSearchTokenArgs, AiSearchTokenState } from "./aiSearchToken";
+export type AiSearchToken = import("./aiSearchToken").AiSearchToken;
+export const AiSearchToken: typeof import("./aiSearchToken").AiSearchToken = null as any;
+utilities.lazyLoad(exports, ["AiSearchToken"], () => require("./aiSearchToken"));
+
 export { ApiShieldArgs, ApiShieldState } from "./apiShield";
 export type ApiShield = import("./apiShield").ApiShield;
 export const ApiShield: typeof import("./apiShield").ApiShield = null as any;
@@ -159,6 +169,11 @@ export { AuthenticatedOriginPullsCertificateArgs, AuthenticatedOriginPullsCertif
 export type AuthenticatedOriginPullsCertificate = import("./authenticatedOriginPullsCertificate").AuthenticatedOriginPullsCertificate;
 export const AuthenticatedOriginPullsCertificate: typeof import("./authenticatedOriginPullsCertificate").AuthenticatedOriginPullsCertificate = null as any;
 utilities.lazyLoad(exports, ["AuthenticatedOriginPullsCertificate"], () => require("./authenticatedOriginPullsCertificate"));
+
+export { AuthenticatedOriginPullsHostnameCertificateArgs, AuthenticatedOriginPullsHostnameCertificateState } from "./authenticatedOriginPullsHostnameCertificate";
+export type AuthenticatedOriginPullsHostnameCertificate = import("./authenticatedOriginPullsHostnameCertificate").AuthenticatedOriginPullsHostnameCertificate;
+export const AuthenticatedOriginPullsHostnameCertificate: typeof import("./authenticatedOriginPullsHostnameCertificate").AuthenticatedOriginPullsHostnameCertificate = null as any;
+utilities.lazyLoad(exports, ["AuthenticatedOriginPullsHostnameCertificate"], () => require("./authenticatedOriginPullsHostnameCertificate"));
 
 export { AuthenticatedOriginPullsSettingsArgs, AuthenticatedOriginPullsSettingsState } from "./authenticatedOriginPullsSettings";
 export type AuthenticatedOriginPullsSettings = import("./authenticatedOriginPullsSettings").AuthenticatedOriginPullsSettings;
@@ -465,6 +480,26 @@ export const getAddressMaps: typeof import("./getAddressMaps").getAddressMaps = 
 export const getAddressMapsOutput: typeof import("./getAddressMaps").getAddressMapsOutput = null as any;
 utilities.lazyLoad(exports, ["getAddressMaps","getAddressMapsOutput"], () => require("./getAddressMaps"));
 
+export { GetAiSearchInstanceArgs, GetAiSearchInstanceResult, GetAiSearchInstanceOutputArgs } from "./getAiSearchInstance";
+export const getAiSearchInstance: typeof import("./getAiSearchInstance").getAiSearchInstance = null as any;
+export const getAiSearchInstanceOutput: typeof import("./getAiSearchInstance").getAiSearchInstanceOutput = null as any;
+utilities.lazyLoad(exports, ["getAiSearchInstance","getAiSearchInstanceOutput"], () => require("./getAiSearchInstance"));
+
+export { GetAiSearchInstancesArgs, GetAiSearchInstancesResult, GetAiSearchInstancesOutputArgs } from "./getAiSearchInstances";
+export const getAiSearchInstances: typeof import("./getAiSearchInstances").getAiSearchInstances = null as any;
+export const getAiSearchInstancesOutput: typeof import("./getAiSearchInstances").getAiSearchInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getAiSearchInstances","getAiSearchInstancesOutput"], () => require("./getAiSearchInstances"));
+
+export { GetAiSearchTokenArgs, GetAiSearchTokenResult, GetAiSearchTokenOutputArgs } from "./getAiSearchToken";
+export const getAiSearchToken: typeof import("./getAiSearchToken").getAiSearchToken = null as any;
+export const getAiSearchTokenOutput: typeof import("./getAiSearchToken").getAiSearchTokenOutput = null as any;
+utilities.lazyLoad(exports, ["getAiSearchToken","getAiSearchTokenOutput"], () => require("./getAiSearchToken"));
+
+export { GetAiSearchTokensArgs, GetAiSearchTokensResult, GetAiSearchTokensOutputArgs } from "./getAiSearchTokens";
+export const getAiSearchTokens: typeof import("./getAiSearchTokens").getAiSearchTokens = null as any;
+export const getAiSearchTokensOutput: typeof import("./getAiSearchTokens").getAiSearchTokensOutput = null as any;
+utilities.lazyLoad(exports, ["getAiSearchTokens","getAiSearchTokensOutput"], () => require("./getAiSearchTokens"));
+
 export { GetApiShieldArgs, GetApiShieldResult, GetApiShieldOutputArgs } from "./getApiShield";
 export const getApiShield: typeof import("./getApiShield").getApiShield = null as any;
 export const getApiShieldOutput: typeof import("./getApiShield").getApiShieldOutput = null as any;
@@ -544,6 +579,16 @@ export { GetAuthenticatedOriginPullsCertificatesArgs, GetAuthenticatedOriginPull
 export const getAuthenticatedOriginPullsCertificates: typeof import("./getAuthenticatedOriginPullsCertificates").getAuthenticatedOriginPullsCertificates = null as any;
 export const getAuthenticatedOriginPullsCertificatesOutput: typeof import("./getAuthenticatedOriginPullsCertificates").getAuthenticatedOriginPullsCertificatesOutput = null as any;
 utilities.lazyLoad(exports, ["getAuthenticatedOriginPullsCertificates","getAuthenticatedOriginPullsCertificatesOutput"], () => require("./getAuthenticatedOriginPullsCertificates"));
+
+export { GetAuthenticatedOriginPullsHostnameCertificateArgs, GetAuthenticatedOriginPullsHostnameCertificateResult, GetAuthenticatedOriginPullsHostnameCertificateOutputArgs } from "./getAuthenticatedOriginPullsHostnameCertificate";
+export const getAuthenticatedOriginPullsHostnameCertificate: typeof import("./getAuthenticatedOriginPullsHostnameCertificate").getAuthenticatedOriginPullsHostnameCertificate = null as any;
+export const getAuthenticatedOriginPullsHostnameCertificateOutput: typeof import("./getAuthenticatedOriginPullsHostnameCertificate").getAuthenticatedOriginPullsHostnameCertificateOutput = null as any;
+utilities.lazyLoad(exports, ["getAuthenticatedOriginPullsHostnameCertificate","getAuthenticatedOriginPullsHostnameCertificateOutput"], () => require("./getAuthenticatedOriginPullsHostnameCertificate"));
+
+export { GetAuthenticatedOriginPullsHostnameCertificatesArgs, GetAuthenticatedOriginPullsHostnameCertificatesResult, GetAuthenticatedOriginPullsHostnameCertificatesOutputArgs } from "./getAuthenticatedOriginPullsHostnameCertificates";
+export const getAuthenticatedOriginPullsHostnameCertificates: typeof import("./getAuthenticatedOriginPullsHostnameCertificates").getAuthenticatedOriginPullsHostnameCertificates = null as any;
+export const getAuthenticatedOriginPullsHostnameCertificatesOutput: typeof import("./getAuthenticatedOriginPullsHostnameCertificates").getAuthenticatedOriginPullsHostnameCertificatesOutput = null as any;
+utilities.lazyLoad(exports, ["getAuthenticatedOriginPullsHostnameCertificates","getAuthenticatedOriginPullsHostnameCertificatesOutput"], () => require("./getAuthenticatedOriginPullsHostnameCertificates"));
 
 export { GetAuthenticatedOriginPullsSettingsArgs, GetAuthenticatedOriginPullsSettingsResult, GetAuthenticatedOriginPullsSettingsOutputArgs } from "./getAuthenticatedOriginPullsSettings";
 export const getAuthenticatedOriginPullsSettings: typeof import("./getAuthenticatedOriginPullsSettings").getAuthenticatedOriginPullsSettings = null as any;
@@ -3032,6 +3077,10 @@ const _module = {
                 return new AccountToken(name, <any>undefined, { urn })
             case "cloudflare:index/addressMap:AddressMap":
                 return new AddressMap(name, <any>undefined, { urn })
+            case "cloudflare:index/aiSearchInstance:AiSearchInstance":
+                return new AiSearchInstance(name, <any>undefined, { urn })
+            case "cloudflare:index/aiSearchToken:AiSearchToken":
+                return new AiSearchToken(name, <any>undefined, { urn })
             case "cloudflare:index/apiShield:ApiShield":
                 return new ApiShield(name, <any>undefined, { urn })
             case "cloudflare:index/apiShieldDiscoveryOperation:ApiShieldDiscoveryOperation":
@@ -3054,6 +3103,8 @@ const _module = {
                 return new AuthenticatedOriginPulls(name, <any>undefined, { urn })
             case "cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate":
                 return new AuthenticatedOriginPullsCertificate(name, <any>undefined, { urn })
+            case "cloudflare:index/authenticatedOriginPullsHostnameCertificate:AuthenticatedOriginPullsHostnameCertificate":
+                return new AuthenticatedOriginPullsHostnameCertificate(name, <any>undefined, { urn })
             case "cloudflare:index/authenticatedOriginPullsSettings:AuthenticatedOriginPullsSettings":
                 return new AuthenticatedOriginPullsSettings(name, <any>undefined, { urn })
             case "cloudflare:index/botManagement:BotManagement":
@@ -3503,6 +3554,8 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/accountMember", _modu
 pulumi.runtime.registerResourceModule("cloudflare", "index/accountSubscription", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accountToken", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/addressMap", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/aiSearchInstance", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/aiSearchToken", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/apiShield", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/apiShieldDiscoveryOperation", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/apiShieldOperation", _module)
@@ -3514,6 +3567,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/argoSmartRouting", _m
 pulumi.runtime.registerResourceModule("cloudflare", "index/argoTieredCaching", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/authenticatedOriginPulls", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/authenticatedOriginPullsCertificate", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/authenticatedOriginPullsHostnameCertificate", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/authenticatedOriginPullsSettings", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/botManagement", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/byoIpPrefix", _module)

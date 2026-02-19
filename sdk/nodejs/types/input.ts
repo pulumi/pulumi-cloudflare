@@ -3094,6 +3094,100 @@ export interface AddressMapMembership {
     kind?: pulumi.Input<string>;
 }
 
+export interface AiSearchInstanceCustomMetadata {
+    /**
+     * Available values: "text", "number", "boolean".
+     */
+    dataType: pulumi.Input<string>;
+    fieldName: pulumi.Input<string>;
+}
+
+export interface AiSearchInstanceMetadata {
+    createdFromAisearchWizard?: pulumi.Input<boolean>;
+    workerDomain?: pulumi.Input<string>;
+}
+
+export interface AiSearchInstancePublicEndpointParams {
+    authorizedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+    chatCompletionsEndpoint?: pulumi.Input<inputs.AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint>;
+    enabled?: pulumi.Input<boolean>;
+    mcp?: pulumi.Input<inputs.AiSearchInstancePublicEndpointParamsMcp>;
+    rateLimit?: pulumi.Input<inputs.AiSearchInstancePublicEndpointParamsRateLimit>;
+    searchEndpoint?: pulumi.Input<inputs.AiSearchInstancePublicEndpointParamsSearchEndpoint>;
+}
+
+export interface AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint {
+    /**
+     * Disable chat completions endpoint for this public endpoint
+     */
+    disabled?: pulumi.Input<boolean>;
+}
+
+export interface AiSearchInstancePublicEndpointParamsMcp {
+    /**
+     * Disable MCP endpoint for this public endpoint
+     */
+    disabled?: pulumi.Input<boolean>;
+}
+
+export interface AiSearchInstancePublicEndpointParamsRateLimit {
+    periodMs?: pulumi.Input<number>;
+    requests?: pulumi.Input<number>;
+    /**
+     * Available values: "fixed", "sliding".
+     */
+    technique?: pulumi.Input<string>;
+}
+
+export interface AiSearchInstancePublicEndpointParamsSearchEndpoint {
+    /**
+     * Disable search endpoint for this public endpoint
+     */
+    disabled?: pulumi.Input<boolean>;
+}
+
+export interface AiSearchInstanceSourceParams {
+    /**
+     * List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
+     */
+    excludeItems?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
+     */
+    includeItems?: pulumi.Input<pulumi.Input<string>[]>;
+    prefix?: pulumi.Input<string>;
+    r2Jurisdiction?: pulumi.Input<string>;
+    webCrawler?: pulumi.Input<inputs.AiSearchInstanceSourceParamsWebCrawler>;
+}
+
+export interface AiSearchInstanceSourceParamsWebCrawler {
+    parseOptions?: pulumi.Input<inputs.AiSearchInstanceSourceParamsWebCrawlerParseOptions>;
+    /**
+     * Available values: "sitemap", "feed-rss".
+     */
+    parseType?: pulumi.Input<string>;
+    storeOptions?: pulumi.Input<inputs.AiSearchInstanceSourceParamsWebCrawlerStoreOptions>;
+}
+
+export interface AiSearchInstanceSourceParamsWebCrawlerParseOptions {
+    includeHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    includeImages?: pulumi.Input<boolean>;
+    /**
+     * List of specific sitemap URLs to use for crawling. Only valid when parseType is 'sitemap'.
+     */
+    specificSitemaps?: pulumi.Input<pulumi.Input<string>[]>;
+    useBrowserRendering?: pulumi.Input<boolean>;
+}
+
+export interface AiSearchInstanceSourceParamsWebCrawlerStoreOptions {
+    r2Jurisdiction?: pulumi.Input<string>;
+    storageId: pulumi.Input<string>;
+    /**
+     * Available values: "r2".
+     */
+    storageType?: pulumi.Input<string>;
+}
+
 export interface ApiShieldAuthIdCharacteristic {
     /**
      * The name of the characteristic field, i.e., the header or cookie name. When using type "jwt", this must be a claim location expressed as `$(token_config_id):$(json_path)`, where `tokenConfigId` is the ID of the token configuration used in validating the JWT, and `jsonPath` is a RFC 9535 JSONPath expression.
@@ -4764,6 +4858,20 @@ export interface GetAccountTokenFilterArgs {
     direction?: pulumi.Input<string>;
 }
 
+export interface GetAiSearchInstanceFilter {
+    /**
+     * Search by id
+     */
+    search?: string;
+}
+
+export interface GetAiSearchInstanceFilterArgs {
+    /**
+     * Search by id
+     */
+    search?: pulumi.Input<string>;
+}
+
 export interface GetApiShieldOperationFilter {
     /**
      * Direction to order results.
@@ -6103,8 +6211,13 @@ export interface GetTurnstileWidgetFilter {
      */
     direction?: string;
     /**
+     * Filter widgets by field using case-insensitive substring matching.
+     * Format: `field:value`
+     */
+    filter?: string;
+    /**
      * Field to order widgets by.
-     * Available values: "id", "sitekey", "name", "created*on", "modified*on".
+     * Available values: "id", "sitekey", "name", "createdOn", "modifiedOn".
      */
     order?: string;
 }
@@ -6116,8 +6229,13 @@ export interface GetTurnstileWidgetFilterArgs {
      */
     direction?: pulumi.Input<string>;
     /**
+     * Filter widgets by field using case-insensitive substring matching.
+     * Format: `field:value`
+     */
+    filter?: pulumi.Input<string>;
+    /**
      * Field to order widgets by.
-     * Available values: "id", "sitekey", "name", "created*on", "modified*on".
+     * Available values: "id", "sitekey", "name", "createdOn", "modifiedOn".
      */
     order?: pulumi.Input<string>;
 }
@@ -6570,13 +6688,37 @@ export interface GetZeroTrustAccessServiceTokenFilterArgs {
     search?: pulumi.Input<string>;
 }
 
+export interface GetZeroTrustDexTestFilter {
+    /**
+     * Filter by test type
+     * Available values: "http", "traceroute".
+     */
+    kind?: string;
+    /**
+     * Filter by test name
+     */
+    testName?: string;
+}
+
+export interface GetZeroTrustDexTestFilterArgs {
+    /**
+     * Filter by test type
+     * Available values: "http", "traceroute".
+     */
+    kind?: pulumi.Input<string>;
+    /**
+     * Filter by test name
+     */
+    testName?: pulumi.Input<string>;
+}
+
 export interface GetZeroTrustDexTestTargetPolicy {
     /**
      * Whether the DEX rule is the account default
      */
     default?: boolean;
     /**
-     * The id of the DEX rule
+     * API Resource UUID tag.
      */
     id?: string;
     /**
@@ -6591,7 +6733,7 @@ export interface GetZeroTrustDexTestTargetPolicyArgs {
      */
     default?: pulumi.Input<boolean>;
     /**
-     * The id of the DEX rule
+     * API Resource UUID tag.
      */
     id?: pulumi.Input<string>;
     /**
@@ -12758,6 +12900,10 @@ export interface WorkerScriptBinding {
      */
     service?: pulumi.Input<string>;
     /**
+     * A simple rate limit.
+     */
+    simple?: pulumi.Input<inputs.WorkerScriptBindingSimple>;
+    /**
      * ID of the store containing the secret.
      */
     storeId?: pulumi.Input<string>;
@@ -12804,6 +12950,17 @@ export interface WorkerScriptBindingOutboundWorker {
      * Name of the outbound worker.
      */
     service?: pulumi.Input<string>;
+}
+
+export interface WorkerScriptBindingSimple {
+    /**
+     * The rate limit value.
+     */
+    limit: pulumi.Input<number>;
+    /**
+     * The rate limit period in seconds.
+     */
+    period: pulumi.Input<number>;
 }
 
 export interface WorkerScriptLimits {
@@ -12957,7 +13114,7 @@ export interface WorkerScriptPlacement {
     lastAnalyzedAt?: pulumi.Input<string>;
     /**
      * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: "smart".
+     * Available values: "smart", "targeted".
      */
     mode?: pulumi.Input<string>;
     /**
@@ -12969,6 +13126,25 @@ export interface WorkerScriptPlacement {
      * Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
      */
     status?: pulumi.Input<string>;
+    /**
+     * Array of placement targets (currently limited to single target).
+     */
+    targets?: pulumi.Input<pulumi.Input<inputs.WorkerScriptPlacementTarget>[]>;
+}
+
+export interface WorkerScriptPlacementTarget {
+    /**
+     * TCP host:port for targeted placement.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname?: pulumi.Input<string>;
+    /**
+     * Cloud region in format 'provider:region'.
+     */
+    region?: pulumi.Input<string>;
 }
 
 export interface WorkerScriptTailConsumer {
@@ -13167,6 +13343,10 @@ export interface WorkerVersionBinding {
      */
     service?: pulumi.Input<string>;
     /**
+     * The rate limit configuration.
+     */
+    simple?: pulumi.Input<inputs.WorkerVersionBindingSimple>;
+    /**
      * ID of the store containing the secret.
      */
     storeId?: pulumi.Input<string>;
@@ -13176,7 +13356,7 @@ export interface WorkerVersionBinding {
     text?: pulumi.Input<string>;
     /**
      * The kind of resource that the binding provides.
-     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasmModule".
+     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasmModule".
      */
     type: pulumi.Input<string>;
     /**
@@ -13213,6 +13393,17 @@ export interface WorkerVersionBindingOutboundWorker {
      * Name of the outbound worker.
      */
     service?: pulumi.Input<string>;
+}
+
+export interface WorkerVersionBindingSimple {
+    /**
+     * The limit (requests per period).
+     */
+    limit: pulumi.Input<number>;
+    /**
+     * The period in seconds.
+     */
+    period: pulumi.Input<number>;
 }
 
 export interface WorkerVersionLimits {
@@ -13327,10 +13518,41 @@ export interface WorkerVersionModule {
 
 export interface WorkerVersionPlacement {
     /**
-     * Placement mode for the version.
-     * Available values: "smart".
+     * TCP host and port for targeted placement.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname?: pulumi.Input<string>;
+    /**
+     * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: "smart", "targeted".
      */
     mode?: pulumi.Input<string>;
+    /**
+     * Cloud region for targeted placement in format 'provider:region'.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * Array of placement targets (currently limited to single target).
+     */
+    targets?: pulumi.Input<pulumi.Input<inputs.WorkerVersionPlacementTarget>[]>;
+}
+
+export interface WorkerVersionPlacementTarget {
+    /**
+     * TCP host:port for targeted placement.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname?: pulumi.Input<string>;
+    /**
+     * Cloud region in format 'provider:region'.
+     */
+    region?: pulumi.Input<string>;
 }
 
 export interface WorkersCronTriggerSchedule {
@@ -13517,6 +13739,10 @@ export interface WorkersScriptBinding {
      */
     service?: pulumi.Input<string>;
     /**
+     * A simple rate limit.
+     */
+    simple?: pulumi.Input<inputs.WorkersScriptBindingSimple>;
+    /**
      * ID of the store containing the secret.
      */
     storeId?: pulumi.Input<string>;
@@ -13563,6 +13789,17 @@ export interface WorkersScriptBindingOutboundWorker {
      * Name of the outbound worker.
      */
     service?: pulumi.Input<string>;
+}
+
+export interface WorkersScriptBindingSimple {
+    /**
+     * The rate limit value.
+     */
+    limit: pulumi.Input<number>;
+    /**
+     * The rate limit period in seconds.
+     */
+    period: pulumi.Input<number>;
 }
 
 export interface WorkersScriptLimits {
@@ -13716,7 +13953,7 @@ export interface WorkersScriptPlacement {
     lastAnalyzedAt?: pulumi.Input<string>;
     /**
      * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: "smart".
+     * Available values: "smart", "targeted".
      */
     mode?: pulumi.Input<string>;
     /**
@@ -13728,6 +13965,25 @@ export interface WorkersScriptPlacement {
      * Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
      */
     status?: pulumi.Input<string>;
+    /**
+     * Array of placement targets (currently limited to single target).
+     */
+    targets?: pulumi.Input<pulumi.Input<inputs.WorkersScriptPlacementTarget>[]>;
+}
+
+export interface WorkersScriptPlacementTarget {
+    /**
+     * TCP host:port for targeted placement.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname?: pulumi.Input<string>;
+    /**
+     * Cloud region in format 'provider:region'.
+     */
+    region?: pulumi.Input<string>;
 }
 
 export interface WorkersScriptTailConsumer {

@@ -17,7 +17,7 @@ public final class GetAuthenticatedOriginPullsSettingsResult {
      */
     private Boolean enabled;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Identifier.
      * 
      */
     private String id;
@@ -36,7 +36,7 @@ public final class GetAuthenticatedOriginPullsSettingsResult {
         return this.enabled;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Identifier.
      * 
      */
     public String id() {

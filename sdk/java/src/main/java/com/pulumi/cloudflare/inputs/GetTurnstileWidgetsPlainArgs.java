@@ -49,33 +49,32 @@ public final class GetTurnstileWidgetsPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * Max items to fetch, default: 1000
+     * Filter widgets by field using case-insensitive substring matching.
+     * Format: `field:value`
      * 
      */
+    @Import(name="filter")
+    private @Nullable String filter;
+
+    /**
+     * @return Filter widgets by field using case-insensitive substring matching.
+     * Format: `field:value`
+     * 
+     */
+    public Optional<String> filter() {
+        return Optional.ofNullable(this.filter);
+    }
+
     @Import(name="maxItems")
     private @Nullable Integer maxItems;
 
-    /**
-     * @return Max items to fetch, default: 1000
-     * 
-     */
     public Optional<Integer> maxItems() {
         return Optional.ofNullable(this.maxItems);
     }
 
-    /**
-     * Field to order widgets by.
-     * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;created*on&#34;, &#34;modified*on&#34;.
-     * 
-     */
     @Import(name="order")
     private @Nullable String order;
 
-    /**
-     * @return Field to order widgets by.
-     * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;created*on&#34;, &#34;modified*on&#34;.
-     * 
-     */
     public Optional<String> order() {
         return Optional.ofNullable(this.order);
     }
@@ -85,6 +84,7 @@ public final class GetTurnstileWidgetsPlainArgs extends com.pulumi.resources.Inv
     private GetTurnstileWidgetsPlainArgs(GetTurnstileWidgetsPlainArgs $) {
         this.accountId = $.accountId;
         this.direction = $.direction;
+        this.filter = $.filter;
         this.maxItems = $.maxItems;
         this.order = $.order;
     }
@@ -131,23 +131,22 @@ public final class GetTurnstileWidgetsPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param maxItems Max items to fetch, default: 1000
+         * @param filter Filter widgets by field using case-insensitive substring matching.
+         * Format: `field:value`
          * 
          * @return builder
          * 
          */
+        public Builder filter(@Nullable String filter) {
+            $.filter = filter;
+            return this;
+        }
+
         public Builder maxItems(@Nullable Integer maxItems) {
             $.maxItems = maxItems;
             return this;
         }
 
-        /**
-         * @param order Field to order widgets by.
-         * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;created*on&#34;, &#34;modified*on&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder order(@Nullable String order) {
             $.order = order;
             return this;

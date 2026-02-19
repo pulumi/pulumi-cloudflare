@@ -61,7 +61,7 @@ type GetZeroTrustTunnelWarpConnectorTokenResult struct {
 	AccountId string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// The Warp Connector Token is used as a mechanism to authenticate the operation of a tunnel.
+	// The Tunnel Token is used as a mechanism to authenticate the operation of a tunnel.
 	Token string `pulumi:"token"`
 	// UUID of the tunnel.
 	TunnelId string `pulumi:"tunnelId"`
@@ -113,7 +113,7 @@ func (o GetZeroTrustTunnelWarpConnectorTokenResultOutput) Id() pulumi.StringOutp
 	return o.ApplyT(func(v GetZeroTrustTunnelWarpConnectorTokenResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The Warp Connector Token is used as a mechanism to authenticate the operation of a tunnel.
+// The Tunnel Token is used as a mechanism to authenticate the operation of a tunnel.
 func (o GetZeroTrustTunnelWarpConnectorTokenResultOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustTunnelWarpConnectorTokenResult) string { return v.Token }).(pulumi.StringOutput)
 }

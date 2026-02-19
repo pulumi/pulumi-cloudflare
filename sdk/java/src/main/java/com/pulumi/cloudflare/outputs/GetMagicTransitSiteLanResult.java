@@ -21,6 +21,7 @@ public final class GetMagicTransitSiteLanResult {
      * 
      */
     private String accountId;
+    private Integer bondId;
     /**
      * @return mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
      * 
@@ -63,6 +64,9 @@ public final class GetMagicTransitSiteLanResult {
      */
     public String accountId() {
         return this.accountId;
+    }
+    public Integer bondId() {
+        return this.bondId;
     }
     /**
      * @return mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
@@ -129,6 +133,7 @@ public final class GetMagicTransitSiteLanResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
+        private Integer bondId;
         private Boolean haLink;
         private String id;
         private String lanId;
@@ -143,6 +148,7 @@ public final class GetMagicTransitSiteLanResult {
         public Builder(GetMagicTransitSiteLanResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.bondId = defaults.bondId;
     	      this.haLink = defaults.haLink;
     	      this.id = defaults.id;
     	      this.lanId = defaults.lanId;
@@ -161,6 +167,14 @@ public final class GetMagicTransitSiteLanResult {
               throw new MissingRequiredPropertyException("GetMagicTransitSiteLanResult", "accountId");
             }
             this.accountId = accountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder bondId(Integer bondId) {
+            if (bondId == null) {
+              throw new MissingRequiredPropertyException("GetMagicTransitSiteLanResult", "bondId");
+            }
+            this.bondId = bondId;
             return this;
         }
         @CustomType.Setter
@@ -249,6 +263,7 @@ public final class GetMagicTransitSiteLanResult {
         public GetMagicTransitSiteLanResult build() {
             final var _resultValue = new GetMagicTransitSiteLanResult();
             _resultValue.accountId = accountId;
+            _resultValue.bondId = bondId;
             _resultValue.haLink = haLink;
             _resultValue.id = id;
             _resultValue.lanId = lanId;

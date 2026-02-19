@@ -315,7 +315,9 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
 
         ## Import
 
-        > This resource does not currently support `pulumi import`.
+        ```sh
+        $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate example '<zone_id>/<certificate_id>'
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -395,7 +397,9 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
 
         ## Import
 
-        > This resource does not currently support `pulumi import`.
+        ```sh
+        $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate example '<zone_id>/<certificate_id>'
+        ```
 
         :param str resource_name: The name of the resource.
         :param AuthenticatedOriginPullsCertificateArgs args: The arguments to use to populate this resource's properties.

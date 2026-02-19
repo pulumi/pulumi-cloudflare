@@ -27,10 +27,13 @@ class GetMagicTransitSiteLanResult:
     """
     A collection of values returned by getMagicTransitSiteLan.
     """
-    def __init__(__self__, account_id=None, ha_link=None, id=None, lan_id=None, name=None, nat=None, physport=None, routed_subnets=None, site_id=None, static_addressing=None, vlan_tag=None):
+    def __init__(__self__, account_id=None, bond_id=None, ha_link=None, id=None, lan_id=None, name=None, nat=None, physport=None, routed_subnets=None, site_id=None, static_addressing=None, vlan_tag=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if bond_id and not isinstance(bond_id, int):
+            raise TypeError("Expected argument 'bond_id' to be a int")
+        pulumi.set(__self__, "bond_id", bond_id)
         if ha_link and not isinstance(ha_link, bool):
             raise TypeError("Expected argument 'ha_link' to be a bool")
         pulumi.set(__self__, "ha_link", ha_link)
@@ -69,6 +72,11 @@ class GetMagicTransitSiteLanResult:
         Identifier
         """
         return pulumi.get(self, "account_id")
+
+    @_builtins.property
+    @pulumi.getter(name="bondId")
+    def bond_id(self) -> _builtins.int:
+        return pulumi.get(self, "bond_id")
 
     @_builtins.property
     @pulumi.getter(name="haLink")
@@ -146,6 +154,7 @@ class AwaitableGetMagicTransitSiteLanResult(GetMagicTransitSiteLanResult):
             yield self
         return GetMagicTransitSiteLanResult(
             account_id=self.account_id,
+            bond_id=self.bond_id,
             ha_link=self.ha_link,
             id=self.id,
             lan_id=self.lan_id,
@@ -188,6 +197,7 @@ def get_magic_transit_site_lan(account_id: Optional[_builtins.str] = None,
 
     return AwaitableGetMagicTransitSiteLanResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        bond_id=pulumi.get(__ret__, 'bond_id'),
         ha_link=pulumi.get(__ret__, 'ha_link'),
         id=pulumi.get(__ret__, 'id'),
         lan_id=pulumi.get(__ret__, 'lan_id'),
@@ -227,6 +237,7 @@ def get_magic_transit_site_lan_output(account_id: Optional[pulumi.Input[_builtin
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getMagicTransitSiteLan:getMagicTransitSiteLan', __args__, opts=opts, typ=GetMagicTransitSiteLanResult)
     return __ret__.apply(lambda __response__: GetMagicTransitSiteLanResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        bond_id=pulumi.get(__response__, 'bond_id'),
         ha_link=pulumi.get(__response__, 'ha_link'),
         id=pulumi.get(__response__, 'id'),
         lan_id=pulumi.get(__response__, 'lan_id'),

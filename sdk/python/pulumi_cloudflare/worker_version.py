@@ -52,7 +52,7 @@ class WorkerVersionArgs:
                [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure 
                [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
                included as modules named `_headers` and `_redirects` with content type `text/plain`.
-        :param pulumi.Input['WorkerVersionPlacementArgs'] placement: Placement settings for the version.
+        :param pulumi.Input['WorkerVersionPlacementArgs'] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
         :param pulumi.Input[_builtins.str] usage_model: Usage model for the version.
                Available values: "standard", "bundled", "unbound".
         """
@@ -225,7 +225,7 @@ class WorkerVersionArgs:
     @pulumi.getter
     def placement(self) -> Optional[pulumi.Input['WorkerVersionPlacementArgs']]:
         """
-        Placement settings for the version.
+        Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
         """
         return pulumi.get(self, "placement")
 
@@ -289,7 +289,7 @@ class _WorkerVersionState:
                [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
                included as modules named `_headers` and `_redirects` with content type `text/plain`.
         :param pulumi.Input[_builtins.int] number: The integer version number, starting from one.
-        :param pulumi.Input['WorkerVersionPlacementArgs'] placement: Placement settings for the version.
+        :param pulumi.Input['WorkerVersionPlacementArgs'] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
         :param pulumi.Input[_builtins.str] source: The client used to create the version.
         :param pulumi.Input[_builtins.int] startup_time_ms: Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
         :param pulumi.Input[_builtins.str] usage_model: Usage model for the version.
@@ -501,7 +501,7 @@ class _WorkerVersionState:
     @pulumi.getter
     def placement(self) -> Optional[pulumi.Input['WorkerVersionPlacementArgs']]:
         """
-        Placement settings for the version.
+        Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
         """
         return pulumi.get(self, "placement")
 
@@ -662,7 +662,7 @@ class WorkerVersion(pulumi.CustomResource):
                [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure 
                [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
                included as modules named `_headers` and `_redirects` with content type `text/plain`.
-        :param pulumi.Input[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict']] placement: Placement settings for the version.
+        :param pulumi.Input[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict']] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
         :param pulumi.Input[_builtins.str] usage_model: Usage model for the version.
                Available values: "standard", "bundled", "unbound".
         :param pulumi.Input[_builtins.str] worker_id: Identifier for the Worker, which can be ID or name.
@@ -850,7 +850,7 @@ class WorkerVersion(pulumi.CustomResource):
                [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
                included as modules named `_headers` and `_redirects` with content type `text/plain`.
         :param pulumi.Input[_builtins.int] number: The integer version number, starting from one.
-        :param pulumi.Input[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict']] placement: Placement settings for the version.
+        :param pulumi.Input[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict']] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
         :param pulumi.Input[_builtins.str] source: The client used to create the version.
         :param pulumi.Input[_builtins.int] startup_time_ms: Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
         :param pulumi.Input[_builtins.str] usage_model: Usage model for the version.
@@ -994,7 +994,7 @@ class WorkerVersion(pulumi.CustomResource):
     @pulumi.getter
     def placement(self) -> pulumi.Output[Optional['outputs.WorkerVersionPlacement']]:
         """
-        Placement settings for the version.
+        Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
         """
         return pulumi.get(self, "placement")
 

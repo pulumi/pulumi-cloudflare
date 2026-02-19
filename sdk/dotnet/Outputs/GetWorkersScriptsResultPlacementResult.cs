@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string LastAnalyzedAt;
         /// <summary>
         /// Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-        /// Available values: "smart".
+        /// Available values: "smart", "targeted".
         /// </summary>
         public readonly string Mode;
         /// <summary>
@@ -39,6 +39,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
         /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// Array of placement targets (currently limited to single target).
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetWorkersScriptsResultPlacementTargetResult> Targets;
 
         [OutputConstructor]
         private GetWorkersScriptsResultPlacementResult(
@@ -52,7 +56,9 @@ namespace Pulumi.Cloudflare.Outputs
 
             string region,
 
-            string status)
+            string status,
+
+            ImmutableArray<Outputs.GetWorkersScriptsResultPlacementTargetResult> targets)
         {
             Host = host;
             Hostname = hostname;
@@ -60,6 +66,7 @@ namespace Pulumi.Cloudflare.Outputs
             Mode = mode;
             Region = region;
             Status = status;
+            Targets = targets;
         }
     }
 }

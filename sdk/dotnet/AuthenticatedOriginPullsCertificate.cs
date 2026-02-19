@@ -83,7 +83,9 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// &gt; This resource does not currently support `pulumi import`.
+    /// ```sh
+    /// $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate example '&lt;zone_id&gt;/&lt;certificate_id&gt;'
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate")]
     public partial class AuthenticatedOriginPullsCertificate : global::Pulumi.CustomResource

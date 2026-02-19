@@ -14,7 +14,6 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -59,7 +58,9 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * &gt; This resource does not currently support `pulumi import`.
+ * ```sh
+ * $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example &#39;&lt;zone_id&gt;/&lt;hostname&gt;&#39;
+ * ```
  * 
  */
 @ResourceType(type="cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls")
@@ -189,14 +190,14 @@ public class AuthenticatedOriginPulls extends com.pulumi.resources.CustomResourc
      * 
      */
     @Export(name="hostname", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> hostname;
+    private Output<String> hostname;
 
     /**
      * @return The hostname on the origin for which the client certificate uploaded will be used.
      * 
      */
-    public Output<Optional<String>> hostname() {
-        return Codegen.optional(this.hostname);
+    public Output<String> hostname() {
+        return this.hostname;
     }
     /**
      * The certificate authority that issued the certificate.

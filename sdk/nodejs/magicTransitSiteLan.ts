@@ -16,12 +16,13 @@ import * as utilities from "./utilities";
  * const exampleMagicTransitSiteLan = new cloudflare.MagicTransitSiteLan("example_magic_transit_site_lan", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     siteId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     physport: 1,
+ *     bondId: 2,
  *     haLink: true,
  *     name: "name",
  *     nat: {
  *         staticPrefix: "192.0.2.0/24",
  *     },
+ *     physport: 1,
  *     routedSubnets: [{
  *         nextHop: "192.0.2.1",
  *         prefix: "192.0.2.0/24",
@@ -89,13 +90,14 @@ export class MagicTransitSiteLan extends pulumi.CustomResource {
      * Identifier
      */
     declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly bondId: pulumi.Output<number | undefined>;
     /**
      * mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
      */
     declare public readonly haLink: pulumi.Output<boolean | undefined>;
     declare public readonly name: pulumi.Output<string | undefined>;
     declare public readonly nat: pulumi.Output<outputs.MagicTransitSiteLanNat | undefined>;
-    declare public readonly physport: pulumi.Output<number>;
+    declare public readonly physport: pulumi.Output<number | undefined>;
     declare public readonly routedSubnets: pulumi.Output<outputs.MagicTransitSiteLanRoutedSubnet[] | undefined>;
     /**
      * Identifier
@@ -124,6 +126,7 @@ export class MagicTransitSiteLan extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as MagicTransitSiteLanState | undefined;
             resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["bondId"] = state?.bondId;
             resourceInputs["haLink"] = state?.haLink;
             resourceInputs["name"] = state?.name;
             resourceInputs["nat"] = state?.nat;
@@ -137,13 +140,11 @@ export class MagicTransitSiteLan extends pulumi.CustomResource {
             if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if (args?.physport === undefined && !opts.urn) {
-                throw new Error("Missing required property 'physport'");
-            }
             if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
             resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["bondId"] = args?.bondId;
             resourceInputs["haLink"] = args?.haLink;
             resourceInputs["name"] = args?.name;
             resourceInputs["nat"] = args?.nat;
@@ -166,6 +167,7 @@ export interface MagicTransitSiteLanState {
      * Identifier
      */
     accountId?: pulumi.Input<string>;
+    bondId?: pulumi.Input<number>;
     /**
      * mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
      */
@@ -196,13 +198,14 @@ export interface MagicTransitSiteLanArgs {
      * Identifier
      */
     accountId: pulumi.Input<string>;
+    bondId?: pulumi.Input<number>;
     /**
      * mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
      */
     haLink?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;
     nat?: pulumi.Input<inputs.MagicTransitSiteLanNat>;
-    physport: pulumi.Input<number>;
+    physport?: pulumi.Input<number>;
     routedSubnets?: pulumi.Input<pulumi.Input<inputs.MagicTransitSiteLanRoutedSubnet>[]>;
     /**
      * Identifier

@@ -69,7 +69,7 @@ export class MtlsCertificate extends pulumi.CustomResource {
      */
     declare public readonly ca: pulumi.Output<boolean>;
     /**
-     * The uploaded root CA certificate.
+     * The uploaded root CA certificate or certificate chain. Certificates must be provided in PEM format with the certificate matching the privateKey first in the chain.
      */
     declare public readonly certificates: pulumi.Output<string>;
     /**
@@ -172,7 +172,7 @@ export interface MtlsCertificateState {
      */
     ca?: pulumi.Input<boolean>;
     /**
-     * The uploaded root CA certificate.
+     * The uploaded root CA certificate or certificate chain. Certificates must be provided in PEM format with the certificate matching the privateKey first in the chain.
      */
     certificates?: pulumi.Input<string>;
     /**
@@ -222,7 +222,7 @@ export interface MtlsCertificateArgs {
      */
     ca: pulumi.Input<boolean>;
     /**
-     * The uploaded root CA certificate.
+     * The uploaded root CA certificate or certificate chain. Certificates must be provided in PEM format with the certificate matching the privateKey first in the chain.
      */
     certificates: pulumi.Input<string>;
     /**

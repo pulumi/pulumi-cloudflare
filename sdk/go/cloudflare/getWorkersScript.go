@@ -62,7 +62,8 @@ type LookupWorkersScriptResult struct {
 	AccountId string                  `pulumi:"accountId"`
 	Filter    *GetWorkersScriptFilter `pulumi:"filter"`
 	// Name of the script, used in URLs and route configuration.
-	Id string `pulumi:"id"`
+	Id     string `pulumi:"id"`
+	Script string `pulumi:"script"`
 	// Name of the script, used in URLs and route configuration.
 	ScriptName *string `pulumi:"scriptName"`
 }
@@ -116,6 +117,10 @@ func (o LookupWorkersScriptResultOutput) Filter() GetWorkersScriptFilterPtrOutpu
 // Name of the script, used in URLs and route configuration.
 func (o LookupWorkersScriptResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersScriptResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupWorkersScriptResultOutput) Script() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkersScriptResult) string { return v.Script }).(pulumi.StringOutput)
 }
 
 // Name of the script, used in URLs and route configuration.

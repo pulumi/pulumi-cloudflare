@@ -57,11 +57,10 @@ import javax.annotation.Nullable;
  *             .name("HTTP dash health check")
  *             .description("Checks the dash endpoint every 30 minutes")
  *             .targetPolicies(ZeroTrustDexTestTargetPolicyArgs.builder()
- *                 .id("id")
+ *                 .id("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
  *                 .default_(true)
  *                 .name("name")
  *                 .build())
- *             .targeted(true)
  *             .build());
  * 
  *     }

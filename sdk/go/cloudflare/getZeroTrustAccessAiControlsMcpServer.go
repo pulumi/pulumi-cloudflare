@@ -67,14 +67,15 @@ type LookupZeroTrustAccessAiControlsMcpServerResult struct {
 	Filter      *GetZeroTrustAccessAiControlsMcpServerFilter `pulumi:"filter"`
 	Hostname    string                                       `pulumi:"hostname"`
 	// server id
-	Id         string              `pulumi:"id"`
-	LastSynced string              `pulumi:"lastSynced"`
-	ModifiedAt string              `pulumi:"modifiedAt"`
-	ModifiedBy string              `pulumi:"modifiedBy"`
-	Name       string              `pulumi:"name"`
-	Prompts    []map[string]string `pulumi:"prompts"`
-	Status     string              `pulumi:"status"`
-	Tools      []map[string]string `pulumi:"tools"`
+	Id                 string              `pulumi:"id"`
+	LastSuccessfulSync string              `pulumi:"lastSuccessfulSync"`
+	LastSynced         string              `pulumi:"lastSynced"`
+	ModifiedAt         string              `pulumi:"modifiedAt"`
+	ModifiedBy         string              `pulumi:"modifiedBy"`
+	Name               string              `pulumi:"name"`
+	Prompts            []map[string]string `pulumi:"prompts"`
+	Status             string              `pulumi:"status"`
+	Tools              []map[string]string `pulumi:"tools"`
 }
 
 func LookupZeroTrustAccessAiControlsMcpServerOutput(ctx *pulumi.Context, args LookupZeroTrustAccessAiControlsMcpServerOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustAccessAiControlsMcpServerResultOutput {
@@ -151,6 +152,10 @@ func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) Hostname() pulumi.
 // server id
 func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessAiControlsMcpServerResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) LastSuccessfulSync() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessAiControlsMcpServerResult) string { return v.LastSuccessfulSync }).(pulumi.StringOutput)
 }
 
 func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) LastSynced() pulumi.StringOutput {

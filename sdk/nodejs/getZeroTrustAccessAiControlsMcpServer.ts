@@ -59,6 +59,7 @@ export interface GetZeroTrustAccessAiControlsMcpServerResult {
      * server id
      */
     readonly id: string;
+    readonly lastSuccessfulSync: string;
     readonly lastSynced: string;
     readonly modifiedAt: string;
     readonly modifiedBy: string;

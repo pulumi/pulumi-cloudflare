@@ -417,18 +417,64 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
+     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode=&#39;smart&#39; for Smart Placement, or one of region/hostname/host.
      * 
      */
     @Import(name="placement")
     private @Nullable Output<WorkersScriptPlacementArgs> placement;
 
     /**
-     * @return Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
+     * @return Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode=&#39;smart&#39; for Smart Placement, or one of region/hostname/host.
      * 
      */
     public Optional<Output<WorkersScriptPlacementArgs>> placement() {
         return Optional.ofNullable(this.placement);
+    }
+
+    /**
+     * Available values: &#34;smart&#34;, &#34;targeted&#34;.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
+    @Import(name="placementMode")
+    private @Nullable Output<String> placementMode;
+
+    /**
+     * @return Available values: &#34;smart&#34;, &#34;targeted&#34;.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
+    public Optional<Output<String>> placementMode() {
+        return Optional.ofNullable(this.placementMode);
+    }
+
+    /**
+     * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
+    @Import(name="placementStatus")
+    private @Nullable Output<String> placementStatus;
+
+    /**
+     * @return Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
+    public Optional<Output<String>> placementStatus() {
+        return Optional.ofNullable(this.placementStatus);
     }
 
     /**
@@ -515,6 +561,8 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
         this.namedHandlers = $.namedHandlers;
         this.observability = $.observability;
         this.placement = $.placement;
+        this.placementMode = $.placementMode;
+        this.placementStatus = $.placementStatus;
         this.scriptName = $.scriptName;
         this.startupTimeMs = $.startupTimeMs;
         this.tailConsumers = $.tailConsumers;
@@ -1136,7 +1184,7 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param placement Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
+         * @param placement Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode=&#39;smart&#39; for Smart Placement, or one of region/hostname/host.
          * 
          * @return builder
          * 
@@ -1147,13 +1195,71 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param placement Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
+         * @param placement Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode=&#39;smart&#39; for Smart Placement, or one of region/hostname/host.
          * 
          * @return builder
          * 
          */
         public Builder placement(WorkersScriptPlacementArgs placement) {
             return placement(Output.of(placement));
+        }
+
+        /**
+         * @param placementMode Available values: &#34;smart&#34;, &#34;targeted&#34;.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
+        public Builder placementMode(@Nullable Output<String> placementMode) {
+            $.placementMode = placementMode;
+            return this;
+        }
+
+        /**
+         * @param placementMode Available values: &#34;smart&#34;, &#34;targeted&#34;.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
+        public Builder placementMode(String placementMode) {
+            return placementMode(Output.of(placementMode));
+        }
+
+        /**
+         * @param placementStatus Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
+        public Builder placementStatus(@Nullable Output<String> placementStatus) {
+            $.placementStatus = placementStatus;
+            return this;
+        }
+
+        /**
+         * @param placementStatus Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
+        public Builder placementStatus(String placementStatus) {
+            return placementStatus(Output.of(placementStatus));
         }
 
         /**

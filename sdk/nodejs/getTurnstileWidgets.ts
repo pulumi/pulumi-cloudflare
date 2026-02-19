@@ -16,6 +16,7 @@ import * as utilities from "./utilities";
  * const exampleTurnstileWidgets = cloudflare.getTurnstileWidgets({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     direction: "asc",
+ *     filter: "name:my-widget",
  *     order: "id",
  * });
  * ```
@@ -25,6 +26,7 @@ export function getTurnstileWidgets(args: GetTurnstileWidgetsArgs, opts?: pulumi
     return pulumi.runtime.invoke("cloudflare:index/getTurnstileWidgets:getTurnstileWidgets", {
         "accountId": args.accountId,
         "direction": args.direction,
+        "filter": args.filter,
         "maxItems": args.maxItems,
         "order": args.order,
     }, opts);
@@ -44,13 +46,11 @@ export interface GetTurnstileWidgetsArgs {
      */
     direction?: string;
     /**
-     * Max items to fetch, default: 1000
+     * Filter widgets by field using case-insensitive substring matching.
+     * Format: `field:value`
      */
+    filter?: string;
     maxItems?: number;
-    /**
-     * Field to order widgets by.
-     * Available values: "id", "sitekey", "name", "created*on", "modified*on".
-     */
     order?: string;
 }
 
@@ -68,21 +68,16 @@ export interface GetTurnstileWidgetsResult {
      */
     readonly direction?: string;
     /**
+     * Filter widgets by field using case-insensitive substring matching.
+     * Format: `field:value`
+     */
+    readonly filter?: string;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Max items to fetch, default: 1000
-     */
     readonly maxItems?: number;
-    /**
-     * Field to order widgets by.
-     * Available values: "id", "sitekey", "name", "created*on", "modified*on".
-     */
     readonly order?: string;
-    /**
-     * The items returned by the data source
-     */
     readonly results: outputs.GetTurnstileWidgetsResult[];
 }
 /**
@@ -95,6 +90,7 @@ export interface GetTurnstileWidgetsResult {
  * const exampleTurnstileWidgets = cloudflare.getTurnstileWidgets({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     direction: "asc",
+ *     filter: "name:my-widget",
  *     order: "id",
  * });
  * ```
@@ -104,6 +100,7 @@ export function getTurnstileWidgetsOutput(args: GetTurnstileWidgetsOutputArgs, o
     return pulumi.runtime.invokeOutput("cloudflare:index/getTurnstileWidgets:getTurnstileWidgets", {
         "accountId": args.accountId,
         "direction": args.direction,
+        "filter": args.filter,
         "maxItems": args.maxItems,
         "order": args.order,
     }, opts);
@@ -123,12 +120,10 @@ export interface GetTurnstileWidgetsOutputArgs {
      */
     direction?: pulumi.Input<string>;
     /**
-     * Max items to fetch, default: 1000
+     * Filter widgets by field using case-insensitive substring matching.
+     * Format: `field:value`
      */
+    filter?: pulumi.Input<string>;
     maxItems?: pulumi.Input<number>;
-    /**
-     * Field to order widgets by.
-     * Available values: "id", "sitekey", "name", "created*on", "modified*on".
-     */
     order?: pulumi.Input<string>;
 }

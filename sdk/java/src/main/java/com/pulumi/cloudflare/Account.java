@@ -14,7 +14,6 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -124,30 +123,34 @@ public class Account extends com.pulumi.resources.CustomResource {
     /**
      * Available values: &#34;standard&#34;, &#34;enterprise&#34;.
      * 
+     * @deprecated
+     * The &#39;type&#39; field should no longer be set through the API.
+     * 
      */
+    @Deprecated /* The 'type' field should no longer be set through the API. */
     @Export(name="type", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> type;
+    private Output<String> type;
 
     /**
      * @return Available values: &#34;standard&#34;, &#34;enterprise&#34;.
      * 
      */
-    public Output<Optional<String>> type() {
-        return Codegen.optional(this.type);
+    public Output<String> type() {
+        return this.type;
     }
     /**
      * information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
      * 
      */
     @Export(name="unit", refs={AccountUnit.class}, tree="[0]")
-    private Output</* @Nullable */ AccountUnit> unit;
+    private Output<AccountUnit> unit;
 
     /**
      * @return information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
      * 
      */
-    public Output<Optional<AccountUnit>> unit() {
-        return Codegen.optional(this.unit);
+    public Output<AccountUnit> unit() {
+        return this.unit;
     }
 
     /**

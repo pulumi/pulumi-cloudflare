@@ -61,6 +61,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AccountToken{}
 	case "cloudflare:index/addressMap:AddressMap":
 		r = &AddressMap{}
+	case "cloudflare:index/aiSearchInstance:AiSearchInstance":
+		r = &AiSearchInstance{}
+	case "cloudflare:index/aiSearchToken:AiSearchToken":
+		r = &AiSearchToken{}
 	case "cloudflare:index/apiShield:ApiShield":
 		r = &ApiShield{}
 	case "cloudflare:index/apiShieldDiscoveryOperation:ApiShieldDiscoveryOperation":
@@ -83,6 +87,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AuthenticatedOriginPulls{}
 	case "cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate":
 		r = &AuthenticatedOriginPullsCertificate{}
+	case "cloudflare:index/authenticatedOriginPullsHostnameCertificate:AuthenticatedOriginPullsHostnameCertificate":
+		r = &AuthenticatedOriginPullsHostnameCertificate{}
 	case "cloudflare:index/authenticatedOriginPullsSettings:AuthenticatedOriginPullsSettings":
 		r = &AuthenticatedOriginPullsSettings{}
 	case "cloudflare:index/botManagement:BotManagement":
@@ -640,6 +646,16 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/aiSearchInstance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/aiSearchToken",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/apiShield",
 		&module{version},
 	)
@@ -691,6 +707,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/authenticatedOriginPullsCertificate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/authenticatedOriginPullsHostnameCertificate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

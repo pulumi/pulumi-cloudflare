@@ -22,6 +22,8 @@ import * as utilities from "./utilities";
  *         forbidden: "699d98642c564d2e855e9661899b7252",
  *         identityDenied: "699d98642c564d2e855e9661899b7252",
  *     },
+ *     denyUnmatchedRequests: true,
+ *     denyUnmatchedRequestsExemptedZoneNames: ["example.com"],
  *     isUiReadOnly: true,
  *     loginDesign: {
  *         backgroundColor: "#c5ed1b",
@@ -88,6 +90,14 @@ export class ZeroTrustOrganization extends pulumi.CustomResource {
     declare public readonly autoRedirectToIdentity: pulumi.Output<boolean>;
     declare public readonly customPages: pulumi.Output<outputs.ZeroTrustOrganizationCustomPages | undefined>;
     /**
+     * Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `denyUnmatchedRequestsExemptedZoneNames` array.
+     */
+    declare public readonly denyUnmatchedRequests: pulumi.Output<boolean | undefined>;
+    /**
+     * Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+     */
+    declare public readonly denyUnmatchedRequestsExemptedZoneNames: pulumi.Output<string[] | undefined>;
+    /**
      * Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
      */
     declare public readonly isUiReadOnly: pulumi.Output<boolean>;
@@ -103,7 +113,7 @@ export class ZeroTrustOrganization extends pulumi.CustomResource {
     /**
      * A description of the reason why the UI read only field is being toggled.
      */
-    declare public readonly uiReadOnlyToggleReason: pulumi.Output<string | undefined>;
+    declare public readonly uiReadOnlyToggleReason: pulumi.Output<string>;
     /**
      * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
      */
@@ -135,6 +145,8 @@ export class ZeroTrustOrganization extends pulumi.CustomResource {
             resourceInputs["authDomain"] = state?.authDomain;
             resourceInputs["autoRedirectToIdentity"] = state?.autoRedirectToIdentity;
             resourceInputs["customPages"] = state?.customPages;
+            resourceInputs["denyUnmatchedRequests"] = state?.denyUnmatchedRequests;
+            resourceInputs["denyUnmatchedRequestsExemptedZoneNames"] = state?.denyUnmatchedRequestsExemptedZoneNames;
             resourceInputs["isUiReadOnly"] = state?.isUiReadOnly;
             resourceInputs["loginDesign"] = state?.loginDesign;
             resourceInputs["name"] = state?.name;
@@ -150,6 +162,8 @@ export class ZeroTrustOrganization extends pulumi.CustomResource {
             resourceInputs["authDomain"] = args?.authDomain;
             resourceInputs["autoRedirectToIdentity"] = args?.autoRedirectToIdentity;
             resourceInputs["customPages"] = args?.customPages;
+            resourceInputs["denyUnmatchedRequests"] = args?.denyUnmatchedRequests;
+            resourceInputs["denyUnmatchedRequestsExemptedZoneNames"] = args?.denyUnmatchedRequestsExemptedZoneNames;
             resourceInputs["isUiReadOnly"] = args?.isUiReadOnly;
             resourceInputs["loginDesign"] = args?.loginDesign;
             resourceInputs["name"] = args?.name;
@@ -187,6 +201,14 @@ export interface ZeroTrustOrganizationState {
      */
     autoRedirectToIdentity?: pulumi.Input<boolean>;
     customPages?: pulumi.Input<inputs.ZeroTrustOrganizationCustomPages>;
+    /**
+     * Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `denyUnmatchedRequestsExemptedZoneNames` array.
+     */
+    denyUnmatchedRequests?: pulumi.Input<boolean>;
+    /**
+     * Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+     */
+    denyUnmatchedRequestsExemptedZoneNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
      */
@@ -239,6 +261,14 @@ export interface ZeroTrustOrganizationArgs {
      */
     autoRedirectToIdentity?: pulumi.Input<boolean>;
     customPages?: pulumi.Input<inputs.ZeroTrustOrganizationCustomPages>;
+    /**
+     * Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `denyUnmatchedRequestsExemptedZoneNames` array.
+     */
+    denyUnmatchedRequests?: pulumi.Input<boolean>;
+    /**
+     * Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+     */
+    denyUnmatchedRequestsExemptedZoneNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
      */

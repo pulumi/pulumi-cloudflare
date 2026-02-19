@@ -209,6 +209,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Service { get; set; }
 
         /// <summary>
+        /// A simple rate limit.
+        /// </summary>
+        [Input("simple")]
+        public Input<Inputs.WorkersScriptBindingSimpleGetArgs>? Simple { get; set; }
+
+        /// <summary>
         /// ID of the store containing the secret.
         /// </summary>
         [Input("storeId")]

@@ -60,7 +60,7 @@ class GetZeroTrustTunnelWarpConnectorTokenResult:
     @pulumi.getter
     def token(self) -> _builtins.str:
         """
-        The Warp Connector Token is used as a mechanism to authenticate the operation of a tunnel.
+        The Tunnel Token is used as a mechanism to authenticate the operation of a tunnel.
         """
         return pulumi.get(self, "token")
 

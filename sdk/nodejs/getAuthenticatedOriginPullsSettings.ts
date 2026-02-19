@@ -42,7 +42,7 @@ export interface GetAuthenticatedOriginPullsSettingsResult {
      */
     readonly enabled: boolean;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Identifier.
      */
     readonly id: string;
     /**

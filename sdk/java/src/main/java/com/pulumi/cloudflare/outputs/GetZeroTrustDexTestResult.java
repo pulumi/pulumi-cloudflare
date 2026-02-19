@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetZeroTrustDexTestData;
+import com.pulumi.cloudflare.outputs.GetZeroTrustDexTestFilter;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDexTestTargetPolicy;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -11,6 +12,8 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustDexTestResult {
@@ -29,12 +32,13 @@ public final class GetZeroTrustDexTestResult {
      * @return The unique identifier for the test.
      * 
      */
-    private String dexTestId;
+    private @Nullable String dexTestId;
     /**
      * @return Determines whether or not the test is active.
      * 
      */
     private Boolean enabled;
+    private @Nullable GetZeroTrustDexTestFilter filter;
     /**
      * @return The unique identifier for the test.
      * 
@@ -84,8 +88,8 @@ public final class GetZeroTrustDexTestResult {
      * @return The unique identifier for the test.
      * 
      */
-    public String dexTestId() {
-        return this.dexTestId;
+    public Optional<String> dexTestId() {
+        return Optional.ofNullable(this.dexTestId);
     }
     /**
      * @return Determines whether or not the test is active.
@@ -93,6 +97,9 @@ public final class GetZeroTrustDexTestResult {
      */
     public Boolean enabled() {
         return this.enabled;
+    }
+    public Optional<GetZeroTrustDexTestFilter> filter() {
+        return Optional.ofNullable(this.filter);
     }
     /**
      * @return The unique identifier for the test.
@@ -145,8 +152,9 @@ public final class GetZeroTrustDexTestResult {
         private String accountId;
         private GetZeroTrustDexTestData data;
         private String description;
-        private String dexTestId;
+        private @Nullable String dexTestId;
         private Boolean enabled;
+        private @Nullable GetZeroTrustDexTestFilter filter;
         private String id;
         private String interval;
         private String name;
@@ -161,6 +169,7 @@ public final class GetZeroTrustDexTestResult {
     	      this.description = defaults.description;
     	      this.dexTestId = defaults.dexTestId;
     	      this.enabled = defaults.enabled;
+    	      this.filter = defaults.filter;
     	      this.id = defaults.id;
     	      this.interval = defaults.interval;
     	      this.name = defaults.name;
@@ -194,10 +203,8 @@ public final class GetZeroTrustDexTestResult {
             return this;
         }
         @CustomType.Setter
-        public Builder dexTestId(String dexTestId) {
-            if (dexTestId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustDexTestResult", "dexTestId");
-            }
+        public Builder dexTestId(@Nullable String dexTestId) {
+
             this.dexTestId = dexTestId;
             return this;
         }
@@ -207,6 +214,12 @@ public final class GetZeroTrustDexTestResult {
               throw new MissingRequiredPropertyException("GetZeroTrustDexTestResult", "enabled");
             }
             this.enabled = enabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder filter(@Nullable GetZeroTrustDexTestFilter filter) {
+
+            this.filter = filter;
             return this;
         }
         @CustomType.Setter
@@ -267,6 +280,7 @@ public final class GetZeroTrustDexTestResult {
             _resultValue.description = description;
             _resultValue.dexTestId = dexTestId;
             _resultValue.enabled = enabled;
+            _resultValue.filter = filter;
             _resultValue.id = id;
             _resultValue.interval = interval;
             _resultValue.name = name;

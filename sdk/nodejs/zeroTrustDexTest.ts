@@ -25,11 +25,10 @@ import * as utilities from "./utilities";
  *     name: "HTTP dash health check",
  *     description: "Checks the dash endpoint every 30 minutes",
  *     targetPolicies: [{
- *         id: "id",
+ *         id: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  *         "default": true,
  *         name: "name",
  *     }],
- *     targeted: true,
  * });
  * ```
  *

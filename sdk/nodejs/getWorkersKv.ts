@@ -65,6 +65,7 @@ export interface GetWorkersKvResult {
      * Namespace identifier tag.
      */
     readonly namespaceId: string;
+    readonly value: string;
 }
 /**
  * ## Example Usage

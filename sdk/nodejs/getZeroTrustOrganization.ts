@@ -64,6 +64,14 @@ export interface GetZeroTrustOrganizationResult {
     readonly autoRedirectToIdentity: boolean;
     readonly customPages: outputs.GetZeroTrustOrganizationCustomPages;
     /**
+     * Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `denyUnmatchedRequestsExemptedZoneNames` array.
+     */
+    readonly denyUnmatchedRequests: boolean;
+    /**
+     * Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+     */
+    readonly denyUnmatchedRequestsExemptedZoneNames: string[];
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;

@@ -124,6 +124,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Service;
         /// <summary>
+        /// The rate limit configuration.
+        /// </summary>
+        public readonly Outputs.WorkerVersionBindingSimple? Simple;
+        /// <summary>
         /// ID of the store containing the secret.
         /// </summary>
         public readonly string? StoreId;
@@ -133,7 +137,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? Text;
         /// <summary>
         /// The kind of resource that the binding provides.
-        /// Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "WasmModule".
+        /// Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "WasmModule".
         /// </summary>
         public readonly string Type;
         /// <summary>
@@ -205,6 +209,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? service,
 
+            Outputs.WorkerVersionBindingSimple? simple,
+
             string? storeId,
 
             string? text,
@@ -244,6 +250,7 @@ namespace Pulumi.Cloudflare.Outputs
             ScriptName = scriptName;
             SecretName = secretName;
             Service = service;
+            Simple = simple;
             StoreId = storeId;
             Text = text;
             Type = type;

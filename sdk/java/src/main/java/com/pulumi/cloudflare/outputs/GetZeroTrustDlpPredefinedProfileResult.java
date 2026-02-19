@@ -18,8 +18,14 @@ public final class GetZeroTrustDlpPredefinedProfileResult {
     private Boolean aiContextEnabled;
     private Integer allowedMatchCount;
     private String confidenceThreshold;
+    /**
+     * @return Entries to enable for this predefined profile. Any entries not provided will be disabled.
+     * 
+     */
     private List<String> enabledEntries;
     /**
+     * @return This field has been deprecated for `enabledEntries`.
+     * 
      * @deprecated
      * This attribute is deprecated.
      * 
@@ -57,10 +63,16 @@ public final class GetZeroTrustDlpPredefinedProfileResult {
     public String confidenceThreshold() {
         return this.confidenceThreshold;
     }
+    /**
+     * @return Entries to enable for this predefined profile. Any entries not provided will be disabled.
+     * 
+     */
     public List<String> enabledEntries() {
         return this.enabledEntries;
     }
     /**
+     * @return This field has been deprecated for `enabledEntries`.
+     * 
      * @deprecated
      * This attribute is deprecated.
      * 

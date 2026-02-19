@@ -62,6 +62,7 @@ type LookupMagicTransitSiteLanArgs struct {
 type LookupMagicTransitSiteLanResult struct {
 	// Identifier
 	AccountId string `pulumi:"accountId"`
+	BondId    int    `pulumi:"bondId"`
 	// mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
 	HaLink bool `pulumi:"haLink"`
 	// Identifier
@@ -121,6 +122,10 @@ func (o LookupMagicTransitSiteLanResultOutput) ToLookupMagicTransitSiteLanResult
 // Identifier
 func (o LookupMagicTransitSiteLanResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMagicTransitSiteLanResult) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+func (o LookupMagicTransitSiteLanResultOutput) BondId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupMagicTransitSiteLanResult) int { return v.BondId }).(pulumi.IntOutput)
 }
 
 // mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.

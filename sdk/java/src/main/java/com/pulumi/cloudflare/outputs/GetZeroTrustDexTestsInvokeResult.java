@@ -22,6 +22,12 @@ public final class GetZeroTrustDexTestsInvokeResult {
      */
     private String id;
     /**
+     * @return Filter by test type
+     * Available values: &#34;http&#34;, &#34;traceroute&#34;.
+     * 
+     */
+    private @Nullable String kind;
+    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -31,6 +37,11 @@ public final class GetZeroTrustDexTestsInvokeResult {
      * 
      */
     private List<GetZeroTrustDexTestsResult> results;
+    /**
+     * @return Filter by test name
+     * 
+     */
+    private @Nullable String testName;
 
     private GetZeroTrustDexTestsInvokeResult() {}
     public String accountId() {
@@ -42,6 +53,14 @@ public final class GetZeroTrustDexTestsInvokeResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return Filter by test type
+     * Available values: &#34;http&#34;, &#34;traceroute&#34;.
+     * 
+     */
+    public Optional<String> kind() {
+        return Optional.ofNullable(this.kind);
     }
     /**
      * @return Max items to fetch, default: 1000
@@ -57,6 +76,13 @@ public final class GetZeroTrustDexTestsInvokeResult {
     public List<GetZeroTrustDexTestsResult> results() {
         return this.results;
     }
+    /**
+     * @return Filter by test name
+     * 
+     */
+    public Optional<String> testName() {
+        return Optional.ofNullable(this.testName);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -69,15 +95,19 @@ public final class GetZeroTrustDexTestsInvokeResult {
     public static final class Builder {
         private String accountId;
         private String id;
+        private @Nullable String kind;
         private @Nullable Integer maxItems;
         private List<GetZeroTrustDexTestsResult> results;
+        private @Nullable String testName;
         public Builder() {}
         public Builder(GetZeroTrustDexTestsInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.id = defaults.id;
+    	      this.kind = defaults.kind;
     	      this.maxItems = defaults.maxItems;
     	      this.results = defaults.results;
+    	      this.testName = defaults.testName;
         }
 
         @CustomType.Setter
@@ -97,6 +127,12 @@ public final class GetZeroTrustDexTestsInvokeResult {
             return this;
         }
         @CustomType.Setter
+        public Builder kind(@Nullable String kind) {
+
+            this.kind = kind;
+            return this;
+        }
+        @CustomType.Setter
         public Builder maxItems(@Nullable Integer maxItems) {
 
             this.maxItems = maxItems;
@@ -113,12 +149,20 @@ public final class GetZeroTrustDexTestsInvokeResult {
         public Builder results(GetZeroTrustDexTestsResult... results) {
             return results(List.of(results));
         }
+        @CustomType.Setter
+        public Builder testName(@Nullable String testName) {
+
+            this.testName = testName;
+            return this;
+        }
         public GetZeroTrustDexTestsInvokeResult build() {
             final var _resultValue = new GetZeroTrustDexTestsInvokeResult();
             _resultValue.accountId = accountId;
             _resultValue.id = id;
+            _resultValue.kind = kind;
             _resultValue.maxItems = maxItems;
             _resultValue.results = results;
+            _resultValue.testName = testName;
             return _resultValue;
         }
     }

@@ -158,7 +158,7 @@ export class WorkerVersion extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly number: pulumi.Output<number>;
     /**
-     * Placement settings for the version.
+     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
      */
     declare public readonly placement: pulumi.Output<outputs.WorkerVersionPlacement | undefined>;
     /**
@@ -306,7 +306,7 @@ export interface WorkerVersionState {
      */
     number?: pulumi.Input<number>;
     /**
-     * Placement settings for the version.
+     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
      */
     placement?: pulumi.Input<inputs.WorkerVersionPlacement>;
     /**
@@ -380,7 +380,7 @@ export interface WorkerVersionArgs {
      */
     modules?: pulumi.Input<pulumi.Input<inputs.WorkerVersionModule>[]>;
     /**
-     * Placement settings for the version.
+     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
      */
     placement?: pulumi.Input<inputs.WorkerVersionPlacement>;
     /**

@@ -139,6 +139,10 @@ namespace Pulumi.Cloudflare
         public readonly string ModifiedAt;
         public readonly string ModifiedBy;
         public readonly string Name;
+        /// <summary>
+        /// Route outbound MCP traffic through Zero Trust Secure Web Gateway
+        /// </summary>
+        public readonly bool SecureWebGateway;
         public readonly ImmutableArray<Outputs.GetZeroTrustAccessAiControlsMcpPortalServerResult> Servers;
 
         [OutputConstructor]
@@ -163,6 +167,8 @@ namespace Pulumi.Cloudflare
 
             string name,
 
+            bool secureWebGateway,
+
             ImmutableArray<Outputs.GetZeroTrustAccessAiControlsMcpPortalServerResult> servers)
         {
             AccountId = accountId;
@@ -175,6 +181,7 @@ namespace Pulumi.Cloudflare
             ModifiedAt = modifiedAt;
             ModifiedBy = modifiedBy;
             Name = name;
+            SecureWebGateway = secureWebGateway;
             Servers = servers;
         }
     }

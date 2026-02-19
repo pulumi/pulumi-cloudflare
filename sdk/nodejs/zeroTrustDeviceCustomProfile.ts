@@ -111,7 +111,7 @@ export class ZeroTrustDeviceCustomProfile extends pulumi.CustomResource {
     /**
      * A description of the policy.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * If the `dnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
      */

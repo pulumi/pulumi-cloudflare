@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestFilterArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestTargetPolicyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -29,15 +30,22 @@ public final class GetZeroTrustDexTestArgs extends com.pulumi.resources.InvokeAr
      * The unique identifier for the test.
      * 
      */
-    @Import(name="dexTestId", required=true)
-    private Output<String> dexTestId;
+    @Import(name="dexTestId")
+    private @Nullable Output<String> dexTestId;
 
     /**
      * @return The unique identifier for the test.
      * 
      */
-    public Output<String> dexTestId() {
-        return this.dexTestId;
+    public Optional<Output<String>> dexTestId() {
+        return Optional.ofNullable(this.dexTestId);
+    }
+
+    @Import(name="filter")
+    private @Nullable Output<GetZeroTrustDexTestFilterArgs> filter;
+
+    public Optional<Output<GetZeroTrustDexTestFilterArgs>> filter() {
+        return Optional.ofNullable(this.filter);
     }
 
     /**
@@ -60,6 +68,7 @@ public final class GetZeroTrustDexTestArgs extends com.pulumi.resources.InvokeAr
     private GetZeroTrustDexTestArgs(GetZeroTrustDexTestArgs $) {
         this.accountId = $.accountId;
         this.dexTestId = $.dexTestId;
+        this.filter = $.filter;
         this.targetPolicies = $.targetPolicies;
     }
 
@@ -96,7 +105,7 @@ public final class GetZeroTrustDexTestArgs extends com.pulumi.resources.InvokeAr
          * @return builder
          * 
          */
-        public Builder dexTestId(Output<String> dexTestId) {
+        public Builder dexTestId(@Nullable Output<String> dexTestId) {
             $.dexTestId = dexTestId;
             return this;
         }
@@ -109,6 +118,15 @@ public final class GetZeroTrustDexTestArgs extends com.pulumi.resources.InvokeAr
          */
         public Builder dexTestId(String dexTestId) {
             return dexTestId(Output.of(dexTestId));
+        }
+
+        public Builder filter(@Nullable Output<GetZeroTrustDexTestFilterArgs> filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        public Builder filter(GetZeroTrustDexTestFilterArgs filter) {
+            return filter(Output.of(filter));
         }
 
         /**
@@ -145,9 +163,6 @@ public final class GetZeroTrustDexTestArgs extends com.pulumi.resources.InvokeAr
         public GetZeroTrustDexTestArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetZeroTrustDexTestArgs", "accountId");
-            }
-            if ($.dexTestId == null) {
-                throw new MissingRequiredPropertyException("GetZeroTrustDexTestArgs", "dexTestId");
             }
             return $;
         }

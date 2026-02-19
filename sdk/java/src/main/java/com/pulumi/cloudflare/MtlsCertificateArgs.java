@@ -48,14 +48,14 @@ public final class MtlsCertificateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The uploaded root CA certificate.
+     * The uploaded root CA certificate or certificate chain. Certificates must be provided in PEM format with the certificate matching the privateKey first in the chain.
      * 
      */
     @Import(name="certificates", required=true)
     private Output<String> certificates;
 
     /**
-     * @return The uploaded root CA certificate.
+     * @return The uploaded root CA certificate or certificate chain. Certificates must be provided in PEM format with the certificate matching the privateKey first in the chain.
      * 
      */
     public Output<String> certificates() {
@@ -163,7 +163,7 @@ public final class MtlsCertificateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param certificates The uploaded root CA certificate.
+         * @param certificates The uploaded root CA certificate or certificate chain. Certificates must be provided in PEM format with the certificate matching the privateKey first in the chain.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class MtlsCertificateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param certificates The uploaded root CA certificate.
+         * @param certificates The uploaded root CA certificate or certificate chain. Certificates must be provided in PEM format with the certificate matching the privateKey first in the chain.
          * 
          * @return builder
          * 

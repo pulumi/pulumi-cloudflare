@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Inputs
         public bool Default { get; set; }
 
         /// <summary>
-        /// The id of the DEX rule
+        /// API Resource UUID tag.
         /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;

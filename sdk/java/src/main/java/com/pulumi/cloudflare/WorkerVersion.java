@@ -315,14 +315,14 @@ public class WorkerVersion extends com.pulumi.resources.CustomResource {
         return this.number;
     }
     /**
-     * Placement settings for the version.
+     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode=&#39;smart&#39; for Smart Placement, or one of region/hostname/host.
      * 
      */
     @Export(name="placement", refs={WorkerVersionPlacement.class}, tree="[0]")
     private Output</* @Nullable */ WorkerVersionPlacement> placement;
 
     /**
-     * @return Placement settings for the version.
+     * @return Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode=&#39;smart&#39; for Smart Placement, or one of region/hostname/host.
      * 
      */
     public Output<Optional<WorkerVersionPlacement>> placement() {

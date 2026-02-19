@@ -28,7 +28,7 @@ class GetZeroTrustAccessAiControlsMcpServerResult:
     """
     A collection of values returned by getZeroTrustAccessAiControlsMcpServer.
     """
-    def __init__(__self__, account_id=None, auth_type=None, created_at=None, created_by=None, description=None, error=None, filter=None, hostname=None, id=None, last_synced=None, modified_at=None, modified_by=None, name=None, prompts=None, status=None, tools=None):
+    def __init__(__self__, account_id=None, auth_type=None, created_at=None, created_by=None, description=None, error=None, filter=None, hostname=None, id=None, last_successful_sync=None, last_synced=None, modified_at=None, modified_by=None, name=None, prompts=None, status=None, tools=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -56,6 +56,9 @@ class GetZeroTrustAccessAiControlsMcpServerResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if last_successful_sync and not isinstance(last_successful_sync, str):
+            raise TypeError("Expected argument 'last_successful_sync' to be a str")
+        pulumi.set(__self__, "last_successful_sync", last_successful_sync)
         if last_synced and not isinstance(last_synced, str):
             raise TypeError("Expected argument 'last_synced' to be a str")
         pulumi.set(__self__, "last_synced", last_synced)
@@ -130,6 +133,11 @@ class GetZeroTrustAccessAiControlsMcpServerResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter(name="lastSuccessfulSync")
+    def last_successful_sync(self) -> _builtins.str:
+        return pulumi.get(self, "last_successful_sync")
+
+    @_builtins.property
     @pulumi.getter(name="lastSynced")
     def last_synced(self) -> _builtins.str:
         return pulumi.get(self, "last_synced")
@@ -180,6 +188,7 @@ class AwaitableGetZeroTrustAccessAiControlsMcpServerResult(GetZeroTrustAccessAiC
             filter=self.filter,
             hostname=self.hostname,
             id=self.id,
+            last_successful_sync=self.last_successful_sync,
             last_synced=self.last_synced,
             modified_at=self.modified_at,
             modified_by=self.modified_by,
@@ -224,6 +233,7 @@ def get_zero_trust_access_ai_controls_mcp_server(account_id: Optional[_builtins.
         filter=pulumi.get(__ret__, 'filter'),
         hostname=pulumi.get(__ret__, 'hostname'),
         id=pulumi.get(__ret__, 'id'),
+        last_successful_sync=pulumi.get(__ret__, 'last_successful_sync'),
         last_synced=pulumi.get(__ret__, 'last_synced'),
         modified_at=pulumi.get(__ret__, 'modified_at'),
         modified_by=pulumi.get(__ret__, 'modified_by'),
@@ -265,6 +275,7 @@ def get_zero_trust_access_ai_controls_mcp_server_output(account_id: Optional[pul
         filter=pulumi.get(__response__, 'filter'),
         hostname=pulumi.get(__response__, 'hostname'),
         id=pulumi.get(__response__, 'id'),
+        last_successful_sync=pulumi.get(__response__, 'last_successful_sync'),
         last_synced=pulumi.get(__response__, 'last_synced'),
         modified_at=pulumi.get(__response__, 'modified_at'),
         modified_by=pulumi.get(__response__, 'modified_by'),

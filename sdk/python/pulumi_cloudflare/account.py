@@ -40,6 +40,9 @@ class AccountArgs:
         if settings is not None:
             pulumi.set(__self__, "settings", settings)
         if type is not None:
+            warnings.warn("""The 'type' field should no longer be set through the API.""", DeprecationWarning)
+            pulumi.log.warn("""type is deprecated: The 'type' field should no longer be set through the API.""")
+        if type is not None:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
@@ -82,6 +85,7 @@ class AccountArgs:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""The 'type' field should no longer be set through the API.""")
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Available values: "standard", "enterprise".
@@ -131,6 +135,9 @@ class _AccountState:
             pulumi.set(__self__, "name", name)
         if settings is not None:
             pulumi.set(__self__, "settings", settings)
+        if type is not None:
+            warnings.warn("""The 'type' field should no longer be set through the API.""", DeprecationWarning)
+            pulumi.log.warn("""type is deprecated: The 'type' field should no longer be set through the API.""")
         if type is not None:
             pulumi.set(__self__, "type", type)
         if unit is not None:
@@ -186,6 +193,7 @@ class _AccountState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""The 'type' field should no longer be set through the API.""")
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Available values: "standard", "enterprise".
@@ -390,7 +398,8 @@ class Account(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> pulumi.Output[Optional[_builtins.str]]:
+    @_utilities.deprecated("""The 'type' field should no longer be set through the API.""")
+    def type(self) -> pulumi.Output[_builtins.str]:
         """
         Available values: "standard", "enterprise".
         """
@@ -398,7 +407,7 @@ class Account(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def unit(self) -> pulumi.Output[Optional['outputs.AccountUnit']]:
+    def unit(self) -> pulumi.Output['outputs.AccountUnit']:
         """
         information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
         """

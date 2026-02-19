@@ -143,7 +143,7 @@ type WorkerVersion struct {
 	Modules WorkerVersionModuleArrayOutput `pulumi:"modules"`
 	// The integer version number, starting from one.
 	Number pulumi.IntOutput `pulumi:"number"`
-	// Placement settings for the version.
+	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
 	Placement WorkerVersionPlacementPtrOutput `pulumi:"placement"`
 	// The client used to create the version.
 	Source pulumi.StringOutput `pulumi:"source"`
@@ -225,7 +225,7 @@ type workerVersionState struct {
 	Modules []WorkerVersionModule `pulumi:"modules"`
 	// The integer version number, starting from one.
 	Number *int `pulumi:"number"`
-	// Placement settings for the version.
+	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
 	Placement *WorkerVersionPlacement `pulumi:"placement"`
 	// The client used to create the version.
 	Source *string `pulumi:"source"`
@@ -272,7 +272,7 @@ type WorkerVersionState struct {
 	Modules WorkerVersionModuleArrayInput
 	// The integer version number, starting from one.
 	Number pulumi.IntPtrInput
-	// Placement settings for the version.
+	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
 	Placement WorkerVersionPlacementPtrInput
 	// The client used to create the version.
 	Source pulumi.StringPtrInput
@@ -317,7 +317,7 @@ type workerVersionArgs struct {
 	// [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
 	// included as modules named `_headers` and `_redirects` with content type `text/plain`.
 	Modules []WorkerVersionModule `pulumi:"modules"`
-	// Placement settings for the version.
+	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
 	Placement *WorkerVersionPlacement `pulumi:"placement"`
 	// Usage model for the version.
 	// Available values: "standard", "bundled", "unbound".
@@ -355,7 +355,7 @@ type WorkerVersionArgs struct {
 	// [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
 	// included as modules named `_headers` and `_redirects` with content type `text/plain`.
 	Modules WorkerVersionModuleArrayInput
-	// Placement settings for the version.
+	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
 	Placement WorkerVersionPlacementPtrInput
 	// Usage model for the version.
 	// Available values: "standard", "bundled", "unbound".
@@ -523,7 +523,7 @@ func (o WorkerVersionOutput) Number() pulumi.IntOutput {
 	return o.ApplyT(func(v *WorkerVersion) pulumi.IntOutput { return v.Number }).(pulumi.IntOutput)
 }
 
-// Placement settings for the version.
+// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
 func (o WorkerVersionOutput) Placement() WorkerVersionPlacementPtrOutput {
 	return o.ApplyT(func(v *WorkerVersion) WorkerVersionPlacementPtrOutput { return v.Placement }).(WorkerVersionPlacementPtrOutput)
 }

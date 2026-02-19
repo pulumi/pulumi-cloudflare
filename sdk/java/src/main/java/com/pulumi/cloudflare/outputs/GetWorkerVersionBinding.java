@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetWorkerVersionBindingOutbound;
+import com.pulumi.cloudflare.outputs.GetWorkerVersionBindingSimple;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -150,6 +151,11 @@ public final class GetWorkerVersionBinding {
      */
     private String service;
     /**
+     * @return The rate limit configuration.
+     * 
+     */
+    private GetWorkerVersionBindingSimple simple;
+    /**
      * @return ID of the store containing the secret.
      * 
      */
@@ -161,7 +167,7 @@ public final class GetWorkerVersionBinding {
     private String text;
     /**
      * @return The kind of resource that the binding provides.
-     * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasmModule&#34;.
+     * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasmModule&#34;.
      * 
      */
     private String type;
@@ -374,6 +380,13 @@ public final class GetWorkerVersionBinding {
         return this.service;
     }
     /**
+     * @return The rate limit configuration.
+     * 
+     */
+    public GetWorkerVersionBindingSimple simple() {
+        return this.simple;
+    }
+    /**
      * @return ID of the store containing the secret.
      * 
      */
@@ -389,7 +402,7 @@ public final class GetWorkerVersionBinding {
     }
     /**
      * @return The kind of resource that the binding provides.
-     * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasmModule&#34;.
+     * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasmModule&#34;.
      * 
      */
     public String type() {
@@ -453,6 +466,7 @@ public final class GetWorkerVersionBinding {
         private String scriptName;
         private String secretName;
         private String service;
+        private GetWorkerVersionBindingSimple simple;
         private String storeId;
         private String text;
         private String type;
@@ -489,6 +503,7 @@ public final class GetWorkerVersionBinding {
     	      this.scriptName = defaults.scriptName;
     	      this.secretName = defaults.secretName;
     	      this.service = defaults.service;
+    	      this.simple = defaults.simple;
     	      this.storeId = defaults.storeId;
     	      this.text = defaults.text;
     	      this.type = defaults.type;
@@ -720,6 +735,14 @@ public final class GetWorkerVersionBinding {
             return this;
         }
         @CustomType.Setter
+        public Builder simple(GetWorkerVersionBindingSimple simple) {
+            if (simple == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionBinding", "simple");
+            }
+            this.simple = simple;
+            return this;
+        }
+        @CustomType.Setter
         public Builder storeId(String storeId) {
             if (storeId == null) {
               throw new MissingRequiredPropertyException("GetWorkerVersionBinding", "storeId");
@@ -799,6 +822,7 @@ public final class GetWorkerVersionBinding {
             _resultValue.scriptName = scriptName;
             _resultValue.secretName = secretName;
             _resultValue.service = service;
+            _resultValue.simple = simple;
             _resultValue.storeId = storeId;
             _resultValue.text = text;
             _resultValue.type = type;

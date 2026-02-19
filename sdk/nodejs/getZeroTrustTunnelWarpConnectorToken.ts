@@ -52,7 +52,7 @@ export interface GetZeroTrustTunnelWarpConnectorTokenResult {
      */
     readonly id: string;
     /**
-     * The Warp Connector Token is used as a mechanism to authenticate the operation of a tunnel.
+     * The Tunnel Token is used as a mechanism to authenticate the operation of a tunnel.
      */
     readonly token: string;
     /**

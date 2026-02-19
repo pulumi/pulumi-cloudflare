@@ -64,11 +64,13 @@ type LookupZeroTrustAccessAiControlsMcpPortalResult struct {
 	Filter      *GetZeroTrustAccessAiControlsMcpPortalFilter `pulumi:"filter"`
 	Hostname    string                                       `pulumi:"hostname"`
 	// portal id
-	Id         string                                        `pulumi:"id"`
-	ModifiedAt string                                        `pulumi:"modifiedAt"`
-	ModifiedBy string                                        `pulumi:"modifiedBy"`
-	Name       string                                        `pulumi:"name"`
-	Servers    []GetZeroTrustAccessAiControlsMcpPortalServer `pulumi:"servers"`
+	Id         string `pulumi:"id"`
+	ModifiedAt string `pulumi:"modifiedAt"`
+	ModifiedBy string `pulumi:"modifiedBy"`
+	Name       string `pulumi:"name"`
+	// Route outbound MCP traffic through Zero Trust Secure Web Gateway
+	SecureWebGateway bool                                          `pulumi:"secureWebGateway"`
+	Servers          []GetZeroTrustAccessAiControlsMcpPortalServer `pulumi:"servers"`
 }
 
 func LookupZeroTrustAccessAiControlsMcpPortalOutput(ctx *pulumi.Context, args LookupZeroTrustAccessAiControlsMcpPortalOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustAccessAiControlsMcpPortalResultOutput {
@@ -148,6 +150,11 @@ func (o LookupZeroTrustAccessAiControlsMcpPortalResultOutput) ModifiedBy() pulum
 
 func (o LookupZeroTrustAccessAiControlsMcpPortalResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessAiControlsMcpPortalResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Route outbound MCP traffic through Zero Trust Secure Web Gateway
+func (o LookupZeroTrustAccessAiControlsMcpPortalResultOutput) SecureWebGateway() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessAiControlsMcpPortalResult) bool { return v.SecureWebGateway }).(pulumi.BoolOutput)
 }
 
 func (o LookupZeroTrustAccessAiControlsMcpPortalResultOutput) Servers() GetZeroTrustAccessAiControlsMcpPortalServerArrayOutput {

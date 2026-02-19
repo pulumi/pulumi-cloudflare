@@ -121,6 +121,12 @@ public class ZeroTrustAccessAiControlsMcpServer extends com.pulumi.resources.Cus
     public Output<String> hostname() {
         return this.hostname;
     }
+    @Export(name="lastSuccessfulSync", refs={String.class}, tree="[0]")
+    private Output<String> lastSuccessfulSync;
+
+    public Output<String> lastSuccessfulSync() {
+        return this.lastSuccessfulSync;
+    }
     @Export(name="lastSynced", refs={String.class}, tree="[0]")
     private Output<String> lastSynced;
 

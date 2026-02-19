@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.WorkerScriptBindingOutbound;
+import com.pulumi.cloudflare.outputs.WorkerScriptBindingSimple;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -151,6 +152,11 @@ public final class WorkerScriptBinding {
      * 
      */
     private @Nullable String service;
+    /**
+     * @return A simple rate limit.
+     * 
+     */
+    private @Nullable WorkerScriptBindingSimple simple;
     /**
      * @return ID of the store containing the secret.
      * 
@@ -376,6 +382,13 @@ public final class WorkerScriptBinding {
         return Optional.ofNullable(this.service);
     }
     /**
+     * @return A simple rate limit.
+     * 
+     */
+    public Optional<WorkerScriptBindingSimple> simple() {
+        return Optional.ofNullable(this.simple);
+    }
+    /**
      * @return ID of the store containing the secret.
      * 
      */
@@ -455,6 +468,7 @@ public final class WorkerScriptBinding {
         private @Nullable String scriptName;
         private @Nullable String secretName;
         private @Nullable String service;
+        private @Nullable WorkerScriptBindingSimple simple;
         private @Nullable String storeId;
         private @Nullable String text;
         private String type;
@@ -491,6 +505,7 @@ public final class WorkerScriptBinding {
     	      this.scriptName = defaults.scriptName;
     	      this.secretName = defaults.secretName;
     	      this.service = defaults.service;
+    	      this.simple = defaults.simple;
     	      this.storeId = defaults.storeId;
     	      this.text = defaults.text;
     	      this.type = defaults.type;
@@ -670,6 +685,12 @@ public final class WorkerScriptBinding {
             return this;
         }
         @CustomType.Setter
+        public Builder simple(@Nullable WorkerScriptBindingSimple simple) {
+
+            this.simple = simple;
+            return this;
+        }
+        @CustomType.Setter
         public Builder storeId(@Nullable String storeId) {
 
             this.storeId = storeId;
@@ -739,6 +760,7 @@ public final class WorkerScriptBinding {
             _resultValue.scriptName = scriptName;
             _resultValue.secretName = secretName;
             _resultValue.service = service;
+            _resultValue.simple = simple;
             _resultValue.storeId = storeId;
             _resultValue.text = text;
             _resultValue.type = type;

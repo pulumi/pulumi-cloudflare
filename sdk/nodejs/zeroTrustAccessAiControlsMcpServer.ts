@@ -67,6 +67,7 @@ export class ZeroTrustAccessAiControlsMcpServer extends pulumi.CustomResource {
     declare public readonly description: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly error: pulumi.Output<string>;
     declare public readonly hostname: pulumi.Output<string>;
+    declare public /*out*/ readonly lastSuccessfulSync: pulumi.Output<string>;
     declare public /*out*/ readonly lastSynced: pulumi.Output<string>;
     declare public /*out*/ readonly modifiedAt: pulumi.Output<string>;
     declare public /*out*/ readonly modifiedBy: pulumi.Output<string>;
@@ -100,6 +101,7 @@ export class ZeroTrustAccessAiControlsMcpServer extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["error"] = state?.error;
             resourceInputs["hostname"] = state?.hostname;
+            resourceInputs["lastSuccessfulSync"] = state?.lastSuccessfulSync;
             resourceInputs["lastSynced"] = state?.lastSynced;
             resourceInputs["modifiedAt"] = state?.modifiedAt;
             resourceInputs["modifiedBy"] = state?.modifiedBy;
@@ -135,6 +137,7 @@ export class ZeroTrustAccessAiControlsMcpServer extends pulumi.CustomResource {
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
+            resourceInputs["lastSuccessfulSync"] = undefined /*out*/;
             resourceInputs["lastSynced"] = undefined /*out*/;
             resourceInputs["modifiedAt"] = undefined /*out*/;
             resourceInputs["modifiedBy"] = undefined /*out*/;
@@ -162,6 +165,7 @@ export interface ZeroTrustAccessAiControlsMcpServerState {
     description?: pulumi.Input<string>;
     error?: pulumi.Input<string>;
     hostname?: pulumi.Input<string>;
+    lastSuccessfulSync?: pulumi.Input<string>;
     lastSynced?: pulumi.Input<string>;
     modifiedAt?: pulumi.Input<string>;
     modifiedBy?: pulumi.Input<string>;

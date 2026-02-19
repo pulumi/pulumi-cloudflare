@@ -26,6 +26,8 @@ class ZeroTrustOrganizationArgs:
                  auth_domain: Optional[pulumi.Input[_builtins.str]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[_builtins.bool]] = None,
                  custom_pages: Optional[pulumi.Input['ZeroTrustOrganizationCustomPagesArgs']] = None,
+                 deny_unmatched_requests: Optional[pulumi.Input[_builtins.bool]] = None,
+                 deny_unmatched_requests_exempted_zone_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  is_ui_read_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  login_design: Optional[pulumi.Input['ZeroTrustOrganizationLoginDesignArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -40,6 +42,8 @@ class ZeroTrustOrganizationArgs:
         :param pulumi.Input[_builtins.bool] allow_authenticate_via_warp: When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
         :param pulumi.Input[_builtins.str] auth_domain: The unique subdomain assigned to your Zero Trust organization.
         :param pulumi.Input[_builtins.bool] auto_redirect_to_identity: When set to `true`, users skip the identity provider selection step during login.
+        :param pulumi.Input[_builtins.bool] deny_unmatched_requests: Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deny_unmatched_requests_exempted_zone_names: Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
         :param pulumi.Input[_builtins.bool] is_ui_read_only: Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
         :param pulumi.Input[_builtins.str] name: The name of your Zero Trust organization.
         :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
@@ -58,6 +62,10 @@ class ZeroTrustOrganizationArgs:
             pulumi.set(__self__, "auto_redirect_to_identity", auto_redirect_to_identity)
         if custom_pages is not None:
             pulumi.set(__self__, "custom_pages", custom_pages)
+        if deny_unmatched_requests is not None:
+            pulumi.set(__self__, "deny_unmatched_requests", deny_unmatched_requests)
+        if deny_unmatched_requests_exempted_zone_names is not None:
+            pulumi.set(__self__, "deny_unmatched_requests_exempted_zone_names", deny_unmatched_requests_exempted_zone_names)
         if is_ui_read_only is not None:
             pulumi.set(__self__, "is_ui_read_only", is_ui_read_only)
         if login_design is not None:
@@ -131,6 +139,30 @@ class ZeroTrustOrganizationArgs:
     @custom_pages.setter
     def custom_pages(self, value: Optional[pulumi.Input['ZeroTrustOrganizationCustomPagesArgs']]):
         pulumi.set(self, "custom_pages", value)
+
+    @_builtins.property
+    @pulumi.getter(name="denyUnmatchedRequests")
+    def deny_unmatched_requests(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.
+        """
+        return pulumi.get(self, "deny_unmatched_requests")
+
+    @deny_unmatched_requests.setter
+    def deny_unmatched_requests(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "deny_unmatched_requests", value)
+
+    @_builtins.property
+    @pulumi.getter(name="denyUnmatchedRequestsExemptedZoneNames")
+    def deny_unmatched_requests_exempted_zone_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+        """
+        return pulumi.get(self, "deny_unmatched_requests_exempted_zone_names")
+
+    @deny_unmatched_requests_exempted_zone_names.setter
+    def deny_unmatched_requests_exempted_zone_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "deny_unmatched_requests_exempted_zone_names", value)
 
     @_builtins.property
     @pulumi.getter(name="isUiReadOnly")
@@ -234,6 +266,8 @@ class _ZeroTrustOrganizationState:
                  auth_domain: Optional[pulumi.Input[_builtins.str]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[_builtins.bool]] = None,
                  custom_pages: Optional[pulumi.Input['ZeroTrustOrganizationCustomPagesArgs']] = None,
+                 deny_unmatched_requests: Optional[pulumi.Input[_builtins.bool]] = None,
+                 deny_unmatched_requests_exempted_zone_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  is_ui_read_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  login_design: Optional[pulumi.Input['ZeroTrustOrganizationLoginDesignArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -248,6 +282,8 @@ class _ZeroTrustOrganizationState:
         :param pulumi.Input[_builtins.bool] allow_authenticate_via_warp: When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
         :param pulumi.Input[_builtins.str] auth_domain: The unique subdomain assigned to your Zero Trust organization.
         :param pulumi.Input[_builtins.bool] auto_redirect_to_identity: When set to `true`, users skip the identity provider selection step during login.
+        :param pulumi.Input[_builtins.bool] deny_unmatched_requests: Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deny_unmatched_requests_exempted_zone_names: Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
         :param pulumi.Input[_builtins.bool] is_ui_read_only: Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
         :param pulumi.Input[_builtins.str] name: The name of your Zero Trust organization.
         :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
@@ -266,6 +302,10 @@ class _ZeroTrustOrganizationState:
             pulumi.set(__self__, "auto_redirect_to_identity", auto_redirect_to_identity)
         if custom_pages is not None:
             pulumi.set(__self__, "custom_pages", custom_pages)
+        if deny_unmatched_requests is not None:
+            pulumi.set(__self__, "deny_unmatched_requests", deny_unmatched_requests)
+        if deny_unmatched_requests_exempted_zone_names is not None:
+            pulumi.set(__self__, "deny_unmatched_requests_exempted_zone_names", deny_unmatched_requests_exempted_zone_names)
         if is_ui_read_only is not None:
             pulumi.set(__self__, "is_ui_read_only", is_ui_read_only)
         if login_design is not None:
@@ -339,6 +379,30 @@ class _ZeroTrustOrganizationState:
     @custom_pages.setter
     def custom_pages(self, value: Optional[pulumi.Input['ZeroTrustOrganizationCustomPagesArgs']]):
         pulumi.set(self, "custom_pages", value)
+
+    @_builtins.property
+    @pulumi.getter(name="denyUnmatchedRequests")
+    def deny_unmatched_requests(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.
+        """
+        return pulumi.get(self, "deny_unmatched_requests")
+
+    @deny_unmatched_requests.setter
+    def deny_unmatched_requests(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "deny_unmatched_requests", value)
+
+    @_builtins.property
+    @pulumi.getter(name="denyUnmatchedRequestsExemptedZoneNames")
+    def deny_unmatched_requests_exempted_zone_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+        """
+        return pulumi.get(self, "deny_unmatched_requests_exempted_zone_names")
+
+    @deny_unmatched_requests_exempted_zone_names.setter
+    def deny_unmatched_requests_exempted_zone_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "deny_unmatched_requests_exempted_zone_names", value)
 
     @_builtins.property
     @pulumi.getter(name="isUiReadOnly")
@@ -445,6 +509,8 @@ class ZeroTrustOrganization(pulumi.CustomResource):
                  auth_domain: Optional[pulumi.Input[_builtins.str]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[_builtins.bool]] = None,
                  custom_pages: Optional[pulumi.Input[Union['ZeroTrustOrganizationCustomPagesArgs', 'ZeroTrustOrganizationCustomPagesArgsDict']]] = None,
+                 deny_unmatched_requests: Optional[pulumi.Input[_builtins.bool]] = None,
+                 deny_unmatched_requests_exempted_zone_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  is_ui_read_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  login_design: Optional[pulumi.Input[Union['ZeroTrustOrganizationLoginDesignArgs', 'ZeroTrustOrganizationLoginDesignArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -470,6 +536,8 @@ class ZeroTrustOrganization(pulumi.CustomResource):
                 "forbidden": "699d98642c564d2e855e9661899b7252",
                 "identity_denied": "699d98642c564d2e855e9661899b7252",
             },
+            deny_unmatched_requests=True,
+            deny_unmatched_requests_exempted_zone_names=["example.com"],
             is_ui_read_only=True,
             login_design={
                 "background_color": "#c5ed1b",
@@ -495,6 +563,8 @@ class ZeroTrustOrganization(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] allow_authenticate_via_warp: When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
         :param pulumi.Input[_builtins.str] auth_domain: The unique subdomain assigned to your Zero Trust organization.
         :param pulumi.Input[_builtins.bool] auto_redirect_to_identity: When set to `true`, users skip the identity provider selection step during login.
+        :param pulumi.Input[_builtins.bool] deny_unmatched_requests: Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deny_unmatched_requests_exempted_zone_names: Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
         :param pulumi.Input[_builtins.bool] is_ui_read_only: Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
         :param pulumi.Input[_builtins.str] name: The name of your Zero Trust organization.
         :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
@@ -525,6 +595,8 @@ class ZeroTrustOrganization(pulumi.CustomResource):
                 "forbidden": "699d98642c564d2e855e9661899b7252",
                 "identity_denied": "699d98642c564d2e855e9661899b7252",
             },
+            deny_unmatched_requests=True,
+            deny_unmatched_requests_exempted_zone_names=["example.com"],
             is_ui_read_only=True,
             login_design={
                 "background_color": "#c5ed1b",
@@ -564,6 +636,8 @@ class ZeroTrustOrganization(pulumi.CustomResource):
                  auth_domain: Optional[pulumi.Input[_builtins.str]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[_builtins.bool]] = None,
                  custom_pages: Optional[pulumi.Input[Union['ZeroTrustOrganizationCustomPagesArgs', 'ZeroTrustOrganizationCustomPagesArgsDict']]] = None,
+                 deny_unmatched_requests: Optional[pulumi.Input[_builtins.bool]] = None,
+                 deny_unmatched_requests_exempted_zone_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  is_ui_read_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  login_design: Optional[pulumi.Input[Union['ZeroTrustOrganizationLoginDesignArgs', 'ZeroTrustOrganizationLoginDesignArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -586,6 +660,8 @@ class ZeroTrustOrganization(pulumi.CustomResource):
             __props__.__dict__["auth_domain"] = auth_domain
             __props__.__dict__["auto_redirect_to_identity"] = auto_redirect_to_identity
             __props__.__dict__["custom_pages"] = custom_pages
+            __props__.__dict__["deny_unmatched_requests"] = deny_unmatched_requests
+            __props__.__dict__["deny_unmatched_requests_exempted_zone_names"] = deny_unmatched_requests_exempted_zone_names
             __props__.__dict__["is_ui_read_only"] = is_ui_read_only
             __props__.__dict__["login_design"] = login_design
             __props__.__dict__["name"] = name
@@ -611,6 +687,8 @@ class ZeroTrustOrganization(pulumi.CustomResource):
             auth_domain: Optional[pulumi.Input[_builtins.str]] = None,
             auto_redirect_to_identity: Optional[pulumi.Input[_builtins.bool]] = None,
             custom_pages: Optional[pulumi.Input[Union['ZeroTrustOrganizationCustomPagesArgs', 'ZeroTrustOrganizationCustomPagesArgsDict']]] = None,
+            deny_unmatched_requests: Optional[pulumi.Input[_builtins.bool]] = None,
+            deny_unmatched_requests_exempted_zone_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             is_ui_read_only: Optional[pulumi.Input[_builtins.bool]] = None,
             login_design: Optional[pulumi.Input[Union['ZeroTrustOrganizationLoginDesignArgs', 'ZeroTrustOrganizationLoginDesignArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -630,6 +708,8 @@ class ZeroTrustOrganization(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] allow_authenticate_via_warp: When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
         :param pulumi.Input[_builtins.str] auth_domain: The unique subdomain assigned to your Zero Trust organization.
         :param pulumi.Input[_builtins.bool] auto_redirect_to_identity: When set to `true`, users skip the identity provider selection step during login.
+        :param pulumi.Input[_builtins.bool] deny_unmatched_requests: Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deny_unmatched_requests_exempted_zone_names: Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
         :param pulumi.Input[_builtins.bool] is_ui_read_only: Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
         :param pulumi.Input[_builtins.str] name: The name of your Zero Trust organization.
         :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
@@ -647,6 +727,8 @@ class ZeroTrustOrganization(pulumi.CustomResource):
         __props__.__dict__["auth_domain"] = auth_domain
         __props__.__dict__["auto_redirect_to_identity"] = auto_redirect_to_identity
         __props__.__dict__["custom_pages"] = custom_pages
+        __props__.__dict__["deny_unmatched_requests"] = deny_unmatched_requests
+        __props__.__dict__["deny_unmatched_requests_exempted_zone_names"] = deny_unmatched_requests_exempted_zone_names
         __props__.__dict__["is_ui_read_only"] = is_ui_read_only
         __props__.__dict__["login_design"] = login_design
         __props__.__dict__["name"] = name
@@ -695,6 +777,22 @@ class ZeroTrustOrganization(pulumi.CustomResource):
         return pulumi.get(self, "custom_pages")
 
     @_builtins.property
+    @pulumi.getter(name="denyUnmatchedRequests")
+    def deny_unmatched_requests(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.
+        """
+        return pulumi.get(self, "deny_unmatched_requests")
+
+    @_builtins.property
+    @pulumi.getter(name="denyUnmatchedRequestsExemptedZoneNames")
+    def deny_unmatched_requests_exempted_zone_names(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+        """
+        return pulumi.get(self, "deny_unmatched_requests_exempted_zone_names")
+
+    @_builtins.property
     @pulumi.getter(name="isUiReadOnly")
     def is_ui_read_only(self) -> pulumi.Output[_builtins.bool]:
         """
@@ -725,7 +823,7 @@ class ZeroTrustOrganization(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="uiReadOnlyToggleReason")
-    def ui_read_only_toggle_reason(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def ui_read_only_toggle_reason(self) -> pulumi.Output[_builtins.str]:
         """
         A description of the reason why the UI read only field is being toggled.
         """

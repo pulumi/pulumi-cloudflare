@@ -524,18 +524,54 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.observability);
     }
     /**
-     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
+     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode=&#39;smart&#39; for Smart Placement, or one of region/hostname/host.
      * 
      */
     @Export(name="placement", refs={WorkerScriptPlacement.class}, tree="[0]")
     private Output<WorkerScriptPlacement> placement;
 
     /**
-     * @return Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
+     * @return Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode=&#39;smart&#39; for Smart Placement, or one of region/hostname/host.
      * 
      */
     public Output<WorkerScriptPlacement> placement() {
         return this.placement;
+    }
+    /**
+     * Available values: &#34;smart&#34;, &#34;targeted&#34;.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
+    @Export(name="placementMode", refs={String.class}, tree="[0]")
+    private Output<String> placementMode;
+
+    /**
+     * @return Available values: &#34;smart&#34;, &#34;targeted&#34;.
+     * 
+     */
+    public Output<String> placementMode() {
+        return this.placementMode;
+    }
+    /**
+     * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
+    @Export(name="placementStatus", refs={String.class}, tree="[0]")
+    private Output<String> placementStatus;
+
+    /**
+     * @return Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
+     * 
+     */
+    public Output<String> placementStatus() {
+        return this.placementStatus;
     }
     /**
      * Name of the script, used in URLs and route configuration.

@@ -26,6 +26,8 @@ from .account_member import *
 from .account_subscription import *
 from .account_token import *
 from .address_map import *
+from .ai_search_instance import *
+from .ai_search_token import *
 from .api_shield import *
 from .api_shield_discovery_operation import *
 from .api_shield_operation import *
@@ -37,6 +39,7 @@ from .argo_smart_routing import *
 from .argo_tiered_caching import *
 from .authenticated_origin_pulls import *
 from .authenticated_origin_pulls_certificate import *
+from .authenticated_origin_pulls_hostname_certificate import *
 from .authenticated_origin_pulls_settings import *
 from .bot_management import *
 from .byo_ip_prefix import *
@@ -98,6 +101,10 @@ from .get_account_tokens import *
 from .get_accounts import *
 from .get_address_map import *
 from .get_address_maps import *
+from .get_ai_search_instance import *
+from .get_ai_search_instances import *
+from .get_ai_search_token import *
+from .get_ai_search_tokens import *
 from .get_api_shield import *
 from .get_api_shield_discovery_operations import *
 from .get_api_shield_operation import *
@@ -114,6 +121,8 @@ from .get_argo_tiered_caching import *
 from .get_authenticated_origin_pulls import *
 from .get_authenticated_origin_pulls_certificate import *
 from .get_authenticated_origin_pulls_certificates import *
+from .get_authenticated_origin_pulls_hostname_certificate import *
+from .get_authenticated_origin_pulls_hostname_certificates import *
 from .get_authenticated_origin_pulls_settings import *
 from .get_bot_management import *
 from .get_botnet_feed_config_asn import *
@@ -776,6 +785,22 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/aiSearchInstance",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/aiSearchInstance:AiSearchInstance": "AiSearchInstance"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/aiSearchToken",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/aiSearchToken:AiSearchToken": "AiSearchToken"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/apiShield",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -860,6 +885,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate": "AuthenticatedOriginPullsCertificate"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/authenticatedOriginPullsHostnameCertificate",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/authenticatedOriginPullsHostnameCertificate:AuthenticatedOriginPullsHostnameCertificate": "AuthenticatedOriginPullsHostnameCertificate"
   }
  },
  {

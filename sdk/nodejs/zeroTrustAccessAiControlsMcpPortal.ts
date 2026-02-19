@@ -19,6 +19,7 @@ import * as utilities from "./utilities";
  *     hostname: "exmaple.com",
  *     name: "My MCP Portal",
  *     description: "This is my custom MCP Portal",
+ *     secureWebGateway: false,
  *     servers: [{
  *         serverId: "my-mcp-server",
  *         defaultDisabled: true,
@@ -79,6 +80,10 @@ export class ZeroTrustAccessAiControlsMcpPortal extends pulumi.CustomResource {
     declare public /*out*/ readonly modifiedAt: pulumi.Output<string>;
     declare public /*out*/ readonly modifiedBy: pulumi.Output<string>;
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Route outbound MCP traffic through Zero Trust Secure Web Gateway
+     */
+    declare public readonly secureWebGateway: pulumi.Output<boolean | undefined>;
     declare public readonly servers: pulumi.Output<outputs.ZeroTrustAccessAiControlsMcpPortalServer[]>;
     /**
      * portal id
@@ -106,6 +111,7 @@ export class ZeroTrustAccessAiControlsMcpPortal extends pulumi.CustomResource {
             resourceInputs["modifiedAt"] = state?.modifiedAt;
             resourceInputs["modifiedBy"] = state?.modifiedBy;
             resourceInputs["name"] = state?.name;
+            resourceInputs["secureWebGateway"] = state?.secureWebGateway;
             resourceInputs["servers"] = state?.servers;
             resourceInputs["zeroTrustAccessAiControlsMcpPortalId"] = state?.zeroTrustAccessAiControlsMcpPortalId;
         } else {
@@ -126,6 +132,7 @@ export class ZeroTrustAccessAiControlsMcpPortal extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["hostname"] = args?.hostname;
             resourceInputs["name"] = args?.name;
+            resourceInputs["secureWebGateway"] = args?.secureWebGateway;
             resourceInputs["servers"] = args?.servers;
             resourceInputs["zeroTrustAccessAiControlsMcpPortalId"] = args?.zeroTrustAccessAiControlsMcpPortalId;
             resourceInputs["createdAt"] = undefined /*out*/;
@@ -150,6 +157,10 @@ export interface ZeroTrustAccessAiControlsMcpPortalState {
     modifiedAt?: pulumi.Input<string>;
     modifiedBy?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
+    /**
+     * Route outbound MCP traffic through Zero Trust Secure Web Gateway
+     */
+    secureWebGateway?: pulumi.Input<boolean>;
     servers?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessAiControlsMcpPortalServer>[]>;
     /**
      * portal id
@@ -165,6 +176,10 @@ export interface ZeroTrustAccessAiControlsMcpPortalArgs {
     description?: pulumi.Input<string>;
     hostname: pulumi.Input<string>;
     name: pulumi.Input<string>;
+    /**
+     * Route outbound MCP traffic through Zero Trust Secure Web Gateway
+     */
+    secureWebGateway?: pulumi.Input<boolean>;
     servers?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessAiControlsMcpPortalServer>[]>;
     /**
      * portal id

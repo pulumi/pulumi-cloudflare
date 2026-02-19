@@ -144,6 +144,14 @@ namespace Pulumi.Cloudflare
         public readonly bool AutoRedirectToIdentity;
         public readonly Outputs.GetZeroTrustOrganizationCustomPagesResult CustomPages;
         /// <summary>
+        /// Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `DenyUnmatchedRequestsExemptedZoneNames` array.
+        /// </summary>
+        public readonly bool DenyUnmatchedRequests;
+        /// <summary>
+        /// Contains zone names to exempt from the `DenyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+        /// </summary>
+        public readonly ImmutableArray<string> DenyUnmatchedRequestsExemptedZoneNames;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -189,6 +197,10 @@ namespace Pulumi.Cloudflare
 
             Outputs.GetZeroTrustOrganizationCustomPagesResult customPages,
 
+            bool denyUnmatchedRequests,
+
+            ImmutableArray<string> denyUnmatchedRequestsExemptedZoneNames,
+
             string id,
 
             bool isUiReadOnly,
@@ -212,6 +224,8 @@ namespace Pulumi.Cloudflare
             AuthDomain = authDomain;
             AutoRedirectToIdentity = autoRedirectToIdentity;
             CustomPages = customPages;
+            DenyUnmatchedRequests = denyUnmatchedRequests;
+            DenyUnmatchedRequestsExemptedZoneNames = denyUnmatchedRequestsExemptedZoneNames;
             Id = id;
             IsUiReadOnly = isUiReadOnly;
             LoginDesign = loginDesign;
