@@ -55,6 +55,8 @@ import javax.annotation.Nullable;
  *                 .forbidden("699d98642c564d2e855e9661899b7252")
  *                 .identityDenied("699d98642c564d2e855e9661899b7252")
  *                 .build())
+ *             .denyUnmatchedRequests(true)
+ *             .denyUnmatchedRequestsExemptedZoneNames("example.com")
  *             .isUiReadOnly(true)
  *             .loginDesign(ZeroTrustOrganizationLoginDesignArgs.builder()
  *                 .backgroundColor("#c5ed1b")
@@ -145,6 +147,34 @@ public class ZeroTrustOrganization extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.customPages);
     }
     /**
+     * Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `denyUnmatchedRequestsExemptedZoneNames` array.
+     * 
+     */
+    @Export(name="denyUnmatchedRequests", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> denyUnmatchedRequests;
+
+    /**
+     * @return Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `denyUnmatchedRequestsExemptedZoneNames` array.
+     * 
+     */
+    public Output<Optional<Boolean>> denyUnmatchedRequests() {
+        return Codegen.optional(this.denyUnmatchedRequests);
+    }
+    /**
+     * Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+     * 
+     */
+    @Export(name="denyUnmatchedRequestsExemptedZoneNames", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> denyUnmatchedRequestsExemptedZoneNames;
+
+    /**
+     * @return Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+     * 
+     */
+    public Output<Optional<List<String>>> denyUnmatchedRequestsExemptedZoneNames() {
+        return Codegen.optional(this.denyUnmatchedRequestsExemptedZoneNames);
+    }
+    /**
      * Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
      * 
      */
@@ -197,14 +227,14 @@ public class ZeroTrustOrganization extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="uiReadOnlyToggleReason", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> uiReadOnlyToggleReason;
+    private Output<String> uiReadOnlyToggleReason;
 
     /**
      * @return A description of the reason why the UI read only field is being toggled.
      * 
      */
-    public Output<Optional<String>> uiReadOnlyToggleReason() {
-        return Codegen.optional(this.uiReadOnlyToggleReason);
+    public Output<String> uiReadOnlyToggleReason() {
+        return this.uiReadOnlyToggleReason;
     }
     /**
      * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.

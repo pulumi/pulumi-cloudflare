@@ -68,7 +68,8 @@ type GetAccountApiTokenPermissionGroupsResult struct {
 	Id string `pulumi:"id"`
 	// Filter by the name of the permission group.
 	// The value must be URL-encoded.
-	Name *string `pulumi:"name"`
+	Name             *string                                             `pulumi:"name"`
+	PermissionGroups []GetAccountApiTokenPermissionGroupsPermissionGroup `pulumi:"permissionGroups"`
 	// Filter by the scope of the permission group.
 	// The value must be URL-encoded.
 	Scope *string `pulumi:"scope"`
@@ -128,6 +129,12 @@ func (o GetAccountApiTokenPermissionGroupsResultOutput) Id() pulumi.StringOutput
 // The value must be URL-encoded.
 func (o GetAccountApiTokenPermissionGroupsResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccountApiTokenPermissionGroupsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAccountApiTokenPermissionGroupsResultOutput) PermissionGroups() GetAccountApiTokenPermissionGroupsPermissionGroupArrayOutput {
+	return o.ApplyT(func(v GetAccountApiTokenPermissionGroupsResult) []GetAccountApiTokenPermissionGroupsPermissionGroup {
+		return v.PermissionGroups
+	}).(GetAccountApiTokenPermissionGroupsPermissionGroupArrayOutput)
 }
 
 // Filter by the scope of the permission group.

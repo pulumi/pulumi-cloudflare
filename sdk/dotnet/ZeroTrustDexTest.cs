@@ -37,12 +37,11 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             new Cloudflare.Inputs.ZeroTrustDexTestTargetPolicyArgs
     ///             {
-    ///                 Id = "id",
+    ///                 Id = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
     ///                 Default = true,
     ///                 Name = "name",
     ///             },
     ///         },
-    ///         Targeted = true,
     ///     });
     /// 
     /// });

@@ -260,7 +260,7 @@ export class PagesProject extends pulumi.CustomResource {
     /**
      * Configs for the project build process.
      */
-    declare public readonly buildConfig: pulumi.Output<outputs.PagesProjectBuildConfig | undefined>;
+    declare public readonly buildConfig: pulumi.Output<outputs.PagesProjectBuildConfig>;
     /**
      * Most recent production deployment of the project.
      */

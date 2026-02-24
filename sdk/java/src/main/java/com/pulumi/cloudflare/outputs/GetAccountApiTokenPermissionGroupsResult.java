@@ -3,9 +3,11 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetAccountApiTokenPermissionGroupsPermissionGroup;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -28,6 +30,7 @@ public final class GetAccountApiTokenPermissionGroupsResult {
      * 
      */
     private @Nullable String name;
+    private List<GetAccountApiTokenPermissionGroupsPermissionGroup> permissionGroups;
     /**
      * @return Filter by the scope of the permission group.
      * The value must be URL-encoded.
@@ -58,6 +61,9 @@ public final class GetAccountApiTokenPermissionGroupsResult {
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    public List<GetAccountApiTokenPermissionGroupsPermissionGroup> permissionGroups() {
+        return this.permissionGroups;
+    }
     /**
      * @return Filter by the scope of the permission group.
      * The value must be URL-encoded.
@@ -79,6 +85,7 @@ public final class GetAccountApiTokenPermissionGroupsResult {
         private String accountId;
         private String id;
         private @Nullable String name;
+        private List<GetAccountApiTokenPermissionGroupsPermissionGroup> permissionGroups;
         private @Nullable String scope;
         public Builder() {}
         public Builder(GetAccountApiTokenPermissionGroupsResult defaults) {
@@ -86,6 +93,7 @@ public final class GetAccountApiTokenPermissionGroupsResult {
     	      this.accountId = defaults.accountId;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
+    	      this.permissionGroups = defaults.permissionGroups;
     	      this.scope = defaults.scope;
         }
 
@@ -112,6 +120,17 @@ public final class GetAccountApiTokenPermissionGroupsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder permissionGroups(List<GetAccountApiTokenPermissionGroupsPermissionGroup> permissionGroups) {
+            if (permissionGroups == null) {
+              throw new MissingRequiredPropertyException("GetAccountApiTokenPermissionGroupsResult", "permissionGroups");
+            }
+            this.permissionGroups = permissionGroups;
+            return this;
+        }
+        public Builder permissionGroups(GetAccountApiTokenPermissionGroupsPermissionGroup... permissionGroups) {
+            return permissionGroups(List.of(permissionGroups));
+        }
+        @CustomType.Setter
         public Builder scope(@Nullable String scope) {
 
             this.scope = scope;
@@ -122,6 +141,7 @@ public final class GetAccountApiTokenPermissionGroupsResult {
             _resultValue.accountId = accountId;
             _resultValue.id = id;
             _resultValue.name = name;
+            _resultValue.permissionGroups = permissionGroups;
             _resultValue.scope = scope;
             return _resultValue;
         }

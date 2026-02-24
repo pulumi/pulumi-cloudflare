@@ -57,6 +57,10 @@ export interface GetZeroTrustAccessAiControlsMcpPortalResult {
     readonly modifiedAt: string;
     readonly modifiedBy: string;
     readonly name: string;
+    /**
+     * Route outbound MCP traffic through Zero Trust Secure Web Gateway
+     */
+    readonly secureWebGateway: boolean;
     readonly servers: outputs.GetZeroTrustAccessAiControlsMcpPortalServer[];
 }
 /**

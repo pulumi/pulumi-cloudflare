@@ -557,6 +557,28 @@ __all__ = [
     'AccountUnitArgsDict',
     'AddressMapMembershipArgs',
     'AddressMapMembershipArgsDict',
+    'AiSearchInstanceCustomMetadataArgs',
+    'AiSearchInstanceCustomMetadataArgsDict',
+    'AiSearchInstanceMetadataArgs',
+    'AiSearchInstanceMetadataArgsDict',
+    'AiSearchInstancePublicEndpointParamsArgs',
+    'AiSearchInstancePublicEndpointParamsArgsDict',
+    'AiSearchInstancePublicEndpointParamsChatCompletionsEndpointArgs',
+    'AiSearchInstancePublicEndpointParamsChatCompletionsEndpointArgsDict',
+    'AiSearchInstancePublicEndpointParamsMcpArgs',
+    'AiSearchInstancePublicEndpointParamsMcpArgsDict',
+    'AiSearchInstancePublicEndpointParamsRateLimitArgs',
+    'AiSearchInstancePublicEndpointParamsRateLimitArgsDict',
+    'AiSearchInstancePublicEndpointParamsSearchEndpointArgs',
+    'AiSearchInstancePublicEndpointParamsSearchEndpointArgsDict',
+    'AiSearchInstanceSourceParamsArgs',
+    'AiSearchInstanceSourceParamsArgsDict',
+    'AiSearchInstanceSourceParamsWebCrawlerArgs',
+    'AiSearchInstanceSourceParamsWebCrawlerArgsDict',
+    'AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs',
+    'AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgsDict',
+    'AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs',
+    'AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgsDict',
     'ApiShieldAuthIdCharacteristicArgs',
     'ApiShieldAuthIdCharacteristicArgsDict',
     'ApiShieldOperationFeaturesArgs',
@@ -1321,6 +1343,8 @@ __all__ = [
     'WorkerScriptBindingOutboundArgsDict',
     'WorkerScriptBindingOutboundWorkerArgs',
     'WorkerScriptBindingOutboundWorkerArgsDict',
+    'WorkerScriptBindingSimpleArgs',
+    'WorkerScriptBindingSimpleArgsDict',
     'WorkerScriptLimitsArgs',
     'WorkerScriptLimitsArgsDict',
     'WorkerScriptMigrationsArgs',
@@ -1343,6 +1367,8 @@ __all__ = [
     'WorkerScriptObservabilityLogsArgsDict',
     'WorkerScriptPlacementArgs',
     'WorkerScriptPlacementArgsDict',
+    'WorkerScriptPlacementTargetArgs',
+    'WorkerScriptPlacementTargetArgsDict',
     'WorkerScriptTailConsumerArgs',
     'WorkerScriptTailConsumerArgsDict',
     'WorkerSubdomainArgs',
@@ -1361,6 +1387,8 @@ __all__ = [
     'WorkerVersionBindingOutboundArgsDict',
     'WorkerVersionBindingOutboundWorkerArgs',
     'WorkerVersionBindingOutboundWorkerArgsDict',
+    'WorkerVersionBindingSimpleArgs',
+    'WorkerVersionBindingSimpleArgsDict',
     'WorkerVersionLimitsArgs',
     'WorkerVersionLimitsArgsDict',
     'WorkerVersionMigrationsArgs',
@@ -1379,6 +1407,8 @@ __all__ = [
     'WorkerVersionModuleArgsDict',
     'WorkerVersionPlacementArgs',
     'WorkerVersionPlacementArgsDict',
+    'WorkerVersionPlacementTargetArgs',
+    'WorkerVersionPlacementTargetArgsDict',
     'WorkersCronTriggerScheduleArgs',
     'WorkersCronTriggerScheduleArgsDict',
     'WorkersDeploymentAnnotationsArgs',
@@ -1395,6 +1425,8 @@ __all__ = [
     'WorkersScriptBindingOutboundArgsDict',
     'WorkersScriptBindingOutboundWorkerArgs',
     'WorkersScriptBindingOutboundWorkerArgsDict',
+    'WorkersScriptBindingSimpleArgs',
+    'WorkersScriptBindingSimpleArgsDict',
     'WorkersScriptLimitsArgs',
     'WorkersScriptLimitsArgsDict',
     'WorkersScriptMigrationsArgs',
@@ -1417,6 +1449,8 @@ __all__ = [
     'WorkersScriptObservabilityLogsArgsDict',
     'WorkersScriptPlacementArgs',
     'WorkersScriptPlacementArgsDict',
+    'WorkersScriptPlacementTargetArgs',
+    'WorkersScriptPlacementTargetArgsDict',
     'WorkersScriptTailConsumerArgs',
     'WorkersScriptTailConsumerArgsDict',
     'WorkflowInstancesArgs',
@@ -2187,6 +2221,8 @@ __all__ = [
     'GetAccountMemberFilterArgsDict',
     'GetAccountTokenFilterArgs',
     'GetAccountTokenFilterArgsDict',
+    'GetAiSearchInstanceFilterArgs',
+    'GetAiSearchInstanceFilterArgsDict',
     'GetApiShieldOperationFilterArgs',
     'GetApiShieldOperationFilterArgsDict',
     'GetApiTokenFilterArgs',
@@ -2287,6 +2323,8 @@ __all__ = [
     'GetZeroTrustAccessInfrastructureTargetFilterArgsDict',
     'GetZeroTrustAccessServiceTokenFilterArgs',
     'GetZeroTrustAccessServiceTokenFilterArgsDict',
+    'GetZeroTrustDexTestFilterArgs',
+    'GetZeroTrustDexTestFilterArgsDict',
     'GetZeroTrustDexTestTargetPolicyArgs',
     'GetZeroTrustDexTestTargetPolicyArgsDict',
     'GetZeroTrustListFilterArgs',
@@ -17419,6 +17457,571 @@ class AddressMapMembershipArgs:
     @kind.setter
     def kind(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "kind", value)
+
+
+class AiSearchInstanceCustomMetadataArgsDict(TypedDict):
+    data_type: pulumi.Input[_builtins.str]
+    """
+    Available values: "text", "number", "boolean".
+    """
+    field_name: pulumi.Input[_builtins.str]
+
+@pulumi.input_type
+class AiSearchInstanceCustomMetadataArgs:
+    def __init__(__self__, *,
+                 data_type: pulumi.Input[_builtins.str],
+                 field_name: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] data_type: Available values: "text", "number", "boolean".
+        """
+        pulumi.set(__self__, "data_type", data_type)
+        pulumi.set(__self__, "field_name", field_name)
+
+    @_builtins.property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Available values: "text", "number", "boolean".
+        """
+        return pulumi.get(self, "data_type")
+
+    @data_type.setter
+    def data_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "data_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fieldName")
+    def field_name(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "field_name")
+
+    @field_name.setter
+    def field_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "field_name", value)
+
+
+class AiSearchInstanceMetadataArgsDict(TypedDict):
+    created_from_aisearch_wizard: NotRequired[pulumi.Input[_builtins.bool]]
+    worker_domain: NotRequired[pulumi.Input[_builtins.str]]
+
+@pulumi.input_type
+class AiSearchInstanceMetadataArgs:
+    def __init__(__self__, *,
+                 created_from_aisearch_wizard: Optional[pulumi.Input[_builtins.bool]] = None,
+                 worker_domain: Optional[pulumi.Input[_builtins.str]] = None):
+        if created_from_aisearch_wizard is not None:
+            pulumi.set(__self__, "created_from_aisearch_wizard", created_from_aisearch_wizard)
+        if worker_domain is not None:
+            pulumi.set(__self__, "worker_domain", worker_domain)
+
+    @_builtins.property
+    @pulumi.getter(name="createdFromAisearchWizard")
+    def created_from_aisearch_wizard(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "created_from_aisearch_wizard")
+
+    @created_from_aisearch_wizard.setter
+    def created_from_aisearch_wizard(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "created_from_aisearch_wizard", value)
+
+    @_builtins.property
+    @pulumi.getter(name="workerDomain")
+    def worker_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "worker_domain")
+
+    @worker_domain.setter
+    def worker_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "worker_domain", value)
+
+
+class AiSearchInstancePublicEndpointParamsArgsDict(TypedDict):
+    authorized_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    chat_completions_endpoint: NotRequired[pulumi.Input['AiSearchInstancePublicEndpointParamsChatCompletionsEndpointArgsDict']]
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    mcp: NotRequired[pulumi.Input['AiSearchInstancePublicEndpointParamsMcpArgsDict']]
+    rate_limit: NotRequired[pulumi.Input['AiSearchInstancePublicEndpointParamsRateLimitArgsDict']]
+    search_endpoint: NotRequired[pulumi.Input['AiSearchInstancePublicEndpointParamsSearchEndpointArgsDict']]
+
+@pulumi.input_type
+class AiSearchInstancePublicEndpointParamsArgs:
+    def __init__(__self__, *,
+                 authorized_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 chat_completions_endpoint: Optional[pulumi.Input['AiSearchInstancePublicEndpointParamsChatCompletionsEndpointArgs']] = None,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 mcp: Optional[pulumi.Input['AiSearchInstancePublicEndpointParamsMcpArgs']] = None,
+                 rate_limit: Optional[pulumi.Input['AiSearchInstancePublicEndpointParamsRateLimitArgs']] = None,
+                 search_endpoint: Optional[pulumi.Input['AiSearchInstancePublicEndpointParamsSearchEndpointArgs']] = None):
+        if authorized_hosts is not None:
+            pulumi.set(__self__, "authorized_hosts", authorized_hosts)
+        if chat_completions_endpoint is not None:
+            pulumi.set(__self__, "chat_completions_endpoint", chat_completions_endpoint)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if mcp is not None:
+            pulumi.set(__self__, "mcp", mcp)
+        if rate_limit is not None:
+            pulumi.set(__self__, "rate_limit", rate_limit)
+        if search_endpoint is not None:
+            pulumi.set(__self__, "search_endpoint", search_endpoint)
+
+    @_builtins.property
+    @pulumi.getter(name="authorizedHosts")
+    def authorized_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "authorized_hosts")
+
+    @authorized_hosts.setter
+    def authorized_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "authorized_hosts", value)
+
+    @_builtins.property
+    @pulumi.getter(name="chatCompletionsEndpoint")
+    def chat_completions_endpoint(self) -> Optional[pulumi.Input['AiSearchInstancePublicEndpointParamsChatCompletionsEndpointArgs']]:
+        return pulumi.get(self, "chat_completions_endpoint")
+
+    @chat_completions_endpoint.setter
+    def chat_completions_endpoint(self, value: Optional[pulumi.Input['AiSearchInstancePublicEndpointParamsChatCompletionsEndpointArgs']]):
+        pulumi.set(self, "chat_completions_endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def mcp(self) -> Optional[pulumi.Input['AiSearchInstancePublicEndpointParamsMcpArgs']]:
+        return pulumi.get(self, "mcp")
+
+    @mcp.setter
+    def mcp(self, value: Optional[pulumi.Input['AiSearchInstancePublicEndpointParamsMcpArgs']]):
+        pulumi.set(self, "mcp", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rateLimit")
+    def rate_limit(self) -> Optional[pulumi.Input['AiSearchInstancePublicEndpointParamsRateLimitArgs']]:
+        return pulumi.get(self, "rate_limit")
+
+    @rate_limit.setter
+    def rate_limit(self, value: Optional[pulumi.Input['AiSearchInstancePublicEndpointParamsRateLimitArgs']]):
+        pulumi.set(self, "rate_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="searchEndpoint")
+    def search_endpoint(self) -> Optional[pulumi.Input['AiSearchInstancePublicEndpointParamsSearchEndpointArgs']]:
+        return pulumi.get(self, "search_endpoint")
+
+    @search_endpoint.setter
+    def search_endpoint(self, value: Optional[pulumi.Input['AiSearchInstancePublicEndpointParamsSearchEndpointArgs']]):
+        pulumi.set(self, "search_endpoint", value)
+
+
+class AiSearchInstancePublicEndpointParamsChatCompletionsEndpointArgsDict(TypedDict):
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Disable chat completions endpoint for this public endpoint
+    """
+
+@pulumi.input_type
+class AiSearchInstancePublicEndpointParamsChatCompletionsEndpointArgs:
+    def __init__(__self__, *,
+                 disabled: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] disabled: Disable chat completions endpoint for this public endpoint
+        """
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Disable chat completions endpoint for this public endpoint
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disabled", value)
+
+
+class AiSearchInstancePublicEndpointParamsMcpArgsDict(TypedDict):
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Disable MCP endpoint for this public endpoint
+    """
+
+@pulumi.input_type
+class AiSearchInstancePublicEndpointParamsMcpArgs:
+    def __init__(__self__, *,
+                 disabled: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] disabled: Disable MCP endpoint for this public endpoint
+        """
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Disable MCP endpoint for this public endpoint
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disabled", value)
+
+
+class AiSearchInstancePublicEndpointParamsRateLimitArgsDict(TypedDict):
+    period_ms: NotRequired[pulumi.Input[_builtins.int]]
+    requests: NotRequired[pulumi.Input[_builtins.int]]
+    technique: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Available values: "fixed", "sliding".
+    """
+
+@pulumi.input_type
+class AiSearchInstancePublicEndpointParamsRateLimitArgs:
+    def __init__(__self__, *,
+                 period_ms: Optional[pulumi.Input[_builtins.int]] = None,
+                 requests: Optional[pulumi.Input[_builtins.int]] = None,
+                 technique: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] technique: Available values: "fixed", "sliding".
+        """
+        if period_ms is not None:
+            pulumi.set(__self__, "period_ms", period_ms)
+        if requests is not None:
+            pulumi.set(__self__, "requests", requests)
+        if technique is not None:
+            pulumi.set(__self__, "technique", technique)
+
+    @_builtins.property
+    @pulumi.getter(name="periodMs")
+    def period_ms(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "period_ms")
+
+    @period_ms.setter
+    def period_ms(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "period_ms", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def requests(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "requests")
+
+    @requests.setter
+    def requests(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "requests", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def technique(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Available values: "fixed", "sliding".
+        """
+        return pulumi.get(self, "technique")
+
+    @technique.setter
+    def technique(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "technique", value)
+
+
+class AiSearchInstancePublicEndpointParamsSearchEndpointArgsDict(TypedDict):
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Disable search endpoint for this public endpoint
+    """
+
+@pulumi.input_type
+class AiSearchInstancePublicEndpointParamsSearchEndpointArgs:
+    def __init__(__self__, *,
+                 disabled: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] disabled: Disable search endpoint for this public endpoint
+        """
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Disable search endpoint for this public endpoint
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disabled", value)
+
+
+class AiSearchInstanceSourceParamsArgsDict(TypedDict):
+    exclude_items: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
+    """
+    include_items: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
+    """
+    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    r2_jurisdiction: NotRequired[pulumi.Input[_builtins.str]]
+    web_crawler: NotRequired[pulumi.Input['AiSearchInstanceSourceParamsWebCrawlerArgsDict']]
+
+@pulumi.input_type
+class AiSearchInstanceSourceParamsArgs:
+    def __init__(__self__, *,
+                 exclude_items: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 include_items: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
+                 r2_jurisdiction: Optional[pulumi.Input[_builtins.str]] = None,
+                 web_crawler: Optional[pulumi.Input['AiSearchInstanceSourceParamsWebCrawlerArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_items: List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] include_items: List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
+        """
+        if exclude_items is not None:
+            pulumi.set(__self__, "exclude_items", exclude_items)
+        if include_items is not None:
+            pulumi.set(__self__, "include_items", include_items)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if r2_jurisdiction is not None:
+            pulumi.set(__self__, "r2_jurisdiction", r2_jurisdiction)
+        if web_crawler is not None:
+            pulumi.set(__self__, "web_crawler", web_crawler)
+
+    @_builtins.property
+    @pulumi.getter(name="excludeItems")
+    def exclude_items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
+        """
+        return pulumi.get(self, "exclude_items")
+
+    @exclude_items.setter
+    def exclude_items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "exclude_items", value)
+
+    @_builtins.property
+    @pulumi.getter(name="includeItems")
+    def include_items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
+        """
+        return pulumi.get(self, "include_items")
+
+    @include_items.setter
+    def include_items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "include_items", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "prefix", value)
+
+    @_builtins.property
+    @pulumi.getter(name="r2Jurisdiction")
+    def r2_jurisdiction(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "r2_jurisdiction")
+
+    @r2_jurisdiction.setter
+    def r2_jurisdiction(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "r2_jurisdiction", value)
+
+    @_builtins.property
+    @pulumi.getter(name="webCrawler")
+    def web_crawler(self) -> Optional[pulumi.Input['AiSearchInstanceSourceParamsWebCrawlerArgs']]:
+        return pulumi.get(self, "web_crawler")
+
+    @web_crawler.setter
+    def web_crawler(self, value: Optional[pulumi.Input['AiSearchInstanceSourceParamsWebCrawlerArgs']]):
+        pulumi.set(self, "web_crawler", value)
+
+
+class AiSearchInstanceSourceParamsWebCrawlerArgsDict(TypedDict):
+    parse_options: NotRequired[pulumi.Input['AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgsDict']]
+    parse_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Available values: "sitemap", "feed-rss".
+    """
+    store_options: NotRequired[pulumi.Input['AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgsDict']]
+
+@pulumi.input_type
+class AiSearchInstanceSourceParamsWebCrawlerArgs:
+    def __init__(__self__, *,
+                 parse_options: Optional[pulumi.Input['AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs']] = None,
+                 parse_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 store_options: Optional[pulumi.Input['AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] parse_type: Available values: "sitemap", "feed-rss".
+        """
+        if parse_options is not None:
+            pulumi.set(__self__, "parse_options", parse_options)
+        if parse_type is not None:
+            pulumi.set(__self__, "parse_type", parse_type)
+        if store_options is not None:
+            pulumi.set(__self__, "store_options", store_options)
+
+    @_builtins.property
+    @pulumi.getter(name="parseOptions")
+    def parse_options(self) -> Optional[pulumi.Input['AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs']]:
+        return pulumi.get(self, "parse_options")
+
+    @parse_options.setter
+    def parse_options(self, value: Optional[pulumi.Input['AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs']]):
+        pulumi.set(self, "parse_options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="parseType")
+    def parse_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Available values: "sitemap", "feed-rss".
+        """
+        return pulumi.get(self, "parse_type")
+
+    @parse_type.setter
+    def parse_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "parse_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storeOptions")
+    def store_options(self) -> Optional[pulumi.Input['AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs']]:
+        return pulumi.get(self, "store_options")
+
+    @store_options.setter
+    def store_options(self, value: Optional[pulumi.Input['AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs']]):
+        pulumi.set(self, "store_options", value)
+
+
+class AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgsDict(TypedDict):
+    include_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    include_images: NotRequired[pulumi.Input[_builtins.bool]]
+    specific_sitemaps: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'.
+    """
+    use_browser_rendering: NotRequired[pulumi.Input[_builtins.bool]]
+
+@pulumi.input_type
+class AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs:
+    def __init__(__self__, *,
+                 include_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 include_images: Optional[pulumi.Input[_builtins.bool]] = None,
+                 specific_sitemaps: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 use_browser_rendering: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] specific_sitemaps: List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'.
+        """
+        if include_headers is not None:
+            pulumi.set(__self__, "include_headers", include_headers)
+        if include_images is not None:
+            pulumi.set(__self__, "include_images", include_images)
+        if specific_sitemaps is not None:
+            pulumi.set(__self__, "specific_sitemaps", specific_sitemaps)
+        if use_browser_rendering is not None:
+            pulumi.set(__self__, "use_browser_rendering", use_browser_rendering)
+
+    @_builtins.property
+    @pulumi.getter(name="includeHeaders")
+    def include_headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "include_headers")
+
+    @include_headers.setter
+    def include_headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "include_headers", value)
+
+    @_builtins.property
+    @pulumi.getter(name="includeImages")
+    def include_images(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "include_images")
+
+    @include_images.setter
+    def include_images(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "include_images", value)
+
+    @_builtins.property
+    @pulumi.getter(name="specificSitemaps")
+    def specific_sitemaps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'.
+        """
+        return pulumi.get(self, "specific_sitemaps")
+
+    @specific_sitemaps.setter
+    def specific_sitemaps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "specific_sitemaps", value)
+
+    @_builtins.property
+    @pulumi.getter(name="useBrowserRendering")
+    def use_browser_rendering(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "use_browser_rendering")
+
+    @use_browser_rendering.setter
+    def use_browser_rendering(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "use_browser_rendering", value)
+
+
+class AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgsDict(TypedDict):
+    storage_id: pulumi.Input[_builtins.str]
+    r2_jurisdiction: NotRequired[pulumi.Input[_builtins.str]]
+    storage_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Available values: "r2".
+    """
+
+@pulumi.input_type
+class AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs:
+    def __init__(__self__, *,
+                 storage_id: pulumi.Input[_builtins.str],
+                 r2_jurisdiction: Optional[pulumi.Input[_builtins.str]] = None,
+                 storage_type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] storage_type: Available values: "r2".
+        """
+        pulumi.set(__self__, "storage_id", storage_id)
+        if r2_jurisdiction is not None:
+            pulumi.set(__self__, "r2_jurisdiction", r2_jurisdiction)
+        if storage_type is not None:
+            pulumi.set(__self__, "storage_type", storage_type)
+
+    @_builtins.property
+    @pulumi.getter(name="storageId")
+    def storage_id(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "storage_id")
+
+    @storage_id.setter
+    def storage_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "storage_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="r2Jurisdiction")
+    def r2_jurisdiction(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "r2_jurisdiction")
+
+    @r2_jurisdiction.setter
+    def r2_jurisdiction(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "r2_jurisdiction", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storageType")
+    def storage_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Available values: "r2".
+        """
+        return pulumi.get(self, "storage_type")
+
+    @storage_type.setter
+    def storage_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "storage_type", value)
 
 
 class ApiShieldAuthIdCharacteristicArgsDict(TypedDict):
@@ -50613,6 +51216,10 @@ class WorkerScriptBindingArgsDict(TypedDict):
     """
     Name of Worker to bind to.
     """
+    simple: NotRequired[pulumi.Input['WorkerScriptBindingSimpleArgsDict']]
+    """
+    A simple rate limit.
+    """
     store_id: NotRequired[pulumi.Input[_builtins.str]]
     """
     ID of the store containing the secret.
@@ -50665,6 +51272,7 @@ class WorkerScriptBindingArgs:
                  script_name: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_name: Optional[pulumi.Input[_builtins.str]] = None,
                  service: Optional[pulumi.Input[_builtins.str]] = None,
+                 simple: Optional[pulumi.Input['WorkerScriptBindingSimpleArgs']] = None,
                  store_id: Optional[pulumi.Input[_builtins.str]] = None,
                  text: Optional[pulumi.Input[_builtins.str]] = None,
                  usages: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -50702,6 +51310,7 @@ class WorkerScriptBindingArgs:
         :param pulumi.Input[_builtins.str] script_name: The script where the Durable Object is defined, if it is external to this Worker.
         :param pulumi.Input[_builtins.str] secret_name: Name of the secret in the store.
         :param pulumi.Input[_builtins.str] service: Name of Worker to bind to.
+        :param pulumi.Input['WorkerScriptBindingSimpleArgs'] simple: A simple rate limit.
         :param pulumi.Input[_builtins.str] store_id: ID of the store containing the secret.
         :param pulumi.Input[_builtins.str] text: The text value to use.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] usages: Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
@@ -50762,6 +51371,8 @@ class WorkerScriptBindingArgs:
             pulumi.set(__self__, "secret_name", secret_name)
         if service is not None:
             pulumi.set(__self__, "service", service)
+        if simple is not None:
+            pulumi.set(__self__, "simple", simple)
         if store_id is not None:
             pulumi.set(__self__, "store_id", store_id)
         if text is not None:
@@ -51113,6 +51724,18 @@ class WorkerScriptBindingArgs:
         pulumi.set(self, "service", value)
 
     @_builtins.property
+    @pulumi.getter
+    def simple(self) -> Optional[pulumi.Input['WorkerScriptBindingSimpleArgs']]:
+        """
+        A simple rate limit.
+        """
+        return pulumi.get(self, "simple")
+
+    @simple.setter
+    def simple(self, value: Optional[pulumi.Input['WorkerScriptBindingSimpleArgs']]):
+        pulumi.set(self, "simple", value)
+
+    @_builtins.property
     @pulumi.getter(name="storeId")
     def store_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -51269,6 +51892,53 @@ class WorkerScriptBindingOutboundWorkerArgs:
     @service.setter
     def service(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "service", value)
+
+
+class WorkerScriptBindingSimpleArgsDict(TypedDict):
+    limit: pulumi.Input[_builtins.float]
+    """
+    The rate limit value.
+    """
+    period: pulumi.Input[_builtins.int]
+    """
+    The rate limit period in seconds.
+    """
+
+@pulumi.input_type
+class WorkerScriptBindingSimpleArgs:
+    def __init__(__self__, *,
+                 limit: pulumi.Input[_builtins.float],
+                 period: pulumi.Input[_builtins.int]):
+        """
+        :param pulumi.Input[_builtins.float] limit: The rate limit value.
+        :param pulumi.Input[_builtins.int] period: The rate limit period in seconds.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "period", period)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> pulumi.Input[_builtins.float]:
+        """
+        The rate limit value.
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: pulumi.Input[_builtins.float]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def period(self) -> pulumi.Input[_builtins.int]:
+        """
+        The rate limit period in seconds.
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "period", value)
 
 
 class WorkerScriptLimitsArgsDict(TypedDict):
@@ -51976,7 +52646,7 @@ class WorkerScriptPlacementArgsDict(TypedDict):
     mode: NotRequired[pulumi.Input[_builtins.str]]
     """
     Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-    Available values: "smart".
+    Available values: "smart", "targeted".
     """
     region: NotRequired[pulumi.Input[_builtins.str]]
     """
@@ -51987,6 +52657,10 @@ class WorkerScriptPlacementArgsDict(TypedDict):
     Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
     Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
     """
+    targets: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkerScriptPlacementTargetArgsDict']]]]
+    """
+    Array of placement targets (currently limited to single target).
+    """
 
 @pulumi.input_type
 class WorkerScriptPlacementArgs:
@@ -51996,16 +52670,18 @@ class WorkerScriptPlacementArgs:
                  last_analyzed_at: Optional[pulumi.Input[_builtins.str]] = None,
                  mode: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 targets: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptPlacementTargetArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] host: TCP host and port for targeted placement.
         :param pulumi.Input[_builtins.str] hostname: HTTP hostname for targeted placement.
         :param pulumi.Input[_builtins.str] last_analyzed_at: The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
         :param pulumi.Input[_builtins.str] mode: Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-               Available values: "smart".
+               Available values: "smart", "targeted".
         :param pulumi.Input[_builtins.str] region: Cloud region for targeted placement in format 'provider:region'.
         :param pulumi.Input[_builtins.str] status: Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
                Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
+        :param pulumi.Input[Sequence[pulumi.Input['WorkerScriptPlacementTargetArgs']]] targets: Array of placement targets (currently limited to single target).
         """
         if host is not None:
             pulumi.set(__self__, "host", host)
@@ -52019,6 +52695,8 @@ class WorkerScriptPlacementArgs:
             pulumi.set(__self__, "region", region)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if targets is not None:
+            pulumi.set(__self__, "targets", targets)
 
     @_builtins.property
     @pulumi.getter
@@ -52061,7 +52739,7 @@ class WorkerScriptPlacementArgs:
     def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-        Available values: "smart".
+        Available values: "smart", "targeted".
         """
         return pulumi.get(self, "mode")
 
@@ -52093,6 +52771,87 @@ class WorkerScriptPlacementArgs:
     @status.setter
     def status(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptPlacementTargetArgs']]]]:
+        """
+        Array of placement targets (currently limited to single target).
+        """
+        return pulumi.get(self, "targets")
+
+    @targets.setter
+    def targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptPlacementTargetArgs']]]]):
+        pulumi.set(self, "targets", value)
+
+
+class WorkerScriptPlacementTargetArgsDict(TypedDict):
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    TCP host:port for targeted placement.
+    """
+    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    HTTP hostname for targeted placement.
+    """
+    region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cloud region in format 'provider:region'.
+    """
+
+@pulumi.input_type
+class WorkerScriptPlacementTargetArgs:
+    def __init__(__self__, *,
+                 host: Optional[pulumi.Input[_builtins.str]] = None,
+                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] host: TCP host:port for targeted placement.
+        :param pulumi.Input[_builtins.str] hostname: HTTP hostname for targeted placement.
+        :param pulumi.Input[_builtins.str] region: Cloud region in format 'provider:region'.
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        TCP host:port for targeted placement.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "host", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        HTTP hostname for targeted placement.
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "hostname", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Cloud region in format 'provider:region'.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
 
 
 class WorkerScriptTailConsumerArgsDict(TypedDict):
@@ -52481,7 +53240,7 @@ class WorkerVersionBindingArgsDict(TypedDict):
     type: pulumi.Input[_builtins.str]
     """
     The kind of resource that the binding provides.
-    Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasm_module".
+    Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasm_module".
     """
     algorithm: NotRequired[pulumi.Input[_builtins.str]]
     """
@@ -52589,6 +53348,10 @@ class WorkerVersionBindingArgsDict(TypedDict):
     """
     Name of Worker to bind to.
     """
+    simple: NotRequired[pulumi.Input['WorkerVersionBindingSimpleArgsDict']]
+    """
+    The rate limit configuration.
+    """
     store_id: NotRequired[pulumi.Input[_builtins.str]]
     """
     ID of the store containing the secret.
@@ -52641,6 +53404,7 @@ class WorkerVersionBindingArgs:
                  script_name: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_name: Optional[pulumi.Input[_builtins.str]] = None,
                  service: Optional[pulumi.Input[_builtins.str]] = None,
+                 simple: Optional[pulumi.Input['WorkerVersionBindingSimpleArgs']] = None,
                  store_id: Optional[pulumi.Input[_builtins.str]] = None,
                  text: Optional[pulumi.Input[_builtins.str]] = None,
                  usages: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -52649,7 +53413,7 @@ class WorkerVersionBindingArgs:
         """
         :param pulumi.Input[_builtins.str] name: A JavaScript variable name for the binding.
         :param pulumi.Input[_builtins.str] type: The kind of resource that the binding provides.
-               Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasm_module".
+               Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasm_module".
         :param pulumi.Input[_builtins.str] algorithm: Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_destination_addresses: List of allowed destination addresses.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_sender_addresses: List of allowed sender addresses.
@@ -52678,6 +53442,7 @@ class WorkerVersionBindingArgs:
         :param pulumi.Input[_builtins.str] script_name: The script where the Durable Object is defined, if it is external to this Worker.
         :param pulumi.Input[_builtins.str] secret_name: Name of the secret in the store.
         :param pulumi.Input[_builtins.str] service: Name of Worker to bind to.
+        :param pulumi.Input['WorkerVersionBindingSimpleArgs'] simple: The rate limit configuration.
         :param pulumi.Input[_builtins.str] store_id: ID of the store containing the secret.
         :param pulumi.Input[_builtins.str] text: The text value to use.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] usages: Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
@@ -52738,6 +53503,8 @@ class WorkerVersionBindingArgs:
             pulumi.set(__self__, "secret_name", secret_name)
         if service is not None:
             pulumi.set(__self__, "service", service)
+        if simple is not None:
+            pulumi.set(__self__, "simple", simple)
         if store_id is not None:
             pulumi.set(__self__, "store_id", store_id)
         if text is not None:
@@ -52766,7 +53533,7 @@ class WorkerVersionBindingArgs:
     def type(self) -> pulumi.Input[_builtins.str]:
         """
         The kind of resource that the binding provides.
-        Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasm_module".
+        Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasm_module".
         """
         return pulumi.get(self, "type")
 
@@ -53089,6 +53856,18 @@ class WorkerVersionBindingArgs:
         pulumi.set(self, "service", value)
 
     @_builtins.property
+    @pulumi.getter
+    def simple(self) -> Optional[pulumi.Input['WorkerVersionBindingSimpleArgs']]:
+        """
+        The rate limit configuration.
+        """
+        return pulumi.get(self, "simple")
+
+    @simple.setter
+    def simple(self, value: Optional[pulumi.Input['WorkerVersionBindingSimpleArgs']]):
+        pulumi.set(self, "simple", value)
+
+    @_builtins.property
     @pulumi.getter(name="storeId")
     def store_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -53245,6 +54024,53 @@ class WorkerVersionBindingOutboundWorkerArgs:
     @service.setter
     def service(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "service", value)
+
+
+class WorkerVersionBindingSimpleArgsDict(TypedDict):
+    limit: pulumi.Input[_builtins.float]
+    """
+    The limit (requests per period).
+    """
+    period: pulumi.Input[_builtins.int]
+    """
+    The period in seconds.
+    """
+
+@pulumi.input_type
+class WorkerVersionBindingSimpleArgs:
+    def __init__(__self__, *,
+                 limit: pulumi.Input[_builtins.float],
+                 period: pulumi.Input[_builtins.int]):
+        """
+        :param pulumi.Input[_builtins.float] limit: The limit (requests per period).
+        :param pulumi.Input[_builtins.int] period: The period in seconds.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "period", period)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> pulumi.Input[_builtins.float]:
+        """
+        The limit (requests per period).
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: pulumi.Input[_builtins.float]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def period(self) -> pulumi.Input[_builtins.int]:
+        """
+        The period in seconds.
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "period", value)
 
 
 class WorkerVersionLimitsArgsDict(TypedDict):
@@ -53819,35 +54645,184 @@ class WorkerVersionModuleArgs:
 
 
 class WorkerVersionPlacementArgsDict(TypedDict):
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    TCP host and port for targeted placement.
+    """
+    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    HTTP hostname for targeted placement.
+    """
     mode: NotRequired[pulumi.Input[_builtins.str]]
     """
-    Placement mode for the version.
-    Available values: "smart".
+    Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+    Available values: "smart", "targeted".
+    """
+    region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cloud region for targeted placement in format 'provider:region'.
+    """
+    targets: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkerVersionPlacementTargetArgsDict']]]]
+    """
+    Array of placement targets (currently limited to single target).
     """
 
 @pulumi.input_type
 class WorkerVersionPlacementArgs:
     def __init__(__self__, *,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 host: Optional[pulumi.Input[_builtins.str]] = None,
+                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
+                 mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 targets: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerVersionPlacementTargetArgs']]]] = None):
         """
-        :param pulumi.Input[_builtins.str] mode: Placement mode for the version.
-               Available values: "smart".
+        :param pulumi.Input[_builtins.str] host: TCP host and port for targeted placement.
+        :param pulumi.Input[_builtins.str] hostname: HTTP hostname for targeted placement.
+        :param pulumi.Input[_builtins.str] mode: Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+               Available values: "smart", "targeted".
+        :param pulumi.Input[_builtins.str] region: Cloud region for targeted placement in format 'provider:region'.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkerVersionPlacementTargetArgs']]] targets: Array of placement targets (currently limited to single target).
         """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if targets is not None:
+            pulumi.set(__self__, "targets", targets)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        TCP host and port for targeted placement.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "host", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        HTTP hostname for targeted placement.
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Placement mode for the version.
-        Available values: "smart".
+        Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        Available values: "smart", "targeted".
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
     def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "mode", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Cloud region for targeted placement in format 'provider:region'.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerVersionPlacementTargetArgs']]]]:
+        """
+        Array of placement targets (currently limited to single target).
+        """
+        return pulumi.get(self, "targets")
+
+    @targets.setter
+    def targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerVersionPlacementTargetArgs']]]]):
+        pulumi.set(self, "targets", value)
+
+
+class WorkerVersionPlacementTargetArgsDict(TypedDict):
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    TCP host:port for targeted placement.
+    """
+    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    HTTP hostname for targeted placement.
+    """
+    region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cloud region in format 'provider:region'.
+    """
+
+@pulumi.input_type
+class WorkerVersionPlacementTargetArgs:
+    def __init__(__self__, *,
+                 host: Optional[pulumi.Input[_builtins.str]] = None,
+                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] host: TCP host:port for targeted placement.
+        :param pulumi.Input[_builtins.str] hostname: HTTP hostname for targeted placement.
+        :param pulumi.Input[_builtins.str] region: Cloud region in format 'provider:region'.
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        TCP host:port for targeted placement.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "host", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        HTTP hostname for targeted placement.
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "hostname", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Cloud region in format 'provider:region'.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
 
 
 class WorkersCronTriggerScheduleArgsDict(TypedDict):
@@ -54319,6 +55294,10 @@ class WorkersScriptBindingArgsDict(TypedDict):
     """
     Name of Worker to bind to.
     """
+    simple: NotRequired[pulumi.Input['WorkersScriptBindingSimpleArgsDict']]
+    """
+    A simple rate limit.
+    """
     store_id: NotRequired[pulumi.Input[_builtins.str]]
     """
     ID of the store containing the secret.
@@ -54371,6 +55350,7 @@ class WorkersScriptBindingArgs:
                  script_name: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_name: Optional[pulumi.Input[_builtins.str]] = None,
                  service: Optional[pulumi.Input[_builtins.str]] = None,
+                 simple: Optional[pulumi.Input['WorkersScriptBindingSimpleArgs']] = None,
                  store_id: Optional[pulumi.Input[_builtins.str]] = None,
                  text: Optional[pulumi.Input[_builtins.str]] = None,
                  usages: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -54408,6 +55388,7 @@ class WorkersScriptBindingArgs:
         :param pulumi.Input[_builtins.str] script_name: The script where the Durable Object is defined, if it is external to this Worker.
         :param pulumi.Input[_builtins.str] secret_name: Name of the secret in the store.
         :param pulumi.Input[_builtins.str] service: Name of Worker to bind to.
+        :param pulumi.Input['WorkersScriptBindingSimpleArgs'] simple: A simple rate limit.
         :param pulumi.Input[_builtins.str] store_id: ID of the store containing the secret.
         :param pulumi.Input[_builtins.str] text: The text value to use.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] usages: Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
@@ -54468,6 +55449,8 @@ class WorkersScriptBindingArgs:
             pulumi.set(__self__, "secret_name", secret_name)
         if service is not None:
             pulumi.set(__self__, "service", service)
+        if simple is not None:
+            pulumi.set(__self__, "simple", simple)
         if store_id is not None:
             pulumi.set(__self__, "store_id", store_id)
         if text is not None:
@@ -54819,6 +55802,18 @@ class WorkersScriptBindingArgs:
         pulumi.set(self, "service", value)
 
     @_builtins.property
+    @pulumi.getter
+    def simple(self) -> Optional[pulumi.Input['WorkersScriptBindingSimpleArgs']]:
+        """
+        A simple rate limit.
+        """
+        return pulumi.get(self, "simple")
+
+    @simple.setter
+    def simple(self, value: Optional[pulumi.Input['WorkersScriptBindingSimpleArgs']]):
+        pulumi.set(self, "simple", value)
+
+    @_builtins.property
     @pulumi.getter(name="storeId")
     def store_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -54975,6 +55970,53 @@ class WorkersScriptBindingOutboundWorkerArgs:
     @service.setter
     def service(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "service", value)
+
+
+class WorkersScriptBindingSimpleArgsDict(TypedDict):
+    limit: pulumi.Input[_builtins.float]
+    """
+    The rate limit value.
+    """
+    period: pulumi.Input[_builtins.int]
+    """
+    The rate limit period in seconds.
+    """
+
+@pulumi.input_type
+class WorkersScriptBindingSimpleArgs:
+    def __init__(__self__, *,
+                 limit: pulumi.Input[_builtins.float],
+                 period: pulumi.Input[_builtins.int]):
+        """
+        :param pulumi.Input[_builtins.float] limit: The rate limit value.
+        :param pulumi.Input[_builtins.int] period: The rate limit period in seconds.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "period", period)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> pulumi.Input[_builtins.float]:
+        """
+        The rate limit value.
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: pulumi.Input[_builtins.float]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def period(self) -> pulumi.Input[_builtins.int]:
+        """
+        The rate limit period in seconds.
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "period", value)
 
 
 class WorkersScriptLimitsArgsDict(TypedDict):
@@ -55682,7 +56724,7 @@ class WorkersScriptPlacementArgsDict(TypedDict):
     mode: NotRequired[pulumi.Input[_builtins.str]]
     """
     Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-    Available values: "smart".
+    Available values: "smart", "targeted".
     """
     region: NotRequired[pulumi.Input[_builtins.str]]
     """
@@ -55693,6 +56735,10 @@ class WorkersScriptPlacementArgsDict(TypedDict):
     Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
     Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
     """
+    targets: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkersScriptPlacementTargetArgsDict']]]]
+    """
+    Array of placement targets (currently limited to single target).
+    """
 
 @pulumi.input_type
 class WorkersScriptPlacementArgs:
@@ -55702,16 +56748,18 @@ class WorkersScriptPlacementArgs:
                  last_analyzed_at: Optional[pulumi.Input[_builtins.str]] = None,
                  mode: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 targets: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptPlacementTargetArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] host: TCP host and port for targeted placement.
         :param pulumi.Input[_builtins.str] hostname: HTTP hostname for targeted placement.
         :param pulumi.Input[_builtins.str] last_analyzed_at: The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
         :param pulumi.Input[_builtins.str] mode: Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-               Available values: "smart".
+               Available values: "smart", "targeted".
         :param pulumi.Input[_builtins.str] region: Cloud region for targeted placement in format 'provider:region'.
         :param pulumi.Input[_builtins.str] status: Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
                Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
+        :param pulumi.Input[Sequence[pulumi.Input['WorkersScriptPlacementTargetArgs']]] targets: Array of placement targets (currently limited to single target).
         """
         if host is not None:
             pulumi.set(__self__, "host", host)
@@ -55725,6 +56773,8 @@ class WorkersScriptPlacementArgs:
             pulumi.set(__self__, "region", region)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if targets is not None:
+            pulumi.set(__self__, "targets", targets)
 
     @_builtins.property
     @pulumi.getter
@@ -55767,7 +56817,7 @@ class WorkersScriptPlacementArgs:
     def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-        Available values: "smart".
+        Available values: "smart", "targeted".
         """
         return pulumi.get(self, "mode")
 
@@ -55799,6 +56849,87 @@ class WorkersScriptPlacementArgs:
     @status.setter
     def status(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptPlacementTargetArgs']]]]:
+        """
+        Array of placement targets (currently limited to single target).
+        """
+        return pulumi.get(self, "targets")
+
+    @targets.setter
+    def targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptPlacementTargetArgs']]]]):
+        pulumi.set(self, "targets", value)
+
+
+class WorkersScriptPlacementTargetArgsDict(TypedDict):
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    TCP host:port for targeted placement.
+    """
+    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    HTTP hostname for targeted placement.
+    """
+    region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cloud region in format 'provider:region'.
+    """
+
+@pulumi.input_type
+class WorkersScriptPlacementTargetArgs:
+    def __init__(__self__, *,
+                 host: Optional[pulumi.Input[_builtins.str]] = None,
+                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] host: TCP host:port for targeted placement.
+        :param pulumi.Input[_builtins.str] hostname: HTTP hostname for targeted placement.
+        :param pulumi.Input[_builtins.str] region: Cloud region in format 'provider:region'.
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        TCP host:port for targeted placement.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "host", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        HTTP hostname for targeted placement.
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "hostname", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Cloud region in format 'provider:region'.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
 
 
 class WorkersScriptTailConsumerArgsDict(TypedDict):
@@ -80553,6 +81684,35 @@ class GetAccountTokenFilterArgs:
         pulumi.set(self, "direction", value)
 
 
+class GetAiSearchInstanceFilterArgsDict(TypedDict):
+    search: NotRequired[_builtins.str]
+    """
+    Search by id
+    """
+
+@pulumi.input_type
+class GetAiSearchInstanceFilterArgs:
+    def __init__(__self__, *,
+                 search: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str search: Search by id
+        """
+        if search is not None:
+            pulumi.set(__self__, "search", search)
+
+    @_builtins.property
+    @pulumi.getter
+    def search(self) -> Optional[_builtins.str]:
+        """
+        Search by id
+        """
+        return pulumi.get(self, "search")
+
+    @search.setter
+    def search(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "search", value)
+
+
 class GetApiShieldOperationFilterArgsDict(TypedDict):
     direction: NotRequired[_builtins.str]
     """
@@ -83644,25 +84804,35 @@ class GetTurnstileWidgetFilterArgsDict(TypedDict):
     Direction to order widgets.
     Available values: "asc", "desc".
     """
+    filter: NotRequired[_builtins.str]
+    """
+    Filter widgets by field using case-insensitive substring matching.
+    Format: `field:value`
+    """
     order: NotRequired[_builtins.str]
     """
     Field to order widgets by.
-    Available values: "id", "sitekey", "name", "created*on", "modified*on".
+    Available values: "id", "sitekey", "name", "created_on", "modified_on".
     """
 
 @pulumi.input_type
 class GetTurnstileWidgetFilterArgs:
     def __init__(__self__, *,
                  direction: Optional[_builtins.str] = None,
+                 filter: Optional[_builtins.str] = None,
                  order: Optional[_builtins.str] = None):
         """
         :param _builtins.str direction: Direction to order widgets.
                Available values: "asc", "desc".
+        :param _builtins.str filter: Filter widgets by field using case-insensitive substring matching.
+               Format: `field:value`
         :param _builtins.str order: Field to order widgets by.
-               Available values: "id", "sitekey", "name", "created*on", "modified*on".
+               Available values: "id", "sitekey", "name", "created_on", "modified_on".
         """
         if direction is not None:
             pulumi.set(__self__, "direction", direction)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
         if order is not None:
             pulumi.set(__self__, "order", order)
 
@@ -83681,10 +84851,23 @@ class GetTurnstileWidgetFilterArgs:
 
     @_builtins.property
     @pulumi.getter
+    def filter(self) -> Optional[_builtins.str]:
+        """
+        Filter widgets by field using case-insensitive substring matching.
+        Format: `field:value`
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "filter", value)
+
+    @_builtins.property
+    @pulumi.getter
     def order(self) -> Optional[_builtins.str]:
         """
         Field to order widgets by.
-        Available values: "id", "sitekey", "name", "created*on", "modified*on".
+        Available values: "id", "sitekey", "name", "created_on", "modified_on".
         """
         return pulumi.get(self, "order")
 
@@ -84709,6 +85892,58 @@ class GetZeroTrustAccessServiceTokenFilterArgs:
         pulumi.set(self, "search", value)
 
 
+class GetZeroTrustDexTestFilterArgsDict(TypedDict):
+    kind: NotRequired[_builtins.str]
+    """
+    Filter by test type
+    Available values: "http", "traceroute".
+    """
+    test_name: NotRequired[_builtins.str]
+    """
+    Filter by test name
+    """
+
+@pulumi.input_type
+class GetZeroTrustDexTestFilterArgs:
+    def __init__(__self__, *,
+                 kind: Optional[_builtins.str] = None,
+                 test_name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str kind: Filter by test type
+               Available values: "http", "traceroute".
+        :param _builtins.str test_name: Filter by test name
+        """
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if test_name is not None:
+            pulumi.set(__self__, "test_name", test_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def kind(self) -> Optional[_builtins.str]:
+        """
+        Filter by test type
+        Available values: "http", "traceroute".
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "kind", value)
+
+    @_builtins.property
+    @pulumi.getter(name="testName")
+    def test_name(self) -> Optional[_builtins.str]:
+        """
+        Filter by test name
+        """
+        return pulumi.get(self, "test_name")
+
+    @test_name.setter
+    def test_name(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "test_name", value)
+
+
 class GetZeroTrustDexTestTargetPolicyArgsDict(TypedDict):
     default: _builtins.bool
     """
@@ -84716,7 +85951,7 @@ class GetZeroTrustDexTestTargetPolicyArgsDict(TypedDict):
     """
     id: _builtins.str
     """
-    The id of the DEX rule
+    API Resource UUID tag.
     """
     name: _builtins.str
     """
@@ -84731,7 +85966,7 @@ class GetZeroTrustDexTestTargetPolicyArgs:
                  name: _builtins.str):
         """
         :param _builtins.bool default: Whether the DEX rule is the account default
-        :param _builtins.str id: The id of the DEX rule
+        :param _builtins.str id: API Resource UUID tag.
         :param _builtins.str name: The name of the DEX rule
         """
         pulumi.set(__self__, "default", default)
@@ -84754,7 +85989,7 @@ class GetZeroTrustDexTestTargetPolicyArgs:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The id of the DEX rule
+        API Resource UUID tag.
         """
         return pulumi.get(self, "id")
 

@@ -66,6 +66,10 @@ type LookupZeroTrustOrganizationResult struct {
 	// When set to `true`, users skip the identity provider selection step during login.
 	AutoRedirectToIdentity bool                                `pulumi:"autoRedirectToIdentity"`
 	CustomPages            GetZeroTrustOrganizationCustomPages `pulumi:"customPages"`
+	// Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `denyUnmatchedRequestsExemptedZoneNames` array.
+	DenyUnmatchedRequests bool `pulumi:"denyUnmatchedRequests"`
+	// Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+	DenyUnmatchedRequestsExemptedZoneNames []string `pulumi:"denyUnmatchedRequestsExemptedZoneNames"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
@@ -143,6 +147,16 @@ func (o LookupZeroTrustOrganizationResultOutput) AutoRedirectToIdentity() pulumi
 
 func (o LookupZeroTrustOrganizationResultOutput) CustomPages() GetZeroTrustOrganizationCustomPagesOutput {
 	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) GetZeroTrustOrganizationCustomPages { return v.CustomPages }).(GetZeroTrustOrganizationCustomPagesOutput)
+}
+
+// Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `denyUnmatchedRequestsExemptedZoneNames` array.
+func (o LookupZeroTrustOrganizationResultOutput) DenyUnmatchedRequests() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) bool { return v.DenyUnmatchedRequests }).(pulumi.BoolOutput)
+}
+
+// Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+func (o LookupZeroTrustOrganizationResultOutput) DenyUnmatchedRequestsExemptedZoneNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) []string { return v.DenyUnmatchedRequestsExemptedZoneNames }).(pulumi.StringArrayOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

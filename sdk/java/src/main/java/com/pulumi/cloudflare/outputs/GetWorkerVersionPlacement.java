@@ -3,28 +3,78 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetWorkerVersionPlacementTarget;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetWorkerVersionPlacement {
     /**
-     * @return Placement mode for the version.
-     * Available values: &#34;smart&#34;.
+     * @return TCP host and port for targeted placement.
+     * 
+     */
+    private String host;
+    /**
+     * @return HTTP hostname for targeted placement.
+     * 
+     */
+    private String hostname;
+    /**
+     * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: &#34;smart&#34;, &#34;targeted&#34;.
      * 
      */
     private String mode;
+    /**
+     * @return Cloud region for targeted placement in format &#39;provider:region&#39;.
+     * 
+     */
+    private String region;
+    /**
+     * @return Array of placement targets (currently limited to single target).
+     * 
+     */
+    private List<GetWorkerVersionPlacementTarget> targets;
 
     private GetWorkerVersionPlacement() {}
     /**
-     * @return Placement mode for the version.
-     * Available values: &#34;smart&#34;.
+     * @return TCP host and port for targeted placement.
+     * 
+     */
+    public String host() {
+        return this.host;
+    }
+    /**
+     * @return HTTP hostname for targeted placement.
+     * 
+     */
+    public String hostname() {
+        return this.hostname;
+    }
+    /**
+     * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: &#34;smart&#34;, &#34;targeted&#34;.
      * 
      */
     public String mode() {
         return this.mode;
+    }
+    /**
+     * @return Cloud region for targeted placement in format &#39;provider:region&#39;.
+     * 
+     */
+    public String region() {
+        return this.region;
+    }
+    /**
+     * @return Array of placement targets (currently limited to single target).
+     * 
+     */
+    public List<GetWorkerVersionPlacementTarget> targets() {
+        return this.targets;
     }
 
     public static Builder builder() {
@@ -36,13 +86,37 @@ public final class GetWorkerVersionPlacement {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String host;
+        private String hostname;
         private String mode;
+        private String region;
+        private List<GetWorkerVersionPlacementTarget> targets;
         public Builder() {}
         public Builder(GetWorkerVersionPlacement defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.host = defaults.host;
+    	      this.hostname = defaults.hostname;
     	      this.mode = defaults.mode;
+    	      this.region = defaults.region;
+    	      this.targets = defaults.targets;
         }
 
+        @CustomType.Setter
+        public Builder host(String host) {
+            if (host == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionPlacement", "host");
+            }
+            this.host = host;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder hostname(String hostname) {
+            if (hostname == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionPlacement", "hostname");
+            }
+            this.hostname = hostname;
+            return this;
+        }
         @CustomType.Setter
         public Builder mode(String mode) {
             if (mode == null) {
@@ -51,9 +125,32 @@ public final class GetWorkerVersionPlacement {
             this.mode = mode;
             return this;
         }
+        @CustomType.Setter
+        public Builder region(String region) {
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionPlacement", "region");
+            }
+            this.region = region;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder targets(List<GetWorkerVersionPlacementTarget> targets) {
+            if (targets == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionPlacement", "targets");
+            }
+            this.targets = targets;
+            return this;
+        }
+        public Builder targets(GetWorkerVersionPlacementTarget... targets) {
+            return targets(List.of(targets));
+        }
         public GetWorkerVersionPlacement build() {
             final var _resultValue = new GetWorkerVersionPlacement();
+            _resultValue.host = host;
+            _resultValue.hostname = hostname;
             _resultValue.mode = mode;
+            _resultValue.region = region;
+            _resultValue.targets = targets;
             return _resultValue;
         }
     }

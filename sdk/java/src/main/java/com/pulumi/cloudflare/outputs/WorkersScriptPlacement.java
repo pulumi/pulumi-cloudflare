@@ -3,8 +3,10 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.WorkersScriptPlacementTarget;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -28,7 +30,7 @@ public final class WorkersScriptPlacement {
     private @Nullable String lastAnalyzedAt;
     /**
      * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: &#34;smart&#34;.
+     * Available values: &#34;smart&#34;, &#34;targeted&#34;.
      * 
      */
     private @Nullable String mode;
@@ -43,6 +45,11 @@ public final class WorkersScriptPlacement {
      * 
      */
     private @Nullable String status;
+    /**
+     * @return Array of placement targets (currently limited to single target).
+     * 
+     */
+    private @Nullable List<WorkersScriptPlacementTarget> targets;
 
     private WorkersScriptPlacement() {}
     /**
@@ -68,7 +75,7 @@ public final class WorkersScriptPlacement {
     }
     /**
      * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: &#34;smart&#34;.
+     * Available values: &#34;smart&#34;, &#34;targeted&#34;.
      * 
      */
     public Optional<String> mode() {
@@ -89,6 +96,13 @@ public final class WorkersScriptPlacement {
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return Array of placement targets (currently limited to single target).
+     * 
+     */
+    public List<WorkersScriptPlacementTarget> targets() {
+        return this.targets == null ? List.of() : this.targets;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -105,6 +119,7 @@ public final class WorkersScriptPlacement {
         private @Nullable String mode;
         private @Nullable String region;
         private @Nullable String status;
+        private @Nullable List<WorkersScriptPlacementTarget> targets;
         public Builder() {}
         public Builder(WorkersScriptPlacement defaults) {
     	      Objects.requireNonNull(defaults);
@@ -114,6 +129,7 @@ public final class WorkersScriptPlacement {
     	      this.mode = defaults.mode;
     	      this.region = defaults.region;
     	      this.status = defaults.status;
+    	      this.targets = defaults.targets;
         }
 
         @CustomType.Setter
@@ -152,6 +168,15 @@ public final class WorkersScriptPlacement {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
+        public Builder targets(@Nullable List<WorkersScriptPlacementTarget> targets) {
+
+            this.targets = targets;
+            return this;
+        }
+        public Builder targets(WorkersScriptPlacementTarget... targets) {
+            return targets(List.of(targets));
+        }
         public WorkersScriptPlacement build() {
             final var _resultValue = new WorkersScriptPlacement();
             _resultValue.host = host;
@@ -160,6 +185,7 @@ public final class WorkersScriptPlacement {
             _resultValue.mode = mode;
             _resultValue.region = region;
             _resultValue.status = status;
+            _resultValue.targets = targets;
             return _resultValue;
         }
     }

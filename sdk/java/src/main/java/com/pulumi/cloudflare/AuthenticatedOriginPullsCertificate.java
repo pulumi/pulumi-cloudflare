@@ -106,7 +106,9 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * &gt; This resource does not currently support `pulumi import`.
+ * ```sh
+ * $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate example &#39;&lt;zone_id&gt;/&lt;certificate_id&gt;&#39;
+ * ```
  * 
  */
 @ResourceType(type="cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate")

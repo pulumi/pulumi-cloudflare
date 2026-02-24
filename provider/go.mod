@@ -54,7 +54,7 @@ require (
 	github.com/cheggaaa/pb v1.0.29 // indirect
 	github.com/cloudflare/circl v1.6.1 // indirect
 	github.com/cloudflare/cloudflare-go v0.115.0 // indirect
-	github.com/cloudflare/cloudflare-go/v6 v6.6.0 // indirect
+	github.com/cloudflare/cloudflare-go/v6 v6.7.0 // indirect
 	github.com/cyphar/filepath-securejoin v0.4.1 // indirect
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
 	github.com/deckarep/golang-set/v2 v2.5.0 // indirect

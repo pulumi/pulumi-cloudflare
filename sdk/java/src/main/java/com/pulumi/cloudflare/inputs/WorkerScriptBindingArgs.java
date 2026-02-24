@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.WorkerScriptBindingOutboundArgs;
+import com.pulumi.cloudflare.inputs.WorkerScriptBindingSimpleArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -428,6 +429,21 @@ public final class WorkerScriptBindingArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * A simple rate limit.
+     * 
+     */
+    @Import(name="simple")
+    private @Nullable Output<WorkerScriptBindingSimpleArgs> simple;
+
+    /**
+     * @return A simple rate limit.
+     * 
+     */
+    public Optional<Output<WorkerScriptBindingSimpleArgs>> simple() {
+        return Optional.ofNullable(this.simple);
+    }
+
+    /**
      * ID of the store containing the secret.
      * 
      */
@@ -549,6 +565,7 @@ public final class WorkerScriptBindingArgs extends com.pulumi.resources.Resource
         this.scriptName = $.scriptName;
         this.secretName = $.secretName;
         this.service = $.service;
+        this.simple = $.simple;
         this.storeId = $.storeId;
         this.text = $.text;
         this.type = $.type;
@@ -1164,6 +1181,27 @@ public final class WorkerScriptBindingArgs extends com.pulumi.resources.Resource
          */
         public Builder service(String service) {
             return service(Output.of(service));
+        }
+
+        /**
+         * @param simple A simple rate limit.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder simple(@Nullable Output<WorkerScriptBindingSimpleArgs> simple) {
+            $.simple = simple;
+            return this;
+        }
+
+        /**
+         * @param simple A simple rate limit.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder simple(WorkerScriptBindingSimpleArgs simple) {
+            return simple(Output.of(simple));
         }
 
         /**

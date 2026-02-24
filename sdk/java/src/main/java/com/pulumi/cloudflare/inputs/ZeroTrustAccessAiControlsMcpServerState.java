@@ -81,6 +81,13 @@ public final class ZeroTrustAccessAiControlsMcpServerState extends com.pulumi.re
         return Optional.ofNullable(this.hostname);
     }
 
+    @Import(name="lastSuccessfulSync")
+    private @Nullable Output<String> lastSuccessfulSync;
+
+    public Optional<Output<String>> lastSuccessfulSync() {
+        return Optional.ofNullable(this.lastSuccessfulSync);
+    }
+
     @Import(name="lastSynced")
     private @Nullable Output<String> lastSynced;
 
@@ -156,6 +163,7 @@ public final class ZeroTrustAccessAiControlsMcpServerState extends com.pulumi.re
         this.description = $.description;
         this.error = $.error;
         this.hostname = $.hostname;
+        this.lastSuccessfulSync = $.lastSuccessfulSync;
         this.lastSynced = $.lastSynced;
         this.modifiedAt = $.modifiedAt;
         this.modifiedBy = $.modifiedBy;
@@ -266,6 +274,15 @@ public final class ZeroTrustAccessAiControlsMcpServerState extends com.pulumi.re
 
         public Builder hostname(String hostname) {
             return hostname(Output.of(hostname));
+        }
+
+        public Builder lastSuccessfulSync(@Nullable Output<String> lastSuccessfulSync) {
+            $.lastSuccessfulSync = lastSuccessfulSync;
+            return this;
+        }
+
+        public Builder lastSuccessfulSync(String lastSuccessfulSync) {
+            return lastSuccessfulSync(Output.of(lastSuccessfulSync));
         }
 
         public Builder lastSynced(@Nullable Output<String> lastSynced) {

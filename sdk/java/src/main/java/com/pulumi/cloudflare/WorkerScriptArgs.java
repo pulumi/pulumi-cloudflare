@@ -281,14 +281,14 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
+     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode=&#39;smart&#39; for Smart Placement, or one of region/hostname/host.
      * 
      */
     @Import(name="placement")
     private @Nullable Output<WorkerScriptPlacementArgs> placement;
 
     /**
-     * @return Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
+     * @return Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode=&#39;smart&#39; for Smart Placement, or one of region/hostname/host.
      * 
      */
     public Optional<Output<WorkerScriptPlacementArgs>> placement() {
@@ -774,7 +774,7 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param placement Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
+         * @param placement Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode=&#39;smart&#39; for Smart Placement, or one of region/hostname/host.
          * 
          * @return builder
          * 
@@ -785,7 +785,7 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param placement Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
+         * @param placement Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode=&#39;smart&#39; for Smart Placement, or one of region/hostname/host.
          * 
          * @return builder
          * 

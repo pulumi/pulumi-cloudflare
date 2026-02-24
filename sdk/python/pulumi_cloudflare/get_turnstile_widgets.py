@@ -27,13 +27,16 @@ class GetTurnstileWidgetsResult:
     """
     A collection of values returned by getTurnstileWidgets.
     """
-    def __init__(__self__, account_id=None, direction=None, id=None, max_items=None, order=None, results=None):
+    def __init__(__self__, account_id=None, direction=None, filter=None, id=None, max_items=None, order=None, results=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if direction and not isinstance(direction, str):
             raise TypeError("Expected argument 'direction' to be a str")
         pulumi.set(__self__, "direction", direction)
+        if filter and not isinstance(filter, str):
+            raise TypeError("Expected argument 'filter' to be a str")
+        pulumi.set(__self__, "filter", filter)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -66,6 +69,15 @@ class GetTurnstileWidgetsResult:
 
     @_builtins.property
     @pulumi.getter
+    def filter(self) -> Optional[_builtins.str]:
+        """
+        Filter widgets by field using case-insensitive substring matching.
+        Format: `field:value`
+        """
+        return pulumi.get(self, "filter")
+
+    @_builtins.property
+    @pulumi.getter
     def id(self) -> _builtins.str:
         """
         The provider-assigned unique ID for this managed resource.
@@ -75,26 +87,16 @@ class GetTurnstileWidgetsResult:
     @_builtins.property
     @pulumi.getter(name="maxItems")
     def max_items(self) -> Optional[_builtins.int]:
-        """
-        Max items to fetch, default: 1000
-        """
         return pulumi.get(self, "max_items")
 
     @_builtins.property
     @pulumi.getter
     def order(self) -> Optional[_builtins.str]:
-        """
-        Field to order widgets by.
-        Available values: "id", "sitekey", "name", "created*on", "modified*on".
-        """
         return pulumi.get(self, "order")
 
     @_builtins.property
     @pulumi.getter
     def results(self) -> Sequence['outputs.GetTurnstileWidgetsResultResult']:
-        """
-        The items returned by the data source
-        """
         return pulumi.get(self, "results")
 
 
@@ -106,6 +108,7 @@ class AwaitableGetTurnstileWidgetsResult(GetTurnstileWidgetsResult):
         return GetTurnstileWidgetsResult(
             account_id=self.account_id,
             direction=self.direction,
+            filter=self.filter,
             id=self.id,
             max_items=self.max_items,
             order=self.order,
@@ -114,6 +117,7 @@ class AwaitableGetTurnstileWidgetsResult(GetTurnstileWidgetsResult):
 
 def get_turnstile_widgets(account_id: Optional[_builtins.str] = None,
                           direction: Optional[_builtins.str] = None,
+                          filter: Optional[_builtins.str] = None,
                           max_items: Optional[_builtins.int] = None,
                           order: Optional[_builtins.str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTurnstileWidgetsResult:
@@ -126,6 +130,7 @@ def get_turnstile_widgets(account_id: Optional[_builtins.str] = None,
 
     example_turnstile_widgets = cloudflare.get_turnstile_widgets(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         direction="asc",
+        filter="name:my-widget",
         order="id")
     ```
 
@@ -133,13 +138,13 @@ def get_turnstile_widgets(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Identifier
     :param _builtins.str direction: Direction to order widgets.
            Available values: "asc", "desc".
-    :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str order: Field to order widgets by.
-           Available values: "id", "sitekey", "name", "created*on", "modified*on".
+    :param _builtins.str filter: Filter widgets by field using case-insensitive substring matching.
+           Format: `field:value`
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['direction'] = direction
+    __args__['filter'] = filter
     __args__['maxItems'] = max_items
     __args__['order'] = order
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -148,12 +153,14 @@ def get_turnstile_widgets(account_id: Optional[_builtins.str] = None,
     return AwaitableGetTurnstileWidgetsResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         direction=pulumi.get(__ret__, 'direction'),
+        filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         order=pulumi.get(__ret__, 'order'),
         results=pulumi.get(__ret__, 'results'))
 def get_turnstile_widgets_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
                                  direction: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                 filter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                  order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTurnstileWidgetsResult]:
@@ -166,6 +173,7 @@ def get_turnstile_widgets_output(account_id: Optional[pulumi.Input[_builtins.str
 
     example_turnstile_widgets = cloudflare.get_turnstile_widgets(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         direction="asc",
+        filter="name:my-widget",
         order="id")
     ```
 
@@ -173,13 +181,13 @@ def get_turnstile_widgets_output(account_id: Optional[pulumi.Input[_builtins.str
     :param _builtins.str account_id: Identifier
     :param _builtins.str direction: Direction to order widgets.
            Available values: "asc", "desc".
-    :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str order: Field to order widgets by.
-           Available values: "id", "sitekey", "name", "created*on", "modified*on".
+    :param _builtins.str filter: Filter widgets by field using case-insensitive substring matching.
+           Format: `field:value`
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['direction'] = direction
+    __args__['filter'] = filter
     __args__['maxItems'] = max_items
     __args__['order'] = order
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -187,6 +195,7 @@ def get_turnstile_widgets_output(account_id: Optional[pulumi.Input[_builtins.str
     return __ret__.apply(lambda __response__: GetTurnstileWidgetsResult(
         account_id=pulumi.get(__response__, 'account_id'),
         direction=pulumi.get(__response__, 'direction'),
+        filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
         order=pulumi.get(__response__, 'order'),

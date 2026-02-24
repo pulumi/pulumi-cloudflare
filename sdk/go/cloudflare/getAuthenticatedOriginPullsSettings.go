@@ -56,7 +56,7 @@ type LookupAuthenticatedOriginPullsSettingsArgs struct {
 type LookupAuthenticatedOriginPullsSettingsResult struct {
 	// Indicates whether zone-level authenticated origin pulls is enabled.
 	Enabled bool `pulumi:"enabled"`
-	// The provider-assigned unique ID for this managed resource.
+	// Identifier.
 	Id string `pulumi:"id"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
@@ -101,7 +101,7 @@ func (o LookupAuthenticatedOriginPullsSettingsResultOutput) Enabled() pulumi.Boo
 	return o.ApplyT(func(v LookupAuthenticatedOriginPullsSettingsResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Identifier.
 func (o LookupAuthenticatedOriginPullsSettingsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthenticatedOriginPullsSettingsResult) string { return v.Id }).(pulumi.StringOutput)
 }

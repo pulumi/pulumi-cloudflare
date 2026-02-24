@@ -19,8 +19,13 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Direction;
         /// <summary>
+        /// Filter widgets by field using case-insensitive substring matching.
+        /// Format: `field:value`
+        /// </summary>
+        public readonly string? Filter;
+        /// <summary>
         /// Field to order widgets by.
-        /// Available values: "id", "sitekey", "name", "created*on", "modified*on".
+        /// Available values: "id", "sitekey", "name", "CreatedOn", "ModifiedOn".
         /// </summary>
         public readonly string? Order;
 
@@ -28,9 +33,12 @@ namespace Pulumi.Cloudflare.Outputs
         private GetTurnstileWidgetFilterResult(
             string? direction,
 
+            string? filter,
+
             string? order)
         {
             Direction = direction;
+            Filter = filter;
             Order = order;
         }
     }

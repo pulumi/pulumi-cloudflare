@@ -18,8 +18,14 @@ public final class GetTurnstileWidgetFilter {
      */
     private @Nullable String direction;
     /**
+     * @return Filter widgets by field using case-insensitive substring matching.
+     * Format: `field:value`
+     * 
+     */
+    private @Nullable String filter;
+    /**
      * @return Field to order widgets by.
-     * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;created*on&#34;, &#34;modified*on&#34;.
+     * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;createdOn&#34;, &#34;modifiedOn&#34;.
      * 
      */
     private @Nullable String order;
@@ -34,8 +40,16 @@ public final class GetTurnstileWidgetFilter {
         return Optional.ofNullable(this.direction);
     }
     /**
+     * @return Filter widgets by field using case-insensitive substring matching.
+     * Format: `field:value`
+     * 
+     */
+    public Optional<String> filter() {
+        return Optional.ofNullable(this.filter);
+    }
+    /**
      * @return Field to order widgets by.
-     * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;created*on&#34;, &#34;modified*on&#34;.
+     * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;createdOn&#34;, &#34;modifiedOn&#34;.
      * 
      */
     public Optional<String> order() {
@@ -52,11 +66,13 @@ public final class GetTurnstileWidgetFilter {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String direction;
+        private @Nullable String filter;
         private @Nullable String order;
         public Builder() {}
         public Builder(GetTurnstileWidgetFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.direction = defaults.direction;
+    	      this.filter = defaults.filter;
     	      this.order = defaults.order;
         }
 
@@ -64,6 +80,12 @@ public final class GetTurnstileWidgetFilter {
         public Builder direction(@Nullable String direction) {
 
             this.direction = direction;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder filter(@Nullable String filter) {
+
+            this.filter = filter;
             return this;
         }
         @CustomType.Setter
@@ -75,6 +97,7 @@ public final class GetTurnstileWidgetFilter {
         public GetTurnstileWidgetFilter build() {
             final var _resultValue = new GetTurnstileWidgetFilter();
             _resultValue.direction = direction;
+            _resultValue.filter = filter;
             _resultValue.order = order;
             return _resultValue;
         }

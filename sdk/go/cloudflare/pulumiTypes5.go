@@ -13,6 +13,4541 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetZeroTrustDexTestsResult struct {
+	// The configuration object which contains the details for the WARP client to conduct the test.
+	Data GetZeroTrustDexTestsResultData `pulumi:"data"`
+	// Additional details about the test.
+	Description string `pulumi:"description"`
+	// Determines whether or not the test is active.
+	Enabled bool `pulumi:"enabled"`
+	// The unique identifier for the test.
+	Id string `pulumi:"id"`
+	// How often the test will run.
+	Interval string `pulumi:"interval"`
+	// The name of the DEX test. Must be unique.
+	Name string `pulumi:"name"`
+	// DEX rules targeted by this test
+	TargetPolicies []GetZeroTrustDexTestsResultTargetPolicy `pulumi:"targetPolicies"`
+	Targeted       bool                                     `pulumi:"targeted"`
+	// The unique identifier for the test.
+	TestId string `pulumi:"testId"`
+}
+
+// GetZeroTrustDexTestsResultInput is an input type that accepts GetZeroTrustDexTestsResultArgs and GetZeroTrustDexTestsResultOutput values.
+// You can construct a concrete instance of `GetZeroTrustDexTestsResultInput` via:
+//
+//	GetZeroTrustDexTestsResultArgs{...}
+type GetZeroTrustDexTestsResultInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDexTestsResultOutput() GetZeroTrustDexTestsResultOutput
+	ToGetZeroTrustDexTestsResultOutputWithContext(context.Context) GetZeroTrustDexTestsResultOutput
+}
+
+type GetZeroTrustDexTestsResultArgs struct {
+	// The configuration object which contains the details for the WARP client to conduct the test.
+	Data GetZeroTrustDexTestsResultDataInput `pulumi:"data"`
+	// Additional details about the test.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Determines whether or not the test is active.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The unique identifier for the test.
+	Id pulumi.StringInput `pulumi:"id"`
+	// How often the test will run.
+	Interval pulumi.StringInput `pulumi:"interval"`
+	// The name of the DEX test. Must be unique.
+	Name pulumi.StringInput `pulumi:"name"`
+	// DEX rules targeted by this test
+	TargetPolicies GetZeroTrustDexTestsResultTargetPolicyArrayInput `pulumi:"targetPolicies"`
+	Targeted       pulumi.BoolInput                                 `pulumi:"targeted"`
+	// The unique identifier for the test.
+	TestId pulumi.StringInput `pulumi:"testId"`
+}
+
+func (GetZeroTrustDexTestsResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDexTestsResult)(nil)).Elem()
+}
+
+func (i GetZeroTrustDexTestsResultArgs) ToGetZeroTrustDexTestsResultOutput() GetZeroTrustDexTestsResultOutput {
+	return i.ToGetZeroTrustDexTestsResultOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDexTestsResultArgs) ToGetZeroTrustDexTestsResultOutputWithContext(ctx context.Context) GetZeroTrustDexTestsResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDexTestsResultOutput)
+}
+
+// GetZeroTrustDexTestsResultArrayInput is an input type that accepts GetZeroTrustDexTestsResultArray and GetZeroTrustDexTestsResultArrayOutput values.
+// You can construct a concrete instance of `GetZeroTrustDexTestsResultArrayInput` via:
+//
+//	GetZeroTrustDexTestsResultArray{ GetZeroTrustDexTestsResultArgs{...} }
+type GetZeroTrustDexTestsResultArrayInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDexTestsResultArrayOutput() GetZeroTrustDexTestsResultArrayOutput
+	ToGetZeroTrustDexTestsResultArrayOutputWithContext(context.Context) GetZeroTrustDexTestsResultArrayOutput
+}
+
+type GetZeroTrustDexTestsResultArray []GetZeroTrustDexTestsResultInput
+
+func (GetZeroTrustDexTestsResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDexTestsResult)(nil)).Elem()
+}
+
+func (i GetZeroTrustDexTestsResultArray) ToGetZeroTrustDexTestsResultArrayOutput() GetZeroTrustDexTestsResultArrayOutput {
+	return i.ToGetZeroTrustDexTestsResultArrayOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDexTestsResultArray) ToGetZeroTrustDexTestsResultArrayOutputWithContext(ctx context.Context) GetZeroTrustDexTestsResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDexTestsResultArrayOutput)
+}
+
+type GetZeroTrustDexTestsResultOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDexTestsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDexTestsResult)(nil)).Elem()
+}
+
+func (o GetZeroTrustDexTestsResultOutput) ToGetZeroTrustDexTestsResultOutput() GetZeroTrustDexTestsResultOutput {
+	return o
+}
+
+func (o GetZeroTrustDexTestsResultOutput) ToGetZeroTrustDexTestsResultOutputWithContext(ctx context.Context) GetZeroTrustDexTestsResultOutput {
+	return o
+}
+
+// The configuration object which contains the details for the WARP client to conduct the test.
+func (o GetZeroTrustDexTestsResultOutput) Data() GetZeroTrustDexTestsResultDataOutput {
+	return o.ApplyT(func(v GetZeroTrustDexTestsResult) GetZeroTrustDexTestsResultData { return v.Data }).(GetZeroTrustDexTestsResultDataOutput)
+}
+
+// Additional details about the test.
+func (o GetZeroTrustDexTestsResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDexTestsResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Determines whether or not the test is active.
+func (o GetZeroTrustDexTestsResultOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDexTestsResult) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The unique identifier for the test.
+func (o GetZeroTrustDexTestsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDexTestsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// How often the test will run.
+func (o GetZeroTrustDexTestsResultOutput) Interval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDexTestsResult) string { return v.Interval }).(pulumi.StringOutput)
+}
+
+// The name of the DEX test. Must be unique.
+func (o GetZeroTrustDexTestsResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDexTestsResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// DEX rules targeted by this test
+func (o GetZeroTrustDexTestsResultOutput) TargetPolicies() GetZeroTrustDexTestsResultTargetPolicyArrayOutput {
+	return o.ApplyT(func(v GetZeroTrustDexTestsResult) []GetZeroTrustDexTestsResultTargetPolicy { return v.TargetPolicies }).(GetZeroTrustDexTestsResultTargetPolicyArrayOutput)
+}
+
+func (o GetZeroTrustDexTestsResultOutput) Targeted() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDexTestsResult) bool { return v.Targeted }).(pulumi.BoolOutput)
+}
+
+// The unique identifier for the test.
+func (o GetZeroTrustDexTestsResultOutput) TestId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDexTestsResult) string { return v.TestId }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDexTestsResultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDexTestsResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDexTestsResult)(nil)).Elem()
+}
+
+func (o GetZeroTrustDexTestsResultArrayOutput) ToGetZeroTrustDexTestsResultArrayOutput() GetZeroTrustDexTestsResultArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDexTestsResultArrayOutput) ToGetZeroTrustDexTestsResultArrayOutputWithContext(ctx context.Context) GetZeroTrustDexTestsResultArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDexTestsResultArrayOutput) Index(i pulumi.IntInput) GetZeroTrustDexTestsResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZeroTrustDexTestsResult {
+		return vs[0].([]GetZeroTrustDexTestsResult)[vs[1].(int)]
+	}).(GetZeroTrustDexTestsResultOutput)
+}
+
+type GetZeroTrustDexTestsResultData struct {
+	// The desired endpoint to test.
+	Host string `pulumi:"host"`
+	// The type of test.
+	// Available values: "http", "traceroute".
+	Kind string `pulumi:"kind"`
+	// The HTTP request method type.
+	// Available values: "GET".
+	Method string `pulumi:"method"`
+}
+
+// GetZeroTrustDexTestsResultDataInput is an input type that accepts GetZeroTrustDexTestsResultDataArgs and GetZeroTrustDexTestsResultDataOutput values.
+// You can construct a concrete instance of `GetZeroTrustDexTestsResultDataInput` via:
+//
+//	GetZeroTrustDexTestsResultDataArgs{...}
+type GetZeroTrustDexTestsResultDataInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDexTestsResultDataOutput() GetZeroTrustDexTestsResultDataOutput
+	ToGetZeroTrustDexTestsResultDataOutputWithContext(context.Context) GetZeroTrustDexTestsResultDataOutput
+}
+
+type GetZeroTrustDexTestsResultDataArgs struct {
+	// The desired endpoint to test.
+	Host pulumi.StringInput `pulumi:"host"`
+	// The type of test.
+	// Available values: "http", "traceroute".
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// The HTTP request method type.
+	// Available values: "GET".
+	Method pulumi.StringInput `pulumi:"method"`
+}
+
+func (GetZeroTrustDexTestsResultDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDexTestsResultData)(nil)).Elem()
+}
+
+func (i GetZeroTrustDexTestsResultDataArgs) ToGetZeroTrustDexTestsResultDataOutput() GetZeroTrustDexTestsResultDataOutput {
+	return i.ToGetZeroTrustDexTestsResultDataOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDexTestsResultDataArgs) ToGetZeroTrustDexTestsResultDataOutputWithContext(ctx context.Context) GetZeroTrustDexTestsResultDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDexTestsResultDataOutput)
+}
+
+type GetZeroTrustDexTestsResultDataOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDexTestsResultDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDexTestsResultData)(nil)).Elem()
+}
+
+func (o GetZeroTrustDexTestsResultDataOutput) ToGetZeroTrustDexTestsResultDataOutput() GetZeroTrustDexTestsResultDataOutput {
+	return o
+}
+
+func (o GetZeroTrustDexTestsResultDataOutput) ToGetZeroTrustDexTestsResultDataOutputWithContext(ctx context.Context) GetZeroTrustDexTestsResultDataOutput {
+	return o
+}
+
+// The desired endpoint to test.
+func (o GetZeroTrustDexTestsResultDataOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDexTestsResultData) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The type of test.
+// Available values: "http", "traceroute".
+func (o GetZeroTrustDexTestsResultDataOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDexTestsResultData) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The HTTP request method type.
+// Available values: "GET".
+func (o GetZeroTrustDexTestsResultDataOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDexTestsResultData) string { return v.Method }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDexTestsResultTargetPolicy struct {
+	// Whether the DEX rule is the account default
+	Default bool `pulumi:"default"`
+	// API Resource UUID tag.
+	Id string `pulumi:"id"`
+	// The name of the DEX rule
+	Name string `pulumi:"name"`
+}
+
+// GetZeroTrustDexTestsResultTargetPolicyInput is an input type that accepts GetZeroTrustDexTestsResultTargetPolicyArgs and GetZeroTrustDexTestsResultTargetPolicyOutput values.
+// You can construct a concrete instance of `GetZeroTrustDexTestsResultTargetPolicyInput` via:
+//
+//	GetZeroTrustDexTestsResultTargetPolicyArgs{...}
+type GetZeroTrustDexTestsResultTargetPolicyInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDexTestsResultTargetPolicyOutput() GetZeroTrustDexTestsResultTargetPolicyOutput
+	ToGetZeroTrustDexTestsResultTargetPolicyOutputWithContext(context.Context) GetZeroTrustDexTestsResultTargetPolicyOutput
+}
+
+type GetZeroTrustDexTestsResultTargetPolicyArgs struct {
+	// Whether the DEX rule is the account default
+	Default pulumi.BoolInput `pulumi:"default"`
+	// API Resource UUID tag.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the DEX rule
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetZeroTrustDexTestsResultTargetPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDexTestsResultTargetPolicy)(nil)).Elem()
+}
+
+func (i GetZeroTrustDexTestsResultTargetPolicyArgs) ToGetZeroTrustDexTestsResultTargetPolicyOutput() GetZeroTrustDexTestsResultTargetPolicyOutput {
+	return i.ToGetZeroTrustDexTestsResultTargetPolicyOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDexTestsResultTargetPolicyArgs) ToGetZeroTrustDexTestsResultTargetPolicyOutputWithContext(ctx context.Context) GetZeroTrustDexTestsResultTargetPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDexTestsResultTargetPolicyOutput)
+}
+
+// GetZeroTrustDexTestsResultTargetPolicyArrayInput is an input type that accepts GetZeroTrustDexTestsResultTargetPolicyArray and GetZeroTrustDexTestsResultTargetPolicyArrayOutput values.
+// You can construct a concrete instance of `GetZeroTrustDexTestsResultTargetPolicyArrayInput` via:
+//
+//	GetZeroTrustDexTestsResultTargetPolicyArray{ GetZeroTrustDexTestsResultTargetPolicyArgs{...} }
+type GetZeroTrustDexTestsResultTargetPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDexTestsResultTargetPolicyArrayOutput() GetZeroTrustDexTestsResultTargetPolicyArrayOutput
+	ToGetZeroTrustDexTestsResultTargetPolicyArrayOutputWithContext(context.Context) GetZeroTrustDexTestsResultTargetPolicyArrayOutput
+}
+
+type GetZeroTrustDexTestsResultTargetPolicyArray []GetZeroTrustDexTestsResultTargetPolicyInput
+
+func (GetZeroTrustDexTestsResultTargetPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDexTestsResultTargetPolicy)(nil)).Elem()
+}
+
+func (i GetZeroTrustDexTestsResultTargetPolicyArray) ToGetZeroTrustDexTestsResultTargetPolicyArrayOutput() GetZeroTrustDexTestsResultTargetPolicyArrayOutput {
+	return i.ToGetZeroTrustDexTestsResultTargetPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDexTestsResultTargetPolicyArray) ToGetZeroTrustDexTestsResultTargetPolicyArrayOutputWithContext(ctx context.Context) GetZeroTrustDexTestsResultTargetPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDexTestsResultTargetPolicyArrayOutput)
+}
+
+type GetZeroTrustDexTestsResultTargetPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDexTestsResultTargetPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDexTestsResultTargetPolicy)(nil)).Elem()
+}
+
+func (o GetZeroTrustDexTestsResultTargetPolicyOutput) ToGetZeroTrustDexTestsResultTargetPolicyOutput() GetZeroTrustDexTestsResultTargetPolicyOutput {
+	return o
+}
+
+func (o GetZeroTrustDexTestsResultTargetPolicyOutput) ToGetZeroTrustDexTestsResultTargetPolicyOutputWithContext(ctx context.Context) GetZeroTrustDexTestsResultTargetPolicyOutput {
+	return o
+}
+
+// Whether the DEX rule is the account default
+func (o GetZeroTrustDexTestsResultTargetPolicyOutput) Default() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDexTestsResultTargetPolicy) bool { return v.Default }).(pulumi.BoolOutput)
+}
+
+// API Resource UUID tag.
+func (o GetZeroTrustDexTestsResultTargetPolicyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDexTestsResultTargetPolicy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the DEX rule
+func (o GetZeroTrustDexTestsResultTargetPolicyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDexTestsResultTargetPolicy) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDexTestsResultTargetPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDexTestsResultTargetPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDexTestsResultTargetPolicy)(nil)).Elem()
+}
+
+func (o GetZeroTrustDexTestsResultTargetPolicyArrayOutput) ToGetZeroTrustDexTestsResultTargetPolicyArrayOutput() GetZeroTrustDexTestsResultTargetPolicyArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDexTestsResultTargetPolicyArrayOutput) ToGetZeroTrustDexTestsResultTargetPolicyArrayOutputWithContext(ctx context.Context) GetZeroTrustDexTestsResultTargetPolicyArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDexTestsResultTargetPolicyArrayOutput) Index(i pulumi.IntInput) GetZeroTrustDexTestsResultTargetPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZeroTrustDexTestsResultTargetPolicy {
+		return vs[0].([]GetZeroTrustDexTestsResultTargetPolicy)[vs[1].(int)]
+	}).(GetZeroTrustDexTestsResultTargetPolicyOutput)
+}
+
+type GetZeroTrustDlpCustomEntriesResult struct {
+	// Only applies to custom word lists.
+	// Determines if the words should be matched in a case-sensitive manner
+	// Cannot be set to false if secret is true
+	CaseSensitive bool                                         `pulumi:"caseSensitive"`
+	Confidence    GetZeroTrustDlpCustomEntriesResultConfidence `pulumi:"confidence"`
+	CreatedAt     string                                       `pulumi:"createdAt"`
+	Enabled       bool                                         `pulumi:"enabled"`
+	Id            string                                       `pulumi:"id"`
+	Name          string                                       `pulumi:"name"`
+	Pattern       GetZeroTrustDlpCustomEntriesResultPattern    `pulumi:"pattern"`
+	ProfileId     string                                       `pulumi:"profileId"`
+	Secret        bool                                         `pulumi:"secret"`
+	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+	Type      string `pulumi:"type"`
+	UpdatedAt string `pulumi:"updatedAt"`
+	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+	UploadStatus string                                    `pulumi:"uploadStatus"`
+	Variant      GetZeroTrustDlpCustomEntriesResultVariant `pulumi:"variant"`
+	WordList     string                                    `pulumi:"wordList"`
+}
+
+// GetZeroTrustDlpCustomEntriesResultInput is an input type that accepts GetZeroTrustDlpCustomEntriesResultArgs and GetZeroTrustDlpCustomEntriesResultOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpCustomEntriesResultInput` via:
+//
+//	GetZeroTrustDlpCustomEntriesResultArgs{...}
+type GetZeroTrustDlpCustomEntriesResultInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpCustomEntriesResultOutput() GetZeroTrustDlpCustomEntriesResultOutput
+	ToGetZeroTrustDlpCustomEntriesResultOutputWithContext(context.Context) GetZeroTrustDlpCustomEntriesResultOutput
+}
+
+type GetZeroTrustDlpCustomEntriesResultArgs struct {
+	// Only applies to custom word lists.
+	// Determines if the words should be matched in a case-sensitive manner
+	// Cannot be set to false if secret is true
+	CaseSensitive pulumi.BoolInput                                  `pulumi:"caseSensitive"`
+	Confidence    GetZeroTrustDlpCustomEntriesResultConfidenceInput `pulumi:"confidence"`
+	CreatedAt     pulumi.StringInput                                `pulumi:"createdAt"`
+	Enabled       pulumi.BoolInput                                  `pulumi:"enabled"`
+	Id            pulumi.StringInput                                `pulumi:"id"`
+	Name          pulumi.StringInput                                `pulumi:"name"`
+	Pattern       GetZeroTrustDlpCustomEntriesResultPatternInput    `pulumi:"pattern"`
+	ProfileId     pulumi.StringInput                                `pulumi:"profileId"`
+	Secret        pulumi.BoolInput                                  `pulumi:"secret"`
+	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+	Type      pulumi.StringInput `pulumi:"type"`
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+	UploadStatus pulumi.StringInput                             `pulumi:"uploadStatus"`
+	Variant      GetZeroTrustDlpCustomEntriesResultVariantInput `pulumi:"variant"`
+	WordList     pulumi.StringInput                             `pulumi:"wordList"`
+}
+
+func (GetZeroTrustDlpCustomEntriesResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpCustomEntriesResult)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpCustomEntriesResultArgs) ToGetZeroTrustDlpCustomEntriesResultOutput() GetZeroTrustDlpCustomEntriesResultOutput {
+	return i.ToGetZeroTrustDlpCustomEntriesResultOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpCustomEntriesResultArgs) ToGetZeroTrustDlpCustomEntriesResultOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomEntriesResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpCustomEntriesResultOutput)
+}
+
+// GetZeroTrustDlpCustomEntriesResultArrayInput is an input type that accepts GetZeroTrustDlpCustomEntriesResultArray and GetZeroTrustDlpCustomEntriesResultArrayOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpCustomEntriesResultArrayInput` via:
+//
+//	GetZeroTrustDlpCustomEntriesResultArray{ GetZeroTrustDlpCustomEntriesResultArgs{...} }
+type GetZeroTrustDlpCustomEntriesResultArrayInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpCustomEntriesResultArrayOutput() GetZeroTrustDlpCustomEntriesResultArrayOutput
+	ToGetZeroTrustDlpCustomEntriesResultArrayOutputWithContext(context.Context) GetZeroTrustDlpCustomEntriesResultArrayOutput
+}
+
+type GetZeroTrustDlpCustomEntriesResultArray []GetZeroTrustDlpCustomEntriesResultInput
+
+func (GetZeroTrustDlpCustomEntriesResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDlpCustomEntriesResult)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpCustomEntriesResultArray) ToGetZeroTrustDlpCustomEntriesResultArrayOutput() GetZeroTrustDlpCustomEntriesResultArrayOutput {
+	return i.ToGetZeroTrustDlpCustomEntriesResultArrayOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpCustomEntriesResultArray) ToGetZeroTrustDlpCustomEntriesResultArrayOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomEntriesResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpCustomEntriesResultArrayOutput)
+}
+
+type GetZeroTrustDlpCustomEntriesResultOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpCustomEntriesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpCustomEntriesResult)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpCustomEntriesResultOutput) ToGetZeroTrustDlpCustomEntriesResultOutput() GetZeroTrustDlpCustomEntriesResultOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpCustomEntriesResultOutput) ToGetZeroTrustDlpCustomEntriesResultOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomEntriesResultOutput {
+	return o
+}
+
+// Only applies to custom word lists.
+// Determines if the words should be matched in a case-sensitive manner
+// Cannot be set to false if secret is true
+func (o GetZeroTrustDlpCustomEntriesResultOutput) CaseSensitive() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomEntriesResult) bool { return v.CaseSensitive }).(pulumi.BoolOutput)
+}
+
+func (o GetZeroTrustDlpCustomEntriesResultOutput) Confidence() GetZeroTrustDlpCustomEntriesResultConfidenceOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomEntriesResult) GetZeroTrustDlpCustomEntriesResultConfidence {
+		return v.Confidence
+	}).(GetZeroTrustDlpCustomEntriesResultConfidenceOutput)
+}
+
+func (o GetZeroTrustDlpCustomEntriesResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomEntriesResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpCustomEntriesResultOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomEntriesResult) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetZeroTrustDlpCustomEntriesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomEntriesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpCustomEntriesResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomEntriesResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpCustomEntriesResultOutput) Pattern() GetZeroTrustDlpCustomEntriesResultPatternOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomEntriesResult) GetZeroTrustDlpCustomEntriesResultPattern { return v.Pattern }).(GetZeroTrustDlpCustomEntriesResultPatternOutput)
+}
+
+func (o GetZeroTrustDlpCustomEntriesResultOutput) ProfileId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomEntriesResult) string { return v.ProfileId }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpCustomEntriesResultOutput) Secret() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomEntriesResult) bool { return v.Secret }).(pulumi.BoolOutput)
+}
+
+// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+func (o GetZeroTrustDlpCustomEntriesResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomEntriesResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpCustomEntriesResultOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomEntriesResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+func (o GetZeroTrustDlpCustomEntriesResultOutput) UploadStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomEntriesResult) string { return v.UploadStatus }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpCustomEntriesResultOutput) Variant() GetZeroTrustDlpCustomEntriesResultVariantOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomEntriesResult) GetZeroTrustDlpCustomEntriesResultVariant { return v.Variant }).(GetZeroTrustDlpCustomEntriesResultVariantOutput)
+}
+
+func (o GetZeroTrustDlpCustomEntriesResultOutput) WordList() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomEntriesResult) string { return v.WordList }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDlpCustomEntriesResultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpCustomEntriesResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDlpCustomEntriesResult)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpCustomEntriesResultArrayOutput) ToGetZeroTrustDlpCustomEntriesResultArrayOutput() GetZeroTrustDlpCustomEntriesResultArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpCustomEntriesResultArrayOutput) ToGetZeroTrustDlpCustomEntriesResultArrayOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomEntriesResultArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpCustomEntriesResultArrayOutput) Index(i pulumi.IntInput) GetZeroTrustDlpCustomEntriesResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZeroTrustDlpCustomEntriesResult {
+		return vs[0].([]GetZeroTrustDlpCustomEntriesResult)[vs[1].(int)]
+	}).(GetZeroTrustDlpCustomEntriesResultOutput)
+}
+
+type GetZeroTrustDlpCustomEntriesResultConfidence struct {
+	// Indicates whether this entry has AI remote service validation.
+	AiContextAvailable bool `pulumi:"aiContextAvailable"`
+	// Indicates whether this entry has any form of validation that is not an AI remote service.
+	Available bool `pulumi:"available"`
+}
+
+// GetZeroTrustDlpCustomEntriesResultConfidenceInput is an input type that accepts GetZeroTrustDlpCustomEntriesResultConfidenceArgs and GetZeroTrustDlpCustomEntriesResultConfidenceOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpCustomEntriesResultConfidenceInput` via:
+//
+//	GetZeroTrustDlpCustomEntriesResultConfidenceArgs{...}
+type GetZeroTrustDlpCustomEntriesResultConfidenceInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpCustomEntriesResultConfidenceOutput() GetZeroTrustDlpCustomEntriesResultConfidenceOutput
+	ToGetZeroTrustDlpCustomEntriesResultConfidenceOutputWithContext(context.Context) GetZeroTrustDlpCustomEntriesResultConfidenceOutput
+}
+
+type GetZeroTrustDlpCustomEntriesResultConfidenceArgs struct {
+	// Indicates whether this entry has AI remote service validation.
+	AiContextAvailable pulumi.BoolInput `pulumi:"aiContextAvailable"`
+	// Indicates whether this entry has any form of validation that is not an AI remote service.
+	Available pulumi.BoolInput `pulumi:"available"`
+}
+
+func (GetZeroTrustDlpCustomEntriesResultConfidenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpCustomEntriesResultConfidence)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpCustomEntriesResultConfidenceArgs) ToGetZeroTrustDlpCustomEntriesResultConfidenceOutput() GetZeroTrustDlpCustomEntriesResultConfidenceOutput {
+	return i.ToGetZeroTrustDlpCustomEntriesResultConfidenceOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpCustomEntriesResultConfidenceArgs) ToGetZeroTrustDlpCustomEntriesResultConfidenceOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomEntriesResultConfidenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpCustomEntriesResultConfidenceOutput)
+}
+
+type GetZeroTrustDlpCustomEntriesResultConfidenceOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpCustomEntriesResultConfidenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpCustomEntriesResultConfidence)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpCustomEntriesResultConfidenceOutput) ToGetZeroTrustDlpCustomEntriesResultConfidenceOutput() GetZeroTrustDlpCustomEntriesResultConfidenceOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpCustomEntriesResultConfidenceOutput) ToGetZeroTrustDlpCustomEntriesResultConfidenceOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomEntriesResultConfidenceOutput {
+	return o
+}
+
+// Indicates whether this entry has AI remote service validation.
+func (o GetZeroTrustDlpCustomEntriesResultConfidenceOutput) AiContextAvailable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomEntriesResultConfidence) bool { return v.AiContextAvailable }).(pulumi.BoolOutput)
+}
+
+// Indicates whether this entry has any form of validation that is not an AI remote service.
+func (o GetZeroTrustDlpCustomEntriesResultConfidenceOutput) Available() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomEntriesResultConfidence) bool { return v.Available }).(pulumi.BoolOutput)
+}
+
+type GetZeroTrustDlpCustomEntriesResultPattern struct {
+	Regex string `pulumi:"regex"`
+	// Available values: "luhn".
+	//
+	// Deprecated: This attribute is deprecated.
+	Validation string `pulumi:"validation"`
+}
+
+// GetZeroTrustDlpCustomEntriesResultPatternInput is an input type that accepts GetZeroTrustDlpCustomEntriesResultPatternArgs and GetZeroTrustDlpCustomEntriesResultPatternOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpCustomEntriesResultPatternInput` via:
+//
+//	GetZeroTrustDlpCustomEntriesResultPatternArgs{...}
+type GetZeroTrustDlpCustomEntriesResultPatternInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpCustomEntriesResultPatternOutput() GetZeroTrustDlpCustomEntriesResultPatternOutput
+	ToGetZeroTrustDlpCustomEntriesResultPatternOutputWithContext(context.Context) GetZeroTrustDlpCustomEntriesResultPatternOutput
+}
+
+type GetZeroTrustDlpCustomEntriesResultPatternArgs struct {
+	Regex pulumi.StringInput `pulumi:"regex"`
+	// Available values: "luhn".
+	//
+	// Deprecated: This attribute is deprecated.
+	Validation pulumi.StringInput `pulumi:"validation"`
+}
+
+func (GetZeroTrustDlpCustomEntriesResultPatternArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpCustomEntriesResultPattern)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpCustomEntriesResultPatternArgs) ToGetZeroTrustDlpCustomEntriesResultPatternOutput() GetZeroTrustDlpCustomEntriesResultPatternOutput {
+	return i.ToGetZeroTrustDlpCustomEntriesResultPatternOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpCustomEntriesResultPatternArgs) ToGetZeroTrustDlpCustomEntriesResultPatternOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomEntriesResultPatternOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpCustomEntriesResultPatternOutput)
+}
+
+type GetZeroTrustDlpCustomEntriesResultPatternOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpCustomEntriesResultPatternOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpCustomEntriesResultPattern)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpCustomEntriesResultPatternOutput) ToGetZeroTrustDlpCustomEntriesResultPatternOutput() GetZeroTrustDlpCustomEntriesResultPatternOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpCustomEntriesResultPatternOutput) ToGetZeroTrustDlpCustomEntriesResultPatternOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomEntriesResultPatternOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpCustomEntriesResultPatternOutput) Regex() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomEntriesResultPattern) string { return v.Regex }).(pulumi.StringOutput)
+}
+
+// Available values: "luhn".
+//
+// Deprecated: This attribute is deprecated.
+func (o GetZeroTrustDlpCustomEntriesResultPatternOutput) Validation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomEntriesResultPattern) string { return v.Validation }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDlpCustomEntriesResultVariant struct {
+	Description string `pulumi:"description"`
+	// Available values: "Intent", "Content".
+	TopicType string `pulumi:"topicType"`
+	// Available values: "PromptTopic".
+	Type string `pulumi:"type"`
+}
+
+// GetZeroTrustDlpCustomEntriesResultVariantInput is an input type that accepts GetZeroTrustDlpCustomEntriesResultVariantArgs and GetZeroTrustDlpCustomEntriesResultVariantOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpCustomEntriesResultVariantInput` via:
+//
+//	GetZeroTrustDlpCustomEntriesResultVariantArgs{...}
+type GetZeroTrustDlpCustomEntriesResultVariantInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpCustomEntriesResultVariantOutput() GetZeroTrustDlpCustomEntriesResultVariantOutput
+	ToGetZeroTrustDlpCustomEntriesResultVariantOutputWithContext(context.Context) GetZeroTrustDlpCustomEntriesResultVariantOutput
+}
+
+type GetZeroTrustDlpCustomEntriesResultVariantArgs struct {
+	Description pulumi.StringInput `pulumi:"description"`
+	// Available values: "Intent", "Content".
+	TopicType pulumi.StringInput `pulumi:"topicType"`
+	// Available values: "PromptTopic".
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetZeroTrustDlpCustomEntriesResultVariantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpCustomEntriesResultVariant)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpCustomEntriesResultVariantArgs) ToGetZeroTrustDlpCustomEntriesResultVariantOutput() GetZeroTrustDlpCustomEntriesResultVariantOutput {
+	return i.ToGetZeroTrustDlpCustomEntriesResultVariantOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpCustomEntriesResultVariantArgs) ToGetZeroTrustDlpCustomEntriesResultVariantOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomEntriesResultVariantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpCustomEntriesResultVariantOutput)
+}
+
+type GetZeroTrustDlpCustomEntriesResultVariantOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpCustomEntriesResultVariantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpCustomEntriesResultVariant)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpCustomEntriesResultVariantOutput) ToGetZeroTrustDlpCustomEntriesResultVariantOutput() GetZeroTrustDlpCustomEntriesResultVariantOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpCustomEntriesResultVariantOutput) ToGetZeroTrustDlpCustomEntriesResultVariantOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomEntriesResultVariantOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpCustomEntriesResultVariantOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomEntriesResultVariant) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Available values: "Intent", "Content".
+func (o GetZeroTrustDlpCustomEntriesResultVariantOutput) TopicType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomEntriesResultVariant) string { return v.TopicType }).(pulumi.StringOutput)
+}
+
+// Available values: "PromptTopic".
+func (o GetZeroTrustDlpCustomEntriesResultVariantOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomEntriesResultVariant) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDlpCustomEntryConfidence struct {
+	// Indicates whether this entry has AI remote service validation.
+	AiContextAvailable bool `pulumi:"aiContextAvailable"`
+	// Indicates whether this entry has any form of validation that is not an AI remote service.
+	Available bool `pulumi:"available"`
+}
+
+// GetZeroTrustDlpCustomEntryConfidenceInput is an input type that accepts GetZeroTrustDlpCustomEntryConfidenceArgs and GetZeroTrustDlpCustomEntryConfidenceOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpCustomEntryConfidenceInput` via:
+//
+//	GetZeroTrustDlpCustomEntryConfidenceArgs{...}
+type GetZeroTrustDlpCustomEntryConfidenceInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpCustomEntryConfidenceOutput() GetZeroTrustDlpCustomEntryConfidenceOutput
+	ToGetZeroTrustDlpCustomEntryConfidenceOutputWithContext(context.Context) GetZeroTrustDlpCustomEntryConfidenceOutput
+}
+
+type GetZeroTrustDlpCustomEntryConfidenceArgs struct {
+	// Indicates whether this entry has AI remote service validation.
+	AiContextAvailable pulumi.BoolInput `pulumi:"aiContextAvailable"`
+	// Indicates whether this entry has any form of validation that is not an AI remote service.
+	Available pulumi.BoolInput `pulumi:"available"`
+}
+
+func (GetZeroTrustDlpCustomEntryConfidenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpCustomEntryConfidence)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpCustomEntryConfidenceArgs) ToGetZeroTrustDlpCustomEntryConfidenceOutput() GetZeroTrustDlpCustomEntryConfidenceOutput {
+	return i.ToGetZeroTrustDlpCustomEntryConfidenceOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpCustomEntryConfidenceArgs) ToGetZeroTrustDlpCustomEntryConfidenceOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomEntryConfidenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpCustomEntryConfidenceOutput)
+}
+
+type GetZeroTrustDlpCustomEntryConfidenceOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpCustomEntryConfidenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpCustomEntryConfidence)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpCustomEntryConfidenceOutput) ToGetZeroTrustDlpCustomEntryConfidenceOutput() GetZeroTrustDlpCustomEntryConfidenceOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpCustomEntryConfidenceOutput) ToGetZeroTrustDlpCustomEntryConfidenceOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomEntryConfidenceOutput {
+	return o
+}
+
+// Indicates whether this entry has AI remote service validation.
+func (o GetZeroTrustDlpCustomEntryConfidenceOutput) AiContextAvailable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomEntryConfidence) bool { return v.AiContextAvailable }).(pulumi.BoolOutput)
+}
+
+// Indicates whether this entry has any form of validation that is not an AI remote service.
+func (o GetZeroTrustDlpCustomEntryConfidenceOutput) Available() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomEntryConfidence) bool { return v.Available }).(pulumi.BoolOutput)
+}
+
+type GetZeroTrustDlpCustomEntryPattern struct {
+	Regex string `pulumi:"regex"`
+	// Available values: "luhn".
+	//
+	// Deprecated: This attribute is deprecated.
+	Validation string `pulumi:"validation"`
+}
+
+// GetZeroTrustDlpCustomEntryPatternInput is an input type that accepts GetZeroTrustDlpCustomEntryPatternArgs and GetZeroTrustDlpCustomEntryPatternOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpCustomEntryPatternInput` via:
+//
+//	GetZeroTrustDlpCustomEntryPatternArgs{...}
+type GetZeroTrustDlpCustomEntryPatternInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpCustomEntryPatternOutput() GetZeroTrustDlpCustomEntryPatternOutput
+	ToGetZeroTrustDlpCustomEntryPatternOutputWithContext(context.Context) GetZeroTrustDlpCustomEntryPatternOutput
+}
+
+type GetZeroTrustDlpCustomEntryPatternArgs struct {
+	Regex pulumi.StringInput `pulumi:"regex"`
+	// Available values: "luhn".
+	//
+	// Deprecated: This attribute is deprecated.
+	Validation pulumi.StringInput `pulumi:"validation"`
+}
+
+func (GetZeroTrustDlpCustomEntryPatternArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpCustomEntryPattern)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpCustomEntryPatternArgs) ToGetZeroTrustDlpCustomEntryPatternOutput() GetZeroTrustDlpCustomEntryPatternOutput {
+	return i.ToGetZeroTrustDlpCustomEntryPatternOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpCustomEntryPatternArgs) ToGetZeroTrustDlpCustomEntryPatternOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomEntryPatternOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpCustomEntryPatternOutput)
+}
+
+type GetZeroTrustDlpCustomEntryPatternOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpCustomEntryPatternOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpCustomEntryPattern)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpCustomEntryPatternOutput) ToGetZeroTrustDlpCustomEntryPatternOutput() GetZeroTrustDlpCustomEntryPatternOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpCustomEntryPatternOutput) ToGetZeroTrustDlpCustomEntryPatternOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomEntryPatternOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpCustomEntryPatternOutput) Regex() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomEntryPattern) string { return v.Regex }).(pulumi.StringOutput)
+}
+
+// Available values: "luhn".
+//
+// Deprecated: This attribute is deprecated.
+func (o GetZeroTrustDlpCustomEntryPatternOutput) Validation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomEntryPattern) string { return v.Validation }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDlpCustomEntryProfile struct {
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
+}
+
+// GetZeroTrustDlpCustomEntryProfileInput is an input type that accepts GetZeroTrustDlpCustomEntryProfileArgs and GetZeroTrustDlpCustomEntryProfileOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpCustomEntryProfileInput` via:
+//
+//	GetZeroTrustDlpCustomEntryProfileArgs{...}
+type GetZeroTrustDlpCustomEntryProfileInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpCustomEntryProfileOutput() GetZeroTrustDlpCustomEntryProfileOutput
+	ToGetZeroTrustDlpCustomEntryProfileOutputWithContext(context.Context) GetZeroTrustDlpCustomEntryProfileOutput
+}
+
+type GetZeroTrustDlpCustomEntryProfileArgs struct {
+	Id   pulumi.StringInput `pulumi:"id"`
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetZeroTrustDlpCustomEntryProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpCustomEntryProfile)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpCustomEntryProfileArgs) ToGetZeroTrustDlpCustomEntryProfileOutput() GetZeroTrustDlpCustomEntryProfileOutput {
+	return i.ToGetZeroTrustDlpCustomEntryProfileOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpCustomEntryProfileArgs) ToGetZeroTrustDlpCustomEntryProfileOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomEntryProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpCustomEntryProfileOutput)
+}
+
+// GetZeroTrustDlpCustomEntryProfileArrayInput is an input type that accepts GetZeroTrustDlpCustomEntryProfileArray and GetZeroTrustDlpCustomEntryProfileArrayOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpCustomEntryProfileArrayInput` via:
+//
+//	GetZeroTrustDlpCustomEntryProfileArray{ GetZeroTrustDlpCustomEntryProfileArgs{...} }
+type GetZeroTrustDlpCustomEntryProfileArrayInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpCustomEntryProfileArrayOutput() GetZeroTrustDlpCustomEntryProfileArrayOutput
+	ToGetZeroTrustDlpCustomEntryProfileArrayOutputWithContext(context.Context) GetZeroTrustDlpCustomEntryProfileArrayOutput
+}
+
+type GetZeroTrustDlpCustomEntryProfileArray []GetZeroTrustDlpCustomEntryProfileInput
+
+func (GetZeroTrustDlpCustomEntryProfileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDlpCustomEntryProfile)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpCustomEntryProfileArray) ToGetZeroTrustDlpCustomEntryProfileArrayOutput() GetZeroTrustDlpCustomEntryProfileArrayOutput {
+	return i.ToGetZeroTrustDlpCustomEntryProfileArrayOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpCustomEntryProfileArray) ToGetZeroTrustDlpCustomEntryProfileArrayOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomEntryProfileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpCustomEntryProfileArrayOutput)
+}
+
+type GetZeroTrustDlpCustomEntryProfileOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpCustomEntryProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpCustomEntryProfile)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpCustomEntryProfileOutput) ToGetZeroTrustDlpCustomEntryProfileOutput() GetZeroTrustDlpCustomEntryProfileOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpCustomEntryProfileOutput) ToGetZeroTrustDlpCustomEntryProfileOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomEntryProfileOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpCustomEntryProfileOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomEntryProfile) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpCustomEntryProfileOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomEntryProfile) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDlpCustomEntryProfileArrayOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpCustomEntryProfileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDlpCustomEntryProfile)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpCustomEntryProfileArrayOutput) ToGetZeroTrustDlpCustomEntryProfileArrayOutput() GetZeroTrustDlpCustomEntryProfileArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpCustomEntryProfileArrayOutput) ToGetZeroTrustDlpCustomEntryProfileArrayOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomEntryProfileArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpCustomEntryProfileArrayOutput) Index(i pulumi.IntInput) GetZeroTrustDlpCustomEntryProfileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZeroTrustDlpCustomEntryProfile {
+		return vs[0].([]GetZeroTrustDlpCustomEntryProfile)[vs[1].(int)]
+	}).(GetZeroTrustDlpCustomEntryProfileOutput)
+}
+
+type GetZeroTrustDlpCustomEntryVariant struct {
+	Description string `pulumi:"description"`
+	// Available values: "Intent", "Content".
+	TopicType string `pulumi:"topicType"`
+	// Available values: "PromptTopic".
+	Type string `pulumi:"type"`
+}
+
+// GetZeroTrustDlpCustomEntryVariantInput is an input type that accepts GetZeroTrustDlpCustomEntryVariantArgs and GetZeroTrustDlpCustomEntryVariantOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpCustomEntryVariantInput` via:
+//
+//	GetZeroTrustDlpCustomEntryVariantArgs{...}
+type GetZeroTrustDlpCustomEntryVariantInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpCustomEntryVariantOutput() GetZeroTrustDlpCustomEntryVariantOutput
+	ToGetZeroTrustDlpCustomEntryVariantOutputWithContext(context.Context) GetZeroTrustDlpCustomEntryVariantOutput
+}
+
+type GetZeroTrustDlpCustomEntryVariantArgs struct {
+	Description pulumi.StringInput `pulumi:"description"`
+	// Available values: "Intent", "Content".
+	TopicType pulumi.StringInput `pulumi:"topicType"`
+	// Available values: "PromptTopic".
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetZeroTrustDlpCustomEntryVariantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpCustomEntryVariant)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpCustomEntryVariantArgs) ToGetZeroTrustDlpCustomEntryVariantOutput() GetZeroTrustDlpCustomEntryVariantOutput {
+	return i.ToGetZeroTrustDlpCustomEntryVariantOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpCustomEntryVariantArgs) ToGetZeroTrustDlpCustomEntryVariantOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomEntryVariantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpCustomEntryVariantOutput)
+}
+
+type GetZeroTrustDlpCustomEntryVariantOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpCustomEntryVariantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpCustomEntryVariant)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpCustomEntryVariantOutput) ToGetZeroTrustDlpCustomEntryVariantOutput() GetZeroTrustDlpCustomEntryVariantOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpCustomEntryVariantOutput) ToGetZeroTrustDlpCustomEntryVariantOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomEntryVariantOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpCustomEntryVariantOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomEntryVariant) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Available values: "Intent", "Content".
+func (o GetZeroTrustDlpCustomEntryVariantOutput) TopicType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomEntryVariant) string { return v.TopicType }).(pulumi.StringOutput)
+}
+
+// Available values: "PromptTopic".
+func (o GetZeroTrustDlpCustomEntryVariantOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomEntryVariant) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDlpCustomProfileContextAwareness struct {
+	// If true, scan the context of predefined entries to only return matches surrounded by keywords.
+	Enabled bool `pulumi:"enabled"`
+	// Content types to exclude from context analysis and return all matches.
+	Skip GetZeroTrustDlpCustomProfileContextAwarenessSkip `pulumi:"skip"`
+}
+
+// GetZeroTrustDlpCustomProfileContextAwarenessInput is an input type that accepts GetZeroTrustDlpCustomProfileContextAwarenessArgs and GetZeroTrustDlpCustomProfileContextAwarenessOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpCustomProfileContextAwarenessInput` via:
+//
+//	GetZeroTrustDlpCustomProfileContextAwarenessArgs{...}
+type GetZeroTrustDlpCustomProfileContextAwarenessInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpCustomProfileContextAwarenessOutput() GetZeroTrustDlpCustomProfileContextAwarenessOutput
+	ToGetZeroTrustDlpCustomProfileContextAwarenessOutputWithContext(context.Context) GetZeroTrustDlpCustomProfileContextAwarenessOutput
+}
+
+type GetZeroTrustDlpCustomProfileContextAwarenessArgs struct {
+	// If true, scan the context of predefined entries to only return matches surrounded by keywords.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Content types to exclude from context analysis and return all matches.
+	Skip GetZeroTrustDlpCustomProfileContextAwarenessSkipInput `pulumi:"skip"`
+}
+
+func (GetZeroTrustDlpCustomProfileContextAwarenessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpCustomProfileContextAwareness)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpCustomProfileContextAwarenessArgs) ToGetZeroTrustDlpCustomProfileContextAwarenessOutput() GetZeroTrustDlpCustomProfileContextAwarenessOutput {
+	return i.ToGetZeroTrustDlpCustomProfileContextAwarenessOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpCustomProfileContextAwarenessArgs) ToGetZeroTrustDlpCustomProfileContextAwarenessOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomProfileContextAwarenessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpCustomProfileContextAwarenessOutput)
+}
+
+type GetZeroTrustDlpCustomProfileContextAwarenessOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpCustomProfileContextAwarenessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpCustomProfileContextAwareness)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpCustomProfileContextAwarenessOutput) ToGetZeroTrustDlpCustomProfileContextAwarenessOutput() GetZeroTrustDlpCustomProfileContextAwarenessOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpCustomProfileContextAwarenessOutput) ToGetZeroTrustDlpCustomProfileContextAwarenessOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomProfileContextAwarenessOutput {
+	return o
+}
+
+// If true, scan the context of predefined entries to only return matches surrounded by keywords.
+func (o GetZeroTrustDlpCustomProfileContextAwarenessOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomProfileContextAwareness) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Content types to exclude from context analysis and return all matches.
+func (o GetZeroTrustDlpCustomProfileContextAwarenessOutput) Skip() GetZeroTrustDlpCustomProfileContextAwarenessSkipOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomProfileContextAwareness) GetZeroTrustDlpCustomProfileContextAwarenessSkip {
+		return v.Skip
+	}).(GetZeroTrustDlpCustomProfileContextAwarenessSkipOutput)
+}
+
+type GetZeroTrustDlpCustomProfileContextAwarenessSkip struct {
+	// If the content type is a file, skip context analysis and return all matches.
+	Files bool `pulumi:"files"`
+}
+
+// GetZeroTrustDlpCustomProfileContextAwarenessSkipInput is an input type that accepts GetZeroTrustDlpCustomProfileContextAwarenessSkipArgs and GetZeroTrustDlpCustomProfileContextAwarenessSkipOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpCustomProfileContextAwarenessSkipInput` via:
+//
+//	GetZeroTrustDlpCustomProfileContextAwarenessSkipArgs{...}
+type GetZeroTrustDlpCustomProfileContextAwarenessSkipInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpCustomProfileContextAwarenessSkipOutput() GetZeroTrustDlpCustomProfileContextAwarenessSkipOutput
+	ToGetZeroTrustDlpCustomProfileContextAwarenessSkipOutputWithContext(context.Context) GetZeroTrustDlpCustomProfileContextAwarenessSkipOutput
+}
+
+type GetZeroTrustDlpCustomProfileContextAwarenessSkipArgs struct {
+	// If the content type is a file, skip context analysis and return all matches.
+	Files pulumi.BoolInput `pulumi:"files"`
+}
+
+func (GetZeroTrustDlpCustomProfileContextAwarenessSkipArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpCustomProfileContextAwarenessSkip)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpCustomProfileContextAwarenessSkipArgs) ToGetZeroTrustDlpCustomProfileContextAwarenessSkipOutput() GetZeroTrustDlpCustomProfileContextAwarenessSkipOutput {
+	return i.ToGetZeroTrustDlpCustomProfileContextAwarenessSkipOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpCustomProfileContextAwarenessSkipArgs) ToGetZeroTrustDlpCustomProfileContextAwarenessSkipOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomProfileContextAwarenessSkipOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpCustomProfileContextAwarenessSkipOutput)
+}
+
+type GetZeroTrustDlpCustomProfileContextAwarenessSkipOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpCustomProfileContextAwarenessSkipOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpCustomProfileContextAwarenessSkip)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpCustomProfileContextAwarenessSkipOutput) ToGetZeroTrustDlpCustomProfileContextAwarenessSkipOutput() GetZeroTrustDlpCustomProfileContextAwarenessSkipOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpCustomProfileContextAwarenessSkipOutput) ToGetZeroTrustDlpCustomProfileContextAwarenessSkipOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomProfileContextAwarenessSkipOutput {
+	return o
+}
+
+// If the content type is a file, skip context analysis and return all matches.
+func (o GetZeroTrustDlpCustomProfileContextAwarenessSkipOutput) Files() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomProfileContextAwarenessSkip) bool { return v.Files }).(pulumi.BoolOutput)
+}
+
+type GetZeroTrustDlpCustomProfileEntry struct {
+	// Only applies to custom word lists.
+	// Determines if the words should be matched in a case-sensitive manner
+	// Cannot be set to false if secret is true
+	CaseSensitive bool                                        `pulumi:"caseSensitive"`
+	Confidence    GetZeroTrustDlpCustomProfileEntryConfidence `pulumi:"confidence"`
+	CreatedAt     string                                      `pulumi:"createdAt"`
+	Enabled       bool                                        `pulumi:"enabled"`
+	Id            string                                      `pulumi:"id"`
+	Name          string                                      `pulumi:"name"`
+	Pattern       GetZeroTrustDlpCustomProfileEntryPattern    `pulumi:"pattern"`
+	ProfileId     string                                      `pulumi:"profileId"`
+	Secret        bool                                        `pulumi:"secret"`
+	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+	Type      string                                   `pulumi:"type"`
+	UpdatedAt string                                   `pulumi:"updatedAt"`
+	Variant   GetZeroTrustDlpCustomProfileEntryVariant `pulumi:"variant"`
+	WordList  string                                   `pulumi:"wordList"`
+}
+
+// GetZeroTrustDlpCustomProfileEntryInput is an input type that accepts GetZeroTrustDlpCustomProfileEntryArgs and GetZeroTrustDlpCustomProfileEntryOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpCustomProfileEntryInput` via:
+//
+//	GetZeroTrustDlpCustomProfileEntryArgs{...}
+type GetZeroTrustDlpCustomProfileEntryInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpCustomProfileEntryOutput() GetZeroTrustDlpCustomProfileEntryOutput
+	ToGetZeroTrustDlpCustomProfileEntryOutputWithContext(context.Context) GetZeroTrustDlpCustomProfileEntryOutput
+}
+
+type GetZeroTrustDlpCustomProfileEntryArgs struct {
+	// Only applies to custom word lists.
+	// Determines if the words should be matched in a case-sensitive manner
+	// Cannot be set to false if secret is true
+	CaseSensitive pulumi.BoolInput                                 `pulumi:"caseSensitive"`
+	Confidence    GetZeroTrustDlpCustomProfileEntryConfidenceInput `pulumi:"confidence"`
+	CreatedAt     pulumi.StringInput                               `pulumi:"createdAt"`
+	Enabled       pulumi.BoolInput                                 `pulumi:"enabled"`
+	Id            pulumi.StringInput                               `pulumi:"id"`
+	Name          pulumi.StringInput                               `pulumi:"name"`
+	Pattern       GetZeroTrustDlpCustomProfileEntryPatternInput    `pulumi:"pattern"`
+	ProfileId     pulumi.StringInput                               `pulumi:"profileId"`
+	Secret        pulumi.BoolInput                                 `pulumi:"secret"`
+	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+	Type      pulumi.StringInput                            `pulumi:"type"`
+	UpdatedAt pulumi.StringInput                            `pulumi:"updatedAt"`
+	Variant   GetZeroTrustDlpCustomProfileEntryVariantInput `pulumi:"variant"`
+	WordList  pulumi.StringInput                            `pulumi:"wordList"`
+}
+
+func (GetZeroTrustDlpCustomProfileEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpCustomProfileEntry)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpCustomProfileEntryArgs) ToGetZeroTrustDlpCustomProfileEntryOutput() GetZeroTrustDlpCustomProfileEntryOutput {
+	return i.ToGetZeroTrustDlpCustomProfileEntryOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpCustomProfileEntryArgs) ToGetZeroTrustDlpCustomProfileEntryOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomProfileEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpCustomProfileEntryOutput)
+}
+
+// GetZeroTrustDlpCustomProfileEntryArrayInput is an input type that accepts GetZeroTrustDlpCustomProfileEntryArray and GetZeroTrustDlpCustomProfileEntryArrayOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpCustomProfileEntryArrayInput` via:
+//
+//	GetZeroTrustDlpCustomProfileEntryArray{ GetZeroTrustDlpCustomProfileEntryArgs{...} }
+type GetZeroTrustDlpCustomProfileEntryArrayInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpCustomProfileEntryArrayOutput() GetZeroTrustDlpCustomProfileEntryArrayOutput
+	ToGetZeroTrustDlpCustomProfileEntryArrayOutputWithContext(context.Context) GetZeroTrustDlpCustomProfileEntryArrayOutput
+}
+
+type GetZeroTrustDlpCustomProfileEntryArray []GetZeroTrustDlpCustomProfileEntryInput
+
+func (GetZeroTrustDlpCustomProfileEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDlpCustomProfileEntry)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpCustomProfileEntryArray) ToGetZeroTrustDlpCustomProfileEntryArrayOutput() GetZeroTrustDlpCustomProfileEntryArrayOutput {
+	return i.ToGetZeroTrustDlpCustomProfileEntryArrayOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpCustomProfileEntryArray) ToGetZeroTrustDlpCustomProfileEntryArrayOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomProfileEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpCustomProfileEntryArrayOutput)
+}
+
+type GetZeroTrustDlpCustomProfileEntryOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpCustomProfileEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpCustomProfileEntry)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpCustomProfileEntryOutput) ToGetZeroTrustDlpCustomProfileEntryOutput() GetZeroTrustDlpCustomProfileEntryOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpCustomProfileEntryOutput) ToGetZeroTrustDlpCustomProfileEntryOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomProfileEntryOutput {
+	return o
+}
+
+// Only applies to custom word lists.
+// Determines if the words should be matched in a case-sensitive manner
+// Cannot be set to false if secret is true
+func (o GetZeroTrustDlpCustomProfileEntryOutput) CaseSensitive() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomProfileEntry) bool { return v.CaseSensitive }).(pulumi.BoolOutput)
+}
+
+func (o GetZeroTrustDlpCustomProfileEntryOutput) Confidence() GetZeroTrustDlpCustomProfileEntryConfidenceOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomProfileEntry) GetZeroTrustDlpCustomProfileEntryConfidence {
+		return v.Confidence
+	}).(GetZeroTrustDlpCustomProfileEntryConfidenceOutput)
+}
+
+func (o GetZeroTrustDlpCustomProfileEntryOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomProfileEntry) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpCustomProfileEntryOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomProfileEntry) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetZeroTrustDlpCustomProfileEntryOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomProfileEntry) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpCustomProfileEntryOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomProfileEntry) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpCustomProfileEntryOutput) Pattern() GetZeroTrustDlpCustomProfileEntryPatternOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomProfileEntry) GetZeroTrustDlpCustomProfileEntryPattern { return v.Pattern }).(GetZeroTrustDlpCustomProfileEntryPatternOutput)
+}
+
+func (o GetZeroTrustDlpCustomProfileEntryOutput) ProfileId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomProfileEntry) string { return v.ProfileId }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpCustomProfileEntryOutput) Secret() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomProfileEntry) bool { return v.Secret }).(pulumi.BoolOutput)
+}
+
+// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+func (o GetZeroTrustDlpCustomProfileEntryOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomProfileEntry) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpCustomProfileEntryOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomProfileEntry) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpCustomProfileEntryOutput) Variant() GetZeroTrustDlpCustomProfileEntryVariantOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomProfileEntry) GetZeroTrustDlpCustomProfileEntryVariant { return v.Variant }).(GetZeroTrustDlpCustomProfileEntryVariantOutput)
+}
+
+func (o GetZeroTrustDlpCustomProfileEntryOutput) WordList() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomProfileEntry) string { return v.WordList }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDlpCustomProfileEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpCustomProfileEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDlpCustomProfileEntry)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpCustomProfileEntryArrayOutput) ToGetZeroTrustDlpCustomProfileEntryArrayOutput() GetZeroTrustDlpCustomProfileEntryArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpCustomProfileEntryArrayOutput) ToGetZeroTrustDlpCustomProfileEntryArrayOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomProfileEntryArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpCustomProfileEntryArrayOutput) Index(i pulumi.IntInput) GetZeroTrustDlpCustomProfileEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZeroTrustDlpCustomProfileEntry {
+		return vs[0].([]GetZeroTrustDlpCustomProfileEntry)[vs[1].(int)]
+	}).(GetZeroTrustDlpCustomProfileEntryOutput)
+}
+
+type GetZeroTrustDlpCustomProfileEntryConfidence struct {
+	// Indicates whether this entry has AI remote service validation.
+	AiContextAvailable bool `pulumi:"aiContextAvailable"`
+	// Indicates whether this entry has any form of validation that is not an AI remote service.
+	Available bool `pulumi:"available"`
+}
+
+// GetZeroTrustDlpCustomProfileEntryConfidenceInput is an input type that accepts GetZeroTrustDlpCustomProfileEntryConfidenceArgs and GetZeroTrustDlpCustomProfileEntryConfidenceOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpCustomProfileEntryConfidenceInput` via:
+//
+//	GetZeroTrustDlpCustomProfileEntryConfidenceArgs{...}
+type GetZeroTrustDlpCustomProfileEntryConfidenceInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpCustomProfileEntryConfidenceOutput() GetZeroTrustDlpCustomProfileEntryConfidenceOutput
+	ToGetZeroTrustDlpCustomProfileEntryConfidenceOutputWithContext(context.Context) GetZeroTrustDlpCustomProfileEntryConfidenceOutput
+}
+
+type GetZeroTrustDlpCustomProfileEntryConfidenceArgs struct {
+	// Indicates whether this entry has AI remote service validation.
+	AiContextAvailable pulumi.BoolInput `pulumi:"aiContextAvailable"`
+	// Indicates whether this entry has any form of validation that is not an AI remote service.
+	Available pulumi.BoolInput `pulumi:"available"`
+}
+
+func (GetZeroTrustDlpCustomProfileEntryConfidenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpCustomProfileEntryConfidence)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpCustomProfileEntryConfidenceArgs) ToGetZeroTrustDlpCustomProfileEntryConfidenceOutput() GetZeroTrustDlpCustomProfileEntryConfidenceOutput {
+	return i.ToGetZeroTrustDlpCustomProfileEntryConfidenceOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpCustomProfileEntryConfidenceArgs) ToGetZeroTrustDlpCustomProfileEntryConfidenceOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomProfileEntryConfidenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpCustomProfileEntryConfidenceOutput)
+}
+
+type GetZeroTrustDlpCustomProfileEntryConfidenceOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpCustomProfileEntryConfidenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpCustomProfileEntryConfidence)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpCustomProfileEntryConfidenceOutput) ToGetZeroTrustDlpCustomProfileEntryConfidenceOutput() GetZeroTrustDlpCustomProfileEntryConfidenceOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpCustomProfileEntryConfidenceOutput) ToGetZeroTrustDlpCustomProfileEntryConfidenceOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomProfileEntryConfidenceOutput {
+	return o
+}
+
+// Indicates whether this entry has AI remote service validation.
+func (o GetZeroTrustDlpCustomProfileEntryConfidenceOutput) AiContextAvailable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomProfileEntryConfidence) bool { return v.AiContextAvailable }).(pulumi.BoolOutput)
+}
+
+// Indicates whether this entry has any form of validation that is not an AI remote service.
+func (o GetZeroTrustDlpCustomProfileEntryConfidenceOutput) Available() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomProfileEntryConfidence) bool { return v.Available }).(pulumi.BoolOutput)
+}
+
+type GetZeroTrustDlpCustomProfileEntryPattern struct {
+	Regex string `pulumi:"regex"`
+	// Available values: "luhn".
+	//
+	// Deprecated: This attribute is deprecated.
+	Validation string `pulumi:"validation"`
+}
+
+// GetZeroTrustDlpCustomProfileEntryPatternInput is an input type that accepts GetZeroTrustDlpCustomProfileEntryPatternArgs and GetZeroTrustDlpCustomProfileEntryPatternOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpCustomProfileEntryPatternInput` via:
+//
+//	GetZeroTrustDlpCustomProfileEntryPatternArgs{...}
+type GetZeroTrustDlpCustomProfileEntryPatternInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpCustomProfileEntryPatternOutput() GetZeroTrustDlpCustomProfileEntryPatternOutput
+	ToGetZeroTrustDlpCustomProfileEntryPatternOutputWithContext(context.Context) GetZeroTrustDlpCustomProfileEntryPatternOutput
+}
+
+type GetZeroTrustDlpCustomProfileEntryPatternArgs struct {
+	Regex pulumi.StringInput `pulumi:"regex"`
+	// Available values: "luhn".
+	//
+	// Deprecated: This attribute is deprecated.
+	Validation pulumi.StringInput `pulumi:"validation"`
+}
+
+func (GetZeroTrustDlpCustomProfileEntryPatternArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpCustomProfileEntryPattern)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpCustomProfileEntryPatternArgs) ToGetZeroTrustDlpCustomProfileEntryPatternOutput() GetZeroTrustDlpCustomProfileEntryPatternOutput {
+	return i.ToGetZeroTrustDlpCustomProfileEntryPatternOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpCustomProfileEntryPatternArgs) ToGetZeroTrustDlpCustomProfileEntryPatternOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomProfileEntryPatternOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpCustomProfileEntryPatternOutput)
+}
+
+type GetZeroTrustDlpCustomProfileEntryPatternOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpCustomProfileEntryPatternOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpCustomProfileEntryPattern)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpCustomProfileEntryPatternOutput) ToGetZeroTrustDlpCustomProfileEntryPatternOutput() GetZeroTrustDlpCustomProfileEntryPatternOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpCustomProfileEntryPatternOutput) ToGetZeroTrustDlpCustomProfileEntryPatternOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomProfileEntryPatternOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpCustomProfileEntryPatternOutput) Regex() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomProfileEntryPattern) string { return v.Regex }).(pulumi.StringOutput)
+}
+
+// Available values: "luhn".
+//
+// Deprecated: This attribute is deprecated.
+func (o GetZeroTrustDlpCustomProfileEntryPatternOutput) Validation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomProfileEntryPattern) string { return v.Validation }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDlpCustomProfileEntryVariant struct {
+	Description string `pulumi:"description"`
+	// Available values: "Intent", "Content".
+	TopicType string `pulumi:"topicType"`
+	// Available values: "PromptTopic".
+	Type string `pulumi:"type"`
+}
+
+// GetZeroTrustDlpCustomProfileEntryVariantInput is an input type that accepts GetZeroTrustDlpCustomProfileEntryVariantArgs and GetZeroTrustDlpCustomProfileEntryVariantOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpCustomProfileEntryVariantInput` via:
+//
+//	GetZeroTrustDlpCustomProfileEntryVariantArgs{...}
+type GetZeroTrustDlpCustomProfileEntryVariantInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpCustomProfileEntryVariantOutput() GetZeroTrustDlpCustomProfileEntryVariantOutput
+	ToGetZeroTrustDlpCustomProfileEntryVariantOutputWithContext(context.Context) GetZeroTrustDlpCustomProfileEntryVariantOutput
+}
+
+type GetZeroTrustDlpCustomProfileEntryVariantArgs struct {
+	Description pulumi.StringInput `pulumi:"description"`
+	// Available values: "Intent", "Content".
+	TopicType pulumi.StringInput `pulumi:"topicType"`
+	// Available values: "PromptTopic".
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetZeroTrustDlpCustomProfileEntryVariantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpCustomProfileEntryVariant)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpCustomProfileEntryVariantArgs) ToGetZeroTrustDlpCustomProfileEntryVariantOutput() GetZeroTrustDlpCustomProfileEntryVariantOutput {
+	return i.ToGetZeroTrustDlpCustomProfileEntryVariantOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpCustomProfileEntryVariantArgs) ToGetZeroTrustDlpCustomProfileEntryVariantOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomProfileEntryVariantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpCustomProfileEntryVariantOutput)
+}
+
+type GetZeroTrustDlpCustomProfileEntryVariantOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpCustomProfileEntryVariantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpCustomProfileEntryVariant)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpCustomProfileEntryVariantOutput) ToGetZeroTrustDlpCustomProfileEntryVariantOutput() GetZeroTrustDlpCustomProfileEntryVariantOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpCustomProfileEntryVariantOutput) ToGetZeroTrustDlpCustomProfileEntryVariantOutputWithContext(ctx context.Context) GetZeroTrustDlpCustomProfileEntryVariantOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpCustomProfileEntryVariantOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomProfileEntryVariant) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Available values: "Intent", "Content".
+func (o GetZeroTrustDlpCustomProfileEntryVariantOutput) TopicType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomProfileEntryVariant) string { return v.TopicType }).(pulumi.StringOutput)
+}
+
+// Available values: "PromptTopic".
+func (o GetZeroTrustDlpCustomProfileEntryVariantOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomProfileEntryVariant) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDlpDatasetColumn struct {
+	EntryId    string `pulumi:"entryId"`
+	HeaderName string `pulumi:"headerName"`
+	NumCells   int    `pulumi:"numCells"`
+	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+	UploadStatus string `pulumi:"uploadStatus"`
+}
+
+// GetZeroTrustDlpDatasetColumnInput is an input type that accepts GetZeroTrustDlpDatasetColumnArgs and GetZeroTrustDlpDatasetColumnOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpDatasetColumnInput` via:
+//
+//	GetZeroTrustDlpDatasetColumnArgs{...}
+type GetZeroTrustDlpDatasetColumnInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpDatasetColumnOutput() GetZeroTrustDlpDatasetColumnOutput
+	ToGetZeroTrustDlpDatasetColumnOutputWithContext(context.Context) GetZeroTrustDlpDatasetColumnOutput
+}
+
+type GetZeroTrustDlpDatasetColumnArgs struct {
+	EntryId    pulumi.StringInput `pulumi:"entryId"`
+	HeaderName pulumi.StringInput `pulumi:"headerName"`
+	NumCells   pulumi.IntInput    `pulumi:"numCells"`
+	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+	UploadStatus pulumi.StringInput `pulumi:"uploadStatus"`
+}
+
+func (GetZeroTrustDlpDatasetColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpDatasetColumn)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpDatasetColumnArgs) ToGetZeroTrustDlpDatasetColumnOutput() GetZeroTrustDlpDatasetColumnOutput {
+	return i.ToGetZeroTrustDlpDatasetColumnOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpDatasetColumnArgs) ToGetZeroTrustDlpDatasetColumnOutputWithContext(ctx context.Context) GetZeroTrustDlpDatasetColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpDatasetColumnOutput)
+}
+
+// GetZeroTrustDlpDatasetColumnArrayInput is an input type that accepts GetZeroTrustDlpDatasetColumnArray and GetZeroTrustDlpDatasetColumnArrayOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpDatasetColumnArrayInput` via:
+//
+//	GetZeroTrustDlpDatasetColumnArray{ GetZeroTrustDlpDatasetColumnArgs{...} }
+type GetZeroTrustDlpDatasetColumnArrayInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpDatasetColumnArrayOutput() GetZeroTrustDlpDatasetColumnArrayOutput
+	ToGetZeroTrustDlpDatasetColumnArrayOutputWithContext(context.Context) GetZeroTrustDlpDatasetColumnArrayOutput
+}
+
+type GetZeroTrustDlpDatasetColumnArray []GetZeroTrustDlpDatasetColumnInput
+
+func (GetZeroTrustDlpDatasetColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDlpDatasetColumn)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpDatasetColumnArray) ToGetZeroTrustDlpDatasetColumnArrayOutput() GetZeroTrustDlpDatasetColumnArrayOutput {
+	return i.ToGetZeroTrustDlpDatasetColumnArrayOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpDatasetColumnArray) ToGetZeroTrustDlpDatasetColumnArrayOutputWithContext(ctx context.Context) GetZeroTrustDlpDatasetColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpDatasetColumnArrayOutput)
+}
+
+type GetZeroTrustDlpDatasetColumnOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpDatasetColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpDatasetColumn)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpDatasetColumnOutput) ToGetZeroTrustDlpDatasetColumnOutput() GetZeroTrustDlpDatasetColumnOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpDatasetColumnOutput) ToGetZeroTrustDlpDatasetColumnOutputWithContext(ctx context.Context) GetZeroTrustDlpDatasetColumnOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpDatasetColumnOutput) EntryId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpDatasetColumn) string { return v.EntryId }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpDatasetColumnOutput) HeaderName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpDatasetColumn) string { return v.HeaderName }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpDatasetColumnOutput) NumCells() pulumi.IntOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpDatasetColumn) int { return v.NumCells }).(pulumi.IntOutput)
+}
+
+// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+func (o GetZeroTrustDlpDatasetColumnOutput) UploadStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpDatasetColumn) string { return v.UploadStatus }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDlpDatasetColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpDatasetColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDlpDatasetColumn)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpDatasetColumnArrayOutput) ToGetZeroTrustDlpDatasetColumnArrayOutput() GetZeroTrustDlpDatasetColumnArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpDatasetColumnArrayOutput) ToGetZeroTrustDlpDatasetColumnArrayOutputWithContext(ctx context.Context) GetZeroTrustDlpDatasetColumnArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpDatasetColumnArrayOutput) Index(i pulumi.IntInput) GetZeroTrustDlpDatasetColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZeroTrustDlpDatasetColumn {
+		return vs[0].([]GetZeroTrustDlpDatasetColumn)[vs[1].(int)]
+	}).(GetZeroTrustDlpDatasetColumnOutput)
+}
+
+type GetZeroTrustDlpDatasetUpload struct {
+	NumCells int `pulumi:"numCells"`
+	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+	Status  string `pulumi:"status"`
+	Version int    `pulumi:"version"`
+}
+
+// GetZeroTrustDlpDatasetUploadInput is an input type that accepts GetZeroTrustDlpDatasetUploadArgs and GetZeroTrustDlpDatasetUploadOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpDatasetUploadInput` via:
+//
+//	GetZeroTrustDlpDatasetUploadArgs{...}
+type GetZeroTrustDlpDatasetUploadInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpDatasetUploadOutput() GetZeroTrustDlpDatasetUploadOutput
+	ToGetZeroTrustDlpDatasetUploadOutputWithContext(context.Context) GetZeroTrustDlpDatasetUploadOutput
+}
+
+type GetZeroTrustDlpDatasetUploadArgs struct {
+	NumCells pulumi.IntInput `pulumi:"numCells"`
+	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+	Status  pulumi.StringInput `pulumi:"status"`
+	Version pulumi.IntInput    `pulumi:"version"`
+}
+
+func (GetZeroTrustDlpDatasetUploadArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpDatasetUpload)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpDatasetUploadArgs) ToGetZeroTrustDlpDatasetUploadOutput() GetZeroTrustDlpDatasetUploadOutput {
+	return i.ToGetZeroTrustDlpDatasetUploadOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpDatasetUploadArgs) ToGetZeroTrustDlpDatasetUploadOutputWithContext(ctx context.Context) GetZeroTrustDlpDatasetUploadOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpDatasetUploadOutput)
+}
+
+// GetZeroTrustDlpDatasetUploadArrayInput is an input type that accepts GetZeroTrustDlpDatasetUploadArray and GetZeroTrustDlpDatasetUploadArrayOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpDatasetUploadArrayInput` via:
+//
+//	GetZeroTrustDlpDatasetUploadArray{ GetZeroTrustDlpDatasetUploadArgs{...} }
+type GetZeroTrustDlpDatasetUploadArrayInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpDatasetUploadArrayOutput() GetZeroTrustDlpDatasetUploadArrayOutput
+	ToGetZeroTrustDlpDatasetUploadArrayOutputWithContext(context.Context) GetZeroTrustDlpDatasetUploadArrayOutput
+}
+
+type GetZeroTrustDlpDatasetUploadArray []GetZeroTrustDlpDatasetUploadInput
+
+func (GetZeroTrustDlpDatasetUploadArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDlpDatasetUpload)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpDatasetUploadArray) ToGetZeroTrustDlpDatasetUploadArrayOutput() GetZeroTrustDlpDatasetUploadArrayOutput {
+	return i.ToGetZeroTrustDlpDatasetUploadArrayOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpDatasetUploadArray) ToGetZeroTrustDlpDatasetUploadArrayOutputWithContext(ctx context.Context) GetZeroTrustDlpDatasetUploadArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpDatasetUploadArrayOutput)
+}
+
+type GetZeroTrustDlpDatasetUploadOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpDatasetUploadOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpDatasetUpload)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpDatasetUploadOutput) ToGetZeroTrustDlpDatasetUploadOutput() GetZeroTrustDlpDatasetUploadOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpDatasetUploadOutput) ToGetZeroTrustDlpDatasetUploadOutputWithContext(ctx context.Context) GetZeroTrustDlpDatasetUploadOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpDatasetUploadOutput) NumCells() pulumi.IntOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpDatasetUpload) int { return v.NumCells }).(pulumi.IntOutput)
+}
+
+// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+func (o GetZeroTrustDlpDatasetUploadOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpDatasetUpload) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpDatasetUploadOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpDatasetUpload) int { return v.Version }).(pulumi.IntOutput)
+}
+
+type GetZeroTrustDlpDatasetUploadArrayOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpDatasetUploadArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDlpDatasetUpload)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpDatasetUploadArrayOutput) ToGetZeroTrustDlpDatasetUploadArrayOutput() GetZeroTrustDlpDatasetUploadArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpDatasetUploadArrayOutput) ToGetZeroTrustDlpDatasetUploadArrayOutputWithContext(ctx context.Context) GetZeroTrustDlpDatasetUploadArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpDatasetUploadArrayOutput) Index(i pulumi.IntInput) GetZeroTrustDlpDatasetUploadOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZeroTrustDlpDatasetUpload {
+		return vs[0].([]GetZeroTrustDlpDatasetUpload)[vs[1].(int)]
+	}).(GetZeroTrustDlpDatasetUploadOutput)
+}
+
+type GetZeroTrustDlpDatasetsResult struct {
+	CaseSensitive bool                                  `pulumi:"caseSensitive"`
+	Columns       []GetZeroTrustDlpDatasetsResultColumn `pulumi:"columns"`
+	CreatedAt     string                                `pulumi:"createdAt"`
+	// The description of the dataset.
+	Description     string `pulumi:"description"`
+	EncodingVersion int    `pulumi:"encodingVersion"`
+	Id              string `pulumi:"id"`
+	Name            string `pulumi:"name"`
+	NumCells        int    `pulumi:"numCells"`
+	Secret          bool   `pulumi:"secret"`
+	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+	Status string `pulumi:"status"`
+	// Stores when the dataset was last updated.
+	UpdatedAt string                                `pulumi:"updatedAt"`
+	Uploads   []GetZeroTrustDlpDatasetsResultUpload `pulumi:"uploads"`
+}
+
+// GetZeroTrustDlpDatasetsResultInput is an input type that accepts GetZeroTrustDlpDatasetsResultArgs and GetZeroTrustDlpDatasetsResultOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpDatasetsResultInput` via:
+//
+//	GetZeroTrustDlpDatasetsResultArgs{...}
+type GetZeroTrustDlpDatasetsResultInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpDatasetsResultOutput() GetZeroTrustDlpDatasetsResultOutput
+	ToGetZeroTrustDlpDatasetsResultOutputWithContext(context.Context) GetZeroTrustDlpDatasetsResultOutput
+}
+
+type GetZeroTrustDlpDatasetsResultArgs struct {
+	CaseSensitive pulumi.BoolInput                              `pulumi:"caseSensitive"`
+	Columns       GetZeroTrustDlpDatasetsResultColumnArrayInput `pulumi:"columns"`
+	CreatedAt     pulumi.StringInput                            `pulumi:"createdAt"`
+	// The description of the dataset.
+	Description     pulumi.StringInput `pulumi:"description"`
+	EncodingVersion pulumi.IntInput    `pulumi:"encodingVersion"`
+	Id              pulumi.StringInput `pulumi:"id"`
+	Name            pulumi.StringInput `pulumi:"name"`
+	NumCells        pulumi.IntInput    `pulumi:"numCells"`
+	Secret          pulumi.BoolInput   `pulumi:"secret"`
+	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+	Status pulumi.StringInput `pulumi:"status"`
+	// Stores when the dataset was last updated.
+	UpdatedAt pulumi.StringInput                            `pulumi:"updatedAt"`
+	Uploads   GetZeroTrustDlpDatasetsResultUploadArrayInput `pulumi:"uploads"`
+}
+
+func (GetZeroTrustDlpDatasetsResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpDatasetsResult)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpDatasetsResultArgs) ToGetZeroTrustDlpDatasetsResultOutput() GetZeroTrustDlpDatasetsResultOutput {
+	return i.ToGetZeroTrustDlpDatasetsResultOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpDatasetsResultArgs) ToGetZeroTrustDlpDatasetsResultOutputWithContext(ctx context.Context) GetZeroTrustDlpDatasetsResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpDatasetsResultOutput)
+}
+
+// GetZeroTrustDlpDatasetsResultArrayInput is an input type that accepts GetZeroTrustDlpDatasetsResultArray and GetZeroTrustDlpDatasetsResultArrayOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpDatasetsResultArrayInput` via:
+//
+//	GetZeroTrustDlpDatasetsResultArray{ GetZeroTrustDlpDatasetsResultArgs{...} }
+type GetZeroTrustDlpDatasetsResultArrayInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpDatasetsResultArrayOutput() GetZeroTrustDlpDatasetsResultArrayOutput
+	ToGetZeroTrustDlpDatasetsResultArrayOutputWithContext(context.Context) GetZeroTrustDlpDatasetsResultArrayOutput
+}
+
+type GetZeroTrustDlpDatasetsResultArray []GetZeroTrustDlpDatasetsResultInput
+
+func (GetZeroTrustDlpDatasetsResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDlpDatasetsResult)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpDatasetsResultArray) ToGetZeroTrustDlpDatasetsResultArrayOutput() GetZeroTrustDlpDatasetsResultArrayOutput {
+	return i.ToGetZeroTrustDlpDatasetsResultArrayOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpDatasetsResultArray) ToGetZeroTrustDlpDatasetsResultArrayOutputWithContext(ctx context.Context) GetZeroTrustDlpDatasetsResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpDatasetsResultArrayOutput)
+}
+
+type GetZeroTrustDlpDatasetsResultOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpDatasetsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpDatasetsResult)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpDatasetsResultOutput) ToGetZeroTrustDlpDatasetsResultOutput() GetZeroTrustDlpDatasetsResultOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpDatasetsResultOutput) ToGetZeroTrustDlpDatasetsResultOutputWithContext(ctx context.Context) GetZeroTrustDlpDatasetsResultOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpDatasetsResultOutput) CaseSensitive() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpDatasetsResult) bool { return v.CaseSensitive }).(pulumi.BoolOutput)
+}
+
+func (o GetZeroTrustDlpDatasetsResultOutput) Columns() GetZeroTrustDlpDatasetsResultColumnArrayOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpDatasetsResult) []GetZeroTrustDlpDatasetsResultColumn { return v.Columns }).(GetZeroTrustDlpDatasetsResultColumnArrayOutput)
+}
+
+func (o GetZeroTrustDlpDatasetsResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpDatasetsResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The description of the dataset.
+func (o GetZeroTrustDlpDatasetsResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpDatasetsResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpDatasetsResultOutput) EncodingVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpDatasetsResult) int { return v.EncodingVersion }).(pulumi.IntOutput)
+}
+
+func (o GetZeroTrustDlpDatasetsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpDatasetsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpDatasetsResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpDatasetsResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpDatasetsResultOutput) NumCells() pulumi.IntOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpDatasetsResult) int { return v.NumCells }).(pulumi.IntOutput)
+}
+
+func (o GetZeroTrustDlpDatasetsResultOutput) Secret() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpDatasetsResult) bool { return v.Secret }).(pulumi.BoolOutput)
+}
+
+// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+func (o GetZeroTrustDlpDatasetsResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpDatasetsResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Stores when the dataset was last updated.
+func (o GetZeroTrustDlpDatasetsResultOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpDatasetsResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpDatasetsResultOutput) Uploads() GetZeroTrustDlpDatasetsResultUploadArrayOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpDatasetsResult) []GetZeroTrustDlpDatasetsResultUpload { return v.Uploads }).(GetZeroTrustDlpDatasetsResultUploadArrayOutput)
+}
+
+type GetZeroTrustDlpDatasetsResultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpDatasetsResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDlpDatasetsResult)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpDatasetsResultArrayOutput) ToGetZeroTrustDlpDatasetsResultArrayOutput() GetZeroTrustDlpDatasetsResultArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpDatasetsResultArrayOutput) ToGetZeroTrustDlpDatasetsResultArrayOutputWithContext(ctx context.Context) GetZeroTrustDlpDatasetsResultArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpDatasetsResultArrayOutput) Index(i pulumi.IntInput) GetZeroTrustDlpDatasetsResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZeroTrustDlpDatasetsResult {
+		return vs[0].([]GetZeroTrustDlpDatasetsResult)[vs[1].(int)]
+	}).(GetZeroTrustDlpDatasetsResultOutput)
+}
+
+type GetZeroTrustDlpDatasetsResultColumn struct {
+	EntryId    string `pulumi:"entryId"`
+	HeaderName string `pulumi:"headerName"`
+	NumCells   int    `pulumi:"numCells"`
+	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+	UploadStatus string `pulumi:"uploadStatus"`
+}
+
+// GetZeroTrustDlpDatasetsResultColumnInput is an input type that accepts GetZeroTrustDlpDatasetsResultColumnArgs and GetZeroTrustDlpDatasetsResultColumnOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpDatasetsResultColumnInput` via:
+//
+//	GetZeroTrustDlpDatasetsResultColumnArgs{...}
+type GetZeroTrustDlpDatasetsResultColumnInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpDatasetsResultColumnOutput() GetZeroTrustDlpDatasetsResultColumnOutput
+	ToGetZeroTrustDlpDatasetsResultColumnOutputWithContext(context.Context) GetZeroTrustDlpDatasetsResultColumnOutput
+}
+
+type GetZeroTrustDlpDatasetsResultColumnArgs struct {
+	EntryId    pulumi.StringInput `pulumi:"entryId"`
+	HeaderName pulumi.StringInput `pulumi:"headerName"`
+	NumCells   pulumi.IntInput    `pulumi:"numCells"`
+	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+	UploadStatus pulumi.StringInput `pulumi:"uploadStatus"`
+}
+
+func (GetZeroTrustDlpDatasetsResultColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpDatasetsResultColumn)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpDatasetsResultColumnArgs) ToGetZeroTrustDlpDatasetsResultColumnOutput() GetZeroTrustDlpDatasetsResultColumnOutput {
+	return i.ToGetZeroTrustDlpDatasetsResultColumnOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpDatasetsResultColumnArgs) ToGetZeroTrustDlpDatasetsResultColumnOutputWithContext(ctx context.Context) GetZeroTrustDlpDatasetsResultColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpDatasetsResultColumnOutput)
+}
+
+// GetZeroTrustDlpDatasetsResultColumnArrayInput is an input type that accepts GetZeroTrustDlpDatasetsResultColumnArray and GetZeroTrustDlpDatasetsResultColumnArrayOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpDatasetsResultColumnArrayInput` via:
+//
+//	GetZeroTrustDlpDatasetsResultColumnArray{ GetZeroTrustDlpDatasetsResultColumnArgs{...} }
+type GetZeroTrustDlpDatasetsResultColumnArrayInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpDatasetsResultColumnArrayOutput() GetZeroTrustDlpDatasetsResultColumnArrayOutput
+	ToGetZeroTrustDlpDatasetsResultColumnArrayOutputWithContext(context.Context) GetZeroTrustDlpDatasetsResultColumnArrayOutput
+}
+
+type GetZeroTrustDlpDatasetsResultColumnArray []GetZeroTrustDlpDatasetsResultColumnInput
+
+func (GetZeroTrustDlpDatasetsResultColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDlpDatasetsResultColumn)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpDatasetsResultColumnArray) ToGetZeroTrustDlpDatasetsResultColumnArrayOutput() GetZeroTrustDlpDatasetsResultColumnArrayOutput {
+	return i.ToGetZeroTrustDlpDatasetsResultColumnArrayOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpDatasetsResultColumnArray) ToGetZeroTrustDlpDatasetsResultColumnArrayOutputWithContext(ctx context.Context) GetZeroTrustDlpDatasetsResultColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpDatasetsResultColumnArrayOutput)
+}
+
+type GetZeroTrustDlpDatasetsResultColumnOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpDatasetsResultColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpDatasetsResultColumn)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpDatasetsResultColumnOutput) ToGetZeroTrustDlpDatasetsResultColumnOutput() GetZeroTrustDlpDatasetsResultColumnOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpDatasetsResultColumnOutput) ToGetZeroTrustDlpDatasetsResultColumnOutputWithContext(ctx context.Context) GetZeroTrustDlpDatasetsResultColumnOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpDatasetsResultColumnOutput) EntryId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpDatasetsResultColumn) string { return v.EntryId }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpDatasetsResultColumnOutput) HeaderName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpDatasetsResultColumn) string { return v.HeaderName }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpDatasetsResultColumnOutput) NumCells() pulumi.IntOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpDatasetsResultColumn) int { return v.NumCells }).(pulumi.IntOutput)
+}
+
+// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+func (o GetZeroTrustDlpDatasetsResultColumnOutput) UploadStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpDatasetsResultColumn) string { return v.UploadStatus }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDlpDatasetsResultColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpDatasetsResultColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDlpDatasetsResultColumn)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpDatasetsResultColumnArrayOutput) ToGetZeroTrustDlpDatasetsResultColumnArrayOutput() GetZeroTrustDlpDatasetsResultColumnArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpDatasetsResultColumnArrayOutput) ToGetZeroTrustDlpDatasetsResultColumnArrayOutputWithContext(ctx context.Context) GetZeroTrustDlpDatasetsResultColumnArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpDatasetsResultColumnArrayOutput) Index(i pulumi.IntInput) GetZeroTrustDlpDatasetsResultColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZeroTrustDlpDatasetsResultColumn {
+		return vs[0].([]GetZeroTrustDlpDatasetsResultColumn)[vs[1].(int)]
+	}).(GetZeroTrustDlpDatasetsResultColumnOutput)
+}
+
+type GetZeroTrustDlpDatasetsResultUpload struct {
+	NumCells int `pulumi:"numCells"`
+	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+	Status  string `pulumi:"status"`
+	Version int    `pulumi:"version"`
+}
+
+// GetZeroTrustDlpDatasetsResultUploadInput is an input type that accepts GetZeroTrustDlpDatasetsResultUploadArgs and GetZeroTrustDlpDatasetsResultUploadOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpDatasetsResultUploadInput` via:
+//
+//	GetZeroTrustDlpDatasetsResultUploadArgs{...}
+type GetZeroTrustDlpDatasetsResultUploadInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpDatasetsResultUploadOutput() GetZeroTrustDlpDatasetsResultUploadOutput
+	ToGetZeroTrustDlpDatasetsResultUploadOutputWithContext(context.Context) GetZeroTrustDlpDatasetsResultUploadOutput
+}
+
+type GetZeroTrustDlpDatasetsResultUploadArgs struct {
+	NumCells pulumi.IntInput `pulumi:"numCells"`
+	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+	Status  pulumi.StringInput `pulumi:"status"`
+	Version pulumi.IntInput    `pulumi:"version"`
+}
+
+func (GetZeroTrustDlpDatasetsResultUploadArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpDatasetsResultUpload)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpDatasetsResultUploadArgs) ToGetZeroTrustDlpDatasetsResultUploadOutput() GetZeroTrustDlpDatasetsResultUploadOutput {
+	return i.ToGetZeroTrustDlpDatasetsResultUploadOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpDatasetsResultUploadArgs) ToGetZeroTrustDlpDatasetsResultUploadOutputWithContext(ctx context.Context) GetZeroTrustDlpDatasetsResultUploadOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpDatasetsResultUploadOutput)
+}
+
+// GetZeroTrustDlpDatasetsResultUploadArrayInput is an input type that accepts GetZeroTrustDlpDatasetsResultUploadArray and GetZeroTrustDlpDatasetsResultUploadArrayOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpDatasetsResultUploadArrayInput` via:
+//
+//	GetZeroTrustDlpDatasetsResultUploadArray{ GetZeroTrustDlpDatasetsResultUploadArgs{...} }
+type GetZeroTrustDlpDatasetsResultUploadArrayInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpDatasetsResultUploadArrayOutput() GetZeroTrustDlpDatasetsResultUploadArrayOutput
+	ToGetZeroTrustDlpDatasetsResultUploadArrayOutputWithContext(context.Context) GetZeroTrustDlpDatasetsResultUploadArrayOutput
+}
+
+type GetZeroTrustDlpDatasetsResultUploadArray []GetZeroTrustDlpDatasetsResultUploadInput
+
+func (GetZeroTrustDlpDatasetsResultUploadArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDlpDatasetsResultUpload)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpDatasetsResultUploadArray) ToGetZeroTrustDlpDatasetsResultUploadArrayOutput() GetZeroTrustDlpDatasetsResultUploadArrayOutput {
+	return i.ToGetZeroTrustDlpDatasetsResultUploadArrayOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpDatasetsResultUploadArray) ToGetZeroTrustDlpDatasetsResultUploadArrayOutputWithContext(ctx context.Context) GetZeroTrustDlpDatasetsResultUploadArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpDatasetsResultUploadArrayOutput)
+}
+
+type GetZeroTrustDlpDatasetsResultUploadOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpDatasetsResultUploadOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpDatasetsResultUpload)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpDatasetsResultUploadOutput) ToGetZeroTrustDlpDatasetsResultUploadOutput() GetZeroTrustDlpDatasetsResultUploadOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpDatasetsResultUploadOutput) ToGetZeroTrustDlpDatasetsResultUploadOutputWithContext(ctx context.Context) GetZeroTrustDlpDatasetsResultUploadOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpDatasetsResultUploadOutput) NumCells() pulumi.IntOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpDatasetsResultUpload) int { return v.NumCells }).(pulumi.IntOutput)
+}
+
+// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+func (o GetZeroTrustDlpDatasetsResultUploadOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpDatasetsResultUpload) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpDatasetsResultUploadOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpDatasetsResultUpload) int { return v.Version }).(pulumi.IntOutput)
+}
+
+type GetZeroTrustDlpDatasetsResultUploadArrayOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpDatasetsResultUploadArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDlpDatasetsResultUpload)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpDatasetsResultUploadArrayOutput) ToGetZeroTrustDlpDatasetsResultUploadArrayOutput() GetZeroTrustDlpDatasetsResultUploadArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpDatasetsResultUploadArrayOutput) ToGetZeroTrustDlpDatasetsResultUploadArrayOutputWithContext(ctx context.Context) GetZeroTrustDlpDatasetsResultUploadArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpDatasetsResultUploadArrayOutput) Index(i pulumi.IntInput) GetZeroTrustDlpDatasetsResultUploadOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZeroTrustDlpDatasetsResultUpload {
+		return vs[0].([]GetZeroTrustDlpDatasetsResultUpload)[vs[1].(int)]
+	}).(GetZeroTrustDlpDatasetsResultUploadOutput)
+}
+
+type GetZeroTrustDlpEntriesResult struct {
+	// Only applies to custom word lists.
+	// Determines if the words should be matched in a case-sensitive manner
+	// Cannot be set to false if secret is true
+	CaseSensitive bool                                   `pulumi:"caseSensitive"`
+	Confidence    GetZeroTrustDlpEntriesResultConfidence `pulumi:"confidence"`
+	CreatedAt     string                                 `pulumi:"createdAt"`
+	Enabled       bool                                   `pulumi:"enabled"`
+	Id            string                                 `pulumi:"id"`
+	Name          string                                 `pulumi:"name"`
+	Pattern       GetZeroTrustDlpEntriesResultPattern    `pulumi:"pattern"`
+	ProfileId     string                                 `pulumi:"profileId"`
+	Secret        bool                                   `pulumi:"secret"`
+	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+	Type      string `pulumi:"type"`
+	UpdatedAt string `pulumi:"updatedAt"`
+	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+	UploadStatus string                              `pulumi:"uploadStatus"`
+	Variant      GetZeroTrustDlpEntriesResultVariant `pulumi:"variant"`
+	WordList     string                              `pulumi:"wordList"`
+}
+
+// GetZeroTrustDlpEntriesResultInput is an input type that accepts GetZeroTrustDlpEntriesResultArgs and GetZeroTrustDlpEntriesResultOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpEntriesResultInput` via:
+//
+//	GetZeroTrustDlpEntriesResultArgs{...}
+type GetZeroTrustDlpEntriesResultInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpEntriesResultOutput() GetZeroTrustDlpEntriesResultOutput
+	ToGetZeroTrustDlpEntriesResultOutputWithContext(context.Context) GetZeroTrustDlpEntriesResultOutput
+}
+
+type GetZeroTrustDlpEntriesResultArgs struct {
+	// Only applies to custom word lists.
+	// Determines if the words should be matched in a case-sensitive manner
+	// Cannot be set to false if secret is true
+	CaseSensitive pulumi.BoolInput                            `pulumi:"caseSensitive"`
+	Confidence    GetZeroTrustDlpEntriesResultConfidenceInput `pulumi:"confidence"`
+	CreatedAt     pulumi.StringInput                          `pulumi:"createdAt"`
+	Enabled       pulumi.BoolInput                            `pulumi:"enabled"`
+	Id            pulumi.StringInput                          `pulumi:"id"`
+	Name          pulumi.StringInput                          `pulumi:"name"`
+	Pattern       GetZeroTrustDlpEntriesResultPatternInput    `pulumi:"pattern"`
+	ProfileId     pulumi.StringInput                          `pulumi:"profileId"`
+	Secret        pulumi.BoolInput                            `pulumi:"secret"`
+	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+	Type      pulumi.StringInput `pulumi:"type"`
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+	UploadStatus pulumi.StringInput                       `pulumi:"uploadStatus"`
+	Variant      GetZeroTrustDlpEntriesResultVariantInput `pulumi:"variant"`
+	WordList     pulumi.StringInput                       `pulumi:"wordList"`
+}
+
+func (GetZeroTrustDlpEntriesResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpEntriesResult)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpEntriesResultArgs) ToGetZeroTrustDlpEntriesResultOutput() GetZeroTrustDlpEntriesResultOutput {
+	return i.ToGetZeroTrustDlpEntriesResultOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpEntriesResultArgs) ToGetZeroTrustDlpEntriesResultOutputWithContext(ctx context.Context) GetZeroTrustDlpEntriesResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpEntriesResultOutput)
+}
+
+// GetZeroTrustDlpEntriesResultArrayInput is an input type that accepts GetZeroTrustDlpEntriesResultArray and GetZeroTrustDlpEntriesResultArrayOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpEntriesResultArrayInput` via:
+//
+//	GetZeroTrustDlpEntriesResultArray{ GetZeroTrustDlpEntriesResultArgs{...} }
+type GetZeroTrustDlpEntriesResultArrayInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpEntriesResultArrayOutput() GetZeroTrustDlpEntriesResultArrayOutput
+	ToGetZeroTrustDlpEntriesResultArrayOutputWithContext(context.Context) GetZeroTrustDlpEntriesResultArrayOutput
+}
+
+type GetZeroTrustDlpEntriesResultArray []GetZeroTrustDlpEntriesResultInput
+
+func (GetZeroTrustDlpEntriesResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDlpEntriesResult)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpEntriesResultArray) ToGetZeroTrustDlpEntriesResultArrayOutput() GetZeroTrustDlpEntriesResultArrayOutput {
+	return i.ToGetZeroTrustDlpEntriesResultArrayOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpEntriesResultArray) ToGetZeroTrustDlpEntriesResultArrayOutputWithContext(ctx context.Context) GetZeroTrustDlpEntriesResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpEntriesResultArrayOutput)
+}
+
+type GetZeroTrustDlpEntriesResultOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpEntriesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpEntriesResult)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpEntriesResultOutput) ToGetZeroTrustDlpEntriesResultOutput() GetZeroTrustDlpEntriesResultOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpEntriesResultOutput) ToGetZeroTrustDlpEntriesResultOutputWithContext(ctx context.Context) GetZeroTrustDlpEntriesResultOutput {
+	return o
+}
+
+// Only applies to custom word lists.
+// Determines if the words should be matched in a case-sensitive manner
+// Cannot be set to false if secret is true
+func (o GetZeroTrustDlpEntriesResultOutput) CaseSensitive() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpEntriesResult) bool { return v.CaseSensitive }).(pulumi.BoolOutput)
+}
+
+func (o GetZeroTrustDlpEntriesResultOutput) Confidence() GetZeroTrustDlpEntriesResultConfidenceOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpEntriesResult) GetZeroTrustDlpEntriesResultConfidence { return v.Confidence }).(GetZeroTrustDlpEntriesResultConfidenceOutput)
+}
+
+func (o GetZeroTrustDlpEntriesResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpEntriesResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpEntriesResultOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpEntriesResult) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetZeroTrustDlpEntriesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpEntriesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpEntriesResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpEntriesResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpEntriesResultOutput) Pattern() GetZeroTrustDlpEntriesResultPatternOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpEntriesResult) GetZeroTrustDlpEntriesResultPattern { return v.Pattern }).(GetZeroTrustDlpEntriesResultPatternOutput)
+}
+
+func (o GetZeroTrustDlpEntriesResultOutput) ProfileId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpEntriesResult) string { return v.ProfileId }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpEntriesResultOutput) Secret() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpEntriesResult) bool { return v.Secret }).(pulumi.BoolOutput)
+}
+
+// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+func (o GetZeroTrustDlpEntriesResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpEntriesResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpEntriesResultOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpEntriesResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+func (o GetZeroTrustDlpEntriesResultOutput) UploadStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpEntriesResult) string { return v.UploadStatus }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpEntriesResultOutput) Variant() GetZeroTrustDlpEntriesResultVariantOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpEntriesResult) GetZeroTrustDlpEntriesResultVariant { return v.Variant }).(GetZeroTrustDlpEntriesResultVariantOutput)
+}
+
+func (o GetZeroTrustDlpEntriesResultOutput) WordList() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpEntriesResult) string { return v.WordList }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDlpEntriesResultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpEntriesResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDlpEntriesResult)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpEntriesResultArrayOutput) ToGetZeroTrustDlpEntriesResultArrayOutput() GetZeroTrustDlpEntriesResultArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpEntriesResultArrayOutput) ToGetZeroTrustDlpEntriesResultArrayOutputWithContext(ctx context.Context) GetZeroTrustDlpEntriesResultArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpEntriesResultArrayOutput) Index(i pulumi.IntInput) GetZeroTrustDlpEntriesResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZeroTrustDlpEntriesResult {
+		return vs[0].([]GetZeroTrustDlpEntriesResult)[vs[1].(int)]
+	}).(GetZeroTrustDlpEntriesResultOutput)
+}
+
+type GetZeroTrustDlpEntriesResultConfidence struct {
+	// Indicates whether this entry has AI remote service validation.
+	AiContextAvailable bool `pulumi:"aiContextAvailable"`
+	// Indicates whether this entry has any form of validation that is not an AI remote service.
+	Available bool `pulumi:"available"`
+}
+
+// GetZeroTrustDlpEntriesResultConfidenceInput is an input type that accepts GetZeroTrustDlpEntriesResultConfidenceArgs and GetZeroTrustDlpEntriesResultConfidenceOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpEntriesResultConfidenceInput` via:
+//
+//	GetZeroTrustDlpEntriesResultConfidenceArgs{...}
+type GetZeroTrustDlpEntriesResultConfidenceInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpEntriesResultConfidenceOutput() GetZeroTrustDlpEntriesResultConfidenceOutput
+	ToGetZeroTrustDlpEntriesResultConfidenceOutputWithContext(context.Context) GetZeroTrustDlpEntriesResultConfidenceOutput
+}
+
+type GetZeroTrustDlpEntriesResultConfidenceArgs struct {
+	// Indicates whether this entry has AI remote service validation.
+	AiContextAvailable pulumi.BoolInput `pulumi:"aiContextAvailable"`
+	// Indicates whether this entry has any form of validation that is not an AI remote service.
+	Available pulumi.BoolInput `pulumi:"available"`
+}
+
+func (GetZeroTrustDlpEntriesResultConfidenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpEntriesResultConfidence)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpEntriesResultConfidenceArgs) ToGetZeroTrustDlpEntriesResultConfidenceOutput() GetZeroTrustDlpEntriesResultConfidenceOutput {
+	return i.ToGetZeroTrustDlpEntriesResultConfidenceOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpEntriesResultConfidenceArgs) ToGetZeroTrustDlpEntriesResultConfidenceOutputWithContext(ctx context.Context) GetZeroTrustDlpEntriesResultConfidenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpEntriesResultConfidenceOutput)
+}
+
+type GetZeroTrustDlpEntriesResultConfidenceOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpEntriesResultConfidenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpEntriesResultConfidence)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpEntriesResultConfidenceOutput) ToGetZeroTrustDlpEntriesResultConfidenceOutput() GetZeroTrustDlpEntriesResultConfidenceOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpEntriesResultConfidenceOutput) ToGetZeroTrustDlpEntriesResultConfidenceOutputWithContext(ctx context.Context) GetZeroTrustDlpEntriesResultConfidenceOutput {
+	return o
+}
+
+// Indicates whether this entry has AI remote service validation.
+func (o GetZeroTrustDlpEntriesResultConfidenceOutput) AiContextAvailable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpEntriesResultConfidence) bool { return v.AiContextAvailable }).(pulumi.BoolOutput)
+}
+
+// Indicates whether this entry has any form of validation that is not an AI remote service.
+func (o GetZeroTrustDlpEntriesResultConfidenceOutput) Available() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpEntriesResultConfidence) bool { return v.Available }).(pulumi.BoolOutput)
+}
+
+type GetZeroTrustDlpEntriesResultPattern struct {
+	Regex string `pulumi:"regex"`
+	// Available values: "luhn".
+	//
+	// Deprecated: This attribute is deprecated.
+	Validation string `pulumi:"validation"`
+}
+
+// GetZeroTrustDlpEntriesResultPatternInput is an input type that accepts GetZeroTrustDlpEntriesResultPatternArgs and GetZeroTrustDlpEntriesResultPatternOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpEntriesResultPatternInput` via:
+//
+//	GetZeroTrustDlpEntriesResultPatternArgs{...}
+type GetZeroTrustDlpEntriesResultPatternInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpEntriesResultPatternOutput() GetZeroTrustDlpEntriesResultPatternOutput
+	ToGetZeroTrustDlpEntriesResultPatternOutputWithContext(context.Context) GetZeroTrustDlpEntriesResultPatternOutput
+}
+
+type GetZeroTrustDlpEntriesResultPatternArgs struct {
+	Regex pulumi.StringInput `pulumi:"regex"`
+	// Available values: "luhn".
+	//
+	// Deprecated: This attribute is deprecated.
+	Validation pulumi.StringInput `pulumi:"validation"`
+}
+
+func (GetZeroTrustDlpEntriesResultPatternArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpEntriesResultPattern)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpEntriesResultPatternArgs) ToGetZeroTrustDlpEntriesResultPatternOutput() GetZeroTrustDlpEntriesResultPatternOutput {
+	return i.ToGetZeroTrustDlpEntriesResultPatternOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpEntriesResultPatternArgs) ToGetZeroTrustDlpEntriesResultPatternOutputWithContext(ctx context.Context) GetZeroTrustDlpEntriesResultPatternOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpEntriesResultPatternOutput)
+}
+
+type GetZeroTrustDlpEntriesResultPatternOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpEntriesResultPatternOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpEntriesResultPattern)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpEntriesResultPatternOutput) ToGetZeroTrustDlpEntriesResultPatternOutput() GetZeroTrustDlpEntriesResultPatternOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpEntriesResultPatternOutput) ToGetZeroTrustDlpEntriesResultPatternOutputWithContext(ctx context.Context) GetZeroTrustDlpEntriesResultPatternOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpEntriesResultPatternOutput) Regex() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpEntriesResultPattern) string { return v.Regex }).(pulumi.StringOutput)
+}
+
+// Available values: "luhn".
+//
+// Deprecated: This attribute is deprecated.
+func (o GetZeroTrustDlpEntriesResultPatternOutput) Validation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpEntriesResultPattern) string { return v.Validation }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDlpEntriesResultVariant struct {
+	Description string `pulumi:"description"`
+	// Available values: "Intent", "Content".
+	TopicType string `pulumi:"topicType"`
+	// Available values: "PromptTopic".
+	Type string `pulumi:"type"`
+}
+
+// GetZeroTrustDlpEntriesResultVariantInput is an input type that accepts GetZeroTrustDlpEntriesResultVariantArgs and GetZeroTrustDlpEntriesResultVariantOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpEntriesResultVariantInput` via:
+//
+//	GetZeroTrustDlpEntriesResultVariantArgs{...}
+type GetZeroTrustDlpEntriesResultVariantInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpEntriesResultVariantOutput() GetZeroTrustDlpEntriesResultVariantOutput
+	ToGetZeroTrustDlpEntriesResultVariantOutputWithContext(context.Context) GetZeroTrustDlpEntriesResultVariantOutput
+}
+
+type GetZeroTrustDlpEntriesResultVariantArgs struct {
+	Description pulumi.StringInput `pulumi:"description"`
+	// Available values: "Intent", "Content".
+	TopicType pulumi.StringInput `pulumi:"topicType"`
+	// Available values: "PromptTopic".
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetZeroTrustDlpEntriesResultVariantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpEntriesResultVariant)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpEntriesResultVariantArgs) ToGetZeroTrustDlpEntriesResultVariantOutput() GetZeroTrustDlpEntriesResultVariantOutput {
+	return i.ToGetZeroTrustDlpEntriesResultVariantOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpEntriesResultVariantArgs) ToGetZeroTrustDlpEntriesResultVariantOutputWithContext(ctx context.Context) GetZeroTrustDlpEntriesResultVariantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpEntriesResultVariantOutput)
+}
+
+type GetZeroTrustDlpEntriesResultVariantOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpEntriesResultVariantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpEntriesResultVariant)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpEntriesResultVariantOutput) ToGetZeroTrustDlpEntriesResultVariantOutput() GetZeroTrustDlpEntriesResultVariantOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpEntriesResultVariantOutput) ToGetZeroTrustDlpEntriesResultVariantOutputWithContext(ctx context.Context) GetZeroTrustDlpEntriesResultVariantOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpEntriesResultVariantOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpEntriesResultVariant) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Available values: "Intent", "Content".
+func (o GetZeroTrustDlpEntriesResultVariantOutput) TopicType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpEntriesResultVariant) string { return v.TopicType }).(pulumi.StringOutput)
+}
+
+// Available values: "PromptTopic".
+func (o GetZeroTrustDlpEntriesResultVariantOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpEntriesResultVariant) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDlpEntryConfidence struct {
+	// Indicates whether this entry has AI remote service validation.
+	AiContextAvailable bool `pulumi:"aiContextAvailable"`
+	// Indicates whether this entry has any form of validation that is not an AI remote service.
+	Available bool `pulumi:"available"`
+}
+
+// GetZeroTrustDlpEntryConfidenceInput is an input type that accepts GetZeroTrustDlpEntryConfidenceArgs and GetZeroTrustDlpEntryConfidenceOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpEntryConfidenceInput` via:
+//
+//	GetZeroTrustDlpEntryConfidenceArgs{...}
+type GetZeroTrustDlpEntryConfidenceInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpEntryConfidenceOutput() GetZeroTrustDlpEntryConfidenceOutput
+	ToGetZeroTrustDlpEntryConfidenceOutputWithContext(context.Context) GetZeroTrustDlpEntryConfidenceOutput
+}
+
+type GetZeroTrustDlpEntryConfidenceArgs struct {
+	// Indicates whether this entry has AI remote service validation.
+	AiContextAvailable pulumi.BoolInput `pulumi:"aiContextAvailable"`
+	// Indicates whether this entry has any form of validation that is not an AI remote service.
+	Available pulumi.BoolInput `pulumi:"available"`
+}
+
+func (GetZeroTrustDlpEntryConfidenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpEntryConfidence)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpEntryConfidenceArgs) ToGetZeroTrustDlpEntryConfidenceOutput() GetZeroTrustDlpEntryConfidenceOutput {
+	return i.ToGetZeroTrustDlpEntryConfidenceOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpEntryConfidenceArgs) ToGetZeroTrustDlpEntryConfidenceOutputWithContext(ctx context.Context) GetZeroTrustDlpEntryConfidenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpEntryConfidenceOutput)
+}
+
+type GetZeroTrustDlpEntryConfidenceOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpEntryConfidenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpEntryConfidence)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpEntryConfidenceOutput) ToGetZeroTrustDlpEntryConfidenceOutput() GetZeroTrustDlpEntryConfidenceOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpEntryConfidenceOutput) ToGetZeroTrustDlpEntryConfidenceOutputWithContext(ctx context.Context) GetZeroTrustDlpEntryConfidenceOutput {
+	return o
+}
+
+// Indicates whether this entry has AI remote service validation.
+func (o GetZeroTrustDlpEntryConfidenceOutput) AiContextAvailable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpEntryConfidence) bool { return v.AiContextAvailable }).(pulumi.BoolOutput)
+}
+
+// Indicates whether this entry has any form of validation that is not an AI remote service.
+func (o GetZeroTrustDlpEntryConfidenceOutput) Available() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpEntryConfidence) bool { return v.Available }).(pulumi.BoolOutput)
+}
+
+type GetZeroTrustDlpEntryPattern struct {
+	Regex string `pulumi:"regex"`
+	// Available values: "luhn".
+	//
+	// Deprecated: This attribute is deprecated.
+	Validation string `pulumi:"validation"`
+}
+
+// GetZeroTrustDlpEntryPatternInput is an input type that accepts GetZeroTrustDlpEntryPatternArgs and GetZeroTrustDlpEntryPatternOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpEntryPatternInput` via:
+//
+//	GetZeroTrustDlpEntryPatternArgs{...}
+type GetZeroTrustDlpEntryPatternInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpEntryPatternOutput() GetZeroTrustDlpEntryPatternOutput
+	ToGetZeroTrustDlpEntryPatternOutputWithContext(context.Context) GetZeroTrustDlpEntryPatternOutput
+}
+
+type GetZeroTrustDlpEntryPatternArgs struct {
+	Regex pulumi.StringInput `pulumi:"regex"`
+	// Available values: "luhn".
+	//
+	// Deprecated: This attribute is deprecated.
+	Validation pulumi.StringInput `pulumi:"validation"`
+}
+
+func (GetZeroTrustDlpEntryPatternArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpEntryPattern)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpEntryPatternArgs) ToGetZeroTrustDlpEntryPatternOutput() GetZeroTrustDlpEntryPatternOutput {
+	return i.ToGetZeroTrustDlpEntryPatternOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpEntryPatternArgs) ToGetZeroTrustDlpEntryPatternOutputWithContext(ctx context.Context) GetZeroTrustDlpEntryPatternOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpEntryPatternOutput)
+}
+
+type GetZeroTrustDlpEntryPatternOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpEntryPatternOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpEntryPattern)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpEntryPatternOutput) ToGetZeroTrustDlpEntryPatternOutput() GetZeroTrustDlpEntryPatternOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpEntryPatternOutput) ToGetZeroTrustDlpEntryPatternOutputWithContext(ctx context.Context) GetZeroTrustDlpEntryPatternOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpEntryPatternOutput) Regex() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpEntryPattern) string { return v.Regex }).(pulumi.StringOutput)
+}
+
+// Available values: "luhn".
+//
+// Deprecated: This attribute is deprecated.
+func (o GetZeroTrustDlpEntryPatternOutput) Validation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpEntryPattern) string { return v.Validation }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDlpEntryProfile struct {
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
+}
+
+// GetZeroTrustDlpEntryProfileInput is an input type that accepts GetZeroTrustDlpEntryProfileArgs and GetZeroTrustDlpEntryProfileOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpEntryProfileInput` via:
+//
+//	GetZeroTrustDlpEntryProfileArgs{...}
+type GetZeroTrustDlpEntryProfileInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpEntryProfileOutput() GetZeroTrustDlpEntryProfileOutput
+	ToGetZeroTrustDlpEntryProfileOutputWithContext(context.Context) GetZeroTrustDlpEntryProfileOutput
+}
+
+type GetZeroTrustDlpEntryProfileArgs struct {
+	Id   pulumi.StringInput `pulumi:"id"`
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetZeroTrustDlpEntryProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpEntryProfile)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpEntryProfileArgs) ToGetZeroTrustDlpEntryProfileOutput() GetZeroTrustDlpEntryProfileOutput {
+	return i.ToGetZeroTrustDlpEntryProfileOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpEntryProfileArgs) ToGetZeroTrustDlpEntryProfileOutputWithContext(ctx context.Context) GetZeroTrustDlpEntryProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpEntryProfileOutput)
+}
+
+// GetZeroTrustDlpEntryProfileArrayInput is an input type that accepts GetZeroTrustDlpEntryProfileArray and GetZeroTrustDlpEntryProfileArrayOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpEntryProfileArrayInput` via:
+//
+//	GetZeroTrustDlpEntryProfileArray{ GetZeroTrustDlpEntryProfileArgs{...} }
+type GetZeroTrustDlpEntryProfileArrayInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpEntryProfileArrayOutput() GetZeroTrustDlpEntryProfileArrayOutput
+	ToGetZeroTrustDlpEntryProfileArrayOutputWithContext(context.Context) GetZeroTrustDlpEntryProfileArrayOutput
+}
+
+type GetZeroTrustDlpEntryProfileArray []GetZeroTrustDlpEntryProfileInput
+
+func (GetZeroTrustDlpEntryProfileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDlpEntryProfile)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpEntryProfileArray) ToGetZeroTrustDlpEntryProfileArrayOutput() GetZeroTrustDlpEntryProfileArrayOutput {
+	return i.ToGetZeroTrustDlpEntryProfileArrayOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpEntryProfileArray) ToGetZeroTrustDlpEntryProfileArrayOutputWithContext(ctx context.Context) GetZeroTrustDlpEntryProfileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpEntryProfileArrayOutput)
+}
+
+type GetZeroTrustDlpEntryProfileOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpEntryProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpEntryProfile)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpEntryProfileOutput) ToGetZeroTrustDlpEntryProfileOutput() GetZeroTrustDlpEntryProfileOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpEntryProfileOutput) ToGetZeroTrustDlpEntryProfileOutputWithContext(ctx context.Context) GetZeroTrustDlpEntryProfileOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpEntryProfileOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpEntryProfile) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpEntryProfileOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpEntryProfile) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDlpEntryProfileArrayOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpEntryProfileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDlpEntryProfile)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpEntryProfileArrayOutput) ToGetZeroTrustDlpEntryProfileArrayOutput() GetZeroTrustDlpEntryProfileArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpEntryProfileArrayOutput) ToGetZeroTrustDlpEntryProfileArrayOutputWithContext(ctx context.Context) GetZeroTrustDlpEntryProfileArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpEntryProfileArrayOutput) Index(i pulumi.IntInput) GetZeroTrustDlpEntryProfileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZeroTrustDlpEntryProfile {
+		return vs[0].([]GetZeroTrustDlpEntryProfile)[vs[1].(int)]
+	}).(GetZeroTrustDlpEntryProfileOutput)
+}
+
+type GetZeroTrustDlpEntryVariant struct {
+	Description string `pulumi:"description"`
+	// Available values: "Intent", "Content".
+	TopicType string `pulumi:"topicType"`
+	// Available values: "PromptTopic".
+	Type string `pulumi:"type"`
+}
+
+// GetZeroTrustDlpEntryVariantInput is an input type that accepts GetZeroTrustDlpEntryVariantArgs and GetZeroTrustDlpEntryVariantOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpEntryVariantInput` via:
+//
+//	GetZeroTrustDlpEntryVariantArgs{...}
+type GetZeroTrustDlpEntryVariantInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpEntryVariantOutput() GetZeroTrustDlpEntryVariantOutput
+	ToGetZeroTrustDlpEntryVariantOutputWithContext(context.Context) GetZeroTrustDlpEntryVariantOutput
+}
+
+type GetZeroTrustDlpEntryVariantArgs struct {
+	Description pulumi.StringInput `pulumi:"description"`
+	// Available values: "Intent", "Content".
+	TopicType pulumi.StringInput `pulumi:"topicType"`
+	// Available values: "PromptTopic".
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetZeroTrustDlpEntryVariantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpEntryVariant)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpEntryVariantArgs) ToGetZeroTrustDlpEntryVariantOutput() GetZeroTrustDlpEntryVariantOutput {
+	return i.ToGetZeroTrustDlpEntryVariantOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpEntryVariantArgs) ToGetZeroTrustDlpEntryVariantOutputWithContext(ctx context.Context) GetZeroTrustDlpEntryVariantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpEntryVariantOutput)
+}
+
+type GetZeroTrustDlpEntryVariantOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpEntryVariantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpEntryVariant)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpEntryVariantOutput) ToGetZeroTrustDlpEntryVariantOutput() GetZeroTrustDlpEntryVariantOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpEntryVariantOutput) ToGetZeroTrustDlpEntryVariantOutputWithContext(ctx context.Context) GetZeroTrustDlpEntryVariantOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpEntryVariantOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpEntryVariant) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Available values: "Intent", "Content".
+func (o GetZeroTrustDlpEntryVariantOutput) TopicType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpEntryVariant) string { return v.TopicType }).(pulumi.StringOutput)
+}
+
+// Available values: "PromptTopic".
+func (o GetZeroTrustDlpEntryVariantOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpEntryVariant) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDlpIntegrationEntriesResult struct {
+	// Only applies to custom word lists.
+	// Determines if the words should be matched in a case-sensitive manner
+	// Cannot be set to false if secret is true
+	CaseSensitive bool                                              `pulumi:"caseSensitive"`
+	Confidence    GetZeroTrustDlpIntegrationEntriesResultConfidence `pulumi:"confidence"`
+	CreatedAt     string                                            `pulumi:"createdAt"`
+	Enabled       bool                                              `pulumi:"enabled"`
+	Id            string                                            `pulumi:"id"`
+	Name          string                                            `pulumi:"name"`
+	Pattern       GetZeroTrustDlpIntegrationEntriesResultPattern    `pulumi:"pattern"`
+	ProfileId     string                                            `pulumi:"profileId"`
+	Secret        bool                                              `pulumi:"secret"`
+	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+	Type      string `pulumi:"type"`
+	UpdatedAt string `pulumi:"updatedAt"`
+	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+	UploadStatus string                                         `pulumi:"uploadStatus"`
+	Variant      GetZeroTrustDlpIntegrationEntriesResultVariant `pulumi:"variant"`
+	WordList     string                                         `pulumi:"wordList"`
+}
+
+// GetZeroTrustDlpIntegrationEntriesResultInput is an input type that accepts GetZeroTrustDlpIntegrationEntriesResultArgs and GetZeroTrustDlpIntegrationEntriesResultOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpIntegrationEntriesResultInput` via:
+//
+//	GetZeroTrustDlpIntegrationEntriesResultArgs{...}
+type GetZeroTrustDlpIntegrationEntriesResultInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpIntegrationEntriesResultOutput() GetZeroTrustDlpIntegrationEntriesResultOutput
+	ToGetZeroTrustDlpIntegrationEntriesResultOutputWithContext(context.Context) GetZeroTrustDlpIntegrationEntriesResultOutput
+}
+
+type GetZeroTrustDlpIntegrationEntriesResultArgs struct {
+	// Only applies to custom word lists.
+	// Determines if the words should be matched in a case-sensitive manner
+	// Cannot be set to false if secret is true
+	CaseSensitive pulumi.BoolInput                                       `pulumi:"caseSensitive"`
+	Confidence    GetZeroTrustDlpIntegrationEntriesResultConfidenceInput `pulumi:"confidence"`
+	CreatedAt     pulumi.StringInput                                     `pulumi:"createdAt"`
+	Enabled       pulumi.BoolInput                                       `pulumi:"enabled"`
+	Id            pulumi.StringInput                                     `pulumi:"id"`
+	Name          pulumi.StringInput                                     `pulumi:"name"`
+	Pattern       GetZeroTrustDlpIntegrationEntriesResultPatternInput    `pulumi:"pattern"`
+	ProfileId     pulumi.StringInput                                     `pulumi:"profileId"`
+	Secret        pulumi.BoolInput                                       `pulumi:"secret"`
+	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+	Type      pulumi.StringInput `pulumi:"type"`
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+	UploadStatus pulumi.StringInput                                  `pulumi:"uploadStatus"`
+	Variant      GetZeroTrustDlpIntegrationEntriesResultVariantInput `pulumi:"variant"`
+	WordList     pulumi.StringInput                                  `pulumi:"wordList"`
+}
+
+func (GetZeroTrustDlpIntegrationEntriesResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpIntegrationEntriesResult)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpIntegrationEntriesResultArgs) ToGetZeroTrustDlpIntegrationEntriesResultOutput() GetZeroTrustDlpIntegrationEntriesResultOutput {
+	return i.ToGetZeroTrustDlpIntegrationEntriesResultOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpIntegrationEntriesResultArgs) ToGetZeroTrustDlpIntegrationEntriesResultOutputWithContext(ctx context.Context) GetZeroTrustDlpIntegrationEntriesResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpIntegrationEntriesResultOutput)
+}
+
+// GetZeroTrustDlpIntegrationEntriesResultArrayInput is an input type that accepts GetZeroTrustDlpIntegrationEntriesResultArray and GetZeroTrustDlpIntegrationEntriesResultArrayOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpIntegrationEntriesResultArrayInput` via:
+//
+//	GetZeroTrustDlpIntegrationEntriesResultArray{ GetZeroTrustDlpIntegrationEntriesResultArgs{...} }
+type GetZeroTrustDlpIntegrationEntriesResultArrayInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpIntegrationEntriesResultArrayOutput() GetZeroTrustDlpIntegrationEntriesResultArrayOutput
+	ToGetZeroTrustDlpIntegrationEntriesResultArrayOutputWithContext(context.Context) GetZeroTrustDlpIntegrationEntriesResultArrayOutput
+}
+
+type GetZeroTrustDlpIntegrationEntriesResultArray []GetZeroTrustDlpIntegrationEntriesResultInput
+
+func (GetZeroTrustDlpIntegrationEntriesResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDlpIntegrationEntriesResult)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpIntegrationEntriesResultArray) ToGetZeroTrustDlpIntegrationEntriesResultArrayOutput() GetZeroTrustDlpIntegrationEntriesResultArrayOutput {
+	return i.ToGetZeroTrustDlpIntegrationEntriesResultArrayOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpIntegrationEntriesResultArray) ToGetZeroTrustDlpIntegrationEntriesResultArrayOutputWithContext(ctx context.Context) GetZeroTrustDlpIntegrationEntriesResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpIntegrationEntriesResultArrayOutput)
+}
+
+type GetZeroTrustDlpIntegrationEntriesResultOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpIntegrationEntriesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpIntegrationEntriesResult)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpIntegrationEntriesResultOutput) ToGetZeroTrustDlpIntegrationEntriesResultOutput() GetZeroTrustDlpIntegrationEntriesResultOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpIntegrationEntriesResultOutput) ToGetZeroTrustDlpIntegrationEntriesResultOutputWithContext(ctx context.Context) GetZeroTrustDlpIntegrationEntriesResultOutput {
+	return o
+}
+
+// Only applies to custom word lists.
+// Determines if the words should be matched in a case-sensitive manner
+// Cannot be set to false if secret is true
+func (o GetZeroTrustDlpIntegrationEntriesResultOutput) CaseSensitive() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpIntegrationEntriesResult) bool { return v.CaseSensitive }).(pulumi.BoolOutput)
+}
+
+func (o GetZeroTrustDlpIntegrationEntriesResultOutput) Confidence() GetZeroTrustDlpIntegrationEntriesResultConfidenceOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpIntegrationEntriesResult) GetZeroTrustDlpIntegrationEntriesResultConfidence {
+		return v.Confidence
+	}).(GetZeroTrustDlpIntegrationEntriesResultConfidenceOutput)
+}
+
+func (o GetZeroTrustDlpIntegrationEntriesResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpIntegrationEntriesResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpIntegrationEntriesResultOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpIntegrationEntriesResult) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetZeroTrustDlpIntegrationEntriesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpIntegrationEntriesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpIntegrationEntriesResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpIntegrationEntriesResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpIntegrationEntriesResultOutput) Pattern() GetZeroTrustDlpIntegrationEntriesResultPatternOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpIntegrationEntriesResult) GetZeroTrustDlpIntegrationEntriesResultPattern {
+		return v.Pattern
+	}).(GetZeroTrustDlpIntegrationEntriesResultPatternOutput)
+}
+
+func (o GetZeroTrustDlpIntegrationEntriesResultOutput) ProfileId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpIntegrationEntriesResult) string { return v.ProfileId }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpIntegrationEntriesResultOutput) Secret() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpIntegrationEntriesResult) bool { return v.Secret }).(pulumi.BoolOutput)
+}
+
+// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+func (o GetZeroTrustDlpIntegrationEntriesResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpIntegrationEntriesResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpIntegrationEntriesResultOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpIntegrationEntriesResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+func (o GetZeroTrustDlpIntegrationEntriesResultOutput) UploadStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpIntegrationEntriesResult) string { return v.UploadStatus }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpIntegrationEntriesResultOutput) Variant() GetZeroTrustDlpIntegrationEntriesResultVariantOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpIntegrationEntriesResult) GetZeroTrustDlpIntegrationEntriesResultVariant {
+		return v.Variant
+	}).(GetZeroTrustDlpIntegrationEntriesResultVariantOutput)
+}
+
+func (o GetZeroTrustDlpIntegrationEntriesResultOutput) WordList() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpIntegrationEntriesResult) string { return v.WordList }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDlpIntegrationEntriesResultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpIntegrationEntriesResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDlpIntegrationEntriesResult)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpIntegrationEntriesResultArrayOutput) ToGetZeroTrustDlpIntegrationEntriesResultArrayOutput() GetZeroTrustDlpIntegrationEntriesResultArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpIntegrationEntriesResultArrayOutput) ToGetZeroTrustDlpIntegrationEntriesResultArrayOutputWithContext(ctx context.Context) GetZeroTrustDlpIntegrationEntriesResultArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpIntegrationEntriesResultArrayOutput) Index(i pulumi.IntInput) GetZeroTrustDlpIntegrationEntriesResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZeroTrustDlpIntegrationEntriesResult {
+		return vs[0].([]GetZeroTrustDlpIntegrationEntriesResult)[vs[1].(int)]
+	}).(GetZeroTrustDlpIntegrationEntriesResultOutput)
+}
+
+type GetZeroTrustDlpIntegrationEntriesResultConfidence struct {
+	// Indicates whether this entry has AI remote service validation.
+	AiContextAvailable bool `pulumi:"aiContextAvailable"`
+	// Indicates whether this entry has any form of validation that is not an AI remote service.
+	Available bool `pulumi:"available"`
+}
+
+// GetZeroTrustDlpIntegrationEntriesResultConfidenceInput is an input type that accepts GetZeroTrustDlpIntegrationEntriesResultConfidenceArgs and GetZeroTrustDlpIntegrationEntriesResultConfidenceOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpIntegrationEntriesResultConfidenceInput` via:
+//
+//	GetZeroTrustDlpIntegrationEntriesResultConfidenceArgs{...}
+type GetZeroTrustDlpIntegrationEntriesResultConfidenceInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpIntegrationEntriesResultConfidenceOutput() GetZeroTrustDlpIntegrationEntriesResultConfidenceOutput
+	ToGetZeroTrustDlpIntegrationEntriesResultConfidenceOutputWithContext(context.Context) GetZeroTrustDlpIntegrationEntriesResultConfidenceOutput
+}
+
+type GetZeroTrustDlpIntegrationEntriesResultConfidenceArgs struct {
+	// Indicates whether this entry has AI remote service validation.
+	AiContextAvailable pulumi.BoolInput `pulumi:"aiContextAvailable"`
+	// Indicates whether this entry has any form of validation that is not an AI remote service.
+	Available pulumi.BoolInput `pulumi:"available"`
+}
+
+func (GetZeroTrustDlpIntegrationEntriesResultConfidenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpIntegrationEntriesResultConfidence)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpIntegrationEntriesResultConfidenceArgs) ToGetZeroTrustDlpIntegrationEntriesResultConfidenceOutput() GetZeroTrustDlpIntegrationEntriesResultConfidenceOutput {
+	return i.ToGetZeroTrustDlpIntegrationEntriesResultConfidenceOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpIntegrationEntriesResultConfidenceArgs) ToGetZeroTrustDlpIntegrationEntriesResultConfidenceOutputWithContext(ctx context.Context) GetZeroTrustDlpIntegrationEntriesResultConfidenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpIntegrationEntriesResultConfidenceOutput)
+}
+
+type GetZeroTrustDlpIntegrationEntriesResultConfidenceOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpIntegrationEntriesResultConfidenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpIntegrationEntriesResultConfidence)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpIntegrationEntriesResultConfidenceOutput) ToGetZeroTrustDlpIntegrationEntriesResultConfidenceOutput() GetZeroTrustDlpIntegrationEntriesResultConfidenceOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpIntegrationEntriesResultConfidenceOutput) ToGetZeroTrustDlpIntegrationEntriesResultConfidenceOutputWithContext(ctx context.Context) GetZeroTrustDlpIntegrationEntriesResultConfidenceOutput {
+	return o
+}
+
+// Indicates whether this entry has AI remote service validation.
+func (o GetZeroTrustDlpIntegrationEntriesResultConfidenceOutput) AiContextAvailable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpIntegrationEntriesResultConfidence) bool { return v.AiContextAvailable }).(pulumi.BoolOutput)
+}
+
+// Indicates whether this entry has any form of validation that is not an AI remote service.
+func (o GetZeroTrustDlpIntegrationEntriesResultConfidenceOutput) Available() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpIntegrationEntriesResultConfidence) bool { return v.Available }).(pulumi.BoolOutput)
+}
+
+type GetZeroTrustDlpIntegrationEntriesResultPattern struct {
+	Regex string `pulumi:"regex"`
+	// Available values: "luhn".
+	//
+	// Deprecated: This attribute is deprecated.
+	Validation string `pulumi:"validation"`
+}
+
+// GetZeroTrustDlpIntegrationEntriesResultPatternInput is an input type that accepts GetZeroTrustDlpIntegrationEntriesResultPatternArgs and GetZeroTrustDlpIntegrationEntriesResultPatternOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpIntegrationEntriesResultPatternInput` via:
+//
+//	GetZeroTrustDlpIntegrationEntriesResultPatternArgs{...}
+type GetZeroTrustDlpIntegrationEntriesResultPatternInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpIntegrationEntriesResultPatternOutput() GetZeroTrustDlpIntegrationEntriesResultPatternOutput
+	ToGetZeroTrustDlpIntegrationEntriesResultPatternOutputWithContext(context.Context) GetZeroTrustDlpIntegrationEntriesResultPatternOutput
+}
+
+type GetZeroTrustDlpIntegrationEntriesResultPatternArgs struct {
+	Regex pulumi.StringInput `pulumi:"regex"`
+	// Available values: "luhn".
+	//
+	// Deprecated: This attribute is deprecated.
+	Validation pulumi.StringInput `pulumi:"validation"`
+}
+
+func (GetZeroTrustDlpIntegrationEntriesResultPatternArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpIntegrationEntriesResultPattern)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpIntegrationEntriesResultPatternArgs) ToGetZeroTrustDlpIntegrationEntriesResultPatternOutput() GetZeroTrustDlpIntegrationEntriesResultPatternOutput {
+	return i.ToGetZeroTrustDlpIntegrationEntriesResultPatternOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpIntegrationEntriesResultPatternArgs) ToGetZeroTrustDlpIntegrationEntriesResultPatternOutputWithContext(ctx context.Context) GetZeroTrustDlpIntegrationEntriesResultPatternOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpIntegrationEntriesResultPatternOutput)
+}
+
+type GetZeroTrustDlpIntegrationEntriesResultPatternOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpIntegrationEntriesResultPatternOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpIntegrationEntriesResultPattern)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpIntegrationEntriesResultPatternOutput) ToGetZeroTrustDlpIntegrationEntriesResultPatternOutput() GetZeroTrustDlpIntegrationEntriesResultPatternOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpIntegrationEntriesResultPatternOutput) ToGetZeroTrustDlpIntegrationEntriesResultPatternOutputWithContext(ctx context.Context) GetZeroTrustDlpIntegrationEntriesResultPatternOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpIntegrationEntriesResultPatternOutput) Regex() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpIntegrationEntriesResultPattern) string { return v.Regex }).(pulumi.StringOutput)
+}
+
+// Available values: "luhn".
+//
+// Deprecated: This attribute is deprecated.
+func (o GetZeroTrustDlpIntegrationEntriesResultPatternOutput) Validation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpIntegrationEntriesResultPattern) string { return v.Validation }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDlpIntegrationEntriesResultVariant struct {
+	Description string `pulumi:"description"`
+	// Available values: "Intent", "Content".
+	TopicType string `pulumi:"topicType"`
+	// Available values: "PromptTopic".
+	Type string `pulumi:"type"`
+}
+
+// GetZeroTrustDlpIntegrationEntriesResultVariantInput is an input type that accepts GetZeroTrustDlpIntegrationEntriesResultVariantArgs and GetZeroTrustDlpIntegrationEntriesResultVariantOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpIntegrationEntriesResultVariantInput` via:
+//
+//	GetZeroTrustDlpIntegrationEntriesResultVariantArgs{...}
+type GetZeroTrustDlpIntegrationEntriesResultVariantInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpIntegrationEntriesResultVariantOutput() GetZeroTrustDlpIntegrationEntriesResultVariantOutput
+	ToGetZeroTrustDlpIntegrationEntriesResultVariantOutputWithContext(context.Context) GetZeroTrustDlpIntegrationEntriesResultVariantOutput
+}
+
+type GetZeroTrustDlpIntegrationEntriesResultVariantArgs struct {
+	Description pulumi.StringInput `pulumi:"description"`
+	// Available values: "Intent", "Content".
+	TopicType pulumi.StringInput `pulumi:"topicType"`
+	// Available values: "PromptTopic".
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetZeroTrustDlpIntegrationEntriesResultVariantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpIntegrationEntriesResultVariant)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpIntegrationEntriesResultVariantArgs) ToGetZeroTrustDlpIntegrationEntriesResultVariantOutput() GetZeroTrustDlpIntegrationEntriesResultVariantOutput {
+	return i.ToGetZeroTrustDlpIntegrationEntriesResultVariantOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpIntegrationEntriesResultVariantArgs) ToGetZeroTrustDlpIntegrationEntriesResultVariantOutputWithContext(ctx context.Context) GetZeroTrustDlpIntegrationEntriesResultVariantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpIntegrationEntriesResultVariantOutput)
+}
+
+type GetZeroTrustDlpIntegrationEntriesResultVariantOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpIntegrationEntriesResultVariantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpIntegrationEntriesResultVariant)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpIntegrationEntriesResultVariantOutput) ToGetZeroTrustDlpIntegrationEntriesResultVariantOutput() GetZeroTrustDlpIntegrationEntriesResultVariantOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpIntegrationEntriesResultVariantOutput) ToGetZeroTrustDlpIntegrationEntriesResultVariantOutputWithContext(ctx context.Context) GetZeroTrustDlpIntegrationEntriesResultVariantOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpIntegrationEntriesResultVariantOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpIntegrationEntriesResultVariant) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Available values: "Intent", "Content".
+func (o GetZeroTrustDlpIntegrationEntriesResultVariantOutput) TopicType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpIntegrationEntriesResultVariant) string { return v.TopicType }).(pulumi.StringOutput)
+}
+
+// Available values: "PromptTopic".
+func (o GetZeroTrustDlpIntegrationEntriesResultVariantOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpIntegrationEntriesResultVariant) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDlpIntegrationEntryConfidence struct {
+	// Indicates whether this entry has AI remote service validation.
+	AiContextAvailable bool `pulumi:"aiContextAvailable"`
+	// Indicates whether this entry has any form of validation that is not an AI remote service.
+	Available bool `pulumi:"available"`
+}
+
+// GetZeroTrustDlpIntegrationEntryConfidenceInput is an input type that accepts GetZeroTrustDlpIntegrationEntryConfidenceArgs and GetZeroTrustDlpIntegrationEntryConfidenceOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpIntegrationEntryConfidenceInput` via:
+//
+//	GetZeroTrustDlpIntegrationEntryConfidenceArgs{...}
+type GetZeroTrustDlpIntegrationEntryConfidenceInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpIntegrationEntryConfidenceOutput() GetZeroTrustDlpIntegrationEntryConfidenceOutput
+	ToGetZeroTrustDlpIntegrationEntryConfidenceOutputWithContext(context.Context) GetZeroTrustDlpIntegrationEntryConfidenceOutput
+}
+
+type GetZeroTrustDlpIntegrationEntryConfidenceArgs struct {
+	// Indicates whether this entry has AI remote service validation.
+	AiContextAvailable pulumi.BoolInput `pulumi:"aiContextAvailable"`
+	// Indicates whether this entry has any form of validation that is not an AI remote service.
+	Available pulumi.BoolInput `pulumi:"available"`
+}
+
+func (GetZeroTrustDlpIntegrationEntryConfidenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpIntegrationEntryConfidence)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpIntegrationEntryConfidenceArgs) ToGetZeroTrustDlpIntegrationEntryConfidenceOutput() GetZeroTrustDlpIntegrationEntryConfidenceOutput {
+	return i.ToGetZeroTrustDlpIntegrationEntryConfidenceOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpIntegrationEntryConfidenceArgs) ToGetZeroTrustDlpIntegrationEntryConfidenceOutputWithContext(ctx context.Context) GetZeroTrustDlpIntegrationEntryConfidenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpIntegrationEntryConfidenceOutput)
+}
+
+type GetZeroTrustDlpIntegrationEntryConfidenceOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpIntegrationEntryConfidenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpIntegrationEntryConfidence)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpIntegrationEntryConfidenceOutput) ToGetZeroTrustDlpIntegrationEntryConfidenceOutput() GetZeroTrustDlpIntegrationEntryConfidenceOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpIntegrationEntryConfidenceOutput) ToGetZeroTrustDlpIntegrationEntryConfidenceOutputWithContext(ctx context.Context) GetZeroTrustDlpIntegrationEntryConfidenceOutput {
+	return o
+}
+
+// Indicates whether this entry has AI remote service validation.
+func (o GetZeroTrustDlpIntegrationEntryConfidenceOutput) AiContextAvailable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpIntegrationEntryConfidence) bool { return v.AiContextAvailable }).(pulumi.BoolOutput)
+}
+
+// Indicates whether this entry has any form of validation that is not an AI remote service.
+func (o GetZeroTrustDlpIntegrationEntryConfidenceOutput) Available() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpIntegrationEntryConfidence) bool { return v.Available }).(pulumi.BoolOutput)
+}
+
+type GetZeroTrustDlpIntegrationEntryPattern struct {
+	Regex string `pulumi:"regex"`
+	// Available values: "luhn".
+	//
+	// Deprecated: This attribute is deprecated.
+	Validation string `pulumi:"validation"`
+}
+
+// GetZeroTrustDlpIntegrationEntryPatternInput is an input type that accepts GetZeroTrustDlpIntegrationEntryPatternArgs and GetZeroTrustDlpIntegrationEntryPatternOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpIntegrationEntryPatternInput` via:
+//
+//	GetZeroTrustDlpIntegrationEntryPatternArgs{...}
+type GetZeroTrustDlpIntegrationEntryPatternInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpIntegrationEntryPatternOutput() GetZeroTrustDlpIntegrationEntryPatternOutput
+	ToGetZeroTrustDlpIntegrationEntryPatternOutputWithContext(context.Context) GetZeroTrustDlpIntegrationEntryPatternOutput
+}
+
+type GetZeroTrustDlpIntegrationEntryPatternArgs struct {
+	Regex pulumi.StringInput `pulumi:"regex"`
+	// Available values: "luhn".
+	//
+	// Deprecated: This attribute is deprecated.
+	Validation pulumi.StringInput `pulumi:"validation"`
+}
+
+func (GetZeroTrustDlpIntegrationEntryPatternArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpIntegrationEntryPattern)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpIntegrationEntryPatternArgs) ToGetZeroTrustDlpIntegrationEntryPatternOutput() GetZeroTrustDlpIntegrationEntryPatternOutput {
+	return i.ToGetZeroTrustDlpIntegrationEntryPatternOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpIntegrationEntryPatternArgs) ToGetZeroTrustDlpIntegrationEntryPatternOutputWithContext(ctx context.Context) GetZeroTrustDlpIntegrationEntryPatternOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpIntegrationEntryPatternOutput)
+}
+
+type GetZeroTrustDlpIntegrationEntryPatternOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpIntegrationEntryPatternOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpIntegrationEntryPattern)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpIntegrationEntryPatternOutput) ToGetZeroTrustDlpIntegrationEntryPatternOutput() GetZeroTrustDlpIntegrationEntryPatternOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpIntegrationEntryPatternOutput) ToGetZeroTrustDlpIntegrationEntryPatternOutputWithContext(ctx context.Context) GetZeroTrustDlpIntegrationEntryPatternOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpIntegrationEntryPatternOutput) Regex() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpIntegrationEntryPattern) string { return v.Regex }).(pulumi.StringOutput)
+}
+
+// Available values: "luhn".
+//
+// Deprecated: This attribute is deprecated.
+func (o GetZeroTrustDlpIntegrationEntryPatternOutput) Validation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpIntegrationEntryPattern) string { return v.Validation }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDlpIntegrationEntryProfile struct {
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
+}
+
+// GetZeroTrustDlpIntegrationEntryProfileInput is an input type that accepts GetZeroTrustDlpIntegrationEntryProfileArgs and GetZeroTrustDlpIntegrationEntryProfileOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpIntegrationEntryProfileInput` via:
+//
+//	GetZeroTrustDlpIntegrationEntryProfileArgs{...}
+type GetZeroTrustDlpIntegrationEntryProfileInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpIntegrationEntryProfileOutput() GetZeroTrustDlpIntegrationEntryProfileOutput
+	ToGetZeroTrustDlpIntegrationEntryProfileOutputWithContext(context.Context) GetZeroTrustDlpIntegrationEntryProfileOutput
+}
+
+type GetZeroTrustDlpIntegrationEntryProfileArgs struct {
+	Id   pulumi.StringInput `pulumi:"id"`
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetZeroTrustDlpIntegrationEntryProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpIntegrationEntryProfile)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpIntegrationEntryProfileArgs) ToGetZeroTrustDlpIntegrationEntryProfileOutput() GetZeroTrustDlpIntegrationEntryProfileOutput {
+	return i.ToGetZeroTrustDlpIntegrationEntryProfileOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpIntegrationEntryProfileArgs) ToGetZeroTrustDlpIntegrationEntryProfileOutputWithContext(ctx context.Context) GetZeroTrustDlpIntegrationEntryProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpIntegrationEntryProfileOutput)
+}
+
+// GetZeroTrustDlpIntegrationEntryProfileArrayInput is an input type that accepts GetZeroTrustDlpIntegrationEntryProfileArray and GetZeroTrustDlpIntegrationEntryProfileArrayOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpIntegrationEntryProfileArrayInput` via:
+//
+//	GetZeroTrustDlpIntegrationEntryProfileArray{ GetZeroTrustDlpIntegrationEntryProfileArgs{...} }
+type GetZeroTrustDlpIntegrationEntryProfileArrayInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpIntegrationEntryProfileArrayOutput() GetZeroTrustDlpIntegrationEntryProfileArrayOutput
+	ToGetZeroTrustDlpIntegrationEntryProfileArrayOutputWithContext(context.Context) GetZeroTrustDlpIntegrationEntryProfileArrayOutput
+}
+
+type GetZeroTrustDlpIntegrationEntryProfileArray []GetZeroTrustDlpIntegrationEntryProfileInput
+
+func (GetZeroTrustDlpIntegrationEntryProfileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDlpIntegrationEntryProfile)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpIntegrationEntryProfileArray) ToGetZeroTrustDlpIntegrationEntryProfileArrayOutput() GetZeroTrustDlpIntegrationEntryProfileArrayOutput {
+	return i.ToGetZeroTrustDlpIntegrationEntryProfileArrayOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpIntegrationEntryProfileArray) ToGetZeroTrustDlpIntegrationEntryProfileArrayOutputWithContext(ctx context.Context) GetZeroTrustDlpIntegrationEntryProfileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpIntegrationEntryProfileArrayOutput)
+}
+
+type GetZeroTrustDlpIntegrationEntryProfileOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpIntegrationEntryProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpIntegrationEntryProfile)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpIntegrationEntryProfileOutput) ToGetZeroTrustDlpIntegrationEntryProfileOutput() GetZeroTrustDlpIntegrationEntryProfileOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpIntegrationEntryProfileOutput) ToGetZeroTrustDlpIntegrationEntryProfileOutputWithContext(ctx context.Context) GetZeroTrustDlpIntegrationEntryProfileOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpIntegrationEntryProfileOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpIntegrationEntryProfile) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpIntegrationEntryProfileOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpIntegrationEntryProfile) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDlpIntegrationEntryProfileArrayOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpIntegrationEntryProfileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDlpIntegrationEntryProfile)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpIntegrationEntryProfileArrayOutput) ToGetZeroTrustDlpIntegrationEntryProfileArrayOutput() GetZeroTrustDlpIntegrationEntryProfileArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpIntegrationEntryProfileArrayOutput) ToGetZeroTrustDlpIntegrationEntryProfileArrayOutputWithContext(ctx context.Context) GetZeroTrustDlpIntegrationEntryProfileArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpIntegrationEntryProfileArrayOutput) Index(i pulumi.IntInput) GetZeroTrustDlpIntegrationEntryProfileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZeroTrustDlpIntegrationEntryProfile {
+		return vs[0].([]GetZeroTrustDlpIntegrationEntryProfile)[vs[1].(int)]
+	}).(GetZeroTrustDlpIntegrationEntryProfileOutput)
+}
+
+type GetZeroTrustDlpIntegrationEntryVariant struct {
+	Description string `pulumi:"description"`
+	// Available values: "Intent", "Content".
+	TopicType string `pulumi:"topicType"`
+	// Available values: "PromptTopic".
+	Type string `pulumi:"type"`
+}
+
+// GetZeroTrustDlpIntegrationEntryVariantInput is an input type that accepts GetZeroTrustDlpIntegrationEntryVariantArgs and GetZeroTrustDlpIntegrationEntryVariantOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpIntegrationEntryVariantInput` via:
+//
+//	GetZeroTrustDlpIntegrationEntryVariantArgs{...}
+type GetZeroTrustDlpIntegrationEntryVariantInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpIntegrationEntryVariantOutput() GetZeroTrustDlpIntegrationEntryVariantOutput
+	ToGetZeroTrustDlpIntegrationEntryVariantOutputWithContext(context.Context) GetZeroTrustDlpIntegrationEntryVariantOutput
+}
+
+type GetZeroTrustDlpIntegrationEntryVariantArgs struct {
+	Description pulumi.StringInput `pulumi:"description"`
+	// Available values: "Intent", "Content".
+	TopicType pulumi.StringInput `pulumi:"topicType"`
+	// Available values: "PromptTopic".
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetZeroTrustDlpIntegrationEntryVariantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpIntegrationEntryVariant)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpIntegrationEntryVariantArgs) ToGetZeroTrustDlpIntegrationEntryVariantOutput() GetZeroTrustDlpIntegrationEntryVariantOutput {
+	return i.ToGetZeroTrustDlpIntegrationEntryVariantOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpIntegrationEntryVariantArgs) ToGetZeroTrustDlpIntegrationEntryVariantOutputWithContext(ctx context.Context) GetZeroTrustDlpIntegrationEntryVariantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpIntegrationEntryVariantOutput)
+}
+
+type GetZeroTrustDlpIntegrationEntryVariantOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpIntegrationEntryVariantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpIntegrationEntryVariant)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpIntegrationEntryVariantOutput) ToGetZeroTrustDlpIntegrationEntryVariantOutput() GetZeroTrustDlpIntegrationEntryVariantOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpIntegrationEntryVariantOutput) ToGetZeroTrustDlpIntegrationEntryVariantOutputWithContext(ctx context.Context) GetZeroTrustDlpIntegrationEntryVariantOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpIntegrationEntryVariantOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpIntegrationEntryVariant) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Available values: "Intent", "Content".
+func (o GetZeroTrustDlpIntegrationEntryVariantOutput) TopicType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpIntegrationEntryVariant) string { return v.TopicType }).(pulumi.StringOutput)
+}
+
+// Available values: "PromptTopic".
+func (o GetZeroTrustDlpIntegrationEntryVariantOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpIntegrationEntryVariant) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDlpPredefinedEntriesResult struct {
+	// Only applies to custom word lists.
+	// Determines if the words should be matched in a case-sensitive manner
+	// Cannot be set to false if secret is true
+	CaseSensitive bool                                             `pulumi:"caseSensitive"`
+	Confidence    GetZeroTrustDlpPredefinedEntriesResultConfidence `pulumi:"confidence"`
+	CreatedAt     string                                           `pulumi:"createdAt"`
+	Enabled       bool                                             `pulumi:"enabled"`
+	Id            string                                           `pulumi:"id"`
+	Name          string                                           `pulumi:"name"`
+	Pattern       GetZeroTrustDlpPredefinedEntriesResultPattern    `pulumi:"pattern"`
+	ProfileId     string                                           `pulumi:"profileId"`
+	Secret        bool                                             `pulumi:"secret"`
+	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+	Type      string `pulumi:"type"`
+	UpdatedAt string `pulumi:"updatedAt"`
+	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+	UploadStatus string                                        `pulumi:"uploadStatus"`
+	Variant      GetZeroTrustDlpPredefinedEntriesResultVariant `pulumi:"variant"`
+	WordList     string                                        `pulumi:"wordList"`
+}
+
+// GetZeroTrustDlpPredefinedEntriesResultInput is an input type that accepts GetZeroTrustDlpPredefinedEntriesResultArgs and GetZeroTrustDlpPredefinedEntriesResultOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpPredefinedEntriesResultInput` via:
+//
+//	GetZeroTrustDlpPredefinedEntriesResultArgs{...}
+type GetZeroTrustDlpPredefinedEntriesResultInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpPredefinedEntriesResultOutput() GetZeroTrustDlpPredefinedEntriesResultOutput
+	ToGetZeroTrustDlpPredefinedEntriesResultOutputWithContext(context.Context) GetZeroTrustDlpPredefinedEntriesResultOutput
+}
+
+type GetZeroTrustDlpPredefinedEntriesResultArgs struct {
+	// Only applies to custom word lists.
+	// Determines if the words should be matched in a case-sensitive manner
+	// Cannot be set to false if secret is true
+	CaseSensitive pulumi.BoolInput                                      `pulumi:"caseSensitive"`
+	Confidence    GetZeroTrustDlpPredefinedEntriesResultConfidenceInput `pulumi:"confidence"`
+	CreatedAt     pulumi.StringInput                                    `pulumi:"createdAt"`
+	Enabled       pulumi.BoolInput                                      `pulumi:"enabled"`
+	Id            pulumi.StringInput                                    `pulumi:"id"`
+	Name          pulumi.StringInput                                    `pulumi:"name"`
+	Pattern       GetZeroTrustDlpPredefinedEntriesResultPatternInput    `pulumi:"pattern"`
+	ProfileId     pulumi.StringInput                                    `pulumi:"profileId"`
+	Secret        pulumi.BoolInput                                      `pulumi:"secret"`
+	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+	Type      pulumi.StringInput `pulumi:"type"`
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+	UploadStatus pulumi.StringInput                                 `pulumi:"uploadStatus"`
+	Variant      GetZeroTrustDlpPredefinedEntriesResultVariantInput `pulumi:"variant"`
+	WordList     pulumi.StringInput                                 `pulumi:"wordList"`
+}
+
+func (GetZeroTrustDlpPredefinedEntriesResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpPredefinedEntriesResult)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpPredefinedEntriesResultArgs) ToGetZeroTrustDlpPredefinedEntriesResultOutput() GetZeroTrustDlpPredefinedEntriesResultOutput {
+	return i.ToGetZeroTrustDlpPredefinedEntriesResultOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpPredefinedEntriesResultArgs) ToGetZeroTrustDlpPredefinedEntriesResultOutputWithContext(ctx context.Context) GetZeroTrustDlpPredefinedEntriesResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpPredefinedEntriesResultOutput)
+}
+
+// GetZeroTrustDlpPredefinedEntriesResultArrayInput is an input type that accepts GetZeroTrustDlpPredefinedEntriesResultArray and GetZeroTrustDlpPredefinedEntriesResultArrayOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpPredefinedEntriesResultArrayInput` via:
+//
+//	GetZeroTrustDlpPredefinedEntriesResultArray{ GetZeroTrustDlpPredefinedEntriesResultArgs{...} }
+type GetZeroTrustDlpPredefinedEntriesResultArrayInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpPredefinedEntriesResultArrayOutput() GetZeroTrustDlpPredefinedEntriesResultArrayOutput
+	ToGetZeroTrustDlpPredefinedEntriesResultArrayOutputWithContext(context.Context) GetZeroTrustDlpPredefinedEntriesResultArrayOutput
+}
+
+type GetZeroTrustDlpPredefinedEntriesResultArray []GetZeroTrustDlpPredefinedEntriesResultInput
+
+func (GetZeroTrustDlpPredefinedEntriesResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDlpPredefinedEntriesResult)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpPredefinedEntriesResultArray) ToGetZeroTrustDlpPredefinedEntriesResultArrayOutput() GetZeroTrustDlpPredefinedEntriesResultArrayOutput {
+	return i.ToGetZeroTrustDlpPredefinedEntriesResultArrayOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpPredefinedEntriesResultArray) ToGetZeroTrustDlpPredefinedEntriesResultArrayOutputWithContext(ctx context.Context) GetZeroTrustDlpPredefinedEntriesResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpPredefinedEntriesResultArrayOutput)
+}
+
+type GetZeroTrustDlpPredefinedEntriesResultOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpPredefinedEntriesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpPredefinedEntriesResult)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpPredefinedEntriesResultOutput) ToGetZeroTrustDlpPredefinedEntriesResultOutput() GetZeroTrustDlpPredefinedEntriesResultOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpPredefinedEntriesResultOutput) ToGetZeroTrustDlpPredefinedEntriesResultOutputWithContext(ctx context.Context) GetZeroTrustDlpPredefinedEntriesResultOutput {
+	return o
+}
+
+// Only applies to custom word lists.
+// Determines if the words should be matched in a case-sensitive manner
+// Cannot be set to false if secret is true
+func (o GetZeroTrustDlpPredefinedEntriesResultOutput) CaseSensitive() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedEntriesResult) bool { return v.CaseSensitive }).(pulumi.BoolOutput)
+}
+
+func (o GetZeroTrustDlpPredefinedEntriesResultOutput) Confidence() GetZeroTrustDlpPredefinedEntriesResultConfidenceOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedEntriesResult) GetZeroTrustDlpPredefinedEntriesResultConfidence {
+		return v.Confidence
+	}).(GetZeroTrustDlpPredefinedEntriesResultConfidenceOutput)
+}
+
+func (o GetZeroTrustDlpPredefinedEntriesResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedEntriesResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpPredefinedEntriesResultOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedEntriesResult) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetZeroTrustDlpPredefinedEntriesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedEntriesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpPredefinedEntriesResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedEntriesResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpPredefinedEntriesResultOutput) Pattern() GetZeroTrustDlpPredefinedEntriesResultPatternOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedEntriesResult) GetZeroTrustDlpPredefinedEntriesResultPattern {
+		return v.Pattern
+	}).(GetZeroTrustDlpPredefinedEntriesResultPatternOutput)
+}
+
+func (o GetZeroTrustDlpPredefinedEntriesResultOutput) ProfileId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedEntriesResult) string { return v.ProfileId }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpPredefinedEntriesResultOutput) Secret() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedEntriesResult) bool { return v.Secret }).(pulumi.BoolOutput)
+}
+
+// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+func (o GetZeroTrustDlpPredefinedEntriesResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedEntriesResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpPredefinedEntriesResultOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedEntriesResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+func (o GetZeroTrustDlpPredefinedEntriesResultOutput) UploadStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedEntriesResult) string { return v.UploadStatus }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpPredefinedEntriesResultOutput) Variant() GetZeroTrustDlpPredefinedEntriesResultVariantOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedEntriesResult) GetZeroTrustDlpPredefinedEntriesResultVariant {
+		return v.Variant
+	}).(GetZeroTrustDlpPredefinedEntriesResultVariantOutput)
+}
+
+func (o GetZeroTrustDlpPredefinedEntriesResultOutput) WordList() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedEntriesResult) string { return v.WordList }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDlpPredefinedEntriesResultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpPredefinedEntriesResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDlpPredefinedEntriesResult)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpPredefinedEntriesResultArrayOutput) ToGetZeroTrustDlpPredefinedEntriesResultArrayOutput() GetZeroTrustDlpPredefinedEntriesResultArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpPredefinedEntriesResultArrayOutput) ToGetZeroTrustDlpPredefinedEntriesResultArrayOutputWithContext(ctx context.Context) GetZeroTrustDlpPredefinedEntriesResultArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpPredefinedEntriesResultArrayOutput) Index(i pulumi.IntInput) GetZeroTrustDlpPredefinedEntriesResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZeroTrustDlpPredefinedEntriesResult {
+		return vs[0].([]GetZeroTrustDlpPredefinedEntriesResult)[vs[1].(int)]
+	}).(GetZeroTrustDlpPredefinedEntriesResultOutput)
+}
+
+type GetZeroTrustDlpPredefinedEntriesResultConfidence struct {
+	// Indicates whether this entry has AI remote service validation.
+	AiContextAvailable bool `pulumi:"aiContextAvailable"`
+	// Indicates whether this entry has any form of validation that is not an AI remote service.
+	Available bool `pulumi:"available"`
+}
+
+// GetZeroTrustDlpPredefinedEntriesResultConfidenceInput is an input type that accepts GetZeroTrustDlpPredefinedEntriesResultConfidenceArgs and GetZeroTrustDlpPredefinedEntriesResultConfidenceOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpPredefinedEntriesResultConfidenceInput` via:
+//
+//	GetZeroTrustDlpPredefinedEntriesResultConfidenceArgs{...}
+type GetZeroTrustDlpPredefinedEntriesResultConfidenceInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpPredefinedEntriesResultConfidenceOutput() GetZeroTrustDlpPredefinedEntriesResultConfidenceOutput
+	ToGetZeroTrustDlpPredefinedEntriesResultConfidenceOutputWithContext(context.Context) GetZeroTrustDlpPredefinedEntriesResultConfidenceOutput
+}
+
+type GetZeroTrustDlpPredefinedEntriesResultConfidenceArgs struct {
+	// Indicates whether this entry has AI remote service validation.
+	AiContextAvailable pulumi.BoolInput `pulumi:"aiContextAvailable"`
+	// Indicates whether this entry has any form of validation that is not an AI remote service.
+	Available pulumi.BoolInput `pulumi:"available"`
+}
+
+func (GetZeroTrustDlpPredefinedEntriesResultConfidenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpPredefinedEntriesResultConfidence)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpPredefinedEntriesResultConfidenceArgs) ToGetZeroTrustDlpPredefinedEntriesResultConfidenceOutput() GetZeroTrustDlpPredefinedEntriesResultConfidenceOutput {
+	return i.ToGetZeroTrustDlpPredefinedEntriesResultConfidenceOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpPredefinedEntriesResultConfidenceArgs) ToGetZeroTrustDlpPredefinedEntriesResultConfidenceOutputWithContext(ctx context.Context) GetZeroTrustDlpPredefinedEntriesResultConfidenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpPredefinedEntriesResultConfidenceOutput)
+}
+
+type GetZeroTrustDlpPredefinedEntriesResultConfidenceOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpPredefinedEntriesResultConfidenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpPredefinedEntriesResultConfidence)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpPredefinedEntriesResultConfidenceOutput) ToGetZeroTrustDlpPredefinedEntriesResultConfidenceOutput() GetZeroTrustDlpPredefinedEntriesResultConfidenceOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpPredefinedEntriesResultConfidenceOutput) ToGetZeroTrustDlpPredefinedEntriesResultConfidenceOutputWithContext(ctx context.Context) GetZeroTrustDlpPredefinedEntriesResultConfidenceOutput {
+	return o
+}
+
+// Indicates whether this entry has AI remote service validation.
+func (o GetZeroTrustDlpPredefinedEntriesResultConfidenceOutput) AiContextAvailable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedEntriesResultConfidence) bool { return v.AiContextAvailable }).(pulumi.BoolOutput)
+}
+
+// Indicates whether this entry has any form of validation that is not an AI remote service.
+func (o GetZeroTrustDlpPredefinedEntriesResultConfidenceOutput) Available() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedEntriesResultConfidence) bool { return v.Available }).(pulumi.BoolOutput)
+}
+
+type GetZeroTrustDlpPredefinedEntriesResultPattern struct {
+	Regex string `pulumi:"regex"`
+	// Available values: "luhn".
+	//
+	// Deprecated: This attribute is deprecated.
+	Validation string `pulumi:"validation"`
+}
+
+// GetZeroTrustDlpPredefinedEntriesResultPatternInput is an input type that accepts GetZeroTrustDlpPredefinedEntriesResultPatternArgs and GetZeroTrustDlpPredefinedEntriesResultPatternOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpPredefinedEntriesResultPatternInput` via:
+//
+//	GetZeroTrustDlpPredefinedEntriesResultPatternArgs{...}
+type GetZeroTrustDlpPredefinedEntriesResultPatternInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpPredefinedEntriesResultPatternOutput() GetZeroTrustDlpPredefinedEntriesResultPatternOutput
+	ToGetZeroTrustDlpPredefinedEntriesResultPatternOutputWithContext(context.Context) GetZeroTrustDlpPredefinedEntriesResultPatternOutput
+}
+
+type GetZeroTrustDlpPredefinedEntriesResultPatternArgs struct {
+	Regex pulumi.StringInput `pulumi:"regex"`
+	// Available values: "luhn".
+	//
+	// Deprecated: This attribute is deprecated.
+	Validation pulumi.StringInput `pulumi:"validation"`
+}
+
+func (GetZeroTrustDlpPredefinedEntriesResultPatternArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpPredefinedEntriesResultPattern)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpPredefinedEntriesResultPatternArgs) ToGetZeroTrustDlpPredefinedEntriesResultPatternOutput() GetZeroTrustDlpPredefinedEntriesResultPatternOutput {
+	return i.ToGetZeroTrustDlpPredefinedEntriesResultPatternOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpPredefinedEntriesResultPatternArgs) ToGetZeroTrustDlpPredefinedEntriesResultPatternOutputWithContext(ctx context.Context) GetZeroTrustDlpPredefinedEntriesResultPatternOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpPredefinedEntriesResultPatternOutput)
+}
+
+type GetZeroTrustDlpPredefinedEntriesResultPatternOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpPredefinedEntriesResultPatternOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpPredefinedEntriesResultPattern)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpPredefinedEntriesResultPatternOutput) ToGetZeroTrustDlpPredefinedEntriesResultPatternOutput() GetZeroTrustDlpPredefinedEntriesResultPatternOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpPredefinedEntriesResultPatternOutput) ToGetZeroTrustDlpPredefinedEntriesResultPatternOutputWithContext(ctx context.Context) GetZeroTrustDlpPredefinedEntriesResultPatternOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpPredefinedEntriesResultPatternOutput) Regex() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedEntriesResultPattern) string { return v.Regex }).(pulumi.StringOutput)
+}
+
+// Available values: "luhn".
+//
+// Deprecated: This attribute is deprecated.
+func (o GetZeroTrustDlpPredefinedEntriesResultPatternOutput) Validation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedEntriesResultPattern) string { return v.Validation }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDlpPredefinedEntriesResultVariant struct {
+	Description string `pulumi:"description"`
+	// Available values: "Intent", "Content".
+	TopicType string `pulumi:"topicType"`
+	// Available values: "PromptTopic".
+	Type string `pulumi:"type"`
+}
+
+// GetZeroTrustDlpPredefinedEntriesResultVariantInput is an input type that accepts GetZeroTrustDlpPredefinedEntriesResultVariantArgs and GetZeroTrustDlpPredefinedEntriesResultVariantOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpPredefinedEntriesResultVariantInput` via:
+//
+//	GetZeroTrustDlpPredefinedEntriesResultVariantArgs{...}
+type GetZeroTrustDlpPredefinedEntriesResultVariantInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpPredefinedEntriesResultVariantOutput() GetZeroTrustDlpPredefinedEntriesResultVariantOutput
+	ToGetZeroTrustDlpPredefinedEntriesResultVariantOutputWithContext(context.Context) GetZeroTrustDlpPredefinedEntriesResultVariantOutput
+}
+
+type GetZeroTrustDlpPredefinedEntriesResultVariantArgs struct {
+	Description pulumi.StringInput `pulumi:"description"`
+	// Available values: "Intent", "Content".
+	TopicType pulumi.StringInput `pulumi:"topicType"`
+	// Available values: "PromptTopic".
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetZeroTrustDlpPredefinedEntriesResultVariantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpPredefinedEntriesResultVariant)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpPredefinedEntriesResultVariantArgs) ToGetZeroTrustDlpPredefinedEntriesResultVariantOutput() GetZeroTrustDlpPredefinedEntriesResultVariantOutput {
+	return i.ToGetZeroTrustDlpPredefinedEntriesResultVariantOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpPredefinedEntriesResultVariantArgs) ToGetZeroTrustDlpPredefinedEntriesResultVariantOutputWithContext(ctx context.Context) GetZeroTrustDlpPredefinedEntriesResultVariantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpPredefinedEntriesResultVariantOutput)
+}
+
+type GetZeroTrustDlpPredefinedEntriesResultVariantOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpPredefinedEntriesResultVariantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpPredefinedEntriesResultVariant)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpPredefinedEntriesResultVariantOutput) ToGetZeroTrustDlpPredefinedEntriesResultVariantOutput() GetZeroTrustDlpPredefinedEntriesResultVariantOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpPredefinedEntriesResultVariantOutput) ToGetZeroTrustDlpPredefinedEntriesResultVariantOutputWithContext(ctx context.Context) GetZeroTrustDlpPredefinedEntriesResultVariantOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpPredefinedEntriesResultVariantOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedEntriesResultVariant) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Available values: "Intent", "Content".
+func (o GetZeroTrustDlpPredefinedEntriesResultVariantOutput) TopicType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedEntriesResultVariant) string { return v.TopicType }).(pulumi.StringOutput)
+}
+
+// Available values: "PromptTopic".
+func (o GetZeroTrustDlpPredefinedEntriesResultVariantOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedEntriesResultVariant) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDlpPredefinedEntryConfidence struct {
+	// Indicates whether this entry has AI remote service validation.
+	AiContextAvailable bool `pulumi:"aiContextAvailable"`
+	// Indicates whether this entry has any form of validation that is not an AI remote service.
+	Available bool `pulumi:"available"`
+}
+
+// GetZeroTrustDlpPredefinedEntryConfidenceInput is an input type that accepts GetZeroTrustDlpPredefinedEntryConfidenceArgs and GetZeroTrustDlpPredefinedEntryConfidenceOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpPredefinedEntryConfidenceInput` via:
+//
+//	GetZeroTrustDlpPredefinedEntryConfidenceArgs{...}
+type GetZeroTrustDlpPredefinedEntryConfidenceInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpPredefinedEntryConfidenceOutput() GetZeroTrustDlpPredefinedEntryConfidenceOutput
+	ToGetZeroTrustDlpPredefinedEntryConfidenceOutputWithContext(context.Context) GetZeroTrustDlpPredefinedEntryConfidenceOutput
+}
+
+type GetZeroTrustDlpPredefinedEntryConfidenceArgs struct {
+	// Indicates whether this entry has AI remote service validation.
+	AiContextAvailable pulumi.BoolInput `pulumi:"aiContextAvailable"`
+	// Indicates whether this entry has any form of validation that is not an AI remote service.
+	Available pulumi.BoolInput `pulumi:"available"`
+}
+
+func (GetZeroTrustDlpPredefinedEntryConfidenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpPredefinedEntryConfidence)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpPredefinedEntryConfidenceArgs) ToGetZeroTrustDlpPredefinedEntryConfidenceOutput() GetZeroTrustDlpPredefinedEntryConfidenceOutput {
+	return i.ToGetZeroTrustDlpPredefinedEntryConfidenceOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpPredefinedEntryConfidenceArgs) ToGetZeroTrustDlpPredefinedEntryConfidenceOutputWithContext(ctx context.Context) GetZeroTrustDlpPredefinedEntryConfidenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpPredefinedEntryConfidenceOutput)
+}
+
+type GetZeroTrustDlpPredefinedEntryConfidenceOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpPredefinedEntryConfidenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpPredefinedEntryConfidence)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpPredefinedEntryConfidenceOutput) ToGetZeroTrustDlpPredefinedEntryConfidenceOutput() GetZeroTrustDlpPredefinedEntryConfidenceOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpPredefinedEntryConfidenceOutput) ToGetZeroTrustDlpPredefinedEntryConfidenceOutputWithContext(ctx context.Context) GetZeroTrustDlpPredefinedEntryConfidenceOutput {
+	return o
+}
+
+// Indicates whether this entry has AI remote service validation.
+func (o GetZeroTrustDlpPredefinedEntryConfidenceOutput) AiContextAvailable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedEntryConfidence) bool { return v.AiContextAvailable }).(pulumi.BoolOutput)
+}
+
+// Indicates whether this entry has any form of validation that is not an AI remote service.
+func (o GetZeroTrustDlpPredefinedEntryConfidenceOutput) Available() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedEntryConfidence) bool { return v.Available }).(pulumi.BoolOutput)
+}
+
+type GetZeroTrustDlpPredefinedEntryPattern struct {
+	Regex string `pulumi:"regex"`
+	// Available values: "luhn".
+	//
+	// Deprecated: This attribute is deprecated.
+	Validation string `pulumi:"validation"`
+}
+
+// GetZeroTrustDlpPredefinedEntryPatternInput is an input type that accepts GetZeroTrustDlpPredefinedEntryPatternArgs and GetZeroTrustDlpPredefinedEntryPatternOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpPredefinedEntryPatternInput` via:
+//
+//	GetZeroTrustDlpPredefinedEntryPatternArgs{...}
+type GetZeroTrustDlpPredefinedEntryPatternInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpPredefinedEntryPatternOutput() GetZeroTrustDlpPredefinedEntryPatternOutput
+	ToGetZeroTrustDlpPredefinedEntryPatternOutputWithContext(context.Context) GetZeroTrustDlpPredefinedEntryPatternOutput
+}
+
+type GetZeroTrustDlpPredefinedEntryPatternArgs struct {
+	Regex pulumi.StringInput `pulumi:"regex"`
+	// Available values: "luhn".
+	//
+	// Deprecated: This attribute is deprecated.
+	Validation pulumi.StringInput `pulumi:"validation"`
+}
+
+func (GetZeroTrustDlpPredefinedEntryPatternArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpPredefinedEntryPattern)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpPredefinedEntryPatternArgs) ToGetZeroTrustDlpPredefinedEntryPatternOutput() GetZeroTrustDlpPredefinedEntryPatternOutput {
+	return i.ToGetZeroTrustDlpPredefinedEntryPatternOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpPredefinedEntryPatternArgs) ToGetZeroTrustDlpPredefinedEntryPatternOutputWithContext(ctx context.Context) GetZeroTrustDlpPredefinedEntryPatternOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpPredefinedEntryPatternOutput)
+}
+
+type GetZeroTrustDlpPredefinedEntryPatternOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpPredefinedEntryPatternOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpPredefinedEntryPattern)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpPredefinedEntryPatternOutput) ToGetZeroTrustDlpPredefinedEntryPatternOutput() GetZeroTrustDlpPredefinedEntryPatternOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpPredefinedEntryPatternOutput) ToGetZeroTrustDlpPredefinedEntryPatternOutputWithContext(ctx context.Context) GetZeroTrustDlpPredefinedEntryPatternOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpPredefinedEntryPatternOutput) Regex() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedEntryPattern) string { return v.Regex }).(pulumi.StringOutput)
+}
+
+// Available values: "luhn".
+//
+// Deprecated: This attribute is deprecated.
+func (o GetZeroTrustDlpPredefinedEntryPatternOutput) Validation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedEntryPattern) string { return v.Validation }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDlpPredefinedEntryProfile struct {
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
+}
+
+// GetZeroTrustDlpPredefinedEntryProfileInput is an input type that accepts GetZeroTrustDlpPredefinedEntryProfileArgs and GetZeroTrustDlpPredefinedEntryProfileOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpPredefinedEntryProfileInput` via:
+//
+//	GetZeroTrustDlpPredefinedEntryProfileArgs{...}
+type GetZeroTrustDlpPredefinedEntryProfileInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpPredefinedEntryProfileOutput() GetZeroTrustDlpPredefinedEntryProfileOutput
+	ToGetZeroTrustDlpPredefinedEntryProfileOutputWithContext(context.Context) GetZeroTrustDlpPredefinedEntryProfileOutput
+}
+
+type GetZeroTrustDlpPredefinedEntryProfileArgs struct {
+	Id   pulumi.StringInput `pulumi:"id"`
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetZeroTrustDlpPredefinedEntryProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpPredefinedEntryProfile)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpPredefinedEntryProfileArgs) ToGetZeroTrustDlpPredefinedEntryProfileOutput() GetZeroTrustDlpPredefinedEntryProfileOutput {
+	return i.ToGetZeroTrustDlpPredefinedEntryProfileOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpPredefinedEntryProfileArgs) ToGetZeroTrustDlpPredefinedEntryProfileOutputWithContext(ctx context.Context) GetZeroTrustDlpPredefinedEntryProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpPredefinedEntryProfileOutput)
+}
+
+// GetZeroTrustDlpPredefinedEntryProfileArrayInput is an input type that accepts GetZeroTrustDlpPredefinedEntryProfileArray and GetZeroTrustDlpPredefinedEntryProfileArrayOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpPredefinedEntryProfileArrayInput` via:
+//
+//	GetZeroTrustDlpPredefinedEntryProfileArray{ GetZeroTrustDlpPredefinedEntryProfileArgs{...} }
+type GetZeroTrustDlpPredefinedEntryProfileArrayInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpPredefinedEntryProfileArrayOutput() GetZeroTrustDlpPredefinedEntryProfileArrayOutput
+	ToGetZeroTrustDlpPredefinedEntryProfileArrayOutputWithContext(context.Context) GetZeroTrustDlpPredefinedEntryProfileArrayOutput
+}
+
+type GetZeroTrustDlpPredefinedEntryProfileArray []GetZeroTrustDlpPredefinedEntryProfileInput
+
+func (GetZeroTrustDlpPredefinedEntryProfileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDlpPredefinedEntryProfile)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpPredefinedEntryProfileArray) ToGetZeroTrustDlpPredefinedEntryProfileArrayOutput() GetZeroTrustDlpPredefinedEntryProfileArrayOutput {
+	return i.ToGetZeroTrustDlpPredefinedEntryProfileArrayOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpPredefinedEntryProfileArray) ToGetZeroTrustDlpPredefinedEntryProfileArrayOutputWithContext(ctx context.Context) GetZeroTrustDlpPredefinedEntryProfileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpPredefinedEntryProfileArrayOutput)
+}
+
+type GetZeroTrustDlpPredefinedEntryProfileOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpPredefinedEntryProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpPredefinedEntryProfile)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpPredefinedEntryProfileOutput) ToGetZeroTrustDlpPredefinedEntryProfileOutput() GetZeroTrustDlpPredefinedEntryProfileOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpPredefinedEntryProfileOutput) ToGetZeroTrustDlpPredefinedEntryProfileOutputWithContext(ctx context.Context) GetZeroTrustDlpPredefinedEntryProfileOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpPredefinedEntryProfileOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedEntryProfile) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpPredefinedEntryProfileOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedEntryProfile) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDlpPredefinedEntryProfileArrayOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpPredefinedEntryProfileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDlpPredefinedEntryProfile)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpPredefinedEntryProfileArrayOutput) ToGetZeroTrustDlpPredefinedEntryProfileArrayOutput() GetZeroTrustDlpPredefinedEntryProfileArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpPredefinedEntryProfileArrayOutput) ToGetZeroTrustDlpPredefinedEntryProfileArrayOutputWithContext(ctx context.Context) GetZeroTrustDlpPredefinedEntryProfileArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpPredefinedEntryProfileArrayOutput) Index(i pulumi.IntInput) GetZeroTrustDlpPredefinedEntryProfileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZeroTrustDlpPredefinedEntryProfile {
+		return vs[0].([]GetZeroTrustDlpPredefinedEntryProfile)[vs[1].(int)]
+	}).(GetZeroTrustDlpPredefinedEntryProfileOutput)
+}
+
+type GetZeroTrustDlpPredefinedEntryVariant struct {
+	Description string `pulumi:"description"`
+	// Available values: "Intent", "Content".
+	TopicType string `pulumi:"topicType"`
+	// Available values: "PromptTopic".
+	Type string `pulumi:"type"`
+}
+
+// GetZeroTrustDlpPredefinedEntryVariantInput is an input type that accepts GetZeroTrustDlpPredefinedEntryVariantArgs and GetZeroTrustDlpPredefinedEntryVariantOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpPredefinedEntryVariantInput` via:
+//
+//	GetZeroTrustDlpPredefinedEntryVariantArgs{...}
+type GetZeroTrustDlpPredefinedEntryVariantInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpPredefinedEntryVariantOutput() GetZeroTrustDlpPredefinedEntryVariantOutput
+	ToGetZeroTrustDlpPredefinedEntryVariantOutputWithContext(context.Context) GetZeroTrustDlpPredefinedEntryVariantOutput
+}
+
+type GetZeroTrustDlpPredefinedEntryVariantArgs struct {
+	Description pulumi.StringInput `pulumi:"description"`
+	// Available values: "Intent", "Content".
+	TopicType pulumi.StringInput `pulumi:"topicType"`
+	// Available values: "PromptTopic".
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetZeroTrustDlpPredefinedEntryVariantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpPredefinedEntryVariant)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpPredefinedEntryVariantArgs) ToGetZeroTrustDlpPredefinedEntryVariantOutput() GetZeroTrustDlpPredefinedEntryVariantOutput {
+	return i.ToGetZeroTrustDlpPredefinedEntryVariantOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpPredefinedEntryVariantArgs) ToGetZeroTrustDlpPredefinedEntryVariantOutputWithContext(ctx context.Context) GetZeroTrustDlpPredefinedEntryVariantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpPredefinedEntryVariantOutput)
+}
+
+type GetZeroTrustDlpPredefinedEntryVariantOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpPredefinedEntryVariantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpPredefinedEntryVariant)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpPredefinedEntryVariantOutput) ToGetZeroTrustDlpPredefinedEntryVariantOutput() GetZeroTrustDlpPredefinedEntryVariantOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpPredefinedEntryVariantOutput) ToGetZeroTrustDlpPredefinedEntryVariantOutputWithContext(ctx context.Context) GetZeroTrustDlpPredefinedEntryVariantOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpPredefinedEntryVariantOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedEntryVariant) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Available values: "Intent", "Content".
+func (o GetZeroTrustDlpPredefinedEntryVariantOutput) TopicType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedEntryVariant) string { return v.TopicType }).(pulumi.StringOutput)
+}
+
+// Available values: "PromptTopic".
+func (o GetZeroTrustDlpPredefinedEntryVariantOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedEntryVariant) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDlpPredefinedProfileEntry struct {
+	// Only applies to custom word lists.
+	// Determines if the words should be matched in a case-sensitive manner
+	// Cannot be set to false if secret is true
+	CaseSensitive bool                                            `pulumi:"caseSensitive"`
+	Confidence    GetZeroTrustDlpPredefinedProfileEntryConfidence `pulumi:"confidence"`
+	CreatedAt     string                                          `pulumi:"createdAt"`
+	Enabled       bool                                            `pulumi:"enabled"`
+	Id            string                                          `pulumi:"id"`
+	Name          string                                          `pulumi:"name"`
+	Pattern       GetZeroTrustDlpPredefinedProfileEntryPattern    `pulumi:"pattern"`
+	ProfileId     string                                          `pulumi:"profileId"`
+	Secret        bool                                            `pulumi:"secret"`
+	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+	Type      string                                       `pulumi:"type"`
+	UpdatedAt string                                       `pulumi:"updatedAt"`
+	Variant   GetZeroTrustDlpPredefinedProfileEntryVariant `pulumi:"variant"`
+	WordList  string                                       `pulumi:"wordList"`
+}
+
+// GetZeroTrustDlpPredefinedProfileEntryInput is an input type that accepts GetZeroTrustDlpPredefinedProfileEntryArgs and GetZeroTrustDlpPredefinedProfileEntryOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpPredefinedProfileEntryInput` via:
+//
+//	GetZeroTrustDlpPredefinedProfileEntryArgs{...}
+type GetZeroTrustDlpPredefinedProfileEntryInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpPredefinedProfileEntryOutput() GetZeroTrustDlpPredefinedProfileEntryOutput
+	ToGetZeroTrustDlpPredefinedProfileEntryOutputWithContext(context.Context) GetZeroTrustDlpPredefinedProfileEntryOutput
+}
+
+type GetZeroTrustDlpPredefinedProfileEntryArgs struct {
+	// Only applies to custom word lists.
+	// Determines if the words should be matched in a case-sensitive manner
+	// Cannot be set to false if secret is true
+	CaseSensitive pulumi.BoolInput                                     `pulumi:"caseSensitive"`
+	Confidence    GetZeroTrustDlpPredefinedProfileEntryConfidenceInput `pulumi:"confidence"`
+	CreatedAt     pulumi.StringInput                                   `pulumi:"createdAt"`
+	Enabled       pulumi.BoolInput                                     `pulumi:"enabled"`
+	Id            pulumi.StringInput                                   `pulumi:"id"`
+	Name          pulumi.StringInput                                   `pulumi:"name"`
+	Pattern       GetZeroTrustDlpPredefinedProfileEntryPatternInput    `pulumi:"pattern"`
+	ProfileId     pulumi.StringInput                                   `pulumi:"profileId"`
+	Secret        pulumi.BoolInput                                     `pulumi:"secret"`
+	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+	Type      pulumi.StringInput                                `pulumi:"type"`
+	UpdatedAt pulumi.StringInput                                `pulumi:"updatedAt"`
+	Variant   GetZeroTrustDlpPredefinedProfileEntryVariantInput `pulumi:"variant"`
+	WordList  pulumi.StringInput                                `pulumi:"wordList"`
+}
+
+func (GetZeroTrustDlpPredefinedProfileEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpPredefinedProfileEntry)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpPredefinedProfileEntryArgs) ToGetZeroTrustDlpPredefinedProfileEntryOutput() GetZeroTrustDlpPredefinedProfileEntryOutput {
+	return i.ToGetZeroTrustDlpPredefinedProfileEntryOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpPredefinedProfileEntryArgs) ToGetZeroTrustDlpPredefinedProfileEntryOutputWithContext(ctx context.Context) GetZeroTrustDlpPredefinedProfileEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpPredefinedProfileEntryOutput)
+}
+
+// GetZeroTrustDlpPredefinedProfileEntryArrayInput is an input type that accepts GetZeroTrustDlpPredefinedProfileEntryArray and GetZeroTrustDlpPredefinedProfileEntryArrayOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpPredefinedProfileEntryArrayInput` via:
+//
+//	GetZeroTrustDlpPredefinedProfileEntryArray{ GetZeroTrustDlpPredefinedProfileEntryArgs{...} }
+type GetZeroTrustDlpPredefinedProfileEntryArrayInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpPredefinedProfileEntryArrayOutput() GetZeroTrustDlpPredefinedProfileEntryArrayOutput
+	ToGetZeroTrustDlpPredefinedProfileEntryArrayOutputWithContext(context.Context) GetZeroTrustDlpPredefinedProfileEntryArrayOutput
+}
+
+type GetZeroTrustDlpPredefinedProfileEntryArray []GetZeroTrustDlpPredefinedProfileEntryInput
+
+func (GetZeroTrustDlpPredefinedProfileEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDlpPredefinedProfileEntry)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpPredefinedProfileEntryArray) ToGetZeroTrustDlpPredefinedProfileEntryArrayOutput() GetZeroTrustDlpPredefinedProfileEntryArrayOutput {
+	return i.ToGetZeroTrustDlpPredefinedProfileEntryArrayOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpPredefinedProfileEntryArray) ToGetZeroTrustDlpPredefinedProfileEntryArrayOutputWithContext(ctx context.Context) GetZeroTrustDlpPredefinedProfileEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpPredefinedProfileEntryArrayOutput)
+}
+
+type GetZeroTrustDlpPredefinedProfileEntryOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpPredefinedProfileEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpPredefinedProfileEntry)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpPredefinedProfileEntryOutput) ToGetZeroTrustDlpPredefinedProfileEntryOutput() GetZeroTrustDlpPredefinedProfileEntryOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpPredefinedProfileEntryOutput) ToGetZeroTrustDlpPredefinedProfileEntryOutputWithContext(ctx context.Context) GetZeroTrustDlpPredefinedProfileEntryOutput {
+	return o
+}
+
+// Only applies to custom word lists.
+// Determines if the words should be matched in a case-sensitive manner
+// Cannot be set to false if secret is true
+func (o GetZeroTrustDlpPredefinedProfileEntryOutput) CaseSensitive() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedProfileEntry) bool { return v.CaseSensitive }).(pulumi.BoolOutput)
+}
+
+func (o GetZeroTrustDlpPredefinedProfileEntryOutput) Confidence() GetZeroTrustDlpPredefinedProfileEntryConfidenceOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedProfileEntry) GetZeroTrustDlpPredefinedProfileEntryConfidence {
+		return v.Confidence
+	}).(GetZeroTrustDlpPredefinedProfileEntryConfidenceOutput)
+}
+
+func (o GetZeroTrustDlpPredefinedProfileEntryOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedProfileEntry) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpPredefinedProfileEntryOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedProfileEntry) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetZeroTrustDlpPredefinedProfileEntryOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedProfileEntry) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpPredefinedProfileEntryOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedProfileEntry) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpPredefinedProfileEntryOutput) Pattern() GetZeroTrustDlpPredefinedProfileEntryPatternOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedProfileEntry) GetZeroTrustDlpPredefinedProfileEntryPattern {
+		return v.Pattern
+	}).(GetZeroTrustDlpPredefinedProfileEntryPatternOutput)
+}
+
+func (o GetZeroTrustDlpPredefinedProfileEntryOutput) ProfileId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedProfileEntry) string { return v.ProfileId }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpPredefinedProfileEntryOutput) Secret() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedProfileEntry) bool { return v.Secret }).(pulumi.BoolOutput)
+}
+
+// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+func (o GetZeroTrustDlpPredefinedProfileEntryOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedProfileEntry) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpPredefinedProfileEntryOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedProfileEntry) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+func (o GetZeroTrustDlpPredefinedProfileEntryOutput) Variant() GetZeroTrustDlpPredefinedProfileEntryVariantOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedProfileEntry) GetZeroTrustDlpPredefinedProfileEntryVariant {
+		return v.Variant
+	}).(GetZeroTrustDlpPredefinedProfileEntryVariantOutput)
+}
+
+func (o GetZeroTrustDlpPredefinedProfileEntryOutput) WordList() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedProfileEntry) string { return v.WordList }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDlpPredefinedProfileEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpPredefinedProfileEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustDlpPredefinedProfileEntry)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpPredefinedProfileEntryArrayOutput) ToGetZeroTrustDlpPredefinedProfileEntryArrayOutput() GetZeroTrustDlpPredefinedProfileEntryArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpPredefinedProfileEntryArrayOutput) ToGetZeroTrustDlpPredefinedProfileEntryArrayOutputWithContext(ctx context.Context) GetZeroTrustDlpPredefinedProfileEntryArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpPredefinedProfileEntryArrayOutput) Index(i pulumi.IntInput) GetZeroTrustDlpPredefinedProfileEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZeroTrustDlpPredefinedProfileEntry {
+		return vs[0].([]GetZeroTrustDlpPredefinedProfileEntry)[vs[1].(int)]
+	}).(GetZeroTrustDlpPredefinedProfileEntryOutput)
+}
+
+type GetZeroTrustDlpPredefinedProfileEntryConfidence struct {
+	// Indicates whether this entry has AI remote service validation.
+	AiContextAvailable bool `pulumi:"aiContextAvailable"`
+	// Indicates whether this entry has any form of validation that is not an AI remote service.
+	Available bool `pulumi:"available"`
+}
+
+// GetZeroTrustDlpPredefinedProfileEntryConfidenceInput is an input type that accepts GetZeroTrustDlpPredefinedProfileEntryConfidenceArgs and GetZeroTrustDlpPredefinedProfileEntryConfidenceOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpPredefinedProfileEntryConfidenceInput` via:
+//
+//	GetZeroTrustDlpPredefinedProfileEntryConfidenceArgs{...}
+type GetZeroTrustDlpPredefinedProfileEntryConfidenceInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpPredefinedProfileEntryConfidenceOutput() GetZeroTrustDlpPredefinedProfileEntryConfidenceOutput
+	ToGetZeroTrustDlpPredefinedProfileEntryConfidenceOutputWithContext(context.Context) GetZeroTrustDlpPredefinedProfileEntryConfidenceOutput
+}
+
+type GetZeroTrustDlpPredefinedProfileEntryConfidenceArgs struct {
+	// Indicates whether this entry has AI remote service validation.
+	AiContextAvailable pulumi.BoolInput `pulumi:"aiContextAvailable"`
+	// Indicates whether this entry has any form of validation that is not an AI remote service.
+	Available pulumi.BoolInput `pulumi:"available"`
+}
+
+func (GetZeroTrustDlpPredefinedProfileEntryConfidenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpPredefinedProfileEntryConfidence)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpPredefinedProfileEntryConfidenceArgs) ToGetZeroTrustDlpPredefinedProfileEntryConfidenceOutput() GetZeroTrustDlpPredefinedProfileEntryConfidenceOutput {
+	return i.ToGetZeroTrustDlpPredefinedProfileEntryConfidenceOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpPredefinedProfileEntryConfidenceArgs) ToGetZeroTrustDlpPredefinedProfileEntryConfidenceOutputWithContext(ctx context.Context) GetZeroTrustDlpPredefinedProfileEntryConfidenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpPredefinedProfileEntryConfidenceOutput)
+}
+
+type GetZeroTrustDlpPredefinedProfileEntryConfidenceOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpPredefinedProfileEntryConfidenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpPredefinedProfileEntryConfidence)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpPredefinedProfileEntryConfidenceOutput) ToGetZeroTrustDlpPredefinedProfileEntryConfidenceOutput() GetZeroTrustDlpPredefinedProfileEntryConfidenceOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpPredefinedProfileEntryConfidenceOutput) ToGetZeroTrustDlpPredefinedProfileEntryConfidenceOutputWithContext(ctx context.Context) GetZeroTrustDlpPredefinedProfileEntryConfidenceOutput {
+	return o
+}
+
+// Indicates whether this entry has AI remote service validation.
+func (o GetZeroTrustDlpPredefinedProfileEntryConfidenceOutput) AiContextAvailable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedProfileEntryConfidence) bool { return v.AiContextAvailable }).(pulumi.BoolOutput)
+}
+
+// Indicates whether this entry has any form of validation that is not an AI remote service.
+func (o GetZeroTrustDlpPredefinedProfileEntryConfidenceOutput) Available() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedProfileEntryConfidence) bool { return v.Available }).(pulumi.BoolOutput)
+}
+
+type GetZeroTrustDlpPredefinedProfileEntryPattern struct {
+	Regex string `pulumi:"regex"`
+	// Available values: "luhn".
+	//
+	// Deprecated: This attribute is deprecated.
+	Validation string `pulumi:"validation"`
+}
+
+// GetZeroTrustDlpPredefinedProfileEntryPatternInput is an input type that accepts GetZeroTrustDlpPredefinedProfileEntryPatternArgs and GetZeroTrustDlpPredefinedProfileEntryPatternOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpPredefinedProfileEntryPatternInput` via:
+//
+//	GetZeroTrustDlpPredefinedProfileEntryPatternArgs{...}
+type GetZeroTrustDlpPredefinedProfileEntryPatternInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpPredefinedProfileEntryPatternOutput() GetZeroTrustDlpPredefinedProfileEntryPatternOutput
+	ToGetZeroTrustDlpPredefinedProfileEntryPatternOutputWithContext(context.Context) GetZeroTrustDlpPredefinedProfileEntryPatternOutput
+}
+
+type GetZeroTrustDlpPredefinedProfileEntryPatternArgs struct {
+	Regex pulumi.StringInput `pulumi:"regex"`
+	// Available values: "luhn".
+	//
+	// Deprecated: This attribute is deprecated.
+	Validation pulumi.StringInput `pulumi:"validation"`
+}
+
+func (GetZeroTrustDlpPredefinedProfileEntryPatternArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpPredefinedProfileEntryPattern)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpPredefinedProfileEntryPatternArgs) ToGetZeroTrustDlpPredefinedProfileEntryPatternOutput() GetZeroTrustDlpPredefinedProfileEntryPatternOutput {
+	return i.ToGetZeroTrustDlpPredefinedProfileEntryPatternOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpPredefinedProfileEntryPatternArgs) ToGetZeroTrustDlpPredefinedProfileEntryPatternOutputWithContext(ctx context.Context) GetZeroTrustDlpPredefinedProfileEntryPatternOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpPredefinedProfileEntryPatternOutput)
+}
+
+type GetZeroTrustDlpPredefinedProfileEntryPatternOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpPredefinedProfileEntryPatternOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpPredefinedProfileEntryPattern)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpPredefinedProfileEntryPatternOutput) ToGetZeroTrustDlpPredefinedProfileEntryPatternOutput() GetZeroTrustDlpPredefinedProfileEntryPatternOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpPredefinedProfileEntryPatternOutput) ToGetZeroTrustDlpPredefinedProfileEntryPatternOutputWithContext(ctx context.Context) GetZeroTrustDlpPredefinedProfileEntryPatternOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpPredefinedProfileEntryPatternOutput) Regex() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedProfileEntryPattern) string { return v.Regex }).(pulumi.StringOutput)
+}
+
+// Available values: "luhn".
+//
+// Deprecated: This attribute is deprecated.
+func (o GetZeroTrustDlpPredefinedProfileEntryPatternOutput) Validation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedProfileEntryPattern) string { return v.Validation }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustDlpPredefinedProfileEntryVariant struct {
+	Description string `pulumi:"description"`
+	// Available values: "Intent", "Content".
+	TopicType string `pulumi:"topicType"`
+	// Available values: "PromptTopic".
+	Type string `pulumi:"type"`
+}
+
+// GetZeroTrustDlpPredefinedProfileEntryVariantInput is an input type that accepts GetZeroTrustDlpPredefinedProfileEntryVariantArgs and GetZeroTrustDlpPredefinedProfileEntryVariantOutput values.
+// You can construct a concrete instance of `GetZeroTrustDlpPredefinedProfileEntryVariantInput` via:
+//
+//	GetZeroTrustDlpPredefinedProfileEntryVariantArgs{...}
+type GetZeroTrustDlpPredefinedProfileEntryVariantInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustDlpPredefinedProfileEntryVariantOutput() GetZeroTrustDlpPredefinedProfileEntryVariantOutput
+	ToGetZeroTrustDlpPredefinedProfileEntryVariantOutputWithContext(context.Context) GetZeroTrustDlpPredefinedProfileEntryVariantOutput
+}
+
+type GetZeroTrustDlpPredefinedProfileEntryVariantArgs struct {
+	Description pulumi.StringInput `pulumi:"description"`
+	// Available values: "Intent", "Content".
+	TopicType pulumi.StringInput `pulumi:"topicType"`
+	// Available values: "PromptTopic".
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetZeroTrustDlpPredefinedProfileEntryVariantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpPredefinedProfileEntryVariant)(nil)).Elem()
+}
+
+func (i GetZeroTrustDlpPredefinedProfileEntryVariantArgs) ToGetZeroTrustDlpPredefinedProfileEntryVariantOutput() GetZeroTrustDlpPredefinedProfileEntryVariantOutput {
+	return i.ToGetZeroTrustDlpPredefinedProfileEntryVariantOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustDlpPredefinedProfileEntryVariantArgs) ToGetZeroTrustDlpPredefinedProfileEntryVariantOutputWithContext(ctx context.Context) GetZeroTrustDlpPredefinedProfileEntryVariantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDlpPredefinedProfileEntryVariantOutput)
+}
+
+type GetZeroTrustDlpPredefinedProfileEntryVariantOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustDlpPredefinedProfileEntryVariantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustDlpPredefinedProfileEntryVariant)(nil)).Elem()
+}
+
+func (o GetZeroTrustDlpPredefinedProfileEntryVariantOutput) ToGetZeroTrustDlpPredefinedProfileEntryVariantOutput() GetZeroTrustDlpPredefinedProfileEntryVariantOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpPredefinedProfileEntryVariantOutput) ToGetZeroTrustDlpPredefinedProfileEntryVariantOutputWithContext(ctx context.Context) GetZeroTrustDlpPredefinedProfileEntryVariantOutput {
+	return o
+}
+
+func (o GetZeroTrustDlpPredefinedProfileEntryVariantOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedProfileEntryVariant) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Available values: "Intent", "Content".
+func (o GetZeroTrustDlpPredefinedProfileEntryVariantOutput) TopicType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedProfileEntryVariant) string { return v.TopicType }).(pulumi.StringOutput)
+}
+
+// Available values: "PromptTopic".
+func (o GetZeroTrustDlpPredefinedProfileEntryVariantOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedProfileEntryVariant) string { return v.Type }).(pulumi.StringOutput)
+}
+
 type GetZeroTrustDnsLocationEndpoints struct {
 	Doh  GetZeroTrustDnsLocationEndpointsDoh  `pulumi:"doh"`
 	Dot  GetZeroTrustDnsLocationEndpointsDot  `pulumi:"dot"`
@@ -15113,6 +19648,73 @@ func (o GetZonesResultTenantUnitOutput) Id() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDexTestsResultInput)(nil)).Elem(), GetZeroTrustDexTestsResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDexTestsResultArrayInput)(nil)).Elem(), GetZeroTrustDexTestsResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDexTestsResultDataInput)(nil)).Elem(), GetZeroTrustDexTestsResultDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDexTestsResultTargetPolicyInput)(nil)).Elem(), GetZeroTrustDexTestsResultTargetPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDexTestsResultTargetPolicyArrayInput)(nil)).Elem(), GetZeroTrustDexTestsResultTargetPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpCustomEntriesResultInput)(nil)).Elem(), GetZeroTrustDlpCustomEntriesResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpCustomEntriesResultArrayInput)(nil)).Elem(), GetZeroTrustDlpCustomEntriesResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpCustomEntriesResultConfidenceInput)(nil)).Elem(), GetZeroTrustDlpCustomEntriesResultConfidenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpCustomEntriesResultPatternInput)(nil)).Elem(), GetZeroTrustDlpCustomEntriesResultPatternArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpCustomEntriesResultVariantInput)(nil)).Elem(), GetZeroTrustDlpCustomEntriesResultVariantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpCustomEntryConfidenceInput)(nil)).Elem(), GetZeroTrustDlpCustomEntryConfidenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpCustomEntryPatternInput)(nil)).Elem(), GetZeroTrustDlpCustomEntryPatternArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpCustomEntryProfileInput)(nil)).Elem(), GetZeroTrustDlpCustomEntryProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpCustomEntryProfileArrayInput)(nil)).Elem(), GetZeroTrustDlpCustomEntryProfileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpCustomEntryVariantInput)(nil)).Elem(), GetZeroTrustDlpCustomEntryVariantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpCustomProfileContextAwarenessInput)(nil)).Elem(), GetZeroTrustDlpCustomProfileContextAwarenessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpCustomProfileContextAwarenessSkipInput)(nil)).Elem(), GetZeroTrustDlpCustomProfileContextAwarenessSkipArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpCustomProfileEntryInput)(nil)).Elem(), GetZeroTrustDlpCustomProfileEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpCustomProfileEntryArrayInput)(nil)).Elem(), GetZeroTrustDlpCustomProfileEntryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpCustomProfileEntryConfidenceInput)(nil)).Elem(), GetZeroTrustDlpCustomProfileEntryConfidenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpCustomProfileEntryPatternInput)(nil)).Elem(), GetZeroTrustDlpCustomProfileEntryPatternArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpCustomProfileEntryVariantInput)(nil)).Elem(), GetZeroTrustDlpCustomProfileEntryVariantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpDatasetColumnInput)(nil)).Elem(), GetZeroTrustDlpDatasetColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpDatasetColumnArrayInput)(nil)).Elem(), GetZeroTrustDlpDatasetColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpDatasetUploadInput)(nil)).Elem(), GetZeroTrustDlpDatasetUploadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpDatasetUploadArrayInput)(nil)).Elem(), GetZeroTrustDlpDatasetUploadArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpDatasetsResultInput)(nil)).Elem(), GetZeroTrustDlpDatasetsResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpDatasetsResultArrayInput)(nil)).Elem(), GetZeroTrustDlpDatasetsResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpDatasetsResultColumnInput)(nil)).Elem(), GetZeroTrustDlpDatasetsResultColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpDatasetsResultColumnArrayInput)(nil)).Elem(), GetZeroTrustDlpDatasetsResultColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpDatasetsResultUploadInput)(nil)).Elem(), GetZeroTrustDlpDatasetsResultUploadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpDatasetsResultUploadArrayInput)(nil)).Elem(), GetZeroTrustDlpDatasetsResultUploadArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpEntriesResultInput)(nil)).Elem(), GetZeroTrustDlpEntriesResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpEntriesResultArrayInput)(nil)).Elem(), GetZeroTrustDlpEntriesResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpEntriesResultConfidenceInput)(nil)).Elem(), GetZeroTrustDlpEntriesResultConfidenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpEntriesResultPatternInput)(nil)).Elem(), GetZeroTrustDlpEntriesResultPatternArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpEntriesResultVariantInput)(nil)).Elem(), GetZeroTrustDlpEntriesResultVariantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpEntryConfidenceInput)(nil)).Elem(), GetZeroTrustDlpEntryConfidenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpEntryPatternInput)(nil)).Elem(), GetZeroTrustDlpEntryPatternArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpEntryProfileInput)(nil)).Elem(), GetZeroTrustDlpEntryProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpEntryProfileArrayInput)(nil)).Elem(), GetZeroTrustDlpEntryProfileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpEntryVariantInput)(nil)).Elem(), GetZeroTrustDlpEntryVariantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpIntegrationEntriesResultInput)(nil)).Elem(), GetZeroTrustDlpIntegrationEntriesResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpIntegrationEntriesResultArrayInput)(nil)).Elem(), GetZeroTrustDlpIntegrationEntriesResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpIntegrationEntriesResultConfidenceInput)(nil)).Elem(), GetZeroTrustDlpIntegrationEntriesResultConfidenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpIntegrationEntriesResultPatternInput)(nil)).Elem(), GetZeroTrustDlpIntegrationEntriesResultPatternArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpIntegrationEntriesResultVariantInput)(nil)).Elem(), GetZeroTrustDlpIntegrationEntriesResultVariantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpIntegrationEntryConfidenceInput)(nil)).Elem(), GetZeroTrustDlpIntegrationEntryConfidenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpIntegrationEntryPatternInput)(nil)).Elem(), GetZeroTrustDlpIntegrationEntryPatternArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpIntegrationEntryProfileInput)(nil)).Elem(), GetZeroTrustDlpIntegrationEntryProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpIntegrationEntryProfileArrayInput)(nil)).Elem(), GetZeroTrustDlpIntegrationEntryProfileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpIntegrationEntryVariantInput)(nil)).Elem(), GetZeroTrustDlpIntegrationEntryVariantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpPredefinedEntriesResultInput)(nil)).Elem(), GetZeroTrustDlpPredefinedEntriesResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpPredefinedEntriesResultArrayInput)(nil)).Elem(), GetZeroTrustDlpPredefinedEntriesResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpPredefinedEntriesResultConfidenceInput)(nil)).Elem(), GetZeroTrustDlpPredefinedEntriesResultConfidenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpPredefinedEntriesResultPatternInput)(nil)).Elem(), GetZeroTrustDlpPredefinedEntriesResultPatternArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpPredefinedEntriesResultVariantInput)(nil)).Elem(), GetZeroTrustDlpPredefinedEntriesResultVariantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpPredefinedEntryConfidenceInput)(nil)).Elem(), GetZeroTrustDlpPredefinedEntryConfidenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpPredefinedEntryPatternInput)(nil)).Elem(), GetZeroTrustDlpPredefinedEntryPatternArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpPredefinedEntryProfileInput)(nil)).Elem(), GetZeroTrustDlpPredefinedEntryProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpPredefinedEntryProfileArrayInput)(nil)).Elem(), GetZeroTrustDlpPredefinedEntryProfileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpPredefinedEntryVariantInput)(nil)).Elem(), GetZeroTrustDlpPredefinedEntryVariantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpPredefinedProfileEntryInput)(nil)).Elem(), GetZeroTrustDlpPredefinedProfileEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpPredefinedProfileEntryArrayInput)(nil)).Elem(), GetZeroTrustDlpPredefinedProfileEntryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpPredefinedProfileEntryConfidenceInput)(nil)).Elem(), GetZeroTrustDlpPredefinedProfileEntryConfidenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpPredefinedProfileEntryPatternInput)(nil)).Elem(), GetZeroTrustDlpPredefinedProfileEntryPatternArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDlpPredefinedProfileEntryVariantInput)(nil)).Elem(), GetZeroTrustDlpPredefinedProfileEntryVariantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDnsLocationEndpointsInput)(nil)).Elem(), GetZeroTrustDnsLocationEndpointsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDnsLocationEndpointsDohInput)(nil)).Elem(), GetZeroTrustDnsLocationEndpointsDohArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDnsLocationEndpointsDohNetworkInput)(nil)).Elem(), GetZeroTrustDnsLocationEndpointsDohNetworkArgs{})
@@ -15297,6 +19899,73 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesResultPlanInput)(nil)).Elem(), GetZonesResultPlanArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesResultTenantInput)(nil)).Elem(), GetZonesResultTenantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesResultTenantUnitInput)(nil)).Elem(), GetZonesResultTenantUnitArgs{})
+	pulumi.RegisterOutputType(GetZeroTrustDexTestsResultOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDexTestsResultArrayOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDexTestsResultDataOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDexTestsResultTargetPolicyOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDexTestsResultTargetPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpCustomEntriesResultOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpCustomEntriesResultArrayOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpCustomEntriesResultConfidenceOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpCustomEntriesResultPatternOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpCustomEntriesResultVariantOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpCustomEntryConfidenceOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpCustomEntryPatternOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpCustomEntryProfileOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpCustomEntryProfileArrayOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpCustomEntryVariantOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpCustomProfileContextAwarenessOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpCustomProfileContextAwarenessSkipOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpCustomProfileEntryOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpCustomProfileEntryArrayOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpCustomProfileEntryConfidenceOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpCustomProfileEntryPatternOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpCustomProfileEntryVariantOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpDatasetColumnOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpDatasetColumnArrayOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpDatasetUploadOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpDatasetUploadArrayOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpDatasetsResultOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpDatasetsResultArrayOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpDatasetsResultColumnOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpDatasetsResultColumnArrayOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpDatasetsResultUploadOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpDatasetsResultUploadArrayOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpEntriesResultOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpEntriesResultArrayOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpEntriesResultConfidenceOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpEntriesResultPatternOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpEntriesResultVariantOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpEntryConfidenceOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpEntryPatternOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpEntryProfileOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpEntryProfileArrayOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpEntryVariantOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpIntegrationEntriesResultOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpIntegrationEntriesResultArrayOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpIntegrationEntriesResultConfidenceOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpIntegrationEntriesResultPatternOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpIntegrationEntriesResultVariantOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpIntegrationEntryConfidenceOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpIntegrationEntryPatternOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpIntegrationEntryProfileOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpIntegrationEntryProfileArrayOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpIntegrationEntryVariantOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpPredefinedEntriesResultOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpPredefinedEntriesResultArrayOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpPredefinedEntriesResultConfidenceOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpPredefinedEntriesResultPatternOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpPredefinedEntriesResultVariantOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpPredefinedEntryConfidenceOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpPredefinedEntryPatternOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpPredefinedEntryProfileOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpPredefinedEntryProfileArrayOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpPredefinedEntryVariantOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpPredefinedProfileEntryOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpPredefinedProfileEntryArrayOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpPredefinedProfileEntryConfidenceOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpPredefinedProfileEntryPatternOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustDlpPredefinedProfileEntryVariantOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustDnsLocationEndpointsOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustDnsLocationEndpointsDohOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustDnsLocationEndpointsDohNetworkOutput{})

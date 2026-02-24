@@ -95,7 +95,9 @@ import (
 //
 // ## Import
 //
-// > This resource does not currently support `pulumi import`.
+// ```sh
+// $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate example '<zone_id>/<certificate_id>'
+// ```
 type AuthenticatedOriginPullsCertificate struct {
 	pulumi.CustomResourceState
 

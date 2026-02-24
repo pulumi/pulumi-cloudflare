@@ -981,7 +981,7 @@ class PagesProject(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="buildConfig")
-    def build_config(self) -> pulumi.Output[Optional['outputs.PagesProjectBuildConfig']]:
+    def build_config(self) -> pulumi.Output['outputs.PagesProjectBuildConfig']:
         """
         Configs for the project build process.
         """

@@ -15,6 +15,8 @@ import * as utilities from "./utilities";
  *
  * const exampleZeroTrustDexTests = cloudflare.getZeroTrustDexTests({
  *     accountId: "01a7362d577a6c3019a474fd6f485823",
+ *     kind: "http",
+ *     testName: "testName",
  * });
  * ```
  */
@@ -22,7 +24,9 @@ export function getZeroTrustDexTests(args: GetZeroTrustDexTestsArgs, opts?: pulu
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDexTests:getZeroTrustDexTests", {
         "accountId": args.accountId,
+        "kind": args.kind,
         "maxItems": args.maxItems,
+        "testName": args.testName,
     }, opts);
 }
 
@@ -32,9 +36,18 @@ export function getZeroTrustDexTests(args: GetZeroTrustDexTestsArgs, opts?: pulu
 export interface GetZeroTrustDexTestsArgs {
     accountId: string;
     /**
+     * Filter by test type
+     * Available values: "http", "traceroute".
+     */
+    kind?: string;
+    /**
      * Max items to fetch, default: 1000
      */
     maxItems?: number;
+    /**
+     * Filter by test name
+     */
+    testName?: string;
 }
 
 /**
@@ -47,6 +60,11 @@ export interface GetZeroTrustDexTestsResult {
      */
     readonly id: string;
     /**
+     * Filter by test type
+     * Available values: "http", "traceroute".
+     */
+    readonly kind?: string;
+    /**
      * Max items to fetch, default: 1000
      */
     readonly maxItems?: number;
@@ -54,6 +72,10 @@ export interface GetZeroTrustDexTestsResult {
      * The items returned by the data source
      */
     readonly results: outputs.GetZeroTrustDexTestsResult[];
+    /**
+     * Filter by test name
+     */
+    readonly testName?: string;
 }
 /**
  * ## Example Usage
@@ -64,6 +86,8 @@ export interface GetZeroTrustDexTestsResult {
  *
  * const exampleZeroTrustDexTests = cloudflare.getZeroTrustDexTests({
  *     accountId: "01a7362d577a6c3019a474fd6f485823",
+ *     kind: "http",
+ *     testName: "testName",
  * });
  * ```
  */
@@ -71,7 +95,9 @@ export function getZeroTrustDexTestsOutput(args: GetZeroTrustDexTestsOutputArgs,
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDexTests:getZeroTrustDexTests", {
         "accountId": args.accountId,
+        "kind": args.kind,
         "maxItems": args.maxItems,
+        "testName": args.testName,
     }, opts);
 }
 
@@ -81,7 +107,16 @@ export function getZeroTrustDexTestsOutput(args: GetZeroTrustDexTestsOutputArgs,
 export interface GetZeroTrustDexTestsOutputArgs {
     accountId: pulumi.Input<string>;
     /**
+     * Filter by test type
+     * Available values: "http", "traceroute".
+     */
+    kind?: pulumi.Input<string>;
+    /**
      * Max items to fetch, default: 1000
      */
     maxItems?: pulumi.Input<number>;
+    /**
+     * Filter by test name
+     */
+    testName?: pulumi.Input<string>;
 }

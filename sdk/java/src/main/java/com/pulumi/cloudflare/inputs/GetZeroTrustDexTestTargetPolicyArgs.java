@@ -31,14 +31,14 @@ public final class GetZeroTrustDexTestTargetPolicyArgs extends com.pulumi.resour
     }
 
     /**
-     * The id of the DEX rule
+     * API Resource UUID tag.
      * 
      */
     @Import(name="id", required=true)
     private Output<String> id;
 
     /**
-     * @return The id of the DEX rule
+     * @return API Resource UUID tag.
      * 
      */
     public Output<String> id() {
@@ -108,7 +108,7 @@ public final class GetZeroTrustDexTestTargetPolicyArgs extends com.pulumi.resour
         }
 
         /**
-         * @param id The id of the DEX rule
+         * @param id API Resource UUID tag.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class GetZeroTrustDexTestTargetPolicyArgs extends com.pulumi.resour
         }
 
         /**
-         * @param id The id of the DEX rule
+         * @param id API Resource UUID tag.
          * 
          * @return builder
          * 

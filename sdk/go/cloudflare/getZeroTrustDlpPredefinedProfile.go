@@ -55,11 +55,14 @@ type LookupZeroTrustDlpPredefinedProfileArgs struct {
 
 // A collection of values returned by getZeroTrustDlpPredefinedProfile.
 type LookupZeroTrustDlpPredefinedProfileResult struct {
-	AccountId           string   `pulumi:"accountId"`
-	AiContextEnabled    bool     `pulumi:"aiContextEnabled"`
-	AllowedMatchCount   int      `pulumi:"allowedMatchCount"`
-	ConfidenceThreshold string   `pulumi:"confidenceThreshold"`
-	EnabledEntries      []string `pulumi:"enabledEntries"`
+	AccountId           string `pulumi:"accountId"`
+	AiContextEnabled    bool   `pulumi:"aiContextEnabled"`
+	AllowedMatchCount   int    `pulumi:"allowedMatchCount"`
+	ConfidenceThreshold string `pulumi:"confidenceThreshold"`
+	// Entries to enable for this predefined profile. Any entries not provided will be disabled.
+	EnabledEntries []string `pulumi:"enabledEntries"`
+	// This field has been deprecated for `enabledEntries`.
+	//
 	// Deprecated: This attribute is deprecated.
 	Entries []GetZeroTrustDlpPredefinedProfileEntry `pulumi:"entries"`
 	// The ID of this resource.
@@ -122,10 +125,13 @@ func (o LookupZeroTrustDlpPredefinedProfileResultOutput) ConfidenceThreshold() p
 	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedProfileResult) string { return v.ConfidenceThreshold }).(pulumi.StringOutput)
 }
 
+// Entries to enable for this predefined profile. Any entries not provided will be disabled.
 func (o LookupZeroTrustDlpPredefinedProfileResultOutput) EnabledEntries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedProfileResult) []string { return v.EnabledEntries }).(pulumi.StringArrayOutput)
 }
 
+// This field has been deprecated for `enabledEntries`.
+//
 // Deprecated: This attribute is deprecated.
 func (o LookupZeroTrustDlpPredefinedProfileResultOutput) Entries() GetZeroTrustDlpPredefinedProfileEntryArrayOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedProfileResult) []GetZeroTrustDlpPredefinedProfileEntry {

@@ -39,7 +39,9 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// &gt; This resource does not currently support `pulumi import`.
+    /// ```sh
+    /// $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example '&lt;zone_id&gt;/&lt;hostname&gt;'
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls")]
     public partial class AuthenticatedOriginPulls : global::Pulumi.CustomResource
@@ -100,7 +102,7 @@ namespace Pulumi.Cloudflare
         /// The hostname on the origin for which the client certificate uploaded will be used.
         /// </summary>
         [Output("hostname")]
-        public Output<string?> Hostname { get; private set; } = null!;
+        public Output<string> Hostname { get; private set; } = null!;
 
         /// <summary>
         /// The certificate authority that issued the certificate.
@@ -202,12 +204,6 @@ namespace Pulumi.Cloudflare
             get => _configs ?? (_configs = new InputList<Inputs.AuthenticatedOriginPullsConfigArgs>());
             set => _configs = value;
         }
-
-        /// <summary>
-        /// The hostname on the origin for which the client certificate uploaded will be used.
-        /// </summary>
-        [Input("hostname")]
-        public Input<string>? Hostname { get; set; }
 
         /// <summary>
         /// Identifier.

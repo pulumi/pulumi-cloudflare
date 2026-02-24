@@ -141,6 +141,7 @@ namespace Pulumi.Cloudflare
         /// Name of the script, used in URLs and route configuration.
         /// </summary>
         public readonly string Id;
+        public readonly string Script;
         /// <summary>
         /// Name of the script, used in URLs and route configuration.
         /// </summary>
@@ -154,11 +155,14 @@ namespace Pulumi.Cloudflare
 
             string id,
 
+            string script,
+
             string? scriptName)
         {
             AccountId = accountId;
             Filter = filter;
             Id = id;
+            Script = script;
             ScriptName = scriptName;
         }
     }

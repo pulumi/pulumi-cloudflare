@@ -27,6 +27,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupZeroTrustDexTests(ctx, &cloudflare.LookupZeroTrustDexTestsArgs{
 //				AccountId: "01a7362d577a6c3019a474fd6f485823",
+//				Kind:      pulumi.StringRef("http"),
+//				TestName:  pulumi.StringRef("testName"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,8 +51,13 @@ func LookupZeroTrustDexTests(ctx *pulumi.Context, args *LookupZeroTrustDexTestsA
 // A collection of arguments for invoking getZeroTrustDexTests.
 type LookupZeroTrustDexTestsArgs struct {
 	AccountId string `pulumi:"accountId"`
+	// Filter by test type
+	// Available values: "http", "traceroute".
+	Kind *string `pulumi:"kind"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
+	// Filter by test name
+	TestName *string `pulumi:"testName"`
 }
 
 // A collection of values returned by getZeroTrustDexTests.
@@ -58,10 +65,15 @@ type LookupZeroTrustDexTestsResult struct {
 	AccountId string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// Filter by test type
+	// Available values: "http", "traceroute".
+	Kind *string `pulumi:"kind"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
 	Results []GetZeroTrustDexTestsResult `pulumi:"results"`
+	// Filter by test name
+	TestName *string `pulumi:"testName"`
 }
 
 func LookupZeroTrustDexTestsOutput(ctx *pulumi.Context, args LookupZeroTrustDexTestsOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustDexTestsResultOutput {
@@ -76,8 +88,13 @@ func LookupZeroTrustDexTestsOutput(ctx *pulumi.Context, args LookupZeroTrustDexT
 // A collection of arguments for invoking getZeroTrustDexTests.
 type LookupZeroTrustDexTestsOutputArgs struct {
 	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// Filter by test type
+	// Available values: "http", "traceroute".
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
+	// Filter by test name
+	TestName pulumi.StringPtrInput `pulumi:"testName"`
 }
 
 func (LookupZeroTrustDexTestsOutputArgs) ElementType() reflect.Type {
@@ -108,6 +125,12 @@ func (o LookupZeroTrustDexTestsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDexTestsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Filter by test type
+// Available values: "http", "traceroute".
+func (o LookupZeroTrustDexTestsResultOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustDexTestsResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
 // Max items to fetch, default: 1000
 func (o LookupZeroTrustDexTestsResultOutput) MaxItems() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustDexTestsResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
@@ -116,6 +139,11 @@ func (o LookupZeroTrustDexTestsResultOutput) MaxItems() pulumi.IntPtrOutput {
 // The items returned by the data source
 func (o LookupZeroTrustDexTestsResultOutput) Results() GetZeroTrustDexTestsResultArrayOutput {
 	return o.ApplyT(func(v LookupZeroTrustDexTestsResult) []GetZeroTrustDexTestsResult { return v.Results }).(GetZeroTrustDexTestsResultArrayOutput)
+}
+
+// Filter by test name
+func (o LookupZeroTrustDexTestsResultOutput) TestName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustDexTestsResult) *string { return v.TestName }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -26,10 +26,12 @@ class ZeroTrustAccessAiControlsMcpPortalArgs:
                  name: pulumi.Input[_builtins.str],
                  zero_trust_access_ai_controls_mcp_portal_id: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 secure_web_gateway: Optional[pulumi.Input[_builtins.bool]] = None,
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpPortalServerArgs']]]] = None):
         """
         The set of arguments for constructing a ZeroTrustAccessAiControlsMcpPortal resource.
         :param pulumi.Input[_builtins.str] zero_trust_access_ai_controls_mcp_portal_id: portal id
+        :param pulumi.Input[_builtins.bool] secure_web_gateway: Route outbound MCP traffic through Zero Trust Secure Web Gateway
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "hostname", hostname)
@@ -37,6 +39,8 @@ class ZeroTrustAccessAiControlsMcpPortalArgs:
         pulumi.set(__self__, "zero_trust_access_ai_controls_mcp_portal_id", zero_trust_access_ai_controls_mcp_portal_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if secure_web_gateway is not None:
+            pulumi.set(__self__, "secure_web_gateway", secure_web_gateway)
         if servers is not None:
             pulumi.set(__self__, "servers", servers)
 
@@ -89,6 +93,18 @@ class ZeroTrustAccessAiControlsMcpPortalArgs:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="secureWebGateway")
+    def secure_web_gateway(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Route outbound MCP traffic through Zero Trust Secure Web Gateway
+        """
+        return pulumi.get(self, "secure_web_gateway")
+
+    @secure_web_gateway.setter
+    def secure_web_gateway(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "secure_web_gateway", value)
+
+    @_builtins.property
     @pulumi.getter
     def servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpPortalServerArgs']]]]:
         return pulumi.get(self, "servers")
@@ -109,10 +125,12 @@ class _ZeroTrustAccessAiControlsMcpPortalState:
                  modified_at: Optional[pulumi.Input[_builtins.str]] = None,
                  modified_by: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 secure_web_gateway: Optional[pulumi.Input[_builtins.bool]] = None,
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpPortalServerArgs']]]] = None,
                  zero_trust_access_ai_controls_mcp_portal_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustAccessAiControlsMcpPortal resources.
+        :param pulumi.Input[_builtins.bool] secure_web_gateway: Route outbound MCP traffic through Zero Trust Secure Web Gateway
         :param pulumi.Input[_builtins.str] zero_trust_access_ai_controls_mcp_portal_id: portal id
         """
         if account_id is not None:
@@ -131,6 +149,8 @@ class _ZeroTrustAccessAiControlsMcpPortalState:
             pulumi.set(__self__, "modified_by", modified_by)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if secure_web_gateway is not None:
+            pulumi.set(__self__, "secure_web_gateway", secure_web_gateway)
         if servers is not None:
             pulumi.set(__self__, "servers", servers)
         if zero_trust_access_ai_controls_mcp_portal_id is not None:
@@ -209,6 +229,18 @@ class _ZeroTrustAccessAiControlsMcpPortalState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="secureWebGateway")
+    def secure_web_gateway(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Route outbound MCP traffic through Zero Trust Secure Web Gateway
+        """
+        return pulumi.get(self, "secure_web_gateway")
+
+    @secure_web_gateway.setter
+    def secure_web_gateway(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "secure_web_gateway", value)
+
+    @_builtins.property
     @pulumi.getter
     def servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpPortalServerArgs']]]]:
         return pulumi.get(self, "servers")
@@ -240,6 +272,7 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  hostname: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 secure_web_gateway: Optional[pulumi.Input[_builtins.bool]] = None,
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpPortalServerArgs', 'ZeroTrustAccessAiControlsMcpPortalServerArgsDict']]]]] = None,
                  zero_trust_access_ai_controls_mcp_portal_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -256,6 +289,7 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
             hostname="exmaple.com",
             name="My MCP Portal",
             description="This is my custom MCP Portal",
+            secure_web_gateway=False,
             servers=[{
                 "server_id": "my-mcp-server",
                 "default_disabled": True,
@@ -281,6 +315,7 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] secure_web_gateway: Route outbound MCP traffic through Zero Trust Secure Web Gateway
         :param pulumi.Input[_builtins.str] zero_trust_access_ai_controls_mcp_portal_id: portal id
         """
         ...
@@ -302,6 +337,7 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
             hostname="exmaple.com",
             name="My MCP Portal",
             description="This is my custom MCP Portal",
+            secure_web_gateway=False,
             servers=[{
                 "server_id": "my-mcp-server",
                 "default_disabled": True,
@@ -344,6 +380,7 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  hostname: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 secure_web_gateway: Optional[pulumi.Input[_builtins.bool]] = None,
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpPortalServerArgs', 'ZeroTrustAccessAiControlsMcpPortalServerArgsDict']]]]] = None,
                  zero_trust_access_ai_controls_mcp_portal_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -365,6 +402,7 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
+            __props__.__dict__["secure_web_gateway"] = secure_web_gateway
             __props__.__dict__["servers"] = servers
             if zero_trust_access_ai_controls_mcp_portal_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zero_trust_access_ai_controls_mcp_portal_id'")
@@ -391,6 +429,7 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
             modified_at: Optional[pulumi.Input[_builtins.str]] = None,
             modified_by: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            secure_web_gateway: Optional[pulumi.Input[_builtins.bool]] = None,
             servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpPortalServerArgs', 'ZeroTrustAccessAiControlsMcpPortalServerArgsDict']]]]] = None,
             zero_trust_access_ai_controls_mcp_portal_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZeroTrustAccessAiControlsMcpPortal':
         """
@@ -400,6 +439,7 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] secure_web_gateway: Route outbound MCP traffic through Zero Trust Secure Web Gateway
         :param pulumi.Input[_builtins.str] zero_trust_access_ai_controls_mcp_portal_id: portal id
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -414,6 +454,7 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
         __props__.__dict__["modified_at"] = modified_at
         __props__.__dict__["modified_by"] = modified_by
         __props__.__dict__["name"] = name
+        __props__.__dict__["secure_web_gateway"] = secure_web_gateway
         __props__.__dict__["servers"] = servers
         __props__.__dict__["zero_trust_access_ai_controls_mcp_portal_id"] = zero_trust_access_ai_controls_mcp_portal_id
         return ZeroTrustAccessAiControlsMcpPortal(resource_name, opts=opts, __props__=__props__)
@@ -457,6 +498,14 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="secureWebGateway")
+    def secure_web_gateway(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Route outbound MCP traffic through Zero Trust Secure Web Gateway
+        """
+        return pulumi.get(self, "secure_web_gateway")
 
     @_builtins.property
     @pulumi.getter

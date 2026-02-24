@@ -100,14 +100,14 @@ public class MtlsCertificate extends com.pulumi.resources.CustomResource {
         return this.ca;
     }
     /**
-     * The uploaded root CA certificate.
+     * The uploaded root CA certificate or certificate chain. Certificates must be provided in PEM format with the certificate matching the privateKey first in the chain.
      * 
      */
     @Export(name="certificates", refs={String.class}, tree="[0]")
     private Output<String> certificates;
 
     /**
-     * @return The uploaded root CA certificate.
+     * @return The uploaded root CA certificate or certificate chain. Certificates must be provided in PEM format with the certificate matching the privateKey first in the chain.
      * 
      */
     public Output<String> certificates() {

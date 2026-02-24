@@ -31,6 +31,11 @@ namespace Pulumi.Cloudflare
     ///             Forbidden = "699d98642c564d2e855e9661899b7252",
     ///             IdentityDenied = "699d98642c564d2e855e9661899b7252",
     ///         },
+    ///         DenyUnmatchedRequests = true,
+    ///         DenyUnmatchedRequestsExemptedZoneNames = new[]
+    ///         {
+    ///             "example.com",
+    ///         },
     ///         IsUiReadOnly = true,
     ///         LoginDesign = new Cloudflare.Inputs.ZeroTrustOrganizationLoginDesignArgs
     ///         {
@@ -86,6 +91,18 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.AccessOrganizationCustomPages?> CustomPages { get; private set; } = null!;
 
         /// <summary>
+        /// Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `DenyUnmatchedRequestsExemptedZoneNames` array.
+        /// </summary>
+        [Output("denyUnmatchedRequests")]
+        public Output<bool?> DenyUnmatchedRequests { get; private set; } = null!;
+
+        /// <summary>
+        /// Contains zone names to exempt from the `DenyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+        /// </summary>
+        [Output("denyUnmatchedRequestsExemptedZoneNames")]
+        public Output<ImmutableArray<string>> DenyUnmatchedRequestsExemptedZoneNames { get; private set; } = null!;
+
+        /// <summary>
         /// Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
         /// </summary>
         [Output("isUiReadOnly")]
@@ -110,7 +127,7 @@ namespace Pulumi.Cloudflare
         /// A description of the reason why the UI read only field is being toggled.
         /// </summary>
         [Output("uiReadOnlyToggleReason")]
-        public Output<string?> UiReadOnlyToggleReason { get; private set; } = null!;
+        public Output<string> UiReadOnlyToggleReason { get; private set; } = null!;
 
         /// <summary>
         /// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `Ns`, `Us` (or `µs`), `Ms`, `S`, `M`, `H`.
@@ -208,6 +225,24 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.AccessOrganizationCustomPagesArgs>? CustomPages { get; set; }
 
         /// <summary>
+        /// Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `DenyUnmatchedRequestsExemptedZoneNames` array.
+        /// </summary>
+        [Input("denyUnmatchedRequests")]
+        public Input<bool>? DenyUnmatchedRequests { get; set; }
+
+        [Input("denyUnmatchedRequestsExemptedZoneNames")]
+        private InputList<string>? _denyUnmatchedRequestsExemptedZoneNames;
+
+        /// <summary>
+        /// Contains zone names to exempt from the `DenyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+        /// </summary>
+        public InputList<string> DenyUnmatchedRequestsExemptedZoneNames
+        {
+            get => _denyUnmatchedRequestsExemptedZoneNames ?? (_denyUnmatchedRequestsExemptedZoneNames = new InputList<string>());
+            set => _denyUnmatchedRequestsExemptedZoneNames = value;
+        }
+
+        /// <summary>
         /// Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
         /// </summary>
         [Input("isUiReadOnly")]
@@ -286,6 +321,24 @@ namespace Pulumi.Cloudflare
 
         [Input("customPages")]
         public Input<Inputs.AccessOrganizationCustomPagesGetArgs>? CustomPages { get; set; }
+
+        /// <summary>
+        /// Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `DenyUnmatchedRequestsExemptedZoneNames` array.
+        /// </summary>
+        [Input("denyUnmatchedRequests")]
+        public Input<bool>? DenyUnmatchedRequests { get; set; }
+
+        [Input("denyUnmatchedRequestsExemptedZoneNames")]
+        private InputList<string>? _denyUnmatchedRequestsExemptedZoneNames;
+
+        /// <summary>
+        /// Contains zone names to exempt from the `DenyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+        /// </summary>
+        public InputList<string> DenyUnmatchedRequestsExemptedZoneNames
+        {
+            get => _denyUnmatchedRequestsExemptedZoneNames ?? (_denyUnmatchedRequestsExemptedZoneNames = new InputList<string>());
+            set => _denyUnmatchedRequestsExemptedZoneNames = value;
+        }
 
         /// <summary>
         /// Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.

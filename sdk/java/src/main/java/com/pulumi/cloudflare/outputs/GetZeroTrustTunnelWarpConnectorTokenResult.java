@@ -21,7 +21,7 @@ public final class GetZeroTrustTunnelWarpConnectorTokenResult {
      */
     private String id;
     /**
-     * @return The Warp Connector Token is used as a mechanism to authenticate the operation of a tunnel.
+     * @return The Tunnel Token is used as a mechanism to authenticate the operation of a tunnel.
      * 
      */
     private String token;
@@ -47,7 +47,7 @@ public final class GetZeroTrustTunnelWarpConnectorTokenResult {
         return this.id;
     }
     /**
-     * @return The Warp Connector Token is used as a mechanism to authenticate the operation of a tunnel.
+     * @return The Tunnel Token is used as a mechanism to authenticate the operation of a tunnel.
      * 
      */
     public String token() {

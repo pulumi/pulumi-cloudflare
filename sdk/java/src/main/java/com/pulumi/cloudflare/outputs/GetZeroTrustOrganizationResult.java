@@ -9,6 +9,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -36,6 +37,16 @@ public final class GetZeroTrustOrganizationResult {
      */
     private Boolean autoRedirectToIdentity;
     private GetZeroTrustOrganizationCustomPages customPages;
+    /**
+     * @return Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `denyUnmatchedRequestsExemptedZoneNames` array.
+     * 
+     */
+    private Boolean denyUnmatchedRequests;
+    /**
+     * @return Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+     * 
+     */
+    private List<String> denyUnmatchedRequestsExemptedZoneNames;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -111,6 +122,20 @@ public final class GetZeroTrustOrganizationResult {
         return this.customPages;
     }
     /**
+     * @return Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `denyUnmatchedRequestsExemptedZoneNames` array.
+     * 
+     */
+    public Boolean denyUnmatchedRequests() {
+        return this.denyUnmatchedRequests;
+    }
+    /**
+     * @return Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+     * 
+     */
+    public List<String> denyUnmatchedRequestsExemptedZoneNames() {
+        return this.denyUnmatchedRequestsExemptedZoneNames;
+    }
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -184,6 +209,8 @@ public final class GetZeroTrustOrganizationResult {
         private String authDomain;
         private Boolean autoRedirectToIdentity;
         private GetZeroTrustOrganizationCustomPages customPages;
+        private Boolean denyUnmatchedRequests;
+        private List<String> denyUnmatchedRequestsExemptedZoneNames;
         private String id;
         private Boolean isUiReadOnly;
         private GetZeroTrustOrganizationLoginDesign loginDesign;
@@ -201,6 +228,8 @@ public final class GetZeroTrustOrganizationResult {
     	      this.authDomain = defaults.authDomain;
     	      this.autoRedirectToIdentity = defaults.autoRedirectToIdentity;
     	      this.customPages = defaults.customPages;
+    	      this.denyUnmatchedRequests = defaults.denyUnmatchedRequests;
+    	      this.denyUnmatchedRequestsExemptedZoneNames = defaults.denyUnmatchedRequestsExemptedZoneNames;
     	      this.id = defaults.id;
     	      this.isUiReadOnly = defaults.isUiReadOnly;
     	      this.loginDesign = defaults.loginDesign;
@@ -249,6 +278,25 @@ public final class GetZeroTrustOrganizationResult {
             }
             this.customPages = customPages;
             return this;
+        }
+        @CustomType.Setter
+        public Builder denyUnmatchedRequests(Boolean denyUnmatchedRequests) {
+            if (denyUnmatchedRequests == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustOrganizationResult", "denyUnmatchedRequests");
+            }
+            this.denyUnmatchedRequests = denyUnmatchedRequests;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder denyUnmatchedRequestsExemptedZoneNames(List<String> denyUnmatchedRequestsExemptedZoneNames) {
+            if (denyUnmatchedRequestsExemptedZoneNames == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustOrganizationResult", "denyUnmatchedRequestsExemptedZoneNames");
+            }
+            this.denyUnmatchedRequestsExemptedZoneNames = denyUnmatchedRequestsExemptedZoneNames;
+            return this;
+        }
+        public Builder denyUnmatchedRequestsExemptedZoneNames(String... denyUnmatchedRequestsExemptedZoneNames) {
+            return denyUnmatchedRequestsExemptedZoneNames(List.of(denyUnmatchedRequestsExemptedZoneNames));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -327,6 +375,8 @@ public final class GetZeroTrustOrganizationResult {
             _resultValue.authDomain = authDomain;
             _resultValue.autoRedirectToIdentity = autoRedirectToIdentity;
             _resultValue.customPages = customPages;
+            _resultValue.denyUnmatchedRequests = denyUnmatchedRequests;
+            _resultValue.denyUnmatchedRequestsExemptedZoneNames = denyUnmatchedRequestsExemptedZoneNames;
             _resultValue.id = id;
             _resultValue.isUiReadOnly = isUiReadOnly;
             _resultValue.loginDesign = loginDesign;

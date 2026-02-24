@@ -71,7 +71,9 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * > This resource does not currently support `pulumi import`.
+ * ```sh
+ * $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate example '<zone_id>/<certificate_id>'
+ * ```
  */
 export class AuthenticatedOriginPullsCertificate extends pulumi.CustomResource {
     /**

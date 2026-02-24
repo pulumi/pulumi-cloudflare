@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool Default;
         /// <summary>
-        /// The id of the DEX rule
+        /// API Resource UUID tag.
         /// </summary>
         public readonly string Id;
         /// <summary>

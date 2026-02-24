@@ -50,33 +50,32 @@ public final class GetTurnstileWidgetsArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Max items to fetch, default: 1000
+     * Filter widgets by field using case-insensitive substring matching.
+     * Format: `field:value`
      * 
      */
+    @Import(name="filter")
+    private @Nullable Output<String> filter;
+
+    /**
+     * @return Filter widgets by field using case-insensitive substring matching.
+     * Format: `field:value`
+     * 
+     */
+    public Optional<Output<String>> filter() {
+        return Optional.ofNullable(this.filter);
+    }
+
     @Import(name="maxItems")
     private @Nullable Output<Integer> maxItems;
 
-    /**
-     * @return Max items to fetch, default: 1000
-     * 
-     */
     public Optional<Output<Integer>> maxItems() {
         return Optional.ofNullable(this.maxItems);
     }
 
-    /**
-     * Field to order widgets by.
-     * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;created*on&#34;, &#34;modified*on&#34;.
-     * 
-     */
     @Import(name="order")
     private @Nullable Output<String> order;
 
-    /**
-     * @return Field to order widgets by.
-     * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;created*on&#34;, &#34;modified*on&#34;.
-     * 
-     */
     public Optional<Output<String>> order() {
         return Optional.ofNullable(this.order);
     }
@@ -86,6 +85,7 @@ public final class GetTurnstileWidgetsArgs extends com.pulumi.resources.InvokeAr
     private GetTurnstileWidgetsArgs(GetTurnstileWidgetsArgs $) {
         this.accountId = $.accountId;
         this.direction = $.direction;
+        this.filter = $.filter;
         this.maxItems = $.maxItems;
         this.order = $.order;
     }
@@ -153,45 +153,42 @@ public final class GetTurnstileWidgetsArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param maxItems Max items to fetch, default: 1000
+         * @param filter Filter widgets by field using case-insensitive substring matching.
+         * Format: `field:value`
          * 
          * @return builder
          * 
          */
+        public Builder filter(@Nullable Output<String> filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        /**
+         * @param filter Filter widgets by field using case-insensitive substring matching.
+         * Format: `field:value`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filter(String filter) {
+            return filter(Output.of(filter));
+        }
+
         public Builder maxItems(@Nullable Output<Integer> maxItems) {
             $.maxItems = maxItems;
             return this;
         }
 
-        /**
-         * @param maxItems Max items to fetch, default: 1000
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxItems(Integer maxItems) {
             return maxItems(Output.of(maxItems));
         }
 
-        /**
-         * @param order Field to order widgets by.
-         * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;created*on&#34;, &#34;modified*on&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder order(@Nullable Output<String> order) {
             $.order = order;
             return this;
         }
 
-        /**
-         * @param order Field to order widgets by.
-         * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;created*on&#34;, &#34;modified*on&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder order(String order) {
             return order(Output.of(order));
         }

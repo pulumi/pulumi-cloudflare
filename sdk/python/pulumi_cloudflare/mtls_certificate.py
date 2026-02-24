@@ -28,7 +28,7 @@ class MtlsCertificateArgs:
         The set of arguments for constructing a MtlsCertificate resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.bool] ca: Indicates whether the certificate is a CA or leaf certificate.
-        :param pulumi.Input[_builtins.str] certificates: The uploaded root CA certificate.
+        :param pulumi.Input[_builtins.str] certificates: The uploaded root CA certificate or certificate chain. Certificates must be provided in PEM format with the certificate matching the private_key first in the chain.
         :param pulumi.Input[_builtins.str] name: Optional unique name for the certificate. Only used for human readability.
         :param pulumi.Input[_builtins.str] private_key: The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page.
         """
@@ -68,7 +68,7 @@ class MtlsCertificateArgs:
     @pulumi.getter
     def certificates(self) -> pulumi.Input[_builtins.str]:
         """
-        The uploaded root CA certificate.
+        The uploaded root CA certificate or certificate chain. Certificates must be provided in PEM format with the certificate matching the private_key first in the chain.
         """
         return pulumi.get(self, "certificates")
 
@@ -119,7 +119,7 @@ class _MtlsCertificateState:
         Input properties used for looking up and filtering MtlsCertificate resources.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.bool] ca: Indicates whether the certificate is a CA or leaf certificate.
-        :param pulumi.Input[_builtins.str] certificates: The uploaded root CA certificate.
+        :param pulumi.Input[_builtins.str] certificates: The uploaded root CA certificate or certificate chain. Certificates must be provided in PEM format with the certificate matching the private_key first in the chain.
         :param pulumi.Input[_builtins.str] expires_on: When the certificate expires.
         :param pulumi.Input[_builtins.str] issuer: The certificate authority that issued the certificate.
         :param pulumi.Input[_builtins.str] name: Optional unique name for the certificate. Only used for human readability.
@@ -180,7 +180,7 @@ class _MtlsCertificateState:
     @pulumi.getter
     def certificates(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The uploaded root CA certificate.
+        The uploaded root CA certificate or certificate chain. Certificates must be provided in PEM format with the certificate matching the private_key first in the chain.
         """
         return pulumi.get(self, "certificates")
 
@@ -328,7 +328,7 @@ class MtlsCertificate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.bool] ca: Indicates whether the certificate is a CA or leaf certificate.
-        :param pulumi.Input[_builtins.str] certificates: The uploaded root CA certificate.
+        :param pulumi.Input[_builtins.str] certificates: The uploaded root CA certificate or certificate chain. Certificates must be provided in PEM format with the certificate matching the private_key first in the chain.
         :param pulumi.Input[_builtins.str] name: Optional unique name for the certificate. Only used for human readability.
         :param pulumi.Input[_builtins.str] private_key: The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page.
         """
@@ -443,7 +443,7 @@ class MtlsCertificate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.bool] ca: Indicates whether the certificate is a CA or leaf certificate.
-        :param pulumi.Input[_builtins.str] certificates: The uploaded root CA certificate.
+        :param pulumi.Input[_builtins.str] certificates: The uploaded root CA certificate or certificate chain. Certificates must be provided in PEM format with the certificate matching the private_key first in the chain.
         :param pulumi.Input[_builtins.str] expires_on: When the certificate expires.
         :param pulumi.Input[_builtins.str] issuer: The certificate authority that issued the certificate.
         :param pulumi.Input[_builtins.str] name: Optional unique name for the certificate. Only used for human readability.
@@ -490,7 +490,7 @@ class MtlsCertificate(pulumi.CustomResource):
     @pulumi.getter
     def certificates(self) -> pulumi.Output[_builtins.str]:
         """
-        The uploaded root CA certificate.
+        The uploaded root CA certificate or certificate chain. Certificates must be provided in PEM format with the certificate matching the private_key first in the chain.
         """
         return pulumi.get(self, "certificates")
 

@@ -54,12 +54,13 @@ import javax.annotation.Nullable;
  *         var exampleMagicTransitSiteLan = new MagicTransitSiteLan("exampleMagicTransitSiteLan", MagicTransitSiteLanArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .siteId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .physport(1)
+ *             .bondId(2)
  *             .haLink(true)
  *             .name("name")
  *             .nat(MagicTransitSiteLanNatArgs.builder()
  *                 .staticPrefix("192.0.2.0/24")
  *                 .build())
+ *             .physport(1)
  *             .routedSubnets(MagicTransitSiteLanRoutedSubnetArgs.builder()
  *                 .nextHop("192.0.2.1")
  *                 .prefix("192.0.2.0/24")
@@ -116,6 +117,12 @@ public class MagicTransitSiteLan extends com.pulumi.resources.CustomResource {
     public Output<String> accountId() {
         return this.accountId;
     }
+    @Export(name="bondId", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> bondId;
+
+    public Output<Optional<Integer>> bondId() {
+        return Codegen.optional(this.bondId);
+    }
     /**
      * mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
      * 
@@ -143,10 +150,10 @@ public class MagicTransitSiteLan extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.nat);
     }
     @Export(name="physport", refs={Integer.class}, tree="[0]")
-    private Output<Integer> physport;
+    private Output</* @Nullable */ Integer> physport;
 
-    public Output<Integer> physport() {
-        return this.physport;
+    public Output<Optional<Integer>> physport() {
+        return Codegen.optional(this.physport);
     }
     @Export(name="routedSubnets", refs={List.class,MagicTransitSiteLanRoutedSubnet.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MagicTransitSiteLanRoutedSubnet>> routedSubnets;

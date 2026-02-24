@@ -157,6 +157,7 @@ namespace Pulumi.Cloudflare
         /// Namespace identifier tag.
         /// </summary>
         public readonly string NamespaceId;
+        public readonly string Value;
 
         [OutputConstructor]
         private GetWorkersKvResult(
@@ -166,12 +167,15 @@ namespace Pulumi.Cloudflare
 
             string keyName,
 
-            string namespaceId)
+            string namespaceId,
+
+            string value)
         {
             AccountId = accountId;
             Id = id;
             KeyName = keyName;
             NamespaceId = namespaceId;
+            Value = value;
         }
     }
 }

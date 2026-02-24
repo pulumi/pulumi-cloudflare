@@ -70,6 +70,9 @@ namespace Pulumi.Cloudflare
         [Output("hostname")]
         public Output<string> Hostname { get; private set; } = null!;
 
+        [Output("lastSuccessfulSync")]
+        public Output<string> LastSuccessfulSync { get; private set; } = null!;
+
         [Output("lastSynced")]
         public Output<string> LastSynced { get; private set; } = null!;
 
@@ -204,6 +207,9 @@ namespace Pulumi.Cloudflare
 
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
+
+        [Input("lastSuccessfulSync")]
+        public Input<string>? LastSuccessfulSync { get; set; }
 
         [Input("lastSynced")]
         public Input<string>? LastSynced { get; set; }

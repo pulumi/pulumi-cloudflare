@@ -3079,7 +3079,7 @@ export interface AccountUnit {
     /**
      * Tenant unit ID
      */
-    id?: string;
+    id: string;
 }
 
 export interface AddressMapMembership {
@@ -3092,6 +3092,100 @@ export interface AddressMapMembership {
      * Available values: "zone", "account".
      */
     kind?: string;
+}
+
+export interface AiSearchInstanceCustomMetadata {
+    /**
+     * Available values: "text", "number", "boolean".
+     */
+    dataType: string;
+    fieldName: string;
+}
+
+export interface AiSearchInstanceMetadata {
+    createdFromAisearchWizard?: boolean;
+    workerDomain?: string;
+}
+
+export interface AiSearchInstancePublicEndpointParams {
+    authorizedHosts?: string[];
+    chatCompletionsEndpoint: outputs.AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint;
+    enabled: boolean;
+    mcp: outputs.AiSearchInstancePublicEndpointParamsMcp;
+    rateLimit?: outputs.AiSearchInstancePublicEndpointParamsRateLimit;
+    searchEndpoint: outputs.AiSearchInstancePublicEndpointParamsSearchEndpoint;
+}
+
+export interface AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint {
+    /**
+     * Disable chat completions endpoint for this public endpoint
+     */
+    disabled: boolean;
+}
+
+export interface AiSearchInstancePublicEndpointParamsMcp {
+    /**
+     * Disable MCP endpoint for this public endpoint
+     */
+    disabled: boolean;
+}
+
+export interface AiSearchInstancePublicEndpointParamsRateLimit {
+    periodMs?: number;
+    requests?: number;
+    /**
+     * Available values: "fixed", "sliding".
+     */
+    technique?: string;
+}
+
+export interface AiSearchInstancePublicEndpointParamsSearchEndpoint {
+    /**
+     * Disable search endpoint for this public endpoint
+     */
+    disabled: boolean;
+}
+
+export interface AiSearchInstanceSourceParams {
+    /**
+     * List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
+     */
+    excludeItems?: string[];
+    /**
+     * List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
+     */
+    includeItems?: string[];
+    prefix?: string;
+    r2Jurisdiction: string;
+    webCrawler: outputs.AiSearchInstanceSourceParamsWebCrawler;
+}
+
+export interface AiSearchInstanceSourceParamsWebCrawler {
+    parseOptions?: outputs.AiSearchInstanceSourceParamsWebCrawlerParseOptions;
+    /**
+     * Available values: "sitemap", "feed-rss".
+     */
+    parseType: string;
+    storeOptions?: outputs.AiSearchInstanceSourceParamsWebCrawlerStoreOptions;
+}
+
+export interface AiSearchInstanceSourceParamsWebCrawlerParseOptions {
+    includeHeaders?: {[key: string]: string};
+    includeImages: boolean;
+    /**
+     * List of specific sitemap URLs to use for crawling. Only valid when parseType is 'sitemap'.
+     */
+    specificSitemaps?: string[];
+    useBrowserRendering: boolean;
+}
+
+export interface AiSearchInstanceSourceParamsWebCrawlerStoreOptions {
+    r2Jurisdiction: string;
+    storageId: string;
+    /**
+     * Available values: "r2".
+     */
+    storageType?: string;
 }
 
 export interface ApiShieldAuthIdCharacteristic {
@@ -4610,6 +4704,21 @@ export interface GetAccountApiTokenPermissionGroupsListResult {
     scopes: string[];
 }
 
+export interface GetAccountApiTokenPermissionGroupsPermissionGroup {
+    /**
+     * Public ID.
+     */
+    id: string;
+    /**
+     * Permission Group Name
+     */
+    name: string;
+    /**
+     * Resources to which the Permission Group is scoped
+     */
+    scopes: string[];
+}
+
 export interface GetAccountDnsSettingsInternalViewFilter {
     /**
      * Direction to order DNS views in.
@@ -5749,6 +5858,287 @@ export interface GetAddressMapsResult {
     modifiedAt: string;
 }
 
+export interface GetAiSearchInstanceCustomMetadata {
+    /**
+     * Available values: "text", "number", "boolean".
+     */
+    dataType: string;
+    fieldName: string;
+}
+
+export interface GetAiSearchInstanceFilter {
+    /**
+     * Search by id
+     */
+    search?: string;
+}
+
+export interface GetAiSearchInstanceMetadata {
+    createdFromAisearchWizard: boolean;
+    workerDomain: string;
+}
+
+export interface GetAiSearchInstancePublicEndpointParams {
+    authorizedHosts: string[];
+    chatCompletionsEndpoint: outputs.GetAiSearchInstancePublicEndpointParamsChatCompletionsEndpoint;
+    enabled: boolean;
+    mcp: outputs.GetAiSearchInstancePublicEndpointParamsMcp;
+    rateLimit: outputs.GetAiSearchInstancePublicEndpointParamsRateLimit;
+    searchEndpoint: outputs.GetAiSearchInstancePublicEndpointParamsSearchEndpoint;
+}
+
+export interface GetAiSearchInstancePublicEndpointParamsChatCompletionsEndpoint {
+    /**
+     * Disable chat completions endpoint for this public endpoint
+     */
+    disabled: boolean;
+}
+
+export interface GetAiSearchInstancePublicEndpointParamsMcp {
+    /**
+     * Disable MCP endpoint for this public endpoint
+     */
+    disabled: boolean;
+}
+
+export interface GetAiSearchInstancePublicEndpointParamsRateLimit {
+    periodMs: number;
+    requests: number;
+    /**
+     * Available values: "fixed", "sliding".
+     */
+    technique: string;
+}
+
+export interface GetAiSearchInstancePublicEndpointParamsSearchEndpoint {
+    /**
+     * Disable search endpoint for this public endpoint
+     */
+    disabled: boolean;
+}
+
+export interface GetAiSearchInstanceSourceParams {
+    /**
+     * List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
+     */
+    excludeItems: string[];
+    /**
+     * List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
+     */
+    includeItems: string[];
+    prefix: string;
+    r2Jurisdiction: string;
+    webCrawler: outputs.GetAiSearchInstanceSourceParamsWebCrawler;
+}
+
+export interface GetAiSearchInstanceSourceParamsWebCrawler {
+    parseOptions: outputs.GetAiSearchInstanceSourceParamsWebCrawlerParseOptions;
+    /**
+     * Available values: "sitemap", "feed-rss".
+     */
+    parseType: string;
+    storeOptions: outputs.GetAiSearchInstanceSourceParamsWebCrawlerStoreOptions;
+}
+
+export interface GetAiSearchInstanceSourceParamsWebCrawlerParseOptions {
+    includeHeaders: {[key: string]: string};
+    includeImages: boolean;
+    /**
+     * List of specific sitemap URLs to use for crawling. Only valid when parseType is 'sitemap'.
+     */
+    specificSitemaps: string[];
+    useBrowserRendering: boolean;
+}
+
+export interface GetAiSearchInstanceSourceParamsWebCrawlerStoreOptions {
+    r2Jurisdiction: string;
+    storageId: string;
+    /**
+     * Available values: "r2".
+     */
+    storageType: string;
+}
+
+export interface GetAiSearchInstancesResult {
+    accountId: string;
+    accountTag: string;
+    aiGatewayId: string;
+    /**
+     * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+     */
+    aisearchModel: string;
+    cache: boolean;
+    /**
+     * Available values: "super*strict*match", "close*enough", "flexible*friend", "anythingGoes".
+     */
+    cacheThreshold: string;
+    chunk: boolean;
+    chunkOverlap: number;
+    chunkSize: number;
+    createdAt: string;
+    createdBy: string;
+    customMetadatas: outputs.GetAiSearchInstancesResultCustomMetadata[];
+    /**
+     * Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
+     */
+    embeddingModel: string;
+    enable: boolean;
+    engineVersion: number;
+    hybridSearchEnabled: boolean;
+    /**
+     * Use your AI Search ID.
+     */
+    id: string;
+    internalId: string;
+    lastActivity: string;
+    maxNumResults: number;
+    metadata: outputs.GetAiSearchInstancesResultMetadata;
+    modifiedAt: string;
+    modifiedBy: string;
+    paused: boolean;
+    publicEndpointId: string;
+    publicEndpointParams: outputs.GetAiSearchInstancesResultPublicEndpointParams;
+    reranking: boolean;
+    /**
+     * Available values: "@cf/baai/bge-reranker-base", "".
+     */
+    rerankingModel: string;
+    /**
+     * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+     */
+    rewriteModel: string;
+    rewriteQuery: boolean;
+    scoreThreshold: number;
+    source: string;
+    sourceParams: outputs.GetAiSearchInstancesResultSourceParams;
+    status: string;
+    summarization: boolean;
+    /**
+     * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+     */
+    summarizationModel: string;
+    systemPromptAisearch: string;
+    systemPromptIndexSummarization: string;
+    systemPromptRewriteQuery: string;
+    tokenId: string;
+    /**
+     * Available values: "r2", "web-crawler".
+     */
+    type: string;
+    vectorizeActiveNamespace: string;
+    vectorizeName: string;
+}
+
+export interface GetAiSearchInstancesResultCustomMetadata {
+    /**
+     * Available values: "text", "number", "boolean".
+     */
+    dataType: string;
+    fieldName: string;
+}
+
+export interface GetAiSearchInstancesResultMetadata {
+    createdFromAisearchWizard: boolean;
+    workerDomain: string;
+}
+
+export interface GetAiSearchInstancesResultPublicEndpointParams {
+    authorizedHosts: string[];
+    chatCompletionsEndpoint: outputs.GetAiSearchInstancesResultPublicEndpointParamsChatCompletionsEndpoint;
+    enabled: boolean;
+    mcp: outputs.GetAiSearchInstancesResultPublicEndpointParamsMcp;
+    rateLimit: outputs.GetAiSearchInstancesResultPublicEndpointParamsRateLimit;
+    searchEndpoint: outputs.GetAiSearchInstancesResultPublicEndpointParamsSearchEndpoint;
+}
+
+export interface GetAiSearchInstancesResultPublicEndpointParamsChatCompletionsEndpoint {
+    /**
+     * Disable chat completions endpoint for this public endpoint
+     */
+    disabled: boolean;
+}
+
+export interface GetAiSearchInstancesResultPublicEndpointParamsMcp {
+    /**
+     * Disable MCP endpoint for this public endpoint
+     */
+    disabled: boolean;
+}
+
+export interface GetAiSearchInstancesResultPublicEndpointParamsRateLimit {
+    periodMs: number;
+    requests: number;
+    /**
+     * Available values: "fixed", "sliding".
+     */
+    technique: string;
+}
+
+export interface GetAiSearchInstancesResultPublicEndpointParamsSearchEndpoint {
+    /**
+     * Disable search endpoint for this public endpoint
+     */
+    disabled: boolean;
+}
+
+export interface GetAiSearchInstancesResultSourceParams {
+    /**
+     * List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
+     */
+    excludeItems: string[];
+    /**
+     * List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
+     */
+    includeItems: string[];
+    prefix: string;
+    r2Jurisdiction: string;
+    webCrawler: outputs.GetAiSearchInstancesResultSourceParamsWebCrawler;
+}
+
+export interface GetAiSearchInstancesResultSourceParamsWebCrawler {
+    parseOptions: outputs.GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptions;
+    /**
+     * Available values: "sitemap", "feed-rss".
+     */
+    parseType: string;
+    storeOptions: outputs.GetAiSearchInstancesResultSourceParamsWebCrawlerStoreOptions;
+}
+
+export interface GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptions {
+    includeHeaders: {[key: string]: string};
+    includeImages: boolean;
+    /**
+     * List of specific sitemap URLs to use for crawling. Only valid when parseType is 'sitemap'.
+     */
+    specificSitemaps: string[];
+    useBrowserRendering: boolean;
+}
+
+export interface GetAiSearchInstancesResultSourceParamsWebCrawlerStoreOptions {
+    r2Jurisdiction: string;
+    storageId: string;
+    /**
+     * Available values: "r2".
+     */
+    storageType: string;
+}
+
+export interface GetAiSearchTokensResult {
+    accountId: string;
+    accountTag: string;
+    cfApiId: string;
+    cfApiKey: string;
+    createdAt: string;
+    createdBy: string;
+    enabled: boolean;
+    id: string;
+    legacy: boolean;
+    modifiedAt: string;
+    modifiedBy: string;
+    name: string;
+    syncedAt: string;
+}
+
 export interface GetApiShieldAuthIdCharacteristic {
     /**
      * The name of the characteristic field, i.e., the header or cookie name.
@@ -6443,6 +6833,75 @@ export interface GetAuthenticatedOriginPullsCertificatesResult {
      * This is the time the certificate was uploaded.
      */
     uploadedOn: string;
+}
+
+export interface GetAuthenticatedOriginPullsHostnameCertificatesResult {
+    /**
+     * Identifier.
+     */
+    certId: string;
+    /**
+     * Status of the certificate or the association.
+     * Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
+     */
+    certStatus: string;
+    /**
+     * The time when the certificate was updated.
+     */
+    certUpdatedAt: string;
+    /**
+     * The time when the certificate was uploaded.
+     */
+    certUploadedOn: string;
+    /**
+     * The hostname certificate.
+     */
+    certificate: string;
+    /**
+     * The time when the certificate was created.
+     */
+    createdAt: string;
+    /**
+     * Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.
+     */
+    enabled: boolean;
+    /**
+     * The date when the certificate expires.
+     */
+    expiresOn: string;
+    /**
+     * The hostname on the origin for which the client certificate uploaded will be used.
+     */
+    hostname: string;
+    /**
+     * Identifier.
+     */
+    id: string;
+    /**
+     * The certificate authority that issued the certificate.
+     */
+    issuer: string;
+    /**
+     * The hostname certificate's private key.
+     */
+    privateKey: string;
+    /**
+     * The serial number on the uploaded certificate.
+     */
+    serialNumber: string;
+    /**
+     * The type of hash used for the certificate.
+     */
+    signature: string;
+    /**
+     * Status of the certificate or the association.
+     * Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
+     */
+    status: string;
+    /**
+     * The time when the certificate was updated.
+     */
+    updatedAt: string;
 }
 
 export interface GetBotManagementStaleZoneConfiguration {
@@ -10938,6 +11397,7 @@ export interface GetMagicTransitSiteLanStaticAddressingDhcpServer {
 }
 
 export interface GetMagicTransitSiteLansResult {
+    bondId: number;
     /**
      * mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
      */
@@ -17216,8 +17676,13 @@ export interface GetTurnstileWidgetFilter {
      */
     direction?: string;
     /**
+     * Filter widgets by field using case-insensitive substring matching.
+     * Format: `field:value`
+     */
+    filter?: string;
+    /**
      * Field to order widgets by.
-     * Available values: "id", "sitekey", "name", "created*on", "modified*on".
+     * Available values: "id", "sitekey", "name", "createdOn", "modifiedOn".
      */
     order?: string;
 }
@@ -18146,6 +18611,10 @@ export interface GetWorkerVersionBinding {
      */
     service: string;
     /**
+     * The rate limit configuration.
+     */
+    simple: outputs.GetWorkerVersionBindingSimple;
+    /**
      * ID of the store containing the secret.
      */
     storeId: string;
@@ -18155,7 +18624,7 @@ export interface GetWorkerVersionBinding {
     text: string;
     /**
      * The kind of resource that the binding provides.
-     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasmModule".
+     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasmModule".
      */
     type: string;
     /**
@@ -18192,6 +18661,17 @@ export interface GetWorkerVersionBindingOutboundWorker {
      * Name of the outbound worker.
      */
     service: string;
+}
+
+export interface GetWorkerVersionBindingSimple {
+    /**
+     * The limit (requests per period).
+     */
+    limit: number;
+    /**
+     * The period in seconds.
+     */
+    period: number;
 }
 
 export interface GetWorkerVersionLimits {
@@ -18298,10 +18778,41 @@ export interface GetWorkerVersionModule {
 
 export interface GetWorkerVersionPlacement {
     /**
-     * Placement mode for the version.
-     * Available values: "smart".
+     * TCP host and port for targeted placement.
+     */
+    host: string;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname: string;
+    /**
+     * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: "smart", "targeted".
      */
     mode: string;
+    /**
+     * Cloud region for targeted placement in format 'provider:region'.
+     */
+    region: string;
+    /**
+     * Array of placement targets (currently limited to single target).
+     */
+    targets: outputs.GetWorkerVersionPlacementTarget[];
+}
+
+export interface GetWorkerVersionPlacementTarget {
+    /**
+     * TCP host:port for targeted placement.
+     */
+    host: string;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname: string;
+    /**
+     * Cloud region in format 'provider:region'.
+     */
+    region: string;
 }
 
 export interface GetWorkerVersionsResult {
@@ -18363,7 +18874,7 @@ export interface GetWorkerVersionsResult {
      */
     number: number;
     /**
-     * Placement settings for the version.
+     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
      */
     placement: outputs.GetWorkerVersionsResultPlacement;
     /**
@@ -18538,6 +19049,10 @@ export interface GetWorkerVersionsResultBinding {
      */
     service: string;
     /**
+     * The rate limit configuration.
+     */
+    simple: outputs.GetWorkerVersionsResultBindingSimple;
+    /**
      * ID of the store containing the secret.
      */
     storeId: string;
@@ -18547,7 +19062,7 @@ export interface GetWorkerVersionsResultBinding {
     text: string;
     /**
      * The kind of resource that the binding provides.
-     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasmModule".
+     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasmModule".
      */
     type: string;
     /**
@@ -18584,6 +19099,17 @@ export interface GetWorkerVersionsResultBindingOutboundWorker {
      * Name of the outbound worker.
      */
     service: string;
+}
+
+export interface GetWorkerVersionsResultBindingSimple {
+    /**
+     * The limit (requests per period).
+     */
+    limit: number;
+    /**
+     * The period in seconds.
+     */
+    period: number;
 }
 
 export interface GetWorkerVersionsResultLimits {
@@ -18690,10 +19216,41 @@ export interface GetWorkerVersionsResultModule {
 
 export interface GetWorkerVersionsResultPlacement {
     /**
-     * Placement mode for the version.
-     * Available values: "smart".
+     * TCP host and port for targeted placement.
+     */
+    host: string;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname: string;
+    /**
+     * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: "smart", "targeted".
      */
     mode: string;
+    /**
+     * Cloud region for targeted placement in format 'provider:region'.
+     */
+    region: string;
+    /**
+     * Array of placement targets (currently limited to single target).
+     */
+    targets: outputs.GetWorkerVersionsResultPlacementTarget[];
+}
+
+export interface GetWorkerVersionsResultPlacementTarget {
+    /**
+     * TCP host:port for targeted placement.
+     */
+    host: string;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname: string;
+    /**
+     * Cloud region in format 'provider:region'.
+     */
+    region: string;
 }
 
 export interface GetWorkersCronTriggerSchedule {
@@ -19118,11 +19675,11 @@ export interface GetWorkersScriptsResult {
      */
     observability: outputs.GetWorkersScriptsResultObservability;
     /**
-     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
+     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
      */
     placement: outputs.GetWorkersScriptsResultPlacement;
     /**
-     * Available values: "smart".
+     * Available values: "smart", "targeted".
      *
      * @deprecated This attribute is deprecated.
      */
@@ -19220,7 +19777,7 @@ export interface GetWorkersScriptsResultPlacement {
     lastAnalyzedAt: string;
     /**
      * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: "smart".
+     * Available values: "smart", "targeted".
      */
     mode: string;
     /**
@@ -19232,6 +19789,25 @@ export interface GetWorkersScriptsResultPlacement {
      * Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
      */
     status: string;
+    /**
+     * Array of placement targets (currently limited to single target).
+     */
+    targets: outputs.GetWorkersScriptsResultPlacementTarget[];
+}
+
+export interface GetWorkersScriptsResultPlacementTarget {
+    /**
+     * TCP host:port for targeted placement.
+     */
+    host: string;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname: string;
+    /**
+     * Cloud region in format 'provider:region'.
+     */
+    region: string;
 }
 
 export interface GetWorkersScriptsResultRoute {
@@ -19326,6 +19902,7 @@ export interface GetZeroTrustAccessAiControlsMcpPortalServer {
      * server id
      */
     id: string;
+    lastSuccessfulSync: string;
     lastSynced: string;
     modifiedAt: string;
     modifiedBy: string;
@@ -19350,6 +19927,10 @@ export interface GetZeroTrustAccessAiControlsMcpPortalsResult {
     modifiedAt: string;
     modifiedBy: string;
     name: string;
+    /**
+     * Route outbound MCP traffic through Zero Trust Secure Web Gateway
+     */
+    secureWebGateway: boolean;
 }
 
 export interface GetZeroTrustAccessAiControlsMcpServerFilter {
@@ -19373,6 +19954,7 @@ export interface GetZeroTrustAccessAiControlsMcpServersResult {
      * server id
      */
     id: string;
+    lastSuccessfulSync: string;
     lastSynced: string;
     modifiedAt: string;
     modifiedBy: string;
@@ -26851,12 +27433,26 @@ export interface GetZeroTrustDexTestData {
     host: string;
     /**
      * The type of test.
+     * Available values: "http", "traceroute".
      */
     kind: string;
     /**
      * The HTTP request method type.
+     * Available values: "GET".
      */
     method: string;
+}
+
+export interface GetZeroTrustDexTestFilter {
+    /**
+     * Filter by test type
+     * Available values: "http", "traceroute".
+     */
+    kind?: string;
+    /**
+     * Filter by test name
+     */
+    testName?: string;
 }
 
 export interface GetZeroTrustDexTestTargetPolicy {
@@ -26865,7 +27461,7 @@ export interface GetZeroTrustDexTestTargetPolicy {
      */
     default: boolean;
     /**
-     * The id of the DEX rule
+     * API Resource UUID tag.
      */
     id: string;
     /**
@@ -26917,10 +27513,12 @@ export interface GetZeroTrustDexTestsResultData {
     host: string;
     /**
      * The type of test.
+     * Available values: "http", "traceroute".
      */
     kind: string;
     /**
      * The HTTP request method type.
+     * Available values: "GET".
      */
     method: string;
 }
@@ -26931,7 +27529,7 @@ export interface GetZeroTrustDexTestsResultTargetPolicy {
      */
     default: boolean;
     /**
-     * The id of the DEX rule
+     * API Resource UUID tag.
      */
     id: string;
     /**
@@ -32480,7 +33078,7 @@ export interface PagesProjectDeploymentConfigsPreviewServices {
     /**
      * The Service environment.
      */
-    environment?: string;
+    environment: string;
     /**
      * The Service name.
      */
@@ -32679,7 +33277,7 @@ export interface PagesProjectDeploymentConfigsProductionServices {
     /**
      * The Service environment.
      */
-    environment?: string;
+    environment: string;
     /**
      * The Service name.
      */
@@ -36150,6 +36748,10 @@ export interface WorkerScriptBinding {
      */
     service?: string;
     /**
+     * A simple rate limit.
+     */
+    simple?: outputs.WorkerScriptBindingSimple;
+    /**
      * ID of the store containing the secret.
      */
     storeId?: string;
@@ -36196,6 +36798,17 @@ export interface WorkerScriptBindingOutboundWorker {
      * Name of the outbound worker.
      */
     service?: string;
+}
+
+export interface WorkerScriptBindingSimple {
+    /**
+     * The rate limit value.
+     */
+    limit: number;
+    /**
+     * The rate limit period in seconds.
+     */
+    period: number;
 }
 
 export interface WorkerScriptLimits {
@@ -36349,7 +36962,7 @@ export interface WorkerScriptPlacement {
     lastAnalyzedAt: string;
     /**
      * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: "smart".
+     * Available values: "smart", "targeted".
      */
     mode?: string;
     /**
@@ -36361,6 +36974,25 @@ export interface WorkerScriptPlacement {
      * Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
      */
     status: string;
+    /**
+     * Array of placement targets (currently limited to single target).
+     */
+    targets: outputs.WorkerScriptPlacementTarget[];
+}
+
+export interface WorkerScriptPlacementTarget {
+    /**
+     * TCP host:port for targeted placement.
+     */
+    host: string;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname: string;
+    /**
+     * Cloud region in format 'provider:region'.
+     */
+    region: string;
 }
 
 export interface WorkerScriptTailConsumer {
@@ -36559,6 +37191,10 @@ export interface WorkerVersionBinding {
      */
     service?: string;
     /**
+     * The rate limit configuration.
+     */
+    simple?: outputs.WorkerVersionBindingSimple;
+    /**
      * ID of the store containing the secret.
      */
     storeId?: string;
@@ -36568,7 +37204,7 @@ export interface WorkerVersionBinding {
     text?: string;
     /**
      * The kind of resource that the binding provides.
-     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasmModule".
+     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasmModule".
      */
     type: string;
     /**
@@ -36605,6 +37241,17 @@ export interface WorkerVersionBindingOutboundWorker {
      * Name of the outbound worker.
      */
     service?: string;
+}
+
+export interface WorkerVersionBindingSimple {
+    /**
+     * The limit (requests per period).
+     */
+    limit: number;
+    /**
+     * The period in seconds.
+     */
+    period: number;
 }
 
 export interface WorkerVersionLimits {
@@ -36719,10 +37366,41 @@ export interface WorkerVersionModule {
 
 export interface WorkerVersionPlacement {
     /**
-     * Placement mode for the version.
-     * Available values: "smart".
+     * TCP host and port for targeted placement.
+     */
+    host?: string;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname?: string;
+    /**
+     * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: "smart", "targeted".
      */
     mode?: string;
+    /**
+     * Cloud region for targeted placement in format 'provider:region'.
+     */
+    region?: string;
+    /**
+     * Array of placement targets (currently limited to single target).
+     */
+    targets?: outputs.WorkerVersionPlacementTarget[];
+}
+
+export interface WorkerVersionPlacementTarget {
+    /**
+     * TCP host:port for targeted placement.
+     */
+    host?: string;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname?: string;
+    /**
+     * Cloud region in format 'provider:region'.
+     */
+    region?: string;
 }
 
 export interface WorkersCronTriggerSchedule {
@@ -36909,6 +37587,10 @@ export interface WorkersScriptBinding {
      */
     service?: string;
     /**
+     * A simple rate limit.
+     */
+    simple?: outputs.WorkersScriptBindingSimple;
+    /**
      * ID of the store containing the secret.
      */
     storeId?: string;
@@ -36955,6 +37637,17 @@ export interface WorkersScriptBindingOutboundWorker {
      * Name of the outbound worker.
      */
     service?: string;
+}
+
+export interface WorkersScriptBindingSimple {
+    /**
+     * The rate limit value.
+     */
+    limit: number;
+    /**
+     * The rate limit period in seconds.
+     */
+    period: number;
 }
 
 export interface WorkersScriptLimits {
@@ -37108,7 +37801,7 @@ export interface WorkersScriptPlacement {
     lastAnalyzedAt: string;
     /**
      * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: "smart".
+     * Available values: "smart", "targeted".
      */
     mode?: string;
     /**
@@ -37120,6 +37813,25 @@ export interface WorkersScriptPlacement {
      * Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
      */
     status: string;
+    /**
+     * Array of placement targets (currently limited to single target).
+     */
+    targets: outputs.WorkersScriptPlacementTarget[];
+}
+
+export interface WorkersScriptPlacementTarget {
+    /**
+     * TCP host:port for targeted placement.
+     */
+    host: string;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname: string;
+    /**
+     * Cloud region in format 'provider:region'.
+     */
+    region: string;
 }
 
 export interface WorkersScriptTailConsumer {

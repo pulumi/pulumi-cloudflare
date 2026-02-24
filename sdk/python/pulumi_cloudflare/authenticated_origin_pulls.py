@@ -22,17 +22,13 @@ __all__ = ['AuthenticatedOriginPullsArgs', 'AuthenticatedOriginPulls']
 class AuthenticatedOriginPullsArgs:
     def __init__(__self__, *,
                  configs: pulumi.Input[Sequence[pulumi.Input['AuthenticatedOriginPullsConfigArgs']]],
-                 zone_id: pulumi.Input[_builtins.str],
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None):
+                 zone_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a AuthenticatedOriginPulls resource.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
-        :param pulumi.Input[_builtins.str] hostname: The hostname on the origin for which the client certificate uploaded will be used.
         """
         pulumi.set(__self__, "configs", configs)
         pulumi.set(__self__, "zone_id", zone_id)
-        if hostname is not None:
-            pulumi.set(__self__, "hostname", hostname)
 
     @_builtins.property
     @pulumi.getter
@@ -54,18 +50,6 @@ class AuthenticatedOriginPullsArgs:
     @zone_id.setter
     def zone_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "zone_id", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The hostname on the origin for which the client certificate uploaded will be used.
-        """
-        return pulumi.get(self, "hostname")
-
-    @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "hostname", value)
 
 
 @pulumi.input_type
@@ -355,7 +339,6 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AuthenticatedOriginPullsConfigArgs', 'AuthenticatedOriginPullsConfigArgsDict']]]]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -376,11 +359,12 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
 
         ## Import
 
-        > This resource does not currently support `pulumi import`.
+        ```sh
+        $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example '<zone_id>/<hostname>'
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] hostname: The hostname on the origin for which the client certificate uploaded will be used.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         ...
@@ -407,7 +391,9 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
 
         ## Import
 
-        > This resource does not currently support `pulumi import`.
+        ```sh
+        $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example '<zone_id>/<hostname>'
+        ```
 
         :param str resource_name: The name of the resource.
         :param AuthenticatedOriginPullsArgs args: The arguments to use to populate this resource's properties.
@@ -425,7 +411,6 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AuthenticatedOriginPullsConfigArgs', 'AuthenticatedOriginPullsConfigArgsDict']]]]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -439,7 +424,6 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
             if configs is None and not opts.urn:
                 raise TypeError("Missing required property 'configs'")
             __props__.__dict__["configs"] = configs
-            __props__.__dict__["hostname"] = hostname
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
@@ -451,6 +435,7 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["enabled"] = None
             __props__.__dict__["expires_on"] = None
+            __props__.__dict__["hostname"] = None
             __props__.__dict__["issuer"] = None
             __props__.__dict__["private_key"] = None
             __props__.__dict__["serial_number"] = None
@@ -607,7 +592,7 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def hostname(self) -> pulumi.Output[_builtins.str]:
         """
         The hostname on the origin for which the client certificate uploaded will be used.
         """

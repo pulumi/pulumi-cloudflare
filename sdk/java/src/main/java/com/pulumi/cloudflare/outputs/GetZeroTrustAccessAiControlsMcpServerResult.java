@@ -32,6 +32,7 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
      * 
      */
     private String id;
+    private String lastSuccessfulSync;
     private String lastSynced;
     private String modifiedAt;
     private String modifiedBy;
@@ -76,6 +77,9 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
     public String id() {
         return this.id;
     }
+    public String lastSuccessfulSync() {
+        return this.lastSuccessfulSync;
+    }
     public String lastSynced() {
         return this.lastSynced;
     }
@@ -116,6 +120,7 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
         private @Nullable GetZeroTrustAccessAiControlsMcpServerFilter filter;
         private String hostname;
         private String id;
+        private String lastSuccessfulSync;
         private String lastSynced;
         private String modifiedAt;
         private String modifiedBy;
@@ -135,6 +140,7 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
     	      this.filter = defaults.filter;
     	      this.hostname = defaults.hostname;
     	      this.id = defaults.id;
+    	      this.lastSuccessfulSync = defaults.lastSuccessfulSync;
     	      this.lastSynced = defaults.lastSynced;
     	      this.modifiedAt = defaults.modifiedAt;
     	      this.modifiedBy = defaults.modifiedBy;
@@ -215,6 +221,14 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
             return this;
         }
         @CustomType.Setter
+        public Builder lastSuccessfulSync(String lastSuccessfulSync) {
+            if (lastSuccessfulSync == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpServerResult", "lastSuccessfulSync");
+            }
+            this.lastSuccessfulSync = lastSuccessfulSync;
+            return this;
+        }
+        @CustomType.Setter
         public Builder lastSynced(String lastSynced) {
             if (lastSynced == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpServerResult", "lastSynced");
@@ -281,6 +295,7 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
             _resultValue.filter = filter;
             _resultValue.hostname = hostname;
             _resultValue.id = id;
+            _resultValue.lastSuccessfulSync = lastSuccessfulSync;
             _resultValue.lastSynced = lastSynced;
             _resultValue.modifiedAt = modifiedAt;
             _resultValue.modifiedBy = modifiedBy;
