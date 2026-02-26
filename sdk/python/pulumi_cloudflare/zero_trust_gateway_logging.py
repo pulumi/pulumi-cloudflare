@@ -26,6 +26,7 @@ class ZeroTrustGatewayLoggingArgs:
                  settings_by_rule_type: Optional[pulumi.Input['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs']] = None):
         """
         The set of arguments for constructing a ZeroTrustGatewayLogging resource.
+
         :param pulumi.Input[_builtins.bool] redact_pii: Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
         :param pulumi.Input['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs'] settings_by_rule_type: Configure logging settings for each rule type.
         """
@@ -77,6 +78,7 @@ class _ZeroTrustGatewayLoggingState:
                  settings_by_rule_type: Optional[pulumi.Input['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs']] = None):
         """
         Input properties used for looking up and filtering ZeroTrustGatewayLogging resources.
+
         :param pulumi.Input[_builtins.bool] redact_pii: Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
         :param pulumi.Input['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs'] settings_by_rule_type: Configure logging settings for each rule type.
         """
@@ -161,6 +163,7 @@ class ZeroTrustGatewayLogging(pulumi.CustomResource):
 
         > This resource does not currently support `pulumi import`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] redact_pii: Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
@@ -201,6 +204,7 @@ class ZeroTrustGatewayLogging(pulumi.CustomResource):
         ## Import
 
         > This resource does not currently support `pulumi import`.
+
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustGatewayLoggingArgs args: The arguments to use to populate this resource's properties.

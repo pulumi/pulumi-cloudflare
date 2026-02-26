@@ -34,6 +34,7 @@ class DnsFirewallArgs:
                  retries: Optional[pulumi.Input[_builtins.float]] = None):
         """
         The set of arguments for constructing a DnsFirewall resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] name: DNS Firewall cluster name
         :param pulumi.Input['DnsFirewallAttackMitigationArgs'] attack_mitigation: Attack mitigation settings
@@ -253,6 +254,7 @@ class _DnsFirewallState:
                  upstream_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DnsFirewall resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input['DnsFirewallAttackMitigationArgs'] attack_mitigation: Attack mitigation settings
         :param pulumi.Input[_builtins.bool] deprecate_any_requests: Whether to refuse to answer queries for the ANY type
@@ -535,6 +537,7 @@ class DnsFirewall(pulumi.CustomResource):
         $ pulumi import cloudflare:index/dnsFirewall:DnsFirewall example '<account_id>/<dns_firewall_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -607,6 +610,7 @@ class DnsFirewall(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/dnsFirewall:DnsFirewall example '<account_id>/<dns_firewall_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DnsFirewallArgs args: The arguments to use to populate this resource's properties.

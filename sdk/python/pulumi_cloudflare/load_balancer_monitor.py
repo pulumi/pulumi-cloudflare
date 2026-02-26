@@ -38,6 +38,7 @@ class LoadBalancerMonitorArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LoadBalancerMonitor resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.bool] allow_insecure: Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.
         :param pulumi.Input[_builtins.int] consecutive_down: To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.
@@ -321,6 +322,7 @@ class _LoadBalancerMonitorState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LoadBalancerMonitor resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.bool] allow_insecure: Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.
         :param pulumi.Input[_builtins.int] consecutive_down: To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.
@@ -663,6 +665,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         $ pulumi import cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor example '<account_id>/<monitor_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -725,6 +728,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor example '<account_id>/<monitor_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LoadBalancerMonitorArgs args: The arguments to use to populate this resource's properties.

@@ -29,6 +29,7 @@ class ConnectivityDirectoryServiceArgs:
                  https_port: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a ConnectivityDirectoryService resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account identifier
         :param pulumi.Input[_builtins.str] type: Available values: "http".
         """
@@ -116,6 +117,7 @@ class _ConnectivityDirectoryServiceState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConnectivityDirectoryService resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account identifier
         :param pulumi.Input[_builtins.str] type: Available values: "http".
         """
@@ -267,6 +269,7 @@ class ConnectivityDirectoryService(pulumi.CustomResource):
         $ pulumi import cloudflare:index/connectivityDirectoryService:ConnectivityDirectoryService example '<account_id>/<service_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier
@@ -305,6 +308,7 @@ class ConnectivityDirectoryService(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/connectivityDirectoryService:ConnectivityDirectoryService example '<account_id>/<service_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConnectivityDirectoryServiceArgs args: The arguments to use to populate this resource's properties.

@@ -25,6 +25,7 @@ class TeamsAccountArgs:
                  settings: Optional[pulumi.Input['TeamsAccountSettingsArgs']] = None):
         """
         The set of arguments for constructing a TeamsAccount resource.
+
         :param pulumi.Input['TeamsAccountSettingsArgs'] settings: Specify account settings.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -62,6 +63,7 @@ class _TeamsAccountState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TeamsAccount resources.
+
         :param pulumi.Input['TeamsAccountSettingsArgs'] settings: Specify account settings.
         """
         if account_id is not None:
@@ -210,6 +212,7 @@ class TeamsAccount(pulumi.CustomResource):
         $ pulumi import cloudflare:index/teamsAccount:TeamsAccount example '<account_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['TeamsAccountSettingsArgs', 'TeamsAccountSettingsArgsDict']] settings: Specify account settings.
@@ -302,6 +305,7 @@ class TeamsAccount(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/teamsAccount:TeamsAccount example '<account_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TeamsAccountArgs args: The arguments to use to populate this resource's properties.

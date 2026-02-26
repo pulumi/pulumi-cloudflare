@@ -22,6 +22,7 @@ class StreamKeyArgs:
                  account_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a StreamKey resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -48,6 +49,7 @@ class _StreamKeyState:
                  pem: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StreamKey resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] created: The date and time a signing key was created.
         :param pulumi.Input[_builtins.str] jwk: The signing key in JWK format.
@@ -135,6 +137,7 @@ class StreamKey(pulumi.CustomResource):
         $ pulumi import cloudflare:index/streamKey:StreamKey example '<account_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -160,6 +163,7 @@ class StreamKey(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/streamKey:StreamKey example '<account_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param StreamKeyArgs args: The arguments to use to populate this resource's properties.

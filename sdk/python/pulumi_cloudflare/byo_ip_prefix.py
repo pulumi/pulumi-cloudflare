@@ -27,6 +27,7 @@ class ByoIpPrefixArgs:
                  loa_document_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ByoIpPrefix resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier of a Cloudflare account.
         :param pulumi.Input[_builtins.int] asn: Autonomous System Number (ASN) the prefix will be advertised under.
         :param pulumi.Input[_builtins.str] cidr: IP Prefix in Classless Inter-Domain Routing format.
@@ -139,6 +140,7 @@ class _ByoIpPrefixState:
                  rpki_validation_state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ByoIpPrefix resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier of a Cloudflare account.
         :param pulumi.Input[_builtins.bool] advertised: Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
         :param pulumi.Input[_builtins.str] advertised_modified_at: Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.
@@ -440,6 +442,7 @@ class ByoIpPrefix(pulumi.CustomResource):
         $ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example '<account_id>/<prefix_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier of a Cloudflare account.
@@ -476,6 +479,7 @@ class ByoIpPrefix(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example '<account_id>/<prefix_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ByoIpPrefixArgs args: The arguments to use to populate this resource's properties.

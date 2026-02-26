@@ -31,6 +31,7 @@ class ZeroTrustDeviceSettingsArgs:
                  use_zt_virtual_ip: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ZeroTrustDeviceSettings resource.
+
         :param pulumi.Input[_builtins.float] disable_for_time: Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
         :param pulumi.Input[_builtins.bool] external_emergency_signal_enabled: Controls whether the external emergency disconnect feature is enabled.
         :param pulumi.Input[_builtins.str] external_emergency_signal_fingerprint: The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
@@ -194,6 +195,7 @@ class _ZeroTrustDeviceSettingsState:
                  use_zt_virtual_ip: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustDeviceSettings resources.
+
         :param pulumi.Input[_builtins.float] disable_for_time: Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
         :param pulumi.Input[_builtins.bool] external_emergency_signal_enabled: Controls whether the external emergency disconnect feature is enabled.
         :param pulumi.Input[_builtins.str] external_emergency_signal_fingerprint: The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
@@ -384,6 +386,7 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
 
         > This resource does not currently support `pulumi import`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.float] disable_for_time: Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
@@ -425,6 +428,7 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
         ## Import
 
         > This resource does not currently support `pulumi import`.
+
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustDeviceSettingsArgs args: The arguments to use to populate this resource's properties.

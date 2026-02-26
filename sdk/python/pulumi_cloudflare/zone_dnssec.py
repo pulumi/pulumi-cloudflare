@@ -26,6 +26,7 @@ class ZoneDnssecArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZoneDnssec resource.
+
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.bool] dnssec_multi_signer: If true, multi-signer DNSSEC is enabled on the zone, allowing multiple
                providers to serve a DNSSEC-signed zone at the same time.
@@ -153,6 +154,7 @@ class _ZoneDnssecState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZoneDnssec resources.
+
         :param pulumi.Input[_builtins.str] algorithm: Algorithm key code.
         :param pulumi.Input[_builtins.str] digest: Digest hash.
         :param pulumi.Input[_builtins.str] digest_algorithm: Type of digest algorithm.
@@ -444,6 +446,7 @@ class ZoneDnssec(pulumi.CustomResource):
         $ pulumi import cloudflare:index/zoneDnssec:ZoneDnssec example '<zone_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] dnssec_multi_signer: If true, multi-signer DNSSEC is enabled on the zone, allowing multiple
@@ -493,6 +496,7 @@ class ZoneDnssec(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/zoneDnssec:ZoneDnssec example '<zone_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZoneDnssecArgs args: The arguments to use to populate this resource's properties.

@@ -26,6 +26,7 @@ class TunnelRouteArgs:
                  virtual_network_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TunnelRoute resource.
+
         :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID
         :param pulumi.Input[_builtins.str] network: The private IPv4 or IPv6 range connected by the route, in CIDR notation.
         :param pulumi.Input[_builtins.str] tunnel_id: UUID of the tunnel.
@@ -113,6 +114,7 @@ class _TunnelRouteState:
                  virtual_network_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TunnelRoute resources.
+
         :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID
         :param pulumi.Input[_builtins.str] comment: Optional remark describing the route.
         :param pulumi.Input[_builtins.str] created_at: Timestamp of when the resource was created.
@@ -259,6 +261,7 @@ class TunnelRoute(pulumi.CustomResource):
         $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute example '<account_id>/<route_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID
@@ -293,6 +296,7 @@ class TunnelRoute(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute example '<account_id>/<route_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TunnelRouteArgs args: The arguments to use to populate this resource's properties.

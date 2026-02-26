@@ -23,6 +23,7 @@ class ContentScanningArgs:
                  zone_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ContentScanning resource.
+
         :param pulumi.Input[_builtins.str] value: The status value for Content Scanning.
                Available values: "enabled", "disabled".
         :param pulumi.Input[_builtins.str] zone_id: Defines an identifier.
@@ -64,6 +65,7 @@ class _ContentScanningState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ContentScanning resources.
+
         :param pulumi.Input[_builtins.str] modified: Defines the last modification date (ISO 8601) of the Content Scanning status.
         :param pulumi.Input[_builtins.str] value: The status value for Content Scanning.
                Available values: "enabled", "disabled".
@@ -139,6 +141,7 @@ class ContentScanning(pulumi.CustomResource):
 
         > This resource does not currently support `pulumi import`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] value: The status value for Content Scanning.
@@ -166,6 +169,7 @@ class ContentScanning(pulumi.CustomResource):
         ## Import
 
         > This resource does not currently support `pulumi import`.
+
 
         :param str resource_name: The name of the resource.
         :param ContentScanningArgs args: The arguments to use to populate this resource's properties.

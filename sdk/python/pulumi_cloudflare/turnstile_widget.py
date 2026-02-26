@@ -30,6 +30,7 @@ class TurnstileWidgetArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TurnstileWidget resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.str] mode: Widget Mode
                Available values: "non-interactive", "invisible", "managed".
@@ -192,6 +193,7 @@ class _TurnstileWidgetState:
                  sitekey: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TurnstileWidget resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.bool] bot_fight_mode: If bot*fight*mode is set to `true`, Cloudflare issues computationally
                expensive challenges in response to malicious bots (ENT only).
@@ -445,6 +447,7 @@ class TurnstileWidget(pulumi.CustomResource):
         $ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example '<account_id>/<sitekey>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier
@@ -497,6 +500,7 @@ class TurnstileWidget(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example '<account_id>/<sitekey>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TurnstileWidgetArgs args: The arguments to use to populate this resource's properties.

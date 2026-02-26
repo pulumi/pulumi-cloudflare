@@ -111,6 +111,7 @@ class ZeroTrustDeviceDefaultProfileLocalDomainFallback(pulumi.CustomResource):
         $ pulumi import cloudflare:index/zeroTrustDeviceDefaultProfileLocalDomainFallback:ZeroTrustDeviceDefaultProfileLocalDomainFallback example '<account_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -141,6 +142,7 @@ class ZeroTrustDeviceDefaultProfileLocalDomainFallback(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/zeroTrustDeviceDefaultProfileLocalDomainFallback:ZeroTrustDeviceDefaultProfileLocalDomainFallback example '<account_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs args: The arguments to use to populate this resource's properties.

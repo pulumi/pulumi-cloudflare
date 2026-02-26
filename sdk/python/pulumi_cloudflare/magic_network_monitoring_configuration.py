@@ -28,6 +28,7 @@ class MagicNetworkMonitoringConfigurationArgs:
                  warp_devices: Optional[pulumi.Input[Sequence[pulumi.Input['MagicNetworkMonitoringConfigurationWarpDeviceArgs']]]] = None):
         """
         The set of arguments for constructing a MagicNetworkMonitoringConfiguration resource.
+
         :param pulumi.Input[_builtins.str] name: The account name.
         :param pulumi.Input[_builtins.float] default_sampling: Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.
         """
@@ -102,6 +103,7 @@ class _MagicNetworkMonitoringConfigurationState:
                  warp_devices: Optional[pulumi.Input[Sequence[pulumi.Input['MagicNetworkMonitoringConfigurationWarpDeviceArgs']]]] = None):
         """
         Input properties used for looking up and filtering MagicNetworkMonitoringConfiguration resources.
+
         :param pulumi.Input[_builtins.float] default_sampling: Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.
         :param pulumi.Input[_builtins.str] name: The account name.
         """
@@ -183,6 +185,7 @@ class MagicNetworkMonitoringConfiguration(pulumi.CustomResource):
         """
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.float] default_sampling: Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.
@@ -196,6 +199,7 @@ class MagicNetworkMonitoringConfiguration(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param MagicNetworkMonitoringConfigurationArgs args: The arguments to use to populate this resource's properties.

@@ -28,6 +28,7 @@ class UserArgs:
                  zipcode: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a User resource.
+
         :param pulumi.Input[_builtins.str] country: The country in which the user lives.
         :param pulumi.Input[_builtins.str] first_name: User's first name
         :param pulumi.Input[_builtins.str] last_name: User's last name
@@ -124,6 +125,7 @@ class _UserState:
                  zipcode: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering User resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] betas: Lists the betas that the user is participating in.
         :param pulumi.Input[_builtins.str] country: The country in which the user lives.
         :param pulumi.Input[_builtins.str] first_name: User's first name
@@ -349,6 +351,7 @@ class User(pulumi.CustomResource):
 
         > This resource does not currently support `pulumi import`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] country: The country in which the user lives.
@@ -381,6 +384,7 @@ class User(pulumi.CustomResource):
         ## Import
 
         > This resource does not currently support `pulumi import`.
+
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.

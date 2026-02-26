@@ -41,6 +41,7 @@ class ZeroTrustDeviceDefaultProfileArgs:
                  tunnel_protocol: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustDeviceDefaultProfile resource.
+
         :param pulumi.Input[_builtins.bool] allow_mode_switch: Whether to allow the user to switch WARP between modes.
         :param pulumi.Input[_builtins.bool] allow_updates: Whether to receive update notifications when a new version of the client is available.
         :param pulumi.Input[_builtins.bool] allowed_to_leave: Whether to allow devices to leave the organization.
@@ -332,6 +333,7 @@ class _ZeroTrustDeviceDefaultProfileState:
                  tunnel_protocol: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustDeviceDefaultProfile resources.
+
         :param pulumi.Input[_builtins.bool] allow_mode_switch: Whether to allow the user to switch WARP between modes.
         :param pulumi.Input[_builtins.bool] allow_updates: Whether to receive update notifications when a new version of the client is available.
         :param pulumi.Input[_builtins.bool] allowed_to_leave: Whether to allow devices to leave the organization.
@@ -717,6 +719,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
         $ pulumi import cloudflare:index/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile example '<account_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_mode_switch: Whether to allow the user to switch WARP between modes.
@@ -784,6 +787,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile example '<account_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustDeviceDefaultProfileArgs args: The arguments to use to populate this resource's properties.

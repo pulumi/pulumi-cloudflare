@@ -37,6 +37,7 @@ class HealthcheckArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Healthcheck resource.
+
         :param pulumi.Input[_builtins.str] address: The hostname or IP address of the origin server to run health checks on.
         :param pulumi.Input[_builtins.str] name: A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
         :param pulumi.Input[_builtins.str] zone_id: Identifier
@@ -270,6 +271,7 @@ class _HealthcheckState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Healthcheck resources.
+
         :param pulumi.Input[_builtins.str] address: The hostname or IP address of the origin server to run health checks on.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] check_regions: A list of regions from which to run health checks. Null means Cloudflare will pick a default region.
         :param pulumi.Input[_builtins.int] consecutive_fails: The number of consecutive fails required from a health check before changing the health to unhealthy.
@@ -609,6 +611,7 @@ class Healthcheck(pulumi.CustomResource):
         $ pulumi import cloudflare:index/healthcheck:Healthcheck example '<zone_id>/<healthcheck_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address: The hostname or IP address of the origin server to run health checks on.
@@ -682,6 +685,7 @@ class Healthcheck(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/healthcheck:Healthcheck example '<zone_id>/<healthcheck_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HealthcheckArgs args: The arguments to use to populate this resource's properties.

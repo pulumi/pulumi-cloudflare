@@ -28,6 +28,7 @@ class AccountArgs:
                  unit: Optional[pulumi.Input['AccountUnitArgs']] = None):
         """
         The set of arguments for constructing a Account resource.
+
         :param pulumi.Input[_builtins.str] name: Account name
         :param pulumi.Input['AccountManagedByArgs'] managed_by: Parent container details
         :param pulumi.Input['AccountSettingsArgs'] settings: Account settings
@@ -116,6 +117,7 @@ class _AccountState:
                  unit: Optional[pulumi.Input['AccountUnitArgs']] = None):
         """
         Input properties used for looking up and filtering Account resources.
+
         :param pulumi.Input[_builtins.str] created_on: Timestamp for the creation of the account
         :param pulumi.Input['AccountManagedByArgs'] managed_by: Parent container details
         :param pulumi.Input[_builtins.str] name: Account name
@@ -242,6 +244,7 @@ class Account(pulumi.CustomResource):
         $ pulumi import cloudflare:index/account:Account example '<account_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AccountManagedByArgs', 'AccountManagedByArgsDict']] managed_by: Parent container details
@@ -276,6 +279,7 @@ class Account(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/account:Account example '<account_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccountArgs args: The arguments to use to populate this resource's properties.

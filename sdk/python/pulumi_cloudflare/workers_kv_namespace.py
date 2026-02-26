@@ -23,6 +23,7 @@ class WorkersKvNamespaceArgs:
                  title: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a WorkersKvNamespace resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] title: A human-readable string name for a Namespace.
         """
@@ -62,6 +63,7 @@ class _WorkersKvNamespaceState:
                  title: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkersKvNamespace resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.bool] supports_url_encoding: True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
         :param pulumi.Input[_builtins.str] title: A human-readable string name for a Namespace.
@@ -137,6 +139,7 @@ class WorkersKvNamespace(pulumi.CustomResource):
         $ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example '<account_id>/<namespace_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -165,6 +168,7 @@ class WorkersKvNamespace(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example '<account_id>/<namespace_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkersKvNamespaceArgs args: The arguments to use to populate this resource's properties.

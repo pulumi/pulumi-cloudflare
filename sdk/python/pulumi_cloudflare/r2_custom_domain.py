@@ -31,6 +31,7 @@ class R2CustomDomainArgs:
                  min_tls: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a R2CustomDomain resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account ID.
         :param pulumi.Input[_builtins.str] bucket_name: Name of the bucket.
         :param pulumi.Input[_builtins.str] domain: Name of the custom domain to be added.
@@ -166,6 +167,7 @@ class _R2CustomDomainState:
                  zone_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering R2CustomDomain resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account ID.
         :param pulumi.Input[_builtins.str] bucket_name: Name of the bucket.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ciphers: An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
@@ -353,6 +355,7 @@ class R2CustomDomain(pulumi.CustomResource):
 
         > This resource does not currently support `pulumi import`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account ID.
@@ -391,6 +394,7 @@ class R2CustomDomain(pulumi.CustomResource):
         ## Import
 
         > This resource does not currently support `pulumi import`.
+
 
         :param str resource_name: The name of the resource.
         :param R2CustomDomainArgs args: The arguments to use to populate this resource's properties.

@@ -26,6 +26,7 @@ class AccountSubscriptionArgs:
                  rate_plan: Optional[pulumi.Input['AccountSubscriptionRatePlanArgs']] = None):
         """
         The set of arguments for constructing a AccountSubscription resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.str] frequency: How often the subscription is renewed automatically.
                Available values: "weekly", "monthly", "quarterly", "yearly".
@@ -88,6 +89,7 @@ class _AccountSubscriptionState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountSubscription resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.str] currency: The monetary unit in which pricing information is displayed.
         :param pulumi.Input[_builtins.str] current_period_end: The end of the current period and also when the next billing is due.
@@ -252,6 +254,7 @@ class AccountSubscription(pulumi.CustomResource):
         $ pulumi import cloudflare:index/accountSubscription:AccountSubscription example '<account_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier
@@ -291,6 +294,7 @@ class AccountSubscription(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/accountSubscription:AccountSubscription example '<account_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccountSubscriptionArgs args: The arguments to use to populate this resource's properties.

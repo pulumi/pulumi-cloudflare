@@ -25,6 +25,7 @@ class ZoneSettingArgs:
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ZoneSetting resource.
+
         :param pulumi.Input[_builtins.str] setting_id: Setting name
         :param Any value: Current value of the zone setting.
         :param pulumi.Input[_builtins.str] zone_id: Identifier
@@ -97,6 +98,7 @@ class _ZoneSettingState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZoneSetting resources.
+
         :param pulumi.Input[_builtins.bool] editable: Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
         :param pulumi.Input[_builtins.bool] enabled: ssl-recommender enrollment setting.
         :param pulumi.Input[_builtins.str] modified_on: last time this setting was modified.
@@ -412,6 +414,7 @@ class ZoneSetting(pulumi.CustomResource):
         $ pulumi import cloudflare:index/zoneSetting:ZoneSetting example '<zone_id>/<setting_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enabled: ssl-recommender enrollment setting.
@@ -618,6 +621,7 @@ class ZoneSetting(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/zoneSetting:ZoneSetting example '<zone_id>/<setting_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZoneSettingArgs args: The arguments to use to populate this resource's properties.

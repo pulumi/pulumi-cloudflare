@@ -23,6 +23,7 @@ class AccessKeysConfigurationArgs:
                  key_rotation_interval_days: pulumi.Input[_builtins.float]):
         """
         The set of arguments for constructing a AccessKeysConfiguration resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.float] key_rotation_interval_days: The number of days between key rotations.
         """
@@ -63,6 +64,7 @@ class _AccessKeysConfigurationState:
                  last_key_rotation_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessKeysConfiguration resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.float] days_until_next_rotation: The number of days until the next key rotation.
         :param pulumi.Input[_builtins.float] key_rotation_interval_days: The number of days between key rotations.
@@ -158,6 +160,7 @@ class AccessKeysConfiguration(pulumi.CustomResource):
         $ pulumi import cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration example '<account_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -186,6 +189,7 @@ class AccessKeysConfiguration(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration example '<account_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccessKeysConfigurationArgs args: The arguments to use to populate this resource's properties.

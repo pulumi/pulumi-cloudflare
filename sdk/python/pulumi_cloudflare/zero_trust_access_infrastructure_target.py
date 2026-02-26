@@ -26,6 +26,7 @@ class ZeroTrustAccessInfrastructureTargetArgs:
                  ip: pulumi.Input['ZeroTrustAccessInfrastructureTargetIpArgs']):
         """
         The set of arguments for constructing a ZeroTrustAccessInfrastructureTarget resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account identifier
         :param pulumi.Input[_builtins.str] hostname: A non-unique field that refers to a target. Case insensitive, maximum
                length of 255 characters, supports the use of special characters dash
@@ -87,6 +88,7 @@ class _ZeroTrustAccessInfrastructureTargetState:
                  modified_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustAccessInfrastructureTarget resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account identifier
         :param pulumi.Input[_builtins.str] created_at: Date and time at which the target was created
         :param pulumi.Input[_builtins.str] hostname: A non-unique field that refers to a target. Case insensitive, maximum
@@ -209,6 +211,7 @@ class ZeroTrustAccessInfrastructureTarget(pulumi.CustomResource):
         $ pulumi import cloudflare:index/zeroTrustAccessInfrastructureTarget:ZeroTrustAccessInfrastructureTarget example '<account_id>/<target_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier
@@ -251,6 +254,7 @@ class ZeroTrustAccessInfrastructureTarget(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/zeroTrustAccessInfrastructureTarget:ZeroTrustAccessInfrastructureTarget example '<account_id>/<target_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustAccessInfrastructureTargetArgs args: The arguments to use to populate this resource's properties.

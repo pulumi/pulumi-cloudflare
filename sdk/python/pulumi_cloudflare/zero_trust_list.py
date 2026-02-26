@@ -28,6 +28,7 @@ class ZeroTrustListArgs:
                  items: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustListItemArgs']]]] = None):
         """
         The set of arguments for constructing a ZeroTrustList resource.
+
         :param pulumi.Input[_builtins.str] name: Specify the list name.
         :param pulumi.Input[_builtins.str] type: Specify the list type.
                Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
@@ -114,6 +115,7 @@ class _ZeroTrustListState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustList resources.
+
         :param pulumi.Input[_builtins.str] description: Provide the list description.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustListItemArgs']]] items: Add items to the list.
         :param pulumi.Input[_builtins.float] list_count: Indicate the number of items in the list.
@@ -263,6 +265,7 @@ class ZeroTrustList(pulumi.CustomResource):
         $ pulumi import cloudflare:index/zeroTrustList:ZeroTrustList example '<account_id>/<list_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Provide the list description.
@@ -300,6 +303,7 @@ class ZeroTrustList(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/zeroTrustList:ZeroTrustList example '<account_id>/<list_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustListArgs args: The arguments to use to populate this resource's properties.

@@ -26,6 +26,7 @@ class PagesDomainArgs:
                  project_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a PagesDomain resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] name: The domain name.
         :param pulumi.Input[_builtins.str] project_name: Name of the project.
@@ -86,6 +87,7 @@ class _PagesDomainState:
                  zone_tag: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PagesDomain resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] certificate_authority: Available values: "google", "lets_encrypt".
         :param pulumi.Input[_builtins.str] name: The domain name.
@@ -251,6 +253,7 @@ class PagesDomain(pulumi.CustomResource):
         $ pulumi import cloudflare:index/pagesDomain:PagesDomain example '<account_id>/<project_name>/<domain_name>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -284,6 +287,7 @@ class PagesDomain(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/pagesDomain:PagesDomain example '<account_id>/<project_name>/<domain_name>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PagesDomainArgs args: The arguments to use to populate this resource's properties.

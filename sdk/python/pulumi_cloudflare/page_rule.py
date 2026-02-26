@@ -28,6 +28,7 @@ class PageRuleArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PageRule resource.
+
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.int] priority: The priority of the rule, used to define which Page Rule is processed
                over another. A higher number indicates a higher priority. For example,
@@ -117,6 +118,7 @@ class _PageRuleState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PageRule resources.
+
         :param pulumi.Input[_builtins.str] created_on: The timestamp of when the Page Rule was created.
         :param pulumi.Input[_builtins.str] modified_on: The timestamp of when the Page Rule was last modified.
         :param pulumi.Input[_builtins.int] priority: The priority of the rule, used to define which Page Rule is processed
@@ -265,6 +267,7 @@ class PageRule(pulumi.CustomResource):
         $ pulumi import cloudflare:index/pageRule:PageRule example '<zone_id>/<pagerule_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] priority: The priority of the rule, used to define which Page Rule is processed
@@ -307,6 +310,7 @@ class PageRule(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/pageRule:PageRule example '<zone_id>/<pagerule_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PageRuleArgs args: The arguments to use to populate this resource's properties.

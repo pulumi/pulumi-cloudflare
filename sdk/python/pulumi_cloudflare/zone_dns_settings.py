@@ -33,6 +33,7 @@ class ZoneDnsSettingsArgs:
                  zone_mode: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZoneDnsSettings resource.
+
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.bool] flatten_all_cnames: Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
         :param pulumi.Input[_builtins.bool] foundation_dns: Whether to enable Foundation DNS Advanced Nameservers on the zone.
@@ -202,6 +203,7 @@ class _ZoneDnsSettingsState:
                  zone_mode: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZoneDnsSettings resources.
+
         :param pulumi.Input[_builtins.bool] flatten_all_cnames: Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
         :param pulumi.Input[_builtins.bool] foundation_dns: Whether to enable Foundation DNS Advanced Nameservers on the zone.
         :param pulumi.Input['ZoneDnsSettingsInternalDnsArgs'] internal_dns: Settings for this internal zone.
@@ -411,6 +413,7 @@ class ZoneDnsSettings(pulumi.CustomResource):
 
         > This resource does not currently support `pulumi import`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] flatten_all_cnames: Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
@@ -467,6 +470,7 @@ class ZoneDnsSettings(pulumi.CustomResource):
         ## Import
 
         > This resource does not currently support `pulumi import`.
+
 
         :param str resource_name: The name of the resource.
         :param ZoneDnsSettingsArgs args: The arguments to use to populate this resource's properties.

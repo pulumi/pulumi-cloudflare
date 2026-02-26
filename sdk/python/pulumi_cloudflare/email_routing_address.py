@@ -23,6 +23,7 @@ class EmailRoutingAddressArgs:
                  email: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a EmailRoutingAddress resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] email: The contact email address of the user.
         """
@@ -65,6 +66,7 @@ class _EmailRoutingAddressState:
                  verified: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EmailRoutingAddress resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] created: The date and time the destination address has been created.
         :param pulumi.Input[_builtins.str] email: The contact email address of the user.
@@ -189,6 +191,7 @@ class EmailRoutingAddress(pulumi.CustomResource):
         $ pulumi import cloudflare:index/emailRoutingAddress:EmailRoutingAddress example '<account_id>/<destination_address_identifier>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -217,6 +220,7 @@ class EmailRoutingAddress(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/emailRoutingAddress:EmailRoutingAddress example '<account_id>/<destination_address_identifier>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EmailRoutingAddressArgs args: The arguments to use to populate this resource's properties.

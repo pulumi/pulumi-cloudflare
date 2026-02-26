@@ -30,6 +30,7 @@ class ZeroTrustDexTestArgs:
                  target_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDexTestTargetPolicyArgs']]]] = None):
         """
         The set of arguments for constructing a ZeroTrustDexTest resource.
+
         :param pulumi.Input['ZeroTrustDexTestDataArgs'] data: The configuration object which contains the details for the WARP client to conduct the test.
         :param pulumi.Input[_builtins.bool] enabled: Determines whether or not the test is active.
         :param pulumi.Input[_builtins.str] interval: How often the test will run.
@@ -143,6 +144,7 @@ class _ZeroTrustDexTestState:
                  test_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustDexTest resources.
+
         :param pulumi.Input['ZeroTrustDexTestDataArgs'] data: The configuration object which contains the details for the WARP client to conduct the test.
         :param pulumi.Input[_builtins.str] description: Additional details about the test.
         :param pulumi.Input[_builtins.bool] enabled: Determines whether or not the test is active.
@@ -319,6 +321,7 @@ class ZeroTrustDexTest(pulumi.CustomResource):
         $ pulumi import cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest example '<account_id>/<dex_test_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ZeroTrustDexTestDataArgs', 'ZeroTrustDexTestDataArgsDict']] data: The configuration object which contains the details for the WARP client to conduct the test.
@@ -365,6 +368,7 @@ class ZeroTrustDexTest(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest example '<account_id>/<dex_test_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustDexTestArgs args: The arguments to use to populate this resource's properties.

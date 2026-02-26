@@ -27,6 +27,7 @@ class ZeroTrustDeviceManagedNetworksArgs:
                  type: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ZeroTrustDeviceManagedNetworks resource.
+
         :param pulumi.Input['ZeroTrustDeviceManagedNetworksConfigArgs'] config: The configuration object containing information for the WARP client to detect the managed network.
         :param pulumi.Input[_builtins.str] name: The name of the device managed network. This name must be unique.
         :param pulumi.Input[_builtins.str] type: The type of device managed network.
@@ -94,6 +95,7 @@ class _ZeroTrustDeviceManagedNetworksState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustDeviceManagedNetworks resources.
+
         :param pulumi.Input['ZeroTrustDeviceManagedNetworksConfigArgs'] config: The configuration object containing information for the WARP client to detect the managed network.
         :param pulumi.Input[_builtins.str] name: The name of the device managed network. This name must be unique.
         :param pulumi.Input[_builtins.str] network_id: API UUID.
@@ -204,6 +206,7 @@ class ZeroTrustDeviceManagedNetworks(pulumi.CustomResource):
         $ pulumi import cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks example '<account_id>/<network_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ZeroTrustDeviceManagedNetworksConfigArgs', 'ZeroTrustDeviceManagedNetworksConfigArgsDict']] config: The configuration object containing information for the WARP client to detect the managed network.
@@ -239,6 +242,7 @@ class ZeroTrustDeviceManagedNetworks(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks example '<account_id>/<network_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustDeviceManagedNetworksArgs args: The arguments to use to populate this resource's properties.

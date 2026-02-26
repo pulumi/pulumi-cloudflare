@@ -30,6 +30,7 @@ class CertificatePackArgs:
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a CertificatePack resource.
+
         :param pulumi.Input[_builtins.str] certificate_authority: Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
                Available values: "google", "lets*encrypt", "ssl*com".
         :param pulumi.Input[_builtins.str] type: Type of certificate pack.
@@ -158,6 +159,7 @@ class _CertificatePackState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CertificatePack resources.
+
         :param pulumi.Input[_builtins.str] certificate_authority: Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
                Available values: "google", "lets*encrypt", "ssl*com".
         :param pulumi.Input[Sequence[pulumi.Input['CertificatePackCertificateArgs']]] certificates: Array of certificates in this pack.
@@ -401,6 +403,7 @@ class CertificatePack(pulumi.CustomResource):
         While supported, importing isn't recommended and it is advised to replace the
         certificate entirely instead.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] certificate_authority: Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
@@ -456,6 +459,7 @@ class CertificatePack(pulumi.CustomResource):
 
         While supported, importing isn't recommended and it is advised to replace the
         certificate entirely instead.
+
 
         :param str resource_name: The name of the resource.
         :param CertificatePackArgs args: The arguments to use to populate this resource's properties.

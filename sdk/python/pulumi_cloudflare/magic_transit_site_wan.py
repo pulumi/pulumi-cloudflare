@@ -30,6 +30,7 @@ class MagicTransitSiteWanArgs:
                  vlan_tag: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a MagicTransitSiteWan resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.str] site_id: Identifier
         :param pulumi.Input['MagicTransitSiteWanStaticAddressingArgs'] static_addressing: (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
@@ -136,6 +137,7 @@ class _MagicTransitSiteWanState:
                  vlan_tag: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering MagicTransitSiteWan resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.str] health_check_rate: Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
                Available values: "low", "mid", "high".
@@ -290,6 +292,7 @@ class MagicTransitSiteWan(pulumi.CustomResource):
         $ pulumi import cloudflare:index/magicTransitSiteWan:MagicTransitSiteWan example '<account_id>/<site_id>/<wan_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier
@@ -329,6 +332,7 @@ class MagicTransitSiteWan(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/magicTransitSiteWan:MagicTransitSiteWan example '<account_id>/<site_id>/<wan_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MagicTransitSiteWanArgs args: The arguments to use to populate this resource's properties.

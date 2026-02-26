@@ -29,6 +29,7 @@ class HyperdriveConfigArgs:
                  origin_connection_limit: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a HyperdriveConfig resource.
+
         :param pulumi.Input[_builtins.str] account_id: Define configurations using a unique string identifier.
         :param pulumi.Input[_builtins.str] name: The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
         :param pulumi.Input[_builtins.int] origin_connection_limit: The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
@@ -120,6 +121,7 @@ class _HyperdriveConfigState:
                  origin_connection_limit: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering HyperdriveConfig resources.
+
         :param pulumi.Input[_builtins.str] account_id: Define configurations using a unique string identifier.
         :param pulumi.Input[_builtins.str] created_on: Defines the creation time of the Hyperdrive configuration.
         :param pulumi.Input[_builtins.str] modified_on: Defines the last modified time of the Hyperdrive configuration.
@@ -279,6 +281,7 @@ class HyperdriveConfig(pulumi.CustomResource):
         $ pulumi import cloudflare:index/hyperdriveConfig:HyperdriveConfig example '<account_id>/<hyperdrive_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Define configurations using a unique string identifier.
@@ -325,6 +328,7 @@ class HyperdriveConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/hyperdriveConfig:HyperdriveConfig example '<account_id>/<hyperdrive_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HyperdriveConfigArgs args: The arguments to use to populate this resource's properties.

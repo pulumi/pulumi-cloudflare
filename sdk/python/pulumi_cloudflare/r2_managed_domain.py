@@ -25,6 +25,7 @@ class R2ManagedDomainArgs:
                  jurisdiction: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a R2ManagedDomain resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account ID.
         :param pulumi.Input[_builtins.str] bucket_name: Name of the bucket.
         :param pulumi.Input[_builtins.bool] enabled: Whether to enable public bucket access at the r2.dev domain.
@@ -96,6 +97,7 @@ class _R2ManagedDomainState:
                  jurisdiction: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering R2ManagedDomain resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account ID.
         :param pulumi.Input[_builtins.str] bucket_id: Bucket ID.
         :param pulumi.Input[_builtins.str] bucket_name: Name of the bucket.
@@ -217,6 +219,7 @@ class R2ManagedDomain(pulumi.CustomResource):
 
         > This resource does not currently support `pulumi import`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account ID.
@@ -246,6 +249,7 @@ class R2ManagedDomain(pulumi.CustomResource):
         ## Import
 
         > This resource does not currently support `pulumi import`.
+
 
         :param str resource_name: The name of the resource.
         :param R2ManagedDomainArgs args: The arguments to use to populate this resource's properties.

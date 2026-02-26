@@ -27,6 +27,7 @@ class R2BucketCorsArgs:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['R2BucketCorsRuleArgs']]]] = None):
         """
         The set of arguments for constructing a R2BucketCors resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account ID.
         :param pulumi.Input[_builtins.str] bucket_name: Name of the bucket.
         :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction of the bucket
@@ -93,6 +94,7 @@ class _R2BucketCorsState:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['R2BucketCorsRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering R2BucketCors resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account ID.
         :param pulumi.Input[_builtins.str] bucket_name: Name of the bucket.
         :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction of the bucket
@@ -189,6 +191,7 @@ class R2BucketCors(pulumi.CustomResource):
 
         > This resource does not currently support `pulumi import`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account ID.
@@ -226,6 +229,7 @@ class R2BucketCors(pulumi.CustomResource):
         ## Import
 
         > This resource does not currently support `pulumi import`.
+
 
         :param str resource_name: The name of the resource.
         :param R2BucketCorsArgs args: The arguments to use to populate this resource's properties.

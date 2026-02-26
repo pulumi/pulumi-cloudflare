@@ -29,6 +29,7 @@ class StreamWatermarkInitArgs:
                  scale: Optional[pulumi.Input[_builtins.float]] = None):
         """
         The set of arguments for constructing a StreamWatermark resource.
+
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
         :param pulumi.Input[_builtins.str] file: The image file to upload.
         :param pulumi.Input[_builtins.str] identifier: The unique identifier for a watermark profile.
@@ -169,6 +170,7 @@ class _StreamWatermarkState:
                  width: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering StreamWatermark resources.
+
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
         :param pulumi.Input[_builtins.str] created: The date and a time a watermark profile was created.
         :param pulumi.Input[_builtins.str] downloaded_from: The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null.
@@ -418,6 +420,7 @@ class StreamWatermark(pulumi.CustomResource):
 
         > This resource does not currently support `pulumi import`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
@@ -455,6 +458,7 @@ class StreamWatermark(pulumi.CustomResource):
         ## Import
 
         > This resource does not currently support `pulumi import`.
+
 
         :param str resource_name: The name of the resource.
         :param StreamWatermarkInitArgs args: The arguments to use to populate this resource's properties.

@@ -26,6 +26,7 @@ class AccessMutualTlsCertificateArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccessMutualTlsCertificate resource.
+
         :param pulumi.Input[_builtins.str] certificate: The certificate content.
         :param pulumi.Input[_builtins.str] name: The name of the certificate.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
@@ -114,6 +115,7 @@ class _AccessMutualTlsCertificateState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessMutualTlsCertificate resources.
+
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] associated_hostnames: The hostnames of the applications that will use this certificate.
         :param pulumi.Input[_builtins.str] certificate: The certificate content.
@@ -261,6 +263,7 @@ class AccessMutualTlsCertificate(pulumi.CustomResource):
         $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example '<{accounts|zones}/{account_id|zone_id}>/<certificate_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
@@ -300,6 +303,7 @@ class AccessMutualTlsCertificate(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example '<{accounts|zones}/{account_id|zone_id}>/<certificate_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccessMutualTlsCertificateArgs args: The arguments to use to populate this resource's properties.

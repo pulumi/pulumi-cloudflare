@@ -23,6 +23,7 @@ class WorkersForPlatformsNamespaceArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkersForPlatformsNamespace resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] name: The name of the dispatch namespace.
         """
@@ -70,6 +71,7 @@ class _WorkersForPlatformsNamespaceState:
                  trusted_workers: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering WorkersForPlatformsNamespace resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] created_by: Identifier.
         :param pulumi.Input[_builtins.str] created_on: When the script was created.
@@ -255,6 +257,7 @@ class WorkersForPlatformsNamespace(pulumi.CustomResource):
         $ pulumi import cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace example '<account_id>/<dispatch_namespace>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -283,6 +286,7 @@ class WorkersForPlatformsNamespace(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace example '<account_id>/<dispatch_namespace>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkersForPlatformsNamespaceArgs args: The arguments to use to populate this resource's properties.

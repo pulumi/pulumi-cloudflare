@@ -23,6 +23,7 @@ class StreamWebhookArgs:
                  notification_url: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a StreamWebhook resource.
+
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
         :param pulumi.Input[_builtins.str] notification_url: The URL where webhooks will be sent.
         """
@@ -61,6 +62,7 @@ class _StreamWebhookState:
                  notification_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StreamWebhook resources.
+
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
         :param pulumi.Input[_builtins.str] notification_url: The URL where webhooks will be sent.
         """
@@ -119,6 +121,7 @@ class StreamWebhook(pulumi.CustomResource):
 
         > This resource does not currently support `pulumi import`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
@@ -145,6 +148,7 @@ class StreamWebhook(pulumi.CustomResource):
         ## Import
 
         > This resource does not currently support `pulumi import`.
+
 
         :param str resource_name: The name of the resource.
         :param StreamWebhookArgs args: The arguments to use to populate this resource's properties.

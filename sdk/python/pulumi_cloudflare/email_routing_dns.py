@@ -25,6 +25,7 @@ class EmailRoutingDnsArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EmailRoutingDns resource.
+
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.str] name: Domain of your zone.
         """
@@ -75,6 +76,7 @@ class _EmailRoutingDnsState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EmailRoutingDns resources.
+
         :param pulumi.Input[_builtins.str] created: The date and time the settings have been created.
         :param pulumi.Input[_builtins.bool] enabled: State of the zone settings for Email Routing.
         :param pulumi.Input[_builtins.str] modified: The date and time the settings have been modified.
@@ -290,6 +292,7 @@ class EmailRoutingDns(pulumi.CustomResource):
         $ pulumi import cloudflare:index/emailRoutingDns:EmailRoutingDns example '<zone_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: Domain of your zone.
@@ -318,6 +321,7 @@ class EmailRoutingDns(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/emailRoutingDns:EmailRoutingDns example '<zone_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EmailRoutingDnsArgs args: The arguments to use to populate this resource's properties.

@@ -35,6 +35,7 @@ class MagicWanGreTunnelArgs:
                  ttl: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a MagicWanGreTunnel resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.str] cloudflare_gre_endpoint: The IP address assigned to the Cloudflare side of the GRE tunnel.
         :param pulumi.Input[_builtins.str] customer_gre_endpoint: The IP address assigned to the customer side of the GRE tunnel.
@@ -225,6 +226,7 @@ class _MagicWanGreTunnelState:
                  ttl: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering MagicWanGreTunnel resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.bool] automatic_return_routing: True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
         :param pulumi.Input[_builtins.str] cloudflare_gre_endpoint: The IP address assigned to the Cloudflare side of the GRE tunnel.
@@ -500,6 +502,7 @@ class MagicWanGreTunnel(pulumi.CustomResource):
         $ pulumi import cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel example '<account_id>/<gre_tunnel_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier
@@ -558,6 +561,7 @@ class MagicWanGreTunnel(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel example '<account_id>/<gre_tunnel_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MagicWanGreTunnelArgs args: The arguments to use to populate this resource's properties.

@@ -23,6 +23,7 @@ class ZeroTrustAccessKeyConfigurationArgs:
                  key_rotation_interval_days: pulumi.Input[_builtins.float]):
         """
         The set of arguments for constructing a ZeroTrustAccessKeyConfiguration resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.float] key_rotation_interval_days: The number of days between key rotations.
         """
@@ -63,6 +64,7 @@ class _ZeroTrustAccessKeyConfigurationState:
                  last_key_rotation_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustAccessKeyConfiguration resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.float] days_until_next_rotation: The number of days until the next key rotation.
         :param pulumi.Input[_builtins.float] key_rotation_interval_days: The number of days between key rotations.
@@ -153,6 +155,7 @@ class ZeroTrustAccessKeyConfiguration(pulumi.CustomResource):
         $ pulumi import cloudflare:index/zeroTrustAccessKeyConfiguration:ZeroTrustAccessKeyConfiguration example '<account_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -181,6 +184,7 @@ class ZeroTrustAccessKeyConfiguration(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/zeroTrustAccessKeyConfiguration:ZeroTrustAccessKeyConfiguration example '<account_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustAccessKeyConfigurationArgs args: The arguments to use to populate this resource's properties.

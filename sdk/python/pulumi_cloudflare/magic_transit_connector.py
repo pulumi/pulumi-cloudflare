@@ -30,6 +30,7 @@ class MagicTransitConnectorArgs:
                  timezone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MagicTransitConnector resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account identifier
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -125,6 +126,7 @@ class _MagicTransitConnectorState:
                  timezone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MagicTransitConnector resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account identifier
         :param pulumi.Input[_builtins.str] license_key: License key for the connector. This is only returned on creation and will not be available in subsequent reads.
         """
@@ -265,6 +267,7 @@ class MagicTransitConnector(pulumi.CustomResource):
         $ pulumi import cloudflare:index/magicTransitConnector:MagicTransitConnector example '<account_id>/<connector_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier
@@ -301,6 +304,7 @@ class MagicTransitConnector(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/magicTransitConnector:MagicTransitConnector example '<account_id>/<connector_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MagicTransitConnectorArgs args: The arguments to use to populate this resource's properties.

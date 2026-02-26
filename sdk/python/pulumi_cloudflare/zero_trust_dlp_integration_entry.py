@@ -27,6 +27,7 @@ class ZeroTrustDlpIntegrationEntryArgs:
                  profile_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustDlpIntegrationEntry resource.
+
         :param pulumi.Input[_builtins.str] profile_id: This field is not used as the owning profile.
                For predefined entries it is already set to a predefined profile.
         """
@@ -98,6 +99,7 @@ class _ZeroTrustDlpIntegrationEntryState:
                  word_list: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustDlpIntegrationEntry resources.
+
         :param pulumi.Input[_builtins.bool] case_sensitive: Only applies to custom word lists.
                Determines if the words should be matched in a case-sensitive manner
                Cannot be set to false if secret is true
@@ -330,6 +332,7 @@ class ZeroTrustDlpIntegrationEntry(pulumi.CustomResource):
         $ pulumi import cloudflare:index/zeroTrustDlpIntegrationEntry:ZeroTrustDlpIntegrationEntry example '<account_id>/<entry_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] profile_id: This field is not used as the owning profile.
@@ -360,6 +363,7 @@ class ZeroTrustDlpIntegrationEntry(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/zeroTrustDlpIntegrationEntry:ZeroTrustDlpIntegrationEntry example '<account_id>/<entry_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustDlpIntegrationEntryArgs args: The arguments to use to populate this resource's properties.

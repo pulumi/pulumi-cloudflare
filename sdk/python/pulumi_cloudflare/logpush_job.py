@@ -38,6 +38,7 @@ class LogpushJobArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LogpushJob resource.
+
         :param pulumi.Input[_builtins.str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[_builtins.str] dataset: Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
@@ -302,6 +303,7 @@ class _LogpushJobState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LogpushJob resources.
+
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[_builtins.str] dataset: Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
                Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
@@ -660,6 +662,7 @@ class LogpushJob(pulumi.CustomResource):
         $ pulumi import cloudflare:index/logpushJob:LogpushJob example '<{accounts|zones}/{account_id|zone_id}>/<job_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
@@ -735,6 +738,7 @@ class LogpushJob(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/logpushJob:LogpushJob example '<{accounts|zones}/{account_id|zone_id}>/<job_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LogpushJobArgs args: The arguments to use to populate this resource's properties.

@@ -26,6 +26,7 @@ class ManagedTransformsArgs:
                  zone_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ManagedTransforms resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['ManagedTransformsManagedRequestHeaderArgs']]] managed_request_headers: The list of Managed Request Transforms.
         :param pulumi.Input[Sequence[pulumi.Input['ManagedTransformsManagedResponseHeaderArgs']]] managed_response_headers: The list of Managed Response Transforms.
         :param pulumi.Input[_builtins.str] zone_id: The unique ID of the zone.
@@ -79,6 +80,7 @@ class _ManagedTransformsState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ManagedTransforms resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['ManagedTransformsManagedRequestHeaderArgs']]] managed_request_headers: The list of Managed Request Transforms.
         :param pulumi.Input[Sequence[pulumi.Input['ManagedTransformsManagedResponseHeaderArgs']]] managed_response_headers: The list of Managed Response Transforms.
         :param pulumi.Input[_builtins.str] zone_id: The unique ID of the zone.
@@ -162,6 +164,7 @@ class ManagedTransforms(pulumi.CustomResource):
         $ pulumi import cloudflare:index/managedTransforms:ManagedTransforms example '<zone_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ManagedTransformsManagedRequestHeaderArgs', 'ManagedTransformsManagedRequestHeaderArgsDict']]]] managed_request_headers: The list of Managed Request Transforms.
@@ -198,6 +201,7 @@ class ManagedTransforms(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/managedTransforms:ManagedTransforms example '<zone_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ManagedTransformsArgs args: The arguments to use to populate this resource's properties.

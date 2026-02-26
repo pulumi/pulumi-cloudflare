@@ -26,6 +26,7 @@ class CustomPagesArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CustomPages resource.
+
         :param pulumi.Input[_builtins.str] identifier: Error Page Types
                Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
         :param pulumi.Input[_builtins.str] state: The custom page state.
@@ -121,6 +122,7 @@ class _CustomPagesState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CustomPages resources.
+
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[_builtins.str] identifier: Error Page Types
                Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
@@ -290,6 +292,7 @@ class CustomPages(pulumi.CustomResource):
         $ pulumi import cloudflare:index/customPages:CustomPages example '<{accounts|zones}/{account_id|zone_id}>/<identifier>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
@@ -325,6 +328,7 @@ class CustomPages(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/customPages:CustomPages example '<{accounts|zones}/{account_id|zone_id}>/<identifier>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CustomPagesArgs args: The arguments to use to populate this resource's properties.

@@ -27,6 +27,7 @@ class R2BucketLockArgs:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['R2BucketLockRuleArgs']]]] = None):
         """
         The set of arguments for constructing a R2BucketLock resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account ID.
         :param pulumi.Input[_builtins.str] bucket_name: Name of the bucket.
         :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction of the bucket
@@ -93,6 +94,7 @@ class _R2BucketLockState:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['R2BucketLockRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering R2BucketLock resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account ID.
         :param pulumi.Input[_builtins.str] bucket_name: Name of the bucket.
         :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction of the bucket
@@ -188,6 +190,7 @@ class R2BucketLock(pulumi.CustomResource):
 
         > This resource does not currently support `pulumi import`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account ID.
@@ -224,6 +227,7 @@ class R2BucketLock(pulumi.CustomResource):
         ## Import
 
         > This resource does not currently support `pulumi import`.
+
 
         :param str resource_name: The name of the resource.
         :param R2BucketLockArgs args: The arguments to use to populate this resource's properties.

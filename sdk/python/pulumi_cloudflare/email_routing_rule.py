@@ -29,6 +29,7 @@ class EmailRoutingRuleArgs:
                  priority: Optional[pulumi.Input[_builtins.float]] = None):
         """
         The set of arguments for constructing a EmailRoutingRule resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['EmailRoutingRuleActionArgs']]] actions: List actions patterns.
         :param pulumi.Input[Sequence[pulumi.Input['EmailRoutingRuleMatcherArgs']]] matchers: Matching patterns to forward to your actions.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
@@ -131,6 +132,7 @@ class _EmailRoutingRuleState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EmailRoutingRule resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['EmailRoutingRuleActionArgs']]] actions: List actions patterns.
         :param pulumi.Input[_builtins.bool] enabled: Routing rule status.
         :param pulumi.Input[Sequence[pulumi.Input['EmailRoutingRuleMatcherArgs']]] matchers: Matching patterns to forward to your actions.
@@ -285,6 +287,7 @@ class EmailRoutingRule(pulumi.CustomResource):
         $ pulumi import cloudflare:index/emailRoutingRule:EmailRoutingRule example '<zone_id>/<rule_identifier>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingRuleActionArgs', 'EmailRoutingRuleActionArgsDict']]]] actions: List actions patterns.
@@ -328,6 +331,7 @@ class EmailRoutingRule(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/emailRoutingRule:EmailRoutingRule example '<zone_id>/<rule_identifier>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EmailRoutingRuleArgs args: The arguments to use to populate this resource's properties.

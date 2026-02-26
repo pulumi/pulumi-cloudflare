@@ -30,6 +30,7 @@ class CustomSslArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CustomSsl resource.
+
         :param pulumi.Input[_builtins.str] certificate: The zone's SSL certificate or certificate and the intermediate(s).
         :param pulumi.Input[_builtins.str] private_key: The zone's private key.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
@@ -160,6 +161,7 @@ class _CustomSslState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CustomSsl resources.
+
         :param pulumi.Input[_builtins.str] bundle_method: A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
                Available values: "ubiquitous", "optimal", "force".
         :param pulumi.Input[_builtins.str] certificate: The zone's SSL certificate or certificate and the intermediate(s).
@@ -491,6 +493,7 @@ class CustomSsl(pulumi.CustomResource):
         $ pulumi import cloudflare:index/customSsl:CustomSsl example '<zone_id>/<custom_certificate_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bundle_method: A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
@@ -584,6 +587,7 @@ class CustomSsl(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/customSsl:CustomSsl example '<zone_id>/<custom_certificate_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CustomSslArgs args: The arguments to use to populate this resource's properties.

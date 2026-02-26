@@ -26,6 +26,7 @@ class QueueArgs:
                  settings: Optional[pulumi.Input['QueueSettingsArgs']] = None):
         """
         The set of arguments for constructing a Queue resource.
+
         :param pulumi.Input[_builtins.str] account_id: A Resource identifier.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -79,6 +80,7 @@ class _QueueState:
                  settings: Optional[pulumi.Input['QueueSettingsArgs']] = None):
         """
         Input properties used for looking up and filtering Queue resources.
+
         :param pulumi.Input[_builtins.str] account_id: A Resource identifier.
         """
         if account_id is not None:
@@ -224,6 +226,7 @@ class Queue(pulumi.CustomResource):
         $ pulumi import cloudflare:index/queue:Queue example '<account_id>/<queue_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: A Resource identifier.
@@ -251,6 +254,7 @@ class Queue(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/queue:Queue example '<account_id>/<queue_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param QueueArgs args: The arguments to use to populate this resource's properties.

@@ -23,6 +23,7 @@ class UniversalSslSettingArgs:
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a UniversalSslSetting resource.
+
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.bool] enabled: Disabling Universal SSL removes any currently active Universal SSL certificates for your zone from the edge and prevents any future Universal SSL certificates from being ordered. If there are no advanced certificates or custom certificates uploaded for the domain, visitors will be unable to access the domain over HTTPS.
         """
@@ -62,6 +63,7 @@ class _UniversalSslSettingState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UniversalSslSetting resources.
+
         :param pulumi.Input[_builtins.bool] enabled: Disabling Universal SSL removes any currently active Universal SSL certificates for your zone from the edge and prevents any future Universal SSL certificates from being ordered. If there are no advanced certificates or custom certificates uploaded for the domain, visitors will be unable to access the domain over HTTPS.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -122,6 +124,7 @@ class UniversalSslSetting(pulumi.CustomResource):
         $ pulumi import cloudflare:index/universalSslSetting:UniversalSslSetting example '<zone_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enabled: Disabling Universal SSL removes any currently active Universal SSL certificates for your zone from the edge and prevents any future Universal SSL certificates from being ordered. If there are no advanced certificates or custom certificates uploaded for the domain, visitors will be unable to access the domain over HTTPS.
@@ -150,6 +153,7 @@ class UniversalSslSetting(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/universalSslSetting:UniversalSslSetting example '<zone_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UniversalSslSettingArgs args: The arguments to use to populate this resource's properties.

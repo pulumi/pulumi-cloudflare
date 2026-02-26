@@ -28,6 +28,7 @@ class ZeroTrustDevicePostureIntegrationArgs:
                  type: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ZeroTrustDevicePostureIntegration resource.
+
         :param pulumi.Input['ZeroTrustDevicePostureIntegrationConfigArgs'] config: The configuration object containing third-party integration information.
         :param pulumi.Input[_builtins.str] interval: The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
         :param pulumi.Input[_builtins.str] name: The name of the device posture integration.
@@ -109,6 +110,7 @@ class _ZeroTrustDevicePostureIntegrationState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustDevicePostureIntegration resources.
+
         :param pulumi.Input['ZeroTrustDevicePostureIntegrationConfigArgs'] config: The configuration object containing third-party integration information.
         :param pulumi.Input[_builtins.str] interval: The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
         :param pulumi.Input[_builtins.str] name: The name of the device posture integration.
@@ -223,6 +225,7 @@ class ZeroTrustDevicePostureIntegration(pulumi.CustomResource):
         $ pulumi import cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration example '<account_id>/<integration_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ZeroTrustDevicePostureIntegrationConfigArgs', 'ZeroTrustDevicePostureIntegrationConfigArgsDict']] config: The configuration object containing third-party integration information.
@@ -262,6 +265,7 @@ class ZeroTrustDevicePostureIntegration(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration example '<account_id>/<integration_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustDevicePostureIntegrationArgs args: The arguments to use to populate this resource's properties.

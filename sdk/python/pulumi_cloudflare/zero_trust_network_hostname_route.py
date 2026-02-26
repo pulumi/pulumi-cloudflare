@@ -25,6 +25,7 @@ class ZeroTrustNetworkHostnameRouteArgs:
                  tunnel_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustNetworkHostnameRoute resource.
+
         :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID
         :param pulumi.Input[_builtins.str] comment: An optional description of the hostname route.
         :param pulumi.Input[_builtins.str] hostname: The hostname of the route.
@@ -99,6 +100,7 @@ class _ZeroTrustNetworkHostnameRouteState:
                  tunnel_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustNetworkHostnameRoute resources.
+
         :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID
         :param pulumi.Input[_builtins.str] comment: An optional description of the hostname route.
         :param pulumi.Input[_builtins.str] created_at: Timestamp of when the resource was created.
@@ -238,6 +240,7 @@ class ZeroTrustNetworkHostnameRoute(pulumi.CustomResource):
         $ pulumi import cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute example '<account_id>/<hostname_route_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID
@@ -270,6 +273,7 @@ class ZeroTrustNetworkHostnameRoute(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute example '<account_id>/<hostname_route_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustNetworkHostnameRouteArgs args: The arguments to use to populate this resource's properties.

@@ -29,6 +29,7 @@ class ZeroTrustAccessIdentityProviderArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustAccessIdentityProvider resource.
+
         :param pulumi.Input['ZeroTrustAccessIdentityProviderConfigArgs'] config: The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
         :param pulumi.Input[_builtins.str] name: The name of the identity provider, shown to users on the login page.
         :param pulumi.Input[_builtins.str] type: The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
@@ -132,6 +133,7 @@ class _ZeroTrustAccessIdentityProviderState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustAccessIdentityProvider resources.
+
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input['ZeroTrustAccessIdentityProviderConfigArgs'] config: The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
         :param pulumi.Input[_builtins.str] name: The name of the identity provider, shown to users on the login page.
@@ -279,6 +281,7 @@ class ZeroTrustAccessIdentityProvider(pulumi.CustomResource):
         $ pulumi import cloudflare:index/zeroTrustAccessIdentityProvider:ZeroTrustAccessIdentityProvider example '<{accounts|zones}/{account_id|zone_id}>/<identity_provider_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
@@ -333,6 +336,7 @@ class ZeroTrustAccessIdentityProvider(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/zeroTrustAccessIdentityProvider:ZeroTrustAccessIdentityProvider example '<{accounts|zones}/{account_id|zone_id}>/<identity_provider_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustAccessIdentityProviderArgs args: The arguments to use to populate this resource's properties.

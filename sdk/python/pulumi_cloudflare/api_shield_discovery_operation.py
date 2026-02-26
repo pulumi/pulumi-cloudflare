@@ -24,6 +24,7 @@ class ApiShieldDiscoveryOperationArgs:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApiShieldDiscoveryOperation resource.
+
         :param pulumi.Input[_builtins.str] operation_id: UUID.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.str] state: Mark state of operation in API Discovery
@@ -84,6 +85,7 @@ class _ApiShieldDiscoveryOperationState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApiShieldDiscoveryOperation resources.
+
         :param pulumi.Input[_builtins.str] operation_id: UUID.
         :param pulumi.Input[_builtins.str] state: Mark state of operation in API Discovery
                  * `review` - Mark operation as for review
@@ -165,6 +167,7 @@ class ApiShieldDiscoveryOperation(pulumi.CustomResource):
 
         > This resource does not currently support `pulumi import`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] operation_id: UUID.
@@ -196,6 +199,7 @@ class ApiShieldDiscoveryOperation(pulumi.CustomResource):
         ## Import
 
         > This resource does not currently support `pulumi import`.
+
 
         :param str resource_name: The name of the resource.
         :param ApiShieldDiscoveryOperationArgs args: The arguments to use to populate this resource's properties.

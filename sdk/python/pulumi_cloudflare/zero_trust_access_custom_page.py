@@ -25,6 +25,7 @@ class ZeroTrustAccessCustomPageArgs:
                  type: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ZeroTrustAccessCustomPage resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] custom_html: Custom page HTML.
         :param pulumi.Input[_builtins.str] name: Custom page name.
@@ -96,6 +97,7 @@ class _ZeroTrustAccessCustomPageState:
                  uid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustAccessCustomPage resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] custom_html: Custom page HTML.
         :param pulumi.Input[_builtins.str] name: Custom page name.
@@ -207,6 +209,7 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
         $ pulumi import cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage example '<account_id>/<custom_page_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -240,6 +243,7 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage example '<account_id>/<custom_page_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustAccessCustomPageArgs args: The arguments to use to populate this resource's properties.

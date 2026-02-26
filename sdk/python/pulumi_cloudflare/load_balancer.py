@@ -43,6 +43,7 @@ class LoadBalancerArgs:
                  ttl: Optional[pulumi.Input[_builtins.float]] = None):
         """
         The set of arguments for constructing a LoadBalancer resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] default_pools: A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.
         :param pulumi.Input[_builtins.str] fallback_pool: The pool ID to use when all other pools are detected as unhealthy.
         :param pulumi.Input[_builtins.str] name: The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used.
@@ -368,6 +369,7 @@ class _LoadBalancerState:
                  zone_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LoadBalancer resources.
+
         :param pulumi.Input['LoadBalancerAdaptiveRoutingArgs'] adaptive_routing: Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin.
         :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] country_pools: A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region*pool mapping if it exists else to default*pools.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] default_pools: A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.
@@ -879,6 +881,7 @@ class LoadBalancer(pulumi.CustomResource):
         $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example '<zone_id>/<load_balancer_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['LoadBalancerAdaptiveRoutingArgs', 'LoadBalancerAdaptiveRoutingArgsDict']] adaptive_routing: Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin.
@@ -1057,6 +1060,7 @@ class LoadBalancer(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example '<zone_id>/<load_balancer_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LoadBalancerArgs args: The arguments to use to populate this resource's properties.

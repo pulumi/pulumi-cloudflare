@@ -26,6 +26,7 @@ class MtlsCertificateArgs:
                  private_key: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MtlsCertificate resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.bool] ca: Indicates whether the certificate is a CA or leaf certificate.
         :param pulumi.Input[_builtins.str] certificates: The uploaded root CA certificate.
@@ -117,6 +118,7 @@ class _MtlsCertificateState:
                  uploaded_on: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MtlsCertificate resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.bool] ca: Indicates whether the certificate is a CA or leaf certificate.
         :param pulumi.Input[_builtins.str] certificates: The uploaded root CA certificate.
@@ -324,6 +326,7 @@ class MtlsCertificate(pulumi.CustomResource):
         $ pulumi import cloudflare:index/mtlsCertificate:MtlsCertificate example '<account_id>/<mtls_certificate_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -364,6 +367,7 @@ class MtlsCertificate(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/mtlsCertificate:MtlsCertificate example '<account_id>/<mtls_certificate_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MtlsCertificateArgs args: The arguments to use to populate this resource's properties.

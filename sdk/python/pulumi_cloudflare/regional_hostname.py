@@ -25,6 +25,7 @@ class RegionalHostnameArgs:
                  routing: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegionalHostname resource.
+
         :param pulumi.Input[_builtins.str] hostname: DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
         :param pulumi.Input[_builtins.str] region_key: Identifying key for the region
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
@@ -95,6 +96,7 @@ class _RegionalHostnameState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionalHostname resources.
+
         :param pulumi.Input[_builtins.str] created_on: When the regional hostname was created
         :param pulumi.Input[_builtins.str] hostname: DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
         :param pulumi.Input[_builtins.str] region_key: Identifying key for the region
@@ -204,6 +206,7 @@ class RegionalHostname(pulumi.CustomResource):
         $ pulumi import cloudflare:index/regionalHostname:RegionalHostname example '<zone_id>/<hostname>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] hostname: DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
@@ -236,6 +239,7 @@ class RegionalHostname(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/regionalHostname:RegionalHostname example '<zone_id>/<hostname>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RegionalHostnameArgs args: The arguments to use to populate this resource's properties.

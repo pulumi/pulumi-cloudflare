@@ -36,6 +36,7 @@ class ZeroTrustGatewayPolicyArgs:
                  traffic: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustGatewayPolicy resource.
+
         :param pulumi.Input[_builtins.str] action: Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
                Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         :param pulumi.Input[_builtins.str] name: Specify the rule name.
@@ -255,6 +256,7 @@ class _ZeroTrustGatewayPolicyState:
                  warning_status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustGatewayPolicy resources.
+
         :param pulumi.Input[_builtins.str] action: Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
                Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         :param pulumi.Input[_builtins.str] deleted_at: Indicate the date of deletion, if any.
@@ -721,6 +723,7 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
         $ pulumi import cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy example '<account_id>/<rule_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
@@ -880,6 +883,7 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy example '<account_id>/<rule_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustGatewayPolicyArgs args: The arguments to use to populate this resource's properties.

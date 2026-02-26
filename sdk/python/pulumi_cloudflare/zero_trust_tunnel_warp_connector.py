@@ -26,6 +26,7 @@ class ZeroTrustTunnelWarpConnectorArgs:
                  tunnel_secret: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustTunnelWarpConnector resource.
+
         :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID
         :param pulumi.Input[_builtins.str] name: A user-friendly name for a tunnel.
         :param pulumi.Input[_builtins.str] tunnel_secret: Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
@@ -89,6 +90,7 @@ class _ZeroTrustTunnelWarpConnectorState:
                  tunnel_secret: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustTunnelWarpConnector resources.
+
         :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID
         :param pulumi.Input[_builtins.str] account_tag: Cloudflare account ID
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustTunnelWarpConnectorConnectionArgs']]] connections: The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
@@ -308,6 +310,7 @@ class ZeroTrustTunnelWarpConnector(pulumi.CustomResource):
         $ pulumi import cloudflare:index/zeroTrustTunnelWarpConnector:ZeroTrustTunnelWarpConnector example '<account_id>/<tunnel_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID
@@ -337,6 +340,7 @@ class ZeroTrustTunnelWarpConnector(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/zeroTrustTunnelWarpConnector:ZeroTrustTunnelWarpConnector example '<account_id>/<tunnel_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustTunnelWarpConnectorArgs args: The arguments to use to populate this resource's properties.

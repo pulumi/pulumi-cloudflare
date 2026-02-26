@@ -25,6 +25,7 @@ class SnippetRulesArgs:
                  zone_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a SnippetRules resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['SnippetRulesRuleArgs']]] rules: A list of snippet rules.
         :param pulumi.Input[_builtins.str] zone_id: The unique ID of the zone.
         """
@@ -63,6 +64,7 @@ class _SnippetRulesState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SnippetRules resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['SnippetRulesRuleArgs']]] rules: A list of snippet rules.
         :param pulumi.Input[_builtins.str] zone_id: The unique ID of the zone.
         """
@@ -126,6 +128,7 @@ class SnippetRules(pulumi.CustomResource):
 
         > This resource does not currently support `pulumi import`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SnippetRulesRuleArgs', 'SnippetRulesRuleArgsDict']]]] rules: A list of snippet rules.
@@ -157,6 +160,7 @@ class SnippetRules(pulumi.CustomResource):
         ## Import
 
         > This resource does not currently support `pulumi import`.
+
 
         :param str resource_name: The name of the resource.
         :param SnippetRulesArgs args: The arguments to use to populate this resource's properties.

@@ -31,6 +31,7 @@ class TokenValidationRulesArgs:
                  position: Optional[pulumi.Input['TokenValidationRulesPositionArgs']] = None):
         """
         The set of arguments for constructing a TokenValidationRules resource.
+
         :param pulumi.Input[_builtins.str] action: Action to take on requests that match operations included in `selector` and fail `expression`.
                Available values: "log", "block".
         :param pulumi.Input[_builtins.str] description: A human-readable description that gives more details than `title`.
@@ -168,6 +169,7 @@ class _TokenValidationRulesState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TokenValidationRules resources.
+
         :param pulumi.Input[_builtins.str] action: Action to take on requests that match operations included in `selector` and fail `expression`.
                Available values: "log", "block".
         :param pulumi.Input[_builtins.str] description: A human-readable description that gives more details than `title`.
@@ -370,6 +372,7 @@ class TokenValidationRules(pulumi.CustomResource):
         $ pulumi import cloudflare:index/tokenValidationRules:TokenValidationRules example '<zone_id>/<rule_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: Action to take on requests that match operations included in `selector` and fail `expression`.
@@ -425,6 +428,7 @@ class TokenValidationRules(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/tokenValidationRules:TokenValidationRules example '<zone_id>/<rule_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TokenValidationRulesArgs args: The arguments to use to populate this resource's properties.

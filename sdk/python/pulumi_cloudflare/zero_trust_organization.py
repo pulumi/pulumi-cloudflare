@@ -36,6 +36,7 @@ class ZeroTrustOrganizationArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustOrganization resource.
+
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[_builtins.bool] allow_authenticate_via_warp: When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
         :param pulumi.Input[_builtins.str] auth_domain: The unique subdomain assigned to your Zero Trust organization.
@@ -244,6 +245,7 @@ class _ZeroTrustOrganizationState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustOrganization resources.
+
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[_builtins.bool] allow_authenticate_via_warp: When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
         :param pulumi.Input[_builtins.str] auth_domain: The unique subdomain assigned to your Zero Trust organization.
@@ -489,6 +491,7 @@ class ZeroTrustOrganization(pulumi.CustomResource):
 
         > This resource does not currently support `pulumi import`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
@@ -543,6 +546,7 @@ class ZeroTrustOrganization(pulumi.CustomResource):
         ## Import
 
         > This resource does not currently support `pulumi import`.
+
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustOrganizationArgs args: The arguments to use to populate this resource's properties.

@@ -26,6 +26,7 @@ class StreamAudioTrackArgs:
                  label: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a StreamAudioTrack resource.
+
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
         :param pulumi.Input[_builtins.str] identifier: A Cloudflare-generated unique identifier for a media item.
         :param pulumi.Input[_builtins.str] audio_identifier: The unique identifier for an additional audio track.
@@ -114,6 +115,7 @@ class _StreamAudioTrackState:
                  uid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StreamAudioTrack resources.
+
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
         :param pulumi.Input[_builtins.str] audio_identifier: The unique identifier for an additional audio track.
         :param pulumi.Input[_builtins.bool] default: Denotes whether the audio track will be played by default in a player.
@@ -255,6 +257,7 @@ class StreamAudioTrack(pulumi.CustomResource):
 
         > This resource does not currently support `pulumi import`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
@@ -287,6 +290,7 @@ class StreamAudioTrack(pulumi.CustomResource):
         ## Import
 
         > This resource does not currently support `pulumi import`.
+
 
         :param str resource_name: The name of the resource.
         :param StreamAudioTrackArgs args: The arguments to use to populate this resource's properties.

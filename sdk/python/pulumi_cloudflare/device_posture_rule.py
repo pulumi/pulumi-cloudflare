@@ -31,6 +31,7 @@ class DevicePostureRuleArgs:
                  schedule: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DevicePostureRule resource.
+
         :param pulumi.Input[_builtins.str] name: The name of the device posture rule.
         :param pulumi.Input[_builtins.str] type: The type of device posture rule.
                Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "serial*number", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "antivirus", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom*s2s".
@@ -162,6 +163,7 @@ class _DevicePostureRuleState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DevicePostureRule resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the device posture rule.
         :param pulumi.Input[_builtins.str] expiration: Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
         :param pulumi.Input['DevicePostureRuleInputArgs'] input: The value to be checked against.
@@ -335,6 +337,7 @@ class DevicePostureRule(pulumi.CustomResource):
         $ pulumi import cloudflare:index/devicePostureRule:DevicePostureRule example '<account_id>/<rule_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the device posture rule.
@@ -383,6 +386,7 @@ class DevicePostureRule(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/devicePostureRule:DevicePostureRule example '<account_id>/<rule_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DevicePostureRuleArgs args: The arguments to use to populate this resource's properties.

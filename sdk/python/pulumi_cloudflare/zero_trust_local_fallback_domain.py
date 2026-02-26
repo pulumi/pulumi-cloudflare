@@ -141,6 +141,7 @@ class ZeroTrustLocalFallbackDomain(pulumi.CustomResource):
         $ pulumi import cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain example '<account_id>/<policy_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -172,6 +173,7 @@ class ZeroTrustLocalFallbackDomain(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain example '<account_id>/<policy_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustLocalFallbackDomainArgs args: The arguments to use to populate this resource's properties.

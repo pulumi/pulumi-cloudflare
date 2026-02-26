@@ -30,6 +30,7 @@ class RulesetArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Ruleset resource.
+
         :param pulumi.Input[_builtins.str] kind: The kind of the ruleset.
                Available values: "managed", "custom", "root", "zone".
         :param pulumi.Input[_builtins.str] name: The human-readable name of the ruleset.
@@ -153,6 +154,7 @@ class _RulesetState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Ruleset resources.
+
         :param pulumi.Input[_builtins.str] account_id: The unique ID of the account.
         :param pulumi.Input[_builtins.str] description: An informative description of the ruleset.
         :param pulumi.Input[_builtins.str] kind: The kind of the ruleset.
@@ -336,6 +338,7 @@ class Ruleset(pulumi.CustomResource):
         $ pulumi import cloudflare:index/ruleset:Ruleset example '<{accounts|zones}/{account_id|zone_id}>/<ruleset_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The unique ID of the account.
@@ -380,6 +383,7 @@ class Ruleset(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/ruleset:Ruleset example '<{accounts|zones}/{account_id|zone_id}>/<ruleset_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RulesetArgs args: The arguments to use to populate this resource's properties.

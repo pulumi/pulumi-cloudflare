@@ -28,6 +28,7 @@ class MagicNetworkMonitoringRuleArgs:
                  prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a MagicNetworkMonitoringRule resource.
+
         :param pulumi.Input[_builtins.str] name: The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.
         :param pulumi.Input[_builtins.bool] automatic_advertisement: Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
         :param pulumi.Input[_builtins.float] bandwidth: The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
@@ -145,6 +146,7 @@ class _MagicNetworkMonitoringRuleState:
                  zscore_target: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MagicNetworkMonitoringRule resources.
+
         :param pulumi.Input[_builtins.bool] automatic_advertisement: Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
         :param pulumi.Input[_builtins.float] bandwidth: The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
         :param pulumi.Input[_builtins.float] bandwidth_threshold: The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
@@ -367,6 +369,7 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
         $ pulumi import cloudflare:index/magicNetworkMonitoringRule:MagicNetworkMonitoringRule example '<account_id>/<rule_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] automatic_advertisement: Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
@@ -404,6 +407,7 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/magicNetworkMonitoringRule:MagicNetworkMonitoringRule example '<account_id>/<rule_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MagicNetworkMonitoringRuleArgs args: The arguments to use to populate this resource's properties.

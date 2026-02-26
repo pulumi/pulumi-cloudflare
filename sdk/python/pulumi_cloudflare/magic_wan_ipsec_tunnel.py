@@ -36,6 +36,7 @@ class MagicWanIpsecTunnelArgs:
                  replay_protection: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a MagicWanIpsecTunnel resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.str] cloudflare_endpoint: The IP address assigned to the Cloudflare side of the IPsec tunnel.
         :param pulumi.Input[_builtins.str] interface_address: A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
@@ -241,6 +242,7 @@ class _MagicWanIpsecTunnelState:
                  replay_protection: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering MagicWanIpsecTunnel resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.bool] allow_null_cipher: When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
         :param pulumi.Input[_builtins.bool] automatic_return_routing: True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
@@ -561,6 +563,7 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
         $ pulumi import cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel example '<account_id>/<ipsec_tunnel_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier
@@ -622,6 +625,7 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel example '<account_id>/<ipsec_tunnel_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MagicWanIpsecTunnelArgs args: The arguments to use to populate this resource's properties.

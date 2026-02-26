@@ -30,6 +30,7 @@ class StaticRouteArgs:
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a StaticRoute resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.str] nexthop: The next-hop IP Address for the static route.
         :param pulumi.Input[_builtins.str] prefix: IP Prefix in Classless Inter-Domain Routing format.
@@ -148,6 +149,7 @@ class _StaticRouteState:
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering StaticRoute resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.str] created_on: When the route was created.
         :param pulumi.Input[_builtins.str] description: An optional human provided description of the static route.
@@ -331,6 +333,7 @@ class StaticRoute(pulumi.CustomResource):
         $ pulumi import cloudflare:index/staticRoute:StaticRoute example '<account_id>/<route_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier
@@ -372,6 +375,7 @@ class StaticRoute(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/staticRoute:StaticRoute example '<account_id>/<route_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param StaticRouteArgs args: The arguments to use to populate this resource's properties.

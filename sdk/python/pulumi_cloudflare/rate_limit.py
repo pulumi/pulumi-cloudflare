@@ -28,6 +28,7 @@ class RateLimitArgs:
                  zone_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a RateLimit resource.
+
         :param pulumi.Input['RateLimitActionArgs'] action: The action to perform when the threshold of matched traffic within the configured period is exceeded.
         :param pulumi.Input['RateLimitMatchArgs'] match: Determines which traffic the rate limit counts towards the threshold.
         :param pulumi.Input[_builtins.float] period: The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
@@ -114,6 +115,7 @@ class _RateLimitState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RateLimit resources.
+
         :param pulumi.Input['RateLimitActionArgs'] action: The action to perform when the threshold of matched traffic within the configured period is exceeded.
         :param pulumi.Input[Sequence[pulumi.Input['RateLimitBypassArgs']]] bypasses: Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
         :param pulumi.Input[_builtins.str] description: An informative summary of the rule. This value is sanitized and any tags will be removed.
@@ -303,6 +305,7 @@ class RateLimit(pulumi.CustomResource):
         $ pulumi import cloudflare:index/rateLimit:RateLimit example '<zone_id>/<rate_limit_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['RateLimitActionArgs', 'RateLimitActionArgsDict']] action: The action to perform when the threshold of matched traffic within the configured period is exceeded.
@@ -370,6 +373,7 @@ class RateLimit(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/rateLimit:RateLimit example '<zone_id>/<rate_limit_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RateLimitArgs args: The arguments to use to populate this resource's properties.

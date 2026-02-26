@@ -27,6 +27,7 @@ class R2BucketLifecycleArgs:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['R2BucketLifecycleRuleArgs']]]] = None):
         """
         The set of arguments for constructing a R2BucketLifecycle resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account ID.
         :param pulumi.Input[_builtins.str] bucket_name: Name of the bucket.
         :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction of the bucket
@@ -93,6 +94,7 @@ class _R2BucketLifecycleState:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['R2BucketLifecycleRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering R2BucketLifecycle resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account ID.
         :param pulumi.Input[_builtins.str] bucket_name: Name of the bucket.
         :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction of the bucket
@@ -205,6 +207,7 @@ class R2BucketLifecycle(pulumi.CustomResource):
 
         > This resource does not currently support `pulumi import`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account ID.
@@ -258,6 +261,7 @@ class R2BucketLifecycle(pulumi.CustomResource):
         ## Import
 
         > This resource does not currently support `pulumi import`.
+
 
         :param str resource_name: The name of the resource.
         :param R2BucketLifecycleArgs args: The arguments to use to populate this resource's properties.

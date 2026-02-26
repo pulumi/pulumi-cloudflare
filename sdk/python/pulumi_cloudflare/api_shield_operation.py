@@ -27,6 +27,7 @@ class ApiShieldOperationArgs:
                  zone_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ApiShieldOperation resource.
+
         :param pulumi.Input[_builtins.str] endpoint: The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
         :param pulumi.Input[_builtins.str] host: RFC3986-compliant host.
         :param pulumi.Input[_builtins.str] method: The HTTP method used to access the endpoint.
@@ -100,6 +101,7 @@ class _ApiShieldOperationState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApiShieldOperation resources.
+
         :param pulumi.Input[_builtins.str] endpoint: The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
         :param pulumi.Input[_builtins.str] host: RFC3986-compliant host.
         :param pulumi.Input[_builtins.str] method: The HTTP method used to access the endpoint.
@@ -233,6 +235,7 @@ class ApiShieldOperation(pulumi.CustomResource):
         $ pulumi import cloudflare:index/apiShieldOperation:ApiShieldOperation example '<zone_id>/<operation_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] endpoint: The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
@@ -266,6 +269,7 @@ class ApiShieldOperation(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/apiShieldOperation:ApiShieldOperation example '<zone_id>/<operation_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApiShieldOperationArgs args: The arguments to use to populate this resource's properties.

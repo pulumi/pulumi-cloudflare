@@ -30,6 +30,7 @@ class ListItemInitArgs:
                  redirect: Optional[pulumi.Input['ListItemRedirectArgs']] = None):
         """
         The set of arguments for constructing a ListItem resource.
+
         :param pulumi.Input[_builtins.str] account_id: The Account ID for this resource.
         :param pulumi.Input[_builtins.str] list_id: The unique ID of the list.
         :param pulumi.Input[_builtins.int] asn: A non-negative 32 bit integer
@@ -151,6 +152,7 @@ class _ListItemState:
                  redirect: Optional[pulumi.Input['ListItemRedirectArgs']] = None):
         """
         Input properties used for looking up and filtering ListItem resources.
+
         :param pulumi.Input[_builtins.str] account_id: The Account ID for this resource.
         :param pulumi.Input[_builtins.int] asn: A non-negative 32 bit integer
         :param pulumi.Input[_builtins.str] comment: An informative summary of the list item.
@@ -339,6 +341,7 @@ class ListItem(pulumi.CustomResource):
         $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The Account ID for this resource.
@@ -375,6 +378,7 @@ class ListItem(pulumi.CustomResource):
         $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
         $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ListItemInitArgs args: The arguments to use to populate this resource's properties.

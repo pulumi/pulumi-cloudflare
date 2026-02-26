@@ -27,6 +27,7 @@ class ZeroTrustTunnelCloudflaredArgs:
                  tunnel_secret: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustTunnelCloudflared resource.
+
         :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID
         :param pulumi.Input[_builtins.str] name: A user-friendly name for a tunnel.
         :param pulumi.Input[_builtins.str] config_src: Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
@@ -109,6 +110,7 @@ class _ZeroTrustTunnelCloudflaredState:
                  tunnel_secret: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustTunnelCloudflared resources.
+
         :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID
         :param pulumi.Input[_builtins.str] account_tag: Cloudflare account ID
         :param pulumi.Input[_builtins.str] config_src: Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
@@ -367,6 +369,7 @@ class ZeroTrustTunnelCloudflared(pulumi.CustomResource):
         $ pulumi import cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared example '<account_id>/<tunnel_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID
@@ -400,6 +403,7 @@ class ZeroTrustTunnelCloudflared(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared example '<account_id>/<tunnel_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustTunnelCloudflaredArgs args: The arguments to use to populate this resource's properties.

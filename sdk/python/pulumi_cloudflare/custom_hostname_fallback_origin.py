@@ -23,6 +23,7 @@ class CustomHostnameFallbackOriginArgs:
                  zone_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a CustomHostnameFallbackOrigin resource.
+
         :param pulumi.Input[_builtins.str] origin: Your origin hostname that requests to your custom hostnames will be sent to.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -65,6 +66,7 @@ class _CustomHostnameFallbackOriginState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CustomHostnameFallbackOrigin resources.
+
         :param pulumi.Input[_builtins.str] created_at: This is the time the fallback origin was created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] errors: These are errors that were encountered while trying to activate a fallback origin.
         :param pulumi.Input[_builtins.str] origin: Your origin hostname that requests to your custom hostnames will be sent to.
@@ -187,6 +189,7 @@ class CustomHostnameFallbackOrigin(pulumi.CustomResource):
         $ pulumi import cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin example '<zone_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] origin: Your origin hostname that requests to your custom hostnames will be sent to.
@@ -215,6 +218,7 @@ class CustomHostnameFallbackOrigin(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin example '<zone_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CustomHostnameFallbackOriginArgs args: The arguments to use to populate this resource's properties.

@@ -24,6 +24,7 @@ class TotalTlsArgs:
                  certificate_authority: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TotalTls resource.
+
         :param pulumi.Input[_builtins.bool] enabled: If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.str] certificate_authority: The Certificate Authority that Total TLS certificates will be issued through.
@@ -81,6 +82,7 @@ class _TotalTlsState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TotalTls resources.
+
         :param pulumi.Input[_builtins.str] certificate_authority: The Certificate Authority that Total TLS certificates will be issued through.
                Available values: "google", "lets*encrypt", "ssl*com".
         :param pulumi.Input[_builtins.bool] enabled: If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
@@ -177,6 +179,7 @@ class TotalTls(pulumi.CustomResource):
         $ pulumi import cloudflare:index/totalTls:TotalTls example '<zone_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] certificate_authority: The Certificate Authority that Total TLS certificates will be issued through.
@@ -208,6 +211,7 @@ class TotalTls(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/totalTls:TotalTls example '<zone_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TotalTlsArgs args: The arguments to use to populate this resource's properties.

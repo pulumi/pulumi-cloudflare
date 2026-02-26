@@ -25,6 +25,7 @@ class DnsZoneTransfersIncomingArgs:
                  auto_refresh_seconds: Optional[pulumi.Input[_builtins.float]] = None):
         """
         The set of arguments for constructing a DnsZoneTransfersIncoming resource.
+
         :param pulumi.Input[_builtins.str] name: Zone name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] peers: A list of peer tags.
         :param pulumi.Input[_builtins.float] auto_refresh_seconds: How often should a secondary zone auto refresh regardless of DNS NOTIFY.
@@ -96,6 +97,7 @@ class _DnsZoneTransfersIncomingState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DnsZoneTransfersIncoming resources.
+
         :param pulumi.Input[_builtins.float] auto_refresh_seconds: How often should a secondary zone auto refresh regardless of DNS NOTIFY.
                Not applicable for primary zones.
         :param pulumi.Input[_builtins.str] checked_time: The time for a specific event.
@@ -251,6 +253,7 @@ class DnsZoneTransfersIncoming(pulumi.CustomResource):
         $ pulumi import cloudflare:index/dnsZoneTransfersIncoming:DnsZoneTransfersIncoming example '<zone_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.float] auto_refresh_seconds: How often should a secondary zone auto refresh regardless of DNS NOTIFY.
@@ -286,6 +289,7 @@ class DnsZoneTransfersIncoming(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/dnsZoneTransfersIncoming:DnsZoneTransfersIncoming example '<zone_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DnsZoneTransfersIncomingArgs args: The arguments to use to populate this resource's properties.

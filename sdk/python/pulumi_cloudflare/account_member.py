@@ -28,6 +28,7 @@ class AccountMemberArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccountMember resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
         :param pulumi.Input[_builtins.str] email: The contact email address of the user.
         :param pulumi.Input[Sequence[pulumi.Input['AccountMemberPolicyArgs']]] policies: Array of policies associated with this member.
@@ -115,6 +116,7 @@ class _AccountMemberState:
                  user: Optional[pulumi.Input['AccountMemberUserArgs']] = None):
         """
         Input properties used for looking up and filtering AccountMember resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
         :param pulumi.Input[_builtins.str] email: The contact email address of the user.
         :param pulumi.Input[Sequence[pulumi.Input['AccountMemberPolicyArgs']]] policies: Array of policies associated with this member.
@@ -240,6 +242,7 @@ class AccountMember(pulumi.CustomResource):
         $ pulumi import cloudflare:index/accountMember:AccountMember example '<account_id>/<member_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
@@ -273,6 +276,7 @@ class AccountMember(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/accountMember:AccountMember example '<account_id>/<member_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccountMemberArgs args: The arguments to use to populate this resource's properties.

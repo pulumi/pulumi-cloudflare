@@ -35,6 +35,7 @@ class SpectrumApplicationArgs:
                  traffic_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SpectrumApplication resource.
+
         :param pulumi.Input['SpectrumApplicationDnsArgs'] dns: The name and type of DNS record for the Spectrum application.
         :param pulumi.Input[_builtins.str] protocol: The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
         :param pulumi.Input[_builtins.str] zone_id: Zone identifier.
@@ -246,6 +247,7 @@ class _SpectrumApplicationState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SpectrumApplication resources.
+
         :param pulumi.Input[_builtins.bool] argo_smart_routing: Enables Argo Smart Routing for this application.
                Notes: Only available for TCP applications with traffic_type set to "direct".
         :param pulumi.Input[_builtins.str] created_on: When the Application was created.
@@ -528,6 +530,7 @@ class SpectrumApplication(pulumi.CustomResource):
         $ pulumi import cloudflare:index/spectrumApplication:SpectrumApplication example '<zone_id>/<app_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] argo_smart_routing: Enables Argo Smart Routing for this application.
@@ -592,6 +595,7 @@ class SpectrumApplication(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/spectrumApplication:SpectrumApplication example '<zone_id>/<app_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SpectrumApplicationArgs args: The arguments to use to populate this resource's properties.

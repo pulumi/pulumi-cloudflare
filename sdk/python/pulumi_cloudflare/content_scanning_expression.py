@@ -25,6 +25,7 @@ class ContentScanningExpressionArgs:
                  zone_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ContentScanningExpression resource.
+
         :param pulumi.Input[_builtins.str] zone_id: Defines an identifier.
         """
         pulumi.set(__self__, "bodies", bodies)
@@ -59,6 +60,7 @@ class _ContentScanningExpressionState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ContentScanningExpression resources.
+
         :param pulumi.Input[_builtins.str] zone_id: Defines an identifier.
         """
         if bodies is not None:
@@ -115,6 +117,7 @@ class ContentScanningExpression(pulumi.CustomResource):
 
         > This resource does not currently support `pulumi import`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] zone_id: Defines an identifier.
@@ -142,6 +145,7 @@ class ContentScanningExpression(pulumi.CustomResource):
         ## Import
 
         > This resource does not currently support `pulumi import`.
+
 
         :param str resource_name: The name of the resource.
         :param ContentScanningExpressionArgs args: The arguments to use to populate this resource's properties.

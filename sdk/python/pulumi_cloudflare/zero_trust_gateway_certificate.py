@@ -24,6 +24,7 @@ class ZeroTrustGatewayCertificateArgs:
                  validity_period_days: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a ZeroTrustGatewayCertificate resource.
+
         :param pulumi.Input[_builtins.bool] activate: Whether to activate the certificate on Cloudflare's edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `binding_status` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic
         :param pulumi.Input[_builtins.int] validity_period_days: Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.
         """
@@ -86,6 +87,7 @@ class _ZeroTrustGatewayCertificateState:
                  validity_period_days: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustGatewayCertificate resources.
+
         :param pulumi.Input[_builtins.bool] activate: Whether to activate the certificate on Cloudflare's edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `binding_status` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic
         :param pulumi.Input[_builtins.str] binding_status: Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.
                Available values: "pending*deployment", "available", "pending*deletion", "inactive".
@@ -311,6 +313,7 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
         $ pulumi import cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate example '<account_id>/<certificate_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] activate: Whether to activate the certificate on Cloudflare's edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `binding_status` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic
@@ -339,6 +342,7 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate example '<account_id>/<certificate_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustGatewayCertificateArgs args: The arguments to use to populate this resource's properties.

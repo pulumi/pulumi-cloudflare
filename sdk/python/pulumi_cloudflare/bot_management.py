@@ -38,6 +38,7 @@ class BotManagementArgs:
                  suppress_session_score: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a BotManagement resource.
+
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
                Available values: "block", "disabled", "only*on*ad_pages".
@@ -303,6 +304,7 @@ class _BotManagementState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BotManagement resources.
+
         :param pulumi.Input[_builtins.str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
                Available values: "block", "disabled", "only*on*ad_pages".
         :param pulumi.Input[_builtins.bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
@@ -622,6 +624,7 @@ class BotManagement(pulumi.CustomResource):
         $ pulumi import cloudflare:index/botManagement:BotManagement example '<zone_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
@@ -676,6 +679,7 @@ class BotManagement(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/botManagement:BotManagement example '<zone_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BotManagementArgs args: The arguments to use to populate this resource's properties.

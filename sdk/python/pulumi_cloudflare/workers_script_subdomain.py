@@ -25,6 +25,7 @@ class WorkersScriptSubdomainArgs:
                  previews_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a WorkersScriptSubdomain resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.bool] enabled: Whether the Worker should be available on the workers.dev subdomain.
         :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
@@ -94,6 +95,7 @@ class _WorkersScriptSubdomainState:
                  script_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkersScriptSubdomain resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.bool] enabled: Whether the Worker should be available on the workers.dev subdomain.
         :param pulumi.Input[_builtins.bool] previews_enabled: Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
@@ -190,6 +192,7 @@ class WorkersScriptSubdomain(pulumi.CustomResource):
         $ pulumi import cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain example '<account_id>/<script_name>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -224,6 +227,7 @@ class WorkersScriptSubdomain(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain example '<account_id>/<script_name>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkersScriptSubdomainArgs args: The arguments to use to populate this resource's properties.

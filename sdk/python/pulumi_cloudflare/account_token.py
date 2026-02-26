@@ -30,6 +30,7 @@ class AccountTokenArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccountToken resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
         :param pulumi.Input[_builtins.str] name: Token name.
         :param pulumi.Input[Sequence[pulumi.Input['AccountTokenPolicyArgs']]] policies: Set of access policies assigned to the token.
@@ -149,6 +150,7 @@ class _AccountTokenState:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountToken resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
         :param pulumi.Input[_builtins.str] expires_on: The expiration time on or after which the JWT MUST NOT be accepted for processing.
         :param pulumi.Input[_builtins.str] issued_on: The time on which the token was created.
@@ -338,6 +340,7 @@ class AccountToken(pulumi.CustomResource):
         $ pulumi import cloudflare:index/accountToken:AccountToken example '<account_id>/<token_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
@@ -362,6 +365,7 @@ class AccountToken(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/accountToken:AccountToken example '<account_id>/<token_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccountTokenArgs args: The arguments to use to populate this resource's properties.

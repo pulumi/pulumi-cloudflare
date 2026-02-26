@@ -29,6 +29,7 @@ class ZoneLockdownArgs:
                  priority: Optional[pulumi.Input[_builtins.float]] = None):
         """
         The set of arguments for constructing a ZoneLockdown resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]] configurations: A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] urls: The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
         :param pulumi.Input[_builtins.str] zone_id: Defines an identifier.
@@ -132,6 +133,7 @@ class _ZoneLockdownState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZoneLockdown resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]] configurations: A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
         :param pulumi.Input[_builtins.str] created_on: The timestamp of when the rule was created.
         :param pulumi.Input[_builtins.str] description: An informative summary of the rule. This value is sanitized and any tags will be removed.
@@ -293,6 +295,7 @@ class ZoneLockdown(pulumi.CustomResource):
         $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown example '<zone_id>/<lock_downs_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneLockdownConfigurationArgs', 'ZoneLockdownConfigurationArgsDict']]]] configurations: A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
@@ -332,6 +335,7 @@ class ZoneLockdown(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown example '<zone_id>/<lock_downs_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZoneLockdownArgs args: The arguments to use to populate this resource's properties.
