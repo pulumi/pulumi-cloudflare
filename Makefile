@@ -10,6 +10,12 @@ PROVIDER := pulumi-resource-$(PACK)
 TESTPARALLELISM := 10
 GOTESTARGS := ""
 WORKING_DIR := $(shell pwd)
+# Use gotestsum for richer test output when running in CI environments
+ifdef CI
+GO_TEST_EXEC ?= gotestsum --format pkgname --
+else
+GO_TEST_EXEC ?= go test
+endif
 PULUMI_PROVIDER_BUILD_PARALLELISM ?=
 PULUMI_CONVERT := 1
 PULUMI_MISSING_DOCS_ERROR := false
@@ -252,9 +258,9 @@ bin/$(PROVIDER): .make/schema
 
 test: export PATH := $(WORKING_DIR)/bin:$(PATH)
 test:
-	cd examples && go test -v -tags=all -parallel $(TESTPARALLELISM) -timeout 2h $(value GOTESTARGS)
+	cd examples && $(GO_TEST_EXEC) -v -tags=all -parallel $(TESTPARALLELISM) -timeout 2h $(value GOTESTARGS)
 .PHONY: test
-test_provider_cmd = cd provider && go test -v -short \
+test_provider_cmd = cd provider && $(GO_TEST_EXEC) -v -short \
 	-coverprofile="coverage.txt" \
 	-coverpkg="./...,github.com/hashicorp/terraform-provider-..." \
 	-parallel $(TESTPARALLELISM) \

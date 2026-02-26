@@ -106,7 +106,7 @@ jobs:
     - name: Run provider tests
       if: matrix.testTarget == 'local'
       working-directory: provider
-      run: go test -v -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -parallel 4 .
+      run: gotestsum --format pkgname -- -v -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -parallel 4 .
       env:
         CLOUDFLARE_ACCOUNT_ID: ${{ steps.esc-secrets.outputs.CLOUDFLARE_ACCOUNT_ID }}
         CLOUDFLARE_API_TOKEN: ${{ steps.esc-secrets.outputs.CLOUDFLARE_API_TOKEN }}
@@ -114,7 +114,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Run tests
       if: matrix.testTarget == 'local'
-      run: cd examples && go test -v -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -skip TestPulumiExamples -parallel 4 .
+      run: cd examples && gotestsum --format pkgname -- -v -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -skip TestPulumiExamples -parallel 4 .
       env:
         CLOUDFLARE_ACCOUNT_ID: ${{ steps.esc-secrets.outputs.CLOUDFLARE_ACCOUNT_ID }}
         CLOUDFLARE_API_TOKEN: ${{ steps.esc-secrets.outputs.CLOUDFLARE_API_TOKEN }}
@@ -122,7 +122,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Run pulumi/examples tests
       if: matrix.testTarget == 'pulumiExamples'
-      run: cd examples && go test -v -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -run TestPulumiExamples -parallel 4 .
+      run: cd examples && gotestsum --format pkgname -- -v -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -run TestPulumiExamples -parallel 4 .
       env:
         CLOUDFLARE_ACCOUNT_ID: ${{ steps.esc-secrets.outputs.CLOUDFLARE_ACCOUNT_ID }}
         CLOUDFLARE_API_TOKEN: ${{ steps.esc-secrets.outputs.CLOUDFLARE_API_TOKEN }}
