@@ -26,6 +26,7 @@ class R2BucketArgs:
                  storage_class: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a R2Bucket resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account ID.
         :param pulumi.Input[_builtins.str] name: Name of the bucket.
         :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction where objects in this bucket are guaranteed to be stored.
@@ -119,6 +120,7 @@ class _R2BucketState:
                  storage_class: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering R2Bucket resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account ID.
         :param pulumi.Input[_builtins.str] creation_date: Creation timestamp.
         :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction where objects in this bucket are guaranteed to be stored.
@@ -250,6 +252,7 @@ class R2Bucket(pulumi.CustomResource):
         $ pulumi import cloudflare:index/r2Bucket:R2Bucket example '<account_id>/<bucket_name>/<jurisdiction>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account ID.
@@ -286,6 +289,7 @@ class R2Bucket(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/r2Bucket:R2Bucket example '<account_id>/<bucket_name>/<jurisdiction>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param R2BucketArgs args: The arguments to use to populate this resource's properties.

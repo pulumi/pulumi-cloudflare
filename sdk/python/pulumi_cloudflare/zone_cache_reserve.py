@@ -23,6 +23,7 @@ class ZoneCacheReserveArgs:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZoneCacheReserve resource.
+
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.str] value: Value of the Cache Reserve zone setting.
                Available values: "on", "off".
@@ -66,6 +67,7 @@ class _ZoneCacheReserveState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZoneCacheReserve resources.
+
         :param pulumi.Input[_builtins.bool] editable: Whether the setting is editable.
         :param pulumi.Input[_builtins.str] modified_on: Last time this setting was modified.
         :param pulumi.Input[_builtins.str] value: Value of the Cache Reserve zone setting.
@@ -158,6 +160,7 @@ class ZoneCacheReserve(pulumi.CustomResource):
         $ pulumi import cloudflare:index/zoneCacheReserve:ZoneCacheReserve example '<zone_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] value: Value of the Cache Reserve zone setting.
@@ -187,6 +190,7 @@ class ZoneCacheReserve(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/zoneCacheReserve:ZoneCacheReserve example '<zone_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZoneCacheReserveArgs args: The arguments to use to populate this resource's properties.

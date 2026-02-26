@@ -24,6 +24,7 @@ class DnsZoneTransfersOutgoingArgs:
                  zone_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a DnsZoneTransfersOutgoing resource.
+
         :param pulumi.Input[_builtins.str] name: Zone name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] peers: A list of peer tags.
         """
@@ -77,6 +78,7 @@ class _DnsZoneTransfersOutgoingState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DnsZoneTransfersOutgoing resources.
+
         :param pulumi.Input[_builtins.str] checked_time: The time for a specific event.
         :param pulumi.Input[_builtins.str] created_time: The time for a specific event.
         :param pulumi.Input[_builtins.str] last_transferred_time: The time for a specific event.
@@ -213,6 +215,7 @@ class DnsZoneTransfersOutgoing(pulumi.CustomResource):
         $ pulumi import cloudflare:index/dnsZoneTransfersOutgoing:DnsZoneTransfersOutgoing example '<zone_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: Zone name.
@@ -245,6 +248,7 @@ class DnsZoneTransfersOutgoing(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/dnsZoneTransfersOutgoing:DnsZoneTransfersOutgoing example '<zone_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DnsZoneTransfersOutgoingArgs args: The arguments to use to populate this resource's properties.

@@ -26,6 +26,7 @@ class ZeroTrustRiskScoringIntegrationArgs:
                  reference_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustRiskScoringIntegration resource.
+
         :param pulumi.Input[_builtins.str] integration_type: Available values: "Okta".
         :param pulumi.Input[_builtins.str] tenant_url: The base url of the tenant, e.g. "https://tenant.okta.com".
         :param pulumi.Input[_builtins.bool] active: Whether this integration is enabled. If disabled, no risk changes will be exported to the third-party.
@@ -112,6 +113,7 @@ class _ZeroTrustRiskScoringIntegrationState:
                  well_known_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustRiskScoringIntegration resources.
+
         :param pulumi.Input[_builtins.str] account_tag: The Cloudflare account tag.
         :param pulumi.Input[_builtins.bool] active: Whether this integration is enabled. If disabled, no risk changes will be exported to the third-party.
         :param pulumi.Input[_builtins.str] created_at: When the integration was created in RFC3339 format.
@@ -265,6 +267,7 @@ class ZeroTrustRiskScoringIntegration(pulumi.CustomResource):
         $ pulumi import cloudflare:index/zeroTrustRiskScoringIntegration:ZeroTrustRiskScoringIntegration example '<account_id>/<integration_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] active: Whether this integration is enabled. If disabled, no risk changes will be exported to the third-party.
@@ -298,6 +301,7 @@ class ZeroTrustRiskScoringIntegration(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/zeroTrustRiskScoringIntegration:ZeroTrustRiskScoringIntegration example '<account_id>/<integration_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustRiskScoringIntegrationArgs args: The arguments to use to populate this resource's properties.

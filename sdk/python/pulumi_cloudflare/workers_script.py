@@ -44,6 +44,7 @@ class WorkersScriptArgs:
                  usage_model: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkersScript resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
         :param pulumi.Input['WorkersScriptAssetsArgs'] assets: Configuration for assets within a Worker.
@@ -398,6 +399,7 @@ class _WorkersScriptState:
                  usage_model: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkersScript resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input['WorkersScriptAssetsArgs'] assets: Configuration for assets within a Worker.
         :param pulumi.Input[Sequence[pulumi.Input['WorkersScriptBindingArgs']]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
@@ -981,6 +983,7 @@ class WorkersScript(pulumi.CustomResource):
         $ pulumi import cloudflare:index/workersScript:WorkersScript example '<account_id>/<script_name>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -1100,6 +1103,7 @@ class WorkersScript(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/workersScript:WorkersScript example '<account_id>/<script_name>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkersScriptArgs args: The arguments to use to populate this resource's properties.

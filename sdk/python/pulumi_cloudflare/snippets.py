@@ -27,6 +27,7 @@ class SnippetsArgs:
                  zone_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a Snippets resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] files: The list of files belonging to the snippet.
         :param pulumi.Input['SnippetsMetadataArgs'] metadata: Metadata about the snippet.
         :param pulumi.Input[_builtins.str] snippet_name: The identifying name of the snippet.
@@ -97,6 +98,7 @@ class _SnippetsState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Snippets resources.
+
         :param pulumi.Input[_builtins.str] created_on: The timestamp of when the snippet was created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] files: The list of files belonging to the snippet.
         :param pulumi.Input['SnippetsMetadataArgs'] metadata: Metadata about the snippet.
@@ -206,6 +208,7 @@ class Snippets(pulumi.CustomResource):
 
         > This resource does not currently support `pulumi import`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] files: The list of files belonging to the snippet.
@@ -223,6 +226,7 @@ class Snippets(pulumi.CustomResource):
         ## Import
 
         > This resource does not currently support `pulumi import`.
+
 
         :param str resource_name: The name of the resource.
         :param SnippetsArgs args: The arguments to use to populate this resource's properties.

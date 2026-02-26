@@ -26,6 +26,7 @@ class AuthenticatedOriginPullsArgs:
                  hostname: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AuthenticatedOriginPulls resource.
+
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.str] hostname: The hostname on the origin for which the client certificate uploaded will be used.
         """
@@ -90,6 +91,7 @@ class _AuthenticatedOriginPullsState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuthenticatedOriginPulls resources.
+
         :param pulumi.Input[_builtins.str] cert_id: Identifier.
         :param pulumi.Input[_builtins.str] cert_status: Status of the certificate or the association.
                Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
@@ -378,6 +380,7 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
 
         > This resource does not currently support `pulumi import`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] hostname: The hostname on the origin for which the client certificate uploaded will be used.
@@ -408,6 +411,7 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
         ## Import
 
         > This resource does not currently support `pulumi import`.
+
 
         :param str resource_name: The name of the resource.
         :param AuthenticatedOriginPullsArgs args: The arguments to use to populate this resource's properties.

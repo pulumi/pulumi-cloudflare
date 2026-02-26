@@ -30,6 +30,7 @@ class ZeroTrustDlpDatasetArgs:
                  secret: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ZeroTrustDlpDataset resource.
+
         :param pulumi.Input[_builtins.bool] case_sensitive: Only applies to custom word lists.
                Determines if the words should be matched in a case-sensitive manner
                Cannot be set to false if `secret` is true or undefined
@@ -155,6 +156,7 @@ class _ZeroTrustDlpDatasetState:
                  version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustDlpDataset resources.
+
         :param pulumi.Input[_builtins.bool] case_sensitive: Only applies to custom word lists.
                Determines if the words should be matched in a case-sensitive manner
                Cannot be set to false if `secret` is true or undefined
@@ -410,6 +412,7 @@ class ZeroTrustDlpDataset(pulumi.CustomResource):
 
         > This resource does not currently support `pulumi import`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] case_sensitive: Only applies to custom word lists.
@@ -447,6 +450,7 @@ class ZeroTrustDlpDataset(pulumi.CustomResource):
         ## Import
 
         > This resource does not currently support `pulumi import`.
+
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustDlpDatasetArgs args: The arguments to use to populate this resource's properties.

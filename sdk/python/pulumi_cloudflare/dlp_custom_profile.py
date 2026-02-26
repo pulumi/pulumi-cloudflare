@@ -33,6 +33,7 @@ class DlpCustomProfileArgs:
                  shared_entries: Optional[pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileSharedEntryArgs']]]] = None):
         """
         The set of arguments for constructing a DlpCustomProfile resource.
+
         :param pulumi.Input[_builtins.int] allowed_match_count: Related DLP policies will trigger when the match count exceeds the number set.
         :param pulumi.Input['DlpCustomProfileContextAwarenessArgs'] context_awareness: Scan the context of predefined entries to only return matches surrounded by keywords.
         :param pulumi.Input[_builtins.str] description: The description of the profile.
@@ -193,6 +194,7 @@ class _DlpCustomProfileState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DlpCustomProfile resources.
+
         :param pulumi.Input[_builtins.int] allowed_match_count: Related DLP policies will trigger when the match count exceeds the number set.
         :param pulumi.Input['DlpCustomProfileContextAwarenessArgs'] context_awareness: Scan the context of predefined entries to only return matches surrounded by keywords.
         :param pulumi.Input[_builtins.str] created_at: When the profile was created.
@@ -451,6 +453,7 @@ class DlpCustomProfile(pulumi.CustomResource):
         $ pulumi import cloudflare:index/dlpCustomProfile:DlpCustomProfile example '<account_id>/<profile_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] allowed_match_count: Related DLP policies will trigger when the match count exceeds the number set.
@@ -498,6 +501,7 @@ class DlpCustomProfile(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/dlpCustomProfile:DlpCustomProfile example '<account_id>/<profile_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DlpCustomProfileArgs args: The arguments to use to populate this resource's properties.

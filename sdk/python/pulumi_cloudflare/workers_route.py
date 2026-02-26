@@ -24,6 +24,7 @@ class WorkersRouteArgs:
                  script: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkersRoute resource.
+
         :param pulumi.Input[_builtins.str] pattern: Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.str] script: Name of the script to run if the route matches.
@@ -78,6 +79,7 @@ class _WorkersRouteState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkersRoute resources.
+
         :param pulumi.Input[_builtins.str] pattern: Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
         :param pulumi.Input[_builtins.str] script: Name of the script to run if the route matches.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
@@ -155,6 +157,7 @@ class WorkersRoute(pulumi.CustomResource):
         $ pulumi import cloudflare:index/workersRoute:WorkersRoute example '<zone_id>/<route_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] pattern: Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
@@ -185,6 +188,7 @@ class WorkersRoute(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/workersRoute:WorkersRoute example '<zone_id>/<route_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkersRouteArgs args: The arguments to use to populate this resource's properties.

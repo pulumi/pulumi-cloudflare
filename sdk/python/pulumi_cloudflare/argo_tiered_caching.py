@@ -23,6 +23,7 @@ class ArgoTieredCachingArgs:
                  zone_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ArgoTieredCaching resource.
+
         :param pulumi.Input[_builtins.str] value: Enables Tiered Caching.
                Available values: "on", "off".
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
@@ -65,6 +66,7 @@ class _ArgoTieredCachingState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ArgoTieredCaching resources.
+
         :param pulumi.Input[_builtins.bool] editable: Whether the setting is editable.
         :param pulumi.Input[_builtins.str] modified_on: Last time this setting was modified.
         :param pulumi.Input[_builtins.str] value: Enables Tiered Caching.
@@ -157,6 +159,7 @@ class ArgoTieredCaching(pulumi.CustomResource):
         $ pulumi import cloudflare:index/argoTieredCaching:ArgoTieredCaching example '<zone_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] value: Enables Tiered Caching.
@@ -186,6 +189,7 @@ class ArgoTieredCaching(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/argoTieredCaching:ArgoTieredCaching example '<zone_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ArgoTieredCachingArgs args: The arguments to use to populate this resource's properties.

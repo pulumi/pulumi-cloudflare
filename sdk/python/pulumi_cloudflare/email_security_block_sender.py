@@ -26,6 +26,7 @@ class EmailSecurityBlockSenderArgs:
                  comments: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EmailSecurityBlockSender resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account Identifier
         :param pulumi.Input[_builtins.str] pattern_type: Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         """
@@ -100,6 +101,7 @@ class _EmailSecurityBlockSenderState:
                  pattern_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EmailSecurityBlockSender resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account Identifier
         :param pulumi.Input[_builtins.str] pattern_type: Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         """
@@ -221,6 +223,7 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
         $ pulumi import cloudflare:index/emailSecurityBlockSender:EmailSecurityBlockSender example '<account_id>/<pattern_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account Identifier
@@ -252,6 +255,7 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/emailSecurityBlockSender:EmailSecurityBlockSender example '<account_id>/<pattern_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EmailSecurityBlockSenderArgs args: The arguments to use to populate this resource's properties.

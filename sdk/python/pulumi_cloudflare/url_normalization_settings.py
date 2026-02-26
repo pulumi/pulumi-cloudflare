@@ -24,6 +24,7 @@ class UrlNormalizationSettingsArgs:
                  zone_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a UrlNormalizationSettings resource.
+
         :param pulumi.Input[_builtins.str] scope: The scope of the URL normalization.
                Available values: "incoming", "both", "none".
         :param pulumi.Input[_builtins.str] type: The type of URL normalization performed by Cloudflare.
@@ -81,6 +82,7 @@ class _UrlNormalizationSettingsState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UrlNormalizationSettings resources.
+
         :param pulumi.Input[_builtins.str] scope: The scope of the URL normalization.
                Available values: "incoming", "both", "none".
         :param pulumi.Input[_builtins.str] type: The type of URL normalization performed by Cloudflare.
@@ -162,6 +164,7 @@ class UrlNormalizationSettings(pulumi.CustomResource):
         $ pulumi import cloudflare:index/urlNormalizationSettings:UrlNormalizationSettings example '<zone_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] scope: The scope of the URL normalization.
@@ -194,6 +197,7 @@ class UrlNormalizationSettings(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/urlNormalizationSettings:UrlNormalizationSettings example '<zone_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UrlNormalizationSettingsArgs args: The arguments to use to populate this resource's properties.

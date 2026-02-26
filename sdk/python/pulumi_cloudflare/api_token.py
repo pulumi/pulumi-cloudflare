@@ -29,6 +29,7 @@ class ApiTokenArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApiToken resource.
+
         :param pulumi.Input[_builtins.str] name: Token name.
         :param pulumi.Input[Sequence[pulumi.Input['ApiTokenPolicyArgs']]] policies: Set of access policies assigned to the token.
         :param pulumi.Input[_builtins.str] expires_on: The expiration time on or after which the JWT MUST NOT be accepted for processing.
@@ -133,6 +134,7 @@ class _ApiTokenState:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApiToken resources.
+
         :param pulumi.Input[_builtins.str] expires_on: The expiration time on or after which the JWT MUST NOT be accepted for processing.
         :param pulumi.Input[_builtins.str] issued_on: The time on which the token was created.
         :param pulumi.Input[_builtins.str] last_used_on: Last time the token was used.
@@ -306,6 +308,7 @@ class ApiToken(pulumi.CustomResource):
         $ pulumi import cloudflare:index/apiToken:ApiToken example '<token_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] expires_on: The expiration time on or after which the JWT MUST NOT be accepted for processing.
@@ -329,6 +332,7 @@ class ApiToken(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/apiToken:ApiToken example '<token_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApiTokenArgs args: The arguments to use to populate this resource's properties.

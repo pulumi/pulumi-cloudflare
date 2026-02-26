@@ -29,6 +29,7 @@ class WebAnalyticsSiteArgs:
                  zone_tag: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WebAnalyticsSite resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.bool] auto_install: If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
         :param pulumi.Input[_builtins.bool] enabled: Enables or disables RUM. This option can be used only when auto_install is set to true.
@@ -138,6 +139,7 @@ class _WebAnalyticsSiteState:
                  zone_tag: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WebAnalyticsSite resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.bool] auto_install: If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
         :param pulumi.Input[_builtins.bool] enabled: Enables or disables RUM. This option can be used only when auto_install is set to true.
@@ -346,6 +348,7 @@ class WebAnalyticsSite(pulumi.CustomResource):
         $ pulumi import cloudflare:index/webAnalyticsSite:WebAnalyticsSite example '<account_id>/<site_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -380,6 +383,7 @@ class WebAnalyticsSite(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/webAnalyticsSite:WebAnalyticsSite example '<account_id>/<site_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WebAnalyticsSiteArgs args: The arguments to use to populate this resource's properties.

@@ -29,6 +29,7 @@ class PagesProjectArgs:
                  source: Optional[pulumi.Input['PagesProjectSourceArgs']] = None):
         """
         The set of arguments for constructing a PagesProject resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] name: Name of the project.
         :param pulumi.Input[_builtins.str] production_branch: Production branch of the project. Used to identify production deployments.
@@ -140,6 +141,7 @@ class _PagesProjectState:
                  uses_functions: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering PagesProject resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input['PagesProjectBuildConfigArgs'] build_config: Configs for the project build process.
         :param pulumi.Input['PagesProjectCanonicalDeploymentArgs'] canonical_deployment: Most recent production deployment of the project.
@@ -614,6 +616,7 @@ class PagesProject(pulumi.CustomResource):
         $ pulumi import cloudflare:index/pagesProject:PagesProject example '<account_id>/<project_name>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -846,6 +849,7 @@ class PagesProject(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/pagesProject:PagesProject example '<account_id>/<project_name>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PagesProjectArgs args: The arguments to use to populate this resource's properties.

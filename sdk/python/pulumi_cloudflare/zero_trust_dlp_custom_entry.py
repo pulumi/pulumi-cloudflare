@@ -102,6 +102,7 @@ class _ZeroTrustDlpCustomEntryState:
                  word_list: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustDlpCustomEntry resources.
+
         :param pulumi.Input[_builtins.bool] case_sensitive: Only applies to custom word lists.
                Determines if the words should be matched in a case-sensitive manner
                Cannot be set to false if secret is true
@@ -322,6 +323,7 @@ class ZeroTrustDlpCustomEntry(pulumi.CustomResource):
         $ pulumi import cloudflare:index/zeroTrustDlpCustomEntry:ZeroTrustDlpCustomEntry example '<account_id>/<entry_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -354,6 +356,7 @@ class ZeroTrustDlpCustomEntry(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/zeroTrustDlpCustomEntry:ZeroTrustDlpCustomEntry example '<account_id>/<entry_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustDlpCustomEntryArgs args: The arguments to use to populate this resource's properties.

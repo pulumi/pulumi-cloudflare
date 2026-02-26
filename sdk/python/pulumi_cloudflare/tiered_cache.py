@@ -23,6 +23,7 @@ class TieredCacheArgs:
                  zone_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a TieredCache resource.
+
         :param pulumi.Input[_builtins.str] value: Enable or disable the Smart Tiered Cache.
                Available values: "on", "off".
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
@@ -65,6 +66,7 @@ class _TieredCacheState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TieredCache resources.
+
         :param pulumi.Input[_builtins.bool] editable: Whether the setting is editable.
         :param pulumi.Input[_builtins.str] modified_on: Last time this setting was modified.
         :param pulumi.Input[_builtins.str] value: Enable or disable the Smart Tiered Cache.
@@ -157,6 +159,7 @@ class TieredCache(pulumi.CustomResource):
         $ pulumi import cloudflare:index/tieredCache:TieredCache example '<zone_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] value: Enable or disable the Smart Tiered Cache.
@@ -186,6 +189,7 @@ class TieredCache(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/tieredCache:TieredCache example '<zone_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TieredCacheArgs args: The arguments to use to populate this resource's properties.

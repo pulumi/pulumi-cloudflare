@@ -38,6 +38,7 @@ class WaitingRoomEventArgs:
                  turnstile_mode: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WaitingRoomEvent resource.
+
         :param pulumi.Input[_builtins.str] event_end_time: An ISO 8601 timestamp that marks the end of the event.
         :param pulumi.Input[_builtins.str] event_start_time: An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`.
         :param pulumi.Input[_builtins.str] name: A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed.
@@ -315,6 +316,7 @@ class _WaitingRoomEventState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WaitingRoomEvent resources.
+
         :param pulumi.Input[_builtins.str] custom_page_html: If set, the event will override the waiting room's `custom_page_html` property while it is active. If null, the event will inherit it.
         :param pulumi.Input[_builtins.str] description: A note that you can use to add more details about the event.
         :param pulumi.Input[_builtins.bool] disable_session_renewal: If set, the event will override the waiting room's `disable_session_renewal` property while it is active. If null, the event will inherit it.
@@ -652,6 +654,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
         $ pulumi import cloudflare:index/waitingRoomEvent:WaitingRoomEvent example '<zone_id>/<waiting_room_id>/<event_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] custom_page_html: If set, the event will override the waiting room's `custom_page_html` property while it is active. If null, the event will inherit it.
@@ -711,6 +714,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/waitingRoomEvent:WaitingRoomEvent example '<zone_id>/<waiting_room_id>/<event_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WaitingRoomEventArgs args: The arguments to use to populate this resource's properties.

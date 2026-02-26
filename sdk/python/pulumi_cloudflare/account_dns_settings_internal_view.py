@@ -24,6 +24,7 @@ class AccountDnsSettingsInternalViewArgs:
                  zones: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         """
         The set of arguments for constructing a AccountDnsSettingsInternalView resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] name: The name of the view.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] zones: The list of zones linked to this view.
@@ -79,6 +80,7 @@ class _AccountDnsSettingsInternalViewState:
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AccountDnsSettingsInternalView resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] created_time: When the view was created.
         :param pulumi.Input[_builtins.str] modified_time: When the view was last modified.
@@ -186,6 +188,7 @@ class AccountDnsSettingsInternalView(pulumi.CustomResource):
         $ pulumi import cloudflare:index/accountDnsSettingsInternalView:AccountDnsSettingsInternalView example '<account_id>/<view_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -216,6 +219,7 @@ class AccountDnsSettingsInternalView(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/accountDnsSettingsInternalView:AccountDnsSettingsInternalView example '<account_id>/<view_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccountDnsSettingsInternalViewArgs args: The arguments to use to populate this resource's properties.

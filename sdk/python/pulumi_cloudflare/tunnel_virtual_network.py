@@ -26,6 +26,7 @@ class TunnelVirtualNetworkArgs:
                  is_default_network: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a TunnelVirtualNetwork resource.
+
         :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID
         :param pulumi.Input[_builtins.str] name: A user-friendly name for the virtual network.
         :param pulumi.Input[_builtins.str] comment: Optional remark describing the virtual network.
@@ -118,6 +119,7 @@ class _TunnelVirtualNetworkState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TunnelVirtualNetwork resources.
+
         :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID
         :param pulumi.Input[_builtins.str] comment: Optional remark describing the virtual network.
         :param pulumi.Input[_builtins.str] created_at: Timestamp of when the resource was created.
@@ -268,6 +270,7 @@ class TunnelVirtualNetwork(pulumi.CustomResource):
         $ pulumi import cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork example '<account_id>/<virtual_network_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID
@@ -302,6 +305,7 @@ class TunnelVirtualNetwork(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork example '<account_id>/<virtual_network_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TunnelVirtualNetworkArgs args: The arguments to use to populate this resource's properties.

@@ -29,6 +29,7 @@ class ApiShieldSchemaArgs:
                  validation_enabled: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApiShieldSchema resource.
+
         :param pulumi.Input[_builtins.str] file: Schema file bytes
         :param pulumi.Input[_builtins.str] kind: Kind of schema
                Available values: "openapi_v3".
@@ -134,6 +135,7 @@ class _ApiShieldSchemaState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApiShieldSchema resources.
+
         :param pulumi.Input[_builtins.str] file: Schema file bytes
         :param pulumi.Input[_builtins.str] kind: Kind of schema
                Available values: "openapi_v3".
@@ -306,6 +308,7 @@ class ApiShieldSchema(pulumi.CustomResource):
             validation_enabled="true")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] file: Schema file bytes
@@ -339,6 +342,7 @@ class ApiShieldSchema(pulumi.CustomResource):
             name="petstore schema",
             validation_enabled="true")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApiShieldSchemaArgs args: The arguments to use to populate this resource's properties.

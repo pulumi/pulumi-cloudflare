@@ -27,6 +27,7 @@ class DnsZoneTransfersPeerArgs:
                  tsig_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DnsZoneTransfersPeer resource.
+
         :param pulumi.Input[_builtins.str] name: The name of the peer.
         :param pulumi.Input[_builtins.str] ip: IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.
         :param pulumi.Input[_builtins.bool] ixfr_enable: Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones.
@@ -125,6 +126,7 @@ class _DnsZoneTransfersPeerState:
                  tsig_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DnsZoneTransfersPeer resources.
+
         :param pulumi.Input[_builtins.str] ip: IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.
         :param pulumi.Input[_builtins.bool] ixfr_enable: Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones.
         :param pulumi.Input[_builtins.str] name: The name of the peer.
@@ -245,6 +247,7 @@ class DnsZoneTransfersPeer(pulumi.CustomResource):
         $ pulumi import cloudflare:index/dnsZoneTransfersPeer:DnsZoneTransfersPeer example '<account_id>/<peer_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ip: IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.
@@ -276,6 +279,7 @@ class DnsZoneTransfersPeer(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/dnsZoneTransfersPeer:DnsZoneTransfersPeer example '<account_id>/<peer_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DnsZoneTransfersPeerArgs args: The arguments to use to populate this resource's properties.

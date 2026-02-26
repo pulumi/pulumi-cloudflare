@@ -28,6 +28,7 @@ class R2BucketEventNotificationArgs:
                  jurisdiction: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a R2BucketEventNotification resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account ID.
         :param pulumi.Input[_builtins.str] bucket_name: Name of the bucket.
         :param pulumi.Input[_builtins.str] queue_id: Queue ID.
@@ -113,6 +114,7 @@ class _R2BucketEventNotificationState:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['R2BucketEventNotificationRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering R2BucketEventNotification resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account ID.
         :param pulumi.Input[_builtins.str] bucket_name: Name of the bucket.
         :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction of the bucket
@@ -244,6 +246,7 @@ class R2BucketEventNotification(pulumi.CustomResource):
 
         > This resource does not currently support `pulumi import`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account ID.
@@ -283,6 +286,7 @@ class R2BucketEventNotification(pulumi.CustomResource):
         ## Import
 
         > This resource does not currently support `pulumi import`.
+
 
         :param str resource_name: The name of the resource.
         :param R2BucketEventNotificationArgs args: The arguments to use to populate this resource's properties.

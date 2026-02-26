@@ -27,6 +27,7 @@ class WebAnalyticsRuleArgs:
                  paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a WebAnalyticsRule resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] ruleset_id: The Web Analytics ruleset identifier.
         :param pulumi.Input[_builtins.bool] inclusive: Whether the rule includes or excludes traffic from being measured.
@@ -123,6 +124,7 @@ class _WebAnalyticsRuleState:
                  ruleset_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WebAnalyticsRule resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.bool] inclusive: Whether the rule includes or excludes traffic from being measured.
         :param pulumi.Input[_builtins.bool] is_paused: Whether the rule is paused or not.
@@ -263,6 +265,7 @@ class WebAnalyticsRule(pulumi.CustomResource):
 
         > This resource does not currently support `pulumi import`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -295,6 +298,7 @@ class WebAnalyticsRule(pulumi.CustomResource):
         ## Import
 
         > This resource does not currently support `pulumi import`.
+
 
         :param str resource_name: The name of the resource.
         :param WebAnalyticsRuleArgs args: The arguments to use to populate this resource's properties.

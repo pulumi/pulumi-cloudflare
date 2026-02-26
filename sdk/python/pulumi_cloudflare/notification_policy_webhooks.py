@@ -25,6 +25,7 @@ class NotificationPolicyWebhooksArgs:
                  secret: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NotificationPolicyWebhooks resource.
+
         :param pulumi.Input[_builtins.str] account_id: The account id
         :param pulumi.Input[_builtins.str] name: The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
         :param pulumi.Input[_builtins.str] url: The POST endpoint to call when dispatching a notification.
@@ -98,6 +99,7 @@ class _NotificationPolicyWebhooksState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NotificationPolicyWebhooks resources.
+
         :param pulumi.Input[_builtins.str] account_id: The account id
         :param pulumi.Input[_builtins.str] created_at: Timestamp of when the webhook destination was created.
         :param pulumi.Input[_builtins.str] last_failure: Timestamp of the last time an attempt to dispatch a notification to this webhook failed.
@@ -254,6 +256,7 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
         $ pulumi import cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks example '<account_id>/<webhook_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The account id
@@ -286,6 +289,7 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks example '<account_id>/<webhook_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NotificationPolicyWebhooksArgs args: The arguments to use to populate this resource's properties.

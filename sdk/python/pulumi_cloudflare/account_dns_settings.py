@@ -25,6 +25,7 @@ class AccountDnsSettingsArgs:
                  zone_defaults: Optional[pulumi.Input['AccountDnsSettingsZoneDefaultsArgs']] = None):
         """
         The set of arguments for constructing a AccountDnsSettings resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -60,6 +61,7 @@ class _AccountDnsSettingsState:
                  zone_defaults: Optional[pulumi.Input['AccountDnsSettingsZoneDefaultsArgs']] = None):
         """
         Input properties used for looking up and filtering AccountDnsSettings resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         """
         if account_id is not None:
@@ -136,6 +138,7 @@ class AccountDnsSettings(pulumi.CustomResource):
 
         > This resource does not currently support `pulumi import`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -183,6 +186,7 @@ class AccountDnsSettings(pulumi.CustomResource):
         ## Import
 
         > This resource does not currently support `pulumi import`.
+
 
         :param str resource_name: The name of the resource.
         :param AccountDnsSettingsArgs args: The arguments to use to populate this resource's properties.

@@ -26,6 +26,7 @@ class SchemaValidationSchemasArgs:
                  zone_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a SchemaValidationSchemas resource.
+
         :param pulumi.Input[_builtins.str] kind: The kind of the schema
                Available values: "openapi_v3".
         :param pulumi.Input[_builtins.str] name: A human-readable name for the schema
@@ -113,6 +114,7 @@ class _SchemaValidationSchemasState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SchemaValidationSchemas resources.
+
         :param pulumi.Input[_builtins.str] kind: The kind of the schema
                Available values: "openapi_v3".
         :param pulumi.Input[_builtins.str] name: A human-readable name for the schema
@@ -252,6 +254,7 @@ class SchemaValidationSchemas(pulumi.CustomResource):
         $ pulumi import cloudflare:index/schemaValidationSchemas:SchemaValidationSchemas example '<zone_id>/<schema_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] kind: The kind of the schema
@@ -287,6 +290,7 @@ class SchemaValidationSchemas(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/schemaValidationSchemas:SchemaValidationSchemas example '<zone_id>/<schema_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SchemaValidationSchemasArgs args: The arguments to use to populate this resource's properties.

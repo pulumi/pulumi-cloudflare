@@ -26,6 +26,7 @@ class WorkersCustomDomainArgs:
                  environment: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkersCustomDomain resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifer of the account.
         :param pulumi.Input[_builtins.str] hostname: Hostname of the Worker Domain.
         :param pulumi.Input[_builtins.str] service: Worker service associated with the zone and hostname.
@@ -115,6 +116,7 @@ class _WorkersCustomDomainState:
                  zone_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkersCustomDomain resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifer of the account.
         :param pulumi.Input[_builtins.str] environment: Worker environment associated with the zone and hostname.
         :param pulumi.Input[_builtins.str] hostname: Hostname of the Worker Domain.
@@ -245,6 +247,7 @@ class WorkersCustomDomain(pulumi.CustomResource):
         $ pulumi import cloudflare:index/workersCustomDomain:WorkersCustomDomain example '<account_id>/<domain_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifer of the account.
@@ -279,6 +282,7 @@ class WorkersCustomDomain(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/workersCustomDomain:WorkersCustomDomain example '<account_id>/<domain_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkersCustomDomainArgs args: The arguments to use to populate this resource's properties.

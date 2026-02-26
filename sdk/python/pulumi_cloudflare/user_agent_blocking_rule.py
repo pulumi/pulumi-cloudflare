@@ -28,6 +28,7 @@ class UserAgentBlockingRuleArgs:
                  paused: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a UserAgentBlockingRule resource.
+
         :param pulumi.Input[_builtins.str] mode: The action to apply to a matched request.
                Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         :param pulumi.Input[_builtins.str] zone_id: Defines an identifier.
@@ -111,6 +112,7 @@ class _UserAgentBlockingRuleState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserAgentBlockingRule resources.
+
         :param pulumi.Input[_builtins.str] description: An informative summary of the rule. This value is sanitized and any tags will be removed.
         :param pulumi.Input[_builtins.str] mode: The action to apply to a matched request.
                Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
@@ -223,6 +225,7 @@ class UserAgentBlockingRule(pulumi.CustomResource):
         $ pulumi import cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule example '<zone_id>/<ua_rule_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: An informative summary of the rule. This value is sanitized and any tags will be removed.
@@ -260,6 +263,7 @@ class UserAgentBlockingRule(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule example '<zone_id>/<ua_rule_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserAgentBlockingRuleArgs args: The arguments to use to populate this resource's properties.

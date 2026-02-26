@@ -28,6 +28,7 @@ class R2BucketSippyArgs:
                  source: Optional[pulumi.Input['R2BucketSippySourceArgs']] = None):
         """
         The set of arguments for constructing a R2BucketSippy resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account ID.
         :param pulumi.Input[_builtins.str] bucket_name: Name of the bucket.
         :param pulumi.Input['R2BucketSippyDestinationArgs'] destination: R2 bucket to copy objects to.
@@ -115,6 +116,7 @@ class _R2BucketSippyState:
                  source: Optional[pulumi.Input['R2BucketSippySourceArgs']] = None):
         """
         Input properties used for looking up and filtering R2BucketSippy resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account ID.
         :param pulumi.Input[_builtins.str] bucket_name: Name of the bucket.
         :param pulumi.Input['R2BucketSippyDestinationArgs'] destination: R2 bucket to copy objects to.
@@ -248,6 +250,7 @@ class R2BucketSippy(pulumi.CustomResource):
 
         > This resource does not currently support `pulumi import`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account ID.
@@ -289,6 +292,7 @@ class R2BucketSippy(pulumi.CustomResource):
         ## Import
 
         > This resource does not currently support `pulumi import`.
+
 
         :param str resource_name: The name of the resource.
         :param R2BucketSippyArgs args: The arguments to use to populate this resource's properties.

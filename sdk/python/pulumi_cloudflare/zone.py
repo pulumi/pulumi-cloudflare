@@ -28,6 +28,7 @@ class ZoneArgs:
                  vanity_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Zone resource.
+
         :param pulumi.Input[_builtins.str] name: The domain name.
         :param pulumi.Input[_builtins.bool] paused: Indicates whether the zone is only using Cloudflare DNS services. A
                true value means the zone will not receive security or performance
@@ -137,6 +138,7 @@ class _ZoneState:
                  verification_key: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Zone resources.
+
         :param pulumi.Input[_builtins.str] activated_on: The last time proof of ownership was detected and the zone was made
                active.
         :param pulumi.Input[_builtins.str] cname_suffix: Allows the customer to use a custom apex.
@@ -538,6 +540,7 @@ class Zone(pulumi.CustomResource):
         $ pulumi import cloudflare:index/zone:Zone example '<zone_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The domain name.
@@ -578,6 +581,7 @@ class Zone(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/zone:Zone example '<zone_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZoneArgs args: The arguments to use to populate this resource's properties.

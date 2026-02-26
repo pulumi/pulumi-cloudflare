@@ -34,6 +34,7 @@ class DnsRecordArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DnsRecord resource.
+
         :param pulumi.Input[_builtins.str] name: DNS record name (or @ for the zone apex) in Punycode.
         :param pulumi.Input[_builtins.float] ttl: Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
         :param pulumi.Input[_builtins.str] type: Record type.
@@ -222,6 +223,7 @@ class _DnsRecordState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DnsRecord resources.
+
         :param pulumi.Input[_builtins.str] comment: Comments or notes about the DNS record. This field has no effect on DNS responses.
         :param pulumi.Input[_builtins.str] comment_modified_on: When the record comment was last modified. Omitted if there is no comment.
         :param pulumi.Input[_builtins.str] content: A valid IPv4 address.
@@ -528,6 +530,7 @@ class DnsRecord(pulumi.CustomResource):
         $ pulumi import cloudflare:index/dnsRecord:DnsRecord example '<zone_id>/<dns_record_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: Comments or notes about the DNS record. This field has no effect on DNS responses.
@@ -576,6 +579,7 @@ class DnsRecord(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/dnsRecord:DnsRecord example '<zone_id>/<dns_record_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DnsRecordArgs args: The arguments to use to populate this resource's properties.

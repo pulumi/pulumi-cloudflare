@@ -29,6 +29,7 @@ class AddressMapArgs:
                  memberships: Optional[pulumi.Input[Sequence[pulumi.Input['AddressMapMembershipArgs']]]] = None):
         """
         The set of arguments for constructing a AddressMap resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier of a Cloudflare account.
         :param pulumi.Input[_builtins.str] default_sni: If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.
         :param pulumi.Input[_builtins.str] description: An optional description field which may be used to describe the types of IPs or zones on the map.
@@ -132,6 +133,7 @@ class _AddressMapState:
                  modified_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AddressMap resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier of a Cloudflare account.
         :param pulumi.Input[_builtins.bool] can_delete: If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
         :param pulumi.Input[_builtins.bool] can_modify_ips: If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps.
@@ -310,6 +312,7 @@ class AddressMap(pulumi.CustomResource):
         $ pulumi import cloudflare:index/addressMap:AddressMap example '<account_id>/<address_map_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier of a Cloudflare account.
@@ -347,6 +350,7 @@ class AddressMap(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/addressMap:AddressMap example '<account_id>/<address_map_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AddressMapArgs args: The arguments to use to populate this resource's properties.

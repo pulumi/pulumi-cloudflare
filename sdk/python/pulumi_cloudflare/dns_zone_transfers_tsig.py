@@ -25,6 +25,7 @@ class DnsZoneTransfersTsigArgs:
                  secret: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a DnsZoneTransfersTsig resource.
+
         :param pulumi.Input[_builtins.str] algo: TSIG algorithm.
         :param pulumi.Input[_builtins.str] name: TSIG key name.
         :param pulumi.Input[_builtins.str] secret: TSIG secret.
@@ -89,6 +90,7 @@ class _DnsZoneTransfersTsigState:
                  secret: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DnsZoneTransfersTsig resources.
+
         :param pulumi.Input[_builtins.str] algo: TSIG algorithm.
         :param pulumi.Input[_builtins.str] name: TSIG key name.
         :param pulumi.Input[_builtins.str] secret: TSIG secret.
@@ -179,6 +181,7 @@ class DnsZoneTransfersTsig(pulumi.CustomResource):
         $ pulumi import cloudflare:index/dnsZoneTransfersTsig:DnsZoneTransfersTsig example '<account_id>/<tsig_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] algo: TSIG algorithm.
@@ -210,6 +213,7 @@ class DnsZoneTransfersTsig(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/dnsZoneTransfersTsig:DnsZoneTransfersTsig example '<account_id>/<tsig_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DnsZoneTransfersTsigArgs args: The arguments to use to populate this resource's properties.

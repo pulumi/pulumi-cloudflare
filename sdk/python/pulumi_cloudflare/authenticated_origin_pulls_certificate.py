@@ -24,6 +24,7 @@ class AuthenticatedOriginPullsCertificateArgs:
                  zone_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a AuthenticatedOriginPullsCertificate resource.
+
         :param pulumi.Input[_builtins.str] certificate: The zone's leaf certificate.
         :param pulumi.Input[_builtins.str] private_key: The zone's private key.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
@@ -84,6 +85,7 @@ class _AuthenticatedOriginPullsCertificateState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuthenticatedOriginPullsCertificate resources.
+
         :param pulumi.Input[_builtins.str] certificate: The zone's leaf certificate.
         :param pulumi.Input[_builtins.str] certificate_id: Identifier.
         :param pulumi.Input[_builtins.bool] enabled: Indicates whether zone-level authenticated origin pulls is enabled.
@@ -317,6 +319,7 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
 
         > This resource does not currently support `pulumi import`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] certificate: The zone's leaf certificate.
@@ -396,6 +399,7 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
         ## Import
 
         > This resource does not currently support `pulumi import`.
+
 
         :param str resource_name: The name of the resource.
         :param AuthenticatedOriginPullsCertificateArgs args: The arguments to use to populate this resource's properties.

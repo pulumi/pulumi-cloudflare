@@ -23,6 +23,7 @@ class WaitingRoomSettingsArgs:
                  search_engine_crawler_bypass: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a WaitingRoomSettings resource.
+
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.bool] search_engine_crawler_bypass: Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
                Verified search engine crawlers will not be tracked or counted by the waiting room system,
@@ -66,6 +67,7 @@ class _WaitingRoomSettingsState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WaitingRoomSettings resources.
+
         :param pulumi.Input[_builtins.bool] search_engine_crawler_bypass: Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
                Verified search engine crawlers will not be tracked or counted by the waiting room system,
                and will not appear in waiting room analytics.
@@ -130,6 +132,7 @@ class WaitingRoomSettings(pulumi.CustomResource):
         $ pulumi import cloudflare:index/waitingRoomSettings:WaitingRoomSettings example '<zone_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] search_engine_crawler_bypass: Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
@@ -160,6 +163,7 @@ class WaitingRoomSettings(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/waitingRoomSettings:WaitingRoomSettings example '<zone_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WaitingRoomSettingsArgs args: The arguments to use to populate this resource's properties.

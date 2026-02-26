@@ -61,6 +61,7 @@ class AccessApplicationArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccessApplication resource.
+
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[_builtins.bool] allow_authenticate_via_warp: When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
         :param pulumi.Input[_builtins.bool] allow_iframe: Enables loading application content in an iFrame.
@@ -684,6 +685,7 @@ class _AccessApplicationState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessApplication resources.
+
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[_builtins.bool] allow_authenticate_via_warp: When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
         :param pulumi.Input[_builtins.bool] allow_iframe: Enables loading application content in an iFrame.
@@ -1337,6 +1339,7 @@ class AccessApplication(pulumi.CustomResource):
         $ pulumi import cloudflare:index/accessApplication:AccessApplication example '<{accounts|zones}/{account_id|zone_id}>/<app_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
@@ -1396,6 +1399,7 @@ class AccessApplication(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/accessApplication:AccessApplication example '<{accounts|zones}/{account_id|zone_id}>/<app_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccessApplicationArgs args: The arguments to use to populate this resource's properties.

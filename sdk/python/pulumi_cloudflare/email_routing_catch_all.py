@@ -28,6 +28,7 @@ class EmailRoutingCatchAllArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EmailRoutingCatchAll resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['EmailRoutingCatchAllActionArgs']]] actions: List actions for the catch-all routing rule.
         :param pulumi.Input[Sequence[pulumi.Input['EmailRoutingCatchAllMatcherArgs']]] matchers: List of matchers for the catch-all routing rule.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
@@ -114,6 +115,7 @@ class _EmailRoutingCatchAllState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EmailRoutingCatchAll resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['EmailRoutingCatchAllActionArgs']]] actions: List actions for the catch-all routing rule.
         :param pulumi.Input[_builtins.bool] enabled: Routing rule status.
         :param pulumi.Input[Sequence[pulumi.Input['EmailRoutingCatchAllMatcherArgs']]] matchers: List of matchers for the catch-all routing rule.
@@ -249,6 +251,7 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
         $ pulumi import cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll example '<zone_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingCatchAllActionArgs', 'EmailRoutingCatchAllActionArgsDict']]]] actions: List actions for the catch-all routing rule.
@@ -288,6 +291,7 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll example '<zone_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EmailRoutingCatchAllArgs args: The arguments to use to populate this resource's properties.

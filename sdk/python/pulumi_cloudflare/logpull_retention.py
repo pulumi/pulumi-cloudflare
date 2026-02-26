@@ -23,6 +23,7 @@ class LogpullRetentionArgs:
                  flag: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a LogpullRetention resource.
+
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.bool] flag: The log retention flag for Logpull API.
         """
@@ -62,6 +63,7 @@ class _LogpullRetentionState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LogpullRetention resources.
+
         :param pulumi.Input[_builtins.bool] flag: The log retention flag for Logpull API.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -122,6 +124,7 @@ class LogpullRetention(pulumi.CustomResource):
         $ pulumi import cloudflare:index/logpullRetention:LogpullRetention example '<zone_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] flag: The log retention flag for Logpull API.
@@ -150,6 +153,7 @@ class LogpullRetention(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/logpullRetention:LogpullRetention example '<zone_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LogpullRetentionArgs args: The arguments to use to populate this resource's properties.

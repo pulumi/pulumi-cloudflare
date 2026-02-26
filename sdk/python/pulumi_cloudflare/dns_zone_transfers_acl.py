@@ -24,6 +24,7 @@ class DnsZoneTransfersAclArgs:
                  name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a DnsZoneTransfersAcl resource.
+
         :param pulumi.Input[_builtins.str] ip_range: Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively.
         :param pulumi.Input[_builtins.str] name: The name of the acl.
         """
@@ -73,6 +74,7 @@ class _DnsZoneTransfersAclState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DnsZoneTransfersAcl resources.
+
         :param pulumi.Input[_builtins.str] ip_range: Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively.
         :param pulumi.Input[_builtins.str] name: The name of the acl.
         """
@@ -146,6 +148,7 @@ class DnsZoneTransfersAcl(pulumi.CustomResource):
         $ pulumi import cloudflare:index/dnsZoneTransfersAcl:DnsZoneTransfersAcl example '<account_id>/<acl_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ip_range: Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively.
@@ -175,6 +178,7 @@ class DnsZoneTransfersAcl(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/dnsZoneTransfersAcl:DnsZoneTransfersAcl example '<account_id>/<acl_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DnsZoneTransfersAclArgs args: The arguments to use to populate this resource's properties.

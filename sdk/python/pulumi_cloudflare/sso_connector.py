@@ -28,6 +28,7 @@ class SsoConnectorArgs:
                  use_fedramp_language: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a SsoConnector resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
         :param pulumi.Input[_builtins.str] email_domain: Email domain of the new SSO connector
         :param pulumi.Input[_builtins.bool] begin_verification: Begin the verification process after creation
@@ -117,6 +118,7 @@ class _SsoConnectorState:
                  verification: Optional[pulumi.Input['SsoConnectorVerificationArgs']] = None):
         """
         Input properties used for looking up and filtering SsoConnector resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
         :param pulumi.Input[_builtins.bool] begin_verification: Begin the verification process after creation
         :param pulumi.Input[_builtins.str] created_on: Timestamp for the creation of the SSO connector
@@ -268,6 +270,7 @@ class SsoConnector(pulumi.CustomResource):
         $ pulumi import cloudflare:index/ssoConnector:SsoConnector example '<account_id>/<sso_connector_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
@@ -301,6 +304,7 @@ class SsoConnector(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/ssoConnector:SsoConnector example '<account_id>/<sso_connector_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SsoConnectorArgs args: The arguments to use to populate this resource's properties.

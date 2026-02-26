@@ -26,6 +26,7 @@ class WorkersKvArgs:
                  metadata: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkersKv resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] key_name: A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
         :param pulumi.Input[_builtins.str] namespace_id: Namespace identifier tag.
@@ -110,6 +111,7 @@ class _WorkersKvState:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkersKv resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] key_name: A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
         :param pulumi.Input[_builtins.str] metadata: Associates arbitrary JSON data with a key/value pair.
@@ -221,6 +223,7 @@ class WorkersKv(pulumi.CustomResource):
         $ pulumi import cloudflare:index/workersKv:WorkersKv example '<account_id>/<namespace_id>/<key_name>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -255,6 +258,7 @@ class WorkersKv(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/workersKv:WorkersKv example '<account_id>/<namespace_id>/<key_name>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkersKvArgs args: The arguments to use to populate this resource's properties.

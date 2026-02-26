@@ -23,6 +23,7 @@ class ArgoSmartRoutingArgs:
                  zone_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ArgoSmartRouting resource.
+
         :param pulumi.Input[_builtins.str] value: Specifies the enablement value of Argo Smart Routing.
                Available values: "on", "off".
         :param pulumi.Input[_builtins.str] zone_id: Specifies the zone associated with the API call.
@@ -65,6 +66,7 @@ class _ArgoSmartRoutingState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ArgoSmartRouting resources.
+
         :param pulumi.Input[_builtins.bool] editable: Specifies if the setting is editable.
         :param pulumi.Input[_builtins.str] modified_on: Specifies the time when the setting was last modified.
         :param pulumi.Input[_builtins.str] value: Specifies the enablement value of Argo Smart Routing.
@@ -157,6 +159,7 @@ class ArgoSmartRouting(pulumi.CustomResource):
         $ pulumi import cloudflare:index/argoSmartRouting:ArgoSmartRouting example '<zone_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] value: Specifies the enablement value of Argo Smart Routing.
@@ -186,6 +189,7 @@ class ArgoSmartRouting(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/argoSmartRouting:ArgoSmartRouting example '<zone_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ArgoSmartRoutingArgs args: The arguments to use to populate this resource's properties.

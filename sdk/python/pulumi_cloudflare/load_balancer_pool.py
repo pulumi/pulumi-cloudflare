@@ -38,6 +38,7 @@ class LoadBalancerPoolArgs:
                  origin_steering: Optional[pulumi.Input['LoadBalancerPoolOriginSteeringArgs']] = None):
         """
         The set of arguments for constructing a LoadBalancerPool resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] name: A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginArgs']]] origins: The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
@@ -287,6 +288,7 @@ class _LoadBalancerPoolState:
                  origins: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginArgs']]]] = None):
         """
         Input properties used for looking up and filtering LoadBalancerPool resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] check_regions: A list of regions from which to run health checks. Null means every Cloudflare data center.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the pool.
@@ -645,6 +647,7 @@ class LoadBalancerPool(pulumi.CustomResource):
         $ pulumi import cloudflare:index/loadBalancerPool:LoadBalancerPool example '<account_id>/<pool_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -724,6 +727,7 @@ class LoadBalancerPool(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/loadBalancerPool:LoadBalancerPool example '<account_id>/<pool_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LoadBalancerPoolArgs args: The arguments to use to populate this resource's properties.

@@ -29,6 +29,7 @@ class CustomHostnameArgs:
                  custom_origin_sni: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CustomHostname resource.
+
         :param pulumi.Input[_builtins.str] hostname: The custom hostname that will point to your hostname via CNAME.
         :param pulumi.Input['CustomHostnameSslArgs'] ssl: SSL properties used when creating the custom hostname.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
@@ -135,6 +136,7 @@ class _CustomHostnameState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CustomHostname resources.
+
         :param pulumi.Input[_builtins.str] created_at: This is the time the hostname was created.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_metadata: Unique key/value metadata for this hostname. These are per-hostname (customer) settings.
         :param pulumi.Input[_builtins.str] custom_origin_server: a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record.
@@ -399,6 +401,7 @@ class CustomHostname(pulumi.CustomResource):
         $ pulumi import cloudflare:index/customHostname:CustomHostname example '<zone_id>/<custom_hostname_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_metadata: Unique key/value metadata for this hostname. These are per-hostname (customer) settings.
@@ -494,6 +497,7 @@ class CustomHostname(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/customHostname:CustomHostname example '<zone_id>/<custom_hostname_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CustomHostnameArgs args: The arguments to use to populate this resource's properties.

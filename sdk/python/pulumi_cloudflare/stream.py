@@ -33,6 +33,7 @@ class StreamArgs:
                  upload_expiry: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Stream resource.
+
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
         :param pulumi.Input[_builtins.str] creator: A user-defined identifier for the media creator.
@@ -215,6 +216,7 @@ class _StreamState:
                  watermark: Optional[pulumi.Input['StreamWatermarkArgs']] = None):
         """
         Input properties used for looking up and filtering Stream resources.
+
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
         :param pulumi.Input[_builtins.str] created: The date and time the media item was created.
@@ -612,6 +614,7 @@ class Stream(pulumi.CustomResource):
 
         > This resource does not currently support `pulumi import`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
@@ -644,6 +647,7 @@ class Stream(pulumi.CustomResource):
         ## Import
 
         > This resource does not currently support `pulumi import`.
+
 
         :param str resource_name: The name of the resource.
         :param StreamArgs args: The arguments to use to populate this resource's properties.

@@ -26,6 +26,7 @@ class CloudforceOneRequestAssetArgs:
                  source: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CloudforceOneRequestAsset resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.int] page: Page number of results.
         :param pulumi.Input[_builtins.int] per_page: Number of results per page.
@@ -114,6 +115,7 @@ class _CloudforceOneRequestAssetState:
                  source: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CloudforceOneRequestAsset resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] created: Defines the asset creation time.
         :param pulumi.Input[_builtins.str] description: Asset description.
@@ -284,6 +286,7 @@ class CloudforceOneRequestAsset(pulumi.CustomResource):
         $ pulumi import cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset example '<account_id>/<request_id>/<asset_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -317,6 +320,7 @@ class CloudforceOneRequestAsset(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset example '<account_id>/<request_id>/<asset_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CloudforceOneRequestAssetArgs args: The arguments to use to populate this resource's properties.

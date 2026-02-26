@@ -23,6 +23,7 @@ class StreamDownloadArgs:
                  identifier: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a StreamDownload resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] identifier: A Cloudflare-generated unique identifier for a media item.
         """
@@ -61,6 +62,7 @@ class _StreamDownloadState:
                  identifier: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StreamDownload resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] identifier: A Cloudflare-generated unique identifier for a media item.
         """
@@ -119,6 +121,7 @@ class StreamDownload(pulumi.CustomResource):
 
         > This resource does not currently support `pulumi import`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -145,6 +148,7 @@ class StreamDownload(pulumi.CustomResource):
         ## Import
 
         > This resource does not currently support `pulumi import`.
+
 
         :param str resource_name: The name of the resource.
         :param StreamDownloadArgs args: The arguments to use to populate this resource's properties.

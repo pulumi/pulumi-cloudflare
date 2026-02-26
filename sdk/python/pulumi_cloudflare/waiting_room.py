@@ -45,6 +45,7 @@ class WaitingRoomArgs:
                  turnstile_mode: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WaitingRoom resource.
+
         :param pulumi.Input[_builtins.str] host: The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique.
         :param pulumi.Input[_builtins.str] name: A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed.
         :param pulumi.Input[_builtins.int] new_users_per_minute: Sets the number of new users that will be let into the route every minute. This value is used as baseline for the number of users that are let in per minute. So it is possible that there is a little more or little less traffic coming to the route based on the traffic patterns at that time around the world.
@@ -618,6 +619,7 @@ class _WaitingRoomState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WaitingRoom resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['WaitingRoomAdditionalRouteArgs']]] additional_routes: Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. The hostname and path combination must be unique to this and all other waiting rooms.
         :param pulumi.Input['WaitingRoomCookieAttributesArgs'] cookie_attributes: Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position.
         :param pulumi.Input[_builtins.str] cookie_suffix: Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(_*cf*waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additional_routes`.
@@ -1290,6 +1292,7 @@ class WaitingRoom(pulumi.CustomResource):
         $ pulumi import cloudflare:index/waitingRoom:WaitingRoom example '<zone_id>/<waiting_room_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WaitingRoomAdditionalRouteArgs', 'WaitingRoomAdditionalRouteArgsDict']]]] additional_routes: Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. The hostname and path combination must be unique to this and all other waiting rooms.
@@ -1471,6 +1474,7 @@ class WaitingRoom(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/waitingRoom:WaitingRoom example '<zone_id>/<waiting_room_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WaitingRoomArgs args: The arguments to use to populate this resource's properties.

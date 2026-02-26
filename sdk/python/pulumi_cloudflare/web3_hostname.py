@@ -26,6 +26,7 @@ class Web3HostnameArgs:
                  dnslink: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Web3Hostname resource.
+
         :param pulumi.Input[_builtins.str] name: Specify the hostname that points to the target gateway via CNAME.
         :param pulumi.Input[_builtins.str] target: Specify the target gateway of the hostname.
                Available values: "ethereum", "ipfs", "ipfs*universal*path".
@@ -116,6 +117,7 @@ class _Web3HostnameState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Web3Hostname resources.
+
         :param pulumi.Input[_builtins.str] description: Specify an optional description of the hostname.
         :param pulumi.Input[_builtins.str] dnslink: Specify the DNSLink value used if the target is ipfs.
         :param pulumi.Input[_builtins.str] name: Specify the hostname that points to the target gateway via CNAME.
@@ -268,6 +270,7 @@ class Web3Hostname(pulumi.CustomResource):
         $ pulumi import cloudflare:index/web3Hostname:Web3Hostname example '<zone_id>/<identifier>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Specify an optional description of the hostname.
@@ -303,6 +306,7 @@ class Web3Hostname(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/web3Hostname:Web3Hostname example '<zone_id>/<identifier>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param Web3HostnameArgs args: The arguments to use to populate this resource's properties.

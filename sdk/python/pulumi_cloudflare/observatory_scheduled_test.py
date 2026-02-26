@@ -25,6 +25,7 @@ class ObservatoryScheduledTestArgs:
                  zone_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ObservatoryScheduledTest resource.
+
         :param pulumi.Input[_builtins.str] url: A URL.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -67,6 +68,7 @@ class _ObservatoryScheduledTestState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ObservatoryScheduledTest resources.
+
         :param pulumi.Input[_builtins.str] frequency: The frequency of the test.
                Available values: "DAILY", "WEEKLY".
         :param pulumi.Input[_builtins.str] region: A test region.
@@ -187,6 +189,7 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
         $ pulumi import cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest example '<zone_id>/<url>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] url: A URL.
@@ -215,6 +218,7 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest example '<zone_id>/<url>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ObservatoryScheduledTestArgs args: The arguments to use to populate this resource's properties.

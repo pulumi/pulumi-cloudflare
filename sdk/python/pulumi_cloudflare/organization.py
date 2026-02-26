@@ -166,6 +166,7 @@ class Organization(pulumi.CustomResource):
         $ pulumi import cloudflare:index/organization:Organization example '<organization_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -201,6 +202,7 @@ class Organization(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/organization:Organization example '<organization_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OrganizationArgs args: The arguments to use to populate this resource's properties.

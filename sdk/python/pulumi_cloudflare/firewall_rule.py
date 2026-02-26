@@ -26,6 +26,7 @@ class FirewallRuleArgs:
                  zone_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a FirewallRule resource.
+
         :param pulumi.Input['FirewallRuleActionArgs'] action: The action to perform when the threshold of matched traffic within the configured period is exceeded.
         :param pulumi.Input[_builtins.str] zone_id: Defines an identifier.
         """
@@ -80,6 +81,7 @@ class _FirewallRuleState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FirewallRule resources.
+
         :param pulumi.Input['FirewallRuleActionArgs'] action: The action to perform when the threshold of matched traffic within the configured period is exceeded.
         :param pulumi.Input[_builtins.str] description: An informative summary of the firewall rule.
         :param pulumi.Input[_builtins.bool] paused: When true, indicates that the firewall rule is currently paused.
@@ -242,6 +244,7 @@ class FirewallRule(pulumi.CustomResource):
         $ pulumi import cloudflare:index/firewallRule:FirewallRule example '<zone_id>/<rule_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['FirewallRuleActionArgs', 'FirewallRuleActionArgsDict']] action: The action to perform when the threshold of matched traffic within the configured period is exceeded.
@@ -289,6 +292,7 @@ class FirewallRule(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/firewallRule:FirewallRule example '<zone_id>/<rule_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FirewallRuleArgs args: The arguments to use to populate this resource's properties.

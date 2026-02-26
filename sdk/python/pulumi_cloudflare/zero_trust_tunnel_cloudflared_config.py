@@ -27,6 +27,7 @@ class ZeroTrustTunnelCloudflaredConfigArgs:
                  source: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustTunnelCloudflaredConfig resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] tunnel_id: UUID of the tunnel.
         :param pulumi.Input['ZeroTrustTunnelCloudflaredConfigConfigArgs'] config: The tunnel configuration and ingress rules.
@@ -101,6 +102,7 @@ class _ZeroTrustTunnelCloudflaredConfigState:
                  version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustTunnelCloudflaredConfig resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input['ZeroTrustTunnelCloudflaredConfigConfigArgs'] config: The tunnel configuration and ingress rules.
         :param pulumi.Input[_builtins.str] source: Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
@@ -270,6 +272,7 @@ class ZeroTrustTunnelCloudflaredConfig(pulumi.CustomResource):
         $ pulumi import cloudflare:index/zeroTrustTunnelCloudflaredConfig:ZeroTrustTunnelCloudflaredConfig example '<account_id>/<tunnel_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -350,6 +353,7 @@ class ZeroTrustTunnelCloudflaredConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/zeroTrustTunnelCloudflaredConfig:ZeroTrustTunnelCloudflaredConfig example '<account_id>/<tunnel_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustTunnelCloudflaredConfigArgs args: The arguments to use to populate this resource's properties.

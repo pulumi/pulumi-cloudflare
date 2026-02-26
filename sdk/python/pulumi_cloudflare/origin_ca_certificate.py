@@ -25,6 +25,7 @@ class OriginCaCertificateArgs:
                  requested_validity: Optional[pulumi.Input[_builtins.float]] = None):
         """
         The set of arguments for constructing a OriginCaCertificate resource.
+
         :param pulumi.Input[_builtins.str] csr: The Certificate Signing Request (CSR). Must be newline-encoded.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
         :param pulumi.Input[_builtins.str] request_type: Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
@@ -100,6 +101,7 @@ class _OriginCaCertificateState:
                  requested_validity: Optional[pulumi.Input[_builtins.float]] = None):
         """
         Input properties used for looking up and filtering OriginCaCertificate resources.
+
         :param pulumi.Input[_builtins.str] certificate: The Origin CA certificate. Will be newline-encoded.
         :param pulumi.Input[_builtins.str] csr: The Certificate Signing Request (CSR). Must be newline-encoded.
         :param pulumi.Input[_builtins.str] expires_on: When the certificate will expire.
@@ -248,6 +250,7 @@ class OriginCaCertificate(pulumi.CustomResource):
         $ pulumi import cloudflare:index/originCaCertificate:OriginCaCertificate example '<certificate_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] csr: The Certificate Signing Request (CSR). Must be newline-encoded.
@@ -302,6 +305,7 @@ class OriginCaCertificate(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/originCaCertificate:OriginCaCertificate example '<certificate_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OriginCaCertificateArgs args: The arguments to use to populate this resource's properties.

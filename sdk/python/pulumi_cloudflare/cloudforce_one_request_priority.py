@@ -26,6 +26,7 @@ class CloudforceOneRequestPriorityArgs:
                  tlp: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a CloudforceOneRequestPriority resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] labels: List of labels.
         :param pulumi.Input[_builtins.int] priority: Priority.
@@ -121,6 +122,7 @@ class _CloudforceOneRequestPriorityState:
                  updated: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CloudforceOneRequestPriority resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] content: Request content.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] labels: List of labels.
@@ -377,6 +379,7 @@ class CloudforceOneRequestPriority(pulumi.CustomResource):
         $ pulumi import cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority example '<account_id>/<priority_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -415,6 +418,7 @@ class CloudforceOneRequestPriority(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority example '<account_id>/<priority_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CloudforceOneRequestPriorityArgs args: The arguments to use to populate this resource's properties.

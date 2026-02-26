@@ -28,6 +28,7 @@ class D1DatabaseArgs:
                  read_replication: Optional[pulumi.Input['D1DatabaseReadReplicationArgs']] = None):
         """
         The set of arguments for constructing a D1Database resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
         :param pulumi.Input[_builtins.str] name: D1 database name.
         :param pulumi.Input[_builtins.str] jurisdiction: Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
@@ -123,6 +124,7 @@ class _D1DatabaseState:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering D1Database resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
         :param pulumi.Input[_builtins.str] created_at: Specifies the timestamp the resource was created as an ISO8601 string.
         :param pulumi.Input[_builtins.float] file_size: The D1 database's size, in bytes.
@@ -307,6 +309,7 @@ class D1Database(pulumi.CustomResource):
         $ pulumi import cloudflare:index/d1Database:D1Database example '<account_id>/<database_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
@@ -345,6 +348,7 @@ class D1Database(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/d1Database:D1Database example '<account_id>/<database_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param D1DatabaseArgs args: The arguments to use to populate this resource's properties.

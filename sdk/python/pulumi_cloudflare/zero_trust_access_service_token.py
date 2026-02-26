@@ -27,6 +27,7 @@ class ZeroTrustAccessServiceTokenArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustAccessServiceToken resource.
+
         :param pulumi.Input[_builtins.str] name: The name of the service token.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[_builtins.float] client_secret_version: A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
@@ -133,6 +134,7 @@ class _ZeroTrustAccessServiceTokenState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustAccessServiceToken resources.
+
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[_builtins.str] client_id: The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.
         :param pulumi.Input[_builtins.str] client_secret: The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
@@ -301,6 +303,7 @@ class ZeroTrustAccessServiceToken(pulumi.CustomResource):
         $ pulumi import cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken example '<{accounts|zones}/{account_id|zone_id}>/<service_token_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
@@ -336,6 +339,7 @@ class ZeroTrustAccessServiceToken(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken example '<{accounts|zones}/{account_id|zone_id}>/<service_token_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustAccessServiceTokenArgs args: The arguments to use to populate this resource's properties.

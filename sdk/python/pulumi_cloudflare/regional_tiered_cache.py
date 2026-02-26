@@ -23,6 +23,7 @@ class RegionalTieredCacheArgs:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegionalTieredCache resource.
+
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.str] value: Value of the Regional Tiered Cache zone setting.
                Available values: "on", "off".
@@ -66,6 +67,7 @@ class _RegionalTieredCacheState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionalTieredCache resources.
+
         :param pulumi.Input[_builtins.bool] editable: Whether the setting is editable.
         :param pulumi.Input[_builtins.str] modified_on: Last time this setting was modified.
         :param pulumi.Input[_builtins.str] value: Value of the Regional Tiered Cache zone setting.
@@ -158,6 +160,7 @@ class RegionalTieredCache(pulumi.CustomResource):
         $ pulumi import cloudflare:index/regionalTieredCache:RegionalTieredCache example '<zone_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] value: Value of the Regional Tiered Cache zone setting.
@@ -187,6 +190,7 @@ class RegionalTieredCache(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/regionalTieredCache:RegionalTieredCache example '<zone_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RegionalTieredCacheArgs args: The arguments to use to populate this resource's properties.

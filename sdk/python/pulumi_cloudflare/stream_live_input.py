@@ -29,6 +29,7 @@ class StreamLiveInputArgs:
                  recording: Optional[pulumi.Input['StreamLiveInputRecordingArgs']] = None):
         """
         The set of arguments for constructing a StreamLiveInput resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] default_creator: Sets the creator ID asssociated with this live input.
         :param pulumi.Input[_builtins.float] delete_recording_after_days: Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
@@ -142,6 +143,7 @@ class _StreamLiveInputState:
                  web_rtc_playback: Optional[pulumi.Input['StreamLiveInputWebRtcPlaybackArgs']] = None):
         """
         Input properties used for looking up and filtering StreamLiveInput resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] created: The date and time the live input was created.
         :param pulumi.Input[_builtins.str] default_creator: Sets the creator ID asssociated with this live input.
@@ -407,6 +409,7 @@ class StreamLiveInput(pulumi.CustomResource):
 
         > This resource does not currently support `pulumi import`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -428,6 +431,7 @@ class StreamLiveInput(pulumi.CustomResource):
         ## Import
 
         > This resource does not currently support `pulumi import`.
+
 
         :param str resource_name: The name of the resource.
         :param StreamLiveInputArgs args: The arguments to use to populate this resource's properties.

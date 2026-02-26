@@ -46,6 +46,7 @@ class ZeroTrustDeviceCustomProfileArgs:
                  tunnel_protocol: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustDeviceCustomProfile resource.
+
         :param pulumi.Input[_builtins.str] match: The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
         :param pulumi.Input[_builtins.str] name: The name of the device settings profile.
         :param pulumi.Input[_builtins.bool] allow_mode_switch: Whether to allow the user to switch WARP between modes.
@@ -416,6 +417,7 @@ class _ZeroTrustDeviceCustomProfileState:
                  tunnel_protocol: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustDeviceCustomProfile resources.
+
         :param pulumi.Input[_builtins.bool] allow_mode_switch: Whether to allow the user to switch WARP between modes.
         :param pulumi.Input[_builtins.bool] allow_updates: Whether to receive update notifications when a new version of the client is available.
         :param pulumi.Input[_builtins.bool] allowed_to_leave: Whether to allow devices to leave the organization.
@@ -893,6 +895,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
         $ pulumi import cloudflare:index/zeroTrustDeviceCustomProfile:ZeroTrustDeviceCustomProfile example '<account_id>/<policy_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_mode_switch: Whether to allow the user to switch WARP between modes.
@@ -970,6 +973,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/zeroTrustDeviceCustomProfile:ZeroTrustDeviceCustomProfile example '<account_id>/<policy_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustDeviceCustomProfileArgs args: The arguments to use to populate this resource's properties.

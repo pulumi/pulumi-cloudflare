@@ -32,6 +32,7 @@ class MagicTransitSiteLanArgs:
                  vlan_tag: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a MagicTransitSiteLan resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.str] site_id: Identifier
         :param pulumi.Input[_builtins.bool] ha_link: mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
@@ -165,6 +166,7 @@ class _MagicTransitSiteLanState:
                  vlan_tag: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering MagicTransitSiteLan resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.bool] ha_link: mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
         :param pulumi.Input[_builtins.str] site_id: Identifier
@@ -353,6 +355,7 @@ class MagicTransitSiteLan(pulumi.CustomResource):
         $ pulumi import cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan example '<account_id>/<site_id>/<lan_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier
@@ -416,6 +419,7 @@ class MagicTransitSiteLan(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan example '<account_id>/<site_id>/<lan_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MagicTransitSiteLanArgs args: The arguments to use to populate this resource's properties.

@@ -27,6 +27,7 @@ class DeviceManagedNetworksArgs:
                  type: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a DeviceManagedNetworks resource.
+
         :param pulumi.Input['DeviceManagedNetworksConfigArgs'] config: The configuration object containing information for the WARP client to detect the managed network.
         :param pulumi.Input[_builtins.str] name: The name of the device managed network. This name must be unique.
         :param pulumi.Input[_builtins.str] type: The type of device managed network.
@@ -94,6 +95,7 @@ class _DeviceManagedNetworksState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DeviceManagedNetworks resources.
+
         :param pulumi.Input['DeviceManagedNetworksConfigArgs'] config: The configuration object containing information for the WARP client to detect the managed network.
         :param pulumi.Input[_builtins.str] name: The name of the device managed network. This name must be unique.
         :param pulumi.Input[_builtins.str] network_id: API UUID.
@@ -209,6 +211,7 @@ class DeviceManagedNetworks(pulumi.CustomResource):
         $ pulumi import cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks example '<account_id>/<network_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['DeviceManagedNetworksConfigArgs', 'DeviceManagedNetworksConfigArgsDict']] config: The configuration object containing information for the WARP client to detect the managed network.
@@ -244,6 +247,7 @@ class DeviceManagedNetworks(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks example '<account_id>/<network_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DeviceManagedNetworksArgs args: The arguments to use to populate this resource's properties.

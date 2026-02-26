@@ -27,6 +27,7 @@ class PageShieldPolicyArgs:
                  zone_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a PageShieldPolicy resource.
+
         :param pulumi.Input[_builtins.str] action: The action to take if the expression matches
                Available values: "allow", "log".
         :param pulumi.Input[_builtins.str] description: A description for the policy
@@ -127,6 +128,7 @@ class _PageShieldPolicyState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PageShieldPolicy resources.
+
         :param pulumi.Input[_builtins.str] action: The action to take if the expression matches
                Available values: "allow", "log".
         :param pulumi.Input[_builtins.str] description: A description for the policy
@@ -244,6 +246,7 @@ class PageShieldPolicy(pulumi.CustomResource):
         $ pulumi import cloudflare:index/pageShieldPolicy:PageShieldPolicy example '<zone_id>/<policy_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: The action to take if the expression matches
@@ -268,6 +271,7 @@ class PageShieldPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/pageShieldPolicy:PageShieldPolicy example '<zone_id>/<policy_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PageShieldPolicyArgs args: The arguments to use to populate this resource's properties.

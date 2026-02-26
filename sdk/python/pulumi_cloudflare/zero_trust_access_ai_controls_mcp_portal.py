@@ -29,6 +29,7 @@ class ZeroTrustAccessAiControlsMcpPortalArgs:
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpPortalServerArgs']]]] = None):
         """
         The set of arguments for constructing a ZeroTrustAccessAiControlsMcpPortal resource.
+
         :param pulumi.Input[_builtins.str] zero_trust_access_ai_controls_mcp_portal_id: portal id
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -113,6 +114,7 @@ class _ZeroTrustAccessAiControlsMcpPortalState:
                  zero_trust_access_ai_controls_mcp_portal_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustAccessAiControlsMcpPortal resources.
+
         :param pulumi.Input[_builtins.str] zero_trust_access_ai_controls_mcp_portal_id: portal id
         """
         if account_id is not None:
@@ -279,6 +281,7 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
         $ pulumi import cloudflare:index/zeroTrustAccessAiControlsMcpPortal:ZeroTrustAccessAiControlsMcpPortal example '<account_id>/<id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] zero_trust_access_ai_controls_mcp_portal_id: portal id
@@ -324,6 +327,7 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/zeroTrustAccessAiControlsMcpPortal:ZeroTrustAccessAiControlsMcpPortal example '<account_id>/<id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustAccessAiControlsMcpPortalArgs args: The arguments to use to populate this resource's properties.

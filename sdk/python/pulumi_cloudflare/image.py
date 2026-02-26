@@ -28,6 +28,7 @@ class ImageArgs:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Image resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
         :param pulumi.Input[_builtins.str] image_id: An optional custom unique identifier for your image.
         :param pulumi.Input[_builtins.str] creator: Can set the creator field with an internal user ID.
@@ -150,6 +151,7 @@ class _ImageState:
                  variants: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Image resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
         :param pulumi.Input[_builtins.str] creator: Can set the creator field with an internal user ID.
         :param pulumi.Input[_builtins.str] file: An image binary data. Only needed when type is uploading a file.
@@ -355,6 +357,7 @@ class Image(pulumi.CustomResource):
         $ pulumi import cloudflare:index/image:Image example '<account_id>/<image_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
@@ -393,6 +396,7 @@ class Image(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/image:Image example '<account_id>/<image_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ImageArgs args: The arguments to use to populate this resource's properties.

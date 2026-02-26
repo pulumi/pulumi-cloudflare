@@ -30,6 +30,7 @@ class AccessGroupArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccessGroup resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeArgs']]] includes: Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
         :param pulumi.Input[_builtins.str] name: The name of the Access group.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
@@ -148,6 +149,7 @@ class _AccessGroupState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessGroup resources.
+
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeArgs']]] excludes: Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
         :param pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeArgs']]] includes: Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
@@ -309,6 +311,7 @@ class AccessGroup(pulumi.CustomResource):
         $ pulumi import cloudflare:index/accessGroup:AccessGroup example '<{accounts|zones}/{account_id|zone_id}>/<group_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
@@ -358,6 +361,7 @@ class AccessGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/accessGroup:AccessGroup example '<{accounts|zones}/{account_id|zone_id}>/<group_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccessGroupArgs args: The arguments to use to populate this resource's properties.

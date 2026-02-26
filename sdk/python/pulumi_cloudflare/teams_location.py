@@ -30,6 +30,7 @@ class TeamsLocationArgs:
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input['TeamsLocationNetworkArgs']]]] = None):
         """
         The set of arguments for constructing a TeamsLocation resource.
+
         :param pulumi.Input[_builtins.str] name: Specify the location name.
         :param pulumi.Input[_builtins.bool] client_default: Indicate whether this location is the default location.
         :param pulumi.Input[_builtins.str] dns_destination_ips_id: Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
@@ -151,6 +152,7 @@ class _TeamsLocationState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TeamsLocation resources.
+
         :param pulumi.Input[_builtins.bool] client_default: Indicate whether this location is the default location.
         :param pulumi.Input[_builtins.str] dns_destination_ips_id: Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
         :param pulumi.Input[_builtins.str] dns_destination_ipv6_block_id: Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.
@@ -419,6 +421,7 @@ class TeamsLocation(pulumi.CustomResource):
         $ pulumi import cloudflare:index/teamsLocation:TeamsLocation example '<account_id>/<location_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] client_default: Indicate whether this location is the default location.
@@ -481,6 +484,7 @@ class TeamsLocation(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/teamsLocation:TeamsLocation example '<account_id>/<location_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TeamsLocationArgs args: The arguments to use to populate this resource's properties.

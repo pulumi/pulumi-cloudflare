@@ -25,6 +25,7 @@ class ZeroTrustGatewaySettingsArgs:
                  settings: Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsArgs']] = None):
         """
         The set of arguments for constructing a ZeroTrustGatewaySettings resource.
+
         :param pulumi.Input['ZeroTrustGatewaySettingsSettingsArgs'] settings: Specify account settings.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -62,6 +63,7 @@ class _ZeroTrustGatewaySettingsState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustGatewaySettings resources.
+
         :param pulumi.Input['ZeroTrustGatewaySettingsSettingsArgs'] settings: Specify account settings.
         """
         if account_id is not None:
@@ -205,6 +207,7 @@ class ZeroTrustGatewaySettings(pulumi.CustomResource):
         $ pulumi import cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings example '<account_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ZeroTrustGatewaySettingsSettingsArgs', 'ZeroTrustGatewaySettingsSettingsArgsDict']] settings: Specify account settings.
@@ -297,6 +300,7 @@ class ZeroTrustGatewaySettings(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings example '<account_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustGatewaySettingsArgs args: The arguments to use to populate this resource's properties.

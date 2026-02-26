@@ -25,6 +25,7 @@ class ApiShieldArgs:
                  zone_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ApiShield resource.
+
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         pulumi.set(__self__, "auth_id_characteristics", auth_id_characteristics)
@@ -59,6 +60,7 @@ class _ApiShieldState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApiShield resources.
+
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         if auth_id_characteristics is not None:
@@ -126,6 +128,7 @@ class ApiShield(pulumi.CustomResource):
         $ pulumi import cloudflare:index/apiShield:ApiShield example '<zone_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
@@ -164,6 +167,7 @@ class ApiShield(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/apiShield:ApiShield example '<zone_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApiShieldArgs args: The arguments to use to populate this resource's properties.

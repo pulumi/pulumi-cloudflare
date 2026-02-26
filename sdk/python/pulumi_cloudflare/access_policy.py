@@ -35,6 +35,7 @@ class AccessPolicyArgs:
                  session_duration: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccessPolicy resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] decision: The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
                Available values: "allow", "deny", "non_identity", "bypass".
@@ -234,6 +235,7 @@ class _AccessPolicyState:
                  session_duration: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessPolicy resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyApprovalGroupArgs']]] approval_groups: Administrators who can approve a temporary authentication request.
         :param pulumi.Input[_builtins.bool] approval_required: Requires the user to request access from an administrator at the start of each session.
@@ -500,6 +502,7 @@ class AccessPolicy(pulumi.CustomResource):
         $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example '<account_id>/<policy_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -578,6 +581,7 @@ class AccessPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example '<account_id>/<policy_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccessPolicyArgs args: The arguments to use to populate this resource's properties.

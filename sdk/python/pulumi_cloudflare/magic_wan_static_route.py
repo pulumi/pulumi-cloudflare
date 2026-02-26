@@ -30,6 +30,7 @@ class MagicWanStaticRouteArgs:
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a MagicWanStaticRoute resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.str] nexthop: The next-hop IP Address for the static route.
         :param pulumi.Input[_builtins.str] prefix: IP Prefix in Classless Inter-Domain Routing format.
@@ -148,6 +149,7 @@ class _MagicWanStaticRouteState:
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering MagicWanStaticRoute resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.str] created_on: When the route was created.
         :param pulumi.Input[_builtins.str] description: An optional human provided description of the static route.
@@ -326,6 +328,7 @@ class MagicWanStaticRoute(pulumi.CustomResource):
         $ pulumi import cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute example '<account_id>/<route_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier
@@ -367,6 +370,7 @@ class MagicWanStaticRoute(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute example '<account_id>/<route_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MagicWanStaticRouteArgs args: The arguments to use to populate this resource's properties.

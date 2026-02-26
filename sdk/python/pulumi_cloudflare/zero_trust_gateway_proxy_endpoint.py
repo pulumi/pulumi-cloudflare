@@ -25,6 +25,7 @@ class ZeroTrustGatewayProxyEndpointArgs:
                  kind: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustGatewayProxyEndpoint resource.
+
         :param pulumi.Input[_builtins.str] name: Specify the name of the proxy endpoint.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ips: Specify the list of CIDRs to restrict ingress connections.
         :param pulumi.Input[_builtins.str] kind: The proxy endpoint kind
@@ -96,6 +97,7 @@ class _ZeroTrustGatewayProxyEndpointState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustGatewayProxyEndpoint resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ips: Specify the list of CIDRs to restrict ingress connections.
         :param pulumi.Input[_builtins.str] kind: The proxy endpoint kind
                Available values: "ip", "identity".
@@ -224,6 +226,7 @@ class ZeroTrustGatewayProxyEndpoint(pulumi.CustomResource):
         $ pulumi import cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint example '<account_id>/<proxy_endpoint_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ips: Specify the list of CIDRs to restrict ingress connections.
@@ -255,6 +258,7 @@ class ZeroTrustGatewayProxyEndpoint(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint example '<account_id>/<proxy_endpoint_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustGatewayProxyEndpointArgs args: The arguments to use to populate this resource's properties.

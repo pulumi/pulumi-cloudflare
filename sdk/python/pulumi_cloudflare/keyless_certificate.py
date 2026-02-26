@@ -31,6 +31,7 @@ class KeylessCertificateArgs:
                  tunnel: Optional[pulumi.Input['KeylessCertificateTunnelArgs']] = None):
         """
         The set of arguments for constructing a KeylessCertificate resource.
+
         :param pulumi.Input[_builtins.str] certificate: The zone's SSL certificate or SSL certificate and intermediate(s).
         :param pulumi.Input[_builtins.str] host: The keyless SSL name.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
@@ -174,6 +175,7 @@ class _KeylessCertificateState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KeylessCertificate resources.
+
         :param pulumi.Input[_builtins.str] bundle_method: A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
                Available values: "ubiquitous", "optimal", "force".
         :param pulumi.Input[_builtins.str] certificate: The zone's SSL certificate or SSL certificate and intermediate(s).
@@ -406,6 +408,7 @@ class KeylessCertificate(pulumi.CustomResource):
         $ pulumi import cloudflare:index/keylessCertificate:KeylessCertificate example '<zone_id>/<keyless_certificate_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bundle_method: A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
@@ -449,6 +452,7 @@ class KeylessCertificate(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/keylessCertificate:KeylessCertificate example '<zone_id>/<keyless_certificate_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KeylessCertificateArgs args: The arguments to use to populate this resource's properties.

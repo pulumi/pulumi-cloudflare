@@ -27,6 +27,7 @@ class CloudforceOneRequestArgs:
                  tlp: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CloudforceOneRequest resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] content: Request content.
         :param pulumi.Input[_builtins.str] priority: Priority for analyzing the request.
@@ -140,6 +141,7 @@ class _CloudforceOneRequestState:
                  updated: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CloudforceOneRequest resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] content: Request content.
         :param pulumi.Input[_builtins.int] message_tokens: Tokens for the request messages.
@@ -380,6 +382,7 @@ class CloudforceOneRequest(pulumi.CustomResource):
         $ pulumi import cloudflare:index/cloudforceOneRequest:CloudforceOneRequest example '<account_id>/<request_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -417,6 +420,7 @@ class CloudforceOneRequest(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/cloudforceOneRequest:CloudforceOneRequest example '<account_id>/<request_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CloudforceOneRequestArgs args: The arguments to use to populate this resource's properties.

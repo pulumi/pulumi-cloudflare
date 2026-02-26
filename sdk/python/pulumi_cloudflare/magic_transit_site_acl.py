@@ -32,6 +32,7 @@ class MagicTransitSiteAclArgs:
                  unidirectional: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a MagicTransitSiteAcl resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.str] name: The name of the ACL.
         :param pulumi.Input[_builtins.str] site_id: Identifier
@@ -167,6 +168,7 @@ class _MagicTransitSiteAclState:
                  unidirectional: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering MagicTransitSiteAcl resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.str] description: Description for the ACL.
         :param pulumi.Input[_builtins.bool] forward_locally: The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false.
@@ -346,6 +348,7 @@ class MagicTransitSiteAcl(pulumi.CustomResource):
         $ pulumi import cloudflare:index/magicTransitSiteAcl:MagicTransitSiteAcl example '<account_id>/<site_id>/<acl_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier
@@ -397,6 +400,7 @@ class MagicTransitSiteAcl(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/magicTransitSiteAcl:MagicTransitSiteAcl example '<account_id>/<site_id>/<acl_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MagicTransitSiteAclArgs args: The arguments to use to populate this resource's properties.

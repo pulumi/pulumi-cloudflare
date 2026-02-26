@@ -24,6 +24,7 @@ class ApiShieldSchemaValidationSettingsArgs:
                  validation_override_mitigation_action: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApiShieldSchemaValidationSettings resource.
+
         :param pulumi.Input[_builtins.str] validation_default_mitigation_action: The default mitigation action used when there is no mitigation action defined on the operation
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.str] validation_override_mitigation_action: When set, this overrides both zone level and operation level mitigation actions.
@@ -90,6 +91,7 @@ class _ApiShieldSchemaValidationSettingsState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApiShieldSchemaValidationSettings resources.
+
         :param pulumi.Input[_builtins.str] validation_default_mitigation_action: The default mitigation action used when there is no mitigation action defined on the operation
         :param pulumi.Input[_builtins.str] validation_override_mitigation_action: When set, this overrides both zone level and operation level mitigation actions.
                
@@ -182,6 +184,7 @@ class ApiShieldSchemaValidationSettings(pulumi.CustomResource):
         $ pulumi import cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings example '<zone_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] validation_default_mitigation_action: The default mitigation action used when there is no mitigation action defined on the operation
@@ -221,6 +224,7 @@ class ApiShieldSchemaValidationSettings(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings example '<zone_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApiShieldSchemaValidationSettingsArgs args: The arguments to use to populate this resource's properties.

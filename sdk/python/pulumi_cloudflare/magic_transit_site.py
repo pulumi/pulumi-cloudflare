@@ -30,6 +30,7 @@ class MagicTransitSiteArgs:
                  secondary_connector_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MagicTransitSite resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.str] name: The name of the site.
         :param pulumi.Input[_builtins.str] connector_id: Magic Connector identifier tag.
@@ -144,6 +145,7 @@ class _MagicTransitSiteState:
                  secondary_connector_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MagicTransitSite resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.str] connector_id: Magic Connector identifier tag.
         :param pulumi.Input[_builtins.bool] ha_mode: Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.
@@ -288,6 +290,7 @@ class MagicTransitSite(pulumi.CustomResource):
         $ pulumi import cloudflare:index/magicTransitSite:MagicTransitSite example '<account_id>/<site_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier
@@ -328,6 +331,7 @@ class MagicTransitSite(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/magicTransitSite:MagicTransitSite example '<account_id>/<site_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MagicTransitSiteArgs args: The arguments to use to populate this resource's properties.

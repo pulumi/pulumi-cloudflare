@@ -24,6 +24,7 @@ class ZoneHoldArgs:
                  include_subdomains: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ZoneHold resource.
+
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.str] hold_after: If `hold_after` is provided and future-dated, the hold will be temporarily disabled,
                then automatically re-enabled by the system at the time specified
@@ -94,6 +95,7 @@ class _ZoneHoldState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZoneHold resources.
+
         :param pulumi.Input[_builtins.str] hold_after: If `hold_after` is provided and future-dated, the hold will be temporarily disabled,
                then automatically re-enabled by the system at the time specified
                in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
@@ -193,6 +195,7 @@ class ZoneHold(pulumi.CustomResource):
         $ pulumi import cloudflare:index/zoneHold:ZoneHold example '<zone_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] hold_after: If `hold_after` is provided and future-dated, the hold will be temporarily disabled,
@@ -227,6 +230,7 @@ class ZoneHold(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/zoneHold:ZoneHold example '<zone_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZoneHoldArgs args: The arguments to use to populate this resource's properties.

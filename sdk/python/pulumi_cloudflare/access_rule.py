@@ -28,6 +28,7 @@ class AccessRuleArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccessRule resource.
+
         :param pulumi.Input['AccessRuleConfigurationArgs'] configuration: The rule configuration.
         :param pulumi.Input[_builtins.str] mode: The action to apply to a matched request.
                Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
@@ -120,6 +121,7 @@ class _AccessRuleState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessRule resources.
+
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_modes: The available actions that a rule can apply to a matched request.
         :param pulumi.Input['AccessRuleConfigurationArgs'] configuration: The rule configuration.
@@ -295,6 +297,7 @@ class AccessRule(pulumi.CustomResource):
         $ pulumi import cloudflare:index/accessRule:AccessRule example '<{accounts|zones}/{account_id|zone_id}>/<rule_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
@@ -332,6 +335,7 @@ class AccessRule(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/accessRule:AccessRule example '<{accounts|zones}/{account_id|zone_id}>/<rule_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccessRuleArgs args: The arguments to use to populate this resource's properties.

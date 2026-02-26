@@ -253,6 +253,7 @@ class Workflow(pulumi.CustomResource):
         $ pulumi import cloudflare:index/workflow:Workflow example '<account_id>/<workflow_name>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -281,6 +282,7 @@ class Workflow(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/workflow:Workflow example '<account_id>/<workflow_name>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkflowArgs args: The arguments to use to populate this resource's properties.

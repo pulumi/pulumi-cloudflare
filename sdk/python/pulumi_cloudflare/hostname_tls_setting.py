@@ -25,6 +25,7 @@ class HostnameTlsSettingArgs:
                  zone_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a HostnameTlsSetting resource.
+
         :param pulumi.Input[_builtins.str] hostname: The hostname for which the tls settings are set.
         :param pulumi.Input[_builtins.str] setting_id: The TLS Setting name.
                Available values: "ciphers", "min*tls*version", "http2".
@@ -98,6 +99,7 @@ class _HostnameTlsSettingState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HostnameTlsSetting resources.
+
         :param pulumi.Input[_builtins.str] created_at: This is the time the tls setting was originally created for this hostname.
         :param pulumi.Input[_builtins.str] hostname: The hostname for which the tls settings are set.
         :param pulumi.Input[_builtins.str] setting_id: The TLS Setting name.
@@ -242,6 +244,7 @@ class HostnameTlsSetting(pulumi.CustomResource):
         $ pulumi import cloudflare:index/hostnameTlsSetting:HostnameTlsSetting example '<zone_id>/<setting_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] hostname: The hostname for which the tls settings are set.
@@ -278,6 +281,7 @@ class HostnameTlsSetting(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/hostnameTlsSetting:HostnameTlsSetting example '<zone_id>/<setting_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HostnameTlsSettingArgs args: The arguments to use to populate this resource's properties.

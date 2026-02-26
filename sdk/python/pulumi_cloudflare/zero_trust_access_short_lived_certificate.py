@@ -24,6 +24,7 @@ class ZeroTrustAccessShortLivedCertificateArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustAccessShortLivedCertificate resource.
+
         :param pulumi.Input[_builtins.str] app_id: UUID.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[_builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -81,6 +82,7 @@ class _ZeroTrustAccessShortLivedCertificateState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustAccessShortLivedCertificate resources.
+
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[_builtins.str] app_id: UUID.
         :param pulumi.Input[_builtins.str] aud: The Application Audience (AUD) tag. Identifies the application associated with the CA.
@@ -187,6 +189,7 @@ class ZeroTrustAccessShortLivedCertificate(pulumi.CustomResource):
         $ pulumi import cloudflare:index/zeroTrustAccessShortLivedCertificate:ZeroTrustAccessShortLivedCertificate example '<{accounts|zones}/{account_id|zone_id}>/<app_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
@@ -216,6 +219,7 @@ class ZeroTrustAccessShortLivedCertificate(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/zeroTrustAccessShortLivedCertificate:ZeroTrustAccessShortLivedCertificate example '<{accounts|zones}/{account_id|zone_id}>/<app_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustAccessShortLivedCertificateArgs args: The arguments to use to populate this resource's properties.

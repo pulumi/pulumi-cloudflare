@@ -24,6 +24,7 @@ class ApiShieldOperationSchemaValidationSettingsArgs:
                  mitigation_action: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApiShieldOperationSchemaValidationSettings resource.
+
         :param pulumi.Input[_builtins.str] operation_id: UUID.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.str] mitigation_action: When set, this applies a mitigation action to this operation
@@ -90,6 +91,7 @@ class _ApiShieldOperationSchemaValidationSettingsState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApiShieldOperationSchemaValidationSettings resources.
+
         :param pulumi.Input[_builtins.str] mitigation_action: When set, this applies a mitigation action to this operation
                
                  - `log` log request when request does not conform to schema for this operation
@@ -182,6 +184,7 @@ class ApiShieldOperationSchemaValidationSettings(pulumi.CustomResource):
         $ pulumi import cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings example '<zone_id>/<operation_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] mitigation_action: When set, this applies a mitigation action to this operation
@@ -221,6 +224,7 @@ class ApiShieldOperationSchemaValidationSettings(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings example '<zone_id>/<operation_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApiShieldOperationSchemaValidationSettingsArgs args: The arguments to use to populate this resource's properties.

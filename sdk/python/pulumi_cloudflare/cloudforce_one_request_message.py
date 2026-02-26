@@ -24,6 +24,7 @@ class CloudforceOneRequestMessageArgs:
                  content: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CloudforceOneRequestMessage resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] request_id: UUID.
         :param pulumi.Input[_builtins.str] content: Content of message.
@@ -82,6 +83,7 @@ class _CloudforceOneRequestMessageState:
                  updated: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CloudforceOneRequestMessage resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] author: Author of message.
         :param pulumi.Input[_builtins.str] content: Content of message.
@@ -219,6 +221,7 @@ class CloudforceOneRequestMessage(pulumi.CustomResource):
         $ pulumi import cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage example '<account_id>/<request_id>/<page>/<per_page>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -249,6 +252,7 @@ class CloudforceOneRequestMessage(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage example '<account_id>/<request_id>/<page>/<per_page>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CloudforceOneRequestMessageArgs args: The arguments to use to populate this resource's properties.

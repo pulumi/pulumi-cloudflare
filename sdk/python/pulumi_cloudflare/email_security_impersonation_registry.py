@@ -25,6 +25,7 @@ class EmailSecurityImpersonationRegistryArgs:
                  name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a EmailSecurityImpersonationRegistry resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account Identifier
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -88,6 +89,7 @@ class _EmailSecurityImpersonationRegistryState:
                  provenance: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EmailSecurityImpersonationRegistry resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account Identifier
         """
         if account_id is not None:
@@ -251,6 +253,7 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
         $ pulumi import cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry example '<account_id>/<display_name_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account Identifier
@@ -280,6 +283,7 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry example '<account_id>/<display_name_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EmailSecurityImpersonationRegistryArgs args: The arguments to use to populate this resource's properties.

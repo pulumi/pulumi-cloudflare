@@ -36,6 +36,7 @@ class WorkerVersionArgs:
                  usage_model: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkerVersion resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] worker_id: Identifier for the Worker, which can be ID or name.
         :param pulumi.Input['WorkerVersionAnnotationsArgs'] annotations: Metadata about the version.
@@ -271,6 +272,7 @@ class _WorkerVersionState:
                  worker_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkerVersion resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input['WorkerVersionAnnotationsArgs'] annotations: Metadata about the version.
         :param pulumi.Input['WorkerVersionAssetsArgs'] assets: Configuration for assets within a Worker.
@@ -645,6 +647,7 @@ class WorkerVersion(pulumi.CustomResource):
         $ pulumi import cloudflare:index/workerVersion:WorkerVersion example '<account_id>/<worker_id>/<version_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -737,6 +740,7 @@ class WorkerVersion(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/workerVersion:WorkerVersion example '<account_id>/<worker_id>/<version_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkerVersionArgs args: The arguments to use to populate this resource's properties.

@@ -24,6 +24,7 @@ class CallsTurnAppArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CallsTurnApp resource.
+
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
         :param pulumi.Input[_builtins.str] key_id: A Cloudflare-generated unique identifier for a item.
         :param pulumi.Input[_builtins.str] name: A short description of a TURN key, not shown to end users.
@@ -83,6 +84,7 @@ class _CallsTurnAppState:
                  uid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CallsTurnApp resources.
+
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
         :param pulumi.Input[_builtins.str] created: The date and time the item was created.
         :param pulumi.Input[_builtins.str] key: Bearer token
@@ -217,6 +219,7 @@ class CallsTurnApp(pulumi.CustomResource):
 
         > This resource does not currently support `pulumi import`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
@@ -244,6 +247,7 @@ class CallsTurnApp(pulumi.CustomResource):
         ## Import
 
         > This resource does not currently support `pulumi import`.
+
 
         :param str resource_name: The name of the resource.
         :param CallsTurnAppArgs args: The arguments to use to populate this resource's properties.

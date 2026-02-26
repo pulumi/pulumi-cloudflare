@@ -26,6 +26,7 @@ class WorkerCronTriggerArgs:
                  script_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a WorkerCronTrigger resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
         """
@@ -75,6 +76,7 @@ class _WorkerCronTriggerState:
                  script_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkerCronTrigger resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
         """
@@ -155,6 +157,7 @@ class WorkerCronTrigger(pulumi.CustomResource):
         $ pulumi import cloudflare:index/workerCronTrigger:WorkerCronTrigger example '<account_id>/<script_name>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -186,6 +189,7 @@ class WorkerCronTrigger(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/workerCronTrigger:WorkerCronTrigger example '<account_id>/<script_name>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkerCronTriggerArgs args: The arguments to use to populate this resource's properties.

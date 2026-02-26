@@ -28,6 +28,7 @@ class WorkersDeploymentArgs:
                  annotations: Optional[pulumi.Input['WorkersDeploymentAnnotationsArgs']] = None):
         """
         The set of arguments for constructing a WorkersDeployment resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
         :param pulumi.Input[_builtins.str] strategy: Available values: "percentage".
@@ -107,6 +108,7 @@ class _WorkersDeploymentState:
                  versions: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersDeploymentVersionArgs']]]] = None):
         """
         Input properties used for looking up and filtering WorkersDeployment resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
         :param pulumi.Input[_builtins.str] strategy: Available values: "percentage".
@@ -248,6 +250,7 @@ class WorkersDeployment(pulumi.CustomResource):
         $ pulumi import cloudflare:index/workersDeployment:WorkersDeployment example '<account_id>/<script_name>/<deployment_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -285,6 +288,7 @@ class WorkersDeployment(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/workersDeployment:WorkersDeployment example '<account_id>/<script_name>/<deployment_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkersDeploymentArgs args: The arguments to use to populate this resource's properties.

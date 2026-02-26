@@ -30,6 +30,7 @@ class WorkerArgs:
                  tail_consumers: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerTailConsumerArgs']]]] = None):
         """
         The set of arguments for constructing a Worker resource.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] name: Name of the Worker.
         :param pulumi.Input[_builtins.bool] logpush: Whether logpush is enabled for the Worker.
@@ -151,6 +152,7 @@ class _WorkerState:
                  updated_on: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Worker resources.
+
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] created_on: When the Worker was created.
         :param pulumi.Input[_builtins.bool] logpush: Whether logpush is enabled for the Worker.
@@ -357,6 +359,7 @@ class Worker(pulumi.CustomResource):
         $ pulumi import cloudflare:index/worker:Worker example '<account_id>/<worker_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -411,6 +414,7 @@ class Worker(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/worker:Worker example '<account_id>/<worker_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkerArgs args: The arguments to use to populate this resource's properties.

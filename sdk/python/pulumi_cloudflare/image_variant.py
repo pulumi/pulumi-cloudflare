@@ -26,6 +26,7 @@ class ImageVariantArgs:
                  never_require_signed_urls: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ImageVariant resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
         :param pulumi.Input['ImageVariantOptionsArgs'] options: Allows you to define image resizing sizes for different use cases.
         :param pulumi.Input[_builtins.bool] never_require_signed_urls: Indicates whether the variant can access an image without a signature, regardless of image access control.
@@ -81,6 +82,7 @@ class _ImageVariantState:
                  variant: Optional[pulumi.Input['ImageVariantVariantArgs']] = None):
         """
         Input properties used for looking up and filtering ImageVariant resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
         :param pulumi.Input[_builtins.bool] never_require_signed_urls: Indicates whether the variant can access an image without a signature, regardless of image access control.
         :param pulumi.Input['ImageVariantOptionsArgs'] options: Allows you to define image resizing sizes for different use cases.
@@ -175,6 +177,7 @@ class ImageVariant(pulumi.CustomResource):
         $ pulumi import cloudflare:index/imageVariant:ImageVariant example '<account_id>/<variant_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
@@ -211,6 +214,7 @@ class ImageVariant(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/imageVariant:ImageVariant example '<account_id>/<variant_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ImageVariantArgs args: The arguments to use to populate this resource's properties.

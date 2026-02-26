@@ -24,6 +24,7 @@ class LeakedCredentialCheckRuleArgs:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LeakedCredentialCheckRule resource.
+
         :param pulumi.Input[_builtins.str] zone_id: Defines an identifier.
         :param pulumi.Input[_builtins.str] password: Defines ehe ruleset expression to use in matching the password in a request.
         :param pulumi.Input[_builtins.str] username: Defines the ruleset expression to use in matching the username in a request.
@@ -79,6 +80,7 @@ class _LeakedCredentialCheckRuleState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LeakedCredentialCheckRule resources.
+
         :param pulumi.Input[_builtins.str] password: Defines ehe ruleset expression to use in matching the password in a request.
         :param pulumi.Input[_builtins.str] username: Defines the ruleset expression to use in matching the username in a request.
         :param pulumi.Input[_builtins.str] zone_id: Defines an identifier.
@@ -156,6 +158,7 @@ class LeakedCredentialCheckRule(pulumi.CustomResource):
         $ pulumi import cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule example '<zone_id>/<detection_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] password: Defines ehe ruleset expression to use in matching the password in a request.
@@ -186,6 +189,7 @@ class LeakedCredentialCheckRule(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule example '<zone_id>/<detection_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LeakedCredentialCheckRuleArgs args: The arguments to use to populate this resource's properties.

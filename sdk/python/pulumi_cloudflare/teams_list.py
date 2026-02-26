@@ -28,6 +28,7 @@ class TeamsListArgs:
                  items: Optional[pulumi.Input[Sequence[pulumi.Input['TeamsListItemArgs']]]] = None):
         """
         The set of arguments for constructing a TeamsList resource.
+
         :param pulumi.Input[_builtins.str] name: Specify the list name.
         :param pulumi.Input[_builtins.str] type: Specify the list type.
                Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
@@ -114,6 +115,7 @@ class _TeamsListState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TeamsList resources.
+
         :param pulumi.Input[_builtins.str] description: Provide the list description.
         :param pulumi.Input[Sequence[pulumi.Input['TeamsListItemArgs']]] items: Add items to the list.
         :param pulumi.Input[_builtins.float] list_count: Indicate the number of items in the list.
@@ -268,6 +270,7 @@ class TeamsList(pulumi.CustomResource):
         $ pulumi import cloudflare:index/teamsList:TeamsList example '<account_id>/<list_id>'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Provide the list description.
@@ -305,6 +308,7 @@ class TeamsList(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudflare:index/teamsList:TeamsList example '<account_id>/<list_id>'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TeamsListArgs args: The arguments to use to populate this resource's properties.
