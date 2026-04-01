@@ -13,6 +13,12 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustAccessApplicationPolicyConnectionRulesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The RDP-specific rules that define clipboard behavior for RDP connections.
+        /// </summary>
+        [Input("rdp")]
+        public Input<Inputs.ZeroTrustAccessApplicationPolicyConnectionRulesRdpArgs>? Rdp { get; set; }
+
+        /// <summary>
         /// The SSH-specific rules that define how users may connect to the targets secured by your application.
         /// </summary>
         [Input("ssh")]

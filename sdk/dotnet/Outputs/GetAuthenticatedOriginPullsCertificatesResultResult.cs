@@ -18,10 +18,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Certificate;
         /// <summary>
-        /// Indicates whether zone-level authenticated origin pulls is enabled.
-        /// </summary>
-        public readonly bool Enabled;
-        /// <summary>
         /// When the certificate from the authority expires.
         /// </summary>
         public readonly string ExpiresOn;
@@ -34,9 +30,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Issuer;
         /// <summary>
-        /// The zone's private key.
+        /// The serial number on the uploaded certificate.
         /// </summary>
-        public readonly string PrivateKey;
+        public readonly string SerialNumber;
         /// <summary>
         /// The type of hash used for the certificate.
         /// </summary>
@@ -55,15 +51,13 @@ namespace Pulumi.Cloudflare.Outputs
         private GetAuthenticatedOriginPullsCertificatesResultResult(
             string certificate,
 
-            bool enabled,
-
             string expiresOn,
 
             string id,
 
             string issuer,
 
-            string privateKey,
+            string serialNumber,
 
             string signature,
 
@@ -72,11 +66,10 @@ namespace Pulumi.Cloudflare.Outputs
             string uploadedOn)
         {
             Certificate = certificate;
-            Enabled = enabled;
             ExpiresOn = expiresOn;
             Id = id;
             Issuer = issuer;
-            PrivateKey = privateKey;
+            SerialNumber = serialNumber;
             Signature = signature;
             Status = status;
             UploadedOn = uploadedOn;

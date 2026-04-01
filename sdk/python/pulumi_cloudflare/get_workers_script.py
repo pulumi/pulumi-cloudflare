@@ -28,7 +28,7 @@ class GetWorkersScriptResult:
     """
     A collection of values returned by getWorkersScript.
     """
-    def __init__(__self__, account_id=None, filter=None, id=None, script_name=None):
+    def __init__(__self__, account_id=None, filter=None, id=None, script=None, script_name=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -38,6 +38,9 @@ class GetWorkersScriptResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if script and not isinstance(script, str):
+            raise TypeError("Expected argument 'script' to be a str")
+        pulumi.set(__self__, "script", script)
         if script_name and not isinstance(script_name, str):
             raise TypeError("Expected argument 'script_name' to be a str")
         pulumi.set(__self__, "script_name", script_name)
@@ -64,6 +67,11 @@ class GetWorkersScriptResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter
+    def script(self) -> _builtins.str:
+        return pulumi.get(self, "script")
+
+    @_builtins.property
     @pulumi.getter(name="scriptName")
     def script_name(self) -> Optional[_builtins.str]:
         """
@@ -81,6 +89,7 @@ class AwaitableGetWorkersScriptResult(GetWorkersScriptResult):
             account_id=self.account_id,
             filter=self.filter,
             id=self.id,
+            script=self.script,
             script_name=self.script_name)
 
 
@@ -114,6 +123,7 @@ def get_workers_script(account_id: Optional[_builtins.str] = None,
         account_id=pulumi.get(__ret__, 'account_id'),
         filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
+        script=pulumi.get(__ret__, 'script'),
         script_name=pulumi.get(__ret__, 'script_name'))
 def get_workers_script_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
                               filter: Optional[pulumi.Input[Optional[Union['GetWorkersScriptFilterArgs', 'GetWorkersScriptFilterArgsDict']]]] = None,
@@ -144,4 +154,5 @@ def get_workers_script_output(account_id: Optional[pulumi.Input[_builtins.str]] 
         account_id=pulumi.get(__response__, 'account_id'),
         filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
+        script=pulumi.get(__response__, 'script'),
         script_name=pulumi.get(__response__, 'script_name')))

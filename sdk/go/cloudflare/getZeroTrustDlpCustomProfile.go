@@ -68,16 +68,18 @@ type LookupZeroTrustDlpCustomProfileResult struct {
 	// When the profile was created.
 	CreatedAt string `pulumi:"createdAt"`
 	// The description of the profile.
-	Description string                              `pulumi:"description"`
-	Entries     []GetZeroTrustDlpCustomProfileEntry `pulumi:"entries"`
+	Description string `pulumi:"description"`
+	// Deprecated: This attribute is deprecated.
+	Entries []GetZeroTrustDlpCustomProfileEntry `pulumi:"entries"`
 	// The ID of this resource.
 	Id string `pulumi:"id"`
 	// The name of the profile.
 	Name       string `pulumi:"name"`
 	OcrEnabled bool   `pulumi:"ocrEnabled"`
 	// Whether this profile can be accessed by anyone.
-	OpenAccess bool   `pulumi:"openAccess"`
-	ProfileId  string `pulumi:"profileId"`
+	OpenAccess    bool                                      `pulumi:"openAccess"`
+	ProfileId     string                                    `pulumi:"profileId"`
+	SharedEntries []GetZeroTrustDlpCustomProfileSharedEntry `pulumi:"sharedEntries"`
 	// Available values: "custom", "predefined", "integration".
 	Type string `pulumi:"type"`
 	// When the profile was lasted updated.
@@ -155,6 +157,7 @@ func (o LookupZeroTrustDlpCustomProfileResultOutput) Description() pulumi.String
 	return o.ApplyT(func(v LookupZeroTrustDlpCustomProfileResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Deprecated: This attribute is deprecated.
 func (o LookupZeroTrustDlpCustomProfileResultOutput) Entries() GetZeroTrustDlpCustomProfileEntryArrayOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpCustomProfileResult) []GetZeroTrustDlpCustomProfileEntry { return v.Entries }).(GetZeroTrustDlpCustomProfileEntryArrayOutput)
 }
@@ -180,6 +183,12 @@ func (o LookupZeroTrustDlpCustomProfileResultOutput) OpenAccess() pulumi.BoolOut
 
 func (o LookupZeroTrustDlpCustomProfileResultOutput) ProfileId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpCustomProfileResult) string { return v.ProfileId }).(pulumi.StringOutput)
+}
+
+func (o LookupZeroTrustDlpCustomProfileResultOutput) SharedEntries() GetZeroTrustDlpCustomProfileSharedEntryArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustDlpCustomProfileResult) []GetZeroTrustDlpCustomProfileSharedEntry {
+		return v.SharedEntries
+	}).(GetZeroTrustDlpCustomProfileSharedEntryArrayOutput)
 }
 
 // Available values: "custom", "predefined", "integration".

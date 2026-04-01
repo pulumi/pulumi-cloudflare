@@ -26,6 +26,8 @@ from .account_member import *
 from .account_subscription import *
 from .account_token import *
 from .address_map import *
+from .ai_search_instance import *
+from .ai_search_token import *
 from .api_shield import *
 from .api_shield_discovery_operation import *
 from .api_shield_operation import *
@@ -37,12 +39,14 @@ from .argo_smart_routing import *
 from .argo_tiered_caching import *
 from .authenticated_origin_pulls import *
 from .authenticated_origin_pulls_certificate import *
+from .authenticated_origin_pulls_hostname_certificate import *
 from .authenticated_origin_pulls_settings import *
 from .bot_management import *
 from .byo_ip_prefix import *
 from .calls_sfu_app import *
 from .calls_turn_app import *
 from .certificate_pack import *
+from .client_certificate import *
 from .cloud_connector_rules import *
 from .cloudforce_one_request import *
 from .cloudforce_one_request_asset import *
@@ -53,6 +57,7 @@ from .content_scanning import *
 from .content_scanning_expression import *
 from .custom_hostname import *
 from .custom_hostname_fallback_origin import *
+from .custom_origin_trust_store import *
 from .custom_pages import *
 from .custom_ssl import *
 from .d1_database import *
@@ -98,6 +103,10 @@ from .get_account_tokens import *
 from .get_accounts import *
 from .get_address_map import *
 from .get_address_maps import *
+from .get_ai_search_instance import *
+from .get_ai_search_instances import *
+from .get_ai_search_token import *
+from .get_ai_search_tokens import *
 from .get_api_shield import *
 from .get_api_shield_discovery_operations import *
 from .get_api_shield_operation import *
@@ -114,6 +123,8 @@ from .get_argo_tiered_caching import *
 from .get_authenticated_origin_pulls import *
 from .get_authenticated_origin_pulls_certificate import *
 from .get_authenticated_origin_pulls_certificates import *
+from .get_authenticated_origin_pulls_hostname_certificate import *
+from .get_authenticated_origin_pulls_hostname_certificates import *
 from .get_authenticated_origin_pulls_settings import *
 from .get_bot_management import *
 from .get_botnet_feed_config_asn import *
@@ -125,6 +136,8 @@ from .get_calls_turn_app import *
 from .get_calls_turn_apps import *
 from .get_certificate_pack import *
 from .get_certificate_packs import *
+from .get_client_certificate import *
+from .get_client_certificates import *
 from .get_cloud_connector_rules import *
 from .get_cloudforce_one_request import *
 from .get_cloudforce_one_request_asset import *
@@ -138,6 +151,8 @@ from .get_content_scanning_expressions import *
 from .get_custom_hostname import *
 from .get_custom_hostname_fallback_origin import *
 from .get_custom_hostnames import *
+from .get_custom_origin_trust_store import *
+from .get_custom_origin_trust_stores import *
 from .get_custom_pages import *
 from .get_custom_pages_list import *
 from .get_custom_ssl import *
@@ -373,6 +388,8 @@ from .get_zero_trust_device_posture_integrations import *
 from .get_zero_trust_device_posture_rule import *
 from .get_zero_trust_device_posture_rules import *
 from .get_zero_trust_device_settings import *
+from .get_zero_trust_dex_rule import *
+from .get_zero_trust_dex_rules import *
 from .get_zero_trust_dex_test import *
 from .get_zero_trust_dex_tests import *
 from .get_zero_trust_dlp_custom_entries import *
@@ -394,6 +411,8 @@ from .get_zero_trust_gateway_categories_list import *
 from .get_zero_trust_gateway_certificate import *
 from .get_zero_trust_gateway_certificates import *
 from .get_zero_trust_gateway_logging import *
+from .get_zero_trust_gateway_pacfile import *
+from .get_zero_trust_gateway_pacfiles import *
 from .get_zero_trust_gateway_policies import *
 from .get_zero_trust_gateway_policy import *
 from .get_zero_trust_gateway_proxy_endpoint import *
@@ -567,6 +586,7 @@ from .zero_trust_device_managed_networks import *
 from .zero_trust_device_posture_integration import *
 from .zero_trust_device_posture_rule import *
 from .zero_trust_device_settings import *
+from .zero_trust_dex_rule import *
 from .zero_trust_dex_test import *
 from .zero_trust_dlp_custom_entry import *
 from .zero_trust_dlp_custom_profile import *
@@ -578,6 +598,7 @@ from .zero_trust_dlp_predefined_profile import *
 from .zero_trust_dns_location import *
 from .zero_trust_gateway_certificate import *
 from .zero_trust_gateway_logging import *
+from .zero_trust_gateway_pacfile import *
 from .zero_trust_gateway_policy import *
 from .zero_trust_gateway_proxy_endpoint import *
 from .zero_trust_gateway_settings import *
@@ -776,6 +797,22 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/aiSearchInstance",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/aiSearchInstance:AiSearchInstance": "AiSearchInstance"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/aiSearchToken",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/aiSearchToken:AiSearchToken": "AiSearchToken"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/apiShield",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -864,6 +901,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/authenticatedOriginPullsHostnameCertificate",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/authenticatedOriginPullsHostnameCertificate:AuthenticatedOriginPullsHostnameCertificate": "AuthenticatedOriginPullsHostnameCertificate"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/authenticatedOriginPullsSettings",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -908,6 +953,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/certificatePack:CertificatePack": "CertificatePack"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/clientCertificate",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/clientCertificate:ClientCertificate": "ClientCertificate"
   }
  },
  {
@@ -988,6 +1041,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin": "CustomHostnameFallbackOrigin"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/customOriginTrustStore",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/customOriginTrustStore:CustomOriginTrustStore": "CustomOriginTrustStore"
   }
  },
  {
@@ -2288,6 +2349,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/zeroTrustDexRule",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustDexRule:ZeroTrustDexRule": "ZeroTrustDexRule"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/zeroTrustDexTest",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -2372,6 +2441,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging": "ZeroTrustGatewayLogging"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustGatewayPacfile",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustGatewayPacfile:ZeroTrustGatewayPacfile": "ZeroTrustGatewayPacfile"
   }
  },
  {

@@ -119,6 +119,8 @@ public class AccountMember extends com.pulumi.resources.CustomResource {
         return this.roles;
     }
     /**
+     * Status of the member invitation. If not provided during creation, defaults to &#39;pending&#39;.
+     * Changing from &#39;accepted&#39; back to &#39;pending&#39; will trigger a replacement of the member resource in Terraform.
      * Available values: &#34;accepted&#34;, &#34;pending&#34;.
      * 
      */
@@ -126,7 +128,9 @@ public class AccountMember extends com.pulumi.resources.CustomResource {
     private Output<String> status;
 
     /**
-     * @return Available values: &#34;accepted&#34;, &#34;pending&#34;.
+     * @return Status of the member invitation. If not provided during creation, defaults to &#39;pending&#39;.
+     * Changing from &#39;accepted&#39; back to &#39;pending&#39; will trigger a replacement of the member resource in Terraform.
+     * Available values: &#34;accepted&#34;, &#34;pending&#34;.
      * 
      */
     public Output<String> status() {

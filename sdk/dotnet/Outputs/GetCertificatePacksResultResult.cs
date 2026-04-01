@@ -27,6 +27,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool CloudflareBranding;
         /// <summary>
+        /// DCV Delegation records for domain validation.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetCertificatePacksResultDcvDelegationRecordResult> DcvDelegationRecords;
+        /// <summary>
         /// Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
         /// </summary>
         public readonly ImmutableArray<string> Hosts;
@@ -75,6 +79,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool cloudflareBranding,
 
+            ImmutableArray<Outputs.GetCertificatePacksResultDcvDelegationRecordResult> dcvDelegationRecords,
+
             ImmutableArray<string> hosts,
 
             string id,
@@ -96,6 +102,7 @@ namespace Pulumi.Cloudflare.Outputs
             CertificateAuthority = certificateAuthority;
             Certificates = certificates;
             CloudflareBranding = cloudflareBranding;
+            DcvDelegationRecords = dcvDelegationRecords;
             Hosts = hosts;
             Id = id;
             PrimaryCertificate = primaryCertificate;

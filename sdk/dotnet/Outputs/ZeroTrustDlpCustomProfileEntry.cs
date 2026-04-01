@@ -13,6 +13,7 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class ZeroTrustDlpCustomProfileEntry
     {
+        public readonly string? Description;
         public readonly bool Enabled;
         public readonly string? EntryId;
         public readonly string Name;
@@ -20,6 +21,8 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private ZeroTrustDlpCustomProfileEntry(
+            string? description,
+
             bool enabled,
 
             string? entryId,
@@ -28,6 +31,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.ZeroTrustDlpCustomProfileEntryPattern pattern)
         {
+            Description = description;
             Enabled = enabled;
             EntryId = entryId;
             Name = name;

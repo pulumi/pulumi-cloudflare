@@ -64,28 +64,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/snippetRules:SnippetRules")
 public class SnippetRules extends com.pulumi.resources.CustomResource {
     /**
-     * A list of snippet rules.
+     * Lists snippet rules.
      * 
      */
     @Export(name="rules", refs={List.class,SnippetRulesRule.class}, tree="[0,1]")
     private Output<List<SnippetRulesRule>> rules;
 
     /**
-     * @return A list of snippet rules.
+     * @return Lists snippet rules.
      * 
      */
     public Output<List<SnippetRulesRule>> rules() {
         return this.rules;
     }
     /**
-     * The unique ID of the zone.
+     * Use this field to specify the unique ID of the zone.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The unique ID of the zone.
+     * @return Use this field to specify the unique ID of the zone.
      * 
      */
     public Output<String> zoneId() {

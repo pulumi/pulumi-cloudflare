@@ -107,6 +107,21 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
     }
 
     /**
+     * The serial number on the uploaded certificate.
+     * 
+     */
+    @Import(name="serialNumber")
+    private @Nullable Output<String> serialNumber;
+
+    /**
+     * @return The serial number on the uploaded certificate.
+     * 
+     */
+    public Optional<Output<String>> serialNumber() {
+        return Optional.ofNullable(this.serialNumber);
+    }
+
+    /**
      * The type of hash used for the certificate.
      * 
      */
@@ -177,6 +192,7 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
         this.expiresOn = $.expiresOn;
         this.issuer = $.issuer;
         this.privateKey = $.privateKey;
+        this.serialNumber = $.serialNumber;
         this.signature = $.signature;
         this.status = $.status;
         this.uploadedOn = $.uploadedOn;
@@ -325,6 +341,27 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
          */
         public Builder privateKey(String privateKey) {
             return privateKey(Output.of(privateKey));
+        }
+
+        /**
+         * @param serialNumber The serial number on the uploaded certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serialNumber(@Nullable Output<String> serialNumber) {
+            $.serialNumber = serialNumber;
+            return this;
+        }
+
+        /**
+         * @param serialNumber The serial number on the uploaded certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serialNumber(String serialNumber) {
+            return serialNumber(Output.of(serialNumber));
         }
 
         /**

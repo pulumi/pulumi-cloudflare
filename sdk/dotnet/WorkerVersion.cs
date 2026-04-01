@@ -206,7 +206,7 @@ namespace Pulumi.Cloudflare
         public Output<int> Number { get; private set; } = null!;
 
         /// <summary>
-        /// Placement settings for the version.
+        /// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
         /// </summary>
         [Output("placement")]
         public Output<Outputs.WorkerVersionPlacement?> Placement { get; private set; } = null!;
@@ -366,7 +366,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Placement settings for the version.
+        /// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
         /// </summary>
         [Input("placement")]
         public Input<Inputs.WorkerVersionPlacementArgs>? Placement { get; set; }
@@ -494,7 +494,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? Number { get; set; }
 
         /// <summary>
-        /// Placement settings for the version.
+        /// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
         /// </summary>
         [Input("placement")]
         public Input<Inputs.WorkerVersionPlacementGetArgs>? Placement { get; set; }

@@ -15,7 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// The action to take if the expression matches
-        /// Available values: "allow", "log".
+        /// Available values: "allow", "log", "add*reporting*directives".
         /// </summary>
         public readonly string Action;
         /// <summary>

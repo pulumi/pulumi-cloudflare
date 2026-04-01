@@ -43,9 +43,7 @@ import javax.annotation.Nullable;
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .settingId("ciphers")
  *             .hostname("app.example.com")
- *             .value(            
- *                 "ECDHE-RSA-AES128-GCM-SHA256",
- *                 "AES128-GCM-SHA256")
+ *             .value("1.0")
  *             .build());
  * 
  *     }
@@ -91,16 +89,14 @@ public class HostnameTlsSetting extends com.pulumi.resources.CustomResource {
         return this.hostname;
     }
     /**
-     * The TLS Setting name.
-     * Available values: &#34;ciphers&#34;, &#34;min*tls*version&#34;, &#34;http2&#34;.
+     * The TLS Setting name. The value type depends on the setting:
      * 
      */
     @Export(name="settingId", refs={String.class}, tree="[0]")
     private Output<String> settingId;
 
     /**
-     * @return The TLS Setting name.
-     * Available values: &#34;ciphers&#34;, &#34;min*tls*version&#34;, &#34;http2&#34;.
+     * @return The TLS Setting name. The value type depends on the setting:
      * 
      */
     public Output<String> settingId() {
@@ -135,14 +131,14 @@ public class HostnameTlsSetting extends com.pulumi.resources.CustomResource {
         return this.updatedAt;
     }
     /**
-     * The tls setting value.
+     * The TLS setting value. The type depends on the `settingId` used in the request path:
      * 
      */
     @Export(name="value", refs={Object.class}, tree="[0]")
     private Output<Object> value;
 
     /**
-     * @return The tls setting value.
+     * @return The TLS setting value. The type depends on the `settingId` used in the request path:
      * 
      */
     public Output<Object> value() {

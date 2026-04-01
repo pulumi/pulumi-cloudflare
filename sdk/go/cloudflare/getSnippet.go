@@ -49,23 +49,23 @@ func LookupSnippet(ctx *pulumi.Context, args *LookupSnippetArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getSnippet.
 type LookupSnippetArgs struct {
-	// The identifying name of the snippet.
+	// Identify the snippet.
 	SnippetName string `pulumi:"snippetName"`
-	// The unique ID of the zone.
+	// Use this field to specify the unique ID of the zone.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getSnippet.
 type LookupSnippetResult struct {
-	// The timestamp of when the snippet was created.
+	// Indicates when the snippet was created.
 	CreatedOn string `pulumi:"createdOn"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// The timestamp of when the snippet was last modified.
+	// Indicates when the snippet was last modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
-	// The identifying name of the snippet.
+	// Identify the snippet.
 	SnippetName string `pulumi:"snippetName"`
-	// The unique ID of the zone.
+	// Use this field to specify the unique ID of the zone.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -80,9 +80,9 @@ func LookupSnippetOutput(ctx *pulumi.Context, args LookupSnippetOutputArgs, opts
 
 // A collection of arguments for invoking getSnippet.
 type LookupSnippetOutputArgs struct {
-	// The identifying name of the snippet.
+	// Identify the snippet.
 	SnippetName pulumi.StringInput `pulumi:"snippetName"`
-	// The unique ID of the zone.
+	// Use this field to specify the unique ID of the zone.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -105,7 +105,7 @@ func (o LookupSnippetResultOutput) ToLookupSnippetResultOutputWithContext(ctx co
 	return o
 }
 
-// The timestamp of when the snippet was created.
+// Indicates when the snippet was created.
 func (o LookupSnippetResultOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnippetResult) string { return v.CreatedOn }).(pulumi.StringOutput)
 }
@@ -115,17 +115,17 @@ func (o LookupSnippetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnippetResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The timestamp of when the snippet was last modified.
+// Indicates when the snippet was last modified.
 func (o LookupSnippetResultOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnippetResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-// The identifying name of the snippet.
+// Identify the snippet.
 func (o LookupSnippetResultOutput) SnippetName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnippetResult) string { return v.SnippetName }).(pulumi.StringOutput)
 }
 
-// The unique ID of the zone.
+// Use this field to specify the unique ID of the zone.
 func (o LookupSnippetResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnippetResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

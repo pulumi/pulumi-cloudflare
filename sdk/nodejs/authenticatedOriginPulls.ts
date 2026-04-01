@@ -25,7 +25,9 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * > This resource does not currently support `pulumi import`.
+ * ```sh
+ * $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example '<zone_id>/<hostname>'
+ * ```
  */
 export class AuthenticatedOriginPulls extends pulumi.CustomResource {
     /**
@@ -92,7 +94,7 @@ export class AuthenticatedOriginPulls extends pulumi.CustomResource {
     /**
      * The hostname on the origin for which the client certificate uploaded will be used.
      */
-    declare public readonly hostname: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly hostname: pulumi.Output<string>;
     /**
      * The certificate authority that issued the certificate.
      */
@@ -162,7 +164,6 @@ export class AuthenticatedOriginPulls extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["configs"] = args?.configs;
-            resourceInputs["hostname"] = args?.hostname;
             resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["certId"] = undefined /*out*/;
             resourceInputs["certStatus"] = undefined /*out*/;
@@ -172,6 +173,7 @@ export class AuthenticatedOriginPulls extends pulumi.CustomResource {
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["enabled"] = undefined /*out*/;
             resourceInputs["expiresOn"] = undefined /*out*/;
+            resourceInputs["hostname"] = undefined /*out*/;
             resourceInputs["issuer"] = undefined /*out*/;
             resourceInputs["privateKey"] = undefined /*out*/;
             resourceInputs["serialNumber"] = undefined /*out*/;
@@ -264,10 +266,6 @@ export interface AuthenticatedOriginPullsState {
  */
 export interface AuthenticatedOriginPullsArgs {
     configs: pulumi.Input<pulumi.Input<inputs.AuthenticatedOriginPullsConfig>[]>;
-    /**
-     * The hostname on the origin for which the client certificate uploaded will be used.
-     */
-    hostname?: pulumi.Input<string>;
     /**
      * Identifier.
      */

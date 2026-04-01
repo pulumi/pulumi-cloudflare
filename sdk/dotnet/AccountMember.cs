@@ -68,6 +68,8 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<string>> Roles { get; private set; } = null!;
 
         /// <summary>
+        /// Status of the member invitation. If not provided during creation, defaults to 'pending'.
+        /// Changing from 'accepted' back to 'pending' will trigger a replacement of the member resource in Terraform.
         /// Available values: "accepted", "pending".
         /// </summary>
         [Output("status")]
@@ -162,6 +164,8 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
+        /// Status of the member invitation. If not provided during creation, defaults to 'pending'.
+        /// Changing from 'accepted' back to 'pending' will trigger a replacement of the member resource in Terraform.
         /// Available values: "accepted", "pending".
         /// </summary>
         [Input("status")]
@@ -212,6 +216,8 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
+        /// Status of the member invitation. If not provided during creation, defaults to 'pending'.
+        /// Changing from 'accepted' back to 'pending' will trigger a replacement of the member resource in Terraform.
         /// Available values: "accepted", "pending".
         /// </summary>
         [Input("status")]

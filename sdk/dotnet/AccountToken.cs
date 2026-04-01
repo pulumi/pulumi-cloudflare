@@ -12,6 +12,33 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// resource "cloudflare.AccountToken" "ExampleAccountToken" {
+    ///   AccountId = "b67e14daa5f8dceeb91fe5449ba496eb"
+    ///   name       = "workers read-only token"
+    /// 
+    ///   policies = [{
+    ///     effect = "allow"
+    ///     PermissionGroups = [{
+    ///       id = "1a71c399035b4950a1bd1466bbe4f420"
+    ///       }, {
+    ///       id = "8b47d2786a534c08a1f94ee8f9f599ef"
+    ///     }]
+    ///     resources = jsonencode({
+    ///       "com.cloudflare.api.account.b67e14daa5f8dceeb91fe5449ba496eb" = "*"
+    ///     })
+    ///   }]
+    /// 
+    ///   condition = {
+    ///     RequestIp = {
+    ///       in     = ["123.123.123.0/24", "2606:4700::/32"]
+    ///       NotIn = ["123.123.123.0/28", "2606:4700:4700::/48"]
+    ///     }
+    ///   }
+    /// 
+    ///   ExpiresOn = "2027-10-01T00:00:00Z"
+    ///   NotBefore = "2025-10-01T00:00:00Z"
+    /// }
+    /// 
     /// ## Import
     /// 
     /// ```sh

@@ -26,8 +26,13 @@ class AccessOrganizationArgs:
                  auth_domain: Optional[pulumi.Input[_builtins.str]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[_builtins.bool]] = None,
                  custom_pages: Optional[pulumi.Input['AccessOrganizationCustomPagesArgs']] = None,
+                 deny_unmatched_requests: Optional[pulumi.Input[_builtins.bool]] = None,
+                 deny_unmatched_requests_exempted_zone_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  is_ui_read_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  login_design: Optional[pulumi.Input['AccessOrganizationLoginDesignArgs']] = None,
+                 mfa_config: Optional[pulumi.Input['AccessOrganizationMfaConfigArgs']] = None,
+                 mfa_configuration_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
+                 mfa_required_for_all_apps: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  session_duration: Optional[pulumi.Input[_builtins.str]] = None,
                  ui_read_only_toggle_reason: Optional[pulumi.Input[_builtins.str]] = None,
@@ -41,7 +46,12 @@ class AccessOrganizationArgs:
         :param pulumi.Input[_builtins.bool] allow_authenticate_via_warp: When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
         :param pulumi.Input[_builtins.str] auth_domain: The unique subdomain assigned to your Zero Trust organization.
         :param pulumi.Input[_builtins.bool] auto_redirect_to_identity: When set to `true`, users skip the identity provider selection step during login.
+        :param pulumi.Input[_builtins.bool] deny_unmatched_requests: Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deny_unmatched_requests_exempted_zone_names: Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
         :param pulumi.Input[_builtins.bool] is_ui_read_only: Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
+        :param pulumi.Input['AccessOrganizationMfaConfigArgs'] mfa_config: Configures multi-factor authentication (MFA) settings for an organization.
+        :param pulumi.Input[_builtins.bool] mfa_configuration_allowed: Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
+        :param pulumi.Input[_builtins.bool] mfa_required_for_all_apps: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
         :param pulumi.Input[_builtins.str] name: The name of your Zero Trust organization.
         :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         :param pulumi.Input[_builtins.str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
@@ -59,10 +69,20 @@ class AccessOrganizationArgs:
             pulumi.set(__self__, "auto_redirect_to_identity", auto_redirect_to_identity)
         if custom_pages is not None:
             pulumi.set(__self__, "custom_pages", custom_pages)
+        if deny_unmatched_requests is not None:
+            pulumi.set(__self__, "deny_unmatched_requests", deny_unmatched_requests)
+        if deny_unmatched_requests_exempted_zone_names is not None:
+            pulumi.set(__self__, "deny_unmatched_requests_exempted_zone_names", deny_unmatched_requests_exempted_zone_names)
         if is_ui_read_only is not None:
             pulumi.set(__self__, "is_ui_read_only", is_ui_read_only)
         if login_design is not None:
             pulumi.set(__self__, "login_design", login_design)
+        if mfa_config is not None:
+            pulumi.set(__self__, "mfa_config", mfa_config)
+        if mfa_configuration_allowed is not None:
+            pulumi.set(__self__, "mfa_configuration_allowed", mfa_configuration_allowed)
+        if mfa_required_for_all_apps is not None:
+            pulumi.set(__self__, "mfa_required_for_all_apps", mfa_required_for_all_apps)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if session_duration is not None:
@@ -134,6 +154,30 @@ class AccessOrganizationArgs:
         pulumi.set(self, "custom_pages", value)
 
     @_builtins.property
+    @pulumi.getter(name="denyUnmatchedRequests")
+    def deny_unmatched_requests(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.
+        """
+        return pulumi.get(self, "deny_unmatched_requests")
+
+    @deny_unmatched_requests.setter
+    def deny_unmatched_requests(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "deny_unmatched_requests", value)
+
+    @_builtins.property
+    @pulumi.getter(name="denyUnmatchedRequestsExemptedZoneNames")
+    def deny_unmatched_requests_exempted_zone_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+        """
+        return pulumi.get(self, "deny_unmatched_requests_exempted_zone_names")
+
+    @deny_unmatched_requests_exempted_zone_names.setter
+    def deny_unmatched_requests_exempted_zone_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "deny_unmatched_requests_exempted_zone_names", value)
+
+    @_builtins.property
     @pulumi.getter(name="isUiReadOnly")
     def is_ui_read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -153,6 +197,42 @@ class AccessOrganizationArgs:
     @login_design.setter
     def login_design(self, value: Optional[pulumi.Input['AccessOrganizationLoginDesignArgs']]):
         pulumi.set(self, "login_design", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mfaConfig")
+    def mfa_config(self) -> Optional[pulumi.Input['AccessOrganizationMfaConfigArgs']]:
+        """
+        Configures multi-factor authentication (MFA) settings for an organization.
+        """
+        return pulumi.get(self, "mfa_config")
+
+    @mfa_config.setter
+    def mfa_config(self, value: Optional[pulumi.Input['AccessOrganizationMfaConfigArgs']]):
+        pulumi.set(self, "mfa_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mfaConfigurationAllowed")
+    def mfa_configuration_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
+        """
+        return pulumi.get(self, "mfa_configuration_allowed")
+
+    @mfa_configuration_allowed.setter
+    def mfa_configuration_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "mfa_configuration_allowed", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mfaRequiredForAllApps")
+    def mfa_required_for_all_apps(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+        """
+        return pulumi.get(self, "mfa_required_for_all_apps")
+
+    @mfa_required_for_all_apps.setter
+    def mfa_required_for_all_apps(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "mfa_required_for_all_apps", value)
 
     @_builtins.property
     @pulumi.getter
@@ -235,8 +315,13 @@ class _AccessOrganizationState:
                  auth_domain: Optional[pulumi.Input[_builtins.str]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[_builtins.bool]] = None,
                  custom_pages: Optional[pulumi.Input['AccessOrganizationCustomPagesArgs']] = None,
+                 deny_unmatched_requests: Optional[pulumi.Input[_builtins.bool]] = None,
+                 deny_unmatched_requests_exempted_zone_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  is_ui_read_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  login_design: Optional[pulumi.Input['AccessOrganizationLoginDesignArgs']] = None,
+                 mfa_config: Optional[pulumi.Input['AccessOrganizationMfaConfigArgs']] = None,
+                 mfa_configuration_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
+                 mfa_required_for_all_apps: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  session_duration: Optional[pulumi.Input[_builtins.str]] = None,
                  ui_read_only_toggle_reason: Optional[pulumi.Input[_builtins.str]] = None,
@@ -250,7 +335,12 @@ class _AccessOrganizationState:
         :param pulumi.Input[_builtins.bool] allow_authenticate_via_warp: When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
         :param pulumi.Input[_builtins.str] auth_domain: The unique subdomain assigned to your Zero Trust organization.
         :param pulumi.Input[_builtins.bool] auto_redirect_to_identity: When set to `true`, users skip the identity provider selection step during login.
+        :param pulumi.Input[_builtins.bool] deny_unmatched_requests: Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deny_unmatched_requests_exempted_zone_names: Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
         :param pulumi.Input[_builtins.bool] is_ui_read_only: Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
+        :param pulumi.Input['AccessOrganizationMfaConfigArgs'] mfa_config: Configures multi-factor authentication (MFA) settings for an organization.
+        :param pulumi.Input[_builtins.bool] mfa_configuration_allowed: Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
+        :param pulumi.Input[_builtins.bool] mfa_required_for_all_apps: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
         :param pulumi.Input[_builtins.str] name: The name of your Zero Trust organization.
         :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         :param pulumi.Input[_builtins.str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
@@ -268,10 +358,20 @@ class _AccessOrganizationState:
             pulumi.set(__self__, "auto_redirect_to_identity", auto_redirect_to_identity)
         if custom_pages is not None:
             pulumi.set(__self__, "custom_pages", custom_pages)
+        if deny_unmatched_requests is not None:
+            pulumi.set(__self__, "deny_unmatched_requests", deny_unmatched_requests)
+        if deny_unmatched_requests_exempted_zone_names is not None:
+            pulumi.set(__self__, "deny_unmatched_requests_exempted_zone_names", deny_unmatched_requests_exempted_zone_names)
         if is_ui_read_only is not None:
             pulumi.set(__self__, "is_ui_read_only", is_ui_read_only)
         if login_design is not None:
             pulumi.set(__self__, "login_design", login_design)
+        if mfa_config is not None:
+            pulumi.set(__self__, "mfa_config", mfa_config)
+        if mfa_configuration_allowed is not None:
+            pulumi.set(__self__, "mfa_configuration_allowed", mfa_configuration_allowed)
+        if mfa_required_for_all_apps is not None:
+            pulumi.set(__self__, "mfa_required_for_all_apps", mfa_required_for_all_apps)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if session_duration is not None:
@@ -343,6 +443,30 @@ class _AccessOrganizationState:
         pulumi.set(self, "custom_pages", value)
 
     @_builtins.property
+    @pulumi.getter(name="denyUnmatchedRequests")
+    def deny_unmatched_requests(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.
+        """
+        return pulumi.get(self, "deny_unmatched_requests")
+
+    @deny_unmatched_requests.setter
+    def deny_unmatched_requests(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "deny_unmatched_requests", value)
+
+    @_builtins.property
+    @pulumi.getter(name="denyUnmatchedRequestsExemptedZoneNames")
+    def deny_unmatched_requests_exempted_zone_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+        """
+        return pulumi.get(self, "deny_unmatched_requests_exempted_zone_names")
+
+    @deny_unmatched_requests_exempted_zone_names.setter
+    def deny_unmatched_requests_exempted_zone_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "deny_unmatched_requests_exempted_zone_names", value)
+
+    @_builtins.property
     @pulumi.getter(name="isUiReadOnly")
     def is_ui_read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -362,6 +486,42 @@ class _AccessOrganizationState:
     @login_design.setter
     def login_design(self, value: Optional[pulumi.Input['AccessOrganizationLoginDesignArgs']]):
         pulumi.set(self, "login_design", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mfaConfig")
+    def mfa_config(self) -> Optional[pulumi.Input['AccessOrganizationMfaConfigArgs']]:
+        """
+        Configures multi-factor authentication (MFA) settings for an organization.
+        """
+        return pulumi.get(self, "mfa_config")
+
+    @mfa_config.setter
+    def mfa_config(self, value: Optional[pulumi.Input['AccessOrganizationMfaConfigArgs']]):
+        pulumi.set(self, "mfa_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mfaConfigurationAllowed")
+    def mfa_configuration_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
+        """
+        return pulumi.get(self, "mfa_configuration_allowed")
+
+    @mfa_configuration_allowed.setter
+    def mfa_configuration_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "mfa_configuration_allowed", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mfaRequiredForAllApps")
+    def mfa_required_for_all_apps(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+        """
+        return pulumi.get(self, "mfa_required_for_all_apps")
+
+    @mfa_required_for_all_apps.setter
+    def mfa_required_for_all_apps(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "mfa_required_for_all_apps", value)
 
     @_builtins.property
     @pulumi.getter
@@ -452,8 +612,13 @@ class AccessOrganization(pulumi.CustomResource):
                  auth_domain: Optional[pulumi.Input[_builtins.str]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[_builtins.bool]] = None,
                  custom_pages: Optional[pulumi.Input[Union['AccessOrganizationCustomPagesArgs', 'AccessOrganizationCustomPagesArgsDict']]] = None,
+                 deny_unmatched_requests: Optional[pulumi.Input[_builtins.bool]] = None,
+                 deny_unmatched_requests_exempted_zone_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  is_ui_read_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  login_design: Optional[pulumi.Input[Union['AccessOrganizationLoginDesignArgs', 'AccessOrganizationLoginDesignArgsDict']]] = None,
+                 mfa_config: Optional[pulumi.Input[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict']]] = None,
+                 mfa_configuration_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
+                 mfa_required_for_all_apps: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  session_duration: Optional[pulumi.Input[_builtins.str]] = None,
                  ui_read_only_toggle_reason: Optional[pulumi.Input[_builtins.str]] = None,
@@ -477,6 +642,8 @@ class AccessOrganization(pulumi.CustomResource):
                 "forbidden": "699d98642c564d2e855e9661899b7252",
                 "identity_denied": "699d98642c564d2e855e9661899b7252",
             },
+            deny_unmatched_requests=True,
+            deny_unmatched_requests_exempted_zone_names=["example.com"],
             is_ui_read_only=True,
             login_design={
                 "background_color": "#c5ed1b",
@@ -485,6 +652,16 @@ class AccessOrganization(pulumi.CustomResource):
                 "logo_path": "https://example.com/logo.png",
                 "text_color": "#c5ed1b",
             },
+            mfa_config={
+                "allowed_authenticators": [
+                    "totp",
+                    "biometrics",
+                    "security_key",
+                ],
+                "session_duration": "24h",
+            },
+            mfa_configuration_allowed=True,
+            mfa_required_for_all_apps=False,
             name="Widget Corps Internal Applications",
             session_duration="24h",
             ui_read_only_toggle_reason="Temporarily turn off the UI read only lock to make a change via the UI",
@@ -503,7 +680,12 @@ class AccessOrganization(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] allow_authenticate_via_warp: When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
         :param pulumi.Input[_builtins.str] auth_domain: The unique subdomain assigned to your Zero Trust organization.
         :param pulumi.Input[_builtins.bool] auto_redirect_to_identity: When set to `true`, users skip the identity provider selection step during login.
+        :param pulumi.Input[_builtins.bool] deny_unmatched_requests: Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deny_unmatched_requests_exempted_zone_names: Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
         :param pulumi.Input[_builtins.bool] is_ui_read_only: Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
+        :param pulumi.Input[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict']] mfa_config: Configures multi-factor authentication (MFA) settings for an organization.
+        :param pulumi.Input[_builtins.bool] mfa_configuration_allowed: Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
+        :param pulumi.Input[_builtins.bool] mfa_required_for_all_apps: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
         :param pulumi.Input[_builtins.str] name: The name of your Zero Trust organization.
         :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         :param pulumi.Input[_builtins.str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
@@ -533,6 +715,8 @@ class AccessOrganization(pulumi.CustomResource):
                 "forbidden": "699d98642c564d2e855e9661899b7252",
                 "identity_denied": "699d98642c564d2e855e9661899b7252",
             },
+            deny_unmatched_requests=True,
+            deny_unmatched_requests_exempted_zone_names=["example.com"],
             is_ui_read_only=True,
             login_design={
                 "background_color": "#c5ed1b",
@@ -541,6 +725,16 @@ class AccessOrganization(pulumi.CustomResource):
                 "logo_path": "https://example.com/logo.png",
                 "text_color": "#c5ed1b",
             },
+            mfa_config={
+                "allowed_authenticators": [
+                    "totp",
+                    "biometrics",
+                    "security_key",
+                ],
+                "session_duration": "24h",
+            },
+            mfa_configuration_allowed=True,
+            mfa_required_for_all_apps=False,
             name="Widget Corps Internal Applications",
             session_duration="24h",
             ui_read_only_toggle_reason="Temporarily turn off the UI read only lock to make a change via the UI",
@@ -573,8 +767,13 @@ class AccessOrganization(pulumi.CustomResource):
                  auth_domain: Optional[pulumi.Input[_builtins.str]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[_builtins.bool]] = None,
                  custom_pages: Optional[pulumi.Input[Union['AccessOrganizationCustomPagesArgs', 'AccessOrganizationCustomPagesArgsDict']]] = None,
+                 deny_unmatched_requests: Optional[pulumi.Input[_builtins.bool]] = None,
+                 deny_unmatched_requests_exempted_zone_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  is_ui_read_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  login_design: Optional[pulumi.Input[Union['AccessOrganizationLoginDesignArgs', 'AccessOrganizationLoginDesignArgsDict']]] = None,
+                 mfa_config: Optional[pulumi.Input[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict']]] = None,
+                 mfa_configuration_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
+                 mfa_required_for_all_apps: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  session_duration: Optional[pulumi.Input[_builtins.str]] = None,
                  ui_read_only_toggle_reason: Optional[pulumi.Input[_builtins.str]] = None,
@@ -596,8 +795,13 @@ class AccessOrganization(pulumi.CustomResource):
             __props__.__dict__["auth_domain"] = auth_domain
             __props__.__dict__["auto_redirect_to_identity"] = auto_redirect_to_identity
             __props__.__dict__["custom_pages"] = custom_pages
+            __props__.__dict__["deny_unmatched_requests"] = deny_unmatched_requests
+            __props__.__dict__["deny_unmatched_requests_exempted_zone_names"] = deny_unmatched_requests_exempted_zone_names
             __props__.__dict__["is_ui_read_only"] = is_ui_read_only
             __props__.__dict__["login_design"] = login_design
+            __props__.__dict__["mfa_config"] = mfa_config
+            __props__.__dict__["mfa_configuration_allowed"] = mfa_configuration_allowed
+            __props__.__dict__["mfa_required_for_all_apps"] = mfa_required_for_all_apps
             __props__.__dict__["name"] = name
             __props__.__dict__["session_duration"] = session_duration
             __props__.__dict__["ui_read_only_toggle_reason"] = ui_read_only_toggle_reason
@@ -621,8 +825,13 @@ class AccessOrganization(pulumi.CustomResource):
             auth_domain: Optional[pulumi.Input[_builtins.str]] = None,
             auto_redirect_to_identity: Optional[pulumi.Input[_builtins.bool]] = None,
             custom_pages: Optional[pulumi.Input[Union['AccessOrganizationCustomPagesArgs', 'AccessOrganizationCustomPagesArgsDict']]] = None,
+            deny_unmatched_requests: Optional[pulumi.Input[_builtins.bool]] = None,
+            deny_unmatched_requests_exempted_zone_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             is_ui_read_only: Optional[pulumi.Input[_builtins.bool]] = None,
             login_design: Optional[pulumi.Input[Union['AccessOrganizationLoginDesignArgs', 'AccessOrganizationLoginDesignArgsDict']]] = None,
+            mfa_config: Optional[pulumi.Input[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict']]] = None,
+            mfa_configuration_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
+            mfa_required_for_all_apps: Optional[pulumi.Input[_builtins.bool]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             session_duration: Optional[pulumi.Input[_builtins.str]] = None,
             ui_read_only_toggle_reason: Optional[pulumi.Input[_builtins.str]] = None,
@@ -640,7 +849,12 @@ class AccessOrganization(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] allow_authenticate_via_warp: When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
         :param pulumi.Input[_builtins.str] auth_domain: The unique subdomain assigned to your Zero Trust organization.
         :param pulumi.Input[_builtins.bool] auto_redirect_to_identity: When set to `true`, users skip the identity provider selection step during login.
+        :param pulumi.Input[_builtins.bool] deny_unmatched_requests: Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deny_unmatched_requests_exempted_zone_names: Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
         :param pulumi.Input[_builtins.bool] is_ui_read_only: Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
+        :param pulumi.Input[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict']] mfa_config: Configures multi-factor authentication (MFA) settings for an organization.
+        :param pulumi.Input[_builtins.bool] mfa_configuration_allowed: Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
+        :param pulumi.Input[_builtins.bool] mfa_required_for_all_apps: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
         :param pulumi.Input[_builtins.str] name: The name of your Zero Trust organization.
         :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         :param pulumi.Input[_builtins.str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
@@ -657,8 +871,13 @@ class AccessOrganization(pulumi.CustomResource):
         __props__.__dict__["auth_domain"] = auth_domain
         __props__.__dict__["auto_redirect_to_identity"] = auto_redirect_to_identity
         __props__.__dict__["custom_pages"] = custom_pages
+        __props__.__dict__["deny_unmatched_requests"] = deny_unmatched_requests
+        __props__.__dict__["deny_unmatched_requests_exempted_zone_names"] = deny_unmatched_requests_exempted_zone_names
         __props__.__dict__["is_ui_read_only"] = is_ui_read_only
         __props__.__dict__["login_design"] = login_design
+        __props__.__dict__["mfa_config"] = mfa_config
+        __props__.__dict__["mfa_configuration_allowed"] = mfa_configuration_allowed
+        __props__.__dict__["mfa_required_for_all_apps"] = mfa_required_for_all_apps
         __props__.__dict__["name"] = name
         __props__.__dict__["session_duration"] = session_duration
         __props__.__dict__["ui_read_only_toggle_reason"] = ui_read_only_toggle_reason
@@ -705,6 +924,22 @@ class AccessOrganization(pulumi.CustomResource):
         return pulumi.get(self, "custom_pages")
 
     @_builtins.property
+    @pulumi.getter(name="denyUnmatchedRequests")
+    def deny_unmatched_requests(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.
+        """
+        return pulumi.get(self, "deny_unmatched_requests")
+
+    @_builtins.property
+    @pulumi.getter(name="denyUnmatchedRequestsExemptedZoneNames")
+    def deny_unmatched_requests_exempted_zone_names(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+        """
+        return pulumi.get(self, "deny_unmatched_requests_exempted_zone_names")
+
+    @_builtins.property
     @pulumi.getter(name="isUiReadOnly")
     def is_ui_read_only(self) -> pulumi.Output[_builtins.bool]:
         """
@@ -716,6 +951,30 @@ class AccessOrganization(pulumi.CustomResource):
     @pulumi.getter(name="loginDesign")
     def login_design(self) -> pulumi.Output[Optional['outputs.AccessOrganizationLoginDesign']]:
         return pulumi.get(self, "login_design")
+
+    @_builtins.property
+    @pulumi.getter(name="mfaConfig")
+    def mfa_config(self) -> pulumi.Output[Optional['outputs.AccessOrganizationMfaConfig']]:
+        """
+        Configures multi-factor authentication (MFA) settings for an organization.
+        """
+        return pulumi.get(self, "mfa_config")
+
+    @_builtins.property
+    @pulumi.getter(name="mfaConfigurationAllowed")
+    def mfa_configuration_allowed(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
+        """
+        return pulumi.get(self, "mfa_configuration_allowed")
+
+    @_builtins.property
+    @pulumi.getter(name="mfaRequiredForAllApps")
+    def mfa_required_for_all_apps(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+        """
+        return pulumi.get(self, "mfa_required_for_all_apps")
 
     @_builtins.property
     @pulumi.getter
@@ -735,7 +994,7 @@ class AccessOrganization(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="uiReadOnlyToggleReason")
-    def ui_read_only_toggle_reason(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def ui_read_only_toggle_reason(self) -> pulumi.Output[_builtins.str]:
         """
         A description of the reason why the UI read only field is being toggled.
         """

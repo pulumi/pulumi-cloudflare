@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetSnippetResult {
     /**
-     * @return The timestamp of when the snippet was created.
+     * @return Indicates when the snippet was created.
      * 
      */
     private String createdOn;
@@ -21,24 +21,24 @@ public final class GetSnippetResult {
      */
     private String id;
     /**
-     * @return The timestamp of when the snippet was last modified.
+     * @return Indicates when the snippet was last modified.
      * 
      */
     private String modifiedOn;
     /**
-     * @return The identifying name of the snippet.
+     * @return Identify the snippet.
      * 
      */
     private String snippetName;
     /**
-     * @return The unique ID of the zone.
+     * @return Use this field to specify the unique ID of the zone.
      * 
      */
     private String zoneId;
 
     private GetSnippetResult() {}
     /**
-     * @return The timestamp of when the snippet was created.
+     * @return Indicates when the snippet was created.
      * 
      */
     public String createdOn() {
@@ -52,21 +52,21 @@ public final class GetSnippetResult {
         return this.id;
     }
     /**
-     * @return The timestamp of when the snippet was last modified.
+     * @return Indicates when the snippet was last modified.
      * 
      */
     public String modifiedOn() {
         return this.modifiedOn;
     }
     /**
-     * @return The identifying name of the snippet.
+     * @return Identify the snippet.
      * 
      */
     public String snippetName() {
         return this.snippetName;
     }
     /**
-     * @return The unique ID of the zone.
+     * @return Use this field to specify the unique ID of the zone.
      * 
      */
     public String zoneId() {

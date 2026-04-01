@@ -28,7 +28,7 @@ class GetCustomSslResult:
     """
     A collection of values returned by getCustomSsl.
     """
-    def __init__(__self__, bundle_method=None, custom_certificate_id=None, expires_on=None, filter=None, geo_restrictions=None, hosts=None, id=None, issuer=None, keyless_server=None, modified_on=None, policy=None, priority=None, signature=None, status=None, uploaded_on=None, zone_id=None):
+    def __init__(__self__, bundle_method=None, custom_certificate_id=None, expires_on=None, filter=None, geo_restrictions=None, hosts=None, id=None, issuer=None, keyless_server=None, modified_on=None, policy_restrictions=None, priority=None, signature=None, status=None, uploaded_on=None, zone_id=None):
         if bundle_method and not isinstance(bundle_method, str):
             raise TypeError("Expected argument 'bundle_method' to be a str")
         pulumi.set(__self__, "bundle_method", bundle_method)
@@ -59,9 +59,9 @@ class GetCustomSslResult:
         if modified_on and not isinstance(modified_on, str):
             raise TypeError("Expected argument 'modified_on' to be a str")
         pulumi.set(__self__, "modified_on", modified_on)
-        if policy and not isinstance(policy, str):
-            raise TypeError("Expected argument 'policy' to be a str")
-        pulumi.set(__self__, "policy", policy)
+        if policy_restrictions and not isinstance(policy_restrictions, str):
+            raise TypeError("Expected argument 'policy_restrictions' to be a str")
+        pulumi.set(__self__, "policy_restrictions", policy_restrictions)
         if priority and not isinstance(priority, float):
             raise TypeError("Expected argument 'priority' to be a float")
         pulumi.set(__self__, "priority", priority)
@@ -151,44 +151,33 @@ class GetCustomSslResult:
         return pulumi.get(self, "modified_on")
 
     @_builtins.property
-    @pulumi.getter
-    def policy(self) -> _builtins.str:
+    @pulumi.getter(name="policyRestrictions")
+    def policy_restrictions(self) -> _builtins.str:
         """
-        Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+        The policy restrictions returned by the API. This field is returned in responses
+        when a policy has been set. The API accepts the "policy" field in requests but
+        returns this field as "policy_restrictions" in responses.
         """
-        return pulumi.get(self, "policy")
+        return pulumi.get(self, "policy_restrictions")
 
     @_builtins.property
     @pulumi.getter
     def priority(self) -> _builtins.float:
-        """
-        The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy*custom' certificates, but 'legacy*custom' certificates will always supercede 'sni_custom' certificates.
-        """
         return pulumi.get(self, "priority")
 
     @_builtins.property
     @pulumi.getter
     def signature(self) -> _builtins.str:
-        """
-        The type of hash used for the certificate.
-        """
         return pulumi.get(self, "signature")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
-        """
-        Status of the zone's custom SSL.
-        Available values: "active", "expired", "deleted", "pending", "initializing".
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="uploadedOn")
     def uploaded_on(self) -> _builtins.str:
-        """
-        When the certificate was uploaded to Cloudflare.
-        """
         return pulumi.get(self, "uploaded_on")
 
     @_builtins.property
@@ -216,7 +205,7 @@ class AwaitableGetCustomSslResult(GetCustomSslResult):
             issuer=self.issuer,
             keyless_server=self.keyless_server,
             modified_on=self.modified_on,
-            policy=self.policy,
+            policy_restrictions=self.policy_restrictions,
             priority=self.priority,
             signature=self.signature,
             status=self.status,
@@ -261,7 +250,7 @@ def get_custom_ssl(custom_certificate_id: Optional[_builtins.str] = None,
         issuer=pulumi.get(__ret__, 'issuer'),
         keyless_server=pulumi.get(__ret__, 'keyless_server'),
         modified_on=pulumi.get(__ret__, 'modified_on'),
-        policy=pulumi.get(__ret__, 'policy'),
+        policy_restrictions=pulumi.get(__ret__, 'policy_restrictions'),
         priority=pulumi.get(__ret__, 'priority'),
         signature=pulumi.get(__ret__, 'signature'),
         status=pulumi.get(__ret__, 'status'),
@@ -303,7 +292,7 @@ def get_custom_ssl_output(custom_certificate_id: Optional[pulumi.Input[Optional[
         issuer=pulumi.get(__response__, 'issuer'),
         keyless_server=pulumi.get(__response__, 'keyless_server'),
         modified_on=pulumi.get(__response__, 'modified_on'),
-        policy=pulumi.get(__response__, 'policy'),
+        policy_restrictions=pulumi.get(__response__, 'policy_restrictions'),
         priority=pulumi.get(__response__, 'priority'),
         signature=pulumi.get(__response__, 'signature'),
         status=pulumi.get(__response__, 'status'),

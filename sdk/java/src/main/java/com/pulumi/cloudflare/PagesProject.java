@@ -244,14 +244,14 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="buildConfig", refs={PagesProjectBuildConfig.class}, tree="[0]")
-    private Output</* @Nullable */ PagesProjectBuildConfig> buildConfig;
+    private Output<PagesProjectBuildConfig> buildConfig;
 
     /**
      * @return Configs for the project build process.
      * 
      */
-    public Output<Optional<PagesProjectBuildConfig>> buildConfig() {
-        return Codegen.optional(this.buildConfig);
+    public Output<PagesProjectBuildConfig> buildConfig() {
+        return this.buildConfig;
     }
     /**
      * Most recent production deployment of the project.

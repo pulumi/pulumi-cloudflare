@@ -14,6 +14,14 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class CertificatePackValidationRecord
     {
         /// <summary>
+        /// The CNAME record hostname for DCV delegation.
+        /// </summary>
+        public readonly string? Cname;
+        /// <summary>
+        /// The CNAME record target value for DCV delegation.
+        /// </summary>
+        public readonly string? CnameTarget;
+        /// <summary>
         /// The set of email addresses that the certificate authority (CA) will use to complete domain validation.
         /// </summary>
         public readonly ImmutableArray<string> Emails;
@@ -26,6 +34,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? HttpUrl;
         /// <summary>
+        /// Status of the validation record.
+        /// </summary>
+        public readonly string? Status;
+        /// <summary>
         /// The hostname that the certificate authority (CA) will check for a TXT record during domain validation .
         /// </summary>
         public readonly string? TxtName;
@@ -36,19 +48,28 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private CertificatePackValidationRecord(
+            string? cname,
+
+            string? cnameTarget,
+
             ImmutableArray<string> emails,
 
             string? httpBody,
 
             string? httpUrl,
 
+            string? status,
+
             string? txtName,
 
             string? txtValue)
         {
+            Cname = cname;
+            CnameTarget = cnameTarget;
             Emails = emails;
             HttpBody = httpBody;
             HttpUrl = httpUrl;
+            Status = status;
             TxtName = txtName;
             TxtValue = txtValue;
         }

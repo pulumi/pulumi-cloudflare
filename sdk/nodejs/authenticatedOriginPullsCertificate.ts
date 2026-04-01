@@ -71,7 +71,9 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * > This resource does not currently support `pulumi import`.
+ * ```sh
+ * $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate example '<zone_id>/<certificate_id>'
+ * ```
  */
 export class AuthenticatedOriginPullsCertificate extends pulumi.CustomResource {
     /**
@@ -126,6 +128,10 @@ export class AuthenticatedOriginPullsCertificate extends pulumi.CustomResource {
      */
     declare public readonly privateKey: pulumi.Output<string>;
     /**
+     * The serial number on the uploaded certificate.
+     */
+    declare public /*out*/ readonly serialNumber: pulumi.Output<string>;
+    /**
      * The type of hash used for the certificate.
      */
     declare public /*out*/ readonly signature: pulumi.Output<string>;
@@ -162,6 +168,7 @@ export class AuthenticatedOriginPullsCertificate extends pulumi.CustomResource {
             resourceInputs["expiresOn"] = state?.expiresOn;
             resourceInputs["issuer"] = state?.issuer;
             resourceInputs["privateKey"] = state?.privateKey;
+            resourceInputs["serialNumber"] = state?.serialNumber;
             resourceInputs["signature"] = state?.signature;
             resourceInputs["status"] = state?.status;
             resourceInputs["uploadedOn"] = state?.uploadedOn;
@@ -184,6 +191,7 @@ export class AuthenticatedOriginPullsCertificate extends pulumi.CustomResource {
             resourceInputs["enabled"] = undefined /*out*/;
             resourceInputs["expiresOn"] = undefined /*out*/;
             resourceInputs["issuer"] = undefined /*out*/;
+            resourceInputs["serialNumber"] = undefined /*out*/;
             resourceInputs["signature"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["uploadedOn"] = undefined /*out*/;
@@ -223,6 +231,10 @@ export interface AuthenticatedOriginPullsCertificateState {
      * The zone's private key.
      */
     privateKey?: pulumi.Input<string>;
+    /**
+     * The serial number on the uploaded certificate.
+     */
+    serialNumber?: pulumi.Input<string>;
     /**
      * The type of hash used for the certificate.
      */

@@ -19,14 +19,14 @@ public final class SnippetState extends com.pulumi.resources.ResourceArgs {
     public static final SnippetState Empty = new SnippetState();
 
     /**
-     * The timestamp of when the snippet was created.
+     * Indicates when the snippet was created.
      * 
      */
     @Import(name="createdOn")
     private @Nullable Output<String> createdOn;
 
     /**
-     * @return The timestamp of when the snippet was created.
+     * @return Indicates when the snippet was created.
      * 
      */
     public Optional<Output<String>> createdOn() {
@@ -49,14 +49,14 @@ public final class SnippetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Metadata about the snippet.
+     * Provide metadata about the snippet.
      * 
      */
     @Import(name="metadata")
     private @Nullable Output<SnippetMetadataArgs> metadata;
 
     /**
-     * @return Metadata about the snippet.
+     * @return Provide metadata about the snippet.
      * 
      */
     public Optional<Output<SnippetMetadataArgs>> metadata() {
@@ -64,14 +64,14 @@ public final class SnippetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The timestamp of when the snippet was last modified.
+     * Indicates when the snippet was last modified.
      * 
      */
     @Import(name="modifiedOn")
     private @Nullable Output<String> modifiedOn;
 
     /**
-     * @return The timestamp of when the snippet was last modified.
+     * @return Indicates when the snippet was last modified.
      * 
      */
     public Optional<Output<String>> modifiedOn() {
@@ -79,14 +79,14 @@ public final class SnippetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The identifying name of the snippet.
+     * Identify the snippet.
      * 
      */
     @Import(name="snippetName")
     private @Nullable Output<String> snippetName;
 
     /**
-     * @return The identifying name of the snippet.
+     * @return Identify the snippet.
      * 
      */
     public Optional<Output<String>> snippetName() {
@@ -94,14 +94,14 @@ public final class SnippetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The unique ID of the zone.
+     * Use this field to specify the unique ID of the zone.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The unique ID of the zone.
+     * @return Use this field to specify the unique ID of the zone.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -138,7 +138,7 @@ public final class SnippetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createdOn The timestamp of when the snippet was created.
+         * @param createdOn Indicates when the snippet was created.
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class SnippetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createdOn The timestamp of when the snippet was created.
+         * @param createdOn Indicates when the snippet was created.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class SnippetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metadata Metadata about the snippet.
+         * @param metadata Provide metadata about the snippet.
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class SnippetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metadata Metadata about the snippet.
+         * @param metadata Provide metadata about the snippet.
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class SnippetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modifiedOn The timestamp of when the snippet was last modified.
+         * @param modifiedOn Indicates when the snippet was last modified.
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class SnippetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modifiedOn The timestamp of when the snippet was last modified.
+         * @param modifiedOn Indicates when the snippet was last modified.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class SnippetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snippetName The identifying name of the snippet.
+         * @param snippetName Identify the snippet.
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class SnippetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snippetName The identifying name of the snippet.
+         * @param snippetName Identify the snippet.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class SnippetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The unique ID of the zone.
+         * @param zoneId Use this field to specify the unique ID of the zone.
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class SnippetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The unique ID of the zone.
+         * @param zoneId Use this field to specify the unique ID of the zone.
          * 
          * @return builder
          * 

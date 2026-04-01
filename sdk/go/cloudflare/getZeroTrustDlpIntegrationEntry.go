@@ -62,6 +62,7 @@ type LookupZeroTrustDlpIntegrationEntryResult struct {
 	CaseSensitive bool                                      `pulumi:"caseSensitive"`
 	Confidence    GetZeroTrustDlpIntegrationEntryConfidence `pulumi:"confidence"`
 	CreatedAt     string                                    `pulumi:"createdAt"`
+	Description   string                                    `pulumi:"description"`
 	Enabled       bool                                      `pulumi:"enabled"`
 	EntryId       string                                    `pulumi:"entryId"`
 	// The ID of this resource.
@@ -133,6 +134,10 @@ func (o LookupZeroTrustDlpIntegrationEntryResultOutput) Confidence() GetZeroTrus
 
 func (o LookupZeroTrustDlpIntegrationEntryResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpIntegrationEntryResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o LookupZeroTrustDlpIntegrationEntryResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustDlpIntegrationEntryResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
 func (o LookupZeroTrustDlpIntegrationEntryResultOutput) Enabled() pulumi.BoolOutput {

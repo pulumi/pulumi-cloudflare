@@ -21,6 +21,7 @@ import * as utilities from "./utilities";
  *         regex: "regex",
  *         validation: "luhn",
  *     },
+ *     description: "description",
  *     profileId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
@@ -68,6 +69,7 @@ export class ZeroTrustDlpCustomEntry extends pulumi.CustomResource {
     declare public /*out*/ readonly caseSensitive: pulumi.Output<boolean>;
     declare public /*out*/ readonly confidence: pulumi.Output<outputs.ZeroTrustDlpCustomEntryConfidence>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     declare public readonly enabled: pulumi.Output<boolean>;
     declare public readonly name: pulumi.Output<string>;
     declare public readonly pattern: pulumi.Output<outputs.ZeroTrustDlpCustomEntryPattern>;
@@ -103,6 +105,7 @@ export class ZeroTrustDlpCustomEntry extends pulumi.CustomResource {
             resourceInputs["caseSensitive"] = state?.caseSensitive;
             resourceInputs["confidence"] = state?.confidence;
             resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
             resourceInputs["enabled"] = state?.enabled;
             resourceInputs["name"] = state?.name;
             resourceInputs["pattern"] = state?.pattern;
@@ -129,6 +132,7 @@ export class ZeroTrustDlpCustomEntry extends pulumi.CustomResource {
                 throw new Error("Missing required property 'pattern'");
             }
             resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["description"] = args?.description;
             resourceInputs["enabled"] = args?.enabled;
             resourceInputs["name"] = args?.name;
             resourceInputs["pattern"] = args?.pattern;
@@ -162,6 +166,7 @@ export interface ZeroTrustDlpCustomEntryState {
     caseSensitive?: pulumi.Input<boolean>;
     confidence?: pulumi.Input<inputs.ZeroTrustDlpCustomEntryConfidence>;
     createdAt?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     enabled?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;
     pattern?: pulumi.Input<inputs.ZeroTrustDlpCustomEntryPattern>;
@@ -186,6 +191,7 @@ export interface ZeroTrustDlpCustomEntryState {
  */
 export interface ZeroTrustDlpCustomEntryArgs {
     accountId: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     enabled: pulumi.Input<boolean>;
     name: pulumi.Input<string>;
     pattern: pulumi.Input<inputs.ZeroTrustDlpCustomEntryPattern>;

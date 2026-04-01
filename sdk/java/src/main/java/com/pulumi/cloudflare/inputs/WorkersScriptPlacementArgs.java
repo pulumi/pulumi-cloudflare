@@ -3,9 +3,11 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.WorkersScriptPlacementTargetArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -62,7 +64,7 @@ public final class WorkersScriptPlacementArgs extends com.pulumi.resources.Resou
 
     /**
      * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: &#34;smart&#34;.
+     * Available values: &#34;smart&#34;, &#34;targeted&#34;.
      * 
      */
     @Import(name="mode")
@@ -70,7 +72,7 @@ public final class WorkersScriptPlacementArgs extends com.pulumi.resources.Resou
 
     /**
      * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: &#34;smart&#34;.
+     * Available values: &#34;smart&#34;, &#34;targeted&#34;.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -109,6 +111,21 @@ public final class WorkersScriptPlacementArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * Array of placement targets (currently limited to single target).
+     * 
+     */
+    @Import(name="targets")
+    private @Nullable Output<List<WorkersScriptPlacementTargetArgs>> targets;
+
+    /**
+     * @return Array of placement targets (currently limited to single target).
+     * 
+     */
+    public Optional<Output<List<WorkersScriptPlacementTargetArgs>>> targets() {
+        return Optional.ofNullable(this.targets);
+    }
+
     private WorkersScriptPlacementArgs() {}
 
     private WorkersScriptPlacementArgs(WorkersScriptPlacementArgs $) {
@@ -118,6 +135,7 @@ public final class WorkersScriptPlacementArgs extends com.pulumi.resources.Resou
         this.mode = $.mode;
         this.region = $.region;
         this.status = $.status;
+        this.targets = $.targets;
     }
 
     public static Builder builder() {
@@ -203,7 +221,7 @@ public final class WorkersScriptPlacementArgs extends com.pulumi.resources.Resou
 
         /**
          * @param mode Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-         * Available values: &#34;smart&#34;.
+         * Available values: &#34;smart&#34;, &#34;targeted&#34;.
          * 
          * @return builder
          * 
@@ -215,7 +233,7 @@ public final class WorkersScriptPlacementArgs extends com.pulumi.resources.Resou
 
         /**
          * @param mode Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-         * Available values: &#34;smart&#34;.
+         * Available values: &#34;smart&#34;, &#34;targeted&#34;.
          * 
          * @return builder
          * 
@@ -266,6 +284,37 @@ public final class WorkersScriptPlacementArgs extends com.pulumi.resources.Resou
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param targets Array of placement targets (currently limited to single target).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targets(@Nullable Output<List<WorkersScriptPlacementTargetArgs>> targets) {
+            $.targets = targets;
+            return this;
+        }
+
+        /**
+         * @param targets Array of placement targets (currently limited to single target).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targets(List<WorkersScriptPlacementTargetArgs> targets) {
+            return targets(Output.of(targets));
+        }
+
+        /**
+         * @param targets Array of placement targets (currently limited to single target).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targets(WorkersScriptPlacementTargetArgs... targets) {
+            return targets(List.of(targets));
         }
 
         public WorkersScriptPlacementArgs build() {

@@ -12,6 +12,7 @@ import com.pulumi.cloudflare.inputs.StreamLiveInputWebRtcArgs;
 import com.pulumi.cloudflare.inputs.StreamLiveInputWebRtcPlaybackArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -81,6 +82,21 @@ public final class StreamLiveInputState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<Double>> deleteRecordingAfterDays() {
         return Optional.ofNullable(this.deleteRecordingAfterDays);
+    }
+
+    /**
+     * Indicates whether the live input is enabled and can accept streams.
+     * 
+     */
+    @Import(name="enabled")
+    private @Nullable Output<Boolean> enabled;
+
+    /**
+     * @return Indicates whether the live input is enabled and can accept streams.
+     * 
+     */
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
     }
 
     /**
@@ -272,6 +288,7 @@ public final class StreamLiveInputState extends com.pulumi.resources.ResourceArg
         this.created = $.created;
         this.defaultCreator = $.defaultCreator;
         this.deleteRecordingAfterDays = $.deleteRecordingAfterDays;
+        this.enabled = $.enabled;
         this.liveInputIdentifier = $.liveInputIdentifier;
         this.meta = $.meta;
         this.modified = $.modified;
@@ -386,6 +403,27 @@ public final class StreamLiveInputState extends com.pulumi.resources.ResourceArg
          */
         public Builder deleteRecordingAfterDays(Double deleteRecordingAfterDays) {
             return deleteRecordingAfterDays(Output.of(deleteRecordingAfterDays));
+        }
+
+        /**
+         * @param enabled Indicates whether the live input is enabled and can accept streams.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
+            $.enabled = enabled;
+            return this;
+        }
+
+        /**
+         * @param enabled Indicates whether the live input is enabled and can accept streams.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(Boolean enabled) {
+            return enabled(Output.of(enabled));
         }
 
         /**

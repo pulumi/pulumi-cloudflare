@@ -14,74 +14,74 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SnippetRulesRule {
     /**
-     * @return An informative description of the rule.
+     * @return Provide an informative description of the rule.
      * 
      */
     private @Nullable String description;
     /**
-     * @return Whether the rule should be executed.
+     * @return Indicate whether to execute the rule.
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return The expression defining which traffic will match the rule.
+     * @return Define the expression that determines which traffic matches the rule.
      * 
      */
     private String expression;
     /**
-     * @return The unique ID of the rule.
+     * @return Specify the unique ID of the rule.
      * 
      */
     private @Nullable String id;
     /**
-     * @return The timestamp of when the rule was last modified.
+     * @return Specify the timestamp of when the rule was last modified.
      * 
      */
     private @Nullable String lastUpdated;
     /**
-     * @return The identifying name of the snippet.
+     * @return Identify the snippet.
      * 
      */
     private String snippetName;
 
     private SnippetRulesRule() {}
     /**
-     * @return An informative description of the rule.
+     * @return Provide an informative description of the rule.
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return Whether the rule should be executed.
+     * @return Indicate whether to execute the rule.
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return The expression defining which traffic will match the rule.
+     * @return Define the expression that determines which traffic matches the rule.
      * 
      */
     public String expression() {
         return this.expression;
     }
     /**
-     * @return The unique ID of the rule.
+     * @return Specify the unique ID of the rule.
      * 
      */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return The timestamp of when the rule was last modified.
+     * @return Specify the timestamp of when the rule was last modified.
      * 
      */
     public Optional<String> lastUpdated() {
         return Optional.ofNullable(this.lastUpdated);
     }
     /**
-     * @return The identifying name of the snippet.
+     * @return Identify the snippet.
      * 
      */
     public String snippetName() {

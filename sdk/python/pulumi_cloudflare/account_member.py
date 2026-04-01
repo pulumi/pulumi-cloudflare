@@ -33,7 +33,9 @@ class AccountMemberArgs:
         :param pulumi.Input[_builtins.str] email: The contact email address of the user.
         :param pulumi.Input[Sequence[pulumi.Input['AccountMemberPolicyArgs']]] policies: Array of policies associated with this member.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] roles: Set of roles associated with this member.
-        :param pulumi.Input[_builtins.str] status: Available values: "accepted", "pending".
+        :param pulumi.Input[_builtins.str] status: Status of the member invitation. If not provided during creation, defaults to 'pending'.
+               Changing from 'accepted' back to 'pending' will trigger a replacement of the member resource in Terraform.
+               Available values: "accepted", "pending".
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "email", email)
@@ -96,6 +98,8 @@ class AccountMemberArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
+        Status of the member invitation. If not provided during creation, defaults to 'pending'.
+        Changing from 'accepted' back to 'pending' will trigger a replacement of the member resource in Terraform.
         Available values: "accepted", "pending".
         """
         return pulumi.get(self, "status")
@@ -121,7 +125,9 @@ class _AccountMemberState:
         :param pulumi.Input[_builtins.str] email: The contact email address of the user.
         :param pulumi.Input[Sequence[pulumi.Input['AccountMemberPolicyArgs']]] policies: Array of policies associated with this member.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] roles: Set of roles associated with this member.
-        :param pulumi.Input[_builtins.str] status: Available values: "accepted", "pending".
+        :param pulumi.Input[_builtins.str] status: Status of the member invitation. If not provided during creation, defaults to 'pending'.
+               Changing from 'accepted' back to 'pending' will trigger a replacement of the member resource in Terraform.
+               Available values: "accepted", "pending".
         :param pulumi.Input['AccountMemberUserArgs'] user: Details of the user associated to the membership.
         """
         if account_id is not None:
@@ -189,6 +195,8 @@ class _AccountMemberState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
+        Status of the member invitation. If not provided during creation, defaults to 'pending'.
+        Changing from 'accepted' back to 'pending' will trigger a replacement of the member resource in Terraform.
         Available values: "accepted", "pending".
         """
         return pulumi.get(self, "status")
@@ -249,7 +257,9 @@ class AccountMember(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] email: The contact email address of the user.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AccountMemberPolicyArgs', 'AccountMemberPolicyArgsDict']]]] policies: Array of policies associated with this member.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] roles: Set of roles associated with this member.
-        :param pulumi.Input[_builtins.str] status: Available values: "accepted", "pending".
+        :param pulumi.Input[_builtins.str] status: Status of the member invitation. If not provided during creation, defaults to 'pending'.
+               Changing from 'accepted' back to 'pending' will trigger a replacement of the member resource in Terraform.
+               Available values: "accepted", "pending".
         """
         ...
     @overload
@@ -344,7 +354,9 @@ class AccountMember(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] email: The contact email address of the user.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AccountMemberPolicyArgs', 'AccountMemberPolicyArgsDict']]]] policies: Array of policies associated with this member.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] roles: Set of roles associated with this member.
-        :param pulumi.Input[_builtins.str] status: Available values: "accepted", "pending".
+        :param pulumi.Input[_builtins.str] status: Status of the member invitation. If not provided during creation, defaults to 'pending'.
+               Changing from 'accepted' back to 'pending' will trigger a replacement of the member resource in Terraform.
+               Available values: "accepted", "pending".
         :param pulumi.Input[Union['AccountMemberUserArgs', 'AccountMemberUserArgsDict']] user: Details of the user associated to the membership.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -395,6 +407,8 @@ class AccountMember(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
+        Status of the member invitation. If not provided during creation, defaults to 'pending'.
+        Changing from 'accepted' back to 'pending' will trigger a replacement of the member resource in Terraform.
         Available values: "accepted", "pending".
         """
         return pulumi.get(self, "status")

@@ -28,7 +28,7 @@ class GetZeroTrustDexTestResult:
     """
     A collection of values returned by getZeroTrustDexTest.
     """
-    def __init__(__self__, account_id=None, data=None, description=None, dex_test_id=None, enabled=None, id=None, interval=None, name=None, target_policies=None, targeted=None, test_id=None):
+    def __init__(__self__, account_id=None, data=None, description=None, dex_test_id=None, enabled=None, filter=None, id=None, interval=None, name=None, target_policies=None, targeted=None, test_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -44,6 +44,9 @@ class GetZeroTrustDexTestResult:
         if enabled and not isinstance(enabled, bool):
             raise TypeError("Expected argument 'enabled' to be a bool")
         pulumi.set(__self__, "enabled", enabled)
+        if filter and not isinstance(filter, dict):
+            raise TypeError("Expected argument 'filter' to be a dict")
+        pulumi.set(__self__, "filter", filter)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -86,7 +89,7 @@ class GetZeroTrustDexTestResult:
 
     @_builtins.property
     @pulumi.getter(name="dexTestId")
-    def dex_test_id(self) -> _builtins.str:
+    def dex_test_id(self) -> Optional[_builtins.str]:
         """
         The unique identifier for the test.
         """
@@ -99,6 +102,11 @@ class GetZeroTrustDexTestResult:
         Determines whether or not the test is active.
         """
         return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def filter(self) -> Optional['outputs.GetZeroTrustDexTestFilterResult']:
+        return pulumi.get(self, "filter")
 
     @_builtins.property
     @pulumi.getter
@@ -157,6 +165,7 @@ class AwaitableGetZeroTrustDexTestResult(GetZeroTrustDexTestResult):
             description=self.description,
             dex_test_id=self.dex_test_id,
             enabled=self.enabled,
+            filter=self.filter,
             id=self.id,
             interval=self.interval,
             name=self.name,
@@ -167,6 +176,7 @@ class AwaitableGetZeroTrustDexTestResult(GetZeroTrustDexTestResult):
 
 def get_zero_trust_dex_test(account_id: Optional[_builtins.str] = None,
                             dex_test_id: Optional[_builtins.str] = None,
+                            filter: Optional[Union['GetZeroTrustDexTestFilterArgs', 'GetZeroTrustDexTestFilterArgsDict']] = None,
                             target_policies: Optional[Sequence[Union['GetZeroTrustDexTestTargetPolicyArgs', 'GetZeroTrustDexTestTargetPolicyArgsDict']]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustDexTestResult:
     """
@@ -187,6 +197,7 @@ def get_zero_trust_dex_test(account_id: Optional[_builtins.str] = None,
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['dexTestId'] = dex_test_id
+    __args__['filter'] = filter
     __args__['targetPolicies'] = target_policies
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getZeroTrustDexTest:getZeroTrustDexTest', __args__, opts=opts, typ=GetZeroTrustDexTestResult).value
@@ -197,6 +208,7 @@ def get_zero_trust_dex_test(account_id: Optional[_builtins.str] = None,
         description=pulumi.get(__ret__, 'description'),
         dex_test_id=pulumi.get(__ret__, 'dex_test_id'),
         enabled=pulumi.get(__ret__, 'enabled'),
+        filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
         interval=pulumi.get(__ret__, 'interval'),
         name=pulumi.get(__ret__, 'name'),
@@ -204,7 +216,8 @@ def get_zero_trust_dex_test(account_id: Optional[_builtins.str] = None,
         targeted=pulumi.get(__ret__, 'targeted'),
         test_id=pulumi.get(__ret__, 'test_id'))
 def get_zero_trust_dex_test_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                   dex_test_id: Optional[pulumi.Input[_builtins.str]] = None,
+                                   dex_test_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                   filter: Optional[pulumi.Input[Optional[Union['GetZeroTrustDexTestFilterArgs', 'GetZeroTrustDexTestFilterArgsDict']]]] = None,
                                    target_policies: Optional[pulumi.Input[Optional[Sequence[Union['GetZeroTrustDexTestTargetPolicyArgs', 'GetZeroTrustDexTestTargetPolicyArgsDict']]]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDexTestResult]:
     """
@@ -225,6 +238,7 @@ def get_zero_trust_dex_test_output(account_id: Optional[pulumi.Input[_builtins.s
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['dexTestId'] = dex_test_id
+    __args__['filter'] = filter
     __args__['targetPolicies'] = target_policies
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustDexTest:getZeroTrustDexTest', __args__, opts=opts, typ=GetZeroTrustDexTestResult)
@@ -234,6 +248,7 @@ def get_zero_trust_dex_test_output(account_id: Optional[pulumi.Input[_builtins.s
         description=pulumi.get(__response__, 'description'),
         dex_test_id=pulumi.get(__response__, 'dex_test_id'),
         enabled=pulumi.get(__response__, 'enabled'),
+        filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
         interval=pulumi.get(__response__, 'interval'),
         name=pulumi.get(__response__, 'name'),

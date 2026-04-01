@@ -39,33 +39,25 @@ public final class QueueConsumerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A Resource identifier.
+     * Name of the dead letter queue, or empty string if not configured
      * 
      */
-    @Import(name="queueId")
-    private @Nullable Output<String> queueId;
+    @Import(name="deadLetterQueue")
+    private @Nullable Output<String> deadLetterQueue;
 
     /**
-     * @return A Resource identifier.
+     * @return Name of the dead letter queue, or empty string if not configured
      * 
      */
-    public Optional<Output<String>> queueId() {
-        return Optional.ofNullable(this.queueId);
+    public Optional<Output<String>> deadLetterQueue() {
+        return Optional.ofNullable(this.deadLetterQueue);
     }
 
-    /**
-     * Name of a Worker
-     * 
-     */
-    @Import(name="script")
-    private @Nullable Output<String> script;
+    @Import(name="queueName")
+    private @Nullable Output<String> queueName;
 
-    /**
-     * @return Name of a Worker
-     * 
-     */
-    public Optional<Output<String>> script() {
-        return Optional.ofNullable(this.script);
+    public Optional<Output<String>> queueName() {
+        return Optional.ofNullable(this.queueName);
     }
 
     /**
@@ -110,8 +102,8 @@ public final class QueueConsumerArgs extends com.pulumi.resources.ResourceArgs {
     private QueueConsumerArgs(QueueConsumerArgs $) {
         this.consumerId = $.consumerId;
         this.createdOn = $.createdOn;
-        this.queueId = $.queueId;
-        this.script = $.script;
+        this.deadLetterQueue = $.deadLetterQueue;
+        this.queueName = $.queueName;
         this.scriptName = $.scriptName;
         this.settings = $.settings;
         this.type = $.type;
@@ -166,45 +158,33 @@ public final class QueueConsumerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param queueId A Resource identifier.
+         * @param deadLetterQueue Name of the dead letter queue, or empty string if not configured
          * 
          * @return builder
          * 
          */
-        public Builder queueId(@Nullable Output<String> queueId) {
-            $.queueId = queueId;
+        public Builder deadLetterQueue(@Nullable Output<String> deadLetterQueue) {
+            $.deadLetterQueue = deadLetterQueue;
             return this;
         }
 
         /**
-         * @param queueId A Resource identifier.
+         * @param deadLetterQueue Name of the dead letter queue, or empty string if not configured
          * 
          * @return builder
          * 
          */
-        public Builder queueId(String queueId) {
-            return queueId(Output.of(queueId));
+        public Builder deadLetterQueue(String deadLetterQueue) {
+            return deadLetterQueue(Output.of(deadLetterQueue));
         }
 
-        /**
-         * @param script Name of a Worker
-         * 
-         * @return builder
-         * 
-         */
-        public Builder script(@Nullable Output<String> script) {
-            $.script = script;
+        public Builder queueName(@Nullable Output<String> queueName) {
+            $.queueName = queueName;
             return this;
         }
 
-        /**
-         * @param script Name of a Worker
-         * 
-         * @return builder
-         * 
-         */
-        public Builder script(String script) {
-            return script(Output.of(script));
+        public Builder queueName(String queueName) {
+            return queueName(Output.of(queueName));
         }
 
         /**

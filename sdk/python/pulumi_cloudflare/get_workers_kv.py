@@ -26,7 +26,7 @@ class GetWorkersKvResult:
     """
     A collection of values returned by getWorkersKv.
     """
-    def __init__(__self__, account_id=None, id=None, key_name=None, namespace_id=None):
+    def __init__(__self__, account_id=None, id=None, key_name=None, namespace_id=None, value=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -39,6 +39,9 @@ class GetWorkersKvResult:
         if namespace_id and not isinstance(namespace_id, str):
             raise TypeError("Expected argument 'namespace_id' to be a str")
         pulumi.set(__self__, "namespace_id", namespace_id)
+        if value and not isinstance(value, str):
+            raise TypeError("Expected argument 'value' to be a str")
+        pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -72,6 +75,11 @@ class GetWorkersKvResult:
         """
         return pulumi.get(self, "namespace_id")
 
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        return pulumi.get(self, "value")
+
 
 class AwaitableGetWorkersKvResult(GetWorkersKvResult):
     # pylint: disable=using-constant-test
@@ -82,7 +90,8 @@ class AwaitableGetWorkersKvResult(GetWorkersKvResult):
             account_id=self.account_id,
             id=self.id,
             key_name=self.key_name,
-            namespace_id=self.namespace_id)
+            namespace_id=self.namespace_id,
+            value=self.value)
 
 
 def get_workers_kv(account_id: Optional[_builtins.str] = None,
@@ -117,7 +126,8 @@ def get_workers_kv(account_id: Optional[_builtins.str] = None,
         account_id=pulumi.get(__ret__, 'account_id'),
         id=pulumi.get(__ret__, 'id'),
         key_name=pulumi.get(__ret__, 'key_name'),
-        namespace_id=pulumi.get(__ret__, 'namespace_id'))
+        namespace_id=pulumi.get(__ret__, 'namespace_id'),
+        value=pulumi.get(__ret__, 'value'))
 def get_workers_kv_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
                           key_name: Optional[pulumi.Input[_builtins.str]] = None,
                           namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -149,4 +159,5 @@ def get_workers_kv_output(account_id: Optional[pulumi.Input[_builtins.str]] = No
         account_id=pulumi.get(__response__, 'account_id'),
         id=pulumi.get(__response__, 'id'),
         key_name=pulumi.get(__response__, 'key_name'),
-        namespace_id=pulumi.get(__response__, 'namespace_id')))
+        namespace_id=pulumi.get(__response__, 'namespace_id'),
+        value=pulumi.get(__response__, 'value')))

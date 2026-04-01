@@ -15,8 +15,8 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// If the content type is a file, skip context analysis and return all matches.
         /// </summary>
-        [Input("files", required: true)]
-        public Input<bool> Files { get; set; } = null!;
+        [Input("files")]
+        public Input<bool>? Files { get; set; }
 
         public ZeroTrustDlpCustomProfileContextAwarenessSkipArgs()
         {

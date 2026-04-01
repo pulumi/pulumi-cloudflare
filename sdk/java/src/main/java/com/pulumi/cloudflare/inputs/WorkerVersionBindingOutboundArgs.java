@@ -3,10 +3,10 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.WorkerVersionBindingOutboundParamArgs;
 import com.pulumi.cloudflare.inputs.WorkerVersionBindingOutboundWorkerArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -22,13 +22,13 @@ public final class WorkerVersionBindingOutboundArgs extends com.pulumi.resources
      * 
      */
     @Import(name="params")
-    private @Nullable Output<List<String>> params;
+    private @Nullable Output<List<WorkerVersionBindingOutboundParamArgs>> params;
 
     /**
      * @return Pass information from the Dispatch Worker to the Outbound Worker through the parameters.
      * 
      */
-    public Optional<Output<List<String>>> params() {
+    public Optional<Output<List<WorkerVersionBindingOutboundParamArgs>>> params() {
         return Optional.ofNullable(this.params);
     }
 
@@ -78,7 +78,7 @@ public final class WorkerVersionBindingOutboundArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder params(@Nullable Output<List<String>> params) {
+        public Builder params(@Nullable Output<List<WorkerVersionBindingOutboundParamArgs>> params) {
             $.params = params;
             return this;
         }
@@ -89,7 +89,7 @@ public final class WorkerVersionBindingOutboundArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder params(List<String> params) {
+        public Builder params(List<WorkerVersionBindingOutboundParamArgs> params) {
             return params(Output.of(params));
         }
 
@@ -99,7 +99,7 @@ public final class WorkerVersionBindingOutboundArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder params(String... params) {
+        public Builder params(WorkerVersionBindingOutboundParamArgs... params) {
             return params(List.of(params));
         }
 

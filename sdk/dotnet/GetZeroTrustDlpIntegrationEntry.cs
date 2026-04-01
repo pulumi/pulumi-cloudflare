@@ -123,6 +123,7 @@ namespace Pulumi.Cloudflare
         public readonly bool CaseSensitive;
         public readonly Outputs.GetZeroTrustDlpIntegrationEntryConfidenceResult Confidence;
         public readonly string CreatedAt;
+        public readonly string Description;
         public readonly bool Enabled;
         public readonly string EntryId;
         /// <summary>
@@ -156,6 +157,8 @@ namespace Pulumi.Cloudflare
 
             string createdAt,
 
+            string description,
+
             bool enabled,
 
             string entryId,
@@ -186,6 +189,7 @@ namespace Pulumi.Cloudflare
             CaseSensitive = caseSensitive;
             Confidence = confidence;
             CreatedAt = createdAt;
+            Description = description;
             Enabled = enabled;
             EntryId = entryId;
             Id = id;

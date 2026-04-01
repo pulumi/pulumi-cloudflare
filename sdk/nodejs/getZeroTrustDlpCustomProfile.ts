@@ -63,6 +63,9 @@ export interface GetZeroTrustDlpCustomProfileResult {
      * The description of the profile.
      */
     readonly description: string;
+    /**
+     * @deprecated This attribute is deprecated.
+     */
     readonly entries: outputs.GetZeroTrustDlpCustomProfileEntry[];
     /**
      * The ID of this resource.
@@ -78,6 +81,7 @@ export interface GetZeroTrustDlpCustomProfileResult {
      */
     readonly openAccess: boolean;
     readonly profileId: string;
+    readonly sharedEntries: outputs.GetZeroTrustDlpCustomProfileSharedEntry[];
     /**
      * Available values: "custom", "predefined", "integration".
      */

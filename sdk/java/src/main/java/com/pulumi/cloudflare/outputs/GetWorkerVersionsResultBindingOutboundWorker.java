@@ -11,6 +11,11 @@ import java.util.Objects;
 @CustomType
 public final class GetWorkerVersionsResultBindingOutboundWorker {
     /**
+     * @return Entrypoint to invoke on the outbound worker.
+     * 
+     */
+    private String entrypoint;
+    /**
      * @return Environment of the outbound worker.
      * 
      */
@@ -22,6 +27,13 @@ public final class GetWorkerVersionsResultBindingOutboundWorker {
     private String service;
 
     private GetWorkerVersionsResultBindingOutboundWorker() {}
+    /**
+     * @return Entrypoint to invoke on the outbound worker.
+     * 
+     */
+    public String entrypoint() {
+        return this.entrypoint;
+    }
     /**
      * @return Environment of the outbound worker.
      * 
@@ -46,15 +58,25 @@ public final class GetWorkerVersionsResultBindingOutboundWorker {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String entrypoint;
         private String environment;
         private String service;
         public Builder() {}
         public Builder(GetWorkerVersionsResultBindingOutboundWorker defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.entrypoint = defaults.entrypoint;
     	      this.environment = defaults.environment;
     	      this.service = defaults.service;
         }
 
+        @CustomType.Setter
+        public Builder entrypoint(String entrypoint) {
+            if (entrypoint == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionsResultBindingOutboundWorker", "entrypoint");
+            }
+            this.entrypoint = entrypoint;
+            return this;
+        }
         @CustomType.Setter
         public Builder environment(String environment) {
             if (environment == null) {
@@ -73,6 +95,7 @@ public final class GetWorkerVersionsResultBindingOutboundWorker {
         }
         public GetWorkerVersionsResultBindingOutboundWorker build() {
             final var _resultValue = new GetWorkerVersionsResultBindingOutboundWorker();
+            _resultValue.entrypoint = entrypoint;
             _resultValue.environment = environment;
             _resultValue.service = service;
             return _resultValue;

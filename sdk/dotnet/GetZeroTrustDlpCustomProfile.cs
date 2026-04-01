@@ -151,6 +151,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool OpenAccess;
         public readonly string ProfileId;
+        public readonly ImmutableArray<Outputs.GetZeroTrustDlpCustomProfileSharedEntryResult> SharedEntries;
         /// <summary>
         /// Available values: "custom", "predefined", "integration".
         /// </summary>
@@ -188,6 +189,8 @@ namespace Pulumi.Cloudflare
 
             string profileId,
 
+            ImmutableArray<Outputs.GetZeroTrustDlpCustomProfileSharedEntryResult> sharedEntries,
+
             string type,
 
             string updatedAt)
@@ -205,6 +208,7 @@ namespace Pulumi.Cloudflare
             OcrEnabled = ocrEnabled;
             OpenAccess = openAccess;
             ProfileId = profileId;
+            SharedEntries = sharedEntries;
             Type = type;
             UpdatedAt = updatedAt;
         }

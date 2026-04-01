@@ -30,6 +30,7 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
      * 
      */
     private String id;
+    private String lastSuccessfulSync;
     private String lastSynced;
     private String modifiedAt;
     private String modifiedBy;
@@ -73,6 +74,9 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
      */
     public String id() {
         return this.id;
+    }
+    public String lastSuccessfulSync() {
+        return this.lastSuccessfulSync;
     }
     public String lastSynced() {
         return this.lastSynced;
@@ -122,6 +126,7 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
         private String error;
         private String hostname;
         private String id;
+        private String lastSuccessfulSync;
         private String lastSynced;
         private String modifiedAt;
         private String modifiedBy;
@@ -143,6 +148,7 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
     	      this.error = defaults.error;
     	      this.hostname = defaults.hostname;
     	      this.id = defaults.id;
+    	      this.lastSuccessfulSync = defaults.lastSuccessfulSync;
     	      this.lastSynced = defaults.lastSynced;
     	      this.modifiedAt = defaults.modifiedAt;
     	      this.modifiedBy = defaults.modifiedBy;
@@ -217,6 +223,14 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpPortalServer", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder lastSuccessfulSync(String lastSuccessfulSync) {
+            if (lastSuccessfulSync == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpPortalServer", "lastSuccessfulSync");
+            }
+            this.lastSuccessfulSync = lastSuccessfulSync;
             return this;
         }
         @CustomType.Setter
@@ -309,6 +323,7 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
             _resultValue.error = error;
             _resultValue.hostname = hostname;
             _resultValue.id = id;
+            _resultValue.lastSuccessfulSync = lastSuccessfulSync;
             _resultValue.lastSynced = lastSynced;
             _resultValue.modifiedAt = modifiedAt;
             _resultValue.modifiedBy = modifiedBy;

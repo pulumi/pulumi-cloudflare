@@ -14,12 +14,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ZeroTrustDlpCustomProfileEntry {
+    private @Nullable String description;
     private Boolean enabled;
     private @Nullable String entryId;
     private String name;
     private ZeroTrustDlpCustomProfileEntryPattern pattern;
 
     private ZeroTrustDlpCustomProfileEntry() {}
+    public Optional<String> description() {
+        return Optional.ofNullable(this.description);
+    }
     public Boolean enabled() {
         return this.enabled;
     }
@@ -42,6 +46,7 @@ public final class ZeroTrustDlpCustomProfileEntry {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String description;
         private Boolean enabled;
         private @Nullable String entryId;
         private String name;
@@ -49,12 +54,19 @@ public final class ZeroTrustDlpCustomProfileEntry {
         public Builder() {}
         public Builder(ZeroTrustDlpCustomProfileEntry defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.description = defaults.description;
     	      this.enabled = defaults.enabled;
     	      this.entryId = defaults.entryId;
     	      this.name = defaults.name;
     	      this.pattern = defaults.pattern;
         }
 
+        @CustomType.Setter
+        public Builder description(@Nullable String description) {
+
+            this.description = description;
+            return this;
+        }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             if (enabled == null) {
@@ -87,6 +99,7 @@ public final class ZeroTrustDlpCustomProfileEntry {
         }
         public ZeroTrustDlpCustomProfileEntry build() {
             final var _resultValue = new ZeroTrustDlpCustomProfileEntry();
+            _resultValue.description = description;
             _resultValue.enabled = enabled;
             _resultValue.entryId = entryId;
             _resultValue.name = name;

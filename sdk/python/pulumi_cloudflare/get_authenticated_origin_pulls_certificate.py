@@ -26,16 +26,13 @@ class GetAuthenticatedOriginPullsCertificateResult:
     """
     A collection of values returned by getAuthenticatedOriginPullsCertificate.
     """
-    def __init__(__self__, certificate=None, certificate_id=None, enabled=None, expires_on=None, id=None, issuer=None, private_key=None, signature=None, status=None, uploaded_on=None, zone_id=None):
+    def __init__(__self__, certificate=None, certificate_id=None, expires_on=None, id=None, issuer=None, serial_number=None, signature=None, status=None, uploaded_on=None, zone_id=None):
         if certificate and not isinstance(certificate, str):
             raise TypeError("Expected argument 'certificate' to be a str")
         pulumi.set(__self__, "certificate", certificate)
         if certificate_id and not isinstance(certificate_id, str):
             raise TypeError("Expected argument 'certificate_id' to be a str")
         pulumi.set(__self__, "certificate_id", certificate_id)
-        if enabled and not isinstance(enabled, bool):
-            raise TypeError("Expected argument 'enabled' to be a bool")
-        pulumi.set(__self__, "enabled", enabled)
         if expires_on and not isinstance(expires_on, str):
             raise TypeError("Expected argument 'expires_on' to be a str")
         pulumi.set(__self__, "expires_on", expires_on)
@@ -45,9 +42,9 @@ class GetAuthenticatedOriginPullsCertificateResult:
         if issuer and not isinstance(issuer, str):
             raise TypeError("Expected argument 'issuer' to be a str")
         pulumi.set(__self__, "issuer", issuer)
-        if private_key and not isinstance(private_key, str):
-            raise TypeError("Expected argument 'private_key' to be a str")
-        pulumi.set(__self__, "private_key", private_key)
+        if serial_number and not isinstance(serial_number, str):
+            raise TypeError("Expected argument 'serial_number' to be a str")
+        pulumi.set(__self__, "serial_number", serial_number)
         if signature and not isinstance(signature, str):
             raise TypeError("Expected argument 'signature' to be a str")
         pulumi.set(__self__, "signature", signature)
@@ -78,14 +75,6 @@ class GetAuthenticatedOriginPullsCertificateResult:
         return pulumi.get(self, "certificate_id")
 
     @_builtins.property
-    @pulumi.getter
-    def enabled(self) -> _builtins.bool:
-        """
-        Indicates whether zone-level authenticated origin pulls is enabled.
-        """
-        return pulumi.get(self, "enabled")
-
-    @_builtins.property
     @pulumi.getter(name="expiresOn")
     def expires_on(self) -> _builtins.str:
         """
@@ -110,12 +99,12 @@ class GetAuthenticatedOriginPullsCertificateResult:
         return pulumi.get(self, "issuer")
 
     @_builtins.property
-    @pulumi.getter(name="privateKey")
-    def private_key(self) -> _builtins.str:
+    @pulumi.getter(name="serialNumber")
+    def serial_number(self) -> _builtins.str:
         """
-        The zone's private key.
+        The serial number on the uploaded certificate.
         """
-        return pulumi.get(self, "private_key")
+        return pulumi.get(self, "serial_number")
 
     @_builtins.property
     @pulumi.getter
@@ -159,11 +148,10 @@ class AwaitableGetAuthenticatedOriginPullsCertificateResult(GetAuthenticatedOrig
         return GetAuthenticatedOriginPullsCertificateResult(
             certificate=self.certificate,
             certificate_id=self.certificate_id,
-            enabled=self.enabled,
             expires_on=self.expires_on,
             id=self.id,
             issuer=self.issuer,
-            private_key=self.private_key,
+            serial_number=self.serial_number,
             signature=self.signature,
             status=self.status,
             uploaded_on=self.uploaded_on,
@@ -197,11 +185,10 @@ def get_authenticated_origin_pulls_certificate(certificate_id: Optional[_builtin
     return AwaitableGetAuthenticatedOriginPullsCertificateResult(
         certificate=pulumi.get(__ret__, 'certificate'),
         certificate_id=pulumi.get(__ret__, 'certificate_id'),
-        enabled=pulumi.get(__ret__, 'enabled'),
         expires_on=pulumi.get(__ret__, 'expires_on'),
         id=pulumi.get(__ret__, 'id'),
         issuer=pulumi.get(__ret__, 'issuer'),
-        private_key=pulumi.get(__ret__, 'private_key'),
+        serial_number=pulumi.get(__ret__, 'serial_number'),
         signature=pulumi.get(__ret__, 'signature'),
         status=pulumi.get(__ret__, 'status'),
         uploaded_on=pulumi.get(__ret__, 'uploaded_on'),
@@ -232,11 +219,10 @@ def get_authenticated_origin_pulls_certificate_output(certificate_id: Optional[p
     return __ret__.apply(lambda __response__: GetAuthenticatedOriginPullsCertificateResult(
         certificate=pulumi.get(__response__, 'certificate'),
         certificate_id=pulumi.get(__response__, 'certificate_id'),
-        enabled=pulumi.get(__response__, 'enabled'),
         expires_on=pulumi.get(__response__, 'expires_on'),
         id=pulumi.get(__response__, 'id'),
         issuer=pulumi.get(__response__, 'issuer'),
-        private_key=pulumi.get(__response__, 'private_key'),
+        serial_number=pulumi.get(__response__, 'serial_number'),
         signature=pulumi.get(__response__, 'signature'),
         status=pulumi.get(__response__, 'status'),
         uploaded_on=pulumi.get(__response__, 'uploaded_on'),

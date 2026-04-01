@@ -32,14 +32,14 @@ public final class GetSnippetListPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The unique ID of the zone.
+     * Use this field to specify the unique ID of the zone.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return The unique ID of the zone.
+     * @return Use this field to specify the unique ID of the zone.
      * 
      */
     public String zoneId() {
@@ -83,7 +83,7 @@ public final class GetSnippetListPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param zoneId The unique ID of the zone.
+         * @param zoneId Use this field to specify the unique ID of the zone.
          * 
          * @return builder
          * 

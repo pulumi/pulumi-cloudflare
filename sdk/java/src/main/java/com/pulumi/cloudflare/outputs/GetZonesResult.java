@@ -64,7 +64,7 @@ public final class GetZonesResult {
      */
     private String modifiedOn;
     /**
-     * @return The domain name.
+     * @return The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment (&#34;label&#34;) not exceeding 63 characters.
      * 
      */
     private String name;
@@ -220,7 +220,7 @@ see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresour
         return this.modifiedOn;
     }
     /**
-     * @return The domain name.
+     * @return The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment (&#34;label&#34;) not exceeding 63 characters.
      * 
      */
     public String name() {

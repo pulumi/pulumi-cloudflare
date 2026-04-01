@@ -185,14 +185,14 @@ public final class WorkerVersionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Placement settings for the version.
+     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode=&#39;smart&#39; for Smart Placement, or one of region/hostname/host.
      * 
      */
     @Import(name="placement")
     private @Nullable Output<WorkerVersionPlacementArgs> placement;
 
     /**
-     * @return Placement settings for the version.
+     * @return Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode=&#39;smart&#39; for Smart Placement, or one of region/hostname/host.
      * 
      */
     public Optional<Output<WorkerVersionPlacementArgs>> placement() {
@@ -531,7 +531,7 @@ public final class WorkerVersionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param placement Placement settings for the version.
+         * @param placement Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode=&#39;smart&#39; for Smart Placement, or one of region/hostname/host.
          * 
          * @return builder
          * 
@@ -542,7 +542,7 @@ public final class WorkerVersionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param placement Placement settings for the version.
+         * @param placement Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode=&#39;smart&#39; for Smart Placement, or one of region/hostname/host.
          * 
          * @return builder
          * 

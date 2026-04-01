@@ -61,6 +61,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AccountToken{}
 	case "cloudflare:index/addressMap:AddressMap":
 		r = &AddressMap{}
+	case "cloudflare:index/aiSearchInstance:AiSearchInstance":
+		r = &AiSearchInstance{}
+	case "cloudflare:index/aiSearchToken:AiSearchToken":
+		r = &AiSearchToken{}
 	case "cloudflare:index/apiShield:ApiShield":
 		r = &ApiShield{}
 	case "cloudflare:index/apiShieldDiscoveryOperation:ApiShieldDiscoveryOperation":
@@ -83,6 +87,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AuthenticatedOriginPulls{}
 	case "cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate":
 		r = &AuthenticatedOriginPullsCertificate{}
+	case "cloudflare:index/authenticatedOriginPullsHostnameCertificate:AuthenticatedOriginPullsHostnameCertificate":
+		r = &AuthenticatedOriginPullsHostnameCertificate{}
 	case "cloudflare:index/authenticatedOriginPullsSettings:AuthenticatedOriginPullsSettings":
 		r = &AuthenticatedOriginPullsSettings{}
 	case "cloudflare:index/botManagement:BotManagement":
@@ -95,6 +101,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CallsTurnApp{}
 	case "cloudflare:index/certificatePack:CertificatePack":
 		r = &CertificatePack{}
+	case "cloudflare:index/clientCertificate:ClientCertificate":
+		r = &ClientCertificate{}
 	case "cloudflare:index/cloudConnectorRules:CloudConnectorRules":
 		r = &CloudConnectorRules{}
 	case "cloudflare:index/cloudforceOneRequest:CloudforceOneRequest":
@@ -115,6 +123,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CustomHostname{}
 	case "cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin":
 		r = &CustomHostnameFallbackOrigin{}
+	case "cloudflare:index/customOriginTrustStore:CustomOriginTrustStore":
+		r = &CustomOriginTrustStore{}
 	case "cloudflare:index/customPages:CustomPages":
 		r = &CustomPages{}
 	case "cloudflare:index/customSsl:CustomSsl":
@@ -439,6 +449,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ZeroTrustDevicePostureRule{}
 	case "cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings":
 		r = &ZeroTrustDeviceSettings{}
+	case "cloudflare:index/zeroTrustDexRule:ZeroTrustDexRule":
+		r = &ZeroTrustDexRule{}
 	case "cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest":
 		r = &ZeroTrustDexTest{}
 	case "cloudflare:index/zeroTrustDlpCustomEntry:ZeroTrustDlpCustomEntry":
@@ -461,6 +473,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ZeroTrustGatewayCertificate{}
 	case "cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging":
 		r = &ZeroTrustGatewayLogging{}
+	case "cloudflare:index/zeroTrustGatewayPacfile:ZeroTrustGatewayPacfile":
+		r = &ZeroTrustGatewayPacfile{}
 	case "cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy":
 		r = &ZeroTrustGatewayPolicy{}
 	case "cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint":
@@ -640,6 +654,16 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/aiSearchInstance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/aiSearchToken",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/apiShield",
 		&module{version},
 	)
@@ -695,6 +719,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/authenticatedOriginPullsHostnameCertificate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/authenticatedOriginPullsSettings",
 		&module{version},
 	)
@@ -721,6 +750,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/certificatePack",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/clientCertificate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -771,6 +805,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/customHostnameFallbackOrigin",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/customOriginTrustStore",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -1585,6 +1624,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/zeroTrustDexRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/zeroTrustDexTest",
 		&module{version},
 	)
@@ -1636,6 +1680,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/zeroTrustGatewayLogging",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustGatewayPacfile",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

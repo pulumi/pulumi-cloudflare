@@ -25,6 +25,7 @@ class ZeroTrustDlpCustomEntryArgs:
                  enabled: pulumi.Input[_builtins.bool],
                  name: pulumi.Input[_builtins.str],
                  pattern: pulumi.Input['ZeroTrustDlpCustomEntryPatternArgs'],
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
                  profile_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustDlpCustomEntry resource.
@@ -33,6 +34,8 @@ class ZeroTrustDlpCustomEntryArgs:
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "pattern", pattern)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if profile_id is not None:
             pulumi.set(__self__, "profile_id", profile_id)
 
@@ -73,6 +76,15 @@ class ZeroTrustDlpCustomEntryArgs:
         pulumi.set(self, "pattern", value)
 
     @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
     @pulumi.getter(name="profileId")
     def profile_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "profile_id")
@@ -89,6 +101,7 @@ class _ZeroTrustDlpCustomEntryState:
                  case_sensitive: Optional[pulumi.Input[_builtins.bool]] = None,
                  confidence: Optional[pulumi.Input['ZeroTrustDlpCustomEntryConfidenceArgs']] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  pattern: Optional[pulumi.Input['ZeroTrustDlpCustomEntryPatternArgs']] = None,
@@ -117,6 +130,8 @@ class _ZeroTrustDlpCustomEntryState:
             pulumi.set(__self__, "confidence", confidence)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if name is not None:
@@ -180,6 +195,15 @@ class _ZeroTrustDlpCustomEntryState:
     @created_at.setter
     def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
@@ -294,6 +318,7 @@ class ZeroTrustDlpCustomEntry(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  pattern: Optional[pulumi.Input[Union['ZeroTrustDlpCustomEntryPatternArgs', 'ZeroTrustDlpCustomEntryPatternArgsDict']]] = None,
@@ -314,6 +339,7 @@ class ZeroTrustDlpCustomEntry(pulumi.CustomResource):
                 "regex": "regex",
                 "validation": "luhn",
             },
+            description="description",
             profile_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
         ```
 
@@ -348,6 +374,7 @@ class ZeroTrustDlpCustomEntry(pulumi.CustomResource):
                 "regex": "regex",
                 "validation": "luhn",
             },
+            description="description",
             profile_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
         ```
 
@@ -374,6 +401,7 @@ class ZeroTrustDlpCustomEntry(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  pattern: Optional[pulumi.Input[Union['ZeroTrustDlpCustomEntryPatternArgs', 'ZeroTrustDlpCustomEntryPatternArgsDict']]] = None,
@@ -390,6 +418,7 @@ class ZeroTrustDlpCustomEntry(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["description"] = description
             if enabled is None and not opts.urn:
                 raise TypeError("Missing required property 'enabled'")
             __props__.__dict__["enabled"] = enabled
@@ -424,6 +453,7 @@ class ZeroTrustDlpCustomEntry(pulumi.CustomResource):
             case_sensitive: Optional[pulumi.Input[_builtins.bool]] = None,
             confidence: Optional[pulumi.Input[Union['ZeroTrustDlpCustomEntryConfidenceArgs', 'ZeroTrustDlpCustomEntryConfidenceArgsDict']]] = None,
             created_at: Optional[pulumi.Input[_builtins.str]] = None,
+            description: Optional[pulumi.Input[_builtins.str]] = None,
             enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             pattern: Optional[pulumi.Input[Union['ZeroTrustDlpCustomEntryPatternArgs', 'ZeroTrustDlpCustomEntryPatternArgsDict']]] = None,
@@ -456,6 +486,7 @@ class ZeroTrustDlpCustomEntry(pulumi.CustomResource):
         __props__.__dict__["case_sensitive"] = case_sensitive
         __props__.__dict__["confidence"] = confidence
         __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["description"] = description
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["name"] = name
         __props__.__dict__["pattern"] = pattern
@@ -493,6 +524,11 @@ class ZeroTrustDlpCustomEntry(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter

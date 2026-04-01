@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetCertificatePackCertificate;
+import com.pulumi.cloudflare.outputs.GetCertificatePackDcvDelegationRecord;
 import com.pulumi.cloudflare.outputs.GetCertificatePackFilter;
 import com.pulumi.cloudflare.outputs.GetCertificatePackValidationError;
 import com.pulumi.cloudflare.outputs.GetCertificatePackValidationRecord;
@@ -40,6 +41,11 @@ public final class GetCertificatePackResult {
      * 
      */
     private Boolean cloudflareBranding;
+    /**
+     * @return DCV Delegation records for domain validation.
+     * 
+     */
+    private List<GetCertificatePackDcvDelegationRecord> dcvDelegationRecords;
     private @Nullable GetCertificatePackFilter filter;
     /**
      * @return Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
@@ -125,6 +131,13 @@ public final class GetCertificatePackResult {
      */
     public Boolean cloudflareBranding() {
         return this.cloudflareBranding;
+    }
+    /**
+     * @return DCV Delegation records for domain validation.
+     * 
+     */
+    public List<GetCertificatePackDcvDelegationRecord> dcvDelegationRecords() {
+        return this.dcvDelegationRecords;
     }
     public Optional<GetCertificatePackFilter> filter() {
         return Optional.ofNullable(this.filter);
@@ -217,6 +230,7 @@ public final class GetCertificatePackResult {
         private @Nullable String certificatePackId;
         private List<GetCertificatePackCertificate> certificates;
         private Boolean cloudflareBranding;
+        private List<GetCertificatePackDcvDelegationRecord> dcvDelegationRecords;
         private @Nullable GetCertificatePackFilter filter;
         private List<String> hosts;
         private String id;
@@ -235,6 +249,7 @@ public final class GetCertificatePackResult {
     	      this.certificatePackId = defaults.certificatePackId;
     	      this.certificates = defaults.certificates;
     	      this.cloudflareBranding = defaults.cloudflareBranding;
+    	      this.dcvDelegationRecords = defaults.dcvDelegationRecords;
     	      this.filter = defaults.filter;
     	      this.hosts = defaults.hosts;
     	      this.id = defaults.id;
@@ -280,6 +295,17 @@ public final class GetCertificatePackResult {
             }
             this.cloudflareBranding = cloudflareBranding;
             return this;
+        }
+        @CustomType.Setter
+        public Builder dcvDelegationRecords(List<GetCertificatePackDcvDelegationRecord> dcvDelegationRecords) {
+            if (dcvDelegationRecords == null) {
+              throw new MissingRequiredPropertyException("GetCertificatePackResult", "dcvDelegationRecords");
+            }
+            this.dcvDelegationRecords = dcvDelegationRecords;
+            return this;
+        }
+        public Builder dcvDelegationRecords(GetCertificatePackDcvDelegationRecord... dcvDelegationRecords) {
+            return dcvDelegationRecords(List.of(dcvDelegationRecords));
         }
         @CustomType.Setter
         public Builder filter(@Nullable GetCertificatePackFilter filter) {
@@ -382,6 +408,7 @@ public final class GetCertificatePackResult {
             _resultValue.certificatePackId = certificatePackId;
             _resultValue.certificates = certificates;
             _resultValue.cloudflareBranding = cloudflareBranding;
+            _resultValue.dcvDelegationRecords = dcvDelegationRecords;
             _resultValue.filter = filter;
             _resultValue.hosts = hosts;
             _resultValue.id = id;

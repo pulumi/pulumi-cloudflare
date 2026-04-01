@@ -76,7 +76,7 @@ type ZeroTrustDlpCustomProfile struct {
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
 	//
 	// Deprecated: This attribute is deprecated.
-	ContextAwareness ZeroTrustDlpCustomProfileContextAwarenessPtrOutput `pulumi:"contextAwareness"`
+	ContextAwareness ZeroTrustDlpCustomProfileContextAwarenessOutput `pulumi:"contextAwareness"`
 	// When the profile was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The description of the profile.
@@ -359,10 +359,10 @@ func (o ZeroTrustDlpCustomProfileOutput) ConfidenceThreshold() pulumi.StringOutp
 // Scan the context of predefined entries to only return matches surrounded by keywords.
 //
 // Deprecated: This attribute is deprecated.
-func (o ZeroTrustDlpCustomProfileOutput) ContextAwareness() ZeroTrustDlpCustomProfileContextAwarenessPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) ZeroTrustDlpCustomProfileContextAwarenessPtrOutput {
+func (o ZeroTrustDlpCustomProfileOutput) ContextAwareness() ZeroTrustDlpCustomProfileContextAwarenessOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) ZeroTrustDlpCustomProfileContextAwarenessOutput {
 		return v.ContextAwareness
-	}).(ZeroTrustDlpCustomProfileContextAwarenessPtrOutput)
+	}).(ZeroTrustDlpCustomProfileContextAwarenessOutput)
 }
 
 // When the profile was created.

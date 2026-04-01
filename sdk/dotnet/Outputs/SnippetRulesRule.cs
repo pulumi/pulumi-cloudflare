@@ -14,27 +14,27 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class SnippetRulesRule
     {
         /// <summary>
-        /// An informative description of the rule.
+        /// Provide an informative description of the rule.
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// Whether the rule should be executed.
+        /// Indicate whether to execute the rule.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// The expression defining which traffic will match the rule.
+        /// Define the expression that determines which traffic matches the rule.
         /// </summary>
         public readonly string Expression;
         /// <summary>
-        /// The unique ID of the rule.
+        /// Specify the unique ID of the rule.
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// The timestamp of when the rule was last modified.
+        /// Specify the timestamp of when the rule was last modified.
         /// </summary>
         public readonly string? LastUpdated;
         /// <summary>
-        /// The identifying name of the snippet.
+        /// Identify the snippet.
         /// </summary>
         public readonly string SnippetName;
 

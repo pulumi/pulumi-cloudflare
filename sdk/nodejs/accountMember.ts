@@ -72,6 +72,8 @@ export class AccountMember extends pulumi.CustomResource {
      */
     declare public readonly roles: pulumi.Output<string[]>;
     /**
+     * Status of the member invitation. If not provided during creation, defaults to 'pending'.
+     * Changing from 'accepted' back to 'pending' will trigger a replacement of the member resource in Terraform.
      * Available values: "accepted", "pending".
      */
     declare public readonly status: pulumi.Output<string>;
@@ -140,6 +142,8 @@ export interface AccountMemberState {
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Status of the member invitation. If not provided during creation, defaults to 'pending'.
+     * Changing from 'accepted' back to 'pending' will trigger a replacement of the member resource in Terraform.
      * Available values: "accepted", "pending".
      */
     status?: pulumi.Input<string>;
@@ -170,6 +174,8 @@ export interface AccountMemberArgs {
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Status of the member invitation. If not provided during creation, defaults to 'pending'.
+     * Changing from 'accepted' back to 'pending' will trigger a replacement of the member resource in Terraform.
      * Available values: "accepted", "pending".
      */
     status?: pulumi.Input<string>;

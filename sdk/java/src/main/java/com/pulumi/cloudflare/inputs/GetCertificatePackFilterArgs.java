@@ -16,6 +16,23 @@ public final class GetCertificatePackFilterArgs extends com.pulumi.resources.Res
     public static final GetCertificatePackFilterArgs Empty = new GetCertificatePackFilterArgs();
 
     /**
+     * Specify the deployment environment for the certificate packs.
+     * Available values: &#34;staging&#34;, &#34;production&#34;.
+     * 
+     */
+    @Import(name="deploy")
+    private @Nullable Output<String> deploy;
+
+    /**
+     * @return Specify the deployment environment for the certificate packs.
+     * Available values: &#34;staging&#34;, &#34;production&#34;.
+     * 
+     */
+    public Optional<Output<String>> deploy() {
+        return Optional.ofNullable(this.deploy);
+    }
+
+    /**
      * Include Certificate Packs of all statuses, not just active ones.
      * Available values: &#34;all&#34;.
      * 
@@ -35,6 +52,7 @@ public final class GetCertificatePackFilterArgs extends com.pulumi.resources.Res
     private GetCertificatePackFilterArgs() {}
 
     private GetCertificatePackFilterArgs(GetCertificatePackFilterArgs $) {
+        this.deploy = $.deploy;
         this.status = $.status;
     }
 
@@ -54,6 +72,29 @@ public final class GetCertificatePackFilterArgs extends com.pulumi.resources.Res
 
         public Builder(GetCertificatePackFilterArgs defaults) {
             $ = new GetCertificatePackFilterArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param deploy Specify the deployment environment for the certificate packs.
+         * Available values: &#34;staging&#34;, &#34;production&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deploy(@Nullable Output<String> deploy) {
+            $.deploy = deploy;
+            return this;
+        }
+
+        /**
+         * @param deploy Specify the deployment environment for the certificate packs.
+         * Available values: &#34;staging&#34;, &#34;production&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deploy(String deploy) {
+            return deploy(Output.of(deploy));
         }
 
         /**

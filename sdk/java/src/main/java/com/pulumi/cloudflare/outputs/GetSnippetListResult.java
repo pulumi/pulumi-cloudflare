@@ -11,38 +11,38 @@ import java.util.Objects;
 @CustomType
 public final class GetSnippetListResult {
     /**
-     * @return The timestamp of when the snippet was created.
+     * @return Indicates when the snippet was created.
      * 
      */
     private String createdOn;
     /**
-     * @return The timestamp of when the snippet was last modified.
+     * @return Indicates when the snippet was last modified.
      * 
      */
     private String modifiedOn;
     /**
-     * @return The identifying name of the snippet.
+     * @return Identify the snippet.
      * 
      */
     private String snippetName;
 
     private GetSnippetListResult() {}
     /**
-     * @return The timestamp of when the snippet was created.
+     * @return Indicates when the snippet was created.
      * 
      */
     public String createdOn() {
         return this.createdOn;
     }
     /**
-     * @return The timestamp of when the snippet was last modified.
+     * @return Indicates when the snippet was last modified.
      * 
      */
     public String modifiedOn() {
         return this.modifiedOn;
     }
     /**
-     * @return The identifying name of the snippet.
+     * @return Identify the snippet.
      * 
      */
     public String snippetName() {

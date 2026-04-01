@@ -58,6 +58,10 @@ export class StreamLiveInput extends pulumi.CustomResource {
      */
     declare public readonly deleteRecordingAfterDays: pulumi.Output<number | undefined>;
     /**
+     * Indicates whether the live input is enabled and can accept streams.
+     */
+    declare public readonly enabled: pulumi.Output<boolean>;
+    /**
      * A unique identifier for a live input.
      */
     declare public readonly liveInputIdentifier: pulumi.Output<string | undefined>;
@@ -124,6 +128,7 @@ export class StreamLiveInput extends pulumi.CustomResource {
             resourceInputs["created"] = state?.created;
             resourceInputs["defaultCreator"] = state?.defaultCreator;
             resourceInputs["deleteRecordingAfterDays"] = state?.deleteRecordingAfterDays;
+            resourceInputs["enabled"] = state?.enabled;
             resourceInputs["liveInputIdentifier"] = state?.liveInputIdentifier;
             resourceInputs["meta"] = state?.meta;
             resourceInputs["modified"] = state?.modified;
@@ -144,6 +149,7 @@ export class StreamLiveInput extends pulumi.CustomResource {
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["defaultCreator"] = args?.defaultCreator;
             resourceInputs["deleteRecordingAfterDays"] = args?.deleteRecordingAfterDays;
+            resourceInputs["enabled"] = args?.enabled;
             resourceInputs["liveInputIdentifier"] = args?.liveInputIdentifier;
             resourceInputs["meta"] = args?.meta;
             resourceInputs["recording"] = args?.recording;
@@ -183,6 +189,10 @@ export interface StreamLiveInputState {
      * Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
      */
     deleteRecordingAfterDays?: pulumi.Input<number>;
+    /**
+     * Indicates whether the live input is enabled and can accept streams.
+     */
+    enabled?: pulumi.Input<boolean>;
     /**
      * A unique identifier for a live input.
      */
@@ -250,6 +260,10 @@ export interface StreamLiveInputArgs {
      * Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
      */
     deleteRecordingAfterDays?: pulumi.Input<number>;
+    /**
+     * Indicates whether the live input is enabled and can accept streams.
+     */
+    enabled?: pulumi.Input<boolean>;
     /**
      * A unique identifier for a live input.
      */

@@ -5,10 +5,12 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationCustomPagesArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationLoginDesignArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationMfaConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -86,6 +88,36 @@ public final class ZeroTrustOrganizationState extends com.pulumi.resources.Resou
     }
 
     /**
+     * Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `denyUnmatchedRequestsExemptedZoneNames` array.
+     * 
+     */
+    @Import(name="denyUnmatchedRequests")
+    private @Nullable Output<Boolean> denyUnmatchedRequests;
+
+    /**
+     * @return Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `denyUnmatchedRequestsExemptedZoneNames` array.
+     * 
+     */
+    public Optional<Output<Boolean>> denyUnmatchedRequests() {
+        return Optional.ofNullable(this.denyUnmatchedRequests);
+    }
+
+    /**
+     * Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+     * 
+     */
+    @Import(name="denyUnmatchedRequestsExemptedZoneNames")
+    private @Nullable Output<List<String>> denyUnmatchedRequestsExemptedZoneNames;
+
+    /**
+     * @return Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+     * 
+     */
+    public Optional<Output<List<String>>> denyUnmatchedRequestsExemptedZoneNames() {
+        return Optional.ofNullable(this.denyUnmatchedRequestsExemptedZoneNames);
+    }
+
+    /**
      * Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
      * 
      */
@@ -105,6 +137,51 @@ public final class ZeroTrustOrganizationState extends com.pulumi.resources.Resou
 
     public Optional<Output<ZeroTrustOrganizationLoginDesignArgs>> loginDesign() {
         return Optional.ofNullable(this.loginDesign);
+    }
+
+    /**
+     * Configures multi-factor authentication (MFA) settings for an organization.
+     * 
+     */
+    @Import(name="mfaConfig")
+    private @Nullable Output<ZeroTrustOrganizationMfaConfigArgs> mfaConfig;
+
+    /**
+     * @return Configures multi-factor authentication (MFA) settings for an organization.
+     * 
+     */
+    public Optional<Output<ZeroTrustOrganizationMfaConfigArgs>> mfaConfig() {
+        return Optional.ofNullable(this.mfaConfig);
+    }
+
+    /**
+     * Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
+     * 
+     */
+    @Import(name="mfaConfigurationAllowed")
+    private @Nullable Output<Boolean> mfaConfigurationAllowed;
+
+    /**
+     * @return Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
+     * 
+     */
+    public Optional<Output<Boolean>> mfaConfigurationAllowed() {
+        return Optional.ofNullable(this.mfaConfigurationAllowed);
+    }
+
+    /**
+     * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+     * 
+     */
+    @Import(name="mfaRequiredForAllApps")
+    private @Nullable Output<Boolean> mfaRequiredForAllApps;
+
+    /**
+     * @return Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+     * 
+     */
+    public Optional<Output<Boolean>> mfaRequiredForAllApps() {
+        return Optional.ofNullable(this.mfaRequiredForAllApps);
     }
 
     /**
@@ -205,8 +282,13 @@ public final class ZeroTrustOrganizationState extends com.pulumi.resources.Resou
         this.authDomain = $.authDomain;
         this.autoRedirectToIdentity = $.autoRedirectToIdentity;
         this.customPages = $.customPages;
+        this.denyUnmatchedRequests = $.denyUnmatchedRequests;
+        this.denyUnmatchedRequestsExemptedZoneNames = $.denyUnmatchedRequestsExemptedZoneNames;
         this.isUiReadOnly = $.isUiReadOnly;
         this.loginDesign = $.loginDesign;
+        this.mfaConfig = $.mfaConfig;
+        this.mfaConfigurationAllowed = $.mfaConfigurationAllowed;
+        this.mfaRequiredForAllApps = $.mfaRequiredForAllApps;
         this.name = $.name;
         this.sessionDuration = $.sessionDuration;
         this.uiReadOnlyToggleReason = $.uiReadOnlyToggleReason;
@@ -327,6 +409,58 @@ public final class ZeroTrustOrganizationState extends com.pulumi.resources.Resou
         }
 
         /**
+         * @param denyUnmatchedRequests Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `denyUnmatchedRequestsExemptedZoneNames` array.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder denyUnmatchedRequests(@Nullable Output<Boolean> denyUnmatchedRequests) {
+            $.denyUnmatchedRequests = denyUnmatchedRequests;
+            return this;
+        }
+
+        /**
+         * @param denyUnmatchedRequests Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `denyUnmatchedRequestsExemptedZoneNames` array.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder denyUnmatchedRequests(Boolean denyUnmatchedRequests) {
+            return denyUnmatchedRequests(Output.of(denyUnmatchedRequests));
+        }
+
+        /**
+         * @param denyUnmatchedRequestsExemptedZoneNames Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder denyUnmatchedRequestsExemptedZoneNames(@Nullable Output<List<String>> denyUnmatchedRequestsExemptedZoneNames) {
+            $.denyUnmatchedRequestsExemptedZoneNames = denyUnmatchedRequestsExemptedZoneNames;
+            return this;
+        }
+
+        /**
+         * @param denyUnmatchedRequestsExemptedZoneNames Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder denyUnmatchedRequestsExemptedZoneNames(List<String> denyUnmatchedRequestsExemptedZoneNames) {
+            return denyUnmatchedRequestsExemptedZoneNames(Output.of(denyUnmatchedRequestsExemptedZoneNames));
+        }
+
+        /**
+         * @param denyUnmatchedRequestsExemptedZoneNames Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder denyUnmatchedRequestsExemptedZoneNames(String... denyUnmatchedRequestsExemptedZoneNames) {
+            return denyUnmatchedRequestsExemptedZoneNames(List.of(denyUnmatchedRequestsExemptedZoneNames));
+        }
+
+        /**
          * @param isUiReadOnly Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
          * 
          * @return builder
@@ -354,6 +488,69 @@ public final class ZeroTrustOrganizationState extends com.pulumi.resources.Resou
 
         public Builder loginDesign(ZeroTrustOrganizationLoginDesignArgs loginDesign) {
             return loginDesign(Output.of(loginDesign));
+        }
+
+        /**
+         * @param mfaConfig Configures multi-factor authentication (MFA) settings for an organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mfaConfig(@Nullable Output<ZeroTrustOrganizationMfaConfigArgs> mfaConfig) {
+            $.mfaConfig = mfaConfig;
+            return this;
+        }
+
+        /**
+         * @param mfaConfig Configures multi-factor authentication (MFA) settings for an organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mfaConfig(ZeroTrustOrganizationMfaConfigArgs mfaConfig) {
+            return mfaConfig(Output.of(mfaConfig));
+        }
+
+        /**
+         * @param mfaConfigurationAllowed Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mfaConfigurationAllowed(@Nullable Output<Boolean> mfaConfigurationAllowed) {
+            $.mfaConfigurationAllowed = mfaConfigurationAllowed;
+            return this;
+        }
+
+        /**
+         * @param mfaConfigurationAllowed Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mfaConfigurationAllowed(Boolean mfaConfigurationAllowed) {
+            return mfaConfigurationAllowed(Output.of(mfaConfigurationAllowed));
+        }
+
+        /**
+         * @param mfaRequiredForAllApps Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mfaRequiredForAllApps(@Nullable Output<Boolean> mfaRequiredForAllApps) {
+            $.mfaRequiredForAllApps = mfaRequiredForAllApps;
+            return this;
+        }
+
+        /**
+         * @param mfaRequiredForAllApps Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mfaRequiredForAllApps(Boolean mfaRequiredForAllApps) {
+            return mfaRequiredForAllApps(Output.of(mfaRequiredForAllApps));
         }
 
         /**

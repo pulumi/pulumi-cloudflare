@@ -16,8 +16,9 @@ import * as utilities from "./utilities";
  * const exampleQueueConsumer = new cloudflare.QueueConsumer("example_queue_consumer", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     queueId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     deadLetterQueue: "example-queue",
  *     scriptName: "my-consumer-worker",
+ *     type: "worker",
+ *     deadLetterQueue: "example-queue",
  *     settings: {
  *         batchSize: 50,
  *         maxConcurrency: 10,
@@ -25,7 +26,6 @@ import * as utilities from "./utilities";
  *         maxWaitTimeMs: 5000,
  *         retryDelay: 10,
  *     },
- *     type: "worker",
  * });
  * ```
  *
@@ -75,10 +75,7 @@ export class QueueConsumer extends pulumi.CustomResource {
      * A Resource identifier.
      */
     declare public readonly queueId: pulumi.Output<string>;
-    /**
-     * Name of a Worker
-     */
-    declare public /*out*/ readonly script: pulumi.Output<string>;
+    declare public /*out*/ readonly queueName: pulumi.Output<string>;
     /**
      * Name of a Worker
      */
@@ -87,7 +84,7 @@ export class QueueConsumer extends pulumi.CustomResource {
     /**
      * Available values: "worker", "httpPull".
      */
-    declare public readonly type: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a QueueConsumer resource with the given unique name, arguments, and options.
@@ -107,7 +104,7 @@ export class QueueConsumer extends pulumi.CustomResource {
             resourceInputs["createdOn"] = state?.createdOn;
             resourceInputs["deadLetterQueue"] = state?.deadLetterQueue;
             resourceInputs["queueId"] = state?.queueId;
-            resourceInputs["script"] = state?.script;
+            resourceInputs["queueName"] = state?.queueName;
             resourceInputs["scriptName"] = state?.scriptName;
             resourceInputs["settings"] = state?.settings;
             resourceInputs["type"] = state?.type;
@@ -119,6 +116,9 @@ export class QueueConsumer extends pulumi.CustomResource {
             if (args?.queueId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'queueId'");
             }
+            if (args?.type === undefined && !opts.urn) {
+                throw new Error("Missing required property 'type'");
+            }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["deadLetterQueue"] = args?.deadLetterQueue;
             resourceInputs["queueId"] = args?.queueId;
@@ -127,7 +127,7 @@ export class QueueConsumer extends pulumi.CustomResource {
             resourceInputs["type"] = args?.type;
             resourceInputs["consumerId"] = undefined /*out*/;
             resourceInputs["createdOn"] = undefined /*out*/;
-            resourceInputs["script"] = undefined /*out*/;
+            resourceInputs["queueName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(QueueConsumer.__pulumiType, name, resourceInputs, opts);
@@ -152,10 +152,7 @@ export interface QueueConsumerState {
      * A Resource identifier.
      */
     queueId?: pulumi.Input<string>;
-    /**
-     * Name of a Worker
-     */
-    script?: pulumi.Input<string>;
+    queueName?: pulumi.Input<string>;
     /**
      * Name of a Worker
      */
@@ -188,5 +185,5 @@ export interface QueueConsumerArgs {
     /**
      * Available values: "worker", "httpPull".
      */
-    type?: pulumi.Input<string>;
+    type: pulumi.Input<string>;
 }

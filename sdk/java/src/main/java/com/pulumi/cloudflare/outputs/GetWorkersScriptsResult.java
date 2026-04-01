@@ -88,12 +88,12 @@ public final class GetWorkersScriptsResult {
      */
     private GetWorkersScriptsResultObservability observability;
     /**
-     * @return Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
+     * @return Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode=&#39;smart&#39; for Smart Placement, or one of region/hostname/host.
      * 
      */
     private GetWorkersScriptsResultPlacement placement;
     /**
-     * @return Available values: &#34;smart&#34;.
+     * @return Available values: &#34;smart&#34;, &#34;targeted&#34;.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -237,14 +237,14 @@ public final class GetWorkersScriptsResult {
         return this.observability;
     }
     /**
-     * @return Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
+     * @return Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode=&#39;smart&#39; for Smart Placement, or one of region/hostname/host.
      * 
      */
     public GetWorkersScriptsResultPlacement placement() {
         return this.placement;
     }
     /**
-     * @return Available values: &#34;smart&#34;.
+     * @return Available values: &#34;smart&#34;, &#34;targeted&#34;.
      * 
      * @deprecated
      * This attribute is deprecated.

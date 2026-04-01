@@ -16,17 +16,17 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// If true, scan the context of predefined entries to only return matches surrounded by keywords.
         /// </summary>
-        public readonly bool Enabled;
+        public readonly bool? Enabled;
         /// <summary>
         /// Content types to exclude from context analysis and return all matches.
         /// </summary>
-        public readonly Outputs.DlpCustomProfileContextAwarenessSkip Skip;
+        public readonly Outputs.DlpCustomProfileContextAwarenessSkip? Skip;
 
         [OutputConstructor]
         private DlpCustomProfileContextAwareness(
-            bool enabled,
+            bool? enabled,
 
-            Outputs.DlpCustomProfileContextAwarenessSkip skip)
+            Outputs.DlpCustomProfileContextAwarenessSkip? skip)
         {
             Enabled = enabled;
             Skip = skip;

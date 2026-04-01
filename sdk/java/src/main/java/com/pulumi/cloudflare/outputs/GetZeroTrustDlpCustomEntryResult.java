@@ -26,6 +26,7 @@ public final class GetZeroTrustDlpCustomEntryResult {
     private Boolean caseSensitive;
     private GetZeroTrustDlpCustomEntryConfidence confidence;
     private String createdAt;
+    private String description;
     private Boolean enabled;
     private String entryId;
     /**
@@ -70,6 +71,9 @@ public final class GetZeroTrustDlpCustomEntryResult {
     }
     public String createdAt() {
         return this.createdAt;
+    }
+    public String description() {
+        return this.description;
     }
     public Boolean enabled() {
         return this.enabled;
@@ -136,6 +140,7 @@ public final class GetZeroTrustDlpCustomEntryResult {
         private Boolean caseSensitive;
         private GetZeroTrustDlpCustomEntryConfidence confidence;
         private String createdAt;
+        private String description;
         private Boolean enabled;
         private String entryId;
         private String id;
@@ -156,6 +161,7 @@ public final class GetZeroTrustDlpCustomEntryResult {
     	      this.caseSensitive = defaults.caseSensitive;
     	      this.confidence = defaults.confidence;
     	      this.createdAt = defaults.createdAt;
+    	      this.description = defaults.description;
     	      this.enabled = defaults.enabled;
     	      this.entryId = defaults.entryId;
     	      this.id = defaults.id;
@@ -201,6 +207,14 @@ public final class GetZeroTrustDlpCustomEntryResult {
               throw new MissingRequiredPropertyException("GetZeroTrustDlpCustomEntryResult", "createdAt");
             }
             this.createdAt = createdAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder description(String description) {
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDlpCustomEntryResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
@@ -316,6 +330,7 @@ public final class GetZeroTrustDlpCustomEntryResult {
             _resultValue.caseSensitive = caseSensitive;
             _resultValue.confidence = confidence;
             _resultValue.createdAt = createdAt;
+            _resultValue.description = description;
             _resultValue.enabled = enabled;
             _resultValue.entryId = entryId;
             _resultValue.id = id;

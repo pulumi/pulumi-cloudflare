@@ -20,8 +20,15 @@ namespace Pulumi.Cloudflare.Inputs
         public string? Direction { get; set; }
 
         /// <summary>
+        /// Filter widgets by field using case-insensitive substring matching.
+        /// Format: `field:value`
+        /// </summary>
+        [Input("filter")]
+        public string? Filter { get; set; }
+
+        /// <summary>
         /// Field to order widgets by.
-        /// Available values: "id", "sitekey", "name", "created*on", "modified*on".
+        /// Available values: "id", "sitekey", "name", "CreatedOn", "ModifiedOn".
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }

@@ -74,12 +74,14 @@ export class Account extends pulumi.CustomResource {
     declare public readonly settings: pulumi.Output<outputs.AccountSettings>;
     /**
      * Available values: "standard", "enterprise".
+     *
+     * @deprecated The 'type' field should no longer be set through the API.
      */
-    declare public readonly type: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
      */
-    declare public readonly unit: pulumi.Output<outputs.AccountUnit | undefined>;
+    declare public readonly unit: pulumi.Output<outputs.AccountUnit>;
 
     /**
      * Create a Account resource with the given unique name, arguments, and options.
@@ -139,6 +141,8 @@ export interface AccountState {
     settings?: pulumi.Input<inputs.AccountSettings>;
     /**
      * Available values: "standard", "enterprise".
+     *
+     * @deprecated The 'type' field should no longer be set through the API.
      */
     type?: pulumi.Input<string>;
     /**
@@ -165,6 +169,8 @@ export interface AccountArgs {
     settings?: pulumi.Input<inputs.AccountSettings>;
     /**
      * Available values: "standard", "enterprise".
+     *
+     * @deprecated The 'type' field should no longer be set through the API.
      */
     type?: pulumi.Input<string>;
     /**

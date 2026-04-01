@@ -102,6 +102,7 @@ import javax.annotation.Nullable;
  * 
  *             """)
  *             .bundleMethod("ubiquitous")
+ *             .deploy("staging")
  *             .geoRestrictions(CustomSslGeoRestrictionsArgs.builder()
  *                 .label("us")
  *                 .build())
@@ -152,6 +153,22 @@ public class CustomSsl extends com.pulumi.resources.CustomResource {
      */
     public Output<String> certificate() {
         return this.certificate;
+    }
+    /**
+     * The environment to deploy the certificate to.
+     * Available values: &#34;staging&#34;, &#34;production&#34;.
+     * 
+     */
+    @Export(name="deploy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> deploy;
+
+    /**
+     * @return The environment to deploy the certificate to.
+     * Available values: &#34;staging&#34;, &#34;production&#34;.
+     * 
+     */
+    public Output<Optional<String>> deploy() {
+        return Codegen.optional(this.deploy);
     }
     /**
      * When the certificate from the authority expires.
@@ -222,28 +239,48 @@ public class CustomSsl extends com.pulumi.resources.CustomResource {
         return this.modifiedOn;
     }
     /**
-     * Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as &#39;country: IN&#39;, as well as &#39;region: EU&#39; which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+     * Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code*elements) can be chosen, such as &#39;country: IN&#39;, as well as &#39;region: EU&#39; which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+     * Note: The API accepts this field as either &#34;policy&#34; or &#34;policy*restrictions&#34; in requests. Responses return this field as &#34;policyRestrictions&#34;.
      * 
      */
     @Export(name="policy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> policy;
 
     /**
-     * @return Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as &#39;country: IN&#39;, as well as &#39;region: EU&#39; which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+     * @return Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code*elements) can be chosen, such as &#39;country: IN&#39;, as well as &#39;region: EU&#39; which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+     * Note: The API accepts this field as either &#34;policy&#34; or &#34;policy*restrictions&#34; in requests. Responses return this field as &#34;policyRestrictions&#34;.
      * 
      */
     public Output<Optional<String>> policy() {
         return Codegen.optional(this.policy);
     }
     /**
-     * The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping &#39;legacy*custom&#39; certificates, but &#39;legacy*custom&#39; certificates will always supercede &#39;sni_custom&#39; certificates.
+     * The policy restrictions returned by the API. This field is returned in responses
+     * when a policy has been set. The API accepts the &#34;policy&#34; field in requests but
+     * returns this field as &#34;policyRestrictions&#34; in responses.
+     * 
+     */
+    @Export(name="policyRestrictions", refs={String.class}, tree="[0]")
+    private Output<String> policyRestrictions;
+
+    /**
+     * @return The policy restrictions returned by the API. This field is returned in responses
+     * when a policy has been set. The API accepts the &#34;policy&#34; field in requests but
+     * returns this field as &#34;policyRestrictions&#34; in responses.
+     * 
+     */
+    public Output<String> policyRestrictions() {
+        return this.policyRestrictions;
+    }
+    /**
+     * The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping &#39;legacy_custom&#39; certificates, but &#39;legacy_custom&#39; certificates will always supercede &#39;sni_custom&#39; certificates.
      * 
      */
     @Export(name="priority", refs={Double.class}, tree="[0]")
     private Output<Double> priority;
 
     /**
-     * @return The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping &#39;legacy*custom&#39; certificates, but &#39;legacy*custom&#39; certificates will always supercede &#39;sni_custom&#39; certificates.
+     * @return The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping &#39;legacy_custom&#39; certificates, but &#39;legacy_custom&#39; certificates will always supercede &#39;sni_custom&#39; certificates.
      * 
      */
     public Output<Double> priority() {

@@ -127,14 +127,14 @@ public class ZeroTrustDlpCustomProfile extends com.pulumi.resources.CustomResour
      */
     @Deprecated /* This attribute is deprecated. */
     @Export(name="contextAwareness", refs={ZeroTrustDlpCustomProfileContextAwareness.class}, tree="[0]")
-    private Output</* @Nullable */ ZeroTrustDlpCustomProfileContextAwareness> contextAwareness;
+    private Output<ZeroTrustDlpCustomProfileContextAwareness> contextAwareness;
 
     /**
      * @return Scan the context of predefined entries to only return matches surrounded by keywords.
      * 
      */
-    public Output<Optional<ZeroTrustDlpCustomProfileContextAwareness>> contextAwareness() {
-        return Codegen.optional(this.contextAwareness);
+    public Output<ZeroTrustDlpCustomProfileContextAwareness> contextAwareness() {
+        return this.contextAwareness;
     }
     /**
      * When the profile was created.

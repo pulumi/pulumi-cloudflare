@@ -55,6 +55,7 @@ export interface GetMagicTransitSiteLanResult {
      * Identifier
      */
     readonly accountId: string;
+    readonly bondId: number;
     /**
      * mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
      */

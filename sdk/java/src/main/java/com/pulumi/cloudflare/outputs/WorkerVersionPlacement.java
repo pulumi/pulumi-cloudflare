@@ -3,8 +3,10 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.WorkerVersionPlacementTarget;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -12,20 +14,68 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkerVersionPlacement {
     /**
-     * @return Placement mode for the version.
-     * Available values: &#34;smart&#34;.
+     * @return TCP host and port for targeted placement.
+     * 
+     */
+    private @Nullable String host;
+    /**
+     * @return HTTP hostname for targeted placement.
+     * 
+     */
+    private @Nullable String hostname;
+    /**
+     * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: &#34;smart&#34;, &#34;targeted&#34;.
      * 
      */
     private @Nullable String mode;
+    /**
+     * @return Cloud region for targeted placement in format &#39;provider:region&#39;.
+     * 
+     */
+    private @Nullable String region;
+    /**
+     * @return Array of placement targets (currently limited to single target).
+     * 
+     */
+    private @Nullable List<WorkerVersionPlacementTarget> targets;
 
     private WorkerVersionPlacement() {}
     /**
-     * @return Placement mode for the version.
-     * Available values: &#34;smart&#34;.
+     * @return TCP host and port for targeted placement.
+     * 
+     */
+    public Optional<String> host() {
+        return Optional.ofNullable(this.host);
+    }
+    /**
+     * @return HTTP hostname for targeted placement.
+     * 
+     */
+    public Optional<String> hostname() {
+        return Optional.ofNullable(this.hostname);
+    }
+    /**
+     * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: &#34;smart&#34;, &#34;targeted&#34;.
      * 
      */
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
+    }
+    /**
+     * @return Cloud region for targeted placement in format &#39;provider:region&#39;.
+     * 
+     */
+    public Optional<String> region() {
+        return Optional.ofNullable(this.region);
+    }
+    /**
+     * @return Array of placement targets (currently limited to single target).
+     * 
+     */
+    public List<WorkerVersionPlacementTarget> targets() {
+        return this.targets == null ? List.of() : this.targets;
     }
 
     public static Builder builder() {
@@ -37,22 +87,61 @@ public final class WorkerVersionPlacement {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String host;
+        private @Nullable String hostname;
         private @Nullable String mode;
+        private @Nullable String region;
+        private @Nullable List<WorkerVersionPlacementTarget> targets;
         public Builder() {}
         public Builder(WorkerVersionPlacement defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.host = defaults.host;
+    	      this.hostname = defaults.hostname;
     	      this.mode = defaults.mode;
+    	      this.region = defaults.region;
+    	      this.targets = defaults.targets;
         }
 
+        @CustomType.Setter
+        public Builder host(@Nullable String host) {
+
+            this.host = host;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder hostname(@Nullable String hostname) {
+
+            this.hostname = hostname;
+            return this;
+        }
         @CustomType.Setter
         public Builder mode(@Nullable String mode) {
 
             this.mode = mode;
             return this;
         }
+        @CustomType.Setter
+        public Builder region(@Nullable String region) {
+
+            this.region = region;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder targets(@Nullable List<WorkerVersionPlacementTarget> targets) {
+
+            this.targets = targets;
+            return this;
+        }
+        public Builder targets(WorkerVersionPlacementTarget... targets) {
+            return targets(List.of(targets));
+        }
         public WorkerVersionPlacement build() {
             final var _resultValue = new WorkerVersionPlacement();
+            _resultValue.host = host;
+            _resultValue.hostname = hostname;
             _resultValue.mode = mode;
+            _resultValue.region = region;
+            _resultValue.targets = targets;
             return _resultValue;
         }
     }

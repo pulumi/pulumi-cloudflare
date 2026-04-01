@@ -36,6 +36,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string CustomKey;
         /// <summary>
+        /// DCV Delegation records for domain validation.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetCustomHostnameSslDcvDelegationRecordResult> DcvDelegationRecords;
+        /// <summary>
         /// The time the custom certificate expires on.
         /// </summary>
         public readonly string ExpiresOn;
@@ -101,6 +105,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string customKey,
 
+            ImmutableArray<Outputs.GetCustomHostnameSslDcvDelegationRecordResult> dcvDelegationRecords,
+
             string expiresOn,
 
             ImmutableArray<string> hosts,
@@ -134,6 +140,7 @@ namespace Pulumi.Cloudflare.Outputs
             CustomCertificate = customCertificate;
             CustomCsrId = customCsrId;
             CustomKey = customKey;
+            DcvDelegationRecords = dcvDelegationRecords;
             ExpiresOn = expiresOn;
             Hosts = hosts;
             Id = id;

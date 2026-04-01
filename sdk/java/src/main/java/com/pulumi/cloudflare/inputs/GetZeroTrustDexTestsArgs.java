@@ -25,6 +25,23 @@ public final class GetZeroTrustDexTestsArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
+     * Filter by test type
+     * Available values: &#34;http&#34;, &#34;traceroute&#34;.
+     * 
+     */
+    @Import(name="kind")
+    private @Nullable Output<String> kind;
+
+    /**
+     * @return Filter by test type
+     * Available values: &#34;http&#34;, &#34;traceroute&#34;.
+     * 
+     */
+    public Optional<Output<String>> kind() {
+        return Optional.ofNullable(this.kind);
+    }
+
+    /**
      * Max items to fetch, default: 1000
      * 
      */
@@ -39,11 +56,28 @@ public final class GetZeroTrustDexTestsArgs extends com.pulumi.resources.InvokeA
         return Optional.ofNullable(this.maxItems);
     }
 
+    /**
+     * Filter by test name
+     * 
+     */
+    @Import(name="testName")
+    private @Nullable Output<String> testName;
+
+    /**
+     * @return Filter by test name
+     * 
+     */
+    public Optional<Output<String>> testName() {
+        return Optional.ofNullable(this.testName);
+    }
+
     private GetZeroTrustDexTestsArgs() {}
 
     private GetZeroTrustDexTestsArgs(GetZeroTrustDexTestsArgs $) {
         this.accountId = $.accountId;
+        this.kind = $.kind;
         this.maxItems = $.maxItems;
+        this.testName = $.testName;
     }
 
     public static Builder builder() {
@@ -74,6 +108,29 @@ public final class GetZeroTrustDexTestsArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
+         * @param kind Filter by test type
+         * Available values: &#34;http&#34;, &#34;traceroute&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kind(@Nullable Output<String> kind) {
+            $.kind = kind;
+            return this;
+        }
+
+        /**
+         * @param kind Filter by test type
+         * Available values: &#34;http&#34;, &#34;traceroute&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kind(String kind) {
+            return kind(Output.of(kind));
+        }
+
+        /**
          * @param maxItems Max items to fetch, default: 1000
          * 
          * @return builder
@@ -92,6 +149,27 @@ public final class GetZeroTrustDexTestsArgs extends com.pulumi.resources.InvokeA
          */
         public Builder maxItems(Integer maxItems) {
             return maxItems(Output.of(maxItems));
+        }
+
+        /**
+         * @param testName Filter by test name
+         * 
+         * @return builder
+         * 
+         */
+        public Builder testName(@Nullable Output<String> testName) {
+            $.testName = testName;
+            return this;
+        }
+
+        /**
+         * @param testName Filter by test name
+         * 
+         * @return builder
+         * 
+         */
+        public Builder testName(String testName) {
+            return testName(Output.of(testName));
         }
 
         public GetZeroTrustDexTestsArgs build() {

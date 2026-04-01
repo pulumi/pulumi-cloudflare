@@ -85,6 +85,10 @@ export class CertificatePack extends pulumi.CustomResource {
      */
     declare public readonly cloudflareBranding: pulumi.Output<boolean | undefined>;
     /**
+     * DCV Delegation records for domain validation.
+     */
+    declare public /*out*/ readonly dcvDelegationRecords: pulumi.Output<outputs.CertificatePackDcvDelegationRecord[]>;
+    /**
      * Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
      */
     declare public readonly hosts: pulumi.Output<string[]>;
@@ -141,6 +145,7 @@ export class CertificatePack extends pulumi.CustomResource {
             resourceInputs["certificateAuthority"] = state?.certificateAuthority;
             resourceInputs["certificates"] = state?.certificates;
             resourceInputs["cloudflareBranding"] = state?.cloudflareBranding;
+            resourceInputs["dcvDelegationRecords"] = state?.dcvDelegationRecords;
             resourceInputs["hosts"] = state?.hosts;
             resourceInputs["primaryCertificate"] = state?.primaryCertificate;
             resourceInputs["status"] = state?.status;
@@ -175,6 +180,7 @@ export class CertificatePack extends pulumi.CustomResource {
             resourceInputs["validityDays"] = args?.validityDays;
             resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["certificates"] = undefined /*out*/;
+            resourceInputs["dcvDelegationRecords"] = undefined /*out*/;
             resourceInputs["primaryCertificate"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["validationErrors"] = undefined /*out*/;
@@ -202,6 +208,10 @@ export interface CertificatePackState {
      * Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
      */
     cloudflareBranding?: pulumi.Input<boolean>;
+    /**
+     * DCV Delegation records for domain validation.
+     */
+    dcvDelegationRecords?: pulumi.Input<pulumi.Input<inputs.CertificatePackDcvDelegationRecord>[]>;
     /**
      * Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
      */

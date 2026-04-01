@@ -107,6 +107,15 @@ func Provider() info.Provider {
 				},
 			},
 
+			"cloudflare_ai_search_instance": {
+				Fields: map[string]*info.Schema{
+					"id": {
+						Name: "aiSearchInstanceId",
+					},
+				},
+				ComputeID: delegateID("aiSearchInstanceId"),
+			},
+
 			"cloudflare_image": {
 				Fields: map[string]*info.Schema{
 					"id": {

@@ -45,6 +45,10 @@ export interface GetQueueConsumerResult {
     readonly consumerId: string;
     readonly createdOn: string;
     /**
+     * Name of the dead letter queue, or empty string if not configured
+     */
+    readonly deadLetterQueue: string;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
@@ -52,10 +56,7 @@ export interface GetQueueConsumerResult {
      * A Resource identifier.
      */
     readonly queueId: string;
-    /**
-     * Name of a Worker
-     */
-    readonly script: string;
+    readonly queueName: string;
     /**
      * Name of a Worker
      */

@@ -69,7 +69,7 @@ class GetSnippetListResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> _builtins.str:
         """
-        The unique ID of the zone.
+        Use this field to specify the unique ID of the zone.
         """
         return pulumi.get(self, "zone_id")
 
@@ -93,7 +93,7 @@ def get_snippet_list(max_items: Optional[_builtins.int] = None,
     Use this data source to access information about an existing resource.
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str zone_id: The unique ID of the zone.
+    :param _builtins.str zone_id: Use this field to specify the unique ID of the zone.
     """
     __args__ = dict()
     __args__['maxItems'] = max_items
@@ -113,7 +113,7 @@ def get_snippet_list_output(max_items: Optional[pulumi.Input[Optional[_builtins.
     Use this data source to access information about an existing resource.
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str zone_id: The unique ID of the zone.
+    :param _builtins.str zone_id: Use this field to specify the unique ID of the zone.
     """
     __args__ = dict()
     __args__['maxItems'] = max_items

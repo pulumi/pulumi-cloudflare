@@ -59,6 +59,12 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/listItem:ListItem example &#39;&lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;&#39;
  * $ pulumi import cloudflare:index/listItem:ListItem example &#39;&lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;&#39;
  * $ pulumi import cloudflare:index/listItem:ListItem example &#39;&lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;&#39;
+ * $ pulumi import cloudflare:index/listItem:ListItem example &#39;&lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;&#39;
+ * $ pulumi import cloudflare:index/listItem:ListItem example &#39;&lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;&#39;
+ * $ pulumi import cloudflare:index/listItem:ListItem example &#39;&lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;&#39;
+ * $ pulumi import cloudflare:index/listItem:ListItem example &#39;&lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;&#39;
+ * $ pulumi import cloudflare:index/listItem:ListItem example &#39;&lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;&#39;
+ * $ pulumi import cloudflare:index/listItem:ListItem example &#39;&lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;&#39;
  * ```
  * 
  */

@@ -64,8 +64,10 @@ type LookupZeroTrustAccessPolicyResult struct {
 	// Administrators who can approve a temporary authentication request.
 	ApprovalGroups []GetZeroTrustAccessPolicyApprovalGroup `pulumi:"approvalGroups"`
 	// Requires the user to request access from an administrator at the start of each session.
-	ApprovalRequired bool   `pulumi:"approvalRequired"`
-	CreatedAt        string `pulumi:"createdAt"`
+	ApprovalRequired bool `pulumi:"approvalRequired"`
+	// The rules that define how users may connect to targets secured by your application.
+	ConnectionRules GetZeroTrustAccessPolicyConnectionRules `pulumi:"connectionRules"`
+	CreatedAt       string                                  `pulumi:"createdAt"`
 	// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
 	// Available values: "allow", "deny", "nonIdentity", "bypass".
 	Decision string `pulumi:"decision"`
@@ -77,6 +79,8 @@ type LookupZeroTrustAccessPolicyResult struct {
 	Includes []GetZeroTrustAccessPolicyInclude `pulumi:"includes"`
 	// Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
 	IsolationRequired bool `pulumi:"isolationRequired"`
+	// Configures multi-factor authentication (MFA) settings.
+	MfaConfig GetZeroTrustAccessPolicyMfaConfig `pulumi:"mfaConfig"`
 	// The name of the Access policy.
 	Name string `pulumi:"name"`
 	// The UUID of the policy
@@ -151,6 +155,13 @@ func (o LookupZeroTrustAccessPolicyResultOutput) ApprovalRequired() pulumi.BoolO
 	return o.ApplyT(func(v LookupZeroTrustAccessPolicyResult) bool { return v.ApprovalRequired }).(pulumi.BoolOutput)
 }
 
+// The rules that define how users may connect to targets secured by your application.
+func (o LookupZeroTrustAccessPolicyResultOutput) ConnectionRules() GetZeroTrustAccessPolicyConnectionRulesOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessPolicyResult) GetZeroTrustAccessPolicyConnectionRules {
+		return v.ConnectionRules
+	}).(GetZeroTrustAccessPolicyConnectionRulesOutput)
+}
+
 func (o LookupZeroTrustAccessPolicyResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessPolicyResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
@@ -179,6 +190,11 @@ func (o LookupZeroTrustAccessPolicyResultOutput) Includes() GetZeroTrustAccessPo
 // Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
 func (o LookupZeroTrustAccessPolicyResultOutput) IsolationRequired() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessPolicyResult) bool { return v.IsolationRequired }).(pulumi.BoolOutput)
+}
+
+// Configures multi-factor authentication (MFA) settings.
+func (o LookupZeroTrustAccessPolicyResultOutput) MfaConfig() GetZeroTrustAccessPolicyMfaConfigOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessPolicyResult) GetZeroTrustAccessPolicyMfaConfig { return v.MfaConfig }).(GetZeroTrustAccessPolicyMfaConfigOutput)
 }
 
 // The name of the Access policy.

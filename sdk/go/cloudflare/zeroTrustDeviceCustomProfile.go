@@ -95,7 +95,7 @@ type ZeroTrustDeviceCustomProfile struct {
 	// Whether the policy is the default policy for an account.
 	Default pulumi.BoolOutput `pulumi:"default"`
 	// A description of the policy.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringOutput `pulumi:"description"`
 	// If the `dnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
 	DisableAutoFallback pulumi.BoolOutput `pulumi:"disableAutoFallback"`
 	// Whether the policy will be applied to matching devices.
@@ -507,8 +507,8 @@ func (o ZeroTrustDeviceCustomProfileOutput) Default() pulumi.BoolOutput {
 }
 
 // A description of the policy.
-func (o ZeroTrustDeviceCustomProfileOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o ZeroTrustDeviceCustomProfileOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // If the `dnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.

@@ -130,14 +130,14 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The domain name.
+     * The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment (&#34;label&#34;) not exceeding 63 characters.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The domain name.
+     * @return The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment (&#34;label&#34;) not exceeding 63 characters.
      * 
      */
     public Optional<Output<String>> name() {
@@ -583,7 +583,7 @@ see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresour
         }
 
         /**
-         * @param name The domain name.
+         * @param name The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment (&#34;label&#34;) not exceeding 63 characters.
          * 
          * @return builder
          * 
@@ -594,7 +594,7 @@ see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresour
         }
 
         /**
-         * @param name The domain name.
+         * @param name The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment (&#34;label&#34;) not exceeding 63 characters.
          * 
          * @return builder
          * 

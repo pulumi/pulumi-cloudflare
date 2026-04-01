@@ -12,6 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetCertificatePackFilter {
     /**
+     * @return Specify the deployment environment for the certificate packs.
+     * Available values: &#34;staging&#34;, &#34;production&#34;.
+     * 
+     */
+    private @Nullable String deploy;
+    /**
      * @return Include Certificate Packs of all statuses, not just active ones.
      * Available values: &#34;all&#34;.
      * 
@@ -19,6 +25,14 @@ public final class GetCertificatePackFilter {
     private @Nullable String status;
 
     private GetCertificatePackFilter() {}
+    /**
+     * @return Specify the deployment environment for the certificate packs.
+     * Available values: &#34;staging&#34;, &#34;production&#34;.
+     * 
+     */
+    public Optional<String> deploy() {
+        return Optional.ofNullable(this.deploy);
+    }
     /**
      * @return Include Certificate Packs of all statuses, not just active ones.
      * Available values: &#34;all&#34;.
@@ -37,13 +51,21 @@ public final class GetCertificatePackFilter {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String deploy;
         private @Nullable String status;
         public Builder() {}
         public Builder(GetCertificatePackFilter defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.deploy = defaults.deploy;
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
+        public Builder deploy(@Nullable String deploy) {
+
+            this.deploy = deploy;
+            return this;
+        }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
 
@@ -52,6 +74,7 @@ public final class GetCertificatePackFilter {
         }
         public GetCertificatePackFilter build() {
             final var _resultValue = new GetCertificatePackFilter();
+            _resultValue.deploy = deploy;
             _resultValue.status = status;
             return _resultValue;
         }

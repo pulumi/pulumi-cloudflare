@@ -37,6 +37,13 @@ public final class MagicTransitSiteLanArgs extends com.pulumi.resources.Resource
         return this.accountId;
     }
 
+    @Import(name="bondId")
+    private @Nullable Output<Integer> bondId;
+
+    public Optional<Output<Integer>> bondId() {
+        return Optional.ofNullable(this.bondId);
+    }
+
     /**
      * mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
      * 
@@ -66,11 +73,11 @@ public final class MagicTransitSiteLanArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.nat);
     }
 
-    @Import(name="physport", required=true)
-    private Output<Integer> physport;
+    @Import(name="physport")
+    private @Nullable Output<Integer> physport;
 
-    public Output<Integer> physport() {
-        return this.physport;
+    public Optional<Output<Integer>> physport() {
+        return Optional.ofNullable(this.physport);
     }
 
     @Import(name="routedSubnets")
@@ -129,6 +136,7 @@ public final class MagicTransitSiteLanArgs extends com.pulumi.resources.Resource
 
     private MagicTransitSiteLanArgs(MagicTransitSiteLanArgs $) {
         this.accountId = $.accountId;
+        this.bondId = $.bondId;
         this.haLink = $.haLink;
         this.name = $.name;
         this.nat = $.nat;
@@ -178,6 +186,15 @@ public final class MagicTransitSiteLanArgs extends com.pulumi.resources.Resource
             return accountId(Output.of(accountId));
         }
 
+        public Builder bondId(@Nullable Output<Integer> bondId) {
+            $.bondId = bondId;
+            return this;
+        }
+
+        public Builder bondId(Integer bondId) {
+            return bondId(Output.of(bondId));
+        }
+
         /**
          * @param haLink mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
          * 
@@ -217,7 +234,7 @@ public final class MagicTransitSiteLanArgs extends com.pulumi.resources.Resource
             return nat(Output.of(nat));
         }
 
-        public Builder physport(Output<Integer> physport) {
+        public Builder physport(@Nullable Output<Integer> physport) {
             $.physport = physport;
             return this;
         }
@@ -305,9 +322,6 @@ public final class MagicTransitSiteLanArgs extends com.pulumi.resources.Resource
         public MagicTransitSiteLanArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("MagicTransitSiteLanArgs", "accountId");
-            }
-            if ($.physport == null) {
-                throw new MissingRequiredPropertyException("MagicTransitSiteLanArgs", "physport");
             }
             if ($.siteId == null) {
                 throw new MissingRequiredPropertyException("MagicTransitSiteLanArgs", "siteId");

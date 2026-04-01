@@ -144,6 +144,14 @@ namespace Pulumi.Cloudflare
         public readonly bool AutoRedirectToIdentity;
         public readonly Outputs.GetZeroTrustOrganizationCustomPagesResult CustomPages;
         /// <summary>
+        /// Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `DenyUnmatchedRequestsExemptedZoneNames` array.
+        /// </summary>
+        public readonly bool DenyUnmatchedRequests;
+        /// <summary>
+        /// Contains zone names to exempt from the `DenyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+        /// </summary>
+        public readonly ImmutableArray<string> DenyUnmatchedRequestsExemptedZoneNames;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -152,6 +160,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool IsUiReadOnly;
         public readonly Outputs.GetZeroTrustOrganizationLoginDesignResult LoginDesign;
+        /// <summary>
+        /// Configures multi-factor authentication (MFA) settings for an organization.
+        /// </summary>
+        public readonly Outputs.GetZeroTrustOrganizationMfaConfigResult MfaConfig;
+        /// <summary>
+        /// Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
+        /// </summary>
+        public readonly bool MfaConfigurationAllowed;
+        /// <summary>
+        /// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+        /// </summary>
+        public readonly bool MfaRequiredForAllApps;
         /// <summary>
         /// The name of your Zero Trust organization.
         /// </summary>
@@ -189,11 +209,21 @@ namespace Pulumi.Cloudflare
 
             Outputs.GetZeroTrustOrganizationCustomPagesResult customPages,
 
+            bool denyUnmatchedRequests,
+
+            ImmutableArray<string> denyUnmatchedRequestsExemptedZoneNames,
+
             string id,
 
             bool isUiReadOnly,
 
             Outputs.GetZeroTrustOrganizationLoginDesignResult loginDesign,
+
+            Outputs.GetZeroTrustOrganizationMfaConfigResult mfaConfig,
+
+            bool mfaConfigurationAllowed,
+
+            bool mfaRequiredForAllApps,
 
             string name,
 
@@ -212,9 +242,14 @@ namespace Pulumi.Cloudflare
             AuthDomain = authDomain;
             AutoRedirectToIdentity = autoRedirectToIdentity;
             CustomPages = customPages;
+            DenyUnmatchedRequests = denyUnmatchedRequests;
+            DenyUnmatchedRequestsExemptedZoneNames = denyUnmatchedRequestsExemptedZoneNames;
             Id = id;
             IsUiReadOnly = isUiReadOnly;
             LoginDesign = loginDesign;
+            MfaConfig = mfaConfig;
+            MfaConfigurationAllowed = mfaConfigurationAllowed;
+            MfaRequiredForAllApps = mfaRequiredForAllApps;
             Name = name;
             SessionDuration = sessionDuration;
             UiReadOnlyToggleReason = uiReadOnlyToggleReason;

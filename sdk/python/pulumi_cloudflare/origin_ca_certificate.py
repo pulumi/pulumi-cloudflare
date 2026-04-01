@@ -27,7 +27,8 @@ class OriginCaCertificateArgs:
         The set of arguments for constructing a OriginCaCertificate resource.
 
         :param pulumi.Input[_builtins.str] csr: The Certificate Signing Request (CSR). Must be newline-encoded.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: Array of hostnames or wildcard names bound to the certificate.
+               Hostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wildcards are supported only as a `*.` prefix for a single level (e.g., `*.example.com`). Double wildcards (`*.*.example.com`) and interior wildcards (`foo.*.example.com`) are not allowed. The wildcard suffix must be a multi-label domain (`*.example.com` is valid, but `*.com` is not). Unicode/IDN hostnames are accepted and automatically converted to punycode.
         :param pulumi.Input[_builtins.str] request_type: Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
                Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
         :param pulumi.Input[_builtins.float] requested_validity: The number of days for which the certificate should be valid.
@@ -55,7 +56,8 @@ class OriginCaCertificateArgs:
     @pulumi.getter
     def hostnames(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
+        Array of hostnames or wildcard names bound to the certificate.
+        Hostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wildcards are supported only as a `*.` prefix for a single level (e.g., `*.example.com`). Double wildcards (`*.*.example.com`) and interior wildcards (`foo.*.example.com`) are not allowed. The wildcard suffix must be a multi-label domain (`*.example.com` is valid, but `*.com` is not). Unicode/IDN hostnames are accepted and automatically converted to punycode.
         """
         return pulumi.get(self, "hostnames")
 
@@ -105,7 +107,8 @@ class _OriginCaCertificateState:
         :param pulumi.Input[_builtins.str] certificate: The Origin CA certificate. Will be newline-encoded.
         :param pulumi.Input[_builtins.str] csr: The Certificate Signing Request (CSR). Must be newline-encoded.
         :param pulumi.Input[_builtins.str] expires_on: When the certificate will expire.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: Array of hostnames or wildcard names bound to the certificate.
+               Hostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wildcards are supported only as a `*.` prefix for a single level (e.g., `*.example.com`). Double wildcards (`*.*.example.com`) and interior wildcards (`foo.*.example.com`) are not allowed. The wildcard suffix must be a multi-label domain (`*.example.com` is valid, but `*.com` is not). Unicode/IDN hostnames are accepted and automatically converted to punycode.
         :param pulumi.Input[_builtins.str] request_type: Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
                Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
         :param pulumi.Input[_builtins.float] requested_validity: The number of days for which the certificate should be valid.
@@ -164,7 +167,8 @@ class _OriginCaCertificateState:
     @pulumi.getter
     def hostnames(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
+        Array of hostnames or wildcard names bound to the certificate.
+        Hostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wildcards are supported only as a `*.` prefix for a single level (e.g., `*.example.com`). Double wildcards (`*.*.example.com`) and interior wildcards (`foo.*.example.com`) are not allowed. The wildcard suffix must be a multi-label domain (`*.example.com` is valid, but `*.com` is not). Unicode/IDN hostnames are accepted and automatically converted to punycode.
         """
         return pulumi.get(self, "hostnames")
 
@@ -239,6 +243,7 @@ class OriginCaCertificate(pulumi.CustomResource):
             hostnames=[
                 "example.com",
                 "*.example.com",
+                "sub.example.com",
             ],
             request_type="origin-rsa",
             requested_validity=5475)
@@ -254,7 +259,8 @@ class OriginCaCertificate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] csr: The Certificate Signing Request (CSR). Must be newline-encoded.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: Array of hostnames or wildcard names bound to the certificate.
+               Hostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wildcards are supported only as a `*.` prefix for a single level (e.g., `*.example.com`). Double wildcards (`*.*.example.com`) and interior wildcards (`foo.*.example.com`) are not allowed. The wildcard suffix must be a multi-label domain (`*.example.com` is valid, but `*.com` is not). Unicode/IDN hostnames are accepted and automatically converted to punycode.
         :param pulumi.Input[_builtins.str] request_type: Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
                Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
         :param pulumi.Input[_builtins.float] requested_validity: The number of days for which the certificate should be valid.
@@ -295,6 +301,7 @@ class OriginCaCertificate(pulumi.CustomResource):
             hostnames=[
                 "example.com",
                 "*.example.com",
+                "sub.example.com",
             ],
             request_type="origin-rsa",
             requested_validity=5475)
@@ -373,7 +380,8 @@ class OriginCaCertificate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] certificate: The Origin CA certificate. Will be newline-encoded.
         :param pulumi.Input[_builtins.str] csr: The Certificate Signing Request (CSR). Must be newline-encoded.
         :param pulumi.Input[_builtins.str] expires_on: When the certificate will expire.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: Array of hostnames or wildcard names bound to the certificate.
+               Hostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wildcards are supported only as a `*.` prefix for a single level (e.g., `*.example.com`). Double wildcards (`*.*.example.com`) and interior wildcards (`foo.*.example.com`) are not allowed. The wildcard suffix must be a multi-label domain (`*.example.com` is valid, but `*.com` is not). Unicode/IDN hostnames are accepted and automatically converted to punycode.
         :param pulumi.Input[_builtins.str] request_type: Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
                Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
         :param pulumi.Input[_builtins.float] requested_validity: The number of days for which the certificate should be valid.
@@ -419,7 +427,8 @@ class OriginCaCertificate(pulumi.CustomResource):
     @pulumi.getter
     def hostnames(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
+        Array of hostnames or wildcard names bound to the certificate.
+        Hostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wildcards are supported only as a `*.` prefix for a single level (e.g., `*.example.com`). Double wildcards (`*.*.example.com`) and interior wildcards (`foo.*.example.com`) are not allowed. The wildcard suffix must be a multi-label domain (`*.example.com` is valid, but `*.com` is not). Unicode/IDN hostnames are accepted and automatically converted to punycode.
         """
         return pulumi.get(self, "hostnames")
 

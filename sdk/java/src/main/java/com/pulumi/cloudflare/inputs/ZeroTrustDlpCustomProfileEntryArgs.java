@@ -18,6 +18,13 @@ public final class ZeroTrustDlpCustomProfileEntryArgs extends com.pulumi.resourc
 
     public static final ZeroTrustDlpCustomProfileEntryArgs Empty = new ZeroTrustDlpCustomProfileEntryArgs();
 
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
@@ -49,6 +56,7 @@ public final class ZeroTrustDlpCustomProfileEntryArgs extends com.pulumi.resourc
     private ZeroTrustDlpCustomProfileEntryArgs() {}
 
     private ZeroTrustDlpCustomProfileEntryArgs(ZeroTrustDlpCustomProfileEntryArgs $) {
+        this.description = $.description;
         this.enabled = $.enabled;
         this.entryId = $.entryId;
         this.name = $.name;
@@ -71,6 +79,15 @@ public final class ZeroTrustDlpCustomProfileEntryArgs extends com.pulumi.resourc
 
         public Builder(ZeroTrustDlpCustomProfileEntryArgs defaults) {
             $ = new ZeroTrustDlpCustomProfileEntryArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         public Builder enabled(Output<Boolean> enabled) {

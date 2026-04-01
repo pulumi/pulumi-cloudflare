@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.AccessApplicationPolicyConnectionRulesRdp;
 import com.pulumi.cloudflare.outputs.AccessApplicationPolicyConnectionRulesSsh;
 import com.pulumi.core.annotations.CustomType;
 import java.util.Objects;
@@ -12,12 +13,24 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AccessApplicationPolicyConnectionRules {
     /**
+     * @return The RDP-specific rules that define clipboard behavior for RDP connections.
+     * 
+     */
+    private @Nullable AccessApplicationPolicyConnectionRulesRdp rdp;
+    /**
      * @return The SSH-specific rules that define how users may connect to the targets secured by your application.
      * 
      */
     private @Nullable AccessApplicationPolicyConnectionRulesSsh ssh;
 
     private AccessApplicationPolicyConnectionRules() {}
+    /**
+     * @return The RDP-specific rules that define clipboard behavior for RDP connections.
+     * 
+     */
+    public Optional<AccessApplicationPolicyConnectionRulesRdp> rdp() {
+        return Optional.ofNullable(this.rdp);
+    }
     /**
      * @return The SSH-specific rules that define how users may connect to the targets secured by your application.
      * 
@@ -35,13 +48,21 @@ public final class AccessApplicationPolicyConnectionRules {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable AccessApplicationPolicyConnectionRulesRdp rdp;
         private @Nullable AccessApplicationPolicyConnectionRulesSsh ssh;
         public Builder() {}
         public Builder(AccessApplicationPolicyConnectionRules defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.rdp = defaults.rdp;
     	      this.ssh = defaults.ssh;
         }
 
+        @CustomType.Setter
+        public Builder rdp(@Nullable AccessApplicationPolicyConnectionRulesRdp rdp) {
+
+            this.rdp = rdp;
+            return this;
+        }
         @CustomType.Setter
         public Builder ssh(@Nullable AccessApplicationPolicyConnectionRulesSsh ssh) {
 
@@ -50,6 +71,7 @@ public final class AccessApplicationPolicyConnectionRules {
         }
         public AccessApplicationPolicyConnectionRules build() {
             final var _resultValue = new AccessApplicationPolicyConnectionRules();
+            _resultValue.rdp = rdp;
             _resultValue.ssh = ssh;
             return _resultValue;
         }

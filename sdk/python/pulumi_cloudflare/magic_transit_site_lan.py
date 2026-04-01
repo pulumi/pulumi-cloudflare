@@ -22,11 +22,12 @@ __all__ = ['MagicTransitSiteLanArgs', 'MagicTransitSiteLan']
 class MagicTransitSiteLanArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
-                 physport: pulumi.Input[_builtins.int],
                  site_id: pulumi.Input[_builtins.str],
+                 bond_id: Optional[pulumi.Input[_builtins.int]] = None,
                  ha_link: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  nat: Optional[pulumi.Input['MagicTransitSiteLanNatArgs']] = None,
+                 physport: Optional[pulumi.Input[_builtins.int]] = None,
                  routed_subnets: Optional[pulumi.Input[Sequence[pulumi.Input['MagicTransitSiteLanRoutedSubnetArgs']]]] = None,
                  static_addressing: Optional[pulumi.Input['MagicTransitSiteLanStaticAddressingArgs']] = None,
                  vlan_tag: Optional[pulumi.Input[_builtins.int]] = None):
@@ -40,14 +41,17 @@ class MagicTransitSiteLanArgs:
         :param pulumi.Input[_builtins.int] vlan_tag: VLAN ID. Use zero for untagged.
         """
         pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "physport", physport)
         pulumi.set(__self__, "site_id", site_id)
+        if bond_id is not None:
+            pulumi.set(__self__, "bond_id", bond_id)
         if ha_link is not None:
             pulumi.set(__self__, "ha_link", ha_link)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if nat is not None:
             pulumi.set(__self__, "nat", nat)
+        if physport is not None:
+            pulumi.set(__self__, "physport", physport)
         if routed_subnets is not None:
             pulumi.set(__self__, "routed_subnets", routed_subnets)
         if static_addressing is not None:
@@ -68,15 +72,6 @@ class MagicTransitSiteLanArgs:
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
-    @pulumi.getter
-    def physport(self) -> pulumi.Input[_builtins.int]:
-        return pulumi.get(self, "physport")
-
-    @physport.setter
-    def physport(self, value: pulumi.Input[_builtins.int]):
-        pulumi.set(self, "physport", value)
-
-    @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Input[_builtins.str]:
         """
@@ -87,6 +82,15 @@ class MagicTransitSiteLanArgs:
     @site_id.setter
     def site_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "site_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bondId")
+    def bond_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "bond_id")
+
+    @bond_id.setter
+    def bond_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "bond_id", value)
 
     @_builtins.property
     @pulumi.getter(name="haLink")
@@ -117,6 +121,15 @@ class MagicTransitSiteLanArgs:
     @nat.setter
     def nat(self, value: Optional[pulumi.Input['MagicTransitSiteLanNatArgs']]):
         pulumi.set(self, "nat", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def physport(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "physport")
+
+    @physport.setter
+    def physport(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "physport", value)
 
     @_builtins.property
     @pulumi.getter(name="routedSubnets")
@@ -156,6 +169,7 @@ class MagicTransitSiteLanArgs:
 class _MagicTransitSiteLanState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 bond_id: Optional[pulumi.Input[_builtins.int]] = None,
                  ha_link: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  nat: Optional[pulumi.Input['MagicTransitSiteLanNatArgs']] = None,
@@ -175,6 +189,8 @@ class _MagicTransitSiteLanState:
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if bond_id is not None:
+            pulumi.set(__self__, "bond_id", bond_id)
         if ha_link is not None:
             pulumi.set(__self__, "ha_link", ha_link)
         if name is not None:
@@ -203,6 +219,15 @@ class _MagicTransitSiteLanState:
     @account_id.setter
     def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "account_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bondId")
+    def bond_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "bond_id")
+
+    @bond_id.setter
+    def bond_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "bond_id", value)
 
     @_builtins.property
     @pulumi.getter(name="haLink")
@@ -296,6 +321,7 @@ class MagicTransitSiteLan(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 bond_id: Optional[pulumi.Input[_builtins.int]] = None,
                  ha_link: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  nat: Optional[pulumi.Input[Union['MagicTransitSiteLanNatArgs', 'MagicTransitSiteLanNatArgsDict']]] = None,
@@ -315,12 +341,13 @@ class MagicTransitSiteLan(pulumi.CustomResource):
         example_magic_transit_site_lan = cloudflare.MagicTransitSiteLan("example_magic_transit_site_lan",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             site_id="023e105f4ecef8ad9ca31a8372d0c353",
-            physport=1,
+            bond_id=2,
             ha_link=True,
             name="name",
             nat={
                 "static_prefix": "192.0.2.0/24",
             },
+            physport=1,
             routed_subnets=[{
                 "next_hop": "192.0.2.1",
                 "prefix": "192.0.2.0/24",
@@ -380,12 +407,13 @@ class MagicTransitSiteLan(pulumi.CustomResource):
         example_magic_transit_site_lan = cloudflare.MagicTransitSiteLan("example_magic_transit_site_lan",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             site_id="023e105f4ecef8ad9ca31a8372d0c353",
-            physport=1,
+            bond_id=2,
             ha_link=True,
             name="name",
             nat={
                 "static_prefix": "192.0.2.0/24",
             },
+            physport=1,
             routed_subnets=[{
                 "next_hop": "192.0.2.1",
                 "prefix": "192.0.2.0/24",
@@ -437,6 +465,7 @@ class MagicTransitSiteLan(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 bond_id: Optional[pulumi.Input[_builtins.int]] = None,
                  ha_link: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  nat: Optional[pulumi.Input[Union['MagicTransitSiteLanNatArgs', 'MagicTransitSiteLanNatArgsDict']]] = None,
@@ -457,11 +486,10 @@ class MagicTransitSiteLan(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["bond_id"] = bond_id
             __props__.__dict__["ha_link"] = ha_link
             __props__.__dict__["name"] = name
             __props__.__dict__["nat"] = nat
-            if physport is None and not opts.urn:
-                raise TypeError("Missing required property 'physport'")
             __props__.__dict__["physport"] = physport
             __props__.__dict__["routed_subnets"] = routed_subnets
             if site_id is None and not opts.urn:
@@ -480,6 +508,7 @@ class MagicTransitSiteLan(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
+            bond_id: Optional[pulumi.Input[_builtins.int]] = None,
             ha_link: Optional[pulumi.Input[_builtins.bool]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             nat: Optional[pulumi.Input[Union['MagicTransitSiteLanNatArgs', 'MagicTransitSiteLanNatArgsDict']]] = None,
@@ -506,6 +535,7 @@ class MagicTransitSiteLan(pulumi.CustomResource):
         __props__ = _MagicTransitSiteLanState.__new__(_MagicTransitSiteLanState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["bond_id"] = bond_id
         __props__.__dict__["ha_link"] = ha_link
         __props__.__dict__["name"] = name
         __props__.__dict__["nat"] = nat
@@ -523,6 +553,11 @@ class MagicTransitSiteLan(pulumi.CustomResource):
         Identifier
         """
         return pulumi.get(self, "account_id")
+
+    @_builtins.property
+    @pulumi.getter(name="bondId")
+    def bond_id(self) -> pulumi.Output[Optional[_builtins.int]]:
+        return pulumi.get(self, "bond_id")
 
     @_builtins.property
     @pulumi.getter(name="haLink")
@@ -544,7 +579,7 @@ class MagicTransitSiteLan(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def physport(self) -> pulumi.Output[_builtins.int]:
+    def physport(self) -> pulumi.Output[Optional[_builtins.int]]:
         return pulumi.get(self, "physport")
 
     @_builtins.property

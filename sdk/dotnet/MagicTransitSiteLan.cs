@@ -24,13 +24,14 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         SiteId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         Physport = 1,
+    ///         BondId = 2,
     ///         HaLink = true,
     ///         Name = "name",
     ///         Nat = new Cloudflare.Inputs.MagicTransitSiteLanNatArgs
     ///         {
     ///             StaticPrefix = "192.0.2.0/24",
     ///         },
+    ///         Physport = 1,
     ///         RoutedSubnets = new[]
     ///         {
     ///             new Cloudflare.Inputs.MagicTransitSiteLanRoutedSubnetArgs
@@ -92,6 +93,9 @@ namespace Pulumi.Cloudflare
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
+        [Output("bondId")]
+        public Output<int?> BondId { get; private set; } = null!;
+
         /// <summary>
         /// mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
         /// </summary>
@@ -105,7 +109,7 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.MagicTransitSiteLanNat?> Nat { get; private set; } = null!;
 
         [Output("physport")]
-        public Output<int> Physport { get; private set; } = null!;
+        public Output<int?> Physport { get; private set; } = null!;
 
         [Output("routedSubnets")]
         public Output<ImmutableArray<Outputs.MagicTransitSiteLanRoutedSubnet>> RoutedSubnets { get; private set; } = null!;
@@ -180,6 +184,9 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
+        [Input("bondId")]
+        public Input<int>? BondId { get; set; }
+
         /// <summary>
         /// mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
         /// </summary>
@@ -192,8 +199,8 @@ namespace Pulumi.Cloudflare
         [Input("nat")]
         public Input<Inputs.MagicTransitSiteLanNatArgs>? Nat { get; set; }
 
-        [Input("physport", required: true)]
-        public Input<int> Physport { get; set; } = null!;
+        [Input("physport")]
+        public Input<int>? Physport { get; set; }
 
         [Input("routedSubnets")]
         private InputList<Inputs.MagicTransitSiteLanRoutedSubnetArgs>? _routedSubnets;
@@ -234,6 +241,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        [Input("bondId")]
+        public Input<int>? BondId { get; set; }
 
         /// <summary>
         /// mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.

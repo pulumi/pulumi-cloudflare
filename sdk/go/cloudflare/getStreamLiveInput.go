@@ -63,6 +63,8 @@ type LookupStreamLiveInputResult struct {
 	Created string `pulumi:"created"`
 	// Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
 	DeleteRecordingAfterDays float64 `pulumi:"deleteRecordingAfterDays"`
+	// Indicates whether the live input is enabled and can accept streams.
+	Enabled bool `pulumi:"enabled"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A unique identifier for a live input.
@@ -141,6 +143,11 @@ func (o LookupStreamLiveInputResultOutput) Created() pulumi.StringOutput {
 // Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
 func (o LookupStreamLiveInputResultOutput) DeleteRecordingAfterDays() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupStreamLiveInputResult) float64 { return v.DeleteRecordingAfterDays }).(pulumi.Float64Output)
+}
+
+// Indicates whether the live input is enabled and can accept streams.
+func (o LookupStreamLiveInputResultOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupStreamLiveInputResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -64,6 +64,7 @@ export class ZeroTrustDlpPredefinedEntry extends pulumi.CustomResource {
     declare public /*out*/ readonly caseSensitive: pulumi.Output<boolean>;
     declare public /*out*/ readonly confidence: pulumi.Output<outputs.ZeroTrustDlpPredefinedEntryConfidence>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    declare public /*out*/ readonly description: pulumi.Output<string>;
     declare public readonly enabled: pulumi.Output<boolean>;
     declare public readonly entryId: pulumi.Output<string>;
     declare public /*out*/ readonly name: pulumi.Output<string>;
@@ -104,6 +105,7 @@ export class ZeroTrustDlpPredefinedEntry extends pulumi.CustomResource {
             resourceInputs["caseSensitive"] = state?.caseSensitive;
             resourceInputs["confidence"] = state?.confidence;
             resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
             resourceInputs["enabled"] = state?.enabled;
             resourceInputs["entryId"] = state?.entryId;
             resourceInputs["name"] = state?.name;
@@ -134,6 +136,7 @@ export class ZeroTrustDlpPredefinedEntry extends pulumi.CustomResource {
             resourceInputs["caseSensitive"] = undefined /*out*/;
             resourceInputs["confidence"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pattern"] = undefined /*out*/;
             resourceInputs["profiles"] = undefined /*out*/;
@@ -162,6 +165,7 @@ export interface ZeroTrustDlpPredefinedEntryState {
     caseSensitive?: pulumi.Input<boolean>;
     confidence?: pulumi.Input<inputs.ZeroTrustDlpPredefinedEntryConfidence>;
     createdAt?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     enabled?: pulumi.Input<boolean>;
     entryId?: pulumi.Input<string>;
     name?: pulumi.Input<string>;

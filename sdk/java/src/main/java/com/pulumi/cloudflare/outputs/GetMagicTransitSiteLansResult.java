@@ -16,6 +16,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetMagicTransitSiteLansResult {
+    private Integer bondId;
     /**
      * @return mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
      * 
@@ -47,6 +48,9 @@ public final class GetMagicTransitSiteLansResult {
     private Integer vlanTag;
 
     private GetMagicTransitSiteLansResult() {}
+    public Integer bondId() {
+        return this.bondId;
+    }
     /**
      * @return mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
      * 
@@ -104,6 +108,7 @@ public final class GetMagicTransitSiteLansResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Integer bondId;
         private Boolean haLink;
         private String id;
         private String name;
@@ -116,6 +121,7 @@ public final class GetMagicTransitSiteLansResult {
         public Builder() {}
         public Builder(GetMagicTransitSiteLansResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.bondId = defaults.bondId;
     	      this.haLink = defaults.haLink;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
@@ -127,6 +133,14 @@ public final class GetMagicTransitSiteLansResult {
     	      this.vlanTag = defaults.vlanTag;
         }
 
+        @CustomType.Setter
+        public Builder bondId(Integer bondId) {
+            if (bondId == null) {
+              throw new MissingRequiredPropertyException("GetMagicTransitSiteLansResult", "bondId");
+            }
+            this.bondId = bondId;
+            return this;
+        }
         @CustomType.Setter
         public Builder haLink(Boolean haLink) {
             if (haLink == null) {
@@ -204,6 +218,7 @@ public final class GetMagicTransitSiteLansResult {
         }
         public GetMagicTransitSiteLansResult build() {
             final var _resultValue = new GetMagicTransitSiteLansResult();
+            _resultValue.bondId = bondId;
             _resultValue.haLink = haLink;
             _resultValue.id = id;
             _resultValue.name = name;

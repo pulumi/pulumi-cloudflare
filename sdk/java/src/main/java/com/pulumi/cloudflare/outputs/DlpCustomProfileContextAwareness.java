@@ -5,9 +5,10 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.DlpCustomProfileContextAwarenessSkip;
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class DlpCustomProfileContextAwareness {
@@ -15,27 +16,27 @@ public final class DlpCustomProfileContextAwareness {
      * @return If true, scan the context of predefined entries to only return matches surrounded by keywords.
      * 
      */
-    private Boolean enabled;
+    private @Nullable Boolean enabled;
     /**
      * @return Content types to exclude from context analysis and return all matches.
      * 
      */
-    private DlpCustomProfileContextAwarenessSkip skip;
+    private @Nullable DlpCustomProfileContextAwarenessSkip skip;
 
     private DlpCustomProfileContextAwareness() {}
     /**
      * @return If true, scan the context of predefined entries to only return matches surrounded by keywords.
      * 
      */
-    public Boolean enabled() {
-        return this.enabled;
+    public Optional<Boolean> enabled() {
+        return Optional.ofNullable(this.enabled);
     }
     /**
      * @return Content types to exclude from context analysis and return all matches.
      * 
      */
-    public DlpCustomProfileContextAwarenessSkip skip() {
-        return this.skip;
+    public Optional<DlpCustomProfileContextAwarenessSkip> skip() {
+        return Optional.ofNullable(this.skip);
     }
 
     public static Builder builder() {
@@ -47,8 +48,8 @@ public final class DlpCustomProfileContextAwareness {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Boolean enabled;
-        private DlpCustomProfileContextAwarenessSkip skip;
+        private @Nullable Boolean enabled;
+        private @Nullable DlpCustomProfileContextAwarenessSkip skip;
         public Builder() {}
         public Builder(DlpCustomProfileContextAwareness defaults) {
     	      Objects.requireNonNull(defaults);
@@ -57,18 +58,14 @@ public final class DlpCustomProfileContextAwareness {
         }
 
         @CustomType.Setter
-        public Builder enabled(Boolean enabled) {
-            if (enabled == null) {
-              throw new MissingRequiredPropertyException("DlpCustomProfileContextAwareness", "enabled");
-            }
+        public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
-        public Builder skip(DlpCustomProfileContextAwarenessSkip skip) {
-            if (skip == null) {
-              throw new MissingRequiredPropertyException("DlpCustomProfileContextAwareness", "skip");
-            }
+        public Builder skip(@Nullable DlpCustomProfileContextAwarenessSkip skip) {
+
             this.skip = skip;
             return this;
         }

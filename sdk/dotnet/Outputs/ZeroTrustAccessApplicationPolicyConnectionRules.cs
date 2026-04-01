@@ -14,13 +14,21 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustAccessApplicationPolicyConnectionRules
     {
         /// <summary>
+        /// The RDP-specific rules that define clipboard behavior for RDP connections.
+        /// </summary>
+        public readonly Outputs.ZeroTrustAccessApplicationPolicyConnectionRulesRdp? Rdp;
+        /// <summary>
         /// The SSH-specific rules that define how users may connect to the targets secured by your application.
         /// </summary>
         public readonly Outputs.ZeroTrustAccessApplicationPolicyConnectionRulesSsh? Ssh;
 
         [OutputConstructor]
-        private ZeroTrustAccessApplicationPolicyConnectionRules(Outputs.ZeroTrustAccessApplicationPolicyConnectionRulesSsh? ssh)
+        private ZeroTrustAccessApplicationPolicyConnectionRules(
+            Outputs.ZeroTrustAccessApplicationPolicyConnectionRulesRdp? rdp,
+
+            Outputs.ZeroTrustAccessApplicationPolicyConnectionRulesSsh? ssh)
         {
+            Rdp = rdp;
             Ssh = ssh;
         }
     }

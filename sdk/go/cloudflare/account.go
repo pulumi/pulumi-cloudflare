@@ -59,9 +59,11 @@ type Account struct {
 	// Account settings
 	Settings AccountSettingsOutput `pulumi:"settings"`
 	// Available values: "standard", "enterprise".
-	Type pulumi.StringPtrOutput `pulumi:"type"`
+	//
+	// Deprecated: The 'type' field should no longer be set through the API.
+	Type pulumi.StringOutput `pulumi:"type"`
 	// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
-	Unit AccountUnitPtrOutput `pulumi:"unit"`
+	Unit AccountUnitOutput `pulumi:"unit"`
 }
 
 // NewAccount registers a new resource with the given unique name, arguments, and options.
@@ -106,6 +108,8 @@ type accountState struct {
 	// Account settings
 	Settings *AccountSettings `pulumi:"settings"`
 	// Available values: "standard", "enterprise".
+	//
+	// Deprecated: The 'type' field should no longer be set through the API.
 	Type *string `pulumi:"type"`
 	// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
 	Unit *AccountUnit `pulumi:"unit"`
@@ -121,6 +125,8 @@ type AccountState struct {
 	// Account settings
 	Settings AccountSettingsPtrInput
 	// Available values: "standard", "enterprise".
+	//
+	// Deprecated: The 'type' field should no longer be set through the API.
 	Type pulumi.StringPtrInput
 	// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
 	Unit AccountUnitPtrInput
@@ -138,6 +144,8 @@ type accountArgs struct {
 	// Account settings
 	Settings *AccountSettings `pulumi:"settings"`
 	// Available values: "standard", "enterprise".
+	//
+	// Deprecated: The 'type' field should no longer be set through the API.
 	Type *string `pulumi:"type"`
 	// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
 	Unit *AccountUnit `pulumi:"unit"`
@@ -152,6 +160,8 @@ type AccountArgs struct {
 	// Account settings
 	Settings AccountSettingsPtrInput
 	// Available values: "standard", "enterprise".
+	//
+	// Deprecated: The 'type' field should no longer be set through the API.
 	Type pulumi.StringPtrInput
 	// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
 	Unit AccountUnitPtrInput
@@ -265,13 +275,15 @@ func (o AccountOutput) Settings() AccountSettingsOutput {
 }
 
 // Available values: "standard", "enterprise".
-func (o AccountOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
+//
+// Deprecated: The 'type' field should no longer be set through the API.
+func (o AccountOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 // information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
-func (o AccountOutput) Unit() AccountUnitPtrOutput {
-	return o.ApplyT(func(v *Account) AccountUnitPtrOutput { return v.Unit }).(AccountUnitPtrOutput)
+func (o AccountOutput) Unit() AccountUnitOutput {
+	return o.ApplyT(func(v *Account) AccountUnitOutput { return v.Unit }).(AccountUnitOutput)
 }
 
 type AccountArrayOutput struct{ *pulumi.OutputState }

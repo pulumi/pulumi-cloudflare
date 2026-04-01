@@ -66,8 +66,10 @@ type LookupCertificatePackResult struct {
 	// Array of certificates in this pack.
 	Certificates []GetCertificatePackCertificate `pulumi:"certificates"`
 	// Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
-	CloudflareBranding bool                      `pulumi:"cloudflareBranding"`
-	Filter             *GetCertificatePackFilter `pulumi:"filter"`
+	CloudflareBranding bool `pulumi:"cloudflareBranding"`
+	// DCV Delegation records for domain validation.
+	DcvDelegationRecords []GetCertificatePackDcvDelegationRecord `pulumi:"dcvDelegationRecords"`
+	Filter               *GetCertificatePackFilter               `pulumi:"filter"`
 	// Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
 	Hosts []string `pulumi:"hosts"`
 	// Identifier.
@@ -150,6 +152,13 @@ func (o LookupCertificatePackResultOutput) Certificates() GetCertificatePackCert
 // Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
 func (o LookupCertificatePackResultOutput) CloudflareBranding() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupCertificatePackResult) bool { return v.CloudflareBranding }).(pulumi.BoolOutput)
+}
+
+// DCV Delegation records for domain validation.
+func (o LookupCertificatePackResultOutput) DcvDelegationRecords() GetCertificatePackDcvDelegationRecordArrayOutput {
+	return o.ApplyT(func(v LookupCertificatePackResult) []GetCertificatePackDcvDelegationRecord {
+		return v.DcvDelegationRecords
+	}).(GetCertificatePackDcvDelegationRecordArrayOutput)
 }
 
 func (o LookupCertificatePackResultOutput) Filter() GetCertificatePackFilterPtrOutput {

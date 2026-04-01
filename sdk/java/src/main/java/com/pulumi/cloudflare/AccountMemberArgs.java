@@ -79,6 +79,8 @@ public final class AccountMemberArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Status of the member invitation. If not provided during creation, defaults to &#39;pending&#39;.
+     * Changing from &#39;accepted&#39; back to &#39;pending&#39; will trigger a replacement of the member resource in Terraform.
      * Available values: &#34;accepted&#34;, &#34;pending&#34;.
      * 
      */
@@ -86,7 +88,9 @@ public final class AccountMemberArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> status;
 
     /**
-     * @return Available values: &#34;accepted&#34;, &#34;pending&#34;.
+     * @return Status of the member invitation. If not provided during creation, defaults to &#39;pending&#39;.
+     * Changing from &#39;accepted&#39; back to &#39;pending&#39; will trigger a replacement of the member resource in Terraform.
+     * Available values: &#34;accepted&#34;, &#34;pending&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -226,7 +230,9 @@ public final class AccountMemberArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Available values: &#34;accepted&#34;, &#34;pending&#34;.
+         * @param status Status of the member invitation. If not provided during creation, defaults to &#39;pending&#39;.
+         * Changing from &#39;accepted&#39; back to &#39;pending&#39; will trigger a replacement of the member resource in Terraform.
+         * Available values: &#34;accepted&#34;, &#34;pending&#34;.
          * 
          * @return builder
          * 
@@ -237,7 +243,9 @@ public final class AccountMemberArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Available values: &#34;accepted&#34;, &#34;pending&#34;.
+         * @param status Status of the member invitation. If not provided during creation, defaults to &#39;pending&#39;.
+         * Changing from &#39;accepted&#39; back to &#39;pending&#39; will trigger a replacement of the member resource in Terraform.
+         * Available values: &#34;accepted&#34;, &#34;pending&#34;.
          * 
          * @return builder
          * 

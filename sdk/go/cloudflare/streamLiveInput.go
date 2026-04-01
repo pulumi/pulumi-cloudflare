@@ -28,6 +28,8 @@ type StreamLiveInput struct {
 	DefaultCreator pulumi.StringPtrOutput `pulumi:"defaultCreator"`
 	// Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
 	DeleteRecordingAfterDays pulumi.Float64PtrOutput `pulumi:"deleteRecordingAfterDays"`
+	// Indicates whether the live input is enabled and can accept streams.
+	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// A unique identifier for a live input.
 	LiveInputIdentifier pulumi.StringPtrOutput `pulumi:"liveInputIdentifier"`
 	// A user modifiable key-value store used to reference other systems of record for managing live inputs.
@@ -96,6 +98,8 @@ type streamLiveInputState struct {
 	DefaultCreator *string `pulumi:"defaultCreator"`
 	// Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
 	DeleteRecordingAfterDays *float64 `pulumi:"deleteRecordingAfterDays"`
+	// Indicates whether the live input is enabled and can accept streams.
+	Enabled *bool `pulumi:"enabled"`
 	// A unique identifier for a live input.
 	LiveInputIdentifier *string `pulumi:"liveInputIdentifier"`
 	// A user modifiable key-value store used to reference other systems of record for managing live inputs.
@@ -132,6 +136,8 @@ type StreamLiveInputState struct {
 	DefaultCreator pulumi.StringPtrInput
 	// Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
 	DeleteRecordingAfterDays pulumi.Float64PtrInput
+	// Indicates whether the live input is enabled and can accept streams.
+	Enabled pulumi.BoolPtrInput
 	// A unique identifier for a live input.
 	LiveInputIdentifier pulumi.StringPtrInput
 	// A user modifiable key-value store used to reference other systems of record for managing live inputs.
@@ -170,6 +176,8 @@ type streamLiveInputArgs struct {
 	DefaultCreator *string `pulumi:"defaultCreator"`
 	// Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
 	DeleteRecordingAfterDays *float64 `pulumi:"deleteRecordingAfterDays"`
+	// Indicates whether the live input is enabled and can accept streams.
+	Enabled *bool `pulumi:"enabled"`
 	// A unique identifier for a live input.
 	LiveInputIdentifier *string `pulumi:"liveInputIdentifier"`
 	// A user modifiable key-value store used to reference other systems of record for managing live inputs.
@@ -186,6 +194,8 @@ type StreamLiveInputArgs struct {
 	DefaultCreator pulumi.StringPtrInput
 	// Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
 	DeleteRecordingAfterDays pulumi.Float64PtrInput
+	// Indicates whether the live input is enabled and can accept streams.
+	Enabled pulumi.BoolPtrInput
 	// A unique identifier for a live input.
 	LiveInputIdentifier pulumi.StringPtrInput
 	// A user modifiable key-value store used to reference other systems of record for managing live inputs.
@@ -299,6 +309,11 @@ func (o StreamLiveInputOutput) DefaultCreator() pulumi.StringPtrOutput {
 // Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
 func (o StreamLiveInputOutput) DeleteRecordingAfterDays() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *StreamLiveInput) pulumi.Float64PtrOutput { return v.DeleteRecordingAfterDays }).(pulumi.Float64PtrOutput)
+}
+
+// Indicates whether the live input is enabled and can accept streams.
+func (o StreamLiveInputOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *StreamLiveInput) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // A unique identifier for a live input.

@@ -41,7 +41,9 @@ import (
 //
 // ## Import
 //
-// > This resource does not currently support `pulumi import`.
+// ```sh
+// $ pulumi import cloudflare:index/authenticatedOriginPullsSettings:AuthenticatedOriginPullsSettings example '<zone_id>'
+// ```
 type AuthenticatedOriginPullsSettings struct {
 	pulumi.CustomResourceState
 

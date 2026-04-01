@@ -3,9 +3,9 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.WorkerVersionBindingOutboundParam;
 import com.pulumi.cloudflare.outputs.WorkerVersionBindingOutboundWorker;
 import com.pulumi.core.annotations.CustomType;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,7 +17,7 @@ public final class WorkerVersionBindingOutbound {
      * @return Pass information from the Dispatch Worker to the Outbound Worker through the parameters.
      * 
      */
-    private @Nullable List<String> params;
+    private @Nullable List<WorkerVersionBindingOutboundParam> params;
     /**
      * @return Outbound worker.
      * 
@@ -29,7 +29,7 @@ public final class WorkerVersionBindingOutbound {
      * @return Pass information from the Dispatch Worker to the Outbound Worker through the parameters.
      * 
      */
-    public List<String> params() {
+    public List<WorkerVersionBindingOutboundParam> params() {
         return this.params == null ? List.of() : this.params;
     }
     /**
@@ -49,7 +49,7 @@ public final class WorkerVersionBindingOutbound {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<String> params;
+        private @Nullable List<WorkerVersionBindingOutboundParam> params;
         private @Nullable WorkerVersionBindingOutboundWorker worker;
         public Builder() {}
         public Builder(WorkerVersionBindingOutbound defaults) {
@@ -59,12 +59,12 @@ public final class WorkerVersionBindingOutbound {
         }
 
         @CustomType.Setter
-        public Builder params(@Nullable List<String> params) {
+        public Builder params(@Nullable List<WorkerVersionBindingOutboundParam> params) {
 
             this.params = params;
             return this;
         }
-        public Builder params(String... params) {
+        public Builder params(WorkerVersionBindingOutboundParam... params) {
             return params(List.of(params));
         }
         @CustomType.Setter

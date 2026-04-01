@@ -90,7 +90,7 @@ public final class GetWorkerVersionsResult {
      */
     private Integer number;
     /**
-     * @return Placement settings for the version.
+     * @return Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode=&#39;smart&#39; for Smart Placement, or one of region/hostname/host.
      * 
      */
     private GetWorkerVersionsResultPlacement placement;
@@ -213,7 +213,7 @@ public final class GetWorkerVersionsResult {
         return this.number;
     }
     /**
-     * @return Placement settings for the version.
+     * @return Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode=&#39;smart&#39; for Smart Placement, or one of region/hostname/host.
      * 
      */
     public GetWorkerVersionsResultPlacement placement() {

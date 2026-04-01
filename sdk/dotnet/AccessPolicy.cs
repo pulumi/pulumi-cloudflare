@@ -59,6 +59,20 @@ namespace Pulumi.Cloudflare
     ///             },
     ///         },
     ///         ApprovalRequired = true,
+    ///         ConnectionRules = new Cloudflare.Inputs.ZeroTrustAccessPolicyConnectionRulesArgs
+    ///         {
+    ///             Rdp = new Cloudflare.Inputs.ZeroTrustAccessPolicyConnectionRulesRdpArgs
+    ///             {
+    ///                 AllowedClipboardLocalToRemoteFormats = new[]
+    ///                 {
+    ///                     "text",
+    ///                 },
+    ///                 AllowedClipboardRemoteToLocalFormats = new[]
+    ///                 {
+    ///                     "text",
+    ///                 },
+    ///             },
+    ///         },
     ///         Excludes = new[]
     ///         {
     ///             new Cloudflare.Inputs.ZeroTrustAccessPolicyExcludeArgs
@@ -70,6 +84,17 @@ namespace Pulumi.Cloudflare
     ///             },
     ///         },
     ///         IsolationRequired = false,
+    ///         MfaConfig = new Cloudflare.Inputs.ZeroTrustAccessPolicyMfaConfigArgs
+    ///         {
+    ///             AllowedAuthenticators = new[]
+    ///             {
+    ///                 "totp",
+    ///                 "biometrics",
+    ///                 "security_key",
+    ///             },
+    ///             MfaBypass = false,
+    ///             SessionDuration = "24h",
+    ///         },
     ///         PurposeJustificationPrompt = "Please enter a justification for entering this protected domain.",
     ///         PurposeJustificationRequired = true,
     ///         Requires = new[]
@@ -117,6 +142,12 @@ namespace Pulumi.Cloudflare
         public Output<bool?> ApprovalRequired { get; private set; } = null!;
 
         /// <summary>
+        /// The rules that define how users may connect to targets secured by your application.
+        /// </summary>
+        [Output("connectionRules")]
+        public Output<Outputs.AccessPolicyConnectionRules?> ConnectionRules { get; private set; } = null!;
+
+        /// <summary>
         /// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
         /// Available values: "allow", "deny", "NonIdentity", "bypass".
         /// </summary>
@@ -140,6 +171,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("isolationRequired")]
         public Output<bool?> IsolationRequired { get; private set; } = null!;
+
+        /// <summary>
+        /// Configures multi-factor authentication (MFA) settings.
+        /// </summary>
+        [Output("mfaConfig")]
+        public Output<Outputs.AccessPolicyMfaConfig?> MfaConfig { get; private set; } = null!;
 
         /// <summary>
         /// The name of the Access policy.
@@ -246,6 +283,12 @@ namespace Pulumi.Cloudflare
         public Input<bool>? ApprovalRequired { get; set; }
 
         /// <summary>
+        /// The rules that define how users may connect to targets secured by your application.
+        /// </summary>
+        [Input("connectionRules")]
+        public Input<Inputs.AccessPolicyConnectionRulesArgs>? ConnectionRules { get; set; }
+
+        /// <summary>
         /// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
         /// Available values: "allow", "deny", "NonIdentity", "bypass".
         /// </summary>
@@ -281,6 +324,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("isolationRequired")]
         public Input<bool>? IsolationRequired { get; set; }
+
+        /// <summary>
+        /// Configures multi-factor authentication (MFA) settings.
+        /// </summary>
+        [Input("mfaConfig")]
+        public Input<Inputs.AccessPolicyMfaConfigArgs>? MfaConfig { get; set; }
 
         /// <summary>
         /// The name of the Access policy.
@@ -351,6 +400,12 @@ namespace Pulumi.Cloudflare
         public Input<bool>? ApprovalRequired { get; set; }
 
         /// <summary>
+        /// The rules that define how users may connect to targets secured by your application.
+        /// </summary>
+        [Input("connectionRules")]
+        public Input<Inputs.AccessPolicyConnectionRulesGetArgs>? ConnectionRules { get; set; }
+
+        /// <summary>
         /// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
         /// Available values: "allow", "deny", "NonIdentity", "bypass".
         /// </summary>
@@ -386,6 +441,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("isolationRequired")]
         public Input<bool>? IsolationRequired { get; set; }
+
+        /// <summary>
+        /// Configures multi-factor authentication (MFA) settings.
+        /// </summary>
+        [Input("mfaConfig")]
+        public Input<Inputs.AccessPolicyMfaConfigGetArgs>? MfaConfig { get; set; }
 
         /// <summary>
         /// The name of the Access policy.

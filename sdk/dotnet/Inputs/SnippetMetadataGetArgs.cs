@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class SnippetMetadataGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the file that contains the main module of the snippet.
+        /// Specify the name of the file that contains the main module of the snippet.
         /// </summary>
         [Input("mainModule", required: true)]
         public Input<string> MainModule { get; set; } = null!;

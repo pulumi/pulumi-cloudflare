@@ -27,7 +27,10 @@ class GetCertificatePacksResult:
     """
     A collection of values returned by getCertificatePacks.
     """
-    def __init__(__self__, id=None, max_items=None, results=None, status=None, zone_id=None):
+    def __init__(__self__, deploy=None, id=None, max_items=None, results=None, status=None, zone_id=None):
+        if deploy and not isinstance(deploy, str):
+            raise TypeError("Expected argument 'deploy' to be a str")
+        pulumi.set(__self__, "deploy", deploy)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -43,6 +46,15 @@ class GetCertificatePacksResult:
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def deploy(self) -> Optional[_builtins.str]:
+        """
+        Specify the deployment environment for the certificate packs.
+        Available values: "staging", "production".
+        """
+        return pulumi.get(self, "deploy")
 
     @_builtins.property
     @pulumi.getter
@@ -92,6 +104,7 @@ class AwaitableGetCertificatePacksResult(GetCertificatePacksResult):
         if False:
             yield self
         return GetCertificatePacksResult(
+            deploy=self.deploy,
             id=self.id,
             max_items=self.max_items,
             results=self.results,
@@ -99,7 +112,8 @@ class AwaitableGetCertificatePacksResult(GetCertificatePacksResult):
             zone_id=self.zone_id)
 
 
-def get_certificate_packs(max_items: Optional[_builtins.int] = None,
+def get_certificate_packs(deploy: Optional[_builtins.str] = None,
+                          max_items: Optional[_builtins.int] = None,
                           status: Optional[_builtins.str] = None,
                           zone_id: Optional[_builtins.str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCertificatePacksResult:
@@ -111,16 +125,20 @@ def get_certificate_packs(max_items: Optional[_builtins.int] = None,
     import pulumi_cloudflare as cloudflare
 
     example_certificate_packs = cloudflare.get_certificate_packs(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+        deploy="staging",
         status="all")
     ```
 
 
+    :param _builtins.str deploy: Specify the deployment environment for the certificate packs.
+           Available values: "staging", "production".
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str status: Include Certificate Packs of all statuses, not just active ones.
            Available values: "all".
     :param _builtins.str zone_id: Identifier.
     """
     __args__ = dict()
+    __args__['deploy'] = deploy
     __args__['maxItems'] = max_items
     __args__['status'] = status
     __args__['zoneId'] = zone_id
@@ -128,12 +146,14 @@ def get_certificate_packs(max_items: Optional[_builtins.int] = None,
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getCertificatePacks:getCertificatePacks', __args__, opts=opts, typ=GetCertificatePacksResult).value
 
     return AwaitableGetCertificatePacksResult(
+        deploy=pulumi.get(__ret__, 'deploy'),
         id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'),
         status=pulumi.get(__ret__, 'status'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_certificate_packs_output(max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+def get_certificate_packs_output(deploy: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                 max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                  status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCertificatePacksResult]:
@@ -145,22 +165,27 @@ def get_certificate_packs_output(max_items: Optional[pulumi.Input[Optional[_buil
     import pulumi_cloudflare as cloudflare
 
     example_certificate_packs = cloudflare.get_certificate_packs(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+        deploy="staging",
         status="all")
     ```
 
 
+    :param _builtins.str deploy: Specify the deployment environment for the certificate packs.
+           Available values: "staging", "production".
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str status: Include Certificate Packs of all statuses, not just active ones.
            Available values: "all".
     :param _builtins.str zone_id: Identifier.
     """
     __args__ = dict()
+    __args__['deploy'] = deploy
     __args__['maxItems'] = max_items
     __args__['status'] = status
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getCertificatePacks:getCertificatePacks', __args__, opts=opts, typ=GetCertificatePacksResult)
     return __ret__.apply(lambda __response__: GetCertificatePacksResult(
+        deploy=pulumi.get(__response__, 'deploy'),
         id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
         results=pulumi.get(__response__, 'results'),

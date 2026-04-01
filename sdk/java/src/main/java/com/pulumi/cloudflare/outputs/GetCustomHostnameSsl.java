@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetCustomHostnameSslDcvDelegationRecord;
 import com.pulumi.cloudflare.outputs.GetCustomHostnameSslSettings;
 import com.pulumi.cloudflare.outputs.GetCustomHostnameSslValidationError;
 import com.pulumi.cloudflare.outputs.GetCustomHostnameSslValidationRecord;
@@ -42,6 +43,11 @@ public final class GetCustomHostnameSsl {
      * 
      */
     private String customKey;
+    /**
+     * @return DCV Delegation records for domain validation.
+     * 
+     */
+    private List<GetCustomHostnameSslDcvDelegationRecord> dcvDelegationRecords;
     /**
      * @return The time the custom certificate expires on.
      * 
@@ -145,6 +151,13 @@ public final class GetCustomHostnameSsl {
      */
     public String customKey() {
         return this.customKey;
+    }
+    /**
+     * @return DCV Delegation records for domain validation.
+     * 
+     */
+    public List<GetCustomHostnameSslDcvDelegationRecord> dcvDelegationRecords() {
+        return this.dcvDelegationRecords;
     }
     /**
      * @return The time the custom certificate expires on.
@@ -254,6 +267,7 @@ public final class GetCustomHostnameSsl {
         private String customCertificate;
         private String customCsrId;
         private String customKey;
+        private List<GetCustomHostnameSslDcvDelegationRecord> dcvDelegationRecords;
         private String expiresOn;
         private List<String> hosts;
         private String id;
@@ -276,6 +290,7 @@ public final class GetCustomHostnameSsl {
     	      this.customCertificate = defaults.customCertificate;
     	      this.customCsrId = defaults.customCsrId;
     	      this.customKey = defaults.customKey;
+    	      this.dcvDelegationRecords = defaults.dcvDelegationRecords;
     	      this.expiresOn = defaults.expiresOn;
     	      this.hosts = defaults.hosts;
     	      this.id = defaults.id;
@@ -331,6 +346,17 @@ public final class GetCustomHostnameSsl {
             }
             this.customKey = customKey;
             return this;
+        }
+        @CustomType.Setter
+        public Builder dcvDelegationRecords(List<GetCustomHostnameSslDcvDelegationRecord> dcvDelegationRecords) {
+            if (dcvDelegationRecords == null) {
+              throw new MissingRequiredPropertyException("GetCustomHostnameSsl", "dcvDelegationRecords");
+            }
+            this.dcvDelegationRecords = dcvDelegationRecords;
+            return this;
+        }
+        public Builder dcvDelegationRecords(GetCustomHostnameSslDcvDelegationRecord... dcvDelegationRecords) {
+            return dcvDelegationRecords(List.of(dcvDelegationRecords));
         }
         @CustomType.Setter
         public Builder expiresOn(String expiresOn) {
@@ -460,6 +486,7 @@ public final class GetCustomHostnameSsl {
             _resultValue.customCertificate = customCertificate;
             _resultValue.customCsrId = customCsrId;
             _resultValue.customKey = customKey;
+            _resultValue.dcvDelegationRecords = dcvDelegationRecords;
             _resultValue.expiresOn = expiresOn;
             _resultValue.hosts = hosts;
             _resultValue.id = id;

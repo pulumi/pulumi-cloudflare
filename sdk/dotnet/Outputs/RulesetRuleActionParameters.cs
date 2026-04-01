@@ -87,6 +87,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? EmailObfuscation;
         /// <summary>
+        /// An expression to generate cache tags for set*cache*tags action.
+        /// </summary>
+        public readonly string? Expression;
+        /// <summary>
         /// Whether to enable Cloudflare Fonts.
         /// </summary>
         public readonly bool? Fonts;
@@ -115,6 +119,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
+        /// Set the immutable cache control directive.
+        /// </summary>
+        public readonly Outputs.RulesetRuleActionParametersImmutable? Immutable;
+        /// <summary>
         /// A delta to change the score by, which can be either positive or negative.
         /// </summary>
         public readonly int? Increment;
@@ -123,9 +131,38 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.RulesetRuleActionParametersMatchedData? MatchedData;
         /// <summary>
+        /// Set the max-age cache control directive.
+        /// </summary>
+        public readonly Outputs.RulesetRuleActionParametersMaxAge? MaxAge;
+        /// <summary>
         /// Whether to enable Mirage.
         /// </summary>
         public readonly bool? Mirage;
+        /// <summary>
+        /// Set the must-revalidate cache control directive.
+        /// </summary>
+        public readonly Outputs.RulesetRuleActionParametersMustRevalidate? MustRevalidate;
+        /// <summary>
+        /// Set the must-understand cache control directive.
+        /// </summary>
+        public readonly Outputs.RulesetRuleActionParametersMustUnderstand? MustUnderstand;
+        /// <summary>
+        /// Set the no-cache cache control directive.
+        /// </summary>
+        public readonly Outputs.RulesetRuleActionParametersNoCache? NoCache;
+        /// <summary>
+        /// Set the no-store cache control directive.
+        /// </summary>
+        public readonly Outputs.RulesetRuleActionParametersNoStore? NoStore;
+        /// <summary>
+        /// Set the no-transform cache control directive.
+        /// </summary>
+        public readonly Outputs.RulesetRuleActionParametersNoTransform? NoTransform;
+        /// <summary>
+        /// The operation to perform for set*cache*tags action.
+        /// Available values: "set", "add", "remove".
+        /// </summary>
+        public readonly string? Operation;
         /// <summary>
         /// Whether to enable Opportunistic Encryption.
         /// </summary>
@@ -148,7 +185,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.RulesetRuleActionParametersOverrides? Overrides;
         /// <summary>
         /// A list of phases to skip the execution of. This option is incompatible with the rulesets option.
-        /// Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
+        /// Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*cache*settings", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit*ratelimit".
         /// </summary>
         public readonly ImmutableArray<string> Phases;
         /// <summary>
@@ -157,10 +194,22 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Polish;
         /// <summary>
+        /// Set the private cache control directive.
+        /// </summary>
+        public readonly Outputs.RulesetRuleActionParametersPrivate? Private;
+        /// <summary>
         /// A list of legacy security products to skip the execution of.
         /// Available values: "bic", "hot", "rateLimit", "securityLevel", "uaBlock", "waf", "zoneLockdown".
         /// </summary>
         public readonly ImmutableArray<string> Products;
+        /// <summary>
+        /// Set the proxy-revalidate cache control directive.
+        /// </summary>
+        public readonly Outputs.RulesetRuleActionParametersProxyRevalidate? ProxyRevalidate;
+        /// <summary>
+        /// Set the public cache control directive.
+        /// </summary>
+        public readonly Outputs.RulesetRuleActionParametersPublic? Public;
         /// <summary>
         /// The raw response fields to log.
         /// </summary>
@@ -213,6 +262,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Rulesets;
         /// <summary>
+        /// Set the s-maxage cache control directive.
+        /// </summary>
+        public readonly Outputs.RulesetRuleActionParametersSMaxage? SMaxage;
+        /// <summary>
         /// The Security Level to configure.
         /// Available values: "off", "essentially*off", "low", "medium", "high", "under*attack".
         /// </summary>
@@ -235,9 +288,29 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Ssl;
         /// <summary>
+        /// Set the stale-if-error cache control directive.
+        /// </summary>
+        public readonly Outputs.RulesetRuleActionParametersStaleIfError? StaleIfError;
+        /// <summary>
+        /// Set the stale-while-revalidate cache control directive.
+        /// </summary>
+        public readonly Outputs.RulesetRuleActionParametersStaleWhileRevalidate? StaleWhileRevalidate;
+        /// <summary>
         /// The status code to use for the error.
         /// </summary>
         public readonly int? StatusCode;
+        /// <summary>
+        /// Whether to strip the ETag header from the response.
+        /// </summary>
+        public readonly bool? StripEtags;
+        /// <summary>
+        /// Whether to strip the Last-Modified header from the response.
+        /// </summary>
+        public readonly bool? StripLastModified;
+        /// <summary>
+        /// Whether to strip the Set-Cookie header from the response.
+        /// </summary>
+        public readonly bool? StripSetCookie;
         /// <summary>
         /// Whether to enable Signed Exchanges (SXG).
         /// </summary>
@@ -250,6 +323,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// A URI rewrite.
         /// </summary>
         public readonly Outputs.RulesetRuleActionParametersUri? Uri;
+        /// <summary>
+        /// The cache tag values for set*cache*tags action.
+        /// </summary>
+        public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]
         private RulesetRuleActionParameters(
@@ -289,6 +366,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool? emailObfuscation,
 
+            string? expression,
+
             bool? fonts,
 
             Outputs.RulesetRuleActionParametersFromList? fromList,
@@ -303,11 +382,27 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? id,
 
+            Outputs.RulesetRuleActionParametersImmutable? immutable,
+
             int? increment,
 
             Outputs.RulesetRuleActionParametersMatchedData? matchedData,
 
+            Outputs.RulesetRuleActionParametersMaxAge? maxAge,
+
             bool? mirage,
+
+            Outputs.RulesetRuleActionParametersMustRevalidate? mustRevalidate,
+
+            Outputs.RulesetRuleActionParametersMustUnderstand? mustUnderstand,
+
+            Outputs.RulesetRuleActionParametersNoCache? noCache,
+
+            Outputs.RulesetRuleActionParametersNoStore? noStore,
+
+            Outputs.RulesetRuleActionParametersNoTransform? noTransform,
+
+            string? operation,
 
             bool? opportunisticEncryption,
 
@@ -323,7 +418,13 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? polish,
 
+            Outputs.RulesetRuleActionParametersPrivate? @private,
+
             ImmutableArray<string> products,
+
+            Outputs.RulesetRuleActionParametersProxyRevalidate? proxyRevalidate,
+
+            Outputs.RulesetRuleActionParametersPublic? @public,
 
             ImmutableArray<Outputs.RulesetRuleActionParametersRawResponseField> rawResponseFields,
 
@@ -349,6 +450,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> rulesets,
 
+            Outputs.RulesetRuleActionParametersSMaxage? sMaxage,
+
             string? securityLevel,
 
             Outputs.RulesetRuleActionParametersServeStale? serveStale,
@@ -359,13 +462,25 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? ssl,
 
+            Outputs.RulesetRuleActionParametersStaleIfError? staleIfError,
+
+            Outputs.RulesetRuleActionParametersStaleWhileRevalidate? staleWhileRevalidate,
+
             int? statusCode,
+
+            bool? stripEtags,
+
+            bool? stripLastModified,
+
+            bool? stripSetCookie,
 
             bool? sxg,
 
             ImmutableArray<Outputs.RulesetRuleActionParametersTransformedRequestField> transformedRequestFields,
 
-            Outputs.RulesetRuleActionParametersUri? uri)
+            Outputs.RulesetRuleActionParametersUri? uri,
+
+            ImmutableArray<string> values)
         {
             AdditionalCacheablePorts = additionalCacheablePorts;
             Algorithms = algorithms;
@@ -385,6 +500,7 @@ namespace Pulumi.Cloudflare.Outputs
             DisableZaraz = disableZaraz;
             EdgeTtl = edgeTtl;
             EmailObfuscation = emailObfuscation;
+            Expression = expression;
             Fonts = fonts;
             FromList = fromList;
             FromValue = fromValue;
@@ -392,9 +508,17 @@ namespace Pulumi.Cloudflare.Outputs
             HostHeader = hostHeader;
             HotlinkProtection = hotlinkProtection;
             Id = id;
+            Immutable = immutable;
             Increment = increment;
             MatchedData = matchedData;
+            MaxAge = maxAge;
             Mirage = mirage;
+            MustRevalidate = mustRevalidate;
+            MustUnderstand = mustUnderstand;
+            NoCache = noCache;
+            NoStore = noStore;
+            NoTransform = noTransform;
+            Operation = operation;
             OpportunisticEncryption = opportunisticEncryption;
             Origin = origin;
             OriginCacheControl = originCacheControl;
@@ -402,7 +526,10 @@ namespace Pulumi.Cloudflare.Outputs
             Overrides = overrides;
             Phases = phases;
             Polish = polish;
+            Private = @private;
             Products = products;
+            ProxyRevalidate = proxyRevalidate;
+            Public = @public;
             RawResponseFields = rawResponseFields;
             ReadTimeout = readTimeout;
             RequestBodyBuffering = requestBodyBuffering;
@@ -415,15 +542,22 @@ namespace Pulumi.Cloudflare.Outputs
             Rules = rules;
             Ruleset = ruleset;
             Rulesets = rulesets;
+            SMaxage = sMaxage;
             SecurityLevel = securityLevel;
             ServeStale = serveStale;
             ServerSideExcludes = serverSideExcludes;
             Sni = sni;
             Ssl = ssl;
+            StaleIfError = staleIfError;
+            StaleWhileRevalidate = staleWhileRevalidate;
             StatusCode = statusCode;
+            StripEtags = stripEtags;
+            StripLastModified = stripLastModified;
+            StripSetCookie = stripSetCookie;
             Sxg = sxg;
             TransformedRequestFields = transformedRequestFields;
             Uri = uri;
+            Values = values;
         }
     }
 }

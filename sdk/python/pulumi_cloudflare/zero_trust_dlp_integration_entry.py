@@ -85,6 +85,7 @@ class _ZeroTrustDlpIntegrationEntryState:
                  case_sensitive: Optional[pulumi.Input[_builtins.bool]] = None,
                  confidence: Optional[pulumi.Input['ZeroTrustDlpIntegrationEntryConfidenceArgs']] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  entry_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -116,6 +117,8 @@ class _ZeroTrustDlpIntegrationEntryState:
             pulumi.set(__self__, "confidence", confidence)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if entry_id is not None:
@@ -181,6 +184,15 @@ class _ZeroTrustDlpIntegrationEntryState:
     @created_at.setter
     def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
@@ -406,6 +418,7 @@ class ZeroTrustDlpIntegrationEntry(pulumi.CustomResource):
             __props__.__dict__["case_sensitive"] = None
             __props__.__dict__["confidence"] = None
             __props__.__dict__["created_at"] = None
+            __props__.__dict__["description"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["pattern"] = None
             __props__.__dict__["profiles"] = None
@@ -429,6 +442,7 @@ class ZeroTrustDlpIntegrationEntry(pulumi.CustomResource):
             case_sensitive: Optional[pulumi.Input[_builtins.bool]] = None,
             confidence: Optional[pulumi.Input[Union['ZeroTrustDlpIntegrationEntryConfidenceArgs', 'ZeroTrustDlpIntegrationEntryConfidenceArgsDict']]] = None,
             created_at: Optional[pulumi.Input[_builtins.str]] = None,
+            description: Optional[pulumi.Input[_builtins.str]] = None,
             enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             entry_id: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -464,6 +478,7 @@ class ZeroTrustDlpIntegrationEntry(pulumi.CustomResource):
         __props__.__dict__["case_sensitive"] = case_sensitive
         __props__.__dict__["confidence"] = confidence
         __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["description"] = description
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["entry_id"] = entry_id
         __props__.__dict__["name"] = name
@@ -502,6 +517,11 @@ class ZeroTrustDlpIntegrationEntry(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter

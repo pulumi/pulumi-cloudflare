@@ -83,7 +83,9 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// &gt; This resource does not currently support `pulumi import`.
+    /// ```sh
+    /// $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate example '&lt;zone_id&gt;/&lt;certificate_id&gt;'
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate")]
     public partial class AuthenticatedOriginPullsCertificate : global::Pulumi.CustomResource
@@ -123,6 +125,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("privateKey")]
         public Output<string> PrivateKey { get; private set; } = null!;
+
+        /// <summary>
+        /// The serial number on the uploaded certificate.
+        /// </summary>
+        [Output("serialNumber")]
+        public Output<string> SerialNumber { get; private set; } = null!;
 
         /// <summary>
         /// The type of hash used for the certificate.
@@ -280,6 +288,12 @@ namespace Pulumi.Cloudflare
                 _privateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        /// <summary>
+        /// The serial number on the uploaded certificate.
+        /// </summary>
+        [Input("serialNumber")]
+        public Input<string>? SerialNumber { get; set; }
 
         /// <summary>
         /// The type of hash used for the certificate.

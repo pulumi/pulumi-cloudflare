@@ -48,6 +48,7 @@ export interface GetZeroTrustDlpIntegrationEntryResult {
     readonly caseSensitive: boolean;
     readonly confidence: outputs.GetZeroTrustDlpIntegrationEntryConfidence;
     readonly createdAt: string;
+    readonly description: string;
     readonly enabled: boolean;
     readonly entryId: string;
     /**

@@ -13,6 +13,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CertificatePackValidationRecord {
     /**
+     * @return The CNAME record hostname for DCV delegation.
+     * 
+     */
+    private @Nullable String cname;
+    /**
+     * @return The CNAME record target value for DCV delegation.
+     * 
+     */
+    private @Nullable String cnameTarget;
+    /**
      * @return The set of email addresses that the certificate authority (CA) will use to complete domain validation.
      * 
      */
@@ -28,6 +38,11 @@ public final class CertificatePackValidationRecord {
      */
     private @Nullable String httpUrl;
     /**
+     * @return Status of the validation record.
+     * 
+     */
+    private @Nullable String status;
+    /**
      * @return The hostname that the certificate authority (CA) will check for a TXT record during domain validation .
      * 
      */
@@ -39,6 +54,20 @@ public final class CertificatePackValidationRecord {
     private @Nullable String txtValue;
 
     private CertificatePackValidationRecord() {}
+    /**
+     * @return The CNAME record hostname for DCV delegation.
+     * 
+     */
+    public Optional<String> cname() {
+        return Optional.ofNullable(this.cname);
+    }
+    /**
+     * @return The CNAME record target value for DCV delegation.
+     * 
+     */
+    public Optional<String> cnameTarget() {
+        return Optional.ofNullable(this.cnameTarget);
+    }
     /**
      * @return The set of email addresses that the certificate authority (CA) will use to complete domain validation.
      * 
@@ -59,6 +88,13 @@ public final class CertificatePackValidationRecord {
      */
     public Optional<String> httpUrl() {
         return Optional.ofNullable(this.httpUrl);
+    }
+    /**
+     * @return Status of the validation record.
+     * 
+     */
+    public Optional<String> status() {
+        return Optional.ofNullable(this.status);
     }
     /**
      * @return The hostname that the certificate authority (CA) will check for a TXT record during domain validation .
@@ -84,21 +120,39 @@ public final class CertificatePackValidationRecord {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String cname;
+        private @Nullable String cnameTarget;
         private @Nullable List<String> emails;
         private @Nullable String httpBody;
         private @Nullable String httpUrl;
+        private @Nullable String status;
         private @Nullable String txtName;
         private @Nullable String txtValue;
         public Builder() {}
         public Builder(CertificatePackValidationRecord defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.cname = defaults.cname;
+    	      this.cnameTarget = defaults.cnameTarget;
     	      this.emails = defaults.emails;
     	      this.httpBody = defaults.httpBody;
     	      this.httpUrl = defaults.httpUrl;
+    	      this.status = defaults.status;
     	      this.txtName = defaults.txtName;
     	      this.txtValue = defaults.txtValue;
         }
 
+        @CustomType.Setter
+        public Builder cname(@Nullable String cname) {
+
+            this.cname = cname;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cnameTarget(@Nullable String cnameTarget) {
+
+            this.cnameTarget = cnameTarget;
+            return this;
+        }
         @CustomType.Setter
         public Builder emails(@Nullable List<String> emails) {
 
@@ -121,6 +175,12 @@ public final class CertificatePackValidationRecord {
             return this;
         }
         @CustomType.Setter
+        public Builder status(@Nullable String status) {
+
+            this.status = status;
+            return this;
+        }
+        @CustomType.Setter
         public Builder txtName(@Nullable String txtName) {
 
             this.txtName = txtName;
@@ -134,9 +194,12 @@ public final class CertificatePackValidationRecord {
         }
         public CertificatePackValidationRecord build() {
             final var _resultValue = new CertificatePackValidationRecord();
+            _resultValue.cname = cname;
+            _resultValue.cnameTarget = cnameTarget;
             _resultValue.emails = emails;
             _resultValue.httpBody = httpBody;
             _resultValue.httpUrl = httpUrl;
+            _resultValue.status = status;
             _resultValue.txtName = txtName;
             _resultValue.txtValue = txtValue;
             return _resultValue;

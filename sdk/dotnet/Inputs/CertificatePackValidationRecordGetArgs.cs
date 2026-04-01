@@ -12,6 +12,18 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class CertificatePackValidationRecordGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The CNAME record hostname for DCV delegation.
+        /// </summary>
+        [Input("cname")]
+        public Input<string>? Cname { get; set; }
+
+        /// <summary>
+        /// The CNAME record target value for DCV delegation.
+        /// </summary>
+        [Input("cnameTarget")]
+        public Input<string>? CnameTarget { get; set; }
+
         [Input("emails")]
         private InputList<string>? _emails;
 
@@ -35,6 +47,12 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("httpUrl")]
         public Input<string>? HttpUrl { get; set; }
+
+        /// <summary>
+        /// Status of the validation record.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         /// <summary>
         /// The hostname that the certificate authority (CA) will check for a TXT record during domain validation .

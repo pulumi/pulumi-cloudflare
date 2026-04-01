@@ -65,7 +65,7 @@ type ZeroTrustDevicePostureRule struct {
 
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The description of the device posture rule.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringOutput `pulumi:"description"`
 	// Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
 	Expiration pulumi.StringPtrOutput `pulumi:"expiration"`
 	// The value to be checked against.
@@ -73,7 +73,7 @@ type ZeroTrustDevicePostureRule struct {
 	// The conditions that the client must match to run the rule.
 	Matches ZeroTrustDevicePostureRuleMatchArrayOutput `pulumi:"matches"`
 	// The name of the device posture rule.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringPtrOutput `pulumi:"name"`
 	// Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
 	Schedule pulumi.StringPtrOutput `pulumi:"schedule"`
 	// The type of device posture rule.
@@ -90,9 +90,6 @@ func NewZeroTrustDevicePostureRule(ctx *pulumi.Context,
 
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
@@ -178,7 +175,7 @@ type zeroTrustDevicePostureRuleArgs struct {
 	// The conditions that the client must match to run the rule.
 	Matches []ZeroTrustDevicePostureRuleMatch `pulumi:"matches"`
 	// The name of the device posture rule.
-	Name string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 	// Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
 	Schedule *string `pulumi:"schedule"`
 	// The type of device posture rule.
@@ -198,7 +195,7 @@ type ZeroTrustDevicePostureRuleArgs struct {
 	// The conditions that the client must match to run the rule.
 	Matches ZeroTrustDevicePostureRuleMatchArrayInput
 	// The name of the device posture rule.
-	Name pulumi.StringInput
+	Name pulumi.StringPtrInput
 	// Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
 	Schedule pulumi.StringPtrInput
 	// The type of device posture rule.
@@ -298,8 +295,8 @@ func (o ZeroTrustDevicePostureRuleOutput) AccountId() pulumi.StringOutput {
 }
 
 // The description of the device posture rule.
-func (o ZeroTrustDevicePostureRuleOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDevicePostureRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o ZeroTrustDevicePostureRuleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDevicePostureRule) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
@@ -318,8 +315,8 @@ func (o ZeroTrustDevicePostureRuleOutput) Matches() ZeroTrustDevicePostureRuleMa
 }
 
 // The name of the device posture rule.
-func (o ZeroTrustDevicePostureRuleOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustDevicePostureRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+func (o ZeroTrustDevicePostureRuleOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDevicePostureRule) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.

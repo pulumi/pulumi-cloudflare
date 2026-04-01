@@ -339,6 +339,12 @@ class ListItem(pulumi.CustomResource):
         $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
         $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
         $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
+        $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
+        $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
+        $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
+        $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
+        $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
+        $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
         ```
 
 
@@ -374,6 +380,12 @@ class ListItem(pulumi.CustomResource):
         ## Import
 
         ```sh
+        $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
+        $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
+        $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
+        $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
+        $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
+        $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
         $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
         $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
         $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'

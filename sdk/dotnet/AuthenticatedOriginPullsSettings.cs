@@ -31,7 +31,9 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// &gt; This resource does not currently support `pulumi import`.
+    /// ```sh
+    /// $ pulumi import cloudflare:index/authenticatedOriginPullsSettings:AuthenticatedOriginPullsSettings example '&lt;zone_id&gt;'
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/authenticatedOriginPullsSettings:AuthenticatedOriginPullsSettings")]
     public partial class AuthenticatedOriginPullsSettings : global::Pulumi.CustomResource

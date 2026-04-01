@@ -14,15 +14,44 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class WorkerVersionPlacement
     {
         /// <summary>
-        /// Placement mode for the version.
-        /// Available values: "smart".
+        /// TCP host and port for targeted placement.
+        /// </summary>
+        public readonly string? Host;
+        /// <summary>
+        /// HTTP hostname for targeted placement.
+        /// </summary>
+        public readonly string? Hostname;
+        /// <summary>
+        /// Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        /// Available values: "smart", "targeted".
         /// </summary>
         public readonly string? Mode;
+        /// <summary>
+        /// Cloud region for targeted placement in format 'provider:region'.
+        /// </summary>
+        public readonly string? Region;
+        /// <summary>
+        /// Array of placement targets (currently limited to single target).
+        /// </summary>
+        public readonly ImmutableArray<Outputs.WorkerVersionPlacementTarget> Targets;
 
         [OutputConstructor]
-        private WorkerVersionPlacement(string? mode)
+        private WorkerVersionPlacement(
+            string? host,
+
+            string? hostname,
+
+            string? mode,
+
+            string? region,
+
+            ImmutableArray<Outputs.WorkerVersionPlacementTarget> targets)
         {
+            Host = host;
+            Hostname = hostname;
             Mode = mode;
+            Region = region;
+            Targets = targets;
         }
     }
 }

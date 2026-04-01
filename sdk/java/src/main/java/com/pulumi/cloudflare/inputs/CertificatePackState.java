@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.CertificatePackCertificateArgs;
+import com.pulumi.cloudflare.inputs.CertificatePackDcvDelegationRecordArgs;
 import com.pulumi.cloudflare.inputs.CertificatePackValidationErrorArgs;
 import com.pulumi.cloudflare.inputs.CertificatePackValidationRecordArgs;
 import com.pulumi.core.Output;
@@ -66,6 +67,21 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<Boolean>> cloudflareBranding() {
         return Optional.ofNullable(this.cloudflareBranding);
+    }
+
+    /**
+     * DCV Delegation records for domain validation.
+     * 
+     */
+    @Import(name="dcvDelegationRecords")
+    private @Nullable Output<List<CertificatePackDcvDelegationRecordArgs>> dcvDelegationRecords;
+
+    /**
+     * @return DCV Delegation records for domain validation.
+     * 
+     */
+    public Optional<Output<List<CertificatePackDcvDelegationRecordArgs>>> dcvDelegationRecords() {
+        return Optional.ofNullable(this.dcvDelegationRecords);
     }
 
     /**
@@ -217,6 +233,7 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
         this.certificateAuthority = $.certificateAuthority;
         this.certificates = $.certificates;
         this.cloudflareBranding = $.cloudflareBranding;
+        this.dcvDelegationRecords = $.dcvDelegationRecords;
         this.hosts = $.hosts;
         this.primaryCertificate = $.primaryCertificate;
         this.status = $.status;
@@ -319,6 +336,37 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
          */
         public Builder cloudflareBranding(Boolean cloudflareBranding) {
             return cloudflareBranding(Output.of(cloudflareBranding));
+        }
+
+        /**
+         * @param dcvDelegationRecords DCV Delegation records for domain validation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dcvDelegationRecords(@Nullable Output<List<CertificatePackDcvDelegationRecordArgs>> dcvDelegationRecords) {
+            $.dcvDelegationRecords = dcvDelegationRecords;
+            return this;
+        }
+
+        /**
+         * @param dcvDelegationRecords DCV Delegation records for domain validation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dcvDelegationRecords(List<CertificatePackDcvDelegationRecordArgs> dcvDelegationRecords) {
+            return dcvDelegationRecords(Output.of(dcvDelegationRecords));
+        }
+
+        /**
+         * @param dcvDelegationRecords DCV Delegation records for domain validation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dcvDelegationRecords(CertificatePackDcvDelegationRecordArgs... dcvDelegationRecords) {
+            return dcvDelegationRecords(List.of(dcvDelegationRecords));
         }
 
         /**

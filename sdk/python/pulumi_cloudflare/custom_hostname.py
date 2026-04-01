@@ -346,7 +346,13 @@ class CustomHostname(pulumi.CustomResource):
 
         \"\"\",
                 }],
-                "custom_certificate": "-----BEGIN CERTIFICATE-----\\\\nMIIFJDCCBAygAwIBAgIQD0ifmj/Yi5NP/2gdUySbfzANBgkqhkiG9w0BAQsFADBN\\\\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E...SzSHfXp5lnu/3V08I72q1QNzOCgY1XeL4GKVcj4or6cT6tX6oJH7ePPmfrBfqI/O\\\\nOeH8gMJ+FuwtXYEPa4hBf38M5eU5xWG7\\\\n-----END CERTIFICATE-----\\\\n",
+                "custom_certificate": \"\"\"    -----BEGIN CERTIFICATE-----
+            MIIFJDCCBAygAwIBAgIQD0ifmj/Yi5NP/2gdUySbfzANBgkqhkiG9w0BAQsFADBN
+            MQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E...SzSHfXp5lnu/3V08I72q1QNzOCgY1XeL4GKVcj4or6cT6tX6oJH7ePPmfrBfqI/O
+            OeH8gMJ+FuwtXYEPa4hBf38M5eU5xWG7
+            -----END CERTIFICATE-----
+
+        \"\"\",
                 "custom_key": \"\"\"    -----BEGIN RSA PRIVATE KEY-----
             MIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG
             dtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn
@@ -443,7 +449,13 @@ class CustomHostname(pulumi.CustomResource):
 
         \"\"\",
                 }],
-                "custom_certificate": "-----BEGIN CERTIFICATE-----\\\\nMIIFJDCCBAygAwIBAgIQD0ifmj/Yi5NP/2gdUySbfzANBgkqhkiG9w0BAQsFADBN\\\\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E...SzSHfXp5lnu/3V08I72q1QNzOCgY1XeL4GKVcj4or6cT6tX6oJH7ePPmfrBfqI/O\\\\nOeH8gMJ+FuwtXYEPa4hBf38M5eU5xWG7\\\\n-----END CERTIFICATE-----\\\\n",
+                "custom_certificate": \"\"\"    -----BEGIN CERTIFICATE-----
+            MIIFJDCCBAygAwIBAgIQD0ifmj/Yi5NP/2gdUySbfzANBgkqhkiG9w0BAQsFADBN
+            MQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E...SzSHfXp5lnu/3V08I72q1QNzOCgY1XeL4GKVcj4or6cT6tX6oJH7ePPmfrBfqI/O
+            OeH8gMJ+FuwtXYEPa4hBf38M5eU5xWG7
+            -----END CERTIFICATE-----
+
+        \"\"\",
                 "custom_key": \"\"\"    -----BEGIN RSA PRIVATE KEY-----
             MIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG
             dtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn

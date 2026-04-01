@@ -22,16 +22,13 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? CreatedOn { get; set; }
 
         /// <summary>
-        /// A Resource identifier.
+        /// Name of the dead letter queue, or empty string if not configured
         /// </summary>
-        [Input("queueId")]
-        public Input<string>? QueueId { get; set; }
+        [Input("deadLetterQueue")]
+        public Input<string>? DeadLetterQueue { get; set; }
 
-        /// <summary>
-        /// Name of a Worker
-        /// </summary>
-        [Input("script")]
-        public Input<string>? Script { get; set; }
+        [Input("queueName")]
+        public Input<string>? QueueName { get; set; }
 
         /// <summary>
         /// Name of a Worker

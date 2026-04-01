@@ -61,16 +61,14 @@ type LookupAuthenticatedOriginPullsCertificateResult struct {
 	Certificate string `pulumi:"certificate"`
 	// Identifier.
 	CertificateId string `pulumi:"certificateId"`
-	// Indicates whether zone-level authenticated origin pulls is enabled.
-	Enabled bool `pulumi:"enabled"`
 	// When the certificate from the authority expires.
 	ExpiresOn string `pulumi:"expiresOn"`
 	// Identifier.
 	Id string `pulumi:"id"`
 	// The certificate authority that issued the certificate.
 	Issuer string `pulumi:"issuer"`
-	// The zone's private key.
-	PrivateKey string `pulumi:"privateKey"`
+	// The serial number on the uploaded certificate.
+	SerialNumber string `pulumi:"serialNumber"`
 	// The type of hash used for the certificate.
 	Signature string `pulumi:"signature"`
 	// Status of the certificate activation.
@@ -128,11 +126,6 @@ func (o LookupAuthenticatedOriginPullsCertificateResultOutput) CertificateId() p
 	return o.ApplyT(func(v LookupAuthenticatedOriginPullsCertificateResult) string { return v.CertificateId }).(pulumi.StringOutput)
 }
 
-// Indicates whether zone-level authenticated origin pulls is enabled.
-func (o LookupAuthenticatedOriginPullsCertificateResultOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupAuthenticatedOriginPullsCertificateResult) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
 // When the certificate from the authority expires.
 func (o LookupAuthenticatedOriginPullsCertificateResultOutput) ExpiresOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthenticatedOriginPullsCertificateResult) string { return v.ExpiresOn }).(pulumi.StringOutput)
@@ -148,9 +141,9 @@ func (o LookupAuthenticatedOriginPullsCertificateResultOutput) Issuer() pulumi.S
 	return o.ApplyT(func(v LookupAuthenticatedOriginPullsCertificateResult) string { return v.Issuer }).(pulumi.StringOutput)
 }
 
-// The zone's private key.
-func (o LookupAuthenticatedOriginPullsCertificateResultOutput) PrivateKey() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAuthenticatedOriginPullsCertificateResult) string { return v.PrivateKey }).(pulumi.StringOutput)
+// The serial number on the uploaded certificate.
+func (o LookupAuthenticatedOriginPullsCertificateResultOutput) SerialNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAuthenticatedOriginPullsCertificateResult) string { return v.SerialNumber }).(pulumi.StringOutput)
 }
 
 // The type of hash used for the certificate.

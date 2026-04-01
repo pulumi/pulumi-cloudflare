@@ -52,6 +52,23 @@ public final class CustomSslState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The environment to deploy the certificate to.
+     * Available values: &#34;staging&#34;, &#34;production&#34;.
+     * 
+     */
+    @Import(name="deploy")
+    private @Nullable Output<String> deploy;
+
+    /**
+     * @return The environment to deploy the certificate to.
+     * Available values: &#34;staging&#34;, &#34;production&#34;.
+     * 
+     */
+    public Optional<Output<String>> deploy() {
+        return Optional.ofNullable(this.deploy);
+    }
+
+    /**
      * When the certificate from the authority expires.
      * 
      */
@@ -126,14 +143,16 @@ public final class CustomSslState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as &#39;country: IN&#39;, as well as &#39;region: EU&#39; which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+     * Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code*elements) can be chosen, such as &#39;country: IN&#39;, as well as &#39;region: EU&#39; which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+     * Note: The API accepts this field as either &#34;policy&#34; or &#34;policy*restrictions&#34; in requests. Responses return this field as &#34;policyRestrictions&#34;.
      * 
      */
     @Import(name="policy")
     private @Nullable Output<String> policy;
 
     /**
-     * @return Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as &#39;country: IN&#39;, as well as &#39;region: EU&#39; which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+     * @return Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code*elements) can be chosen, such as &#39;country: IN&#39;, as well as &#39;region: EU&#39; which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+     * Note: The API accepts this field as either &#34;policy&#34; or &#34;policy*restrictions&#34; in requests. Responses return this field as &#34;policyRestrictions&#34;.
      * 
      */
     public Optional<Output<String>> policy() {
@@ -141,14 +160,33 @@ public final class CustomSslState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping &#39;legacy*custom&#39; certificates, but &#39;legacy*custom&#39; certificates will always supercede &#39;sni_custom&#39; certificates.
+     * The policy restrictions returned by the API. This field is returned in responses
+     * when a policy has been set. The API accepts the &#34;policy&#34; field in requests but
+     * returns this field as &#34;policyRestrictions&#34; in responses.
+     * 
+     */
+    @Import(name="policyRestrictions")
+    private @Nullable Output<String> policyRestrictions;
+
+    /**
+     * @return The policy restrictions returned by the API. This field is returned in responses
+     * when a policy has been set. The API accepts the &#34;policy&#34; field in requests but
+     * returns this field as &#34;policyRestrictions&#34; in responses.
+     * 
+     */
+    public Optional<Output<String>> policyRestrictions() {
+        return Optional.ofNullable(this.policyRestrictions);
+    }
+
+    /**
+     * The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping &#39;legacy_custom&#39; certificates, but &#39;legacy_custom&#39; certificates will always supercede &#39;sni_custom&#39; certificates.
      * 
      */
     @Import(name="priority")
     private @Nullable Output<Double> priority;
 
     /**
-     * @return The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping &#39;legacy*custom&#39; certificates, but &#39;legacy*custom&#39; certificates will always supercede &#39;sni_custom&#39; certificates.
+     * @return The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping &#39;legacy_custom&#39; certificates, but &#39;legacy_custom&#39; certificates will always supercede &#39;sni_custom&#39; certificates.
      * 
      */
     public Optional<Output<Double>> priority() {
@@ -254,6 +292,7 @@ public final class CustomSslState extends com.pulumi.resources.ResourceArgs {
     private CustomSslState(CustomSslState $) {
         this.bundleMethod = $.bundleMethod;
         this.certificate = $.certificate;
+        this.deploy = $.deploy;
         this.expiresOn = $.expiresOn;
         this.geoRestrictions = $.geoRestrictions;
         this.hosts = $.hosts;
@@ -261,6 +300,7 @@ public final class CustomSslState extends com.pulumi.resources.ResourceArgs {
         this.keylessServer = $.keylessServer;
         this.modifiedOn = $.modifiedOn;
         this.policy = $.policy;
+        this.policyRestrictions = $.policyRestrictions;
         this.priority = $.priority;
         this.privateKey = $.privateKey;
         this.signature = $.signature;
@@ -330,6 +370,29 @@ public final class CustomSslState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder certificate(String certificate) {
             return certificate(Output.of(certificate));
+        }
+
+        /**
+         * @param deploy The environment to deploy the certificate to.
+         * Available values: &#34;staging&#34;, &#34;production&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deploy(@Nullable Output<String> deploy) {
+            $.deploy = deploy;
+            return this;
+        }
+
+        /**
+         * @param deploy The environment to deploy the certificate to.
+         * Available values: &#34;staging&#34;, &#34;production&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deploy(String deploy) {
+            return deploy(Output.of(deploy));
         }
 
         /**
@@ -439,7 +502,8 @@ public final class CustomSslState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policy Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as &#39;country: IN&#39;, as well as &#39;region: EU&#39; which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+         * @param policy Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code*elements) can be chosen, such as &#39;country: IN&#39;, as well as &#39;region: EU&#39; which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+         * Note: The API accepts this field as either &#34;policy&#34; or &#34;policy*restrictions&#34; in requests. Responses return this field as &#34;policyRestrictions&#34;.
          * 
          * @return builder
          * 
@@ -450,7 +514,8 @@ public final class CustomSslState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policy Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as &#39;country: IN&#39;, as well as &#39;region: EU&#39; which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+         * @param policy Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code*elements) can be chosen, such as &#39;country: IN&#39;, as well as &#39;region: EU&#39; which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+         * Note: The API accepts this field as either &#34;policy&#34; or &#34;policy*restrictions&#34; in requests. Responses return this field as &#34;policyRestrictions&#34;.
          * 
          * @return builder
          * 
@@ -460,7 +525,32 @@ public final class CustomSslState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param priority The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping &#39;legacy*custom&#39; certificates, but &#39;legacy*custom&#39; certificates will always supercede &#39;sni_custom&#39; certificates.
+         * @param policyRestrictions The policy restrictions returned by the API. This field is returned in responses
+         * when a policy has been set. The API accepts the &#34;policy&#34; field in requests but
+         * returns this field as &#34;policyRestrictions&#34; in responses.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policyRestrictions(@Nullable Output<String> policyRestrictions) {
+            $.policyRestrictions = policyRestrictions;
+            return this;
+        }
+
+        /**
+         * @param policyRestrictions The policy restrictions returned by the API. This field is returned in responses
+         * when a policy has been set. The API accepts the &#34;policy&#34; field in requests but
+         * returns this field as &#34;policyRestrictions&#34; in responses.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policyRestrictions(String policyRestrictions) {
+            return policyRestrictions(Output.of(policyRestrictions));
+        }
+
+        /**
+         * @param priority The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping &#39;legacy_custom&#39; certificates, but &#39;legacy_custom&#39; certificates will always supercede &#39;sni_custom&#39; certificates.
          * 
          * @return builder
          * 
@@ -471,7 +561,7 @@ public final class CustomSslState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param priority The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping &#39;legacy*custom&#39; certificates, but &#39;legacy*custom&#39; certificates will always supercede &#39;sni_custom&#39; certificates.
+         * @param priority The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping &#39;legacy_custom&#39; certificates, but &#39;legacy_custom&#39; certificates will always supercede &#39;sni_custom&#39; certificates.
          * 
          * @return builder
          * 

@@ -31,7 +31,7 @@ public final class GetSnippetListInvokeResult {
      */
     private List<GetSnippetListResult> results;
     /**
-     * @return The unique ID of the zone.
+     * @return Use this field to specify the unique ID of the zone.
      * 
      */
     private String zoneId;
@@ -59,7 +59,7 @@ public final class GetSnippetListInvokeResult {
         return this.results;
     }
     /**
-     * @return The unique ID of the zone.
+     * @return Use this field to specify the unique ID of the zone.
      * 
      */
     public String zoneId() {

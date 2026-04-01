@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.CertificatePackArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.CertificatePackState;
 import com.pulumi.cloudflare.outputs.CertificatePackCertificate;
+import com.pulumi.cloudflare.outputs.CertificatePackDcvDelegationRecord;
 import com.pulumi.cloudflare.outputs.CertificatePackValidationError;
 import com.pulumi.cloudflare.outputs.CertificatePackValidationRecord;
 import com.pulumi.core.Output;
@@ -124,6 +125,20 @@ public class CertificatePack extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> cloudflareBranding() {
         return Codegen.optional(this.cloudflareBranding);
+    }
+    /**
+     * DCV Delegation records for domain validation.
+     * 
+     */
+    @Export(name="dcvDelegationRecords", refs={List.class,CertificatePackDcvDelegationRecord.class}, tree="[0,1]")
+    private Output<List<CertificatePackDcvDelegationRecord>> dcvDelegationRecords;
+
+    /**
+     * @return DCV Delegation records for domain validation.
+     * 
+     */
+    public Output<List<CertificatePackDcvDelegationRecord>> dcvDelegationRecords() {
+        return this.dcvDelegationRecords;
     }
     /**
      * Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.

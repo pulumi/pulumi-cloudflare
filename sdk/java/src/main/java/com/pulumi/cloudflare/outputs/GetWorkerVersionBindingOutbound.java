@@ -3,10 +3,10 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetWorkerVersionBindingOutboundParam;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionBindingOutboundWorker;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,7 +16,7 @@ public final class GetWorkerVersionBindingOutbound {
      * @return Pass information from the Dispatch Worker to the Outbound Worker through the parameters.
      * 
      */
-    private List<String> params;
+    private List<GetWorkerVersionBindingOutboundParam> params;
     /**
      * @return Outbound worker.
      * 
@@ -28,7 +28,7 @@ public final class GetWorkerVersionBindingOutbound {
      * @return Pass information from the Dispatch Worker to the Outbound Worker through the parameters.
      * 
      */
-    public List<String> params() {
+    public List<GetWorkerVersionBindingOutboundParam> params() {
         return this.params;
     }
     /**
@@ -48,7 +48,7 @@ public final class GetWorkerVersionBindingOutbound {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<String> params;
+        private List<GetWorkerVersionBindingOutboundParam> params;
         private GetWorkerVersionBindingOutboundWorker worker;
         public Builder() {}
         public Builder(GetWorkerVersionBindingOutbound defaults) {
@@ -58,14 +58,14 @@ public final class GetWorkerVersionBindingOutbound {
         }
 
         @CustomType.Setter
-        public Builder params(List<String> params) {
+        public Builder params(List<GetWorkerVersionBindingOutboundParam> params) {
             if (params == null) {
               throw new MissingRequiredPropertyException("GetWorkerVersionBindingOutbound", "params");
             }
             this.params = params;
             return this;
         }
-        public Builder params(String... params) {
+        public Builder params(GetWorkerVersionBindingOutboundParam... params) {
             return params(List.of(params));
         }
         @CustomType.Setter

@@ -14,14 +14,14 @@ public final class GetSnippetPlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetSnippetPlainArgs Empty = new GetSnippetPlainArgs();
 
     /**
-     * The identifying name of the snippet.
+     * Identify the snippet.
      * 
      */
     @Import(name="snippetName", required=true)
     private String snippetName;
 
     /**
-     * @return The identifying name of the snippet.
+     * @return Identify the snippet.
      * 
      */
     public String snippetName() {
@@ -29,14 +29,14 @@ public final class GetSnippetPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The unique ID of the zone.
+     * Use this field to specify the unique ID of the zone.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return The unique ID of the zone.
+     * @return Use this field to specify the unique ID of the zone.
      * 
      */
     public String zoneId() {
@@ -69,7 +69,7 @@ public final class GetSnippetPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param snippetName The identifying name of the snippet.
+         * @param snippetName Identify the snippet.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class GetSnippetPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param zoneId The unique ID of the zone.
+         * @param zoneId Use this field to specify the unique ID of the zone.
          * 
          * @return builder
          * 

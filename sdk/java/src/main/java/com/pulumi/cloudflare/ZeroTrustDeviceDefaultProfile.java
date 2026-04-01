@@ -323,10 +323,10 @@ public class ZeroTrustDeviceDefaultProfile extends com.pulumi.resources.CustomRe
         return this.sccmVpnBoundarySupport;
     }
     @Export(name="serviceModeV2", refs={ZeroTrustDeviceDefaultProfileServiceModeV2.class}, tree="[0]")
-    private Output</* @Nullable */ ZeroTrustDeviceDefaultProfileServiceModeV2> serviceModeV2;
+    private Output<ZeroTrustDeviceDefaultProfileServiceModeV2> serviceModeV2;
 
-    public Output<Optional<ZeroTrustDeviceDefaultProfileServiceModeV2>> serviceModeV2() {
-        return Codegen.optional(this.serviceModeV2);
+    public Output<ZeroTrustDeviceDefaultProfileServiceModeV2> serviceModeV2() {
+        return this.serviceModeV2;
     }
     /**
      * The URL to launch when the Send Feedback button is clicked.

@@ -61,6 +61,10 @@ export interface GetZeroTrustAccessPolicyResult {
      * Requires the user to request access from an administrator at the start of each session.
      */
     readonly approvalRequired: boolean;
+    /**
+     * The rules that define how users may connect to targets secured by your application.
+     */
+    readonly connectionRules: outputs.GetZeroTrustAccessPolicyConnectionRules;
     readonly createdAt: string;
     /**
      * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
@@ -83,6 +87,10 @@ export interface GetZeroTrustAccessPolicyResult {
      * Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
      */
     readonly isolationRequired: boolean;
+    /**
+     * Configures multi-factor authentication (MFA) settings.
+     */
+    readonly mfaConfig: outputs.GetZeroTrustAccessPolicyMfaConfig;
     /**
      * The name of the Access policy.
      */

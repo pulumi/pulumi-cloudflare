@@ -68,6 +68,7 @@ type LookupWorkersKvResult struct {
 	KeyName string `pulumi:"keyName"`
 	// Namespace identifier tag.
 	NamespaceId string `pulumi:"namespaceId"`
+	Value       string `pulumi:"value"`
 }
 
 func LookupWorkersKvOutput(ctx *pulumi.Context, args LookupWorkersKvOutputArgs, opts ...pulumi.InvokeOption) LookupWorkersKvResultOutput {
@@ -126,6 +127,10 @@ func (o LookupWorkersKvResultOutput) KeyName() pulumi.StringOutput {
 // Namespace identifier tag.
 func (o LookupWorkersKvResultOutput) NamespaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersKvResult) string { return v.NamespaceId }).(pulumi.StringOutput)
+}
+
+func (o LookupWorkersKvResultOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkersKvResult) string { return v.Value }).(pulumi.StringOutput)
 }
 
 func init() {

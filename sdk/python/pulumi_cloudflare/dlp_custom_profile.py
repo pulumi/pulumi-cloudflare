@@ -646,7 +646,7 @@ class DlpCustomProfile(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="contextAwareness")
     @_utilities.deprecated("""This attribute is deprecated.""")
-    def context_awareness(self) -> pulumi.Output[Optional['outputs.DlpCustomProfileContextAwareness']]:
+    def context_awareness(self) -> pulumi.Output['outputs.DlpCustomProfileContextAwareness']:
         """
         Scan the context of predefined entries to only return matches surrounded by keywords.
         """

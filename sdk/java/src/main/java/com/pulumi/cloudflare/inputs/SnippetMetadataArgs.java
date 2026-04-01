@@ -15,14 +15,14 @@ public final class SnippetMetadataArgs extends com.pulumi.resources.ResourceArgs
     public static final SnippetMetadataArgs Empty = new SnippetMetadataArgs();
 
     /**
-     * Name of the file that contains the main module of the snippet.
+     * Specify the name of the file that contains the main module of the snippet.
      * 
      */
     @Import(name="mainModule", required=true)
     private Output<String> mainModule;
 
     /**
-     * @return Name of the file that contains the main module of the snippet.
+     * @return Specify the name of the file that contains the main module of the snippet.
      * 
      */
     public Output<String> mainModule() {
@@ -54,7 +54,7 @@ public final class SnippetMetadataArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param mainModule Name of the file that contains the main module of the snippet.
+         * @param mainModule Specify the name of the file that contains the main module of the snippet.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class SnippetMetadataArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param mainModule Name of the file that contains the main module of the snippet.
+         * @param mainModule Specify the name of the file that contains the main module of the snippet.
          * 
          * @return builder
          * 

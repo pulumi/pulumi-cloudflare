@@ -10,8 +10,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class AuthenticatedOriginPullsArgs extends com.pulumi.resources.ResourceArgs {
@@ -23,21 +21,6 @@ public final class AuthenticatedOriginPullsArgs extends com.pulumi.resources.Res
 
     public Output<List<AuthenticatedOriginPullsConfigArgs>> configs() {
         return this.configs;
-    }
-
-    /**
-     * The hostname on the origin for which the client certificate uploaded will be used.
-     * 
-     */
-    @Import(name="hostname")
-    private @Nullable Output<String> hostname;
-
-    /**
-     * @return The hostname on the origin for which the client certificate uploaded will be used.
-     * 
-     */
-    public Optional<Output<String>> hostname() {
-        return Optional.ofNullable(this.hostname);
     }
 
     /**
@@ -59,7 +42,6 @@ public final class AuthenticatedOriginPullsArgs extends com.pulumi.resources.Res
 
     private AuthenticatedOriginPullsArgs(AuthenticatedOriginPullsArgs $) {
         this.configs = $.configs;
-        this.hostname = $.hostname;
         this.zoneId = $.zoneId;
     }
 
@@ -92,27 +74,6 @@ public final class AuthenticatedOriginPullsArgs extends com.pulumi.resources.Res
 
         public Builder configs(AuthenticatedOriginPullsConfigArgs... configs) {
             return configs(List.of(configs));
-        }
-
-        /**
-         * @param hostname The hostname on the origin for which the client certificate uploaded will be used.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder hostname(@Nullable Output<String> hostname) {
-            $.hostname = hostname;
-            return this;
-        }
-
-        /**
-         * @param hostname The hostname on the origin for which the client certificate uploaded will be used.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder hostname(String hostname) {
-            return hostname(Output.of(hostname));
         }
 
         /**

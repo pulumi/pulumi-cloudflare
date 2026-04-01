@@ -78,7 +78,7 @@ type DlpCustomProfile struct {
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
 	//
 	// Deprecated: This attribute is deprecated.
-	ContextAwareness DlpCustomProfileContextAwarenessPtrOutput `pulumi:"contextAwareness"`
+	ContextAwareness DlpCustomProfileContextAwarenessOutput `pulumi:"contextAwareness"`
 	// When the profile was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The description of the profile.
@@ -361,8 +361,8 @@ func (o DlpCustomProfileOutput) ConfidenceThreshold() pulumi.StringOutput {
 // Scan the context of predefined entries to only return matches surrounded by keywords.
 //
 // Deprecated: This attribute is deprecated.
-func (o DlpCustomProfileOutput) ContextAwareness() DlpCustomProfileContextAwarenessPtrOutput {
-	return o.ApplyT(func(v *DlpCustomProfile) DlpCustomProfileContextAwarenessPtrOutput { return v.ContextAwareness }).(DlpCustomProfileContextAwarenessPtrOutput)
+func (o DlpCustomProfileOutput) ContextAwareness() DlpCustomProfileContextAwarenessOutput {
+	return o.ApplyT(func(v *DlpCustomProfile) DlpCustomProfileContextAwarenessOutput { return v.ContextAwareness }).(DlpCustomProfileContextAwarenessOutput)
 }
 
 // When the profile was created.

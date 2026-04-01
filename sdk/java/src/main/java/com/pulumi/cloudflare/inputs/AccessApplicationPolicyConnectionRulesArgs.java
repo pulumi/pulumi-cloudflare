@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.AccessApplicationPolicyConnectionRulesRdpArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationPolicyConnectionRulesSshArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -14,6 +15,21 @@ import javax.annotation.Nullable;
 public final class AccessApplicationPolicyConnectionRulesArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AccessApplicationPolicyConnectionRulesArgs Empty = new AccessApplicationPolicyConnectionRulesArgs();
+
+    /**
+     * The RDP-specific rules that define clipboard behavior for RDP connections.
+     * 
+     */
+    @Import(name="rdp")
+    private @Nullable Output<AccessApplicationPolicyConnectionRulesRdpArgs> rdp;
+
+    /**
+     * @return The RDP-specific rules that define clipboard behavior for RDP connections.
+     * 
+     */
+    public Optional<Output<AccessApplicationPolicyConnectionRulesRdpArgs>> rdp() {
+        return Optional.ofNullable(this.rdp);
+    }
 
     /**
      * The SSH-specific rules that define how users may connect to the targets secured by your application.
@@ -33,6 +49,7 @@ public final class AccessApplicationPolicyConnectionRulesArgs extends com.pulumi
     private AccessApplicationPolicyConnectionRulesArgs() {}
 
     private AccessApplicationPolicyConnectionRulesArgs(AccessApplicationPolicyConnectionRulesArgs $) {
+        this.rdp = $.rdp;
         this.ssh = $.ssh;
     }
 
@@ -52,6 +69,27 @@ public final class AccessApplicationPolicyConnectionRulesArgs extends com.pulumi
 
         public Builder(AccessApplicationPolicyConnectionRulesArgs defaults) {
             $ = new AccessApplicationPolicyConnectionRulesArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param rdp The RDP-specific rules that define clipboard behavior for RDP connections.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rdp(@Nullable Output<AccessApplicationPolicyConnectionRulesRdpArgs> rdp) {
+            $.rdp = rdp;
+            return this;
+        }
+
+        /**
+         * @param rdp The RDP-specific rules that define clipboard behavior for RDP connections.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rdp(AccessApplicationPolicyConnectionRulesRdpArgs rdp) {
+            return rdp(Output.of(rdp));
         }
 
         /**

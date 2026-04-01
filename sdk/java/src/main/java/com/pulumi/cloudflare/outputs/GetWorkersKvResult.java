@@ -30,6 +30,7 @@ public final class GetWorkersKvResult {
      * 
      */
     private String namespaceId;
+    private String value;
 
     private GetWorkersKvResult() {}
     /**
@@ -60,6 +61,9 @@ public final class GetWorkersKvResult {
     public String namespaceId() {
         return this.namespaceId;
     }
+    public String value() {
+        return this.value;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -74,6 +78,7 @@ public final class GetWorkersKvResult {
         private String id;
         private String keyName;
         private String namespaceId;
+        private String value;
         public Builder() {}
         public Builder(GetWorkersKvResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -81,6 +86,7 @@ public final class GetWorkersKvResult {
     	      this.id = defaults.id;
     	      this.keyName = defaults.keyName;
     	      this.namespaceId = defaults.namespaceId;
+    	      this.value = defaults.value;
         }
 
         @CustomType.Setter
@@ -115,12 +121,21 @@ public final class GetWorkersKvResult {
             this.namespaceId = namespaceId;
             return this;
         }
+        @CustomType.Setter
+        public Builder value(String value) {
+            if (value == null) {
+              throw new MissingRequiredPropertyException("GetWorkersKvResult", "value");
+            }
+            this.value = value;
+            return this;
+        }
         public GetWorkersKvResult build() {
             final var _resultValue = new GetWorkersKvResult();
             _resultValue.accountId = accountId;
             _resultValue.id = id;
             _resultValue.keyName = keyName;
             _resultValue.namespaceId = namespaceId;
+            _resultValue.value = value;
             return _resultValue;
         }
     }

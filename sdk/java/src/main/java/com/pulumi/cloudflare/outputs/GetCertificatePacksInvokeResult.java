@@ -16,6 +16,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetCertificatePacksInvokeResult {
     /**
+     * @return Specify the deployment environment for the certificate packs.
+     * Available values: &#34;staging&#34;, &#34;production&#34;.
+     * 
+     */
+    private @Nullable String deploy;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -43,6 +49,14 @@ public final class GetCertificatePacksInvokeResult {
     private String zoneId;
 
     private GetCertificatePacksInvokeResult() {}
+    /**
+     * @return Specify the deployment environment for the certificate packs.
+     * Available values: &#34;staging&#34;, &#34;production&#34;.
+     * 
+     */
+    public Optional<String> deploy() {
+        return Optional.ofNullable(this.deploy);
+    }
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -89,6 +103,7 @@ public final class GetCertificatePacksInvokeResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String deploy;
         private String id;
         private @Nullable Integer maxItems;
         private List<GetCertificatePacksResult> results;
@@ -97,6 +112,7 @@ public final class GetCertificatePacksInvokeResult {
         public Builder() {}
         public Builder(GetCertificatePacksInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.deploy = defaults.deploy;
     	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.results = defaults.results;
@@ -104,6 +120,12 @@ public final class GetCertificatePacksInvokeResult {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
+        public Builder deploy(@Nullable String deploy) {
+
+            this.deploy = deploy;
+            return this;
+        }
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
@@ -145,6 +167,7 @@ public final class GetCertificatePacksInvokeResult {
         }
         public GetCertificatePacksInvokeResult build() {
             final var _resultValue = new GetCertificatePacksInvokeResult();
+            _resultValue.deploy = deploy;
             _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.results = results;

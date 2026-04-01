@@ -26,6 +26,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",
+        ///         Filter = "name:my-widget",
         ///         Order = "id",
         ///     });
         /// 
@@ -50,6 +51,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",
+        ///         Filter = "name:my-widget",
         ///         Order = "id",
         ///     });
         /// 
@@ -74,6 +76,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",
+        ///         Filter = "name:my-widget",
         ///         Order = "id",
         ///     });
         /// 
@@ -101,15 +104,15 @@ namespace Pulumi.Cloudflare
         public string? Direction { get; set; }
 
         /// <summary>
-        /// Max items to fetch, default: 1000
+        /// Filter widgets by field using case-insensitive substring matching.
+        /// Format: `field:value`
         /// </summary>
+        [Input("filter")]
+        public string? Filter { get; set; }
+
         [Input("maxItems")]
         public int? MaxItems { get; set; }
 
-        /// <summary>
-        /// Field to order widgets by.
-        /// Available values: "id", "sitekey", "name", "created*on", "modified*on".
-        /// </summary>
         [Input("order")]
         public string? Order { get; set; }
 
@@ -135,15 +138,15 @@ namespace Pulumi.Cloudflare
         public Input<string>? Direction { get; set; }
 
         /// <summary>
-        /// Max items to fetch, default: 1000
+        /// Filter widgets by field using case-insensitive substring matching.
+        /// Format: `field:value`
         /// </summary>
+        [Input("filter")]
+        public Input<string>? Filter { get; set; }
+
         [Input("maxItems")]
         public Input<int>? MaxItems { get; set; }
 
-        /// <summary>
-        /// Field to order widgets by.
-        /// Available values: "id", "sitekey", "name", "created*on", "modified*on".
-        /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }
 
@@ -167,21 +170,16 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? Direction;
         /// <summary>
+        /// Filter widgets by field using case-insensitive substring matching.
+        /// Format: `field:value`
+        /// </summary>
+        public readonly string? Filter;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Max items to fetch, default: 1000
-        /// </summary>
         public readonly int? MaxItems;
-        /// <summary>
-        /// Field to order widgets by.
-        /// Available values: "id", "sitekey", "name", "created*on", "modified*on".
-        /// </summary>
         public readonly string? Order;
-        /// <summary>
-        /// The items returned by the data source
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetTurnstileWidgetsResultResult> Results;
 
         [OutputConstructor]
@@ -189,6 +187,8 @@ namespace Pulumi.Cloudflare
             string accountId,
 
             string? direction,
+
+            string? filter,
 
             string id,
 
@@ -200,6 +200,7 @@ namespace Pulumi.Cloudflare
         {
             AccountId = accountId;
             Direction = direction;
+            Filter = filter;
             Id = id;
             MaxItems = maxItems;
             Order = order;

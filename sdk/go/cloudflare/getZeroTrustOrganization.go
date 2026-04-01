@@ -66,11 +66,21 @@ type LookupZeroTrustOrganizationResult struct {
 	// When set to `true`, users skip the identity provider selection step during login.
 	AutoRedirectToIdentity bool                                `pulumi:"autoRedirectToIdentity"`
 	CustomPages            GetZeroTrustOrganizationCustomPages `pulumi:"customPages"`
+	// Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `denyUnmatchedRequestsExemptedZoneNames` array.
+	DenyUnmatchedRequests bool `pulumi:"denyUnmatchedRequests"`
+	// Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+	DenyUnmatchedRequestsExemptedZoneNames []string `pulumi:"denyUnmatchedRequestsExemptedZoneNames"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
 	IsUiReadOnly bool                                `pulumi:"isUiReadOnly"`
 	LoginDesign  GetZeroTrustOrganizationLoginDesign `pulumi:"loginDesign"`
+	// Configures multi-factor authentication (MFA) settings for an organization.
+	MfaConfig GetZeroTrustOrganizationMfaConfig `pulumi:"mfaConfig"`
+	// Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
+	MfaConfigurationAllowed bool `pulumi:"mfaConfigurationAllowed"`
+	// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+	MfaRequiredForAllApps bool `pulumi:"mfaRequiredForAllApps"`
 	// The name of your Zero Trust organization.
 	Name string `pulumi:"name"`
 	// The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
@@ -145,6 +155,16 @@ func (o LookupZeroTrustOrganizationResultOutput) CustomPages() GetZeroTrustOrgan
 	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) GetZeroTrustOrganizationCustomPages { return v.CustomPages }).(GetZeroTrustOrganizationCustomPagesOutput)
 }
 
+// Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `denyUnmatchedRequestsExemptedZoneNames` array.
+func (o LookupZeroTrustOrganizationResultOutput) DenyUnmatchedRequests() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) bool { return v.DenyUnmatchedRequests }).(pulumi.BoolOutput)
+}
+
+// Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+func (o LookupZeroTrustOrganizationResultOutput) DenyUnmatchedRequestsExemptedZoneNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) []string { return v.DenyUnmatchedRequestsExemptedZoneNames }).(pulumi.StringArrayOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o LookupZeroTrustOrganizationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) string { return v.Id }).(pulumi.StringOutput)
@@ -157,6 +177,21 @@ func (o LookupZeroTrustOrganizationResultOutput) IsUiReadOnly() pulumi.BoolOutpu
 
 func (o LookupZeroTrustOrganizationResultOutput) LoginDesign() GetZeroTrustOrganizationLoginDesignOutput {
 	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) GetZeroTrustOrganizationLoginDesign { return v.LoginDesign }).(GetZeroTrustOrganizationLoginDesignOutput)
+}
+
+// Configures multi-factor authentication (MFA) settings for an organization.
+func (o LookupZeroTrustOrganizationResultOutput) MfaConfig() GetZeroTrustOrganizationMfaConfigOutput {
+	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) GetZeroTrustOrganizationMfaConfig { return v.MfaConfig }).(GetZeroTrustOrganizationMfaConfigOutput)
+}
+
+// Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
+func (o LookupZeroTrustOrganizationResultOutput) MfaConfigurationAllowed() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) bool { return v.MfaConfigurationAllowed }).(pulumi.BoolOutput)
+}
+
+// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+func (o LookupZeroTrustOrganizationResultOutput) MfaRequiredForAllApps() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) bool { return v.MfaRequiredForAllApps }).(pulumi.BoolOutput)
 }
 
 // The name of your Zero Trust organization.

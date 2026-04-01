@@ -52,10 +52,6 @@ export interface GetAuthenticatedOriginPullsCertificateResult {
      */
     readonly certificateId: string;
     /**
-     * Indicates whether zone-level authenticated origin pulls is enabled.
-     */
-    readonly enabled: boolean;
-    /**
      * When the certificate from the authority expires.
      */
     readonly expiresOn: string;
@@ -68,9 +64,9 @@ export interface GetAuthenticatedOriginPullsCertificateResult {
      */
     readonly issuer: string;
     /**
-     * The zone's private key.
+     * The serial number on the uploaded certificate.
      */
-    readonly privateKey: string;
+    readonly serialNumber: string;
     /**
      * The type of hash used for the certificate.
      */

@@ -104,6 +104,47 @@
                     }
                 }
             },
+            "cloudflare_ai_search_instance": {
+                "current": "cloudflare:index/aiSearchInstance:AiSearchInstance",
+                "majorVersion": 6,
+                "fields": {
+                    "custom_metadata": {
+                        "maxItemsOne": false
+                    },
+                    "public_endpoint_params": {
+                        "fields": {
+                            "authorized_hosts": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "source_params": {
+                        "fields": {
+                            "exclude_items": {
+                                "maxItemsOne": false
+                            },
+                            "include_items": {
+                                "maxItemsOne": false
+                            },
+                            "web_crawler": {
+                                "fields": {
+                                    "parse_options": {
+                                        "fields": {
+                                            "specific_sitemaps": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "cloudflare_ai_search_token": {
+                "current": "cloudflare:index/aiSearchToken:AiSearchToken",
+                "majorVersion": 6
+            },
             "cloudflare_api_shield": {
                 "current": "cloudflare:index/apiShield:ApiShield",
                 "majorVersion": 6,
@@ -217,6 +258,10 @@
                 "current": "cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate",
                 "majorVersion": 6
             },
+            "cloudflare_authenticated_origin_pulls_hostname_certificate": {
+                "current": "cloudflare:index/authenticatedOriginPullsHostnameCertificate:AuthenticatedOriginPullsHostnameCertificate",
+                "majorVersion": 6
+            },
             "cloudflare_authenticated_origin_pulls_settings": {
                 "current": "cloudflare:index/authenticatedOriginPullsSettings:AuthenticatedOriginPullsSettings",
                 "majorVersion": 6
@@ -251,6 +296,16 @@
                             }
                         }
                     },
+                    "dcv_delegation_records": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "emails": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "hosts": {
                         "maxItemsOne": false
                     },
@@ -268,6 +323,10 @@
                         }
                     }
                 }
+            },
+            "cloudflare_client_certificate": {
+                "current": "cloudflare:index/clientCertificate:ClientCertificate",
+                "majorVersion": 6
             },
             "cloudflare_cloud_connector_rules": {
                 "current": "cloudflare:index/cloudConnectorRules:CloudConnectorRules",
@@ -360,6 +419,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "cloudflare_custom_origin_trust_store": {
+                "current": "cloudflare:index/customOriginTrustStore:CustomOriginTrustStore",
+                "majorVersion": 6
             },
             "cloudflare_custom_pages": {
                 "current": "cloudflare:index/customPages:CustomPages",
@@ -1479,6 +1542,13 @@
                                                 }
                                             }
                                         },
+                                        "no_cache": {
+                                            "fields": {
+                                                "qualifiers": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        },
                                         "overrides": {
                                             "fields": {
                                                 "categories": {
@@ -1491,6 +1561,13 @@
                                         },
                                         "phases": {
                                             "maxItemsOne": false
+                                        },
+                                        "private": {
+                                            "fields": {
+                                                "qualifiers": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
                                         },
                                         "products": {
                                             "maxItemsOne": false
@@ -1513,6 +1590,9 @@
                                             "maxItemsOne": false
                                         },
                                         "transformed_request_fields": {
+                                            "maxItemsOne": false
+                                        },
+                                        "values": {
                                             "maxItemsOne": false
                                         }
                                     }
@@ -1893,6 +1973,13 @@
                     },
                     "modules": {
                         "maxItemsOne": false
+                    },
+                    "placement": {
+                        "fields": {
+                            "target": {
+                                "maxItemsOne": false
+                            }
+                        }
                     }
                 }
             },
@@ -2060,6 +2147,13 @@
                             }
                         }
                     },
+                    "placement": {
+                        "fields": {
+                            "target": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
                     "tail_consumers": {
                         "maxItemsOne": false
                     }
@@ -2146,6 +2240,16 @@
                             "fields": {
                                 "connection_rules": {
                                     "fields": {
+                                        "rdp": {
+                                            "fields": {
+                                                "allowed_clipboard_local_to_remote_formats": {
+                                                    "maxItemsOne": false
+                                                },
+                                                "allowed_clipboard_remote_to_local_formats": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        },
                                         "ssh": {
                                             "fields": {
                                                 "usernames": {
@@ -2364,11 +2468,32 @@
                             }
                         }
                     },
+                    "connection_rules": {
+                        "fields": {
+                            "rdp": {
+                                "fields": {
+                                    "allowed_clipboard_local_to_remote_formats": {
+                                        "maxItemsOne": false
+                                    },
+                                    "allowed_clipboard_remote_to_local_formats": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "exclude": {
                         "maxItemsOne": false
                     },
                     "include": {
                         "maxItemsOne": false
+                    },
+                    "mfa_config": {
+                        "fields": {
+                            "allowed_authenticators": {
+                                "maxItemsOne": false
+                            }
+                        }
                     },
                     "require": {
                         "maxItemsOne": false
@@ -2568,6 +2693,15 @@
                 "current": "cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings",
                 "majorVersion": 6
             },
+            "cloudflare_zero_trust_dex_rule": {
+                "current": "cloudflare:index/zeroTrustDexRule:ZeroTrustDexRule",
+                "majorVersion": 6,
+                "fields": {
+                    "targeted_tests": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "cloudflare_zero_trust_dex_test": {
                 "current": "cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest",
                 "majorVersion": 6,
@@ -2722,6 +2856,10 @@
                 "current": "cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging",
                 "majorVersion": 6
             },
+            "cloudflare_zero_trust_gateway_pacfile": {
+                "current": "cloudflare:index/zeroTrustGatewayPacfile:ZeroTrustGatewayPacfile",
+                "majorVersion": 6
+            },
             "cloudflare_zero_trust_gateway_policy": {
                 "current": "cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy",
                 "past": [
@@ -2823,7 +2961,19 @@
                         "majorVersion": 6
                     }
                 ],
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "deny_unmatched_requests_exempted_zone_names": {
+                        "maxItemsOne": false
+                    },
+                    "mfa_config": {
+                        "fields": {
+                            "allowed_authenticators": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
             },
             "cloudflare_zero_trust_risk_behavior": {
                 "current": "cloudflare:index/zeroTrustRiskBehavior:ZeroTrustRiskBehavior",
@@ -3072,7 +3222,19 @@
             },
             "cloudflare_account_api_token_permission_groups": {
                 "current": "cloudflare:index/getAccountApiTokenPermissionGroups:getAccountApiTokenPermissionGroups",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "permission_groups": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "scopes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "cloudflare_account_api_token_permission_groups_list": {
                 "current": "cloudflare:index/getAccountApiTokenPermissionGroupsList:getAccountApiTokenPermissionGroupsList",
@@ -3334,6 +3496,100 @@
                     }
                 }
             },
+            "cloudflare_ai_search_instance": {
+                "current": "cloudflare:index/getAiSearchInstance:getAiSearchInstance",
+                "majorVersion": 6,
+                "fields": {
+                    "custom_metadata": {
+                        "maxItemsOne": false
+                    },
+                    "public_endpoint_params": {
+                        "fields": {
+                            "authorized_hosts": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "source_params": {
+                        "fields": {
+                            "exclude_items": {
+                                "maxItemsOne": false
+                            },
+                            "include_items": {
+                                "maxItemsOne": false
+                            },
+                            "web_crawler": {
+                                "fields": {
+                                    "parse_options": {
+                                        "fields": {
+                                            "specific_sitemaps": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "cloudflare_ai_search_instances": {
+                "current": "cloudflare:index/getAiSearchInstances:getAiSearchInstances",
+                "majorVersion": 6,
+                "fields": {
+                    "result": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "custom_metadata": {
+                                    "maxItemsOne": false
+                                },
+                                "public_endpoint_params": {
+                                    "fields": {
+                                        "authorized_hosts": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "source_params": {
+                                    "fields": {
+                                        "exclude_items": {
+                                            "maxItemsOne": false
+                                        },
+                                        "include_items": {
+                                            "maxItemsOne": false
+                                        },
+                                        "web_crawler": {
+                                            "fields": {
+                                                "parse_options": {
+                                                    "fields": {
+                                                        "specific_sitemaps": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "cloudflare_ai_search_token": {
+                "current": "cloudflare:index/getAiSearchToken:getAiSearchToken",
+                "majorVersion": 6
+            },
+            "cloudflare_ai_search_tokens": {
+                "current": "cloudflare:index/getAiSearchTokens:getAiSearchTokens",
+                "majorVersion": 6,
+                "fields": {
+                    "result": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "cloudflare_api_shield": {
                 "current": "cloudflare:index/getApiShield:getApiShield",
                 "majorVersion": 6,
@@ -3568,6 +3824,19 @@
                     }
                 }
             },
+            "cloudflare_authenticated_origin_pulls_hostname_certificate": {
+                "current": "cloudflare:index/getAuthenticatedOriginPullsHostnameCertificate:getAuthenticatedOriginPullsHostnameCertificate",
+                "majorVersion": 6
+            },
+            "cloudflare_authenticated_origin_pulls_hostname_certificates": {
+                "current": "cloudflare:index/getAuthenticatedOriginPullsHostnameCertificates:getAuthenticatedOriginPullsHostnameCertificates",
+                "majorVersion": 6,
+                "fields": {
+                    "result": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "cloudflare_authenticated_origin_pulls_settings": {
                 "current": "cloudflare:index/getAuthenticatedOriginPullsSettings:getAuthenticatedOriginPullsSettings",
                 "majorVersion": 6
@@ -3633,6 +3902,16 @@
                             }
                         }
                     },
+                    "dcv_delegation_records": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "emails": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "hosts": {
                         "maxItemsOne": false
                     },
@@ -3669,6 +3948,16 @@
                                         }
                                     }
                                 },
+                                "dcv_delegation_records": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "emails": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
                                 "hosts": {
                                     "maxItemsOne": false
                                 },
@@ -3687,6 +3976,19 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "cloudflare_client_certificate": {
+                "current": "cloudflare:index/getClientCertificate:getClientCertificate",
+                "majorVersion": 6
+            },
+            "cloudflare_client_certificates": {
+                "current": "cloudflare:index/getClientCertificates:getClientCertificates",
+                "majorVersion": 6,
+                "fields": {
+                    "result": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -3784,6 +4086,16 @@
                 "fields": {
                     "ssl": {
                         "fields": {
+                            "dcv_delegation_records": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "emails": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            },
                             "hosts": {
                                 "maxItemsOne": false
                             },
@@ -3833,6 +4145,16 @@
                             "fields": {
                                 "ssl": {
                                     "fields": {
+                                        "dcv_delegation_records": {
+                                            "maxItemsOne": false,
+                                            "elem": {
+                                                "fields": {
+                                                    "emails": {
+                                                        "maxItemsOne": false
+                                                    }
+                                                }
+                                            }
+                                        },
                                         "hosts": {
                                             "maxItemsOne": false
                                         },
@@ -3863,6 +4185,19 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "cloudflare_custom_origin_trust_store": {
+                "current": "cloudflare:index/getCustomOriginTrustStore:getCustomOriginTrustStore",
+                "majorVersion": 6
+            },
+            "cloudflare_custom_origin_trust_stores": {
+                "current": "cloudflare:index/getCustomOriginTrustStores:getCustomOriginTrustStores",
+                "majorVersion": 6,
+                "fields": {
+                    "result": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -6083,6 +6418,13 @@
                                                 }
                                             }
                                         },
+                                        "no_cache": {
+                                            "fields": {
+                                                "qualifiers": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        },
                                         "overrides": {
                                             "fields": {
                                                 "categories": {
@@ -6095,6 +6437,13 @@
                                         },
                                         "phases": {
                                             "maxItemsOne": false
+                                        },
+                                        "private": {
+                                            "fields": {
+                                                "qualifiers": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
                                         },
                                         "products": {
                                             "maxItemsOne": false
@@ -6117,6 +6466,9 @@
                                             "maxItemsOne": false
                                         },
                                         "transformed_request_fields": {
+                                            "maxItemsOne": false
+                                        },
+                                        "values": {
                                             "maxItemsOne": false
                                         }
                                     }
@@ -6747,6 +7099,13 @@
                     },
                     "modules": {
                         "maxItemsOne": false
+                    },
+                    "placement": {
+                        "fields": {
+                            "target": {
+                                "maxItemsOne": false
+                            }
+                        }
                     }
                 }
             },
@@ -6838,6 +7197,13 @@
                                 },
                                 "modules": {
                                     "maxItemsOne": false
+                                },
+                                "placement": {
+                                    "fields": {
+                                        "target": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -6996,6 +7362,13 @@
                                                     "maxItemsOne": false
                                                 }
                                             }
+                                        }
+                                    }
+                                },
+                                "placement": {
+                                    "fields": {
+                                        "target": {
+                                            "maxItemsOne": false
                                         }
                                     }
                                 },
@@ -7547,11 +7920,32 @@
                                         }
                                     }
                                 },
+                                "connection_rules": {
+                                    "fields": {
+                                        "rdp": {
+                                            "fields": {
+                                                "allowed_clipboard_local_to_remote_formats": {
+                                                    "maxItemsOne": false
+                                                },
+                                                "allowed_clipboard_remote_to_local_formats": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "exclude": {
                                     "maxItemsOne": false
                                 },
                                 "include": {
                                     "maxItemsOne": false
+                                },
+                                "mfa_config": {
+                                    "fields": {
+                                        "allowed_authenticators": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
                                 },
                                 "require": {
                                     "maxItemsOne": false
@@ -7575,11 +7969,32 @@
                             }
                         }
                     },
+                    "connection_rules": {
+                        "fields": {
+                            "rdp": {
+                                "fields": {
+                                    "allowed_clipboard_local_to_remote_formats": {
+                                        "maxItemsOne": false
+                                    },
+                                    "allowed_clipboard_remote_to_local_formats": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "exclude": {
                         "maxItemsOne": false
                     },
                     "include": {
                         "maxItemsOne": false
+                    },
+                    "mfa_config": {
+                        "fields": {
+                            "allowed_authenticators": {
+                                "maxItemsOne": false
+                            }
+                        }
                     },
                     "require": {
                         "maxItemsOne": false
@@ -7827,6 +8242,38 @@
                 "current": "cloudflare:index/getZeroTrustDeviceSettings:getZeroTrustDeviceSettings",
                 "majorVersion": 6
             },
+            "cloudflare_zero_trust_dex_rule": {
+                "current": "cloudflare:index/getZeroTrustDexRule:getZeroTrustDexRule",
+                "majorVersion": 6,
+                "fields": {
+                    "targeted_tests": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudflare_zero_trust_dex_rules": {
+                "current": "cloudflare:index/getZeroTrustDexRules:getZeroTrustDexRules",
+                "majorVersion": 6,
+                "fields": {
+                    "result": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "rules": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "targeted_tests": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "cloudflare_zero_trust_dex_test": {
                 "current": "cloudflare:index/getZeroTrustDexTest:getZeroTrustDexTest",
                 "majorVersion": 6,
@@ -7875,6 +8322,9 @@
                 "majorVersion": 6,
                 "fields": {
                     "entries": {
+                        "maxItemsOne": false
+                    },
+                    "shared_entries": {
                         "maxItemsOne": false
                     }
                 }
@@ -8093,6 +8543,19 @@
                 "current": "cloudflare:index/getZeroTrustGatewayLogging:getZeroTrustGatewayLogging",
                 "majorVersion": 6
             },
+            "cloudflare_zero_trust_gateway_pacfile": {
+                "current": "cloudflare:index/getZeroTrustGatewayPacfile:getZeroTrustGatewayPacfile",
+                "majorVersion": 6
+            },
+            "cloudflare_zero_trust_gateway_pacfiles": {
+                "current": "cloudflare:index/getZeroTrustGatewayPacfiles:getZeroTrustGatewayPacfiles",
+                "majorVersion": 6,
+                "fields": {
+                    "result": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "cloudflare_zero_trust_gateway_policies": {
                 "current": "cloudflare:index/getZeroTrustGatewayPolicies:getZeroTrustGatewayPolicies",
                 "majorVersion": 6,
@@ -8245,7 +8708,19 @@
             },
             "cloudflare_zero_trust_organization": {
                 "current": "cloudflare:index/getZeroTrustOrganization:getZeroTrustOrganization",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "deny_unmatched_requests_exempted_zone_names": {
+                        "maxItemsOne": false
+                    },
+                    "mfa_config": {
+                        "fields": {
+                            "allowed_authenticators": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
             },
             "cloudflare_zero_trust_risk_behavior": {
                 "current": "cloudflare:index/getZeroTrustRiskBehavior:getZeroTrustRiskBehavior",

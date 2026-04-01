@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationPolicyConnectionRulesRdp;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationPolicyConnectionRulesSsh;
 import com.pulumi.core.annotations.CustomType;
 import java.util.Objects;
@@ -12,12 +13,24 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustAccessApplicationPolicyConnectionRules {
     /**
+     * @return The RDP-specific rules that define clipboard behavior for RDP connections.
+     * 
+     */
+    private @Nullable ZeroTrustAccessApplicationPolicyConnectionRulesRdp rdp;
+    /**
      * @return The SSH-specific rules that define how users may connect to the targets secured by your application.
      * 
      */
     private @Nullable ZeroTrustAccessApplicationPolicyConnectionRulesSsh ssh;
 
     private ZeroTrustAccessApplicationPolicyConnectionRules() {}
+    /**
+     * @return The RDP-specific rules that define clipboard behavior for RDP connections.
+     * 
+     */
+    public Optional<ZeroTrustAccessApplicationPolicyConnectionRulesRdp> rdp() {
+        return Optional.ofNullable(this.rdp);
+    }
     /**
      * @return The SSH-specific rules that define how users may connect to the targets secured by your application.
      * 
@@ -35,13 +48,21 @@ public final class ZeroTrustAccessApplicationPolicyConnectionRules {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable ZeroTrustAccessApplicationPolicyConnectionRulesRdp rdp;
         private @Nullable ZeroTrustAccessApplicationPolicyConnectionRulesSsh ssh;
         public Builder() {}
         public Builder(ZeroTrustAccessApplicationPolicyConnectionRules defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.rdp = defaults.rdp;
     	      this.ssh = defaults.ssh;
         }
 
+        @CustomType.Setter
+        public Builder rdp(@Nullable ZeroTrustAccessApplicationPolicyConnectionRulesRdp rdp) {
+
+            this.rdp = rdp;
+            return this;
+        }
         @CustomType.Setter
         public Builder ssh(@Nullable ZeroTrustAccessApplicationPolicyConnectionRulesSsh ssh) {
 
@@ -50,6 +71,7 @@ public final class ZeroTrustAccessApplicationPolicyConnectionRules {
         }
         public ZeroTrustAccessApplicationPolicyConnectionRules build() {
             final var _resultValue = new ZeroTrustAccessApplicationPolicyConnectionRules();
+            _resultValue.rdp = rdp;
             _resultValue.ssh = ssh;
             return _resultValue;
         }

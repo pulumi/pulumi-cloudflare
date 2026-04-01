@@ -106,7 +106,9 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * &gt; This resource does not currently support `pulumi import`.
+ * ```sh
+ * $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate example &#39;&lt;zone_id&gt;/&lt;certificate_id&gt;&#39;
+ * ```
  * 
  */
 @ResourceType(type="cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate")
@@ -194,6 +196,20 @@ public class AuthenticatedOriginPullsCertificate extends com.pulumi.resources.Cu
      */
     public Output<String> privateKey() {
         return this.privateKey;
+    }
+    /**
+     * The serial number on the uploaded certificate.
+     * 
+     */
+    @Export(name="serialNumber", refs={String.class}, tree="[0]")
+    private Output<String> serialNumber;
+
+    /**
+     * @return The serial number on the uploaded certificate.
+     * 
+     */
+    public Output<String> serialNumber() {
+        return this.serialNumber;
     }
     /**
      * The type of hash used for the certificate.

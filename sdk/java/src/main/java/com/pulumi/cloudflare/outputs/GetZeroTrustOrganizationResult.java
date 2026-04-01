@@ -5,10 +5,12 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetZeroTrustOrganizationCustomPages;
 import com.pulumi.cloudflare.outputs.GetZeroTrustOrganizationLoginDesign;
+import com.pulumi.cloudflare.outputs.GetZeroTrustOrganizationMfaConfig;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -37,6 +39,16 @@ public final class GetZeroTrustOrganizationResult {
     private Boolean autoRedirectToIdentity;
     private GetZeroTrustOrganizationCustomPages customPages;
     /**
+     * @return Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `denyUnmatchedRequestsExemptedZoneNames` array.
+     * 
+     */
+    private Boolean denyUnmatchedRequests;
+    /**
+     * @return Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+     * 
+     */
+    private List<String> denyUnmatchedRequestsExemptedZoneNames;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -47,6 +59,21 @@ public final class GetZeroTrustOrganizationResult {
      */
     private Boolean isUiReadOnly;
     private GetZeroTrustOrganizationLoginDesign loginDesign;
+    /**
+     * @return Configures multi-factor authentication (MFA) settings for an organization.
+     * 
+     */
+    private GetZeroTrustOrganizationMfaConfig mfaConfig;
+    /**
+     * @return Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
+     * 
+     */
+    private Boolean mfaConfigurationAllowed;
+    /**
+     * @return Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+     * 
+     */
+    private Boolean mfaRequiredForAllApps;
     /**
      * @return The name of your Zero Trust organization.
      * 
@@ -111,6 +138,20 @@ public final class GetZeroTrustOrganizationResult {
         return this.customPages;
     }
     /**
+     * @return Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `denyUnmatchedRequestsExemptedZoneNames` array.
+     * 
+     */
+    public Boolean denyUnmatchedRequests() {
+        return this.denyUnmatchedRequests;
+    }
+    /**
+     * @return Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+     * 
+     */
+    public List<String> denyUnmatchedRequestsExemptedZoneNames() {
+        return this.denyUnmatchedRequestsExemptedZoneNames;
+    }
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -126,6 +167,27 @@ public final class GetZeroTrustOrganizationResult {
     }
     public GetZeroTrustOrganizationLoginDesign loginDesign() {
         return this.loginDesign;
+    }
+    /**
+     * @return Configures multi-factor authentication (MFA) settings for an organization.
+     * 
+     */
+    public GetZeroTrustOrganizationMfaConfig mfaConfig() {
+        return this.mfaConfig;
+    }
+    /**
+     * @return Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
+     * 
+     */
+    public Boolean mfaConfigurationAllowed() {
+        return this.mfaConfigurationAllowed;
+    }
+    /**
+     * @return Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+     * 
+     */
+    public Boolean mfaRequiredForAllApps() {
+        return this.mfaRequiredForAllApps;
     }
     /**
      * @return The name of your Zero Trust organization.
@@ -184,9 +246,14 @@ public final class GetZeroTrustOrganizationResult {
         private String authDomain;
         private Boolean autoRedirectToIdentity;
         private GetZeroTrustOrganizationCustomPages customPages;
+        private Boolean denyUnmatchedRequests;
+        private List<String> denyUnmatchedRequestsExemptedZoneNames;
         private String id;
         private Boolean isUiReadOnly;
         private GetZeroTrustOrganizationLoginDesign loginDesign;
+        private GetZeroTrustOrganizationMfaConfig mfaConfig;
+        private Boolean mfaConfigurationAllowed;
+        private Boolean mfaRequiredForAllApps;
         private String name;
         private String sessionDuration;
         private String uiReadOnlyToggleReason;
@@ -201,9 +268,14 @@ public final class GetZeroTrustOrganizationResult {
     	      this.authDomain = defaults.authDomain;
     	      this.autoRedirectToIdentity = defaults.autoRedirectToIdentity;
     	      this.customPages = defaults.customPages;
+    	      this.denyUnmatchedRequests = defaults.denyUnmatchedRequests;
+    	      this.denyUnmatchedRequestsExemptedZoneNames = defaults.denyUnmatchedRequestsExemptedZoneNames;
     	      this.id = defaults.id;
     	      this.isUiReadOnly = defaults.isUiReadOnly;
     	      this.loginDesign = defaults.loginDesign;
+    	      this.mfaConfig = defaults.mfaConfig;
+    	      this.mfaConfigurationAllowed = defaults.mfaConfigurationAllowed;
+    	      this.mfaRequiredForAllApps = defaults.mfaRequiredForAllApps;
     	      this.name = defaults.name;
     	      this.sessionDuration = defaults.sessionDuration;
     	      this.uiReadOnlyToggleReason = defaults.uiReadOnlyToggleReason;
@@ -251,6 +323,25 @@ public final class GetZeroTrustOrganizationResult {
             return this;
         }
         @CustomType.Setter
+        public Builder denyUnmatchedRequests(Boolean denyUnmatchedRequests) {
+            if (denyUnmatchedRequests == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustOrganizationResult", "denyUnmatchedRequests");
+            }
+            this.denyUnmatchedRequests = denyUnmatchedRequests;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder denyUnmatchedRequestsExemptedZoneNames(List<String> denyUnmatchedRequestsExemptedZoneNames) {
+            if (denyUnmatchedRequestsExemptedZoneNames == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustOrganizationResult", "denyUnmatchedRequestsExemptedZoneNames");
+            }
+            this.denyUnmatchedRequestsExemptedZoneNames = denyUnmatchedRequestsExemptedZoneNames;
+            return this;
+        }
+        public Builder denyUnmatchedRequestsExemptedZoneNames(String... denyUnmatchedRequestsExemptedZoneNames) {
+            return denyUnmatchedRequestsExemptedZoneNames(List.of(denyUnmatchedRequestsExemptedZoneNames));
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustOrganizationResult", "id");
@@ -272,6 +363,30 @@ public final class GetZeroTrustOrganizationResult {
               throw new MissingRequiredPropertyException("GetZeroTrustOrganizationResult", "loginDesign");
             }
             this.loginDesign = loginDesign;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mfaConfig(GetZeroTrustOrganizationMfaConfig mfaConfig) {
+            if (mfaConfig == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustOrganizationResult", "mfaConfig");
+            }
+            this.mfaConfig = mfaConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mfaConfigurationAllowed(Boolean mfaConfigurationAllowed) {
+            if (mfaConfigurationAllowed == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustOrganizationResult", "mfaConfigurationAllowed");
+            }
+            this.mfaConfigurationAllowed = mfaConfigurationAllowed;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mfaRequiredForAllApps(Boolean mfaRequiredForAllApps) {
+            if (mfaRequiredForAllApps == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustOrganizationResult", "mfaRequiredForAllApps");
+            }
+            this.mfaRequiredForAllApps = mfaRequiredForAllApps;
             return this;
         }
         @CustomType.Setter
@@ -327,9 +442,14 @@ public final class GetZeroTrustOrganizationResult {
             _resultValue.authDomain = authDomain;
             _resultValue.autoRedirectToIdentity = autoRedirectToIdentity;
             _resultValue.customPages = customPages;
+            _resultValue.denyUnmatchedRequests = denyUnmatchedRequests;
+            _resultValue.denyUnmatchedRequestsExemptedZoneNames = denyUnmatchedRequestsExemptedZoneNames;
             _resultValue.id = id;
             _resultValue.isUiReadOnly = isUiReadOnly;
             _resultValue.loginDesign = loginDesign;
+            _resultValue.mfaConfig = mfaConfig;
+            _resultValue.mfaConfigurationAllowed = mfaConfigurationAllowed;
+            _resultValue.mfaRequiredForAllApps = mfaRequiredForAllApps;
             _resultValue.name = name;
             _resultValue.sessionDuration = sessionDuration;
             _resultValue.uiReadOnlyToggleReason = uiReadOnlyToggleReason;

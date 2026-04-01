@@ -69,7 +69,7 @@ type Zone struct {
 	Meta ZoneMetaOutput `pulumi:"meta"`
 	// When the zone was last modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
-	// The domain name.
+	// The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment ("label") not exceeding 63 characters.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name servers Cloudflare assigns to a zone.
 	NameServers pulumi.StringArrayOutput `pulumi:"nameServers"`
@@ -167,7 +167,7 @@ type zoneState struct {
 	Meta *ZoneMeta `pulumi:"meta"`
 	// When the zone was last modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
-	// The domain name.
+	// The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment ("label") not exceeding 63 characters.
 	Name *string `pulumi:"name"`
 	// The name servers Cloudflare assigns to a zone.
 	NameServers []string `pulumi:"nameServers"`
@@ -230,7 +230,7 @@ type ZoneState struct {
 	Meta ZoneMetaPtrInput
 	// When the zone was last modified.
 	ModifiedOn pulumi.StringPtrInput
-	// The domain name.
+	// The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment ("label") not exceeding 63 characters.
 	Name pulumi.StringPtrInput
 	// The name servers Cloudflare assigns to a zone.
 	NameServers pulumi.StringArrayInput
@@ -281,7 +281,7 @@ func (ZoneState) ElementType() reflect.Type {
 
 type zoneArgs struct {
 	Account ZoneAccount `pulumi:"account"`
-	// The domain name.
+	// The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment ("label") not exceeding 63 characters.
 	Name string `pulumi:"name"`
 	// Indicates whether the zone is only using Cloudflare DNS services. A
 	// true value means the zone will not receive security or performance
@@ -299,7 +299,7 @@ type zoneArgs struct {
 // The set of arguments for constructing a Zone resource.
 type ZoneArgs struct {
 	Account ZoneAccountInput
-	// The domain name.
+	// The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment ("label") not exceeding 63 characters.
 	Name pulumi.StringInput
 	// Indicates whether the zone is only using Cloudflare DNS services. A
 	// true value means the zone will not receive security or performance
@@ -439,7 +439,7 @@ func (o ZoneOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-// The domain name.
+// The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment ("label") not exceeding 63 characters.
 func (o ZoneOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

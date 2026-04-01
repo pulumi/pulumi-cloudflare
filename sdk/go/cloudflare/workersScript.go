@@ -196,8 +196,16 @@ type WorkersScript struct {
 	NamedHandlers WorkersScriptNamedHandlerArrayOutput `pulumi:"namedHandlers"`
 	// Observability settings for the Worker.
 	Observability WorkersScriptObservabilityPtrOutput `pulumi:"observability"`
-	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
+	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
 	Placement WorkersScriptPlacementOutput `pulumi:"placement"`
+	// Available values: "smart", "targeted".
+	//
+	// Deprecated: This attribute is deprecated.
+	PlacementMode pulumi.StringOutput `pulumi:"placementMode"`
+	// Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
+	//
+	// Deprecated: This attribute is deprecated.
+	PlacementStatus pulumi.StringOutput `pulumi:"placementStatus"`
 	// Name of the script, used in URLs and route configuration.
 	ScriptName    pulumi.StringOutput `pulumi:"scriptName"`
 	StartupTimeMs pulumi.IntOutput    `pulumi:"startupTimeMs"`
@@ -302,8 +310,16 @@ type workersScriptState struct {
 	NamedHandlers []WorkersScriptNamedHandler `pulumi:"namedHandlers"`
 	// Observability settings for the Worker.
 	Observability *WorkersScriptObservability `pulumi:"observability"`
-	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
+	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
 	Placement *WorkersScriptPlacement `pulumi:"placement"`
+	// Available values: "smart", "targeted".
+	//
+	// Deprecated: This attribute is deprecated.
+	PlacementMode *string `pulumi:"placementMode"`
+	// Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
+	//
+	// Deprecated: This attribute is deprecated.
+	PlacementStatus *string `pulumi:"placementStatus"`
 	// Name of the script, used in URLs and route configuration.
 	ScriptName    *string `pulumi:"scriptName"`
 	StartupTimeMs *int    `pulumi:"startupTimeMs"`
@@ -367,8 +383,16 @@ type WorkersScriptState struct {
 	NamedHandlers WorkersScriptNamedHandlerArrayInput
 	// Observability settings for the Worker.
 	Observability WorkersScriptObservabilityPtrInput
-	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
+	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
 	Placement WorkersScriptPlacementPtrInput
+	// Available values: "smart", "targeted".
+	//
+	// Deprecated: This attribute is deprecated.
+	PlacementMode pulumi.StringPtrInput
+	// Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
+	//
+	// Deprecated: This attribute is deprecated.
+	PlacementStatus pulumi.StringPtrInput
 	// Name of the script, used in URLs and route configuration.
 	ScriptName    pulumi.StringPtrInput
 	StartupTimeMs pulumi.IntPtrInput
@@ -418,7 +442,7 @@ type workersScriptArgs struct {
 	Migrations *WorkersScriptMigrations `pulumi:"migrations"`
 	// Observability settings for the Worker.
 	Observability *WorkersScriptObservability `pulumi:"observability"`
-	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
+	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
 	Placement *WorkersScriptPlacement `pulumi:"placement"`
 	// Name of the script, used in URLs and route configuration.
 	ScriptName string `pulumi:"scriptName"`
@@ -465,7 +489,7 @@ type WorkersScriptArgs struct {
 	Migrations WorkersScriptMigrationsPtrInput
 	// Observability settings for the Worker.
 	Observability WorkersScriptObservabilityPtrInput
-	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
+	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
 	Placement WorkersScriptPlacementPtrInput
 	// Name of the script, used in URLs and route configuration.
 	ScriptName pulumi.StringInput
@@ -693,9 +717,23 @@ func (o WorkersScriptOutput) Observability() WorkersScriptObservabilityPtrOutput
 	return o.ApplyT(func(v *WorkersScript) WorkersScriptObservabilityPtrOutput { return v.Observability }).(WorkersScriptObservabilityPtrOutput)
 }
 
-// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
+// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
 func (o WorkersScriptOutput) Placement() WorkersScriptPlacementOutput {
 	return o.ApplyT(func(v *WorkersScript) WorkersScriptPlacementOutput { return v.Placement }).(WorkersScriptPlacementOutput)
+}
+
+// Available values: "smart", "targeted".
+//
+// Deprecated: This attribute is deprecated.
+func (o WorkersScriptOutput) PlacementMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkersScript) pulumi.StringOutput { return v.PlacementMode }).(pulumi.StringOutput)
+}
+
+// Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
+//
+// Deprecated: This attribute is deprecated.
+func (o WorkersScriptOutput) PlacementStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkersScript) pulumi.StringOutput { return v.PlacementStatus }).(pulumi.StringOutput)
 }
 
 // Name of the script, used in URLs and route configuration.

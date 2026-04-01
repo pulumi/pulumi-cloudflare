@@ -56,6 +56,7 @@ type ZeroTrustDlpPredefinedEntry struct {
 	CaseSensitive pulumi.BoolOutput                           `pulumi:"caseSensitive"`
 	Confidence    ZeroTrustDlpPredefinedEntryConfidenceOutput `pulumi:"confidence"`
 	CreatedAt     pulumi.StringOutput                         `pulumi:"createdAt"`
+	Description   pulumi.StringOutput                         `pulumi:"description"`
 	Enabled       pulumi.BoolOutput                           `pulumi:"enabled"`
 	EntryId       pulumi.StringOutput                         `pulumi:"entryId"`
 	Name          pulumi.StringOutput                         `pulumi:"name"`
@@ -120,6 +121,7 @@ type zeroTrustDlpPredefinedEntryState struct {
 	CaseSensitive *bool                                  `pulumi:"caseSensitive"`
 	Confidence    *ZeroTrustDlpPredefinedEntryConfidence `pulumi:"confidence"`
 	CreatedAt     *string                                `pulumi:"createdAt"`
+	Description   *string                                `pulumi:"description"`
 	Enabled       *bool                                  `pulumi:"enabled"`
 	EntryId       *string                                `pulumi:"entryId"`
 	Name          *string                                `pulumi:"name"`
@@ -146,6 +148,7 @@ type ZeroTrustDlpPredefinedEntryState struct {
 	CaseSensitive pulumi.BoolPtrInput
 	Confidence    ZeroTrustDlpPredefinedEntryConfidencePtrInput
 	CreatedAt     pulumi.StringPtrInput
+	Description   pulumi.StringPtrInput
 	Enabled       pulumi.BoolPtrInput
 	EntryId       pulumi.StringPtrInput
 	Name          pulumi.StringPtrInput
@@ -291,6 +294,10 @@ func (o ZeroTrustDlpPredefinedEntryOutput) Confidence() ZeroTrustDlpPredefinedEn
 
 func (o ZeroTrustDlpPredefinedEntryOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpPredefinedEntry) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o ZeroTrustDlpPredefinedEntryOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpPredefinedEntry) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 func (o ZeroTrustDlpPredefinedEntryOutput) Enabled() pulumi.BoolOutput {

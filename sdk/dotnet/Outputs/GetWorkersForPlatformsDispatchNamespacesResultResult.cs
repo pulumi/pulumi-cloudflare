@@ -38,10 +38,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string NamespaceId;
         /// <summary>
-        /// Name of the Workers for Platforms dispatch namespace.
-        /// </summary>
-        public readonly string NamespaceName;
-        /// <summary>
         /// The current number of scripts in this Dispatch Namespace.
         /// </summary>
         public readonly int ScriptCount;
@@ -64,8 +60,6 @@ namespace Pulumi.Cloudflare.Outputs
 
             string namespaceId,
 
-            string namespaceName,
-
             int scriptCount,
 
             bool trustedWorkers)
@@ -76,7 +70,6 @@ namespace Pulumi.Cloudflare.Outputs
             ModifiedBy = modifiedBy;
             ModifiedOn = modifiedOn;
             NamespaceId = namespaceId;
-            NamespaceName = namespaceName;
             ScriptCount = scriptCount;
             TrustedWorkers = trustedWorkers;
         }

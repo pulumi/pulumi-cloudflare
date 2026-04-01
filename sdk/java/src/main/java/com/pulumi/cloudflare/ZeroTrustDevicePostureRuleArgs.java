@@ -90,15 +90,15 @@ public final class ZeroTrustDevicePostureRuleArgs extends com.pulumi.resources.R
      * The name of the device posture rule.
      * 
      */
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
     /**
      * @return The name of the device posture rule.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     /**
@@ -273,7 +273,7 @@ public final class ZeroTrustDevicePostureRuleArgs extends com.pulumi.resources.R
          * @return builder
          * 
          */
-        public Builder name(Output<String> name) {
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
@@ -335,9 +335,6 @@ public final class ZeroTrustDevicePostureRuleArgs extends com.pulumi.resources.R
         public ZeroTrustDevicePostureRuleArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustDevicePostureRuleArgs", "accountId");
-            }
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustDevicePostureRuleArgs", "name");
             }
             if ($.type == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustDevicePostureRuleArgs", "type");

@@ -1080,7 +1080,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="serviceModeV2")
-    def service_mode_v2(self) -> pulumi.Output[Optional['outputs.ZeroTrustDeviceDefaultProfileServiceModeV2']]:
+    def service_mode_v2(self) -> pulumi.Output['outputs.ZeroTrustDeviceDefaultProfileServiceModeV2']:
         return pulumi.get(self, "service_mode_v2")
 
     @_builtins.property

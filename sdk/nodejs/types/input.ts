@@ -148,9 +148,24 @@ export interface AccessApplicationPolicy {
 
 export interface AccessApplicationPolicyConnectionRules {
     /**
+     * The RDP-specific rules that define clipboard behavior for RDP connections.
+     */
+    rdp?: pulumi.Input<inputs.AccessApplicationPolicyConnectionRulesRdp>;
+    /**
      * The SSH-specific rules that define how users may connect to the targets secured by your application.
      */
     ssh?: pulumi.Input<inputs.AccessApplicationPolicyConnectionRulesSsh>;
+}
+
+export interface AccessApplicationPolicyConnectionRulesRdp {
+    /**
+     * Clipboard formats allowed when copying from local machine to remote RDP session.
+     */
+    allowedClipboardLocalToRemoteFormats?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Clipboard formats allowed when copying from remote RDP session to local machine.
+     */
+    allowedClipboardRemoteToLocalFormats?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessApplicationPolicyConnectionRulesSsh {
@@ -2087,6 +2102,17 @@ export interface AccessOrganizationLoginDesign {
     textColor?: pulumi.Input<string>;
 }
 
+export interface AccessOrganizationMfaConfig {
+    /**
+     * Lists the MFA methods that users can authenticate with.
+     */
+    allowedAuthenticators?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
+     */
+    sessionDuration?: pulumi.Input<string>;
+}
+
 export interface AccessPolicyApprovalGroup {
     /**
      * The number of approvals needed to obtain access.
@@ -2100,6 +2126,24 @@ export interface AccessPolicyApprovalGroup {
      * The UUID of an re-usable email list.
      */
     emailListUuid?: pulumi.Input<string>;
+}
+
+export interface AccessPolicyConnectionRules {
+    /**
+     * The RDP-specific rules that define clipboard behavior for RDP connections.
+     */
+    rdp?: pulumi.Input<inputs.AccessPolicyConnectionRulesRdp>;
+}
+
+export interface AccessPolicyConnectionRulesRdp {
+    /**
+     * Clipboard formats allowed when copying from local machine to remote RDP session.
+     */
+    allowedClipboardLocalToRemoteFormats?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Clipboard formats allowed when copying from remote RDP session to local machine.
+     */
+    allowedClipboardRemoteToLocalFormats?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessPolicyExclude {
@@ -2574,6 +2618,21 @@ export interface AccessPolicyIncludeServiceToken {
      * The ID of a Service Token.
      */
     tokenId: pulumi.Input<string>;
+}
+
+export interface AccessPolicyMfaConfig {
+    /**
+     * Lists the MFA methods that users can authenticate with.
+     */
+    allowedAuthenticators?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Indicates whether to bypass MFA for this resource. This option is available at the application and policy level.
+     */
+    mfaBypass?: pulumi.Input<boolean>;
+    /**
+     * Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
+     */
+    sessionDuration?: pulumi.Input<string>;
 }
 
 export interface AccessPolicyRequire {
@@ -3094,6 +3153,109 @@ export interface AddressMapMembership {
     kind?: pulumi.Input<string>;
 }
 
+export interface AiSearchInstanceCustomMetadata {
+    /**
+     * Available values: "text", "number", "boolean".
+     */
+    dataType: pulumi.Input<string>;
+    fieldName: pulumi.Input<string>;
+}
+
+export interface AiSearchInstanceMetadata {
+    createdFromAisearchWizard?: pulumi.Input<boolean>;
+    workerDomain?: pulumi.Input<string>;
+}
+
+export interface AiSearchInstancePublicEndpointParams {
+    authorizedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+    chatCompletionsEndpoint?: pulumi.Input<inputs.AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint>;
+    enabled?: pulumi.Input<boolean>;
+    mcp?: pulumi.Input<inputs.AiSearchInstancePublicEndpointParamsMcp>;
+    rateLimit?: pulumi.Input<inputs.AiSearchInstancePublicEndpointParamsRateLimit>;
+    searchEndpoint?: pulumi.Input<inputs.AiSearchInstancePublicEndpointParamsSearchEndpoint>;
+}
+
+export interface AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint {
+    /**
+     * Disable chat completions endpoint for this public endpoint
+     */
+    disabled?: pulumi.Input<boolean>;
+}
+
+export interface AiSearchInstancePublicEndpointParamsMcp {
+    description?: pulumi.Input<string>;
+    /**
+     * Disable MCP endpoint for this public endpoint
+     */
+    disabled?: pulumi.Input<boolean>;
+}
+
+export interface AiSearchInstancePublicEndpointParamsRateLimit {
+    periodMs?: pulumi.Input<number>;
+    requests?: pulumi.Input<number>;
+    /**
+     * Available values: "fixed", "sliding".
+     */
+    technique?: pulumi.Input<string>;
+}
+
+export interface AiSearchInstancePublicEndpointParamsSearchEndpoint {
+    /**
+     * Disable search endpoint for this public endpoint
+     */
+    disabled?: pulumi.Input<boolean>;
+}
+
+export interface AiSearchInstanceRetrievalOptions {
+    /**
+     * Controls how keyword search terms are matched. exact*match requires all terms to appear (AND); fuzzy*match returns results containing any term (OR). Defaults to exact*match.
+     * Available values: "exact*match", "fuzzyMatch".
+     */
+    keywordMatchMode?: pulumi.Input<string>;
+}
+
+export interface AiSearchInstanceSourceParams {
+    /**
+     * List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
+     */
+    excludeItems?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
+     */
+    includeItems?: pulumi.Input<pulumi.Input<string>[]>;
+    prefix?: pulumi.Input<string>;
+    r2Jurisdiction?: pulumi.Input<string>;
+    webCrawler?: pulumi.Input<inputs.AiSearchInstanceSourceParamsWebCrawler>;
+}
+
+export interface AiSearchInstanceSourceParamsWebCrawler {
+    parseOptions?: pulumi.Input<inputs.AiSearchInstanceSourceParamsWebCrawlerParseOptions>;
+    /**
+     * Available values: "sitemap", "feed-rss".
+     */
+    parseType?: pulumi.Input<string>;
+    storeOptions?: pulumi.Input<inputs.AiSearchInstanceSourceParamsWebCrawlerStoreOptions>;
+}
+
+export interface AiSearchInstanceSourceParamsWebCrawlerParseOptions {
+    includeHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    includeImages?: pulumi.Input<boolean>;
+    /**
+     * List of specific sitemap URLs to use for crawling. Only valid when parseType is 'sitemap'.
+     */
+    specificSitemaps?: pulumi.Input<pulumi.Input<string>[]>;
+    useBrowserRendering?: pulumi.Input<boolean>;
+}
+
+export interface AiSearchInstanceSourceParamsWebCrawlerStoreOptions {
+    r2Jurisdiction?: pulumi.Input<string>;
+    storageId: pulumi.Input<string>;
+    /**
+     * Available values: "r2".
+     */
+    storageType?: pulumi.Input<string>;
+}
+
 export interface ApiShieldAuthIdCharacteristic {
     /**
      * The name of the characteristic field, i.e., the header or cookie name. When using type "jwt", this must be a claim location expressed as `$(token_config_id):$(json_path)`, where `tokenConfigId` is the ID of the token configuration used in validating the JWT, and `jsonPath` is a RFC 9535 JSONPath expression.
@@ -3465,14 +3627,15 @@ export interface CertificatePackCertificateGeoRestrictions {
     label?: pulumi.Input<string>;
 }
 
-export interface CertificatePackValidationError {
+export interface CertificatePackDcvDelegationRecord {
     /**
-     * A domain validation error.
+     * The CNAME record hostname for DCV delegation.
      */
-    message?: pulumi.Input<string>;
-}
-
-export interface CertificatePackValidationRecord {
+    cname?: pulumi.Input<string>;
+    /**
+     * The CNAME record target value for DCV delegation.
+     */
+    cnameTarget?: pulumi.Input<string>;
     /**
      * The set of email addresses that the certificate authority (CA) will use to complete domain validation.
      */
@@ -3486,6 +3649,10 @@ export interface CertificatePackValidationRecord {
      */
     httpUrl?: pulumi.Input<string>;
     /**
+     * Status of the validation record.
+     */
+    status?: pulumi.Input<string>;
+    /**
      * The hostname that the certificate authority (CA) will check for a TXT record during domain validation .
      */
     txtName?: pulumi.Input<string>;
@@ -3493,6 +3660,53 @@ export interface CertificatePackValidationRecord {
      * The TXT record that the certificate authority (CA) will check during domain validation.
      */
     txtValue?: pulumi.Input<string>;
+}
+
+export interface CertificatePackValidationError {
+    /**
+     * A domain validation error.
+     */
+    message?: pulumi.Input<string>;
+}
+
+export interface CertificatePackValidationRecord {
+    /**
+     * The CNAME record hostname for DCV delegation.
+     */
+    cname?: pulumi.Input<string>;
+    /**
+     * The CNAME record target value for DCV delegation.
+     */
+    cnameTarget?: pulumi.Input<string>;
+    /**
+     * The set of email addresses that the certificate authority (CA) will use to complete domain validation.
+     */
+    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The content that the certificate authority (CA) will expect to find at the httpUrl during the domain validation.
+     */
+    httpBody?: pulumi.Input<string>;
+    /**
+     * The url that will be checked during domain validation.
+     */
+    httpUrl?: pulumi.Input<string>;
+    /**
+     * Status of the validation record.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The hostname that the certificate authority (CA) will check for a TXT record during domain validation .
+     */
+    txtName?: pulumi.Input<string>;
+    /**
+     * The TXT record that the certificate authority (CA) will check during domain validation.
+     */
+    txtValue?: pulumi.Input<string>;
+}
+
+export interface ClientCertificateCertificateAuthority {
+    id?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 export interface CloudConnectorRulesRule {
@@ -3970,21 +4184,22 @@ export interface DlpCustomProfileContextAwareness {
     /**
      * If true, scan the context of predefined entries to only return matches surrounded by keywords.
      */
-    enabled: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * Content types to exclude from context analysis and return all matches.
      */
-    skip: pulumi.Input<inputs.DlpCustomProfileContextAwarenessSkip>;
+    skip?: pulumi.Input<inputs.DlpCustomProfileContextAwarenessSkip>;
 }
 
 export interface DlpCustomProfileContextAwarenessSkip {
     /**
      * If the content type is a file, skip context analysis and return all matches.
      */
-    files: pulumi.Input<boolean>;
+    files?: pulumi.Input<boolean>;
 }
 
 export interface DlpCustomProfileEntry {
+    description?: pulumi.Input<string>;
     enabled: pulumi.Input<boolean>;
     entryId?: pulumi.Input<string>;
     name: pulumi.Input<string>;
@@ -4764,6 +4979,20 @@ export interface GetAccountTokenFilterArgs {
     direction?: pulumi.Input<string>;
 }
 
+export interface GetAiSearchInstanceFilter {
+    /**
+     * Search by id
+     */
+    search?: string;
+}
+
+export interface GetAiSearchInstanceFilterArgs {
+    /**
+     * Search by id
+     */
+    search?: pulumi.Input<string>;
+}
+
 export interface GetApiShieldOperationFilter {
     /**
      * Direction to order results.
@@ -4840,6 +5069,11 @@ export interface GetApiTokenFilterArgs {
 
 export interface GetCertificatePackFilter {
     /**
+     * Specify the deployment environment for the certificate packs.
+     * Available values: "staging", "production".
+     */
+    deploy?: string;
+    /**
      * Include Certificate Packs of all statuses, not just active ones.
      * Available values: "all".
      */
@@ -4848,8 +5082,45 @@ export interface GetCertificatePackFilter {
 
 export interface GetCertificatePackFilterArgs {
     /**
+     * Specify the deployment environment for the certificate packs.
+     * Available values: "staging", "production".
+     */
+    deploy?: pulumi.Input<string>;
+    /**
      * Include Certificate Packs of all statuses, not just active ones.
      * Available values: "all".
+     */
+    status?: pulumi.Input<string>;
+}
+
+export interface GetClientCertificateFilter {
+    /**
+     * Limit to the number of records returned.
+     */
+    limit?: number;
+    /**
+     * Offset the results
+     */
+    offset?: number;
+    /**
+     * Client Certitifcate Status to filter results by.
+     * Available values: "all", "active", "pending*reactivation", "pending*revocation", "revoked".
+     */
+    status?: string;
+}
+
+export interface GetClientCertificateFilterArgs {
+    /**
+     * Limit to the number of records returned.
+     */
+    limit?: pulumi.Input<number>;
+    /**
+     * Offset the results
+     */
+    offset?: pulumi.Input<number>;
+    /**
+     * Client Certitifcate Status to filter results by.
+     * Available values: "all", "active", "pending*reactivation", "pending*revocation", "revoked".
      */
     status?: pulumi.Input<string>;
 }
@@ -5008,6 +5279,28 @@ export interface GetCustomHostnameFilterArgs {
      * Available values: 0, 1.
      */
     ssl?: pulumi.Input<number>;
+}
+
+export interface GetCustomOriginTrustStoreFilter {
+    /**
+     * Limit to the number of records returned.
+     */
+    limit?: number;
+    /**
+     * Offset the results
+     */
+    offset?: number;
+}
+
+export interface GetCustomOriginTrustStoreFilterArgs {
+    /**
+     * Limit to the number of records returned.
+     */
+    limit?: pulumi.Input<number>;
+    /**
+     * Offset the results
+     */
+    offset?: pulumi.Input<number>;
 }
 
 export interface GetCustomSslFilter {
@@ -6103,8 +6396,13 @@ export interface GetTurnstileWidgetFilter {
      */
     direction?: string;
     /**
+     * Filter widgets by field using case-insensitive substring matching.
+     * Format: `field:value`
+     */
+    filter?: string;
+    /**
      * Field to order widgets by.
-     * Available values: "id", "sitekey", "name", "created*on", "modified*on".
+     * Available values: "id", "sitekey", "name", "createdOn", "modifiedOn".
      */
     order?: string;
 }
@@ -6116,8 +6414,13 @@ export interface GetTurnstileWidgetFilterArgs {
      */
     direction?: pulumi.Input<string>;
     /**
+     * Filter widgets by field using case-insensitive substring matching.
+     * Format: `field:value`
+     */
+    filter?: pulumi.Input<string>;
+    /**
      * Field to order widgets by.
-     * Available values: "id", "sitekey", "name", "created*on", "modified*on".
+     * Available values: "id", "sitekey", "name", "createdOn", "modifiedOn".
      */
     order?: pulumi.Input<string>;
 }
@@ -6570,13 +6873,37 @@ export interface GetZeroTrustAccessServiceTokenFilterArgs {
     search?: pulumi.Input<string>;
 }
 
+export interface GetZeroTrustDexTestFilter {
+    /**
+     * Filter by test type
+     * Available values: "http", "traceroute".
+     */
+    kind?: string;
+    /**
+     * Filter by test name
+     */
+    testName?: string;
+}
+
+export interface GetZeroTrustDexTestFilterArgs {
+    /**
+     * Filter by test type
+     * Available values: "http", "traceroute".
+     */
+    kind?: pulumi.Input<string>;
+    /**
+     * Filter by test name
+     */
+    testName?: pulumi.Input<string>;
+}
+
 export interface GetZeroTrustDexTestTargetPolicy {
     /**
      * Whether the DEX rule is the account default
      */
     default?: boolean;
     /**
-     * The id of the DEX rule
+     * API Resource UUID tag.
      */
     id?: string;
     /**
@@ -6591,7 +6918,7 @@ export interface GetZeroTrustDexTestTargetPolicyArgs {
      */
     default?: pulumi.Input<boolean>;
     /**
-     * The id of the DEX rule
+     * API Resource UUID tag.
      */
     id?: pulumi.Input<string>;
     /**
@@ -9624,13 +9951,10 @@ export interface QueueConsumer {
     consumerId?: pulumi.Input<string>;
     createdOn?: pulumi.Input<string>;
     /**
-     * A Resource identifier.
+     * Name of the dead letter queue, or empty string if not configured
      */
-    queueId?: pulumi.Input<string>;
-    /**
-     * Name of a Worker
-     */
-    script?: pulumi.Input<string>;
+    deadLetterQueue?: pulumi.Input<string>;
+    queueName?: pulumi.Input<string>;
     /**
      * Name of a Worker
      */
@@ -10189,7 +10513,7 @@ export interface RiskBehaviorBehaviors {
 export interface RulesetRule {
     /**
      * The action to perform when the rule matches.
-     * Available values: "block", "challenge", "compress*response", "ddos*dynamic", "execute", "force*connection*close", "js*challenge", "log", "log*custom*field", "managed*challenge", "redirect", "rewrite", "route", "score", "serve*error", "set*cache*settings", "set*config", "skip".
+     * Available values: "block", "challenge", "compress*response", "ddos*dynamic", "execute", "force*connection*close", "js*challenge", "log", "log*custom*field", "managed*challenge", "redirect", "rewrite", "route", "score", "serve*error", "set*cache*control", "set*cache*settings", "set*cache*tags", "set*config", "skip".
      */
     action: pulumi.Input<string>;
     /**
@@ -10305,6 +10629,10 @@ export interface RulesetRuleActionParameters {
      */
     emailObfuscation?: pulumi.Input<boolean>;
     /**
+     * An expression to generate cache tags for set*cache*tags action.
+     */
+    expression?: pulumi.Input<string>;
+    /**
      * Whether to enable Cloudflare Fonts.
      */
     fonts?: pulumi.Input<boolean>;
@@ -10333,6 +10661,10 @@ export interface RulesetRuleActionParameters {
      */
     id?: pulumi.Input<string>;
     /**
+     * Set the immutable cache control directive.
+     */
+    immutable?: pulumi.Input<inputs.RulesetRuleActionParametersImmutable>;
+    /**
      * A delta to change the score by, which can be either positive or negative.
      */
     increment?: pulumi.Input<number>;
@@ -10341,9 +10673,38 @@ export interface RulesetRuleActionParameters {
      */
     matchedData?: pulumi.Input<inputs.RulesetRuleActionParametersMatchedData>;
     /**
+     * Set the max-age cache control directive.
+     */
+    maxAge?: pulumi.Input<inputs.RulesetRuleActionParametersMaxAge>;
+    /**
      * Whether to enable Mirage.
      */
     mirage?: pulumi.Input<boolean>;
+    /**
+     * Set the must-revalidate cache control directive.
+     */
+    mustRevalidate?: pulumi.Input<inputs.RulesetRuleActionParametersMustRevalidate>;
+    /**
+     * Set the must-understand cache control directive.
+     */
+    mustUnderstand?: pulumi.Input<inputs.RulesetRuleActionParametersMustUnderstand>;
+    /**
+     * Set the no-cache cache control directive.
+     */
+    noCache?: pulumi.Input<inputs.RulesetRuleActionParametersNoCache>;
+    /**
+     * Set the no-store cache control directive.
+     */
+    noStore?: pulumi.Input<inputs.RulesetRuleActionParametersNoStore>;
+    /**
+     * Set the no-transform cache control directive.
+     */
+    noTransform?: pulumi.Input<inputs.RulesetRuleActionParametersNoTransform>;
+    /**
+     * The operation to perform for set*cache*tags action.
+     * Available values: "set", "add", "remove".
+     */
+    operation?: pulumi.Input<string>;
     /**
      * Whether to enable Opportunistic Encryption.
      */
@@ -10366,7 +10727,7 @@ export interface RulesetRuleActionParameters {
     overrides?: pulumi.Input<inputs.RulesetRuleActionParametersOverrides>;
     /**
      * A list of phases to skip the execution of. This option is incompatible with the rulesets option.
-     * Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
+     * Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*cache*settings", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit*ratelimit".
      */
     phases?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -10375,10 +10736,22 @@ export interface RulesetRuleActionParameters {
      */
     polish?: pulumi.Input<string>;
     /**
+     * Set the private cache control directive.
+     */
+    private?: pulumi.Input<inputs.RulesetRuleActionParametersPrivate>;
+    /**
      * A list of legacy security products to skip the execution of.
      * Available values: "bic", "hot", "rateLimit", "securityLevel", "uaBlock", "waf", "zoneLockdown".
      */
     products?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Set the proxy-revalidate cache control directive.
+     */
+    proxyRevalidate?: pulumi.Input<inputs.RulesetRuleActionParametersProxyRevalidate>;
+    /**
+     * Set the public cache control directive.
+     */
+    public?: pulumi.Input<inputs.RulesetRuleActionParametersPublic>;
     /**
      * The raw response fields to log.
      */
@@ -10431,6 +10804,10 @@ export interface RulesetRuleActionParameters {
      */
     rulesets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Set the s-maxage cache control directive.
+     */
+    sMaxage?: pulumi.Input<inputs.RulesetRuleActionParametersSMaxage>;
+    /**
      * The Security Level to configure.
      * Available values: "off", "essentially*off", "low", "medium", "high", "under*attack".
      */
@@ -10453,9 +10830,29 @@ export interface RulesetRuleActionParameters {
      */
     ssl?: pulumi.Input<string>;
     /**
+     * Set the stale-if-error cache control directive.
+     */
+    staleIfError?: pulumi.Input<inputs.RulesetRuleActionParametersStaleIfError>;
+    /**
+     * Set the stale-while-revalidate cache control directive.
+     */
+    staleWhileRevalidate?: pulumi.Input<inputs.RulesetRuleActionParametersStaleWhileRevalidate>;
+    /**
      * The status code to use for the error.
      */
     statusCode?: pulumi.Input<number>;
+    /**
+     * Whether to strip the ETag header from the response.
+     */
+    stripEtags?: pulumi.Input<boolean>;
+    /**
+     * Whether to strip the Last-Modified header from the response.
+     */
+    stripLastModified?: pulumi.Input<boolean>;
+    /**
+     * Whether to strip the Set-Cookie header from the response.
+     */
+    stripSetCookie?: pulumi.Input<boolean>;
     /**
      * Whether to enable Signed Exchanges (SXG).
      */
@@ -10468,6 +10865,10 @@ export interface RulesetRuleActionParameters {
      * A URI rewrite.
      */
     uri?: pulumi.Input<inputs.RulesetRuleActionParametersUri>;
+    /**
+     * The cache tag values for set*cache*tags action.
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface RulesetRuleActionParametersAlgorithm {
@@ -10745,11 +11146,103 @@ export interface RulesetRuleActionParametersHeaders {
     value?: pulumi.Input<string>;
 }
 
+export interface RulesetRuleActionParametersImmutable {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly?: pulumi.Input<boolean>;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: pulumi.Input<string>;
+}
+
 export interface RulesetRuleActionParametersMatchedData {
     /**
      * The public key to encrypt matched data logs with.
      */
     publicKey: pulumi.Input<string>;
+}
+
+export interface RulesetRuleActionParametersMaxAge {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly?: pulumi.Input<boolean>;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: pulumi.Input<string>;
+    /**
+     * The value for the directive in seconds.
+     */
+    value?: pulumi.Input<number>;
+}
+
+export interface RulesetRuleActionParametersMustRevalidate {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly?: pulumi.Input<boolean>;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: pulumi.Input<string>;
+}
+
+export interface RulesetRuleActionParametersMustUnderstand {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly?: pulumi.Input<boolean>;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: pulumi.Input<string>;
+}
+
+export interface RulesetRuleActionParametersNoCache {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly?: pulumi.Input<boolean>;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: pulumi.Input<string>;
+    /**
+     * The qualifiers for the directive.
+     */
+    qualifiers?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface RulesetRuleActionParametersNoStore {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly?: pulumi.Input<boolean>;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: pulumi.Input<string>;
+}
+
+export interface RulesetRuleActionParametersNoTransform {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly?: pulumi.Input<boolean>;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: pulumi.Input<string>;
 }
 
 export interface RulesetRuleActionParametersOrigin {
@@ -10831,6 +11324,46 @@ export interface RulesetRuleActionParametersOverridesRule {
     sensitivityLevel?: pulumi.Input<string>;
 }
 
+export interface RulesetRuleActionParametersPrivate {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly?: pulumi.Input<boolean>;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: pulumi.Input<string>;
+    /**
+     * The qualifiers for the directive.
+     */
+    qualifiers?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface RulesetRuleActionParametersProxyRevalidate {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly?: pulumi.Input<boolean>;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: pulumi.Input<string>;
+}
+
+export interface RulesetRuleActionParametersPublic {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly?: pulumi.Input<boolean>;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: pulumi.Input<string>;
+}
+
 export interface RulesetRuleActionParametersRawResponseField {
     /**
      * The name of the response header.
@@ -10875,6 +11408,22 @@ export interface RulesetRuleActionParametersResponseField {
     preserveDuplicates?: pulumi.Input<boolean>;
 }
 
+export interface RulesetRuleActionParametersSMaxage {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly?: pulumi.Input<boolean>;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: pulumi.Input<string>;
+    /**
+     * The value for the directive in seconds.
+     */
+    value?: pulumi.Input<number>;
+}
+
 export interface RulesetRuleActionParametersServeStale {
     /**
      * Whether Cloudflare should disable serving stale content while getting the latest content from the origin.
@@ -10887,6 +11436,38 @@ export interface RulesetRuleActionParametersSni {
      * A value to override the SNI to.
      */
     value: pulumi.Input<string>;
+}
+
+export interface RulesetRuleActionParametersStaleIfError {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly?: pulumi.Input<boolean>;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: pulumi.Input<string>;
+    /**
+     * The value for the directive in seconds.
+     */
+    value?: pulumi.Input<number>;
+}
+
+export interface RulesetRuleActionParametersStaleWhileRevalidate {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly?: pulumi.Input<boolean>;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: pulumi.Input<string>;
+    /**
+     * The value for the directive in seconds.
+     */
+    value?: pulumi.Input<number>;
 }
 
 export interface RulesetRuleActionParametersTransformedRequestField {
@@ -10989,34 +11570,34 @@ export interface SnippetFile {
 
 export interface SnippetMetadata {
     /**
-     * Name of the file that contains the main module of the snippet.
+     * Specify the name of the file that contains the main module of the snippet.
      */
     mainModule: pulumi.Input<string>;
 }
 
 export interface SnippetRulesRule {
     /**
-     * An informative description of the rule.
+     * Provide an informative description of the rule.
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether the rule should be executed.
+     * Indicate whether to execute the rule.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * The expression defining which traffic will match the rule.
+     * Define the expression that determines which traffic matches the rule.
      */
     expression: pulumi.Input<string>;
     /**
-     * The unique ID of the rule.
+     * Specify the unique ID of the rule.
      */
     id?: pulumi.Input<string>;
     /**
-     * The timestamp of when the rule was last modified.
+     * Specify the timestamp of when the rule was last modified.
      */
     lastUpdated?: pulumi.Input<string>;
     /**
-     * The identifying name of the snippet.
+     * Identify the snippet.
      */
     snippetName: pulumi.Input<string>;
 }
@@ -12758,6 +13339,10 @@ export interface WorkerScriptBinding {
      */
     service?: pulumi.Input<string>;
     /**
+     * A simple rate limit.
+     */
+    simple?: pulumi.Input<inputs.WorkerScriptBindingSimple>;
+    /**
      * ID of the store containing the secret.
      */
     storeId?: pulumi.Input<string>;
@@ -12804,6 +13389,17 @@ export interface WorkerScriptBindingOutboundWorker {
      * Name of the outbound worker.
      */
     service?: pulumi.Input<string>;
+}
+
+export interface WorkerScriptBindingSimple {
+    /**
+     * The rate limit value.
+     */
+    limit: pulumi.Input<number>;
+    /**
+     * The rate limit period in seconds.
+     */
+    period: pulumi.Input<number>;
 }
 
 export interface WorkerScriptLimits {
@@ -12957,7 +13553,7 @@ export interface WorkerScriptPlacement {
     lastAnalyzedAt?: pulumi.Input<string>;
     /**
      * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: "smart".
+     * Available values: "smart", "targeted".
      */
     mode?: pulumi.Input<string>;
     /**
@@ -12969,6 +13565,25 @@ export interface WorkerScriptPlacement {
      * Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
      */
     status?: pulumi.Input<string>;
+    /**
+     * Array of placement targets (currently limited to single target).
+     */
+    targets?: pulumi.Input<pulumi.Input<inputs.WorkerScriptPlacementTarget>[]>;
+}
+
+export interface WorkerScriptPlacementTarget {
+    /**
+     * TCP host:port for targeted placement.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname?: pulumi.Input<string>;
+    /**
+     * Cloud region in format 'provider:region'.
+     */
+    region?: pulumi.Input<string>;
 }
 
 export interface WorkerScriptTailConsumer {
@@ -13167,6 +13782,10 @@ export interface WorkerVersionBinding {
      */
     service?: pulumi.Input<string>;
     /**
+     * The rate limit configuration.
+     */
+    simple?: pulumi.Input<inputs.WorkerVersionBindingSimple>;
+    /**
      * ID of the store containing the secret.
      */
     storeId?: pulumi.Input<string>;
@@ -13176,7 +13795,7 @@ export interface WorkerVersionBinding {
     text?: pulumi.Input<string>;
     /**
      * The kind of resource that the binding provides.
-     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasmModule".
+     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasmModule".
      */
     type: pulumi.Input<string>;
     /**
@@ -13197,14 +13816,25 @@ export interface WorkerVersionBindingOutbound {
     /**
      * Pass information from the Dispatch Worker to the Outbound Worker through the parameters.
      */
-    params?: pulumi.Input<pulumi.Input<string>[]>;
+    params?: pulumi.Input<pulumi.Input<inputs.WorkerVersionBindingOutboundParam>[]>;
     /**
      * Outbound worker.
      */
     worker?: pulumi.Input<inputs.WorkerVersionBindingOutboundWorker>;
 }
 
+export interface WorkerVersionBindingOutboundParam {
+    /**
+     * Name of the parameter.
+     */
+    name: pulumi.Input<string>;
+}
+
 export interface WorkerVersionBindingOutboundWorker {
+    /**
+     * Entrypoint to invoke on the outbound worker.
+     */
+    entrypoint?: pulumi.Input<string>;
     /**
      * Environment of the outbound worker.
      */
@@ -13213,6 +13843,17 @@ export interface WorkerVersionBindingOutboundWorker {
      * Name of the outbound worker.
      */
     service?: pulumi.Input<string>;
+}
+
+export interface WorkerVersionBindingSimple {
+    /**
+     * The limit (requests per period).
+     */
+    limit: pulumi.Input<number>;
+    /**
+     * The period in seconds.
+     */
+    period: pulumi.Input<number>;
 }
 
 export interface WorkerVersionLimits {
@@ -13327,10 +13968,41 @@ export interface WorkerVersionModule {
 
 export interface WorkerVersionPlacement {
     /**
-     * Placement mode for the version.
-     * Available values: "smart".
+     * TCP host and port for targeted placement.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname?: pulumi.Input<string>;
+    /**
+     * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: "smart", "targeted".
      */
     mode?: pulumi.Input<string>;
+    /**
+     * Cloud region for targeted placement in format 'provider:region'.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * Array of placement targets (currently limited to single target).
+     */
+    targets?: pulumi.Input<pulumi.Input<inputs.WorkerVersionPlacementTarget>[]>;
+}
+
+export interface WorkerVersionPlacementTarget {
+    /**
+     * TCP host:port for targeted placement.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname?: pulumi.Input<string>;
+    /**
+     * Cloud region in format 'provider:region'.
+     */
+    region?: pulumi.Input<string>;
 }
 
 export interface WorkersCronTriggerSchedule {
@@ -13517,6 +14189,10 @@ export interface WorkersScriptBinding {
      */
     service?: pulumi.Input<string>;
     /**
+     * A simple rate limit.
+     */
+    simple?: pulumi.Input<inputs.WorkersScriptBindingSimple>;
+    /**
      * ID of the store containing the secret.
      */
     storeId?: pulumi.Input<string>;
@@ -13563,6 +14239,17 @@ export interface WorkersScriptBindingOutboundWorker {
      * Name of the outbound worker.
      */
     service?: pulumi.Input<string>;
+}
+
+export interface WorkersScriptBindingSimple {
+    /**
+     * The rate limit value.
+     */
+    limit: pulumi.Input<number>;
+    /**
+     * The rate limit period in seconds.
+     */
+    period: pulumi.Input<number>;
 }
 
 export interface WorkersScriptLimits {
@@ -13716,7 +14403,7 @@ export interface WorkersScriptPlacement {
     lastAnalyzedAt?: pulumi.Input<string>;
     /**
      * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: "smart".
+     * Available values: "smart", "targeted".
      */
     mode?: pulumi.Input<string>;
     /**
@@ -13728,6 +14415,25 @@ export interface WorkersScriptPlacement {
      * Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
      */
     status?: pulumi.Input<string>;
+    /**
+     * Array of placement targets (currently limited to single target).
+     */
+    targets?: pulumi.Input<pulumi.Input<inputs.WorkersScriptPlacementTarget>[]>;
+}
+
+export interface WorkersScriptPlacementTarget {
+    /**
+     * TCP host:port for targeted placement.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname?: pulumi.Input<string>;
+    /**
+     * Cloud region in format 'provider:region'.
+     */
+    region?: pulumi.Input<string>;
 }
 
 export interface WorkersScriptTailConsumer {
@@ -13922,9 +14628,24 @@ export interface ZeroTrustAccessApplicationPolicy {
 
 export interface ZeroTrustAccessApplicationPolicyConnectionRules {
     /**
+     * The RDP-specific rules that define clipboard behavior for RDP connections.
+     */
+    rdp?: pulumi.Input<inputs.ZeroTrustAccessApplicationPolicyConnectionRulesRdp>;
+    /**
      * The SSH-specific rules that define how users may connect to the targets secured by your application.
      */
     ssh?: pulumi.Input<inputs.ZeroTrustAccessApplicationPolicyConnectionRulesSsh>;
+}
+
+export interface ZeroTrustAccessApplicationPolicyConnectionRulesRdp {
+    /**
+     * Clipboard formats allowed when copying from local machine to remote RDP session.
+     */
+    allowedClipboardLocalToRemoteFormats?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Clipboard formats allowed when copying from remote RDP session to local machine.
+     */
+    allowedClipboardRemoteToLocalFormats?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ZeroTrustAccessApplicationPolicyConnectionRulesSsh {
@@ -15875,6 +16596,24 @@ export interface ZeroTrustAccessPolicyApprovalGroup {
     emailListUuid?: pulumi.Input<string>;
 }
 
+export interface ZeroTrustAccessPolicyConnectionRules {
+    /**
+     * The RDP-specific rules that define clipboard behavior for RDP connections.
+     */
+    rdp?: pulumi.Input<inputs.ZeroTrustAccessPolicyConnectionRulesRdp>;
+}
+
+export interface ZeroTrustAccessPolicyConnectionRulesRdp {
+    /**
+     * Clipboard formats allowed when copying from local machine to remote RDP session.
+     */
+    allowedClipboardLocalToRemoteFormats?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Clipboard formats allowed when copying from remote RDP session to local machine.
+     */
+    allowedClipboardRemoteToLocalFormats?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface ZeroTrustAccessPolicyExclude {
     /**
      * An empty object which matches on all service tokens.
@@ -16347,6 +17086,21 @@ export interface ZeroTrustAccessPolicyIncludeServiceToken {
      * The ID of a Service Token.
      */
     tokenId: pulumi.Input<string>;
+}
+
+export interface ZeroTrustAccessPolicyMfaConfig {
+    /**
+     * Lists the MFA methods that users can authenticate with.
+     */
+    allowedAuthenticators?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Indicates whether to bypass MFA for this resource. This option is available at the application and policy level.
+     */
+    mfaBypass?: pulumi.Input<boolean>;
+    /**
+     * Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
+     */
+    sessionDuration?: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessPolicyRequire {
@@ -16981,6 +17735,33 @@ export interface ZeroTrustDevicePostureRuleMatch {
     platform?: pulumi.Input<string>;
 }
 
+export interface ZeroTrustDexRuleTargetedTest {
+    /**
+     * The configuration object which contains the details for the WARP client to conduct the test.
+     */
+    data?: pulumi.Input<inputs.ZeroTrustDexRuleTargetedTestData>;
+    enabled?: pulumi.Input<boolean>;
+    name?: pulumi.Input<string>;
+    testId?: pulumi.Input<string>;
+}
+
+export interface ZeroTrustDexRuleTargetedTestData {
+    /**
+     * The desired endpoint to test.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * The type of test.
+     * Available values: "http", "traceroute".
+     */
+    kind?: pulumi.Input<string>;
+    /**
+     * The HTTP request method type.
+     * Available values: "GET".
+     */
+    method?: pulumi.Input<string>;
+}
+
 export interface ZeroTrustDexTestData {
     /**
      * The desired endpoint to test.
@@ -17053,21 +17834,22 @@ export interface ZeroTrustDlpCustomProfileContextAwareness {
     /**
      * If true, scan the context of predefined entries to only return matches surrounded by keywords.
      */
-    enabled: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * Content types to exclude from context analysis and return all matches.
      */
-    skip: pulumi.Input<inputs.ZeroTrustDlpCustomProfileContextAwarenessSkip>;
+    skip?: pulumi.Input<inputs.ZeroTrustDlpCustomProfileContextAwarenessSkip>;
 }
 
 export interface ZeroTrustDlpCustomProfileContextAwarenessSkip {
     /**
      * If the content type is a file, skip context analysis and return all matches.
      */
-    files: pulumi.Input<boolean>;
+    files?: pulumi.Input<boolean>;
 }
 
 export interface ZeroTrustDlpCustomProfileEntry {
+    description?: pulumi.Input<string>;
     enabled: pulumi.Input<boolean>;
     entryId?: pulumi.Input<string>;
     name: pulumi.Input<string>;
@@ -18126,6 +18908,17 @@ export interface ZeroTrustOrganizationLoginDesign {
      * The text color on your login page.
      */
     textColor?: pulumi.Input<string>;
+}
+
+export interface ZeroTrustOrganizationMfaConfig {
+    /**
+     * Lists the MFA methods that users can authenticate with.
+     */
+    allowedAuthenticators?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
+     */
+    sessionDuration?: pulumi.Input<string>;
 }
 
 export interface ZeroTrustRiskBehaviorBehaviors {

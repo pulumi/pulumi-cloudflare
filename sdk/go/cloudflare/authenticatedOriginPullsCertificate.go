@@ -95,7 +95,9 @@ import (
 //
 // ## Import
 //
-// > This resource does not currently support `pulumi import`.
+// ```sh
+// $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate example '<zone_id>/<certificate_id>'
+// ```
 type AuthenticatedOriginPullsCertificate struct {
 	pulumi.CustomResourceState
 
@@ -111,6 +113,8 @@ type AuthenticatedOriginPullsCertificate struct {
 	Issuer pulumi.StringOutput `pulumi:"issuer"`
 	// The zone's private key.
 	PrivateKey pulumi.StringOutput `pulumi:"privateKey"`
+	// The serial number on the uploaded certificate.
+	SerialNumber pulumi.StringOutput `pulumi:"serialNumber"`
 	// The type of hash used for the certificate.
 	Signature pulumi.StringOutput `pulumi:"signature"`
 	// Status of the certificate activation.
@@ -180,6 +184,8 @@ type authenticatedOriginPullsCertificateState struct {
 	Issuer *string `pulumi:"issuer"`
 	// The zone's private key.
 	PrivateKey *string `pulumi:"privateKey"`
+	// The serial number on the uploaded certificate.
+	SerialNumber *string `pulumi:"serialNumber"`
 	// The type of hash used for the certificate.
 	Signature *string `pulumi:"signature"`
 	// Status of the certificate activation.
@@ -204,6 +210,8 @@ type AuthenticatedOriginPullsCertificateState struct {
 	Issuer pulumi.StringPtrInput
 	// The zone's private key.
 	PrivateKey pulumi.StringPtrInput
+	// The serial number on the uploaded certificate.
+	SerialNumber pulumi.StringPtrInput
 	// The type of hash used for the certificate.
 	Signature pulumi.StringPtrInput
 	// Status of the certificate activation.
@@ -353,6 +361,11 @@ func (o AuthenticatedOriginPullsCertificateOutput) Issuer() pulumi.StringOutput 
 // The zone's private key.
 func (o AuthenticatedOriginPullsCertificateOutput) PrivateKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPullsCertificate) pulumi.StringOutput { return v.PrivateKey }).(pulumi.StringOutput)
+}
+
+// The serial number on the uploaded certificate.
+func (o AuthenticatedOriginPullsCertificateOutput) SerialNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthenticatedOriginPullsCertificate) pulumi.StringOutput { return v.SerialNumber }).(pulumi.StringOutput)
 }
 
 // The type of hash used for the certificate.

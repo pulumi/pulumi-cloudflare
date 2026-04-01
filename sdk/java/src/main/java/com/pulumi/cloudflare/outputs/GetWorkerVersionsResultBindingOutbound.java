@@ -3,10 +3,10 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetWorkerVersionsResultBindingOutboundParam;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionsResultBindingOutboundWorker;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,7 +16,7 @@ public final class GetWorkerVersionsResultBindingOutbound {
      * @return Pass information from the Dispatch Worker to the Outbound Worker through the parameters.
      * 
      */
-    private List<String> params;
+    private List<GetWorkerVersionsResultBindingOutboundParam> params;
     /**
      * @return Outbound worker.
      * 
@@ -28,7 +28,7 @@ public final class GetWorkerVersionsResultBindingOutbound {
      * @return Pass information from the Dispatch Worker to the Outbound Worker through the parameters.
      * 
      */
-    public List<String> params() {
+    public List<GetWorkerVersionsResultBindingOutboundParam> params() {
         return this.params;
     }
     /**
@@ -48,7 +48,7 @@ public final class GetWorkerVersionsResultBindingOutbound {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<String> params;
+        private List<GetWorkerVersionsResultBindingOutboundParam> params;
         private GetWorkerVersionsResultBindingOutboundWorker worker;
         public Builder() {}
         public Builder(GetWorkerVersionsResultBindingOutbound defaults) {
@@ -58,14 +58,14 @@ public final class GetWorkerVersionsResultBindingOutbound {
         }
 
         @CustomType.Setter
-        public Builder params(List<String> params) {
+        public Builder params(List<GetWorkerVersionsResultBindingOutboundParam> params) {
             if (params == null) {
               throw new MissingRequiredPropertyException("GetWorkerVersionsResultBindingOutbound", "params");
             }
             this.params = params;
             return this;
         }
-        public Builder params(String... params) {
+        public Builder params(GetWorkerVersionsResultBindingOutboundParam... params) {
             return params(List.of(params));
         }
         @CustomType.Setter

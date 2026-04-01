@@ -18,14 +18,14 @@ public final class SnippetRulesState extends com.pulumi.resources.ResourceArgs {
     public static final SnippetRulesState Empty = new SnippetRulesState();
 
     /**
-     * A list of snippet rules.
+     * Lists snippet rules.
      * 
      */
     @Import(name="rules")
     private @Nullable Output<List<SnippetRulesRuleArgs>> rules;
 
     /**
-     * @return A list of snippet rules.
+     * @return Lists snippet rules.
      * 
      */
     public Optional<Output<List<SnippetRulesRuleArgs>>> rules() {
@@ -33,14 +33,14 @@ public final class SnippetRulesState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The unique ID of the zone.
+     * Use this field to specify the unique ID of the zone.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The unique ID of the zone.
+     * @return Use this field to specify the unique ID of the zone.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -73,7 +73,7 @@ public final class SnippetRulesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules A list of snippet rules.
+         * @param rules Lists snippet rules.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class SnippetRulesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules A list of snippet rules.
+         * @param rules Lists snippet rules.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class SnippetRulesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules A list of snippet rules.
+         * @param rules Lists snippet rules.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class SnippetRulesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The unique ID of the zone.
+         * @param zoneId Use this field to specify the unique ID of the zone.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class SnippetRulesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The unique ID of the zone.
+         * @param zoneId Use this field to specify the unique ID of the zone.
          * 
          * @return builder
          * 

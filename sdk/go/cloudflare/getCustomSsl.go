@@ -76,17 +76,14 @@ type LookupCustomSslResult struct {
 	KeylessServer GetCustomSslKeylessServer `pulumi:"keylessServer"`
 	// When the certificate was last modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
-	// Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
-	Policy string `pulumi:"policy"`
-	// The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy*custom' certificates, but 'legacy*custom' certificates will always supercede 'sni_custom' certificates.
-	Priority float64 `pulumi:"priority"`
-	// The type of hash used for the certificate.
-	Signature string `pulumi:"signature"`
-	// Status of the zone's custom SSL.
-	// Available values: "active", "expired", "deleted", "pending", "initializing".
-	Status string `pulumi:"status"`
-	// When the certificate was uploaded to Cloudflare.
-	UploadedOn string `pulumi:"uploadedOn"`
+	// The policy restrictions returned by the API. This field is returned in responses
+	// when a policy has been set. The API accepts the "policy" field in requests but
+	// returns this field as "policyRestrictions" in responses.
+	PolicyRestrictions string  `pulumi:"policyRestrictions"`
+	Priority           float64 `pulumi:"priority"`
+	Signature          string  `pulumi:"signature"`
+	Status             string  `pulumi:"status"`
+	UploadedOn         string  `pulumi:"uploadedOn"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -176,28 +173,25 @@ func (o LookupCustomSslResultOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomSslResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-// Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
-func (o LookupCustomSslResultOutput) Policy() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCustomSslResult) string { return v.Policy }).(pulumi.StringOutput)
+// The policy restrictions returned by the API. This field is returned in responses
+// when a policy has been set. The API accepts the "policy" field in requests but
+// returns this field as "policyRestrictions" in responses.
+func (o LookupCustomSslResultOutput) PolicyRestrictions() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomSslResult) string { return v.PolicyRestrictions }).(pulumi.StringOutput)
 }
 
-// The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy*custom' certificates, but 'legacy*custom' certificates will always supercede 'sni_custom' certificates.
 func (o LookupCustomSslResultOutput) Priority() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupCustomSslResult) float64 { return v.Priority }).(pulumi.Float64Output)
 }
 
-// The type of hash used for the certificate.
 func (o LookupCustomSslResultOutput) Signature() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomSslResult) string { return v.Signature }).(pulumi.StringOutput)
 }
 
-// Status of the zone's custom SSL.
-// Available values: "active", "expired", "deleted", "pending", "initializing".
 func (o LookupCustomSslResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomSslResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// When the certificate was uploaded to Cloudflare.
 func (o LookupCustomSslResultOutput) UploadedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomSslResult) string { return v.UploadedOn }).(pulumi.StringOutput)
 }

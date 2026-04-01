@@ -77,6 +77,12 @@ namespace Pulumi.Cloudflare
         public Output<bool?> CloudflareBranding { get; private set; } = null!;
 
         /// <summary>
+        /// DCV Delegation records for domain validation.
+        /// </summary>
+        [Output("dcvDelegationRecords")]
+        public Output<ImmutableArray<Outputs.CertificatePackDcvDelegationRecord>> DcvDelegationRecords { get; private set; } = null!;
+
+        /// <summary>
         /// Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
         /// </summary>
         [Output("hosts")]
@@ -264,6 +270,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("cloudflareBranding")]
         public Input<bool>? CloudflareBranding { get; set; }
+
+        [Input("dcvDelegationRecords")]
+        private InputList<Inputs.CertificatePackDcvDelegationRecordGetArgs>? _dcvDelegationRecords;
+
+        /// <summary>
+        /// DCV Delegation records for domain validation.
+        /// </summary>
+        public InputList<Inputs.CertificatePackDcvDelegationRecordGetArgs> DcvDelegationRecords
+        {
+            get => _dcvDelegationRecords ?? (_dcvDelegationRecords = new InputList<Inputs.CertificatePackDcvDelegationRecordGetArgs>());
+            set => _dcvDelegationRecords = value;
+        }
 
         [Input("hosts")]
         private InputList<string>? _hosts;

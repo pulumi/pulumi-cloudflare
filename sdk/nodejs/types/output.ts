@@ -148,9 +148,24 @@ export interface AccessApplicationPolicy {
 
 export interface AccessApplicationPolicyConnectionRules {
     /**
+     * The RDP-specific rules that define clipboard behavior for RDP connections.
+     */
+    rdp?: outputs.AccessApplicationPolicyConnectionRulesRdp;
+    /**
      * The SSH-specific rules that define how users may connect to the targets secured by your application.
      */
     ssh?: outputs.AccessApplicationPolicyConnectionRulesSsh;
+}
+
+export interface AccessApplicationPolicyConnectionRulesRdp {
+    /**
+     * Clipboard formats allowed when copying from local machine to remote RDP session.
+     */
+    allowedClipboardLocalToRemoteFormats?: string[];
+    /**
+     * Clipboard formats allowed when copying from remote RDP session to local machine.
+     */
+    allowedClipboardRemoteToLocalFormats?: string[];
 }
 
 export interface AccessApplicationPolicyConnectionRulesSsh {
@@ -2087,6 +2102,17 @@ export interface AccessOrganizationLoginDesign {
     textColor?: string;
 }
 
+export interface AccessOrganizationMfaConfig {
+    /**
+     * Lists the MFA methods that users can authenticate with.
+     */
+    allowedAuthenticators?: string[];
+    /**
+     * Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
+     */
+    sessionDuration?: string;
+}
+
 export interface AccessPolicyApprovalGroup {
     /**
      * The number of approvals needed to obtain access.
@@ -2100,6 +2126,24 @@ export interface AccessPolicyApprovalGroup {
      * The UUID of an re-usable email list.
      */
     emailListUuid?: string;
+}
+
+export interface AccessPolicyConnectionRules {
+    /**
+     * The RDP-specific rules that define clipboard behavior for RDP connections.
+     */
+    rdp?: outputs.AccessPolicyConnectionRulesRdp;
+}
+
+export interface AccessPolicyConnectionRulesRdp {
+    /**
+     * Clipboard formats allowed when copying from local machine to remote RDP session.
+     */
+    allowedClipboardLocalToRemoteFormats?: string[];
+    /**
+     * Clipboard formats allowed when copying from remote RDP session to local machine.
+     */
+    allowedClipboardRemoteToLocalFormats?: string[];
 }
 
 export interface AccessPolicyExclude {
@@ -2574,6 +2618,21 @@ export interface AccessPolicyIncludeServiceToken {
      * The ID of a Service Token.
      */
     tokenId: string;
+}
+
+export interface AccessPolicyMfaConfig {
+    /**
+     * Lists the MFA methods that users can authenticate with.
+     */
+    allowedAuthenticators?: string[];
+    /**
+     * Indicates whether to bypass MFA for this resource. This option is available at the application and policy level.
+     */
+    mfaBypass?: boolean;
+    /**
+     * Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
+     */
+    sessionDuration?: string;
 }
 
 export interface AccessPolicyRequire {
@@ -3079,7 +3138,7 @@ export interface AccountUnit {
     /**
      * Tenant unit ID
      */
-    id?: string;
+    id: string;
 }
 
 export interface AddressMapMembership {
@@ -3092,6 +3151,109 @@ export interface AddressMapMembership {
      * Available values: "zone", "account".
      */
     kind?: string;
+}
+
+export interface AiSearchInstanceCustomMetadata {
+    /**
+     * Available values: "text", "number", "boolean".
+     */
+    dataType: string;
+    fieldName: string;
+}
+
+export interface AiSearchInstanceMetadata {
+    createdFromAisearchWizard?: boolean;
+    workerDomain?: string;
+}
+
+export interface AiSearchInstancePublicEndpointParams {
+    authorizedHosts?: string[];
+    chatCompletionsEndpoint: outputs.AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint;
+    enabled: boolean;
+    mcp: outputs.AiSearchInstancePublicEndpointParamsMcp;
+    rateLimit?: outputs.AiSearchInstancePublicEndpointParamsRateLimit;
+    searchEndpoint: outputs.AiSearchInstancePublicEndpointParamsSearchEndpoint;
+}
+
+export interface AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint {
+    /**
+     * Disable chat completions endpoint for this public endpoint
+     */
+    disabled: boolean;
+}
+
+export interface AiSearchInstancePublicEndpointParamsMcp {
+    description: string;
+    /**
+     * Disable MCP endpoint for this public endpoint
+     */
+    disabled: boolean;
+}
+
+export interface AiSearchInstancePublicEndpointParamsRateLimit {
+    periodMs?: number;
+    requests?: number;
+    /**
+     * Available values: "fixed", "sliding".
+     */
+    technique?: string;
+}
+
+export interface AiSearchInstancePublicEndpointParamsSearchEndpoint {
+    /**
+     * Disable search endpoint for this public endpoint
+     */
+    disabled: boolean;
+}
+
+export interface AiSearchInstanceRetrievalOptions {
+    /**
+     * Controls how keyword search terms are matched. exact*match requires all terms to appear (AND); fuzzy*match returns results containing any term (OR). Defaults to exact*match.
+     * Available values: "exact*match", "fuzzyMatch".
+     */
+    keywordMatchMode: string;
+}
+
+export interface AiSearchInstanceSourceParams {
+    /**
+     * List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
+     */
+    excludeItems?: string[];
+    /**
+     * List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
+     */
+    includeItems?: string[];
+    prefix?: string;
+    r2Jurisdiction: string;
+    webCrawler: outputs.AiSearchInstanceSourceParamsWebCrawler;
+}
+
+export interface AiSearchInstanceSourceParamsWebCrawler {
+    parseOptions?: outputs.AiSearchInstanceSourceParamsWebCrawlerParseOptions;
+    /**
+     * Available values: "sitemap", "feed-rss".
+     */
+    parseType: string;
+    storeOptions?: outputs.AiSearchInstanceSourceParamsWebCrawlerStoreOptions;
+}
+
+export interface AiSearchInstanceSourceParamsWebCrawlerParseOptions {
+    includeHeaders?: {[key: string]: string};
+    includeImages: boolean;
+    /**
+     * List of specific sitemap URLs to use for crawling. Only valid when parseType is 'sitemap'.
+     */
+    specificSitemaps?: string[];
+    useBrowserRendering: boolean;
+}
+
+export interface AiSearchInstanceSourceParamsWebCrawlerStoreOptions {
+    r2Jurisdiction: string;
+    storageId: string;
+    /**
+     * Available values: "r2".
+     */
+    storageType?: string;
 }
 
 export interface ApiShieldAuthIdCharacteristic {
@@ -3465,14 +3627,15 @@ export interface CertificatePackCertificateGeoRestrictions {
     label: string;
 }
 
-export interface CertificatePackValidationError {
+export interface CertificatePackDcvDelegationRecord {
     /**
-     * A domain validation error.
+     * The CNAME record hostname for DCV delegation.
      */
-    message: string;
-}
-
-export interface CertificatePackValidationRecord {
+    cname: string;
+    /**
+     * The CNAME record target value for DCV delegation.
+     */
+    cnameTarget: string;
     /**
      * The set of email addresses that the certificate authority (CA) will use to complete domain validation.
      */
@@ -3486,6 +3649,10 @@ export interface CertificatePackValidationRecord {
      */
     httpUrl: string;
     /**
+     * Status of the validation record.
+     */
+    status: string;
+    /**
      * The hostname that the certificate authority (CA) will check for a TXT record during domain validation .
      */
     txtName: string;
@@ -3493,6 +3660,53 @@ export interface CertificatePackValidationRecord {
      * The TXT record that the certificate authority (CA) will check during domain validation.
      */
     txtValue: string;
+}
+
+export interface CertificatePackValidationError {
+    /**
+     * A domain validation error.
+     */
+    message: string;
+}
+
+export interface CertificatePackValidationRecord {
+    /**
+     * The CNAME record hostname for DCV delegation.
+     */
+    cname: string;
+    /**
+     * The CNAME record target value for DCV delegation.
+     */
+    cnameTarget: string;
+    /**
+     * The set of email addresses that the certificate authority (CA) will use to complete domain validation.
+     */
+    emails: string[];
+    /**
+     * The content that the certificate authority (CA) will expect to find at the httpUrl during the domain validation.
+     */
+    httpBody: string;
+    /**
+     * The url that will be checked during domain validation.
+     */
+    httpUrl: string;
+    /**
+     * Status of the validation record.
+     */
+    status: string;
+    /**
+     * The hostname that the certificate authority (CA) will check for a TXT record during domain validation .
+     */
+    txtName: string;
+    /**
+     * The TXT record that the certificate authority (CA) will check during domain validation.
+     */
+    txtValue: string;
+}
+
+export interface ClientCertificateCertificateAuthority {
+    id: string;
+    name: string;
 }
 
 export interface CloudConnectorRulesRule {
@@ -3985,6 +4199,7 @@ export interface DlpCustomProfileContextAwarenessSkip {
 }
 
 export interface DlpCustomProfileEntry {
+    description?: string;
     enabled: boolean;
     entryId?: string;
     name: string;
@@ -4596,6 +4811,21 @@ export interface GetAccessRulesResultScope {
 }
 
 export interface GetAccountApiTokenPermissionGroupsListResult {
+    /**
+     * Public ID.
+     */
+    id: string;
+    /**
+     * Permission Group Name
+     */
+    name: string;
+    /**
+     * Resources to which the Permission Group is scoped
+     */
+    scopes: string[];
+}
+
+export interface GetAccountApiTokenPermissionGroupsPermissionGroup {
     /**
      * Public ID.
      */
@@ -5749,6 +5979,292 @@ export interface GetAddressMapsResult {
     modifiedAt: string;
 }
 
+export interface GetAiSearchInstanceCustomMetadata {
+    /**
+     * Available values: "text", "number", "boolean".
+     */
+    dataType: string;
+    fieldName: string;
+}
+
+export interface GetAiSearchInstanceFilter {
+    /**
+     * Search by id
+     */
+    search?: string;
+}
+
+export interface GetAiSearchInstanceMetadata {
+    createdFromAisearchWizard: boolean;
+    workerDomain: string;
+}
+
+export interface GetAiSearchInstancePublicEndpointParams {
+    authorizedHosts: string[];
+    chatCompletionsEndpoint: outputs.GetAiSearchInstancePublicEndpointParamsChatCompletionsEndpoint;
+    enabled: boolean;
+    mcp: outputs.GetAiSearchInstancePublicEndpointParamsMcp;
+    rateLimit: outputs.GetAiSearchInstancePublicEndpointParamsRateLimit;
+    searchEndpoint: outputs.GetAiSearchInstancePublicEndpointParamsSearchEndpoint;
+}
+
+export interface GetAiSearchInstancePublicEndpointParamsChatCompletionsEndpoint {
+    /**
+     * Disable chat completions endpoint for this public endpoint
+     */
+    disabled: boolean;
+}
+
+export interface GetAiSearchInstancePublicEndpointParamsMcp {
+    description: string;
+    /**
+     * Disable MCP endpoint for this public endpoint
+     */
+    disabled: boolean;
+}
+
+export interface GetAiSearchInstancePublicEndpointParamsRateLimit {
+    periodMs: number;
+    requests: number;
+    /**
+     * Available values: "fixed", "sliding".
+     */
+    technique: string;
+}
+
+export interface GetAiSearchInstancePublicEndpointParamsSearchEndpoint {
+    /**
+     * Disable search endpoint for this public endpoint
+     */
+    disabled: boolean;
+}
+
+export interface GetAiSearchInstanceRetrievalOptions {
+    /**
+     * Controls how keyword search terms are matched. exact*match requires all terms to appear (AND); fuzzy*match returns results containing any term (OR). Defaults to exact*match.
+     * Available values: "exact*match", "fuzzyMatch".
+     */
+    keywordMatchMode: string;
+}
+
+export interface GetAiSearchInstanceSourceParams {
+    /**
+     * List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
+     */
+    excludeItems: string[];
+    /**
+     * List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
+     */
+    includeItems: string[];
+    prefix: string;
+    r2Jurisdiction: string;
+    webCrawler: outputs.GetAiSearchInstanceSourceParamsWebCrawler;
+}
+
+export interface GetAiSearchInstanceSourceParamsWebCrawler {
+    parseOptions: outputs.GetAiSearchInstanceSourceParamsWebCrawlerParseOptions;
+    /**
+     * Available values: "sitemap", "feed-rss".
+     */
+    parseType: string;
+    storeOptions: outputs.GetAiSearchInstanceSourceParamsWebCrawlerStoreOptions;
+}
+
+export interface GetAiSearchInstanceSourceParamsWebCrawlerParseOptions {
+    includeHeaders: {[key: string]: string};
+    includeImages: boolean;
+    /**
+     * List of specific sitemap URLs to use for crawling. Only valid when parseType is 'sitemap'.
+     */
+    specificSitemaps: string[];
+    useBrowserRendering: boolean;
+}
+
+export interface GetAiSearchInstanceSourceParamsWebCrawlerStoreOptions {
+    r2Jurisdiction: string;
+    storageId: string;
+    /**
+     * Available values: "r2".
+     */
+    storageType: string;
+}
+
+export interface GetAiSearchInstancesResult {
+    aiGatewayId: string;
+    /**
+     * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+     */
+    aisearchModel: string;
+    cache: boolean;
+    /**
+     * Available values: "super*strict*match", "close*enough", "flexible*friend", "anythingGoes".
+     */
+    cacheThreshold: string;
+    chunkOverlap: number;
+    chunkSize: number;
+    createdAt: string;
+    createdBy: string;
+    customMetadatas: outputs.GetAiSearchInstancesResultCustomMetadata[];
+    /**
+     * Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
+     */
+    embeddingModel: string;
+    enable: boolean;
+    /**
+     * Available values: "max", "rrf".
+     */
+    fusionMethod: string;
+    hybridSearchEnabled: boolean;
+    /**
+     * Use your AI Search ID.
+     */
+    id: string;
+    lastActivity: string;
+    maxNumResults: number;
+    metadata: outputs.GetAiSearchInstancesResultMetadata;
+    modifiedAt: string;
+    modifiedBy: string;
+    paused: boolean;
+    publicEndpointId: string;
+    publicEndpointParams: outputs.GetAiSearchInstancesResultPublicEndpointParams;
+    reranking: boolean;
+    /**
+     * Available values: "@cf/baai/bge-reranker-base", "".
+     */
+    rerankingModel: string;
+    retrievalOptions: outputs.GetAiSearchInstancesResultRetrievalOptions;
+    /**
+     * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+     */
+    rewriteModel: string;
+    rewriteQuery: boolean;
+    scoreThreshold: number;
+    source: string;
+    sourceParams: outputs.GetAiSearchInstancesResultSourceParams;
+    status: string;
+    tokenId: string;
+    /**
+     * Available values: "r2", "web-crawler".
+     */
+    type: string;
+    vectorizeName: string;
+}
+
+export interface GetAiSearchInstancesResultCustomMetadata {
+    /**
+     * Available values: "text", "number", "boolean".
+     */
+    dataType: string;
+    fieldName: string;
+}
+
+export interface GetAiSearchInstancesResultMetadata {
+    createdFromAisearchWizard: boolean;
+    workerDomain: string;
+}
+
+export interface GetAiSearchInstancesResultPublicEndpointParams {
+    authorizedHosts: string[];
+    chatCompletionsEndpoint: outputs.GetAiSearchInstancesResultPublicEndpointParamsChatCompletionsEndpoint;
+    enabled: boolean;
+    mcp: outputs.GetAiSearchInstancesResultPublicEndpointParamsMcp;
+    rateLimit: outputs.GetAiSearchInstancesResultPublicEndpointParamsRateLimit;
+    searchEndpoint: outputs.GetAiSearchInstancesResultPublicEndpointParamsSearchEndpoint;
+}
+
+export interface GetAiSearchInstancesResultPublicEndpointParamsChatCompletionsEndpoint {
+    /**
+     * Disable chat completions endpoint for this public endpoint
+     */
+    disabled: boolean;
+}
+
+export interface GetAiSearchInstancesResultPublicEndpointParamsMcp {
+    description: string;
+    /**
+     * Disable MCP endpoint for this public endpoint
+     */
+    disabled: boolean;
+}
+
+export interface GetAiSearchInstancesResultPublicEndpointParamsRateLimit {
+    periodMs: number;
+    requests: number;
+    /**
+     * Available values: "fixed", "sliding".
+     */
+    technique: string;
+}
+
+export interface GetAiSearchInstancesResultPublicEndpointParamsSearchEndpoint {
+    /**
+     * Disable search endpoint for this public endpoint
+     */
+    disabled: boolean;
+}
+
+export interface GetAiSearchInstancesResultRetrievalOptions {
+    /**
+     * Controls how keyword search terms are matched. exact*match requires all terms to appear (AND); fuzzy*match returns results containing any term (OR). Defaults to exact*match.
+     * Available values: "exact*match", "fuzzyMatch".
+     */
+    keywordMatchMode: string;
+}
+
+export interface GetAiSearchInstancesResultSourceParams {
+    /**
+     * List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
+     */
+    excludeItems: string[];
+    /**
+     * List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
+     */
+    includeItems: string[];
+    prefix: string;
+    r2Jurisdiction: string;
+    webCrawler: outputs.GetAiSearchInstancesResultSourceParamsWebCrawler;
+}
+
+export interface GetAiSearchInstancesResultSourceParamsWebCrawler {
+    parseOptions: outputs.GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptions;
+    /**
+     * Available values: "sitemap", "feed-rss".
+     */
+    parseType: string;
+    storeOptions: outputs.GetAiSearchInstancesResultSourceParamsWebCrawlerStoreOptions;
+}
+
+export interface GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptions {
+    includeHeaders: {[key: string]: string};
+    includeImages: boolean;
+    /**
+     * List of specific sitemap URLs to use for crawling. Only valid when parseType is 'sitemap'.
+     */
+    specificSitemaps: string[];
+    useBrowserRendering: boolean;
+}
+
+export interface GetAiSearchInstancesResultSourceParamsWebCrawlerStoreOptions {
+    r2Jurisdiction: string;
+    storageId: string;
+    /**
+     * Available values: "r2".
+     */
+    storageType: string;
+}
+
+export interface GetAiSearchTokensResult {
+    cfApiId: string;
+    createdAt: string;
+    createdBy: string;
+    enabled: boolean;
+    id: string;
+    legacy: boolean;
+    modifiedAt: string;
+    modifiedBy: string;
+    name: string;
+}
+
 export interface GetApiShieldAuthIdCharacteristic {
     /**
      * The name of the characteristic field, i.e., the header or cookie name.
@@ -6411,10 +6927,6 @@ export interface GetAuthenticatedOriginPullsCertificatesResult {
      */
     certificate: string;
     /**
-     * Indicates whether zone-level authenticated origin pulls is enabled.
-     */
-    enabled: boolean;
-    /**
      * When the certificate from the authority expires.
      */
     expiresOn: string;
@@ -6427,9 +6939,9 @@ export interface GetAuthenticatedOriginPullsCertificatesResult {
      */
     issuer: string;
     /**
-     * The zone's private key.
+     * The serial number on the uploaded certificate.
      */
-    privateKey: string;
+    serialNumber: string;
     /**
      * The type of hash used for the certificate.
      */
@@ -6441,6 +6953,42 @@ export interface GetAuthenticatedOriginPullsCertificatesResult {
     status: string;
     /**
      * This is the time the certificate was uploaded.
+     */
+    uploadedOn: string;
+}
+
+export interface GetAuthenticatedOriginPullsHostnameCertificatesResult {
+    /**
+     * The hostname certificate.
+     */
+    certificate: string;
+    /**
+     * The date when the certificate expires.
+     */
+    expiresOn: string;
+    /**
+     * Identifier.
+     */
+    id: string;
+    /**
+     * The certificate authority that issued the certificate.
+     */
+    issuer: string;
+    /**
+     * The serial number on the uploaded certificate.
+     */
+    serialNumber: string;
+    /**
+     * The type of hash used for the certificate.
+     */
+    signature: string;
+    /**
+     * Status of the certificate or the association.
+     * Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
+     */
+    status: string;
+    /**
+     * The time when the certificate was uploaded.
      */
     uploadedOn: string;
 }
@@ -6649,7 +7197,47 @@ export interface GetCertificatePackCertificateGeoRestrictions {
     label: string;
 }
 
+export interface GetCertificatePackDcvDelegationRecord {
+    /**
+     * The CNAME record hostname for DCV delegation.
+     */
+    cname: string;
+    /**
+     * The CNAME record target value for DCV delegation.
+     */
+    cnameTarget: string;
+    /**
+     * The set of email addresses that the certificate authority (CA) will use to complete domain validation.
+     */
+    emails: string[];
+    /**
+     * The content that the certificate authority (CA) will expect to find at the httpUrl during the domain validation.
+     */
+    httpBody: string;
+    /**
+     * The url that will be checked during domain validation.
+     */
+    httpUrl: string;
+    /**
+     * Status of the validation record.
+     */
+    status: string;
+    /**
+     * The hostname that the certificate authority (CA) will check for a TXT record during domain validation .
+     */
+    txtName: string;
+    /**
+     * The TXT record that the certificate authority (CA) will check during domain validation.
+     */
+    txtValue: string;
+}
+
 export interface GetCertificatePackFilter {
+    /**
+     * Specify the deployment environment for the certificate packs.
+     * Available values: "staging", "production".
+     */
+    deploy?: string;
     /**
      * Include Certificate Packs of all statuses, not just active ones.
      * Available values: "all".
@@ -6666,6 +7254,14 @@ export interface GetCertificatePackValidationError {
 
 export interface GetCertificatePackValidationRecord {
     /**
+     * The CNAME record hostname for DCV delegation.
+     */
+    cname: string;
+    /**
+     * The CNAME record target value for DCV delegation.
+     */
+    cnameTarget: string;
+    /**
      * The set of email addresses that the certificate authority (CA) will use to complete domain validation.
      */
     emails: string[];
@@ -6677,6 +7273,10 @@ export interface GetCertificatePackValidationRecord {
      * The url that will be checked during domain validation.
      */
     httpUrl: string;
+    /**
+     * Status of the validation record.
+     */
+    status: string;
     /**
      * The hostname that the certificate authority (CA) will check for a TXT record during domain validation .
      */
@@ -6701,6 +7301,10 @@ export interface GetCertificatePacksResult {
      * Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
      */
     cloudflareBranding: boolean;
+    /**
+     * DCV Delegation records for domain validation.
+     */
+    dcvDelegationRecords: outputs.GetCertificatePacksResultDcvDelegationRecord[];
     /**
      * Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
      */
@@ -6801,14 +7405,15 @@ export interface GetCertificatePacksResultCertificateGeoRestrictions {
     label: string;
 }
 
-export interface GetCertificatePacksResultValidationError {
+export interface GetCertificatePacksResultDcvDelegationRecord {
     /**
-     * A domain validation error.
+     * The CNAME record hostname for DCV delegation.
      */
-    message: string;
-}
-
-export interface GetCertificatePacksResultValidationRecord {
+    cname: string;
+    /**
+     * The CNAME record target value for DCV delegation.
+     */
+    cnameTarget: string;
     /**
      * The set of email addresses that the certificate authority (CA) will use to complete domain validation.
      */
@@ -6822,6 +7427,10 @@ export interface GetCertificatePacksResultValidationRecord {
      */
     httpUrl: string;
     /**
+     * Status of the validation record.
+     */
+    status: string;
+    /**
      * The hostname that the certificate authority (CA) will check for a TXT record during domain validation .
      */
     txtName: string;
@@ -6829,6 +7438,150 @@ export interface GetCertificatePacksResultValidationRecord {
      * The TXT record that the certificate authority (CA) will check during domain validation.
      */
     txtValue: string;
+}
+
+export interface GetCertificatePacksResultValidationError {
+    /**
+     * A domain validation error.
+     */
+    message: string;
+}
+
+export interface GetCertificatePacksResultValidationRecord {
+    /**
+     * The CNAME record hostname for DCV delegation.
+     */
+    cname: string;
+    /**
+     * The CNAME record target value for DCV delegation.
+     */
+    cnameTarget: string;
+    /**
+     * The set of email addresses that the certificate authority (CA) will use to complete domain validation.
+     */
+    emails: string[];
+    /**
+     * The content that the certificate authority (CA) will expect to find at the httpUrl during the domain validation.
+     */
+    httpBody: string;
+    /**
+     * The url that will be checked during domain validation.
+     */
+    httpUrl: string;
+    /**
+     * Status of the validation record.
+     */
+    status: string;
+    /**
+     * The hostname that the certificate authority (CA) will check for a TXT record during domain validation .
+     */
+    txtName: string;
+    /**
+     * The TXT record that the certificate authority (CA) will check during domain validation.
+     */
+    txtValue: string;
+}
+
+export interface GetClientCertificateCertificateAuthority {
+    id: string;
+    name: string;
+}
+
+export interface GetClientCertificateFilter {
+    /**
+     * Limit to the number of records returned.
+     */
+    limit?: number;
+    /**
+     * Offset the results
+     */
+    offset?: number;
+    /**
+     * Client Certitifcate Status to filter results by.
+     * Available values: "all", "active", "pending*reactivation", "pending*revocation", "revoked".
+     */
+    status?: string;
+}
+
+export interface GetClientCertificatesResult {
+    /**
+     * The Client Certificate PEM
+     */
+    certificate: string;
+    /**
+     * Certificate Authority used to issue the Client Certificate
+     */
+    certificateAuthority: outputs.GetClientCertificatesResultCertificateAuthority;
+    /**
+     * Common Name of the Client Certificate
+     */
+    commonName: string;
+    /**
+     * Country, provided by the CSR
+     */
+    country: string;
+    /**
+     * The Certificate Signing Request (CSR). Must be newline-encoded.
+     */
+    csr: string;
+    /**
+     * Date that the Client Certificate expires
+     */
+    expiresOn: string;
+    /**
+     * Unique identifier of the Client Certificate
+     */
+    fingerprintSha256: string;
+    /**
+     * Identifier.
+     */
+    id: string;
+    /**
+     * Date that the Client Certificate was issued by the Certificate Authority
+     */
+    issuedOn: string;
+    /**
+     * Location, provided by the CSR
+     */
+    location: string;
+    /**
+     * Organization, provided by the CSR
+     */
+    organization: string;
+    /**
+     * Organizational Unit, provided by the CSR
+     */
+    organizationalUnit: string;
+    /**
+     * The serial number on the created Client Certificate.
+     */
+    serialNumber: string;
+    /**
+     * The type of hash used for the Client Certificate..
+     */
+    signature: string;
+    /**
+     * Subject Key Identifier
+     */
+    ski: string;
+    /**
+     * State, provided by the CSR
+     */
+    state: string;
+    /**
+     * Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions
+     * Available values: "active", "pending*reactivation", "pending*revocation", "revoked".
+     */
+    status: string;
+    /**
+     * The number of days the Client Certificate will be valid after the issuedOn date
+     */
+    validityDays: number;
+}
+
+export interface GetClientCertificatesResultCertificateAuthority {
+    id: string;
+    name: string;
 }
 
 export interface GetCloudConnectorRulesRule {
@@ -7096,6 +7849,10 @@ export interface GetCustomHostnameSsl {
      */
     customKey: string;
     /**
+     * DCV Delegation records for domain validation.
+     */
+    dcvDelegationRecords: outputs.GetCustomHostnameSslDcvDelegationRecord[];
+    /**
      * The time the custom certificate expires on.
      */
     expiresOn: string;
@@ -7150,6 +7907,41 @@ export interface GetCustomHostnameSsl {
     wildcard: boolean;
 }
 
+export interface GetCustomHostnameSslDcvDelegationRecord {
+    /**
+     * The CNAME record hostname for DCV delegation.
+     */
+    cname: string;
+    /**
+     * The CNAME record target value for DCV delegation.
+     */
+    cnameTarget: string;
+    /**
+     * The set of email addresses that the certificate authority (CA) will use to complete domain validation.
+     */
+    emails: string[];
+    /**
+     * The content that the certificate authority (CA) will expect to find at the httpUrl during the domain validation.
+     */
+    httpBody: string;
+    /**
+     * The url that will be checked during domain validation.
+     */
+    httpUrl: string;
+    /**
+     * Status of the validation record.
+     */
+    status: string;
+    /**
+     * The hostname that the certificate authority (CA) will check for a TXT record during domain validation .
+     */
+    txtName: string;
+    /**
+     * The TXT record that the certificate authority (CA) will check during domain validation.
+     */
+    txtValue: string;
+}
+
 export interface GetCustomHostnameSslSettings {
     /**
      * An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
@@ -7186,6 +7978,14 @@ export interface GetCustomHostnameSslValidationError {
 
 export interface GetCustomHostnameSslValidationRecord {
     /**
+     * The CNAME record hostname for DCV delegation.
+     */
+    cname: string;
+    /**
+     * The CNAME record target value for DCV delegation.
+     */
+    cnameTarget: string;
+    /**
      * The set of email addresses that the certificate authority (CA) will use to complete domain validation.
      */
     emails: string[];
@@ -7197,6 +7997,10 @@ export interface GetCustomHostnameSslValidationRecord {
      * The url that will be checked during domain validation.
      */
     httpUrl: string;
+    /**
+     * Status of the validation record.
+     */
+    status: string;
     /**
      * The hostname that the certificate authority (CA) will check for a TXT record during domain validation .
      */
@@ -7303,6 +8107,10 @@ export interface GetCustomHostnamesResultSsl {
      */
     customKey: string;
     /**
+     * DCV Delegation records for domain validation.
+     */
+    dcvDelegationRecords: outputs.GetCustomHostnamesResultSslDcvDelegationRecord[];
+    /**
      * The time the custom certificate expires on.
      */
     expiresOn: string;
@@ -7357,6 +8165,41 @@ export interface GetCustomHostnamesResultSsl {
     wildcard: boolean;
 }
 
+export interface GetCustomHostnamesResultSslDcvDelegationRecord {
+    /**
+     * The CNAME record hostname for DCV delegation.
+     */
+    cname: string;
+    /**
+     * The CNAME record target value for DCV delegation.
+     */
+    cnameTarget: string;
+    /**
+     * The set of email addresses that the certificate authority (CA) will use to complete domain validation.
+     */
+    emails: string[];
+    /**
+     * The content that the certificate authority (CA) will expect to find at the httpUrl during the domain validation.
+     */
+    httpBody: string;
+    /**
+     * The url that will be checked during domain validation.
+     */
+    httpUrl: string;
+    /**
+     * Status of the validation record.
+     */
+    status: string;
+    /**
+     * The hostname that the certificate authority (CA) will check for a TXT record during domain validation .
+     */
+    txtName: string;
+    /**
+     * The TXT record that the certificate authority (CA) will check during domain validation.
+     */
+    txtValue: string;
+}
+
 export interface GetCustomHostnamesResultSslSettings {
     /**
      * An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
@@ -7393,6 +8236,14 @@ export interface GetCustomHostnamesResultSslValidationError {
 
 export interface GetCustomHostnamesResultSslValidationRecord {
     /**
+     * The CNAME record hostname for DCV delegation.
+     */
+    cname: string;
+    /**
+     * The CNAME record target value for DCV delegation.
+     */
+    cnameTarget: string;
+    /**
      * The set of email addresses that the certificate authority (CA) will use to complete domain validation.
      */
     emails: string[];
@@ -7405,6 +8256,10 @@ export interface GetCustomHostnamesResultSslValidationRecord {
      */
     httpUrl: string;
     /**
+     * Status of the validation record.
+     */
+    status: string;
+    /**
      * The hostname that the certificate authority (CA) will check for a TXT record during domain validation .
      */
     txtName: string;
@@ -7412,6 +8267,53 @@ export interface GetCustomHostnamesResultSslValidationRecord {
      * The TXT record that the certificate authority (CA) will check during domain validation.
      */
     txtValue: string;
+}
+
+export interface GetCustomOriginTrustStoreFilter {
+    /**
+     * Limit to the number of records returned.
+     */
+    limit?: number;
+    /**
+     * Offset the results
+     */
+    offset?: number;
+}
+
+export interface GetCustomOriginTrustStoresResult {
+    /**
+     * The zone's SSL certificate or certificate and the intermediate(s).
+     */
+    certificate: string;
+    /**
+     * When the certificate expires.
+     */
+    expiresOn: string;
+    /**
+     * Identifier.
+     */
+    id: string;
+    /**
+     * The certificate authority that issued the certificate.
+     */
+    issuer: string;
+    /**
+     * The type of hash used for the certificate.
+     */
+    signature: string;
+    /**
+     * Status of the zone's custom SSL.
+     * Available values: "initializing", "pending*deployment", "active", "pending*deletion", "deleted", "expired".
+     */
+    status: string;
+    /**
+     * When the certificate was last modified.
+     */
+    updatedAt: string;
+    /**
+     * When the certificate was uploaded to Cloudflare.
+     */
+    uploadedOn: string;
 }
 
 export interface GetCustomPagesListResult {
@@ -7536,11 +8438,13 @@ export interface GetCustomSslsResult {
      */
     modifiedOn: string;
     /**
-     * Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+     * The policy restrictions returned by the API. This field is returned in responses
+     * when a policy has been set. The API accepts the "policy" field in requests but
+     * returns this field as "policyRestrictions" in responses.
      */
-    policy: string;
+    policyRestrictions: string;
     /**
-     * The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy*custom' certificates, but 'legacy*custom' certificates will always supercede 'sni_custom' certificates.
+     * The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.
      */
     priority: number;
     /**
@@ -10938,6 +11842,7 @@ export interface GetMagicTransitSiteLanStaticAddressingDhcpServer {
 }
 
 export interface GetMagicTransitSiteLansResult {
+    bondId: number;
     /**
      * mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
      */
@@ -12197,7 +13102,8 @@ export interface GetOriginCaCertificatesResult {
      */
     expiresOn: string;
     /**
-     * Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
+     * Array of hostnames or wildcard names bound to the certificate.
+     * Hostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wildcards are supported only as a `*.` prefix for a single level (e.g., `*.example.com`). Double wildcards (`*.*.example.com`) and interior wildcards (`foo.*.example.com`) are not allowed. The wildcard suffix must be a multi-label domain (`*.example.com` is valid, but `*.com` is not). Unicode/IDN hostnames are accepted and automatically converted to punycode.
      */
     hostnames: string[];
     /**
@@ -12264,7 +13170,7 @@ export interface GetPageShieldCookiesListResult {
 export interface GetPageShieldPoliciesResult {
     /**
      * The action to take if the expression matches
-     * Available values: "allow", "log".
+     * Available values: "allow", "log", "add*reporting*directives".
      */
     action: string;
     /**
@@ -14526,13 +15432,10 @@ export interface GetQueueConsumer {
     consumerId: string;
     createdOn: string;
     /**
-     * A Resource identifier.
+     * Name of the dead letter queue, or empty string if not configured
      */
-    queueId: string;
-    /**
-     * Name of a Worker
-     */
-    script: string;
+    deadLetterQueue: string;
+    queueName: string;
     /**
      * Name of a Worker
      */
@@ -14578,13 +15481,10 @@ export interface GetQueueConsumersResult {
     consumerId: string;
     createdOn: string;
     /**
-     * A Resource identifier.
+     * Name of the dead letter queue, or empty string if not configured
      */
-    queueId: string;
-    /**
-     * Name of a Worker
-     */
-    script: string;
+    deadLetterQueue: string;
+    queueName: string;
     /**
      * Name of a Worker
      */
@@ -14667,13 +15567,10 @@ export interface GetQueuesResultConsumer {
     consumerId: string;
     createdOn: string;
     /**
-     * A Resource identifier.
+     * Name of the dead letter queue, or empty string if not configured
      */
-    queueId: string;
-    /**
-     * Name of a Worker
-     */
-    script: string;
+    deadLetterQueue: string;
+    queueName: string;
     /**
      * Name of a Worker
      */
@@ -15393,7 +16290,7 @@ export interface GetResourceGroupsResultScopeObject {
 export interface GetRulesetRule {
     /**
      * The action to perform when the rule matches.
-     * Available values: "block", "challenge", "compress*response", "ddos*dynamic", "execute", "force*connection*close", "js*challenge", "log", "log*custom*field", "managed*challenge", "redirect", "rewrite", "route", "score", "serve*error", "set*cache*settings", "set*config", "skip".
+     * Available values: "block", "challenge", "compress*response", "ddos*dynamic", "execute", "force*connection*close", "js*challenge", "log", "log*custom*field", "managed*challenge", "redirect", "rewrite", "route", "score", "serve*error", "set*cache*control", "set*cache*settings", "set*cache*tags", "set*config", "skip".
      */
     action: string;
     /**
@@ -15513,6 +16410,10 @@ export interface GetRulesetRuleActionParameters {
      */
     emailObfuscation: boolean;
     /**
+     * An expression to generate cache tags for set*cache*tags action.
+     */
+    expression: string;
+    /**
      * Whether to enable Cloudflare Fonts.
      */
     fonts: boolean;
@@ -15541,6 +16442,10 @@ export interface GetRulesetRuleActionParameters {
      */
     id: string;
     /**
+     * Set the immutable cache control directive.
+     */
+    immutable: outputs.GetRulesetRuleActionParametersImmutable;
+    /**
      * A delta to change the score by, which can be either positive or negative.
      */
     increment: number;
@@ -15549,9 +16454,38 @@ export interface GetRulesetRuleActionParameters {
      */
     matchedData: outputs.GetRulesetRuleActionParametersMatchedData;
     /**
+     * Set the max-age cache control directive.
+     */
+    maxAge: outputs.GetRulesetRuleActionParametersMaxAge;
+    /**
      * Whether to enable Mirage.
      */
     mirage: boolean;
+    /**
+     * Set the must-revalidate cache control directive.
+     */
+    mustRevalidate: outputs.GetRulesetRuleActionParametersMustRevalidate;
+    /**
+     * Set the must-understand cache control directive.
+     */
+    mustUnderstand: outputs.GetRulesetRuleActionParametersMustUnderstand;
+    /**
+     * Set the no-cache cache control directive.
+     */
+    noCache: outputs.GetRulesetRuleActionParametersNoCache;
+    /**
+     * Set the no-store cache control directive.
+     */
+    noStore: outputs.GetRulesetRuleActionParametersNoStore;
+    /**
+     * Set the no-transform cache control directive.
+     */
+    noTransform: outputs.GetRulesetRuleActionParametersNoTransform;
+    /**
+     * The operation to perform for set*cache*tags action.
+     * Available values: "set", "add", "remove".
+     */
+    operation: string;
     /**
      * Whether to enable Opportunistic Encryption.
      */
@@ -15574,7 +16508,7 @@ export interface GetRulesetRuleActionParameters {
     overrides: outputs.GetRulesetRuleActionParametersOverrides;
     /**
      * A list of phases to skip the execution of. This option is incompatible with the rulesets option.
-     * Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
+     * Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*cache*settings", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit*ratelimit".
      */
     phases: string[];
     /**
@@ -15583,10 +16517,22 @@ export interface GetRulesetRuleActionParameters {
      */
     polish: string;
     /**
+     * Set the private cache control directive.
+     */
+    private: outputs.GetRulesetRuleActionParametersPrivate;
+    /**
      * A list of legacy security products to skip the execution of.
      * Available values: "bic", "hot", "rateLimit", "securityLevel", "uaBlock", "waf", "zoneLockdown".
      */
     products: string[];
+    /**
+     * Set the proxy-revalidate cache control directive.
+     */
+    proxyRevalidate: outputs.GetRulesetRuleActionParametersProxyRevalidate;
+    /**
+     * Set the public cache control directive.
+     */
+    public: outputs.GetRulesetRuleActionParametersPublic;
     /**
      * The raw response fields to log.
      */
@@ -15639,6 +16585,10 @@ export interface GetRulesetRuleActionParameters {
      */
     rulesets: string[];
     /**
+     * Set the s-maxage cache control directive.
+     */
+    sMaxage: outputs.GetRulesetRuleActionParametersSMaxage;
+    /**
      * The Security Level to configure.
      * Available values: "off", "essentially*off", "low", "medium", "high", "under*attack".
      */
@@ -15661,9 +16611,29 @@ export interface GetRulesetRuleActionParameters {
      */
     ssl: string;
     /**
+     * Set the stale-if-error cache control directive.
+     */
+    staleIfError: outputs.GetRulesetRuleActionParametersStaleIfError;
+    /**
+     * Set the stale-while-revalidate cache control directive.
+     */
+    staleWhileRevalidate: outputs.GetRulesetRuleActionParametersStaleWhileRevalidate;
+    /**
      * The status code to use for the error.
      */
     statusCode: number;
+    /**
+     * Whether to strip the ETag header from the response.
+     */
+    stripEtags: boolean;
+    /**
+     * Whether to strip the Last-Modified header from the response.
+     */
+    stripLastModified: boolean;
+    /**
+     * Whether to strip the Set-Cookie header from the response.
+     */
+    stripSetCookie: boolean;
     /**
      * Whether to enable Signed Exchanges (SXG).
      */
@@ -15676,6 +16646,10 @@ export interface GetRulesetRuleActionParameters {
      * A URI rewrite.
      */
     uri: outputs.GetRulesetRuleActionParametersUri;
+    /**
+     * The cache tag values for set*cache*tags action.
+     */
+    values: string[];
 }
 
 export interface GetRulesetRuleActionParametersAlgorithm {
@@ -15953,11 +16927,103 @@ export interface GetRulesetRuleActionParametersHeaders {
     value: string;
 }
 
+export interface GetRulesetRuleActionParametersImmutable {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly: boolean;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: string;
+}
+
 export interface GetRulesetRuleActionParametersMatchedData {
     /**
      * The public key to encrypt matched data logs with.
      */
     publicKey: string;
+}
+
+export interface GetRulesetRuleActionParametersMaxAge {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly: boolean;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: string;
+    /**
+     * The value for the directive in seconds.
+     */
+    value: number;
+}
+
+export interface GetRulesetRuleActionParametersMustRevalidate {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly: boolean;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: string;
+}
+
+export interface GetRulesetRuleActionParametersMustUnderstand {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly: boolean;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: string;
+}
+
+export interface GetRulesetRuleActionParametersNoCache {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly: boolean;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: string;
+    /**
+     * The qualifiers for the directive.
+     */
+    qualifiers: string[];
+}
+
+export interface GetRulesetRuleActionParametersNoStore {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly: boolean;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: string;
+}
+
+export interface GetRulesetRuleActionParametersNoTransform {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly: boolean;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: string;
 }
 
 export interface GetRulesetRuleActionParametersOrigin {
@@ -16039,6 +17105,46 @@ export interface GetRulesetRuleActionParametersOverridesRule {
     sensitivityLevel: string;
 }
 
+export interface GetRulesetRuleActionParametersPrivate {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly: boolean;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: string;
+    /**
+     * The qualifiers for the directive.
+     */
+    qualifiers: string[];
+}
+
+export interface GetRulesetRuleActionParametersProxyRevalidate {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly: boolean;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: string;
+}
+
+export interface GetRulesetRuleActionParametersPublic {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly: boolean;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: string;
+}
+
 export interface GetRulesetRuleActionParametersRawResponseField {
     /**
      * The name of the response header.
@@ -16083,6 +17189,22 @@ export interface GetRulesetRuleActionParametersResponseField {
     preserveDuplicates: boolean;
 }
 
+export interface GetRulesetRuleActionParametersSMaxage {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly: boolean;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: string;
+    /**
+     * The value for the directive in seconds.
+     */
+    value: number;
+}
+
 export interface GetRulesetRuleActionParametersServeStale {
     /**
      * Whether Cloudflare should disable serving stale content while getting the latest content from the origin.
@@ -16095,6 +17217,38 @@ export interface GetRulesetRuleActionParametersSni {
      * A value to override the SNI to.
      */
     value: string;
+}
+
+export interface GetRulesetRuleActionParametersStaleIfError {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly: boolean;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: string;
+    /**
+     * The value for the directive in seconds.
+     */
+    value: number;
+}
+
+export interface GetRulesetRuleActionParametersStaleWhileRevalidate {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly: boolean;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: string;
+    /**
+     * The value for the directive in seconds.
+     */
+    value: number;
 }
 
 export interface GetRulesetRuleActionParametersTransformedRequestField {
@@ -16324,15 +17478,15 @@ export interface GetSchemaValidationSchemasListResult {
 
 export interface GetSnippetListResult {
     /**
-     * The timestamp of when the snippet was created.
+     * Indicates when the snippet was created.
      */
     createdOn: string;
     /**
-     * The timestamp of when the snippet was last modified.
+     * Indicates when the snippet was last modified.
      */
     modifiedOn: string;
     /**
-     * The identifying name of the snippet.
+     * Identify the snippet.
      */
     snippetName: string;
 }
@@ -17216,8 +18370,13 @@ export interface GetTurnstileWidgetFilter {
      */
     direction?: string;
     /**
+     * Filter widgets by field using case-insensitive substring matching.
+     * Format: `field:value`
+     */
+    filter?: string;
+    /**
      * Field to order widgets by.
-     * Available values: "id", "sitekey", "name", "created*on", "modified*on".
+     * Available values: "id", "sitekey", "name", "createdOn", "modifiedOn".
      */
     order?: string;
 }
@@ -18146,6 +19305,10 @@ export interface GetWorkerVersionBinding {
      */
     service: string;
     /**
+     * The rate limit configuration.
+     */
+    simple: outputs.GetWorkerVersionBindingSimple;
+    /**
      * ID of the store containing the secret.
      */
     storeId: string;
@@ -18155,7 +19318,7 @@ export interface GetWorkerVersionBinding {
     text: string;
     /**
      * The kind of resource that the binding provides.
-     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasmModule".
+     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasmModule".
      */
     type: string;
     /**
@@ -18176,14 +19339,25 @@ export interface GetWorkerVersionBindingOutbound {
     /**
      * Pass information from the Dispatch Worker to the Outbound Worker through the parameters.
      */
-    params: string[];
+    params: outputs.GetWorkerVersionBindingOutboundParam[];
     /**
      * Outbound worker.
      */
     worker: outputs.GetWorkerVersionBindingOutboundWorker;
 }
 
+export interface GetWorkerVersionBindingOutboundParam {
+    /**
+     * Name of the parameter.
+     */
+    name: string;
+}
+
 export interface GetWorkerVersionBindingOutboundWorker {
+    /**
+     * Entrypoint to invoke on the outbound worker.
+     */
+    entrypoint: string;
     /**
      * Environment of the outbound worker.
      */
@@ -18192,6 +19366,17 @@ export interface GetWorkerVersionBindingOutboundWorker {
      * Name of the outbound worker.
      */
     service: string;
+}
+
+export interface GetWorkerVersionBindingSimple {
+    /**
+     * The limit (requests per period).
+     */
+    limit: number;
+    /**
+     * The period in seconds.
+     */
+    period: number;
 }
 
 export interface GetWorkerVersionLimits {
@@ -18298,10 +19483,41 @@ export interface GetWorkerVersionModule {
 
 export interface GetWorkerVersionPlacement {
     /**
-     * Placement mode for the version.
-     * Available values: "smart".
+     * TCP host and port for targeted placement.
+     */
+    host: string;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname: string;
+    /**
+     * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: "smart", "targeted".
      */
     mode: string;
+    /**
+     * Cloud region for targeted placement in format 'provider:region'.
+     */
+    region: string;
+    /**
+     * Array of placement targets (currently limited to single target).
+     */
+    targets: outputs.GetWorkerVersionPlacementTarget[];
+}
+
+export interface GetWorkerVersionPlacementTarget {
+    /**
+     * TCP host:port for targeted placement.
+     */
+    host: string;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname: string;
+    /**
+     * Cloud region in format 'provider:region'.
+     */
+    region: string;
 }
 
 export interface GetWorkerVersionsResult {
@@ -18363,7 +19579,7 @@ export interface GetWorkerVersionsResult {
      */
     number: number;
     /**
-     * Placement settings for the version.
+     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
      */
     placement: outputs.GetWorkerVersionsResultPlacement;
     /**
@@ -18538,6 +19754,10 @@ export interface GetWorkerVersionsResultBinding {
      */
     service: string;
     /**
+     * The rate limit configuration.
+     */
+    simple: outputs.GetWorkerVersionsResultBindingSimple;
+    /**
      * ID of the store containing the secret.
      */
     storeId: string;
@@ -18547,7 +19767,7 @@ export interface GetWorkerVersionsResultBinding {
     text: string;
     /**
      * The kind of resource that the binding provides.
-     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasmModule".
+     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasmModule".
      */
     type: string;
     /**
@@ -18568,14 +19788,25 @@ export interface GetWorkerVersionsResultBindingOutbound {
     /**
      * Pass information from the Dispatch Worker to the Outbound Worker through the parameters.
      */
-    params: string[];
+    params: outputs.GetWorkerVersionsResultBindingOutboundParam[];
     /**
      * Outbound worker.
      */
     worker: outputs.GetWorkerVersionsResultBindingOutboundWorker;
 }
 
+export interface GetWorkerVersionsResultBindingOutboundParam {
+    /**
+     * Name of the parameter.
+     */
+    name: string;
+}
+
 export interface GetWorkerVersionsResultBindingOutboundWorker {
+    /**
+     * Entrypoint to invoke on the outbound worker.
+     */
+    entrypoint: string;
     /**
      * Environment of the outbound worker.
      */
@@ -18584,6 +19815,17 @@ export interface GetWorkerVersionsResultBindingOutboundWorker {
      * Name of the outbound worker.
      */
     service: string;
+}
+
+export interface GetWorkerVersionsResultBindingSimple {
+    /**
+     * The limit (requests per period).
+     */
+    limit: number;
+    /**
+     * The period in seconds.
+     */
+    period: number;
 }
 
 export interface GetWorkerVersionsResultLimits {
@@ -18690,10 +19932,41 @@ export interface GetWorkerVersionsResultModule {
 
 export interface GetWorkerVersionsResultPlacement {
     /**
-     * Placement mode for the version.
-     * Available values: "smart".
+     * TCP host and port for targeted placement.
+     */
+    host: string;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname: string;
+    /**
+     * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: "smart", "targeted".
      */
     mode: string;
+    /**
+     * Cloud region for targeted placement in format 'provider:region'.
+     */
+    region: string;
+    /**
+     * Array of placement targets (currently limited to single target).
+     */
+    targets: outputs.GetWorkerVersionsResultPlacementTarget[];
+}
+
+export interface GetWorkerVersionsResultPlacementTarget {
+    /**
+     * TCP host:port for targeted placement.
+     */
+    host: string;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname: string;
+    /**
+     * Cloud region in format 'provider:region'.
+     */
+    region: string;
 }
 
 export interface GetWorkersCronTriggerSchedule {
@@ -18795,10 +20068,6 @@ export interface GetWorkersForPlatformsDispatchNamespacesResult {
      * API Resource UUID tag.
      */
     namespaceId: string;
-    /**
-     * Name of the Workers for Platforms dispatch namespace.
-     */
-    namespaceName: string;
     /**
      * The current number of scripts in this Dispatch Namespace.
      */
@@ -19118,11 +20387,11 @@ export interface GetWorkersScriptsResult {
      */
     observability: outputs.GetWorkersScriptsResultObservability;
     /**
-     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
+     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
      */
     placement: outputs.GetWorkersScriptsResultPlacement;
     /**
-     * Available values: "smart".
+     * Available values: "smart", "targeted".
      *
      * @deprecated This attribute is deprecated.
      */
@@ -19220,7 +20489,7 @@ export interface GetWorkersScriptsResultPlacement {
     lastAnalyzedAt: string;
     /**
      * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: "smart".
+     * Available values: "smart", "targeted".
      */
     mode: string;
     /**
@@ -19232,6 +20501,25 @@ export interface GetWorkersScriptsResultPlacement {
      * Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
      */
     status: string;
+    /**
+     * Array of placement targets (currently limited to single target).
+     */
+    targets: outputs.GetWorkersScriptsResultPlacementTarget[];
+}
+
+export interface GetWorkersScriptsResultPlacementTarget {
+    /**
+     * TCP host:port for targeted placement.
+     */
+    host: string;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname: string;
+    /**
+     * Cloud region in format 'provider:region'.
+     */
+    region: string;
 }
 
 export interface GetWorkersScriptsResultRoute {
@@ -19326,6 +20614,7 @@ export interface GetZeroTrustAccessAiControlsMcpPortalServer {
      * server id
      */
     id: string;
+    lastSuccessfulSync: string;
     lastSynced: string;
     modifiedAt: string;
     modifiedBy: string;
@@ -19350,6 +20639,10 @@ export interface GetZeroTrustAccessAiControlsMcpPortalsResult {
     modifiedAt: string;
     modifiedBy: string;
     name: string;
+    /**
+     * Route outbound MCP traffic through Zero Trust Secure Web Gateway
+     */
+    secureWebGateway: boolean;
 }
 
 export interface GetZeroTrustAccessAiControlsMcpServerFilter {
@@ -19373,6 +20666,7 @@ export interface GetZeroTrustAccessAiControlsMcpServersResult {
      * server id
      */
     id: string;
+    lastSuccessfulSync: string;
     lastSynced: string;
     modifiedAt: string;
     modifiedBy: string;
@@ -24474,6 +25768,10 @@ export interface GetZeroTrustAccessPoliciesResult {
      * Requires the user to request access from an administrator at the start of each session.
      */
     approvalRequired: boolean;
+    /**
+     * The rules that define how users may connect to targets secured by your application.
+     */
+    connectionRules: outputs.GetZeroTrustAccessPoliciesResultConnectionRules;
     createdAt: string;
     /**
      * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
@@ -24496,6 +25794,10 @@ export interface GetZeroTrustAccessPoliciesResult {
      * Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
      */
     isolationRequired: boolean;
+    /**
+     * Configures multi-factor authentication (MFA) settings.
+     */
+    mfaConfig: outputs.GetZeroTrustAccessPoliciesResultMfaConfig;
     /**
      * The name of the Access policy.
      */
@@ -24533,6 +25835,24 @@ export interface GetZeroTrustAccessPoliciesResultApprovalGroup {
      * The UUID of an re-usable email list.
      */
     emailListUuid: string;
+}
+
+export interface GetZeroTrustAccessPoliciesResultConnectionRules {
+    /**
+     * The RDP-specific rules that define clipboard behavior for RDP connections.
+     */
+    rdp: outputs.GetZeroTrustAccessPoliciesResultConnectionRulesRdp;
+}
+
+export interface GetZeroTrustAccessPoliciesResultConnectionRulesRdp {
+    /**
+     * Clipboard formats allowed when copying from local machine to remote RDP session.
+     */
+    allowedClipboardLocalToRemoteFormats: string[];
+    /**
+     * Clipboard formats allowed when copying from remote RDP session to local machine.
+     */
+    allowedClipboardRemoteToLocalFormats: string[];
 }
 
 export interface GetZeroTrustAccessPoliciesResultExclude {
@@ -25009,6 +26329,21 @@ export interface GetZeroTrustAccessPoliciesResultIncludeServiceToken {
     tokenId: string;
 }
 
+export interface GetZeroTrustAccessPoliciesResultMfaConfig {
+    /**
+     * Lists the MFA methods that users can authenticate with.
+     */
+    allowedAuthenticators: string[];
+    /**
+     * Indicates whether to bypass MFA for this resource. This option is available at the application and policy level.
+     */
+    mfaBypass: boolean;
+    /**
+     * Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
+     */
+    sessionDuration: string;
+}
+
 export interface GetZeroTrustAccessPoliciesResultRequire {
     /**
      * An empty object which matches on all service tokens.
@@ -25259,6 +26594,24 @@ export interface GetZeroTrustAccessPolicyApprovalGroup {
      * The UUID of an re-usable email list.
      */
     emailListUuid: string;
+}
+
+export interface GetZeroTrustAccessPolicyConnectionRules {
+    /**
+     * The RDP-specific rules that define clipboard behavior for RDP connections.
+     */
+    rdp: outputs.GetZeroTrustAccessPolicyConnectionRulesRdp;
+}
+
+export interface GetZeroTrustAccessPolicyConnectionRulesRdp {
+    /**
+     * Clipboard formats allowed when copying from local machine to remote RDP session.
+     */
+    allowedClipboardLocalToRemoteFormats: string[];
+    /**
+     * Clipboard formats allowed when copying from remote RDP session to local machine.
+     */
+    allowedClipboardRemoteToLocalFormats: string[];
 }
 
 export interface GetZeroTrustAccessPolicyExclude {
@@ -25733,6 +27086,21 @@ export interface GetZeroTrustAccessPolicyIncludeServiceToken {
      * The ID of a Service Token.
      */
     tokenId: string;
+}
+
+export interface GetZeroTrustAccessPolicyMfaConfig {
+    /**
+     * Lists the MFA methods that users can authenticate with.
+     */
+    allowedAuthenticators: string[];
+    /**
+     * Indicates whether to bypass MFA for this resource. This option is available at the application and policy level.
+     */
+    mfaBypass: boolean;
+    /**
+     * Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
+     */
+    sessionDuration: string;
 }
 
 export interface GetZeroTrustAccessPolicyRequire {
@@ -26844,6 +28212,77 @@ export interface GetZeroTrustDevicePostureRulesResultMatch {
     platform: string;
 }
 
+export interface GetZeroTrustDexRuleTargetedTest {
+    /**
+     * The configuration object which contains the details for the WARP client to conduct the test.
+     */
+    data: outputs.GetZeroTrustDexRuleTargetedTestData;
+    enabled: boolean;
+    name: string;
+    testId: string;
+}
+
+export interface GetZeroTrustDexRuleTargetedTestData {
+    /**
+     * The desired endpoint to test.
+     */
+    host: string;
+    /**
+     * The type of test.
+     * Available values: "http", "traceroute".
+     */
+    kind: string;
+    /**
+     * The HTTP request method type.
+     * Available values: "GET".
+     */
+    method: string;
+}
+
+export interface GetZeroTrustDexRulesResult {
+    rules: outputs.GetZeroTrustDexRulesResultRule[];
+}
+
+export interface GetZeroTrustDexRulesResultRule {
+    createdAt: string;
+    description: string;
+    /**
+     * API Resource UUID tag.
+     */
+    id: string;
+    match: string;
+    name: string;
+    targetedTests: outputs.GetZeroTrustDexRulesResultRuleTargetedTest[];
+    updatedAt: string;
+}
+
+export interface GetZeroTrustDexRulesResultRuleTargetedTest {
+    /**
+     * The configuration object which contains the details for the WARP client to conduct the test.
+     */
+    data: outputs.GetZeroTrustDexRulesResultRuleTargetedTestData;
+    enabled: boolean;
+    name: string;
+    testId: string;
+}
+
+export interface GetZeroTrustDexRulesResultRuleTargetedTestData {
+    /**
+     * The desired endpoint to test.
+     */
+    host: string;
+    /**
+     * The type of test.
+     * Available values: "http", "traceroute".
+     */
+    kind: string;
+    /**
+     * The HTTP request method type.
+     * Available values: "GET".
+     */
+    method: string;
+}
+
 export interface GetZeroTrustDexTestData {
     /**
      * The desired endpoint to test.
@@ -26851,12 +28290,26 @@ export interface GetZeroTrustDexTestData {
     host: string;
     /**
      * The type of test.
+     * Available values: "http", "traceroute".
      */
     kind: string;
     /**
      * The HTTP request method type.
+     * Available values: "GET".
      */
     method: string;
+}
+
+export interface GetZeroTrustDexTestFilter {
+    /**
+     * Filter by test type
+     * Available values: "http", "traceroute".
+     */
+    kind?: string;
+    /**
+     * Filter by test name
+     */
+    testName?: string;
 }
 
 export interface GetZeroTrustDexTestTargetPolicy {
@@ -26865,7 +28318,7 @@ export interface GetZeroTrustDexTestTargetPolicy {
      */
     default: boolean;
     /**
-     * The id of the DEX rule
+     * API Resource UUID tag.
      */
     id: string;
     /**
@@ -26917,10 +28370,12 @@ export interface GetZeroTrustDexTestsResultData {
     host: string;
     /**
      * The type of test.
+     * Available values: "http", "traceroute".
      */
     kind: string;
     /**
      * The HTTP request method type.
+     * Available values: "GET".
      */
     method: string;
 }
@@ -26931,7 +28386,7 @@ export interface GetZeroTrustDexTestsResultTargetPolicy {
      */
     default: boolean;
     /**
-     * The id of the DEX rule
+     * API Resource UUID tag.
      */
     id: string;
     /**
@@ -26949,6 +28404,7 @@ export interface GetZeroTrustDlpCustomEntriesResult {
     caseSensitive: boolean;
     confidence: outputs.GetZeroTrustDlpCustomEntriesResultConfidence;
     createdAt: string;
+    description: string;
     enabled: boolean;
     id: string;
     name: string;
@@ -27066,6 +28522,7 @@ export interface GetZeroTrustDlpCustomProfileEntry {
     caseSensitive: boolean;
     confidence: outputs.GetZeroTrustDlpCustomProfileEntryConfidence;
     createdAt: string;
+    description: string;
     enabled: boolean;
     id: string;
     name: string;
@@ -27103,6 +28560,64 @@ export interface GetZeroTrustDlpCustomProfileEntryPattern {
 }
 
 export interface GetZeroTrustDlpCustomProfileEntryVariant {
+    description: string;
+    /**
+     * Available values: "Intent", "Content".
+     */
+    topicType: string;
+    /**
+     * Available values: "PromptTopic".
+     */
+    type: string;
+}
+
+export interface GetZeroTrustDlpCustomProfileSharedEntry {
+    /**
+     * Only applies to custom word lists.
+     * Determines if the words should be matched in a case-sensitive manner
+     * Cannot be set to false if secret is true
+     */
+    caseSensitive: boolean;
+    confidence: outputs.GetZeroTrustDlpCustomProfileSharedEntryConfidence;
+    createdAt: string;
+    description: string;
+    enabled: boolean;
+    id: string;
+    name: string;
+    pattern: outputs.GetZeroTrustDlpCustomProfileSharedEntryPattern;
+    profileId: string;
+    secret: boolean;
+    /**
+     * Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+     */
+    type: string;
+    updatedAt: string;
+    variant: outputs.GetZeroTrustDlpCustomProfileSharedEntryVariant;
+    wordList: string;
+}
+
+export interface GetZeroTrustDlpCustomProfileSharedEntryConfidence {
+    /**
+     * Indicates whether this entry has AI remote service validation.
+     */
+    aiContextAvailable: boolean;
+    /**
+     * Indicates whether this entry has any form of validation that is not an AI remote service.
+     */
+    available: boolean;
+}
+
+export interface GetZeroTrustDlpCustomProfileSharedEntryPattern {
+    regex: string;
+    /**
+     * Available values: "luhn".
+     *
+     * @deprecated This attribute is deprecated.
+     */
+    validation: string;
+}
+
+export interface GetZeroTrustDlpCustomProfileSharedEntryVariant {
     description: string;
     /**
      * Available values: "Intent", "Content".
@@ -27185,6 +28700,7 @@ export interface GetZeroTrustDlpEntriesResult {
     caseSensitive: boolean;
     confidence: outputs.GetZeroTrustDlpEntriesResultConfidence;
     createdAt: string;
+    description: string;
     enabled: boolean;
     id: string;
     name: string;
@@ -27284,6 +28800,7 @@ export interface GetZeroTrustDlpIntegrationEntriesResult {
     caseSensitive: boolean;
     confidence: outputs.GetZeroTrustDlpIntegrationEntriesResultConfidence;
     createdAt: string;
+    description: string;
     enabled: boolean;
     id: string;
     name: string;
@@ -27383,6 +28900,7 @@ export interface GetZeroTrustDlpPredefinedEntriesResult {
     caseSensitive: boolean;
     confidence: outputs.GetZeroTrustDlpPredefinedEntriesResultConfidence;
     createdAt: string;
+    description: string;
     enabled: boolean;
     id: string;
     name: string;
@@ -27482,6 +29000,7 @@ export interface GetZeroTrustDlpPredefinedProfileEntry {
     caseSensitive: boolean;
     confidence: outputs.GetZeroTrustDlpPredefinedProfileEntryConfidence;
     createdAt: string;
+    description: string;
     enabled: boolean;
     id: string;
     name: string;
@@ -27897,6 +29416,28 @@ export interface GetZeroTrustGatewayLoggingSettingsByRuleTypeL4 {
      * Specify whether to log only blocking requests to this service.
      */
     logBlocks: boolean;
+}
+
+export interface GetZeroTrustGatewayPacfilesResult {
+    createdAt: string;
+    /**
+     * Detailed description of the PAC file.
+     */
+    description: string;
+    id: string;
+    /**
+     * Name of the PAC file.
+     */
+    name: string;
+    /**
+     * URL-friendly version of the PAC file name.
+     */
+    slug: string;
+    updatedAt: string;
+    /**
+     * Unique URL to download the PAC file.
+     */
+    url: string;
 }
 
 export interface GetZeroTrustGatewayPoliciesResult {
@@ -29213,6 +30754,17 @@ export interface GetZeroTrustOrganizationLoginDesign {
     textColor: string;
 }
 
+export interface GetZeroTrustOrganizationMfaConfig {
+    /**
+     * Lists the MFA methods that users can authenticate with.
+     */
+    allowedAuthenticators: string[];
+    /**
+     * Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
+     */
+    sessionDuration: string;
+}
+
 export interface GetZeroTrustRiskBehaviorBehaviors {
     description: string;
     enabled: boolean;
@@ -30328,7 +31880,7 @@ export interface GetZonesResult {
      */
     modifiedOn: string;
     /**
-     * The domain name.
+     * The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment ("label") not exceeding 63 characters.
      */
     name: string;
     /**
@@ -30782,18 +32334,18 @@ export interface LoadBalancerPoolNotificationFilter {
     /**
      * Filter options for a particular resource type (pool or origin). Use null to reset.
      */
-    origin: outputs.LoadBalancerPoolNotificationFilterOrigin;
+    origin?: outputs.LoadBalancerPoolNotificationFilterOrigin;
     /**
      * Filter options for a particular resource type (pool or origin). Use null to reset.
      */
-    pool: outputs.LoadBalancerPoolNotificationFilterPool;
+    pool?: outputs.LoadBalancerPoolNotificationFilterPool;
 }
 
 export interface LoadBalancerPoolNotificationFilterOrigin {
     /**
      * If set true, disable notifications for this type of resource (pool or origin).
      */
-    disable: boolean;
+    disable?: boolean;
     /**
      * If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).
      */
@@ -30804,7 +32356,7 @@ export interface LoadBalancerPoolNotificationFilterPool {
     /**
      * If set true, disable notifications for this type of resource (pool or origin).
      */
-    disable: boolean;
+    disable?: boolean;
     /**
      * If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).
      */
@@ -32480,7 +34032,7 @@ export interface PagesProjectDeploymentConfigsPreviewServices {
     /**
      * The Service environment.
      */
-    environment?: string;
+    environment: string;
     /**
      * The Service name.
      */
@@ -32679,7 +34231,7 @@ export interface PagesProjectDeploymentConfigsProductionServices {
     /**
      * The Service environment.
      */
-    environment?: string;
+    environment: string;
     /**
      * The Service name.
      */
@@ -33016,13 +34568,10 @@ export interface QueueConsumer {
     consumerId: string;
     createdOn: string;
     /**
-     * A Resource identifier.
+     * Name of the dead letter queue, or empty string if not configured
      */
-    queueId: string;
-    /**
-     * Name of a Worker
-     */
-    script: string;
+    deadLetterQueue: string;
+    queueName: string;
     /**
      * Name of a Worker
      */
@@ -33581,7 +35130,7 @@ export interface RiskBehaviorBehaviors {
 export interface RulesetRule {
     /**
      * The action to perform when the rule matches.
-     * Available values: "block", "challenge", "compress*response", "ddos*dynamic", "execute", "force*connection*close", "js*challenge", "log", "log*custom*field", "managed*challenge", "redirect", "rewrite", "route", "score", "serve*error", "set*cache*settings", "set*config", "skip".
+     * Available values: "block", "challenge", "compress*response", "ddos*dynamic", "execute", "force*connection*close", "js*challenge", "log", "log*custom*field", "managed*challenge", "redirect", "rewrite", "route", "score", "serve*error", "set*cache*control", "set*cache*settings", "set*cache*tags", "set*config", "skip".
      */
     action: string;
     /**
@@ -33697,6 +35246,10 @@ export interface RulesetRuleActionParameters {
      */
     emailObfuscation?: boolean;
     /**
+     * An expression to generate cache tags for set*cache*tags action.
+     */
+    expression?: string;
+    /**
      * Whether to enable Cloudflare Fonts.
      */
     fonts?: boolean;
@@ -33725,6 +35278,10 @@ export interface RulesetRuleActionParameters {
      */
     id?: string;
     /**
+     * Set the immutable cache control directive.
+     */
+    immutable?: outputs.RulesetRuleActionParametersImmutable;
+    /**
      * A delta to change the score by, which can be either positive or negative.
      */
     increment?: number;
@@ -33733,9 +35290,38 @@ export interface RulesetRuleActionParameters {
      */
     matchedData?: outputs.RulesetRuleActionParametersMatchedData;
     /**
+     * Set the max-age cache control directive.
+     */
+    maxAge?: outputs.RulesetRuleActionParametersMaxAge;
+    /**
      * Whether to enable Mirage.
      */
     mirage?: boolean;
+    /**
+     * Set the must-revalidate cache control directive.
+     */
+    mustRevalidate?: outputs.RulesetRuleActionParametersMustRevalidate;
+    /**
+     * Set the must-understand cache control directive.
+     */
+    mustUnderstand?: outputs.RulesetRuleActionParametersMustUnderstand;
+    /**
+     * Set the no-cache cache control directive.
+     */
+    noCache?: outputs.RulesetRuleActionParametersNoCache;
+    /**
+     * Set the no-store cache control directive.
+     */
+    noStore?: outputs.RulesetRuleActionParametersNoStore;
+    /**
+     * Set the no-transform cache control directive.
+     */
+    noTransform?: outputs.RulesetRuleActionParametersNoTransform;
+    /**
+     * The operation to perform for set*cache*tags action.
+     * Available values: "set", "add", "remove".
+     */
+    operation?: string;
     /**
      * Whether to enable Opportunistic Encryption.
      */
@@ -33758,7 +35344,7 @@ export interface RulesetRuleActionParameters {
     overrides?: outputs.RulesetRuleActionParametersOverrides;
     /**
      * A list of phases to skip the execution of. This option is incompatible with the rulesets option.
-     * Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
+     * Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*cache*settings", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit*ratelimit".
      */
     phases?: string[];
     /**
@@ -33767,10 +35353,22 @@ export interface RulesetRuleActionParameters {
      */
     polish?: string;
     /**
+     * Set the private cache control directive.
+     */
+    private?: outputs.RulesetRuleActionParametersPrivate;
+    /**
      * A list of legacy security products to skip the execution of.
      * Available values: "bic", "hot", "rateLimit", "securityLevel", "uaBlock", "waf", "zoneLockdown".
      */
     products?: string[];
+    /**
+     * Set the proxy-revalidate cache control directive.
+     */
+    proxyRevalidate?: outputs.RulesetRuleActionParametersProxyRevalidate;
+    /**
+     * Set the public cache control directive.
+     */
+    public?: outputs.RulesetRuleActionParametersPublic;
     /**
      * The raw response fields to log.
      */
@@ -33823,6 +35421,10 @@ export interface RulesetRuleActionParameters {
      */
     rulesets?: string[];
     /**
+     * Set the s-maxage cache control directive.
+     */
+    sMaxage?: outputs.RulesetRuleActionParametersSMaxage;
+    /**
      * The Security Level to configure.
      * Available values: "off", "essentially*off", "low", "medium", "high", "under*attack".
      */
@@ -33845,9 +35447,29 @@ export interface RulesetRuleActionParameters {
      */
     ssl?: string;
     /**
+     * Set the stale-if-error cache control directive.
+     */
+    staleIfError?: outputs.RulesetRuleActionParametersStaleIfError;
+    /**
+     * Set the stale-while-revalidate cache control directive.
+     */
+    staleWhileRevalidate?: outputs.RulesetRuleActionParametersStaleWhileRevalidate;
+    /**
      * The status code to use for the error.
      */
     statusCode?: number;
+    /**
+     * Whether to strip the ETag header from the response.
+     */
+    stripEtags?: boolean;
+    /**
+     * Whether to strip the Last-Modified header from the response.
+     */
+    stripLastModified?: boolean;
+    /**
+     * Whether to strip the Set-Cookie header from the response.
+     */
+    stripSetCookie?: boolean;
     /**
      * Whether to enable Signed Exchanges (SXG).
      */
@@ -33860,6 +35482,10 @@ export interface RulesetRuleActionParameters {
      * A URI rewrite.
      */
     uri?: outputs.RulesetRuleActionParametersUri;
+    /**
+     * The cache tag values for set*cache*tags action.
+     */
+    values?: string[];
 }
 
 export interface RulesetRuleActionParametersAlgorithm {
@@ -34137,11 +35763,103 @@ export interface RulesetRuleActionParametersHeaders {
     value?: string;
 }
 
+export interface RulesetRuleActionParametersImmutable {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly: boolean;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: string;
+}
+
 export interface RulesetRuleActionParametersMatchedData {
     /**
      * The public key to encrypt matched data logs with.
      */
     publicKey: string;
+}
+
+export interface RulesetRuleActionParametersMaxAge {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly: boolean;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: string;
+    /**
+     * The value for the directive in seconds.
+     */
+    value?: number;
+}
+
+export interface RulesetRuleActionParametersMustRevalidate {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly: boolean;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: string;
+}
+
+export interface RulesetRuleActionParametersMustUnderstand {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly: boolean;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: string;
+}
+
+export interface RulesetRuleActionParametersNoCache {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly: boolean;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: string;
+    /**
+     * The qualifiers for the directive.
+     */
+    qualifiers?: string[];
+}
+
+export interface RulesetRuleActionParametersNoStore {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly: boolean;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: string;
+}
+
+export interface RulesetRuleActionParametersNoTransform {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly: boolean;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: string;
 }
 
 export interface RulesetRuleActionParametersOrigin {
@@ -34223,6 +35941,46 @@ export interface RulesetRuleActionParametersOverridesRule {
     sensitivityLevel?: string;
 }
 
+export interface RulesetRuleActionParametersPrivate {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly: boolean;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: string;
+    /**
+     * The qualifiers for the directive.
+     */
+    qualifiers?: string[];
+}
+
+export interface RulesetRuleActionParametersProxyRevalidate {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly: boolean;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: string;
+}
+
+export interface RulesetRuleActionParametersPublic {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly: boolean;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: string;
+}
+
 export interface RulesetRuleActionParametersRawResponseField {
     /**
      * The name of the response header.
@@ -34267,6 +36025,22 @@ export interface RulesetRuleActionParametersResponseField {
     preserveDuplicates: boolean;
 }
 
+export interface RulesetRuleActionParametersSMaxage {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly: boolean;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: string;
+    /**
+     * The value for the directive in seconds.
+     */
+    value?: number;
+}
+
 export interface RulesetRuleActionParametersServeStale {
     /**
      * Whether Cloudflare should disable serving stale content while getting the latest content from the origin.
@@ -34279,6 +36053,38 @@ export interface RulesetRuleActionParametersSni {
      * A value to override the SNI to.
      */
     value: string;
+}
+
+export interface RulesetRuleActionParametersStaleIfError {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly: boolean;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: string;
+    /**
+     * The value for the directive in seconds.
+     */
+    value?: number;
+}
+
+export interface RulesetRuleActionParametersStaleWhileRevalidate {
+    /**
+     * Whether to apply the directive only to Cloudflare's cache.
+     */
+    cloudflareOnly: boolean;
+    /**
+     * The operation to perform.
+     * Available values: "set", "remove".
+     */
+    operation: string;
+    /**
+     * The value for the directive in seconds.
+     */
+    value?: number;
 }
 
 export interface RulesetRuleActionParametersTransformedRequestField {
@@ -34381,34 +36187,34 @@ export interface SnippetFile {
 
 export interface SnippetMetadata {
     /**
-     * Name of the file that contains the main module of the snippet.
+     * Specify the name of the file that contains the main module of the snippet.
      */
     mainModule: string;
 }
 
 export interface SnippetRulesRule {
     /**
-     * An informative description of the rule.
+     * Provide an informative description of the rule.
      */
     description: string;
     /**
-     * Whether the rule should be executed.
+     * Indicate whether to execute the rule.
      */
     enabled: boolean;
     /**
-     * The expression defining which traffic will match the rule.
+     * Define the expression that determines which traffic matches the rule.
      */
     expression: string;
     /**
-     * The unique ID of the rule.
+     * Specify the unique ID of the rule.
      */
     id: string;
     /**
-     * The timestamp of when the rule was last modified.
+     * Specify the timestamp of when the rule was last modified.
      */
     lastUpdated: string;
     /**
-     * The identifying name of the snippet.
+     * Identify the snippet.
      */
     snippetName: string;
 }
@@ -34441,7 +36247,7 @@ export interface SpectrumApplicationEdgeIps {
     /**
      * The array of customer owned IPs we broadcast via anycast for this hostname and application.
      */
-    ips?: string[];
+    ips: string[];
     /**
      * The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.
      * Available values: "dynamic", "static".
@@ -36150,6 +37956,10 @@ export interface WorkerScriptBinding {
      */
     service?: string;
     /**
+     * A simple rate limit.
+     */
+    simple?: outputs.WorkerScriptBindingSimple;
+    /**
      * ID of the store containing the secret.
      */
     storeId?: string;
@@ -36196,6 +38006,17 @@ export interface WorkerScriptBindingOutboundWorker {
      * Name of the outbound worker.
      */
     service?: string;
+}
+
+export interface WorkerScriptBindingSimple {
+    /**
+     * The rate limit value.
+     */
+    limit: number;
+    /**
+     * The rate limit period in seconds.
+     */
+    period: number;
 }
 
 export interface WorkerScriptLimits {
@@ -36349,7 +38170,7 @@ export interface WorkerScriptPlacement {
     lastAnalyzedAt: string;
     /**
      * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: "smart".
+     * Available values: "smart", "targeted".
      */
     mode?: string;
     /**
@@ -36361,6 +38182,25 @@ export interface WorkerScriptPlacement {
      * Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
      */
     status: string;
+    /**
+     * Array of placement targets (currently limited to single target).
+     */
+    targets: outputs.WorkerScriptPlacementTarget[];
+}
+
+export interface WorkerScriptPlacementTarget {
+    /**
+     * TCP host:port for targeted placement.
+     */
+    host: string;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname: string;
+    /**
+     * Cloud region in format 'provider:region'.
+     */
+    region: string;
 }
 
 export interface WorkerScriptTailConsumer {
@@ -36559,6 +38399,10 @@ export interface WorkerVersionBinding {
      */
     service?: string;
     /**
+     * The rate limit configuration.
+     */
+    simple?: outputs.WorkerVersionBindingSimple;
+    /**
      * ID of the store containing the secret.
      */
     storeId?: string;
@@ -36568,7 +38412,7 @@ export interface WorkerVersionBinding {
     text?: string;
     /**
      * The kind of resource that the binding provides.
-     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasmModule".
+     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasmModule".
      */
     type: string;
     /**
@@ -36589,14 +38433,25 @@ export interface WorkerVersionBindingOutbound {
     /**
      * Pass information from the Dispatch Worker to the Outbound Worker through the parameters.
      */
-    params?: string[];
+    params?: outputs.WorkerVersionBindingOutboundParam[];
     /**
      * Outbound worker.
      */
     worker?: outputs.WorkerVersionBindingOutboundWorker;
 }
 
+export interface WorkerVersionBindingOutboundParam {
+    /**
+     * Name of the parameter.
+     */
+    name: string;
+}
+
 export interface WorkerVersionBindingOutboundWorker {
+    /**
+     * Entrypoint to invoke on the outbound worker.
+     */
+    entrypoint?: string;
     /**
      * Environment of the outbound worker.
      */
@@ -36605,6 +38460,17 @@ export interface WorkerVersionBindingOutboundWorker {
      * Name of the outbound worker.
      */
     service?: string;
+}
+
+export interface WorkerVersionBindingSimple {
+    /**
+     * The limit (requests per period).
+     */
+    limit: number;
+    /**
+     * The period in seconds.
+     */
+    period: number;
 }
 
 export interface WorkerVersionLimits {
@@ -36719,10 +38585,41 @@ export interface WorkerVersionModule {
 
 export interface WorkerVersionPlacement {
     /**
-     * Placement mode for the version.
-     * Available values: "smart".
+     * TCP host and port for targeted placement.
+     */
+    host?: string;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname?: string;
+    /**
+     * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: "smart", "targeted".
      */
     mode?: string;
+    /**
+     * Cloud region for targeted placement in format 'provider:region'.
+     */
+    region?: string;
+    /**
+     * Array of placement targets (currently limited to single target).
+     */
+    targets?: outputs.WorkerVersionPlacementTarget[];
+}
+
+export interface WorkerVersionPlacementTarget {
+    /**
+     * TCP host:port for targeted placement.
+     */
+    host?: string;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname?: string;
+    /**
+     * Cloud region in format 'provider:region'.
+     */
+    region?: string;
 }
 
 export interface WorkersCronTriggerSchedule {
@@ -36909,6 +38806,10 @@ export interface WorkersScriptBinding {
      */
     service?: string;
     /**
+     * A simple rate limit.
+     */
+    simple?: outputs.WorkersScriptBindingSimple;
+    /**
      * ID of the store containing the secret.
      */
     storeId?: string;
@@ -36955,6 +38856,17 @@ export interface WorkersScriptBindingOutboundWorker {
      * Name of the outbound worker.
      */
     service?: string;
+}
+
+export interface WorkersScriptBindingSimple {
+    /**
+     * The rate limit value.
+     */
+    limit: number;
+    /**
+     * The rate limit period in seconds.
+     */
+    period: number;
 }
 
 export interface WorkersScriptLimits {
@@ -37108,7 +39020,7 @@ export interface WorkersScriptPlacement {
     lastAnalyzedAt: string;
     /**
      * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: "smart".
+     * Available values: "smart", "targeted".
      */
     mode?: string;
     /**
@@ -37120,6 +39032,25 @@ export interface WorkersScriptPlacement {
      * Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
      */
     status: string;
+    /**
+     * Array of placement targets (currently limited to single target).
+     */
+    targets: outputs.WorkersScriptPlacementTarget[];
+}
+
+export interface WorkersScriptPlacementTarget {
+    /**
+     * TCP host:port for targeted placement.
+     */
+    host: string;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname: string;
+    /**
+     * Cloud region in format 'provider:region'.
+     */
+    region: string;
 }
 
 export interface WorkersScriptTailConsumer {
@@ -37314,9 +39245,24 @@ export interface ZeroTrustAccessApplicationPolicy {
 
 export interface ZeroTrustAccessApplicationPolicyConnectionRules {
     /**
+     * The RDP-specific rules that define clipboard behavior for RDP connections.
+     */
+    rdp?: outputs.ZeroTrustAccessApplicationPolicyConnectionRulesRdp;
+    /**
      * The SSH-specific rules that define how users may connect to the targets secured by your application.
      */
     ssh?: outputs.ZeroTrustAccessApplicationPolicyConnectionRulesSsh;
+}
+
+export interface ZeroTrustAccessApplicationPolicyConnectionRulesRdp {
+    /**
+     * Clipboard formats allowed when copying from local machine to remote RDP session.
+     */
+    allowedClipboardLocalToRemoteFormats?: string[];
+    /**
+     * Clipboard formats allowed when copying from remote RDP session to local machine.
+     */
+    allowedClipboardRemoteToLocalFormats?: string[];
 }
 
 export interface ZeroTrustAccessApplicationPolicyConnectionRulesSsh {
@@ -39267,6 +41213,24 @@ export interface ZeroTrustAccessPolicyApprovalGroup {
     emailListUuid?: string;
 }
 
+export interface ZeroTrustAccessPolicyConnectionRules {
+    /**
+     * The RDP-specific rules that define clipboard behavior for RDP connections.
+     */
+    rdp?: outputs.ZeroTrustAccessPolicyConnectionRulesRdp;
+}
+
+export interface ZeroTrustAccessPolicyConnectionRulesRdp {
+    /**
+     * Clipboard formats allowed when copying from local machine to remote RDP session.
+     */
+    allowedClipboardLocalToRemoteFormats?: string[];
+    /**
+     * Clipboard formats allowed when copying from remote RDP session to local machine.
+     */
+    allowedClipboardRemoteToLocalFormats?: string[];
+}
+
 export interface ZeroTrustAccessPolicyExclude {
     /**
      * An empty object which matches on all service tokens.
@@ -39739,6 +41703,21 @@ export interface ZeroTrustAccessPolicyIncludeServiceToken {
      * The ID of a Service Token.
      */
     tokenId: string;
+}
+
+export interface ZeroTrustAccessPolicyMfaConfig {
+    /**
+     * Lists the MFA methods that users can authenticate with.
+     */
+    allowedAuthenticators?: string[];
+    /**
+     * Indicates whether to bypass MFA for this resource. This option is available at the application and policy level.
+     */
+    mfaBypass?: boolean;
+    /**
+     * Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
+     */
+    sessionDuration?: string;
 }
 
 export interface ZeroTrustAccessPolicyRequire {
@@ -40373,6 +42352,33 @@ export interface ZeroTrustDevicePostureRuleMatch {
     platform?: string;
 }
 
+export interface ZeroTrustDexRuleTargetedTest {
+    /**
+     * The configuration object which contains the details for the WARP client to conduct the test.
+     */
+    data: outputs.ZeroTrustDexRuleTargetedTestData;
+    enabled: boolean;
+    name: string;
+    testId: string;
+}
+
+export interface ZeroTrustDexRuleTargetedTestData {
+    /**
+     * The desired endpoint to test.
+     */
+    host: string;
+    /**
+     * The type of test.
+     * Available values: "http", "traceroute".
+     */
+    kind: string;
+    /**
+     * The HTTP request method type.
+     * Available values: "GET".
+     */
+    method: string;
+}
+
 export interface ZeroTrustDexTestData {
     /**
      * The desired endpoint to test.
@@ -40460,6 +42466,7 @@ export interface ZeroTrustDlpCustomProfileContextAwarenessSkip {
 }
 
 export interface ZeroTrustDlpCustomProfileEntry {
+    description?: string;
     enabled: boolean;
     entryId?: string;
     name: string;
@@ -41518,6 +43525,17 @@ export interface ZeroTrustOrganizationLoginDesign {
      * The text color on your login page.
      */
     textColor?: string;
+}
+
+export interface ZeroTrustOrganizationMfaConfig {
+    /**
+     * Lists the MFA methods that users can authenticate with.
+     */
+    allowedAuthenticators?: string[];
+    /**
+     * Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
+     */
+    sessionDuration?: string;
 }
 
 export interface ZeroTrustRiskBehaviorBehaviors {

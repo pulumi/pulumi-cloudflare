@@ -142,6 +142,10 @@ namespace Pulumi.Cloudflare
         /// Requires the user to request access from an administrator at the start of each session.
         /// </summary>
         public readonly bool ApprovalRequired;
+        /// <summary>
+        /// The rules that define how users may connect to targets secured by your application.
+        /// </summary>
+        public readonly Outputs.GetZeroTrustAccessPolicyConnectionRulesResult ConnectionRules;
         public readonly string CreatedAt;
         /// <summary>
         /// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
@@ -164,6 +168,10 @@ namespace Pulumi.Cloudflare
         /// Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
         /// </summary>
         public readonly bool IsolationRequired;
+        /// <summary>
+        /// Configures multi-factor authentication (MFA) settings.
+        /// </summary>
+        public readonly Outputs.GetZeroTrustAccessPolicyMfaConfigResult MfaConfig;
         /// <summary>
         /// The name of the Access policy.
         /// </summary>
@@ -201,6 +209,8 @@ namespace Pulumi.Cloudflare
 
             bool approvalRequired,
 
+            Outputs.GetZeroTrustAccessPolicyConnectionRulesResult connectionRules,
+
             string createdAt,
 
             string decision,
@@ -212,6 +222,8 @@ namespace Pulumi.Cloudflare
             ImmutableArray<Outputs.GetZeroTrustAccessPolicyIncludeResult> includes,
 
             bool isolationRequired,
+
+            Outputs.GetZeroTrustAccessPolicyMfaConfigResult mfaConfig,
 
             string name,
 
@@ -233,12 +245,14 @@ namespace Pulumi.Cloudflare
             AppCount = appCount;
             ApprovalGroups = approvalGroups;
             ApprovalRequired = approvalRequired;
+            ConnectionRules = connectionRules;
             CreatedAt = createdAt;
             Decision = decision;
             Excludes = excludes;
             Id = id;
             Includes = includes;
             IsolationRequired = isolationRequired;
+            MfaConfig = mfaConfig;
             Name = name;
             PolicyId = policyId;
             PurposeJustificationPrompt = purposeJustificationPrompt;

@@ -46,13 +46,13 @@ namespace Pulumi.Cloudflare
     public partial class SnippetRules : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A list of snippet rules.
+        /// Lists snippet rules.
         /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.SnippetRulesRule>> Rules { get; private set; } = null!;
 
         /// <summary>
-        /// The unique ID of the zone.
+        /// Use this field to specify the unique ID of the zone.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -107,7 +107,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.SnippetRulesRuleArgs>? _rules;
 
         /// <summary>
-        /// A list of snippet rules.
+        /// Lists snippet rules.
         /// </summary>
         public InputList<Inputs.SnippetRulesRuleArgs> Rules
         {
@@ -116,7 +116,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The unique ID of the zone.
+        /// Use this field to specify the unique ID of the zone.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -133,7 +133,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.SnippetRulesRuleGetArgs>? _rules;
 
         /// <summary>
-        /// A list of snippet rules.
+        /// Lists snippet rules.
         /// </summary>
         public InputList<Inputs.SnippetRulesRuleGetArgs> Rules
         {
@@ -142,7 +142,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The unique ID of the zone.
+        /// Use this field to specify the unique ID of the zone.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

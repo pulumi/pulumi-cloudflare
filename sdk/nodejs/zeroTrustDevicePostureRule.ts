@@ -71,7 +71,7 @@ export class ZeroTrustDevicePostureRule extends pulumi.CustomResource {
     /**
      * The description of the device posture rule.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
      */
@@ -87,7 +87,7 @@ export class ZeroTrustDevicePostureRule extends pulumi.CustomResource {
     /**
      * The name of the device posture rule.
      */
-    declare public readonly name: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string | undefined>;
     /**
      * Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
      */
@@ -123,9 +123,6 @@ export class ZeroTrustDevicePostureRule extends pulumi.CustomResource {
             const args = argsOrState as ZeroTrustDevicePostureRuleArgs | undefined;
             if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
-            }
-            if (args?.name === undefined && !opts.urn) {
-                throw new Error("Missing required property 'name'");
             }
             if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
@@ -206,7 +203,7 @@ export interface ZeroTrustDevicePostureRuleArgs {
     /**
      * The name of the device posture rule.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
      */

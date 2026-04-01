@@ -206,14 +206,14 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="loadShedding", refs={LoadBalancerPoolLoadShedding.class}, tree="[0]")
-    private Output<LoadBalancerPoolLoadShedding> loadShedding;
+    private Output</* @Nullable */ LoadBalancerPoolLoadShedding> loadShedding;
 
     /**
      * @return Configures load shedding policies and percentages for the pool.
      * 
      */
-    public Output<LoadBalancerPoolLoadShedding> loadShedding() {
-        return this.loadShedding;
+    public Output<Optional<LoadBalancerPoolLoadShedding>> loadShedding() {
+        return Codegen.optional(this.loadShedding);
     }
     /**
      * The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
@@ -324,28 +324,28 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="notificationFilter", refs={LoadBalancerPoolNotificationFilter.class}, tree="[0]")
-    private Output<LoadBalancerPoolNotificationFilter> notificationFilter;
+    private Output</* @Nullable */ LoadBalancerPoolNotificationFilter> notificationFilter;
 
     /**
      * @return Filter pool and origin health notifications by resource type or health status. Use null to reset.
      * 
      */
-    public Output<LoadBalancerPoolNotificationFilter> notificationFilter() {
-        return this.notificationFilter;
+    public Output<Optional<LoadBalancerPoolNotificationFilter>> notificationFilter() {
+        return Codegen.optional(this.notificationFilter);
     }
     /**
      * Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
      * 
      */
     @Export(name="originSteering", refs={LoadBalancerPoolOriginSteering.class}, tree="[0]")
-    private Output<LoadBalancerPoolOriginSteering> originSteering;
+    private Output</* @Nullable */ LoadBalancerPoolOriginSteering> originSteering;
 
     /**
      * @return Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
      * 
      */
-    public Output<LoadBalancerPoolOriginSteering> originSteering() {
-        return this.originSteering;
+    public Output<Optional<LoadBalancerPoolOriginSteering>> originSteering() {
+        return Codegen.optional(this.originSteering);
     }
     /**
      * The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.

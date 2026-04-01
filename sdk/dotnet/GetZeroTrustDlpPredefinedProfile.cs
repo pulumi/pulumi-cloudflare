@@ -118,7 +118,13 @@ namespace Pulumi.Cloudflare
         public readonly bool AiContextEnabled;
         public readonly int AllowedMatchCount;
         public readonly string ConfidenceThreshold;
+        /// <summary>
+        /// Entries to enable for this predefined profile. Any entries not provided will be disabled.
+        /// </summary>
         public readonly ImmutableArray<string> EnabledEntries;
+        /// <summary>
+        /// This field has been deprecated for `EnabledEntries`.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetZeroTrustDlpPredefinedProfileEntryResult> Entries;
         /// <summary>
         /// The ID of this resource.

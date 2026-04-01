@@ -4,9 +4,10 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class DlpCustomProfileContextAwarenessSkip {
@@ -14,15 +15,15 @@ public final class DlpCustomProfileContextAwarenessSkip {
      * @return If the content type is a file, skip context analysis and return all matches.
      * 
      */
-    private Boolean files;
+    private @Nullable Boolean files;
 
     private DlpCustomProfileContextAwarenessSkip() {}
     /**
      * @return If the content type is a file, skip context analysis and return all matches.
      * 
      */
-    public Boolean files() {
-        return this.files;
+    public Optional<Boolean> files() {
+        return Optional.ofNullable(this.files);
     }
 
     public static Builder builder() {
@@ -34,7 +35,7 @@ public final class DlpCustomProfileContextAwarenessSkip {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Boolean files;
+        private @Nullable Boolean files;
         public Builder() {}
         public Builder(DlpCustomProfileContextAwarenessSkip defaults) {
     	      Objects.requireNonNull(defaults);
@@ -42,10 +43,8 @@ public final class DlpCustomProfileContextAwarenessSkip {
         }
 
         @CustomType.Setter
-        public Builder files(Boolean files) {
-            if (files == null) {
-              throw new MissingRequiredPropertyException("DlpCustomProfileContextAwarenessSkip", "files");
-            }
+        public Builder files(@Nullable Boolean files) {
+
             this.files = files;
             return this;
         }

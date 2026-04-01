@@ -148,6 +148,7 @@ class _CertificatePackState:
                  certificate_authority: Optional[pulumi.Input[_builtins.str]] = None,
                  certificates: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackCertificateArgs']]]] = None,
                  cloudflare_branding: Optional[pulumi.Input[_builtins.bool]] = None,
+                 dcv_delegation_records: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackDcvDelegationRecordArgs']]]] = None,
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  primary_certificate: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
@@ -164,6 +165,7 @@ class _CertificatePackState:
                Available values: "google", "lets*encrypt", "ssl*com".
         :param pulumi.Input[Sequence[pulumi.Input['CertificatePackCertificateArgs']]] certificates: Array of certificates in this pack.
         :param pulumi.Input[_builtins.bool] cloudflare_branding: Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificatePackDcvDelegationRecordArgs']]] dcv_delegation_records: DCV Delegation records for domain validation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hosts: Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
         :param pulumi.Input[_builtins.str] primary_certificate: Identifier of the primary certificate in a pack.
         :param pulumi.Input[_builtins.str] status: Status of certificate pack.
@@ -184,6 +186,8 @@ class _CertificatePackState:
             pulumi.set(__self__, "certificates", certificates)
         if cloudflare_branding is not None:
             pulumi.set(__self__, "cloudflare_branding", cloudflare_branding)
+        if dcv_delegation_records is not None:
+            pulumi.set(__self__, "dcv_delegation_records", dcv_delegation_records)
         if hosts is not None:
             pulumi.set(__self__, "hosts", hosts)
         if primary_certificate is not None:
@@ -239,6 +243,18 @@ class _CertificatePackState:
     @cloudflare_branding.setter
     def cloudflare_branding(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "cloudflare_branding", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dcvDelegationRecords")
+    def dcv_delegation_records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackDcvDelegationRecordArgs']]]]:
+        """
+        DCV Delegation records for domain validation.
+        """
+        return pulumi.get(self, "dcv_delegation_records")
+
+    @dcv_delegation_records.setter
+    def dcv_delegation_records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackDcvDelegationRecordArgs']]]]):
+        pulumi.set(self, "dcv_delegation_records", value)
 
     @_builtins.property
     @pulumi.getter
@@ -510,6 +526,7 @@ class CertificatePack(pulumi.CustomResource):
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["certificates"] = None
+            __props__.__dict__["dcv_delegation_records"] = None
             __props__.__dict__["primary_certificate"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["validation_errors"] = None
@@ -527,6 +544,7 @@ class CertificatePack(pulumi.CustomResource):
             certificate_authority: Optional[pulumi.Input[_builtins.str]] = None,
             certificates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CertificatePackCertificateArgs', 'CertificatePackCertificateArgsDict']]]]] = None,
             cloudflare_branding: Optional[pulumi.Input[_builtins.bool]] = None,
+            dcv_delegation_records: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CertificatePackDcvDelegationRecordArgs', 'CertificatePackDcvDelegationRecordArgsDict']]]]] = None,
             hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             primary_certificate: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
@@ -547,6 +565,7 @@ class CertificatePack(pulumi.CustomResource):
                Available values: "google", "lets*encrypt", "ssl*com".
         :param pulumi.Input[Sequence[pulumi.Input[Union['CertificatePackCertificateArgs', 'CertificatePackCertificateArgsDict']]]] certificates: Array of certificates in this pack.
         :param pulumi.Input[_builtins.bool] cloudflare_branding: Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CertificatePackDcvDelegationRecordArgs', 'CertificatePackDcvDelegationRecordArgsDict']]]] dcv_delegation_records: DCV Delegation records for domain validation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hosts: Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
         :param pulumi.Input[_builtins.str] primary_certificate: Identifier of the primary certificate in a pack.
         :param pulumi.Input[_builtins.str] status: Status of certificate pack.
@@ -568,6 +587,7 @@ class CertificatePack(pulumi.CustomResource):
         __props__.__dict__["certificate_authority"] = certificate_authority
         __props__.__dict__["certificates"] = certificates
         __props__.__dict__["cloudflare_branding"] = cloudflare_branding
+        __props__.__dict__["dcv_delegation_records"] = dcv_delegation_records
         __props__.__dict__["hosts"] = hosts
         __props__.__dict__["primary_certificate"] = primary_certificate
         __props__.__dict__["status"] = status
@@ -603,6 +623,14 @@ class CertificatePack(pulumi.CustomResource):
         Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
         """
         return pulumi.get(self, "cloudflare_branding")
+
+    @_builtins.property
+    @pulumi.getter(name="dcvDelegationRecords")
+    def dcv_delegation_records(self) -> pulumi.Output[Sequence['outputs.CertificatePackDcvDelegationRecord']]:
+        """
+        DCV Delegation records for domain validation.
+        """
+        return pulumi.get(self, "dcv_delegation_records")
 
     @_builtins.property
     @pulumi.getter

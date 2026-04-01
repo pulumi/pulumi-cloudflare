@@ -24,6 +24,23 @@ public final class GetZeroTrustDexTestsPlainArgs extends com.pulumi.resources.In
     }
 
     /**
+     * Filter by test type
+     * Available values: &#34;http&#34;, &#34;traceroute&#34;.
+     * 
+     */
+    @Import(name="kind")
+    private @Nullable String kind;
+
+    /**
+     * @return Filter by test type
+     * Available values: &#34;http&#34;, &#34;traceroute&#34;.
+     * 
+     */
+    public Optional<String> kind() {
+        return Optional.ofNullable(this.kind);
+    }
+
+    /**
      * Max items to fetch, default: 1000
      * 
      */
@@ -38,11 +55,28 @@ public final class GetZeroTrustDexTestsPlainArgs extends com.pulumi.resources.In
         return Optional.ofNullable(this.maxItems);
     }
 
+    /**
+     * Filter by test name
+     * 
+     */
+    @Import(name="testName")
+    private @Nullable String testName;
+
+    /**
+     * @return Filter by test name
+     * 
+     */
+    public Optional<String> testName() {
+        return Optional.ofNullable(this.testName);
+    }
+
     private GetZeroTrustDexTestsPlainArgs() {}
 
     private GetZeroTrustDexTestsPlainArgs(GetZeroTrustDexTestsPlainArgs $) {
         this.accountId = $.accountId;
+        this.kind = $.kind;
         this.maxItems = $.maxItems;
+        this.testName = $.testName;
     }
 
     public static Builder builder() {
@@ -69,6 +103,18 @@ public final class GetZeroTrustDexTestsPlainArgs extends com.pulumi.resources.In
         }
 
         /**
+         * @param kind Filter by test type
+         * Available values: &#34;http&#34;, &#34;traceroute&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kind(@Nullable String kind) {
+            $.kind = kind;
+            return this;
+        }
+
+        /**
          * @param maxItems Max items to fetch, default: 1000
          * 
          * @return builder
@@ -76,6 +122,17 @@ public final class GetZeroTrustDexTestsPlainArgs extends com.pulumi.resources.In
          */
         public Builder maxItems(@Nullable Integer maxItems) {
             $.maxItems = maxItems;
+            return this;
+        }
+
+        /**
+         * @param testName Filter by test name
+         * 
+         * @return builder
+         * 
+         */
+        public Builder testName(@Nullable String testName) {
+            $.testName = testName;
             return this;
         }
 

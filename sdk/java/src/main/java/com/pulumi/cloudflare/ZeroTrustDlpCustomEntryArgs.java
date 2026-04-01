@@ -25,6 +25,13 @@ public final class ZeroTrustDlpCustomEntryArgs extends com.pulumi.resources.Reso
         return this.accountId;
     }
 
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
@@ -57,6 +64,7 @@ public final class ZeroTrustDlpCustomEntryArgs extends com.pulumi.resources.Reso
 
     private ZeroTrustDlpCustomEntryArgs(ZeroTrustDlpCustomEntryArgs $) {
         this.accountId = $.accountId;
+        this.description = $.description;
         this.enabled = $.enabled;
         this.name = $.name;
         this.pattern = $.pattern;
@@ -88,6 +96,15 @@ public final class ZeroTrustDlpCustomEntryArgs extends com.pulumi.resources.Reso
 
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         public Builder enabled(Output<Boolean> enabled) {

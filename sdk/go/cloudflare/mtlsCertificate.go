@@ -54,7 +54,7 @@ type MtlsCertificate struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Indicates whether the certificate is a CA or leaf certificate.
 	Ca pulumi.BoolOutput `pulumi:"ca"`
-	// The uploaded root CA certificate.
+	// The uploaded root CA certificate or certificate chain. Certificates must be provided in PEM format with the certificate matching the privateKey first in the chain.
 	Certificates pulumi.StringOutput `pulumi:"certificates"`
 	// When the certificate expires.
 	ExpiresOn pulumi.StringOutput `pulumi:"expiresOn"`
@@ -124,7 +124,7 @@ type mtlsCertificateState struct {
 	AccountId *string `pulumi:"accountId"`
 	// Indicates whether the certificate is a CA or leaf certificate.
 	Ca *bool `pulumi:"ca"`
-	// The uploaded root CA certificate.
+	// The uploaded root CA certificate or certificate chain. Certificates must be provided in PEM format with the certificate matching the privateKey first in the chain.
 	Certificates *string `pulumi:"certificates"`
 	// When the certificate expires.
 	ExpiresOn *string `pulumi:"expiresOn"`
@@ -149,7 +149,7 @@ type MtlsCertificateState struct {
 	AccountId pulumi.StringPtrInput
 	// Indicates whether the certificate is a CA or leaf certificate.
 	Ca pulumi.BoolPtrInput
-	// The uploaded root CA certificate.
+	// The uploaded root CA certificate or certificate chain. Certificates must be provided in PEM format with the certificate matching the privateKey first in the chain.
 	Certificates pulumi.StringPtrInput
 	// When the certificate expires.
 	ExpiresOn pulumi.StringPtrInput
@@ -178,7 +178,7 @@ type mtlsCertificateArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Indicates whether the certificate is a CA or leaf certificate.
 	Ca bool `pulumi:"ca"`
-	// The uploaded root CA certificate.
+	// The uploaded root CA certificate or certificate chain. Certificates must be provided in PEM format with the certificate matching the privateKey first in the chain.
 	Certificates string `pulumi:"certificates"`
 	// Optional unique name for the certificate. Only used for human readability.
 	Name *string `pulumi:"name"`
@@ -192,7 +192,7 @@ type MtlsCertificateArgs struct {
 	AccountId pulumi.StringInput
 	// Indicates whether the certificate is a CA or leaf certificate.
 	Ca pulumi.BoolInput
-	// The uploaded root CA certificate.
+	// The uploaded root CA certificate or certificate chain. Certificates must be provided in PEM format with the certificate matching the privateKey first in the chain.
 	Certificates pulumi.StringInput
 	// Optional unique name for the certificate. Only used for human readability.
 	Name pulumi.StringPtrInput
@@ -297,7 +297,7 @@ func (o MtlsCertificateOutput) Ca() pulumi.BoolOutput {
 	return o.ApplyT(func(v *MtlsCertificate) pulumi.BoolOutput { return v.Ca }).(pulumi.BoolOutput)
 }
 
-// The uploaded root CA certificate.
+// The uploaded root CA certificate or certificate chain. Certificates must be provided in PEM format with the certificate matching the privateKey first in the chain.
 func (o MtlsCertificateOutput) Certificates() pulumi.StringOutput {
 	return o.ApplyT(func(v *MtlsCertificate) pulumi.StringOutput { return v.Certificates }).(pulumi.StringOutput)
 }

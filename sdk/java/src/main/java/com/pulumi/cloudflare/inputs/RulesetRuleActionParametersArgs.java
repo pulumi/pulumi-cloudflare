@@ -13,15 +13,28 @@ import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersEdgeTtlArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersFromListArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersFromValueArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersHeadersArgs;
+import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersImmutableArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersMatchedDataArgs;
+import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersMaxAgeArgs;
+import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersMustRevalidateArgs;
+import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersMustUnderstandArgs;
+import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersNoCacheArgs;
+import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersNoStoreArgs;
+import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersNoTransformArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersOriginArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersOverridesArgs;
+import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersPrivateArgs;
+import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersProxyRevalidateArgs;
+import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersPublicArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersRawResponseFieldArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersRequestFieldArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersResponseArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersResponseFieldArgs;
+import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersSMaxageArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersServeStaleArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersSniArgs;
+import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersStaleIfErrorArgs;
+import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersStaleWhileRevalidateArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersTransformedRequestFieldArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersUriArgs;
 import com.pulumi.core.Output;
@@ -313,6 +326,21 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
+     * An expression to generate cache tags for set*cache*tags action.
+     * 
+     */
+    @Import(name="expression")
+    private @Nullable Output<String> expression;
+
+    /**
+     * @return An expression to generate cache tags for set*cache*tags action.
+     * 
+     */
+    public Optional<Output<String>> expression() {
+        return Optional.ofNullable(this.expression);
+    }
+
+    /**
      * Whether to enable Cloudflare Fonts.
      * 
      */
@@ -418,6 +446,21 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
+     * Set the immutable cache control directive.
+     * 
+     */
+    @Import(name="immutable")
+    private @Nullable Output<RulesetRuleActionParametersImmutableArgs> immutable;
+
+    /**
+     * @return Set the immutable cache control directive.
+     * 
+     */
+    public Optional<Output<RulesetRuleActionParametersImmutableArgs>> immutable() {
+        return Optional.ofNullable(this.immutable);
+    }
+
+    /**
      * A delta to change the score by, which can be either positive or negative.
      * 
      */
@@ -448,6 +491,21 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
+     * Set the max-age cache control directive.
+     * 
+     */
+    @Import(name="maxAge")
+    private @Nullable Output<RulesetRuleActionParametersMaxAgeArgs> maxAge;
+
+    /**
+     * @return Set the max-age cache control directive.
+     * 
+     */
+    public Optional<Output<RulesetRuleActionParametersMaxAgeArgs>> maxAge() {
+        return Optional.ofNullable(this.maxAge);
+    }
+
+    /**
      * Whether to enable Mirage.
      * 
      */
@@ -460,6 +518,98 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
      */
     public Optional<Output<Boolean>> mirage() {
         return Optional.ofNullable(this.mirage);
+    }
+
+    /**
+     * Set the must-revalidate cache control directive.
+     * 
+     */
+    @Import(name="mustRevalidate")
+    private @Nullable Output<RulesetRuleActionParametersMustRevalidateArgs> mustRevalidate;
+
+    /**
+     * @return Set the must-revalidate cache control directive.
+     * 
+     */
+    public Optional<Output<RulesetRuleActionParametersMustRevalidateArgs>> mustRevalidate() {
+        return Optional.ofNullable(this.mustRevalidate);
+    }
+
+    /**
+     * Set the must-understand cache control directive.
+     * 
+     */
+    @Import(name="mustUnderstand")
+    private @Nullable Output<RulesetRuleActionParametersMustUnderstandArgs> mustUnderstand;
+
+    /**
+     * @return Set the must-understand cache control directive.
+     * 
+     */
+    public Optional<Output<RulesetRuleActionParametersMustUnderstandArgs>> mustUnderstand() {
+        return Optional.ofNullable(this.mustUnderstand);
+    }
+
+    /**
+     * Set the no-cache cache control directive.
+     * 
+     */
+    @Import(name="noCache")
+    private @Nullable Output<RulesetRuleActionParametersNoCacheArgs> noCache;
+
+    /**
+     * @return Set the no-cache cache control directive.
+     * 
+     */
+    public Optional<Output<RulesetRuleActionParametersNoCacheArgs>> noCache() {
+        return Optional.ofNullable(this.noCache);
+    }
+
+    /**
+     * Set the no-store cache control directive.
+     * 
+     */
+    @Import(name="noStore")
+    private @Nullable Output<RulesetRuleActionParametersNoStoreArgs> noStore;
+
+    /**
+     * @return Set the no-store cache control directive.
+     * 
+     */
+    public Optional<Output<RulesetRuleActionParametersNoStoreArgs>> noStore() {
+        return Optional.ofNullable(this.noStore);
+    }
+
+    /**
+     * Set the no-transform cache control directive.
+     * 
+     */
+    @Import(name="noTransform")
+    private @Nullable Output<RulesetRuleActionParametersNoTransformArgs> noTransform;
+
+    /**
+     * @return Set the no-transform cache control directive.
+     * 
+     */
+    public Optional<Output<RulesetRuleActionParametersNoTransformArgs>> noTransform() {
+        return Optional.ofNullable(this.noTransform);
+    }
+
+    /**
+     * The operation to perform for set*cache*tags action.
+     * Available values: &#34;set&#34;, &#34;add&#34;, &#34;remove&#34;.
+     * 
+     */
+    @Import(name="operation")
+    private @Nullable Output<String> operation;
+
+    /**
+     * @return The operation to perform for set*cache*tags action.
+     * Available values: &#34;set&#34;, &#34;add&#34;, &#34;remove&#34;.
+     * 
+     */
+    public Optional<Output<String>> operation() {
+        return Optional.ofNullable(this.operation);
     }
 
     /**
@@ -539,7 +689,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
     /**
      * A list of phases to skip the execution of. This option is incompatible with the rulesets option.
-     * Available values: &#34;ddos*l4&#34;, &#34;ddos*l7&#34;, &#34;http*config*settings&#34;, &#34;http*custom*errors&#34;, &#34;http*log*custom*fields&#34;, &#34;http*ratelimit&#34;, &#34;http*request*cache*settings&#34;, &#34;http*request*dynamic*redirect&#34;, &#34;http*request*firewall*custom&#34;, &#34;http*request*firewall*managed&#34;, &#34;http*request*late*transform&#34;, &#34;http*request*origin&#34;, &#34;http*request*redirect&#34;, &#34;http*request*sanitize&#34;, &#34;http*request*sbfm&#34;, &#34;http*request*transform&#34;, &#34;http*response*compression&#34;, &#34;http*response*firewall*managed&#34;, &#34;http*response*headers*transform&#34;, &#34;magic*transit&#34;, &#34;magic*transit*ids*managed&#34;, &#34;magic*transit*managed&#34;, &#34;magic*transit_ratelimit&#34;.
+     * Available values: &#34;ddos*l4&#34;, &#34;ddos*l7&#34;, &#34;http*config*settings&#34;, &#34;http*custom*errors&#34;, &#34;http*log*custom*fields&#34;, &#34;http*ratelimit&#34;, &#34;http*request*cache*settings&#34;, &#34;http*request*dynamic*redirect&#34;, &#34;http*request*firewall*custom&#34;, &#34;http*request*firewall*managed&#34;, &#34;http*request*late*transform&#34;, &#34;http*request*origin&#34;, &#34;http*request*redirect&#34;, &#34;http*request*sanitize&#34;, &#34;http*request*sbfm&#34;, &#34;http*request*transform&#34;, &#34;http*response*cache*settings&#34;, &#34;http*response*compression&#34;, &#34;http*response*firewall*managed&#34;, &#34;http*response*headers*transform&#34;, &#34;magic*transit&#34;, &#34;magic*transit*ids*managed&#34;, &#34;magic*transit*managed&#34;, &#34;magic*transit*ratelimit&#34;.
      * 
      */
     @Import(name="phases")
@@ -547,7 +697,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
     /**
      * @return A list of phases to skip the execution of. This option is incompatible with the rulesets option.
-     * Available values: &#34;ddos*l4&#34;, &#34;ddos*l7&#34;, &#34;http*config*settings&#34;, &#34;http*custom*errors&#34;, &#34;http*log*custom*fields&#34;, &#34;http*ratelimit&#34;, &#34;http*request*cache*settings&#34;, &#34;http*request*dynamic*redirect&#34;, &#34;http*request*firewall*custom&#34;, &#34;http*request*firewall*managed&#34;, &#34;http*request*late*transform&#34;, &#34;http*request*origin&#34;, &#34;http*request*redirect&#34;, &#34;http*request*sanitize&#34;, &#34;http*request*sbfm&#34;, &#34;http*request*transform&#34;, &#34;http*response*compression&#34;, &#34;http*response*firewall*managed&#34;, &#34;http*response*headers*transform&#34;, &#34;magic*transit&#34;, &#34;magic*transit*ids*managed&#34;, &#34;magic*transit*managed&#34;, &#34;magic*transit_ratelimit&#34;.
+     * Available values: &#34;ddos*l4&#34;, &#34;ddos*l7&#34;, &#34;http*config*settings&#34;, &#34;http*custom*errors&#34;, &#34;http*log*custom*fields&#34;, &#34;http*ratelimit&#34;, &#34;http*request*cache*settings&#34;, &#34;http*request*dynamic*redirect&#34;, &#34;http*request*firewall*custom&#34;, &#34;http*request*firewall*managed&#34;, &#34;http*request*late*transform&#34;, &#34;http*request*origin&#34;, &#34;http*request*redirect&#34;, &#34;http*request*sanitize&#34;, &#34;http*request*sbfm&#34;, &#34;http*request*transform&#34;, &#34;http*response*cache*settings&#34;, &#34;http*response*compression&#34;, &#34;http*response*firewall*managed&#34;, &#34;http*response*headers*transform&#34;, &#34;magic*transit&#34;, &#34;magic*transit*ids*managed&#34;, &#34;magic*transit*managed&#34;, &#34;magic*transit*ratelimit&#34;.
      * 
      */
     public Optional<Output<List<String>>> phases() {
@@ -572,6 +722,21 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
+     * Set the private cache control directive.
+     * 
+     */
+    @Import(name="private")
+    private @Nullable Output<RulesetRuleActionParametersPrivateArgs> private_;
+
+    /**
+     * @return Set the private cache control directive.
+     * 
+     */
+    public Optional<Output<RulesetRuleActionParametersPrivateArgs>> private_() {
+        return Optional.ofNullable(this.private_);
+    }
+
+    /**
      * A list of legacy security products to skip the execution of.
      * Available values: &#34;bic&#34;, &#34;hot&#34;, &#34;rateLimit&#34;, &#34;securityLevel&#34;, &#34;uaBlock&#34;, &#34;waf&#34;, &#34;zoneLockdown&#34;.
      * 
@@ -586,6 +751,36 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
      */
     public Optional<Output<List<String>>> products() {
         return Optional.ofNullable(this.products);
+    }
+
+    /**
+     * Set the proxy-revalidate cache control directive.
+     * 
+     */
+    @Import(name="proxyRevalidate")
+    private @Nullable Output<RulesetRuleActionParametersProxyRevalidateArgs> proxyRevalidate;
+
+    /**
+     * @return Set the proxy-revalidate cache control directive.
+     * 
+     */
+    public Optional<Output<RulesetRuleActionParametersProxyRevalidateArgs>> proxyRevalidate() {
+        return Optional.ofNullable(this.proxyRevalidate);
+    }
+
+    /**
+     * Set the public cache control directive.
+     * 
+     */
+    @Import(name="public")
+    private @Nullable Output<RulesetRuleActionParametersPublicArgs> public_;
+
+    /**
+     * @return Set the public cache control directive.
+     * 
+     */
+    public Optional<Output<RulesetRuleActionParametersPublicArgs>> public_() {
+        return Optional.ofNullable(this.public_);
     }
 
     /**
@@ -775,6 +970,21 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
+     * Set the s-maxage cache control directive.
+     * 
+     */
+    @Import(name="sMaxage")
+    private @Nullable Output<RulesetRuleActionParametersSMaxageArgs> sMaxage;
+
+    /**
+     * @return Set the s-maxage cache control directive.
+     * 
+     */
+    public Optional<Output<RulesetRuleActionParametersSMaxageArgs>> sMaxage() {
+        return Optional.ofNullable(this.sMaxage);
+    }
+
+    /**
      * The Security Level to configure.
      * Available values: &#34;off&#34;, &#34;essentially*off&#34;, &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;under*attack&#34;.
      * 
@@ -854,6 +1064,36 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
+     * Set the stale-if-error cache control directive.
+     * 
+     */
+    @Import(name="staleIfError")
+    private @Nullable Output<RulesetRuleActionParametersStaleIfErrorArgs> staleIfError;
+
+    /**
+     * @return Set the stale-if-error cache control directive.
+     * 
+     */
+    public Optional<Output<RulesetRuleActionParametersStaleIfErrorArgs>> staleIfError() {
+        return Optional.ofNullable(this.staleIfError);
+    }
+
+    /**
+     * Set the stale-while-revalidate cache control directive.
+     * 
+     */
+    @Import(name="staleWhileRevalidate")
+    private @Nullable Output<RulesetRuleActionParametersStaleWhileRevalidateArgs> staleWhileRevalidate;
+
+    /**
+     * @return Set the stale-while-revalidate cache control directive.
+     * 
+     */
+    public Optional<Output<RulesetRuleActionParametersStaleWhileRevalidateArgs>> staleWhileRevalidate() {
+        return Optional.ofNullable(this.staleWhileRevalidate);
+    }
+
+    /**
      * The status code to use for the error.
      * 
      */
@@ -866,6 +1106,51 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
      */
     public Optional<Output<Integer>> statusCode() {
         return Optional.ofNullable(this.statusCode);
+    }
+
+    /**
+     * Whether to strip the ETag header from the response.
+     * 
+     */
+    @Import(name="stripEtags")
+    private @Nullable Output<Boolean> stripEtags;
+
+    /**
+     * @return Whether to strip the ETag header from the response.
+     * 
+     */
+    public Optional<Output<Boolean>> stripEtags() {
+        return Optional.ofNullable(this.stripEtags);
+    }
+
+    /**
+     * Whether to strip the Last-Modified header from the response.
+     * 
+     */
+    @Import(name="stripLastModified")
+    private @Nullable Output<Boolean> stripLastModified;
+
+    /**
+     * @return Whether to strip the Last-Modified header from the response.
+     * 
+     */
+    public Optional<Output<Boolean>> stripLastModified() {
+        return Optional.ofNullable(this.stripLastModified);
+    }
+
+    /**
+     * Whether to strip the Set-Cookie header from the response.
+     * 
+     */
+    @Import(name="stripSetCookie")
+    private @Nullable Output<Boolean> stripSetCookie;
+
+    /**
+     * @return Whether to strip the Set-Cookie header from the response.
+     * 
+     */
+    public Optional<Output<Boolean>> stripSetCookie() {
+        return Optional.ofNullable(this.stripSetCookie);
     }
 
     /**
@@ -913,6 +1198,21 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.uri);
     }
 
+    /**
+     * The cache tag values for set*cache*tags action.
+     * 
+     */
+    @Import(name="values")
+    private @Nullable Output<List<String>> values;
+
+    /**
+     * @return The cache tag values for set*cache*tags action.
+     * 
+     */
+    public Optional<Output<List<String>>> values() {
+        return Optional.ofNullable(this.values);
+    }
+
     private RulesetRuleActionParametersArgs() {}
 
     private RulesetRuleActionParametersArgs(RulesetRuleActionParametersArgs $) {
@@ -934,6 +1234,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         this.disableZaraz = $.disableZaraz;
         this.edgeTtl = $.edgeTtl;
         this.emailObfuscation = $.emailObfuscation;
+        this.expression = $.expression;
         this.fonts = $.fonts;
         this.fromList = $.fromList;
         this.fromValue = $.fromValue;
@@ -941,9 +1242,17 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         this.hostHeader = $.hostHeader;
         this.hotlinkProtection = $.hotlinkProtection;
         this.id = $.id;
+        this.immutable = $.immutable;
         this.increment = $.increment;
         this.matchedData = $.matchedData;
+        this.maxAge = $.maxAge;
         this.mirage = $.mirage;
+        this.mustRevalidate = $.mustRevalidate;
+        this.mustUnderstand = $.mustUnderstand;
+        this.noCache = $.noCache;
+        this.noStore = $.noStore;
+        this.noTransform = $.noTransform;
+        this.operation = $.operation;
         this.opportunisticEncryption = $.opportunisticEncryption;
         this.origin = $.origin;
         this.originCacheControl = $.originCacheControl;
@@ -951,7 +1260,10 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         this.overrides = $.overrides;
         this.phases = $.phases;
         this.polish = $.polish;
+        this.private_ = $.private_;
         this.products = $.products;
+        this.proxyRevalidate = $.proxyRevalidate;
+        this.public_ = $.public_;
         this.rawResponseFields = $.rawResponseFields;
         this.readTimeout = $.readTimeout;
         this.requestBodyBuffering = $.requestBodyBuffering;
@@ -964,15 +1276,22 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         this.rules = $.rules;
         this.ruleset = $.ruleset;
         this.rulesets = $.rulesets;
+        this.sMaxage = $.sMaxage;
         this.securityLevel = $.securityLevel;
         this.serveStale = $.serveStale;
         this.serverSideExcludes = $.serverSideExcludes;
         this.sni = $.sni;
         this.ssl = $.ssl;
+        this.staleIfError = $.staleIfError;
+        this.staleWhileRevalidate = $.staleWhileRevalidate;
         this.statusCode = $.statusCode;
+        this.stripEtags = $.stripEtags;
+        this.stripLastModified = $.stripLastModified;
+        this.stripSetCookie = $.stripSetCookie;
         this.sxg = $.sxg;
         this.transformedRequestFields = $.transformedRequestFields;
         this.uri = $.uri;
+        this.values = $.values;
     }
 
     public static Builder builder() {
@@ -1404,6 +1723,27 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
+         * @param expression An expression to generate cache tags for set*cache*tags action.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expression(@Nullable Output<String> expression) {
+            $.expression = expression;
+            return this;
+        }
+
+        /**
+         * @param expression An expression to generate cache tags for set*cache*tags action.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expression(String expression) {
+            return expression(Output.of(expression));
+        }
+
+        /**
          * @param fonts Whether to enable Cloudflare Fonts.
          * 
          * @return builder
@@ -1551,6 +1891,27 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
+         * @param immutable Set the immutable cache control directive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder immutable(@Nullable Output<RulesetRuleActionParametersImmutableArgs> immutable) {
+            $.immutable = immutable;
+            return this;
+        }
+
+        /**
+         * @param immutable Set the immutable cache control directive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder immutable(RulesetRuleActionParametersImmutableArgs immutable) {
+            return immutable(Output.of(immutable));
+        }
+
+        /**
          * @param increment A delta to change the score by, which can be either positive or negative.
          * 
          * @return builder
@@ -1593,6 +1954,27 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
+         * @param maxAge Set the max-age cache control directive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxAge(@Nullable Output<RulesetRuleActionParametersMaxAgeArgs> maxAge) {
+            $.maxAge = maxAge;
+            return this;
+        }
+
+        /**
+         * @param maxAge Set the max-age cache control directive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxAge(RulesetRuleActionParametersMaxAgeArgs maxAge) {
+            return maxAge(Output.of(maxAge));
+        }
+
+        /**
          * @param mirage Whether to enable Mirage.
          * 
          * @return builder
@@ -1611,6 +1993,134 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
          */
         public Builder mirage(Boolean mirage) {
             return mirage(Output.of(mirage));
+        }
+
+        /**
+         * @param mustRevalidate Set the must-revalidate cache control directive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mustRevalidate(@Nullable Output<RulesetRuleActionParametersMustRevalidateArgs> mustRevalidate) {
+            $.mustRevalidate = mustRevalidate;
+            return this;
+        }
+
+        /**
+         * @param mustRevalidate Set the must-revalidate cache control directive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mustRevalidate(RulesetRuleActionParametersMustRevalidateArgs mustRevalidate) {
+            return mustRevalidate(Output.of(mustRevalidate));
+        }
+
+        /**
+         * @param mustUnderstand Set the must-understand cache control directive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mustUnderstand(@Nullable Output<RulesetRuleActionParametersMustUnderstandArgs> mustUnderstand) {
+            $.mustUnderstand = mustUnderstand;
+            return this;
+        }
+
+        /**
+         * @param mustUnderstand Set the must-understand cache control directive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mustUnderstand(RulesetRuleActionParametersMustUnderstandArgs mustUnderstand) {
+            return mustUnderstand(Output.of(mustUnderstand));
+        }
+
+        /**
+         * @param noCache Set the no-cache cache control directive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder noCache(@Nullable Output<RulesetRuleActionParametersNoCacheArgs> noCache) {
+            $.noCache = noCache;
+            return this;
+        }
+
+        /**
+         * @param noCache Set the no-cache cache control directive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder noCache(RulesetRuleActionParametersNoCacheArgs noCache) {
+            return noCache(Output.of(noCache));
+        }
+
+        /**
+         * @param noStore Set the no-store cache control directive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder noStore(@Nullable Output<RulesetRuleActionParametersNoStoreArgs> noStore) {
+            $.noStore = noStore;
+            return this;
+        }
+
+        /**
+         * @param noStore Set the no-store cache control directive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder noStore(RulesetRuleActionParametersNoStoreArgs noStore) {
+            return noStore(Output.of(noStore));
+        }
+
+        /**
+         * @param noTransform Set the no-transform cache control directive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder noTransform(@Nullable Output<RulesetRuleActionParametersNoTransformArgs> noTransform) {
+            $.noTransform = noTransform;
+            return this;
+        }
+
+        /**
+         * @param noTransform Set the no-transform cache control directive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder noTransform(RulesetRuleActionParametersNoTransformArgs noTransform) {
+            return noTransform(Output.of(noTransform));
+        }
+
+        /**
+         * @param operation The operation to perform for set*cache*tags action.
+         * Available values: &#34;set&#34;, &#34;add&#34;, &#34;remove&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder operation(@Nullable Output<String> operation) {
+            $.operation = operation;
+            return this;
+        }
+
+        /**
+         * @param operation The operation to perform for set*cache*tags action.
+         * Available values: &#34;set&#34;, &#34;add&#34;, &#34;remove&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder operation(String operation) {
+            return operation(Output.of(operation));
         }
 
         /**
@@ -1720,7 +2230,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
         /**
          * @param phases A list of phases to skip the execution of. This option is incompatible with the rulesets option.
-         * Available values: &#34;ddos*l4&#34;, &#34;ddos*l7&#34;, &#34;http*config*settings&#34;, &#34;http*custom*errors&#34;, &#34;http*log*custom*fields&#34;, &#34;http*ratelimit&#34;, &#34;http*request*cache*settings&#34;, &#34;http*request*dynamic*redirect&#34;, &#34;http*request*firewall*custom&#34;, &#34;http*request*firewall*managed&#34;, &#34;http*request*late*transform&#34;, &#34;http*request*origin&#34;, &#34;http*request*redirect&#34;, &#34;http*request*sanitize&#34;, &#34;http*request*sbfm&#34;, &#34;http*request*transform&#34;, &#34;http*response*compression&#34;, &#34;http*response*firewall*managed&#34;, &#34;http*response*headers*transform&#34;, &#34;magic*transit&#34;, &#34;magic*transit*ids*managed&#34;, &#34;magic*transit*managed&#34;, &#34;magic*transit_ratelimit&#34;.
+         * Available values: &#34;ddos*l4&#34;, &#34;ddos*l7&#34;, &#34;http*config*settings&#34;, &#34;http*custom*errors&#34;, &#34;http*log*custom*fields&#34;, &#34;http*ratelimit&#34;, &#34;http*request*cache*settings&#34;, &#34;http*request*dynamic*redirect&#34;, &#34;http*request*firewall*custom&#34;, &#34;http*request*firewall*managed&#34;, &#34;http*request*late*transform&#34;, &#34;http*request*origin&#34;, &#34;http*request*redirect&#34;, &#34;http*request*sanitize&#34;, &#34;http*request*sbfm&#34;, &#34;http*request*transform&#34;, &#34;http*response*cache*settings&#34;, &#34;http*response*compression&#34;, &#34;http*response*firewall*managed&#34;, &#34;http*response*headers*transform&#34;, &#34;magic*transit&#34;, &#34;magic*transit*ids*managed&#34;, &#34;magic*transit*managed&#34;, &#34;magic*transit*ratelimit&#34;.
          * 
          * @return builder
          * 
@@ -1732,7 +2242,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
         /**
          * @param phases A list of phases to skip the execution of. This option is incompatible with the rulesets option.
-         * Available values: &#34;ddos*l4&#34;, &#34;ddos*l7&#34;, &#34;http*config*settings&#34;, &#34;http*custom*errors&#34;, &#34;http*log*custom*fields&#34;, &#34;http*ratelimit&#34;, &#34;http*request*cache*settings&#34;, &#34;http*request*dynamic*redirect&#34;, &#34;http*request*firewall*custom&#34;, &#34;http*request*firewall*managed&#34;, &#34;http*request*late*transform&#34;, &#34;http*request*origin&#34;, &#34;http*request*redirect&#34;, &#34;http*request*sanitize&#34;, &#34;http*request*sbfm&#34;, &#34;http*request*transform&#34;, &#34;http*response*compression&#34;, &#34;http*response*firewall*managed&#34;, &#34;http*response*headers*transform&#34;, &#34;magic*transit&#34;, &#34;magic*transit*ids*managed&#34;, &#34;magic*transit*managed&#34;, &#34;magic*transit_ratelimit&#34;.
+         * Available values: &#34;ddos*l4&#34;, &#34;ddos*l7&#34;, &#34;http*config*settings&#34;, &#34;http*custom*errors&#34;, &#34;http*log*custom*fields&#34;, &#34;http*ratelimit&#34;, &#34;http*request*cache*settings&#34;, &#34;http*request*dynamic*redirect&#34;, &#34;http*request*firewall*custom&#34;, &#34;http*request*firewall*managed&#34;, &#34;http*request*late*transform&#34;, &#34;http*request*origin&#34;, &#34;http*request*redirect&#34;, &#34;http*request*sanitize&#34;, &#34;http*request*sbfm&#34;, &#34;http*request*transform&#34;, &#34;http*response*cache*settings&#34;, &#34;http*response*compression&#34;, &#34;http*response*firewall*managed&#34;, &#34;http*response*headers*transform&#34;, &#34;magic*transit&#34;, &#34;magic*transit*ids*managed&#34;, &#34;magic*transit*managed&#34;, &#34;magic*transit*ratelimit&#34;.
          * 
          * @return builder
          * 
@@ -1743,7 +2253,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
         /**
          * @param phases A list of phases to skip the execution of. This option is incompatible with the rulesets option.
-         * Available values: &#34;ddos*l4&#34;, &#34;ddos*l7&#34;, &#34;http*config*settings&#34;, &#34;http*custom*errors&#34;, &#34;http*log*custom*fields&#34;, &#34;http*ratelimit&#34;, &#34;http*request*cache*settings&#34;, &#34;http*request*dynamic*redirect&#34;, &#34;http*request*firewall*custom&#34;, &#34;http*request*firewall*managed&#34;, &#34;http*request*late*transform&#34;, &#34;http*request*origin&#34;, &#34;http*request*redirect&#34;, &#34;http*request*sanitize&#34;, &#34;http*request*sbfm&#34;, &#34;http*request*transform&#34;, &#34;http*response*compression&#34;, &#34;http*response*firewall*managed&#34;, &#34;http*response*headers*transform&#34;, &#34;magic*transit&#34;, &#34;magic*transit*ids*managed&#34;, &#34;magic*transit*managed&#34;, &#34;magic*transit_ratelimit&#34;.
+         * Available values: &#34;ddos*l4&#34;, &#34;ddos*l7&#34;, &#34;http*config*settings&#34;, &#34;http*custom*errors&#34;, &#34;http*log*custom*fields&#34;, &#34;http*ratelimit&#34;, &#34;http*request*cache*settings&#34;, &#34;http*request*dynamic*redirect&#34;, &#34;http*request*firewall*custom&#34;, &#34;http*request*firewall*managed&#34;, &#34;http*request*late*transform&#34;, &#34;http*request*origin&#34;, &#34;http*request*redirect&#34;, &#34;http*request*sanitize&#34;, &#34;http*request*sbfm&#34;, &#34;http*request*transform&#34;, &#34;http*response*cache*settings&#34;, &#34;http*response*compression&#34;, &#34;http*response*firewall*managed&#34;, &#34;http*response*headers*transform&#34;, &#34;magic*transit&#34;, &#34;magic*transit*ids*managed&#34;, &#34;magic*transit*managed&#34;, &#34;magic*transit*ratelimit&#34;.
          * 
          * @return builder
          * 
@@ -1773,6 +2283,27 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
          */
         public Builder polish(String polish) {
             return polish(Output.of(polish));
+        }
+
+        /**
+         * @param private_ Set the private cache control directive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder private_(@Nullable Output<RulesetRuleActionParametersPrivateArgs> private_) {
+            $.private_ = private_;
+            return this;
+        }
+
+        /**
+         * @param private_ Set the private cache control directive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder private_(RulesetRuleActionParametersPrivateArgs private_) {
+            return private_(Output.of(private_));
         }
 
         /**
@@ -1807,6 +2338,48 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
          */
         public Builder products(String... products) {
             return products(List.of(products));
+        }
+
+        /**
+         * @param proxyRevalidate Set the proxy-revalidate cache control directive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxyRevalidate(@Nullable Output<RulesetRuleActionParametersProxyRevalidateArgs> proxyRevalidate) {
+            $.proxyRevalidate = proxyRevalidate;
+            return this;
+        }
+
+        /**
+         * @param proxyRevalidate Set the proxy-revalidate cache control directive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxyRevalidate(RulesetRuleActionParametersProxyRevalidateArgs proxyRevalidate) {
+            return proxyRevalidate(Output.of(proxyRevalidate));
+        }
+
+        /**
+         * @param public_ Set the public cache control directive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder public_(@Nullable Output<RulesetRuleActionParametersPublicArgs> public_) {
+            $.public_ = public_;
+            return this;
+        }
+
+        /**
+         * @param public_ Set the public cache control directive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder public_(RulesetRuleActionParametersPublicArgs public_) {
+            return public_(Output.of(public_));
         }
 
         /**
@@ -2108,6 +2681,27 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
+         * @param sMaxage Set the s-maxage cache control directive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sMaxage(@Nullable Output<RulesetRuleActionParametersSMaxageArgs> sMaxage) {
+            $.sMaxage = sMaxage;
+            return this;
+        }
+
+        /**
+         * @param sMaxage Set the s-maxage cache control directive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sMaxage(RulesetRuleActionParametersSMaxageArgs sMaxage) {
+            return sMaxage(Output.of(sMaxage));
+        }
+
+        /**
          * @param securityLevel The Security Level to configure.
          * Available values: &#34;off&#34;, &#34;essentially*off&#34;, &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;under*attack&#34;.
          * 
@@ -2217,6 +2811,48 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
+         * @param staleIfError Set the stale-if-error cache control directive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder staleIfError(@Nullable Output<RulesetRuleActionParametersStaleIfErrorArgs> staleIfError) {
+            $.staleIfError = staleIfError;
+            return this;
+        }
+
+        /**
+         * @param staleIfError Set the stale-if-error cache control directive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder staleIfError(RulesetRuleActionParametersStaleIfErrorArgs staleIfError) {
+            return staleIfError(Output.of(staleIfError));
+        }
+
+        /**
+         * @param staleWhileRevalidate Set the stale-while-revalidate cache control directive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder staleWhileRevalidate(@Nullable Output<RulesetRuleActionParametersStaleWhileRevalidateArgs> staleWhileRevalidate) {
+            $.staleWhileRevalidate = staleWhileRevalidate;
+            return this;
+        }
+
+        /**
+         * @param staleWhileRevalidate Set the stale-while-revalidate cache control directive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder staleWhileRevalidate(RulesetRuleActionParametersStaleWhileRevalidateArgs staleWhileRevalidate) {
+            return staleWhileRevalidate(Output.of(staleWhileRevalidate));
+        }
+
+        /**
          * @param statusCode The status code to use for the error.
          * 
          * @return builder
@@ -2235,6 +2871,69 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
          */
         public Builder statusCode(Integer statusCode) {
             return statusCode(Output.of(statusCode));
+        }
+
+        /**
+         * @param stripEtags Whether to strip the ETag header from the response.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stripEtags(@Nullable Output<Boolean> stripEtags) {
+            $.stripEtags = stripEtags;
+            return this;
+        }
+
+        /**
+         * @param stripEtags Whether to strip the ETag header from the response.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stripEtags(Boolean stripEtags) {
+            return stripEtags(Output.of(stripEtags));
+        }
+
+        /**
+         * @param stripLastModified Whether to strip the Last-Modified header from the response.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stripLastModified(@Nullable Output<Boolean> stripLastModified) {
+            $.stripLastModified = stripLastModified;
+            return this;
+        }
+
+        /**
+         * @param stripLastModified Whether to strip the Last-Modified header from the response.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stripLastModified(Boolean stripLastModified) {
+            return stripLastModified(Output.of(stripLastModified));
+        }
+
+        /**
+         * @param stripSetCookie Whether to strip the Set-Cookie header from the response.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stripSetCookie(@Nullable Output<Boolean> stripSetCookie) {
+            $.stripSetCookie = stripSetCookie;
+            return this;
+        }
+
+        /**
+         * @param stripSetCookie Whether to strip the Set-Cookie header from the response.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stripSetCookie(Boolean stripSetCookie) {
+            return stripSetCookie(Output.of(stripSetCookie));
         }
 
         /**
@@ -2308,6 +3007,37 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
          */
         public Builder uri(RulesetRuleActionParametersUriArgs uri) {
             return uri(Output.of(uri));
+        }
+
+        /**
+         * @param values The cache tag values for set*cache*tags action.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder values(@Nullable Output<List<String>> values) {
+            $.values = values;
+            return this;
+        }
+
+        /**
+         * @param values The cache tag values for set*cache*tags action.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder values(List<String> values) {
+            return values(Output.of(values));
+        }
+
+        /**
+         * @param values The cache tag values for set*cache*tags action.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder values(String... values) {
+            return values(List.of(values));
         }
 
         public RulesetRuleActionParametersArgs build() {

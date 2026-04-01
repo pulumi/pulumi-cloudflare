@@ -140,6 +140,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? EmailObfuscation { get; set; }
 
         /// <summary>
+        /// An expression to generate cache tags for set*cache*tags action.
+        /// </summary>
+        [Input("expression")]
+        public Input<string>? Expression { get; set; }
+
+        /// <summary>
         /// Whether to enable Cloudflare Fonts.
         /// </summary>
         [Input("fonts")]
@@ -188,6 +194,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Id { get; set; }
 
         /// <summary>
+        /// Set the immutable cache control directive.
+        /// </summary>
+        [Input("immutable")]
+        public Input<Inputs.RulesetRuleActionParametersImmutableGetArgs>? Immutable { get; set; }
+
+        /// <summary>
         /// A delta to change the score by, which can be either positive or negative.
         /// </summary>
         [Input("increment")]
@@ -200,10 +212,53 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.RulesetRuleActionParametersMatchedDataGetArgs>? MatchedData { get; set; }
 
         /// <summary>
+        /// Set the max-age cache control directive.
+        /// </summary>
+        [Input("maxAge")]
+        public Input<Inputs.RulesetRuleActionParametersMaxAgeGetArgs>? MaxAge { get; set; }
+
+        /// <summary>
         /// Whether to enable Mirage.
         /// </summary>
         [Input("mirage")]
         public Input<bool>? Mirage { get; set; }
+
+        /// <summary>
+        /// Set the must-revalidate cache control directive.
+        /// </summary>
+        [Input("mustRevalidate")]
+        public Input<Inputs.RulesetRuleActionParametersMustRevalidateGetArgs>? MustRevalidate { get; set; }
+
+        /// <summary>
+        /// Set the must-understand cache control directive.
+        /// </summary>
+        [Input("mustUnderstand")]
+        public Input<Inputs.RulesetRuleActionParametersMustUnderstandGetArgs>? MustUnderstand { get; set; }
+
+        /// <summary>
+        /// Set the no-cache cache control directive.
+        /// </summary>
+        [Input("noCache")]
+        public Input<Inputs.RulesetRuleActionParametersNoCacheGetArgs>? NoCache { get; set; }
+
+        /// <summary>
+        /// Set the no-store cache control directive.
+        /// </summary>
+        [Input("noStore")]
+        public Input<Inputs.RulesetRuleActionParametersNoStoreGetArgs>? NoStore { get; set; }
+
+        /// <summary>
+        /// Set the no-transform cache control directive.
+        /// </summary>
+        [Input("noTransform")]
+        public Input<Inputs.RulesetRuleActionParametersNoTransformGetArgs>? NoTransform { get; set; }
+
+        /// <summary>
+        /// The operation to perform for set*cache*tags action.
+        /// Available values: "set", "add", "remove".
+        /// </summary>
+        [Input("operation")]
+        public Input<string>? Operation { get; set; }
 
         /// <summary>
         /// Whether to enable Opportunistic Encryption.
@@ -240,7 +295,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// A list of phases to skip the execution of. This option is incompatible with the rulesets option.
-        /// Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
+        /// Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*cache*settings", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit*ratelimit".
         /// </summary>
         public InputList<string> Phases
         {
@@ -255,6 +310,12 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("polish")]
         public Input<string>? Polish { get; set; }
 
+        /// <summary>
+        /// Set the private cache control directive.
+        /// </summary>
+        [Input("private")]
+        public Input<Inputs.RulesetRuleActionParametersPrivateGetArgs>? Private { get; set; }
+
         [Input("products")]
         private InputList<string>? _products;
 
@@ -267,6 +328,18 @@ namespace Pulumi.Cloudflare.Inputs
             get => _products ?? (_products = new InputList<string>());
             set => _products = value;
         }
+
+        /// <summary>
+        /// Set the proxy-revalidate cache control directive.
+        /// </summary>
+        [Input("proxyRevalidate")]
+        public Input<Inputs.RulesetRuleActionParametersProxyRevalidateGetArgs>? ProxyRevalidate { get; set; }
+
+        /// <summary>
+        /// Set the public cache control directive.
+        /// </summary>
+        [Input("public")]
+        public Input<Inputs.RulesetRuleActionParametersPublicGetArgs>? Public { get; set; }
 
         [Input("rawResponseFields")]
         private InputList<Inputs.RulesetRuleActionParametersRawResponseFieldGetArgs>? _rawResponseFields;
@@ -374,6 +447,12 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
+        /// Set the s-maxage cache control directive.
+        /// </summary>
+        [Input("sMaxage")]
+        public Input<Inputs.RulesetRuleActionParametersSMaxageGetArgs>? SMaxage { get; set; }
+
+        /// <summary>
         /// The Security Level to configure.
         /// Available values: "off", "essentially*off", "low", "medium", "high", "under*attack".
         /// </summary>
@@ -406,10 +485,40 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Ssl { get; set; }
 
         /// <summary>
+        /// Set the stale-if-error cache control directive.
+        /// </summary>
+        [Input("staleIfError")]
+        public Input<Inputs.RulesetRuleActionParametersStaleIfErrorGetArgs>? StaleIfError { get; set; }
+
+        /// <summary>
+        /// Set the stale-while-revalidate cache control directive.
+        /// </summary>
+        [Input("staleWhileRevalidate")]
+        public Input<Inputs.RulesetRuleActionParametersStaleWhileRevalidateGetArgs>? StaleWhileRevalidate { get; set; }
+
+        /// <summary>
         /// The status code to use for the error.
         /// </summary>
         [Input("statusCode")]
         public Input<int>? StatusCode { get; set; }
+
+        /// <summary>
+        /// Whether to strip the ETag header from the response.
+        /// </summary>
+        [Input("stripEtags")]
+        public Input<bool>? StripEtags { get; set; }
+
+        /// <summary>
+        /// Whether to strip the Last-Modified header from the response.
+        /// </summary>
+        [Input("stripLastModified")]
+        public Input<bool>? StripLastModified { get; set; }
+
+        /// <summary>
+        /// Whether to strip the Set-Cookie header from the response.
+        /// </summary>
+        [Input("stripSetCookie")]
+        public Input<bool>? StripSetCookie { get; set; }
 
         /// <summary>
         /// Whether to enable Signed Exchanges (SXG).
@@ -434,6 +543,18 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("uri")]
         public Input<Inputs.RulesetRuleActionParametersUriGetArgs>? Uri { get; set; }
+
+        [Input("values")]
+        private InputList<string>? _values;
+
+        /// <summary>
+        /// The cache tag values for set*cache*tags action.
+        /// </summary>
+        public InputList<string> Values
+        {
+            get => _values ?? (_values = new InputList<string>());
+            set => _values = value;
+        }
 
         public RulesetRuleActionParametersGetArgs()
         {

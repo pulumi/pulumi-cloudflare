@@ -36,6 +36,13 @@ public final class MagicTransitSiteLanState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.accountId);
     }
 
+    @Import(name="bondId")
+    private @Nullable Output<Integer> bondId;
+
+    public Optional<Output<Integer>> bondId() {
+        return Optional.ofNullable(this.bondId);
+    }
+
     /**
      * mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
      * 
@@ -128,6 +135,7 @@ public final class MagicTransitSiteLanState extends com.pulumi.resources.Resourc
 
     private MagicTransitSiteLanState(MagicTransitSiteLanState $) {
         this.accountId = $.accountId;
+        this.bondId = $.bondId;
         this.haLink = $.haLink;
         this.name = $.name;
         this.nat = $.nat;
@@ -175,6 +183,15 @@ public final class MagicTransitSiteLanState extends com.pulumi.resources.Resourc
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        public Builder bondId(@Nullable Output<Integer> bondId) {
+            $.bondId = bondId;
+            return this;
+        }
+
+        public Builder bondId(Integer bondId) {
+            return bondId(Output.of(bondId));
         }
 
         /**
