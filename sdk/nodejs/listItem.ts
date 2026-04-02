@@ -26,6 +26,12 @@ import * as utilities from "./utilities";
  * $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
  * $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
  * $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
+ * $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
+ * $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
+ * $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
+ * $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
+ * $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
+ * $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
  * ```
  */
 export class ListItem extends pulumi.CustomResource {

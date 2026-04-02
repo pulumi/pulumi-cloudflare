@@ -90,8 +90,11 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The unique identifier for the test.
         /// </summary>
-        [Input("dexTestId", required: true)]
-        public string DexTestId { get; set; } = null!;
+        [Input("dexTestId")]
+        public string? DexTestId { get; set; }
+
+        [Input("filter")]
+        public Inputs.GetZeroTrustDexTestFilterArgs? Filter { get; set; }
 
         [Input("targetPolicies")]
         private List<Inputs.GetZeroTrustDexTestTargetPolicyArgs>? _targetPolicies;
@@ -119,8 +122,11 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The unique identifier for the test.
         /// </summary>
-        [Input("dexTestId", required: true)]
-        public Input<string> DexTestId { get; set; } = null!;
+        [Input("dexTestId")]
+        public Input<string>? DexTestId { get; set; }
+
+        [Input("filter")]
+        public Input<Inputs.GetZeroTrustDexTestFilterInputArgs>? Filter { get; set; }
 
         [Input("targetPolicies")]
         private InputList<Inputs.GetZeroTrustDexTestTargetPolicyInputArgs>? _targetPolicies;
@@ -156,11 +162,12 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The unique identifier for the test.
         /// </summary>
-        public readonly string DexTestId;
+        public readonly string? DexTestId;
         /// <summary>
         /// Determines whether or not the test is active.
         /// </summary>
         public readonly bool Enabled;
+        public readonly Outputs.GetZeroTrustDexTestFilterResult? Filter;
         /// <summary>
         /// The unique identifier for the test.
         /// </summary>
@@ -191,9 +198,11 @@ namespace Pulumi.Cloudflare
 
             string description,
 
-            string dexTestId,
+            string? dexTestId,
 
             bool enabled,
+
+            Outputs.GetZeroTrustDexTestFilterResult? filter,
 
             string id,
 
@@ -212,6 +221,7 @@ namespace Pulumi.Cloudflare
             Description = description;
             DexTestId = dexTestId;
             Enabled = enabled;
+            Filter = filter;
             Id = id;
             Interval = interval;
             Name = name;

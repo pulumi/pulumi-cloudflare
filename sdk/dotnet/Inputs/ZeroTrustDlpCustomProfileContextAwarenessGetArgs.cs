@@ -15,14 +15,14 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// If true, scan the context of predefined entries to only return matches surrounded by keywords.
         /// </summary>
-        [Input("enabled", required: true)]
-        public Input<bool> Enabled { get; set; } = null!;
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
 
         /// <summary>
         /// Content types to exclude from context analysis and return all matches.
         /// </summary>
-        [Input("skip", required: true)]
-        public Input<Inputs.ZeroTrustDlpCustomProfileContextAwarenessSkipGetArgs> Skip { get; set; } = null!;
+        [Input("skip")]
+        public Input<Inputs.ZeroTrustDlpCustomProfileContextAwarenessSkipGetArgs>? Skip { get; set; }
 
         public ZeroTrustDlpCustomProfileContextAwarenessGetArgs()
         {

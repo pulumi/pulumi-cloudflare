@@ -19,15 +19,11 @@ public final class QueueConsumer {
     private @Nullable String consumerId;
     private @Nullable String createdOn;
     /**
-     * @return A Resource identifier.
+     * @return Name of the dead letter queue, or empty string if not configured
      * 
      */
-    private @Nullable String queueId;
-    /**
-     * @return Name of a Worker
-     * 
-     */
-    private @Nullable String script;
+    private @Nullable String deadLetterQueue;
+    private @Nullable String queueName;
     /**
      * @return Name of a Worker
      * 
@@ -52,18 +48,14 @@ public final class QueueConsumer {
         return Optional.ofNullable(this.createdOn);
     }
     /**
-     * @return A Resource identifier.
+     * @return Name of the dead letter queue, or empty string if not configured
      * 
      */
-    public Optional<String> queueId() {
-        return Optional.ofNullable(this.queueId);
+    public Optional<String> deadLetterQueue() {
+        return Optional.ofNullable(this.deadLetterQueue);
     }
-    /**
-     * @return Name of a Worker
-     * 
-     */
-    public Optional<String> script() {
-        return Optional.ofNullable(this.script);
+    public Optional<String> queueName() {
+        return Optional.ofNullable(this.queueName);
     }
     /**
      * @return Name of a Worker
@@ -94,8 +86,8 @@ public final class QueueConsumer {
     public static final class Builder {
         private @Nullable String consumerId;
         private @Nullable String createdOn;
-        private @Nullable String queueId;
-        private @Nullable String script;
+        private @Nullable String deadLetterQueue;
+        private @Nullable String queueName;
         private @Nullable String scriptName;
         private @Nullable QueueConsumerSettings settings;
         private @Nullable String type;
@@ -104,8 +96,8 @@ public final class QueueConsumer {
     	      Objects.requireNonNull(defaults);
     	      this.consumerId = defaults.consumerId;
     	      this.createdOn = defaults.createdOn;
-    	      this.queueId = defaults.queueId;
-    	      this.script = defaults.script;
+    	      this.deadLetterQueue = defaults.deadLetterQueue;
+    	      this.queueName = defaults.queueName;
     	      this.scriptName = defaults.scriptName;
     	      this.settings = defaults.settings;
     	      this.type = defaults.type;
@@ -124,15 +116,15 @@ public final class QueueConsumer {
             return this;
         }
         @CustomType.Setter
-        public Builder queueId(@Nullable String queueId) {
+        public Builder deadLetterQueue(@Nullable String deadLetterQueue) {
 
-            this.queueId = queueId;
+            this.deadLetterQueue = deadLetterQueue;
             return this;
         }
         @CustomType.Setter
-        public Builder script(@Nullable String script) {
+        public Builder queueName(@Nullable String queueName) {
 
-            this.script = script;
+            this.queueName = queueName;
             return this;
         }
         @CustomType.Setter
@@ -157,8 +149,8 @@ public final class QueueConsumer {
             final var _resultValue = new QueueConsumer();
             _resultValue.consumerId = consumerId;
             _resultValue.createdOn = createdOn;
-            _resultValue.queueId = queueId;
-            _resultValue.script = script;
+            _resultValue.deadLetterQueue = deadLetterQueue;
+            _resultValue.queueName = queueName;
             _resultValue.scriptName = scriptName;
             _resultValue.settings = settings;
             _resultValue.type = type;

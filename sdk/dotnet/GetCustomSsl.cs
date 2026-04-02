@@ -165,25 +165,14 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string ModifiedOn;
         /// <summary>
-        /// Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+        /// The policy restrictions returned by the API. This field is returned in responses
+        /// when a policy has been set. The API accepts the "policy" field in requests but
+        /// returns this field as "PolicyRestrictions" in responses.
         /// </summary>
-        public readonly string Policy;
-        /// <summary>
-        /// The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy*custom' certificates, but 'legacy*custom' certificates will always supercede 'sni_custom' certificates.
-        /// </summary>
+        public readonly string PolicyRestrictions;
         public readonly double Priority;
-        /// <summary>
-        /// The type of hash used for the certificate.
-        /// </summary>
         public readonly string Signature;
-        /// <summary>
-        /// Status of the zone's custom SSL.
-        /// Available values: "active", "expired", "deleted", "pending", "initializing".
-        /// </summary>
         public readonly string Status;
-        /// <summary>
-        /// When the certificate was uploaded to Cloudflare.
-        /// </summary>
         public readonly string UploadedOn;
         /// <summary>
         /// Identifier.
@@ -212,7 +201,7 @@ namespace Pulumi.Cloudflare
 
             string modifiedOn,
 
-            string policy,
+            string policyRestrictions,
 
             double priority,
 
@@ -234,7 +223,7 @@ namespace Pulumi.Cloudflare
             Issuer = issuer;
             KeylessServer = keylessServer;
             ModifiedOn = modifiedOn;
-            Policy = policy;
+            PolicyRestrictions = policyRestrictions;
             Priority = priority;
             Signature = signature;
             Status = status;

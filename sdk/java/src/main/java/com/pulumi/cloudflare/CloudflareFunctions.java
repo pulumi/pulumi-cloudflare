@@ -44,6 +44,14 @@ import com.pulumi.cloudflare.inputs.GetAddressMapArgs;
 import com.pulumi.cloudflare.inputs.GetAddressMapPlainArgs;
 import com.pulumi.cloudflare.inputs.GetAddressMapsArgs;
 import com.pulumi.cloudflare.inputs.GetAddressMapsPlainArgs;
+import com.pulumi.cloudflare.inputs.GetAiSearchInstanceArgs;
+import com.pulumi.cloudflare.inputs.GetAiSearchInstancePlainArgs;
+import com.pulumi.cloudflare.inputs.GetAiSearchInstancesArgs;
+import com.pulumi.cloudflare.inputs.GetAiSearchInstancesPlainArgs;
+import com.pulumi.cloudflare.inputs.GetAiSearchTokenArgs;
+import com.pulumi.cloudflare.inputs.GetAiSearchTokenPlainArgs;
+import com.pulumi.cloudflare.inputs.GetAiSearchTokensArgs;
+import com.pulumi.cloudflare.inputs.GetAiSearchTokensPlainArgs;
 import com.pulumi.cloudflare.inputs.GetApiShieldArgs;
 import com.pulumi.cloudflare.inputs.GetApiShieldDiscoveryOperationsArgs;
 import com.pulumi.cloudflare.inputs.GetApiShieldDiscoveryOperationsPlainArgs;
@@ -75,6 +83,10 @@ import com.pulumi.cloudflare.inputs.GetAuthenticatedOriginPullsCertificateArgs;
 import com.pulumi.cloudflare.inputs.GetAuthenticatedOriginPullsCertificatePlainArgs;
 import com.pulumi.cloudflare.inputs.GetAuthenticatedOriginPullsCertificatesArgs;
 import com.pulumi.cloudflare.inputs.GetAuthenticatedOriginPullsCertificatesPlainArgs;
+import com.pulumi.cloudflare.inputs.GetAuthenticatedOriginPullsHostnameCertificateArgs;
+import com.pulumi.cloudflare.inputs.GetAuthenticatedOriginPullsHostnameCertificatePlainArgs;
+import com.pulumi.cloudflare.inputs.GetAuthenticatedOriginPullsHostnameCertificatesArgs;
+import com.pulumi.cloudflare.inputs.GetAuthenticatedOriginPullsHostnameCertificatesPlainArgs;
 import com.pulumi.cloudflare.inputs.GetAuthenticatedOriginPullsPlainArgs;
 import com.pulumi.cloudflare.inputs.GetAuthenticatedOriginPullsSettingsArgs;
 import com.pulumi.cloudflare.inputs.GetAuthenticatedOriginPullsSettingsPlainArgs;
@@ -98,6 +110,10 @@ import com.pulumi.cloudflare.inputs.GetCertificatePackArgs;
 import com.pulumi.cloudflare.inputs.GetCertificatePackPlainArgs;
 import com.pulumi.cloudflare.inputs.GetCertificatePacksArgs;
 import com.pulumi.cloudflare.inputs.GetCertificatePacksPlainArgs;
+import com.pulumi.cloudflare.inputs.GetClientCertificateArgs;
+import com.pulumi.cloudflare.inputs.GetClientCertificatePlainArgs;
+import com.pulumi.cloudflare.inputs.GetClientCertificatesArgs;
+import com.pulumi.cloudflare.inputs.GetClientCertificatesPlainArgs;
 import com.pulumi.cloudflare.inputs.GetCloudConnectorRulesArgs;
 import com.pulumi.cloudflare.inputs.GetCloudConnectorRulesPlainArgs;
 import com.pulumi.cloudflare.inputs.GetCloudforceOneRequestArgs;
@@ -124,6 +140,10 @@ import com.pulumi.cloudflare.inputs.GetCustomHostnameFallbackOriginPlainArgs;
 import com.pulumi.cloudflare.inputs.GetCustomHostnamePlainArgs;
 import com.pulumi.cloudflare.inputs.GetCustomHostnamesArgs;
 import com.pulumi.cloudflare.inputs.GetCustomHostnamesPlainArgs;
+import com.pulumi.cloudflare.inputs.GetCustomOriginTrustStoreArgs;
+import com.pulumi.cloudflare.inputs.GetCustomOriginTrustStorePlainArgs;
+import com.pulumi.cloudflare.inputs.GetCustomOriginTrustStoresArgs;
+import com.pulumi.cloudflare.inputs.GetCustomOriginTrustStoresPlainArgs;
 import com.pulumi.cloudflare.inputs.GetCustomPagesArgs;
 import com.pulumi.cloudflare.inputs.GetCustomPagesListArgs;
 import com.pulumi.cloudflare.inputs.GetCustomPagesListPlainArgs;
@@ -592,6 +612,10 @@ import com.pulumi.cloudflare.inputs.GetZeroTrustDevicePostureRulesArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustDevicePostureRulesPlainArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustDeviceSettingsArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustDeviceSettingsPlainArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustDexRuleArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustDexRulePlainArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustDexRulesArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustDexRulesPlainArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestPlainArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestsArgs;
@@ -634,6 +658,10 @@ import com.pulumi.cloudflare.inputs.GetZeroTrustGatewayCertificatesArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustGatewayCertificatesPlainArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustGatewayLoggingArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustGatewayLoggingPlainArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustGatewayPacfileArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustGatewayPacfilePlainArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustGatewayPacfilesArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustGatewayPacfilesPlainArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustGatewayPoliciesArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustGatewayPoliciesPlainArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustGatewayPolicyArgs;
@@ -724,6 +752,10 @@ import com.pulumi.cloudflare.outputs.GetAccountTokensInvokeResult;
 import com.pulumi.cloudflare.outputs.GetAccountsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetAddressMapResult;
 import com.pulumi.cloudflare.outputs.GetAddressMapsInvokeResult;
+import com.pulumi.cloudflare.outputs.GetAiSearchInstanceResult;
+import com.pulumi.cloudflare.outputs.GetAiSearchInstancesInvokeResult;
+import com.pulumi.cloudflare.outputs.GetAiSearchTokenResult;
+import com.pulumi.cloudflare.outputs.GetAiSearchTokensInvokeResult;
 import com.pulumi.cloudflare.outputs.GetApiShieldDiscoveryOperationsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetApiShieldOperationResult;
 import com.pulumi.cloudflare.outputs.GetApiShieldOperationSchemaValidationSettingsResult;
@@ -739,6 +771,8 @@ import com.pulumi.cloudflare.outputs.GetArgoSmartRoutingResult;
 import com.pulumi.cloudflare.outputs.GetArgoTieredCachingResult;
 import com.pulumi.cloudflare.outputs.GetAuthenticatedOriginPullsCertificateResult;
 import com.pulumi.cloudflare.outputs.GetAuthenticatedOriginPullsCertificatesInvokeResult;
+import com.pulumi.cloudflare.outputs.GetAuthenticatedOriginPullsHostnameCertificateResult;
+import com.pulumi.cloudflare.outputs.GetAuthenticatedOriginPullsHostnameCertificatesInvokeResult;
 import com.pulumi.cloudflare.outputs.GetAuthenticatedOriginPullsResult;
 import com.pulumi.cloudflare.outputs.GetAuthenticatedOriginPullsSettingsResult;
 import com.pulumi.cloudflare.outputs.GetBotManagementResult;
@@ -751,6 +785,8 @@ import com.pulumi.cloudflare.outputs.GetCallsTurnAppResult;
 import com.pulumi.cloudflare.outputs.GetCallsTurnAppsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetCertificatePackResult;
 import com.pulumi.cloudflare.outputs.GetCertificatePacksInvokeResult;
+import com.pulumi.cloudflare.outputs.GetClientCertificateResult;
+import com.pulumi.cloudflare.outputs.GetClientCertificatesInvokeResult;
 import com.pulumi.cloudflare.outputs.GetCloudConnectorRulesResult;
 import com.pulumi.cloudflare.outputs.GetCloudforceOneRequestAssetResult;
 import com.pulumi.cloudflare.outputs.GetCloudforceOneRequestMessageResult;
@@ -764,6 +800,8 @@ import com.pulumi.cloudflare.outputs.GetContentScanningResult;
 import com.pulumi.cloudflare.outputs.GetCustomHostnameFallbackOriginResult;
 import com.pulumi.cloudflare.outputs.GetCustomHostnameResult;
 import com.pulumi.cloudflare.outputs.GetCustomHostnamesInvokeResult;
+import com.pulumi.cloudflare.outputs.GetCustomOriginTrustStoreResult;
+import com.pulumi.cloudflare.outputs.GetCustomOriginTrustStoresInvokeResult;
 import com.pulumi.cloudflare.outputs.GetCustomPagesListInvokeResult;
 import com.pulumi.cloudflare.outputs.GetCustomPagesResult;
 import com.pulumi.cloudflare.outputs.GetCustomSslResult;
@@ -999,6 +1037,8 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustDevicePostureIntegrationsInvoke
 import com.pulumi.cloudflare.outputs.GetZeroTrustDevicePostureRuleResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDevicePostureRulesInvokeResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDeviceSettingsResult;
+import com.pulumi.cloudflare.outputs.GetZeroTrustDexRuleResult;
+import com.pulumi.cloudflare.outputs.GetZeroTrustDexRulesInvokeResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDexTestResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDexTestsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDlpCustomEntriesInvokeResult;
@@ -1020,6 +1060,8 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayCategoriesListInvokeResu
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayCertificateResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayCertificatesInvokeResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayLoggingResult;
+import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPacfileResult;
+import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPacfilesInvokeResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPoliciesInvokeResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPolicyResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayProxyEndpointResult;
@@ -5394,6 +5436,66 @@ public final class CloudflareFunctions {
     public static CompletableFuture<GetAddressMapsInvokeResult> getAddressMapsPlain(GetAddressMapsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getAddressMaps:getAddressMaps", TypeShape.of(GetAddressMapsInvokeResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetAiSearchInstanceResult> getAiSearchInstance(GetAiSearchInstanceArgs args) {
+        return getAiSearchInstance(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetAiSearchInstanceResult> getAiSearchInstancePlain(GetAiSearchInstancePlainArgs args) {
+        return getAiSearchInstancePlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetAiSearchInstanceResult> getAiSearchInstance(GetAiSearchInstanceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getAiSearchInstance:getAiSearchInstance", TypeShape.of(GetAiSearchInstanceResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetAiSearchInstanceResult> getAiSearchInstance(GetAiSearchInstanceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getAiSearchInstance:getAiSearchInstance", TypeShape.of(GetAiSearchInstanceResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetAiSearchInstanceResult> getAiSearchInstancePlain(GetAiSearchInstancePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getAiSearchInstance:getAiSearchInstance", TypeShape.of(GetAiSearchInstanceResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetAiSearchInstancesInvokeResult> getAiSearchInstances(GetAiSearchInstancesArgs args) {
+        return getAiSearchInstances(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetAiSearchInstancesInvokeResult> getAiSearchInstancesPlain(GetAiSearchInstancesPlainArgs args) {
+        return getAiSearchInstancesPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetAiSearchInstancesInvokeResult> getAiSearchInstances(GetAiSearchInstancesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getAiSearchInstances:getAiSearchInstances", TypeShape.of(GetAiSearchInstancesInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetAiSearchInstancesInvokeResult> getAiSearchInstances(GetAiSearchInstancesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getAiSearchInstances:getAiSearchInstances", TypeShape.of(GetAiSearchInstancesInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetAiSearchInstancesInvokeResult> getAiSearchInstancesPlain(GetAiSearchInstancesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getAiSearchInstances:getAiSearchInstances", TypeShape.of(GetAiSearchInstancesInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetAiSearchTokenResult> getAiSearchToken(GetAiSearchTokenArgs args) {
+        return getAiSearchToken(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetAiSearchTokenResult> getAiSearchTokenPlain(GetAiSearchTokenPlainArgs args) {
+        return getAiSearchTokenPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetAiSearchTokenResult> getAiSearchToken(GetAiSearchTokenArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getAiSearchToken:getAiSearchToken", TypeShape.of(GetAiSearchTokenResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetAiSearchTokenResult> getAiSearchToken(GetAiSearchTokenArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getAiSearchToken:getAiSearchToken", TypeShape.of(GetAiSearchTokenResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetAiSearchTokenResult> getAiSearchTokenPlain(GetAiSearchTokenPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getAiSearchToken:getAiSearchToken", TypeShape.of(GetAiSearchTokenResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetAiSearchTokensInvokeResult> getAiSearchTokens(GetAiSearchTokensArgs args) {
+        return getAiSearchTokens(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetAiSearchTokensInvokeResult> getAiSearchTokensPlain(GetAiSearchTokensPlainArgs args) {
+        return getAiSearchTokensPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetAiSearchTokensInvokeResult> getAiSearchTokens(GetAiSearchTokensArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getAiSearchTokens:getAiSearchTokens", TypeShape.of(GetAiSearchTokensInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetAiSearchTokensInvokeResult> getAiSearchTokens(GetAiSearchTokensArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getAiSearchTokens:getAiSearchTokens", TypeShape.of(GetAiSearchTokensInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetAiSearchTokensInvokeResult> getAiSearchTokensPlain(GetAiSearchTokensPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getAiSearchTokens:getAiSearchTokens", TypeShape.of(GetAiSearchTokensInvokeResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * ## Example Usage
      * 
@@ -8630,6 +8732,391 @@ public final class CloudflareFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetAuthenticatedOriginPullsHostnameCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleAuthenticatedOriginPullsHostnameCertificate = CloudflareFunctions.getAuthenticatedOriginPullsHostnameCertificate(GetAuthenticatedOriginPullsHostnameCertificateArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .certificateId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAuthenticatedOriginPullsHostnameCertificateResult> getAuthenticatedOriginPullsHostnameCertificate(GetAuthenticatedOriginPullsHostnameCertificateArgs args) {
+        return getAuthenticatedOriginPullsHostnameCertificate(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetAuthenticatedOriginPullsHostnameCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleAuthenticatedOriginPullsHostnameCertificate = CloudflareFunctions.getAuthenticatedOriginPullsHostnameCertificate(GetAuthenticatedOriginPullsHostnameCertificateArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .certificateId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAuthenticatedOriginPullsHostnameCertificateResult> getAuthenticatedOriginPullsHostnameCertificatePlain(GetAuthenticatedOriginPullsHostnameCertificatePlainArgs args) {
+        return getAuthenticatedOriginPullsHostnameCertificatePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetAuthenticatedOriginPullsHostnameCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleAuthenticatedOriginPullsHostnameCertificate = CloudflareFunctions.getAuthenticatedOriginPullsHostnameCertificate(GetAuthenticatedOriginPullsHostnameCertificateArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .certificateId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAuthenticatedOriginPullsHostnameCertificateResult> getAuthenticatedOriginPullsHostnameCertificate(GetAuthenticatedOriginPullsHostnameCertificateArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getAuthenticatedOriginPullsHostnameCertificate:getAuthenticatedOriginPullsHostnameCertificate", TypeShape.of(GetAuthenticatedOriginPullsHostnameCertificateResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetAuthenticatedOriginPullsHostnameCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleAuthenticatedOriginPullsHostnameCertificate = CloudflareFunctions.getAuthenticatedOriginPullsHostnameCertificate(GetAuthenticatedOriginPullsHostnameCertificateArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .certificateId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAuthenticatedOriginPullsHostnameCertificateResult> getAuthenticatedOriginPullsHostnameCertificate(GetAuthenticatedOriginPullsHostnameCertificateArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getAuthenticatedOriginPullsHostnameCertificate:getAuthenticatedOriginPullsHostnameCertificate", TypeShape.of(GetAuthenticatedOriginPullsHostnameCertificateResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetAuthenticatedOriginPullsHostnameCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleAuthenticatedOriginPullsHostnameCertificate = CloudflareFunctions.getAuthenticatedOriginPullsHostnameCertificate(GetAuthenticatedOriginPullsHostnameCertificateArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .certificateId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAuthenticatedOriginPullsHostnameCertificateResult> getAuthenticatedOriginPullsHostnameCertificatePlain(GetAuthenticatedOriginPullsHostnameCertificatePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getAuthenticatedOriginPullsHostnameCertificate:getAuthenticatedOriginPullsHostnameCertificate", TypeShape.of(GetAuthenticatedOriginPullsHostnameCertificateResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetAuthenticatedOriginPullsHostnameCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleAuthenticatedOriginPullsHostnameCertificates = CloudflareFunctions.getAuthenticatedOriginPullsHostnameCertificates(GetAuthenticatedOriginPullsHostnameCertificatesArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAuthenticatedOriginPullsHostnameCertificatesInvokeResult> getAuthenticatedOriginPullsHostnameCertificates(GetAuthenticatedOriginPullsHostnameCertificatesArgs args) {
+        return getAuthenticatedOriginPullsHostnameCertificates(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetAuthenticatedOriginPullsHostnameCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleAuthenticatedOriginPullsHostnameCertificates = CloudflareFunctions.getAuthenticatedOriginPullsHostnameCertificates(GetAuthenticatedOriginPullsHostnameCertificatesArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAuthenticatedOriginPullsHostnameCertificatesInvokeResult> getAuthenticatedOriginPullsHostnameCertificatesPlain(GetAuthenticatedOriginPullsHostnameCertificatesPlainArgs args) {
+        return getAuthenticatedOriginPullsHostnameCertificatesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetAuthenticatedOriginPullsHostnameCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleAuthenticatedOriginPullsHostnameCertificates = CloudflareFunctions.getAuthenticatedOriginPullsHostnameCertificates(GetAuthenticatedOriginPullsHostnameCertificatesArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAuthenticatedOriginPullsHostnameCertificatesInvokeResult> getAuthenticatedOriginPullsHostnameCertificates(GetAuthenticatedOriginPullsHostnameCertificatesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getAuthenticatedOriginPullsHostnameCertificates:getAuthenticatedOriginPullsHostnameCertificates", TypeShape.of(GetAuthenticatedOriginPullsHostnameCertificatesInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetAuthenticatedOriginPullsHostnameCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleAuthenticatedOriginPullsHostnameCertificates = CloudflareFunctions.getAuthenticatedOriginPullsHostnameCertificates(GetAuthenticatedOriginPullsHostnameCertificatesArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAuthenticatedOriginPullsHostnameCertificatesInvokeResult> getAuthenticatedOriginPullsHostnameCertificates(GetAuthenticatedOriginPullsHostnameCertificatesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getAuthenticatedOriginPullsHostnameCertificates:getAuthenticatedOriginPullsHostnameCertificates", TypeShape.of(GetAuthenticatedOriginPullsHostnameCertificatesInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetAuthenticatedOriginPullsHostnameCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleAuthenticatedOriginPullsHostnameCertificates = CloudflareFunctions.getAuthenticatedOriginPullsHostnameCertificates(GetAuthenticatedOriginPullsHostnameCertificatesArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAuthenticatedOriginPullsHostnameCertificatesInvokeResult> getAuthenticatedOriginPullsHostnameCertificatesPlain(GetAuthenticatedOriginPullsHostnameCertificatesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getAuthenticatedOriginPullsHostnameCertificates:getAuthenticatedOriginPullsHostnameCertificates", TypeShape.of(GetAuthenticatedOriginPullsHostnameCertificatesInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
      * import com.pulumi.cloudflare.inputs.GetAuthenticatedOriginPullsSettingsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -10566,6 +11053,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleCertificatePacks = CloudflareFunctions.getCertificatePacks(GetCertificatePacksArgs.builder()
      *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .deploy("staging")
      *             .status("all")
      *             .build());
      * 
@@ -10605,6 +11093,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleCertificatePacks = CloudflareFunctions.getCertificatePacks(GetCertificatePacksArgs.builder()
      *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .deploy("staging")
      *             .status("all")
      *             .build());
      * 
@@ -10644,6 +11133,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleCertificatePacks = CloudflareFunctions.getCertificatePacks(GetCertificatePacksArgs.builder()
      *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .deploy("staging")
      *             .status("all")
      *             .build());
      * 
@@ -10683,6 +11173,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleCertificatePacks = CloudflareFunctions.getCertificatePacks(GetCertificatePacksArgs.builder()
      *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .deploy("staging")
      *             .status("all")
      *             .build());
      * 
@@ -10722,6 +11213,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleCertificatePacks = CloudflareFunctions.getCertificatePacks(GetCertificatePacksArgs.builder()
      *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .deploy("staging")
      *             .status("all")
      *             .build());
      * 
@@ -10733,6 +11225,406 @@ public final class CloudflareFunctions {
      */
     public static CompletableFuture<GetCertificatePacksInvokeResult> getCertificatePacksPlain(GetCertificatePacksPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getCertificatePacks:getCertificatePacks", TypeShape.of(GetCertificatePacksInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetClientCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleClientCertificate = CloudflareFunctions.getClientCertificate(GetClientCertificateArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .clientCertificateId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetClientCertificateResult> getClientCertificate(GetClientCertificateArgs args) {
+        return getClientCertificate(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetClientCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleClientCertificate = CloudflareFunctions.getClientCertificate(GetClientCertificateArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .clientCertificateId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetClientCertificateResult> getClientCertificatePlain(GetClientCertificatePlainArgs args) {
+        return getClientCertificatePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetClientCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleClientCertificate = CloudflareFunctions.getClientCertificate(GetClientCertificateArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .clientCertificateId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetClientCertificateResult> getClientCertificate(GetClientCertificateArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getClientCertificate:getClientCertificate", TypeShape.of(GetClientCertificateResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetClientCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleClientCertificate = CloudflareFunctions.getClientCertificate(GetClientCertificateArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .clientCertificateId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetClientCertificateResult> getClientCertificate(GetClientCertificateArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getClientCertificate:getClientCertificate", TypeShape.of(GetClientCertificateResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetClientCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleClientCertificate = CloudflareFunctions.getClientCertificate(GetClientCertificateArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .clientCertificateId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetClientCertificateResult> getClientCertificatePlain(GetClientCertificatePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getClientCertificate:getClientCertificate", TypeShape.of(GetClientCertificateResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetClientCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleClientCertificates = CloudflareFunctions.getClientCertificates(GetClientCertificatesArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .limit(10)
+     *             .offset(10)
+     *             .status("all")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetClientCertificatesInvokeResult> getClientCertificates(GetClientCertificatesArgs args) {
+        return getClientCertificates(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetClientCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleClientCertificates = CloudflareFunctions.getClientCertificates(GetClientCertificatesArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .limit(10)
+     *             .offset(10)
+     *             .status("all")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetClientCertificatesInvokeResult> getClientCertificatesPlain(GetClientCertificatesPlainArgs args) {
+        return getClientCertificatesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetClientCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleClientCertificates = CloudflareFunctions.getClientCertificates(GetClientCertificatesArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .limit(10)
+     *             .offset(10)
+     *             .status("all")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetClientCertificatesInvokeResult> getClientCertificates(GetClientCertificatesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getClientCertificates:getClientCertificates", TypeShape.of(GetClientCertificatesInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetClientCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleClientCertificates = CloudflareFunctions.getClientCertificates(GetClientCertificatesArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .limit(10)
+     *             .offset(10)
+     *             .status("all")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetClientCertificatesInvokeResult> getClientCertificates(GetClientCertificatesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getClientCertificates:getClientCertificates", TypeShape.of(GetClientCertificatesInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetClientCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleClientCertificates = CloudflareFunctions.getClientCertificates(GetClientCertificatesArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .limit(10)
+     *             .offset(10)
+     *             .status("all")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetClientCertificatesInvokeResult> getClientCertificatesPlain(GetClientCertificatesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getClientCertificates:getClientCertificates", TypeShape.of(GetClientCertificatesInvokeResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage
@@ -13343,6 +14235,401 @@ public final class CloudflareFunctions {
      */
     public static CompletableFuture<GetCustomHostnamesInvokeResult> getCustomHostnamesPlain(GetCustomHostnamesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getCustomHostnames:getCustomHostnames", TypeShape.of(GetCustomHostnamesInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetCustomOriginTrustStoreArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleCustomOriginTrustStore = CloudflareFunctions.getCustomOriginTrustStore(GetCustomOriginTrustStoreArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .customOriginTrustStoreId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCustomOriginTrustStoreResult> getCustomOriginTrustStore(GetCustomOriginTrustStoreArgs args) {
+        return getCustomOriginTrustStore(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetCustomOriginTrustStoreArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleCustomOriginTrustStore = CloudflareFunctions.getCustomOriginTrustStore(GetCustomOriginTrustStoreArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .customOriginTrustStoreId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetCustomOriginTrustStoreResult> getCustomOriginTrustStorePlain(GetCustomOriginTrustStorePlainArgs args) {
+        return getCustomOriginTrustStorePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetCustomOriginTrustStoreArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleCustomOriginTrustStore = CloudflareFunctions.getCustomOriginTrustStore(GetCustomOriginTrustStoreArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .customOriginTrustStoreId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCustomOriginTrustStoreResult> getCustomOriginTrustStore(GetCustomOriginTrustStoreArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getCustomOriginTrustStore:getCustomOriginTrustStore", TypeShape.of(GetCustomOriginTrustStoreResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetCustomOriginTrustStoreArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleCustomOriginTrustStore = CloudflareFunctions.getCustomOriginTrustStore(GetCustomOriginTrustStoreArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .customOriginTrustStoreId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCustomOriginTrustStoreResult> getCustomOriginTrustStore(GetCustomOriginTrustStoreArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getCustomOriginTrustStore:getCustomOriginTrustStore", TypeShape.of(GetCustomOriginTrustStoreResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetCustomOriginTrustStoreArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleCustomOriginTrustStore = CloudflareFunctions.getCustomOriginTrustStore(GetCustomOriginTrustStoreArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .customOriginTrustStoreId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetCustomOriginTrustStoreResult> getCustomOriginTrustStorePlain(GetCustomOriginTrustStorePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getCustomOriginTrustStore:getCustomOriginTrustStore", TypeShape.of(GetCustomOriginTrustStoreResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetCustomOriginTrustStoresArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleCustomOriginTrustStores = CloudflareFunctions.getCustomOriginTrustStores(GetCustomOriginTrustStoresArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .limit(10)
+     *             .offset(10)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCustomOriginTrustStoresInvokeResult> getCustomOriginTrustStores(GetCustomOriginTrustStoresArgs args) {
+        return getCustomOriginTrustStores(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetCustomOriginTrustStoresArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleCustomOriginTrustStores = CloudflareFunctions.getCustomOriginTrustStores(GetCustomOriginTrustStoresArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .limit(10)
+     *             .offset(10)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetCustomOriginTrustStoresInvokeResult> getCustomOriginTrustStoresPlain(GetCustomOriginTrustStoresPlainArgs args) {
+        return getCustomOriginTrustStoresPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetCustomOriginTrustStoresArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleCustomOriginTrustStores = CloudflareFunctions.getCustomOriginTrustStores(GetCustomOriginTrustStoresArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .limit(10)
+     *             .offset(10)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCustomOriginTrustStoresInvokeResult> getCustomOriginTrustStores(GetCustomOriginTrustStoresArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getCustomOriginTrustStores:getCustomOriginTrustStores", TypeShape.of(GetCustomOriginTrustStoresInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetCustomOriginTrustStoresArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleCustomOriginTrustStores = CloudflareFunctions.getCustomOriginTrustStores(GetCustomOriginTrustStoresArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .limit(10)
+     *             .offset(10)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCustomOriginTrustStoresInvokeResult> getCustomOriginTrustStores(GetCustomOriginTrustStoresArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getCustomOriginTrustStores:getCustomOriginTrustStores", TypeShape.of(GetCustomOriginTrustStoresInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetCustomOriginTrustStoresArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleCustomOriginTrustStores = CloudflareFunctions.getCustomOriginTrustStores(GetCustomOriginTrustStoresArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .limit(10)
+     *             .offset(10)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetCustomOriginTrustStoresInvokeResult> getCustomOriginTrustStoresPlain(GetCustomOriginTrustStoresPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getCustomOriginTrustStores:getCustomOriginTrustStores", TypeShape.of(GetCustomOriginTrustStoresInvokeResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage
@@ -40739,193 +42026,18 @@ public final class CloudflareFunctions {
     public static CompletableFuture<GetSnippetListInvokeResult> getSnippetListPlain(GetSnippetListPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getSnippetList:getSnippetList", TypeShape.of(GetSnippetListInvokeResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetSnippetRulesListArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleSnippetRulesList = CloudflareFunctions.getSnippetRulesList(GetSnippetRulesListArgs.builder()
-     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static Output<GetSnippetRulesListInvokeResult> getSnippetRulesList(GetSnippetRulesListArgs args) {
         return getSnippetRulesList(args, InvokeOptions.Empty);
     }
-    /**
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetSnippetRulesListArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleSnippetRulesList = CloudflareFunctions.getSnippetRulesList(GetSnippetRulesListArgs.builder()
-     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static CompletableFuture<GetSnippetRulesListInvokeResult> getSnippetRulesListPlain(GetSnippetRulesListPlainArgs args) {
         return getSnippetRulesListPlain(args, InvokeOptions.Empty);
     }
-    /**
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetSnippetRulesListArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleSnippetRulesList = CloudflareFunctions.getSnippetRulesList(GetSnippetRulesListArgs.builder()
-     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static Output<GetSnippetRulesListInvokeResult> getSnippetRulesList(GetSnippetRulesListArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("cloudflare:index/getSnippetRulesList:getSnippetRulesList", TypeShape.of(GetSnippetRulesListInvokeResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetSnippetRulesListArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleSnippetRulesList = CloudflareFunctions.getSnippetRulesList(GetSnippetRulesListArgs.builder()
-     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static Output<GetSnippetRulesListInvokeResult> getSnippetRulesList(GetSnippetRulesListArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("cloudflare:index/getSnippetRulesList:getSnippetRulesList", TypeShape.of(GetSnippetRulesListInvokeResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetSnippetRulesListArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleSnippetRulesList = CloudflareFunctions.getSnippetRulesList(GetSnippetRulesListArgs.builder()
-     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static CompletableFuture<GetSnippetRulesListInvokeResult> getSnippetRulesListPlain(GetSnippetRulesListPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getSnippetRulesList:getSnippetRulesList", TypeShape.of(GetSnippetRulesListInvokeResult.class), args, Utilities.withVersion(options));
     }
@@ -45282,6 +46394,7 @@ public final class CloudflareFunctions {
      *         final var exampleTurnstileWidgets = CloudflareFunctions.getTurnstileWidgets(GetTurnstileWidgetsArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .direction("asc")
+     *             .filter("name:my-widget")
      *             .order("id")
      *             .build());
      * 
@@ -45322,6 +46435,7 @@ public final class CloudflareFunctions {
      *         final var exampleTurnstileWidgets = CloudflareFunctions.getTurnstileWidgets(GetTurnstileWidgetsArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .direction("asc")
+     *             .filter("name:my-widget")
      *             .order("id")
      *             .build());
      * 
@@ -45362,6 +46476,7 @@ public final class CloudflareFunctions {
      *         final var exampleTurnstileWidgets = CloudflareFunctions.getTurnstileWidgets(GetTurnstileWidgetsArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .direction("asc")
+     *             .filter("name:my-widget")
      *             .order("id")
      *             .build());
      * 
@@ -45402,6 +46517,7 @@ public final class CloudflareFunctions {
      *         final var exampleTurnstileWidgets = CloudflareFunctions.getTurnstileWidgets(GetTurnstileWidgetsArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .direction("asc")
+     *             .filter("name:my-widget")
      *             .order("id")
      *             .build());
      * 
@@ -45442,6 +46558,7 @@ public final class CloudflareFunctions {
      *         final var exampleTurnstileWidgets = CloudflareFunctions.getTurnstileWidgets(GetTurnstileWidgetsArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .direction("asc")
+     *             .filter("name:my-widget")
      *             .order("id")
      *             .build());
      * 
@@ -61039,6 +62156,396 @@ public final class CloudflareFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDexRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDexRule = CloudflareFunctions.getZeroTrustDexRule(GetZeroTrustDexRuleArgs.builder()
+     *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .ruleId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetZeroTrustDexRuleResult> getZeroTrustDexRule(GetZeroTrustDexRuleArgs args) {
+        return getZeroTrustDexRule(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDexRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDexRule = CloudflareFunctions.getZeroTrustDexRule(GetZeroTrustDexRuleArgs.builder()
+     *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .ruleId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustDexRuleResult> getZeroTrustDexRulePlain(GetZeroTrustDexRulePlainArgs args) {
+        return getZeroTrustDexRulePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDexRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDexRule = CloudflareFunctions.getZeroTrustDexRule(GetZeroTrustDexRuleArgs.builder()
+     *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .ruleId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetZeroTrustDexRuleResult> getZeroTrustDexRule(GetZeroTrustDexRuleArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustDexRule:getZeroTrustDexRule", TypeShape.of(GetZeroTrustDexRuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDexRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDexRule = CloudflareFunctions.getZeroTrustDexRule(GetZeroTrustDexRuleArgs.builder()
+     *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .ruleId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetZeroTrustDexRuleResult> getZeroTrustDexRule(GetZeroTrustDexRuleArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustDexRule:getZeroTrustDexRule", TypeShape.of(GetZeroTrustDexRuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDexRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDexRule = CloudflareFunctions.getZeroTrustDexRule(GetZeroTrustDexRuleArgs.builder()
+     *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .ruleId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustDexRuleResult> getZeroTrustDexRulePlain(GetZeroTrustDexRulePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getZeroTrustDexRule:getZeroTrustDexRule", TypeShape.of(GetZeroTrustDexRuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDexRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDexRules = CloudflareFunctions.getZeroTrustDexRules(GetZeroTrustDexRulesArgs.builder()
+     *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .name("name")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetZeroTrustDexRulesInvokeResult> getZeroTrustDexRules(GetZeroTrustDexRulesArgs args) {
+        return getZeroTrustDexRules(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDexRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDexRules = CloudflareFunctions.getZeroTrustDexRules(GetZeroTrustDexRulesArgs.builder()
+     *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .name("name")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustDexRulesInvokeResult> getZeroTrustDexRulesPlain(GetZeroTrustDexRulesPlainArgs args) {
+        return getZeroTrustDexRulesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDexRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDexRules = CloudflareFunctions.getZeroTrustDexRules(GetZeroTrustDexRulesArgs.builder()
+     *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .name("name")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetZeroTrustDexRulesInvokeResult> getZeroTrustDexRules(GetZeroTrustDexRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustDexRules:getZeroTrustDexRules", TypeShape.of(GetZeroTrustDexRulesInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDexRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDexRules = CloudflareFunctions.getZeroTrustDexRules(GetZeroTrustDexRulesArgs.builder()
+     *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .name("name")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetZeroTrustDexRulesInvokeResult> getZeroTrustDexRules(GetZeroTrustDexRulesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustDexRules:getZeroTrustDexRules", TypeShape.of(GetZeroTrustDexRulesInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDexRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDexRules = CloudflareFunctions.getZeroTrustDexRules(GetZeroTrustDexRulesArgs.builder()
+     *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .name("name")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustDexRulesInvokeResult> getZeroTrustDexRulesPlain(GetZeroTrustDexRulesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getZeroTrustDexRules:getZeroTrustDexRules", TypeShape.of(GetZeroTrustDexRulesInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
      * import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -61250,6 +62757,8 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleZeroTrustDexTests = CloudflareFunctions.getZeroTrustDexTests(GetZeroTrustDexTestsArgs.builder()
      *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .kind("http")
+     *             .testName("testName")
      *             .build());
      * 
      *     }
@@ -61288,6 +62797,8 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleZeroTrustDexTests = CloudflareFunctions.getZeroTrustDexTests(GetZeroTrustDexTestsArgs.builder()
      *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .kind("http")
+     *             .testName("testName")
      *             .build());
      * 
      *     }
@@ -61326,6 +62837,8 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleZeroTrustDexTests = CloudflareFunctions.getZeroTrustDexTests(GetZeroTrustDexTestsArgs.builder()
      *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .kind("http")
+     *             .testName("testName")
      *             .build());
      * 
      *     }
@@ -61364,6 +62877,8 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleZeroTrustDexTests = CloudflareFunctions.getZeroTrustDexTests(GetZeroTrustDexTestsArgs.builder()
      *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .kind("http")
+     *             .testName("testName")
      *             .build());
      * 
      *     }
@@ -61402,6 +62917,8 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleZeroTrustDexTests = CloudflareFunctions.getZeroTrustDexTests(GetZeroTrustDexTestsArgs.builder()
      *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .kind("http")
+     *             .testName("testName")
      *             .build());
      * 
      *     }
@@ -65067,6 +66584,391 @@ public final class CloudflareFunctions {
      */
     public static CompletableFuture<GetZeroTrustGatewayLoggingResult> getZeroTrustGatewayLoggingPlain(GetZeroTrustGatewayLoggingPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getZeroTrustGatewayLogging:getZeroTrustGatewayLogging", TypeShape.of(GetZeroTrustGatewayLoggingResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustGatewayPacfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustGatewayPacfile = CloudflareFunctions.getZeroTrustGatewayPacfile(GetZeroTrustGatewayPacfileArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .pacfileId("ed35569b41ce4d1facfe683550f54086")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetZeroTrustGatewayPacfileResult> getZeroTrustGatewayPacfile(GetZeroTrustGatewayPacfileArgs args) {
+        return getZeroTrustGatewayPacfile(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustGatewayPacfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustGatewayPacfile = CloudflareFunctions.getZeroTrustGatewayPacfile(GetZeroTrustGatewayPacfileArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .pacfileId("ed35569b41ce4d1facfe683550f54086")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustGatewayPacfileResult> getZeroTrustGatewayPacfilePlain(GetZeroTrustGatewayPacfilePlainArgs args) {
+        return getZeroTrustGatewayPacfilePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustGatewayPacfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustGatewayPacfile = CloudflareFunctions.getZeroTrustGatewayPacfile(GetZeroTrustGatewayPacfileArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .pacfileId("ed35569b41ce4d1facfe683550f54086")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetZeroTrustGatewayPacfileResult> getZeroTrustGatewayPacfile(GetZeroTrustGatewayPacfileArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustGatewayPacfile:getZeroTrustGatewayPacfile", TypeShape.of(GetZeroTrustGatewayPacfileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustGatewayPacfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustGatewayPacfile = CloudflareFunctions.getZeroTrustGatewayPacfile(GetZeroTrustGatewayPacfileArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .pacfileId("ed35569b41ce4d1facfe683550f54086")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetZeroTrustGatewayPacfileResult> getZeroTrustGatewayPacfile(GetZeroTrustGatewayPacfileArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustGatewayPacfile:getZeroTrustGatewayPacfile", TypeShape.of(GetZeroTrustGatewayPacfileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustGatewayPacfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustGatewayPacfile = CloudflareFunctions.getZeroTrustGatewayPacfile(GetZeroTrustGatewayPacfileArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .pacfileId("ed35569b41ce4d1facfe683550f54086")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustGatewayPacfileResult> getZeroTrustGatewayPacfilePlain(GetZeroTrustGatewayPacfilePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getZeroTrustGatewayPacfile:getZeroTrustGatewayPacfile", TypeShape.of(GetZeroTrustGatewayPacfileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustGatewayPacfilesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustGatewayPacfiles = CloudflareFunctions.getZeroTrustGatewayPacfiles(GetZeroTrustGatewayPacfilesArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetZeroTrustGatewayPacfilesInvokeResult> getZeroTrustGatewayPacfiles(GetZeroTrustGatewayPacfilesArgs args) {
+        return getZeroTrustGatewayPacfiles(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustGatewayPacfilesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustGatewayPacfiles = CloudflareFunctions.getZeroTrustGatewayPacfiles(GetZeroTrustGatewayPacfilesArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustGatewayPacfilesInvokeResult> getZeroTrustGatewayPacfilesPlain(GetZeroTrustGatewayPacfilesPlainArgs args) {
+        return getZeroTrustGatewayPacfilesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustGatewayPacfilesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustGatewayPacfiles = CloudflareFunctions.getZeroTrustGatewayPacfiles(GetZeroTrustGatewayPacfilesArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetZeroTrustGatewayPacfilesInvokeResult> getZeroTrustGatewayPacfiles(GetZeroTrustGatewayPacfilesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustGatewayPacfiles:getZeroTrustGatewayPacfiles", TypeShape.of(GetZeroTrustGatewayPacfilesInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustGatewayPacfilesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustGatewayPacfiles = CloudflareFunctions.getZeroTrustGatewayPacfiles(GetZeroTrustGatewayPacfilesArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetZeroTrustGatewayPacfilesInvokeResult> getZeroTrustGatewayPacfiles(GetZeroTrustGatewayPacfilesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustGatewayPacfiles:getZeroTrustGatewayPacfiles", TypeShape.of(GetZeroTrustGatewayPacfilesInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustGatewayPacfilesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustGatewayPacfiles = CloudflareFunctions.getZeroTrustGatewayPacfiles(GetZeroTrustGatewayPacfilesArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustGatewayPacfilesInvokeResult> getZeroTrustGatewayPacfilesPlain(GetZeroTrustGatewayPacfilesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getZeroTrustGatewayPacfiles:getZeroTrustGatewayPacfiles", TypeShape.of(GetZeroTrustGatewayPacfilesInvokeResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage

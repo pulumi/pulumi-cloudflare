@@ -32,8 +32,25 @@ public final class GetTurnstileWidgetFilter extends com.pulumi.resources.InvokeA
     }
 
     /**
+     * Filter widgets by field using case-insensitive substring matching.
+     * Format: `field:value`
+     * 
+     */
+    @Import(name="filter")
+    private @Nullable String filter;
+
+    /**
+     * @return Filter widgets by field using case-insensitive substring matching.
+     * Format: `field:value`
+     * 
+     */
+    public Optional<String> filter() {
+        return Optional.ofNullable(this.filter);
+    }
+
+    /**
      * Field to order widgets by.
-     * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;created*on&#34;, &#34;modified*on&#34;.
+     * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;createdOn&#34;, &#34;modifiedOn&#34;.
      * 
      */
     @Import(name="order")
@@ -41,7 +58,7 @@ public final class GetTurnstileWidgetFilter extends com.pulumi.resources.InvokeA
 
     /**
      * @return Field to order widgets by.
-     * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;created*on&#34;, &#34;modified*on&#34;.
+     * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;createdOn&#34;, &#34;modifiedOn&#34;.
      * 
      */
     public Optional<String> order() {
@@ -52,6 +69,7 @@ public final class GetTurnstileWidgetFilter extends com.pulumi.resources.InvokeA
 
     private GetTurnstileWidgetFilter(GetTurnstileWidgetFilter $) {
         this.direction = $.direction;
+        this.filter = $.filter;
         this.order = $.order;
     }
 
@@ -86,8 +104,20 @@ public final class GetTurnstileWidgetFilter extends com.pulumi.resources.InvokeA
         }
 
         /**
+         * @param filter Filter widgets by field using case-insensitive substring matching.
+         * Format: `field:value`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filter(@Nullable String filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        /**
          * @param order Field to order widgets by.
-         * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;created*on&#34;, &#34;modified*on&#34;.
+         * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;createdOn&#34;, &#34;modifiedOn&#34;.
          * 
          * @return builder
          * 

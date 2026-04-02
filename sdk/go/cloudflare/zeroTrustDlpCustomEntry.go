@@ -34,7 +34,8 @@ import (
 //					Regex:      pulumi.String("regex"),
 //					Validation: pulumi.String("luhn"),
 //				},
-//				ProfileId: pulumi.String("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
+//				Description: pulumi.String("description"),
+//				ProfileId:   pulumi.String("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
 //			})
 //			if err != nil {
 //				return err
@@ -60,6 +61,7 @@ type ZeroTrustDlpCustomEntry struct {
 	CaseSensitive pulumi.BoolOutput                         `pulumi:"caseSensitive"`
 	Confidence    ZeroTrustDlpCustomEntryConfidenceOutput   `pulumi:"confidence"`
 	CreatedAt     pulumi.StringOutput                       `pulumi:"createdAt"`
+	Description   pulumi.StringPtrOutput                    `pulumi:"description"`
 	Enabled       pulumi.BoolOutput                         `pulumi:"enabled"`
 	Name          pulumi.StringOutput                       `pulumi:"name"`
 	Pattern       ZeroTrustDlpCustomEntryPatternOutput      `pulumi:"pattern"`
@@ -124,6 +126,7 @@ type zeroTrustDlpCustomEntryState struct {
 	CaseSensitive *bool                              `pulumi:"caseSensitive"`
 	Confidence    *ZeroTrustDlpCustomEntryConfidence `pulumi:"confidence"`
 	CreatedAt     *string                            `pulumi:"createdAt"`
+	Description   *string                            `pulumi:"description"`
 	Enabled       *bool                              `pulumi:"enabled"`
 	Name          *string                            `pulumi:"name"`
 	Pattern       *ZeroTrustDlpCustomEntryPattern    `pulumi:"pattern"`
@@ -147,6 +150,7 @@ type ZeroTrustDlpCustomEntryState struct {
 	CaseSensitive pulumi.BoolPtrInput
 	Confidence    ZeroTrustDlpCustomEntryConfidencePtrInput
 	CreatedAt     pulumi.StringPtrInput
+	Description   pulumi.StringPtrInput
 	Enabled       pulumi.BoolPtrInput
 	Name          pulumi.StringPtrInput
 	Pattern       ZeroTrustDlpCustomEntryPatternPtrInput
@@ -167,20 +171,22 @@ func (ZeroTrustDlpCustomEntryState) ElementType() reflect.Type {
 }
 
 type zeroTrustDlpCustomEntryArgs struct {
-	AccountId string                         `pulumi:"accountId"`
-	Enabled   bool                           `pulumi:"enabled"`
-	Name      string                         `pulumi:"name"`
-	Pattern   ZeroTrustDlpCustomEntryPattern `pulumi:"pattern"`
-	ProfileId *string                        `pulumi:"profileId"`
+	AccountId   string                         `pulumi:"accountId"`
+	Description *string                        `pulumi:"description"`
+	Enabled     bool                           `pulumi:"enabled"`
+	Name        string                         `pulumi:"name"`
+	Pattern     ZeroTrustDlpCustomEntryPattern `pulumi:"pattern"`
+	ProfileId   *string                        `pulumi:"profileId"`
 }
 
 // The set of arguments for constructing a ZeroTrustDlpCustomEntry resource.
 type ZeroTrustDlpCustomEntryArgs struct {
-	AccountId pulumi.StringInput
-	Enabled   pulumi.BoolInput
-	Name      pulumi.StringInput
-	Pattern   ZeroTrustDlpCustomEntryPatternInput
-	ProfileId pulumi.StringPtrInput
+	AccountId   pulumi.StringInput
+	Description pulumi.StringPtrInput
+	Enabled     pulumi.BoolInput
+	Name        pulumi.StringInput
+	Pattern     ZeroTrustDlpCustomEntryPatternInput
+	ProfileId   pulumi.StringPtrInput
 }
 
 func (ZeroTrustDlpCustomEntryArgs) ElementType() reflect.Type {
@@ -287,6 +293,10 @@ func (o ZeroTrustDlpCustomEntryOutput) Confidence() ZeroTrustDlpCustomEntryConfi
 
 func (o ZeroTrustDlpCustomEntryOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpCustomEntry) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o ZeroTrustDlpCustomEntryOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpCustomEntry) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o ZeroTrustDlpCustomEntryOutput) Enabled() pulumi.BoolOutput {

@@ -927,7 +927,7 @@ class LoadBalancerPool(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="loadShedding")
-    def load_shedding(self) -> pulumi.Output['outputs.LoadBalancerPoolLoadShedding']:
+    def load_shedding(self) -> pulumi.Output[Optional['outputs.LoadBalancerPoolLoadShedding']]:
         """
         Configures load shedding policies and percentages for the pool.
         """
@@ -996,7 +996,7 @@ class LoadBalancerPool(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="notificationFilter")
-    def notification_filter(self) -> pulumi.Output['outputs.LoadBalancerPoolNotificationFilter']:
+    def notification_filter(self) -> pulumi.Output[Optional['outputs.LoadBalancerPoolNotificationFilter']]:
         """
         Filter pool and origin health notifications by resource type or health status. Use null to reset.
         """
@@ -1004,7 +1004,7 @@ class LoadBalancerPool(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="originSteering")
-    def origin_steering(self) -> pulumi.Output['outputs.LoadBalancerPoolOriginSteering']:
+    def origin_steering(self) -> pulumi.Output[Optional['outputs.LoadBalancerPoolOriginSteering']]:
         """
         Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
         """

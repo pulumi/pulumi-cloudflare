@@ -102,6 +102,12 @@ public class ZeroTrustDlpIntegrationEntry extends com.pulumi.resources.CustomRes
     public Output<String> createdAt() {
         return this.createdAt;
     }
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output<String> description;
+
+    public Output<String> description() {
+        return this.description;
+    }
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 

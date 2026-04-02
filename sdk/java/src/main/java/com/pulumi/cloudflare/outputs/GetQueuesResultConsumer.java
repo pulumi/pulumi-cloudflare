@@ -18,15 +18,11 @@ public final class GetQueuesResultConsumer {
     private String consumerId;
     private String createdOn;
     /**
-     * @return A Resource identifier.
+     * @return Name of the dead letter queue, or empty string if not configured
      * 
      */
-    private String queueId;
-    /**
-     * @return Name of a Worker
-     * 
-     */
-    private String script;
+    private String deadLetterQueue;
+    private String queueName;
     /**
      * @return Name of a Worker
      * 
@@ -51,18 +47,14 @@ public final class GetQueuesResultConsumer {
         return this.createdOn;
     }
     /**
-     * @return A Resource identifier.
+     * @return Name of the dead letter queue, or empty string if not configured
      * 
      */
-    public String queueId() {
-        return this.queueId;
+    public String deadLetterQueue() {
+        return this.deadLetterQueue;
     }
-    /**
-     * @return Name of a Worker
-     * 
-     */
-    public String script() {
-        return this.script;
+    public String queueName() {
+        return this.queueName;
     }
     /**
      * @return Name of a Worker
@@ -93,8 +85,8 @@ public final class GetQueuesResultConsumer {
     public static final class Builder {
         private String consumerId;
         private String createdOn;
-        private String queueId;
-        private String script;
+        private String deadLetterQueue;
+        private String queueName;
         private String scriptName;
         private GetQueuesResultConsumerSettings settings;
         private String type;
@@ -103,8 +95,8 @@ public final class GetQueuesResultConsumer {
     	      Objects.requireNonNull(defaults);
     	      this.consumerId = defaults.consumerId;
     	      this.createdOn = defaults.createdOn;
-    	      this.queueId = defaults.queueId;
-    	      this.script = defaults.script;
+    	      this.deadLetterQueue = defaults.deadLetterQueue;
+    	      this.queueName = defaults.queueName;
     	      this.scriptName = defaults.scriptName;
     	      this.settings = defaults.settings;
     	      this.type = defaults.type;
@@ -127,19 +119,19 @@ public final class GetQueuesResultConsumer {
             return this;
         }
         @CustomType.Setter
-        public Builder queueId(String queueId) {
-            if (queueId == null) {
-              throw new MissingRequiredPropertyException("GetQueuesResultConsumer", "queueId");
+        public Builder deadLetterQueue(String deadLetterQueue) {
+            if (deadLetterQueue == null) {
+              throw new MissingRequiredPropertyException("GetQueuesResultConsumer", "deadLetterQueue");
             }
-            this.queueId = queueId;
+            this.deadLetterQueue = deadLetterQueue;
             return this;
         }
         @CustomType.Setter
-        public Builder script(String script) {
-            if (script == null) {
-              throw new MissingRequiredPropertyException("GetQueuesResultConsumer", "script");
+        public Builder queueName(String queueName) {
+            if (queueName == null) {
+              throw new MissingRequiredPropertyException("GetQueuesResultConsumer", "queueName");
             }
-            this.script = script;
+            this.queueName = queueName;
             return this;
         }
         @CustomType.Setter
@@ -170,8 +162,8 @@ public final class GetQueuesResultConsumer {
             final var _resultValue = new GetQueuesResultConsumer();
             _resultValue.consumerId = consumerId;
             _resultValue.createdOn = createdOn;
-            _resultValue.queueId = queueId;
-            _resultValue.script = script;
+            _resultValue.deadLetterQueue = deadLetterQueue;
+            _resultValue.queueName = queueName;
             _resultValue.scriptName = scriptName;
             _resultValue.settings = settings;
             _resultValue.type = type;

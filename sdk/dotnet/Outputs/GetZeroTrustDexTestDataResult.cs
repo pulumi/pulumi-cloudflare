@@ -19,10 +19,12 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Host;
         /// <summary>
         /// The type of test.
+        /// Available values: "http", "traceroute".
         /// </summary>
         public readonly string Kind;
         /// <summary>
         /// The HTTP request method type.
+        /// Available values: "GET".
         /// </summary>
         public readonly string Method;
 

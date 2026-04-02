@@ -75,19 +75,11 @@ public final class QueueConsumerState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.queueId);
     }
 
-    /**
-     * Name of a Worker
-     * 
-     */
-    @Import(name="script")
-    private @Nullable Output<String> script;
+    @Import(name="queueName")
+    private @Nullable Output<String> queueName;
 
-    /**
-     * @return Name of a Worker
-     * 
-     */
-    public Optional<Output<String>> script() {
-        return Optional.ofNullable(this.script);
+    public Optional<Output<String>> queueName() {
+        return Optional.ofNullable(this.queueName);
     }
 
     /**
@@ -135,7 +127,7 @@ public final class QueueConsumerState extends com.pulumi.resources.ResourceArgs 
         this.createdOn = $.createdOn;
         this.deadLetterQueue = $.deadLetterQueue;
         this.queueId = $.queueId;
-        this.script = $.script;
+        this.queueName = $.queueName;
         this.scriptName = $.scriptName;
         this.settings = $.settings;
         this.type = $.type;
@@ -240,25 +232,13 @@ public final class QueueConsumerState extends com.pulumi.resources.ResourceArgs 
             return queueId(Output.of(queueId));
         }
 
-        /**
-         * @param script Name of a Worker
-         * 
-         * @return builder
-         * 
-         */
-        public Builder script(@Nullable Output<String> script) {
-            $.script = script;
+        public Builder queueName(@Nullable Output<String> queueName) {
+            $.queueName = queueName;
             return this;
         }
 
-        /**
-         * @param script Name of a Worker
-         * 
-         * @return builder
-         * 
-         */
-        public Builder script(String script) {
-            return script(Output.of(script));
+        public Builder queueName(String queueName) {
+            return queueName(Output.of(queueName));
         }
 
         /**

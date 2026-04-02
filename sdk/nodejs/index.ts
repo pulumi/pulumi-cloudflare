@@ -105,6 +105,16 @@ export type AddressMap = import("./addressMap").AddressMap;
 export const AddressMap: typeof import("./addressMap").AddressMap = null as any;
 utilities.lazyLoad(exports, ["AddressMap"], () => require("./addressMap"));
 
+export { AiSearchInstanceArgs, AiSearchInstanceState } from "./aiSearchInstance";
+export type AiSearchInstance = import("./aiSearchInstance").AiSearchInstance;
+export const AiSearchInstance: typeof import("./aiSearchInstance").AiSearchInstance = null as any;
+utilities.lazyLoad(exports, ["AiSearchInstance"], () => require("./aiSearchInstance"));
+
+export { AiSearchTokenArgs, AiSearchTokenState } from "./aiSearchToken";
+export type AiSearchToken = import("./aiSearchToken").AiSearchToken;
+export const AiSearchToken: typeof import("./aiSearchToken").AiSearchToken = null as any;
+utilities.lazyLoad(exports, ["AiSearchToken"], () => require("./aiSearchToken"));
+
 export { ApiShieldArgs, ApiShieldState } from "./apiShield";
 export type ApiShield = import("./apiShield").ApiShield;
 export const ApiShield: typeof import("./apiShield").ApiShield = null as any;
@@ -160,6 +170,11 @@ export type AuthenticatedOriginPullsCertificate = import("./authenticatedOriginP
 export const AuthenticatedOriginPullsCertificate: typeof import("./authenticatedOriginPullsCertificate").AuthenticatedOriginPullsCertificate = null as any;
 utilities.lazyLoad(exports, ["AuthenticatedOriginPullsCertificate"], () => require("./authenticatedOriginPullsCertificate"));
 
+export { AuthenticatedOriginPullsHostnameCertificateArgs, AuthenticatedOriginPullsHostnameCertificateState } from "./authenticatedOriginPullsHostnameCertificate";
+export type AuthenticatedOriginPullsHostnameCertificate = import("./authenticatedOriginPullsHostnameCertificate").AuthenticatedOriginPullsHostnameCertificate;
+export const AuthenticatedOriginPullsHostnameCertificate: typeof import("./authenticatedOriginPullsHostnameCertificate").AuthenticatedOriginPullsHostnameCertificate = null as any;
+utilities.lazyLoad(exports, ["AuthenticatedOriginPullsHostnameCertificate"], () => require("./authenticatedOriginPullsHostnameCertificate"));
+
 export { AuthenticatedOriginPullsSettingsArgs, AuthenticatedOriginPullsSettingsState } from "./authenticatedOriginPullsSettings";
 export type AuthenticatedOriginPullsSettings = import("./authenticatedOriginPullsSettings").AuthenticatedOriginPullsSettings;
 export const AuthenticatedOriginPullsSettings: typeof import("./authenticatedOriginPullsSettings").AuthenticatedOriginPullsSettings = null as any;
@@ -189,6 +204,11 @@ export { CertificatePackArgs, CertificatePackState } from "./certificatePack";
 export type CertificatePack = import("./certificatePack").CertificatePack;
 export const CertificatePack: typeof import("./certificatePack").CertificatePack = null as any;
 utilities.lazyLoad(exports, ["CertificatePack"], () => require("./certificatePack"));
+
+export { ClientCertificateArgs, ClientCertificateState } from "./clientCertificate";
+export type ClientCertificate = import("./clientCertificate").ClientCertificate;
+export const ClientCertificate: typeof import("./clientCertificate").ClientCertificate = null as any;
+utilities.lazyLoad(exports, ["ClientCertificate"], () => require("./clientCertificate"));
 
 export { CloudConnectorRulesArgs, CloudConnectorRulesState } from "./cloudConnectorRules";
 export type CloudConnectorRules = import("./cloudConnectorRules").CloudConnectorRules;
@@ -239,6 +259,11 @@ export { CustomHostnameFallbackOriginArgs, CustomHostnameFallbackOriginState } f
 export type CustomHostnameFallbackOrigin = import("./customHostnameFallbackOrigin").CustomHostnameFallbackOrigin;
 export const CustomHostnameFallbackOrigin: typeof import("./customHostnameFallbackOrigin").CustomHostnameFallbackOrigin = null as any;
 utilities.lazyLoad(exports, ["CustomHostnameFallbackOrigin"], () => require("./customHostnameFallbackOrigin"));
+
+export { CustomOriginTrustStoreArgs, CustomOriginTrustStoreState } from "./customOriginTrustStore";
+export type CustomOriginTrustStore = import("./customOriginTrustStore").CustomOriginTrustStore;
+export const CustomOriginTrustStore: typeof import("./customOriginTrustStore").CustomOriginTrustStore = null as any;
+utilities.lazyLoad(exports, ["CustomOriginTrustStore"], () => require("./customOriginTrustStore"));
 
 export { CustomPagesArgs, CustomPagesState } from "./customPages";
 export type CustomPages = import("./customPages").CustomPages;
@@ -465,6 +490,26 @@ export const getAddressMaps: typeof import("./getAddressMaps").getAddressMaps = 
 export const getAddressMapsOutput: typeof import("./getAddressMaps").getAddressMapsOutput = null as any;
 utilities.lazyLoad(exports, ["getAddressMaps","getAddressMapsOutput"], () => require("./getAddressMaps"));
 
+export { GetAiSearchInstanceArgs, GetAiSearchInstanceResult, GetAiSearchInstanceOutputArgs } from "./getAiSearchInstance";
+export const getAiSearchInstance: typeof import("./getAiSearchInstance").getAiSearchInstance = null as any;
+export const getAiSearchInstanceOutput: typeof import("./getAiSearchInstance").getAiSearchInstanceOutput = null as any;
+utilities.lazyLoad(exports, ["getAiSearchInstance","getAiSearchInstanceOutput"], () => require("./getAiSearchInstance"));
+
+export { GetAiSearchInstancesArgs, GetAiSearchInstancesResult, GetAiSearchInstancesOutputArgs } from "./getAiSearchInstances";
+export const getAiSearchInstances: typeof import("./getAiSearchInstances").getAiSearchInstances = null as any;
+export const getAiSearchInstancesOutput: typeof import("./getAiSearchInstances").getAiSearchInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getAiSearchInstances","getAiSearchInstancesOutput"], () => require("./getAiSearchInstances"));
+
+export { GetAiSearchTokenArgs, GetAiSearchTokenResult, GetAiSearchTokenOutputArgs } from "./getAiSearchToken";
+export const getAiSearchToken: typeof import("./getAiSearchToken").getAiSearchToken = null as any;
+export const getAiSearchTokenOutput: typeof import("./getAiSearchToken").getAiSearchTokenOutput = null as any;
+utilities.lazyLoad(exports, ["getAiSearchToken","getAiSearchTokenOutput"], () => require("./getAiSearchToken"));
+
+export { GetAiSearchTokensArgs, GetAiSearchTokensResult, GetAiSearchTokensOutputArgs } from "./getAiSearchTokens";
+export const getAiSearchTokens: typeof import("./getAiSearchTokens").getAiSearchTokens = null as any;
+export const getAiSearchTokensOutput: typeof import("./getAiSearchTokens").getAiSearchTokensOutput = null as any;
+utilities.lazyLoad(exports, ["getAiSearchTokens","getAiSearchTokensOutput"], () => require("./getAiSearchTokens"));
+
 export { GetApiShieldArgs, GetApiShieldResult, GetApiShieldOutputArgs } from "./getApiShield";
 export const getApiShield: typeof import("./getApiShield").getApiShield = null as any;
 export const getApiShieldOutput: typeof import("./getApiShield").getApiShieldOutput = null as any;
@@ -545,6 +590,16 @@ export const getAuthenticatedOriginPullsCertificates: typeof import("./getAuthen
 export const getAuthenticatedOriginPullsCertificatesOutput: typeof import("./getAuthenticatedOriginPullsCertificates").getAuthenticatedOriginPullsCertificatesOutput = null as any;
 utilities.lazyLoad(exports, ["getAuthenticatedOriginPullsCertificates","getAuthenticatedOriginPullsCertificatesOutput"], () => require("./getAuthenticatedOriginPullsCertificates"));
 
+export { GetAuthenticatedOriginPullsHostnameCertificateArgs, GetAuthenticatedOriginPullsHostnameCertificateResult, GetAuthenticatedOriginPullsHostnameCertificateOutputArgs } from "./getAuthenticatedOriginPullsHostnameCertificate";
+export const getAuthenticatedOriginPullsHostnameCertificate: typeof import("./getAuthenticatedOriginPullsHostnameCertificate").getAuthenticatedOriginPullsHostnameCertificate = null as any;
+export const getAuthenticatedOriginPullsHostnameCertificateOutput: typeof import("./getAuthenticatedOriginPullsHostnameCertificate").getAuthenticatedOriginPullsHostnameCertificateOutput = null as any;
+utilities.lazyLoad(exports, ["getAuthenticatedOriginPullsHostnameCertificate","getAuthenticatedOriginPullsHostnameCertificateOutput"], () => require("./getAuthenticatedOriginPullsHostnameCertificate"));
+
+export { GetAuthenticatedOriginPullsHostnameCertificatesArgs, GetAuthenticatedOriginPullsHostnameCertificatesResult, GetAuthenticatedOriginPullsHostnameCertificatesOutputArgs } from "./getAuthenticatedOriginPullsHostnameCertificates";
+export const getAuthenticatedOriginPullsHostnameCertificates: typeof import("./getAuthenticatedOriginPullsHostnameCertificates").getAuthenticatedOriginPullsHostnameCertificates = null as any;
+export const getAuthenticatedOriginPullsHostnameCertificatesOutput: typeof import("./getAuthenticatedOriginPullsHostnameCertificates").getAuthenticatedOriginPullsHostnameCertificatesOutput = null as any;
+utilities.lazyLoad(exports, ["getAuthenticatedOriginPullsHostnameCertificates","getAuthenticatedOriginPullsHostnameCertificatesOutput"], () => require("./getAuthenticatedOriginPullsHostnameCertificates"));
+
 export { GetAuthenticatedOriginPullsSettingsArgs, GetAuthenticatedOriginPullsSettingsResult, GetAuthenticatedOriginPullsSettingsOutputArgs } from "./getAuthenticatedOriginPullsSettings";
 export const getAuthenticatedOriginPullsSettings: typeof import("./getAuthenticatedOriginPullsSettings").getAuthenticatedOriginPullsSettings = null as any;
 export const getAuthenticatedOriginPullsSettingsOutput: typeof import("./getAuthenticatedOriginPullsSettings").getAuthenticatedOriginPullsSettingsOutput = null as any;
@@ -599,6 +654,16 @@ export { GetCertificatePacksArgs, GetCertificatePacksResult, GetCertificatePacks
 export const getCertificatePacks: typeof import("./getCertificatePacks").getCertificatePacks = null as any;
 export const getCertificatePacksOutput: typeof import("./getCertificatePacks").getCertificatePacksOutput = null as any;
 utilities.lazyLoad(exports, ["getCertificatePacks","getCertificatePacksOutput"], () => require("./getCertificatePacks"));
+
+export { GetClientCertificateArgs, GetClientCertificateResult, GetClientCertificateOutputArgs } from "./getClientCertificate";
+export const getClientCertificate: typeof import("./getClientCertificate").getClientCertificate = null as any;
+export const getClientCertificateOutput: typeof import("./getClientCertificate").getClientCertificateOutput = null as any;
+utilities.lazyLoad(exports, ["getClientCertificate","getClientCertificateOutput"], () => require("./getClientCertificate"));
+
+export { GetClientCertificatesArgs, GetClientCertificatesResult, GetClientCertificatesOutputArgs } from "./getClientCertificates";
+export const getClientCertificates: typeof import("./getClientCertificates").getClientCertificates = null as any;
+export const getClientCertificatesOutput: typeof import("./getClientCertificates").getClientCertificatesOutput = null as any;
+utilities.lazyLoad(exports, ["getClientCertificates","getClientCertificatesOutput"], () => require("./getClientCertificates"));
 
 export { GetCloudConnectorRulesArgs, GetCloudConnectorRulesResult, GetCloudConnectorRulesOutputArgs } from "./getCloudConnectorRules";
 export const getCloudConnectorRules: typeof import("./getCloudConnectorRules").getCloudConnectorRules = null as any;
@@ -664,6 +729,16 @@ export { GetCustomHostnamesArgs, GetCustomHostnamesResult, GetCustomHostnamesOut
 export const getCustomHostnames: typeof import("./getCustomHostnames").getCustomHostnames = null as any;
 export const getCustomHostnamesOutput: typeof import("./getCustomHostnames").getCustomHostnamesOutput = null as any;
 utilities.lazyLoad(exports, ["getCustomHostnames","getCustomHostnamesOutput"], () => require("./getCustomHostnames"));
+
+export { GetCustomOriginTrustStoreArgs, GetCustomOriginTrustStoreResult, GetCustomOriginTrustStoreOutputArgs } from "./getCustomOriginTrustStore";
+export const getCustomOriginTrustStore: typeof import("./getCustomOriginTrustStore").getCustomOriginTrustStore = null as any;
+export const getCustomOriginTrustStoreOutput: typeof import("./getCustomOriginTrustStore").getCustomOriginTrustStoreOutput = null as any;
+utilities.lazyLoad(exports, ["getCustomOriginTrustStore","getCustomOriginTrustStoreOutput"], () => require("./getCustomOriginTrustStore"));
+
+export { GetCustomOriginTrustStoresArgs, GetCustomOriginTrustStoresResult, GetCustomOriginTrustStoresOutputArgs } from "./getCustomOriginTrustStores";
+export const getCustomOriginTrustStores: typeof import("./getCustomOriginTrustStores").getCustomOriginTrustStores = null as any;
+export const getCustomOriginTrustStoresOutput: typeof import("./getCustomOriginTrustStores").getCustomOriginTrustStoresOutput = null as any;
+utilities.lazyLoad(exports, ["getCustomOriginTrustStores","getCustomOriginTrustStoresOutput"], () => require("./getCustomOriginTrustStores"));
 
 export { GetCustomPagesArgs, GetCustomPagesResult, GetCustomPagesOutputArgs } from "./getCustomPages";
 export const getCustomPages: typeof import("./getCustomPages").getCustomPages = null as any;
@@ -1840,6 +1915,16 @@ export const getZeroTrustDeviceSettings: typeof import("./getZeroTrustDeviceSett
 export const getZeroTrustDeviceSettingsOutput: typeof import("./getZeroTrustDeviceSettings").getZeroTrustDeviceSettingsOutput = null as any;
 utilities.lazyLoad(exports, ["getZeroTrustDeviceSettings","getZeroTrustDeviceSettingsOutput"], () => require("./getZeroTrustDeviceSettings"));
 
+export { GetZeroTrustDexRuleArgs, GetZeroTrustDexRuleResult, GetZeroTrustDexRuleOutputArgs } from "./getZeroTrustDexRule";
+export const getZeroTrustDexRule: typeof import("./getZeroTrustDexRule").getZeroTrustDexRule = null as any;
+export const getZeroTrustDexRuleOutput: typeof import("./getZeroTrustDexRule").getZeroTrustDexRuleOutput = null as any;
+utilities.lazyLoad(exports, ["getZeroTrustDexRule","getZeroTrustDexRuleOutput"], () => require("./getZeroTrustDexRule"));
+
+export { GetZeroTrustDexRulesArgs, GetZeroTrustDexRulesResult, GetZeroTrustDexRulesOutputArgs } from "./getZeroTrustDexRules";
+export const getZeroTrustDexRules: typeof import("./getZeroTrustDexRules").getZeroTrustDexRules = null as any;
+export const getZeroTrustDexRulesOutput: typeof import("./getZeroTrustDexRules").getZeroTrustDexRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getZeroTrustDexRules","getZeroTrustDexRulesOutput"], () => require("./getZeroTrustDexRules"));
+
 export { GetZeroTrustDexTestArgs, GetZeroTrustDexTestResult, GetZeroTrustDexTestOutputArgs } from "./getZeroTrustDexTest";
 export const getZeroTrustDexTest: typeof import("./getZeroTrustDexTest").getZeroTrustDexTest = null as any;
 export const getZeroTrustDexTestOutput: typeof import("./getZeroTrustDexTest").getZeroTrustDexTestOutput = null as any;
@@ -1944,6 +2029,16 @@ export { GetZeroTrustGatewayLoggingArgs, GetZeroTrustGatewayLoggingResult, GetZe
 export const getZeroTrustGatewayLogging: typeof import("./getZeroTrustGatewayLogging").getZeroTrustGatewayLogging = null as any;
 export const getZeroTrustGatewayLoggingOutput: typeof import("./getZeroTrustGatewayLogging").getZeroTrustGatewayLoggingOutput = null as any;
 utilities.lazyLoad(exports, ["getZeroTrustGatewayLogging","getZeroTrustGatewayLoggingOutput"], () => require("./getZeroTrustGatewayLogging"));
+
+export { GetZeroTrustGatewayPacfileArgs, GetZeroTrustGatewayPacfileResult, GetZeroTrustGatewayPacfileOutputArgs } from "./getZeroTrustGatewayPacfile";
+export const getZeroTrustGatewayPacfile: typeof import("./getZeroTrustGatewayPacfile").getZeroTrustGatewayPacfile = null as any;
+export const getZeroTrustGatewayPacfileOutput: typeof import("./getZeroTrustGatewayPacfile").getZeroTrustGatewayPacfileOutput = null as any;
+utilities.lazyLoad(exports, ["getZeroTrustGatewayPacfile","getZeroTrustGatewayPacfileOutput"], () => require("./getZeroTrustGatewayPacfile"));
+
+export { GetZeroTrustGatewayPacfilesArgs, GetZeroTrustGatewayPacfilesResult, GetZeroTrustGatewayPacfilesOutputArgs } from "./getZeroTrustGatewayPacfiles";
+export const getZeroTrustGatewayPacfiles: typeof import("./getZeroTrustGatewayPacfiles").getZeroTrustGatewayPacfiles = null as any;
+export const getZeroTrustGatewayPacfilesOutput: typeof import("./getZeroTrustGatewayPacfiles").getZeroTrustGatewayPacfilesOutput = null as any;
+utilities.lazyLoad(exports, ["getZeroTrustGatewayPacfiles","getZeroTrustGatewayPacfilesOutput"], () => require("./getZeroTrustGatewayPacfiles"));
 
 export { GetZeroTrustGatewayPoliciesArgs, GetZeroTrustGatewayPoliciesResult, GetZeroTrustGatewayPoliciesOutputArgs } from "./getZeroTrustGatewayPolicies";
 export const getZeroTrustGatewayPolicies: typeof import("./getZeroTrustGatewayPolicies").getZeroTrustGatewayPolicies = null as any;
@@ -2808,6 +2903,11 @@ export type ZeroTrustDeviceSettings = import("./zeroTrustDeviceSettings").ZeroTr
 export const ZeroTrustDeviceSettings: typeof import("./zeroTrustDeviceSettings").ZeroTrustDeviceSettings = null as any;
 utilities.lazyLoad(exports, ["ZeroTrustDeviceSettings"], () => require("./zeroTrustDeviceSettings"));
 
+export { ZeroTrustDexRuleArgs, ZeroTrustDexRuleState } from "./zeroTrustDexRule";
+export type ZeroTrustDexRule = import("./zeroTrustDexRule").ZeroTrustDexRule;
+export const ZeroTrustDexRule: typeof import("./zeroTrustDexRule").ZeroTrustDexRule = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustDexRule"], () => require("./zeroTrustDexRule"));
+
 export { ZeroTrustDexTestArgs, ZeroTrustDexTestState } from "./zeroTrustDexTest";
 export type ZeroTrustDexTest = import("./zeroTrustDexTest").ZeroTrustDexTest;
 export const ZeroTrustDexTest: typeof import("./zeroTrustDexTest").ZeroTrustDexTest = null as any;
@@ -2862,6 +2962,11 @@ export { ZeroTrustGatewayLoggingArgs, ZeroTrustGatewayLoggingState } from "./zer
 export type ZeroTrustGatewayLogging = import("./zeroTrustGatewayLogging").ZeroTrustGatewayLogging;
 export const ZeroTrustGatewayLogging: typeof import("./zeroTrustGatewayLogging").ZeroTrustGatewayLogging = null as any;
 utilities.lazyLoad(exports, ["ZeroTrustGatewayLogging"], () => require("./zeroTrustGatewayLogging"));
+
+export { ZeroTrustGatewayPacfileArgs, ZeroTrustGatewayPacfileState } from "./zeroTrustGatewayPacfile";
+export type ZeroTrustGatewayPacfile = import("./zeroTrustGatewayPacfile").ZeroTrustGatewayPacfile;
+export const ZeroTrustGatewayPacfile: typeof import("./zeroTrustGatewayPacfile").ZeroTrustGatewayPacfile = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustGatewayPacfile"], () => require("./zeroTrustGatewayPacfile"));
 
 export { ZeroTrustGatewayPolicyArgs, ZeroTrustGatewayPolicyState } from "./zeroTrustGatewayPolicy";
 export type ZeroTrustGatewayPolicy = import("./zeroTrustGatewayPolicy").ZeroTrustGatewayPolicy;
@@ -3032,6 +3137,10 @@ const _module = {
                 return new AccountToken(name, <any>undefined, { urn })
             case "cloudflare:index/addressMap:AddressMap":
                 return new AddressMap(name, <any>undefined, { urn })
+            case "cloudflare:index/aiSearchInstance:AiSearchInstance":
+                return new AiSearchInstance(name, <any>undefined, { urn })
+            case "cloudflare:index/aiSearchToken:AiSearchToken":
+                return new AiSearchToken(name, <any>undefined, { urn })
             case "cloudflare:index/apiShield:ApiShield":
                 return new ApiShield(name, <any>undefined, { urn })
             case "cloudflare:index/apiShieldDiscoveryOperation:ApiShieldDiscoveryOperation":
@@ -3054,6 +3163,8 @@ const _module = {
                 return new AuthenticatedOriginPulls(name, <any>undefined, { urn })
             case "cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate":
                 return new AuthenticatedOriginPullsCertificate(name, <any>undefined, { urn })
+            case "cloudflare:index/authenticatedOriginPullsHostnameCertificate:AuthenticatedOriginPullsHostnameCertificate":
+                return new AuthenticatedOriginPullsHostnameCertificate(name, <any>undefined, { urn })
             case "cloudflare:index/authenticatedOriginPullsSettings:AuthenticatedOriginPullsSettings":
                 return new AuthenticatedOriginPullsSettings(name, <any>undefined, { urn })
             case "cloudflare:index/botManagement:BotManagement":
@@ -3066,6 +3177,8 @@ const _module = {
                 return new CallsTurnApp(name, <any>undefined, { urn })
             case "cloudflare:index/certificatePack:CertificatePack":
                 return new CertificatePack(name, <any>undefined, { urn })
+            case "cloudflare:index/clientCertificate:ClientCertificate":
+                return new ClientCertificate(name, <any>undefined, { urn })
             case "cloudflare:index/cloudConnectorRules:CloudConnectorRules":
                 return new CloudConnectorRules(name, <any>undefined, { urn })
             case "cloudflare:index/cloudforceOneRequest:CloudforceOneRequest":
@@ -3086,6 +3199,8 @@ const _module = {
                 return new CustomHostname(name, <any>undefined, { urn })
             case "cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin":
                 return new CustomHostnameFallbackOrigin(name, <any>undefined, { urn })
+            case "cloudflare:index/customOriginTrustStore:CustomOriginTrustStore":
+                return new CustomOriginTrustStore(name, <any>undefined, { urn })
             case "cloudflare:index/customPages:CustomPages":
                 return new CustomPages(name, <any>undefined, { urn })
             case "cloudflare:index/customSsl:CustomSsl":
@@ -3410,6 +3525,8 @@ const _module = {
                 return new ZeroTrustDevicePostureRule(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings":
                 return new ZeroTrustDeviceSettings(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustDexRule:ZeroTrustDexRule":
+                return new ZeroTrustDexRule(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest":
                 return new ZeroTrustDexTest(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustDlpCustomEntry:ZeroTrustDlpCustomEntry":
@@ -3432,6 +3549,8 @@ const _module = {
                 return new ZeroTrustGatewayCertificate(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging":
                 return new ZeroTrustGatewayLogging(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustGatewayPacfile:ZeroTrustGatewayPacfile":
+                return new ZeroTrustGatewayPacfile(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy":
                 return new ZeroTrustGatewayPolicy(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint":
@@ -3503,6 +3622,8 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/accountMember", _modu
 pulumi.runtime.registerResourceModule("cloudflare", "index/accountSubscription", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accountToken", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/addressMap", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/aiSearchInstance", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/aiSearchToken", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/apiShield", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/apiShieldDiscoveryOperation", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/apiShieldOperation", _module)
@@ -3514,12 +3635,14 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/argoSmartRouting", _m
 pulumi.runtime.registerResourceModule("cloudflare", "index/argoTieredCaching", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/authenticatedOriginPulls", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/authenticatedOriginPullsCertificate", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/authenticatedOriginPullsHostnameCertificate", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/authenticatedOriginPullsSettings", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/botManagement", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/byoIpPrefix", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/callsSfuApp", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/callsTurnApp", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/certificatePack", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/clientCertificate", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/cloudConnectorRules", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/cloudforceOneRequest", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/cloudforceOneRequestAsset", _module)
@@ -3530,6 +3653,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/contentScanning", _mo
 pulumi.runtime.registerResourceModule("cloudflare", "index/contentScanningExpression", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customHostname", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customHostnameFallbackOrigin", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/customOriginTrustStore", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customPages", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customSsl", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/d1Database", _module)
@@ -3692,6 +3816,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDeviceManage
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDevicePostureIntegration", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDevicePostureRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDeviceSettings", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDexRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDexTest", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDlpCustomEntry", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDlpCustomProfile", _module)
@@ -3703,6 +3828,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDlpPredefine
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDnsLocation", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustGatewayCertificate", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustGatewayLogging", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustGatewayPacfile", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustGatewayPolicy", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustGatewayProxyEndpoint", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustGatewaySettings", _module)

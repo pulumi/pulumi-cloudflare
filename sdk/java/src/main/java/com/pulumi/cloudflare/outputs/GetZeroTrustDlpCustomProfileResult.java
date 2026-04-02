@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetZeroTrustDlpCustomProfileContextAwareness;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDlpCustomProfileEntry;
+import com.pulumi.cloudflare.outputs.GetZeroTrustDlpCustomProfileSharedEntry;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -46,6 +47,12 @@ public final class GetZeroTrustDlpCustomProfileResult {
      * 
      */
     private String description;
+    /**
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     private List<GetZeroTrustDlpCustomProfileEntry> entries;
     /**
      * @return The ID of this resource.
@@ -64,6 +71,7 @@ public final class GetZeroTrustDlpCustomProfileResult {
      */
     private Boolean openAccess;
     private String profileId;
+    private List<GetZeroTrustDlpCustomProfileSharedEntry> sharedEntries;
     /**
      * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
      * 
@@ -121,6 +129,12 @@ public final class GetZeroTrustDlpCustomProfileResult {
     public String description() {
         return this.description;
     }
+    /**
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     public List<GetZeroTrustDlpCustomProfileEntry> entries() {
         return this.entries;
     }
@@ -150,6 +164,9 @@ public final class GetZeroTrustDlpCustomProfileResult {
     }
     public String profileId() {
         return this.profileId;
+    }
+    public List<GetZeroTrustDlpCustomProfileSharedEntry> sharedEntries() {
+        return this.sharedEntries;
     }
     /**
      * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
@@ -188,6 +205,7 @@ public final class GetZeroTrustDlpCustomProfileResult {
         private Boolean ocrEnabled;
         private Boolean openAccess;
         private String profileId;
+        private List<GetZeroTrustDlpCustomProfileSharedEntry> sharedEntries;
         private String type;
         private String updatedAt;
         public Builder() {}
@@ -206,6 +224,7 @@ public final class GetZeroTrustDlpCustomProfileResult {
     	      this.ocrEnabled = defaults.ocrEnabled;
     	      this.openAccess = defaults.openAccess;
     	      this.profileId = defaults.profileId;
+    	      this.sharedEntries = defaults.sharedEntries;
     	      this.type = defaults.type;
     	      this.updatedAt = defaults.updatedAt;
         }
@@ -318,6 +337,17 @@ public final class GetZeroTrustDlpCustomProfileResult {
             return this;
         }
         @CustomType.Setter
+        public Builder sharedEntries(List<GetZeroTrustDlpCustomProfileSharedEntry> sharedEntries) {
+            if (sharedEntries == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDlpCustomProfileResult", "sharedEntries");
+            }
+            this.sharedEntries = sharedEntries;
+            return this;
+        }
+        public Builder sharedEntries(GetZeroTrustDlpCustomProfileSharedEntry... sharedEntries) {
+            return sharedEntries(List.of(sharedEntries));
+        }
+        @CustomType.Setter
         public Builder type(String type) {
             if (type == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustDlpCustomProfileResult", "type");
@@ -348,6 +378,7 @@ public final class GetZeroTrustDlpCustomProfileResult {
             _resultValue.ocrEnabled = ocrEnabled;
             _resultValue.openAccess = openAccess;
             _resultValue.profileId = profileId;
+            _resultValue.sharedEntries = sharedEntries;
             _resultValue.type = type;
             _resultValue.updatedAt = updatedAt;
             return _resultValue;

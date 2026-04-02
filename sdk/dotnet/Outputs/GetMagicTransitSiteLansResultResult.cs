@@ -13,6 +13,7 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetMagicTransitSiteLansResultResult
     {
+        public readonly int BondId;
         /// <summary>
         /// mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
         /// </summary>
@@ -40,6 +41,8 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private GetMagicTransitSiteLansResultResult(
+            int bondId,
+
             bool haLink,
 
             string id,
@@ -58,6 +61,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             int vlanTag)
         {
+            BondId = bondId;
             HaLink = haLink;
             Id = id;
             Name = name;

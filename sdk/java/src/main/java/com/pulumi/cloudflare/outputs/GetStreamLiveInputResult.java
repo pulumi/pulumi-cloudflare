@@ -12,6 +12,7 @@ import com.pulumi.cloudflare.outputs.GetStreamLiveInputWebRtc;
 import com.pulumi.cloudflare.outputs.GetStreamLiveInputWebRtcPlayback;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -33,6 +34,11 @@ public final class GetStreamLiveInputResult {
      * 
      */
     private Double deleteRecordingAfterDays;
+    /**
+     * @return Indicates whether the live input is enabled and can accept streams.
+     * 
+     */
+    private Boolean enabled;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -121,6 +127,13 @@ public final class GetStreamLiveInputResult {
      */
     public Double deleteRecordingAfterDays() {
         return this.deleteRecordingAfterDays;
+    }
+    /**
+     * @return Indicates whether the live input is enabled and can accept streams.
+     * 
+     */
+    public Boolean enabled() {
+        return this.enabled;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -227,6 +240,7 @@ public final class GetStreamLiveInputResult {
         private String accountId;
         private String created;
         private Double deleteRecordingAfterDays;
+        private Boolean enabled;
         private String id;
         private String liveInputIdentifier;
         private String meta;
@@ -246,6 +260,7 @@ public final class GetStreamLiveInputResult {
     	      this.accountId = defaults.accountId;
     	      this.created = defaults.created;
     	      this.deleteRecordingAfterDays = defaults.deleteRecordingAfterDays;
+    	      this.enabled = defaults.enabled;
     	      this.id = defaults.id;
     	      this.liveInputIdentifier = defaults.liveInputIdentifier;
     	      this.meta = defaults.meta;
@@ -283,6 +298,14 @@ public final class GetStreamLiveInputResult {
               throw new MissingRequiredPropertyException("GetStreamLiveInputResult", "deleteRecordingAfterDays");
             }
             this.deleteRecordingAfterDays = deleteRecordingAfterDays;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enabled(Boolean enabled) {
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetStreamLiveInputResult", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
@@ -394,6 +417,7 @@ public final class GetStreamLiveInputResult {
             _resultValue.accountId = accountId;
             _resultValue.created = created;
             _resultValue.deleteRecordingAfterDays = deleteRecordingAfterDays;
+            _resultValue.enabled = enabled;
             _resultValue.id = id;
             _resultValue.liveInputIdentifier = liveInputIdentifier;
             _resultValue.meta = meta;

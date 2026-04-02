@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.AccessOrganizationState;
 import com.pulumi.cloudflare.outputs.AccessOrganizationCustomPages;
 import com.pulumi.cloudflare.outputs.AccessOrganizationLoginDesign;
+import com.pulumi.cloudflare.outputs.AccessOrganizationMfaConfig;
 import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -33,6 +34,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.ZeroTrustOrganizationArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationCustomPagesArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationLoginDesignArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationMfaConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -55,6 +57,8 @@ import javax.annotation.Nullable;
  *                 .forbidden("699d98642c564d2e855e9661899b7252")
  *                 .identityDenied("699d98642c564d2e855e9661899b7252")
  *                 .build())
+ *             .denyUnmatchedRequests(true)
+ *             .denyUnmatchedRequestsExemptedZoneNames("example.com")
  *             .isUiReadOnly(true)
  *             .loginDesign(ZeroTrustOrganizationLoginDesignArgs.builder()
  *                 .backgroundColor("#c5ed1b")
@@ -63,6 +67,15 @@ import javax.annotation.Nullable;
  *                 .logoPath("https://example.com/logo.png")
  *                 .textColor("#c5ed1b")
  *                 .build())
+ *             .mfaConfig(ZeroTrustOrganizationMfaConfigArgs.builder()
+ *                 .allowedAuthenticators(                
+ *                     "totp",
+ *                     "biometrics",
+ *                     "security_key")
+ *                 .sessionDuration("24h")
+ *                 .build())
+ *             .mfaConfigurationAllowed(true)
+ *             .mfaRequiredForAllApps(false)
  *             .name("Widget Corps Internal Applications")
  *             .sessionDuration("24h")
  *             .uiReadOnlyToggleReason("Temporarily turn off the UI read only lock to make a change via the UI")
@@ -149,6 +162,34 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.customPages);
     }
     /**
+     * Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `denyUnmatchedRequestsExemptedZoneNames` array.
+     * 
+     */
+    @Export(name="denyUnmatchedRequests", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> denyUnmatchedRequests;
+
+    /**
+     * @return Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `denyUnmatchedRequestsExemptedZoneNames` array.
+     * 
+     */
+    public Output<Optional<Boolean>> denyUnmatchedRequests() {
+        return Codegen.optional(this.denyUnmatchedRequests);
+    }
+    /**
+     * Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+     * 
+     */
+    @Export(name="denyUnmatchedRequestsExemptedZoneNames", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> denyUnmatchedRequestsExemptedZoneNames;
+
+    /**
+     * @return Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+     * 
+     */
+    public Output<Optional<List<String>>> denyUnmatchedRequestsExemptedZoneNames() {
+        return Codegen.optional(this.denyUnmatchedRequestsExemptedZoneNames);
+    }
+    /**
      * Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
      * 
      */
@@ -167,6 +208,48 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<AccessOrganizationLoginDesign>> loginDesign() {
         return Codegen.optional(this.loginDesign);
+    }
+    /**
+     * Configures multi-factor authentication (MFA) settings for an organization.
+     * 
+     */
+    @Export(name="mfaConfig", refs={AccessOrganizationMfaConfig.class}, tree="[0]")
+    private Output</* @Nullable */ AccessOrganizationMfaConfig> mfaConfig;
+
+    /**
+     * @return Configures multi-factor authentication (MFA) settings for an organization.
+     * 
+     */
+    public Output<Optional<AccessOrganizationMfaConfig>> mfaConfig() {
+        return Codegen.optional(this.mfaConfig);
+    }
+    /**
+     * Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
+     * 
+     */
+    @Export(name="mfaConfigurationAllowed", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> mfaConfigurationAllowed;
+
+    /**
+     * @return Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
+     * 
+     */
+    public Output<Boolean> mfaConfigurationAllowed() {
+        return this.mfaConfigurationAllowed;
+    }
+    /**
+     * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+     * 
+     */
+    @Export(name="mfaRequiredForAllApps", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> mfaRequiredForAllApps;
+
+    /**
+     * @return Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+     * 
+     */
+    public Output<Boolean> mfaRequiredForAllApps() {
+        return this.mfaRequiredForAllApps;
     }
     /**
      * The name of your Zero Trust organization.
@@ -201,14 +284,14 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="uiReadOnlyToggleReason", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> uiReadOnlyToggleReason;
+    private Output<String> uiReadOnlyToggleReason;
 
     /**
      * @return A description of the reason why the UI read only field is being toggled.
      * 
      */
-    public Output<Optional<String>> uiReadOnlyToggleReason() {
-        return Codegen.optional(this.uiReadOnlyToggleReason);
+    public Output<String> uiReadOnlyToggleReason() {
+        return this.uiReadOnlyToggleReason;
     }
     /**
      * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.

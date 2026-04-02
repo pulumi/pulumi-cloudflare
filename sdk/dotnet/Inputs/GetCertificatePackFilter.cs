@@ -13,6 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class GetCertificatePackFilterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Specify the deployment environment for the certificate packs.
+        /// Available values: "staging", "production".
+        /// </summary>
+        [Input("deploy")]
+        public string? Deploy { get; set; }
+
+        /// <summary>
         /// Include Certificate Packs of all statuses, not just active ones.
         /// Available values: "all".
         /// </summary>

@@ -69,6 +69,7 @@ import * as utilities from "./utilities";
  *
  * `,
  *     bundleMethod: "ubiquitous",
+ *     deploy: "staging",
  *     geoRestrictions: {
  *         label: "us",
  *     },
@@ -121,6 +122,11 @@ export class CustomSsl extends pulumi.CustomResource {
      */
     declare public readonly certificate: pulumi.Output<string>;
     /**
+     * The environment to deploy the certificate to.
+     * Available values: "staging", "production".
+     */
+    declare public readonly deploy: pulumi.Output<string | undefined>;
+    /**
      * When the certificate from the authority expires.
      */
     declare public /*out*/ readonly expiresOn: pulumi.Output<string>;
@@ -139,11 +145,18 @@ export class CustomSsl extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     /**
-     * Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+     * Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code*elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+     * Note: The API accepts this field as either "policy" or "policy*restrictions" in requests. Responses return this field as "policyRestrictions".
      */
     declare public readonly policy: pulumi.Output<string | undefined>;
     /**
-     * The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy*custom' certificates, but 'legacy*custom' certificates will always supercede 'sni_custom' certificates.
+     * The policy restrictions returned by the API. This field is returned in responses
+     * when a policy has been set. The API accepts the "policy" field in requests but
+     * returns this field as "policyRestrictions" in responses.
+     */
+    declare public /*out*/ readonly policyRestrictions: pulumi.Output<string>;
+    /**
+     * The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.
      */
     declare public /*out*/ readonly priority: pulumi.Output<number>;
     /**
@@ -188,6 +201,7 @@ export class CustomSsl extends pulumi.CustomResource {
             const state = argsOrState as CustomSslState | undefined;
             resourceInputs["bundleMethod"] = state?.bundleMethod;
             resourceInputs["certificate"] = state?.certificate;
+            resourceInputs["deploy"] = state?.deploy;
             resourceInputs["expiresOn"] = state?.expiresOn;
             resourceInputs["geoRestrictions"] = state?.geoRestrictions;
             resourceInputs["hosts"] = state?.hosts;
@@ -195,6 +209,7 @@ export class CustomSsl extends pulumi.CustomResource {
             resourceInputs["keylessServer"] = state?.keylessServer;
             resourceInputs["modifiedOn"] = state?.modifiedOn;
             resourceInputs["policy"] = state?.policy;
+            resourceInputs["policyRestrictions"] = state?.policyRestrictions;
             resourceInputs["priority"] = state?.priority;
             resourceInputs["privateKey"] = state?.privateKey;
             resourceInputs["signature"] = state?.signature;
@@ -215,6 +230,7 @@ export class CustomSsl extends pulumi.CustomResource {
             }
             resourceInputs["bundleMethod"] = args?.bundleMethod;
             resourceInputs["certificate"] = args?.certificate;
+            resourceInputs["deploy"] = args?.deploy;
             resourceInputs["geoRestrictions"] = args?.geoRestrictions;
             resourceInputs["policy"] = args?.policy;
             resourceInputs["privateKey"] = args?.privateKey ? pulumi.secret(args.privateKey) : undefined;
@@ -225,6 +241,7 @@ export class CustomSsl extends pulumi.CustomResource {
             resourceInputs["issuer"] = undefined /*out*/;
             resourceInputs["keylessServer"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
+            resourceInputs["policyRestrictions"] = undefined /*out*/;
             resourceInputs["priority"] = undefined /*out*/;
             resourceInputs["signature"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -251,6 +268,11 @@ export interface CustomSslState {
      */
     certificate?: pulumi.Input<string>;
     /**
+     * The environment to deploy the certificate to.
+     * Available values: "staging", "production".
+     */
+    deploy?: pulumi.Input<string>;
+    /**
      * When the certificate from the authority expires.
      */
     expiresOn?: pulumi.Input<string>;
@@ -269,11 +291,18 @@ export interface CustomSslState {
      */
     modifiedOn?: pulumi.Input<string>;
     /**
-     * Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+     * Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code*elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+     * Note: The API accepts this field as either "policy" or "policy*restrictions" in requests. Responses return this field as "policyRestrictions".
      */
     policy?: pulumi.Input<string>;
     /**
-     * The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy*custom' certificates, but 'legacy*custom' certificates will always supercede 'sni_custom' certificates.
+     * The policy restrictions returned by the API. This field is returned in responses
+     * when a policy has been set. The API accepts the "policy" field in requests but
+     * returns this field as "policyRestrictions" in responses.
+     */
+    policyRestrictions?: pulumi.Input<string>;
+    /**
+     * The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.
      */
     priority?: pulumi.Input<number>;
     /**
@@ -318,11 +347,17 @@ export interface CustomSslArgs {
      */
     certificate: pulumi.Input<string>;
     /**
+     * The environment to deploy the certificate to.
+     * Available values: "staging", "production".
+     */
+    deploy?: pulumi.Input<string>;
+    /**
      * Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
      */
     geoRestrictions?: pulumi.Input<inputs.CustomSslGeoRestrictions>;
     /**
-     * Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+     * Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code*elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+     * Note: The API accepts this field as either "policy" or "policy*restrictions" in requests. Responses return this field as "policyRestrictions".
      */
     policy?: pulumi.Input<string>;
     /**

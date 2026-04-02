@@ -24,6 +24,7 @@ export function getZeroTrustDexTest(args: GetZeroTrustDexTestArgs, opts?: pulumi
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDexTest:getZeroTrustDexTest", {
         "accountId": args.accountId,
         "dexTestId": args.dexTestId,
+        "filter": args.filter,
         "targetPolicies": args.targetPolicies,
     }, opts);
 }
@@ -36,7 +37,8 @@ export interface GetZeroTrustDexTestArgs {
     /**
      * The unique identifier for the test.
      */
-    dexTestId: string;
+    dexTestId?: string;
+    filter?: inputs.GetZeroTrustDexTestFilter;
     /**
      * DEX rules targeted by this test
      */
@@ -59,11 +61,12 @@ export interface GetZeroTrustDexTestResult {
     /**
      * The unique identifier for the test.
      */
-    readonly dexTestId: string;
+    readonly dexTestId?: string;
     /**
      * Determines whether or not the test is active.
      */
     readonly enabled: boolean;
+    readonly filter?: outputs.GetZeroTrustDexTestFilter;
     /**
      * The unique identifier for the test.
      */
@@ -104,6 +107,7 @@ export function getZeroTrustDexTestOutput(args: GetZeroTrustDexTestOutputArgs, o
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDexTest:getZeroTrustDexTest", {
         "accountId": args.accountId,
         "dexTestId": args.dexTestId,
+        "filter": args.filter,
         "targetPolicies": args.targetPolicies,
     }, opts);
 }
@@ -116,7 +120,8 @@ export interface GetZeroTrustDexTestOutputArgs {
     /**
      * The unique identifier for the test.
      */
-    dexTestId: pulumi.Input<string>;
+    dexTestId?: pulumi.Input<string>;
+    filter?: pulumi.Input<inputs.GetZeroTrustDexTestFilterArgs>;
     /**
      * DEX rules targeted by this test
      */

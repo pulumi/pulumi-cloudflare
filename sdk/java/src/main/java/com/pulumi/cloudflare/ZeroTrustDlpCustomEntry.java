@@ -54,6 +54,7 @@ import javax.annotation.Nullable;
  *                 .regex("regex")
  *                 .validation("luhn")
  *                 .build())
+ *             .description("description")
  *             .profileId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
  *             .build());
  * 
@@ -106,6 +107,12 @@ public class ZeroTrustDlpCustomEntry extends com.pulumi.resources.CustomResource
 
     public Output<String> createdAt() {
         return this.createdAt;
+    }
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> description;
+
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
     }
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;

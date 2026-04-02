@@ -85,13 +85,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetSnippetArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The identifying name of the snippet.
+        /// Identify the snippet.
         /// </summary>
         [Input("snippetName", required: true)]
         public string SnippetName { get; set; } = null!;
 
         /// <summary>
-        /// The unique ID of the zone.
+        /// Use this field to specify the unique ID of the zone.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -105,13 +105,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetSnippetInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The identifying name of the snippet.
+        /// Identify the snippet.
         /// </summary>
         [Input("snippetName", required: true)]
         public Input<string> SnippetName { get; set; } = null!;
 
         /// <summary>
-        /// The unique ID of the zone.
+        /// Use this field to specify the unique ID of the zone.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -127,7 +127,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetSnippetResult
     {
         /// <summary>
-        /// The timestamp of when the snippet was created.
+        /// Indicates when the snippet was created.
         /// </summary>
         public readonly string CreatedOn;
         /// <summary>
@@ -135,15 +135,15 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The timestamp of when the snippet was last modified.
+        /// Indicates when the snippet was last modified.
         /// </summary>
         public readonly string ModifiedOn;
         /// <summary>
-        /// The identifying name of the snippet.
+        /// Identify the snippet.
         /// </summary>
         public readonly string SnippetName;
         /// <summary>
-        /// The unique ID of the zone.
+        /// Use this field to specify the unique ID of the zone.
         /// </summary>
         public readonly string ZoneId;
 

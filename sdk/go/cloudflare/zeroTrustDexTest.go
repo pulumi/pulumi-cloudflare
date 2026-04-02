@@ -39,12 +39,11 @@ import (
 //				Description: pulumi.String("Checks the dash endpoint every 30 minutes"),
 //				TargetPolicies: cloudflare.ZeroTrustDexTestTargetPolicyArray{
 //					&cloudflare.ZeroTrustDexTestTargetPolicyArgs{
-//						Id:      pulumi.String("id"),
+//						Id:      pulumi.String("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
 //						Default: pulumi.Bool(true),
 //						Name:    pulumi.String("name"),
 //					},
 //				},
-//				Targeted: true,
 //			})
 //			if err != nil {
 //				return err

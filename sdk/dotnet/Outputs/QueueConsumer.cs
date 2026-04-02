@@ -19,13 +19,10 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? ConsumerId;
         public readonly string? CreatedOn;
         /// <summary>
-        /// A Resource identifier.
+        /// Name of the dead letter queue, or empty string if not configured
         /// </summary>
-        public readonly string? QueueId;
-        /// <summary>
-        /// Name of a Worker
-        /// </summary>
-        public readonly string? Script;
+        public readonly string? DeadLetterQueue;
+        public readonly string? QueueName;
         /// <summary>
         /// Name of a Worker
         /// </summary>
@@ -42,9 +39,9 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? createdOn,
 
-            string? queueId,
+            string? deadLetterQueue,
 
-            string? script,
+            string? queueName,
 
             string? scriptName,
 
@@ -54,8 +51,8 @@ namespace Pulumi.Cloudflare.Outputs
         {
             ConsumerId = consumerId;
             CreatedOn = createdOn;
-            QueueId = queueId;
-            Script = script;
+            DeadLetterQueue = deadLetterQueue;
+            QueueName = queueName;
             ScriptName = scriptName;
             Settings = settings;
             Type = type;

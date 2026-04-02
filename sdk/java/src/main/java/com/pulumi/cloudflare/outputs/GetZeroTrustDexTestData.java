@@ -17,11 +17,13 @@ public final class GetZeroTrustDexTestData {
     private String host;
     /**
      * @return The type of test.
+     * Available values: &#34;http&#34;, &#34;traceroute&#34;.
      * 
      */
     private String kind;
     /**
      * @return The HTTP request method type.
+     * Available values: &#34;GET&#34;.
      * 
      */
     private String method;
@@ -36,6 +38,7 @@ public final class GetZeroTrustDexTestData {
     }
     /**
      * @return The type of test.
+     * Available values: &#34;http&#34;, &#34;traceroute&#34;.
      * 
      */
     public String kind() {
@@ -43,6 +46,7 @@ public final class GetZeroTrustDexTestData {
     }
     /**
      * @return The HTTP request method type.
+     * Available values: &#34;GET&#34;.
      * 
      */
     public String method() {

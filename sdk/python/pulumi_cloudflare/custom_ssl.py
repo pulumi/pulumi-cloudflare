@@ -25,6 +25,7 @@ class CustomSslArgs:
                  private_key: pulumi.Input[_builtins.str],
                  zone_id: pulumi.Input[_builtins.str],
                  bundle_method: Optional[pulumi.Input[_builtins.str]] = None,
+                 deploy: Optional[pulumi.Input[_builtins.str]] = None,
                  geo_restrictions: Optional[pulumi.Input['CustomSslGeoRestrictionsArgs']] = None,
                  policy: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None):
@@ -36,8 +37,11 @@ class CustomSslArgs:
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.str] bundle_method: A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
                Available values: "ubiquitous", "optimal", "force".
+        :param pulumi.Input[_builtins.str] deploy: The environment to deploy the certificate to.
+               Available values: "staging", "production".
         :param pulumi.Input['CustomSslGeoRestrictionsArgs'] geo_restrictions: Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
-        :param pulumi.Input[_builtins.str] policy: Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+        :param pulumi.Input[_builtins.str] policy: Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code*elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+               Note: The API accepts this field as either "policy" or "policy*restrictions" in requests. Responses return this field as "policy_restrictions".
         :param pulumi.Input[_builtins.str] type: The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
                Available values: "legacy*custom", "sni_custom".
         """
@@ -46,6 +50,8 @@ class CustomSslArgs:
         pulumi.set(__self__, "zone_id", zone_id)
         if bundle_method is not None:
             pulumi.set(__self__, "bundle_method", bundle_method)
+        if deploy is not None:
+            pulumi.set(__self__, "deploy", deploy)
         if geo_restrictions is not None:
             pulumi.set(__self__, "geo_restrictions", geo_restrictions)
         if policy is not None:
@@ -103,6 +109,19 @@ class CustomSslArgs:
         pulumi.set(self, "bundle_method", value)
 
     @_builtins.property
+    @pulumi.getter
+    def deploy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The environment to deploy the certificate to.
+        Available values: "staging", "production".
+        """
+        return pulumi.get(self, "deploy")
+
+    @deploy.setter
+    def deploy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "deploy", value)
+
+    @_builtins.property
     @pulumi.getter(name="geoRestrictions")
     def geo_restrictions(self) -> Optional[pulumi.Input['CustomSslGeoRestrictionsArgs']]:
         """
@@ -118,7 +137,8 @@ class CustomSslArgs:
     @pulumi.getter
     def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+        Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code*elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+        Note: The API accepts this field as either "policy" or "policy*restrictions" in requests. Responses return this field as "policy_restrictions".
         """
         return pulumi.get(self, "policy")
 
@@ -145,6 +165,7 @@ class _CustomSslState:
     def __init__(__self__, *,
                  bundle_method: Optional[pulumi.Input[_builtins.str]] = None,
                  certificate: Optional[pulumi.Input[_builtins.str]] = None,
+                 deploy: Optional[pulumi.Input[_builtins.str]] = None,
                  expires_on: Optional[pulumi.Input[_builtins.str]] = None,
                  geo_restrictions: Optional[pulumi.Input['CustomSslGeoRestrictionsArgs']] = None,
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -152,6 +173,7 @@ class _CustomSslState:
                  keyless_server: Optional[pulumi.Input['CustomSslKeylessServerArgs']] = None,
                  modified_on: Optional[pulumi.Input[_builtins.str]] = None,
                  policy: Optional[pulumi.Input[_builtins.str]] = None,
+                 policy_restrictions: Optional[pulumi.Input[_builtins.str]] = None,
                  priority: Optional[pulumi.Input[_builtins.float]] = None,
                  private_key: Optional[pulumi.Input[_builtins.str]] = None,
                  signature: Optional[pulumi.Input[_builtins.str]] = None,
@@ -165,12 +187,18 @@ class _CustomSslState:
         :param pulumi.Input[_builtins.str] bundle_method: A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
                Available values: "ubiquitous", "optimal", "force".
         :param pulumi.Input[_builtins.str] certificate: The zone's SSL certificate or certificate and the intermediate(s).
+        :param pulumi.Input[_builtins.str] deploy: The environment to deploy the certificate to.
+               Available values: "staging", "production".
         :param pulumi.Input[_builtins.str] expires_on: When the certificate from the authority expires.
         :param pulumi.Input['CustomSslGeoRestrictionsArgs'] geo_restrictions: Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
         :param pulumi.Input[_builtins.str] issuer: The certificate authority that issued the certificate.
         :param pulumi.Input[_builtins.str] modified_on: When the certificate was last modified.
-        :param pulumi.Input[_builtins.str] policy: Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
-        :param pulumi.Input[_builtins.float] priority: The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy*custom' certificates, but 'legacy*custom' certificates will always supercede 'sni_custom' certificates.
+        :param pulumi.Input[_builtins.str] policy: Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code*elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+               Note: The API accepts this field as either "policy" or "policy*restrictions" in requests. Responses return this field as "policy_restrictions".
+        :param pulumi.Input[_builtins.str] policy_restrictions: The policy restrictions returned by the API. This field is returned in responses
+               when a policy has been set. The API accepts the "policy" field in requests but
+               returns this field as "policy_restrictions" in responses.
+        :param pulumi.Input[_builtins.float] priority: The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.
         :param pulumi.Input[_builtins.str] private_key: The zone's private key.
         :param pulumi.Input[_builtins.str] signature: The type of hash used for the certificate.
         :param pulumi.Input[_builtins.str] status: Status of the zone's custom SSL.
@@ -184,6 +212,8 @@ class _CustomSslState:
             pulumi.set(__self__, "bundle_method", bundle_method)
         if certificate is not None:
             pulumi.set(__self__, "certificate", certificate)
+        if deploy is not None:
+            pulumi.set(__self__, "deploy", deploy)
         if expires_on is not None:
             pulumi.set(__self__, "expires_on", expires_on)
         if geo_restrictions is not None:
@@ -198,6 +228,8 @@ class _CustomSslState:
             pulumi.set(__self__, "modified_on", modified_on)
         if policy is not None:
             pulumi.set(__self__, "policy", policy)
+        if policy_restrictions is not None:
+            pulumi.set(__self__, "policy_restrictions", policy_restrictions)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
         if private_key is not None:
@@ -237,6 +269,19 @@ class _CustomSslState:
     @certificate.setter
     def certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "certificate", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def deploy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The environment to deploy the certificate to.
+        Available values: "staging", "production".
+        """
+        return pulumi.get(self, "deploy")
+
+    @deploy.setter
+    def deploy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "deploy", value)
 
     @_builtins.property
     @pulumi.getter(name="expiresOn")
@@ -308,7 +353,8 @@ class _CustomSslState:
     @pulumi.getter
     def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+        Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code*elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+        Note: The API accepts this field as either "policy" or "policy*restrictions" in requests. Responses return this field as "policy_restrictions".
         """
         return pulumi.get(self, "policy")
 
@@ -317,10 +363,24 @@ class _CustomSslState:
         pulumi.set(self, "policy", value)
 
     @_builtins.property
+    @pulumi.getter(name="policyRestrictions")
+    def policy_restrictions(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The policy restrictions returned by the API. This field is returned in responses
+        when a policy has been set. The API accepts the "policy" field in requests but
+        returns this field as "policy_restrictions" in responses.
+        """
+        return pulumi.get(self, "policy_restrictions")
+
+    @policy_restrictions.setter
+    def policy_restrictions(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "policy_restrictions", value)
+
+    @_builtins.property
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[_builtins.float]]:
         """
-        The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy*custom' certificates, but 'legacy*custom' certificates will always supercede 'sni_custom' certificates.
+        The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.
         """
         return pulumi.get(self, "priority")
 
@@ -411,6 +471,7 @@ class CustomSsl(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bundle_method: Optional[pulumi.Input[_builtins.str]] = None,
                  certificate: Optional[pulumi.Input[_builtins.str]] = None,
+                 deploy: Optional[pulumi.Input[_builtins.str]] = None,
                  geo_restrictions: Optional[pulumi.Input[Union['CustomSslGeoRestrictionsArgs', 'CustomSslGeoRestrictionsArgsDict']]] = None,
                  policy: Optional[pulumi.Input[_builtins.str]] = None,
                  private_key: Optional[pulumi.Input[_builtins.str]] = None,
@@ -480,6 +541,7 @@ class CustomSsl(pulumi.CustomResource):
 
         \"\"\",
             bundle_method="ubiquitous",
+            deploy="staging",
             geo_restrictions={
                 "label": "us",
             },
@@ -499,8 +561,11 @@ class CustomSsl(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] bundle_method: A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
                Available values: "ubiquitous", "optimal", "force".
         :param pulumi.Input[_builtins.str] certificate: The zone's SSL certificate or certificate and the intermediate(s).
+        :param pulumi.Input[_builtins.str] deploy: The environment to deploy the certificate to.
+               Available values: "staging", "production".
         :param pulumi.Input[Union['CustomSslGeoRestrictionsArgs', 'CustomSslGeoRestrictionsArgsDict']] geo_restrictions: Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
-        :param pulumi.Input[_builtins.str] policy: Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+        :param pulumi.Input[_builtins.str] policy: Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code*elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+               Note: The API accepts this field as either "policy" or "policy*restrictions" in requests. Responses return this field as "policy_restrictions".
         :param pulumi.Input[_builtins.str] private_key: The zone's private key.
         :param pulumi.Input[_builtins.str] type: The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
                Available values: "legacy*custom", "sni_custom".
@@ -575,6 +640,7 @@ class CustomSsl(pulumi.CustomResource):
 
         \"\"\",
             bundle_method="ubiquitous",
+            deploy="staging",
             geo_restrictions={
                 "label": "us",
             },
@@ -606,6 +672,7 @@ class CustomSsl(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bundle_method: Optional[pulumi.Input[_builtins.str]] = None,
                  certificate: Optional[pulumi.Input[_builtins.str]] = None,
+                 deploy: Optional[pulumi.Input[_builtins.str]] = None,
                  geo_restrictions: Optional[pulumi.Input[Union['CustomSslGeoRestrictionsArgs', 'CustomSslGeoRestrictionsArgsDict']]] = None,
                  policy: Optional[pulumi.Input[_builtins.str]] = None,
                  private_key: Optional[pulumi.Input[_builtins.str]] = None,
@@ -624,6 +691,7 @@ class CustomSsl(pulumi.CustomResource):
             if certificate is None and not opts.urn:
                 raise TypeError("Missing required property 'certificate'")
             __props__.__dict__["certificate"] = certificate
+            __props__.__dict__["deploy"] = deploy
             __props__.__dict__["geo_restrictions"] = geo_restrictions
             __props__.__dict__["policy"] = policy
             if private_key is None and not opts.urn:
@@ -638,6 +706,7 @@ class CustomSsl(pulumi.CustomResource):
             __props__.__dict__["issuer"] = None
             __props__.__dict__["keyless_server"] = None
             __props__.__dict__["modified_on"] = None
+            __props__.__dict__["policy_restrictions"] = None
             __props__.__dict__["priority"] = None
             __props__.__dict__["signature"] = None
             __props__.__dict__["status"] = None
@@ -656,6 +725,7 @@ class CustomSsl(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             bundle_method: Optional[pulumi.Input[_builtins.str]] = None,
             certificate: Optional[pulumi.Input[_builtins.str]] = None,
+            deploy: Optional[pulumi.Input[_builtins.str]] = None,
             expires_on: Optional[pulumi.Input[_builtins.str]] = None,
             geo_restrictions: Optional[pulumi.Input[Union['CustomSslGeoRestrictionsArgs', 'CustomSslGeoRestrictionsArgsDict']]] = None,
             hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -663,6 +733,7 @@ class CustomSsl(pulumi.CustomResource):
             keyless_server: Optional[pulumi.Input[Union['CustomSslKeylessServerArgs', 'CustomSslKeylessServerArgsDict']]] = None,
             modified_on: Optional[pulumi.Input[_builtins.str]] = None,
             policy: Optional[pulumi.Input[_builtins.str]] = None,
+            policy_restrictions: Optional[pulumi.Input[_builtins.str]] = None,
             priority: Optional[pulumi.Input[_builtins.float]] = None,
             private_key: Optional[pulumi.Input[_builtins.str]] = None,
             signature: Optional[pulumi.Input[_builtins.str]] = None,
@@ -680,12 +751,18 @@ class CustomSsl(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] bundle_method: A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
                Available values: "ubiquitous", "optimal", "force".
         :param pulumi.Input[_builtins.str] certificate: The zone's SSL certificate or certificate and the intermediate(s).
+        :param pulumi.Input[_builtins.str] deploy: The environment to deploy the certificate to.
+               Available values: "staging", "production".
         :param pulumi.Input[_builtins.str] expires_on: When the certificate from the authority expires.
         :param pulumi.Input[Union['CustomSslGeoRestrictionsArgs', 'CustomSslGeoRestrictionsArgsDict']] geo_restrictions: Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
         :param pulumi.Input[_builtins.str] issuer: The certificate authority that issued the certificate.
         :param pulumi.Input[_builtins.str] modified_on: When the certificate was last modified.
-        :param pulumi.Input[_builtins.str] policy: Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
-        :param pulumi.Input[_builtins.float] priority: The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy*custom' certificates, but 'legacy*custom' certificates will always supercede 'sni_custom' certificates.
+        :param pulumi.Input[_builtins.str] policy: Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code*elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+               Note: The API accepts this field as either "policy" or "policy*restrictions" in requests. Responses return this field as "policy_restrictions".
+        :param pulumi.Input[_builtins.str] policy_restrictions: The policy restrictions returned by the API. This field is returned in responses
+               when a policy has been set. The API accepts the "policy" field in requests but
+               returns this field as "policy_restrictions" in responses.
+        :param pulumi.Input[_builtins.float] priority: The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.
         :param pulumi.Input[_builtins.str] private_key: The zone's private key.
         :param pulumi.Input[_builtins.str] signature: The type of hash used for the certificate.
         :param pulumi.Input[_builtins.str] status: Status of the zone's custom SSL.
@@ -701,6 +778,7 @@ class CustomSsl(pulumi.CustomResource):
 
         __props__.__dict__["bundle_method"] = bundle_method
         __props__.__dict__["certificate"] = certificate
+        __props__.__dict__["deploy"] = deploy
         __props__.__dict__["expires_on"] = expires_on
         __props__.__dict__["geo_restrictions"] = geo_restrictions
         __props__.__dict__["hosts"] = hosts
@@ -708,6 +786,7 @@ class CustomSsl(pulumi.CustomResource):
         __props__.__dict__["keyless_server"] = keyless_server
         __props__.__dict__["modified_on"] = modified_on
         __props__.__dict__["policy"] = policy
+        __props__.__dict__["policy_restrictions"] = policy_restrictions
         __props__.__dict__["priority"] = priority
         __props__.__dict__["private_key"] = private_key
         __props__.__dict__["signature"] = signature
@@ -733,6 +812,15 @@ class CustomSsl(pulumi.CustomResource):
         The zone's SSL certificate or certificate and the intermediate(s).
         """
         return pulumi.get(self, "certificate")
+
+    @_builtins.property
+    @pulumi.getter
+    def deploy(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The environment to deploy the certificate to.
+        Available values: "staging", "production".
+        """
+        return pulumi.get(self, "deploy")
 
     @_builtins.property
     @pulumi.getter(name="expiresOn")
@@ -780,15 +868,26 @@ class CustomSsl(pulumi.CustomResource):
     @pulumi.getter
     def policy(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+        Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code*elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+        Note: The API accepts this field as either "policy" or "policy*restrictions" in requests. Responses return this field as "policy_restrictions".
         """
         return pulumi.get(self, "policy")
+
+    @_builtins.property
+    @pulumi.getter(name="policyRestrictions")
+    def policy_restrictions(self) -> pulumi.Output[_builtins.str]:
+        """
+        The policy restrictions returned by the API. This field is returned in responses
+        when a policy has been set. The API accepts the "policy" field in requests but
+        returns this field as "policy_restrictions" in responses.
+        """
+        return pulumi.get(self, "policy_restrictions")
 
     @_builtins.property
     @pulumi.getter
     def priority(self) -> pulumi.Output[_builtins.float]:
         """
-        The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy*custom' certificates, but 'legacy*custom' certificates will always supercede 'sni_custom' certificates.
+        The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.
         """
         return pulumi.get(self, "priority")
 

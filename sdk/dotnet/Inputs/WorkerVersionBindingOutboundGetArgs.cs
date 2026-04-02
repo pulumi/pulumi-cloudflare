@@ -13,14 +13,14 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class WorkerVersionBindingOutboundGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("params")]
-        private InputList<string>? _params;
+        private InputList<Inputs.WorkerVersionBindingOutboundParamGetArgs>? _params;
 
         /// <summary>
         /// Pass information from the Dispatch Worker to the Outbound Worker through the parameters.
         /// </summary>
-        public InputList<string> Params
+        public InputList<Inputs.WorkerVersionBindingOutboundParamGetArgs> Params
         {
-            get => _params ?? (_params = new InputList<string>());
+            get => _params ?? (_params = new InputList<Inputs.WorkerVersionBindingOutboundParamGetArgs>());
             set => _params = value;
         }
 

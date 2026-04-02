@@ -11,6 +11,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -48,6 +49,7 @@ import javax.annotation.Nullable;
  *             .hostname("exmaple.com")
  *             .name("My MCP Portal")
  *             .description("This is my custom MCP Portal")
+ *             .secureWebGateway(false)
  *             .servers(ZeroTrustAccessAiControlsMcpPortalServerArgs.builder()
  *                 .serverId("my-mcp-server")
  *                 .defaultDisabled(true)
@@ -126,6 +128,20 @@ public class ZeroTrustAccessAiControlsMcpPortal extends com.pulumi.resources.Cus
 
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Route outbound MCP traffic through Zero Trust Secure Web Gateway
+     * 
+     */
+    @Export(name="secureWebGateway", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> secureWebGateway;
+
+    /**
+     * @return Route outbound MCP traffic through Zero Trust Secure Web Gateway
+     * 
+     */
+    public Output<Optional<Boolean>> secureWebGateway() {
+        return Codegen.optional(this.secureWebGateway);
     }
     @Export(name="servers", refs={List.class,ZeroTrustAccessAiControlsMcpPortalServer.class}, tree="[0,1]")
     private Output<List<ZeroTrustAccessAiControlsMcpPortalServer>> servers;

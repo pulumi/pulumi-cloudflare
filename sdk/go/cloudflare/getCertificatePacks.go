@@ -27,6 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupCertificatePacks(ctx, &cloudflare.LookupCertificatePacksArgs{
 //				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				Deploy: pulumi.StringRef("staging"),
 //				Status: pulumi.StringRef("all"),
 //			}, nil)
 //			if err != nil {
@@ -49,6 +50,9 @@ func LookupCertificatePacks(ctx *pulumi.Context, args *LookupCertificatePacksArg
 
 // A collection of arguments for invoking getCertificatePacks.
 type LookupCertificatePacksArgs struct {
+	// Specify the deployment environment for the certificate packs.
+	// Available values: "staging", "production".
+	Deploy *string `pulumi:"deploy"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Include Certificate Packs of all statuses, not just active ones.
@@ -60,6 +64,9 @@ type LookupCertificatePacksArgs struct {
 
 // A collection of values returned by getCertificatePacks.
 type LookupCertificatePacksResult struct {
+	// Specify the deployment environment for the certificate packs.
+	// Available values: "staging", "production".
+	Deploy *string `pulumi:"deploy"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -84,6 +91,9 @@ func LookupCertificatePacksOutput(ctx *pulumi.Context, args LookupCertificatePac
 
 // A collection of arguments for invoking getCertificatePacks.
 type LookupCertificatePacksOutputArgs struct {
+	// Specify the deployment environment for the certificate packs.
+	// Available values: "staging", "production".
+	Deploy pulumi.StringPtrInput `pulumi:"deploy"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// Include Certificate Packs of all statuses, not just active ones.
@@ -110,6 +120,12 @@ func (o LookupCertificatePacksResultOutput) ToLookupCertificatePacksResultOutput
 
 func (o LookupCertificatePacksResultOutput) ToLookupCertificatePacksResultOutputWithContext(ctx context.Context) LookupCertificatePacksResultOutput {
 	return o
+}
+
+// Specify the deployment environment for the certificate packs.
+// Available values: "staging", "production".
+func (o LookupCertificatePacksResultOutput) Deploy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCertificatePacksResult) *string { return v.Deploy }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

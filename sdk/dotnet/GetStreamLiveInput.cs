@@ -139,6 +139,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly double DeleteRecordingAfterDays;
         /// <summary>
+        /// Indicates whether the live input is enabled and can accept streams.
+        /// </summary>
+        public readonly bool Enabled;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -200,6 +204,8 @@ namespace Pulumi.Cloudflare
 
             double deleteRecordingAfterDays,
 
+            bool enabled,
+
             string id,
 
             string liveInputIdentifier,
@@ -229,6 +235,7 @@ namespace Pulumi.Cloudflare
             AccountId = accountId;
             Created = created;
             DeleteRecordingAfterDays = deleteRecordingAfterDays;
+            Enabled = enabled;
             Id = id;
             LiveInputIdentifier = liveInputIdentifier;
             Meta = meta;

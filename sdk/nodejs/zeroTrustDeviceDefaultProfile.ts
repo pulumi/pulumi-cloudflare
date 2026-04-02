@@ -141,7 +141,7 @@ export class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
      * Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
      */
     declare public readonly sccmVpnBoundarySupport: pulumi.Output<boolean>;
-    declare public readonly serviceModeV2: pulumi.Output<outputs.ZeroTrustDeviceDefaultProfileServiceModeV2 | undefined>;
+    declare public readonly serviceModeV2: pulumi.Output<outputs.ZeroTrustDeviceDefaultProfileServiceModeV2>;
     /**
      * The URL to launch when the Send Feedback button is clicked.
      */

@@ -23,6 +23,7 @@ public final class GetZeroTrustDlpCustomProfileEntry {
     private Boolean caseSensitive;
     private GetZeroTrustDlpCustomProfileEntryConfidence confidence;
     private String createdAt;
+    private String description;
     private Boolean enabled;
     private String id;
     private String name;
@@ -53,6 +54,9 @@ public final class GetZeroTrustDlpCustomProfileEntry {
     }
     public String createdAt() {
         return this.createdAt;
+    }
+    public String description() {
+        return this.description;
     }
     public Boolean enabled() {
         return this.enabled;
@@ -101,6 +105,7 @@ public final class GetZeroTrustDlpCustomProfileEntry {
         private Boolean caseSensitive;
         private GetZeroTrustDlpCustomProfileEntryConfidence confidence;
         private String createdAt;
+        private String description;
         private Boolean enabled;
         private String id;
         private String name;
@@ -117,6 +122,7 @@ public final class GetZeroTrustDlpCustomProfileEntry {
     	      this.caseSensitive = defaults.caseSensitive;
     	      this.confidence = defaults.confidence;
     	      this.createdAt = defaults.createdAt;
+    	      this.description = defaults.description;
     	      this.enabled = defaults.enabled;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
@@ -151,6 +157,14 @@ public final class GetZeroTrustDlpCustomProfileEntry {
               throw new MissingRequiredPropertyException("GetZeroTrustDlpCustomProfileEntry", "createdAt");
             }
             this.createdAt = createdAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder description(String description) {
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDlpCustomProfileEntry", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
@@ -238,6 +252,7 @@ public final class GetZeroTrustDlpCustomProfileEntry {
             _resultValue.caseSensitive = caseSensitive;
             _resultValue.confidence = confidence;
             _resultValue.createdAt = createdAt;
+            _resultValue.description = description;
             _resultValue.enabled = enabled;
             _resultValue.id = id;
             _resultValue.name = name;

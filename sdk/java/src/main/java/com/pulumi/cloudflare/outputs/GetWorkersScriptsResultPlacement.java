@@ -3,9 +3,11 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetWorkersScriptsResultPlacementTarget;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -27,7 +29,7 @@ public final class GetWorkersScriptsResultPlacement {
     private String lastAnalyzedAt;
     /**
      * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: &#34;smart&#34;.
+     * Available values: &#34;smart&#34;, &#34;targeted&#34;.
      * 
      */
     private String mode;
@@ -42,6 +44,11 @@ public final class GetWorkersScriptsResultPlacement {
      * 
      */
     private String status;
+    /**
+     * @return Array of placement targets (currently limited to single target).
+     * 
+     */
+    private List<GetWorkersScriptsResultPlacementTarget> targets;
 
     private GetWorkersScriptsResultPlacement() {}
     /**
@@ -67,7 +74,7 @@ public final class GetWorkersScriptsResultPlacement {
     }
     /**
      * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: &#34;smart&#34;.
+     * Available values: &#34;smart&#34;, &#34;targeted&#34;.
      * 
      */
     public String mode() {
@@ -88,6 +95,13 @@ public final class GetWorkersScriptsResultPlacement {
     public String status() {
         return this.status;
     }
+    /**
+     * @return Array of placement targets (currently limited to single target).
+     * 
+     */
+    public List<GetWorkersScriptsResultPlacementTarget> targets() {
+        return this.targets;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -104,6 +118,7 @@ public final class GetWorkersScriptsResultPlacement {
         private String mode;
         private String region;
         private String status;
+        private List<GetWorkersScriptsResultPlacementTarget> targets;
         public Builder() {}
         public Builder(GetWorkersScriptsResultPlacement defaults) {
     	      Objects.requireNonNull(defaults);
@@ -113,6 +128,7 @@ public final class GetWorkersScriptsResultPlacement {
     	      this.mode = defaults.mode;
     	      this.region = defaults.region;
     	      this.status = defaults.status;
+    	      this.targets = defaults.targets;
         }
 
         @CustomType.Setter
@@ -163,6 +179,17 @@ public final class GetWorkersScriptsResultPlacement {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
+        public Builder targets(List<GetWorkersScriptsResultPlacementTarget> targets) {
+            if (targets == null) {
+              throw new MissingRequiredPropertyException("GetWorkersScriptsResultPlacement", "targets");
+            }
+            this.targets = targets;
+            return this;
+        }
+        public Builder targets(GetWorkersScriptsResultPlacementTarget... targets) {
+            return targets(List.of(targets));
+        }
         public GetWorkersScriptsResultPlacement build() {
             final var _resultValue = new GetWorkersScriptsResultPlacement();
             _resultValue.host = host;
@@ -171,6 +198,7 @@ public final class GetWorkersScriptsResultPlacement {
             _resultValue.mode = mode;
             _resultValue.region = region;
             _resultValue.status = status;
+            _resultValue.targets = targets;
             return _resultValue;
         }
     }

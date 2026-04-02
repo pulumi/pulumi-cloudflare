@@ -12,6 +12,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkerVersionBindingOutboundWorker {
     /**
+     * @return Entrypoint to invoke on the outbound worker.
+     * 
+     */
+    private @Nullable String entrypoint;
+    /**
      * @return Environment of the outbound worker.
      * 
      */
@@ -23,6 +28,13 @@ public final class WorkerVersionBindingOutboundWorker {
     private @Nullable String service;
 
     private WorkerVersionBindingOutboundWorker() {}
+    /**
+     * @return Entrypoint to invoke on the outbound worker.
+     * 
+     */
+    public Optional<String> entrypoint() {
+        return Optional.ofNullable(this.entrypoint);
+    }
     /**
      * @return Environment of the outbound worker.
      * 
@@ -47,15 +59,23 @@ public final class WorkerVersionBindingOutboundWorker {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String entrypoint;
         private @Nullable String environment;
         private @Nullable String service;
         public Builder() {}
         public Builder(WorkerVersionBindingOutboundWorker defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.entrypoint = defaults.entrypoint;
     	      this.environment = defaults.environment;
     	      this.service = defaults.service;
         }
 
+        @CustomType.Setter
+        public Builder entrypoint(@Nullable String entrypoint) {
+
+            this.entrypoint = entrypoint;
+            return this;
+        }
         @CustomType.Setter
         public Builder environment(@Nullable String environment) {
 
@@ -70,6 +90,7 @@ public final class WorkerVersionBindingOutboundWorker {
         }
         public WorkerVersionBindingOutboundWorker build() {
             final var _resultValue = new WorkerVersionBindingOutboundWorker();
+            _resultValue.entrypoint = entrypoint;
             _resultValue.environment = environment;
             _resultValue.service = service;
             return _resultValue;

@@ -28,7 +28,7 @@ class GetZeroTrustAccessAiControlsMcpPortalResult:
     """
     A collection of values returned by getZeroTrustAccessAiControlsMcpPortal.
     """
-    def __init__(__self__, account_id=None, created_at=None, created_by=None, description=None, filter=None, hostname=None, id=None, modified_at=None, modified_by=None, name=None, servers=None):
+    def __init__(__self__, account_id=None, created_at=None, created_by=None, description=None, filter=None, hostname=None, id=None, modified_at=None, modified_by=None, name=None, secure_web_gateway=None, servers=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -59,6 +59,9 @@ class GetZeroTrustAccessAiControlsMcpPortalResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if secure_web_gateway and not isinstance(secure_web_gateway, bool):
+            raise TypeError("Expected argument 'secure_web_gateway' to be a bool")
+        pulumi.set(__self__, "secure_web_gateway", secure_web_gateway)
         if servers and not isinstance(servers, list):
             raise TypeError("Expected argument 'servers' to be a list")
         pulumi.set(__self__, "servers", servers)
@@ -117,6 +120,14 @@ class GetZeroTrustAccessAiControlsMcpPortalResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="secureWebGateway")
+    def secure_web_gateway(self) -> _builtins.bool:
+        """
+        Route outbound MCP traffic through Zero Trust Secure Web Gateway
+        """
+        return pulumi.get(self, "secure_web_gateway")
+
+    @_builtins.property
     @pulumi.getter
     def servers(self) -> Sequence['outputs.GetZeroTrustAccessAiControlsMcpPortalServerResult']:
         return pulumi.get(self, "servers")
@@ -138,6 +149,7 @@ class AwaitableGetZeroTrustAccessAiControlsMcpPortalResult(GetZeroTrustAccessAiC
             modified_at=self.modified_at,
             modified_by=self.modified_by,
             name=self.name,
+            secure_web_gateway=self.secure_web_gateway,
             servers=self.servers)
 
 
@@ -177,6 +189,7 @@ def get_zero_trust_access_ai_controls_mcp_portal(account_id: Optional[_builtins.
         modified_at=pulumi.get(__ret__, 'modified_at'),
         modified_by=pulumi.get(__ret__, 'modified_by'),
         name=pulumi.get(__ret__, 'name'),
+        secure_web_gateway=pulumi.get(__ret__, 'secure_web_gateway'),
         servers=pulumi.get(__ret__, 'servers'))
 def get_zero_trust_access_ai_controls_mcp_portal_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
                                                         filter: Optional[pulumi.Input[Optional[Union['GetZeroTrustAccessAiControlsMcpPortalFilterArgs', 'GetZeroTrustAccessAiControlsMcpPortalFilterArgsDict']]]] = None,
@@ -213,4 +226,5 @@ def get_zero_trust_access_ai_controls_mcp_portal_output(account_id: Optional[pul
         modified_at=pulumi.get(__response__, 'modified_at'),
         modified_by=pulumi.get(__response__, 'modified_by'),
         name=pulumi.get(__response__, 'name'),
+        secure_web_gateway=pulumi.get(__response__, 'secure_web_gateway'),
         servers=pulumi.get(__response__, 'servers')))

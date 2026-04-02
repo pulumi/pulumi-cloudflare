@@ -326,7 +326,7 @@ namespace Pulumi.Cloudflare
         /// Configs for the project build process.
         /// </summary>
         [Output("buildConfig")]
-        public Output<Outputs.PagesProjectBuildConfig?> BuildConfig { get; private set; } = null!;
+        public Output<Outputs.PagesProjectBuildConfig> BuildConfig { get; private set; } = null!;
 
         /// <summary>
         /// Most recent production deployment of the project.

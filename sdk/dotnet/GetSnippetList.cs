@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare
         public int? MaxItems { get; set; }
 
         /// <summary>
-        /// The unique ID of the zone.
+        /// Use this field to specify the unique ID of the zone.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -51,7 +51,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? MaxItems { get; set; }
 
         /// <summary>
-        /// The unique ID of the zone.
+        /// Use this field to specify the unique ID of the zone.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -79,7 +79,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSnippetListResultResult> Results;
         /// <summary>
-        /// The unique ID of the zone.
+        /// Use this field to specify the unique ID of the zone.
         /// </summary>
         public readonly string ZoneId;
 

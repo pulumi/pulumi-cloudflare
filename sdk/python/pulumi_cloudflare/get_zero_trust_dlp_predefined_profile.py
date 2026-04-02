@@ -85,12 +85,18 @@ class GetZeroTrustDlpPredefinedProfileResult:
     @_builtins.property
     @pulumi.getter(name="enabledEntries")
     def enabled_entries(self) -> Sequence[_builtins.str]:
+        """
+        Entries to enable for this predefined profile. Any entries not provided will be disabled.
+        """
         return pulumi.get(self, "enabled_entries")
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""This attribute is deprecated.""")
     def entries(self) -> Sequence['outputs.GetZeroTrustDlpPredefinedProfileEntryResult']:
+        """
+        This field has been deprecated for `enabled_entries`.
+        """
         return pulumi.get(self, "entries")
 
     @_builtins.property

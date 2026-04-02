@@ -21,6 +21,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool CaseSensitive;
         public readonly Outputs.GetZeroTrustDlpPredefinedProfileEntryConfidenceResult Confidence;
         public readonly string CreatedAt;
+        public readonly string Description;
         public readonly bool Enabled;
         public readonly string Id;
         public readonly string Name;
@@ -42,6 +43,8 @@ namespace Pulumi.Cloudflare.Outputs
             Outputs.GetZeroTrustDlpPredefinedProfileEntryConfidenceResult confidence,
 
             string createdAt,
+
+            string description,
 
             bool enabled,
 
@@ -66,6 +69,7 @@ namespace Pulumi.Cloudflare.Outputs
             CaseSensitive = caseSensitive;
             Confidence = confidence;
             CreatedAt = createdAt;
+            Description = description;
             Enabled = enabled;
             Id = id;
             Name = name;

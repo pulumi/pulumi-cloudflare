@@ -25,6 +25,8 @@ namespace Pulumi.Cloudflare
         ///     var exampleZeroTrustDexTests = Cloudflare.GetZeroTrustDexTests.Invoke(new()
         ///     {
         ///         AccountId = "01a7362d577a6c3019a474fd6f485823",
+        ///         Kind = "http",
+        ///         TestName = "testName",
         ///     });
         /// 
         /// });
@@ -47,6 +49,8 @@ namespace Pulumi.Cloudflare
         ///     var exampleZeroTrustDexTests = Cloudflare.GetZeroTrustDexTests.Invoke(new()
         ///     {
         ///         AccountId = "01a7362d577a6c3019a474fd6f485823",
+        ///         Kind = "http",
+        ///         TestName = "testName",
         ///     });
         /// 
         /// });
@@ -69,6 +73,8 @@ namespace Pulumi.Cloudflare
         ///     var exampleZeroTrustDexTests = Cloudflare.GetZeroTrustDexTests.Invoke(new()
         ///     {
         ///         AccountId = "01a7362d577a6c3019a474fd6f485823",
+        ///         Kind = "http",
+        ///         TestName = "testName",
         ///     });
         /// 
         /// });
@@ -85,10 +91,23 @@ namespace Pulumi.Cloudflare
         public string AccountId { get; set; } = null!;
 
         /// <summary>
+        /// Filter by test type
+        /// Available values: "http", "traceroute".
+        /// </summary>
+        [Input("kind")]
+        public string? Kind { get; set; }
+
+        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         [Input("maxItems")]
         public int? MaxItems { get; set; }
+
+        /// <summary>
+        /// Filter by test name
+        /// </summary>
+        [Input("testName")]
+        public string? TestName { get; set; }
 
         public GetZeroTrustDexTestsArgs()
         {
@@ -102,10 +121,23 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
+        /// Filter by test type
+        /// Available values: "http", "traceroute".
+        /// </summary>
+        [Input("kind")]
+        public Input<string>? Kind { get; set; }
+
+        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         [Input("maxItems")]
         public Input<int>? MaxItems { get; set; }
+
+        /// <summary>
+        /// Filter by test name
+        /// </summary>
+        [Input("testName")]
+        public Input<string>? TestName { get; set; }
 
         public GetZeroTrustDexTestsInvokeArgs()
         {
@@ -123,6 +155,11 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// Filter by test type
+        /// Available values: "http", "traceroute".
+        /// </summary>
+        public readonly string? Kind;
+        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         public readonly int? MaxItems;
@@ -130,6 +167,10 @@ namespace Pulumi.Cloudflare
         /// The items returned by the data source
         /// </summary>
         public readonly ImmutableArray<Outputs.GetZeroTrustDexTestsResultResult> Results;
+        /// <summary>
+        /// Filter by test name
+        /// </summary>
+        public readonly string? TestName;
 
         [OutputConstructor]
         private GetZeroTrustDexTestsResult(
@@ -137,14 +178,20 @@ namespace Pulumi.Cloudflare
 
             string id,
 
+            string? kind,
+
             int? maxItems,
 
-            ImmutableArray<Outputs.GetZeroTrustDexTestsResultResult> results)
+            ImmutableArray<Outputs.GetZeroTrustDexTestsResultResult> results,
+
+            string? testName)
         {
             AccountId = accountId;
             Id = id;
+            Kind = kind;
             MaxItems = maxItems;
             Results = results;
+            TestName = testName;
         }
     }
 }

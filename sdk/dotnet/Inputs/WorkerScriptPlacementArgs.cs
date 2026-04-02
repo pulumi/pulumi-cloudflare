@@ -32,7 +32,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-        /// Available values: "smart".
+        /// Available values: "smart", "targeted".
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -49,6 +49,18 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("targets")]
+        private InputList<Inputs.WorkerScriptPlacementTargetArgs>? _targets;
+
+        /// <summary>
+        /// Array of placement targets (currently limited to single target).
+        /// </summary>
+        public InputList<Inputs.WorkerScriptPlacementTargetArgs> Targets
+        {
+            get => _targets ?? (_targets = new InputList<Inputs.WorkerScriptPlacementTargetArgs>());
+            set => _targets = value;
+        }
 
         public WorkerScriptPlacementArgs()
         {

@@ -56,6 +56,16 @@ import (
 //					},
 //				},
 //				ApprovalRequired: pulumi.Bool(true),
+//				ConnectionRules: &cloudflare.ZeroTrustAccessPolicyConnectionRulesArgs{
+//					Rdp: &cloudflare.ZeroTrustAccessPolicyConnectionRulesRdpArgs{
+//						AllowedClipboardLocalToRemoteFormats: pulumi.StringArray{
+//							pulumi.String("text"),
+//						},
+//						AllowedClipboardRemoteToLocalFormats: pulumi.StringArray{
+//							pulumi.String("text"),
+//						},
+//					},
+//				},
 //				Excludes: cloudflare.ZeroTrustAccessPolicyExcludeArray{
 //					&cloudflare.ZeroTrustAccessPolicyExcludeArgs{
 //						Group: &cloudflare.ZeroTrustAccessPolicyExcludeGroupArgs{
@@ -63,7 +73,16 @@ import (
 //						},
 //					},
 //				},
-//				IsolationRequired:            pulumi.Bool(false),
+//				IsolationRequired: pulumi.Bool(false),
+//				MfaConfig: &cloudflare.ZeroTrustAccessPolicyMfaConfigArgs{
+//					AllowedAuthenticators: pulumi.StringArray{
+//						pulumi.String("totp"),
+//						pulumi.String("biometrics"),
+//						pulumi.String("security_key"),
+//					},
+//					MfaBypass:       pulumi.Bool(false),
+//					SessionDuration: pulumi.String("24h"),
+//				},
 //				PurposeJustificationPrompt:   pulumi.String("Please enter a justification for entering this protected domain."),
 //				PurposeJustificationRequired: pulumi.Bool(true),
 //				Requires: cloudflare.ZeroTrustAccessPolicyRequireArray{
@@ -100,6 +119,8 @@ type AccessPolicy struct {
 	ApprovalGroups AccessPolicyApprovalGroupArrayOutput `pulumi:"approvalGroups"`
 	// Requires the user to request access from an administrator at the start of each session.
 	ApprovalRequired pulumi.BoolPtrOutput `pulumi:"approvalRequired"`
+	// The rules that define how users may connect to targets secured by your application.
+	ConnectionRules AccessPolicyConnectionRulesPtrOutput `pulumi:"connectionRules"`
 	// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
 	// Available values: "allow", "deny", "nonIdentity", "bypass".
 	Decision pulumi.StringOutput `pulumi:"decision"`
@@ -109,6 +130,8 @@ type AccessPolicy struct {
 	Includes AccessPolicyIncludeArrayOutput `pulumi:"includes"`
 	// Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
 	IsolationRequired pulumi.BoolPtrOutput `pulumi:"isolationRequired"`
+	// Configures multi-factor authentication (MFA) settings.
+	MfaConfig AccessPolicyMfaConfigPtrOutput `pulumi:"mfaConfig"`
 	// The name of the Access policy.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A custom message that will appear on the purpose justification screen.
@@ -172,6 +195,8 @@ type accessPolicyState struct {
 	ApprovalGroups []AccessPolicyApprovalGroup `pulumi:"approvalGroups"`
 	// Requires the user to request access from an administrator at the start of each session.
 	ApprovalRequired *bool `pulumi:"approvalRequired"`
+	// The rules that define how users may connect to targets secured by your application.
+	ConnectionRules *AccessPolicyConnectionRules `pulumi:"connectionRules"`
 	// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
 	// Available values: "allow", "deny", "nonIdentity", "bypass".
 	Decision *string `pulumi:"decision"`
@@ -181,6 +206,8 @@ type accessPolicyState struct {
 	Includes []AccessPolicyInclude `pulumi:"includes"`
 	// Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
 	IsolationRequired *bool `pulumi:"isolationRequired"`
+	// Configures multi-factor authentication (MFA) settings.
+	MfaConfig *AccessPolicyMfaConfig `pulumi:"mfaConfig"`
 	// The name of the Access policy.
 	Name *string `pulumi:"name"`
 	// A custom message that will appear on the purpose justification screen.
@@ -200,6 +227,8 @@ type AccessPolicyState struct {
 	ApprovalGroups AccessPolicyApprovalGroupArrayInput
 	// Requires the user to request access from an administrator at the start of each session.
 	ApprovalRequired pulumi.BoolPtrInput
+	// The rules that define how users may connect to targets secured by your application.
+	ConnectionRules AccessPolicyConnectionRulesPtrInput
 	// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
 	// Available values: "allow", "deny", "nonIdentity", "bypass".
 	Decision pulumi.StringPtrInput
@@ -209,6 +238,8 @@ type AccessPolicyState struct {
 	Includes AccessPolicyIncludeArrayInput
 	// Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
 	IsolationRequired pulumi.BoolPtrInput
+	// Configures multi-factor authentication (MFA) settings.
+	MfaConfig AccessPolicyMfaConfigPtrInput
 	// The name of the Access policy.
 	Name pulumi.StringPtrInput
 	// A custom message that will appear on the purpose justification screen.
@@ -232,6 +263,8 @@ type accessPolicyArgs struct {
 	ApprovalGroups []AccessPolicyApprovalGroup `pulumi:"approvalGroups"`
 	// Requires the user to request access from an administrator at the start of each session.
 	ApprovalRequired *bool `pulumi:"approvalRequired"`
+	// The rules that define how users may connect to targets secured by your application.
+	ConnectionRules *AccessPolicyConnectionRules `pulumi:"connectionRules"`
 	// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
 	// Available values: "allow", "deny", "nonIdentity", "bypass".
 	Decision string `pulumi:"decision"`
@@ -241,6 +274,8 @@ type accessPolicyArgs struct {
 	Includes []AccessPolicyInclude `pulumi:"includes"`
 	// Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
 	IsolationRequired *bool `pulumi:"isolationRequired"`
+	// Configures multi-factor authentication (MFA) settings.
+	MfaConfig *AccessPolicyMfaConfig `pulumi:"mfaConfig"`
 	// The name of the Access policy.
 	Name string `pulumi:"name"`
 	// A custom message that will appear on the purpose justification screen.
@@ -261,6 +296,8 @@ type AccessPolicyArgs struct {
 	ApprovalGroups AccessPolicyApprovalGroupArrayInput
 	// Requires the user to request access from an administrator at the start of each session.
 	ApprovalRequired pulumi.BoolPtrInput
+	// The rules that define how users may connect to targets secured by your application.
+	ConnectionRules AccessPolicyConnectionRulesPtrInput
 	// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
 	// Available values: "allow", "deny", "nonIdentity", "bypass".
 	Decision pulumi.StringInput
@@ -270,6 +307,8 @@ type AccessPolicyArgs struct {
 	Includes AccessPolicyIncludeArrayInput
 	// Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
 	IsolationRequired pulumi.BoolPtrInput
+	// Configures multi-factor authentication (MFA) settings.
+	MfaConfig AccessPolicyMfaConfigPtrInput
 	// The name of the Access policy.
 	Name pulumi.StringInput
 	// A custom message that will appear on the purpose justification screen.
@@ -384,6 +423,11 @@ func (o AccessPolicyOutput) ApprovalRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.BoolPtrOutput { return v.ApprovalRequired }).(pulumi.BoolPtrOutput)
 }
 
+// The rules that define how users may connect to targets secured by your application.
+func (o AccessPolicyOutput) ConnectionRules() AccessPolicyConnectionRulesPtrOutput {
+	return o.ApplyT(func(v *AccessPolicy) AccessPolicyConnectionRulesPtrOutput { return v.ConnectionRules }).(AccessPolicyConnectionRulesPtrOutput)
+}
+
 // The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
 // Available values: "allow", "deny", "nonIdentity", "bypass".
 func (o AccessPolicyOutput) Decision() pulumi.StringOutput {
@@ -403,6 +447,11 @@ func (o AccessPolicyOutput) Includes() AccessPolicyIncludeArrayOutput {
 // Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
 func (o AccessPolicyOutput) IsolationRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.BoolPtrOutput { return v.IsolationRequired }).(pulumi.BoolPtrOutput)
+}
+
+// Configures multi-factor authentication (MFA) settings.
+func (o AccessPolicyOutput) MfaConfig() AccessPolicyMfaConfigPtrOutput {
+	return o.ApplyT(func(v *AccessPolicy) AccessPolicyMfaConfigPtrOutput { return v.MfaConfig }).(AccessPolicyMfaConfigPtrOutput)
 }
 
 // The name of the Access policy.

@@ -22,6 +22,8 @@ import * as utilities from "./utilities";
  *         forbidden: "699d98642c564d2e855e9661899b7252",
  *         identityDenied: "699d98642c564d2e855e9661899b7252",
  *     },
+ *     denyUnmatchedRequests: true,
+ *     denyUnmatchedRequestsExemptedZoneNames: ["example.com"],
  *     isUiReadOnly: true,
  *     loginDesign: {
  *         backgroundColor: "#c5ed1b",
@@ -30,6 +32,16 @@ import * as utilities from "./utilities";
  *         logoPath: "https://example.com/logo.png",
  *         textColor: "#c5ed1b",
  *     },
+ *     mfaConfig: {
+ *         allowedAuthenticators: [
+ *             "totp",
+ *             "biometrics",
+ *             "security_key",
+ *         ],
+ *         sessionDuration: "24h",
+ *     },
+ *     mfaConfigurationAllowed: true,
+ *     mfaRequiredForAllApps: false,
  *     name: "Widget Corps Internal Applications",
  *     sessionDuration: "24h",
  *     uiReadOnlyToggleReason: "Temporarily turn off the UI read only lock to make a change via the UI",
@@ -91,10 +103,30 @@ export class AccessOrganization extends pulumi.CustomResource {
     declare public readonly autoRedirectToIdentity: pulumi.Output<boolean>;
     declare public readonly customPages: pulumi.Output<outputs.AccessOrganizationCustomPages | undefined>;
     /**
+     * Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `denyUnmatchedRequestsExemptedZoneNames` array.
+     */
+    declare public readonly denyUnmatchedRequests: pulumi.Output<boolean | undefined>;
+    /**
+     * Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+     */
+    declare public readonly denyUnmatchedRequestsExemptedZoneNames: pulumi.Output<string[] | undefined>;
+    /**
      * Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
      */
     declare public readonly isUiReadOnly: pulumi.Output<boolean>;
     declare public readonly loginDesign: pulumi.Output<outputs.AccessOrganizationLoginDesign | undefined>;
+    /**
+     * Configures multi-factor authentication (MFA) settings for an organization.
+     */
+    declare public readonly mfaConfig: pulumi.Output<outputs.AccessOrganizationMfaConfig | undefined>;
+    /**
+     * Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
+     */
+    declare public readonly mfaConfigurationAllowed: pulumi.Output<boolean>;
+    /**
+     * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+     */
+    declare public readonly mfaRequiredForAllApps: pulumi.Output<boolean>;
     /**
      * The name of your Zero Trust organization.
      */
@@ -106,7 +138,7 @@ export class AccessOrganization extends pulumi.CustomResource {
     /**
      * A description of the reason why the UI read only field is being toggled.
      */
-    declare public readonly uiReadOnlyToggleReason: pulumi.Output<string | undefined>;
+    declare public readonly uiReadOnlyToggleReason: pulumi.Output<string>;
     /**
      * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
      */
@@ -141,8 +173,13 @@ export class AccessOrganization extends pulumi.CustomResource {
             resourceInputs["authDomain"] = state?.authDomain;
             resourceInputs["autoRedirectToIdentity"] = state?.autoRedirectToIdentity;
             resourceInputs["customPages"] = state?.customPages;
+            resourceInputs["denyUnmatchedRequests"] = state?.denyUnmatchedRequests;
+            resourceInputs["denyUnmatchedRequestsExemptedZoneNames"] = state?.denyUnmatchedRequestsExemptedZoneNames;
             resourceInputs["isUiReadOnly"] = state?.isUiReadOnly;
             resourceInputs["loginDesign"] = state?.loginDesign;
+            resourceInputs["mfaConfig"] = state?.mfaConfig;
+            resourceInputs["mfaConfigurationAllowed"] = state?.mfaConfigurationAllowed;
+            resourceInputs["mfaRequiredForAllApps"] = state?.mfaRequiredForAllApps;
             resourceInputs["name"] = state?.name;
             resourceInputs["sessionDuration"] = state?.sessionDuration;
             resourceInputs["uiReadOnlyToggleReason"] = state?.uiReadOnlyToggleReason;
@@ -156,8 +193,13 @@ export class AccessOrganization extends pulumi.CustomResource {
             resourceInputs["authDomain"] = args?.authDomain;
             resourceInputs["autoRedirectToIdentity"] = args?.autoRedirectToIdentity;
             resourceInputs["customPages"] = args?.customPages;
+            resourceInputs["denyUnmatchedRequests"] = args?.denyUnmatchedRequests;
+            resourceInputs["denyUnmatchedRequestsExemptedZoneNames"] = args?.denyUnmatchedRequestsExemptedZoneNames;
             resourceInputs["isUiReadOnly"] = args?.isUiReadOnly;
             resourceInputs["loginDesign"] = args?.loginDesign;
+            resourceInputs["mfaConfig"] = args?.mfaConfig;
+            resourceInputs["mfaConfigurationAllowed"] = args?.mfaConfigurationAllowed;
+            resourceInputs["mfaRequiredForAllApps"] = args?.mfaRequiredForAllApps;
             resourceInputs["name"] = args?.name;
             resourceInputs["sessionDuration"] = args?.sessionDuration;
             resourceInputs["uiReadOnlyToggleReason"] = args?.uiReadOnlyToggleReason;
@@ -194,10 +236,30 @@ export interface AccessOrganizationState {
     autoRedirectToIdentity?: pulumi.Input<boolean>;
     customPages?: pulumi.Input<inputs.AccessOrganizationCustomPages>;
     /**
+     * Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `denyUnmatchedRequestsExemptedZoneNames` array.
+     */
+    denyUnmatchedRequests?: pulumi.Input<boolean>;
+    /**
+     * Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+     */
+    denyUnmatchedRequestsExemptedZoneNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
      */
     isUiReadOnly?: pulumi.Input<boolean>;
     loginDesign?: pulumi.Input<inputs.AccessOrganizationLoginDesign>;
+    /**
+     * Configures multi-factor authentication (MFA) settings for an organization.
+     */
+    mfaConfig?: pulumi.Input<inputs.AccessOrganizationMfaConfig>;
+    /**
+     * Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
+     */
+    mfaConfigurationAllowed?: pulumi.Input<boolean>;
+    /**
+     * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+     */
+    mfaRequiredForAllApps?: pulumi.Input<boolean>;
     /**
      * The name of your Zero Trust organization.
      */
@@ -246,10 +308,30 @@ export interface AccessOrganizationArgs {
     autoRedirectToIdentity?: pulumi.Input<boolean>;
     customPages?: pulumi.Input<inputs.AccessOrganizationCustomPages>;
     /**
+     * Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `denyUnmatchedRequestsExemptedZoneNames` array.
+     */
+    denyUnmatchedRequests?: pulumi.Input<boolean>;
+    /**
+     * Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+     */
+    denyUnmatchedRequestsExemptedZoneNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
      */
     isUiReadOnly?: pulumi.Input<boolean>;
     loginDesign?: pulumi.Input<inputs.AccessOrganizationLoginDesign>;
+    /**
+     * Configures multi-factor authentication (MFA) settings for an organization.
+     */
+    mfaConfig?: pulumi.Input<inputs.AccessOrganizationMfaConfig>;
+    /**
+     * Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
+     */
+    mfaConfigurationAllowed?: pulumi.Input<boolean>;
+    /**
+     * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+     */
+    mfaRequiredForAllApps?: pulumi.Input<boolean>;
     /**
      * The name of your Zero Trust organization.
      */

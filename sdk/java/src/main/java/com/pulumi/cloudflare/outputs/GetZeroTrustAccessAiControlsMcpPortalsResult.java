@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 
@@ -22,6 +23,11 @@ public final class GetZeroTrustAccessAiControlsMcpPortalsResult {
     private String modifiedAt;
     private String modifiedBy;
     private String name;
+    /**
+     * @return Route outbound MCP traffic through Zero Trust Secure Web Gateway
+     * 
+     */
+    private Boolean secureWebGateway;
 
     private GetZeroTrustAccessAiControlsMcpPortalsResult() {}
     public String createdAt() {
@@ -52,6 +58,13 @@ public final class GetZeroTrustAccessAiControlsMcpPortalsResult {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Route outbound MCP traffic through Zero Trust Secure Web Gateway
+     * 
+     */
+    public Boolean secureWebGateway() {
+        return this.secureWebGateway;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -70,6 +83,7 @@ public final class GetZeroTrustAccessAiControlsMcpPortalsResult {
         private String modifiedAt;
         private String modifiedBy;
         private String name;
+        private Boolean secureWebGateway;
         public Builder() {}
         public Builder(GetZeroTrustAccessAiControlsMcpPortalsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -81,6 +95,7 @@ public final class GetZeroTrustAccessAiControlsMcpPortalsResult {
     	      this.modifiedAt = defaults.modifiedAt;
     	      this.modifiedBy = defaults.modifiedBy;
     	      this.name = defaults.name;
+    	      this.secureWebGateway = defaults.secureWebGateway;
         }
 
         @CustomType.Setter
@@ -147,6 +162,14 @@ public final class GetZeroTrustAccessAiControlsMcpPortalsResult {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
+        public Builder secureWebGateway(Boolean secureWebGateway) {
+            if (secureWebGateway == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpPortalsResult", "secureWebGateway");
+            }
+            this.secureWebGateway = secureWebGateway;
+            return this;
+        }
         public GetZeroTrustAccessAiControlsMcpPortalsResult build() {
             final var _resultValue = new GetZeroTrustAccessAiControlsMcpPortalsResult();
             _resultValue.createdAt = createdAt;
@@ -157,6 +180,7 @@ public final class GetZeroTrustAccessAiControlsMcpPortalsResult {
             _resultValue.modifiedAt = modifiedAt;
             _resultValue.modifiedBy = modifiedBy;
             _resultValue.name = name;
+            _resultValue.secureWebGateway = secureWebGateway;
             return _resultValue;
         }
     }

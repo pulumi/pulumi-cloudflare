@@ -15,10 +15,7 @@ import * as utilities from "./utilities";
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     settingId: "ciphers",
  *     hostname: "app.example.com",
- *     value: [
- *         "ECDHE-RSA-AES128-GCM-SHA256",
- *         "AES128-GCM-SHA256",
- *     ],
+ *     value: "1.0",
  * });
  * ```
  *
@@ -65,8 +62,7 @@ export class HostnameTlsSetting extends pulumi.CustomResource {
      */
     declare public readonly hostname: pulumi.Output<string>;
     /**
-     * The TLS Setting name.
-     * Available values: "ciphers", "min*tls*version", "http2".
+     * The TLS Setting name. The value type depends on the setting:
      */
     declare public readonly settingId: pulumi.Output<string>;
     /**
@@ -78,7 +74,7 @@ export class HostnameTlsSetting extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
-     * The tls setting value.
+     * The TLS setting value. The type depends on the `settingId` used in the request path:
      */
     declare public readonly value: pulumi.Output<any>;
     /**
@@ -146,8 +142,7 @@ export interface HostnameTlsSettingState {
      */
     hostname?: pulumi.Input<string>;
     /**
-     * The TLS Setting name.
-     * Available values: "ciphers", "min*tls*version", "http2".
+     * The TLS Setting name. The value type depends on the setting:
      */
     settingId?: pulumi.Input<string>;
     /**
@@ -159,7 +154,7 @@ export interface HostnameTlsSettingState {
      */
     updatedAt?: pulumi.Input<string>;
     /**
-     * The tls setting value.
+     * The TLS setting value. The type depends on the `settingId` used in the request path:
      */
     value?: any;
     /**
@@ -177,12 +172,11 @@ export interface HostnameTlsSettingArgs {
      */
     hostname: pulumi.Input<string>;
     /**
-     * The TLS Setting name.
-     * Available values: "ciphers", "min*tls*version", "http2".
+     * The TLS Setting name. The value type depends on the setting:
      */
     settingId: pulumi.Input<string>;
     /**
-     * The tls setting value.
+     * The TLS setting value. The type depends on the `settingId` used in the request path:
      */
     value: any;
     /**

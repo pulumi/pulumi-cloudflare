@@ -50,6 +50,7 @@ import (
 //				Hostnames: pulumi.StringArray{
 //					pulumi.String("example.com"),
 //					pulumi.String("*.example.com"),
+//					pulumi.String("sub.example.com"),
 //				},
 //				RequestType:       pulumi.String("origin-rsa"),
 //				RequestedValidity: pulumi.Float64(5475),
@@ -77,7 +78,8 @@ type OriginCaCertificate struct {
 	Csr pulumi.StringOutput `pulumi:"csr"`
 	// When the certificate will expire.
 	ExpiresOn pulumi.StringOutput `pulumi:"expiresOn"`
-	// Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
+	// Array of hostnames or wildcard names bound to the certificate.
+	// Hostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wildcards are supported only as a `*.` prefix for a single level (e.g., `*.example.com`). Double wildcards (`*.*.example.com`) and interior wildcards (`foo.*.example.com`) are not allowed. The wildcard suffix must be a multi-label domain (`*.example.com` is valid, but `*.com` is not). Unicode/IDN hostnames are accepted and automatically converted to punycode.
 	Hostnames pulumi.StringArrayOutput `pulumi:"hostnames"`
 	// Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
 	// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
@@ -132,7 +134,8 @@ type originCaCertificateState struct {
 	Csr *string `pulumi:"csr"`
 	// When the certificate will expire.
 	ExpiresOn *string `pulumi:"expiresOn"`
-	// Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
+	// Array of hostnames or wildcard names bound to the certificate.
+	// Hostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wildcards are supported only as a `*.` prefix for a single level (e.g., `*.example.com`). Double wildcards (`*.*.example.com`) and interior wildcards (`foo.*.example.com`) are not allowed. The wildcard suffix must be a multi-label domain (`*.example.com` is valid, but `*.com` is not). Unicode/IDN hostnames are accepted and automatically converted to punycode.
 	Hostnames []string `pulumi:"hostnames"`
 	// Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
 	// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
@@ -149,7 +152,8 @@ type OriginCaCertificateState struct {
 	Csr pulumi.StringPtrInput
 	// When the certificate will expire.
 	ExpiresOn pulumi.StringPtrInput
-	// Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
+	// Array of hostnames or wildcard names bound to the certificate.
+	// Hostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wildcards are supported only as a `*.` prefix for a single level (e.g., `*.example.com`). Double wildcards (`*.*.example.com`) and interior wildcards (`foo.*.example.com`) are not allowed. The wildcard suffix must be a multi-label domain (`*.example.com` is valid, but `*.com` is not). Unicode/IDN hostnames are accepted and automatically converted to punycode.
 	Hostnames pulumi.StringArrayInput
 	// Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
 	// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
@@ -166,7 +170,8 @@ func (OriginCaCertificateState) ElementType() reflect.Type {
 type originCaCertificateArgs struct {
 	// The Certificate Signing Request (CSR). Must be newline-encoded.
 	Csr string `pulumi:"csr"`
-	// Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
+	// Array of hostnames or wildcard names bound to the certificate.
+	// Hostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wildcards are supported only as a `*.` prefix for a single level (e.g., `*.example.com`). Double wildcards (`*.*.example.com`) and interior wildcards (`foo.*.example.com`) are not allowed. The wildcard suffix must be a multi-label domain (`*.example.com` is valid, but `*.com` is not). Unicode/IDN hostnames are accepted and automatically converted to punycode.
 	Hostnames []string `pulumi:"hostnames"`
 	// Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
 	// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
@@ -180,7 +185,8 @@ type originCaCertificateArgs struct {
 type OriginCaCertificateArgs struct {
 	// The Certificate Signing Request (CSR). Must be newline-encoded.
 	Csr pulumi.StringInput
-	// Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
+	// Array of hostnames or wildcard names bound to the certificate.
+	// Hostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wildcards are supported only as a `*.` prefix for a single level (e.g., `*.example.com`). Double wildcards (`*.*.example.com`) and interior wildcards (`foo.*.example.com`) are not allowed. The wildcard suffix must be a multi-label domain (`*.example.com` is valid, but `*.com` is not). Unicode/IDN hostnames are accepted and automatically converted to punycode.
 	Hostnames pulumi.StringArrayInput
 	// Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
 	// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
@@ -292,7 +298,8 @@ func (o OriginCaCertificateOutput) ExpiresOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *OriginCaCertificate) pulumi.StringOutput { return v.ExpiresOn }).(pulumi.StringOutput)
 }
 
-// Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
+// Array of hostnames or wildcard names bound to the certificate.
+// Hostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wildcards are supported only as a `*.` prefix for a single level (e.g., `*.example.com`). Double wildcards (`*.*.example.com`) and interior wildcards (`foo.*.example.com`) are not allowed. The wildcard suffix must be a multi-label domain (`*.example.com` is valid, but `*.com` is not). Unicode/IDN hostnames are accepted and automatically converted to punycode.
 func (o OriginCaCertificateOutput) Hostnames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OriginCaCertificate) pulumi.StringArrayOutput { return v.Hostnames }).(pulumi.StringArrayOutput)
 }

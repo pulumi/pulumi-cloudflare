@@ -27,7 +27,7 @@ class GetZeroTrustDlpEntryResult:
     """
     A collection of values returned by getZeroTrustDlpEntry.
     """
-    def __init__(__self__, account_id=None, case_sensitive=None, confidence=None, created_at=None, enabled=None, entry_id=None, id=None, name=None, pattern=None, profile_id=None, profiles=None, secret=None, type=None, updated_at=None, upload_status=None, variant=None, word_list=None):
+    def __init__(__self__, account_id=None, case_sensitive=None, confidence=None, created_at=None, description=None, enabled=None, entry_id=None, id=None, name=None, pattern=None, profile_id=None, profiles=None, secret=None, type=None, updated_at=None, upload_status=None, variant=None, word_list=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -40,6 +40,9 @@ class GetZeroTrustDlpEntryResult:
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
         if enabled and not isinstance(enabled, bool):
             raise TypeError("Expected argument 'enabled' to be a bool")
         pulumi.set(__self__, "enabled", enabled)
@@ -104,6 +107,11 @@ class GetZeroTrustDlpEntryResult:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> _builtins.str:
         return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
@@ -190,6 +198,7 @@ class AwaitableGetZeroTrustDlpEntryResult(GetZeroTrustDlpEntryResult):
             case_sensitive=self.case_sensitive,
             confidence=self.confidence,
             created_at=self.created_at,
+            description=self.description,
             enabled=self.enabled,
             entry_id=self.entry_id,
             id=self.id,
@@ -230,6 +239,7 @@ def get_zero_trust_dlp_entry(account_id: Optional[_builtins.str] = None,
         case_sensitive=pulumi.get(__ret__, 'case_sensitive'),
         confidence=pulumi.get(__ret__, 'confidence'),
         created_at=pulumi.get(__ret__, 'created_at'),
+        description=pulumi.get(__ret__, 'description'),
         enabled=pulumi.get(__ret__, 'enabled'),
         entry_id=pulumi.get(__ret__, 'entry_id'),
         id=pulumi.get(__ret__, 'id'),
@@ -267,6 +277,7 @@ def get_zero_trust_dlp_entry_output(account_id: Optional[pulumi.Input[_builtins.
         case_sensitive=pulumi.get(__response__, 'case_sensitive'),
         confidence=pulumi.get(__response__, 'confidence'),
         created_at=pulumi.get(__response__, 'created_at'),
+        description=pulumi.get(__response__, 'description'),
         enabled=pulumi.get(__response__, 'enabled'),
         entry_id=pulumi.get(__response__, 'entry_id'),
         id=pulumi.get(__response__, 'id'),

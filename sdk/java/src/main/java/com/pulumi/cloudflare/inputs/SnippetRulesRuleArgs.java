@@ -18,14 +18,14 @@ public final class SnippetRulesRuleArgs extends com.pulumi.resources.ResourceArg
     public static final SnippetRulesRuleArgs Empty = new SnippetRulesRuleArgs();
 
     /**
-     * An informative description of the rule.
+     * Provide an informative description of the rule.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return An informative description of the rule.
+     * @return Provide an informative description of the rule.
      * 
      */
     public Optional<Output<String>> description() {
@@ -33,14 +33,14 @@ public final class SnippetRulesRuleArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Whether the rule should be executed.
+     * Indicate whether to execute the rule.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether the rule should be executed.
+     * @return Indicate whether to execute the rule.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -48,14 +48,14 @@ public final class SnippetRulesRuleArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The expression defining which traffic will match the rule.
+     * Define the expression that determines which traffic matches the rule.
      * 
      */
     @Import(name="expression", required=true)
     private Output<String> expression;
 
     /**
-     * @return The expression defining which traffic will match the rule.
+     * @return Define the expression that determines which traffic matches the rule.
      * 
      */
     public Output<String> expression() {
@@ -63,14 +63,14 @@ public final class SnippetRulesRuleArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The unique ID of the rule.
+     * Specify the unique ID of the rule.
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return The unique ID of the rule.
+     * @return Specify the unique ID of the rule.
      * 
      */
     public Optional<Output<String>> id() {
@@ -78,14 +78,14 @@ public final class SnippetRulesRuleArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The timestamp of when the rule was last modified.
+     * Specify the timestamp of when the rule was last modified.
      * 
      */
     @Import(name="lastUpdated")
     private @Nullable Output<String> lastUpdated;
 
     /**
-     * @return The timestamp of when the rule was last modified.
+     * @return Specify the timestamp of when the rule was last modified.
      * 
      */
     public Optional<Output<String>> lastUpdated() {
@@ -93,14 +93,14 @@ public final class SnippetRulesRuleArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The identifying name of the snippet.
+     * Identify the snippet.
      * 
      */
     @Import(name="snippetName", required=true)
     private Output<String> snippetName;
 
     /**
-     * @return The identifying name of the snippet.
+     * @return Identify the snippet.
      * 
      */
     public Output<String> snippetName() {
@@ -137,7 +137,7 @@ public final class SnippetRulesRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param description An informative description of the rule.
+         * @param description Provide an informative description of the rule.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class SnippetRulesRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param description An informative description of the rule.
+         * @param description Provide an informative description of the rule.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class SnippetRulesRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enabled Whether the rule should be executed.
+         * @param enabled Indicate whether to execute the rule.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class SnippetRulesRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enabled Whether the rule should be executed.
+         * @param enabled Indicate whether to execute the rule.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class SnippetRulesRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param expression The expression defining which traffic will match the rule.
+         * @param expression Define the expression that determines which traffic matches the rule.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class SnippetRulesRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param expression The expression defining which traffic will match the rule.
+         * @param expression Define the expression that determines which traffic matches the rule.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class SnippetRulesRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param id The unique ID of the rule.
+         * @param id Specify the unique ID of the rule.
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class SnippetRulesRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param id The unique ID of the rule.
+         * @param id Specify the unique ID of the rule.
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class SnippetRulesRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param lastUpdated The timestamp of when the rule was last modified.
+         * @param lastUpdated Specify the timestamp of when the rule was last modified.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class SnippetRulesRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param lastUpdated The timestamp of when the rule was last modified.
+         * @param lastUpdated Specify the timestamp of when the rule was last modified.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class SnippetRulesRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param snippetName The identifying name of the snippet.
+         * @param snippetName Identify the snippet.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class SnippetRulesRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param snippetName The identifying name of the snippet.
+         * @param snippetName Identify the snippet.
          * 
          * @return builder
          * 

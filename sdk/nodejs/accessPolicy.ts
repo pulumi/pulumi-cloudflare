@@ -41,12 +41,27 @@ import * as utilities from "./utilities";
  *         },
  *     ],
  *     approvalRequired: true,
+ *     connectionRules: {
+ *         rdp: {
+ *             allowedClipboardLocalToRemoteFormats: ["text"],
+ *             allowedClipboardRemoteToLocalFormats: ["text"],
+ *         },
+ *     },
  *     excludes: [{
  *         group: {
  *             id: "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
  *         },
  *     }],
  *     isolationRequired: false,
+ *     mfaConfig: {
+ *         allowedAuthenticators: [
+ *             "totp",
+ *             "biometrics",
+ *             "security_key",
+ *         ],
+ *         mfaBypass: false,
+ *         sessionDuration: "24h",
+ *     },
  *     purposeJustificationPrompt: "Please enter a justification for entering this protected domain.",
  *     purposeJustificationRequired: true,
  *     requires: [{
@@ -108,6 +123,10 @@ export class AccessPolicy extends pulumi.CustomResource {
      */
     declare public readonly approvalRequired: pulumi.Output<boolean | undefined>;
     /**
+     * The rules that define how users may connect to targets secured by your application.
+     */
+    declare public readonly connectionRules: pulumi.Output<outputs.AccessPolicyConnectionRules | undefined>;
+    /**
      * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
      * Available values: "allow", "deny", "nonIdentity", "bypass".
      */
@@ -124,6 +143,10 @@ export class AccessPolicy extends pulumi.CustomResource {
      * Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
      */
     declare public readonly isolationRequired: pulumi.Output<boolean | undefined>;
+    /**
+     * Configures multi-factor authentication (MFA) settings.
+     */
+    declare public readonly mfaConfig: pulumi.Output<outputs.AccessPolicyMfaConfig | undefined>;
     /**
      * The name of the Access policy.
      */
@@ -164,10 +187,12 @@ export class AccessPolicy extends pulumi.CustomResource {
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["approvalGroups"] = state?.approvalGroups;
             resourceInputs["approvalRequired"] = state?.approvalRequired;
+            resourceInputs["connectionRules"] = state?.connectionRules;
             resourceInputs["decision"] = state?.decision;
             resourceInputs["excludes"] = state?.excludes;
             resourceInputs["includes"] = state?.includes;
             resourceInputs["isolationRequired"] = state?.isolationRequired;
+            resourceInputs["mfaConfig"] = state?.mfaConfig;
             resourceInputs["name"] = state?.name;
             resourceInputs["purposeJustificationPrompt"] = state?.purposeJustificationPrompt;
             resourceInputs["purposeJustificationRequired"] = state?.purposeJustificationRequired;
@@ -187,10 +212,12 @@ export class AccessPolicy extends pulumi.CustomResource {
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["approvalGroups"] = args?.approvalGroups;
             resourceInputs["approvalRequired"] = args?.approvalRequired;
+            resourceInputs["connectionRules"] = args?.connectionRules;
             resourceInputs["decision"] = args?.decision;
             resourceInputs["excludes"] = args?.excludes;
             resourceInputs["includes"] = args?.includes;
             resourceInputs["isolationRequired"] = args?.isolationRequired;
+            resourceInputs["mfaConfig"] = args?.mfaConfig;
             resourceInputs["name"] = args?.name;
             resourceInputs["purposeJustificationPrompt"] = args?.purposeJustificationPrompt;
             resourceInputs["purposeJustificationRequired"] = args?.purposeJustificationRequired;
@@ -221,6 +248,10 @@ export interface AccessPolicyState {
      */
     approvalRequired?: pulumi.Input<boolean>;
     /**
+     * The rules that define how users may connect to targets secured by your application.
+     */
+    connectionRules?: pulumi.Input<inputs.AccessPolicyConnectionRules>;
+    /**
      * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
      * Available values: "allow", "deny", "nonIdentity", "bypass".
      */
@@ -237,6 +268,10 @@ export interface AccessPolicyState {
      * Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
      */
     isolationRequired?: pulumi.Input<boolean>;
+    /**
+     * Configures multi-factor authentication (MFA) settings.
+     */
+    mfaConfig?: pulumi.Input<inputs.AccessPolicyMfaConfig>;
     /**
      * The name of the Access policy.
      */
@@ -276,6 +311,10 @@ export interface AccessPolicyArgs {
      */
     approvalRequired?: pulumi.Input<boolean>;
     /**
+     * The rules that define how users may connect to targets secured by your application.
+     */
+    connectionRules?: pulumi.Input<inputs.AccessPolicyConnectionRules>;
+    /**
      * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
      * Available values: "allow", "deny", "nonIdentity", "bypass".
      */
@@ -292,6 +331,10 @@ export interface AccessPolicyArgs {
      * Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
      */
     isolationRequired?: pulumi.Input<boolean>;
+    /**
+     * Configures multi-factor authentication (MFA) settings.
+     */
+    mfaConfig?: pulumi.Input<inputs.AccessPolicyMfaConfig>;
     /**
      * The name of the Access policy.
      */

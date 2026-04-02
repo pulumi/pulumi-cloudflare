@@ -24,8 +24,9 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         QueueId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         DeadLetterQueue = "example-queue",
     ///         ScriptName = "my-consumer-worker",
+    ///         Type = "worker",
+    ///         DeadLetterQueue = "example-queue",
     ///         Settings = new Cloudflare.Inputs.QueueConsumerSettingsArgs
     ///         {
     ///             BatchSize = 50,
@@ -34,7 +35,6 @@ namespace Pulumi.Cloudflare
     ///             MaxWaitTimeMs = 5000,
     ///             RetryDelay = 10,
     ///         },
-    ///         Type = "worker",
     ///     });
     /// 
     /// });
@@ -71,11 +71,8 @@ namespace Pulumi.Cloudflare
         [Output("queueId")]
         public Output<string> QueueId { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of a Worker
-        /// </summary>
-        [Output("script")]
-        public Output<string> Script { get; private set; } = null!;
+        [Output("queueName")]
+        public Output<string> QueueName { get; private set; } = null!;
 
         /// <summary>
         /// Name of a Worker
@@ -90,7 +87,7 @@ namespace Pulumi.Cloudflare
         /// Available values: "worker", "HttpPull".
         /// </summary>
         [Output("type")]
-        public Output<string?> Type { get; private set; } = null!;
+        public Output<string> Type { get; private set; } = null!;
 
 
         /// <summary>
@@ -165,8 +162,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Available values: "worker", "HttpPull".
         /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
+        [Input("type", required: true)]
+        public Input<string> Type { get; set; } = null!;
 
         public QueueConsumerArgs()
         {
@@ -200,11 +197,8 @@ namespace Pulumi.Cloudflare
         [Input("queueId")]
         public Input<string>? QueueId { get; set; }
 
-        /// <summary>
-        /// Name of a Worker
-        /// </summary>
-        [Input("script")]
-        public Input<string>? Script { get; set; }
+        [Input("queueName")]
+        public Input<string>? QueueName { get; set; }
 
         /// <summary>
         /// Name of a Worker

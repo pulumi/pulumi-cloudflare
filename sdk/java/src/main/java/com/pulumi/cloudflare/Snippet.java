@@ -74,14 +74,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/snippet:Snippet")
 public class Snippet extends com.pulumi.resources.CustomResource {
     /**
-     * The timestamp of when the snippet was created.
+     * Indicates when the snippet was created.
      * 
      */
     @Export(name="createdOn", refs={String.class}, tree="[0]")
     private Output<String> createdOn;
 
     /**
-     * @return The timestamp of when the snippet was created.
+     * @return Indicates when the snippet was created.
      * 
      */
     public Output<String> createdOn() {
@@ -102,56 +102,56 @@ public class Snippet extends com.pulumi.resources.CustomResource {
         return this.files;
     }
     /**
-     * Metadata about the snippet.
+     * Provide metadata about the snippet.
      * 
      */
     @Export(name="metadata", refs={SnippetMetadata.class}, tree="[0]")
     private Output<SnippetMetadata> metadata;
 
     /**
-     * @return Metadata about the snippet.
+     * @return Provide metadata about the snippet.
      * 
      */
     public Output<SnippetMetadata> metadata() {
         return this.metadata;
     }
     /**
-     * The timestamp of when the snippet was last modified.
+     * Indicates when the snippet was last modified.
      * 
      */
     @Export(name="modifiedOn", refs={String.class}, tree="[0]")
     private Output<String> modifiedOn;
 
     /**
-     * @return The timestamp of when the snippet was last modified.
+     * @return Indicates when the snippet was last modified.
      * 
      */
     public Output<String> modifiedOn() {
         return this.modifiedOn;
     }
     /**
-     * The identifying name of the snippet.
+     * Identify the snippet.
      * 
      */
     @Export(name="snippetName", refs={String.class}, tree="[0]")
     private Output<String> snippetName;
 
     /**
-     * @return The identifying name of the snippet.
+     * @return Identify the snippet.
      * 
      */
     public Output<String> snippetName() {
         return this.snippetName;
     }
     /**
-     * The unique ID of the zone.
+     * Use this field to specify the unique ID of the zone.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The unique ID of the zone.
+     * @return Use this field to specify the unique ID of the zone.
      * 
      */
     public Output<String> zoneId() {

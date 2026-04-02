@@ -45,8 +45,8 @@ class GetHostnameTlsSettingResult:
         if updated_at and not isinstance(updated_at, str):
             raise TypeError("Expected argument 'updated_at' to be a str")
         pulumi.set(__self__, "updated_at", updated_at)
-        if value and not isinstance(value, float):
-            raise TypeError("Expected argument 'value' to be a float")
+        if value and not isinstance(value, str):
+            raise TypeError("Expected argument 'value' to be a str")
         pulumi.set(__self__, "value", value)
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
@@ -72,8 +72,7 @@ class GetHostnameTlsSettingResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The TLS Setting name.
-        Available values: "ciphers", "min*tls*version", "http2".
+        The TLS Setting name. The value type depends on the setting:
         """
         return pulumi.get(self, "id")
 
@@ -81,8 +80,7 @@ class GetHostnameTlsSettingResult:
     @pulumi.getter(name="settingId")
     def setting_id(self) -> _builtins.str:
         """
-        The TLS Setting name.
-        Available values: "ciphers", "min*tls*version", "http2".
+        The TLS Setting name. The value type depends on the setting:
         """
         return pulumi.get(self, "setting_id")
 
@@ -104,9 +102,9 @@ class GetHostnameTlsSettingResult:
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> _builtins.float:
+    def value(self) -> _builtins.str:
         """
-        The tls setting value.
+        The TLS setting value. The type depends on the `setting_id` used in the request path:
         """
         return pulumi.get(self, "value")
 
@@ -150,8 +148,7 @@ def get_hostname_tls_setting(setting_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str setting_id: The TLS Setting name.
-           Available values: "ciphers", "min*tls*version", "http2".
+    :param _builtins.str setting_id: The TLS Setting name. The value type depends on the setting:
     :param _builtins.str zone_id: Identifier.
     """
     __args__ = dict()
@@ -184,8 +181,7 @@ def get_hostname_tls_setting_output(setting_id: Optional[pulumi.Input[_builtins.
     ```
 
 
-    :param _builtins.str setting_id: The TLS Setting name.
-           Available values: "ciphers", "min*tls*version", "http2".
+    :param _builtins.str setting_id: The TLS Setting name. The value type depends on the setting:
     :param _builtins.str zone_id: Identifier.
     """
     __args__ = dict()

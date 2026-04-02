@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  *
  * const exampleCertificatePacks = cloudflare.getCertificatePacks({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     deploy: "staging",
  *     status: "all",
  * });
  * ```
@@ -22,6 +23,7 @@ import * as utilities from "./utilities";
 export function getCertificatePacks(args: GetCertificatePacksArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificatePacksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCertificatePacks:getCertificatePacks", {
+        "deploy": args.deploy,
         "maxItems": args.maxItems,
         "status": args.status,
         "zoneId": args.zoneId,
@@ -32,6 +34,11 @@ export function getCertificatePacks(args: GetCertificatePacksArgs, opts?: pulumi
  * A collection of arguments for invoking getCertificatePacks.
  */
 export interface GetCertificatePacksArgs {
+    /**
+     * Specify the deployment environment for the certificate packs.
+     * Available values: "staging", "production".
+     */
+    deploy?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -51,6 +58,11 @@ export interface GetCertificatePacksArgs {
  * A collection of values returned by getCertificatePacks.
  */
 export interface GetCertificatePacksResult {
+    /**
+     * Specify the deployment environment for the certificate packs.
+     * Available values: "staging", "production".
+     */
+    readonly deploy?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -82,6 +94,7 @@ export interface GetCertificatePacksResult {
  *
  * const exampleCertificatePacks = cloudflare.getCertificatePacks({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     deploy: "staging",
  *     status: "all",
  * });
  * ```
@@ -89,6 +102,7 @@ export interface GetCertificatePacksResult {
 export function getCertificatePacksOutput(args: GetCertificatePacksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCertificatePacksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCertificatePacks:getCertificatePacks", {
+        "deploy": args.deploy,
         "maxItems": args.maxItems,
         "status": args.status,
         "zoneId": args.zoneId,
@@ -99,6 +113,11 @@ export function getCertificatePacksOutput(args: GetCertificatePacksOutputArgs, o
  * A collection of arguments for invoking getCertificatePacks.
  */
 export interface GetCertificatePacksOutputArgs {
+    /**
+     * Specify the deployment environment for the certificate packs.
+     * Available values: "staging", "production".
+     */
+    deploy?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

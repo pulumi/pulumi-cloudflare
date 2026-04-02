@@ -12,6 +12,16 @@ import java.util.Objects;
 @CustomType
 public final class GetCertificatePacksResultValidationRecord {
     /**
+     * @return The CNAME record hostname for DCV delegation.
+     * 
+     */
+    private String cname;
+    /**
+     * @return The CNAME record target value for DCV delegation.
+     * 
+     */
+    private String cnameTarget;
+    /**
      * @return The set of email addresses that the certificate authority (CA) will use to complete domain validation.
      * 
      */
@@ -27,6 +37,11 @@ public final class GetCertificatePacksResultValidationRecord {
      */
     private String httpUrl;
     /**
+     * @return Status of the validation record.
+     * 
+     */
+    private String status;
+    /**
      * @return The hostname that the certificate authority (CA) will check for a TXT record during domain validation .
      * 
      */
@@ -38,6 +53,20 @@ public final class GetCertificatePacksResultValidationRecord {
     private String txtValue;
 
     private GetCertificatePacksResultValidationRecord() {}
+    /**
+     * @return The CNAME record hostname for DCV delegation.
+     * 
+     */
+    public String cname() {
+        return this.cname;
+    }
+    /**
+     * @return The CNAME record target value for DCV delegation.
+     * 
+     */
+    public String cnameTarget() {
+        return this.cnameTarget;
+    }
     /**
      * @return The set of email addresses that the certificate authority (CA) will use to complete domain validation.
      * 
@@ -58,6 +87,13 @@ public final class GetCertificatePacksResultValidationRecord {
      */
     public String httpUrl() {
         return this.httpUrl;
+    }
+    /**
+     * @return Status of the validation record.
+     * 
+     */
+    public String status() {
+        return this.status;
     }
     /**
      * @return The hostname that the certificate authority (CA) will check for a TXT record during domain validation .
@@ -83,21 +119,43 @@ public final class GetCertificatePacksResultValidationRecord {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String cname;
+        private String cnameTarget;
         private List<String> emails;
         private String httpBody;
         private String httpUrl;
+        private String status;
         private String txtName;
         private String txtValue;
         public Builder() {}
         public Builder(GetCertificatePacksResultValidationRecord defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.cname = defaults.cname;
+    	      this.cnameTarget = defaults.cnameTarget;
     	      this.emails = defaults.emails;
     	      this.httpBody = defaults.httpBody;
     	      this.httpUrl = defaults.httpUrl;
+    	      this.status = defaults.status;
     	      this.txtName = defaults.txtName;
     	      this.txtValue = defaults.txtValue;
         }
 
+        @CustomType.Setter
+        public Builder cname(String cname) {
+            if (cname == null) {
+              throw new MissingRequiredPropertyException("GetCertificatePacksResultValidationRecord", "cname");
+            }
+            this.cname = cname;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cnameTarget(String cnameTarget) {
+            if (cnameTarget == null) {
+              throw new MissingRequiredPropertyException("GetCertificatePacksResultValidationRecord", "cnameTarget");
+            }
+            this.cnameTarget = cnameTarget;
+            return this;
+        }
         @CustomType.Setter
         public Builder emails(List<String> emails) {
             if (emails == null) {
@@ -126,6 +184,14 @@ public final class GetCertificatePacksResultValidationRecord {
             return this;
         }
         @CustomType.Setter
+        public Builder status(String status) {
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetCertificatePacksResultValidationRecord", "status");
+            }
+            this.status = status;
+            return this;
+        }
+        @CustomType.Setter
         public Builder txtName(String txtName) {
             if (txtName == null) {
               throw new MissingRequiredPropertyException("GetCertificatePacksResultValidationRecord", "txtName");
@@ -143,9 +209,12 @@ public final class GetCertificatePacksResultValidationRecord {
         }
         public GetCertificatePacksResultValidationRecord build() {
             final var _resultValue = new GetCertificatePacksResultValidationRecord();
+            _resultValue.cname = cname;
+            _resultValue.cnameTarget = cnameTarget;
             _resultValue.emails = emails;
             _resultValue.httpBody = httpBody;
             _resultValue.httpUrl = httpUrl;
+            _resultValue.status = status;
             _resultValue.txtName = txtName;
             _resultValue.txtValue = txtValue;
             return _resultValue;

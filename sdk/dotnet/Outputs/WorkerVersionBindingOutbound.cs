@@ -16,7 +16,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Pass information from the Dispatch Worker to the Outbound Worker through the parameters.
         /// </summary>
-        public readonly ImmutableArray<string> Params;
+        public readonly ImmutableArray<Outputs.WorkerVersionBindingOutboundParam> Params;
         /// <summary>
         /// Outbound worker.
         /// </summary>
@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private WorkerVersionBindingOutbound(
-            ImmutableArray<string> @params,
+            ImmutableArray<Outputs.WorkerVersionBindingOutboundParam> @params,
 
             Outputs.WorkerVersionBindingOutboundWorker? worker)
         {

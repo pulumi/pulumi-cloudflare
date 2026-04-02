@@ -103,7 +103,7 @@ type LoadBalancerPool struct {
 	// The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
 	Latitude pulumi.Float64PtrOutput `pulumi:"latitude"`
 	// Configures load shedding policies and percentages for the pool.
-	LoadShedding LoadBalancerPoolLoadSheddingOutput `pulumi:"loadShedding"`
+	LoadShedding LoadBalancerPoolLoadSheddingPtrOutput `pulumi:"loadShedding"`
 	// The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
 	Longitude pulumi.Float64PtrOutput `pulumi:"longitude"`
 	// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool.
@@ -120,9 +120,9 @@ type LoadBalancerPool struct {
 	// This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
 	NotificationEmail pulumi.StringOutput `pulumi:"notificationEmail"`
 	// Filter pool and origin health notifications by resource type or health status. Use null to reset.
-	NotificationFilter LoadBalancerPoolNotificationFilterOutput `pulumi:"notificationFilter"`
+	NotificationFilter LoadBalancerPoolNotificationFilterPtrOutput `pulumi:"notificationFilter"`
 	// Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
-	OriginSteering LoadBalancerPoolOriginSteeringOutput `pulumi:"originSteering"`
+	OriginSteering LoadBalancerPoolOriginSteeringPtrOutput `pulumi:"originSteering"`
 	// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
 	Origins LoadBalancerPoolOriginArrayOutput `pulumi:"origins"`
 }
@@ -436,8 +436,8 @@ func (o LoadBalancerPoolOutput) Latitude() pulumi.Float64PtrOutput {
 }
 
 // Configures load shedding policies and percentages for the pool.
-func (o LoadBalancerPoolOutput) LoadShedding() LoadBalancerPoolLoadSheddingOutput {
-	return o.ApplyT(func(v *LoadBalancerPool) LoadBalancerPoolLoadSheddingOutput { return v.LoadShedding }).(LoadBalancerPoolLoadSheddingOutput)
+func (o LoadBalancerPoolOutput) LoadShedding() LoadBalancerPoolLoadSheddingPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) LoadBalancerPoolLoadSheddingPtrOutput { return v.LoadShedding }).(LoadBalancerPoolLoadSheddingPtrOutput)
 }
 
 // The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
@@ -480,13 +480,13 @@ func (o LoadBalancerPoolOutput) NotificationEmail() pulumi.StringOutput {
 }
 
 // Filter pool and origin health notifications by resource type or health status. Use null to reset.
-func (o LoadBalancerPoolOutput) NotificationFilter() LoadBalancerPoolNotificationFilterOutput {
-	return o.ApplyT(func(v *LoadBalancerPool) LoadBalancerPoolNotificationFilterOutput { return v.NotificationFilter }).(LoadBalancerPoolNotificationFilterOutput)
+func (o LoadBalancerPoolOutput) NotificationFilter() LoadBalancerPoolNotificationFilterPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) LoadBalancerPoolNotificationFilterPtrOutput { return v.NotificationFilter }).(LoadBalancerPoolNotificationFilterPtrOutput)
 }
 
 // Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
-func (o LoadBalancerPoolOutput) OriginSteering() LoadBalancerPoolOriginSteeringOutput {
-	return o.ApplyT(func(v *LoadBalancerPool) LoadBalancerPoolOriginSteeringOutput { return v.OriginSteering }).(LoadBalancerPoolOriginSteeringOutput)
+func (o LoadBalancerPoolOutput) OriginSteering() LoadBalancerPoolOriginSteeringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) LoadBalancerPoolOriginSteeringPtrOutput { return v.OriginSteering }).(LoadBalancerPoolOriginSteeringPtrOutput)
 }
 
 // The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.

@@ -43,11 +43,6 @@ public final class GetWorkersForPlatformsDispatchNamespacesResult {
      */
     private String namespaceId;
     /**
-     * @return Name of the Workers for Platforms dispatch namespace.
-     * 
-     */
-    private String namespaceName;
-    /**
      * @return The current number of scripts in this Dispatch Namespace.
      * 
      */
@@ -102,13 +97,6 @@ public final class GetWorkersForPlatformsDispatchNamespacesResult {
         return this.namespaceId;
     }
     /**
-     * @return Name of the Workers for Platforms dispatch namespace.
-     * 
-     */
-    public String namespaceName() {
-        return this.namespaceName;
-    }
-    /**
      * @return The current number of scripts in this Dispatch Namespace.
      * 
      */
@@ -138,7 +126,6 @@ public final class GetWorkersForPlatformsDispatchNamespacesResult {
         private String modifiedBy;
         private String modifiedOn;
         private String namespaceId;
-        private String namespaceName;
         private Integer scriptCount;
         private Boolean trustedWorkers;
         public Builder() {}
@@ -150,7 +137,6 @@ public final class GetWorkersForPlatformsDispatchNamespacesResult {
     	      this.modifiedBy = defaults.modifiedBy;
     	      this.modifiedOn = defaults.modifiedOn;
     	      this.namespaceId = defaults.namespaceId;
-    	      this.namespaceName = defaults.namespaceName;
     	      this.scriptCount = defaults.scriptCount;
     	      this.trustedWorkers = defaults.trustedWorkers;
         }
@@ -204,14 +190,6 @@ public final class GetWorkersForPlatformsDispatchNamespacesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder namespaceName(String namespaceName) {
-            if (namespaceName == null) {
-              throw new MissingRequiredPropertyException("GetWorkersForPlatformsDispatchNamespacesResult", "namespaceName");
-            }
-            this.namespaceName = namespaceName;
-            return this;
-        }
-        @CustomType.Setter
         public Builder scriptCount(Integer scriptCount) {
             if (scriptCount == null) {
               throw new MissingRequiredPropertyException("GetWorkersForPlatformsDispatchNamespacesResult", "scriptCount");
@@ -235,7 +213,6 @@ public final class GetWorkersForPlatformsDispatchNamespacesResult {
             _resultValue.modifiedBy = modifiedBy;
             _resultValue.modifiedOn = modifiedOn;
             _resultValue.namespaceId = namespaceId;
-            _resultValue.namespaceName = namespaceName;
             _resultValue.scriptCount = scriptCount;
             _resultValue.trustedWorkers = trustedWorkers;
             return _resultValue;

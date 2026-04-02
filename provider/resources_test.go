@@ -53,9 +53,12 @@ func TestRuleSetVersionReminder(t *testing.T) {
 	version.Version = "0.0.1"
 	p := Provider()
 	r := p.P.ResourcesMap().Get("cloudflare_ruleset")
-	assert.Equalf(t, 0, r.SchemaVersion(), "Reminder: cloudflare_ruleset advanced schema version from 0 and "+
-		"custom Pulumi PreStateUpgradeHook that massaged provider=v5 resource=v1 version data needs to be "+
-		"revisited or possibly dropped")
+	// Upstream advanced schema version to 1, but the production 0->1 migration is a no-op
+	// (see upstream/internal/services/ruleset/migrations.go). Our PreStateUpgradeHook is still
+	// needed to massage Pulumi v5->v6 state (headers list->map, rules string->array).
+	// See https://github.com/pulumi/pulumi-cloudflare/issues/1172
+	assert.Equalf(t, 1, r.SchemaVersion(), "Reminder: cloudflare_ruleset advanced schema version from 1 and "+
+		"custom Pulumi PreStateUpgradeHook needs to be revisited or possibly dropped")
 }
 
 func Test_delegateID(t *testing.T) {

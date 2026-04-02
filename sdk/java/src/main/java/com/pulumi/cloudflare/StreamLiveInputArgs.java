@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.inputs.StreamLiveInputRecordingArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -64,6 +65,21 @@ public final class StreamLiveInputArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Indicates whether the live input is enabled and can accept streams.
+     * 
+     */
+    @Import(name="enabled")
+    private @Nullable Output<Boolean> enabled;
+
+    /**
+     * @return Indicates whether the live input is enabled and can accept streams.
+     * 
+     */
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
+    }
+
+    /**
      * A unique identifier for a live input.
      * 
      */
@@ -114,6 +130,7 @@ public final class StreamLiveInputArgs extends com.pulumi.resources.ResourceArgs
         this.accountId = $.accountId;
         this.defaultCreator = $.defaultCreator;
         this.deleteRecordingAfterDays = $.deleteRecordingAfterDays;
+        this.enabled = $.enabled;
         this.liveInputIdentifier = $.liveInputIdentifier;
         this.meta = $.meta;
         this.recording = $.recording;
@@ -198,6 +215,27 @@ public final class StreamLiveInputArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder deleteRecordingAfterDays(Double deleteRecordingAfterDays) {
             return deleteRecordingAfterDays(Output.of(deleteRecordingAfterDays));
+        }
+
+        /**
+         * @param enabled Indicates whether the live input is enabled and can accept streams.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
+            $.enabled = enabled;
+            return this;
+        }
+
+        /**
+         * @param enabled Indicates whether the live input is enabled and can accept streams.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(Boolean enabled) {
+            return enabled(Output.of(enabled));
         }
 
         /**

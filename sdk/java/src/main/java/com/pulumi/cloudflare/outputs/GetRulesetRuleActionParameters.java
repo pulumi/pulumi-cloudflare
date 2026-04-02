@@ -13,15 +13,28 @@ import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersEdgeTtl;
 import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersFromList;
 import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersFromValue;
 import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersHeaders;
+import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersImmutable;
 import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersMatchedData;
+import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersMaxAge;
+import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersMustRevalidate;
+import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersMustUnderstand;
+import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersNoCache;
+import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersNoStore;
+import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersNoTransform;
 import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersOrigin;
 import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersOverrides;
+import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersPrivate;
+import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersProxyRevalidate;
+import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersPublic;
 import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersRawResponseField;
 import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersRequestField;
 import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersResponse;
 import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersResponseField;
+import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersSMaxage;
 import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersServeStale;
 import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersSni;
+import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersStaleIfError;
+import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersStaleWhileRevalidate;
 import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersTransformedRequestField;
 import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersUri;
 import com.pulumi.core.annotations.CustomType;
@@ -127,6 +140,11 @@ public final class GetRulesetRuleActionParameters {
      */
     private Boolean emailObfuscation;
     /**
+     * @return An expression to generate cache tags for set*cache*tags action.
+     * 
+     */
+    private String expression;
+    /**
      * @return Whether to enable Cloudflare Fonts.
      * 
      */
@@ -162,6 +180,11 @@ public final class GetRulesetRuleActionParameters {
      */
     private String id;
     /**
+     * @return Set the immutable cache control directive.
+     * 
+     */
+    private GetRulesetRuleActionParametersImmutable immutable;
+    /**
      * @return A delta to change the score by, which can be either positive or negative.
      * 
      */
@@ -172,10 +195,46 @@ public final class GetRulesetRuleActionParameters {
      */
     private GetRulesetRuleActionParametersMatchedData matchedData;
     /**
+     * @return Set the max-age cache control directive.
+     * 
+     */
+    private GetRulesetRuleActionParametersMaxAge maxAge;
+    /**
      * @return Whether to enable Mirage.
      * 
      */
     private Boolean mirage;
+    /**
+     * @return Set the must-revalidate cache control directive.
+     * 
+     */
+    private GetRulesetRuleActionParametersMustRevalidate mustRevalidate;
+    /**
+     * @return Set the must-understand cache control directive.
+     * 
+     */
+    private GetRulesetRuleActionParametersMustUnderstand mustUnderstand;
+    /**
+     * @return Set the no-cache cache control directive.
+     * 
+     */
+    private GetRulesetRuleActionParametersNoCache noCache;
+    /**
+     * @return Set the no-store cache control directive.
+     * 
+     */
+    private GetRulesetRuleActionParametersNoStore noStore;
+    /**
+     * @return Set the no-transform cache control directive.
+     * 
+     */
+    private GetRulesetRuleActionParametersNoTransform noTransform;
+    /**
+     * @return The operation to perform for set*cache*tags action.
+     * Available values: &#34;set&#34;, &#34;add&#34;, &#34;remove&#34;.
+     * 
+     */
+    private String operation;
     /**
      * @return Whether to enable Opportunistic Encryption.
      * 
@@ -203,7 +262,7 @@ public final class GetRulesetRuleActionParameters {
     private GetRulesetRuleActionParametersOverrides overrides;
     /**
      * @return A list of phases to skip the execution of. This option is incompatible with the rulesets option.
-     * Available values: &#34;ddos*l4&#34;, &#34;ddos*l7&#34;, &#34;http*config*settings&#34;, &#34;http*custom*errors&#34;, &#34;http*log*custom*fields&#34;, &#34;http*ratelimit&#34;, &#34;http*request*cache*settings&#34;, &#34;http*request*dynamic*redirect&#34;, &#34;http*request*firewall*custom&#34;, &#34;http*request*firewall*managed&#34;, &#34;http*request*late*transform&#34;, &#34;http*request*origin&#34;, &#34;http*request*redirect&#34;, &#34;http*request*sanitize&#34;, &#34;http*request*sbfm&#34;, &#34;http*request*transform&#34;, &#34;http*response*compression&#34;, &#34;http*response*firewall*managed&#34;, &#34;http*response*headers*transform&#34;, &#34;magic*transit&#34;, &#34;magic*transit*ids*managed&#34;, &#34;magic*transit*managed&#34;, &#34;magic*transit_ratelimit&#34;.
+     * Available values: &#34;ddos*l4&#34;, &#34;ddos*l7&#34;, &#34;http*config*settings&#34;, &#34;http*custom*errors&#34;, &#34;http*log*custom*fields&#34;, &#34;http*ratelimit&#34;, &#34;http*request*cache*settings&#34;, &#34;http*request*dynamic*redirect&#34;, &#34;http*request*firewall*custom&#34;, &#34;http*request*firewall*managed&#34;, &#34;http*request*late*transform&#34;, &#34;http*request*origin&#34;, &#34;http*request*redirect&#34;, &#34;http*request*sanitize&#34;, &#34;http*request*sbfm&#34;, &#34;http*request*transform&#34;, &#34;http*response*cache*settings&#34;, &#34;http*response*compression&#34;, &#34;http*response*firewall*managed&#34;, &#34;http*response*headers*transform&#34;, &#34;magic*transit&#34;, &#34;magic*transit*ids*managed&#34;, &#34;magic*transit*managed&#34;, &#34;magic*transit*ratelimit&#34;.
      * 
      */
     private List<String> phases;
@@ -214,11 +273,26 @@ public final class GetRulesetRuleActionParameters {
      */
     private String polish;
     /**
+     * @return Set the private cache control directive.
+     * 
+     */
+    private GetRulesetRuleActionParametersPrivate private_;
+    /**
      * @return A list of legacy security products to skip the execution of.
      * Available values: &#34;bic&#34;, &#34;hot&#34;, &#34;rateLimit&#34;, &#34;securityLevel&#34;, &#34;uaBlock&#34;, &#34;waf&#34;, &#34;zoneLockdown&#34;.
      * 
      */
     private List<String> products;
+    /**
+     * @return Set the proxy-revalidate cache control directive.
+     * 
+     */
+    private GetRulesetRuleActionParametersProxyRevalidate proxyRevalidate;
+    /**
+     * @return Set the public cache control directive.
+     * 
+     */
+    private GetRulesetRuleActionParametersPublic public_;
     /**
      * @return The raw response fields to log.
      * 
@@ -283,6 +357,11 @@ public final class GetRulesetRuleActionParameters {
      */
     private List<String> rulesets;
     /**
+     * @return Set the s-maxage cache control directive.
+     * 
+     */
+    private GetRulesetRuleActionParametersSMaxage sMaxage;
+    /**
      * @return The Security Level to configure.
      * Available values: &#34;off&#34;, &#34;essentially*off&#34;, &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;under*attack&#34;.
      * 
@@ -310,10 +389,35 @@ public final class GetRulesetRuleActionParameters {
      */
     private String ssl;
     /**
+     * @return Set the stale-if-error cache control directive.
+     * 
+     */
+    private GetRulesetRuleActionParametersStaleIfError staleIfError;
+    /**
+     * @return Set the stale-while-revalidate cache control directive.
+     * 
+     */
+    private GetRulesetRuleActionParametersStaleWhileRevalidate staleWhileRevalidate;
+    /**
      * @return The status code to use for the error.
      * 
      */
     private Integer statusCode;
+    /**
+     * @return Whether to strip the ETag header from the response.
+     * 
+     */
+    private Boolean stripEtags;
+    /**
+     * @return Whether to strip the Last-Modified header from the response.
+     * 
+     */
+    private Boolean stripLastModified;
+    /**
+     * @return Whether to strip the Set-Cookie header from the response.
+     * 
+     */
+    private Boolean stripSetCookie;
     /**
      * @return Whether to enable Signed Exchanges (SXG).
      * 
@@ -329,6 +433,11 @@ public final class GetRulesetRuleActionParameters {
      * 
      */
     private GetRulesetRuleActionParametersUri uri;
+    /**
+     * @return The cache tag values for set*cache*tags action.
+     * 
+     */
+    private List<String> values;
 
     private GetRulesetRuleActionParameters() {}
     /**
@@ -459,6 +568,13 @@ public final class GetRulesetRuleActionParameters {
         return this.emailObfuscation;
     }
     /**
+     * @return An expression to generate cache tags for set*cache*tags action.
+     * 
+     */
+    public String expression() {
+        return this.expression;
+    }
+    /**
      * @return Whether to enable Cloudflare Fonts.
      * 
      */
@@ -508,6 +624,13 @@ public final class GetRulesetRuleActionParameters {
         return this.id;
     }
     /**
+     * @return Set the immutable cache control directive.
+     * 
+     */
+    public GetRulesetRuleActionParametersImmutable immutable() {
+        return this.immutable;
+    }
+    /**
      * @return A delta to change the score by, which can be either positive or negative.
      * 
      */
@@ -522,11 +645,61 @@ public final class GetRulesetRuleActionParameters {
         return this.matchedData;
     }
     /**
+     * @return Set the max-age cache control directive.
+     * 
+     */
+    public GetRulesetRuleActionParametersMaxAge maxAge() {
+        return this.maxAge;
+    }
+    /**
      * @return Whether to enable Mirage.
      * 
      */
     public Boolean mirage() {
         return this.mirage;
+    }
+    /**
+     * @return Set the must-revalidate cache control directive.
+     * 
+     */
+    public GetRulesetRuleActionParametersMustRevalidate mustRevalidate() {
+        return this.mustRevalidate;
+    }
+    /**
+     * @return Set the must-understand cache control directive.
+     * 
+     */
+    public GetRulesetRuleActionParametersMustUnderstand mustUnderstand() {
+        return this.mustUnderstand;
+    }
+    /**
+     * @return Set the no-cache cache control directive.
+     * 
+     */
+    public GetRulesetRuleActionParametersNoCache noCache() {
+        return this.noCache;
+    }
+    /**
+     * @return Set the no-store cache control directive.
+     * 
+     */
+    public GetRulesetRuleActionParametersNoStore noStore() {
+        return this.noStore;
+    }
+    /**
+     * @return Set the no-transform cache control directive.
+     * 
+     */
+    public GetRulesetRuleActionParametersNoTransform noTransform() {
+        return this.noTransform;
+    }
+    /**
+     * @return The operation to perform for set*cache*tags action.
+     * Available values: &#34;set&#34;, &#34;add&#34;, &#34;remove&#34;.
+     * 
+     */
+    public String operation() {
+        return this.operation;
     }
     /**
      * @return Whether to enable Opportunistic Encryption.
@@ -565,7 +738,7 @@ public final class GetRulesetRuleActionParameters {
     }
     /**
      * @return A list of phases to skip the execution of. This option is incompatible with the rulesets option.
-     * Available values: &#34;ddos*l4&#34;, &#34;ddos*l7&#34;, &#34;http*config*settings&#34;, &#34;http*custom*errors&#34;, &#34;http*log*custom*fields&#34;, &#34;http*ratelimit&#34;, &#34;http*request*cache*settings&#34;, &#34;http*request*dynamic*redirect&#34;, &#34;http*request*firewall*custom&#34;, &#34;http*request*firewall*managed&#34;, &#34;http*request*late*transform&#34;, &#34;http*request*origin&#34;, &#34;http*request*redirect&#34;, &#34;http*request*sanitize&#34;, &#34;http*request*sbfm&#34;, &#34;http*request*transform&#34;, &#34;http*response*compression&#34;, &#34;http*response*firewall*managed&#34;, &#34;http*response*headers*transform&#34;, &#34;magic*transit&#34;, &#34;magic*transit*ids*managed&#34;, &#34;magic*transit*managed&#34;, &#34;magic*transit_ratelimit&#34;.
+     * Available values: &#34;ddos*l4&#34;, &#34;ddos*l7&#34;, &#34;http*config*settings&#34;, &#34;http*custom*errors&#34;, &#34;http*log*custom*fields&#34;, &#34;http*ratelimit&#34;, &#34;http*request*cache*settings&#34;, &#34;http*request*dynamic*redirect&#34;, &#34;http*request*firewall*custom&#34;, &#34;http*request*firewall*managed&#34;, &#34;http*request*late*transform&#34;, &#34;http*request*origin&#34;, &#34;http*request*redirect&#34;, &#34;http*request*sanitize&#34;, &#34;http*request*sbfm&#34;, &#34;http*request*transform&#34;, &#34;http*response*cache*settings&#34;, &#34;http*response*compression&#34;, &#34;http*response*firewall*managed&#34;, &#34;http*response*headers*transform&#34;, &#34;magic*transit&#34;, &#34;magic*transit*ids*managed&#34;, &#34;magic*transit*managed&#34;, &#34;magic*transit*ratelimit&#34;.
      * 
      */
     public List<String> phases() {
@@ -580,12 +753,33 @@ public final class GetRulesetRuleActionParameters {
         return this.polish;
     }
     /**
+     * @return Set the private cache control directive.
+     * 
+     */
+    public GetRulesetRuleActionParametersPrivate private_() {
+        return this.private_;
+    }
+    /**
      * @return A list of legacy security products to skip the execution of.
      * Available values: &#34;bic&#34;, &#34;hot&#34;, &#34;rateLimit&#34;, &#34;securityLevel&#34;, &#34;uaBlock&#34;, &#34;waf&#34;, &#34;zoneLockdown&#34;.
      * 
      */
     public List<String> products() {
         return this.products;
+    }
+    /**
+     * @return Set the proxy-revalidate cache control directive.
+     * 
+     */
+    public GetRulesetRuleActionParametersProxyRevalidate proxyRevalidate() {
+        return this.proxyRevalidate;
+    }
+    /**
+     * @return Set the public cache control directive.
+     * 
+     */
+    public GetRulesetRuleActionParametersPublic public_() {
+        return this.public_;
     }
     /**
      * @return The raw response fields to log.
@@ -675,6 +869,13 @@ public final class GetRulesetRuleActionParameters {
         return this.rulesets;
     }
     /**
+     * @return Set the s-maxage cache control directive.
+     * 
+     */
+    public GetRulesetRuleActionParametersSMaxage sMaxage() {
+        return this.sMaxage;
+    }
+    /**
      * @return The Security Level to configure.
      * Available values: &#34;off&#34;, &#34;essentially*off&#34;, &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;under*attack&#34;.
      * 
@@ -712,11 +913,46 @@ public final class GetRulesetRuleActionParameters {
         return this.ssl;
     }
     /**
+     * @return Set the stale-if-error cache control directive.
+     * 
+     */
+    public GetRulesetRuleActionParametersStaleIfError staleIfError() {
+        return this.staleIfError;
+    }
+    /**
+     * @return Set the stale-while-revalidate cache control directive.
+     * 
+     */
+    public GetRulesetRuleActionParametersStaleWhileRevalidate staleWhileRevalidate() {
+        return this.staleWhileRevalidate;
+    }
+    /**
      * @return The status code to use for the error.
      * 
      */
     public Integer statusCode() {
         return this.statusCode;
+    }
+    /**
+     * @return Whether to strip the ETag header from the response.
+     * 
+     */
+    public Boolean stripEtags() {
+        return this.stripEtags;
+    }
+    /**
+     * @return Whether to strip the Last-Modified header from the response.
+     * 
+     */
+    public Boolean stripLastModified() {
+        return this.stripLastModified;
+    }
+    /**
+     * @return Whether to strip the Set-Cookie header from the response.
+     * 
+     */
+    public Boolean stripSetCookie() {
+        return this.stripSetCookie;
     }
     /**
      * @return Whether to enable Signed Exchanges (SXG).
@@ -738,6 +974,13 @@ public final class GetRulesetRuleActionParameters {
      */
     public GetRulesetRuleActionParametersUri uri() {
         return this.uri;
+    }
+    /**
+     * @return The cache tag values for set*cache*tags action.
+     * 
+     */
+    public List<String> values() {
+        return this.values;
     }
 
     public static Builder builder() {
@@ -767,6 +1010,7 @@ public final class GetRulesetRuleActionParameters {
         private Boolean disableZaraz;
         private GetRulesetRuleActionParametersEdgeTtl edgeTtl;
         private Boolean emailObfuscation;
+        private String expression;
         private Boolean fonts;
         private GetRulesetRuleActionParametersFromList fromList;
         private GetRulesetRuleActionParametersFromValue fromValue;
@@ -774,9 +1018,17 @@ public final class GetRulesetRuleActionParameters {
         private String hostHeader;
         private Boolean hotlinkProtection;
         private String id;
+        private GetRulesetRuleActionParametersImmutable immutable;
         private Integer increment;
         private GetRulesetRuleActionParametersMatchedData matchedData;
+        private GetRulesetRuleActionParametersMaxAge maxAge;
         private Boolean mirage;
+        private GetRulesetRuleActionParametersMustRevalidate mustRevalidate;
+        private GetRulesetRuleActionParametersMustUnderstand mustUnderstand;
+        private GetRulesetRuleActionParametersNoCache noCache;
+        private GetRulesetRuleActionParametersNoStore noStore;
+        private GetRulesetRuleActionParametersNoTransform noTransform;
+        private String operation;
         private Boolean opportunisticEncryption;
         private GetRulesetRuleActionParametersOrigin origin;
         private Boolean originCacheControl;
@@ -784,7 +1036,10 @@ public final class GetRulesetRuleActionParameters {
         private GetRulesetRuleActionParametersOverrides overrides;
         private List<String> phases;
         private String polish;
+        private GetRulesetRuleActionParametersPrivate private_;
         private List<String> products;
+        private GetRulesetRuleActionParametersProxyRevalidate proxyRevalidate;
+        private GetRulesetRuleActionParametersPublic public_;
         private List<GetRulesetRuleActionParametersRawResponseField> rawResponseFields;
         private Integer readTimeout;
         private String requestBodyBuffering;
@@ -797,15 +1052,22 @@ public final class GetRulesetRuleActionParameters {
         private Map<String,List<String>> rules;
         private String ruleset;
         private List<String> rulesets;
+        private GetRulesetRuleActionParametersSMaxage sMaxage;
         private String securityLevel;
         private GetRulesetRuleActionParametersServeStale serveStale;
         private Boolean serverSideExcludes;
         private GetRulesetRuleActionParametersSni sni;
         private String ssl;
+        private GetRulesetRuleActionParametersStaleIfError staleIfError;
+        private GetRulesetRuleActionParametersStaleWhileRevalidate staleWhileRevalidate;
         private Integer statusCode;
+        private Boolean stripEtags;
+        private Boolean stripLastModified;
+        private Boolean stripSetCookie;
         private Boolean sxg;
         private List<GetRulesetRuleActionParametersTransformedRequestField> transformedRequestFields;
         private GetRulesetRuleActionParametersUri uri;
+        private List<String> values;
         public Builder() {}
         public Builder(GetRulesetRuleActionParameters defaults) {
     	      Objects.requireNonNull(defaults);
@@ -827,6 +1089,7 @@ public final class GetRulesetRuleActionParameters {
     	      this.disableZaraz = defaults.disableZaraz;
     	      this.edgeTtl = defaults.edgeTtl;
     	      this.emailObfuscation = defaults.emailObfuscation;
+    	      this.expression = defaults.expression;
     	      this.fonts = defaults.fonts;
     	      this.fromList = defaults.fromList;
     	      this.fromValue = defaults.fromValue;
@@ -834,9 +1097,17 @@ public final class GetRulesetRuleActionParameters {
     	      this.hostHeader = defaults.hostHeader;
     	      this.hotlinkProtection = defaults.hotlinkProtection;
     	      this.id = defaults.id;
+    	      this.immutable = defaults.immutable;
     	      this.increment = defaults.increment;
     	      this.matchedData = defaults.matchedData;
+    	      this.maxAge = defaults.maxAge;
     	      this.mirage = defaults.mirage;
+    	      this.mustRevalidate = defaults.mustRevalidate;
+    	      this.mustUnderstand = defaults.mustUnderstand;
+    	      this.noCache = defaults.noCache;
+    	      this.noStore = defaults.noStore;
+    	      this.noTransform = defaults.noTransform;
+    	      this.operation = defaults.operation;
     	      this.opportunisticEncryption = defaults.opportunisticEncryption;
     	      this.origin = defaults.origin;
     	      this.originCacheControl = defaults.originCacheControl;
@@ -844,7 +1115,10 @@ public final class GetRulesetRuleActionParameters {
     	      this.overrides = defaults.overrides;
     	      this.phases = defaults.phases;
     	      this.polish = defaults.polish;
+    	      this.private_ = defaults.private_;
     	      this.products = defaults.products;
+    	      this.proxyRevalidate = defaults.proxyRevalidate;
+    	      this.public_ = defaults.public_;
     	      this.rawResponseFields = defaults.rawResponseFields;
     	      this.readTimeout = defaults.readTimeout;
     	      this.requestBodyBuffering = defaults.requestBodyBuffering;
@@ -857,15 +1131,22 @@ public final class GetRulesetRuleActionParameters {
     	      this.rules = defaults.rules;
     	      this.ruleset = defaults.ruleset;
     	      this.rulesets = defaults.rulesets;
+    	      this.sMaxage = defaults.sMaxage;
     	      this.securityLevel = defaults.securityLevel;
     	      this.serveStale = defaults.serveStale;
     	      this.serverSideExcludes = defaults.serverSideExcludes;
     	      this.sni = defaults.sni;
     	      this.ssl = defaults.ssl;
+    	      this.staleIfError = defaults.staleIfError;
+    	      this.staleWhileRevalidate = defaults.staleWhileRevalidate;
     	      this.statusCode = defaults.statusCode;
+    	      this.stripEtags = defaults.stripEtags;
+    	      this.stripLastModified = defaults.stripLastModified;
+    	      this.stripSetCookie = defaults.stripSetCookie;
     	      this.sxg = defaults.sxg;
     	      this.transformedRequestFields = defaults.transformedRequestFields;
     	      this.uri = defaults.uri;
+    	      this.values = defaults.values;
         }
 
         @CustomType.Setter
@@ -1022,6 +1303,14 @@ public final class GetRulesetRuleActionParameters {
             return this;
         }
         @CustomType.Setter
+        public Builder expression(String expression) {
+            if (expression == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "expression");
+            }
+            this.expression = expression;
+            return this;
+        }
+        @CustomType.Setter
         public Builder fonts(Boolean fonts) {
             if (fonts == null) {
               throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "fonts");
@@ -1078,6 +1367,14 @@ public final class GetRulesetRuleActionParameters {
             return this;
         }
         @CustomType.Setter
+        public Builder immutable(GetRulesetRuleActionParametersImmutable immutable) {
+            if (immutable == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "immutable");
+            }
+            this.immutable = immutable;
+            return this;
+        }
+        @CustomType.Setter
         public Builder increment(Integer increment) {
             if (increment == null) {
               throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "increment");
@@ -1094,11 +1391,67 @@ public final class GetRulesetRuleActionParameters {
             return this;
         }
         @CustomType.Setter
+        public Builder maxAge(GetRulesetRuleActionParametersMaxAge maxAge) {
+            if (maxAge == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "maxAge");
+            }
+            this.maxAge = maxAge;
+            return this;
+        }
+        @CustomType.Setter
         public Builder mirage(Boolean mirage) {
             if (mirage == null) {
               throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "mirage");
             }
             this.mirage = mirage;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mustRevalidate(GetRulesetRuleActionParametersMustRevalidate mustRevalidate) {
+            if (mustRevalidate == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "mustRevalidate");
+            }
+            this.mustRevalidate = mustRevalidate;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mustUnderstand(GetRulesetRuleActionParametersMustUnderstand mustUnderstand) {
+            if (mustUnderstand == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "mustUnderstand");
+            }
+            this.mustUnderstand = mustUnderstand;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder noCache(GetRulesetRuleActionParametersNoCache noCache) {
+            if (noCache == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "noCache");
+            }
+            this.noCache = noCache;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder noStore(GetRulesetRuleActionParametersNoStore noStore) {
+            if (noStore == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "noStore");
+            }
+            this.noStore = noStore;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder noTransform(GetRulesetRuleActionParametersNoTransform noTransform) {
+            if (noTransform == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "noTransform");
+            }
+            this.noTransform = noTransform;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder operation(String operation) {
+            if (operation == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "operation");
+            }
+            this.operation = operation;
             return this;
         }
         @CustomType.Setter
@@ -1160,6 +1513,14 @@ public final class GetRulesetRuleActionParameters {
             this.polish = polish;
             return this;
         }
+        @CustomType.Setter("private")
+        public Builder private_(GetRulesetRuleActionParametersPrivate private_) {
+            if (private_ == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "private_");
+            }
+            this.private_ = private_;
+            return this;
+        }
         @CustomType.Setter
         public Builder products(List<String> products) {
             if (products == null) {
@@ -1170,6 +1531,22 @@ public final class GetRulesetRuleActionParameters {
         }
         public Builder products(String... products) {
             return products(List.of(products));
+        }
+        @CustomType.Setter
+        public Builder proxyRevalidate(GetRulesetRuleActionParametersProxyRevalidate proxyRevalidate) {
+            if (proxyRevalidate == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "proxyRevalidate");
+            }
+            this.proxyRevalidate = proxyRevalidate;
+            return this;
+        }
+        @CustomType.Setter("public")
+        public Builder public_(GetRulesetRuleActionParametersPublic public_) {
+            if (public_ == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "public_");
+            }
+            this.public_ = public_;
+            return this;
         }
         @CustomType.Setter
         public Builder rawResponseFields(List<GetRulesetRuleActionParametersRawResponseField> rawResponseFields) {
@@ -1280,6 +1657,14 @@ public final class GetRulesetRuleActionParameters {
             return rulesets(List.of(rulesets));
         }
         @CustomType.Setter
+        public Builder sMaxage(GetRulesetRuleActionParametersSMaxage sMaxage) {
+            if (sMaxage == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "sMaxage");
+            }
+            this.sMaxage = sMaxage;
+            return this;
+        }
+        @CustomType.Setter
         public Builder securityLevel(String securityLevel) {
             if (securityLevel == null) {
               throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "securityLevel");
@@ -1320,11 +1705,51 @@ public final class GetRulesetRuleActionParameters {
             return this;
         }
         @CustomType.Setter
+        public Builder staleIfError(GetRulesetRuleActionParametersStaleIfError staleIfError) {
+            if (staleIfError == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "staleIfError");
+            }
+            this.staleIfError = staleIfError;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder staleWhileRevalidate(GetRulesetRuleActionParametersStaleWhileRevalidate staleWhileRevalidate) {
+            if (staleWhileRevalidate == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "staleWhileRevalidate");
+            }
+            this.staleWhileRevalidate = staleWhileRevalidate;
+            return this;
+        }
+        @CustomType.Setter
         public Builder statusCode(Integer statusCode) {
             if (statusCode == null) {
               throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "statusCode");
             }
             this.statusCode = statusCode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder stripEtags(Boolean stripEtags) {
+            if (stripEtags == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "stripEtags");
+            }
+            this.stripEtags = stripEtags;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder stripLastModified(Boolean stripLastModified) {
+            if (stripLastModified == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "stripLastModified");
+            }
+            this.stripLastModified = stripLastModified;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder stripSetCookie(Boolean stripSetCookie) {
+            if (stripSetCookie == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "stripSetCookie");
+            }
+            this.stripSetCookie = stripSetCookie;
             return this;
         }
         @CustomType.Setter
@@ -1354,6 +1779,17 @@ public final class GetRulesetRuleActionParameters {
             this.uri = uri;
             return this;
         }
+        @CustomType.Setter
+        public Builder values(List<String> values) {
+            if (values == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "values");
+            }
+            this.values = values;
+            return this;
+        }
+        public Builder values(String... values) {
+            return values(List.of(values));
+        }
         public GetRulesetRuleActionParameters build() {
             final var _resultValue = new GetRulesetRuleActionParameters();
             _resultValue.additionalCacheablePorts = additionalCacheablePorts;
@@ -1374,6 +1810,7 @@ public final class GetRulesetRuleActionParameters {
             _resultValue.disableZaraz = disableZaraz;
             _resultValue.edgeTtl = edgeTtl;
             _resultValue.emailObfuscation = emailObfuscation;
+            _resultValue.expression = expression;
             _resultValue.fonts = fonts;
             _resultValue.fromList = fromList;
             _resultValue.fromValue = fromValue;
@@ -1381,9 +1818,17 @@ public final class GetRulesetRuleActionParameters {
             _resultValue.hostHeader = hostHeader;
             _resultValue.hotlinkProtection = hotlinkProtection;
             _resultValue.id = id;
+            _resultValue.immutable = immutable;
             _resultValue.increment = increment;
             _resultValue.matchedData = matchedData;
+            _resultValue.maxAge = maxAge;
             _resultValue.mirage = mirage;
+            _resultValue.mustRevalidate = mustRevalidate;
+            _resultValue.mustUnderstand = mustUnderstand;
+            _resultValue.noCache = noCache;
+            _resultValue.noStore = noStore;
+            _resultValue.noTransform = noTransform;
+            _resultValue.operation = operation;
             _resultValue.opportunisticEncryption = opportunisticEncryption;
             _resultValue.origin = origin;
             _resultValue.originCacheControl = originCacheControl;
@@ -1391,7 +1836,10 @@ public final class GetRulesetRuleActionParameters {
             _resultValue.overrides = overrides;
             _resultValue.phases = phases;
             _resultValue.polish = polish;
+            _resultValue.private_ = private_;
             _resultValue.products = products;
+            _resultValue.proxyRevalidate = proxyRevalidate;
+            _resultValue.public_ = public_;
             _resultValue.rawResponseFields = rawResponseFields;
             _resultValue.readTimeout = readTimeout;
             _resultValue.requestBodyBuffering = requestBodyBuffering;
@@ -1404,15 +1852,22 @@ public final class GetRulesetRuleActionParameters {
             _resultValue.rules = rules;
             _resultValue.ruleset = ruleset;
             _resultValue.rulesets = rulesets;
+            _resultValue.sMaxage = sMaxage;
             _resultValue.securityLevel = securityLevel;
             _resultValue.serveStale = serveStale;
             _resultValue.serverSideExcludes = serverSideExcludes;
             _resultValue.sni = sni;
             _resultValue.ssl = ssl;
+            _resultValue.staleIfError = staleIfError;
+            _resultValue.staleWhileRevalidate = staleWhileRevalidate;
             _resultValue.statusCode = statusCode;
+            _resultValue.stripEtags = stripEtags;
+            _resultValue.stripLastModified = stripLastModified;
+            _resultValue.stripSetCookie = stripSetCookie;
             _resultValue.sxg = sxg;
             _resultValue.transformedRequestFields = transformedRequestFields;
             _resultValue.uri = uri;
+            _resultValue.values = values;
             return _resultValue;
         }
     }

@@ -43,8 +43,13 @@ export interface GetZeroTrustDlpPredefinedProfileResult {
     readonly aiContextEnabled: boolean;
     readonly allowedMatchCount: number;
     readonly confidenceThreshold: string;
+    /**
+     * Entries to enable for this predefined profile. Any entries not provided will be disabled.
+     */
     readonly enabledEntries: string[];
     /**
+     * This field has been deprecated for `enabledEntries`.
+     *
      * @deprecated This attribute is deprecated.
      */
     readonly entries: outputs.GetZeroTrustDlpPredefinedProfileEntry[];

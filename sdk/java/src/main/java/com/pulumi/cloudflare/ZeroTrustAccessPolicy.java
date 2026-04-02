@@ -7,8 +7,10 @@ import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.ZeroTrustAccessPolicyArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyState;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyApprovalGroup;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyConnectionRules;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyExclude;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyInclude;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyMfaConfig;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyRequire;
 import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
@@ -36,8 +38,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyIncludeArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyIncludeGroupArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyApprovalGroupArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyConnectionRulesArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyConnectionRulesRdpArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyExcludeArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyExcludeGroupArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyMfaConfigArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyRequireArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyRequireGroupArgs;
  * import java.util.List;
@@ -78,12 +83,26 @@ import javax.annotation.Nullable;
  *                     .emailListUuid("597147a1-976b-4ef2-9af0-81d5d007fc34")
  *                     .build())
  *             .approvalRequired(true)
+ *             .connectionRules(ZeroTrustAccessPolicyConnectionRulesArgs.builder()
+ *                 .rdp(ZeroTrustAccessPolicyConnectionRulesRdpArgs.builder()
+ *                     .allowedClipboardLocalToRemoteFormats("text")
+ *                     .allowedClipboardRemoteToLocalFormats("text")
+ *                     .build())
+ *                 .build())
  *             .excludes(ZeroTrustAccessPolicyExcludeArgs.builder()
  *                 .group(ZeroTrustAccessPolicyExcludeGroupArgs.builder()
  *                     .id("aa0a4aab-672b-4bdb-bc33-a59f1130a11f")
  *                     .build())
  *                 .build())
  *             .isolationRequired(false)
+ *             .mfaConfig(ZeroTrustAccessPolicyMfaConfigArgs.builder()
+ *                 .allowedAuthenticators(                
+ *                     "totp",
+ *                     "biometrics",
+ *                     "security_key")
+ *                 .mfaBypass(false)
+ *                 .sessionDuration("24h")
+ *                 .build())
  *             .purposeJustificationPrompt("Please enter a justification for entering this protected domain.")
  *             .purposeJustificationRequired(true)
  *             .requires(ZeroTrustAccessPolicyRequireArgs.builder()
@@ -151,6 +170,20 @@ public class ZeroTrustAccessPolicy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.approvalRequired);
     }
     /**
+     * The rules that define how users may connect to targets secured by your application.
+     * 
+     */
+    @Export(name="connectionRules", refs={ZeroTrustAccessPolicyConnectionRules.class}, tree="[0]")
+    private Output</* @Nullable */ ZeroTrustAccessPolicyConnectionRules> connectionRules;
+
+    /**
+     * @return The rules that define how users may connect to targets secured by your application.
+     * 
+     */
+    public Output<Optional<ZeroTrustAccessPolicyConnectionRules>> connectionRules() {
+        return Codegen.optional(this.connectionRules);
+    }
+    /**
      * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
      * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;nonIdentity&#34;, &#34;bypass&#34;.
      * 
@@ -207,6 +240,20 @@ public class ZeroTrustAccessPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> isolationRequired() {
         return Codegen.optional(this.isolationRequired);
+    }
+    /**
+     * Configures multi-factor authentication (MFA) settings.
+     * 
+     */
+    @Export(name="mfaConfig", refs={ZeroTrustAccessPolicyMfaConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ZeroTrustAccessPolicyMfaConfig> mfaConfig;
+
+    /**
+     * @return Configures multi-factor authentication (MFA) settings.
+     * 
+     */
+    public Output<Optional<ZeroTrustAccessPolicyMfaConfig>> mfaConfig() {
+        return Codegen.optional(this.mfaConfig);
     }
     /**
      * The name of the Access policy.

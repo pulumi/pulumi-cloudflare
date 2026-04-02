@@ -27,7 +27,7 @@ class GetZeroTrustAccessPolicyResult:
     """
     A collection of values returned by getZeroTrustAccessPolicy.
     """
-    def __init__(__self__, account_id=None, app_count=None, approval_groups=None, approval_required=None, created_at=None, decision=None, excludes=None, id=None, includes=None, isolation_required=None, name=None, policy_id=None, purpose_justification_prompt=None, purpose_justification_required=None, requires=None, reusable=None, session_duration=None, updated_at=None):
+    def __init__(__self__, account_id=None, app_count=None, approval_groups=None, approval_required=None, connection_rules=None, created_at=None, decision=None, excludes=None, id=None, includes=None, isolation_required=None, mfa_config=None, name=None, policy_id=None, purpose_justification_prompt=None, purpose_justification_required=None, requires=None, reusable=None, session_duration=None, updated_at=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -40,6 +40,9 @@ class GetZeroTrustAccessPolicyResult:
         if approval_required and not isinstance(approval_required, bool):
             raise TypeError("Expected argument 'approval_required' to be a bool")
         pulumi.set(__self__, "approval_required", approval_required)
+        if connection_rules and not isinstance(connection_rules, dict):
+            raise TypeError("Expected argument 'connection_rules' to be a dict")
+        pulumi.set(__self__, "connection_rules", connection_rules)
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
@@ -58,6 +61,9 @@ class GetZeroTrustAccessPolicyResult:
         if isolation_required and not isinstance(isolation_required, bool):
             raise TypeError("Expected argument 'isolation_required' to be a bool")
         pulumi.set(__self__, "isolation_required", isolation_required)
+        if mfa_config and not isinstance(mfa_config, dict):
+            raise TypeError("Expected argument 'mfa_config' to be a dict")
+        pulumi.set(__self__, "mfa_config", mfa_config)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -116,6 +122,14 @@ class GetZeroTrustAccessPolicyResult:
         return pulumi.get(self, "approval_required")
 
     @_builtins.property
+    @pulumi.getter(name="connectionRules")
+    def connection_rules(self) -> 'outputs.GetZeroTrustAccessPolicyConnectionRulesResult':
+        """
+        The rules that define how users may connect to targets secured by your application.
+        """
+        return pulumi.get(self, "connection_rules")
+
+    @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> _builtins.str:
         return pulumi.get(self, "created_at")
@@ -160,6 +174,14 @@ class GetZeroTrustAccessPolicyResult:
         Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
         """
         return pulumi.get(self, "isolation_required")
+
+    @_builtins.property
+    @pulumi.getter(name="mfaConfig")
+    def mfa_config(self) -> 'outputs.GetZeroTrustAccessPolicyMfaConfigResult':
+        """
+        Configures multi-factor authentication (MFA) settings.
+        """
+        return pulumi.get(self, "mfa_config")
 
     @_builtins.property
     @pulumi.getter
@@ -230,12 +252,14 @@ class AwaitableGetZeroTrustAccessPolicyResult(GetZeroTrustAccessPolicyResult):
             app_count=self.app_count,
             approval_groups=self.approval_groups,
             approval_required=self.approval_required,
+            connection_rules=self.connection_rules,
             created_at=self.created_at,
             decision=self.decision,
             excludes=self.excludes,
             id=self.id,
             includes=self.includes,
             isolation_required=self.isolation_required,
+            mfa_config=self.mfa_config,
             name=self.name,
             policy_id=self.policy_id,
             purpose_justification_prompt=self.purpose_justification_prompt,
@@ -275,12 +299,14 @@ def get_zero_trust_access_policy(account_id: Optional[_builtins.str] = None,
         app_count=pulumi.get(__ret__, 'app_count'),
         approval_groups=pulumi.get(__ret__, 'approval_groups'),
         approval_required=pulumi.get(__ret__, 'approval_required'),
+        connection_rules=pulumi.get(__ret__, 'connection_rules'),
         created_at=pulumi.get(__ret__, 'created_at'),
         decision=pulumi.get(__ret__, 'decision'),
         excludes=pulumi.get(__ret__, 'excludes'),
         id=pulumi.get(__ret__, 'id'),
         includes=pulumi.get(__ret__, 'includes'),
         isolation_required=pulumi.get(__ret__, 'isolation_required'),
+        mfa_config=pulumi.get(__ret__, 'mfa_config'),
         name=pulumi.get(__ret__, 'name'),
         policy_id=pulumi.get(__ret__, 'policy_id'),
         purpose_justification_prompt=pulumi.get(__ret__, 'purpose_justification_prompt'),
@@ -317,12 +343,14 @@ def get_zero_trust_access_policy_output(account_id: Optional[pulumi.Input[_built
         app_count=pulumi.get(__response__, 'app_count'),
         approval_groups=pulumi.get(__response__, 'approval_groups'),
         approval_required=pulumi.get(__response__, 'approval_required'),
+        connection_rules=pulumi.get(__response__, 'connection_rules'),
         created_at=pulumi.get(__response__, 'created_at'),
         decision=pulumi.get(__response__, 'decision'),
         excludes=pulumi.get(__response__, 'excludes'),
         id=pulumi.get(__response__, 'id'),
         includes=pulumi.get(__response__, 'includes'),
         isolation_required=pulumi.get(__response__, 'isolation_required'),
+        mfa_config=pulumi.get(__response__, 'mfa_config'),
         name=pulumi.get(__response__, 'name'),
         policy_id=pulumi.get(__response__, 'policy_id'),
         purpose_justification_prompt=pulumi.get(__response__, 'purpose_justification_prompt'),

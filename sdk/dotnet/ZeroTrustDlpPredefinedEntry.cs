@@ -57,6 +57,9 @@ namespace Pulumi.Cloudflare
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
@@ -189,6 +192,9 @@ namespace Pulumi.Cloudflare
 
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
+
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

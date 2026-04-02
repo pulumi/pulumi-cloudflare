@@ -30,11 +30,11 @@ export function getSnippet(args: GetSnippetArgs, opts?: pulumi.InvokeOptions): P
  */
 export interface GetSnippetArgs {
     /**
-     * The identifying name of the snippet.
+     * Identify the snippet.
      */
     snippetName: string;
     /**
-     * The unique ID of the zone.
+     * Use this field to specify the unique ID of the zone.
      */
     zoneId: string;
 }
@@ -44,7 +44,7 @@ export interface GetSnippetArgs {
  */
 export interface GetSnippetResult {
     /**
-     * The timestamp of when the snippet was created.
+     * Indicates when the snippet was created.
      */
     readonly createdOn: string;
     /**
@@ -52,15 +52,15 @@ export interface GetSnippetResult {
      */
     readonly id: string;
     /**
-     * The timestamp of when the snippet was last modified.
+     * Indicates when the snippet was last modified.
      */
     readonly modifiedOn: string;
     /**
-     * The identifying name of the snippet.
+     * Identify the snippet.
      */
     readonly snippetName: string;
     /**
-     * The unique ID of the zone.
+     * Use this field to specify the unique ID of the zone.
      */
     readonly zoneId: string;
 }
@@ -90,11 +90,11 @@ export function getSnippetOutput(args: GetSnippetOutputArgs, opts?: pulumi.Invok
  */
 export interface GetSnippetOutputArgs {
     /**
-     * The identifying name of the snippet.
+     * Identify the snippet.
      */
     snippetName: pulumi.Input<string>;
     /**
-     * The unique ID of the zone.
+     * Use this field to specify the unique ID of the zone.
      */
     zoneId: pulumi.Input<string>;
 }

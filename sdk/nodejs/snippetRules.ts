@@ -57,11 +57,11 @@ export class SnippetRules extends pulumi.CustomResource {
     }
 
     /**
-     * A list of snippet rules.
+     * Lists snippet rules.
      */
     declare public readonly rules: pulumi.Output<outputs.SnippetRulesRule[]>;
     /**
-     * The unique ID of the zone.
+     * Use this field to specify the unique ID of the zone.
      */
     declare public readonly zoneId: pulumi.Output<string>;
 
@@ -101,11 +101,11 @@ export class SnippetRules extends pulumi.CustomResource {
  */
 export interface SnippetRulesState {
     /**
-     * A list of snippet rules.
+     * Lists snippet rules.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.SnippetRulesRule>[]>;
     /**
-     * The unique ID of the zone.
+     * Use this field to specify the unique ID of the zone.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -115,11 +115,11 @@ export interface SnippetRulesState {
  */
 export interface SnippetRulesArgs {
     /**
-     * A list of snippet rules.
+     * Lists snippet rules.
      */
     rules: pulumi.Input<pulumi.Input<inputs.SnippetRulesRule>[]>;
     /**
-     * The unique ID of the zone.
+     * Use this field to specify the unique ID of the zone.
      */
     zoneId: pulumi.Input<string>;
 }

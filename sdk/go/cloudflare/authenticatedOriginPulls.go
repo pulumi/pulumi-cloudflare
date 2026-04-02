@@ -47,7 +47,9 @@ import (
 //
 // ## Import
 //
-// > This resource does not currently support `pulumi import`.
+// ```sh
+// $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example '<zone_id>/<hostname>'
+// ```
 type AuthenticatedOriginPulls struct {
 	pulumi.CustomResourceState
 
@@ -70,7 +72,7 @@ type AuthenticatedOriginPulls struct {
 	// The date when the certificate expires.
 	ExpiresOn pulumi.StringOutput `pulumi:"expiresOn"`
 	// The hostname on the origin for which the client certificate uploaded will be used.
-	Hostname pulumi.StringPtrOutput `pulumi:"hostname"`
+	Hostname pulumi.StringOutput `pulumi:"hostname"`
 	// The certificate authority that issued the certificate.
 	Issuer pulumi.StringOutput `pulumi:"issuer"`
 	// The hostname certificate's private key.
@@ -209,8 +211,6 @@ func (AuthenticatedOriginPullsState) ElementType() reflect.Type {
 
 type authenticatedOriginPullsArgs struct {
 	Configs []AuthenticatedOriginPullsConfig `pulumi:"configs"`
-	// The hostname on the origin for which the client certificate uploaded will be used.
-	Hostname *string `pulumi:"hostname"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -218,8 +218,6 @@ type authenticatedOriginPullsArgs struct {
 // The set of arguments for constructing a AuthenticatedOriginPulls resource.
 type AuthenticatedOriginPullsArgs struct {
 	Configs AuthenticatedOriginPullsConfigArrayInput
-	// The hostname on the origin for which the client certificate uploaded will be used.
-	Hostname pulumi.StringPtrInput
 	// Identifier.
 	ZoneId pulumi.StringInput
 }
@@ -357,8 +355,8 @@ func (o AuthenticatedOriginPullsOutput) ExpiresOn() pulumi.StringOutput {
 }
 
 // The hostname on the origin for which the client certificate uploaded will be used.
-func (o AuthenticatedOriginPullsOutput) Hostname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringPtrOutput { return v.Hostname }).(pulumi.StringPtrOutput)
+func (o AuthenticatedOriginPullsOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
 }
 
 // The certificate authority that issued the certificate.

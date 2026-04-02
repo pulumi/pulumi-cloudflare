@@ -23,7 +23,7 @@ export interface GetSnippetListArgs {
      */
     maxItems?: number;
     /**
-     * The unique ID of the zone.
+     * Use this field to specify the unique ID of the zone.
      */
     zoneId: string;
 }
@@ -45,7 +45,7 @@ export interface GetSnippetListResult {
      */
     readonly results: outputs.GetSnippetListResult[];
     /**
-     * The unique ID of the zone.
+     * Use this field to specify the unique ID of the zone.
      */
     readonly zoneId: string;
 }
@@ -66,7 +66,7 @@ export interface GetSnippetListOutputArgs {
      */
     maxItems?: pulumi.Input<number>;
     /**
-     * The unique ID of the zone.
+     * Use this field to specify the unique ID of the zone.
      */
     zoneId: pulumi.Input<string>;
 }

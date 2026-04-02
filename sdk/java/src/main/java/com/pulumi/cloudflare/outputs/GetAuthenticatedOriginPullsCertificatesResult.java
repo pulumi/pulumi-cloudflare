@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 
@@ -16,11 +15,6 @@ public final class GetAuthenticatedOriginPullsCertificatesResult {
      * 
      */
     private String certificate;
-    /**
-     * @return Indicates whether zone-level authenticated origin pulls is enabled.
-     * 
-     */
-    private Boolean enabled;
     /**
      * @return When the certificate from the authority expires.
      * 
@@ -37,10 +31,10 @@ public final class GetAuthenticatedOriginPullsCertificatesResult {
      */
     private String issuer;
     /**
-     * @return The zone&#39;s private key.
+     * @return The serial number on the uploaded certificate.
      * 
      */
-    private String privateKey;
+    private String serialNumber;
     /**
      * @return The type of hash used for the certificate.
      * 
@@ -67,13 +61,6 @@ public final class GetAuthenticatedOriginPullsCertificatesResult {
         return this.certificate;
     }
     /**
-     * @return Indicates whether zone-level authenticated origin pulls is enabled.
-     * 
-     */
-    public Boolean enabled() {
-        return this.enabled;
-    }
-    /**
      * @return When the certificate from the authority expires.
      * 
      */
@@ -95,11 +82,11 @@ public final class GetAuthenticatedOriginPullsCertificatesResult {
         return this.issuer;
     }
     /**
-     * @return The zone&#39;s private key.
+     * @return The serial number on the uploaded certificate.
      * 
      */
-    public String privateKey() {
-        return this.privateKey;
+    public String serialNumber() {
+        return this.serialNumber;
     }
     /**
      * @return The type of hash used for the certificate.
@@ -134,11 +121,10 @@ public final class GetAuthenticatedOriginPullsCertificatesResult {
     @CustomType.Builder
     public static final class Builder {
         private String certificate;
-        private Boolean enabled;
         private String expiresOn;
         private String id;
         private String issuer;
-        private String privateKey;
+        private String serialNumber;
         private String signature;
         private String status;
         private String uploadedOn;
@@ -146,11 +132,10 @@ public final class GetAuthenticatedOriginPullsCertificatesResult {
         public Builder(GetAuthenticatedOriginPullsCertificatesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certificate = defaults.certificate;
-    	      this.enabled = defaults.enabled;
     	      this.expiresOn = defaults.expiresOn;
     	      this.id = defaults.id;
     	      this.issuer = defaults.issuer;
-    	      this.privateKey = defaults.privateKey;
+    	      this.serialNumber = defaults.serialNumber;
     	      this.signature = defaults.signature;
     	      this.status = defaults.status;
     	      this.uploadedOn = defaults.uploadedOn;
@@ -162,14 +147,6 @@ public final class GetAuthenticatedOriginPullsCertificatesResult {
               throw new MissingRequiredPropertyException("GetAuthenticatedOriginPullsCertificatesResult", "certificate");
             }
             this.certificate = certificate;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder enabled(Boolean enabled) {
-            if (enabled == null) {
-              throw new MissingRequiredPropertyException("GetAuthenticatedOriginPullsCertificatesResult", "enabled");
-            }
-            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
@@ -197,11 +174,11 @@ public final class GetAuthenticatedOriginPullsCertificatesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder privateKey(String privateKey) {
-            if (privateKey == null) {
-              throw new MissingRequiredPropertyException("GetAuthenticatedOriginPullsCertificatesResult", "privateKey");
+        public Builder serialNumber(String serialNumber) {
+            if (serialNumber == null) {
+              throw new MissingRequiredPropertyException("GetAuthenticatedOriginPullsCertificatesResult", "serialNumber");
             }
-            this.privateKey = privateKey;
+            this.serialNumber = serialNumber;
             return this;
         }
         @CustomType.Setter
@@ -231,11 +208,10 @@ public final class GetAuthenticatedOriginPullsCertificatesResult {
         public GetAuthenticatedOriginPullsCertificatesResult build() {
             final var _resultValue = new GetAuthenticatedOriginPullsCertificatesResult();
             _resultValue.certificate = certificate;
-            _resultValue.enabled = enabled;
             _resultValue.expiresOn = expiresOn;
             _resultValue.id = id;
             _resultValue.issuer = issuer;
-            _resultValue.privateKey = privateKey;
+            _resultValue.serialNumber = serialNumber;
             _resultValue.signature = signature;
             _resultValue.status = status;
             _resultValue.uploadedOn = uploadedOn;

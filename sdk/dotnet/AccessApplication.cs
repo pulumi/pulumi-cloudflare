@@ -246,7 +246,7 @@ namespace Pulumi.Cloudflare
         /// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal", "ProxyEndpoint".
         /// </summary>
         [Output("type")]
-        public Output<string?> Type { get; private set; } = null!;
+        public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.

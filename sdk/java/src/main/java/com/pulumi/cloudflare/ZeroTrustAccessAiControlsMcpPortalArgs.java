@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.inputs.ZeroTrustAccessAiControlsMcpPortalServerArgs
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -46,6 +47,21 @@ public final class ZeroTrustAccessAiControlsMcpPortalArgs extends com.pulumi.res
         return this.name;
     }
 
+    /**
+     * Route outbound MCP traffic through Zero Trust Secure Web Gateway
+     * 
+     */
+    @Import(name="secureWebGateway")
+    private @Nullable Output<Boolean> secureWebGateway;
+
+    /**
+     * @return Route outbound MCP traffic through Zero Trust Secure Web Gateway
+     * 
+     */
+    public Optional<Output<Boolean>> secureWebGateway() {
+        return Optional.ofNullable(this.secureWebGateway);
+    }
+
     @Import(name="servers")
     private @Nullable Output<List<ZeroTrustAccessAiControlsMcpPortalServerArgs>> servers;
 
@@ -75,6 +91,7 @@ public final class ZeroTrustAccessAiControlsMcpPortalArgs extends com.pulumi.res
         this.description = $.description;
         this.hostname = $.hostname;
         this.name = $.name;
+        this.secureWebGateway = $.secureWebGateway;
         this.servers = $.servers;
         this.zeroTrustAccessAiControlsMcpPortalId = $.zeroTrustAccessAiControlsMcpPortalId;
     }
@@ -131,6 +148,27 @@ public final class ZeroTrustAccessAiControlsMcpPortalArgs extends com.pulumi.res
 
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param secureWebGateway Route outbound MCP traffic through Zero Trust Secure Web Gateway
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secureWebGateway(@Nullable Output<Boolean> secureWebGateway) {
+            $.secureWebGateway = secureWebGateway;
+            return this;
+        }
+
+        /**
+         * @param secureWebGateway Route outbound MCP traffic through Zero Trust Secure Web Gateway
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secureWebGateway(Boolean secureWebGateway) {
+            return secureWebGateway(Output.of(secureWebGateway));
         }
 
         public Builder servers(@Nullable Output<List<ZeroTrustAccessAiControlsMcpPortalServerArgs>> servers) {

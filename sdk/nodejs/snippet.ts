@@ -64,7 +64,7 @@ export class Snippet extends pulumi.CustomResource {
     }
 
     /**
-     * The timestamp of when the snippet was created.
+     * Indicates when the snippet was created.
      */
     declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
@@ -72,19 +72,19 @@ export class Snippet extends pulumi.CustomResource {
      */
     declare public readonly files: pulumi.Output<outputs.SnippetFile[]>;
     /**
-     * Metadata about the snippet.
+     * Provide metadata about the snippet.
      */
     declare public readonly metadata: pulumi.Output<outputs.SnippetMetadata>;
     /**
-     * The timestamp of when the snippet was last modified.
+     * Indicates when the snippet was last modified.
      */
     declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     /**
-     * The identifying name of the snippet.
+     * Identify the snippet.
      */
     declare public readonly snippetName: pulumi.Output<string>;
     /**
-     * The unique ID of the zone.
+     * Use this field to specify the unique ID of the zone.
      */
     declare public readonly zoneId: pulumi.Output<string>;
 
@@ -138,7 +138,7 @@ export class Snippet extends pulumi.CustomResource {
  */
 export interface SnippetState {
     /**
-     * The timestamp of when the snippet was created.
+     * Indicates when the snippet was created.
      */
     createdOn?: pulumi.Input<string>;
     /**
@@ -146,19 +146,19 @@ export interface SnippetState {
      */
     files?: pulumi.Input<pulumi.Input<inputs.SnippetFile>[]>;
     /**
-     * Metadata about the snippet.
+     * Provide metadata about the snippet.
      */
     metadata?: pulumi.Input<inputs.SnippetMetadata>;
     /**
-     * The timestamp of when the snippet was last modified.
+     * Indicates when the snippet was last modified.
      */
     modifiedOn?: pulumi.Input<string>;
     /**
-     * The identifying name of the snippet.
+     * Identify the snippet.
      */
     snippetName?: pulumi.Input<string>;
     /**
-     * The unique ID of the zone.
+     * Use this field to specify the unique ID of the zone.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -172,15 +172,15 @@ export interface SnippetArgs {
      */
     files: pulumi.Input<pulumi.Input<inputs.SnippetFile>[]>;
     /**
-     * Metadata about the snippet.
+     * Provide metadata about the snippet.
      */
     metadata: pulumi.Input<inputs.SnippetMetadata>;
     /**
-     * The identifying name of the snippet.
+     * Identify the snippet.
      */
     snippetName: pulumi.Input<string>;
     /**
-     * The unique ID of the zone.
+     * Use this field to specify the unique ID of the zone.
      */
     zoneId: pulumi.Input<string>;
 }

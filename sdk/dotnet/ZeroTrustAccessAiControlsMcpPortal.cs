@@ -27,6 +27,7 @@ namespace Pulumi.Cloudflare
     ///         Hostname = "exmaple.com",
     ///         Name = "My MCP Portal",
     ///         Description = "This is my custom MCP Portal",
+    ///         SecureWebGateway = false,
     ///         Servers = new[]
     ///         {
     ///             new Cloudflare.Inputs.ZeroTrustAccessAiControlsMcpPortalServerArgs
@@ -91,6 +92,12 @@ namespace Pulumi.Cloudflare
 
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Route outbound MCP traffic through Zero Trust Secure Web Gateway
+        /// </summary>
+        [Output("secureWebGateway")]
+        public Output<bool?> SecureWebGateway { get; private set; } = null!;
 
         [Output("servers")]
         public Output<ImmutableArray<Outputs.ZeroTrustAccessAiControlsMcpPortalServer>> Servers { get; private set; } = null!;
@@ -159,6 +166,12 @@ namespace Pulumi.Cloudflare
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// Route outbound MCP traffic through Zero Trust Secure Web Gateway
+        /// </summary>
+        [Input("secureWebGateway")]
+        public Input<bool>? SecureWebGateway { get; set; }
+
         [Input("servers")]
         private InputList<Inputs.ZeroTrustAccessAiControlsMcpPortalServerArgs>? _servers;
         public InputList<Inputs.ZeroTrustAccessAiControlsMcpPortalServerArgs> Servers
@@ -204,6 +217,12 @@ namespace Pulumi.Cloudflare
 
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Route outbound MCP traffic through Zero Trust Secure Web Gateway
+        /// </summary>
+        [Input("secureWebGateway")]
+        public Input<bool>? SecureWebGateway { get; set; }
 
         [Input("servers")]
         private InputList<Inputs.ZeroTrustAccessAiControlsMcpPortalServerGetArgs>? _servers;

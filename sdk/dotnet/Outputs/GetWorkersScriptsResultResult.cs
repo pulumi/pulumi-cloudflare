@@ -70,11 +70,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.GetWorkersScriptsResultObservabilityResult Observability;
         /// <summary>
-        /// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
+        /// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
         /// </summary>
         public readonly Outputs.GetWorkersScriptsResultPlacementResult Placement;
         /// <summary>
-        /// Available values: "smart".
+        /// Available values: "smart", "targeted".
         /// </summary>
         public readonly string PlacementMode;
         /// <summary>

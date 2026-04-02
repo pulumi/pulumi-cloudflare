@@ -79,6 +79,7 @@ class _AuthenticatedOriginPullsCertificateState:
                  expires_on: Optional[pulumi.Input[_builtins.str]] = None,
                  issuer: Optional[pulumi.Input[_builtins.str]] = None,
                  private_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 serial_number: Optional[pulumi.Input[_builtins.str]] = None,
                  signature: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  uploaded_on: Optional[pulumi.Input[_builtins.str]] = None,
@@ -92,6 +93,7 @@ class _AuthenticatedOriginPullsCertificateState:
         :param pulumi.Input[_builtins.str] expires_on: When the certificate from the authority expires.
         :param pulumi.Input[_builtins.str] issuer: The certificate authority that issued the certificate.
         :param pulumi.Input[_builtins.str] private_key: The zone's private key.
+        :param pulumi.Input[_builtins.str] serial_number: The serial number on the uploaded certificate.
         :param pulumi.Input[_builtins.str] signature: The type of hash used for the certificate.
         :param pulumi.Input[_builtins.str] status: Status of the certificate activation.
                Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
@@ -110,6 +112,8 @@ class _AuthenticatedOriginPullsCertificateState:
             pulumi.set(__self__, "issuer", issuer)
         if private_key is not None:
             pulumi.set(__self__, "private_key", private_key)
+        if serial_number is not None:
+            pulumi.set(__self__, "serial_number", serial_number)
         if signature is not None:
             pulumi.set(__self__, "signature", signature)
         if status is not None:
@@ -190,6 +194,18 @@ class _AuthenticatedOriginPullsCertificateState:
     @private_key.setter
     def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "private_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serialNumber")
+    def serial_number(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The serial number on the uploaded certificate.
+        """
+        return pulumi.get(self, "serial_number")
+
+    @serial_number.setter
+    def serial_number(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "serial_number", value)
 
     @_builtins.property
     @pulumi.getter
@@ -317,7 +333,9 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
 
         ## Import
 
-        > This resource does not currently support `pulumi import`.
+        ```sh
+        $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate example '<zone_id>/<certificate_id>'
+        ```
 
 
         :param str resource_name: The name of the resource.
@@ -398,7 +416,9 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
 
         ## Import
 
-        > This resource does not currently support `pulumi import`.
+        ```sh
+        $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate example '<zone_id>/<certificate_id>'
+        ```
 
 
         :param str resource_name: The name of the resource.
@@ -441,6 +461,7 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
             __props__.__dict__["enabled"] = None
             __props__.__dict__["expires_on"] = None
             __props__.__dict__["issuer"] = None
+            __props__.__dict__["serial_number"] = None
             __props__.__dict__["signature"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["uploaded_on"] = None
@@ -462,6 +483,7 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
             expires_on: Optional[pulumi.Input[_builtins.str]] = None,
             issuer: Optional[pulumi.Input[_builtins.str]] = None,
             private_key: Optional[pulumi.Input[_builtins.str]] = None,
+            serial_number: Optional[pulumi.Input[_builtins.str]] = None,
             signature: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
             uploaded_on: Optional[pulumi.Input[_builtins.str]] = None,
@@ -479,6 +501,7 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] expires_on: When the certificate from the authority expires.
         :param pulumi.Input[_builtins.str] issuer: The certificate authority that issued the certificate.
         :param pulumi.Input[_builtins.str] private_key: The zone's private key.
+        :param pulumi.Input[_builtins.str] serial_number: The serial number on the uploaded certificate.
         :param pulumi.Input[_builtins.str] signature: The type of hash used for the certificate.
         :param pulumi.Input[_builtins.str] status: Status of the certificate activation.
                Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
@@ -495,6 +518,7 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
         __props__.__dict__["expires_on"] = expires_on
         __props__.__dict__["issuer"] = issuer
         __props__.__dict__["private_key"] = private_key
+        __props__.__dict__["serial_number"] = serial_number
         __props__.__dict__["signature"] = signature
         __props__.__dict__["status"] = status
         __props__.__dict__["uploaded_on"] = uploaded_on
@@ -548,6 +572,14 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
         The zone's private key.
         """
         return pulumi.get(self, "private_key")
+
+    @_builtins.property
+    @pulumi.getter(name="serialNumber")
+    def serial_number(self) -> pulumi.Output[_builtins.str]:
+        """
+        The serial number on the uploaded certificate.
+        """
+        return pulumi.get(self, "serial_number")
 
     @_builtins.property
     @pulumi.getter

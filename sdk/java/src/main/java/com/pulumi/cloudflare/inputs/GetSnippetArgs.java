@@ -15,14 +15,14 @@ public final class GetSnippetArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetSnippetArgs Empty = new GetSnippetArgs();
 
     /**
-     * The identifying name of the snippet.
+     * Identify the snippet.
      * 
      */
     @Import(name="snippetName", required=true)
     private Output<String> snippetName;
 
     /**
-     * @return The identifying name of the snippet.
+     * @return Identify the snippet.
      * 
      */
     public Output<String> snippetName() {
@@ -30,14 +30,14 @@ public final class GetSnippetArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The unique ID of the zone.
+     * Use this field to specify the unique ID of the zone.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The unique ID of the zone.
+     * @return Use this field to specify the unique ID of the zone.
      * 
      */
     public Output<String> zoneId() {
@@ -70,7 +70,7 @@ public final class GetSnippetArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param snippetName The identifying name of the snippet.
+         * @param snippetName Identify the snippet.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class GetSnippetArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param snippetName The identifying name of the snippet.
+         * @param snippetName Identify the snippet.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class GetSnippetArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param zoneId The unique ID of the zone.
+         * @param zoneId Use this field to specify the unique ID of the zone.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class GetSnippetArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param zoneId The unique ID of the zone.
+         * @param zoneId Use this field to specify the unique ID of the zone.
          * 
          * @return builder
          * 

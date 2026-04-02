@@ -13,6 +13,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
 
 __all__ = [
     'GetAccountApiTokenPermissionGroupsResult',
@@ -26,7 +27,7 @@ class GetAccountApiTokenPermissionGroupsResult:
     """
     A collection of values returned by getAccountApiTokenPermissionGroups.
     """
-    def __init__(__self__, account_id=None, id=None, name=None, scope=None):
+    def __init__(__self__, account_id=None, id=None, name=None, permission_groups=None, scope=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -36,6 +37,9 @@ class GetAccountApiTokenPermissionGroupsResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if permission_groups and not isinstance(permission_groups, list):
+            raise TypeError("Expected argument 'permission_groups' to be a list")
+        pulumi.set(__self__, "permission_groups", permission_groups)
         if scope and not isinstance(scope, str):
             raise TypeError("Expected argument 'scope' to be a str")
         pulumi.set(__self__, "scope", scope)
@@ -66,6 +70,11 @@ class GetAccountApiTokenPermissionGroupsResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="permissionGroups")
+    def permission_groups(self) -> Sequence['outputs.GetAccountApiTokenPermissionGroupsPermissionGroupResult']:
+        return pulumi.get(self, "permission_groups")
+
+    @_builtins.property
     @pulumi.getter
     def scope(self) -> Optional[_builtins.str]:
         """
@@ -84,6 +93,7 @@ class AwaitableGetAccountApiTokenPermissionGroupsResult(GetAccountApiTokenPermis
             account_id=self.account_id,
             id=self.id,
             name=self.name,
+            permission_groups=self.permission_groups,
             scope=self.scope)
 
 
@@ -121,6 +131,7 @@ def get_account_api_token_permission_groups(account_id: Optional[_builtins.str] 
         account_id=pulumi.get(__ret__, 'account_id'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
+        permission_groups=pulumi.get(__ret__, 'permission_groups'),
         scope=pulumi.get(__ret__, 'scope'))
 def get_account_api_token_permission_groups_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
                                                    name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -155,4 +166,5 @@ def get_account_api_token_permission_groups_output(account_id: Optional[pulumi.I
         account_id=pulumi.get(__response__, 'account_id'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
+        permission_groups=pulumi.get(__response__, 'permission_groups'),
         scope=pulumi.get(__response__, 'scope')))

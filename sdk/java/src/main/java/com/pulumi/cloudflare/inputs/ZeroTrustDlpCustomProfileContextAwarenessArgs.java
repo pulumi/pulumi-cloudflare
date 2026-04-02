@@ -6,9 +6,10 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomProfileContextAwarenessSkipArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ZeroTrustDlpCustomProfileContextAwarenessArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,30 +20,30 @@ public final class ZeroTrustDlpCustomProfileContextAwarenessArgs extends com.pul
      * If true, scan the context of predefined entries to only return matches surrounded by keywords.
      * 
      */
-    @Import(name="enabled", required=true)
-    private Output<Boolean> enabled;
+    @Import(name="enabled")
+    private @Nullable Output<Boolean> enabled;
 
     /**
      * @return If true, scan the context of predefined entries to only return matches surrounded by keywords.
      * 
      */
-    public Output<Boolean> enabled() {
-        return this.enabled;
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
     }
 
     /**
      * Content types to exclude from context analysis and return all matches.
      * 
      */
-    @Import(name="skip", required=true)
-    private Output<ZeroTrustDlpCustomProfileContextAwarenessSkipArgs> skip;
+    @Import(name="skip")
+    private @Nullable Output<ZeroTrustDlpCustomProfileContextAwarenessSkipArgs> skip;
 
     /**
      * @return Content types to exclude from context analysis and return all matches.
      * 
      */
-    public Output<ZeroTrustDlpCustomProfileContextAwarenessSkipArgs> skip() {
-        return this.skip;
+    public Optional<Output<ZeroTrustDlpCustomProfileContextAwarenessSkipArgs>> skip() {
+        return Optional.ofNullable(this.skip);
     }
 
     private ZeroTrustDlpCustomProfileContextAwarenessArgs() {}
@@ -76,7 +77,7 @@ public final class ZeroTrustDlpCustomProfileContextAwarenessArgs extends com.pul
          * @return builder
          * 
          */
-        public Builder enabled(Output<Boolean> enabled) {
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
@@ -97,7 +98,7 @@ public final class ZeroTrustDlpCustomProfileContextAwarenessArgs extends com.pul
          * @return builder
          * 
          */
-        public Builder skip(Output<ZeroTrustDlpCustomProfileContextAwarenessSkipArgs> skip) {
+        public Builder skip(@Nullable Output<ZeroTrustDlpCustomProfileContextAwarenessSkipArgs> skip) {
             $.skip = skip;
             return this;
         }
@@ -113,12 +114,6 @@ public final class ZeroTrustDlpCustomProfileContextAwarenessArgs extends com.pul
         }
 
         public ZeroTrustDlpCustomProfileContextAwarenessArgs build() {
-            if ($.enabled == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustDlpCustomProfileContextAwarenessArgs", "enabled");
-            }
-            if ($.skip == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustDlpCustomProfileContextAwarenessArgs", "skip");
-            }
             return $;
         }
     }

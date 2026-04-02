@@ -20,6 +20,33 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * resource &#34;cloudflare.AccountToken&#34; &#34;exampleAccountToken&#34; {
+ *   accountId = &#34;b67e14daa5f8dceeb91fe5449ba496eb&#34;
+ *   name       = &#34;workers read-only token&#34;
+ * 
+ *   policies = [{
+ *     effect = &#34;allow&#34;
+ *     permissionGroups = [{
+ *       id = &#34;1a71c399035b4950a1bd1466bbe4f420&#34;
+ *       }, {
+ *       id = &#34;8b47d2786a534c08a1f94ee8f9f599ef&#34;
+ *     }]
+ *     resources = jsonencode({
+ *       &#34;com.cloudflare.api.account.b67e14daa5f8dceeb91fe5449ba496eb&#34; = &#34;*&#34;
+ *     })
+ *   }]
+ * 
+ *   condition = {
+ *     requestIp = {
+ *       in     = [&#34;123.123.123.0/24&#34;, &#34;2606:4700::/32&#34;]
+ *       notIn = [&#34;123.123.123.0/28&#34;, &#34;2606:4700:4700::/48&#34;]
+ *     }
+ *   }
+ * 
+ *   expiresOn = &#34;2027-10-01T00:00:00Z&#34;
+ *   notBefore = &#34;2025-10-01T00:00:00Z&#34;
+ * }
+ * 
  * ## Import
  * 
  * ```sh

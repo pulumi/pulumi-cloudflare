@@ -13,7 +13,7 @@ import java.util.Objects;
 public final class GetPageShieldPolicyResult {
     /**
      * @return The action to take if the expression matches
-     * Available values: &#34;allow&#34;, &#34;log&#34;.
+     * Available values: &#34;allow&#34;, &#34;log&#34;, &#34;add*reporting*directives&#34;.
      * 
      */
     private String action;
@@ -56,7 +56,7 @@ public final class GetPageShieldPolicyResult {
     private GetPageShieldPolicyResult() {}
     /**
      * @return The action to take if the expression matches
-     * Available values: &#34;allow&#34;, &#34;log&#34;.
+     * Available values: &#34;allow&#34;, &#34;log&#34;, &#34;add*reporting*directives&#34;.
      * 
      */
     public String action() {

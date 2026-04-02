@@ -131,14 +131,14 @@ public class DlpCustomProfile extends com.pulumi.resources.CustomResource {
      */
     @Deprecated /* This attribute is deprecated. */
     @Export(name="contextAwareness", refs={DlpCustomProfileContextAwareness.class}, tree="[0]")
-    private Output</* @Nullable */ DlpCustomProfileContextAwareness> contextAwareness;
+    private Output<DlpCustomProfileContextAwareness> contextAwareness;
 
     /**
      * @return Scan the context of predefined entries to only return matches surrounded by keywords.
      * 
      */
-    public Output<Optional<DlpCustomProfileContextAwareness>> contextAwareness() {
-        return Codegen.optional(this.contextAwareness);
+    public Output<DlpCustomProfileContextAwareness> contextAwareness() {
+        return this.contextAwareness;
     }
     /**
      * When the profile was created.

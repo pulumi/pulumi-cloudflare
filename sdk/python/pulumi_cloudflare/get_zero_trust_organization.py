@@ -27,7 +27,7 @@ class GetZeroTrustOrganizationResult:
     """
     A collection of values returned by getZeroTrustOrganization.
     """
-    def __init__(__self__, account_id=None, allow_authenticate_via_warp=None, auth_domain=None, auto_redirect_to_identity=None, custom_pages=None, id=None, is_ui_read_only=None, login_design=None, name=None, session_duration=None, ui_read_only_toggle_reason=None, user_seat_expiration_inactive_time=None, warp_auth_session_duration=None, zone_id=None):
+    def __init__(__self__, account_id=None, allow_authenticate_via_warp=None, auth_domain=None, auto_redirect_to_identity=None, custom_pages=None, deny_unmatched_requests=None, deny_unmatched_requests_exempted_zone_names=None, id=None, is_ui_read_only=None, login_design=None, mfa_config=None, mfa_configuration_allowed=None, mfa_required_for_all_apps=None, name=None, session_duration=None, ui_read_only_toggle_reason=None, user_seat_expiration_inactive_time=None, warp_auth_session_duration=None, zone_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -43,6 +43,12 @@ class GetZeroTrustOrganizationResult:
         if custom_pages and not isinstance(custom_pages, dict):
             raise TypeError("Expected argument 'custom_pages' to be a dict")
         pulumi.set(__self__, "custom_pages", custom_pages)
+        if deny_unmatched_requests and not isinstance(deny_unmatched_requests, bool):
+            raise TypeError("Expected argument 'deny_unmatched_requests' to be a bool")
+        pulumi.set(__self__, "deny_unmatched_requests", deny_unmatched_requests)
+        if deny_unmatched_requests_exempted_zone_names and not isinstance(deny_unmatched_requests_exempted_zone_names, list):
+            raise TypeError("Expected argument 'deny_unmatched_requests_exempted_zone_names' to be a list")
+        pulumi.set(__self__, "deny_unmatched_requests_exempted_zone_names", deny_unmatched_requests_exempted_zone_names)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -52,6 +58,15 @@ class GetZeroTrustOrganizationResult:
         if login_design and not isinstance(login_design, dict):
             raise TypeError("Expected argument 'login_design' to be a dict")
         pulumi.set(__self__, "login_design", login_design)
+        if mfa_config and not isinstance(mfa_config, dict):
+            raise TypeError("Expected argument 'mfa_config' to be a dict")
+        pulumi.set(__self__, "mfa_config", mfa_config)
+        if mfa_configuration_allowed and not isinstance(mfa_configuration_allowed, bool):
+            raise TypeError("Expected argument 'mfa_configuration_allowed' to be a bool")
+        pulumi.set(__self__, "mfa_configuration_allowed", mfa_configuration_allowed)
+        if mfa_required_for_all_apps and not isinstance(mfa_required_for_all_apps, bool):
+            raise TypeError("Expected argument 'mfa_required_for_all_apps' to be a bool")
+        pulumi.set(__self__, "mfa_required_for_all_apps", mfa_required_for_all_apps)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -109,6 +124,22 @@ class GetZeroTrustOrganizationResult:
         return pulumi.get(self, "custom_pages")
 
     @_builtins.property
+    @pulumi.getter(name="denyUnmatchedRequests")
+    def deny_unmatched_requests(self) -> _builtins.bool:
+        """
+        Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.
+        """
+        return pulumi.get(self, "deny_unmatched_requests")
+
+    @_builtins.property
+    @pulumi.getter(name="denyUnmatchedRequestsExemptedZoneNames")
+    def deny_unmatched_requests_exempted_zone_names(self) -> Sequence[_builtins.str]:
+        """
+        Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+        """
+        return pulumi.get(self, "deny_unmatched_requests_exempted_zone_names")
+
+    @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
@@ -128,6 +159,30 @@ class GetZeroTrustOrganizationResult:
     @pulumi.getter(name="loginDesign")
     def login_design(self) -> 'outputs.GetZeroTrustOrganizationLoginDesignResult':
         return pulumi.get(self, "login_design")
+
+    @_builtins.property
+    @pulumi.getter(name="mfaConfig")
+    def mfa_config(self) -> 'outputs.GetZeroTrustOrganizationMfaConfigResult':
+        """
+        Configures multi-factor authentication (MFA) settings for an organization.
+        """
+        return pulumi.get(self, "mfa_config")
+
+    @_builtins.property
+    @pulumi.getter(name="mfaConfigurationAllowed")
+    def mfa_configuration_allowed(self) -> _builtins.bool:
+        """
+        Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
+        """
+        return pulumi.get(self, "mfa_configuration_allowed")
+
+    @_builtins.property
+    @pulumi.getter(name="mfaRequiredForAllApps")
+    def mfa_required_for_all_apps(self) -> _builtins.bool:
+        """
+        Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+        """
+        return pulumi.get(self, "mfa_required_for_all_apps")
 
     @_builtins.property
     @pulumi.getter
@@ -189,9 +244,14 @@ class AwaitableGetZeroTrustOrganizationResult(GetZeroTrustOrganizationResult):
             auth_domain=self.auth_domain,
             auto_redirect_to_identity=self.auto_redirect_to_identity,
             custom_pages=self.custom_pages,
+            deny_unmatched_requests=self.deny_unmatched_requests,
+            deny_unmatched_requests_exempted_zone_names=self.deny_unmatched_requests_exempted_zone_names,
             id=self.id,
             is_ui_read_only=self.is_ui_read_only,
             login_design=self.login_design,
+            mfa_config=self.mfa_config,
+            mfa_configuration_allowed=self.mfa_configuration_allowed,
+            mfa_required_for_all_apps=self.mfa_required_for_all_apps,
             name=self.name,
             session_duration=self.session_duration,
             ui_read_only_toggle_reason=self.ui_read_only_toggle_reason,
@@ -230,9 +290,14 @@ def get_zero_trust_organization(account_id: Optional[_builtins.str] = None,
         auth_domain=pulumi.get(__ret__, 'auth_domain'),
         auto_redirect_to_identity=pulumi.get(__ret__, 'auto_redirect_to_identity'),
         custom_pages=pulumi.get(__ret__, 'custom_pages'),
+        deny_unmatched_requests=pulumi.get(__ret__, 'deny_unmatched_requests'),
+        deny_unmatched_requests_exempted_zone_names=pulumi.get(__ret__, 'deny_unmatched_requests_exempted_zone_names'),
         id=pulumi.get(__ret__, 'id'),
         is_ui_read_only=pulumi.get(__ret__, 'is_ui_read_only'),
         login_design=pulumi.get(__ret__, 'login_design'),
+        mfa_config=pulumi.get(__ret__, 'mfa_config'),
+        mfa_configuration_allowed=pulumi.get(__ret__, 'mfa_configuration_allowed'),
+        mfa_required_for_all_apps=pulumi.get(__ret__, 'mfa_required_for_all_apps'),
         name=pulumi.get(__ret__, 'name'),
         session_duration=pulumi.get(__ret__, 'session_duration'),
         ui_read_only_toggle_reason=pulumi.get(__ret__, 'ui_read_only_toggle_reason'),
@@ -268,9 +333,14 @@ def get_zero_trust_organization_output(account_id: Optional[pulumi.Input[Optiona
         auth_domain=pulumi.get(__response__, 'auth_domain'),
         auto_redirect_to_identity=pulumi.get(__response__, 'auto_redirect_to_identity'),
         custom_pages=pulumi.get(__response__, 'custom_pages'),
+        deny_unmatched_requests=pulumi.get(__response__, 'deny_unmatched_requests'),
+        deny_unmatched_requests_exempted_zone_names=pulumi.get(__response__, 'deny_unmatched_requests_exempted_zone_names'),
         id=pulumi.get(__response__, 'id'),
         is_ui_read_only=pulumi.get(__response__, 'is_ui_read_only'),
         login_design=pulumi.get(__response__, 'login_design'),
+        mfa_config=pulumi.get(__response__, 'mfa_config'),
+        mfa_configuration_allowed=pulumi.get(__response__, 'mfa_configuration_allowed'),
+        mfa_required_for_all_apps=pulumi.get(__response__, 'mfa_required_for_all_apps'),
         name=pulumi.get(__response__, 'name'),
         session_duration=pulumi.get(__response__, 'session_duration'),
         ui_read_only_toggle_reason=pulumi.get(__response__, 'ui_read_only_toggle_reason'),

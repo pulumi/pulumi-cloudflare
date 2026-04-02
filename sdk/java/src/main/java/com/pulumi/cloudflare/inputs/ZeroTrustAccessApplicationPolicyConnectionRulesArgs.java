@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationPolicyConnectionRulesRdpArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationPolicyConnectionRulesSshArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -14,6 +15,21 @@ import javax.annotation.Nullable;
 public final class ZeroTrustAccessApplicationPolicyConnectionRulesArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ZeroTrustAccessApplicationPolicyConnectionRulesArgs Empty = new ZeroTrustAccessApplicationPolicyConnectionRulesArgs();
+
+    /**
+     * The RDP-specific rules that define clipboard behavior for RDP connections.
+     * 
+     */
+    @Import(name="rdp")
+    private @Nullable Output<ZeroTrustAccessApplicationPolicyConnectionRulesRdpArgs> rdp;
+
+    /**
+     * @return The RDP-specific rules that define clipboard behavior for RDP connections.
+     * 
+     */
+    public Optional<Output<ZeroTrustAccessApplicationPolicyConnectionRulesRdpArgs>> rdp() {
+        return Optional.ofNullable(this.rdp);
+    }
 
     /**
      * The SSH-specific rules that define how users may connect to the targets secured by your application.
@@ -33,6 +49,7 @@ public final class ZeroTrustAccessApplicationPolicyConnectionRulesArgs extends c
     private ZeroTrustAccessApplicationPolicyConnectionRulesArgs() {}
 
     private ZeroTrustAccessApplicationPolicyConnectionRulesArgs(ZeroTrustAccessApplicationPolicyConnectionRulesArgs $) {
+        this.rdp = $.rdp;
         this.ssh = $.ssh;
     }
 
@@ -52,6 +69,27 @@ public final class ZeroTrustAccessApplicationPolicyConnectionRulesArgs extends c
 
         public Builder(ZeroTrustAccessApplicationPolicyConnectionRulesArgs defaults) {
             $ = new ZeroTrustAccessApplicationPolicyConnectionRulesArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param rdp The RDP-specific rules that define clipboard behavior for RDP connections.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rdp(@Nullable Output<ZeroTrustAccessApplicationPolicyConnectionRulesRdpArgs> rdp) {
+            $.rdp = rdp;
+            return this;
+        }
+
+        /**
+         * @param rdp The RDP-specific rules that define clipboard behavior for RDP connections.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rdp(ZeroTrustAccessApplicationPolicyConnectionRulesRdpArgs rdp) {
+            return rdp(Output.of(rdp));
         }
 
         /**

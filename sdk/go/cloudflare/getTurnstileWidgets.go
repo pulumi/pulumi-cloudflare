@@ -28,6 +28,7 @@ import (
 //			_, err := cloudflare.LookupTurnstileWidgets(ctx, &cloudflare.LookupTurnstileWidgetsArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				Direction: pulumi.StringRef("asc"),
+//				Filter:    pulumi.StringRef("name:my-widget"),
 //				Order:     pulumi.StringRef("id"),
 //			}, nil)
 //			if err != nil {
@@ -55,11 +56,11 @@ type LookupTurnstileWidgetsArgs struct {
 	// Direction to order widgets.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
-	// Max items to fetch, default: 1000
-	MaxItems *int `pulumi:"maxItems"`
-	// Field to order widgets by.
-	// Available values: "id", "sitekey", "name", "created*on", "modified*on".
-	Order *string `pulumi:"order"`
+	// Filter widgets by field using case-insensitive substring matching.
+	// Format: `field:value`
+	Filter   *string `pulumi:"filter"`
+	MaxItems *int    `pulumi:"maxItems"`
+	Order    *string `pulumi:"order"`
 }
 
 // A collection of values returned by getTurnstileWidgets.
@@ -69,15 +70,14 @@ type LookupTurnstileWidgetsResult struct {
 	// Direction to order widgets.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
+	// Filter widgets by field using case-insensitive substring matching.
+	// Format: `field:value`
+	Filter *string `pulumi:"filter"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Max items to fetch, default: 1000
-	MaxItems *int `pulumi:"maxItems"`
-	// Field to order widgets by.
-	// Available values: "id", "sitekey", "name", "created*on", "modified*on".
-	Order *string `pulumi:"order"`
-	// The items returned by the data source
-	Results []GetTurnstileWidgetsResult `pulumi:"results"`
+	Id       string                      `pulumi:"id"`
+	MaxItems *int                        `pulumi:"maxItems"`
+	Order    *string                     `pulumi:"order"`
+	Results  []GetTurnstileWidgetsResult `pulumi:"results"`
 }
 
 func LookupTurnstileWidgetsOutput(ctx *pulumi.Context, args LookupTurnstileWidgetsOutputArgs, opts ...pulumi.InvokeOption) LookupTurnstileWidgetsResultOutput {
@@ -96,11 +96,11 @@ type LookupTurnstileWidgetsOutputArgs struct {
 	// Direction to order widgets.
 	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
-	// Max items to fetch, default: 1000
-	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// Field to order widgets by.
-	// Available values: "id", "sitekey", "name", "created*on", "modified*on".
-	Order pulumi.StringPtrInput `pulumi:"order"`
+	// Filter widgets by field using case-insensitive substring matching.
+	// Format: `field:value`
+	Filter   pulumi.StringPtrInput `pulumi:"filter"`
+	MaxItems pulumi.IntPtrInput    `pulumi:"maxItems"`
+	Order    pulumi.StringPtrInput `pulumi:"order"`
 }
 
 func (LookupTurnstileWidgetsOutputArgs) ElementType() reflect.Type {
@@ -133,23 +133,25 @@ func (o LookupTurnstileWidgetsResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupTurnstileWidgetsResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
 
+// Filter widgets by field using case-insensitive substring matching.
+// Format: `field:value`
+func (o LookupTurnstileWidgetsResultOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupTurnstileWidgetsResult) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o LookupTurnstileWidgetsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTurnstileWidgetsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Max items to fetch, default: 1000
 func (o LookupTurnstileWidgetsResultOutput) MaxItems() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupTurnstileWidgetsResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
 }
 
-// Field to order widgets by.
-// Available values: "id", "sitekey", "name", "created*on", "modified*on".
 func (o LookupTurnstileWidgetsResultOutput) Order() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupTurnstileWidgetsResult) *string { return v.Order }).(pulumi.StringPtrOutput)
 }
 
-// The items returned by the data source
 func (o LookupTurnstileWidgetsResultOutput) Results() GetTurnstileWidgetsResultArrayOutput {
 	return o.ApplyT(func(v LookupTurnstileWidgetsResult) []GetTurnstileWidgetsResult { return v.Results }).(GetTurnstileWidgetsResultArrayOutput)
 }

@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
 
@@ -22,14 +21,12 @@ public final class GetHostnameTlsSettingResult {
      */
     private String hostname;
     /**
-     * @return The TLS Setting name.
-     * Available values: &#34;ciphers&#34;, &#34;min*tls*version&#34;, &#34;http2&#34;.
+     * @return The TLS Setting name. The value type depends on the setting:
      * 
      */
     private String id;
     /**
-     * @return The TLS Setting name.
-     * Available values: &#34;ciphers&#34;, &#34;min*tls*version&#34;, &#34;http2&#34;.
+     * @return The TLS Setting name. The value type depends on the setting:
      * 
      */
     private String settingId;
@@ -44,10 +41,10 @@ public final class GetHostnameTlsSettingResult {
      */
     private String updatedAt;
     /**
-     * @return The tls setting value.
+     * @return The TLS setting value. The type depends on the `settingId` used in the request path:
      * 
      */
-    private Double value;
+    private String value;
     /**
      * @return Identifier.
      * 
@@ -70,16 +67,14 @@ public final class GetHostnameTlsSettingResult {
         return this.hostname;
     }
     /**
-     * @return The TLS Setting name.
-     * Available values: &#34;ciphers&#34;, &#34;min*tls*version&#34;, &#34;http2&#34;.
+     * @return The TLS Setting name. The value type depends on the setting:
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The TLS Setting name.
-     * Available values: &#34;ciphers&#34;, &#34;min*tls*version&#34;, &#34;http2&#34;.
+     * @return The TLS Setting name. The value type depends on the setting:
      * 
      */
     public String settingId() {
@@ -100,10 +95,10 @@ public final class GetHostnameTlsSettingResult {
         return this.updatedAt;
     }
     /**
-     * @return The tls setting value.
+     * @return The TLS setting value. The type depends on the `settingId` used in the request path:
      * 
      */
-    public Double value() {
+    public String value() {
         return this.value;
     }
     /**
@@ -129,7 +124,7 @@ public final class GetHostnameTlsSettingResult {
         private String settingId;
         private String status;
         private String updatedAt;
-        private Double value;
+        private String value;
         private String zoneId;
         public Builder() {}
         public Builder(GetHostnameTlsSettingResult defaults) {
@@ -193,7 +188,7 @@ public final class GetHostnameTlsSettingResult {
             return this;
         }
         @CustomType.Setter
-        public Builder value(Double value) {
+        public Builder value(String value) {
             if (value == null) {
               throw new MissingRequiredPropertyException("GetHostnameTlsSettingResult", "value");
             }

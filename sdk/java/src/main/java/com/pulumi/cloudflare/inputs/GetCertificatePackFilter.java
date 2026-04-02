@@ -15,6 +15,23 @@ public final class GetCertificatePackFilter extends com.pulumi.resources.InvokeA
     public static final GetCertificatePackFilter Empty = new GetCertificatePackFilter();
 
     /**
+     * Specify the deployment environment for the certificate packs.
+     * Available values: &#34;staging&#34;, &#34;production&#34;.
+     * 
+     */
+    @Import(name="deploy")
+    private @Nullable String deploy;
+
+    /**
+     * @return Specify the deployment environment for the certificate packs.
+     * Available values: &#34;staging&#34;, &#34;production&#34;.
+     * 
+     */
+    public Optional<String> deploy() {
+        return Optional.ofNullable(this.deploy);
+    }
+
+    /**
      * Include Certificate Packs of all statuses, not just active ones.
      * Available values: &#34;all&#34;.
      * 
@@ -34,6 +51,7 @@ public final class GetCertificatePackFilter extends com.pulumi.resources.InvokeA
     private GetCertificatePackFilter() {}
 
     private GetCertificatePackFilter(GetCertificatePackFilter $) {
+        this.deploy = $.deploy;
         this.status = $.status;
     }
 
@@ -53,6 +71,18 @@ public final class GetCertificatePackFilter extends com.pulumi.resources.InvokeA
 
         public Builder(GetCertificatePackFilter defaults) {
             $ = new GetCertificatePackFilter(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param deploy Specify the deployment environment for the certificate packs.
+         * Available values: &#34;staging&#34;, &#34;production&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deploy(@Nullable String deploy) {
+            $.deploy = deploy;
+            return this;
         }
 
         /**

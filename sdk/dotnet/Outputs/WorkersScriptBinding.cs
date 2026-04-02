@@ -124,6 +124,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Service;
         /// <summary>
+        /// A simple rate limit.
+        /// </summary>
+        public readonly Outputs.WorkersScriptBindingSimple? Simple;
+        /// <summary>
         /// ID of the store containing the secret.
         /// </summary>
         public readonly string? StoreId;
@@ -205,6 +209,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? service,
 
+            Outputs.WorkersScriptBindingSimple? simple,
+
             string? storeId,
 
             string? text,
@@ -244,6 +250,7 @@ namespace Pulumi.Cloudflare.Outputs
             ScriptName = scriptName;
             SecretName = secretName;
             Service = service;
+            Simple = simple;
             StoreId = storeId;
             Text = text;
             Type = type;

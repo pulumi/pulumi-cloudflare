@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class SnippetMetadata {
     /**
-     * @return Name of the file that contains the main module of the snippet.
+     * @return Specify the name of the file that contains the main module of the snippet.
      * 
      */
     private String mainModule;
 
     private SnippetMetadata() {}
     /**
-     * @return Name of the file that contains the main module of the snippet.
+     * @return Specify the name of the file that contains the main module of the snippet.
      * 
      */
     public String mainModule() {

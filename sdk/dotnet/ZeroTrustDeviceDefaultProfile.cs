@@ -172,7 +172,7 @@ namespace Pulumi.Cloudflare
         public Output<bool> SccmVpnBoundarySupport { get; private set; } = null!;
 
         [Output("serviceModeV2")]
-        public Output<Outputs.ZeroTrustDeviceDefaultProfileServiceModeV2?> ServiceModeV2 { get; private set; } = null!;
+        public Output<Outputs.ZeroTrustDeviceDefaultProfileServiceModeV2> ServiceModeV2 { get; private set; } = null!;
 
         /// <summary>
         /// The URL to launch when the Send Feedback button is clicked.

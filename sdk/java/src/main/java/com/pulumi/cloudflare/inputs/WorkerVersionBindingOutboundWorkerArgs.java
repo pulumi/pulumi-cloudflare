@@ -16,6 +16,21 @@ public final class WorkerVersionBindingOutboundWorkerArgs extends com.pulumi.res
     public static final WorkerVersionBindingOutboundWorkerArgs Empty = new WorkerVersionBindingOutboundWorkerArgs();
 
     /**
+     * Entrypoint to invoke on the outbound worker.
+     * 
+     */
+    @Import(name="entrypoint")
+    private @Nullable Output<String> entrypoint;
+
+    /**
+     * @return Entrypoint to invoke on the outbound worker.
+     * 
+     */
+    public Optional<Output<String>> entrypoint() {
+        return Optional.ofNullable(this.entrypoint);
+    }
+
+    /**
      * Environment of the outbound worker.
      * 
      */
@@ -48,6 +63,7 @@ public final class WorkerVersionBindingOutboundWorkerArgs extends com.pulumi.res
     private WorkerVersionBindingOutboundWorkerArgs() {}
 
     private WorkerVersionBindingOutboundWorkerArgs(WorkerVersionBindingOutboundWorkerArgs $) {
+        this.entrypoint = $.entrypoint;
         this.environment = $.environment;
         this.service = $.service;
     }
@@ -68,6 +84,27 @@ public final class WorkerVersionBindingOutboundWorkerArgs extends com.pulumi.res
 
         public Builder(WorkerVersionBindingOutboundWorkerArgs defaults) {
             $ = new WorkerVersionBindingOutboundWorkerArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param entrypoint Entrypoint to invoke on the outbound worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder entrypoint(@Nullable Output<String> entrypoint) {
+            $.entrypoint = entrypoint;
+            return this;
+        }
+
+        /**
+         * @param entrypoint Entrypoint to invoke on the outbound worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder entrypoint(String entrypoint) {
+            return entrypoint(Output.of(entrypoint));
         }
 
         /**

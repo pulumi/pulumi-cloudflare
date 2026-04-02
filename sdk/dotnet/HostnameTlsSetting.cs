@@ -25,11 +25,7 @@ namespace Pulumi.Cloudflare
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         SettingId = "ciphers",
     ///         Hostname = "app.example.com",
-    ///         Value = new[]
-    ///         {
-    ///             "ECDHE-RSA-AES128-GCM-SHA256",
-    ///             "AES128-GCM-SHA256",
-    ///         },
+    ///         Value = "1.0",
     ///     });
     /// 
     /// });
@@ -57,8 +53,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Hostname { get; private set; } = null!;
 
         /// <summary>
-        /// The TLS Setting name.
-        /// Available values: "ciphers", "min*tls*version", "http2".
+        /// The TLS Setting name. The value type depends on the setting:
         /// </summary>
         [Output("settingId")]
         public Output<string> SettingId { get; private set; } = null!;
@@ -76,7 +71,7 @@ namespace Pulumi.Cloudflare
         public Output<string> UpdatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// The tls setting value.
+        /// The TLS setting value. The type depends on the `SettingId` used in the request path:
         /// </summary>
         [Output("value")]
         public Output<object> Value { get; private set; } = null!;
@@ -140,14 +135,13 @@ namespace Pulumi.Cloudflare
         public Input<string> Hostname { get; set; } = null!;
 
         /// <summary>
-        /// The TLS Setting name.
-        /// Available values: "ciphers", "min*tls*version", "http2".
+        /// The TLS Setting name. The value type depends on the setting:
         /// </summary>
         [Input("settingId", required: true)]
         public Input<string> SettingId { get; set; } = null!;
 
         /// <summary>
-        /// The tls setting value.
+        /// The TLS setting value. The type depends on the `SettingId` used in the request path:
         /// </summary>
         [Input("value", required: true)]
         public Input<object> Value { get; set; } = null!;
@@ -179,8 +173,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Hostname { get; set; }
 
         /// <summary>
-        /// The TLS Setting name.
-        /// Available values: "ciphers", "min*tls*version", "http2".
+        /// The TLS Setting name. The value type depends on the setting:
         /// </summary>
         [Input("settingId")]
         public Input<string>? SettingId { get; set; }
@@ -198,7 +191,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? UpdatedAt { get; set; }
 
         /// <summary>
-        /// The tls setting value.
+        /// The TLS setting value. The type depends on the `SettingId` used in the request path:
         /// </summary>
         [Input("value")]
         public Input<object>? Value { get; set; }

@@ -17,6 +17,36 @@ public final class CertificatePackValidationRecordArgs extends com.pulumi.resour
     public static final CertificatePackValidationRecordArgs Empty = new CertificatePackValidationRecordArgs();
 
     /**
+     * The CNAME record hostname for DCV delegation.
+     * 
+     */
+    @Import(name="cname")
+    private @Nullable Output<String> cname;
+
+    /**
+     * @return The CNAME record hostname for DCV delegation.
+     * 
+     */
+    public Optional<Output<String>> cname() {
+        return Optional.ofNullable(this.cname);
+    }
+
+    /**
+     * The CNAME record target value for DCV delegation.
+     * 
+     */
+    @Import(name="cnameTarget")
+    private @Nullable Output<String> cnameTarget;
+
+    /**
+     * @return The CNAME record target value for DCV delegation.
+     * 
+     */
+    public Optional<Output<String>> cnameTarget() {
+        return Optional.ofNullable(this.cnameTarget);
+    }
+
+    /**
      * The set of email addresses that the certificate authority (CA) will use to complete domain validation.
      * 
      */
@@ -62,6 +92,21 @@ public final class CertificatePackValidationRecordArgs extends com.pulumi.resour
     }
 
     /**
+     * Status of the validation record.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return Status of the validation record.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
+    /**
      * The hostname that the certificate authority (CA) will check for a TXT record during domain validation .
      * 
      */
@@ -94,9 +139,12 @@ public final class CertificatePackValidationRecordArgs extends com.pulumi.resour
     private CertificatePackValidationRecordArgs() {}
 
     private CertificatePackValidationRecordArgs(CertificatePackValidationRecordArgs $) {
+        this.cname = $.cname;
+        this.cnameTarget = $.cnameTarget;
         this.emails = $.emails;
         this.httpBody = $.httpBody;
         this.httpUrl = $.httpUrl;
+        this.status = $.status;
         this.txtName = $.txtName;
         this.txtValue = $.txtValue;
     }
@@ -117,6 +165,48 @@ public final class CertificatePackValidationRecordArgs extends com.pulumi.resour
 
         public Builder(CertificatePackValidationRecordArgs defaults) {
             $ = new CertificatePackValidationRecordArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param cname The CNAME record hostname for DCV delegation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cname(@Nullable Output<String> cname) {
+            $.cname = cname;
+            return this;
+        }
+
+        /**
+         * @param cname The CNAME record hostname for DCV delegation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cname(String cname) {
+            return cname(Output.of(cname));
+        }
+
+        /**
+         * @param cnameTarget The CNAME record target value for DCV delegation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cnameTarget(@Nullable Output<String> cnameTarget) {
+            $.cnameTarget = cnameTarget;
+            return this;
+        }
+
+        /**
+         * @param cnameTarget The CNAME record target value for DCV delegation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cnameTarget(String cnameTarget) {
+            return cnameTarget(Output.of(cnameTarget));
         }
 
         /**
@@ -190,6 +280,27 @@ public final class CertificatePackValidationRecordArgs extends com.pulumi.resour
          */
         public Builder httpUrl(String httpUrl) {
             return httpUrl(Output.of(httpUrl));
+        }
+
+        /**
+         * @param status Status of the validation record.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status Status of the validation record.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
         }
 
         /**

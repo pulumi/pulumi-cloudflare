@@ -64,6 +64,10 @@ export interface GetCertificatePackResult {
      * Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
      */
     readonly cloudflareBranding: boolean;
+    /**
+     * DCV Delegation records for domain validation.
+     */
+    readonly dcvDelegationRecords: outputs.GetCertificatePackDcvDelegationRecord[];
     readonly filter?: outputs.GetCertificatePackFilter;
     /**
      * Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.

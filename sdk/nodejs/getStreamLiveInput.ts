@@ -58,6 +58,10 @@ export interface GetStreamLiveInputResult {
      */
     readonly deleteRecordingAfterDays: number;
     /**
+     * Indicates whether the live input is enabled and can accept streams.
+     */
+    readonly enabled: boolean;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;

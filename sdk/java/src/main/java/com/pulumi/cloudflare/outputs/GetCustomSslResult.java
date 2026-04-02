@@ -57,30 +57,15 @@ public final class GetCustomSslResult {
      */
     private String modifiedOn;
     /**
-     * @return Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as &#39;country: IN&#39;, as well as &#39;region: EU&#39; which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+     * @return The policy restrictions returned by the API. This field is returned in responses
+     * when a policy has been set. The API accepts the &#34;policy&#34; field in requests but
+     * returns this field as &#34;policyRestrictions&#34; in responses.
      * 
      */
-    private String policy;
-    /**
-     * @return The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping &#39;legacy*custom&#39; certificates, but &#39;legacy*custom&#39; certificates will always supercede &#39;sni_custom&#39; certificates.
-     * 
-     */
+    private String policyRestrictions;
     private Double priority;
-    /**
-     * @return The type of hash used for the certificate.
-     * 
-     */
     private String signature;
-    /**
-     * @return Status of the zone&#39;s custom SSL.
-     * Available values: &#34;active&#34;, &#34;expired&#34;, &#34;deleted&#34;, &#34;pending&#34;, &#34;initializing&#34;.
-     * 
-     */
     private String status;
-    /**
-     * @return When the certificate was uploaded to Cloudflare.
-     * 
-     */
     private String uploadedOn;
     /**
      * @return Identifier.
@@ -149,38 +134,23 @@ public final class GetCustomSslResult {
         return this.modifiedOn;
     }
     /**
-     * @return Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as &#39;country: IN&#39;, as well as &#39;region: EU&#39; which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+     * @return The policy restrictions returned by the API. This field is returned in responses
+     * when a policy has been set. The API accepts the &#34;policy&#34; field in requests but
+     * returns this field as &#34;policyRestrictions&#34; in responses.
      * 
      */
-    public String policy() {
-        return this.policy;
+    public String policyRestrictions() {
+        return this.policyRestrictions;
     }
-    /**
-     * @return The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping &#39;legacy*custom&#39; certificates, but &#39;legacy*custom&#39; certificates will always supercede &#39;sni_custom&#39; certificates.
-     * 
-     */
     public Double priority() {
         return this.priority;
     }
-    /**
-     * @return The type of hash used for the certificate.
-     * 
-     */
     public String signature() {
         return this.signature;
     }
-    /**
-     * @return Status of the zone&#39;s custom SSL.
-     * Available values: &#34;active&#34;, &#34;expired&#34;, &#34;deleted&#34;, &#34;pending&#34;, &#34;initializing&#34;.
-     * 
-     */
     public String status() {
         return this.status;
     }
-    /**
-     * @return When the certificate was uploaded to Cloudflare.
-     * 
-     */
     public String uploadedOn() {
         return this.uploadedOn;
     }
@@ -211,7 +181,7 @@ public final class GetCustomSslResult {
         private String issuer;
         private GetCustomSslKeylessServer keylessServer;
         private String modifiedOn;
-        private String policy;
+        private String policyRestrictions;
         private Double priority;
         private String signature;
         private String status;
@@ -230,7 +200,7 @@ public final class GetCustomSslResult {
     	      this.issuer = defaults.issuer;
     	      this.keylessServer = defaults.keylessServer;
     	      this.modifiedOn = defaults.modifiedOn;
-    	      this.policy = defaults.policy;
+    	      this.policyRestrictions = defaults.policyRestrictions;
     	      this.priority = defaults.priority;
     	      this.signature = defaults.signature;
     	      this.status = defaults.status;
@@ -318,11 +288,11 @@ public final class GetCustomSslResult {
             return this;
         }
         @CustomType.Setter
-        public Builder policy(String policy) {
-            if (policy == null) {
-              throw new MissingRequiredPropertyException("GetCustomSslResult", "policy");
+        public Builder policyRestrictions(String policyRestrictions) {
+            if (policyRestrictions == null) {
+              throw new MissingRequiredPropertyException("GetCustomSslResult", "policyRestrictions");
             }
-            this.policy = policy;
+            this.policyRestrictions = policyRestrictions;
             return this;
         }
         @CustomType.Setter
@@ -377,7 +347,7 @@ public final class GetCustomSslResult {
             _resultValue.issuer = issuer;
             _resultValue.keylessServer = keylessServer;
             _resultValue.modifiedOn = modifiedOn;
-            _resultValue.policy = policy;
+            _resultValue.policyRestrictions = policyRestrictions;
             _resultValue.priority = priority;
             _resultValue.signature = signature;
             _resultValue.status = status;

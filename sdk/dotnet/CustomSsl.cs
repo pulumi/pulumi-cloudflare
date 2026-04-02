@@ -77,6 +77,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ",
     ///         BundleMethod = "ubiquitous",
+    ///         Deploy = "staging",
     ///         GeoRestrictions = new Cloudflare.Inputs.CustomSslGeoRestrictionsArgs
     ///         {
     ///             Label = "us",
@@ -111,6 +112,13 @@ namespace Pulumi.Cloudflare
         public Output<string> Certificate { get; private set; } = null!;
 
         /// <summary>
+        /// The environment to deploy the certificate to.
+        /// Available values: "staging", "production".
+        /// </summary>
+        [Output("deploy")]
+        public Output<string?> Deploy { get; private set; } = null!;
+
+        /// <summary>
         /// When the certificate from the authority expires.
         /// </summary>
         [Output("expiresOn")]
@@ -141,13 +149,22 @@ namespace Pulumi.Cloudflare
         public Output<string> ModifiedOn { get; private set; } = null!;
 
         /// <summary>
-        /// Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+        /// Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code*elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+        /// Note: The API accepts this field as either "policy" or "policy*restrictions" in requests. Responses return this field as "PolicyRestrictions".
         /// </summary>
         [Output("policy")]
         public Output<string?> Policy { get; private set; } = null!;
 
         /// <summary>
-        /// The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy*custom' certificates, but 'legacy*custom' certificates will always supercede 'sni_custom' certificates.
+        /// The policy restrictions returned by the API. This field is returned in responses
+        /// when a policy has been set. The API accepts the "policy" field in requests but
+        /// returns this field as "PolicyRestrictions" in responses.
+        /// </summary>
+        [Output("policyRestrictions")]
+        public Output<string> PolicyRestrictions { get; private set; } = null!;
+
+        /// <summary>
+        /// The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.
         /// </summary>
         [Output("priority")]
         public Output<double> Priority { get; private set; } = null!;
@@ -254,13 +271,21 @@ namespace Pulumi.Cloudflare
         public Input<string> Certificate { get; set; } = null!;
 
         /// <summary>
+        /// The environment to deploy the certificate to.
+        /// Available values: "staging", "production".
+        /// </summary>
+        [Input("deploy")]
+        public Input<string>? Deploy { get; set; }
+
+        /// <summary>
         /// Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
         /// </summary>
         [Input("geoRestrictions")]
         public Input<Inputs.CustomSslGeoRestrictionsArgs>? GeoRestrictions { get; set; }
 
         /// <summary>
-        /// Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+        /// Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code*elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+        /// Note: The API accepts this field as either "policy" or "policy*restrictions" in requests. Responses return this field as "PolicyRestrictions".
         /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
@@ -316,6 +341,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? Certificate { get; set; }
 
         /// <summary>
+        /// The environment to deploy the certificate to.
+        /// Available values: "staging", "production".
+        /// </summary>
+        [Input("deploy")]
+        public Input<string>? Deploy { get; set; }
+
+        /// <summary>
         /// When the certificate from the authority expires.
         /// </summary>
         [Input("expiresOn")]
@@ -351,13 +383,22 @@ namespace Pulumi.Cloudflare
         public Input<string>? ModifiedOn { get; set; }
 
         /// <summary>
-        /// Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+        /// Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code*elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+        /// Note: The API accepts this field as either "policy" or "policy*restrictions" in requests. Responses return this field as "PolicyRestrictions".
         /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
 
         /// <summary>
-        /// The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy*custom' certificates, but 'legacy*custom' certificates will always supercede 'sni_custom' certificates.
+        /// The policy restrictions returned by the API. This field is returned in responses
+        /// when a policy has been set. The API accepts the "policy" field in requests but
+        /// returns this field as "PolicyRestrictions" in responses.
+        /// </summary>
+        [Input("policyRestrictions")]
+        public Input<string>? PolicyRestrictions { get; set; }
+
+        /// <summary>
+        /// The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.
         /// </summary>
         [Input("priority")]
         public Input<double>? Priority { get; set; }

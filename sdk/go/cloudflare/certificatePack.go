@@ -72,6 +72,8 @@ type CertificatePack struct {
 	Certificates CertificatePackCertificateArrayOutput `pulumi:"certificates"`
 	// Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
 	CloudflareBranding pulumi.BoolPtrOutput `pulumi:"cloudflareBranding"`
+	// DCV Delegation records for domain validation.
+	DcvDelegationRecords CertificatePackDcvDelegationRecordArrayOutput `pulumi:"dcvDelegationRecords"`
 	// Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
 	Hosts pulumi.StringArrayOutput `pulumi:"hosts"`
 	// Identifier of the primary certificate in a pack.
@@ -148,6 +150,8 @@ type certificatePackState struct {
 	Certificates []CertificatePackCertificate `pulumi:"certificates"`
 	// Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
 	CloudflareBranding *bool `pulumi:"cloudflareBranding"`
+	// DCV Delegation records for domain validation.
+	DcvDelegationRecords []CertificatePackDcvDelegationRecord `pulumi:"dcvDelegationRecords"`
 	// Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
 	Hosts []string `pulumi:"hosts"`
 	// Identifier of the primary certificate in a pack.
@@ -180,6 +184,8 @@ type CertificatePackState struct {
 	Certificates CertificatePackCertificateArrayInput
 	// Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
 	CloudflareBranding pulumi.BoolPtrInput
+	// DCV Delegation records for domain validation.
+	DcvDelegationRecords CertificatePackDcvDelegationRecordArrayInput
 	// Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
 	Hosts pulumi.StringArrayInput
 	// Identifier of the primary certificate in a pack.
@@ -352,6 +358,11 @@ func (o CertificatePackOutput) Certificates() CertificatePackCertificateArrayOut
 // Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
 func (o CertificatePackOutput) CloudflareBranding() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CertificatePack) pulumi.BoolPtrOutput { return v.CloudflareBranding }).(pulumi.BoolPtrOutput)
+}
+
+// DCV Delegation records for domain validation.
+func (o CertificatePackOutput) DcvDelegationRecords() CertificatePackDcvDelegationRecordArrayOutput {
+	return o.ApplyT(func(v *CertificatePack) CertificatePackDcvDelegationRecordArrayOutput { return v.DcvDelegationRecords }).(CertificatePackDcvDelegationRecordArrayOutput)
 }
 
 // Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.

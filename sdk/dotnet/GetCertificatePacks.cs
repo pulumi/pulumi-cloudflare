@@ -25,6 +25,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleCertificatePacks = Cloudflare.GetCertificatePacks.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Deploy = "staging",
         ///         Status = "all",
         ///     });
         /// 
@@ -48,6 +49,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleCertificatePacks = Cloudflare.GetCertificatePacks.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Deploy = "staging",
         ///         Status = "all",
         ///     });
         /// 
@@ -71,6 +73,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleCertificatePacks = Cloudflare.GetCertificatePacks.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Deploy = "staging",
         ///         Status = "all",
         ///     });
         /// 
@@ -84,6 +87,13 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetCertificatePacksArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Specify the deployment environment for the certificate packs.
+        /// Available values: "staging", "production".
+        /// </summary>
+        [Input("deploy")]
+        public string? Deploy { get; set; }
+
         /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
@@ -111,6 +121,13 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetCertificatePacksInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Specify the deployment environment for the certificate packs.
+        /// Available values: "staging", "production".
+        /// </summary>
+        [Input("deploy")]
+        public Input<string>? Deploy { get; set; }
+
         /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
@@ -141,6 +158,11 @@ namespace Pulumi.Cloudflare
     public sealed class GetCertificatePacksResult
     {
         /// <summary>
+        /// Specify the deployment environment for the certificate packs.
+        /// Available values: "staging", "production".
+        /// </summary>
+        public readonly string? Deploy;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -164,6 +186,8 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetCertificatePacksResult(
+            string? deploy,
+
             string id,
 
             int? maxItems,
@@ -174,6 +198,7 @@ namespace Pulumi.Cloudflare
 
             string zoneId)
         {
+            Deploy = deploy;
             Id = id;
             MaxItems = maxItems;
             Results = results;

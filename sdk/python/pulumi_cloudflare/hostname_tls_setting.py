@@ -27,9 +27,8 @@ class HostnameTlsSettingArgs:
         The set of arguments for constructing a HostnameTlsSetting resource.
 
         :param pulumi.Input[_builtins.str] hostname: The hostname for which the tls settings are set.
-        :param pulumi.Input[_builtins.str] setting_id: The TLS Setting name.
-               Available values: "ciphers", "min*tls*version", "http2".
-        :param Any value: The tls setting value.
+        :param pulumi.Input[_builtins.str] setting_id: The TLS Setting name. The value type depends on the setting:
+        :param Any value: The TLS setting value. The type depends on the `setting_id` used in the request path:
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         pulumi.set(__self__, "hostname", hostname)
@@ -53,8 +52,7 @@ class HostnameTlsSettingArgs:
     @pulumi.getter(name="settingId")
     def setting_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The TLS Setting name.
-        Available values: "ciphers", "min*tls*version", "http2".
+        The TLS Setting name. The value type depends on the setting:
         """
         return pulumi.get(self, "setting_id")
 
@@ -66,7 +64,7 @@ class HostnameTlsSettingArgs:
     @pulumi.getter
     def value(self) -> Any:
         """
-        The tls setting value.
+        The TLS setting value. The type depends on the `setting_id` used in the request path:
         """
         return pulumi.get(self, "value")
 
@@ -102,11 +100,10 @@ class _HostnameTlsSettingState:
 
         :param pulumi.Input[_builtins.str] created_at: This is the time the tls setting was originally created for this hostname.
         :param pulumi.Input[_builtins.str] hostname: The hostname for which the tls settings are set.
-        :param pulumi.Input[_builtins.str] setting_id: The TLS Setting name.
-               Available values: "ciphers", "min*tls*version", "http2".
+        :param pulumi.Input[_builtins.str] setting_id: The TLS Setting name. The value type depends on the setting:
         :param pulumi.Input[_builtins.str] status: Deployment status for the given tls setting.
         :param pulumi.Input[_builtins.str] updated_at: This is the time the tls setting was updated.
-        :param Any value: The tls setting value.
+        :param Any value: The TLS setting value. The type depends on the `setting_id` used in the request path:
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         if created_at is not None:
@@ -152,8 +149,7 @@ class _HostnameTlsSettingState:
     @pulumi.getter(name="settingId")
     def setting_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The TLS Setting name.
-        Available values: "ciphers", "min*tls*version", "http2".
+        The TLS Setting name. The value type depends on the setting:
         """
         return pulumi.get(self, "setting_id")
 
@@ -189,7 +185,7 @@ class _HostnameTlsSettingState:
     @pulumi.getter
     def value(self) -> Optional[Any]:
         """
-        The tls setting value.
+        The TLS setting value. The type depends on the `setting_id` used in the request path:
         """
         return pulumi.get(self, "value")
 
@@ -232,10 +228,7 @@ class HostnameTlsSetting(pulumi.CustomResource):
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="ciphers",
             hostname="app.example.com",
-            value=[
-                "ECDHE-RSA-AES128-GCM-SHA256",
-                "AES128-GCM-SHA256",
-            ])
+            value="1.0")
         ```
 
         ## Import
@@ -248,9 +241,8 @@ class HostnameTlsSetting(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] hostname: The hostname for which the tls settings are set.
-        :param pulumi.Input[_builtins.str] setting_id: The TLS Setting name.
-               Available values: "ciphers", "min*tls*version", "http2".
-        :param Any value: The tls setting value.
+        :param pulumi.Input[_builtins.str] setting_id: The TLS Setting name. The value type depends on the setting:
+        :param Any value: The TLS setting value. The type depends on the `setting_id` used in the request path:
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         ...
@@ -270,10 +262,7 @@ class HostnameTlsSetting(pulumi.CustomResource):
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="ciphers",
             hostname="app.example.com",
-            value=[
-                "ECDHE-RSA-AES128-GCM-SHA256",
-                "AES128-GCM-SHA256",
-            ])
+            value="1.0")
         ```
 
         ## Import
@@ -352,11 +341,10 @@ class HostnameTlsSetting(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] created_at: This is the time the tls setting was originally created for this hostname.
         :param pulumi.Input[_builtins.str] hostname: The hostname for which the tls settings are set.
-        :param pulumi.Input[_builtins.str] setting_id: The TLS Setting name.
-               Available values: "ciphers", "min*tls*version", "http2".
+        :param pulumi.Input[_builtins.str] setting_id: The TLS Setting name. The value type depends on the setting:
         :param pulumi.Input[_builtins.str] status: Deployment status for the given tls setting.
         :param pulumi.Input[_builtins.str] updated_at: This is the time the tls setting was updated.
-        :param Any value: The tls setting value.
+        :param Any value: The TLS setting value. The type depends on the `setting_id` used in the request path:
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -392,8 +380,7 @@ class HostnameTlsSetting(pulumi.CustomResource):
     @pulumi.getter(name="settingId")
     def setting_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The TLS Setting name.
-        Available values: "ciphers", "min*tls*version", "http2".
+        The TLS Setting name. The value type depends on the setting:
         """
         return pulumi.get(self, "setting_id")
 
@@ -417,7 +404,7 @@ class HostnameTlsSetting(pulumi.CustomResource):
     @pulumi.getter
     def value(self) -> pulumi.Output[Any]:
         """
-        The tls setting value.
+        The TLS setting value. The type depends on the `setting_id` used in the request path:
         """
         return pulumi.get(self, "value")
 

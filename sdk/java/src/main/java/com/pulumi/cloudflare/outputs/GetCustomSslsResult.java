@@ -48,12 +48,14 @@ public final class GetCustomSslsResult {
      */
     private String modifiedOn;
     /**
-     * @return Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as &#39;country: IN&#39;, as well as &#39;region: EU&#39; which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+     * @return The policy restrictions returned by the API. This field is returned in responses
+     * when a policy has been set. The API accepts the &#34;policy&#34; field in requests but
+     * returns this field as &#34;policyRestrictions&#34; in responses.
      * 
      */
-    private String policy;
+    private String policyRestrictions;
     /**
-     * @return The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping &#39;legacy*custom&#39; certificates, but &#39;legacy*custom&#39; certificates will always supercede &#39;sni_custom&#39; certificates.
+     * @return The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping &#39;legacy_custom&#39; certificates, but &#39;legacy_custom&#39; certificates will always supercede &#39;sni_custom&#39; certificates.
      * 
      */
     private Double priority;
@@ -130,14 +132,16 @@ public final class GetCustomSslsResult {
         return this.modifiedOn;
     }
     /**
-     * @return Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as &#39;country: IN&#39;, as well as &#39;region: EU&#39; which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+     * @return The policy restrictions returned by the API. This field is returned in responses
+     * when a policy has been set. The API accepts the &#34;policy&#34; field in requests but
+     * returns this field as &#34;policyRestrictions&#34; in responses.
      * 
      */
-    public String policy() {
-        return this.policy;
+    public String policyRestrictions() {
+        return this.policyRestrictions;
     }
     /**
-     * @return The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping &#39;legacy*custom&#39; certificates, but &#39;legacy*custom&#39; certificates will always supercede &#39;sni_custom&#39; certificates.
+     * @return The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping &#39;legacy_custom&#39; certificates, but &#39;legacy_custom&#39; certificates will always supercede &#39;sni_custom&#39; certificates.
      * 
      */
     public Double priority() {
@@ -190,7 +194,7 @@ public final class GetCustomSslsResult {
         private String issuer;
         private GetCustomSslsResultKeylessServer keylessServer;
         private String modifiedOn;
-        private String policy;
+        private String policyRestrictions;
         private Double priority;
         private String signature;
         private String status;
@@ -207,7 +211,7 @@ public final class GetCustomSslsResult {
     	      this.issuer = defaults.issuer;
     	      this.keylessServer = defaults.keylessServer;
     	      this.modifiedOn = defaults.modifiedOn;
-    	      this.policy = defaults.policy;
+    	      this.policyRestrictions = defaults.policyRestrictions;
     	      this.priority = defaults.priority;
     	      this.signature = defaults.signature;
     	      this.status = defaults.status;
@@ -283,11 +287,11 @@ public final class GetCustomSslsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder policy(String policy) {
-            if (policy == null) {
-              throw new MissingRequiredPropertyException("GetCustomSslsResult", "policy");
+        public Builder policyRestrictions(String policyRestrictions) {
+            if (policyRestrictions == null) {
+              throw new MissingRequiredPropertyException("GetCustomSslsResult", "policyRestrictions");
             }
-            this.policy = policy;
+            this.policyRestrictions = policyRestrictions;
             return this;
         }
         @CustomType.Setter
@@ -340,7 +344,7 @@ public final class GetCustomSslsResult {
             _resultValue.issuer = issuer;
             _resultValue.keylessServer = keylessServer;
             _resultValue.modifiedOn = modifiedOn;
-            _resultValue.policy = policy;
+            _resultValue.policyRestrictions = policyRestrictions;
             _resultValue.priority = priority;
             _resultValue.signature = signature;
             _resultValue.status = status;

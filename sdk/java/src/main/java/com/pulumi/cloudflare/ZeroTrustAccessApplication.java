@@ -553,15 +553,15 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> type;
+    private Output<String> type;
 
     /**
      * @return The application type.
      * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dash*sso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;, &#34;mcp&#34;, &#34;mcp*portal&#34;, &#34;proxyEndpoint&#34;.
      * 
      */
-    public Output<Optional<String>> type() {
-        return Codegen.optional(this.type);
+    public Output<String> type() {
+        return this.type;
     }
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.

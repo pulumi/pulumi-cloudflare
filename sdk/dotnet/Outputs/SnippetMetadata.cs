@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class SnippetMetadata
     {
         /// <summary>
-        /// Name of the file that contains the main module of the snippet.
+        /// Specify the name of the file that contains the main module of the snippet.
         /// </summary>
         public readonly string MainModule;
 

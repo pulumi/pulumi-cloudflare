@@ -27,25 +27,18 @@ public final class GetTurnstileWidgetsInvokeResult {
      */
     private @Nullable String direction;
     /**
+     * @return Filter widgets by field using case-insensitive substring matching.
+     * Format: `field:value`
+     * 
+     */
+    private @Nullable String filter;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
-    /**
-     * @return Max items to fetch, default: 1000
-     * 
-     */
     private @Nullable Integer maxItems;
-    /**
-     * @return Field to order widgets by.
-     * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;created*on&#34;, &#34;modified*on&#34;.
-     * 
-     */
     private @Nullable String order;
-    /**
-     * @return The items returned by the data source
-     * 
-     */
     private List<GetTurnstileWidgetsResult> results;
 
     private GetTurnstileWidgetsInvokeResult() {}
@@ -65,31 +58,26 @@ public final class GetTurnstileWidgetsInvokeResult {
         return Optional.ofNullable(this.direction);
     }
     /**
+     * @return Filter widgets by field using case-insensitive substring matching.
+     * Format: `field:value`
+     * 
+     */
+    public Optional<String> filter() {
+        return Optional.ofNullable(this.filter);
+    }
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     public String id() {
         return this.id;
     }
-    /**
-     * @return Max items to fetch, default: 1000
-     * 
-     */
     public Optional<Integer> maxItems() {
         return Optional.ofNullable(this.maxItems);
     }
-    /**
-     * @return Field to order widgets by.
-     * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;created*on&#34;, &#34;modified*on&#34;.
-     * 
-     */
     public Optional<String> order() {
         return Optional.ofNullable(this.order);
     }
-    /**
-     * @return The items returned by the data source
-     * 
-     */
     public List<GetTurnstileWidgetsResult> results() {
         return this.results;
     }
@@ -105,6 +93,7 @@ public final class GetTurnstileWidgetsInvokeResult {
     public static final class Builder {
         private String accountId;
         private @Nullable String direction;
+        private @Nullable String filter;
         private String id;
         private @Nullable Integer maxItems;
         private @Nullable String order;
@@ -114,6 +103,7 @@ public final class GetTurnstileWidgetsInvokeResult {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.direction = defaults.direction;
+    	      this.filter = defaults.filter;
     	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.order = defaults.order;
@@ -132,6 +122,12 @@ public final class GetTurnstileWidgetsInvokeResult {
         public Builder direction(@Nullable String direction) {
 
             this.direction = direction;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder filter(@Nullable String filter) {
+
+            this.filter = filter;
             return this;
         }
         @CustomType.Setter
@@ -169,6 +165,7 @@ public final class GetTurnstileWidgetsInvokeResult {
             final var _resultValue = new GetTurnstileWidgetsInvokeResult();
             _resultValue.accountId = accountId;
             _resultValue.direction = direction;
+            _resultValue.filter = filter;
             _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.order = order;

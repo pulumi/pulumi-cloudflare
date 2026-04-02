@@ -28,7 +28,7 @@ class GetCertificatePackResult:
     """
     A collection of values returned by getCertificatePack.
     """
-    def __init__(__self__, certificate_authority=None, certificate_pack_id=None, certificates=None, cloudflare_branding=None, filter=None, hosts=None, id=None, primary_certificate=None, status=None, type=None, validation_errors=None, validation_method=None, validation_records=None, validity_days=None, zone_id=None):
+    def __init__(__self__, certificate_authority=None, certificate_pack_id=None, certificates=None, cloudflare_branding=None, dcv_delegation_records=None, filter=None, hosts=None, id=None, primary_certificate=None, status=None, type=None, validation_errors=None, validation_method=None, validation_records=None, validity_days=None, zone_id=None):
         if certificate_authority and not isinstance(certificate_authority, str):
             raise TypeError("Expected argument 'certificate_authority' to be a str")
         pulumi.set(__self__, "certificate_authority", certificate_authority)
@@ -41,6 +41,9 @@ class GetCertificatePackResult:
         if cloudflare_branding and not isinstance(cloudflare_branding, bool):
             raise TypeError("Expected argument 'cloudflare_branding' to be a bool")
         pulumi.set(__self__, "cloudflare_branding", cloudflare_branding)
+        if dcv_delegation_records and not isinstance(dcv_delegation_records, list):
+            raise TypeError("Expected argument 'dcv_delegation_records' to be a list")
+        pulumi.set(__self__, "dcv_delegation_records", dcv_delegation_records)
         if filter and not isinstance(filter, dict):
             raise TypeError("Expected argument 'filter' to be a dict")
         pulumi.set(__self__, "filter", filter)
@@ -107,6 +110,14 @@ class GetCertificatePackResult:
         Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
         """
         return pulumi.get(self, "cloudflare_branding")
+
+    @_builtins.property
+    @pulumi.getter(name="dcvDelegationRecords")
+    def dcv_delegation_records(self) -> Sequence['outputs.GetCertificatePackDcvDelegationRecordResult']:
+        """
+        DCV Delegation records for domain validation.
+        """
+        return pulumi.get(self, "dcv_delegation_records")
 
     @_builtins.property
     @pulumi.getter
@@ -208,6 +219,7 @@ class AwaitableGetCertificatePackResult(GetCertificatePackResult):
             certificate_pack_id=self.certificate_pack_id,
             certificates=self.certificates,
             cloudflare_branding=self.cloudflare_branding,
+            dcv_delegation_records=self.dcv_delegation_records,
             filter=self.filter,
             hosts=self.hosts,
             id=self.id,
@@ -252,6 +264,7 @@ def get_certificate_pack(certificate_pack_id: Optional[_builtins.str] = None,
         certificate_pack_id=pulumi.get(__ret__, 'certificate_pack_id'),
         certificates=pulumi.get(__ret__, 'certificates'),
         cloudflare_branding=pulumi.get(__ret__, 'cloudflare_branding'),
+        dcv_delegation_records=pulumi.get(__ret__, 'dcv_delegation_records'),
         filter=pulumi.get(__ret__, 'filter'),
         hosts=pulumi.get(__ret__, 'hosts'),
         id=pulumi.get(__ret__, 'id'),
@@ -293,6 +306,7 @@ def get_certificate_pack_output(certificate_pack_id: Optional[pulumi.Input[Optio
         certificate_pack_id=pulumi.get(__response__, 'certificate_pack_id'),
         certificates=pulumi.get(__response__, 'certificates'),
         cloudflare_branding=pulumi.get(__response__, 'cloudflare_branding'),
+        dcv_delegation_records=pulumi.get(__response__, 'dcv_delegation_records'),
         filter=pulumi.get(__response__, 'filter'),
         hosts=pulumi.get(__response__, 'hosts'),
         id=pulumi.get(__response__, 'id'),

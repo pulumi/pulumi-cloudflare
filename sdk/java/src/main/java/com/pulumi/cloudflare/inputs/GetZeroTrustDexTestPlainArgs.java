@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestFilter;
 import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestTargetPolicy;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -28,15 +29,22 @@ public final class GetZeroTrustDexTestPlainArgs extends com.pulumi.resources.Inv
      * The unique identifier for the test.
      * 
      */
-    @Import(name="dexTestId", required=true)
-    private String dexTestId;
+    @Import(name="dexTestId")
+    private @Nullable String dexTestId;
 
     /**
      * @return The unique identifier for the test.
      * 
      */
-    public String dexTestId() {
-        return this.dexTestId;
+    public Optional<String> dexTestId() {
+        return Optional.ofNullable(this.dexTestId);
+    }
+
+    @Import(name="filter")
+    private @Nullable GetZeroTrustDexTestFilter filter;
+
+    public Optional<GetZeroTrustDexTestFilter> filter() {
+        return Optional.ofNullable(this.filter);
     }
 
     /**
@@ -59,6 +67,7 @@ public final class GetZeroTrustDexTestPlainArgs extends com.pulumi.resources.Inv
     private GetZeroTrustDexTestPlainArgs(GetZeroTrustDexTestPlainArgs $) {
         this.accountId = $.accountId;
         this.dexTestId = $.dexTestId;
+        this.filter = $.filter;
         this.targetPolicies = $.targetPolicies;
     }
 
@@ -91,8 +100,13 @@ public final class GetZeroTrustDexTestPlainArgs extends com.pulumi.resources.Inv
          * @return builder
          * 
          */
-        public Builder dexTestId(String dexTestId) {
+        public Builder dexTestId(@Nullable String dexTestId) {
             $.dexTestId = dexTestId;
+            return this;
+        }
+
+        public Builder filter(@Nullable GetZeroTrustDexTestFilter filter) {
+            $.filter = filter;
             return this;
         }
 
@@ -120,9 +134,6 @@ public final class GetZeroTrustDexTestPlainArgs extends com.pulumi.resources.Inv
         public GetZeroTrustDexTestPlainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetZeroTrustDexTestPlainArgs", "accountId");
-            }
-            if ($.dexTestId == null) {
-                throw new MissingRequiredPropertyException("GetZeroTrustDexTestPlainArgs", "dexTestId");
             }
             return $;
         }

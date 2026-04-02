@@ -37,12 +37,13 @@ type LookupQueueConsumerResult struct {
 	// A Resource identifier.
 	ConsumerId string `pulumi:"consumerId"`
 	CreatedOn  string `pulumi:"createdOn"`
+	// Name of the dead letter queue, or empty string if not configured
+	DeadLetterQueue string `pulumi:"deadLetterQueue"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A Resource identifier.
-	QueueId string `pulumi:"queueId"`
-	// Name of a Worker
-	Script string `pulumi:"script"`
+	QueueId   string `pulumi:"queueId"`
+	QueueName string `pulumi:"queueName"`
 	// Name of a Worker
 	ScriptName string                   `pulumi:"scriptName"`
 	Settings   GetQueueConsumerSettings `pulumi:"settings"`
@@ -100,6 +101,11 @@ func (o LookupQueueConsumerResultOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQueueConsumerResult) string { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
+// Name of the dead letter queue, or empty string if not configured
+func (o LookupQueueConsumerResultOutput) DeadLetterQueue() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueueConsumerResult) string { return v.DeadLetterQueue }).(pulumi.StringOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o LookupQueueConsumerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQueueConsumerResult) string { return v.Id }).(pulumi.StringOutput)
@@ -110,9 +116,8 @@ func (o LookupQueueConsumerResultOutput) QueueId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQueueConsumerResult) string { return v.QueueId }).(pulumi.StringOutput)
 }
 
-// Name of a Worker
-func (o LookupQueueConsumerResultOutput) Script() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupQueueConsumerResult) string { return v.Script }).(pulumi.StringOutput)
+func (o LookupQueueConsumerResultOutput) QueueName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueueConsumerResult) string { return v.QueueName }).(pulumi.StringOutput)
 }
 
 // Name of a Worker

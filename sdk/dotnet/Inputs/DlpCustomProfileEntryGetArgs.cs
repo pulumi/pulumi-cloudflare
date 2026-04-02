@@ -12,6 +12,9 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class DlpCustomProfileEntryGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 

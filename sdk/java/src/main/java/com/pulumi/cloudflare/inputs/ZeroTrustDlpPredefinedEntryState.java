@@ -61,6 +61,13 @@ public final class ZeroTrustDlpPredefinedEntryState extends com.pulumi.resources
         return Optional.ofNullable(this.createdAt);
     }
 
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
@@ -178,6 +185,7 @@ public final class ZeroTrustDlpPredefinedEntryState extends com.pulumi.resources
         this.caseSensitive = $.caseSensitive;
         this.confidence = $.confidence;
         this.createdAt = $.createdAt;
+        this.description = $.description;
         this.enabled = $.enabled;
         this.entryId = $.entryId;
         this.name = $.name;
@@ -260,6 +268,15 @@ public final class ZeroTrustDlpPredefinedEntryState extends com.pulumi.resources
 
         public Builder createdAt(String createdAt) {
             return createdAt(Output.of(createdAt));
+        }
+
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         public Builder enabled(@Nullable Output<Boolean> enabled) {

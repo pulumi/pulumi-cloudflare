@@ -27,6 +27,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// server id
         /// </summary>
         public readonly string Id;
+        public readonly string LastSuccessfulSync;
         public readonly string LastSynced;
         public readonly string ModifiedAt;
         public readonly string ModifiedBy;
@@ -56,6 +57,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string id,
 
+            string lastSuccessfulSync,
+
             string lastSynced,
 
             string modifiedAt,
@@ -84,6 +87,7 @@ namespace Pulumi.Cloudflare.Outputs
             Error = error;
             Hostname = hostname;
             Id = id;
+            LastSuccessfulSync = lastSuccessfulSync;
             LastSynced = lastSynced;
             ModifiedAt = modifiedAt;
             ModifiedBy = modifiedBy;

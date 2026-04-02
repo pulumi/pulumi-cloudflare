@@ -44,6 +44,12 @@ namespace Pulumi.Cloudflare
         public Output<double?> DeleteRecordingAfterDays { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates whether the live input is enabled and can accept streams.
+        /// </summary>
+        [Output("enabled")]
+        public Output<bool> Enabled { get; private set; } = null!;
+
+        /// <summary>
         /// A unique identifier for a live input.
         /// </summary>
         [Output("liveInputIdentifier")]
@@ -181,6 +187,12 @@ namespace Pulumi.Cloudflare
         public Input<double>? DeleteRecordingAfterDays { get; set; }
 
         /// <summary>
+        /// Indicates whether the live input is enabled and can accept streams.
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
         /// A unique identifier for a live input.
         /// </summary>
         [Input("liveInputIdentifier")]
@@ -229,6 +241,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("deleteRecordingAfterDays")]
         public Input<double>? DeleteRecordingAfterDays { get; set; }
+
+        /// <summary>
+        /// Indicates whether the live input is enabled and can accept streams.
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
 
         /// <summary>
         /// A unique identifier for a live input.

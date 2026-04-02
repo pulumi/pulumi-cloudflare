@@ -80,7 +80,7 @@ namespace Pulumi.Cloudflare
         /// Scan the context of predefined entries to only return matches surrounded by keywords.
         /// </summary>
         [Output("contextAwareness")]
-        public Output<Outputs.ZeroTrustDlpCustomProfileContextAwareness?> ContextAwareness { get; private set; } = null!;
+        public Output<Outputs.ZeroTrustDlpCustomProfileContextAwareness> ContextAwareness { get; private set; } = null!;
 
         /// <summary>
         /// When the profile was created.

@@ -263,7 +263,7 @@ type PagesProject struct {
 	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Configs for the project build process.
-	BuildConfig PagesProjectBuildConfigPtrOutput `pulumi:"buildConfig"`
+	BuildConfig PagesProjectBuildConfigOutput `pulumi:"buildConfig"`
 	// Most recent production deployment of the project.
 	CanonicalDeployment PagesProjectCanonicalDeploymentOutput `pulumi:"canonicalDeployment"`
 	// When the project was created.
@@ -530,8 +530,8 @@ func (o PagesProjectOutput) AccountId() pulumi.StringOutput {
 }
 
 // Configs for the project build process.
-func (o PagesProjectOutput) BuildConfig() PagesProjectBuildConfigPtrOutput {
-	return o.ApplyT(func(v *PagesProject) PagesProjectBuildConfigPtrOutput { return v.BuildConfig }).(PagesProjectBuildConfigPtrOutput)
+func (o PagesProjectOutput) BuildConfig() PagesProjectBuildConfigOutput {
+	return o.ApplyT(func(v *PagesProject) PagesProjectBuildConfigOutput { return v.BuildConfig }).(PagesProjectBuildConfigOutput)
 }
 
 // Most recent production deployment of the project.

@@ -56,6 +56,7 @@ type ZeroTrustDlpIntegrationEntry struct {
 	CaseSensitive pulumi.BoolOutput                            `pulumi:"caseSensitive"`
 	Confidence    ZeroTrustDlpIntegrationEntryConfidenceOutput `pulumi:"confidence"`
 	CreatedAt     pulumi.StringOutput                          `pulumi:"createdAt"`
+	Description   pulumi.StringOutput                          `pulumi:"description"`
 	Enabled       pulumi.BoolOutput                            `pulumi:"enabled"`
 	EntryId       pulumi.StringOutput                          `pulumi:"entryId"`
 	Name          pulumi.StringOutput                          `pulumi:"name"`
@@ -120,6 +121,7 @@ type zeroTrustDlpIntegrationEntryState struct {
 	CaseSensitive *bool                                   `pulumi:"caseSensitive"`
 	Confidence    *ZeroTrustDlpIntegrationEntryConfidence `pulumi:"confidence"`
 	CreatedAt     *string                                 `pulumi:"createdAt"`
+	Description   *string                                 `pulumi:"description"`
 	Enabled       *bool                                   `pulumi:"enabled"`
 	EntryId       *string                                 `pulumi:"entryId"`
 	Name          *string                                 `pulumi:"name"`
@@ -146,6 +148,7 @@ type ZeroTrustDlpIntegrationEntryState struct {
 	CaseSensitive pulumi.BoolPtrInput
 	Confidence    ZeroTrustDlpIntegrationEntryConfidencePtrInput
 	CreatedAt     pulumi.StringPtrInput
+	Description   pulumi.StringPtrInput
 	Enabled       pulumi.BoolPtrInput
 	EntryId       pulumi.StringPtrInput
 	Name          pulumi.StringPtrInput
@@ -293,6 +296,10 @@ func (o ZeroTrustDlpIntegrationEntryOutput) Confidence() ZeroTrustDlpIntegration
 
 func (o ZeroTrustDlpIntegrationEntryOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpIntegrationEntry) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o ZeroTrustDlpIntegrationEntryOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpIntegrationEntry) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 func (o ZeroTrustDlpIntegrationEntryOutput) Enabled() pulumi.BoolOutput {

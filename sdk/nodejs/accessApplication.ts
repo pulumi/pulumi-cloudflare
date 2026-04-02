@@ -197,7 +197,7 @@ export class AccessApplication extends pulumi.CustomResource {
      * The application type.
      * Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal", "proxyEndpoint".
      */
-    declare public readonly type: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */

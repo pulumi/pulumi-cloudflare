@@ -80,15 +80,15 @@ public final class QueueConsumerArgs extends com.pulumi.resources.ResourceArgs {
      * Available values: &#34;worker&#34;, &#34;httpPull&#34;.
      * 
      */
-    @Import(name="type")
-    private @Nullable Output<String> type;
+    @Import(name="type", required=true)
+    private Output<String> type;
 
     /**
      * @return Available values: &#34;worker&#34;, &#34;httpPull&#34;.
      * 
      */
-    public Optional<Output<String>> type() {
-        return Optional.ofNullable(this.type);
+    public Output<String> type() {
+        return this.type;
     }
 
     private QueueConsumerArgs() {}
@@ -207,7 +207,7 @@ public final class QueueConsumerArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder type(@Nullable Output<String> type) {
+        public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
@@ -228,6 +228,9 @@ public final class QueueConsumerArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.queueId == null) {
                 throw new MissingRequiredPropertyException("QueueConsumerArgs", "queueId");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("QueueConsumerArgs", "type");
             }
             return $;
         }

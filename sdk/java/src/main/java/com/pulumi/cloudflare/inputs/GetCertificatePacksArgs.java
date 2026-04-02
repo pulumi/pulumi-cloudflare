@@ -18,6 +18,23 @@ public final class GetCertificatePacksArgs extends com.pulumi.resources.InvokeAr
     public static final GetCertificatePacksArgs Empty = new GetCertificatePacksArgs();
 
     /**
+     * Specify the deployment environment for the certificate packs.
+     * Available values: &#34;staging&#34;, &#34;production&#34;.
+     * 
+     */
+    @Import(name="deploy")
+    private @Nullable Output<String> deploy;
+
+    /**
+     * @return Specify the deployment environment for the certificate packs.
+     * Available values: &#34;staging&#34;, &#34;production&#34;.
+     * 
+     */
+    public Optional<Output<String>> deploy() {
+        return Optional.ofNullable(this.deploy);
+    }
+
+    /**
      * Max items to fetch, default: 1000
      * 
      */
@@ -67,6 +84,7 @@ public final class GetCertificatePacksArgs extends com.pulumi.resources.InvokeAr
     private GetCertificatePacksArgs() {}
 
     private GetCertificatePacksArgs(GetCertificatePacksArgs $) {
+        this.deploy = $.deploy;
         this.maxItems = $.maxItems;
         this.status = $.status;
         this.zoneId = $.zoneId;
@@ -88,6 +106,29 @@ public final class GetCertificatePacksArgs extends com.pulumi.resources.InvokeAr
 
         public Builder(GetCertificatePacksArgs defaults) {
             $ = new GetCertificatePacksArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param deploy Specify the deployment environment for the certificate packs.
+         * Available values: &#34;staging&#34;, &#34;production&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deploy(@Nullable Output<String> deploy) {
+            $.deploy = deploy;
+            return this;
+        }
+
+        /**
+         * @param deploy Specify the deployment environment for the certificate packs.
+         * Available values: &#34;staging&#34;, &#34;production&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deploy(String deploy) {
+            return deploy(Output.of(deploy));
         }
 
         /**

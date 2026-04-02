@@ -59,6 +59,8 @@ type AccountMember struct {
 	Policies AccountMemberPolicyArrayOutput `pulumi:"policies"`
 	// Set of roles associated with this member.
 	Roles pulumi.StringArrayOutput `pulumi:"roles"`
+	// Status of the member invitation. If not provided during creation, defaults to 'pending'.
+	// Changing from 'accepted' back to 'pending' will trigger a replacement of the member resource in Terraform.
 	// Available values: "accepted", "pending".
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Details of the user associated to the membership.
@@ -109,6 +111,8 @@ type accountMemberState struct {
 	Policies []AccountMemberPolicy `pulumi:"policies"`
 	// Set of roles associated with this member.
 	Roles []string `pulumi:"roles"`
+	// Status of the member invitation. If not provided during creation, defaults to 'pending'.
+	// Changing from 'accepted' back to 'pending' will trigger a replacement of the member resource in Terraform.
 	// Available values: "accepted", "pending".
 	Status *string `pulumi:"status"`
 	// Details of the user associated to the membership.
@@ -124,6 +128,8 @@ type AccountMemberState struct {
 	Policies AccountMemberPolicyArrayInput
 	// Set of roles associated with this member.
 	Roles pulumi.StringArrayInput
+	// Status of the member invitation. If not provided during creation, defaults to 'pending'.
+	// Changing from 'accepted' back to 'pending' will trigger a replacement of the member resource in Terraform.
 	// Available values: "accepted", "pending".
 	Status pulumi.StringPtrInput
 	// Details of the user associated to the membership.
@@ -143,6 +149,8 @@ type accountMemberArgs struct {
 	Policies []AccountMemberPolicy `pulumi:"policies"`
 	// Set of roles associated with this member.
 	Roles []string `pulumi:"roles"`
+	// Status of the member invitation. If not provided during creation, defaults to 'pending'.
+	// Changing from 'accepted' back to 'pending' will trigger a replacement of the member resource in Terraform.
 	// Available values: "accepted", "pending".
 	Status *string `pulumi:"status"`
 }
@@ -157,6 +165,8 @@ type AccountMemberArgs struct {
 	Policies AccountMemberPolicyArrayInput
 	// Set of roles associated with this member.
 	Roles pulumi.StringArrayInput
+	// Status of the member invitation. If not provided during creation, defaults to 'pending'.
+	// Changing from 'accepted' back to 'pending' will trigger a replacement of the member resource in Terraform.
 	// Available values: "accepted", "pending".
 	Status pulumi.StringPtrInput
 }
@@ -268,6 +278,8 @@ func (o AccountMemberOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccountMember) pulumi.StringArrayOutput { return v.Roles }).(pulumi.StringArrayOutput)
 }
 
+// Status of the member invitation. If not provided during creation, defaults to 'pending'.
+// Changing from 'accepted' back to 'pending' will trigger a replacement of the member resource in Terraform.
 // Available values: "accepted", "pending".
 func (o AccountMemberOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountMember) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)

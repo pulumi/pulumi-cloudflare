@@ -13,37 +13,37 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class SnippetRulesRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An informative description of the rule.
+        /// Provide an informative description of the rule.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether the rule should be executed.
+        /// Indicate whether to execute the rule.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The expression defining which traffic will match the rule.
+        /// Define the expression that determines which traffic matches the rule.
         /// </summary>
         [Input("expression", required: true)]
         public Input<string> Expression { get; set; } = null!;
 
         /// <summary>
-        /// The unique ID of the rule.
+        /// Specify the unique ID of the rule.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// The timestamp of when the rule was last modified.
+        /// Specify the timestamp of when the rule was last modified.
         /// </summary>
         [Input("lastUpdated")]
         public Input<string>? LastUpdated { get; set; }
 
         /// <summary>
-        /// The identifying name of the snippet.
+        /// Identify the snippet.
         /// </summary>
         [Input("snippetName", required: true)]
         public Input<string> SnippetName { get; set; } = null!;

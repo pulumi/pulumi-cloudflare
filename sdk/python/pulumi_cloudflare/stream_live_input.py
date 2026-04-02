@@ -24,6 +24,7 @@ class StreamLiveInputArgs:
                  account_id: pulumi.Input[_builtins.str],
                  default_creator: Optional[pulumi.Input[_builtins.str]] = None,
                  delete_recording_after_days: Optional[pulumi.Input[_builtins.float]] = None,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  live_input_identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  meta: Optional[pulumi.Input[_builtins.str]] = None,
                  recording: Optional[pulumi.Input['StreamLiveInputRecordingArgs']] = None):
@@ -33,6 +34,7 @@ class StreamLiveInputArgs:
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] default_creator: Sets the creator ID asssociated with this live input.
         :param pulumi.Input[_builtins.float] delete_recording_after_days: Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
+        :param pulumi.Input[_builtins.bool] enabled: Indicates whether the live input is enabled and can accept streams.
         :param pulumi.Input[_builtins.str] live_input_identifier: A unique identifier for a live input.
         :param pulumi.Input[_builtins.str] meta: A user modifiable key-value store used to reference other systems of record for managing live inputs.
         :param pulumi.Input['StreamLiveInputRecordingArgs'] recording: Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
@@ -42,6 +44,8 @@ class StreamLiveInputArgs:
             pulumi.set(__self__, "default_creator", default_creator)
         if delete_recording_after_days is not None:
             pulumi.set(__self__, "delete_recording_after_days", delete_recording_after_days)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
         if live_input_identifier is not None:
             pulumi.set(__self__, "live_input_identifier", live_input_identifier)
         if meta is not None:
@@ -84,6 +88,18 @@ class StreamLiveInputArgs:
     @delete_recording_after_days.setter
     def delete_recording_after_days(self, value: Optional[pulumi.Input[_builtins.float]]):
         pulumi.set(self, "delete_recording_after_days", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates whether the live input is enabled and can accept streams.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="liveInputIdentifier")
@@ -129,6 +145,7 @@ class _StreamLiveInputState:
                  created: Optional[pulumi.Input[_builtins.str]] = None,
                  default_creator: Optional[pulumi.Input[_builtins.str]] = None,
                  delete_recording_after_days: Optional[pulumi.Input[_builtins.float]] = None,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  live_input_identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  meta: Optional[pulumi.Input[_builtins.str]] = None,
                  modified: Optional[pulumi.Input[_builtins.str]] = None,
@@ -148,6 +165,7 @@ class _StreamLiveInputState:
         :param pulumi.Input[_builtins.str] created: The date and time the live input was created.
         :param pulumi.Input[_builtins.str] default_creator: Sets the creator ID asssociated with this live input.
         :param pulumi.Input[_builtins.float] delete_recording_after_days: Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
+        :param pulumi.Input[_builtins.bool] enabled: Indicates whether the live input is enabled and can accept streams.
         :param pulumi.Input[_builtins.str] live_input_identifier: A unique identifier for a live input.
         :param pulumi.Input[_builtins.str] meta: A user modifiable key-value store used to reference other systems of record for managing live inputs.
         :param pulumi.Input[_builtins.str] modified: The date and time the live input was last modified.
@@ -170,6 +188,8 @@ class _StreamLiveInputState:
             pulumi.set(__self__, "default_creator", default_creator)
         if delete_recording_after_days is not None:
             pulumi.set(__self__, "delete_recording_after_days", delete_recording_after_days)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
         if live_input_identifier is not None:
             pulumi.set(__self__, "live_input_identifier", live_input_identifier)
         if meta is not None:
@@ -242,6 +262,18 @@ class _StreamLiveInputState:
     @delete_recording_after_days.setter
     def delete_recording_after_days(self, value: Optional[pulumi.Input[_builtins.float]]):
         pulumi.set(self, "delete_recording_after_days", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates whether the live input is enabled and can accept streams.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="liveInputIdentifier")
@@ -398,6 +430,7 @@ class StreamLiveInput(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  default_creator: Optional[pulumi.Input[_builtins.str]] = None,
                  delete_recording_after_days: Optional[pulumi.Input[_builtins.float]] = None,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  live_input_identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  meta: Optional[pulumi.Input[_builtins.str]] = None,
                  recording: Optional[pulumi.Input[Union['StreamLiveInputRecordingArgs', 'StreamLiveInputRecordingArgsDict']]] = None,
@@ -415,6 +448,7 @@ class StreamLiveInput(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] default_creator: Sets the creator ID asssociated with this live input.
         :param pulumi.Input[_builtins.float] delete_recording_after_days: Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
+        :param pulumi.Input[_builtins.bool] enabled: Indicates whether the live input is enabled and can accept streams.
         :param pulumi.Input[_builtins.str] live_input_identifier: A unique identifier for a live input.
         :param pulumi.Input[_builtins.str] meta: A user modifiable key-value store used to reference other systems of record for managing live inputs.
         :param pulumi.Input[Union['StreamLiveInputRecordingArgs', 'StreamLiveInputRecordingArgsDict']] recording: Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
@@ -451,6 +485,7 @@ class StreamLiveInput(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  default_creator: Optional[pulumi.Input[_builtins.str]] = None,
                  delete_recording_after_days: Optional[pulumi.Input[_builtins.float]] = None,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  live_input_identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  meta: Optional[pulumi.Input[_builtins.str]] = None,
                  recording: Optional[pulumi.Input[Union['StreamLiveInputRecordingArgs', 'StreamLiveInputRecordingArgsDict']]] = None,
@@ -468,6 +503,7 @@ class StreamLiveInput(pulumi.CustomResource):
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["default_creator"] = default_creator
             __props__.__dict__["delete_recording_after_days"] = delete_recording_after_days
+            __props__.__dict__["enabled"] = enabled
             __props__.__dict__["live_input_identifier"] = live_input_identifier
             __props__.__dict__["meta"] = meta
             __props__.__dict__["recording"] = recording
@@ -495,6 +531,7 @@ class StreamLiveInput(pulumi.CustomResource):
             created: Optional[pulumi.Input[_builtins.str]] = None,
             default_creator: Optional[pulumi.Input[_builtins.str]] = None,
             delete_recording_after_days: Optional[pulumi.Input[_builtins.float]] = None,
+            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             live_input_identifier: Optional[pulumi.Input[_builtins.str]] = None,
             meta: Optional[pulumi.Input[_builtins.str]] = None,
             modified: Optional[pulumi.Input[_builtins.str]] = None,
@@ -518,6 +555,7 @@ class StreamLiveInput(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created: The date and time the live input was created.
         :param pulumi.Input[_builtins.str] default_creator: Sets the creator ID asssociated with this live input.
         :param pulumi.Input[_builtins.float] delete_recording_after_days: Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
+        :param pulumi.Input[_builtins.bool] enabled: Indicates whether the live input is enabled and can accept streams.
         :param pulumi.Input[_builtins.str] live_input_identifier: A unique identifier for a live input.
         :param pulumi.Input[_builtins.str] meta: A user modifiable key-value store used to reference other systems of record for managing live inputs.
         :param pulumi.Input[_builtins.str] modified: The date and time the live input was last modified.
@@ -540,6 +578,7 @@ class StreamLiveInput(pulumi.CustomResource):
         __props__.__dict__["created"] = created
         __props__.__dict__["default_creator"] = default_creator
         __props__.__dict__["delete_recording_after_days"] = delete_recording_after_days
+        __props__.__dict__["enabled"] = enabled
         __props__.__dict__["live_input_identifier"] = live_input_identifier
         __props__.__dict__["meta"] = meta
         __props__.__dict__["modified"] = modified
@@ -585,6 +624,14 @@ class StreamLiveInput(pulumi.CustomResource):
         Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
         """
         return pulumi.get(self, "delete_recording_after_days")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Indicates whether the live input is enabled and can accept streams.
+        """
+        return pulumi.get(self, "enabled")
 
     @_builtins.property
     @pulumi.getter(name="liveInputIdentifier")

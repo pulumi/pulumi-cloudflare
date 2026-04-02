@@ -4,8 +4,10 @@
 package com.pulumi.cloudflare;
 
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyApprovalGroupArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyConnectionRulesArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyExcludeArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyIncludeArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyMfaConfigArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyRequireArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -68,6 +70,21 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * The rules that define how users may connect to targets secured by your application.
+     * 
+     */
+    @Import(name="connectionRules")
+    private @Nullable Output<ZeroTrustAccessPolicyConnectionRulesArgs> connectionRules;
+
+    /**
+     * @return The rules that define how users may connect to targets secured by your application.
+     * 
+     */
+    public Optional<Output<ZeroTrustAccessPolicyConnectionRulesArgs>> connectionRules() {
+        return Optional.ofNullable(this.connectionRules);
+    }
+
+    /**
      * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
      * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;nonIdentity&#34;, &#34;bypass&#34;.
      * 
@@ -127,6 +144,21 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
      */
     public Optional<Output<Boolean>> isolationRequired() {
         return Optional.ofNullable(this.isolationRequired);
+    }
+
+    /**
+     * Configures multi-factor authentication (MFA) settings.
+     * 
+     */
+    @Import(name="mfaConfig")
+    private @Nullable Output<ZeroTrustAccessPolicyMfaConfigArgs> mfaConfig;
+
+    /**
+     * @return Configures multi-factor authentication (MFA) settings.
+     * 
+     */
+    public Optional<Output<ZeroTrustAccessPolicyMfaConfigArgs>> mfaConfig() {
+        return Optional.ofNullable(this.mfaConfig);
     }
 
     /**
@@ -210,10 +242,12 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
         this.accountId = $.accountId;
         this.approvalGroups = $.approvalGroups;
         this.approvalRequired = $.approvalRequired;
+        this.connectionRules = $.connectionRules;
         this.decision = $.decision;
         this.excludes = $.excludes;
         this.includes = $.includes;
         this.isolationRequired = $.isolationRequired;
+        this.mfaConfig = $.mfaConfig;
         this.name = $.name;
         this.purposeJustificationPrompt = $.purposeJustificationPrompt;
         this.purposeJustificationRequired = $.purposeJustificationRequired;
@@ -310,6 +344,27 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
          */
         public Builder approvalRequired(Boolean approvalRequired) {
             return approvalRequired(Output.of(approvalRequired));
+        }
+
+        /**
+         * @param connectionRules The rules that define how users may connect to targets secured by your application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionRules(@Nullable Output<ZeroTrustAccessPolicyConnectionRulesArgs> connectionRules) {
+            $.connectionRules = connectionRules;
+            return this;
+        }
+
+        /**
+         * @param connectionRules The rules that define how users may connect to targets secured by your application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionRules(ZeroTrustAccessPolicyConnectionRulesArgs connectionRules) {
+            return connectionRules(Output.of(connectionRules));
         }
 
         /**
@@ -416,6 +471,27 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
          */
         public Builder isolationRequired(Boolean isolationRequired) {
             return isolationRequired(Output.of(isolationRequired));
+        }
+
+        /**
+         * @param mfaConfig Configures multi-factor authentication (MFA) settings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mfaConfig(@Nullable Output<ZeroTrustAccessPolicyMfaConfigArgs> mfaConfig) {
+            $.mfaConfig = mfaConfig;
+            return this;
+        }
+
+        /**
+         * @param mfaConfig Configures multi-factor authentication (MFA) settings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mfaConfig(ZeroTrustAccessPolicyMfaConfigArgs mfaConfig) {
+            return mfaConfig(Output.of(mfaConfig));
         }
 
         /**

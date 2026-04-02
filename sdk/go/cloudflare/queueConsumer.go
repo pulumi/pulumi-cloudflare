@@ -29,8 +29,9 @@ import (
 //			_, err := cloudflare.NewQueueConsumer(ctx, "example_queue_consumer", &cloudflare.QueueConsumerArgs{
 //				AccountId:       pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				QueueId:         pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				DeadLetterQueue: pulumi.String("example-queue"),
 //				ScriptName:      pulumi.String("my-consumer-worker"),
+//				Type:            pulumi.String("worker"),
+//				DeadLetterQueue: pulumi.String("example-queue"),
 //				Settings: &cloudflare.QueueConsumerSettingsArgs{
 //					BatchSize:      pulumi.Float64(50),
 //					MaxConcurrency: pulumi.Float64(10),
@@ -38,7 +39,6 @@ import (
 //					MaxWaitTimeMs:  pulumi.Float64(5000),
 //					RetryDelay:     pulumi.Float64(10),
 //				},
-//				Type: pulumi.String("worker"),
 //			})
 //			if err != nil {
 //				return err
@@ -62,14 +62,13 @@ type QueueConsumer struct {
 	CreatedOn       pulumi.StringOutput    `pulumi:"createdOn"`
 	DeadLetterQueue pulumi.StringPtrOutput `pulumi:"deadLetterQueue"`
 	// A Resource identifier.
-	QueueId pulumi.StringOutput `pulumi:"queueId"`
-	// Name of a Worker
-	Script pulumi.StringOutput `pulumi:"script"`
+	QueueId   pulumi.StringOutput `pulumi:"queueId"`
+	QueueName pulumi.StringOutput `pulumi:"queueName"`
 	// Name of a Worker
 	ScriptName pulumi.StringPtrOutput         `pulumi:"scriptName"`
 	Settings   QueueConsumerSettingsPtrOutput `pulumi:"settings"`
 	// Available values: "worker", "httpPull".
-	Type pulumi.StringPtrOutput `pulumi:"type"`
+	Type pulumi.StringOutput `pulumi:"type"`
 }
 
 // NewQueueConsumer registers a new resource with the given unique name, arguments, and options.
@@ -84,6 +83,9 @@ func NewQueueConsumer(ctx *pulumi.Context,
 	}
 	if args.QueueId == nil {
 		return nil, errors.New("invalid value for required argument 'QueueId'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource QueueConsumer
@@ -115,9 +117,8 @@ type queueConsumerState struct {
 	CreatedOn       *string `pulumi:"createdOn"`
 	DeadLetterQueue *string `pulumi:"deadLetterQueue"`
 	// A Resource identifier.
-	QueueId *string `pulumi:"queueId"`
-	// Name of a Worker
-	Script *string `pulumi:"script"`
+	QueueId   *string `pulumi:"queueId"`
+	QueueName *string `pulumi:"queueName"`
 	// Name of a Worker
 	ScriptName *string                `pulumi:"scriptName"`
 	Settings   *QueueConsumerSettings `pulumi:"settings"`
@@ -133,9 +134,8 @@ type QueueConsumerState struct {
 	CreatedOn       pulumi.StringPtrInput
 	DeadLetterQueue pulumi.StringPtrInput
 	// A Resource identifier.
-	QueueId pulumi.StringPtrInput
-	// Name of a Worker
-	Script pulumi.StringPtrInput
+	QueueId   pulumi.StringPtrInput
+	QueueName pulumi.StringPtrInput
 	// Name of a Worker
 	ScriptName pulumi.StringPtrInput
 	Settings   QueueConsumerSettingsPtrInput
@@ -157,7 +157,7 @@ type queueConsumerArgs struct {
 	ScriptName *string                `pulumi:"scriptName"`
 	Settings   *QueueConsumerSettings `pulumi:"settings"`
 	// Available values: "worker", "httpPull".
-	Type *string `pulumi:"type"`
+	Type string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a QueueConsumer resource.
@@ -171,7 +171,7 @@ type QueueConsumerArgs struct {
 	ScriptName pulumi.StringPtrInput
 	Settings   QueueConsumerSettingsPtrInput
 	// Available values: "worker", "httpPull".
-	Type pulumi.StringPtrInput
+	Type pulumi.StringInput
 }
 
 func (QueueConsumerArgs) ElementType() reflect.Type {
@@ -284,9 +284,8 @@ func (o QueueConsumerOutput) QueueId() pulumi.StringOutput {
 	return o.ApplyT(func(v *QueueConsumer) pulumi.StringOutput { return v.QueueId }).(pulumi.StringOutput)
 }
 
-// Name of a Worker
-func (o QueueConsumerOutput) Script() pulumi.StringOutput {
-	return o.ApplyT(func(v *QueueConsumer) pulumi.StringOutput { return v.Script }).(pulumi.StringOutput)
+func (o QueueConsumerOutput) QueueName() pulumi.StringOutput {
+	return o.ApplyT(func(v *QueueConsumer) pulumi.StringOutput { return v.QueueName }).(pulumi.StringOutput)
 }
 
 // Name of a Worker
@@ -299,8 +298,8 @@ func (o QueueConsumerOutput) Settings() QueueConsumerSettingsPtrOutput {
 }
 
 // Available values: "worker", "httpPull".
-func (o QueueConsumerOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *QueueConsumer) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
+func (o QueueConsumerOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *QueueConsumer) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 type QueueConsumerArrayOutput struct{ *pulumi.OutputState }

@@ -31,6 +31,11 @@ namespace Pulumi.Cloudflare
     ///             Forbidden = "699d98642c564d2e855e9661899b7252",
     ///             IdentityDenied = "699d98642c564d2e855e9661899b7252",
     ///         },
+    ///         DenyUnmatchedRequests = true,
+    ///         DenyUnmatchedRequestsExemptedZoneNames = new[]
+    ///         {
+    ///             "example.com",
+    ///         },
     ///         IsUiReadOnly = true,
     ///         LoginDesign = new Cloudflare.Inputs.ZeroTrustOrganizationLoginDesignArgs
     ///         {
@@ -40,6 +45,18 @@ namespace Pulumi.Cloudflare
     ///             LogoPath = "https://example.com/logo.png",
     ///             TextColor = "#c5ed1b",
     ///         },
+    ///         MfaConfig = new Cloudflare.Inputs.ZeroTrustOrganizationMfaConfigArgs
+    ///         {
+    ///             AllowedAuthenticators = new[]
+    ///             {
+    ///                 "totp",
+    ///                 "biometrics",
+    ///                 "security_key",
+    ///             },
+    ///             SessionDuration = "24h",
+    ///         },
+    ///         MfaConfigurationAllowed = true,
+    ///         MfaRequiredForAllApps = false,
     ///         Name = "Widget Corps Internal Applications",
     ///         SessionDuration = "24h",
     ///         UiReadOnlyToggleReason = "Temporarily turn off the UI read only lock to make a change via the UI",
@@ -85,6 +102,18 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.ZeroTrustOrganizationCustomPages?> CustomPages { get; private set; } = null!;
 
         /// <summary>
+        /// Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `DenyUnmatchedRequestsExemptedZoneNames` array.
+        /// </summary>
+        [Output("denyUnmatchedRequests")]
+        public Output<bool?> DenyUnmatchedRequests { get; private set; } = null!;
+
+        /// <summary>
+        /// Contains zone names to exempt from the `DenyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+        /// </summary>
+        [Output("denyUnmatchedRequestsExemptedZoneNames")]
+        public Output<ImmutableArray<string>> DenyUnmatchedRequestsExemptedZoneNames { get; private set; } = null!;
+
+        /// <summary>
         /// Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
         /// </summary>
         [Output("isUiReadOnly")]
@@ -92,6 +121,24 @@ namespace Pulumi.Cloudflare
 
         [Output("loginDesign")]
         public Output<Outputs.ZeroTrustOrganizationLoginDesign?> LoginDesign { get; private set; } = null!;
+
+        /// <summary>
+        /// Configures multi-factor authentication (MFA) settings for an organization.
+        /// </summary>
+        [Output("mfaConfig")]
+        public Output<Outputs.ZeroTrustOrganizationMfaConfig?> MfaConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
+        /// </summary>
+        [Output("mfaConfigurationAllowed")]
+        public Output<bool> MfaConfigurationAllowed { get; private set; } = null!;
+
+        /// <summary>
+        /// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+        /// </summary>
+        [Output("mfaRequiredForAllApps")]
+        public Output<bool> MfaRequiredForAllApps { get; private set; } = null!;
 
         /// <summary>
         /// The name of your Zero Trust organization.
@@ -109,7 +156,7 @@ namespace Pulumi.Cloudflare
         /// A description of the reason why the UI read only field is being toggled.
         /// </summary>
         [Output("uiReadOnlyToggleReason")]
-        public Output<string?> UiReadOnlyToggleReason { get; private set; } = null!;
+        public Output<string> UiReadOnlyToggleReason { get; private set; } = null!;
 
         /// <summary>
         /// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `Ns`, `Us` (or `µs`), `Ms`, `S`, `M`, `H`.
@@ -207,6 +254,24 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.ZeroTrustOrganizationCustomPagesArgs>? CustomPages { get; set; }
 
         /// <summary>
+        /// Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `DenyUnmatchedRequestsExemptedZoneNames` array.
+        /// </summary>
+        [Input("denyUnmatchedRequests")]
+        public Input<bool>? DenyUnmatchedRequests { get; set; }
+
+        [Input("denyUnmatchedRequestsExemptedZoneNames")]
+        private InputList<string>? _denyUnmatchedRequestsExemptedZoneNames;
+
+        /// <summary>
+        /// Contains zone names to exempt from the `DenyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+        /// </summary>
+        public InputList<string> DenyUnmatchedRequestsExemptedZoneNames
+        {
+            get => _denyUnmatchedRequestsExemptedZoneNames ?? (_denyUnmatchedRequestsExemptedZoneNames = new InputList<string>());
+            set => _denyUnmatchedRequestsExemptedZoneNames = value;
+        }
+
+        /// <summary>
         /// Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
         /// </summary>
         [Input("isUiReadOnly")]
@@ -214,6 +279,24 @@ namespace Pulumi.Cloudflare
 
         [Input("loginDesign")]
         public Input<Inputs.ZeroTrustOrganizationLoginDesignArgs>? LoginDesign { get; set; }
+
+        /// <summary>
+        /// Configures multi-factor authentication (MFA) settings for an organization.
+        /// </summary>
+        [Input("mfaConfig")]
+        public Input<Inputs.ZeroTrustOrganizationMfaConfigArgs>? MfaConfig { get; set; }
+
+        /// <summary>
+        /// Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
+        /// </summary>
+        [Input("mfaConfigurationAllowed")]
+        public Input<bool>? MfaConfigurationAllowed { get; set; }
+
+        /// <summary>
+        /// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+        /// </summary>
+        [Input("mfaRequiredForAllApps")]
+        public Input<bool>? MfaRequiredForAllApps { get; set; }
 
         /// <summary>
         /// The name of your Zero Trust organization.
@@ -287,6 +370,24 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.ZeroTrustOrganizationCustomPagesGetArgs>? CustomPages { get; set; }
 
         /// <summary>
+        /// Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `DenyUnmatchedRequestsExemptedZoneNames` array.
+        /// </summary>
+        [Input("denyUnmatchedRequests")]
+        public Input<bool>? DenyUnmatchedRequests { get; set; }
+
+        [Input("denyUnmatchedRequestsExemptedZoneNames")]
+        private InputList<string>? _denyUnmatchedRequestsExemptedZoneNames;
+
+        /// <summary>
+        /// Contains zone names to exempt from the `DenyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+        /// </summary>
+        public InputList<string> DenyUnmatchedRequestsExemptedZoneNames
+        {
+            get => _denyUnmatchedRequestsExemptedZoneNames ?? (_denyUnmatchedRequestsExemptedZoneNames = new InputList<string>());
+            set => _denyUnmatchedRequestsExemptedZoneNames = value;
+        }
+
+        /// <summary>
         /// Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
         /// </summary>
         [Input("isUiReadOnly")]
@@ -294,6 +395,24 @@ namespace Pulumi.Cloudflare
 
         [Input("loginDesign")]
         public Input<Inputs.ZeroTrustOrganizationLoginDesignGetArgs>? LoginDesign { get; set; }
+
+        /// <summary>
+        /// Configures multi-factor authentication (MFA) settings for an organization.
+        /// </summary>
+        [Input("mfaConfig")]
+        public Input<Inputs.ZeroTrustOrganizationMfaConfigGetArgs>? MfaConfig { get; set; }
+
+        /// <summary>
+        /// Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
+        /// </summary>
+        [Input("mfaConfigurationAllowed")]
+        public Input<bool>? MfaConfigurationAllowed { get; set; }
+
+        /// <summary>
+        /// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+        /// </summary>
+        [Input("mfaRequiredForAllApps")]
+        public Input<bool>? MfaRequiredForAllApps { get; set; }
 
         /// <summary>
         /// The name of your Zero Trust organization.

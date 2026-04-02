@@ -17,7 +17,7 @@ public final class GetZeroTrustDexTestTargetPolicy {
      */
     private Boolean default_;
     /**
-     * @return The id of the DEX rule
+     * @return API Resource UUID tag.
      * 
      */
     private String id;
@@ -36,7 +36,7 @@ public final class GetZeroTrustDexTestTargetPolicy {
         return this.default_;
     }
     /**
-     * @return The id of the DEX rule
+     * @return API Resource UUID tag.
      * 
      */
     public String id() {

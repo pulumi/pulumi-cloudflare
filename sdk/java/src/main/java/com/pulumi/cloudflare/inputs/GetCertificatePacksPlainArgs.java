@@ -17,6 +17,23 @@ public final class GetCertificatePacksPlainArgs extends com.pulumi.resources.Inv
     public static final GetCertificatePacksPlainArgs Empty = new GetCertificatePacksPlainArgs();
 
     /**
+     * Specify the deployment environment for the certificate packs.
+     * Available values: &#34;staging&#34;, &#34;production&#34;.
+     * 
+     */
+    @Import(name="deploy")
+    private @Nullable String deploy;
+
+    /**
+     * @return Specify the deployment environment for the certificate packs.
+     * Available values: &#34;staging&#34;, &#34;production&#34;.
+     * 
+     */
+    public Optional<String> deploy() {
+        return Optional.ofNullable(this.deploy);
+    }
+
+    /**
      * Max items to fetch, default: 1000
      * 
      */
@@ -66,6 +83,7 @@ public final class GetCertificatePacksPlainArgs extends com.pulumi.resources.Inv
     private GetCertificatePacksPlainArgs() {}
 
     private GetCertificatePacksPlainArgs(GetCertificatePacksPlainArgs $) {
+        this.deploy = $.deploy;
         this.maxItems = $.maxItems;
         this.status = $.status;
         this.zoneId = $.zoneId;
@@ -87,6 +105,18 @@ public final class GetCertificatePacksPlainArgs extends com.pulumi.resources.Inv
 
         public Builder(GetCertificatePacksPlainArgs defaults) {
             $ = new GetCertificatePacksPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param deploy Specify the deployment environment for the certificate packs.
+         * Available values: &#34;staging&#34;, &#34;production&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deploy(@Nullable String deploy) {
+            $.deploy = deploy;
+            return this;
         }
 
         /**

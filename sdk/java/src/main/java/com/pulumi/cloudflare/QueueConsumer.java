@@ -44,8 +44,9 @@ import javax.annotation.Nullable;
  *         var exampleQueueConsumer = new QueueConsumer("exampleQueueConsumer", QueueConsumerArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .queueId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .deadLetterQueue("example-queue")
  *             .scriptName("my-consumer-worker")
+ *             .type("worker")
+ *             .deadLetterQueue("example-queue")
  *             .settings(QueueConsumerSettingsArgs.builder()
  *                 .batchSize(50.0)
  *                 .maxConcurrency(10.0)
@@ -53,7 +54,6 @@ import javax.annotation.Nullable;
  *                 .maxWaitTimeMs(5000.0)
  *                 .retryDelay(10.0)
  *                 .build())
- *             .type("worker")
  *             .build());
  * 
  *     }
@@ -122,19 +122,11 @@ public class QueueConsumer extends com.pulumi.resources.CustomResource {
     public Output<String> queueId() {
         return this.queueId;
     }
-    /**
-     * Name of a Worker
-     * 
-     */
-    @Export(name="script", refs={String.class}, tree="[0]")
-    private Output<String> script;
+    @Export(name="queueName", refs={String.class}, tree="[0]")
+    private Output<String> queueName;
 
-    /**
-     * @return Name of a Worker
-     * 
-     */
-    public Output<String> script() {
-        return this.script;
+    public Output<String> queueName() {
+        return this.queueName;
     }
     /**
      * Name of a Worker
@@ -161,14 +153,14 @@ public class QueueConsumer extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> type;
+    private Output<String> type;
 
     /**
      * @return Available values: &#34;worker&#34;, &#34;httpPull&#34;.
      * 
      */
-    public Output<Optional<String>> type() {
-        return Codegen.optional(this.type);
+    public Output<String> type() {
+        return this.type;
     }
 
     /**

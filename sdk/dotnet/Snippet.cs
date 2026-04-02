@@ -54,7 +54,7 @@ namespace Pulumi.Cloudflare
     public partial class Snippet : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The timestamp of when the snippet was created.
+        /// Indicates when the snippet was created.
         /// </summary>
         [Output("createdOn")]
         public Output<string> CreatedOn { get; private set; } = null!;
@@ -66,25 +66,25 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.SnippetFile>> Files { get; private set; } = null!;
 
         /// <summary>
-        /// Metadata about the snippet.
+        /// Provide metadata about the snippet.
         /// </summary>
         [Output("metadata")]
         public Output<Outputs.SnippetMetadata> Metadata { get; private set; } = null!;
 
         /// <summary>
-        /// The timestamp of when the snippet was last modified.
+        /// Indicates when the snippet was last modified.
         /// </summary>
         [Output("modifiedOn")]
         public Output<string> ModifiedOn { get; private set; } = null!;
 
         /// <summary>
-        /// The identifying name of the snippet.
+        /// Identify the snippet.
         /// </summary>
         [Output("snippetName")]
         public Output<string> SnippetName { get; private set; } = null!;
 
         /// <summary>
-        /// The unique ID of the zone.
+        /// Use this field to specify the unique ID of the zone.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -148,19 +148,19 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Metadata about the snippet.
+        /// Provide metadata about the snippet.
         /// </summary>
         [Input("metadata", required: true)]
         public Input<Inputs.SnippetMetadataArgs> Metadata { get; set; } = null!;
 
         /// <summary>
-        /// The identifying name of the snippet.
+        /// Identify the snippet.
         /// </summary>
         [Input("snippetName", required: true)]
         public Input<string> SnippetName { get; set; } = null!;
 
         /// <summary>
-        /// The unique ID of the zone.
+        /// Use this field to specify the unique ID of the zone.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -174,7 +174,7 @@ namespace Pulumi.Cloudflare
     public sealed class SnippetState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The timestamp of when the snippet was created.
+        /// Indicates when the snippet was created.
         /// </summary>
         [Input("createdOn")]
         public Input<string>? CreatedOn { get; set; }
@@ -192,25 +192,25 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Metadata about the snippet.
+        /// Provide metadata about the snippet.
         /// </summary>
         [Input("metadata")]
         public Input<Inputs.SnippetMetadataGetArgs>? Metadata { get; set; }
 
         /// <summary>
-        /// The timestamp of when the snippet was last modified.
+        /// Indicates when the snippet was last modified.
         /// </summary>
         [Input("modifiedOn")]
         public Input<string>? ModifiedOn { get; set; }
 
         /// <summary>
-        /// The identifying name of the snippet.
+        /// Identify the snippet.
         /// </summary>
         [Input("snippetName")]
         public Input<string>? SnippetName { get; set; }
 
         /// <summary>
-        /// The unique ID of the zone.
+        /// Use this field to specify the unique ID of the zone.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

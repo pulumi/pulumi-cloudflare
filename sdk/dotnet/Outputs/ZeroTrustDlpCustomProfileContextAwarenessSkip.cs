@@ -16,10 +16,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// If the content type is a file, skip context analysis and return all matches.
         /// </summary>
-        public readonly bool Files;
+        public readonly bool? Files;
 
         [OutputConstructor]
-        private ZeroTrustDlpCustomProfileContextAwarenessSkip(bool files)
+        private ZeroTrustDlpCustomProfileContextAwarenessSkip(bool? files)
         {
             Files = files;
         }

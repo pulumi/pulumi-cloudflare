@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class WorkerVersionBindingOutboundWorker
     {
         /// <summary>
+        /// Entrypoint to invoke on the outbound worker.
+        /// </summary>
+        public readonly string? Entrypoint;
+        /// <summary>
         /// Environment of the outbound worker.
         /// </summary>
         public readonly string? Environment;
@@ -24,10 +28,13 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private WorkerVersionBindingOutboundWorker(
+            string? entrypoint,
+
             string? environment,
 
             string? service)
         {
+            Entrypoint = entrypoint;
             Environment = environment;
             Service = service;
         }

@@ -58,7 +58,7 @@ type LookupPageShieldPolicyArgs struct {
 // A collection of values returned by getPageShieldPolicy.
 type LookupPageShieldPolicyResult struct {
 	// The action to take if the expression matches
-	// Available values: "allow", "log".
+	// Available values: "allow", "log", "add*reporting*directives".
 	Action string `pulumi:"action"`
 	// A description for the policy
 	Description string `pulumi:"description"`
@@ -113,7 +113,7 @@ func (o LookupPageShieldPolicyResultOutput) ToLookupPageShieldPolicyResultOutput
 }
 
 // The action to take if the expression matches
-// Available values: "allow", "log".
+// Available values: "allow", "log", "add*reporting*directives".
 func (o LookupPageShieldPolicyResultOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPageShieldPolicyResult) string { return v.Action }).(pulumi.StringOutput)
 }

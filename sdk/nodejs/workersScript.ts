@@ -231,9 +231,21 @@ export class WorkersScript extends pulumi.CustomResource {
      */
     declare public readonly observability: pulumi.Output<outputs.WorkersScriptObservability | undefined>;
     /**
-     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
+     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
      */
     declare public readonly placement: pulumi.Output<outputs.WorkersScriptPlacement>;
+    /**
+     * Available values: "smart", "targeted".
+     *
+     * @deprecated This attribute is deprecated.
+     */
+    declare public /*out*/ readonly placementMode: pulumi.Output<string>;
+    /**
+     * Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
+     *
+     * @deprecated This attribute is deprecated.
+     */
+    declare public /*out*/ readonly placementStatus: pulumi.Output<string>;
     /**
      * Name of the script, used in URLs and route configuration.
      */
@@ -289,6 +301,8 @@ export class WorkersScript extends pulumi.CustomResource {
             resourceInputs["namedHandlers"] = state?.namedHandlers;
             resourceInputs["observability"] = state?.observability;
             resourceInputs["placement"] = state?.placement;
+            resourceInputs["placementMode"] = state?.placementMode;
+            resourceInputs["placementStatus"] = state?.placementStatus;
             resourceInputs["scriptName"] = state?.scriptName;
             resourceInputs["startupTimeMs"] = state?.startupTimeMs;
             resourceInputs["tailConsumers"] = state?.tailConsumers;
@@ -331,6 +345,8 @@ export class WorkersScript extends pulumi.CustomResource {
             resourceInputs["migrationTag"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
             resourceInputs["namedHandlers"] = undefined /*out*/;
+            resourceInputs["placementMode"] = undefined /*out*/;
+            resourceInputs["placementStatus"] = undefined /*out*/;
             resourceInputs["startupTimeMs"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -449,9 +465,21 @@ export interface WorkersScriptState {
      */
     observability?: pulumi.Input<inputs.WorkersScriptObservability>;
     /**
-     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
+     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
      */
     placement?: pulumi.Input<inputs.WorkersScriptPlacement>;
+    /**
+     * Available values: "smart", "targeted".
+     *
+     * @deprecated This attribute is deprecated.
+     */
+    placementMode?: pulumi.Input<string>;
+    /**
+     * Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
+     *
+     * @deprecated This attribute is deprecated.
+     */
+    placementStatus?: pulumi.Input<string>;
     /**
      * Name of the script, used in URLs and route configuration.
      */
@@ -541,7 +569,7 @@ export interface WorkersScriptArgs {
      */
     observability?: pulumi.Input<inputs.WorkersScriptObservability>;
     /**
-     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.
+     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
      */
     placement?: pulumi.Input<inputs.WorkersScriptPlacement>;
     /**

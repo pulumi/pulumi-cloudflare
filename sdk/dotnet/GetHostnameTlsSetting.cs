@@ -85,8 +85,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetHostnameTlsSettingArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The TLS Setting name.
-        /// Available values: "ciphers", "min*tls*version", "http2".
+        /// The TLS Setting name. The value type depends on the setting:
         /// </summary>
         [Input("settingId", required: true)]
         public string SettingId { get; set; } = null!;
@@ -106,8 +105,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetHostnameTlsSettingInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The TLS Setting name.
-        /// Available values: "ciphers", "min*tls*version", "http2".
+        /// The TLS Setting name. The value type depends on the setting:
         /// </summary>
         [Input("settingId", required: true)]
         public Input<string> SettingId { get; set; } = null!;
@@ -137,13 +135,11 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Hostname;
         /// <summary>
-        /// The TLS Setting name.
-        /// Available values: "ciphers", "min*tls*version", "http2".
+        /// The TLS Setting name. The value type depends on the setting:
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The TLS Setting name.
-        /// Available values: "ciphers", "min*tls*version", "http2".
+        /// The TLS Setting name. The value type depends on the setting:
         /// </summary>
         public readonly string SettingId;
         /// <summary>
@@ -155,9 +151,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string UpdatedAt;
         /// <summary>
-        /// The tls setting value.
+        /// The TLS setting value. The type depends on the `SettingId` used in the request path:
         /// </summary>
-        public readonly double Value;
+        public readonly string Value;
         /// <summary>
         /// Identifier.
         /// </summary>
@@ -177,7 +173,7 @@ namespace Pulumi.Cloudflare
 
             string updatedAt,
 
-            double value,
+            string value,
 
             string zoneId)
         {

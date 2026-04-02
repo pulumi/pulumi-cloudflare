@@ -81,7 +81,7 @@ export class ZeroTrustDlpCustomProfile extends pulumi.CustomResource {
      *
      * @deprecated This attribute is deprecated.
      */
-    declare public readonly contextAwareness: pulumi.Output<outputs.ZeroTrustDlpCustomProfileContextAwareness | undefined>;
+    declare public readonly contextAwareness: pulumi.Output<outputs.ZeroTrustDlpCustomProfileContextAwareness>;
     /**
      * When the profile was created.
      */

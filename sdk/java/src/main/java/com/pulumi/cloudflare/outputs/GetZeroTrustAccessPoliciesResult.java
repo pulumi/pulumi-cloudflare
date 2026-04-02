@@ -4,8 +4,10 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessPoliciesResultApprovalGroup;
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessPoliciesResultConnectionRules;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessPoliciesResultExclude;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessPoliciesResultInclude;
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessPoliciesResultMfaConfig;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessPoliciesResultRequire;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -32,6 +34,11 @@ public final class GetZeroTrustAccessPoliciesResult {
      * 
      */
     private Boolean approvalRequired;
+    /**
+     * @return The rules that define how users may connect to targets secured by your application.
+     * 
+     */
+    private GetZeroTrustAccessPoliciesResultConnectionRules connectionRules;
     private String createdAt;
     /**
      * @return The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
@@ -59,6 +66,11 @@ public final class GetZeroTrustAccessPoliciesResult {
      * 
      */
     private Boolean isolationRequired;
+    /**
+     * @return Configures multi-factor authentication (MFA) settings.
+     * 
+     */
+    private GetZeroTrustAccessPoliciesResultMfaConfig mfaConfig;
     /**
      * @return The name of the Access policy.
      * 
@@ -109,6 +121,13 @@ public final class GetZeroTrustAccessPoliciesResult {
     public Boolean approvalRequired() {
         return this.approvalRequired;
     }
+    /**
+     * @return The rules that define how users may connect to targets secured by your application.
+     * 
+     */
+    public GetZeroTrustAccessPoliciesResultConnectionRules connectionRules() {
+        return this.connectionRules;
+    }
     public String createdAt() {
         return this.createdAt;
     }
@@ -147,6 +166,13 @@ public final class GetZeroTrustAccessPoliciesResult {
      */
     public Boolean isolationRequired() {
         return this.isolationRequired;
+    }
+    /**
+     * @return Configures multi-factor authentication (MFA) settings.
+     * 
+     */
+    public GetZeroTrustAccessPoliciesResultMfaConfig mfaConfig() {
+        return this.mfaConfig;
     }
     /**
      * @return The name of the Access policy.
@@ -202,12 +228,14 @@ public final class GetZeroTrustAccessPoliciesResult {
         private Integer appCount;
         private List<GetZeroTrustAccessPoliciesResultApprovalGroup> approvalGroups;
         private Boolean approvalRequired;
+        private GetZeroTrustAccessPoliciesResultConnectionRules connectionRules;
         private String createdAt;
         private String decision;
         private List<GetZeroTrustAccessPoliciesResultExclude> excludes;
         private String id;
         private List<GetZeroTrustAccessPoliciesResultInclude> includes;
         private Boolean isolationRequired;
+        private GetZeroTrustAccessPoliciesResultMfaConfig mfaConfig;
         private String name;
         private String purposeJustificationPrompt;
         private Boolean purposeJustificationRequired;
@@ -221,12 +249,14 @@ public final class GetZeroTrustAccessPoliciesResult {
     	      this.appCount = defaults.appCount;
     	      this.approvalGroups = defaults.approvalGroups;
     	      this.approvalRequired = defaults.approvalRequired;
+    	      this.connectionRules = defaults.connectionRules;
     	      this.createdAt = defaults.createdAt;
     	      this.decision = defaults.decision;
     	      this.excludes = defaults.excludes;
     	      this.id = defaults.id;
     	      this.includes = defaults.includes;
     	      this.isolationRequired = defaults.isolationRequired;
+    	      this.mfaConfig = defaults.mfaConfig;
     	      this.name = defaults.name;
     	      this.purposeJustificationPrompt = defaults.purposeJustificationPrompt;
     	      this.purposeJustificationRequired = defaults.purposeJustificationRequired;
@@ -261,6 +291,14 @@ public final class GetZeroTrustAccessPoliciesResult {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessPoliciesResult", "approvalRequired");
             }
             this.approvalRequired = approvalRequired;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder connectionRules(GetZeroTrustAccessPoliciesResultConnectionRules connectionRules) {
+            if (connectionRules == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessPoliciesResult", "connectionRules");
+            }
+            this.connectionRules = connectionRules;
             return this;
         }
         @CustomType.Setter
@@ -315,6 +353,14 @@ public final class GetZeroTrustAccessPoliciesResult {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessPoliciesResult", "isolationRequired");
             }
             this.isolationRequired = isolationRequired;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mfaConfig(GetZeroTrustAccessPoliciesResultMfaConfig mfaConfig) {
+            if (mfaConfig == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessPoliciesResult", "mfaConfig");
+            }
+            this.mfaConfig = mfaConfig;
             return this;
         }
         @CustomType.Setter
@@ -381,12 +427,14 @@ public final class GetZeroTrustAccessPoliciesResult {
             _resultValue.appCount = appCount;
             _resultValue.approvalGroups = approvalGroups;
             _resultValue.approvalRequired = approvalRequired;
+            _resultValue.connectionRules = connectionRules;
             _resultValue.createdAt = createdAt;
             _resultValue.decision = decision;
             _resultValue.excludes = excludes;
             _resultValue.id = id;
             _resultValue.includes = includes;
             _resultValue.isolationRequired = isolationRequired;
+            _resultValue.mfaConfig = mfaConfig;
             _resultValue.name = name;
             _resultValue.purposeJustificationPrompt = purposeJustificationPrompt;
             _resultValue.purposeJustificationRequired = purposeJustificationRequired;

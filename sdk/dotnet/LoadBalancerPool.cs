@@ -132,7 +132,7 @@ namespace Pulumi.Cloudflare
         /// Configures load shedding policies and percentages for the pool.
         /// </summary>
         [Output("loadShedding")]
-        public Output<Outputs.LoadBalancerPoolLoadShedding> LoadShedding { get; private set; } = null!;
+        public Output<Outputs.LoadBalancerPoolLoadShedding?> LoadShedding { get; private set; } = null!;
 
         /// <summary>
         /// The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
@@ -183,13 +183,13 @@ namespace Pulumi.Cloudflare
         /// Filter pool and origin health notifications by resource type or health status. Use null to reset.
         /// </summary>
         [Output("notificationFilter")]
-        public Output<Outputs.LoadBalancerPoolNotificationFilter> NotificationFilter { get; private set; } = null!;
+        public Output<Outputs.LoadBalancerPoolNotificationFilter?> NotificationFilter { get; private set; } = null!;
 
         /// <summary>
         /// Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
         /// </summary>
         [Output("originSteering")]
-        public Output<Outputs.LoadBalancerPoolOriginSteering> OriginSteering { get; private set; } = null!;
+        public Output<Outputs.LoadBalancerPoolOriginSteering?> OriginSteering { get; private set; } = null!;
 
         /// <summary>
         /// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.

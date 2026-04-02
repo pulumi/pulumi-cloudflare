@@ -64,6 +64,14 @@ export interface GetZeroTrustOrganizationResult {
     readonly autoRedirectToIdentity: boolean;
     readonly customPages: outputs.GetZeroTrustOrganizationCustomPages;
     /**
+     * Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `denyUnmatchedRequestsExemptedZoneNames` array.
+     */
+    readonly denyUnmatchedRequests: boolean;
+    /**
+     * Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+     */
+    readonly denyUnmatchedRequestsExemptedZoneNames: string[];
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
@@ -72,6 +80,18 @@ export interface GetZeroTrustOrganizationResult {
      */
     readonly isUiReadOnly: boolean;
     readonly loginDesign: outputs.GetZeroTrustOrganizationLoginDesign;
+    /**
+     * Configures multi-factor authentication (MFA) settings for an organization.
+     */
+    readonly mfaConfig: outputs.GetZeroTrustOrganizationMfaConfig;
+    /**
+     * Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
+     */
+    readonly mfaConfigurationAllowed: boolean;
+    /**
+     * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+     */
+    readonly mfaRequiredForAllApps: boolean;
     /**
      * The name of your Zero Trust organization.
      */

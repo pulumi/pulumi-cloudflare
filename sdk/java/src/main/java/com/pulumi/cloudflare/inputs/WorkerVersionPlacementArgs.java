@@ -3,9 +3,11 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.WorkerVersionPlacementTargetArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,26 +18,90 @@ public final class WorkerVersionPlacementArgs extends com.pulumi.resources.Resou
     public static final WorkerVersionPlacementArgs Empty = new WorkerVersionPlacementArgs();
 
     /**
-     * Placement mode for the version.
-     * Available values: &#34;smart&#34;.
+     * TCP host and port for targeted placement.
+     * 
+     */
+    @Import(name="host")
+    private @Nullable Output<String> host;
+
+    /**
+     * @return TCP host and port for targeted placement.
+     * 
+     */
+    public Optional<Output<String>> host() {
+        return Optional.ofNullable(this.host);
+    }
+
+    /**
+     * HTTP hostname for targeted placement.
+     * 
+     */
+    @Import(name="hostname")
+    private @Nullable Output<String> hostname;
+
+    /**
+     * @return HTTP hostname for targeted placement.
+     * 
+     */
+    public Optional<Output<String>> hostname() {
+        return Optional.ofNullable(this.hostname);
+    }
+
+    /**
+     * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: &#34;smart&#34;, &#34;targeted&#34;.
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return Placement mode for the version.
-     * Available values: &#34;smart&#34;.
+     * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: &#34;smart&#34;, &#34;targeted&#34;.
      * 
      */
     public Optional<Output<String>> mode() {
         return Optional.ofNullable(this.mode);
     }
 
+    /**
+     * Cloud region for targeted placement in format &#39;provider:region&#39;.
+     * 
+     */
+    @Import(name="region")
+    private @Nullable Output<String> region;
+
+    /**
+     * @return Cloud region for targeted placement in format &#39;provider:region&#39;.
+     * 
+     */
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
+    }
+
+    /**
+     * Array of placement targets (currently limited to single target).
+     * 
+     */
+    @Import(name="targets")
+    private @Nullable Output<List<WorkerVersionPlacementTargetArgs>> targets;
+
+    /**
+     * @return Array of placement targets (currently limited to single target).
+     * 
+     */
+    public Optional<Output<List<WorkerVersionPlacementTargetArgs>>> targets() {
+        return Optional.ofNullable(this.targets);
+    }
+
     private WorkerVersionPlacementArgs() {}
 
     private WorkerVersionPlacementArgs(WorkerVersionPlacementArgs $) {
+        this.host = $.host;
+        this.hostname = $.hostname;
         this.mode = $.mode;
+        this.region = $.region;
+        this.targets = $.targets;
     }
 
     public static Builder builder() {
@@ -57,8 +123,50 @@ public final class WorkerVersionPlacementArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param mode Placement mode for the version.
-         * Available values: &#34;smart&#34;.
+         * @param host TCP host and port for targeted placement.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder host(@Nullable Output<String> host) {
+            $.host = host;
+            return this;
+        }
+
+        /**
+         * @param host TCP host and port for targeted placement.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder host(String host) {
+            return host(Output.of(host));
+        }
+
+        /**
+         * @param hostname HTTP hostname for targeted placement.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostname(@Nullable Output<String> hostname) {
+            $.hostname = hostname;
+            return this;
+        }
+
+        /**
+         * @param hostname HTTP hostname for targeted placement.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostname(String hostname) {
+            return hostname(Output.of(hostname));
+        }
+
+        /**
+         * @param mode Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+         * Available values: &#34;smart&#34;, &#34;targeted&#34;.
          * 
          * @return builder
          * 
@@ -69,14 +177,66 @@ public final class WorkerVersionPlacementArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param mode Placement mode for the version.
-         * Available values: &#34;smart&#34;.
+         * @param mode Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+         * Available values: &#34;smart&#34;, &#34;targeted&#34;.
          * 
          * @return builder
          * 
          */
         public Builder mode(String mode) {
             return mode(Output.of(mode));
+        }
+
+        /**
+         * @param region Cloud region for targeted placement in format &#39;provider:region&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable Output<String> region) {
+            $.region = region;
+            return this;
+        }
+
+        /**
+         * @param region Cloud region for targeted placement in format &#39;provider:region&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(String region) {
+            return region(Output.of(region));
+        }
+
+        /**
+         * @param targets Array of placement targets (currently limited to single target).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targets(@Nullable Output<List<WorkerVersionPlacementTargetArgs>> targets) {
+            $.targets = targets;
+            return this;
+        }
+
+        /**
+         * @param targets Array of placement targets (currently limited to single target).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targets(List<WorkerVersionPlacementTargetArgs> targets) {
+            return targets(Output.of(targets));
+        }
+
+        /**
+         * @param targets Array of placement targets (currently limited to single target).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targets(WorkerVersionPlacementTargetArgs... targets) {
+            return targets(List.of(targets));
         }
 
         public WorkerVersionPlacementArgs build() {

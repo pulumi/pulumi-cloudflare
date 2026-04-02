@@ -107,6 +107,15 @@ func Provider() info.Provider {
 				},
 			},
 
+			"cloudflare_ai_search_instance": {
+				Fields: map[string]*info.Schema{
+					"id": {
+						Name: "aiSearchInstanceId",
+					},
+				},
+				ComputeID: delegateID("aiSearchInstanceId"),
+			},
+
 			"cloudflare_image": {
 				Fields: map[string]*info.Schema{
 					"id": {
@@ -620,16 +629,9 @@ var skipGettingStartedSection = info.DocsEdit{
 }
 
 var resourcesWhichNeedSchemaVersionReset = []string{
-	"cloudflare_access_rule",
 	"cloudflare_cloud_connector_rules",
 	"cloudflare_custom_ssl",
-	"cloudflare_email_routing_address",
-	"cloudflare_email_routing_rule",
-	"cloudflare_list_item",
-	"cloudflare_load_balancer",
 	"cloudflare_dns_record",
-	"cloudflare_regional_hostname",
-	"cloudflare_snippet_rules",
 }
 
 // resetMigratedResourcesSchemaVersion resets the schema version of resources that were migrated

@@ -149,6 +149,10 @@ namespace Pulumi.Cloudflare
         /// Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
         /// </summary>
         public readonly bool CloudflareBranding;
+        /// <summary>
+        /// DCV Delegation records for domain validation.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetCertificatePackDcvDelegationRecordResult> DcvDelegationRecords;
         public readonly Outputs.GetCertificatePackFilterResult? Filter;
         /// <summary>
         /// Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
@@ -205,6 +209,8 @@ namespace Pulumi.Cloudflare
 
             bool cloudflareBranding,
 
+            ImmutableArray<Outputs.GetCertificatePackDcvDelegationRecordResult> dcvDelegationRecords,
+
             Outputs.GetCertificatePackFilterResult? filter,
 
             ImmutableArray<string> hosts,
@@ -231,6 +237,7 @@ namespace Pulumi.Cloudflare
             CertificatePackId = certificatePackId;
             Certificates = certificates;
             CloudflareBranding = cloudflareBranding;
+            DcvDelegationRecords = dcvDelegationRecords;
             Filter = filter;
             Hosts = hosts;
             Id = id;

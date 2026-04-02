@@ -5,9 +5,10 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ZeroTrustDlpCustomProfileContextAwarenessSkipArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,15 +19,15 @@ public final class ZeroTrustDlpCustomProfileContextAwarenessSkipArgs extends com
      * If the content type is a file, skip context analysis and return all matches.
      * 
      */
-    @Import(name="files", required=true)
-    private Output<Boolean> files;
+    @Import(name="files")
+    private @Nullable Output<Boolean> files;
 
     /**
      * @return If the content type is a file, skip context analysis and return all matches.
      * 
      */
-    public Output<Boolean> files() {
-        return this.files;
+    public Optional<Output<Boolean>> files() {
+        return Optional.ofNullable(this.files);
     }
 
     private ZeroTrustDlpCustomProfileContextAwarenessSkipArgs() {}
@@ -59,7 +60,7 @@ public final class ZeroTrustDlpCustomProfileContextAwarenessSkipArgs extends com
          * @return builder
          * 
          */
-        public Builder files(Output<Boolean> files) {
+        public Builder files(@Nullable Output<Boolean> files) {
             $.files = files;
             return this;
         }
@@ -75,9 +76,6 @@ public final class ZeroTrustDlpCustomProfileContextAwarenessSkipArgs extends com
         }
 
         public ZeroTrustDlpCustomProfileContextAwarenessSkipArgs build() {
-            if ($.files == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustDlpCustomProfileContextAwarenessSkipArgs", "files");
-            }
             return $;
         }
     }

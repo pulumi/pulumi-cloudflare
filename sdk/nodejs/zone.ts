@@ -88,7 +88,7 @@ export class Zone extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     /**
-     * The domain name.
+     * The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment ("label") not exceeding 63 characters.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -266,7 +266,7 @@ export interface ZoneState {
      */
     modifiedOn?: pulumi.Input<string>;
     /**
-     * The domain name.
+     * The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment ("label") not exceeding 63 characters.
      */
     name?: pulumi.Input<string>;
     /**
@@ -346,7 +346,7 @@ see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresour
 export interface ZoneArgs {
     account: pulumi.Input<inputs.ZoneAccount>;
     /**
-     * The domain name.
+     * The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment ("label") not exceeding 63 characters.
      */
     name: pulumi.Input<string>;
     /**

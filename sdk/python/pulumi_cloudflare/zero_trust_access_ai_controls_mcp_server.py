@@ -123,6 +123,7 @@ class _ZeroTrustAccessAiControlsMcpServerState:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  error: Optional[pulumi.Input[_builtins.str]] = None,
                  hostname: Optional[pulumi.Input[_builtins.str]] = None,
+                 last_successful_sync: Optional[pulumi.Input[_builtins.str]] = None,
                  last_synced: Optional[pulumi.Input[_builtins.str]] = None,
                  modified_at: Optional[pulumi.Input[_builtins.str]] = None,
                  modified_by: Optional[pulumi.Input[_builtins.str]] = None,
@@ -153,6 +154,8 @@ class _ZeroTrustAccessAiControlsMcpServerState:
             pulumi.set(__self__, "error", error)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
+        if last_successful_sync is not None:
+            pulumi.set(__self__, "last_successful_sync", last_successful_sync)
         if last_synced is not None:
             pulumi.set(__self__, "last_synced", last_synced)
         if modified_at is not None:
@@ -244,6 +247,15 @@ class _ZeroTrustAccessAiControlsMcpServerState:
     @hostname.setter
     def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "hostname", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lastSuccessfulSync")
+    def last_successful_sync(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "last_successful_sync")
+
+    @last_successful_sync.setter
+    def last_successful_sync(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "last_successful_sync", value)
 
     @_builtins.property
     @pulumi.getter(name="lastSynced")
@@ -445,6 +457,7 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["created_by"] = None
             __props__.__dict__["error"] = None
+            __props__.__dict__["last_successful_sync"] = None
             __props__.__dict__["last_synced"] = None
             __props__.__dict__["modified_at"] = None
             __props__.__dict__["modified_by"] = None
@@ -469,6 +482,7 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
             description: Optional[pulumi.Input[_builtins.str]] = None,
             error: Optional[pulumi.Input[_builtins.str]] = None,
             hostname: Optional[pulumi.Input[_builtins.str]] = None,
+            last_successful_sync: Optional[pulumi.Input[_builtins.str]] = None,
             last_synced: Optional[pulumi.Input[_builtins.str]] = None,
             modified_at: Optional[pulumi.Input[_builtins.str]] = None,
             modified_by: Optional[pulumi.Input[_builtins.str]] = None,
@@ -499,6 +513,7 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["error"] = error
         __props__.__dict__["hostname"] = hostname
+        __props__.__dict__["last_successful_sync"] = last_successful_sync
         __props__.__dict__["last_synced"] = last_synced
         __props__.__dict__["modified_at"] = modified_at
         __props__.__dict__["modified_by"] = modified_by
@@ -551,6 +566,11 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
     @pulumi.getter
     def hostname(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "hostname")
+
+    @_builtins.property
+    @pulumi.getter(name="lastSuccessfulSync")
+    def last_successful_sync(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "last_successful_sync")
 
     @_builtins.property
     @pulumi.getter(name="lastSynced")

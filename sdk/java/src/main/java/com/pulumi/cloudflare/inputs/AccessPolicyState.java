@@ -4,8 +4,10 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.AccessPolicyApprovalGroupArgs;
+import com.pulumi.cloudflare.inputs.AccessPolicyConnectionRulesArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyExcludeArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyIncludeArgs;
+import com.pulumi.cloudflare.inputs.AccessPolicyMfaConfigArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyRequireArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -64,6 +66,21 @@ public final class AccessPolicyState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> approvalRequired() {
         return Optional.ofNullable(this.approvalRequired);
+    }
+
+    /**
+     * The rules that define how users may connect to targets secured by your application.
+     * 
+     */
+    @Import(name="connectionRules")
+    private @Nullable Output<AccessPolicyConnectionRulesArgs> connectionRules;
+
+    /**
+     * @return The rules that define how users may connect to targets secured by your application.
+     * 
+     */
+    public Optional<Output<AccessPolicyConnectionRulesArgs>> connectionRules() {
+        return Optional.ofNullable(this.connectionRules);
     }
 
     /**
@@ -126,6 +143,21 @@ public final class AccessPolicyState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> isolationRequired() {
         return Optional.ofNullable(this.isolationRequired);
+    }
+
+    /**
+     * Configures multi-factor authentication (MFA) settings.
+     * 
+     */
+    @Import(name="mfaConfig")
+    private @Nullable Output<AccessPolicyMfaConfigArgs> mfaConfig;
+
+    /**
+     * @return Configures multi-factor authentication (MFA) settings.
+     * 
+     */
+    public Optional<Output<AccessPolicyMfaConfigArgs>> mfaConfig() {
+        return Optional.ofNullable(this.mfaConfig);
     }
 
     /**
@@ -209,10 +241,12 @@ public final class AccessPolicyState extends com.pulumi.resources.ResourceArgs {
         this.accountId = $.accountId;
         this.approvalGroups = $.approvalGroups;
         this.approvalRequired = $.approvalRequired;
+        this.connectionRules = $.connectionRules;
         this.decision = $.decision;
         this.excludes = $.excludes;
         this.includes = $.includes;
         this.isolationRequired = $.isolationRequired;
+        this.mfaConfig = $.mfaConfig;
         this.name = $.name;
         this.purposeJustificationPrompt = $.purposeJustificationPrompt;
         this.purposeJustificationRequired = $.purposeJustificationRequired;
@@ -309,6 +343,27 @@ public final class AccessPolicyState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder approvalRequired(Boolean approvalRequired) {
             return approvalRequired(Output.of(approvalRequired));
+        }
+
+        /**
+         * @param connectionRules The rules that define how users may connect to targets secured by your application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionRules(@Nullable Output<AccessPolicyConnectionRulesArgs> connectionRules) {
+            $.connectionRules = connectionRules;
+            return this;
+        }
+
+        /**
+         * @param connectionRules The rules that define how users may connect to targets secured by your application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionRules(AccessPolicyConnectionRulesArgs connectionRules) {
+            return connectionRules(Output.of(connectionRules));
         }
 
         /**
@@ -415,6 +470,27 @@ public final class AccessPolicyState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder isolationRequired(Boolean isolationRequired) {
             return isolationRequired(Output.of(isolationRequired));
+        }
+
+        /**
+         * @param mfaConfig Configures multi-factor authentication (MFA) settings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mfaConfig(@Nullable Output<AccessPolicyMfaConfigArgs> mfaConfig) {
+            $.mfaConfig = mfaConfig;
+            return this;
+        }
+
+        /**
+         * @param mfaConfig Configures multi-factor authentication (MFA) settings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mfaConfig(AccessPolicyMfaConfigArgs mfaConfig) {
+            return mfaConfig(Output.of(mfaConfig));
         }
 
         /**

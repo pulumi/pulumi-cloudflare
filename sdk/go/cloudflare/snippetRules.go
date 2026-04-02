@@ -52,9 +52,9 @@ import (
 type SnippetRules struct {
 	pulumi.CustomResourceState
 
-	// A list of snippet rules.
+	// Lists snippet rules.
 	Rules SnippetRulesRuleArrayOutput `pulumi:"rules"`
-	// The unique ID of the zone.
+	// Use this field to specify the unique ID of the zone.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -94,16 +94,16 @@ func GetSnippetRules(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SnippetRules resources.
 type snippetRulesState struct {
-	// A list of snippet rules.
+	// Lists snippet rules.
 	Rules []SnippetRulesRule `pulumi:"rules"`
-	// The unique ID of the zone.
+	// Use this field to specify the unique ID of the zone.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type SnippetRulesState struct {
-	// A list of snippet rules.
+	// Lists snippet rules.
 	Rules SnippetRulesRuleArrayInput
-	// The unique ID of the zone.
+	// Use this field to specify the unique ID of the zone.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -112,17 +112,17 @@ func (SnippetRulesState) ElementType() reflect.Type {
 }
 
 type snippetRulesArgs struct {
-	// A list of snippet rules.
+	// Lists snippet rules.
 	Rules []SnippetRulesRule `pulumi:"rules"`
-	// The unique ID of the zone.
+	// Use this field to specify the unique ID of the zone.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a SnippetRules resource.
 type SnippetRulesArgs struct {
-	// A list of snippet rules.
+	// Lists snippet rules.
 	Rules SnippetRulesRuleArrayInput
-	// The unique ID of the zone.
+	// Use this field to specify the unique ID of the zone.
 	ZoneId pulumi.StringInput
 }
 
@@ -213,12 +213,12 @@ func (o SnippetRulesOutput) ToSnippetRulesOutputWithContext(ctx context.Context)
 	return o
 }
 
-// A list of snippet rules.
+// Lists snippet rules.
 func (o SnippetRulesOutput) Rules() SnippetRulesRuleArrayOutput {
 	return o.ApplyT(func(v *SnippetRules) SnippetRulesRuleArrayOutput { return v.Rules }).(SnippetRulesRuleArrayOutput)
 }
 
-// The unique ID of the zone.
+// Use this field to specify the unique ID of the zone.
 func (o SnippetRulesOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SnippetRules) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

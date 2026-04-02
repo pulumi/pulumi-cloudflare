@@ -23,6 +23,11 @@ public final class GetQueueConsumerResult {
     private String consumerId;
     private String createdOn;
     /**
+     * @return Name of the dead letter queue, or empty string if not configured
+     * 
+     */
+    private String deadLetterQueue;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -32,11 +37,7 @@ public final class GetQueueConsumerResult {
      * 
      */
     private String queueId;
-    /**
-     * @return Name of a Worker
-     * 
-     */
-    private String script;
+    private String queueName;
     /**
      * @return Name of a Worker
      * 
@@ -68,6 +69,13 @@ public final class GetQueueConsumerResult {
         return this.createdOn;
     }
     /**
+     * @return Name of the dead letter queue, or empty string if not configured
+     * 
+     */
+    public String deadLetterQueue() {
+        return this.deadLetterQueue;
+    }
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -81,12 +89,8 @@ public final class GetQueueConsumerResult {
     public String queueId() {
         return this.queueId;
     }
-    /**
-     * @return Name of a Worker
-     * 
-     */
-    public String script() {
-        return this.script;
+    public String queueName() {
+        return this.queueName;
     }
     /**
      * @return Name of a Worker
@@ -118,9 +122,10 @@ public final class GetQueueConsumerResult {
         private String accountId;
         private String consumerId;
         private String createdOn;
+        private String deadLetterQueue;
         private String id;
         private String queueId;
-        private String script;
+        private String queueName;
         private String scriptName;
         private GetQueueConsumerSettings settings;
         private String type;
@@ -130,9 +135,10 @@ public final class GetQueueConsumerResult {
     	      this.accountId = defaults.accountId;
     	      this.consumerId = defaults.consumerId;
     	      this.createdOn = defaults.createdOn;
+    	      this.deadLetterQueue = defaults.deadLetterQueue;
     	      this.id = defaults.id;
     	      this.queueId = defaults.queueId;
-    	      this.script = defaults.script;
+    	      this.queueName = defaults.queueName;
     	      this.scriptName = defaults.scriptName;
     	      this.settings = defaults.settings;
     	      this.type = defaults.type;
@@ -163,6 +169,14 @@ public final class GetQueueConsumerResult {
             return this;
         }
         @CustomType.Setter
+        public Builder deadLetterQueue(String deadLetterQueue) {
+            if (deadLetterQueue == null) {
+              throw new MissingRequiredPropertyException("GetQueueConsumerResult", "deadLetterQueue");
+            }
+            this.deadLetterQueue = deadLetterQueue;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetQueueConsumerResult", "id");
@@ -179,11 +193,11 @@ public final class GetQueueConsumerResult {
             return this;
         }
         @CustomType.Setter
-        public Builder script(String script) {
-            if (script == null) {
-              throw new MissingRequiredPropertyException("GetQueueConsumerResult", "script");
+        public Builder queueName(String queueName) {
+            if (queueName == null) {
+              throw new MissingRequiredPropertyException("GetQueueConsumerResult", "queueName");
             }
-            this.script = script;
+            this.queueName = queueName;
             return this;
         }
         @CustomType.Setter
@@ -215,9 +229,10 @@ public final class GetQueueConsumerResult {
             _resultValue.accountId = accountId;
             _resultValue.consumerId = consumerId;
             _resultValue.createdOn = createdOn;
+            _resultValue.deadLetterQueue = deadLetterQueue;
             _resultValue.id = id;
             _resultValue.queueId = queueId;
-            _resultValue.script = script;
+            _resultValue.queueName = queueName;
             _resultValue.scriptName = scriptName;
             _resultValue.settings = settings;
             _resultValue.type = type;

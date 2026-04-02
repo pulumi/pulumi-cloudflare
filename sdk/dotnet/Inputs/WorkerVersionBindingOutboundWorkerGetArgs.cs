@@ -13,6 +13,12 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class WorkerVersionBindingOutboundWorkerGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Entrypoint to invoke on the outbound worker.
+        /// </summary>
+        [Input("entrypoint")]
+        public Input<string>? Entrypoint { get; set; }
+
+        /// <summary>
         /// Environment of the outbound worker.
         /// </summary>
         [Input("environment")]

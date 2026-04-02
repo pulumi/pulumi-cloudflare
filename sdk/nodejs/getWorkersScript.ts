@@ -56,6 +56,7 @@ export interface GetWorkersScriptResult {
      * Name of the script, used in URLs and route configuration.
      */
     readonly id: string;
+    readonly script: string;
     /**
      * Name of the script, used in URLs and route configuration.
      */

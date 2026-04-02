@@ -84,7 +84,7 @@ export class DlpCustomProfile extends pulumi.CustomResource {
      *
      * @deprecated This attribute is deprecated.
      */
-    declare public readonly contextAwareness: pulumi.Output<outputs.DlpCustomProfileContextAwareness | undefined>;
+    declare public readonly contextAwareness: pulumi.Output<outputs.DlpCustomProfileContextAwareness>;
     /**
      * When the profile was created.
      */

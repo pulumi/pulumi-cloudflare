@@ -119,7 +119,7 @@ export class LoadBalancerPool extends pulumi.CustomResource {
     /**
      * Configures load shedding policies and percentages for the pool.
      */
-    declare public readonly loadShedding: pulumi.Output<outputs.LoadBalancerPoolLoadShedding>;
+    declare public readonly loadShedding: pulumi.Output<outputs.LoadBalancerPoolLoadShedding | undefined>;
     /**
      * The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
      */
@@ -152,11 +152,11 @@ export class LoadBalancerPool extends pulumi.CustomResource {
     /**
      * Filter pool and origin health notifications by resource type or health status. Use null to reset.
      */
-    declare public readonly notificationFilter: pulumi.Output<outputs.LoadBalancerPoolNotificationFilter>;
+    declare public readonly notificationFilter: pulumi.Output<outputs.LoadBalancerPoolNotificationFilter | undefined>;
     /**
      * Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
      */
-    declare public readonly originSteering: pulumi.Output<outputs.LoadBalancerPoolOriginSteering>;
+    declare public readonly originSteering: pulumi.Output<outputs.LoadBalancerPoolOriginSteering | undefined>;
     /**
      * The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
      */

@@ -102,7 +102,7 @@ type ZeroTrustAccessApplication struct {
 	TargetCriterias ZeroTrustAccessApplicationTargetCriteriaArrayOutput `pulumi:"targetCriterias"`
 	// The application type.
 	// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal", "proxyEndpoint".
-	Type pulumi.StringPtrOutput `pulumi:"type"`
+	Type pulumi.StringOutput `pulumi:"type"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
@@ -780,8 +780,8 @@ func (o ZeroTrustAccessApplicationOutput) TargetCriterias() ZeroTrustAccessAppli
 
 // The application type.
 // Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal", "proxyEndpoint".
-func (o ZeroTrustAccessApplicationOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplication) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
+func (o ZeroTrustAccessApplicationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessApplication) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 // The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.

@@ -104,7 +104,7 @@ type AccessApplication struct {
 	TargetCriterias AccessApplicationTargetCriteriaArrayOutput `pulumi:"targetCriterias"`
 	// The application type.
 	// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal", "proxyEndpoint".
-	Type pulumi.StringPtrOutput `pulumi:"type"`
+	Type pulumi.StringOutput `pulumi:"type"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
@@ -772,8 +772,8 @@ func (o AccessApplicationOutput) TargetCriterias() AccessApplicationTargetCriter
 
 // The application type.
 // Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal", "proxyEndpoint".
-func (o AccessApplicationOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
+func (o AccessApplicationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 // The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.

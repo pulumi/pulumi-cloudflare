@@ -158,6 +158,7 @@ namespace Pulumi.Cloudflare
         /// The value must be URL-encoded.
         /// </summary>
         public readonly string? Name;
+        public readonly ImmutableArray<Outputs.GetAccountApiTokenPermissionGroupsPermissionGroupResult> PermissionGroups;
         /// <summary>
         /// Filter by the scope of the permission group.
         /// The value must be URL-encoded.
@@ -172,11 +173,14 @@ namespace Pulumi.Cloudflare
 
             string? name,
 
+            ImmutableArray<Outputs.GetAccountApiTokenPermissionGroupsPermissionGroupResult> permissionGroups,
+
             string? scope)
         {
             AccountId = accountId;
             Id = id;
             Name = name;
+            PermissionGroups = permissionGroups;
             Scope = scope;
         }
     }

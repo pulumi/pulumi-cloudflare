@@ -14,14 +14,23 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetCertificatePackFilterResult
     {
         /// <summary>
+        /// Specify the deployment environment for the certificate packs.
+        /// Available values: "staging", "production".
+        /// </summary>
+        public readonly string? Deploy;
+        /// <summary>
         /// Include Certificate Packs of all statuses, not just active ones.
         /// Available values: "all".
         /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]
-        private GetCertificatePackFilterResult(string? status)
+        private GetCertificatePackFilterResult(
+            string? deploy,
+
+            string? status)
         {
+            Deploy = deploy;
             Status = status;
         }
     }

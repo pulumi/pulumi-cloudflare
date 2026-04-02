@@ -29,7 +29,7 @@ class ZoneArgs:
         """
         The set of arguments for constructing a Zone resource.
 
-        :param pulumi.Input[_builtins.str] name: The domain name.
+        :param pulumi.Input[_builtins.str] name: The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment ("label") not exceeding 63 characters.
         :param pulumi.Input[_builtins.bool] paused: Indicates whether the zone is only using Cloudflare DNS services. A
                true value means the zone will not receive security or performance
                benefits.
@@ -61,7 +61,7 @@ class ZoneArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
         """
-        The domain name.
+        The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment ("label") not exceeding 63 characters.
         """
         return pulumi.get(self, "name")
 
@@ -149,7 +149,7 @@ class _ZoneState:
                domain. If development mode has never been enabled, this value is 0.
         :param pulumi.Input['ZoneMetaArgs'] meta: Metadata about the zone.
         :param pulumi.Input[_builtins.str] modified_on: When the zone was last modified.
-        :param pulumi.Input[_builtins.str] name: The domain name.
+        :param pulumi.Input[_builtins.str] name: The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment ("label") not exceeding 63 characters.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] name_servers: The name servers Cloudflare assigns to a zone.
         :param pulumi.Input[_builtins.str] original_dnshost: DNS host at the time of switching to Cloudflare.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] original_name_servers: Original name servers before moving to Cloudflare.
@@ -317,7 +317,7 @@ see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresour
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The domain name.
+        The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment ("label") not exceeding 63 characters.
         """
         return pulumi.get(self, "name")
 
@@ -543,7 +543,7 @@ class Zone(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] name: The domain name.
+        :param pulumi.Input[_builtins.str] name: The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment ("label") not exceeding 63 characters.
         :param pulumi.Input[_builtins.bool] paused: Indicates whether the zone is only using Cloudflare DNS services. A
                true value means the zone will not receive security or performance
                benefits.
@@ -687,7 +687,7 @@ class Zone(pulumi.CustomResource):
                domain. If development mode has never been enabled, this value is 0.
         :param pulumi.Input[Union['ZoneMetaArgs', 'ZoneMetaArgsDict']] meta: Metadata about the zone.
         :param pulumi.Input[_builtins.str] modified_on: When the zone was last modified.
-        :param pulumi.Input[_builtins.str] name: The domain name.
+        :param pulumi.Input[_builtins.str] name: The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment ("label") not exceeding 63 characters.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] name_servers: The name servers Cloudflare assigns to a zone.
         :param pulumi.Input[_builtins.str] original_dnshost: DNS host at the time of switching to Cloudflare.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] original_name_servers: Original name servers before moving to Cloudflare.
@@ -798,7 +798,7 @@ class Zone(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The domain name.
+        The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment ("label") not exceeding 63 characters.
         """
         return pulumi.get(self, "name")
 

@@ -45,7 +45,7 @@ export interface GetPageShieldPolicyArgs {
 export interface GetPageShieldPolicyResult {
     /**
      * The action to take if the expression matches
-     * Available values: "allow", "log".
+     * Available values: "allow", "log", "add*reporting*directives".
      */
     readonly action: string;
     /**
