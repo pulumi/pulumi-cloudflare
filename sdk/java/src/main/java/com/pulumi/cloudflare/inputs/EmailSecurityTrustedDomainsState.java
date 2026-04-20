@@ -55,6 +55,21 @@ public final class EmailSecurityTrustedDomainsState extends com.pulumi.resources
     }
 
     /**
+     * The unique identifier for the trusted domain.
+     * 
+     */
+    @Import(name="emailSecurityTrustedDomainsId")
+    private @Nullable Output<String> emailSecurityTrustedDomainsId;
+
+    /**
+     * @return The unique identifier for the trusted domain.
+     * 
+     */
+    public Optional<Output<String>> emailSecurityTrustedDomainsId() {
+        return Optional.ofNullable(this.emailSecurityTrustedDomainsId);
+    }
+
+    /**
      * Select to prevent recently registered domains from triggering a
      * Suspicious or Malicious disposition.
      * 
@@ -118,6 +133,7 @@ public final class EmailSecurityTrustedDomainsState extends com.pulumi.resources
         this.bodies = $.bodies;
         this.comments = $.comments;
         this.createdAt = $.createdAt;
+        this.emailSecurityTrustedDomainsId = $.emailSecurityTrustedDomainsId;
         this.isRecent = $.isRecent;
         this.isRegex = $.isRegex;
         this.isSimilarity = $.isSimilarity;
@@ -193,6 +209,27 @@ public final class EmailSecurityTrustedDomainsState extends com.pulumi.resources
 
         public Builder createdAt(String createdAt) {
             return createdAt(Output.of(createdAt));
+        }
+
+        /**
+         * @param emailSecurityTrustedDomainsId The unique identifier for the trusted domain.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emailSecurityTrustedDomainsId(@Nullable Output<String> emailSecurityTrustedDomainsId) {
+            $.emailSecurityTrustedDomainsId = emailSecurityTrustedDomainsId;
+            return this;
+        }
+
+        /**
+         * @param emailSecurityTrustedDomainsId The unique identifier for the trusted domain.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emailSecurityTrustedDomainsId(String emailSecurityTrustedDomainsId) {
+            return emailSecurityTrustedDomainsId(Output.of(emailSecurityTrustedDomainsId));
         }
 
         /**

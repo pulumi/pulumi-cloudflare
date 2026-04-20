@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustAccessServiceToken = new Cloudflare.ZeroTrustAccessServiceToken("example_zero_trust_access_service_token", new()
+    ///     var exampleZeroTrustAccessServiceToken = new Cloudflare.Index.ZeroTrustAccessServiceToken("example_zero_trust_access_service_token", new()
     ///     {
     ///         Name = "CI/CD token",
     ///         ZoneId = "zone_id",

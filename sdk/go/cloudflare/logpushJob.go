@@ -105,6 +105,8 @@ type LogpushJob struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	LogpullOptions pulumi.StringOutput `pulumi:"logpullOptions"`
+	// Unique id of the job.
+	LogpushJobId pulumi.StringOutput `pulumi:"logpushJobId"`
 	// The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
 	MaxUploadBytes pulumi.IntOutput `pulumi:"maxUploadBytes"`
 	// The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
@@ -190,6 +192,8 @@ type logpushJobState struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	LogpullOptions *string `pulumi:"logpullOptions"`
+	// Unique id of the job.
+	LogpushJobId *string `pulumi:"logpushJobId"`
 	// The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
 	MaxUploadBytes *int `pulumi:"maxUploadBytes"`
 	// The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
@@ -236,6 +240,8 @@ type LogpushJobState struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	LogpullOptions pulumi.StringPtrInput
+	// Unique id of the job.
+	LogpushJobId pulumi.StringPtrInput
 	// The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
 	MaxUploadBytes pulumi.IntPtrInput
 	// The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
@@ -484,6 +490,11 @@ func (o LogpushJobOutput) LastError() pulumi.StringOutput {
 // Deprecated: This attribute is deprecated.
 func (o LogpushJobOutput) LogpullOptions() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.StringOutput { return v.LogpullOptions }).(pulumi.StringOutput)
+}
+
+// Unique id of the job.
+func (o LogpushJobOutput) LogpushJobId() pulumi.StringOutput {
+	return o.ApplyT(func(v *LogpushJob) pulumi.StringOutput { return v.LogpushJobId }).(pulumi.StringOutput)
 }
 
 // The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.

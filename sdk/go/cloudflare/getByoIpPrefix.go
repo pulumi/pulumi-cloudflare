@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupByoIpPrefix(ctx, &cloudflare.LookupByoIpPrefixArgs{
+//			_, err := cloudflare.GetByoIpPrefix(ctx, &cloudflare.LookupByoIpPrefixArgs{
 //				AccountId: "258def64c72dae45f3e4c8516e2111f2",
 //				PrefixId:  "2af39739cc4e3b5910c918468bb89828",
 //			}, nil)

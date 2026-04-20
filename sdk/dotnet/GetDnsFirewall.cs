@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleDnsFirewall = Cloudflare.GetDnsFirewall.Invoke(new()
+        ///     var exampleDnsFirewall = Cloudflare.Index.GetDnsFirewall.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DnsFirewallId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -45,7 +45,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleDnsFirewall = Cloudflare.GetDnsFirewall.Invoke(new()
+        ///     var exampleDnsFirewall = Cloudflare.Index.GetDnsFirewall.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DnsFirewallId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -68,7 +68,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleDnsFirewall = Cloudflare.GetDnsFirewall.Invoke(new()
+        ///     var exampleDnsFirewall = Cloudflare.Index.GetDnsFirewall.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DnsFirewallId = "023e105f4ecef8ad9ca31a8372d0c353",

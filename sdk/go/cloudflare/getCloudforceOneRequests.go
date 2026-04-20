@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupCloudforceOneRequests(ctx, &cloudflare.LookupCloudforceOneRequestsArgs{
+//			_, err := cloudflare.GetCloudforceOneRequests(ctx, &cloudflare.LookupCloudforceOneRequestsArgs{
 //				AccountId:       "023e105f4ecef8ad9ca31a8372d0c353",
 //				Page:            0,
 //				PerPage:         10,

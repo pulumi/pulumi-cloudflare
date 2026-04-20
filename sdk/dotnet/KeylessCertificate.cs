@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleKeylessCertificate = new Cloudflare.KeylessCertificate("example_keyless_certificate", new()
+    ///     var exampleKeylessCertificate = new Cloudflare.Index.KeylessCertificate("example_keyless_certificate", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Certificate = @"  -----BEGIN CERTIFICATE-----

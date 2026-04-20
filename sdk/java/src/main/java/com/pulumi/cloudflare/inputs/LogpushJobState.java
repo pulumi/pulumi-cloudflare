@@ -206,6 +206,21 @@ public final class LogpushJobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Unique id of the job.
+     * 
+     */
+    @Import(name="logpushJobId")
+    private @Nullable Output<String> logpushJobId;
+
+    /**
+     * @return Unique id of the job.
+     * 
+     */
+    public Optional<Output<String>> logpushJobId() {
+        return Optional.ofNullable(this.logpushJobId);
+    }
+
+    /**
      * The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
      * 
      */
@@ -324,6 +339,7 @@ public final class LogpushJobState extends com.pulumi.resources.ResourceArgs {
         this.lastComplete = $.lastComplete;
         this.lastError = $.lastError;
         this.logpullOptions = $.logpullOptions;
+        this.logpushJobId = $.logpushJobId;
         this.maxUploadBytes = $.maxUploadBytes;
         this.maxUploadIntervalSeconds = $.maxUploadIntervalSeconds;
         this.maxUploadRecords = $.maxUploadRecords;
@@ -602,6 +618,27 @@ public final class LogpushJobState extends com.pulumi.resources.ResourceArgs {
         @Deprecated /* This attribute is deprecated. */
         public Builder logpullOptions(String logpullOptions) {
             return logpullOptions(Output.of(logpullOptions));
+        }
+
+        /**
+         * @param logpushJobId Unique id of the job.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logpushJobId(@Nullable Output<String> logpushJobId) {
+            $.logpushJobId = logpushJobId;
+            return this;
+        }
+
+        /**
+         * @param logpushJobId Unique id of the job.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logpushJobId(String logpushJobId) {
+            return logpushJobId(Output.of(logpushJobId));
         }
 
         /**

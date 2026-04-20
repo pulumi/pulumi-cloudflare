@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleFirewallRule = new Cloudflare.FirewallRule("example_firewall_rule", new()
+    ///     var exampleFirewallRule = new Cloudflare.Index.FirewallRule("example_firewall_rule", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Action = new Cloudflare.Inputs.FirewallRuleActionArgs

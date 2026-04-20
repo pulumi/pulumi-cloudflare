@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleAuthenticatedOriginPulls = new Cloudflare.AuthenticatedOriginPulls("example_authenticated_origin_pulls", new()
+    ///     var exampleAuthenticatedOriginPulls = new Cloudflare.Index.AuthenticatedOriginPulls("example_authenticated_origin_pulls", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Configs = new[]

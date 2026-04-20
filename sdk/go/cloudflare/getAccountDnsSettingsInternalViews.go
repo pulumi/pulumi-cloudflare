@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupAccountDnsSettingsInternalViews(ctx, &cloudflare.LookupAccountDnsSettingsInternalViewsArgs{
+//			_, err := cloudflare.GetAccountDnsSettingsInternalViews(ctx, &cloudflare.LookupAccountDnsSettingsInternalViewsArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				Name: cloudflare.GetAccountDnsSettingsInternalViewsName{
 //					Contains:   pulumi.StringRef("view"),

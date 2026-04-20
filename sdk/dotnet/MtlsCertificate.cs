@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleMtlsCertificate = new Cloudflare.MtlsCertificate("example_mtls_certificate", new()
+    ///     var exampleMtlsCertificate = new Cloudflare.Index.MtlsCertificate("example_mtls_certificate", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Ca = true,

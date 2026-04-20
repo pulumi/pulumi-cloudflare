@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupPageShieldScriptsList(ctx, &cloudflare.LookupPageShieldScriptsListArgs{
+//			_, err := cloudflare.GetPageShieldScriptsList(ctx, &cloudflare.LookupPageShieldScriptsListArgs{
 //				ZoneId:              "023e105f4ecef8ad9ca31a8372d0c353",
 //				Direction:           pulumi.StringRef("asc"),
 //				ExcludeUrls:         pulumi.StringRef("blog.cloudflare.com,www.example"),

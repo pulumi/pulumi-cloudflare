@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupZeroTrustGatewayProxyEndpoints(ctx, &cloudflare.LookupZeroTrustGatewayProxyEndpointsArgs{
+//			_, err := cloudflare.GetZeroTrustGatewayProxyEndpoints(ctx, &cloudflare.LookupZeroTrustGatewayProxyEndpointsArgs{
 //				AccountId: "699d98642c564d2e855e9661899b7252",
 //			}, nil)
 //			if err != nil {

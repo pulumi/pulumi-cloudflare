@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupStreamLiveInput(ctx, &cloudflare.LookupStreamLiveInputArgs{
+//			_, err := cloudflare.GetStreamLiveInput(ctx, &cloudflare.LookupStreamLiveInputArgs{
 //				AccountId:           "023e105f4ecef8ad9ca31a8372d0c353",
 //				LiveInputIdentifier: "66be4bf738797e01e1fca35a7bdecdcd",
 //			}, nil)

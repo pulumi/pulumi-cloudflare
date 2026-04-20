@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleMagicWanStaticRoute = new Cloudflare.MagicWanStaticRoute("example_magic_wan_static_route", new()
+    ///     var exampleMagicWanStaticRoute = new Cloudflare.Index.MagicWanStaticRoute("example_magic_wan_static_route", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Nexthop = "203.0.113.1",

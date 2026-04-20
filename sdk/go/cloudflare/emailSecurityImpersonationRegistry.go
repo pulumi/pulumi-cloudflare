@@ -56,6 +56,8 @@ type EmailSecurityImpersonationRegistry struct {
 	DirectoryId     pulumi.IntOutput    `pulumi:"directoryId"`
 	DirectoryNodeId pulumi.IntOutput    `pulumi:"directoryNodeId"`
 	Email           pulumi.StringOutput `pulumi:"email"`
+	// The ID of this resource.
+	EmailSecurityImpersonationRegistryId pulumi.StringOutput `pulumi:"emailSecurityImpersonationRegistryId"`
 	// Deprecated: This attribute is deprecated.
 	ExternalDirectoryNodeId pulumi.StringOutput `pulumi:"externalDirectoryNodeId"`
 	IsEmailRegex            pulumi.BoolOutput   `pulumi:"isEmailRegex"`
@@ -113,6 +115,8 @@ type emailSecurityImpersonationRegistryState struct {
 	DirectoryId     *int    `pulumi:"directoryId"`
 	DirectoryNodeId *int    `pulumi:"directoryNodeId"`
 	Email           *string `pulumi:"email"`
+	// The ID of this resource.
+	EmailSecurityImpersonationRegistryId *string `pulumi:"emailSecurityImpersonationRegistryId"`
 	// Deprecated: This attribute is deprecated.
 	ExternalDirectoryNodeId *string `pulumi:"externalDirectoryNodeId"`
 	IsEmailRegex            *bool   `pulumi:"isEmailRegex"`
@@ -129,6 +133,8 @@ type EmailSecurityImpersonationRegistryState struct {
 	DirectoryId     pulumi.IntPtrInput
 	DirectoryNodeId pulumi.IntPtrInput
 	Email           pulumi.StringPtrInput
+	// The ID of this resource.
+	EmailSecurityImpersonationRegistryId pulumi.StringPtrInput
 	// Deprecated: This attribute is deprecated.
 	ExternalDirectoryNodeId pulumi.StringPtrInput
 	IsEmailRegex            pulumi.BoolPtrInput
@@ -268,6 +274,13 @@ func (o EmailSecurityImpersonationRegistryOutput) DirectoryNodeId() pulumi.IntOu
 
 func (o EmailSecurityImpersonationRegistryOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailSecurityImpersonationRegistry) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
+}
+
+// The ID of this resource.
+func (o EmailSecurityImpersonationRegistryOutput) EmailSecurityImpersonationRegistryId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EmailSecurityImpersonationRegistry) pulumi.StringOutput {
+		return v.EmailSecurityImpersonationRegistryId
+	}).(pulumi.StringOutput)
 }
 
 // Deprecated: This attribute is deprecated.

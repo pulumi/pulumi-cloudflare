@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupZeroTrustTunnelWarpConnectors(ctx, &cloudflare.LookupZeroTrustTunnelWarpConnectorsArgs{
+//			_, err := cloudflare.GetZeroTrustTunnelWarpConnectors(ctx, &cloudflare.LookupZeroTrustTunnelWarpConnectorsArgs{
 //				AccountId:     "699d98642c564d2e855e9661899b7252",
 //				ExcludePrefix: pulumi.StringRef("vpc1-"),
 //				ExistedAt:     pulumi.StringRef("2019-10-12T07%3A20%3A50.52Z"),

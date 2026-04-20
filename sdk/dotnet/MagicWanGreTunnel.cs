@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleMagicWanGreTunnel = new Cloudflare.MagicWanGreTunnel("example_magic_wan_gre_tunnel", new()
+    ///     var exampleMagicWanGreTunnel = new Cloudflare.Index.MagicWanGreTunnel("example_magic_wan_gre_tunnel", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         CloudflareGreEndpoint = "203.0.113.1",

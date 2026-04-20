@@ -82,6 +82,7 @@ class _EmailSecurityImpersonationRegistryState:
                  directory_id: Optional[pulumi.Input[_builtins.int]] = None,
                  directory_node_id: Optional[pulumi.Input[_builtins.int]] = None,
                  email: Optional[pulumi.Input[_builtins.str]] = None,
+                 email_security_impersonation_registry_id: Optional[pulumi.Input[_builtins.str]] = None,
                  external_directory_node_id: Optional[pulumi.Input[_builtins.str]] = None,
                  is_email_regex: Optional[pulumi.Input[_builtins.bool]] = None,
                  last_modified: Optional[pulumi.Input[_builtins.str]] = None,
@@ -91,6 +92,7 @@ class _EmailSecurityImpersonationRegistryState:
         Input properties used for looking up and filtering EmailSecurityImpersonationRegistry resources.
 
         :param pulumi.Input[_builtins.str] account_id: Account Identifier
+        :param pulumi.Input[_builtins.str] email_security_impersonation_registry_id: The ID of this resource.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -104,6 +106,8 @@ class _EmailSecurityImpersonationRegistryState:
             pulumi.set(__self__, "directory_node_id", directory_node_id)
         if email is not None:
             pulumi.set(__self__, "email", email)
+        if email_security_impersonation_registry_id is not None:
+            pulumi.set(__self__, "email_security_impersonation_registry_id", email_security_impersonation_registry_id)
         if external_directory_node_id is not None:
             warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
             pulumi.log.warn("""external_directory_node_id is deprecated: This attribute is deprecated.""")
@@ -174,6 +178,18 @@ class _EmailSecurityImpersonationRegistryState:
     @email.setter
     def email(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "email", value)
+
+    @_builtins.property
+    @pulumi.getter(name="emailSecurityImpersonationRegistryId")
+    def email_security_impersonation_registry_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "email_security_impersonation_registry_id")
+
+    @email_security_impersonation_registry_id.setter
+    def email_security_impersonation_registry_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "email_security_impersonation_registry_id", value)
 
     @_builtins.property
     @pulumi.getter(name="externalDirectoryNodeId")
@@ -329,6 +345,7 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["directory_id"] = None
             __props__.__dict__["directory_node_id"] = None
+            __props__.__dict__["email_security_impersonation_registry_id"] = None
             __props__.__dict__["external_directory_node_id"] = None
             __props__.__dict__["last_modified"] = None
             __props__.__dict__["provenance"] = None
@@ -348,6 +365,7 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
             directory_id: Optional[pulumi.Input[_builtins.int]] = None,
             directory_node_id: Optional[pulumi.Input[_builtins.int]] = None,
             email: Optional[pulumi.Input[_builtins.str]] = None,
+            email_security_impersonation_registry_id: Optional[pulumi.Input[_builtins.str]] = None,
             external_directory_node_id: Optional[pulumi.Input[_builtins.str]] = None,
             is_email_regex: Optional[pulumi.Input[_builtins.bool]] = None,
             last_modified: Optional[pulumi.Input[_builtins.str]] = None,
@@ -361,6 +379,7 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account Identifier
+        :param pulumi.Input[_builtins.str] email_security_impersonation_registry_id: The ID of this resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -372,6 +391,7 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
         __props__.__dict__["directory_id"] = directory_id
         __props__.__dict__["directory_node_id"] = directory_node_id
         __props__.__dict__["email"] = email
+        __props__.__dict__["email_security_impersonation_registry_id"] = email_security_impersonation_registry_id
         __props__.__dict__["external_directory_node_id"] = external_directory_node_id
         __props__.__dict__["is_email_regex"] = is_email_regex
         __props__.__dict__["last_modified"] = last_modified
@@ -411,6 +431,14 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
     @pulumi.getter
     def email(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "email")
+
+    @_builtins.property
+    @pulumi.getter(name="emailSecurityImpersonationRegistryId")
+    def email_security_impersonation_registry_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "email_security_impersonation_registry_id")
 
     @_builtins.property
     @pulumi.getter(name="externalDirectoryNodeId")

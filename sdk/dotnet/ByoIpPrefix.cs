@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleByoIpPrefix = new Cloudflare.ByoIpPrefix("example_byo_ip_prefix", new()
+    ///     var exampleByoIpPrefix = new Cloudflare.Index.ByoIpPrefix("example_byo_ip_prefix", new()
     ///     {
     ///         AccountId = "258def64c72dae45f3e4c8516e2111f2",
     ///         Asn = 13335,

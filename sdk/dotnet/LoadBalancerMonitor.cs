@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleLoadBalancerMonitor = new Cloudflare.LoadBalancerMonitor("example_load_balancer_monitor", new()
+    ///     var exampleLoadBalancerMonitor = new Cloudflare.Index.LoadBalancerMonitor("example_load_balancer_monitor", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         AllowInsecure = true,

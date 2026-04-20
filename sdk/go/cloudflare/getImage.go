@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupImage(ctx, &cloudflare.LookupImageArgs{
+//			_, err := cloudflare.GetImage(ctx, &cloudflare.LookupImageArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				ImageId:   "image_id",
 //			}, nil)

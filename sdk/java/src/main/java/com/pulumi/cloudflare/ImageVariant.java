@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var exampleImageVariant = new ImageVariant("exampleImageVariant", ImageVariantArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .id("hero")
+ *             .imageVariantId("hero")
  *             .options(ImageVariantOptionsArgs.builder()
  *                 .fit("scale-down")
  *                 .height(768.0)
@@ -81,6 +81,20 @@ public class ImageVariant extends com.pulumi.resources.CustomResource {
      */
     public Output<String> accountId() {
         return this.accountId;
+    }
+    /**
+     * The ID of this resource.
+     * 
+     */
+    @Export(name="imageVariantId", refs={String.class}, tree="[0]")
+    private Output<String> imageVariantId;
+
+    /**
+     * @return The ID of this resource.
+     * 
+     */
+    public Output<String> imageVariantId() {
+        return this.imageVariantId;
     }
     /**
      * Indicates whether the variant can access an image without a signature, regardless of image access control.

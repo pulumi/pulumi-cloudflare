@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupHyperdriveConfig(ctx, &cloudflare.LookupHyperdriveConfigArgs{
+//			_, err := cloudflare.GetHyperdriveConfig(ctx, &cloudflare.LookupHyperdriveConfigArgs{
 //				AccountId:    "023e105f4ecef8ad9ca31a8372d0c353",
 //				HyperdriveId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)

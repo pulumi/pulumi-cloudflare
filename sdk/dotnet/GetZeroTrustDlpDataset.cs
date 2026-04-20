@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDlpDataset = Cloudflare.GetZeroTrustDlpDataset.Invoke(new()
+        ///     var exampleZeroTrustDlpDataset = Cloudflare.Index.GetZeroTrustDlpDataset.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         DatasetId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -45,7 +45,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDlpDataset = Cloudflare.GetZeroTrustDlpDataset.Invoke(new()
+        ///     var exampleZeroTrustDlpDataset = Cloudflare.Index.GetZeroTrustDlpDataset.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         DatasetId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -68,7 +68,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDlpDataset = Cloudflare.GetZeroTrustDlpDataset.Invoke(new()
+        ///     var exampleZeroTrustDlpDataset = Cloudflare.Index.GetZeroTrustDlpDataset.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         DatasetId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",

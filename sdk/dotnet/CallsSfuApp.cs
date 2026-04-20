@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleCallsSfuApp = new Cloudflare.CallsSfuApp("example_calls_sfu_app", new()
+    ///     var exampleCallsSfuApp = new Cloudflare.Index.CallsSfuApp("example_calls_sfu_app", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "production-realtime-app",

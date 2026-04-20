@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleImage = new Cloudflare.Image("example_image", new()
+    ///     var exampleImage = new Cloudflare.Index.Image("example_image", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         ImageId = "id",

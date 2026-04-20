@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleConnectivityDirectoryService = new Cloudflare.ConnectivityDirectoryService("example_connectivity_directory_service", new()
+    ///     var exampleConnectivityDirectoryService = new Cloudflare.Index.ConnectivityDirectoryService("example_connectivity_directory_service", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Host = new Cloudflare.Inputs.ConnectivityDirectoryServiceHostArgs

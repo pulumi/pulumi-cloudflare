@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupEmailSecurityTrustedDomains(ctx, &cloudflare.LookupEmailSecurityTrustedDomainsArgs{
+//			_, err := cloudflare.GetEmailSecurityTrustedDomains(ctx, &cloudflare.LookupEmailSecurityTrustedDomainsArgs{
 //				AccountId:       "023e105f4ecef8ad9ca31a8372d0c353",
 //				TrustedDomainId: pulumi.IntRef(2401),
 //			}, nil)

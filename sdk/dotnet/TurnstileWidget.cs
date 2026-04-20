@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleTurnstileWidget = new Cloudflare.TurnstileWidget("example_turnstile_widget", new()
+    ///     var exampleTurnstileWidget = new Cloudflare.Index.TurnstileWidget("example_turnstile_widget", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Domains = new[]

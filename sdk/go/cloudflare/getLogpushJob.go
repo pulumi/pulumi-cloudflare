@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupLogpushJob(ctx, &cloudflare.LookupLogpushJobArgs{
+//			_, err := cloudflare.GetLogpushJob(ctx, &cloudflare.LookupLogpushJobArgs{
 //				JobId:     1,
 //				AccountId: pulumi.StringRef("account_id"),
 //				ZoneId:    pulumi.StringRef("zone_id"),

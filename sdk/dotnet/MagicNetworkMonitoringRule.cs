@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleMagicNetworkMonitoringRule = new Cloudflare.MagicNetworkMonitoringRule("example_magic_network_monitoring_rule", new()
+    ///     var exampleMagicNetworkMonitoringRule = new Cloudflare.Index.MagicNetworkMonitoringRule("example_magic_network_monitoring_rule", new()
     ///     {
     ///         AccountId = "6f91088a406011ed95aed352566e8d4c",
     ///         Duration = "1m",

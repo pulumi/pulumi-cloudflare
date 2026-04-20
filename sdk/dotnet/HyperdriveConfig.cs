@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleHyperdriveConfig = new Cloudflare.HyperdriveConfig("example_hyperdrive_config", new()
+    ///     var exampleHyperdriveConfig = new Cloudflare.Index.HyperdriveConfig("example_hyperdrive_config", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "example-hyperdrive",

@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustAccessInfrastructureTarget = new Cloudflare.ZeroTrustAccessInfrastructureTarget("example_zero_trust_access_infrastructure_target", new()
+    ///     var exampleZeroTrustAccessInfrastructureTarget = new Cloudflare.Index.ZeroTrustAccessInfrastructureTarget("example_zero_trust_access_infrastructure_target", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Hostname = "infra-access-target",

@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMagicNetworkMonitoringRule = Cloudflare.GetMagicNetworkMonitoringRule.Invoke(new()
+        ///     var exampleMagicNetworkMonitoringRule = Cloudflare.Index.GetMagicNetworkMonitoringRule.Invoke(new()
         ///     {
         ///         AccountId = "6f91088a406011ed95aed352566e8d4c",
         ///         RuleId = "2890e6fa406311ed9b5a23f70f6fb8cf",
@@ -45,7 +45,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMagicNetworkMonitoringRule = Cloudflare.GetMagicNetworkMonitoringRule.Invoke(new()
+        ///     var exampleMagicNetworkMonitoringRule = Cloudflare.Index.GetMagicNetworkMonitoringRule.Invoke(new()
         ///     {
         ///         AccountId = "6f91088a406011ed95aed352566e8d4c",
         ///         RuleId = "2890e6fa406311ed9b5a23f70f6fb8cf",
@@ -68,7 +68,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMagicNetworkMonitoringRule = Cloudflare.GetMagicNetworkMonitoringRule.Invoke(new()
+        ///     var exampleMagicNetworkMonitoringRule = Cloudflare.Index.GetMagicNetworkMonitoringRule.Invoke(new()
         ///     {
         ///         AccountId = "6f91088a406011ed95aed352566e8d4c",
         ///         RuleId = "2890e6fa406311ed9b5a23f70f6fb8cf",

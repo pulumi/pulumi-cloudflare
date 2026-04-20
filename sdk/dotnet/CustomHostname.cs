@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleCustomHostname = new Cloudflare.CustomHostname("example_custom_hostname", new()
+    ///     var exampleCustomHostname = new Cloudflare.Index.CustomHostname("example_custom_hostname", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Hostname = "app.example.com",

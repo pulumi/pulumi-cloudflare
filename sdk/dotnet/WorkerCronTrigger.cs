@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWorkersCronTrigger = new Cloudflare.WorkersCronTrigger("example_workers_cron_trigger", new()
+    ///     var exampleWorkersCronTrigger = new Cloudflare.Index.WorkersCronTrigger("example_workers_cron_trigger", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         ScriptName = "this-is_my_script-01",

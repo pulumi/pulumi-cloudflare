@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupAccessRules(ctx, &cloudflare.LookupAccessRulesArgs{
+//			_, err := cloudflare.GetAccessRules(ctx, &cloudflare.LookupAccessRulesArgs{
 //				AccountId: pulumi.StringRef("account_id"),
 //				ZoneId:    pulumi.StringRef("zone_id"),
 //				Configuration: cloudflare.GetAccessRulesConfiguration{

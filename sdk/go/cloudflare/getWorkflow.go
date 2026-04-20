@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupWorkflow(ctx, &cloudflare.LookupWorkflowArgs{
+//			_, err := cloudflare.GetWorkflow(ctx, &cloudflare.LookupWorkflowArgs{
 //				AccountId:    "account_id",
 //				WorkflowName: pulumi.StringRef("x"),
 //			}, nil)

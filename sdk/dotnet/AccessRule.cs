@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleAccessRule = new Cloudflare.AccessRule("example_access_rule", new()
+    ///     var exampleAccessRule = new Cloudflare.Index.AccessRule("example_access_rule", new()
     ///     {
     ///         Configuration = new Cloudflare.Inputs.AccessRuleConfigurationArgs
     ///         {

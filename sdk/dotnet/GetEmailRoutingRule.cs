@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleEmailRoutingRule = Cloudflare.GetEmailRoutingRule.Invoke(new()
+        ///     var exampleEmailRoutingRule = Cloudflare.Index.GetEmailRoutingRule.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         RuleIdentifier = "a7e6fb77503c41d8a7f3113c6918f10c",
@@ -45,7 +45,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleEmailRoutingRule = Cloudflare.GetEmailRoutingRule.Invoke(new()
+        ///     var exampleEmailRoutingRule = Cloudflare.Index.GetEmailRoutingRule.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         RuleIdentifier = "a7e6fb77503c41d8a7f3113c6918f10c",
@@ -68,7 +68,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleEmailRoutingRule = Cloudflare.GetEmailRoutingRule.Invoke(new()
+        ///     var exampleEmailRoutingRule = Cloudflare.Index.GetEmailRoutingRule.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         RuleIdentifier = "a7e6fb77503c41d8a7f3113c6918f10c",

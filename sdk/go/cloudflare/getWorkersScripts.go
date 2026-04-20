@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupWorkersScripts(ctx, &cloudflare.LookupWorkersScriptsArgs{
+//			_, err := cloudflare.GetWorkersScripts(ctx, &cloudflare.LookupWorkersScriptsArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				Tags:      pulumi.StringRef("production:yes,staging:no"),
 //			}, nil)

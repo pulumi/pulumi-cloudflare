@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleContentScanning = new Cloudflare.ContentScanning("example_content_scanning", new()
+    ///     var exampleContentScanning = new Cloudflare.Index.ContentScanning("example_content_scanning", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Value = "enabled",

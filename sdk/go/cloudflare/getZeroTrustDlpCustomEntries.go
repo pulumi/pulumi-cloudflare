@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupZeroTrustDlpCustomEntries(ctx, &cloudflare.LookupZeroTrustDlpCustomEntriesArgs{
+//			_, err := cloudflare.GetZeroTrustDlpCustomEntries(ctx, &cloudflare.LookupZeroTrustDlpCustomEntriesArgs{
 //				AccountId: "account_id",
 //			}, nil)
 //			if err != nil {

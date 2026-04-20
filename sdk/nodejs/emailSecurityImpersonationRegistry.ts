@@ -63,6 +63,10 @@ export class EmailSecurityImpersonationRegistry extends pulumi.CustomResource {
     declare public /*out*/ readonly directoryNodeId: pulumi.Output<number>;
     declare public readonly email: pulumi.Output<string>;
     /**
+     * The ID of this resource.
+     */
+    declare public /*out*/ readonly emailSecurityImpersonationRegistryId: pulumi.Output<string>;
+    /**
      * @deprecated This attribute is deprecated.
      */
     declare public /*out*/ readonly externalDirectoryNodeId: pulumi.Output<string>;
@@ -90,6 +94,7 @@ export class EmailSecurityImpersonationRegistry extends pulumi.CustomResource {
             resourceInputs["directoryId"] = state?.directoryId;
             resourceInputs["directoryNodeId"] = state?.directoryNodeId;
             resourceInputs["email"] = state?.email;
+            resourceInputs["emailSecurityImpersonationRegistryId"] = state?.emailSecurityImpersonationRegistryId;
             resourceInputs["externalDirectoryNodeId"] = state?.externalDirectoryNodeId;
             resourceInputs["isEmailRegex"] = state?.isEmailRegex;
             resourceInputs["lastModified"] = state?.lastModified;
@@ -117,6 +122,7 @@ export class EmailSecurityImpersonationRegistry extends pulumi.CustomResource {
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["directoryId"] = undefined /*out*/;
             resourceInputs["directoryNodeId"] = undefined /*out*/;
+            resourceInputs["emailSecurityImpersonationRegistryId"] = undefined /*out*/;
             resourceInputs["externalDirectoryNodeId"] = undefined /*out*/;
             resourceInputs["lastModified"] = undefined /*out*/;
             resourceInputs["provenance"] = undefined /*out*/;
@@ -139,6 +145,10 @@ export interface EmailSecurityImpersonationRegistryState {
     directoryId?: pulumi.Input<number>;
     directoryNodeId?: pulumi.Input<number>;
     email?: pulumi.Input<string>;
+    /**
+     * The ID of this resource.
+     */
+    emailSecurityImpersonationRegistryId?: pulumi.Input<string>;
     /**
      * @deprecated This attribute is deprecated.
      */

@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupCustomOriginTrustStores(ctx, &cloudflare.LookupCustomOriginTrustStoresArgs{
+//			_, err := cloudflare.GetCustomOriginTrustStores(ctx, &cloudflare.LookupCustomOriginTrustStoresArgs{
 //				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				Limit:  pulumi.IntRef(10),
 //				Offset: pulumi.IntRef(10),

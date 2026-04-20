@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupSsoConnector(ctx, &cloudflare.LookupSsoConnectorArgs{
+//			_, err := cloudflare.GetSsoConnector(ctx, &cloudflare.LookupSsoConnectorArgs{
 //				AccountId:      "023e105f4ecef8ad9ca31a8372d0c353",
 //				SsoConnectorId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)

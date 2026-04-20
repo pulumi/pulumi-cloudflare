@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWorkersRoute = new Cloudflare.WorkersRoute("example_workers_route", new()
+    ///     var exampleWorkersRoute = new Cloudflare.Index.WorkersRoute("example_workers_route", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Pattern = "example.com/*",

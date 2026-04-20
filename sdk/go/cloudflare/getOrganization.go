@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupOrganization(ctx, &cloudflare.LookupOrganizationArgs{
+//			_, err := cloudflare.GetOrganization(ctx, &cloudflare.LookupOrganizationArgs{
 //				OrganizationId: pulumi.StringRef("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8"),
 //			}, nil)
 //			if err != nil {

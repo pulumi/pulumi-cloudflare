@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupWorkersScriptSubdomain(ctx, &cloudflare.LookupWorkersScriptSubdomainArgs{
+//			_, err := cloudflare.GetWorkersScriptSubdomain(ctx, &cloudflare.LookupWorkersScriptSubdomainArgs{
 //				AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
 //				ScriptName: "this-is_my_script-01",
 //			}, nil)

@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleCustomOriginTrustStore = new Cloudflare.CustomOriginTrustStore("example_custom_origin_trust_store", new()
+    ///     var exampleCustomOriginTrustStore = new Cloudflare.Index.CustomOriginTrustStore("example_custom_origin_trust_store", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Certificate = @"  -----BEGIN CERTIFICATE-----

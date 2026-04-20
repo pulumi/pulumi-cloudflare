@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupZeroTrustDnsLocation(ctx, &cloudflare.LookupZeroTrustDnsLocationArgs{
+//			_, err := cloudflare.GetZeroTrustDnsLocation(ctx, &cloudflare.LookupZeroTrustDnsLocationArgs{
 //				AccountId:  "699d98642c564d2e855e9661899b7252",
 //				LocationId: "ed35569b41ce4d1facfe683550f54086",
 //			}, nil)

@@ -47,6 +47,21 @@ public final class CloudforceOneRequestMessageState extends com.pulumi.resources
     }
 
     /**
+     * Message ID.
+     * 
+     */
+    @Import(name="cloudforceOneRequestMessageId")
+    private @Nullable Output<String> cloudforceOneRequestMessageId;
+
+    /**
+     * @return Message ID.
+     * 
+     */
+    public Optional<Output<String>> cloudforceOneRequestMessageId() {
+        return Optional.ofNullable(this.cloudforceOneRequestMessageId);
+    }
+
+    /**
      * Content of message.
      * 
      */
@@ -126,6 +141,7 @@ public final class CloudforceOneRequestMessageState extends com.pulumi.resources
     private CloudforceOneRequestMessageState(CloudforceOneRequestMessageState $) {
         this.accountId = $.accountId;
         this.author = $.author;
+        this.cloudforceOneRequestMessageId = $.cloudforceOneRequestMessageId;
         this.content = $.content;
         this.created = $.created;
         this.isFollowOnRequest = $.isFollowOnRequest;
@@ -191,6 +207,27 @@ public final class CloudforceOneRequestMessageState extends com.pulumi.resources
          */
         public Builder author(String author) {
             return author(Output.of(author));
+        }
+
+        /**
+         * @param cloudforceOneRequestMessageId Message ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudforceOneRequestMessageId(@Nullable Output<String> cloudforceOneRequestMessageId) {
+            $.cloudforceOneRequestMessageId = cloudforceOneRequestMessageId;
+            return this;
+        }
+
+        /**
+         * @param cloudforceOneRequestMessageId Message ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudforceOneRequestMessageId(String cloudforceOneRequestMessageId) {
+            return cloudforceOneRequestMessageId(Output.of(cloudforceOneRequestMessageId));
         }
 
         /**

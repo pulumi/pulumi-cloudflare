@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupAddressMap(ctx, &cloudflare.LookupAddressMapArgs{
+//			_, err := cloudflare.GetAddressMap(ctx, &cloudflare.LookupAddressMapArgs{
 //				AccountId:    "258def64c72dae45f3e4c8516e2111f2",
 //				AddressMapId: "055817b111884e0227e1be16a0be6ee0",
 //			}, nil)

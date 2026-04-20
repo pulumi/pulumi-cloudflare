@@ -106,6 +106,20 @@ public class EmailSecurityImpersonationRegistry extends com.pulumi.resources.Cus
         return this.email;
     }
     /**
+     * The ID of this resource.
+     * 
+     */
+    @Export(name="emailSecurityImpersonationRegistryId", refs={String.class}, tree="[0]")
+    private Output<String> emailSecurityImpersonationRegistryId;
+
+    /**
+     * @return The ID of this resource.
+     * 
+     */
+    public Output<String> emailSecurityImpersonationRegistryId() {
+        return this.emailSecurityImpersonationRegistryId;
+    }
+    /**
      * @deprecated
      * This attribute is deprecated.
      * 

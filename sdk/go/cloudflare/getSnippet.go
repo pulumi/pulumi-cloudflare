@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupSnippet(ctx, &cloudflare.LookupSnippetArgs{
+//			_, err := cloudflare.GetSnippet(ctx, &cloudflare.LookupSnippetArgs{
 //				ZoneId:      "9f1839b6152d298aca64c4e906b6d074",
 //				SnippetName: "my_snippet",
 //			}, nil)

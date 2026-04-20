@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleEmailSecurityTrustedDomains = new Cloudflare.EmailSecurityTrustedDomains("example_email_security_trusted_domains", new()
+    ///     var exampleEmailSecurityTrustedDomains = new Cloudflare.Index.EmailSecurityTrustedDomains("example_email_security_trusted_domains", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         IsRecent = true,
@@ -56,6 +56,12 @@ namespace Pulumi.Cloudflare
 
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// The unique identifier for the trusted domain.
+        /// </summary>
+        [Output("emailSecurityTrustedDomainsId")]
+        public Output<string> EmailSecurityTrustedDomainsId { get; private set; } = null!;
 
         /// <summary>
         /// Select to prevent recently registered domains from triggering a
@@ -192,6 +198,12 @@ namespace Pulumi.Cloudflare
 
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
+
+        /// <summary>
+        /// The unique identifier for the trusted domain.
+        /// </summary>
+        [Input("emailSecurityTrustedDomainsId")]
+        public Input<string>? EmailSecurityTrustedDomainsId { get; set; }
 
         /// <summary>
         /// Select to prevent recently registered domains from triggering a

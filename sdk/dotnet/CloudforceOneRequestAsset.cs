@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleCloudforceOneRequestAsset = new Cloudflare.CloudforceOneRequestAsset("example_cloudforce_one_request_asset", new()
+    ///     var exampleCloudforceOneRequestAsset = new Cloudflare.Index.CloudforceOneRequestAsset("example_cloudforce_one_request_asset", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         RequestId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
@@ -45,6 +45,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
+
+        /// <summary>
+        /// Asset ID.
+        /// </summary>
+        [Output("cloudforceOneRequestAssetId")]
+        public Output<string> CloudforceOneRequestAssetId { get; private set; } = null!;
 
         /// <summary>
         /// Defines the asset creation time.
@@ -183,6 +189,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// Asset ID.
+        /// </summary>
+        [Input("cloudforceOneRequestAssetId")]
+        public Input<string>? CloudforceOneRequestAssetId { get; set; }
 
         /// <summary>
         /// Defines the asset creation time.

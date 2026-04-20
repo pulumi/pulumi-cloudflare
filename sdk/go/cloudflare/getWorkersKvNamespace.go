@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupWorkersKvNamespace(ctx, &cloudflare.LookupWorkersKvNamespaceArgs{
+//			_, err := cloudflare.GetWorkersKvNamespace(ctx, &cloudflare.LookupWorkersKvNamespaceArgs{
 //				AccountId:   "023e105f4ecef8ad9ca31a8372d0c353",
 //				NamespaceId: pulumi.StringRef("0f2ac74b498b48028cb68387c421e279"),
 //			}, nil)

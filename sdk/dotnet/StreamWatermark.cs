@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleStreamWatermark = new Cloudflare.StreamWatermark("example_stream_watermark", new()
+    ///     var exampleStreamWatermark = new Cloudflare.Index.StreamWatermark("example_stream_watermark", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         File = "@/Users/rchen/Downloads/watermark.png",

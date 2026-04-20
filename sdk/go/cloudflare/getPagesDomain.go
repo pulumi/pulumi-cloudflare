@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupPagesDomain(ctx, &cloudflare.LookupPagesDomainArgs{
+//			_, err := cloudflare.GetPagesDomain(ctx, &cloudflare.LookupPagesDomainArgs{
 //				AccountId:   "023e105f4ecef8ad9ca31a8372d0c353",
 //				ProjectName: "this-is-my-project-01",
 //				DomainName:  "this-is-my-domain-01.com",

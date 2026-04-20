@@ -34,6 +34,21 @@ public final class ImageVariantState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of this resource.
+     * 
+     */
+    @Import(name="imageVariantId")
+    private @Nullable Output<String> imageVariantId;
+
+    /**
+     * @return The ID of this resource.
+     * 
+     */
+    public Optional<Output<String>> imageVariantId() {
+        return Optional.ofNullable(this.imageVariantId);
+    }
+
+    /**
      * Indicates whether the variant can access an image without a signature, regardless of image access control.
      * 
      */
@@ -74,6 +89,7 @@ public final class ImageVariantState extends com.pulumi.resources.ResourceArgs {
 
     private ImageVariantState(ImageVariantState $) {
         this.accountId = $.accountId;
+        this.imageVariantId = $.imageVariantId;
         this.neverRequireSignedUrls = $.neverRequireSignedUrls;
         this.options = $.options;
         this.variant = $.variant;
@@ -116,6 +132,27 @@ public final class ImageVariantState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param imageVariantId The ID of this resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageVariantId(@Nullable Output<String> imageVariantId) {
+            $.imageVariantId = imageVariantId;
+            return this;
+        }
+
+        /**
+         * @param imageVariantId The ID of this resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageVariantId(String imageVariantId) {
+            return imageVariantId(Output.of(imageVariantId));
         }
 
         /**

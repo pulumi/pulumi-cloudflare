@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleEmailRoutingRule = new Cloudflare.EmailRoutingRule("example_email_routing_rule", new()
+    ///     var exampleEmailRoutingRule = new Cloudflare.Index.EmailRoutingRule("example_email_routing_rule", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Actions = new[]

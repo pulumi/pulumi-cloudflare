@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleRegistrarDomain = new Cloudflare.RegistrarDomain("example_registrar_domain", new()
+    ///     var exampleRegistrarDomain = new Cloudflare.Index.RegistrarDomain("example_registrar_domain", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         DomainName = "cloudflare.com",

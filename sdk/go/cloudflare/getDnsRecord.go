@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupDnsRecord(ctx, &cloudflare.LookupDnsRecordArgs{
+//			_, err := cloudflare.GetDnsRecord(ctx, &cloudflare.LookupDnsRecordArgs{
 //				ZoneId:      "023e105f4ecef8ad9ca31a8372d0c353",
 //				DnsRecordId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)

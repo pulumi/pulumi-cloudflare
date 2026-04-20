@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustDevicePostureRule = new Cloudflare.ZeroTrustDevicePostureRule("example_zero_trust_device_posture_rule", new()
+    ///     var exampleZeroTrustDevicePostureRule = new Cloudflare.Index.ZeroTrustDevicePostureRule("example_zero_trust_device_posture_rule", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         Name = "Admin Serial Numbers",

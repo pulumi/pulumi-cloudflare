@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleUser = Cloudflare.GetUser.Invoke();
+        ///     var exampleUser = Cloudflare.Index.GetUser.Invoke();
         /// 
         /// });
         /// ```
@@ -41,7 +41,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleUser = Cloudflare.GetUser.Invoke();
+        ///     var exampleUser = Cloudflare.Index.GetUser.Invoke();
         /// 
         /// });
         /// ```
@@ -60,7 +60,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleUser = Cloudflare.GetUser.Invoke();
+        ///     var exampleUser = Cloudflare.Index.GetUser.Invoke();
         /// 
         /// });
         /// ```

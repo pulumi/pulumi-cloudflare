@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleLogpushJob = new Cloudflare.LogpushJob("example_logpush_job", new()
+    ///     var exampleLogpushJob = new Cloudflare.Index.LogpushJob("example_logpush_job", new()
     ///     {
     ///         DestinationConf = "s3://mybucket/logs?region=us-west-2",
     ///         ZoneId = "zone_id",
@@ -139,6 +139,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("logpullOptions")]
         public Output<string> LogpullOptions { get; private set; } = null!;
+
+        /// <summary>
+        /// Unique id of the job.
+        /// </summary>
+        [Output("logpushJobId")]
+        public Output<string> LogpushJobId { get; private set; } = null!;
 
         /// <summary>
         /// The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
@@ -411,6 +417,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("logpullOptions")]
         public Input<string>? LogpullOptions { get; set; }
+
+        /// <summary>
+        /// Unique id of the job.
+        /// </summary>
+        [Input("logpushJobId")]
+        public Input<string>? LogpushJobId { get; set; }
 
         /// <summary>
         /// The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.

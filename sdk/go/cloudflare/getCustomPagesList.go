@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupCustomPagesList(ctx, &cloudflare.LookupCustomPagesListArgs{
+//			_, err := cloudflare.GetCustomPagesList(ctx, &cloudflare.LookupCustomPagesListArgs{
 //				AccountId: pulumi.StringRef("account_id"),
 //				ZoneId:    pulumi.StringRef("zone_id"),
 //			}, nil)

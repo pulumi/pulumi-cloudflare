@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupZeroTrustAccessAiControlsMcpServer(ctx, &cloudflare.LookupZeroTrustAccessAiControlsMcpServerArgs{
+//			_, err := cloudflare.GetZeroTrustAccessAiControlsMcpServer(ctx, &cloudflare.LookupZeroTrustAccessAiControlsMcpServerArgs{
 //				AccountId: "a86a8f5c339544d7bdc89926de14fb8c",
 //				Id:        pulumi.StringRef("my-mcp-server"),
 //			}, nil)

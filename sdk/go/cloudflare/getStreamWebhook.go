@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupStreamWebhook(ctx, &cloudflare.LookupStreamWebhookArgs{
+//			_, err := cloudflare.GetStreamWebhook(ctx, &cloudflare.LookupStreamWebhookArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {

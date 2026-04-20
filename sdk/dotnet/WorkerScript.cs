@@ -23,7 +23,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWorkersScript = new Cloudflare.WorkersScript("example_workers_script", new()
+    ///     var exampleWorkersScript = new Cloudflare.Index.WorkersScript("example_workers_script", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         ScriptName = "this-is_my_script-01",
@@ -61,7 +61,7 @@ namespace Pulumi.Cloudflare
     ///             "nodejs_compat",
     ///         },
     ///         ContentFile = "worker.js",
-    ///         ContentSha256 = Std.Filesha256.Invoke(new()
+    ///         ContentSha256 = Std.Index.Filesha256.Invoke(new()
     ///         {
     ///             Input = "worker.js",
     ///         }).Apply(invoke =&gt; invoke.Result),

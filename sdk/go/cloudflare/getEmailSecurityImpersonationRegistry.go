@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupEmailSecurityImpersonationRegistry(ctx, &cloudflare.LookupEmailSecurityImpersonationRegistryArgs{
+//			_, err := cloudflare.GetEmailSecurityImpersonationRegistry(ctx, &cloudflare.LookupEmailSecurityImpersonationRegistryArgs{
 //				AccountId:     "023e105f4ecef8ad9ca31a8372d0c353",
 //				DisplayNameId: pulumi.IntRef(2403),
 //			}, nil)

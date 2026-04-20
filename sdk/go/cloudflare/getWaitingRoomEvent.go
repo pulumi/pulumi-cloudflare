@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupWaitingRoomEvent(ctx, &cloudflare.LookupWaitingRoomEventArgs{
+//			_, err := cloudflare.GetWaitingRoomEvent(ctx, &cloudflare.LookupWaitingRoomEventArgs{
 //				ZoneId:        "023e105f4ecef8ad9ca31a8372d0c353",
 //				WaitingRoomId: "699d98642c564d2e855e9661899b7252",
 //				EventId:       "25756b2dfe6e378a06b033b670413757",

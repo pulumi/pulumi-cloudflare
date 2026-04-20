@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupSchemaValidationSchemasList(ctx, &cloudflare.LookupSchemaValidationSchemasListArgs{
+//			_, err := cloudflare.GetSchemaValidationSchemasList(ctx, &cloudflare.LookupSchemaValidationSchemasListArgs{
 //				ZoneId:            "023e105f4ecef8ad9ca31a8372d0c353",
 //				ValidationEnabled: pulumi.BoolRef(true),
 //			}, nil)

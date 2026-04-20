@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupWeb3Hostnames(ctx, &cloudflare.LookupWeb3HostnamesArgs{
+//			_, err := cloudflare.GetWeb3Hostnames(ctx, &cloudflare.LookupWeb3HostnamesArgs{
 //				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {

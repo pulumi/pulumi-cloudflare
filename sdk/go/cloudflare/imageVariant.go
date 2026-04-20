@@ -27,8 +27,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewImageVariant(ctx, "example_image_variant", &cloudflare.ImageVariantArgs{
-//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				Id:        "hero",
+//				AccountId:      pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				ImageVariantId: pulumi.String("hero"),
 //				Options: &cloudflare.ImageVariantOptionsArgs{
 //					Fit:      pulumi.String("scale-down"),
 //					Height:   pulumi.Float64(768),
@@ -56,6 +56,8 @@ type ImageVariant struct {
 
 	// Account identifier tag.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// The ID of this resource.
+	ImageVariantId pulumi.StringOutput `pulumi:"imageVariantId"`
 	// Indicates whether the variant can access an image without a signature, regardless of image access control.
 	NeverRequireSignedUrls pulumi.BoolOutput `pulumi:"neverRequireSignedUrls"`
 	// Allows you to define image resizing sizes for different use cases.
@@ -72,6 +74,9 @@ func NewImageVariant(ctx *pulumi.Context,
 
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
+	if args.ImageVariantId == nil {
+		return nil, errors.New("invalid value for required argument 'ImageVariantId'")
 	}
 	if args.Options == nil {
 		return nil, errors.New("invalid value for required argument 'Options'")
@@ -101,6 +106,8 @@ func GetImageVariant(ctx *pulumi.Context,
 type imageVariantState struct {
 	// Account identifier tag.
 	AccountId *string `pulumi:"accountId"`
+	// The ID of this resource.
+	ImageVariantId *string `pulumi:"imageVariantId"`
 	// Indicates whether the variant can access an image without a signature, regardless of image access control.
 	NeverRequireSignedUrls *bool `pulumi:"neverRequireSignedUrls"`
 	// Allows you to define image resizing sizes for different use cases.
@@ -111,6 +118,8 @@ type imageVariantState struct {
 type ImageVariantState struct {
 	// Account identifier tag.
 	AccountId pulumi.StringPtrInput
+	// The ID of this resource.
+	ImageVariantId pulumi.StringPtrInput
 	// Indicates whether the variant can access an image without a signature, regardless of image access control.
 	NeverRequireSignedUrls pulumi.BoolPtrInput
 	// Allows you to define image resizing sizes for different use cases.
@@ -125,6 +134,8 @@ func (ImageVariantState) ElementType() reflect.Type {
 type imageVariantArgs struct {
 	// Account identifier tag.
 	AccountId string `pulumi:"accountId"`
+	// The ID of this resource.
+	ImageVariantId string `pulumi:"imageVariantId"`
 	// Indicates whether the variant can access an image without a signature, regardless of image access control.
 	NeverRequireSignedUrls *bool `pulumi:"neverRequireSignedUrls"`
 	// Allows you to define image resizing sizes for different use cases.
@@ -135,6 +146,8 @@ type imageVariantArgs struct {
 type ImageVariantArgs struct {
 	// Account identifier tag.
 	AccountId pulumi.StringInput
+	// The ID of this resource.
+	ImageVariantId pulumi.StringInput
 	// Indicates whether the variant can access an image without a signature, regardless of image access control.
 	NeverRequireSignedUrls pulumi.BoolPtrInput
 	// Allows you to define image resizing sizes for different use cases.
@@ -231,6 +244,11 @@ func (o ImageVariantOutput) ToImageVariantOutputWithContext(ctx context.Context)
 // Account identifier tag.
 func (o ImageVariantOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ImageVariant) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The ID of this resource.
+func (o ImageVariantOutput) ImageVariantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageVariant) pulumi.StringOutput { return v.ImageVariantId }).(pulumi.StringOutput)
 }
 
 // Indicates whether the variant can access an image without a signature, regardless of image access control.

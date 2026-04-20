@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupZeroTrustAccessShortLivedCertificates(ctx, &cloudflare.LookupZeroTrustAccessShortLivedCertificatesArgs{
+//			_, err := cloudflare.GetZeroTrustAccessShortLivedCertificates(ctx, &cloudflare.LookupZeroTrustAccessShortLivedCertificatesArgs{
 //				AccountId: pulumi.StringRef("account_id"),
 //				ZoneId:    pulumi.StringRef("zone_id"),
 //			}, nil)

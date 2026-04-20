@@ -68,6 +68,21 @@ public final class EmailSecurityImpersonationRegistryState extends com.pulumi.re
     }
 
     /**
+     * The ID of this resource.
+     * 
+     */
+    @Import(name="emailSecurityImpersonationRegistryId")
+    private @Nullable Output<String> emailSecurityImpersonationRegistryId;
+
+    /**
+     * @return The ID of this resource.
+     * 
+     */
+    public Optional<Output<String>> emailSecurityImpersonationRegistryId() {
+        return Optional.ofNullable(this.emailSecurityImpersonationRegistryId);
+    }
+
+    /**
      * @deprecated
      * This attribute is deprecated.
      * 
@@ -123,6 +138,7 @@ public final class EmailSecurityImpersonationRegistryState extends com.pulumi.re
         this.directoryId = $.directoryId;
         this.directoryNodeId = $.directoryNodeId;
         this.email = $.email;
+        this.emailSecurityImpersonationRegistryId = $.emailSecurityImpersonationRegistryId;
         this.externalDirectoryNodeId = $.externalDirectoryNodeId;
         this.isEmailRegex = $.isEmailRegex;
         this.lastModified = $.lastModified;
@@ -212,6 +228,27 @@ public final class EmailSecurityImpersonationRegistryState extends com.pulumi.re
 
         public Builder email(String email) {
             return email(Output.of(email));
+        }
+
+        /**
+         * @param emailSecurityImpersonationRegistryId The ID of this resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emailSecurityImpersonationRegistryId(@Nullable Output<String> emailSecurityImpersonationRegistryId) {
+            $.emailSecurityImpersonationRegistryId = emailSecurityImpersonationRegistryId;
+            return this;
+        }
+
+        /**
+         * @param emailSecurityImpersonationRegistryId The ID of this resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emailSecurityImpersonationRegistryId(String emailSecurityImpersonationRegistryId) {
+            return emailSecurityImpersonationRegistryId(Output.of(emailSecurityImpersonationRegistryId));
         }
 
         /**

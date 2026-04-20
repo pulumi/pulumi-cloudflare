@@ -98,6 +98,20 @@ public class EmailSecurityTrustedDomains extends com.pulumi.resources.CustomReso
         return this.createdAt;
     }
     /**
+     * The unique identifier for the trusted domain.
+     * 
+     */
+    @Export(name="emailSecurityTrustedDomainsId", refs={String.class}, tree="[0]")
+    private Output<String> emailSecurityTrustedDomainsId;
+
+    /**
+     * @return The unique identifier for the trusted domain.
+     * 
+     */
+    public Output<String> emailSecurityTrustedDomainsId() {
+        return this.emailSecurityTrustedDomainsId;
+    }
+    /**
      * Select to prevent recently registered domains from triggering a
      * Suspicious or Malicious disposition.
      * 

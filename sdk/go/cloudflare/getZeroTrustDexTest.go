@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupZeroTrustDexTest(ctx, &cloudflare.LookupZeroTrustDexTestArgs{
+//			_, err := cloudflare.GetZeroTrustDexTest(ctx, &cloudflare.LookupZeroTrustDexTestArgs{
 //				AccountId: "01a7362d577a6c3019a474fd6f485823",
 //				DexTestId: pulumi.StringRef("372e67954025e0ba6aaa6d586b9e0b59"),
 //			}, nil)

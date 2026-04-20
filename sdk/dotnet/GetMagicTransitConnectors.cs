@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMagicTransitConnectors = Cloudflare.GetMagicTransitConnectors.Invoke(new()
+        ///     var exampleMagicTransitConnectors = Cloudflare.Index.GetMagicTransitConnectors.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -44,7 +44,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMagicTransitConnectors = Cloudflare.GetMagicTransitConnectors.Invoke(new()
+        ///     var exampleMagicTransitConnectors = Cloudflare.Index.GetMagicTransitConnectors.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -66,7 +66,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMagicTransitConnectors = Cloudflare.GetMagicTransitConnectors.Invoke(new()
+        ///     var exampleMagicTransitConnectors = Cloudflare.Index.GetMagicTransitConnectors.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });

@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleStreamAudioTrack = new Cloudflare.StreamAudioTrack("example_stream_audio_track", new()
+    ///     var exampleStreamAudioTrack = new Cloudflare.Index.StreamAudioTrack("example_stream_audio_track", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Identifier = "ea95132c15732412d22c1476fa83f27a",

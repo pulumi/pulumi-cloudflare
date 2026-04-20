@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupR2Bucket(ctx, &cloudflare.LookupR2BucketArgs{
+//			_, err := cloudflare.GetR2Bucket(ctx, &cloudflare.LookupR2BucketArgs{
 //				AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
 //				BucketName: "example-bucket",
 //			}, nil)

@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersForPlatformsDispatchNamespace = Cloudflare.GetWorkersForPlatformsDispatchNamespace.Invoke(new()
+        ///     var exampleWorkersForPlatformsDispatchNamespace = Cloudflare.Index.GetWorkersForPlatformsDispatchNamespace.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DispatchNamespace = "my-dispatch-namespace",
@@ -45,7 +45,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersForPlatformsDispatchNamespace = Cloudflare.GetWorkersForPlatformsDispatchNamespace.Invoke(new()
+        ///     var exampleWorkersForPlatformsDispatchNamespace = Cloudflare.Index.GetWorkersForPlatformsDispatchNamespace.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DispatchNamespace = "my-dispatch-namespace",
@@ -68,7 +68,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersForPlatformsDispatchNamespace = Cloudflare.GetWorkersForPlatformsDispatchNamespace.Invoke(new()
+        ///     var exampleWorkersForPlatformsDispatchNamespace = Cloudflare.Index.GetWorkersForPlatformsDispatchNamespace.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DispatchNamespace = "my-dispatch-namespace",

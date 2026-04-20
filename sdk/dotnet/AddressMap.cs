@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleAddressMap = new Cloudflare.AddressMap("example_address_map", new()
+    ///     var exampleAddressMap = new Cloudflare.Index.AddressMap("example_address_map", new()
     ///     {
     ///         AccountId = "258def64c72dae45f3e4c8516e2111f2",
     ///         Description = "My Ecommerce zones",

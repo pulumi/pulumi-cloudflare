@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupResourceGroups(ctx, &cloudflare.LookupResourceGroupsArgs{
+//			_, err := cloudflare.GetResourceGroups(ctx, &cloudflare.LookupResourceGroupsArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				Id:        pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Name:      pulumi.StringRef("NameOfTheResourceGroup"),

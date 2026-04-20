@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleSchemaValidationSchemas = new Cloudflare.SchemaValidationSchemas("example_schema_validation_schemas", new()
+    ///     var exampleSchemaValidationSchemas = new Cloudflare.Index.SchemaValidationSchemas("example_schema_validation_schemas", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Kind = "openapi_v3",

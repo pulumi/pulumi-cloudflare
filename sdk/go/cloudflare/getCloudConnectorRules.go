@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupCloudConnectorRules(ctx, &cloudflare.LookupCloudConnectorRulesArgs{
+//			_, err := cloudflare.GetCloudConnectorRules(ctx, &cloudflare.LookupCloudConnectorRulesArgs{
 //				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {

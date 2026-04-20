@@ -88,6 +88,20 @@ public class EmailSecurityBlockSender extends com.pulumi.resources.CustomResourc
     public Output<String> createdAt() {
         return this.createdAt;
     }
+    /**
+     * The unique identifier for the allow policy.
+     * 
+     */
+    @Export(name="emailSecurityBlockSenderId", refs={String.class}, tree="[0]")
+    private Output<String> emailSecurityBlockSenderId;
+
+    /**
+     * @return The unique identifier for the allow policy.
+     * 
+     */
+    public Output<String> emailSecurityBlockSenderId() {
+        return this.emailSecurityBlockSenderId;
+    }
     @Export(name="isRegex", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isRegex;
 

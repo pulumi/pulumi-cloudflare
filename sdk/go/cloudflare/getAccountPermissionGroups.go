@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupAccountPermissionGroups(ctx, &cloudflare.LookupAccountPermissionGroupsArgs{
+//			_, err := cloudflare.GetAccountPermissionGroups(ctx, &cloudflare.LookupAccountPermissionGroupsArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				Id:        pulumi.StringRef("6d7f2f5f5b1d4a0e9081fdc98d432fd1"),
 //				Label:     pulumi.StringRef("labelOfThePermissionGroup"),

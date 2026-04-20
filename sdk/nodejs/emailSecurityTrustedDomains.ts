@@ -65,6 +65,10 @@ export class EmailSecurityTrustedDomains extends pulumi.CustomResource {
     declare public readonly comments: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
+     * The unique identifier for the trusted domain.
+     */
+    declare public /*out*/ readonly emailSecurityTrustedDomainsId: pulumi.Output<string>;
+    /**
      * Select to prevent recently registered domains from triggering a
      * Suspicious or Malicious disposition.
      */
@@ -96,6 +100,7 @@ export class EmailSecurityTrustedDomains extends pulumi.CustomResource {
             resourceInputs["bodies"] = state?.bodies;
             resourceInputs["comments"] = state?.comments;
             resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["emailSecurityTrustedDomainsId"] = state?.emailSecurityTrustedDomainsId;
             resourceInputs["isRecent"] = state?.isRecent;
             resourceInputs["isRegex"] = state?.isRegex;
             resourceInputs["isSimilarity"] = state?.isSimilarity;
@@ -114,6 +119,7 @@ export class EmailSecurityTrustedDomains extends pulumi.CustomResource {
             resourceInputs["isSimilarity"] = args?.isSimilarity;
             resourceInputs["pattern"] = args?.pattern;
             resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["emailSecurityTrustedDomainsId"] = undefined /*out*/;
             resourceInputs["lastModified"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -132,6 +138,10 @@ export interface EmailSecurityTrustedDomainsState {
     bodies?: pulumi.Input<pulumi.Input<inputs.EmailSecurityTrustedDomainsBody>[]>;
     comments?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
+    /**
+     * The unique identifier for the trusted domain.
+     */
+    emailSecurityTrustedDomainsId?: pulumi.Input<string>;
     /**
      * Select to prevent recently registered domains from triggering a
      * Suspicious or Malicious disposition.

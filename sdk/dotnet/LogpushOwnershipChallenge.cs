@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleLogpushOwnershipChallenge = new Cloudflare.LogpushOwnershipChallenge("example_logpush_ownership_challenge", new()
+    ///     var exampleLogpushOwnershipChallenge = new Cloudflare.Index.LogpushOwnershipChallenge("example_logpush_ownership_challenge", new()
     ///     {
     ///         DestinationConf = "s3://mybucket/logs?region=us-west-2",
     ///         ZoneId = "zone_id",

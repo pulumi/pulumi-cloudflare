@@ -135,6 +135,7 @@ class _EmailSecurityTrustedDomainsState:
                  bodies: Optional[pulumi.Input[Sequence[pulumi.Input['EmailSecurityTrustedDomainsBodyArgs']]]] = None,
                  comments: Optional[pulumi.Input[_builtins.str]] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 email_security_trusted_domains_id: Optional[pulumi.Input[_builtins.str]] = None,
                  is_recent: Optional[pulumi.Input[_builtins.bool]] = None,
                  is_regex: Optional[pulumi.Input[_builtins.bool]] = None,
                  is_similarity: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -144,6 +145,7 @@ class _EmailSecurityTrustedDomainsState:
         Input properties used for looking up and filtering EmailSecurityTrustedDomains resources.
 
         :param pulumi.Input[_builtins.str] account_id: Account Identifier
+        :param pulumi.Input[_builtins.str] email_security_trusted_domains_id: The unique identifier for the trusted domain.
         :param pulumi.Input[_builtins.bool] is_recent: Select to prevent recently registered domains from triggering a
                Suspicious or Malicious disposition.
         :param pulumi.Input[_builtins.bool] is_similarity: Select for partner or other approved domains that have similar
@@ -158,6 +160,8 @@ class _EmailSecurityTrustedDomainsState:
             pulumi.set(__self__, "comments", comments)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
+        if email_security_trusted_domains_id is not None:
+            pulumi.set(__self__, "email_security_trusted_domains_id", email_security_trusted_domains_id)
         if is_recent is not None:
             pulumi.set(__self__, "is_recent", is_recent)
         if is_regex is not None:
@@ -207,6 +211,18 @@ class _EmailSecurityTrustedDomainsState:
     @created_at.setter
     def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="emailSecurityTrustedDomainsId")
+    def email_security_trusted_domains_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The unique identifier for the trusted domain.
+        """
+        return pulumi.get(self, "email_security_trusted_domains_id")
+
+    @email_security_trusted_domains_id.setter
+    def email_security_trusted_domains_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "email_security_trusted_domains_id", value)
 
     @_builtins.property
     @pulumi.getter(name="isRecent")
@@ -379,6 +395,7 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
             __props__.__dict__["is_similarity"] = is_similarity
             __props__.__dict__["pattern"] = pattern
             __props__.__dict__["created_at"] = None
+            __props__.__dict__["email_security_trusted_domains_id"] = None
             __props__.__dict__["last_modified"] = None
         super(EmailSecurityTrustedDomains, __self__).__init__(
             'cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains',
@@ -394,6 +411,7 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
             bodies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EmailSecurityTrustedDomainsBodyArgs', 'EmailSecurityTrustedDomainsBodyArgsDict']]]]] = None,
             comments: Optional[pulumi.Input[_builtins.str]] = None,
             created_at: Optional[pulumi.Input[_builtins.str]] = None,
+            email_security_trusted_domains_id: Optional[pulumi.Input[_builtins.str]] = None,
             is_recent: Optional[pulumi.Input[_builtins.bool]] = None,
             is_regex: Optional[pulumi.Input[_builtins.bool]] = None,
             is_similarity: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -407,6 +425,7 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account Identifier
+        :param pulumi.Input[_builtins.str] email_security_trusted_domains_id: The unique identifier for the trusted domain.
         :param pulumi.Input[_builtins.bool] is_recent: Select to prevent recently registered domains from triggering a
                Suspicious or Malicious disposition.
         :param pulumi.Input[_builtins.bool] is_similarity: Select for partner or other approved domains that have similar
@@ -421,6 +440,7 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
         __props__.__dict__["bodies"] = bodies
         __props__.__dict__["comments"] = comments
         __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["email_security_trusted_domains_id"] = email_security_trusted_domains_id
         __props__.__dict__["is_recent"] = is_recent
         __props__.__dict__["is_regex"] = is_regex
         __props__.__dict__["is_similarity"] = is_similarity
@@ -450,6 +470,14 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="emailSecurityTrustedDomainsId")
+    def email_security_trusted_domains_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The unique identifier for the trusted domain.
+        """
+        return pulumi.get(self, "email_security_trusted_domains_id")
 
     @_builtins.property
     @pulumi.getter(name="isRecent")

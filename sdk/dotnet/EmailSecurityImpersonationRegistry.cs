@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleEmailSecurityImpersonationRegistry = new Cloudflare.EmailSecurityImpersonationRegistry("example_email_security_impersonation_registry", new()
+    ///     var exampleEmailSecurityImpersonationRegistry = new Cloudflare.Index.EmailSecurityImpersonationRegistry("example_email_security_impersonation_registry", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Email = "email",
@@ -60,6 +60,12 @@ namespace Pulumi.Cloudflare
 
         [Output("email")]
         public Output<string> Email { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of this resource.
+        /// </summary>
+        [Output("emailSecurityImpersonationRegistryId")]
+        public Output<string> EmailSecurityImpersonationRegistryId { get; private set; } = null!;
 
         [Output("externalDirectoryNodeId")]
         public Output<string> ExternalDirectoryNodeId { get; private set; } = null!;
@@ -165,6 +171,12 @@ namespace Pulumi.Cloudflare
 
         [Input("email")]
         public Input<string>? Email { get; set; }
+
+        /// <summary>
+        /// The ID of this resource.
+        /// </summary>
+        [Input("emailSecurityImpersonationRegistryId")]
+        public Input<string>? EmailSecurityImpersonationRegistryId { get; set; }
 
         [Input("externalDirectoryNodeId")]
         public Input<string>? ExternalDirectoryNodeId { get; set; }

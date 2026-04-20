@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustGatewaySettings = Cloudflare.GetZeroTrustGatewaySettings.Invoke(new()
+        ///     var exampleZeroTrustGatewaySettings = Cloudflare.Index.GetZeroTrustGatewaySettings.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///     });
@@ -44,7 +44,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustGatewaySettings = Cloudflare.GetZeroTrustGatewaySettings.Invoke(new()
+        ///     var exampleZeroTrustGatewaySettings = Cloudflare.Index.GetZeroTrustGatewaySettings.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///     });
@@ -66,7 +66,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustGatewaySettings = Cloudflare.GetZeroTrustGatewaySettings.Invoke(new()
+        ///     var exampleZeroTrustGatewaySettings = Cloudflare.Index.GetZeroTrustGatewaySettings.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///     });

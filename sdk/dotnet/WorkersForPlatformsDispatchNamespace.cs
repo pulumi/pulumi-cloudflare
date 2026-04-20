@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWorkersForPlatformsDispatchNamespace = new Cloudflare.WorkersForPlatformsDispatchNamespace("example_workers_for_platforms_dispatch_namespace", new()
+    ///     var exampleWorkersForPlatformsDispatchNamespace = new Cloudflare.Index.WorkersForPlatformsDispatchNamespace("example_workers_for_platforms_dispatch_namespace", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "my-dispatch-namespace",

@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZoneCacheReserve = new Cloudflare.ZoneCacheReserve("example_zone_cache_reserve", new()
+    ///     var exampleZoneCacheReserve = new Cloudflare.Index.ZoneCacheReserve("example_zone_cache_reserve", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Value = "on",

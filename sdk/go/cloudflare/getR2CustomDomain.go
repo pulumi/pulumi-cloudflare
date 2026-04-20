@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupR2CustomDomain(ctx, &cloudflare.LookupR2CustomDomainArgs{
+//			_, err := cloudflare.GetR2CustomDomain(ctx, &cloudflare.LookupR2CustomDomainArgs{
 //				AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
 //				BucketName: "example-bucket",
 //				Domain:     "example-domain/custom-domain.com",

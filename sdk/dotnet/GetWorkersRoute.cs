@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersRoute = Cloudflare.GetWorkersRoute.Invoke(new()
+        ///     var exampleWorkersRoute = Cloudflare.Index.GetWorkersRoute.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         RouteId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -45,7 +45,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersRoute = Cloudflare.GetWorkersRoute.Invoke(new()
+        ///     var exampleWorkersRoute = Cloudflare.Index.GetWorkersRoute.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         RouteId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -68,7 +68,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersRoute = Cloudflare.GetWorkersRoute.Invoke(new()
+        ///     var exampleWorkersRoute = Cloudflare.Index.GetWorkersRoute.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         RouteId = "023e105f4ecef8ad9ca31a8372d0c353",

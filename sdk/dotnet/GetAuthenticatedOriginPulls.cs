@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAuthenticatedOriginPulls = Cloudflare.GetAuthenticatedOriginPulls.Invoke(new()
+        ///     var exampleAuthenticatedOriginPulls = Cloudflare.Index.GetAuthenticatedOriginPulls.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Hostname = "app.example.com",
@@ -45,7 +45,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAuthenticatedOriginPulls = Cloudflare.GetAuthenticatedOriginPulls.Invoke(new()
+        ///     var exampleAuthenticatedOriginPulls = Cloudflare.Index.GetAuthenticatedOriginPulls.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Hostname = "app.example.com",
@@ -68,7 +68,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAuthenticatedOriginPulls = Cloudflare.GetAuthenticatedOriginPulls.Invoke(new()
+        ///     var exampleAuthenticatedOriginPulls = Cloudflare.Index.GetAuthenticatedOriginPulls.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Hostname = "app.example.com",

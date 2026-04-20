@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleDnsZoneTransfersOutgoing = new Cloudflare.DnsZoneTransfersOutgoing("example_dns_zone_transfers_outgoing", new()
+    ///     var exampleDnsZoneTransfersOutgoing = new Cloudflare.Index.DnsZoneTransfersOutgoing("example_dns_zone_transfers_outgoing", new()
     ///     {
     ///         ZoneId = "269d8f4853475ca241c4e730be286b20",
     ///         Name = "www.example.com.",

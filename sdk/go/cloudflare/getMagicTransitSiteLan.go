@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupMagicTransitSiteLan(ctx, &cloudflare.LookupMagicTransitSiteLanArgs{
+//			_, err := cloudflare.GetMagicTransitSiteLan(ctx, &cloudflare.LookupMagicTransitSiteLanArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				SiteId:    "023e105f4ecef8ad9ca31a8372d0c353",
 //				LanId:     "023e105f4ecef8ad9ca31a8372d0c353",

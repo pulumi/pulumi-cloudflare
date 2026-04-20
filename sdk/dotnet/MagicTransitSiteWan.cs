@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleMagicTransitSiteWan = new Cloudflare.MagicTransitSiteWan("example_magic_transit_site_wan", new()
+    ///     var exampleMagicTransitSiteWan = new Cloudflare.Index.MagicTransitSiteWan("example_magic_transit_site_wan", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         SiteId = "023e105f4ecef8ad9ca31a8372d0c353",

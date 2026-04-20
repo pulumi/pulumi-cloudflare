@@ -61,6 +61,10 @@ export class CloudforceOneRequestMessage extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly author: pulumi.Output<string>;
     /**
+     * Message ID.
+     */
+    declare public /*out*/ readonly cloudforceOneRequestMessageId: pulumi.Output<string>;
+    /**
      * Content of message.
      */
     declare public readonly content: pulumi.Output<string | undefined>;
@@ -96,6 +100,7 @@ export class CloudforceOneRequestMessage extends pulumi.CustomResource {
             const state = argsOrState as CloudforceOneRequestMessageState | undefined;
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["author"] = state?.author;
+            resourceInputs["cloudforceOneRequestMessageId"] = state?.cloudforceOneRequestMessageId;
             resourceInputs["content"] = state?.content;
             resourceInputs["created"] = state?.created;
             resourceInputs["isFollowOnRequest"] = state?.isFollowOnRequest;
@@ -113,6 +118,7 @@ export class CloudforceOneRequestMessage extends pulumi.CustomResource {
             resourceInputs["content"] = args?.content;
             resourceInputs["requestId"] = args?.requestId;
             resourceInputs["author"] = undefined /*out*/;
+            resourceInputs["cloudforceOneRequestMessageId"] = undefined /*out*/;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["isFollowOnRequest"] = undefined /*out*/;
             resourceInputs["updated"] = undefined /*out*/;
@@ -134,6 +140,10 @@ export interface CloudforceOneRequestMessageState {
      * Author of message.
      */
     author?: pulumi.Input<string>;
+    /**
+     * Message ID.
+     */
+    cloudforceOneRequestMessageId?: pulumi.Input<string>;
     /**
      * Content of message.
      */
