@@ -531,7 +531,19 @@ func Provider() info.Provider {
 	}
 
 	for _, r := range resourcesWithMistypedID {
-		prov.Resources[r].ComputeID = delegateID("id")
+		res := prov.Resources[r]
+		if res == nil {
+			prov.Resources[r] = &info.Resource{}
+			res = prov.Resources[r]
+		}
+		if res.Fields == nil {
+			res.Fields = map[string]*info.Schema{}
+		}
+		if res.Fields["id"] == nil {
+			res.Fields["id"] = &info.Schema{}
+		}
+		res.Fields["id"].Type = "string"
+		res.ComputeID = delegateID("id")
 	}
 
 	resourcesWithMissingID := []string{
