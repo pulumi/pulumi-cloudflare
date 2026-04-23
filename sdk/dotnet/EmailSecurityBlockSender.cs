@@ -53,12 +53,6 @@ namespace Pulumi.Cloudflare
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
-        /// <summary>
-        /// The unique identifier for the allow policy.
-        /// </summary>
-        [Output("emailSecurityBlockSenderId")]
-        public Output<string> EmailSecurityBlockSenderId { get; private set; } = null!;
-
         [Output("isRegex")]
         public Output<bool> IsRegex { get; private set; } = null!;
 
@@ -160,12 +154,6 @@ namespace Pulumi.Cloudflare
 
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
-
-        /// <summary>
-        /// The unique identifier for the allow policy.
-        /// </summary>
-        [Input("emailSecurityBlockSenderId")]
-        public Input<string>? EmailSecurityBlockSenderId { get; set; }
 
         [Input("isRegex")]
         public Input<bool>? IsRegex { get; set; }

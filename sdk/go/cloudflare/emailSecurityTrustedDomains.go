@@ -56,8 +56,6 @@ type EmailSecurityTrustedDomains struct {
 	Bodies    EmailSecurityTrustedDomainsBodyArrayOutput `pulumi:"bodies"`
 	Comments  pulumi.StringPtrOutput                     `pulumi:"comments"`
 	CreatedAt pulumi.StringOutput                        `pulumi:"createdAt"`
-	// The unique identifier for the trusted domain.
-	EmailSecurityTrustedDomainsId pulumi.StringOutput `pulumi:"emailSecurityTrustedDomainsId"`
 	// Select to prevent recently registered domains from triggering a
 	// Suspicious or Malicious disposition.
 	IsRecent pulumi.BoolPtrOutput `pulumi:"isRecent"`
@@ -108,8 +106,6 @@ type emailSecurityTrustedDomainsState struct {
 	Bodies    []EmailSecurityTrustedDomainsBody `pulumi:"bodies"`
 	Comments  *string                           `pulumi:"comments"`
 	CreatedAt *string                           `pulumi:"createdAt"`
-	// The unique identifier for the trusted domain.
-	EmailSecurityTrustedDomainsId *string `pulumi:"emailSecurityTrustedDomainsId"`
 	// Select to prevent recently registered domains from triggering a
 	// Suspicious or Malicious disposition.
 	IsRecent *bool `pulumi:"isRecent"`
@@ -128,8 +124,6 @@ type EmailSecurityTrustedDomainsState struct {
 	Bodies    EmailSecurityTrustedDomainsBodyArrayInput
 	Comments  pulumi.StringPtrInput
 	CreatedAt pulumi.StringPtrInput
-	// The unique identifier for the trusted domain.
-	EmailSecurityTrustedDomainsId pulumi.StringPtrInput
 	// Select to prevent recently registered domains from triggering a
 	// Suspicious or Malicious disposition.
 	IsRecent pulumi.BoolPtrInput
@@ -281,11 +275,6 @@ func (o EmailSecurityTrustedDomainsOutput) Comments() pulumi.StringPtrOutput {
 
 func (o EmailSecurityTrustedDomainsOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailSecurityTrustedDomains) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
-// The unique identifier for the trusted domain.
-func (o EmailSecurityTrustedDomainsOutput) EmailSecurityTrustedDomainsId() pulumi.StringOutput {
-	return o.ApplyT(func(v *EmailSecurityTrustedDomains) pulumi.StringOutput { return v.EmailSecurityTrustedDomainsId }).(pulumi.StringOutput)
 }
 
 // Select to prevent recently registered domains from triggering a

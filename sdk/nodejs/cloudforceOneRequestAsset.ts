@@ -58,10 +58,6 @@ export class CloudforceOneRequestAsset extends pulumi.CustomResource {
      */
     declare public readonly accountId: pulumi.Output<string>;
     /**
-     * Asset ID.
-     */
-    declare public /*out*/ readonly cloudforceOneRequestAssetId: pulumi.Output<string>;
-    /**
      * Defines the asset creation time.
      */
     declare public /*out*/ readonly created: pulumi.Output<string>;
@@ -108,7 +104,6 @@ export class CloudforceOneRequestAsset extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as CloudforceOneRequestAssetState | undefined;
             resourceInputs["accountId"] = state?.accountId;
-            resourceInputs["cloudforceOneRequestAssetId"] = state?.cloudforceOneRequestAssetId;
             resourceInputs["created"] = state?.created;
             resourceInputs["description"] = state?.description;
             resourceInputs["fileType"] = state?.fileType;
@@ -136,7 +131,6 @@ export class CloudforceOneRequestAsset extends pulumi.CustomResource {
             resourceInputs["perPage"] = args?.perPage;
             resourceInputs["requestId"] = args?.requestId;
             resourceInputs["source"] = args?.source;
-            resourceInputs["cloudforceOneRequestAssetId"] = undefined /*out*/;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["fileType"] = undefined /*out*/;
@@ -155,10 +149,6 @@ export interface CloudforceOneRequestAssetState {
      * Identifier.
      */
     accountId?: pulumi.Input<string>;
-    /**
-     * Asset ID.
-     */
-    cloudforceOneRequestAssetId?: pulumi.Input<string>;
     /**
      * Defines the asset creation time.
      */

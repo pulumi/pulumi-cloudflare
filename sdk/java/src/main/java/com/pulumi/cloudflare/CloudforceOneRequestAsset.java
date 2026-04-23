@@ -76,20 +76,6 @@ public class CloudforceOneRequestAsset extends com.pulumi.resources.CustomResour
         return this.accountId;
     }
     /**
-     * Asset ID.
-     * 
-     */
-    @Export(name="cloudforceOneRequestAssetId", refs={String.class}, tree="[0]")
-    private Output<String> cloudforceOneRequestAssetId;
-
-    /**
-     * @return Asset ID.
-     * 
-     */
-    public Output<String> cloudforceOneRequestAssetId() {
-        return this.cloudforceOneRequestAssetId;
-    }
-    /**
      * Defines the asset creation time.
      * 
      */

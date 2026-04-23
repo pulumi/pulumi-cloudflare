@@ -51,8 +51,6 @@ type CloudforceOneRequestAsset struct {
 
 	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Asset ID.
-	CloudforceOneRequestAssetId pulumi.StringOutput `pulumi:"cloudforceOneRequestAssetId"`
 	// Defines the asset creation time.
 	Created pulumi.StringOutput `pulumi:"created"`
 	// Asset description.
@@ -115,8 +113,6 @@ func GetCloudforceOneRequestAsset(ctx *pulumi.Context,
 type cloudforceOneRequestAssetState struct {
 	// Identifier.
 	AccountId *string `pulumi:"accountId"`
-	// Asset ID.
-	CloudforceOneRequestAssetId *string `pulumi:"cloudforceOneRequestAssetId"`
 	// Defines the asset creation time.
 	Created *string `pulumi:"created"`
 	// Asset description.
@@ -138,8 +134,6 @@ type cloudforceOneRequestAssetState struct {
 type CloudforceOneRequestAssetState struct {
 	// Identifier.
 	AccountId pulumi.StringPtrInput
-	// Asset ID.
-	CloudforceOneRequestAssetId pulumi.StringPtrInput
 	// Defines the asset creation time.
 	Created pulumi.StringPtrInput
 	// Asset description.
@@ -279,11 +273,6 @@ func (o CloudforceOneRequestAssetOutput) ToCloudforceOneRequestAssetOutputWithCo
 // Identifier.
 func (o CloudforceOneRequestAssetOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudforceOneRequestAsset) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
-}
-
-// Asset ID.
-func (o CloudforceOneRequestAssetOutput) CloudforceOneRequestAssetId() pulumi.StringOutput {
-	return o.ApplyT(func(v *CloudforceOneRequestAsset) pulumi.StringOutput { return v.CloudforceOneRequestAssetId }).(pulumi.StringOutput)
 }
 
 // Defines the asset creation time.

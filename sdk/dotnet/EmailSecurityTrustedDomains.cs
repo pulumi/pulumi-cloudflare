@@ -58,12 +58,6 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// The unique identifier for the trusted domain.
-        /// </summary>
-        [Output("emailSecurityTrustedDomainsId")]
-        public Output<string> EmailSecurityTrustedDomainsId { get; private set; } = null!;
-
-        /// <summary>
         /// Select to prevent recently registered domains from triggering a
         /// Suspicious or Malicious disposition.
         /// </summary>
@@ -198,12 +192,6 @@ namespace Pulumi.Cloudflare
 
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
-
-        /// <summary>
-        /// The unique identifier for the trusted domain.
-        /// </summary>
-        [Input("emailSecurityTrustedDomainsId")]
-        public Input<string>? EmailSecurityTrustedDomainsId { get; set; }
 
         /// <summary>
         /// Select to prevent recently registered domains from triggering a

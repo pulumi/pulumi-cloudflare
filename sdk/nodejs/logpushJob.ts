@@ -136,10 +136,6 @@ export class LogpushJob extends pulumi.CustomResource {
      */
     declare public readonly logpullOptions: pulumi.Output<string>;
     /**
-     * Unique id of the job.
-     */
-    declare public /*out*/ readonly logpushJobId: pulumi.Output<string>;
-    /**
      * The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
      */
     declare public readonly maxUploadBytes: pulumi.Output<number>;
@@ -192,7 +188,6 @@ export class LogpushJob extends pulumi.CustomResource {
             resourceInputs["lastComplete"] = state?.lastComplete;
             resourceInputs["lastError"] = state?.lastError;
             resourceInputs["logpullOptions"] = state?.logpullOptions;
-            resourceInputs["logpushJobId"] = state?.logpushJobId;
             resourceInputs["maxUploadBytes"] = state?.maxUploadBytes;
             resourceInputs["maxUploadIntervalSeconds"] = state?.maxUploadIntervalSeconds;
             resourceInputs["maxUploadRecords"] = state?.maxUploadRecords;
@@ -223,7 +218,6 @@ export class LogpushJob extends pulumi.CustomResource {
             resourceInputs["errorMessage"] = undefined /*out*/;
             resourceInputs["lastComplete"] = undefined /*out*/;
             resourceInputs["lastError"] = undefined /*out*/;
-            resourceInputs["logpushJobId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["ownershipChallenge"] };
@@ -287,10 +281,6 @@ export interface LogpushJobState {
      * @deprecated This attribute is deprecated.
      */
     logpullOptions?: pulumi.Input<string>;
-    /**
-     * Unique id of the job.
-     */
-    logpushJobId?: pulumi.Input<string>;
     /**
      * The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
      */

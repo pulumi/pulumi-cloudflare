@@ -32,21 +32,6 @@ public final class CloudforceOneRequestAssetState extends com.pulumi.resources.R
     }
 
     /**
-     * Asset ID.
-     * 
-     */
-    @Import(name="cloudforceOneRequestAssetId")
-    private @Nullable Output<String> cloudforceOneRequestAssetId;
-
-    /**
-     * @return Asset ID.
-     * 
-     */
-    public Optional<Output<String>> cloudforceOneRequestAssetId() {
-        return Optional.ofNullable(this.cloudforceOneRequestAssetId);
-    }
-
-    /**
      * Defines the asset creation time.
      * 
      */
@@ -170,7 +155,6 @@ public final class CloudforceOneRequestAssetState extends com.pulumi.resources.R
 
     private CloudforceOneRequestAssetState(CloudforceOneRequestAssetState $) {
         this.accountId = $.accountId;
-        this.cloudforceOneRequestAssetId = $.cloudforceOneRequestAssetId;
         this.created = $.created;
         this.description = $.description;
         this.fileType = $.fileType;
@@ -218,27 +202,6 @@ public final class CloudforceOneRequestAssetState extends com.pulumi.resources.R
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
-        }
-
-        /**
-         * @param cloudforceOneRequestAssetId Asset ID.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder cloudforceOneRequestAssetId(@Nullable Output<String> cloudforceOneRequestAssetId) {
-            $.cloudforceOneRequestAssetId = cloudforceOneRequestAssetId;
-            return this;
-        }
-
-        /**
-         * @param cloudforceOneRequestAssetId Asset ID.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder cloudforceOneRequestAssetId(String cloudforceOneRequestAssetId) {
-            return cloudforceOneRequestAssetId(Output.of(cloudforceOneRequestAssetId));
         }
 
         /**

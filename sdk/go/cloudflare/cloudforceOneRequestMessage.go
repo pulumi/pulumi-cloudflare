@@ -52,8 +52,6 @@ type CloudforceOneRequestMessage struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Author of message.
 	Author pulumi.StringOutput `pulumi:"author"`
-	// Message ID.
-	CloudforceOneRequestMessageId pulumi.StringOutput `pulumi:"cloudforceOneRequestMessageId"`
 	// Content of message.
 	Content pulumi.StringPtrOutput `pulumi:"content"`
 	// Defines the message creation time.
@@ -106,8 +104,6 @@ type cloudforceOneRequestMessageState struct {
 	AccountId *string `pulumi:"accountId"`
 	// Author of message.
 	Author *string `pulumi:"author"`
-	// Message ID.
-	CloudforceOneRequestMessageId *string `pulumi:"cloudforceOneRequestMessageId"`
 	// Content of message.
 	Content *string `pulumi:"content"`
 	// Defines the message creation time.
@@ -125,8 +121,6 @@ type CloudforceOneRequestMessageState struct {
 	AccountId pulumi.StringPtrInput
 	// Author of message.
 	Author pulumi.StringPtrInput
-	// Message ID.
-	CloudforceOneRequestMessageId pulumi.StringPtrInput
 	// Content of message.
 	Content pulumi.StringPtrInput
 	// Defines the message creation time.
@@ -257,11 +251,6 @@ func (o CloudforceOneRequestMessageOutput) AccountId() pulumi.StringOutput {
 // Author of message.
 func (o CloudforceOneRequestMessageOutput) Author() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudforceOneRequestMessage) pulumi.StringOutput { return v.Author }).(pulumi.StringOutput)
-}
-
-// Message ID.
-func (o CloudforceOneRequestMessageOutput) CloudforceOneRequestMessageId() pulumi.StringOutput {
-	return o.ApplyT(func(v *CloudforceOneRequestMessage) pulumi.StringOutput { return v.CloudforceOneRequestMessageId }).(pulumi.StringOutput)
 }
 
 // Content of message.

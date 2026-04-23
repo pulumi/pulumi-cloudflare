@@ -45,21 +45,6 @@ public final class EmailSecurityBlockSenderState extends com.pulumi.resources.Re
         return Optional.ofNullable(this.createdAt);
     }
 
-    /**
-     * The unique identifier for the allow policy.
-     * 
-     */
-    @Import(name="emailSecurityBlockSenderId")
-    private @Nullable Output<String> emailSecurityBlockSenderId;
-
-    /**
-     * @return The unique identifier for the allow policy.
-     * 
-     */
-    public Optional<Output<String>> emailSecurityBlockSenderId() {
-        return Optional.ofNullable(this.emailSecurityBlockSenderId);
-    }
-
     @Import(name="isRegex")
     private @Nullable Output<Boolean> isRegex;
 
@@ -102,7 +87,6 @@ public final class EmailSecurityBlockSenderState extends com.pulumi.resources.Re
         this.accountId = $.accountId;
         this.comments = $.comments;
         this.createdAt = $.createdAt;
-        this.emailSecurityBlockSenderId = $.emailSecurityBlockSenderId;
         this.isRegex = $.isRegex;
         this.lastModified = $.lastModified;
         this.pattern = $.pattern;
@@ -164,27 +148,6 @@ public final class EmailSecurityBlockSenderState extends com.pulumi.resources.Re
 
         public Builder createdAt(String createdAt) {
             return createdAt(Output.of(createdAt));
-        }
-
-        /**
-         * @param emailSecurityBlockSenderId The unique identifier for the allow policy.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder emailSecurityBlockSenderId(@Nullable Output<String> emailSecurityBlockSenderId) {
-            $.emailSecurityBlockSenderId = emailSecurityBlockSenderId;
-            return this;
-        }
-
-        /**
-         * @param emailSecurityBlockSenderId The unique identifier for the allow policy.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder emailSecurityBlockSenderId(String emailSecurityBlockSenderId) {
-            return emailSecurityBlockSenderId(Output.of(emailSecurityBlockSenderId));
         }
 
         public Builder isRegex(@Nullable Output<Boolean> isRegex) {

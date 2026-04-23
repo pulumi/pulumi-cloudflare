@@ -60,10 +60,6 @@ export class EmailSecurityBlockSender extends pulumi.CustomResource {
     declare public readonly accountId: pulumi.Output<string>;
     declare public readonly comments: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
-    /**
-     * The unique identifier for the allow policy.
-     */
-    declare public /*out*/ readonly emailSecurityBlockSenderId: pulumi.Output<string>;
     declare public readonly isRegex: pulumi.Output<boolean>;
     declare public /*out*/ readonly lastModified: pulumi.Output<string>;
     declare public readonly pattern: pulumi.Output<string>;
@@ -88,7 +84,6 @@ export class EmailSecurityBlockSender extends pulumi.CustomResource {
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["comments"] = state?.comments;
             resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["emailSecurityBlockSenderId"] = state?.emailSecurityBlockSenderId;
             resourceInputs["isRegex"] = state?.isRegex;
             resourceInputs["lastModified"] = state?.lastModified;
             resourceInputs["pattern"] = state?.pattern;
@@ -113,7 +108,6 @@ export class EmailSecurityBlockSender extends pulumi.CustomResource {
             resourceInputs["pattern"] = args?.pattern;
             resourceInputs["patternType"] = args?.patternType;
             resourceInputs["createdAt"] = undefined /*out*/;
-            resourceInputs["emailSecurityBlockSenderId"] = undefined /*out*/;
             resourceInputs["lastModified"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -131,10 +125,6 @@ export interface EmailSecurityBlockSenderState {
     accountId?: pulumi.Input<string>;
     comments?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
-    /**
-     * The unique identifier for the allow policy.
-     */
-    emailSecurityBlockSenderId?: pulumi.Input<string>;
     isRegex?: pulumi.Input<boolean>;
     lastModified?: pulumi.Input<string>;
     pattern?: pulumi.Input<string>;

@@ -294,7 +294,6 @@ class _LogpushJobState:
                  last_complete: Optional[pulumi.Input[_builtins.str]] = None,
                  last_error: Optional[pulumi.Input[_builtins.str]] = None,
                  logpull_options: Optional[pulumi.Input[_builtins.str]] = None,
-                 logpush_job_id: Optional[pulumi.Input[_builtins.str]] = None,
                  max_upload_bytes: Optional[pulumi.Input[_builtins.int]] = None,
                  max_upload_interval_seconds: Optional[pulumi.Input[_builtins.int]] = None,
                  max_upload_records: Optional[pulumi.Input[_builtins.int]] = None,
@@ -319,7 +318,6 @@ class _LogpushJobState:
         :param pulumi.Input[_builtins.str] last_complete: Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.
         :param pulumi.Input[_builtins.str] last_error: Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.
         :param pulumi.Input[_builtins.str] logpull_options: This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
-        :param pulumi.Input[_builtins.str] logpush_job_id: Unique id of the job.
         :param pulumi.Input[_builtins.int] max_upload_bytes: The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
         :param pulumi.Input[_builtins.int] max_upload_interval_seconds: The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
         :param pulumi.Input[_builtins.int] max_upload_records: The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
@@ -356,8 +354,6 @@ class _LogpushJobState:
             pulumi.log.warn("""logpull_options is deprecated: This attribute is deprecated.""")
         if logpull_options is not None:
             pulumi.set(__self__, "logpull_options", logpull_options)
-        if logpush_job_id is not None:
-            pulumi.set(__self__, "logpush_job_id", logpush_job_id)
         if max_upload_bytes is not None:
             pulumi.set(__self__, "max_upload_bytes", max_upload_bytes)
         if max_upload_interval_seconds is not None:
@@ -509,18 +505,6 @@ class _LogpushJobState:
     @logpull_options.setter
     def logpull_options(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "logpull_options", value)
-
-    @_builtins.property
-    @pulumi.getter(name="logpushJobId")
-    def logpush_job_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Unique id of the job.
-        """
-        return pulumi.get(self, "logpush_job_id")
-
-    @logpush_job_id.setter
-    def logpush_job_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "logpush_job_id", value)
 
     @_builtins.property
     @pulumi.getter(name="maxUploadBytes")
@@ -815,7 +799,6 @@ class LogpushJob(pulumi.CustomResource):
             __props__.__dict__["error_message"] = None
             __props__.__dict__["last_complete"] = None
             __props__.__dict__["last_error"] = None
-            __props__.__dict__["logpush_job_id"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["ownershipChallenge"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(LogpushJob, __self__).__init__(
@@ -839,7 +822,6 @@ class LogpushJob(pulumi.CustomResource):
             last_complete: Optional[pulumi.Input[_builtins.str]] = None,
             last_error: Optional[pulumi.Input[_builtins.str]] = None,
             logpull_options: Optional[pulumi.Input[_builtins.str]] = None,
-            logpush_job_id: Optional[pulumi.Input[_builtins.str]] = None,
             max_upload_bytes: Optional[pulumi.Input[_builtins.int]] = None,
             max_upload_interval_seconds: Optional[pulumi.Input[_builtins.int]] = None,
             max_upload_records: Optional[pulumi.Input[_builtins.int]] = None,
@@ -868,7 +850,6 @@ class LogpushJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] last_complete: Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.
         :param pulumi.Input[_builtins.str] last_error: Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.
         :param pulumi.Input[_builtins.str] logpull_options: This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
-        :param pulumi.Input[_builtins.str] logpush_job_id: Unique id of the job.
         :param pulumi.Input[_builtins.int] max_upload_bytes: The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
         :param pulumi.Input[_builtins.int] max_upload_interval_seconds: The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
         :param pulumi.Input[_builtins.int] max_upload_records: The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
@@ -892,7 +873,6 @@ class LogpushJob(pulumi.CustomResource):
         __props__.__dict__["last_complete"] = last_complete
         __props__.__dict__["last_error"] = last_error
         __props__.__dict__["logpull_options"] = logpull_options
-        __props__.__dict__["logpush_job_id"] = logpush_job_id
         __props__.__dict__["max_upload_bytes"] = max_upload_bytes
         __props__.__dict__["max_upload_interval_seconds"] = max_upload_interval_seconds
         __props__.__dict__["max_upload_records"] = max_upload_records
@@ -994,14 +974,6 @@ class LogpushJob(pulumi.CustomResource):
         This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
         """
         return pulumi.get(self, "logpull_options")
-
-    @_builtins.property
-    @pulumi.getter(name="logpushJobId")
-    def logpush_job_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Unique id of the job.
-        """
-        return pulumi.get(self, "logpush_job_id")
 
     @_builtins.property
     @pulumi.getter(name="maxUploadBytes")

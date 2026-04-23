@@ -52,12 +52,6 @@ namespace Pulumi.Cloudflare
         public Output<string> Author { get; private set; } = null!;
 
         /// <summary>
-        /// Message ID.
-        /// </summary>
-        [Output("cloudforceOneRequestMessageId")]
-        public Output<string> CloudforceOneRequestMessageId { get; private set; } = null!;
-
-        /// <summary>
         /// Content of message.
         /// </summary>
         [Output("content")]
@@ -170,12 +164,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("author")]
         public Input<string>? Author { get; set; }
-
-        /// <summary>
-        /// Message ID.
-        /// </summary>
-        [Input("cloudforceOneRequestMessageId")]
-        public Input<string>? CloudforceOneRequestMessageId { get; set; }
 
         /// <summary>
         /// Content of message.

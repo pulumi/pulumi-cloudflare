@@ -47,12 +47,6 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Asset ID.
-        /// </summary>
-        [Output("cloudforceOneRequestAssetId")]
-        public Output<string> CloudforceOneRequestAssetId { get; private set; } = null!;
-
-        /// <summary>
         /// Defines the asset creation time.
         /// </summary>
         [Output("created")]
@@ -189,12 +183,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
-
-        /// <summary>
-        /// Asset ID.
-        /// </summary>
-        [Input("cloudforceOneRequestAssetId")]
-        public Input<string>? CloudforceOneRequestAssetId { get; set; }
 
         /// <summary>
         /// Defines the asset creation time.

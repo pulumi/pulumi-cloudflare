@@ -51,14 +51,12 @@ type EmailSecurityBlockSender struct {
 	pulumi.CustomResourceState
 
 	// Account Identifier
-	AccountId pulumi.StringOutput    `pulumi:"accountId"`
-	Comments  pulumi.StringPtrOutput `pulumi:"comments"`
-	CreatedAt pulumi.StringOutput    `pulumi:"createdAt"`
-	// The unique identifier for the allow policy.
-	EmailSecurityBlockSenderId pulumi.StringOutput `pulumi:"emailSecurityBlockSenderId"`
-	IsRegex                    pulumi.BoolOutput   `pulumi:"isRegex"`
-	LastModified               pulumi.StringOutput `pulumi:"lastModified"`
-	Pattern                    pulumi.StringOutput `pulumi:"pattern"`
+	AccountId    pulumi.StringOutput    `pulumi:"accountId"`
+	Comments     pulumi.StringPtrOutput `pulumi:"comments"`
+	CreatedAt    pulumi.StringOutput    `pulumi:"createdAt"`
+	IsRegex      pulumi.BoolOutput      `pulumi:"isRegex"`
+	LastModified pulumi.StringOutput    `pulumi:"lastModified"`
+	Pattern      pulumi.StringOutput    `pulumi:"pattern"`
 	// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	PatternType pulumi.StringOutput `pulumi:"patternType"`
 }
@@ -106,28 +104,24 @@ func GetEmailSecurityBlockSender(ctx *pulumi.Context,
 // Input properties used for looking up and filtering EmailSecurityBlockSender resources.
 type emailSecurityBlockSenderState struct {
 	// Account Identifier
-	AccountId *string `pulumi:"accountId"`
-	Comments  *string `pulumi:"comments"`
-	CreatedAt *string `pulumi:"createdAt"`
-	// The unique identifier for the allow policy.
-	EmailSecurityBlockSenderId *string `pulumi:"emailSecurityBlockSenderId"`
-	IsRegex                    *bool   `pulumi:"isRegex"`
-	LastModified               *string `pulumi:"lastModified"`
-	Pattern                    *string `pulumi:"pattern"`
+	AccountId    *string `pulumi:"accountId"`
+	Comments     *string `pulumi:"comments"`
+	CreatedAt    *string `pulumi:"createdAt"`
+	IsRegex      *bool   `pulumi:"isRegex"`
+	LastModified *string `pulumi:"lastModified"`
+	Pattern      *string `pulumi:"pattern"`
 	// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	PatternType *string `pulumi:"patternType"`
 }
 
 type EmailSecurityBlockSenderState struct {
 	// Account Identifier
-	AccountId pulumi.StringPtrInput
-	Comments  pulumi.StringPtrInput
-	CreatedAt pulumi.StringPtrInput
-	// The unique identifier for the allow policy.
-	EmailSecurityBlockSenderId pulumi.StringPtrInput
-	IsRegex                    pulumi.BoolPtrInput
-	LastModified               pulumi.StringPtrInput
-	Pattern                    pulumi.StringPtrInput
+	AccountId    pulumi.StringPtrInput
+	Comments     pulumi.StringPtrInput
+	CreatedAt    pulumi.StringPtrInput
+	IsRegex      pulumi.BoolPtrInput
+	LastModified pulumi.StringPtrInput
+	Pattern      pulumi.StringPtrInput
 	// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	PatternType pulumi.StringPtrInput
 }
@@ -255,11 +249,6 @@ func (o EmailSecurityBlockSenderOutput) Comments() pulumi.StringPtrOutput {
 
 func (o EmailSecurityBlockSenderOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailSecurityBlockSender) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
-// The unique identifier for the allow policy.
-func (o EmailSecurityBlockSenderOutput) EmailSecurityBlockSenderId() pulumi.StringOutput {
-	return o.ApplyT(func(v *EmailSecurityBlockSender) pulumi.StringOutput { return v.EmailSecurityBlockSenderId }).(pulumi.StringOutput)
 }
 
 func (o EmailSecurityBlockSenderOutput) IsRegex() pulumi.BoolOutput {

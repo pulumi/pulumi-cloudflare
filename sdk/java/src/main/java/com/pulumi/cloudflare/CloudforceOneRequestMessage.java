@@ -89,20 +89,6 @@ public class CloudforceOneRequestMessage extends com.pulumi.resources.CustomReso
         return this.author;
     }
     /**
-     * Message ID.
-     * 
-     */
-    @Export(name="cloudforceOneRequestMessageId", refs={String.class}, tree="[0]")
-    private Output<String> cloudforceOneRequestMessageId;
-
-    /**
-     * @return Message ID.
-     * 
-     */
-    public Output<String> cloudforceOneRequestMessageId() {
-        return this.cloudforceOneRequestMessageId;
-    }
-    /**
      * Content of message.
      * 
      */

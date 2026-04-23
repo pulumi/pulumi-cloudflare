@@ -95,7 +95,6 @@ class _EmailSecurityBlockSenderState:
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  comments: Optional[pulumi.Input[_builtins.str]] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 email_security_block_sender_id: Optional[pulumi.Input[_builtins.str]] = None,
                  is_regex: Optional[pulumi.Input[_builtins.bool]] = None,
                  last_modified: Optional[pulumi.Input[_builtins.str]] = None,
                  pattern: Optional[pulumi.Input[_builtins.str]] = None,
@@ -104,7 +103,6 @@ class _EmailSecurityBlockSenderState:
         Input properties used for looking up and filtering EmailSecurityBlockSender resources.
 
         :param pulumi.Input[_builtins.str] account_id: Account Identifier
-        :param pulumi.Input[_builtins.str] email_security_block_sender_id: The unique identifier for the allow policy.
         :param pulumi.Input[_builtins.str] pattern_type: Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         """
         if account_id is not None:
@@ -113,8 +111,6 @@ class _EmailSecurityBlockSenderState:
             pulumi.set(__self__, "comments", comments)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
-        if email_security_block_sender_id is not None:
-            pulumi.set(__self__, "email_security_block_sender_id", email_security_block_sender_id)
         if is_regex is not None:
             pulumi.set(__self__, "is_regex", is_regex)
         if last_modified is not None:
@@ -153,18 +149,6 @@ class _EmailSecurityBlockSenderState:
     @created_at.setter
     def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "created_at", value)
-
-    @_builtins.property
-    @pulumi.getter(name="emailSecurityBlockSenderId")
-    def email_security_block_sender_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The unique identifier for the allow policy.
-        """
-        return pulumi.get(self, "email_security_block_sender_id")
-
-    @email_security_block_sender_id.setter
-    def email_security_block_sender_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "email_security_block_sender_id", value)
 
     @_builtins.property
     @pulumi.getter(name="isRegex")
@@ -316,7 +300,6 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
                 raise TypeError("Missing required property 'pattern_type'")
             __props__.__dict__["pattern_type"] = pattern_type
             __props__.__dict__["created_at"] = None
-            __props__.__dict__["email_security_block_sender_id"] = None
             __props__.__dict__["last_modified"] = None
         super(EmailSecurityBlockSender, __self__).__init__(
             'cloudflare:index/emailSecurityBlockSender:EmailSecurityBlockSender',
@@ -331,7 +314,6 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
             comments: Optional[pulumi.Input[_builtins.str]] = None,
             created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            email_security_block_sender_id: Optional[pulumi.Input[_builtins.str]] = None,
             is_regex: Optional[pulumi.Input[_builtins.bool]] = None,
             last_modified: Optional[pulumi.Input[_builtins.str]] = None,
             pattern: Optional[pulumi.Input[_builtins.str]] = None,
@@ -344,7 +326,6 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account Identifier
-        :param pulumi.Input[_builtins.str] email_security_block_sender_id: The unique identifier for the allow policy.
         :param pulumi.Input[_builtins.str] pattern_type: Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -354,7 +335,6 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["comments"] = comments
         __props__.__dict__["created_at"] = created_at
-        __props__.__dict__["email_security_block_sender_id"] = email_security_block_sender_id
         __props__.__dict__["is_regex"] = is_regex
         __props__.__dict__["last_modified"] = last_modified
         __props__.__dict__["pattern"] = pattern
@@ -378,14 +358,6 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "created_at")
-
-    @_builtins.property
-    @pulumi.getter(name="emailSecurityBlockSenderId")
-    def email_security_block_sender_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The unique identifier for the allow policy.
-        """
-        return pulumi.get(self, "email_security_block_sender_id")
 
     @_builtins.property
     @pulumi.getter(name="isRegex")

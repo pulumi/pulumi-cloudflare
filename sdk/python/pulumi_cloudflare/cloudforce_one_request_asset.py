@@ -105,7 +105,6 @@ class CloudforceOneRequestAssetArgs:
 class _CloudforceOneRequestAssetState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloudforce_one_request_asset_id: Optional[pulumi.Input[_builtins.str]] = None,
                  created: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  file_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -118,7 +117,6 @@ class _CloudforceOneRequestAssetState:
         Input properties used for looking up and filtering CloudforceOneRequestAsset resources.
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[_builtins.str] cloudforce_one_request_asset_id: Asset ID.
         :param pulumi.Input[_builtins.str] created: Defines the asset creation time.
         :param pulumi.Input[_builtins.str] description: Asset description.
         :param pulumi.Input[_builtins.str] file_type: Asset file type.
@@ -130,8 +128,6 @@ class _CloudforceOneRequestAssetState:
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
-        if cloudforce_one_request_asset_id is not None:
-            pulumi.set(__self__, "cloudforce_one_request_asset_id", cloudforce_one_request_asset_id)
         if created is not None:
             pulumi.set(__self__, "created", created)
         if description is not None:
@@ -160,18 +156,6 @@ class _CloudforceOneRequestAssetState:
     @account_id.setter
     def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "account_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="cloudforceOneRequestAssetId")
-    def cloudforce_one_request_asset_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Asset ID.
-        """
-        return pulumi.get(self, "cloudforce_one_request_asset_id")
-
-    @cloudforce_one_request_asset_id.setter
-    def cloudforce_one_request_asset_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "cloudforce_one_request_asset_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -380,7 +364,6 @@ class CloudforceOneRequestAsset(pulumi.CustomResource):
                 raise TypeError("Missing required property 'request_id'")
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["source"] = source
-            __props__.__dict__["cloudforce_one_request_asset_id"] = None
             __props__.__dict__["created"] = None
             __props__.__dict__["description"] = None
             __props__.__dict__["file_type"] = None
@@ -396,7 +379,6 @@ class CloudforceOneRequestAsset(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cloudforce_one_request_asset_id: Optional[pulumi.Input[_builtins.str]] = None,
             created: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             file_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -413,7 +395,6 @@ class CloudforceOneRequestAsset(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[_builtins.str] cloudforce_one_request_asset_id: Asset ID.
         :param pulumi.Input[_builtins.str] created: Defines the asset creation time.
         :param pulumi.Input[_builtins.str] description: Asset description.
         :param pulumi.Input[_builtins.str] file_type: Asset file type.
@@ -428,7 +409,6 @@ class CloudforceOneRequestAsset(pulumi.CustomResource):
         __props__ = _CloudforceOneRequestAssetState.__new__(_CloudforceOneRequestAssetState)
 
         __props__.__dict__["account_id"] = account_id
-        __props__.__dict__["cloudforce_one_request_asset_id"] = cloudforce_one_request_asset_id
         __props__.__dict__["created"] = created
         __props__.__dict__["description"] = description
         __props__.__dict__["file_type"] = file_type
@@ -446,14 +426,6 @@ class CloudforceOneRequestAsset(pulumi.CustomResource):
         Identifier.
         """
         return pulumi.get(self, "account_id")
-
-    @_builtins.property
-    @pulumi.getter(name="cloudforceOneRequestAssetId")
-    def cloudforce_one_request_asset_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Asset ID.
-        """
-        return pulumi.get(self, "cloudforce_one_request_asset_id")
 
     @_builtins.property
     @pulumi.getter

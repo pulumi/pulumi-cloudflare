@@ -76,7 +76,6 @@ class _CloudforceOneRequestMessageState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  author: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloudforce_one_request_message_id: Optional[pulumi.Input[_builtins.str]] = None,
                  content: Optional[pulumi.Input[_builtins.str]] = None,
                  created: Optional[pulumi.Input[_builtins.str]] = None,
                  is_follow_on_request: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -87,7 +86,6 @@ class _CloudforceOneRequestMessageState:
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] author: Author of message.
-        :param pulumi.Input[_builtins.str] cloudforce_one_request_message_id: Message ID.
         :param pulumi.Input[_builtins.str] content: Content of message.
         :param pulumi.Input[_builtins.str] created: Defines the message creation time.
         :param pulumi.Input[_builtins.bool] is_follow_on_request: Whether the message is a follow-on request.
@@ -98,8 +96,6 @@ class _CloudforceOneRequestMessageState:
             pulumi.set(__self__, "account_id", account_id)
         if author is not None:
             pulumi.set(__self__, "author", author)
-        if cloudforce_one_request_message_id is not None:
-            pulumi.set(__self__, "cloudforce_one_request_message_id", cloudforce_one_request_message_id)
         if content is not None:
             pulumi.set(__self__, "content", content)
         if created is not None:
@@ -134,18 +130,6 @@ class _CloudforceOneRequestMessageState:
     @author.setter
     def author(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "author", value)
-
-    @_builtins.property
-    @pulumi.getter(name="cloudforceOneRequestMessageId")
-    def cloudforce_one_request_message_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Message ID.
-        """
-        return pulumi.get(self, "cloudforce_one_request_message_id")
-
-    @cloudforce_one_request_message_id.setter
-    def cloudforce_one_request_message_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "cloudforce_one_request_message_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -305,7 +289,6 @@ class CloudforceOneRequestMessage(pulumi.CustomResource):
                 raise TypeError("Missing required property 'request_id'")
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["author"] = None
-            __props__.__dict__["cloudforce_one_request_message_id"] = None
             __props__.__dict__["created"] = None
             __props__.__dict__["is_follow_on_request"] = None
             __props__.__dict__["updated"] = None
@@ -321,7 +304,6 @@ class CloudforceOneRequestMessage(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
             author: Optional[pulumi.Input[_builtins.str]] = None,
-            cloudforce_one_request_message_id: Optional[pulumi.Input[_builtins.str]] = None,
             content: Optional[pulumi.Input[_builtins.str]] = None,
             created: Optional[pulumi.Input[_builtins.str]] = None,
             is_follow_on_request: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -336,7 +318,6 @@ class CloudforceOneRequestMessage(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] author: Author of message.
-        :param pulumi.Input[_builtins.str] cloudforce_one_request_message_id: Message ID.
         :param pulumi.Input[_builtins.str] content: Content of message.
         :param pulumi.Input[_builtins.str] created: Defines the message creation time.
         :param pulumi.Input[_builtins.bool] is_follow_on_request: Whether the message is a follow-on request.
@@ -349,7 +330,6 @@ class CloudforceOneRequestMessage(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["author"] = author
-        __props__.__dict__["cloudforce_one_request_message_id"] = cloudforce_one_request_message_id
         __props__.__dict__["content"] = content
         __props__.__dict__["created"] = created
         __props__.__dict__["is_follow_on_request"] = is_follow_on_request
@@ -372,14 +352,6 @@ class CloudforceOneRequestMessage(pulumi.CustomResource):
         Author of message.
         """
         return pulumi.get(self, "author")
-
-    @_builtins.property
-    @pulumi.getter(name="cloudforceOneRequestMessageId")
-    def cloudforce_one_request_message_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Message ID.
-        """
-        return pulumi.get(self, "cloudforce_one_request_message_id")
 
     @_builtins.property
     @pulumi.getter

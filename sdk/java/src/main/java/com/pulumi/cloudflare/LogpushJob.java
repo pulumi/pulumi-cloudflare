@@ -263,20 +263,6 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
         return this.logpullOptions;
     }
     /**
-     * Unique id of the job.
-     * 
-     */
-    @Export(name="logpushJobId", refs={String.class}, tree="[0]")
-    private Output<String> logpushJobId;
-
-    /**
-     * @return Unique id of the job.
-     * 
-     */
-    public Output<String> logpushJobId() {
-        return this.logpushJobId;
-    }
-    /**
      * The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
      * 
      */
