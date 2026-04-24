@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleAccountMember = new Cloudflare.AccountMember("example_account_member", new()
+    ///     var exampleAccountMember = new Cloudflare.Index.AccountMember("example_account_member", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Email = "user@example.com",

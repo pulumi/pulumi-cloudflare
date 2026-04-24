@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZone = new Cloudflare.Zone("example_zone", new()
+    ///     var exampleZone = new Cloudflare.Index.Zone("example_zone", new()
     ///     {
     ///         Account = new Cloudflare.Inputs.ZoneAccountArgs
     ///         {

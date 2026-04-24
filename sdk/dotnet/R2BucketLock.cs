@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleR2BucketLock = new Cloudflare.R2BucketLock("example_r2_bucket_lock", new()
+    ///     var exampleR2BucketLock = new Cloudflare.Index.R2BucketLock("example_r2_bucket_lock", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         BucketName = "example-bucket",

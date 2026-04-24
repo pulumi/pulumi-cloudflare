@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupWorkersCustomDomains(ctx, &cloudflare.LookupWorkersCustomDomainsArgs{
+//			_, err := cloudflare.GetWorkersCustomDomains(ctx, &cloudflare.LookupWorkersCustomDomainsArgs{
 //				AccountId:   "9a7806061c88ada191ed06f989cc3dac",
 //				Environment: pulumi.StringRef("production"),
 //				Hostname:    pulumi.StringRef("foo.example.com"),

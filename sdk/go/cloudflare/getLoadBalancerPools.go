@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupLoadBalancerPools(ctx, &cloudflare.LookupLoadBalancerPoolsArgs{
+//			_, err := cloudflare.GetLoadBalancerPools(ctx, &cloudflare.LookupLoadBalancerPoolsArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				Monitor:   pulumi.StringRef("monitor"),
 //			}, nil)

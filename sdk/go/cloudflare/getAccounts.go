@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupAccounts(ctx, &cloudflare.LookupAccountsArgs{
+//			_, err := cloudflare.GetAccounts(ctx, &cloudflare.LookupAccountsArgs{
 //				Direction: pulumi.StringRef("desc"),
 //				Name:      pulumi.StringRef("example.com"),
 //			}, nil)

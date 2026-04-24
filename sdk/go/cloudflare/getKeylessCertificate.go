@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupKeylessCertificate(ctx, &cloudflare.LookupKeylessCertificateArgs{
+//			_, err := cloudflare.GetKeylessCertificate(ctx, &cloudflare.LookupKeylessCertificateArgs{
 //				ZoneId:               "023e105f4ecef8ad9ca31a8372d0c353",
 //				KeylessCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)

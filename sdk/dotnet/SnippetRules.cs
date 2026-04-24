@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleSnippetRules = new Cloudflare.SnippetRules("example_snippet_rules", new()
+    ///     var exampleSnippetRules = new Cloudflare.Index.SnippetRules("example_snippet_rules", new()
     ///     {
     ///         ZoneId = "9f1839b6152d298aca64c4e906b6d074",
     ///         Rules = new[]

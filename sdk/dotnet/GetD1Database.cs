@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleD1Database = Cloudflare.GetD1Database.Invoke(new()
+        ///     var exampleD1Database = Cloudflare.Index.GetD1Database.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DatabaseId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
@@ -45,7 +45,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleD1Database = Cloudflare.GetD1Database.Invoke(new()
+        ///     var exampleD1Database = Cloudflare.Index.GetD1Database.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DatabaseId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
@@ -68,7 +68,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleD1Database = Cloudflare.GetD1Database.Invoke(new()
+        ///     var exampleD1Database = Cloudflare.Index.GetD1Database.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DatabaseId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",

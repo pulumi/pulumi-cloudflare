@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupDnsZoneTransfersPeers(ctx, &cloudflare.LookupDnsZoneTransfersPeersArgs{
+//			_, err := cloudflare.GetDnsZoneTransfersPeers(ctx, &cloudflare.LookupDnsZoneTransfersPeersArgs{
 //				AccountId: "01a7362d577a6c3019a474fd6f485823",
 //			}, nil)
 //			if err != nil {

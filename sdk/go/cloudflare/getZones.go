@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupZones(ctx, &cloudflare.LookupZonesArgs{
+//			_, err := cloudflare.GetZones(ctx, &cloudflare.LookupZonesArgs{
 //				Account: cloudflare.GetZonesAccount{
 //					Id:   pulumi.StringRef("id"),
 //					Name: pulumi.StringRef("name"),

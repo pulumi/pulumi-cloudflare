@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupDnsRecords(ctx, &cloudflare.LookupDnsRecordsArgs{
+//			_, err := cloudflare.GetDnsRecords(ctx, &cloudflare.LookupDnsRecordsArgs{
 //				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				Comment: cloudflare.GetDnsRecordsComment{
 //					Absent:     pulumi.StringRef("absent"),

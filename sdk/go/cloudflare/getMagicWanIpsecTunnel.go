@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupMagicWanIpsecTunnel(ctx, &cloudflare.LookupMagicWanIpsecTunnelArgs{
+//			_, err := cloudflare.GetMagicWanIpsecTunnel(ctx, &cloudflare.LookupMagicWanIpsecTunnelArgs{
 //				AccountId:     "023e105f4ecef8ad9ca31a8372d0c353",
 //				IpsecTunnelId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)

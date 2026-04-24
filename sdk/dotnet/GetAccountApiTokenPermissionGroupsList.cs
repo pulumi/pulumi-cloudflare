@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountApiTokenPermissionGroupsList = Cloudflare.GetAccountApiTokenPermissionGroupsList.Invoke(new()
+        ///     var exampleAccountApiTokenPermissionGroupsList = Cloudflare.Index.GetAccountApiTokenPermissionGroupsList.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Name = "Account%20Settings%20Write",
@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountApiTokenPermissionGroupsList = Cloudflare.GetAccountApiTokenPermissionGroupsList.Invoke(new()
+        ///     var exampleAccountApiTokenPermissionGroupsList = Cloudflare.Index.GetAccountApiTokenPermissionGroupsList.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Name = "Account%20Settings%20Write",
@@ -70,7 +70,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountApiTokenPermissionGroupsList = Cloudflare.GetAccountApiTokenPermissionGroupsList.Invoke(new()
+        ///     var exampleAccountApiTokenPermissionGroupsList = Cloudflare.Index.GetAccountApiTokenPermissionGroupsList.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Name = "Account%20Settings%20Write",

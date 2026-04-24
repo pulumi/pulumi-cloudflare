@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleR2CustomDomain = Cloudflare.GetR2CustomDomain.Invoke(new()
+        ///     var exampleR2CustomDomain = Cloudflare.Index.GetR2CustomDomain.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         BucketName = "example-bucket",
@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleR2CustomDomain = Cloudflare.GetR2CustomDomain.Invoke(new()
+        ///     var exampleR2CustomDomain = Cloudflare.Index.GetR2CustomDomain.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         BucketName = "example-bucket",
@@ -70,7 +70,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleR2CustomDomain = Cloudflare.GetR2CustomDomain.Invoke(new()
+        ///     var exampleR2CustomDomain = Cloudflare.Index.GetR2CustomDomain.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         BucketName = "example-bucket",

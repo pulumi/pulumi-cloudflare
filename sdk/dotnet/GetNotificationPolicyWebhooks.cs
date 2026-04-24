@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleNotificationPolicyWebhooks = Cloudflare.GetNotificationPolicyWebhooks.Invoke(new()
+        ///     var exampleNotificationPolicyWebhooks = Cloudflare.Index.GetNotificationPolicyWebhooks.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         WebhookId = "b115d5ec15c641ee8b7692c449b5227b",
@@ -45,7 +45,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleNotificationPolicyWebhooks = Cloudflare.GetNotificationPolicyWebhooks.Invoke(new()
+        ///     var exampleNotificationPolicyWebhooks = Cloudflare.Index.GetNotificationPolicyWebhooks.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         WebhookId = "b115d5ec15c641ee8b7692c449b5227b",
@@ -68,7 +68,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleNotificationPolicyWebhooks = Cloudflare.GetNotificationPolicyWebhooks.Invoke(new()
+        ///     var exampleNotificationPolicyWebhooks = Cloudflare.Index.GetNotificationPolicyWebhooks.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         WebhookId = "b115d5ec15c641ee8b7692c449b5227b",

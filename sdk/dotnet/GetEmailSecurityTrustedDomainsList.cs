@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleEmailSecurityTrustedDomainsList = Cloudflare.GetEmailSecurityTrustedDomainsList.Invoke(new()
+        ///     var exampleEmailSecurityTrustedDomainsList = Cloudflare.Index.GetEmailSecurityTrustedDomainsList.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",
@@ -50,7 +50,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleEmailSecurityTrustedDomainsList = Cloudflare.GetEmailSecurityTrustedDomainsList.Invoke(new()
+        ///     var exampleEmailSecurityTrustedDomainsList = Cloudflare.Index.GetEmailSecurityTrustedDomainsList.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",
@@ -78,7 +78,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleEmailSecurityTrustedDomainsList = Cloudflare.GetEmailSecurityTrustedDomainsList.Invoke(new()
+        ///     var exampleEmailSecurityTrustedDomainsList = Cloudflare.Index.GetEmailSecurityTrustedDomainsList.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",

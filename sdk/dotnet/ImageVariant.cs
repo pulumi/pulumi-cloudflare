@@ -20,10 +20,10 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleImageVariant = new Cloudflare.ImageVariant("example_image_variant", new()
+    ///     var exampleImageVariant = new Cloudflare.Index.ImageVariant("example_image_variant", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         Id = "hero",
+    ///         ImageVariantId = "hero",
     ///         Options = new Cloudflare.Inputs.ImageVariantOptionsArgs
     ///         {
     ///             Fit = "scale-down",
@@ -51,6 +51,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of this resource.
+        /// </summary>
+        [Output("imageVariantId")]
+        public Output<string> ImageVariantId { get; private set; } = null!;
 
         /// <summary>
         /// Indicates whether the variant can access an image without a signature, regardless of image access control.
@@ -120,6 +126,12 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
+        /// The ID of this resource.
+        /// </summary>
+        [Input("imageVariantId", required: true)]
+        public Input<string> ImageVariantId { get; set; } = null!;
+
+        /// <summary>
         /// Indicates whether the variant can access an image without a signature, regardless of image access control.
         /// </summary>
         [Input("neverRequireSignedUrls")]
@@ -144,6 +156,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// The ID of this resource.
+        /// </summary>
+        [Input("imageVariantId")]
+        public Input<string>? ImageVariantId { get; set; }
 
         /// <summary>
         /// Indicates whether the variant can access an image without a signature, regardless of image access control.

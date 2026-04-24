@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupStreams(ctx, &cloudflare.LookupStreamsArgs{
+//			_, err := cloudflare.GetStreams(ctx, &cloudflare.LookupStreamsArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				Creator:   pulumi.StringRef("creator-id_abcde12345"),
 //				End:       pulumi.StringRef("2014-01-02T02:20:00Z"),

@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleDnsZoneTransfersAcl = new Cloudflare.DnsZoneTransfersAcl("example_dns_zone_transfers_acl", new()
+    ///     var exampleDnsZoneTransfersAcl = new Cloudflare.Index.DnsZoneTransfersAcl("example_dns_zone_transfers_acl", new()
     ///     {
     ///         AccountId = "01a7362d577a6c3019a474fd6f485823",
     ///         IpRange = "192.0.2.53/28",

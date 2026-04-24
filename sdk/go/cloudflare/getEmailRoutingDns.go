@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupEmailRoutingDns(ctx, &cloudflare.LookupEmailRoutingDnsArgs{
+//			_, err := cloudflare.GetEmailRoutingDns(ctx, &cloudflare.LookupEmailRoutingDnsArgs{
 //				ZoneId:    "023e105f4ecef8ad9ca31a8372d0c353",
 //				Subdomain: pulumi.StringRef("example.net"),
 //			}, nil)

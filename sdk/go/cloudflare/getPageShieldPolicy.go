@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupPageShieldPolicy(ctx, &cloudflare.LookupPageShieldPolicyArgs{
+//			_, err := cloudflare.GetPageShieldPolicy(ctx, &cloudflare.LookupPageShieldPolicyArgs{
 //				ZoneId:   "023e105f4ecef8ad9ca31a8372d0c353",
 //				PolicyId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)

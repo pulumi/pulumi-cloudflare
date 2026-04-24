@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupTokenValidationRulesList(ctx, &cloudflare.LookupTokenValidationRulesListArgs{
+//			_, err := cloudflare.GetTokenValidationRulesList(ctx, &cloudflare.LookupTokenValidationRulesListArgs{
 //				ZoneId:   "023e105f4ecef8ad9ca31a8372d0c353",
 //				Id:       pulumi.StringRef("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
 //				Action:   pulumi.StringRef("log"),

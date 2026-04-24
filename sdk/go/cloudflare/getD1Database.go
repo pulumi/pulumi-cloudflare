@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupD1Database(ctx, &cloudflare.LookupD1DatabaseArgs{
+//			_, err := cloudflare.GetD1Database(ctx, &cloudflare.LookupD1DatabaseArgs{
 //				AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
 //				DatabaseId: pulumi.StringRef("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
 //			}, nil)

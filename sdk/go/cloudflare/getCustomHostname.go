@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupCustomHostname(ctx, &cloudflare.LookupCustomHostnameArgs{
+//			_, err := cloudflare.GetCustomHostname(ctx, &cloudflare.LookupCustomHostnameArgs{
 //				ZoneId:           "023e105f4ecef8ad9ca31a8372d0c353",
 //				CustomHostnameId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)

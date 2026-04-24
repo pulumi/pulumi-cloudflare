@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupMagicWanGreTunnel(ctx, &cloudflare.LookupMagicWanGreTunnelArgs{
+//			_, err := cloudflare.GetMagicWanGreTunnel(ctx, &cloudflare.LookupMagicWanGreTunnelArgs{
 //				AccountId:   "023e105f4ecef8ad9ca31a8372d0c353",
 //				GreTunnelId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)

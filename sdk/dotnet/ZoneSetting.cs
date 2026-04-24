@@ -23,7 +23,7 @@ namespace Pulumi.Cloudflare
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Basic on/off setting
-    ///     var alwaysOnline = new Cloudflare.ZoneSetting("always_online", new()
+    ///     var alwaysOnline = new Cloudflare.Index.ZoneSetting("always_online", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         SettingId = "always_online",
@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     ///     // String value with specific choices
-    ///     var minTlsVersion = new Cloudflare.ZoneSetting("min_tls_version", new()
+    ///     var minTlsVersion = new Cloudflare.Index.ZoneSetting("min_tls_version", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         SettingId = "min_tls_version",
@@ -39,7 +39,7 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     ///     // Numeric value
-    ///     var browserCacheTtl = new Cloudflare.ZoneSetting("browser_cache_ttl", new()
+    ///     var browserCacheTtl = new Cloudflare.Index.ZoneSetting("browser_cache_ttl", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         SettingId = "browser_cache_ttl",
@@ -47,7 +47,7 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     ///     // Array/List value
-    ///     var ciphers = new Cloudflare.ZoneSetting("ciphers", new()
+    ///     var ciphers = new Cloudflare.Index.ZoneSetting("ciphers", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         SettingId = "ciphers",
@@ -59,7 +59,7 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     ///     // Nested object value
-    ///     var securityHeader = new Cloudflare.ZoneSetting("security_header", new()
+    ///     var securityHeader = new Cloudflare.Index.ZoneSetting("security_header", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         SettingId = "security_header",
@@ -77,7 +77,7 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     ///     // Special case: ssl_recommender uses 'enabled' instead of 'value'
-    ///     var sslRecommender = new Cloudflare.ZoneSetting("ssl_recommender", new()
+    ///     var sslRecommender = new Cloudflare.Index.ZoneSetting("ssl_recommender", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         SettingId = "ssl_recommender",
@@ -99,7 +99,7 @@ namespace Pulumi.Cloudflare
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Minimum TLS Version
-    ///     var minTls = new Cloudflare.ZoneSetting("min_tls", new()
+    ///     var minTls = new Cloudflare.Index.ZoneSetting("min_tls", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         SettingId = "min_tls_version",
@@ -107,7 +107,7 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     ///     // SSL/TLS Mode
-    ///     var ssl = new Cloudflare.ZoneSetting("ssl", new()
+    ///     var ssl = new Cloudflare.Index.ZoneSetting("ssl", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         SettingId = "ssl",
@@ -115,7 +115,7 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     ///     // Security Level
-    ///     var securityLevel = new Cloudflare.ZoneSetting("security_level", new()
+    ///     var securityLevel = new Cloudflare.Index.ZoneSetting("security_level", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         SettingId = "security_level",
@@ -123,7 +123,7 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     ///     // Cache Level
-    ///     var cacheLevel = new Cloudflare.ZoneSetting("cache_level", new()
+    ///     var cacheLevel = new Cloudflare.Index.ZoneSetting("cache_level", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         SettingId = "cache_level",
@@ -143,7 +143,7 @@ namespace Pulumi.Cloudflare
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Browser Cache TTL
-    ///     var browserCacheTtl = new Cloudflare.ZoneSetting("browser_cache_ttl", new()
+    ///     var browserCacheTtl = new Cloudflare.Index.ZoneSetting("browser_cache_ttl", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         SettingId = "browser_cache_ttl",
@@ -151,7 +151,7 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     ///     // Challenge TTL
-    ///     var challengeTtl = new Cloudflare.ZoneSetting("challenge_ttl", new()
+    ///     var challengeTtl = new Cloudflare.Index.ZoneSetting("challenge_ttl", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         SettingId = "challenge_ttl",
@@ -159,7 +159,7 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     ///     // Max Upload Size
-    ///     var maxUpload = new Cloudflare.ZoneSetting("max_upload", new()
+    ///     var maxUpload = new Cloudflare.Index.ZoneSetting("max_upload", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         SettingId = "max_upload",
@@ -179,7 +179,7 @@ namespace Pulumi.Cloudflare
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // 0-RTT (Zero Round Trip Time)
-    ///     var zeroRtt = new Cloudflare.ZoneSetting("zero_rtt", new()
+    ///     var zeroRtt = new Cloudflare.Index.ZoneSetting("zero_rtt", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         SettingId = "0rtt",
@@ -187,7 +187,7 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     ///     // Network Error Logging (NEL)
-    ///     var nel = new Cloudflare.ZoneSetting("nel", new()
+    ///     var nel = new Cloudflare.Index.ZoneSetting("nel", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         SettingId = "nel",
@@ -212,7 +212,7 @@ namespace Pulumi.Cloudflare
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Enable HTTPS everywhere
-    ///     var alwaysUseHttps = new Cloudflare.ZoneSetting("always_use_https", new()
+    ///     var alwaysUseHttps = new Cloudflare.Index.ZoneSetting("always_use_https", new()
     ///     {
     ///         ZoneId = zoneId,
     ///         SettingId = "always_use_https",
@@ -220,7 +220,7 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     ///     // Automatic HTTPS Rewrites
-    ///     var automaticHttpsRewrites = new Cloudflare.ZoneSetting("automatic_https_rewrites", new()
+    ///     var automaticHttpsRewrites = new Cloudflare.Index.ZoneSetting("automatic_https_rewrites", new()
     ///     {
     ///         ZoneId = zoneId,
     ///         SettingId = "automatic_https_rewrites",
@@ -228,7 +228,7 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     ///     // Minimum TLS 1.2
-    ///     var minTlsVersion = new Cloudflare.ZoneSetting("min_tls_version", new()
+    ///     var minTlsVersion = new Cloudflare.Index.ZoneSetting("min_tls_version", new()
     ///     {
     ///         ZoneId = zoneId,
     ///         SettingId = "min_tls_version",
@@ -236,7 +236,7 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     ///     // Enable TLS 1.3
-    ///     var tls13 = new Cloudflare.ZoneSetting("tls_1_3", new()
+    ///     var tls13 = new Cloudflare.Index.ZoneSetting("tls_1_3", new()
     ///     {
     ///         ZoneId = zoneId,
     ///         SettingId = "tls_1_3",
@@ -244,7 +244,7 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     ///     // Strict SSL
-    ///     var ssl = new Cloudflare.ZoneSetting("ssl", new()
+    ///     var ssl = new Cloudflare.Index.ZoneSetting("ssl", new()
     ///     {
     ///         ZoneId = zoneId,
     ///         SettingId = "ssl",
@@ -264,7 +264,7 @@ namespace Pulumi.Cloudflare
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Enable HTTP/3
-    ///     var http3 = new Cloudflare.ZoneSetting("http3", new()
+    ///     var http3 = new Cloudflare.Index.ZoneSetting("http3", new()
     ///     {
     ///         ZoneId = zoneId,
     ///         SettingId = "http3",
@@ -272,7 +272,7 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     ///     // Enable Brotli Compression
-    ///     var brotli = new Cloudflare.ZoneSetting("brotli", new()
+    ///     var brotli = new Cloudflare.Index.ZoneSetting("brotli", new()
     ///     {
     ///         ZoneId = zoneId,
     ///         SettingId = "brotli",
@@ -280,7 +280,7 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     ///     // Early Hints
-    ///     var earlyHints = new Cloudflare.ZoneSetting("early_hints", new()
+    ///     var earlyHints = new Cloudflare.Index.ZoneSetting("early_hints", new()
     ///     {
     ///         ZoneId = zoneId,
     ///         SettingId = "early_hints",
@@ -288,7 +288,7 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     ///     // Aggressive Caching
-    ///     var cacheLevel = new Cloudflare.ZoneSetting("cache_level", new()
+    ///     var cacheLevel = new Cloudflare.Index.ZoneSetting("cache_level", new()
     ///     {
     ///         ZoneId = zoneId,
     ///         SettingId = "cache_level",
@@ -296,7 +296,7 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     ///     // Browser Cache TTL
-    ///     var browserCache = new Cloudflare.ZoneSetting("browser_cache", new()
+    ///     var browserCache = new Cloudflare.Index.ZoneSetting("browser_cache", new()
     ///     {
     ///         ZoneId = zoneId,
     ///         SettingId = "browser_cache_ttl",

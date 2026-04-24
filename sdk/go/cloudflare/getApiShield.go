@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupApiShield(ctx, &cloudflare.LookupApiShieldArgs{
+//			_, err := cloudflare.GetApiShield(ctx, &cloudflare.LookupApiShieldArgs{
 //				ZoneId:    "023e105f4ecef8ad9ca31a8372d0c353",
 //				Normalize: pulumi.BoolRef(true),
 //			}, nil)

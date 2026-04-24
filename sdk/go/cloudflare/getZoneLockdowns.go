@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupZoneLockdowns(ctx, &cloudflare.LookupZoneLockdownsArgs{
+//			_, err := cloudflare.GetZoneLockdowns(ctx, &cloudflare.LookupZoneLockdownsArgs{
 //				ZoneId:            "023e105f4ecef8ad9ca31a8372d0c353",
 //				CreatedOn:         pulumi.StringRef("2014-01-01T05:20:00.12345Z"),
 //				Description:       pulumi.StringRef("endpoints"),

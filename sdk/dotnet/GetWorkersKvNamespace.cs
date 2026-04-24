@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersKvNamespace = Cloudflare.GetWorkersKvNamespace.Invoke(new()
+        ///     var exampleWorkersKvNamespace = Cloudflare.Index.GetWorkersKvNamespace.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         NamespaceId = "0f2ac74b498b48028cb68387c421e279",
@@ -45,7 +45,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersKvNamespace = Cloudflare.GetWorkersKvNamespace.Invoke(new()
+        ///     var exampleWorkersKvNamespace = Cloudflare.Index.GetWorkersKvNamespace.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         NamespaceId = "0f2ac74b498b48028cb68387c421e279",
@@ -68,7 +68,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersKvNamespace = Cloudflare.GetWorkersKvNamespace.Invoke(new()
+        ///     var exampleWorkersKvNamespace = Cloudflare.Index.GetWorkersKvNamespace.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         NamespaceId = "0f2ac74b498b48028cb68387c421e279",

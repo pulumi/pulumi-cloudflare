@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupWebAnalyticsSite(ctx, &cloudflare.LookupWebAnalyticsSiteArgs{
+//			_, err := cloudflare.GetWebAnalyticsSite(ctx, &cloudflare.LookupWebAnalyticsSiteArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				SiteId:    pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)

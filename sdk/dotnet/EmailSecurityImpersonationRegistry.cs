@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleEmailSecurityImpersonationRegistry = new Cloudflare.EmailSecurityImpersonationRegistry("example_email_security_impersonation_registry", new()
+    ///     var exampleEmailSecurityImpersonationRegistry = new Cloudflare.Index.EmailSecurityImpersonationRegistry("example_email_security_impersonation_registry", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Email = "email",

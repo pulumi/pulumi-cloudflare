@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleMagicWanIpsecTunnel = new Cloudflare.MagicWanIpsecTunnel("example_magic_wan_ipsec_tunnel", new()
+    ///     var exampleMagicWanIpsecTunnel = new Cloudflare.Index.MagicWanIpsecTunnel("example_magic_wan_ipsec_tunnel", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         CloudflareEndpoint = "203.0.113.1",

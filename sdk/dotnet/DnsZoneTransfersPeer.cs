@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleDnsZoneTransfersPeer = new Cloudflare.DnsZoneTransfersPeer("example_dns_zone_transfers_peer", new()
+    ///     var exampleDnsZoneTransfersPeer = new Cloudflare.Index.DnsZoneTransfersPeer("example_dns_zone_transfers_peer", new()
     ///     {
     ///         AccountId = "01a7362d577a6c3019a474fd6f485823",
     ///         Name = "my-peer-1",

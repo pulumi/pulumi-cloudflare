@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupNotificationPolicy(ctx, &cloudflare.LookupNotificationPolicyArgs{
+//			_, err := cloudflare.GetNotificationPolicy(ctx, &cloudflare.LookupNotificationPolicyArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				PolicyId:  "0da2b59ef118439d8097bdfb215203c9",
 //			}, nil)

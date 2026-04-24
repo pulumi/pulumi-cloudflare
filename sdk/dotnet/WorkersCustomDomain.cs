@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWorkersCustomDomain = new Cloudflare.WorkersCustomDomain("example_workers_custom_domain", new()
+    ///     var exampleWorkersCustomDomain = new Cloudflare.Index.WorkersCustomDomain("example_workers_custom_domain", new()
     ///     {
     ///         AccountId = "9a7806061c88ada191ed06f989cc3dac",
     ///         Hostname = "foo.example.com",

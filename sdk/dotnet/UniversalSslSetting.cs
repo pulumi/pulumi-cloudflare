@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleUniversalSslSetting = new Cloudflare.UniversalSslSetting("example_universal_ssl_setting", new()
+    ///     var exampleUniversalSslSetting = new Cloudflare.Index.UniversalSslSetting("example_universal_ssl_setting", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Enabled = true,

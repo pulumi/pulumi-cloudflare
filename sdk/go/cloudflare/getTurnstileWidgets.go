@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupTurnstileWidgets(ctx, &cloudflare.LookupTurnstileWidgetsArgs{
+//			_, err := cloudflare.GetTurnstileWidgets(ctx, &cloudflare.LookupTurnstileWidgetsArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				Direction: pulumi.StringRef("asc"),
 //				Filter:    pulumi.StringRef("name:my-widget"),

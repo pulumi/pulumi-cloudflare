@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupImages(ctx, &cloudflare.LookupImagesArgs{
+//			_, err := cloudflare.GetImages(ctx, &cloudflare.LookupImagesArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				Creator:   pulumi.StringRef("creator"),
 //			}, nil)

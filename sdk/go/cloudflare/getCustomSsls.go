@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupCustomSsls(ctx, &cloudflare.LookupCustomSslsArgs{
+//			_, err := cloudflare.GetCustomSsls(ctx, &cloudflare.LookupCustomSslsArgs{
 //				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				Status: pulumi.StringRef("active"),
 //			}, nil)

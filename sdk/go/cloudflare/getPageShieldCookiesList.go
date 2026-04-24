@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupPageShieldCookiesList(ctx, &cloudflare.LookupPageShieldCookiesListArgs{
+//			_, err := cloudflare.GetPageShieldCookiesList(ctx, &cloudflare.LookupPageShieldCookiesListArgs{
 //				ZoneId:    "023e105f4ecef8ad9ca31a8372d0c353",
 //				Direction: pulumi.StringRef("asc"),
 //				Domain:    pulumi.StringRef("example.com"),

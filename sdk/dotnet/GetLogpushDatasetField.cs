@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleLogpushDatasetField = Cloudflare.GetLogpushDatasetField.Invoke(new()
+        ///     var exampleLogpushDatasetField = Cloudflare.Index.GetLogpushDatasetField.Invoke(new()
         ///     {
         ///         DatasetId = "gateway_dns",
         ///         AccountId = "account_id",
@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleLogpushDatasetField = Cloudflare.GetLogpushDatasetField.Invoke(new()
+        ///     var exampleLogpushDatasetField = Cloudflare.Index.GetLogpushDatasetField.Invoke(new()
         ///     {
         ///         DatasetId = "gateway_dns",
         ///         AccountId = "account_id",
@@ -70,7 +70,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleLogpushDatasetField = Cloudflare.GetLogpushDatasetField.Invoke(new()
+        ///     var exampleLogpushDatasetField = Cloudflare.Index.GetLogpushDatasetField.Invoke(new()
         ///     {
         ///         DatasetId = "gateway_dns",
         ///         AccountId = "account_id",

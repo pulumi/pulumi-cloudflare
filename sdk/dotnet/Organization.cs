@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleOrganization = new Cloudflare.Organization("example_organization", new()
+    ///     var exampleOrganization = new Cloudflare.Index.Organization("example_organization", new()
     ///     {
     ///         Name = "name",
     ///         Parent = new Cloudflare.Inputs.OrganizationParentArgs

@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupEmailRoutingAddress(ctx, &cloudflare.LookupEmailRoutingAddressArgs{
+//			_, err := cloudflare.GetEmailRoutingAddress(ctx, &cloudflare.LookupEmailRoutingAddressArgs{
 //				AccountId:                    "023e105f4ecef8ad9ca31a8372d0c353",
 //				DestinationAddressIdentifier: pulumi.StringRef("ea95132c15732412d22c1476fa83f27a"),
 //			}, nil)

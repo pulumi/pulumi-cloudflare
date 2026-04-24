@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupWorkerVersions(ctx, &cloudflare.LookupWorkerVersionsArgs{
+//			_, err := cloudflare.GetWorkerVersions(ctx, &cloudflare.LookupWorkerVersionsArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				WorkerId:  "worker_id",
 //			}, nil)

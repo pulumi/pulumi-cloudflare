@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleOriginCaCertificate = new Cloudflare.OriginCaCertificate("example_origin_ca_certificate", new()
+    ///     var exampleOriginCaCertificate = new Cloudflare.Index.OriginCaCertificate("example_origin_ca_certificate", new()
     ///     {
     ///         Csr = @"  -----BEGIN CERTIFICATE REQUEST-----
     ///   MIICxzCCAa8CAQAwSDELMAkGA1UEBhMCVVMxFjAUBgNVBAgTDVNhbiBGcmFuY2lz

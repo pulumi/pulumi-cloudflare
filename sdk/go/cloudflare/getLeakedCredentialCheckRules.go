@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupLeakedCredentialCheckRules(ctx, &cloudflare.LookupLeakedCredentialCheckRulesArgs{
+//			_, err := cloudflare.GetLeakedCredentialCheckRules(ctx, &cloudflare.LookupLeakedCredentialCheckRulesArgs{
 //				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {

@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWorkflow = new Cloudflare.Workflow("example_workflow", new()
+    ///     var exampleWorkflow = new Cloudflare.Index.Workflow("example_workflow", new()
     ///     {
     ///         AccountId = "account_id",
     ///         WorkflowName = "x",

@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleObservatoryScheduledTest = new Cloudflare.ObservatoryScheduledTest("example_observatory_scheduled_test", new()
+    ///     var exampleObservatoryScheduledTest = new Cloudflare.Index.ObservatoryScheduledTest("example_observatory_scheduled_test", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Url = "example.com",

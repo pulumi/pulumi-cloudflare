@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleUserAgentBlockingRule = new Cloudflare.UserAgentBlockingRule("example_user_agent_blocking_rule", new()
+    ///     var exampleUserAgentBlockingRule = new Cloudflare.Index.UserAgentBlockingRule("example_user_agent_blocking_rule", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Configuration = new Cloudflare.Inputs.UserAgentBlockingRuleConfigurationArgs

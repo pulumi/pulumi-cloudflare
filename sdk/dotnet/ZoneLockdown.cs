@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZoneLockdown = new Cloudflare.ZoneLockdown("example_zone_lockdown", new()
+    ///     var exampleZoneLockdown = new Cloudflare.Index.ZoneLockdown("example_zone_lockdown", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Configurations = new[]

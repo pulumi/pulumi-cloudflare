@@ -34,6 +34,21 @@ public final class ImageVariantArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of this resource.
+     * 
+     */
+    @Import(name="imageVariantId", required=true)
+    private Output<String> imageVariantId;
+
+    /**
+     * @return The ID of this resource.
+     * 
+     */
+    public Output<String> imageVariantId() {
+        return this.imageVariantId;
+    }
+
+    /**
      * Indicates whether the variant can access an image without a signature, regardless of image access control.
      * 
      */
@@ -67,6 +82,7 @@ public final class ImageVariantArgs extends com.pulumi.resources.ResourceArgs {
 
     private ImageVariantArgs(ImageVariantArgs $) {
         this.accountId = $.accountId;
+        this.imageVariantId = $.imageVariantId;
         this.neverRequireSignedUrls = $.neverRequireSignedUrls;
         this.options = $.options;
     }
@@ -108,6 +124,27 @@ public final class ImageVariantArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param imageVariantId The ID of this resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageVariantId(Output<String> imageVariantId) {
+            $.imageVariantId = imageVariantId;
+            return this;
+        }
+
+        /**
+         * @param imageVariantId The ID of this resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageVariantId(String imageVariantId) {
+            return imageVariantId(Output.of(imageVariantId));
         }
 
         /**
@@ -155,6 +192,9 @@ public final class ImageVariantArgs extends com.pulumi.resources.ResourceArgs {
         public ImageVariantArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("ImageVariantArgs", "accountId");
+            }
+            if ($.imageVariantId == null) {
+                throw new MissingRequiredPropertyException("ImageVariantArgs", "imageVariantId");
             }
             if ($.options == null) {
                 throw new MissingRequiredPropertyException("ImageVariantArgs", "options");

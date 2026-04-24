@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustAccessAiControlsMcpServer = Cloudflare.GetZeroTrustAccessAiControlsMcpServer.Invoke(new()
+        ///     var exampleZeroTrustAccessAiControlsMcpServer = Cloudflare.Index.GetZeroTrustAccessAiControlsMcpServer.Invoke(new()
         ///     {
         ///         AccountId = "a86a8f5c339544d7bdc89926de14fb8c",
         ///         Id = "my-mcp-server",
@@ -45,7 +45,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustAccessAiControlsMcpServer = Cloudflare.GetZeroTrustAccessAiControlsMcpServer.Invoke(new()
+        ///     var exampleZeroTrustAccessAiControlsMcpServer = Cloudflare.Index.GetZeroTrustAccessAiControlsMcpServer.Invoke(new()
         ///     {
         ///         AccountId = "a86a8f5c339544d7bdc89926de14fb8c",
         ///         Id = "my-mcp-server",
@@ -68,7 +68,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustAccessAiControlsMcpServer = Cloudflare.GetZeroTrustAccessAiControlsMcpServer.Invoke(new()
+        ///     var exampleZeroTrustAccessAiControlsMcpServer = Cloudflare.Index.GetZeroTrustAccessAiControlsMcpServer.Invoke(new()
         ///     {
         ///         AccountId = "a86a8f5c339544d7bdc89926de14fb8c",
         ///         Id = "my-mcp-server",

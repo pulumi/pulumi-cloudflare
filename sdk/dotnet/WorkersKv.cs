@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWorkersKv = new Cloudflare.WorkersKv("example_workers_kv", new()
+    ///     var exampleWorkersKv = new Cloudflare.Index.WorkersKv("example_workers_kv", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         NamespaceId = "0f2ac74b498b48028cb68387c421e279",

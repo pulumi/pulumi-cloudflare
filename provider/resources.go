@@ -515,9 +515,6 @@ func Provider() info.Provider {
 		EnableAccurateBridgePreview:    true,
 	}
 
-	prov.MustComputeTokens(tfbridgetokens.SingleModule("cloudflare_", mainMod,
-		tfbridgetokens.MakeStandard(mainPkg)))
-
 	resourcesWithMistypedID := []string{
 		"cloudflare_email_security_trusted_domains",
 		"cloudflare_cloudforce_one_request_message",
@@ -531,8 +528,16 @@ func Provider() info.Provider {
 	}
 
 	for _, r := range resourcesWithMistypedID {
-		prov.Resources[r].ComputeID = delegateID("id")
+		res := prov.Resources[r]
+		if res == nil {
+			prov.Resources[r] = &info.Resource{}
+			res = prov.Resources[r]
+		}
+		res.ComputeID = delegateID("id")
 	}
+
+	prov.MustComputeTokens(tfbridgetokens.SingleModule("cloudflare_", mainMod,
+		tfbridgetokens.MakeStandard(mainPkg)))
 
 	resourcesWithMissingID := []string{
 		"cloudflare_zero_trust_organization",

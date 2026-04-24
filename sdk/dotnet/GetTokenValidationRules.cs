@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleTokenValidationRules = Cloudflare.GetTokenValidationRules.Invoke(new()
+        ///     var exampleTokenValidationRules = Cloudflare.Index.GetTokenValidationRules.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         RuleId = "4a7ee8d3-dd63-4ceb-9d5f-c27831854ce7",
@@ -45,7 +45,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleTokenValidationRules = Cloudflare.GetTokenValidationRules.Invoke(new()
+        ///     var exampleTokenValidationRules = Cloudflare.Index.GetTokenValidationRules.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         RuleId = "4a7ee8d3-dd63-4ceb-9d5f-c27831854ce7",
@@ -68,7 +68,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleTokenValidationRules = Cloudflare.GetTokenValidationRules.Invoke(new()
+        ///     var exampleTokenValidationRules = Cloudflare.Index.GetTokenValidationRules.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         RuleId = "4a7ee8d3-dd63-4ceb-9d5f-c27831854ce7",

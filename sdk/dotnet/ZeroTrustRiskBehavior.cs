@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustRiskBehavior = new Cloudflare.ZeroTrustRiskBehavior("example_zero_trust_risk_behavior", new()
+    ///     var exampleZeroTrustRiskBehavior = new Cloudflare.Index.ZeroTrustRiskBehavior("example_zero_trust_risk_behavior", new()
     ///     {
     ///         AccountId = "account_id",
     ///         Behaviors = 

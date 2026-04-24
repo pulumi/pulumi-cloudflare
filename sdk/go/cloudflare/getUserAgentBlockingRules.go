@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupUserAgentBlockingRules(ctx, &cloudflare.LookupUserAgentBlockingRulesArgs{
+//			_, err := cloudflare.GetUserAgentBlockingRules(ctx, &cloudflare.LookupUserAgentBlockingRulesArgs{
 //				ZoneId:      "023e105f4ecef8ad9ca31a8372d0c353",
 //				Description: pulumi.StringRef("abusive"),
 //				Paused:      pulumi.BoolRef(false),

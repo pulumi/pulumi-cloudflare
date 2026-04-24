@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupAccountMembers(ctx, &cloudflare.LookupAccountMembersArgs{
+//			_, err := cloudflare.GetAccountMembers(ctx, &cloudflare.LookupAccountMembersArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				Direction: pulumi.StringRef("desc"),
 //				Order:     pulumi.StringRef("status"),

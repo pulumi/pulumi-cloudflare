@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupCertificatePacks(ctx, &cloudflare.LookupCertificatePacksArgs{
+//			_, err := cloudflare.GetCertificatePacks(ctx, &cloudflare.LookupCertificatePacksArgs{
 //				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				Deploy: pulumi.StringRef("staging"),
 //				Status: pulumi.StringRef("all"),

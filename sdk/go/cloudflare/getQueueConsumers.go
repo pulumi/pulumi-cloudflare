@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupQueueConsumers(ctx, &cloudflare.LookupQueueConsumersArgs{
+//			_, err := cloudflare.GetQueueConsumers(ctx, &cloudflare.LookupQueueConsumersArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				QueueId:   "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)

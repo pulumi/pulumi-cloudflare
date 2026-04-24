@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleObservatoryScheduledTest = Cloudflare.GetObservatoryScheduledTest.Invoke(new()
+        ///     var exampleObservatoryScheduledTest = Cloudflare.Index.GetObservatoryScheduledTest.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Url = "example.com",
@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleObservatoryScheduledTest = Cloudflare.GetObservatoryScheduledTest.Invoke(new()
+        ///     var exampleObservatoryScheduledTest = Cloudflare.Index.GetObservatoryScheduledTest.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Url = "example.com",
@@ -70,7 +70,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleObservatoryScheduledTest = Cloudflare.GetObservatoryScheduledTest.Invoke(new()
+        ///     var exampleObservatoryScheduledTest = Cloudflare.Index.GetObservatoryScheduledTest.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Url = "example.com",

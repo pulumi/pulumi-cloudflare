@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleTokenValidationRules = new Cloudflare.TokenValidationRules("example_token_validation_rules", new()
+    ///     var exampleTokenValidationRules = new Cloudflare.Index.TokenValidationRules("example_token_validation_rules", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Action = "log",

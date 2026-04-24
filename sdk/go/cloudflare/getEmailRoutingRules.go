@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupEmailRoutingRules(ctx, &cloudflare.LookupEmailRoutingRulesArgs{
+//			_, err := cloudflare.GetEmailRoutingRules(ctx, &cloudflare.LookupEmailRoutingRulesArgs{
 //				ZoneId:  "023e105f4ecef8ad9ca31a8372d0c353",
 //				Enabled: pulumi.BoolRef(true),
 //			}, nil)

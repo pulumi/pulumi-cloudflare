@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleNotificationPolicy = new Cloudflare.NotificationPolicy("example_notification_policy", new()
+    ///     var exampleNotificationPolicy = new Cloudflare.Index.NotificationPolicy("example_notification_policy", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         AlertType = "universal_ssl_event_type",

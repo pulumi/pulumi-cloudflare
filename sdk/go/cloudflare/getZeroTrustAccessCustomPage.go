@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupZeroTrustAccessCustomPage(ctx, &cloudflare.LookupZeroTrustAccessCustomPageArgs{
+//			_, err := cloudflare.GetZeroTrustAccessCustomPage(ctx, &cloudflare.LookupZeroTrustAccessCustomPageArgs{
 //				AccountId:    "023e105f4ecef8ad9ca31a8372d0c353",
 //				CustomPageId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 //			}, nil)

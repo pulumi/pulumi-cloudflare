@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleEmailRoutingAddress = new Cloudflare.EmailRoutingAddress("example_email_routing_address", new()
+    ///     var exampleEmailRoutingAddress = new Cloudflare.Index.EmailRoutingAddress("example_email_routing_address", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Email = "user@example.com",

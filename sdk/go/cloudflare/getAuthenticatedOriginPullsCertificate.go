@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupAuthenticatedOriginPullsCertificate(ctx, &cloudflare.LookupAuthenticatedOriginPullsCertificateArgs{
+//			_, err := cloudflare.GetAuthenticatedOriginPullsCertificate(ctx, &cloudflare.LookupAuthenticatedOriginPullsCertificateArgs{
 //				ZoneId:        "023e105f4ecef8ad9ca31a8372d0c353",
 //				CertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)

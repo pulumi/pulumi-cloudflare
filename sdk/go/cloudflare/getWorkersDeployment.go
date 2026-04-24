@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupWorkersDeployment(ctx, &cloudflare.LookupWorkersDeploymentArgs{
+//			_, err := cloudflare.GetWorkersDeployment(ctx, &cloudflare.LookupWorkersDeploymentArgs{
 //				AccountId:    "023e105f4ecef8ad9ca31a8372d0c353",
 //				ScriptName:   "this-is_my_script-01",
 //				DeploymentId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",

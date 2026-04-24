@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleCustomPages = new Cloudflare.CustomPages("example_custom_pages", new()
+    ///     var exampleCustomPages = new Cloudflare.Index.CustomPages("example_custom_pages", new()
     ///     {
     ///         Identifier = "ratelimit_block",
     ///         State = "default",

@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupRateLimit(ctx, &cloudflare.LookupRateLimitArgs{
+//			_, err := cloudflare.GetRateLimit(ctx, &cloudflare.LookupRateLimitArgs{
 //				ZoneId:      "023e105f4ecef8ad9ca31a8372d0c353",
 //				RateLimitId: "372e67954025e0ba6aaa6d586b9e0b59",
 //			}, nil)

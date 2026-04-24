@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupFirewallRules(ctx, &cloudflare.LookupFirewallRulesArgs{
+//			_, err := cloudflare.GetFirewallRules(ctx, &cloudflare.LookupFirewallRulesArgs{
 //				ZoneId:      "023e105f4ecef8ad9ca31a8372d0c353",
 //				Id:          pulumi.StringRef("372e67954025e0ba6aaa6d586b9e0b60"),
 //				Action:      pulumi.StringRef("block"),

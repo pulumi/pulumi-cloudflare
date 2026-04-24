@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCallsTurnApp = Cloudflare.GetCallsTurnApp.Invoke(new()
+        ///     var exampleCallsTurnApp = Cloudflare.Index.GetCallsTurnApp.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         KeyId = "2a95132c15732412d22c1476fa83f27a",
@@ -45,7 +45,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCallsTurnApp = Cloudflare.GetCallsTurnApp.Invoke(new()
+        ///     var exampleCallsTurnApp = Cloudflare.Index.GetCallsTurnApp.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         KeyId = "2a95132c15732412d22c1476fa83f27a",
@@ -68,7 +68,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCallsTurnApp = Cloudflare.GetCallsTurnApp.Invoke(new()
+        ///     var exampleCallsTurnApp = Cloudflare.Index.GetCallsTurnApp.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         KeyId = "2a95132c15732412d22c1476fa83f27a",

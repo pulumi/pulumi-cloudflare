@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var examplePageShieldCookiesList = Cloudflare.GetPageShieldCookiesList.Invoke(new()
+        ///     var examplePageShieldCookiesList = Cloudflare.Index.GetPageShieldCookiesList.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",
@@ -58,7 +58,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var examplePageShieldCookiesList = Cloudflare.GetPageShieldCookiesList.Invoke(new()
+        ///     var examplePageShieldCookiesList = Cloudflare.Index.GetPageShieldCookiesList.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",
@@ -94,7 +94,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var examplePageShieldCookiesList = Cloudflare.GetPageShieldCookiesList.Invoke(new()
+        ///     var examplePageShieldCookiesList = Cloudflare.Index.GetPageShieldCookiesList.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",

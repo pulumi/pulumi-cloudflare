@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupDnsFirewalls(ctx, &cloudflare.LookupDnsFirewallsArgs{
+//			_, err := cloudflare.GetDnsFirewalls(ctx, &cloudflare.LookupDnsFirewallsArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {

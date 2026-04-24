@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupWaitingRooms(ctx, &cloudflare.LookupWaitingRoomsArgs{
+//			_, err := cloudflare.GetWaitingRooms(ctx, &cloudflare.LookupWaitingRoomsArgs{
 //				AccountId: pulumi.StringRef("account_id"),
 //				ZoneId:    pulumi.StringRef("zone_id"),
 //			}, nil)

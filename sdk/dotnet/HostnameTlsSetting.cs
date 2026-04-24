@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleHostnameTlsSetting = new Cloudflare.HostnameTlsSetting("example_hostname_tls_setting", new()
+    ///     var exampleHostnameTlsSetting = new Cloudflare.Index.HostnameTlsSetting("example_hostname_tls_setting", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         SettingId = "ciphers",

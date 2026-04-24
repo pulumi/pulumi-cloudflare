@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupWorkersRoute(ctx, &cloudflare.LookupWorkersRouteArgs{
+//			_, err := cloudflare.GetWorkersRoute(ctx, &cloudflare.LookupWorkersRouteArgs{
 //				ZoneId:  "023e105f4ecef8ad9ca31a8372d0c353",
 //				RouteId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)

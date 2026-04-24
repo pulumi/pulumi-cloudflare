@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var examplePagesProject = new Cloudflare.PagesProject("example_pages_project", new()
+    ///     var examplePagesProject = new Cloudflare.Index.PagesProject("example_pages_project", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "my-pages-app",

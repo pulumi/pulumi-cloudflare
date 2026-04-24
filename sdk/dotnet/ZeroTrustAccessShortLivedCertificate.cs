@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustAccessShortLivedCertificate = new Cloudflare.ZeroTrustAccessShortLivedCertificate("example_zero_trust_access_short_lived_certificate", new()
+    ///     var exampleZeroTrustAccessShortLivedCertificate = new Cloudflare.Index.ZeroTrustAccessShortLivedCertificate("example_zero_trust_access_short_lived_certificate", new()
     ///     {
     ///         AppId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
     ///         ZoneId = "zone_id",

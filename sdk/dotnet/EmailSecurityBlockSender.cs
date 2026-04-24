@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleEmailSecurityBlockSender = new Cloudflare.EmailSecurityBlockSender("example_email_security_block_sender", new()
+    ///     var exampleEmailSecurityBlockSender = new Cloudflare.Index.EmailSecurityBlockSender("example_email_security_block_sender", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         IsRegex = false,

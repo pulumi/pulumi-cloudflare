@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupRegistrarDomain(ctx, &cloudflare.LookupRegistrarDomainArgs{
+//			_, err := cloudflare.GetRegistrarDomain(ctx, &cloudflare.LookupRegistrarDomainArgs{
 //				AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
 //				DomainName: "cloudflare.com",
 //			}, nil)

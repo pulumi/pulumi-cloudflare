@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupHealthcheck(ctx, &cloudflare.LookupHealthcheckArgs{
+//			_, err := cloudflare.GetHealthcheck(ctx, &cloudflare.LookupHealthcheckArgs{
 //				ZoneId:        "023e105f4ecef8ad9ca31a8372d0c353",
 //				HealthcheckId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)

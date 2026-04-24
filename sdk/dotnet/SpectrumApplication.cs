@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleSpectrumApplication = new Cloudflare.SpectrumApplication("example_spectrum_application", new()
+    ///     var exampleSpectrumApplication = new Cloudflare.Index.SpectrumApplication("example_spectrum_application", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Dns = new Cloudflare.Inputs.SpectrumApplicationDnsArgs

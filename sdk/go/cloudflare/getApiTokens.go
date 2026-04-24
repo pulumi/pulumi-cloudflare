@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupApiTokens(ctx, &cloudflare.LookupApiTokensArgs{
+//			_, err := cloudflare.GetApiTokens(ctx, &cloudflare.LookupApiTokensArgs{
 //				Direction: pulumi.StringRef("desc"),
 //			}, nil)
 //			if err != nil {

@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupR2BucketEventNotification(ctx, &cloudflare.LookupR2BucketEventNotificationArgs{
+//			_, err := cloudflare.GetR2BucketEventNotification(ctx, &cloudflare.LookupR2BucketEventNotificationArgs{
 //				AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
 //				BucketName: "example-bucket",
 //				QueueId:    "queue_id",

@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleBotManagement = new Cloudflare.BotManagement("example_bot_management", new()
+    ///     var exampleBotManagement = new Cloudflare.Index.BotManagement("example_bot_management", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         AiBotsProtection = "block",

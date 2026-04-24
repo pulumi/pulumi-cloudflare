@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleLoadBalancer = new Cloudflare.LoadBalancer("example_load_balancer", new()
+    ///     var exampleLoadBalancer = new Cloudflare.Index.LoadBalancer("example_load_balancer", new()
     ///     {
     ///         ZoneId = "699d98642c564d2e855e9661899b7252",
     ///         DefaultPools = new[]

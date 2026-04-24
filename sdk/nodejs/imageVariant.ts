@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * const exampleImageVariant = new cloudflare.ImageVariant("example_image_variant", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     id: "hero",
+ *     imageVariantId: "hero",
  *     options: {
  *         fit: "scale-down",
  *         height: 768,
@@ -65,6 +65,10 @@ export class ImageVariant extends pulumi.CustomResource {
      */
     declare public readonly accountId: pulumi.Output<string>;
     /**
+     * The ID of this resource.
+     */
+    declare public readonly imageVariantId: pulumi.Output<string>;
+    /**
      * Indicates whether the variant can access an image without a signature, regardless of image access control.
      */
     declare public readonly neverRequireSignedUrls: pulumi.Output<boolean>;
@@ -88,6 +92,7 @@ export class ImageVariant extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ImageVariantState | undefined;
             resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["imageVariantId"] = state?.imageVariantId;
             resourceInputs["neverRequireSignedUrls"] = state?.neverRequireSignedUrls;
             resourceInputs["options"] = state?.options;
             resourceInputs["variant"] = state?.variant;
@@ -96,10 +101,14 @@ export class ImageVariant extends pulumi.CustomResource {
             if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
+            if (args?.imageVariantId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'imageVariantId'");
+            }
             if (args?.options === undefined && !opts.urn) {
                 throw new Error("Missing required property 'options'");
             }
             resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["imageVariantId"] = args?.imageVariantId;
             resourceInputs["neverRequireSignedUrls"] = args?.neverRequireSignedUrls;
             resourceInputs["options"] = args?.options;
             resourceInputs["variant"] = undefined /*out*/;
@@ -117,6 +126,10 @@ export interface ImageVariantState {
      * Account identifier tag.
      */
     accountId?: pulumi.Input<string>;
+    /**
+     * The ID of this resource.
+     */
+    imageVariantId?: pulumi.Input<string>;
     /**
      * Indicates whether the variant can access an image without a signature, regardless of image access control.
      */
@@ -136,6 +149,10 @@ export interface ImageVariantArgs {
      * Account identifier tag.
      */
     accountId: pulumi.Input<string>;
+    /**
+     * The ID of this resource.
+     */
+    imageVariantId: pulumi.Input<string>;
     /**
      * Indicates whether the variant can access an image without a signature, regardless of image access control.
      */

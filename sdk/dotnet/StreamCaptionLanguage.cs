@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleStreamCaptionLanguage = new Cloudflare.StreamCaptionLanguage("example_stream_caption_language", new()
+    ///     var exampleStreamCaptionLanguage = new Cloudflare.Index.StreamCaptionLanguage("example_stream_caption_language", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Identifier = "ea95132c15732412d22c1476fa83f27a",

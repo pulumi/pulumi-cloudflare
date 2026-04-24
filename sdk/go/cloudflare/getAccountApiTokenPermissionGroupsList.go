@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupAccountApiTokenPermissionGroupsList(ctx, &cloudflare.LookupAccountApiTokenPermissionGroupsListArgs{
+//			_, err := cloudflare.GetAccountApiTokenPermissionGroupsList(ctx, &cloudflare.LookupAccountApiTokenPermissionGroupsListArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				Name:      pulumi.StringRef("Account%20Settings%20Write"),
 //				Scope:     pulumi.StringRef("com.cloudflare.api.account.zone"),

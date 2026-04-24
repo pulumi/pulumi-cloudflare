@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleRateLimit = new Cloudflare.RateLimit("example_rate_limit", new()
+    ///     var exampleRateLimit = new Cloudflare.Index.RateLimit("example_rate_limit", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Action = new Cloudflare.Inputs.RateLimitActionArgs
