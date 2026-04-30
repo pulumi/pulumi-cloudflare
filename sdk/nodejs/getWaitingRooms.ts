@@ -7,6 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account Waiting Rooms Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,6 +77,10 @@ export interface GetWaitingRoomsResult {
     readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account Waiting Rooms Read`
+ *
  * ## Example Usage
  *
  * ```typescript

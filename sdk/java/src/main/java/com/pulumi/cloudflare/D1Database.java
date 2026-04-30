@@ -17,6 +17,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `D1 Read`
+ * - `D1 Write`
+ * 
  * !&gt; When a D1 Database is replaced all the data is lost. Please ensure you have a
  *    backup of your data before replacing a D1 Database.
  * 
@@ -70,14 +75,14 @@ public class D1Database extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return Account identifier tag.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * Specifies the timestamp the resource was created as an ISO8601 string.

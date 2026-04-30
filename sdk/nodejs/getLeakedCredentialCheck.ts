@@ -5,6 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account WAF Read`
+ * - `Account WAF Write`
+ * - `Zone WAF Read`
+ * - `Zone WAF Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -16,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getLeakedCredentialCheck(args: GetLeakedCredentialCheckArgs, opts?: pulumi.InvokeOptions): Promise<GetLeakedCredentialCheckResult> {
+export function getLeakedCredentialCheck(args?: GetLeakedCredentialCheckArgs, opts?: pulumi.InvokeOptions): Promise<GetLeakedCredentialCheckResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getLeakedCredentialCheck:getLeakedCredentialCheck", {
         "zoneId": args.zoneId,
@@ -30,7 +38,7 @@ export interface GetLeakedCredentialCheckArgs {
     /**
      * Defines an identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -48,9 +56,16 @@ export interface GetLeakedCredentialCheckResult {
     /**
      * Defines an identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account WAF Read`
+ * - `Account WAF Write`
+ * - `Zone WAF Read`
+ * - `Zone WAF Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -62,7 +77,8 @@ export interface GetLeakedCredentialCheckResult {
  * });
  * ```
  */
-export function getLeakedCredentialCheckOutput(args: GetLeakedCredentialCheckOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLeakedCredentialCheckResult> {
+export function getLeakedCredentialCheckOutput(args?: GetLeakedCredentialCheckOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLeakedCredentialCheckResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getLeakedCredentialCheck:getLeakedCredentialCheck", {
         "zoneId": args.zoneId,
@@ -76,5 +92,5 @@ export interface GetLeakedCredentialCheckOutputArgs {
     /**
      * Defines an identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

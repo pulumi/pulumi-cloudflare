@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Access: Organizations, Identity Providers, and Groups Read`
+ * - `Access: Organizations, Identity Providers, and Groups Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -15,22 +20,16 @@ import * as utilities from "./utilities";
  *
  * const exampleZeroTrustAccessGroup = new cloudflare.ZeroTrustAccessGroup("example_zero_trust_access_group", {
  *     includes: [{
- *         group: {
- *             id: "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
- *         },
+ *         certificate: {},
  *     }],
  *     name: "Allow devs",
  *     zoneId: "zone_id",
  *     excludes: [{
- *         group: {
- *             id: "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
- *         },
+ *         certificate: {},
  *     }],
  *     isDefault: true,
  *     requires: [{
- *         group: {
- *             id: "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
- *         },
+ *         certificate: {},
  *     }],
  * });
  * ```

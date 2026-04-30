@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetStreams
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Stream Read`
+        /// - `Stream Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -25,8 +30,14 @@ namespace Pulumi.Cloudflare
         ///     var exampleStreams = Cloudflare.Index.GetStreams.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Id = "ea95132c15732412d22c1476fa83f27a",
+        ///         After = "2019-12-27T18:11:19.117Z",
+        ///         Before = "2019-12-27T18:11:19.117Z",
         ///         Creator = "creator-id_abcde12345",
         ///         End = "2014-01-02T02:20:00Z",
+        ///         Limit = 1,
+        ///         LiveInputId = "live_input_id",
+        ///         Name = "name",
         ///         Search = "puppy.mp4",
         ///         Start = "2014-01-02T02:20:00Z",
         ///         Status = "inprogress",
@@ -37,10 +48,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetStreamsResult> InvokeAsync(GetStreamsArgs args, InvokeOptions? options = null)
+        public static Task<GetStreamsResult> InvokeAsync(GetStreamsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetStreamsResult>("cloudflare:index/getStreams:getStreams", args ?? new GetStreamsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Stream Read`
+        /// - `Stream Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,8 +70,14 @@ namespace Pulumi.Cloudflare
         ///     var exampleStreams = Cloudflare.Index.GetStreams.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Id = "ea95132c15732412d22c1476fa83f27a",
+        ///         After = "2019-12-27T18:11:19.117Z",
+        ///         Before = "2019-12-27T18:11:19.117Z",
         ///         Creator = "creator-id_abcde12345",
         ///         End = "2014-01-02T02:20:00Z",
+        ///         Limit = 1,
+        ///         LiveInputId = "live_input_id",
+        ///         Name = "name",
         ///         Search = "puppy.mp4",
         ///         Start = "2014-01-02T02:20:00Z",
         ///         Status = "inprogress",
@@ -66,10 +88,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetStreamsResult> Invoke(GetStreamsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetStreamsResult> Invoke(GetStreamsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetStreamsResult>("cloudflare:index/getStreams:getStreams", args ?? new GetStreamsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Stream Read`
+        /// - `Stream Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -83,8 +110,14 @@ namespace Pulumi.Cloudflare
         ///     var exampleStreams = Cloudflare.Index.GetStreams.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Id = "ea95132c15732412d22c1476fa83f27a",
+        ///         After = "2019-12-27T18:11:19.117Z",
+        ///         Before = "2019-12-27T18:11:19.117Z",
         ///         Creator = "creator-id_abcde12345",
         ///         End = "2014-01-02T02:20:00Z",
+        ///         Limit = 1,
+        ///         LiveInputId = "live_input_id",
+        ///         Name = "name",
         ///         Search = "puppy.mp4",
         ///         Start = "2014-01-02T02:20:00Z",
         ///         Status = "inprogress",
@@ -105,14 +138,26 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
+
+        /// <summary>
+        /// Alias for 'start'. Returns videos created after this date/time (RFC 3339 format).
+        /// </summary>
+        [Input("after")]
+        public string? After { get; set; }
 
         /// <summary>
         /// Lists videos in ascending order of creation.
         /// </summary>
         [Input("asc")]
         public bool? Asc { get; set; }
+
+        /// <summary>
+        /// Alias for 'end'. Returns videos created before this date/time (RFC 3339 format).
+        /// </summary>
+        [Input("before")]
+        public string? Before { get; set; }
 
         /// <summary>
         /// A user-defined identifier for the media creator.
@@ -127,16 +172,40 @@ namespace Pulumi.Cloudflare
         public string? End { get; set; }
 
         /// <summary>
+        /// Filter by video ID(s). Can be a single ID or a comma-separated list of IDs.
+        /// </summary>
+        [Input("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
         /// Includes the total number of videos associated with the submitted query parameters.
         /// </summary>
         [Input("includeCounts")]
         public bool? IncludeCounts { get; set; }
 
         /// <summary>
+        /// Maximum number of videos to return (default 1000, max 1000).
+        /// </summary>
+        [Input("limit")]
+        public int? Limit { get; set; }
+
+        /// <summary>
+        /// Filter by live input ID to find videos associated with a specific live stream.
+        /// </summary>
+        [Input("liveInputId")]
+        public string? LiveInputId { get; set; }
+
+        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         [Input("maxItems")]
         public int? MaxItems { get; set; }
+
+        /// <summary>
+        /// Filter by video name/UID(s). Can be a single name or a comma-separated list.
+        /// </summary>
+        [Input("name")]
+        public string? Name { get; set; }
 
         /// <summary>
         /// Provides a partial word match of the `Name` key in the `Meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
@@ -180,14 +249,26 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// Alias for 'start'. Returns videos created after this date/time (RFC 3339 format).
+        /// </summary>
+        [Input("after")]
+        public Input<string>? After { get; set; }
 
         /// <summary>
         /// Lists videos in ascending order of creation.
         /// </summary>
         [Input("asc")]
         public Input<bool>? Asc { get; set; }
+
+        /// <summary>
+        /// Alias for 'end'. Returns videos created before this date/time (RFC 3339 format).
+        /// </summary>
+        [Input("before")]
+        public Input<string>? Before { get; set; }
 
         /// <summary>
         /// A user-defined identifier for the media creator.
@@ -202,16 +283,40 @@ namespace Pulumi.Cloudflare
         public Input<string>? End { get; set; }
 
         /// <summary>
+        /// Filter by video ID(s). Can be a single ID or a comma-separated list of IDs.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        /// <summary>
         /// Includes the total number of videos associated with the submitted query parameters.
         /// </summary>
         [Input("includeCounts")]
         public Input<bool>? IncludeCounts { get; set; }
 
         /// <summary>
+        /// Maximum number of videos to return (default 1000, max 1000).
+        /// </summary>
+        [Input("limit")]
+        public Input<int>? Limit { get; set; }
+
+        /// <summary>
+        /// Filter by live input ID to find videos associated with a specific live stream.
+        /// </summary>
+        [Input("liveInputId")]
+        public Input<string>? LiveInputId { get; set; }
+
+        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         [Input("maxItems")]
         public Input<int>? MaxItems { get; set; }
+
+        /// <summary>
+        /// Filter by video name/UID(s). Can be a single name or a comma-separated list.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Provides a partial word match of the `Name` key in the `Meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
@@ -257,11 +362,19 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier tag.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
+        /// <summary>
+        /// Alias for 'start'. Returns videos created after this date/time (RFC 3339 format).
+        /// </summary>
+        public readonly string? After;
         /// <summary>
         /// Lists videos in ascending order of creation.
         /// </summary>
         public readonly bool Asc;
+        /// <summary>
+        /// Alias for 'end'. Returns videos created before this date/time (RFC 3339 format).
+        /// </summary>
+        public readonly string? Before;
         /// <summary>
         /// A user-defined identifier for the media creator.
         /// </summary>
@@ -271,17 +384,29 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? End;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Filter by video ID(s). Can be a single ID or a comma-separated list of IDs.
         /// </summary>
-        public readonly string Id;
+        public readonly string? Id;
         /// <summary>
         /// Includes the total number of videos associated with the submitted query parameters.
         /// </summary>
         public readonly bool IncludeCounts;
         /// <summary>
+        /// Maximum number of videos to return (default 1000, max 1000).
+        /// </summary>
+        public readonly int? Limit;
+        /// <summary>
+        /// Filter by live input ID to find videos associated with a specific live stream.
+        /// </summary>
+        public readonly string? LiveInputId;
+        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         public readonly int? MaxItems;
+        /// <summary>
+        /// Filter by video name/UID(s). Can be a single name or a comma-separated list.
+        /// </summary>
+        public readonly string? Name;
         /// <summary>
         /// The items returned by the data source
         /// </summary>
@@ -310,19 +435,29 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetStreamsResult(
-            string accountId,
+            string? accountId,
+
+            string? after,
 
             bool asc,
+
+            string? before,
 
             string? creator,
 
             string? end,
 
-            string id,
+            string? id,
 
             bool includeCounts,
 
+            int? limit,
+
+            string? liveInputId,
+
             int? maxItems,
+
+            string? name,
 
             ImmutableArray<Outputs.GetStreamsResultResult> results,
 
@@ -337,12 +472,17 @@ namespace Pulumi.Cloudflare
             string? videoName)
         {
             AccountId = accountId;
+            After = after;
             Asc = asc;
+            Before = before;
             Creator = creator;
             End = end;
             Id = id;
             IncludeCounts = includeCounts;
+            Limit = limit;
+            LiveInputId = liveInputId;
             MaxItems = maxItems;
+            Name = name;
             Results = results;
             Search = search;
             Start = start;

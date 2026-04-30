@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Access: Organizations, Identity Providers, and Groups Read`
+    /// - `Access: Organizations, Identity Providers, and Groups Revoke`
+    /// - `Access: Organizations, Identity Providers, and Groups Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -53,10 +59,27 @@ namespace Pulumi.Cloudflare
     ///                 "biometrics",
     ///                 "security_key",
     ///             },
+    ///             AmrMatchingSessionDuration = "12h",
+    ///             RequiredAaguids = "2fc0579f-8113-47ea-b116-bb5a8db9202a",
     ///             SessionDuration = "24h",
     ///         },
-    ///         MfaConfigurationAllowed = true,
     ///         MfaRequiredForAllApps = false,
+    ///         MfaSshPivKeyRequirements = new Cloudflare.Inputs.ZeroTrustOrganizationMfaSshPivKeyRequirementsArgs
+    ///         {
+    ///             PinPolicy = "always",
+    ///             RequireFipsDevice = true,
+    ///             SshKeySizes = new[]
+    ///             {
+    ///                 256,
+    ///                 2048,
+    ///             },
+    ///             SshKeyTypes = new[]
+    ///             {
+    ///                 "ecdsa",
+    ///                 "rsa",
+    ///             },
+    ///             TouchPolicy = "always",
+    ///         },
     ///         Name = "Widget Corps Internal Applications",
     ///         SessionDuration = "24h",
     ///         UiReadOnlyToggleReason = "Temporarily turn off the UI read only lock to make a change via the UI",
@@ -140,6 +163,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("mfaRequiredForAllApps")]
         public Output<bool> MfaRequiredForAllApps { get; private set; } = null!;
+
+        /// <summary>
+        /// Configures SSH PIV key requirements for MFA using hardware security keys.
+        /// </summary>
+        [Output("mfaSshPivKeyRequirements")]
+        public Output<Outputs.AccessOrganizationMfaSshPivKeyRequirements?> MfaSshPivKeyRequirements { get; private set; } = null!;
 
         /// <summary>
         /// The name of your Zero Trust organization.
@@ -300,6 +329,12 @@ namespace Pulumi.Cloudflare
         public Input<bool>? MfaRequiredForAllApps { get; set; }
 
         /// <summary>
+        /// Configures SSH PIV key requirements for MFA using hardware security keys.
+        /// </summary>
+        [Input("mfaSshPivKeyRequirements")]
+        public Input<Inputs.AccessOrganizationMfaSshPivKeyRequirementsArgs>? MfaSshPivKeyRequirements { get; set; }
+
+        /// <summary>
         /// The name of your Zero Trust organization.
         /// </summary>
         [Input("name")]
@@ -414,6 +449,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("mfaRequiredForAllApps")]
         public Input<bool>? MfaRequiredForAllApps { get; set; }
+
+        /// <summary>
+        /// Configures SSH PIV key requirements for MFA using hardware security keys.
+        /// </summary>
+        [Input("mfaSshPivKeyRequirements")]
+        public Input<Inputs.AccessOrganizationMfaSshPivKeyRequirementsGetArgs>? MfaSshPivKeyRequirements { get; set; }
 
         /// <summary>
         /// The name of your Zero Trust organization.

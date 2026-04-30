@@ -12,6 +12,12 @@ namespace Pulumi.Cloudflare
     public static class GetMagicNetworkMonitoringConfiguration
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Magic Network Monitoring Admin`
+        /// - `Magic Network Monitoring Config Read`
+        /// - `Magic Network Monitoring Config Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +36,16 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetMagicNetworkMonitoringConfigurationResult> InvokeAsync(GetMagicNetworkMonitoringConfigurationArgs args, InvokeOptions? options = null)
+        public static Task<GetMagicNetworkMonitoringConfigurationResult> InvokeAsync(GetMagicNetworkMonitoringConfigurationArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMagicNetworkMonitoringConfigurationResult>("cloudflare:index/getMagicNetworkMonitoringConfiguration:getMagicNetworkMonitoringConfiguration", args ?? new GetMagicNetworkMonitoringConfigurationArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Magic Network Monitoring Admin`
+        /// - `Magic Network Monitoring Config Read`
+        /// - `Magic Network Monitoring Config Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +64,16 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetMagicNetworkMonitoringConfigurationResult> Invoke(GetMagicNetworkMonitoringConfigurationInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetMagicNetworkMonitoringConfigurationResult> Invoke(GetMagicNetworkMonitoringConfigurationInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMagicNetworkMonitoringConfigurationResult>("cloudflare:index/getMagicNetworkMonitoringConfiguration:getMagicNetworkMonitoringConfiguration", args ?? new GetMagicNetworkMonitoringConfigurationInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Magic Network Monitoring Admin`
+        /// - `Magic Network Monitoring Config Read`
+        /// - `Magic Network Monitoring Config Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -81,8 +99,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetMagicNetworkMonitoringConfigurationArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         public GetMagicNetworkMonitoringConfigurationArgs()
         {
@@ -92,8 +110,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetMagicNetworkMonitoringConfigurationInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         public GetMagicNetworkMonitoringConfigurationInvokeArgs()
         {
@@ -105,7 +123,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetMagicNetworkMonitoringConfigurationResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.
         /// </summary>
@@ -123,7 +141,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetMagicNetworkMonitoringConfigurationResult(
-            string accountId,
+            string? accountId,
 
             double defaultSampling,
 

@@ -121,15 +121,15 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
      * Identifier.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private Output<String> zoneId;
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private CertificatePackArgs() {}
@@ -312,7 +312,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder zoneId(Output<String> zoneId) {
+        public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -339,9 +339,6 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
             }
             if ($.validityDays == null) {
                 throw new MissingRequiredPropertyException("CertificatePackArgs", "validityDays");
-            }
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("CertificatePackArgs", "zoneId");
             }
             return $;
         }

@@ -29,6 +29,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// Total results available without any search parameters.
         /// </summary>
         public readonly double? TotalCount;
+        /// <summary>
+        /// The number of total pages in the entire result set.
+        /// </summary>
+        public readonly double? TotalPages;
 
         [OutputConstructor]
         private EmailRoutingDnsResultInfo(
@@ -38,12 +42,15 @@ namespace Pulumi.Cloudflare.Outputs
 
             double? perPage,
 
-            double? totalCount)
+            double? totalCount,
+
+            double? totalPages)
         {
             EmailRoutingDnsCount = emailRoutingDnsCount;
             Page = page;
             PerPage = perPage;
             TotalCount = totalCount;
+            TotalPages = totalPages;
         }
     }
 }

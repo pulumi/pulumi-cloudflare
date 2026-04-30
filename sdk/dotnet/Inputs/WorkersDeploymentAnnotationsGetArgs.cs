@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class WorkersDeploymentAnnotationsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Human-readable message about the deployment. Truncated to 100 bytes.
+        /// Human-readable message about the deployment. Truncated to 1000 bytes if longer.
         /// </summary>
         [Input("workersMessage")]
         public Input<string>? WorkersMessage { get; set; }

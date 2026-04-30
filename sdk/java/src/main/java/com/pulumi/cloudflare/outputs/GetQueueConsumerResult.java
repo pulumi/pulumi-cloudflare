@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetQueueConsumerResult {
@@ -15,7 +17,7 @@ public final class GetQueueConsumerResult {
      * @return A Resource identifier.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return A Resource identifier.
      * 
@@ -55,8 +57,8 @@ public final class GetQueueConsumerResult {
      * @return A Resource identifier.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return A Resource identifier.
@@ -119,7 +121,7 @@ public final class GetQueueConsumerResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String consumerId;
         private String createdOn;
         private String deadLetterQueue;
@@ -145,10 +147,8 @@ public final class GetQueueConsumerResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetQueueConsumerResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Firewall Services Read`
+// - `Firewall Services Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetRateLimits(ctx, &cloudflare.LookupRateLimitsArgs{
-//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,7 +56,7 @@ type LookupRateLimitsArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Defines an identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getRateLimits.
@@ -63,7 +68,7 @@ type LookupRateLimitsResult struct {
 	// The items returned by the data source
 	Results []GetRateLimitsResult `pulumi:"results"`
 	// Defines an identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupRateLimitsOutput(ctx *pulumi.Context, args LookupRateLimitsOutputArgs, opts ...pulumi.InvokeOption) LookupRateLimitsResultOutput {
@@ -80,7 +85,7 @@ type LookupRateLimitsOutputArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// Defines an identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupRateLimitsOutputArgs) ElementType() reflect.Type {
@@ -118,8 +123,8 @@ func (o LookupRateLimitsResultOutput) Results() GetRateLimitsResultArrayOutput {
 }
 
 // Defines an identifier.
-func (o LookupRateLimitsResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRateLimitsResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupRateLimitsResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupRateLimitsResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

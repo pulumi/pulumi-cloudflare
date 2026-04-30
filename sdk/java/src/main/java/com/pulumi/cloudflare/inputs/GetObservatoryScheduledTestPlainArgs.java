@@ -51,15 +51,15 @@ public final class GetObservatoryScheduledTestPlainArgs extends com.pulumi.resou
      * Identifier.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private String zoneId;
+    @Import(name="zoneId")
+    private @Nullable String zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private GetObservatoryScheduledTestPlainArgs() {}
@@ -117,7 +117,7 @@ public final class GetObservatoryScheduledTestPlainArgs extends com.pulumi.resou
          * @return builder
          * 
          */
-        public Builder zoneId(String zoneId) {
+        public Builder zoneId(@Nullable String zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -125,9 +125,6 @@ public final class GetObservatoryScheduledTestPlainArgs extends com.pulumi.resou
         public GetObservatoryScheduledTestPlainArgs build() {
             if ($.url == null) {
                 throw new MissingRequiredPropertyException("GetObservatoryScheduledTestPlainArgs", "url");
-            }
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("GetObservatoryScheduledTestPlainArgs", "zoneId");
             }
             return $;
         }

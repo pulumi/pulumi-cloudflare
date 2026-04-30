@@ -273,6 +273,14 @@ class CustomPages(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Account Custom Pages Read`
+        - `Account Custom Pages Write`
+        - `Account Settings Read`
+        - `Account Settings Write`
+        - `Zero Trust: PII Read`
+
         ## Example Usage
 
         ```python
@@ -310,6 +318,14 @@ class CustomPages(pulumi.CustomResource):
                  args: CustomPagesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Account Custom Pages Read`
+        - `Account Custom Pages Write`
+        - `Account Settings Read`
+        - `Account Settings Write`
+        - `Zero Trust: PII Read`
+
         ## Example Usage
 
         ```python

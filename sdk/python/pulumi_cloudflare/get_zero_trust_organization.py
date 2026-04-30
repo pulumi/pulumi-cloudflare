@@ -27,7 +27,7 @@ class GetZeroTrustOrganizationResult:
     """
     A collection of values returned by getZeroTrustOrganization.
     """
-    def __init__(__self__, account_id=None, allow_authenticate_via_warp=None, auth_domain=None, auto_redirect_to_identity=None, custom_pages=None, deny_unmatched_requests=None, deny_unmatched_requests_exempted_zone_names=None, id=None, is_ui_read_only=None, login_design=None, mfa_config=None, mfa_configuration_allowed=None, mfa_required_for_all_apps=None, name=None, session_duration=None, ui_read_only_toggle_reason=None, user_seat_expiration_inactive_time=None, warp_auth_session_duration=None, zone_id=None):
+    def __init__(__self__, account_id=None, allow_authenticate_via_warp=None, auth_domain=None, auto_redirect_to_identity=None, custom_pages=None, deny_unmatched_requests=None, deny_unmatched_requests_exempted_zone_names=None, id=None, is_ui_read_only=None, login_design=None, mfa_config=None, mfa_required_for_all_apps=None, mfa_ssh_piv_key_requirements=None, name=None, session_duration=None, ui_read_only_toggle_reason=None, user_seat_expiration_inactive_time=None, warp_auth_session_duration=None, zone_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -61,12 +61,12 @@ class GetZeroTrustOrganizationResult:
         if mfa_config and not isinstance(mfa_config, dict):
             raise TypeError("Expected argument 'mfa_config' to be a dict")
         pulumi.set(__self__, "mfa_config", mfa_config)
-        if mfa_configuration_allowed and not isinstance(mfa_configuration_allowed, bool):
-            raise TypeError("Expected argument 'mfa_configuration_allowed' to be a bool")
-        pulumi.set(__self__, "mfa_configuration_allowed", mfa_configuration_allowed)
         if mfa_required_for_all_apps and not isinstance(mfa_required_for_all_apps, bool):
             raise TypeError("Expected argument 'mfa_required_for_all_apps' to be a bool")
         pulumi.set(__self__, "mfa_required_for_all_apps", mfa_required_for_all_apps)
+        if mfa_ssh_piv_key_requirements and not isinstance(mfa_ssh_piv_key_requirements, dict):
+            raise TypeError("Expected argument 'mfa_ssh_piv_key_requirements' to be a dict")
+        pulumi.set(__self__, "mfa_ssh_piv_key_requirements", mfa_ssh_piv_key_requirements)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -169,20 +169,20 @@ class GetZeroTrustOrganizationResult:
         return pulumi.get(self, "mfa_config")
 
     @_builtins.property
-    @pulumi.getter(name="mfaConfigurationAllowed")
-    def mfa_configuration_allowed(self) -> _builtins.bool:
-        """
-        Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
-        """
-        return pulumi.get(self, "mfa_configuration_allowed")
-
-    @_builtins.property
     @pulumi.getter(name="mfaRequiredForAllApps")
     def mfa_required_for_all_apps(self) -> _builtins.bool:
         """
         Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
         """
         return pulumi.get(self, "mfa_required_for_all_apps")
+
+    @_builtins.property
+    @pulumi.getter(name="mfaSshPivKeyRequirements")
+    def mfa_ssh_piv_key_requirements(self) -> 'outputs.GetZeroTrustOrganizationMfaSshPivKeyRequirementsResult':
+        """
+        Configures SSH PIV key requirements for MFA using hardware security keys.
+        """
+        return pulumi.get(self, "mfa_ssh_piv_key_requirements")
 
     @_builtins.property
     @pulumi.getter
@@ -250,8 +250,8 @@ class AwaitableGetZeroTrustOrganizationResult(GetZeroTrustOrganizationResult):
             is_ui_read_only=self.is_ui_read_only,
             login_design=self.login_design,
             mfa_config=self.mfa_config,
-            mfa_configuration_allowed=self.mfa_configuration_allowed,
             mfa_required_for_all_apps=self.mfa_required_for_all_apps,
+            mfa_ssh_piv_key_requirements=self.mfa_ssh_piv_key_requirements,
             name=self.name,
             session_duration=self.session_duration,
             ui_read_only_toggle_reason=self.ui_read_only_toggle_reason,
@@ -264,6 +264,12 @@ def get_zero_trust_organization(account_id: Optional[_builtins.str] = None,
                                 zone_id: Optional[_builtins.str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustOrganizationResult:
     """
+    Accepted Permissions
+
+    - `Access: Organizations, Identity Providers, and Groups Read`
+    - `Access: Organizations, Identity Providers, and Groups Revoke`
+    - `Access: Organizations, Identity Providers, and Groups Write`
+
     ## Example Usage
 
     ```python
@@ -296,8 +302,8 @@ def get_zero_trust_organization(account_id: Optional[_builtins.str] = None,
         is_ui_read_only=pulumi.get(__ret__, 'is_ui_read_only'),
         login_design=pulumi.get(__ret__, 'login_design'),
         mfa_config=pulumi.get(__ret__, 'mfa_config'),
-        mfa_configuration_allowed=pulumi.get(__ret__, 'mfa_configuration_allowed'),
         mfa_required_for_all_apps=pulumi.get(__ret__, 'mfa_required_for_all_apps'),
+        mfa_ssh_piv_key_requirements=pulumi.get(__ret__, 'mfa_ssh_piv_key_requirements'),
         name=pulumi.get(__ret__, 'name'),
         session_duration=pulumi.get(__ret__, 'session_duration'),
         ui_read_only_toggle_reason=pulumi.get(__ret__, 'ui_read_only_toggle_reason'),
@@ -308,6 +314,12 @@ def get_zero_trust_organization_output(account_id: Optional[pulumi.Input[Optiona
                                        zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustOrganizationResult]:
     """
+    Accepted Permissions
+
+    - `Access: Organizations, Identity Providers, and Groups Read`
+    - `Access: Organizations, Identity Providers, and Groups Revoke`
+    - `Access: Organizations, Identity Providers, and Groups Write`
+
     ## Example Usage
 
     ```python
@@ -339,8 +351,8 @@ def get_zero_trust_organization_output(account_id: Optional[pulumi.Input[Optiona
         is_ui_read_only=pulumi.get(__response__, 'is_ui_read_only'),
         login_design=pulumi.get(__response__, 'login_design'),
         mfa_config=pulumi.get(__response__, 'mfa_config'),
-        mfa_configuration_allowed=pulumi.get(__response__, 'mfa_configuration_allowed'),
         mfa_required_for_all_apps=pulumi.get(__response__, 'mfa_required_for_all_apps'),
+        mfa_ssh_piv_key_requirements=pulumi.get(__response__, 'mfa_ssh_piv_key_requirements'),
         name=pulumi.get(__response__, 'name'),
         session_duration=pulumi.get(__response__, 'session_duration'),
         ui_read_only_toggle_reason=pulumi.get(__response__, 'ui_read_only_toggle_reason'),

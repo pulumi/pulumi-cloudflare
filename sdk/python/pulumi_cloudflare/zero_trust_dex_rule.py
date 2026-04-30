@@ -21,9 +21,9 @@ __all__ = ['ZeroTrustDexRuleArgs', 'ZeroTrustDexRule']
 @pulumi.input_type
 class ZeroTrustDexRuleArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  match: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustDexRule resource.
@@ -31,20 +31,12 @@ class ZeroTrustDexRuleArgs:
         :param pulumi.Input[_builtins.str] match: The wirefilter expression to match.
         :param pulumi.Input[_builtins.str] name: The name of the Rule.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "match", match)
         pulumi.set(__self__, "name", name)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -69,6 +61,15 @@ class ZeroTrustDexRuleArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -193,6 +194,13 @@ class ZeroTrustDexRule(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Cloudflare DEX Read`
+        - `Cloudflare DEX Write`
+        - `Zero Trust Read`
+        - `Zero Trust Report`
+
         ## Example Usage
 
         ```python
@@ -225,6 +233,13 @@ class ZeroTrustDexRule(pulumi.CustomResource):
                  args: ZeroTrustDexRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Cloudflare DEX Read`
+        - `Cloudflare DEX Write`
+        - `Zero Trust Read`
+        - `Zero Trust Report`
+
         ## Example Usage
 
         ```python
@@ -273,8 +288,6 @@ class ZeroTrustDexRule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZeroTrustDexRuleArgs.__new__(ZeroTrustDexRuleArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["description"] = description
             if match is None and not opts.urn:
@@ -328,7 +341,7 @@ class ZeroTrustDexRule(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property

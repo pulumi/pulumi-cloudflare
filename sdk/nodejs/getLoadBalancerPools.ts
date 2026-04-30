@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Load Balancing: Monitors and Pools Read`
+ * - `Load Balancing: Monitors and Pools Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +24,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getLoadBalancerPools(args: GetLoadBalancerPoolsArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancerPoolsResult> {
+export function getLoadBalancerPools(args?: GetLoadBalancerPoolsArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancerPoolsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getLoadBalancerPools:getLoadBalancerPools", {
         "accountId": args.accountId,
@@ -35,7 +41,7 @@ export interface GetLoadBalancerPoolsArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -53,7 +59,7 @@ export interface GetLoadBalancerPoolsResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -72,6 +78,11 @@ export interface GetLoadBalancerPoolsResult {
     readonly results: outputs.GetLoadBalancerPoolsResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Load Balancing: Monitors and Pools Read`
+ * - `Load Balancing: Monitors and Pools Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -84,7 +95,8 @@ export interface GetLoadBalancerPoolsResult {
  * });
  * ```
  */
-export function getLoadBalancerPoolsOutput(args: GetLoadBalancerPoolsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLoadBalancerPoolsResult> {
+export function getLoadBalancerPoolsOutput(args?: GetLoadBalancerPoolsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLoadBalancerPoolsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getLoadBalancerPools:getLoadBalancerPools", {
         "accountId": args.accountId,
@@ -100,7 +112,7 @@ export interface GetLoadBalancerPoolsOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudforce One Read`
+ * - `Cloudforce One Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -34,7 +39,7 @@ export interface GetCloudforceOneRequestAssetArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * UUID.
      */
@@ -52,7 +57,7 @@ export interface GetCloudforceOneRequestAssetResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * UUID.
      */
@@ -83,6 +88,11 @@ export interface GetCloudforceOneRequestAssetResult {
     readonly requestId: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudforce One Read`
+ * - `Cloudforce One Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -112,7 +122,7 @@ export interface GetCloudforceOneRequestAssetOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * UUID.
      */

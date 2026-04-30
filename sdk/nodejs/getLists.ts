@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account Filter Lists Edit`
+ * - `Account Filter Lists Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getLists(args: GetListsArgs, opts?: pulumi.InvokeOptions): Promise<GetListsResult> {
+export function getLists(args?: GetListsArgs, opts?: pulumi.InvokeOptions): Promise<GetListsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getLists:getLists", {
         "accountId": args.accountId,
@@ -33,7 +39,7 @@ export interface GetListsArgs {
     /**
      * The Account ID for this resource.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -47,7 +53,7 @@ export interface GetListsResult {
     /**
      * The Account ID for this resource.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -62,6 +68,11 @@ export interface GetListsResult {
     readonly results: outputs.GetListsResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account Filter Lists Edit`
+ * - `Account Filter Lists Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,7 +84,8 @@ export interface GetListsResult {
  * });
  * ```
  */
-export function getListsOutput(args: GetListsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetListsResult> {
+export function getListsOutput(args?: GetListsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetListsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getLists:getLists", {
         "accountId": args.accountId,
@@ -88,7 +100,7 @@ export interface GetListsOutputArgs {
     /**
      * The Account ID for this resource.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

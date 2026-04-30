@@ -3,10 +3,12 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetWorkerFilter;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetWorkerPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -17,36 +19,44 @@ public final class GetWorkerPlainArgs extends com.pulumi.resources.InvokeArgs {
      * Identifier.
      * 
      */
-    @Import(name="accountId", required=true)
-    private String accountId;
+    @Import(name="accountId")
+    private @Nullable String accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
+    }
+
+    @Import(name="filter")
+    private @Nullable GetWorkerFilter filter;
+
+    public Optional<GetWorkerFilter> filter() {
+        return Optional.ofNullable(this.filter);
     }
 
     /**
      * Identifier for the Worker, which can be ID or name.
      * 
      */
-    @Import(name="workerId", required=true)
-    private String workerId;
+    @Import(name="workerId")
+    private @Nullable String workerId;
 
     /**
      * @return Identifier for the Worker, which can be ID or name.
      * 
      */
-    public String workerId() {
-        return this.workerId;
+    public Optional<String> workerId() {
+        return Optional.ofNullable(this.workerId);
     }
 
     private GetWorkerPlainArgs() {}
 
     private GetWorkerPlainArgs(GetWorkerPlainArgs $) {
         this.accountId = $.accountId;
+        this.filter = $.filter;
         this.workerId = $.workerId;
     }
 
@@ -74,8 +84,13 @@ public final class GetWorkerPlainArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder accountId(String accountId) {
+        public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
+            return this;
+        }
+
+        public Builder filter(@Nullable GetWorkerFilter filter) {
+            $.filter = filter;
             return this;
         }
 
@@ -85,18 +100,12 @@ public final class GetWorkerPlainArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder workerId(String workerId) {
+        public Builder workerId(@Nullable String workerId) {
             $.workerId = workerId;
             return this;
         }
 
         public GetWorkerPlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetWorkerPlainArgs", "accountId");
-            }
-            if ($.workerId == null) {
-                throw new MissingRequiredPropertyException("GetWorkerPlainArgs", "workerId");
-            }
             return $;
         }
     }

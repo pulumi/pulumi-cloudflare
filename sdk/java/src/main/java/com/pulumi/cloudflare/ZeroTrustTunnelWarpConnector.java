@@ -11,12 +11,20 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Cloudflare One Connector: WARP Read`
+ * - `Cloudflare One Connector: WARP Write`
+ * - `Cloudflare One Connectors Read`
+ * - `Cloudflare One Connectors Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -44,6 +52,7 @@ import javax.annotation.Nullable;
  *         var exampleZeroTrustTunnelWarpConnector = new ZeroTrustTunnelWarpConnector("exampleZeroTrustTunnelWarpConnector", ZeroTrustTunnelWarpConnectorArgs.builder()
  *             .accountId("699d98642c564d2e855e9661899b7252")
  *             .name("blog")
+ *             .ha(true)
  *             .build());
  * 
  *     }
@@ -65,14 +74,14 @@ public class ZeroTrustTunnelWarpConnector extends com.pulumi.resources.CustomRes
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return Cloudflare account ID
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * Cloudflare account ID
@@ -161,6 +170,20 @@ public class ZeroTrustTunnelWarpConnector extends com.pulumi.resources.CustomRes
      */
     public Output<String> deletedAt() {
         return this.deletedAt;
+    }
+    /**
+     * Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
+     * 
+     */
+    @Export(name="ha", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> ha;
+
+    /**
+     * @return Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
+     * 
+     */
+    public Output<Boolean> ha() {
+        return this.ha;
     }
     /**
      * Metadata associated with the tunnel.

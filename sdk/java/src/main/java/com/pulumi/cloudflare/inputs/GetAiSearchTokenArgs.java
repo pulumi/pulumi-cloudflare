@@ -3,43 +3,53 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetAiSearchTokenFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetAiSearchTokenArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetAiSearchTokenArgs Empty = new GetAiSearchTokenArgs();
 
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
+    }
+
+    @Import(name="filter")
+    private @Nullable Output<GetAiSearchTokenFilterArgs> filter;
+
+    public Optional<Output<GetAiSearchTokenFilterArgs>> filter() {
+        return Optional.ofNullable(this.filter);
     }
 
     /**
      * The ID of this resource.
      * 
      */
-    @Import(name="id", required=true)
-    private Output<String> id;
+    @Import(name="id")
+    private @Nullable Output<String> id;
 
     /**
      * @return The ID of this resource.
      * 
      */
-    public Output<String> id() {
-        return this.id;
+    public Optional<Output<String>> id() {
+        return Optional.ofNullable(this.id);
     }
 
     private GetAiSearchTokenArgs() {}
 
     private GetAiSearchTokenArgs(GetAiSearchTokenArgs $) {
         this.accountId = $.accountId;
+        this.filter = $.filter;
         this.id = $.id;
     }
 
@@ -61,7 +71,7 @@ public final class GetAiSearchTokenArgs extends com.pulumi.resources.InvokeArgs 
             $ = new GetAiSearchTokenArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -70,13 +80,22 @@ public final class GetAiSearchTokenArgs extends com.pulumi.resources.InvokeArgs 
             return accountId(Output.of(accountId));
         }
 
+        public Builder filter(@Nullable Output<GetAiSearchTokenFilterArgs> filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        public Builder filter(GetAiSearchTokenFilterArgs filter) {
+            return filter(Output.of(filter));
+        }
+
         /**
          * @param id The ID of this resource.
          * 
          * @return builder
          * 
          */
-        public Builder id(Output<String> id) {
+        public Builder id(@Nullable Output<String> id) {
             $.id = id;
             return this;
         }
@@ -92,12 +111,6 @@ public final class GetAiSearchTokenArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         public GetAiSearchTokenArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetAiSearchTokenArgs", "accountId");
-            }
-            if ($.id == null) {
-                throw new MissingRequiredPropertyException("GetAiSearchTokenArgs", "id");
-            }
             return $;
         }
     }

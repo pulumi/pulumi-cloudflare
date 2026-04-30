@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `SSL and Certificates Read`
+// - `SSL and Certificates Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetCustomOriginTrustStore(ctx, &cloudflare.LookupCustomOriginTrustStoreArgs{
-//				ZoneId:                   "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId:                   pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				CustomOriginTrustStoreId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
@@ -53,7 +58,7 @@ type LookupCustomOriginTrustStoreArgs struct {
 	CustomOriginTrustStoreId *string                          `pulumi:"customOriginTrustStoreId"`
 	Filter                   *GetCustomOriginTrustStoreFilter `pulumi:"filter"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getCustomOriginTrustStore.
@@ -79,7 +84,7 @@ type LookupCustomOriginTrustStoreResult struct {
 	// When the certificate was uploaded to Cloudflare.
 	UploadedOn string `pulumi:"uploadedOn"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupCustomOriginTrustStoreOutput(ctx *pulumi.Context, args LookupCustomOriginTrustStoreOutputArgs, opts ...pulumi.InvokeOption) LookupCustomOriginTrustStoreResultOutput {
@@ -97,7 +102,7 @@ type LookupCustomOriginTrustStoreOutputArgs struct {
 	CustomOriginTrustStoreId pulumi.StringPtrInput                   `pulumi:"customOriginTrustStoreId"`
 	Filter                   GetCustomOriginTrustStoreFilterPtrInput `pulumi:"filter"`
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupCustomOriginTrustStoreOutputArgs) ElementType() reflect.Type {
@@ -170,8 +175,8 @@ func (o LookupCustomOriginTrustStoreResultOutput) UploadedOn() pulumi.StringOutp
 }
 
 // Identifier.
-func (o LookupCustomOriginTrustStoreResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCustomOriginTrustStoreResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupCustomOriginTrustStoreResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCustomOriginTrustStoreResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

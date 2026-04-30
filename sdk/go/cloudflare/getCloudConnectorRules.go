@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloud Connector Read`
+// - `Cloud Connector Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetCloudConnectorRules(ctx, &cloudflare.LookupCloudConnectorRulesArgs{
-//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +54,7 @@ func LookupCloudConnectorRules(ctx *pulumi.Context, args *LookupCloudConnectorRu
 // A collection of arguments for invoking getCloudConnectorRules.
 type LookupCloudConnectorRulesArgs struct {
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getCloudConnectorRules.
@@ -58,7 +63,7 @@ type LookupCloudConnectorRulesResult struct {
 	Id    string                       `pulumi:"id"`
 	Rules []GetCloudConnectorRulesRule `pulumi:"rules"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupCloudConnectorRulesOutput(ctx *pulumi.Context, args LookupCloudConnectorRulesOutputArgs, opts ...pulumi.InvokeOption) LookupCloudConnectorRulesResultOutput {
@@ -73,7 +78,7 @@ func LookupCloudConnectorRulesOutput(ctx *pulumi.Context, args LookupCloudConnec
 // A collection of arguments for invoking getCloudConnectorRules.
 type LookupCloudConnectorRulesOutputArgs struct {
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupCloudConnectorRulesOutputArgs) ElementType() reflect.Type {
@@ -105,8 +110,8 @@ func (o LookupCloudConnectorRulesResultOutput) Rules() GetCloudConnectorRulesRul
 }
 
 // Identifier.
-func (o LookupCloudConnectorRulesResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCloudConnectorRulesResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupCloudConnectorRulesResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCloudConnectorRulesResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -58,7 +58,7 @@ class GetZeroTrustNetworkHostnameRoutesResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Cloudflare account ID
         """
@@ -156,6 +156,13 @@ def get_zero_trust_network_hostname_routes(account_id: Optional[_builtins.str] =
                                            tunnel_id: Optional[_builtins.str] = None,
                                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustNetworkHostnameRoutesResult:
     """
+    Accepted Permissions
+
+    - `Cloudflare One Networks Read`
+    - `Cloudflare One Networks Write`
+    - `Cloudflare Tunnel Read`
+    - `Cloudflare Tunnel Write`
+
     ## Example Usage
 
     ```python
@@ -202,7 +209,7 @@ def get_zero_trust_network_hostname_routes(account_id: Optional[_builtins.str] =
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'),
         tunnel_id=pulumi.get(__ret__, 'tunnel_id'))
-def get_zero_trust_network_hostname_routes_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_network_hostname_routes_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                   comment: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                   existed_at: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                   hostname: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -212,6 +219,13 @@ def get_zero_trust_network_hostname_routes_output(account_id: Optional[pulumi.In
                                                   tunnel_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustNetworkHostnameRoutesResult]:
     """
+    Accepted Permissions
+
+    - `Cloudflare One Networks Read`
+    - `Cloudflare One Networks Write`
+    - `Cloudflare Tunnel Read`
+    - `Cloudflare Tunnel Write`
+
     ## Example Usage
 
     ```python

@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ *
  * > If using the `sslRecommender` zone setting, use the `enabled` attribute instead of `value`.
  *
  * ## Example Usage
@@ -279,7 +284,7 @@ export class ZoneSetting extends pulumi.CustomResource {
     /**
      * Identifier
      */
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a ZoneSetting resource with the given unique name, arguments, and options.
@@ -308,9 +313,6 @@ export class ZoneSetting extends pulumi.CustomResource {
             }
             if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
-            }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["enabled"] = args?.enabled;
             resourceInputs["settingId"] = args?.settingId;
@@ -379,5 +381,5 @@ export interface ZoneSettingArgs {
     /**
      * Identifier
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

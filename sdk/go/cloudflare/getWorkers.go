@@ -11,6 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Workers Scripts Read`
+// - `Workers Scripts Write`
+// - `Workers Tail Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetWorkers(ctx, &cloudflare.LookupWorkersArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,19 +55,31 @@ func LookupWorkers(ctx *pulumi.Context, args *LookupWorkersArgs, opts ...pulumi.
 // A collection of arguments for invoking getWorkers.
 type LookupWorkersArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
+	// Sort direction.
+	// Available values: "asc", "desc".
+	Order *string `pulumi:"order"`
+	// Property to sort results by.
+	// Available values: "deployed*on", "updated*on", "createdOn", "name".
+	OrderBy *string `pulumi:"orderBy"`
 }
 
 // A collection of values returned by getWorkers.
 type LookupWorkersResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
+	// Sort direction.
+	// Available values: "asc", "desc".
+	Order string `pulumi:"order"`
+	// Property to sort results by.
+	// Available values: "deployed*on", "updated*on", "createdOn", "name".
+	OrderBy string `pulumi:"orderBy"`
 	// The items returned by the data source
 	Results []GetWorkersResult `pulumi:"results"`
 }
@@ -78,9 +96,15 @@ func LookupWorkersOutput(ctx *pulumi.Context, args LookupWorkersOutputArgs, opts
 // A collection of arguments for invoking getWorkers.
 type LookupWorkersOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
+	// Sort direction.
+	// Available values: "asc", "desc".
+	Order pulumi.StringPtrInput `pulumi:"order"`
+	// Property to sort results by.
+	// Available values: "deployed*on", "updated*on", "createdOn", "name".
+	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
 }
 
 func (LookupWorkersOutputArgs) ElementType() reflect.Type {
@@ -103,8 +127,8 @@ func (o LookupWorkersResultOutput) ToLookupWorkersResultOutputWithContext(ctx co
 }
 
 // Identifier.
-func (o LookupWorkersResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkersResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupWorkersResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkersResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -115,6 +139,18 @@ func (o LookupWorkersResultOutput) Id() pulumi.StringOutput {
 // Max items to fetch, default: 1000
 func (o LookupWorkersResultOutput) MaxItems() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupWorkersResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
+}
+
+// Sort direction.
+// Available values: "asc", "desc".
+func (o LookupWorkersResultOutput) Order() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkersResult) string { return v.Order }).(pulumi.StringOutput)
+}
+
+// Property to sort results by.
+// Available values: "deployed*on", "updated*on", "createdOn", "name".
+func (o LookupWorkersResultOutput) OrderBy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkersResult) string { return v.OrderBy }).(pulumi.StringOutput)
 }
 
 // The items returned by the data source

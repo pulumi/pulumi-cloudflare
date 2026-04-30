@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Access: Mutual TLS Certificates Read`
+ * - `Access: Mutual TLS Certificates Write`
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +26,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getCustomSsl(args: GetCustomSslArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomSslResult> {
+export function getCustomSsl(args?: GetCustomSslArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomSslResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCustomSsl:getCustomSsl", {
         "customCertificateId": args.customCertificateId,
@@ -40,7 +48,7 @@ export interface GetCustomSslArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -56,6 +64,10 @@ export interface GetCustomSslResult {
      * Identifier.
      */
     readonly customCertificateId?: string;
+    /**
+     * The identifier for the Custom CSR that was used.
+     */
+    readonly customCsrId: string;
     /**
      * When the certificate from the authority expires.
      */
@@ -92,9 +104,16 @@ export interface GetCustomSslResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Access: Mutual TLS Certificates Read`
+ * - `Access: Mutual TLS Certificates Write`
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -107,7 +126,8 @@ export interface GetCustomSslResult {
  * });
  * ```
  */
-export function getCustomSslOutput(args: GetCustomSslOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomSslResult> {
+export function getCustomSslOutput(args?: GetCustomSslOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomSslResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCustomSsl:getCustomSsl", {
         "customCertificateId": args.customCertificateId,
@@ -128,5 +148,5 @@ export interface GetCustomSslOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudflare One Networks Read`
+ * - `Cloudflare One Networks Write`
+ * - `Cloudflare Tunnel Read`
+ * - `Cloudflare Tunnel Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +26,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustTunnelCloudflaredRoute(args: GetZeroTrustTunnelCloudflaredRouteArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustTunnelCloudflaredRouteResult> {
+export function getZeroTrustTunnelCloudflaredRoute(args?: GetZeroTrustTunnelCloudflaredRouteArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustTunnelCloudflaredRouteResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustTunnelCloudflaredRoute:getZeroTrustTunnelCloudflaredRoute", {
         "accountId": args.accountId,
@@ -35,7 +43,7 @@ export interface GetZeroTrustTunnelCloudflaredRouteArgs {
     /**
      * Cloudflare account ID
      */
-    accountId: string;
+    accountId?: string;
     filter?: inputs.GetZeroTrustTunnelCloudflaredRouteFilter;
     /**
      * UUID of the route.
@@ -50,7 +58,7 @@ export interface GetZeroTrustTunnelCloudflaredRouteResult {
     /**
      * Cloudflare account ID
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Optional remark describing the route.
      */
@@ -86,6 +94,13 @@ export interface GetZeroTrustTunnelCloudflaredRouteResult {
     readonly virtualNetworkId: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudflare One Networks Read`
+ * - `Cloudflare One Networks Write`
+ * - `Cloudflare Tunnel Read`
+ * - `Cloudflare Tunnel Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -98,7 +113,8 @@ export interface GetZeroTrustTunnelCloudflaredRouteResult {
  * });
  * ```
  */
-export function getZeroTrustTunnelCloudflaredRouteOutput(args: GetZeroTrustTunnelCloudflaredRouteOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustTunnelCloudflaredRouteResult> {
+export function getZeroTrustTunnelCloudflaredRouteOutput(args?: GetZeroTrustTunnelCloudflaredRouteOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustTunnelCloudflaredRouteResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustTunnelCloudflaredRoute:getZeroTrustTunnelCloudflaredRoute", {
         "accountId": args.accountId,
@@ -114,7 +130,7 @@ export interface GetZeroTrustTunnelCloudflaredRouteOutputArgs {
     /**
      * Cloudflare account ID
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetZeroTrustTunnelCloudflaredRouteFilterArgs>;
     /**
      * UUID of the route.

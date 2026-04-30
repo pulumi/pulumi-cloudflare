@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Zone Settings Read`
+// - `Zone Settings Write`
+//
 // > If using the `sslRecommender` zone setting, use the `enabled` attribute instead of `value`.
 //
 // ## Example Usage
@@ -393,7 +398,7 @@ type ZoneSetting struct {
 	// Current value of the zone setting.
 	Value pulumi.AnyOutput `pulumi:"value"`
 	// Identifier
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewZoneSetting registers a new resource with the given unique name, arguments, and options.
@@ -408,9 +413,6 @@ func NewZoneSetting(ctx *pulumi.Context,
 	}
 	if args.Value == nil {
 		return nil, errors.New("invalid value for required argument 'Value'")
-	}
-	if args.ZoneId == nil {
-		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZoneSetting
@@ -482,7 +484,7 @@ type zoneSettingArgs struct {
 	// Current value of the zone setting.
 	Value interface{} `pulumi:"value"`
 	// Identifier
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ZoneSetting resource.
@@ -494,7 +496,7 @@ type ZoneSettingArgs struct {
 	// Current value of the zone setting.
 	Value pulumi.Input
 	// Identifier
-	ZoneId pulumi.StringInput
+	ZoneId pulumi.StringPtrInput
 }
 
 func (ZoneSettingArgs) ElementType() reflect.Type {
@@ -616,8 +618,8 @@ func (o ZoneSettingOutput) Value() pulumi.AnyOutput {
 }
 
 // Identifier
-func (o ZoneSettingOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZoneSetting) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+func (o ZoneSettingOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSetting) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type ZoneSettingArrayOutput struct{ *pulumi.OutputState }

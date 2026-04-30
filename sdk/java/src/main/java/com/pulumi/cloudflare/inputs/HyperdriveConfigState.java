@@ -71,9 +71,17 @@ public final class HyperdriveConfigState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.modifiedOn);
     }
 
+    /**
+     * mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
+     * 
+     */
     @Import(name="mtls")
     private @Nullable Output<HyperdriveConfigMtlsArgs> mtls;
 
+    /**
+     * @return mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
+     * 
+     */
     public Optional<Output<HyperdriveConfigMtlsArgs>> mtls() {
         return Optional.ofNullable(this.mtls);
     }
@@ -218,11 +226,23 @@ public final class HyperdriveConfigState extends com.pulumi.resources.ResourceAr
             return modifiedOn(Output.of(modifiedOn));
         }
 
+        /**
+         * @param mtls mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mtls(@Nullable Output<HyperdriveConfigMtlsArgs> mtls) {
             $.mtls = mtls;
             return this;
         }
 
+        /**
+         * @param mtls mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mtls(HyperdriveConfigMtlsArgs mtls) {
             return mtls(Output.of(mtls));
         }

@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Double;
+import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,6 +17,21 @@ import javax.annotation.Nullable;
 public final class WorkerObservabilityLogsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final WorkerObservabilityLogsArgs Empty = new WorkerObservabilityLogsArgs();
+
+    /**
+     * A list of destinations where logs will be exported to.
+     * 
+     */
+    @Import(name="destinations")
+    private @Nullable Output<List<String>> destinations;
+
+    /**
+     * @return A list of destinations where logs will be exported to.
+     * 
+     */
+    public Optional<Output<List<String>>> destinations() {
+        return Optional.ofNullable(this.destinations);
+    }
 
     /**
      * Whether logs are enabled for the Worker.
@@ -61,12 +78,29 @@ public final class WorkerObservabilityLogsArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.invocationLogs);
     }
 
+    /**
+     * Whether log persistence is enabled for the Worker.
+     * 
+     */
+    @Import(name="persist")
+    private @Nullable Output<Boolean> persist;
+
+    /**
+     * @return Whether log persistence is enabled for the Worker.
+     * 
+     */
+    public Optional<Output<Boolean>> persist() {
+        return Optional.ofNullable(this.persist);
+    }
+
     private WorkerObservabilityLogsArgs() {}
 
     private WorkerObservabilityLogsArgs(WorkerObservabilityLogsArgs $) {
+        this.destinations = $.destinations;
         this.enabled = $.enabled;
         this.headSamplingRate = $.headSamplingRate;
         this.invocationLogs = $.invocationLogs;
+        this.persist = $.persist;
     }
 
     public static Builder builder() {
@@ -85,6 +119,37 @@ public final class WorkerObservabilityLogsArgs extends com.pulumi.resources.Reso
 
         public Builder(WorkerObservabilityLogsArgs defaults) {
             $ = new WorkerObservabilityLogsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param destinations A list of destinations where logs will be exported to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinations(@Nullable Output<List<String>> destinations) {
+            $.destinations = destinations;
+            return this;
+        }
+
+        /**
+         * @param destinations A list of destinations where logs will be exported to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinations(List<String> destinations) {
+            return destinations(Output.of(destinations));
+        }
+
+        /**
+         * @param destinations A list of destinations where logs will be exported to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinations(String... destinations) {
+            return destinations(List.of(destinations));
         }
 
         /**
@@ -148,6 +213,27 @@ public final class WorkerObservabilityLogsArgs extends com.pulumi.resources.Reso
          */
         public Builder invocationLogs(Boolean invocationLogs) {
             return invocationLogs(Output.of(invocationLogs));
+        }
+
+        /**
+         * @param persist Whether log persistence is enabled for the Worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder persist(@Nullable Output<Boolean> persist) {
+            $.persist = persist;
+            return this;
+        }
+
+        /**
+         * @param persist Whether log persistence is enabled for the Worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder persist(Boolean persist) {
+            return persist(Output.of(persist));
         }
 
         public WorkerObservabilityLogsArgs build() {

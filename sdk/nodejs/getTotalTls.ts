@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -16,7 +21,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getTotalTls(args: GetTotalTlsArgs, opts?: pulumi.InvokeOptions): Promise<GetTotalTlsResult> {
+export function getTotalTls(args?: GetTotalTlsArgs, opts?: pulumi.InvokeOptions): Promise<GetTotalTlsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getTotalTls:getTotalTls", {
         "zoneId": args.zoneId,
@@ -30,7 +36,7 @@ export interface GetTotalTlsArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -58,9 +64,14 @@ export interface GetTotalTlsResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -72,7 +83,8 @@ export interface GetTotalTlsResult {
  * });
  * ```
  */
-export function getTotalTlsOutput(args: GetTotalTlsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTotalTlsResult> {
+export function getTotalTlsOutput(args?: GetTotalTlsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTotalTlsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getTotalTls:getTotalTls", {
         "zoneId": args.zoneId,
@@ -86,5 +98,5 @@ export interface GetTotalTlsOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

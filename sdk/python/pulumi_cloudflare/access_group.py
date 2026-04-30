@@ -278,6 +278,11 @@ class AccessGroup(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Access: Organizations, Identity Providers, and Groups Read`
+        - `Access: Organizations, Identity Providers, and Groups Write`
+
         ## Example Usage
 
         ```python
@@ -286,22 +291,16 @@ class AccessGroup(pulumi.CustomResource):
 
         example_zero_trust_access_group = cloudflare.ZeroTrustAccessGroup("example_zero_trust_access_group",
             includes=[{
-                "group": {
-                    "id": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-                },
+                "certificate": {},
             }],
             name="Allow devs",
             zone_id="zone_id",
             excludes=[{
-                "group": {
-                    "id": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-                },
+                "certificate": {},
             }],
             is_default=True,
             requires=[{
-                "group": {
-                    "id": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-                },
+                "certificate": {},
             }])
         ```
 
@@ -329,6 +328,11 @@ class AccessGroup(pulumi.CustomResource):
                  args: AccessGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Access: Organizations, Identity Providers, and Groups Read`
+        - `Access: Organizations, Identity Providers, and Groups Write`
+
         ## Example Usage
 
         ```python
@@ -337,22 +341,16 @@ class AccessGroup(pulumi.CustomResource):
 
         example_zero_trust_access_group = cloudflare.ZeroTrustAccessGroup("example_zero_trust_access_group",
             includes=[{
-                "group": {
-                    "id": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-                },
+                "certificate": {},
             }],
             name="Allow devs",
             zone_id="zone_id",
             excludes=[{
-                "group": {
-                    "id": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-                },
+                "certificate": {},
             }],
             is_default=True,
             requires=[{
-                "group": {
-                    "id": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-                },
+                "certificate": {},
             }])
         ```
 

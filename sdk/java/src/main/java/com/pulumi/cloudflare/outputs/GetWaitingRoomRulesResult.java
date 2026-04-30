@@ -8,6 +8,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWaitingRoomRulesResult {
@@ -48,7 +50,7 @@ public final class GetWaitingRoomRulesResult {
      * @return Identifier.
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetWaitingRoomRulesResult() {}
     /**
@@ -104,8 +106,8 @@ public final class GetWaitingRoomRulesResult {
      * @return Identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -125,7 +127,7 @@ public final class GetWaitingRoomRulesResult {
         private String lastUpdated;
         private String version;
         private String waitingRoomId;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetWaitingRoomRulesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -205,10 +207,8 @@ public final class GetWaitingRoomRulesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetWaitingRoomRulesResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

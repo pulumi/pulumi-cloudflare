@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkersDeploymentAnnotations {
     /**
-     * @return Human-readable message about the deployment. Truncated to 100 bytes.
+     * @return Human-readable message about the deployment. Truncated to 1000 bytes if longer.
      * 
      */
     private @Nullable String workersMessage;
@@ -24,7 +24,7 @@ public final class WorkersDeploymentAnnotations {
 
     private WorkersDeploymentAnnotations() {}
     /**
-     * @return Human-readable message about the deployment. Truncated to 100 bytes.
+     * @return Human-readable message about the deployment. Truncated to 1000 bytes if longer.
      * 
      */
     public Optional<String> workersMessage() {

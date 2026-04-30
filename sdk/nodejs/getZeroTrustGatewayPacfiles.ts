@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustGatewayPacfiles(args: GetZeroTrustGatewayPacfilesArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustGatewayPacfilesResult> {
+export function getZeroTrustGatewayPacfiles(args?: GetZeroTrustGatewayPacfilesArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustGatewayPacfilesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustGatewayPacfiles:getZeroTrustGatewayPacfiles", {
         "accountId": args.accountId,
@@ -30,7 +36,7 @@ export function getZeroTrustGatewayPacfiles(args: GetZeroTrustGatewayPacfilesArg
  * A collection of arguments for invoking getZeroTrustGatewayPacfiles.
  */
 export interface GetZeroTrustGatewayPacfilesArgs {
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -41,7 +47,7 @@ export interface GetZeroTrustGatewayPacfilesArgs {
  * A collection of values returned by getZeroTrustGatewayPacfiles.
  */
 export interface GetZeroTrustGatewayPacfilesResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -56,6 +62,11 @@ export interface GetZeroTrustGatewayPacfilesResult {
     readonly results: outputs.GetZeroTrustGatewayPacfilesResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -67,7 +78,8 @@ export interface GetZeroTrustGatewayPacfilesResult {
  * });
  * ```
  */
-export function getZeroTrustGatewayPacfilesOutput(args: GetZeroTrustGatewayPacfilesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustGatewayPacfilesResult> {
+export function getZeroTrustGatewayPacfilesOutput(args?: GetZeroTrustGatewayPacfilesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustGatewayPacfilesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustGatewayPacfiles:getZeroTrustGatewayPacfiles", {
         "accountId": args.accountId,
@@ -79,7 +91,7 @@ export function getZeroTrustGatewayPacfilesOutput(args: GetZeroTrustGatewayPacfi
  * A collection of arguments for invoking getZeroTrustGatewayPacfiles.
  */
 export interface GetZeroTrustGatewayPacfilesOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

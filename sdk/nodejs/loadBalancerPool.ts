@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Load Balancing: Monitors and Pools Read`
+ * - `Load Balancing: Monitors and Pools Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,6 +24,7 @@ import * as utilities from "./utilities";
  *     origins: [{
  *         address: "0.0.0.0",
  *         enabled: true,
+ *         flattenCname: true,
  *         header: {
  *             host: ["example.com"],
  *         },
@@ -94,7 +100,7 @@ export class LoadBalancerPool extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * A list of regions from which to run health checks. Null means every Cloudflare data center.
      */
@@ -119,7 +125,7 @@ export class LoadBalancerPool extends pulumi.CustomResource {
     /**
      * Configures load shedding policies and percentages for the pool.
      */
-    declare public readonly loadShedding: pulumi.Output<outputs.LoadBalancerPoolLoadShedding | undefined>;
+    declare public readonly loadShedding: pulumi.Output<outputs.LoadBalancerPoolLoadShedding>;
     /**
      * The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
      */
@@ -152,11 +158,11 @@ export class LoadBalancerPool extends pulumi.CustomResource {
     /**
      * Filter pool and origin health notifications by resource type or health status. Use null to reset.
      */
-    declare public readonly notificationFilter: pulumi.Output<outputs.LoadBalancerPoolNotificationFilter | undefined>;
+    declare public readonly notificationFilter: pulumi.Output<outputs.LoadBalancerPoolNotificationFilter>;
     /**
      * Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
      */
-    declare public readonly originSteering: pulumi.Output<outputs.LoadBalancerPoolOriginSteering | undefined>;
+    declare public readonly originSteering: pulumi.Output<outputs.LoadBalancerPoolOriginSteering>;
     /**
      * The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
      */
@@ -196,9 +202,6 @@ export class LoadBalancerPool extends pulumi.CustomResource {
             resourceInputs["origins"] = state?.origins;
         } else {
             const args = argsOrState as LoadBalancerPoolArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -313,7 +316,7 @@ export interface LoadBalancerPoolArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * A list of regions from which to run health checks. Null means every Cloudflare data center.
      */

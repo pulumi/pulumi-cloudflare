@@ -14,14 +14,25 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetCustomHostnameFilterResult
     {
         /// <summary>
+        /// Filter by the certificate authority that issued the SSL certificate.
+        /// Available values: "google", "lets*encrypt", "ssl*com".
+        /// </summary>
+        public readonly string? CertificateAuthority;
+        /// <summary>
+        /// Filter by custom origin server name.
+        /// </summary>
+        public readonly string? CustomOriginServer;
+        /// <summary>
         /// Direction to order hostnames.
         /// Available values: "asc", "desc".
         /// </summary>
         public readonly string? Direction;
+        public readonly Outputs.GetCustomHostnameFilterHostnameResult? Hostname;
         /// <summary>
-        /// Fully qualified domain name to match against. This parameter cannot be used with the 'id' parameter.
+        /// Filter by the hostname's activation status.
+        /// Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "TestFailed", "provisioned", "blocked".
         /// </summary>
-        public readonly string? Hostname;
+        public readonly string? HostnameStatus;
         /// <summary>
         /// Hostname ID to match against. This ID was generated and returned during the initial CustomHostname creation. This parameter cannot be used with the 'hostname' parameter.
         /// </summary>
@@ -36,24 +47,48 @@ namespace Pulumi.Cloudflare.Outputs
         /// Available values: 0, 1.
         /// </summary>
         public readonly double? Ssl;
+        /// <summary>
+        /// Filter by SSL certificate status.
+        /// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
+        /// </summary>
+        public readonly string? SslStatus;
+        /// <summary>
+        /// Filter by whether the custom hostname is a wildcard hostname.
+        /// </summary>
+        public readonly bool? Wildcard;
 
         [OutputConstructor]
         private GetCustomHostnameFilterResult(
+            string? certificateAuthority,
+
+            string? customOriginServer,
+
             string? direction,
 
-            string? hostname,
+            Outputs.GetCustomHostnameFilterHostnameResult? hostname,
+
+            string? hostnameStatus,
 
             string? id,
 
             string order,
 
-            double? ssl)
+            double? ssl,
+
+            string? sslStatus,
+
+            bool? wildcard)
         {
+            CertificateAuthority = certificateAuthority;
+            CustomOriginServer = customOriginServer;
             Direction = direction;
             Hostname = hostname;
+            HostnameStatus = hostnameStatus;
             Id = id;
             Order = order;
             Ssl = ssl;
+            SslStatus = sslStatus;
+            Wildcard = wildcard;
         }
     }
 }

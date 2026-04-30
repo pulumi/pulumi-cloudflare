@@ -13,9 +13,15 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Cloudforce One Read`
+ * - `Cloudforce One Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -69,14 +75,14 @@ public class CloudforceOneRequestPriority extends com.pulumi.resources.CustomRes
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     @Export(name="completed", refs={String.class}, tree="[0]")
     private Output<String> completed;

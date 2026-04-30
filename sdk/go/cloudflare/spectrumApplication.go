@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Zone Settings Read`
+// - `Zone Settings Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -102,7 +107,7 @@ type SpectrumApplication struct {
 	// Available values: "direct", "http", "https".
 	TrafficType pulumi.StringOutput `pulumi:"trafficType"`
 	// Zone identifier.
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewSpectrumApplication registers a new resource with the given unique name, arguments, and options.
@@ -117,9 +122,6 @@ func NewSpectrumApplication(ctx *pulumi.Context,
 	}
 	if args.Protocol == nil {
 		return nil, errors.New("invalid value for required argument 'Protocol'")
-	}
-	if args.ZoneId == nil {
-		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SpectrumApplication
@@ -251,7 +253,7 @@ type spectrumApplicationArgs struct {
 	// Available values: "direct", "http", "https".
 	TrafficType *string `pulumi:"trafficType"`
 	// Zone identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a SpectrumApplication resource.
@@ -285,7 +287,7 @@ type SpectrumApplicationArgs struct {
 	// Available values: "direct", "http", "https".
 	TrafficType pulumi.StringPtrInput
 	// Zone identifier.
-	ZoneId pulumi.StringInput
+	ZoneId pulumi.StringPtrInput
 }
 
 func (SpectrumApplicationArgs) ElementType() reflect.Type {
@@ -447,8 +449,8 @@ func (o SpectrumApplicationOutput) TrafficType() pulumi.StringOutput {
 }
 
 // Zone identifier.
-func (o SpectrumApplicationOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *SpectrumApplication) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+func (o SpectrumApplicationOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpectrumApplication) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type SpectrumApplicationArrayOutput struct{ *pulumi.OutputState }

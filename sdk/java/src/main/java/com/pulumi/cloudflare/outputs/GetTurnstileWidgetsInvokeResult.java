@@ -19,7 +19,7 @@ public final class GetTurnstileWidgetsInvokeResult {
      * @return Identifier
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Direction to order widgets.
      * Available values: &#34;asc&#34;, &#34;desc&#34;.
@@ -46,8 +46,8 @@ public final class GetTurnstileWidgetsInvokeResult {
      * @return Identifier
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Direction to order widgets.
@@ -91,7 +91,7 @@ public final class GetTurnstileWidgetsInvokeResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private @Nullable String direction;
         private @Nullable String filter;
         private String id;
@@ -111,10 +111,8 @@ public final class GetTurnstileWidgetsInvokeResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetTurnstileWidgetsInvokeResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

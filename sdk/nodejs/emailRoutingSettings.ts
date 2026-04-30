@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -82,7 +87,7 @@ export class EmailRoutingSettings extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a EmailRoutingSettings resource with the given unique name, arguments, and options.
@@ -91,7 +96,7 @@ export class EmailRoutingSettings extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: EmailRoutingSettingsArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: EmailRoutingSettingsArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EmailRoutingSettingsArgs | EmailRoutingSettingsState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -107,9 +112,6 @@ export class EmailRoutingSettings extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as EmailRoutingSettingsArgs | undefined;
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
-            }
             resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["enabled"] = undefined /*out*/;
@@ -172,5 +174,5 @@ export interface EmailRoutingSettingsArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

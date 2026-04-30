@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Health Checks Read`
+ * - `Health Checks Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getHealthchecks(args: GetHealthchecksArgs, opts?: pulumi.InvokeOptions): Promise<GetHealthchecksResult> {
+export function getHealthchecks(args?: GetHealthchecksArgs, opts?: pulumi.InvokeOptions): Promise<GetHealthchecksResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getHealthchecks:getHealthchecks", {
         "maxItems": args.maxItems,
@@ -37,7 +43,7 @@ export interface GetHealthchecksArgs {
     /**
      * Identifier
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -59,9 +65,14 @@ export interface GetHealthchecksResult {
     /**
      * Identifier
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Health Checks Read`
+ * - `Health Checks Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,7 +84,8 @@ export interface GetHealthchecksResult {
  * });
  * ```
  */
-export function getHealthchecksOutput(args: GetHealthchecksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHealthchecksResult> {
+export function getHealthchecksOutput(args?: GetHealthchecksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHealthchecksResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getHealthchecks:getHealthchecks", {
         "maxItems": args.maxItems,
@@ -92,5 +104,5 @@ export interface GetHealthchecksOutputArgs {
     /**
      * Identifier
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

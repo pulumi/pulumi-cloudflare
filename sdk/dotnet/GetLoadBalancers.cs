@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetLoadBalancers
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Load Balancers Read`
+        /// - `Load Balancers Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetLoadBalancersResult> InvokeAsync(GetLoadBalancersArgs args, InvokeOptions? options = null)
+        public static Task<GetLoadBalancersResult> InvokeAsync(GetLoadBalancersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancersResult>("cloudflare:index/getLoadBalancers:getLoadBalancers", args ?? new GetLoadBalancersArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Load Balancers Read`
+        /// - `Load Balancers Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetLoadBalancersResult> Invoke(GetLoadBalancersInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetLoadBalancersResult> Invoke(GetLoadBalancersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLoadBalancersResult>("cloudflare:index/getLoadBalancers:getLoadBalancers", args ?? new GetLoadBalancersInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Load Balancers Read`
+        /// - `Load Balancers Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +102,8 @@ namespace Pulumi.Cloudflare
         [Input("maxItems")]
         public int? MaxItems { get; set; }
 
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetLoadBalancersArgs()
         {
@@ -104,8 +119,8 @@ namespace Pulumi.Cloudflare
         [Input("maxItems")]
         public Input<int>? MaxItems { get; set; }
 
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetLoadBalancersInvokeArgs()
         {
@@ -129,7 +144,7 @@ namespace Pulumi.Cloudflare
         /// The items returned by the data source
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLoadBalancersResultResult> Results;
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetLoadBalancersResult(
@@ -139,7 +154,7 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<Outputs.GetLoadBalancersResultResult> results,
 
-            string zoneId)
+            string? zoneId)
         {
             Id = id;
             MaxItems = maxItems;

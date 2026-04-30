@@ -10,6 +10,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetListItemResult {
@@ -17,7 +19,7 @@ public final class GetListItemResult {
      * @return The Account ID for this resource.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Defines a non-negative 32 bit integer.
      * 
@@ -74,8 +76,8 @@ public final class GetListItemResult {
      * @return The Account ID for this resource.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Defines a non-negative 32 bit integer.
@@ -157,7 +159,7 @@ public final class GetListItemResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private Integer asn;
         private String comment;
         private String createdOn;
@@ -185,10 +187,8 @@ public final class GetListItemResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetListItemResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

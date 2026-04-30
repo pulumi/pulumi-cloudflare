@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetConnectivityDirectoryServiceResult> InvokeAsync(GetConnectivityDirectoryServiceArgs args, InvokeOptions? options = null)
+        public static Task<GetConnectivityDirectoryServiceResult> InvokeAsync(GetConnectivityDirectoryServiceArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectivityDirectoryServiceResult>("cloudflare:index/getConnectivityDirectoryService:getConnectivityDirectoryService", args ?? new GetConnectivityDirectoryServiceArgs(), options.WithDefaults());
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetConnectivityDirectoryServiceResult> Invoke(GetConnectivityDirectoryServiceInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetConnectivityDirectoryServiceResult> Invoke(GetConnectivityDirectoryServiceInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectivityDirectoryServiceResult>("cloudflare:index/getConnectivityDirectoryService:getConnectivityDirectoryService", args ?? new GetConnectivityDirectoryServiceInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetConnectivityDirectoryServiceArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         [Input("filter")]
         public Inputs.GetConnectivityDirectoryServiceFilterArgs? Filter { get; set; }
@@ -101,8 +101,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetConnectivityDirectoryServiceInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("filter")]
         public Input<Inputs.GetConnectivityDirectoryServiceFilterInputArgs>? Filter { get; set; }
@@ -120,7 +120,11 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetConnectivityDirectoryServiceResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
+        /// <summary>
+        /// Available values: "postgresql", "mysql".
+        /// </summary>
+        public readonly string AppProtocol;
         public readonly string CreatedAt;
         public readonly Outputs.GetConnectivityDirectoryServiceFilterResult? Filter;
         public readonly Outputs.GetConnectivityDirectoryServiceHostResult Host;
@@ -132,15 +136,19 @@ namespace Pulumi.Cloudflare
         public readonly string Id;
         public readonly string Name;
         public readonly string ServiceId;
+        public readonly int TcpPort;
         /// <summary>
-        /// Available values: "http".
+        /// TLS settings for a connectivity service.
         /// </summary>
+        public readonly Outputs.GetConnectivityDirectoryServiceTlsSettingsResult TlsSettings;
         public readonly string Type;
         public readonly string UpdatedAt;
 
         [OutputConstructor]
         private GetConnectivityDirectoryServiceResult(
-            string accountId,
+            string? accountId,
+
+            string appProtocol,
 
             string createdAt,
 
@@ -158,11 +166,16 @@ namespace Pulumi.Cloudflare
 
             string serviceId,
 
+            int tcpPort,
+
+            Outputs.GetConnectivityDirectoryServiceTlsSettingsResult tlsSettings,
+
             string type,
 
             string updatedAt)
         {
             AccountId = accountId;
+            AppProtocol = appProtocol;
             CreatedAt = createdAt;
             Filter = filter;
             Host = host;
@@ -171,6 +184,8 @@ namespace Pulumi.Cloudflare
             Id = id;
             Name = name;
             ServiceId = serviceId;
+            TcpPort = tcpPort;
+            TlsSettings = tlsSettings;
             Type = type;
             UpdatedAt = updatedAt;
         }

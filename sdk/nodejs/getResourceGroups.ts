@@ -7,6 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ * - `SCIM Provisioning`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -20,7 +26,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getResourceGroups(args: GetResourceGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceGroupsResult> {
+export function getResourceGroups(args?: GetResourceGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceGroupsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getResourceGroups:getResourceGroups", {
         "accountId": args.accountId,
@@ -37,7 +44,7 @@ export interface GetResourceGroupsArgs {
     /**
      * Account identifier tag.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * ID of the resource group to be fetched.
      */
@@ -59,7 +66,7 @@ export interface GetResourceGroupsResult {
     /**
      * Account identifier tag.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * ID of the resource group to be fetched.
      */
@@ -78,6 +85,12 @@ export interface GetResourceGroupsResult {
     readonly results: outputs.GetResourceGroupsResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ * - `SCIM Provisioning`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -91,7 +104,8 @@ export interface GetResourceGroupsResult {
  * });
  * ```
  */
-export function getResourceGroupsOutput(args: GetResourceGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetResourceGroupsResult> {
+export function getResourceGroupsOutput(args?: GetResourceGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetResourceGroupsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getResourceGroups:getResourceGroups", {
         "accountId": args.accountId,
@@ -108,7 +122,7 @@ export interface GetResourceGroupsOutputArgs {
     /**
      * Account identifier tag.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * ID of the resource group to be fetched.
      */

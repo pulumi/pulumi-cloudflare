@@ -7,6 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -36,7 +42,7 @@ export interface GetWorkersDeploymentArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     deploymentId: string;
     /**
      * Name of the script, used in URLs and route configuration.
@@ -51,7 +57,7 @@ export interface GetWorkersDeploymentResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     readonly annotations: outputs.GetWorkersDeploymentAnnotations;
     readonly authorEmail: string;
     readonly createdOn: string;
@@ -72,6 +78,12 @@ export interface GetWorkersDeploymentResult {
     readonly versions: outputs.GetWorkersDeploymentVersion[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -101,7 +113,7 @@ export interface GetWorkersDeploymentOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     deploymentId: pulumi.Input<string>;
     /**
      * Name of the script, used in URLs and route configuration.

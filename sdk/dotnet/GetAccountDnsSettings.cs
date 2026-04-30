@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetAccountDnsSettings
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account DNS Settings Read`
+        /// - `Account DNS Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetAccountDnsSettingsResult> InvokeAsync(GetAccountDnsSettingsArgs args, InvokeOptions? options = null)
+        public static Task<GetAccountDnsSettingsResult> InvokeAsync(GetAccountDnsSettingsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountDnsSettingsResult>("cloudflare:index/getAccountDnsSettings:getAccountDnsSettings", args ?? new GetAccountDnsSettingsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account DNS Settings Read`
+        /// - `Account DNS Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetAccountDnsSettingsResult> Invoke(GetAccountDnsSettingsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetAccountDnsSettingsResult> Invoke(GetAccountDnsSettingsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountDnsSettingsResult>("cloudflare:index/getAccountDnsSettings:getAccountDnsSettings", args ?? new GetAccountDnsSettingsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account DNS Settings Read`
+        /// - `Account DNS Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +99,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         public GetAccountDnsSettingsArgs()
         {
@@ -98,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         public GetAccountDnsSettingsInvokeArgs()
         {
@@ -114,7 +129,11 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
+        /// <summary>
+        /// When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
+        /// </summary>
+        public readonly bool EnforceDnsOnly;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -123,13 +142,16 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetAccountDnsSettingsResult(
-            string accountId,
+            string? accountId,
+
+            bool enforceDnsOnly,
 
             string id,
 
             Outputs.GetAccountDnsSettingsZoneDefaultsResult zoneDefaults)
         {
             AccountId = accountId;
+            EnforceDnsOnly = enforceDnsOnly;
             Id = id;
             ZoneDefaults = zoneDefaults;
         }

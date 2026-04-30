@@ -21,8 +21,8 @@ __all__ = ['TeamsLocationArgs', 'TeamsLocation']
 @pulumi.input_type
 class TeamsLocationArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  client_default: Optional[pulumi.Input[_builtins.bool]] = None,
                  dns_destination_ips_id: Optional[pulumi.Input[_builtins.str]] = None,
                  ecs_support: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -38,8 +38,9 @@ class TeamsLocationArgs:
         :param pulumi.Input['TeamsLocationEndpointsArgs'] endpoints: Configure the destination endpoints for this location.
         :param pulumi.Input[Sequence[pulumi.Input['TeamsLocationNetworkArgs']]] networks: Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if client_default is not None:
             pulumi.set(__self__, "client_default", client_default)
         if dns_destination_ips_id is not None:
@@ -52,15 +53,6 @@ class TeamsLocationArgs:
             pulumi.set(__self__, "networks", networks)
 
     @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
-
-    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
         """
@@ -71,6 +63,15 @@ class TeamsLocationArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientDefault")
@@ -374,6 +375,12 @@ class TeamsLocation(pulumi.CustomResource):
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TeamsLocationNetworkArgs', 'TeamsLocationNetworkArgsDict']]]]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Cloudflare Zero Trust Secure DNS Locations Write`
+        - `Zero Trust Read`
+        - `Zero Trust Write`
+
         ## Example Usage
 
         ```python
@@ -438,6 +445,12 @@ class TeamsLocation(pulumi.CustomResource):
                  args: TeamsLocationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Cloudflare Zero Trust Secure DNS Locations Write`
+        - `Zero Trust Read`
+        - `Zero Trust Write`
+
         ## Example Usage
 
         ```python
@@ -518,8 +531,6 @@ class TeamsLocation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TeamsLocationArgs.__new__(TeamsLocationArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["client_default"] = client_default
             __props__.__dict__["dns_destination_ips_id"] = dns_destination_ips_id
@@ -603,7 +614,7 @@ class TeamsLocation(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property

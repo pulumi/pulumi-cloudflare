@@ -157,6 +157,12 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+        /// </summary>
+        [Output("oauthConfiguration")]
+        public Output<Outputs.ZeroTrustAccessApplicationOauthConfiguration?> OauthConfiguration { get; private set; } = null!;
+
+        /// <summary>
         /// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if CorsHeaders is set.
         /// </summary>
         [Output("optionsPreflightBypass")]
@@ -457,6 +463,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+        /// </summary>
+        [Input("oauthConfiguration")]
+        public Input<Inputs.ZeroTrustAccessApplicationOauthConfigurationArgs>? OauthConfiguration { get; set; }
+
+        /// <summary>
         /// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if CorsHeaders is set.
         /// </summary>
         [Input("optionsPreflightBypass")]
@@ -743,6 +755,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+        /// </summary>
+        [Input("oauthConfiguration")]
+        public Input<Inputs.ZeroTrustAccessApplicationOauthConfigurationGetArgs>? OauthConfiguration { get; set; }
 
         /// <summary>
         /// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if CorsHeaders is set.

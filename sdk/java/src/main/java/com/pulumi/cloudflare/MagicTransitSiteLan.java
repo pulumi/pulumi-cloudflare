@@ -21,6 +21,13 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Magic Transit Read`
+ * - `Magic Transit Write`
+ * - `Magic WAN Read`
+ * - `Magic WAN Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -56,6 +63,8 @@ import javax.annotation.Nullable;
  *             .siteId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .bondId(2)
  *             .haLink(true)
+ *             .isBreakout(true)
+ *             .isPrioritized(true)
  *             .name("name")
  *             .nat(MagicTransitSiteLanNatArgs.builder()
  *                 .staticPrefix("192.0.2.0/24")
@@ -108,14 +117,14 @@ public class MagicTransitSiteLan extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return Identifier
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     @Export(name="bondId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> bondId;
@@ -136,6 +145,34 @@ public class MagicTransitSiteLan extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> haLink() {
         return Codegen.optional(this.haLink);
+    }
+    /**
+     * mark true to use this LAN for source-based breakout traffic
+     * 
+     */
+    @Export(name="isBreakout", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> isBreakout;
+
+    /**
+     * @return mark true to use this LAN for source-based breakout traffic
+     * 
+     */
+    public Output<Optional<Boolean>> isBreakout() {
+        return Codegen.optional(this.isBreakout);
+    }
+    /**
+     * mark true to use this LAN for source-based prioritized traffic
+     * 
+     */
+    @Export(name="isPrioritized", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> isPrioritized;
+
+    /**
+     * @return mark true to use this LAN for source-based prioritized traffic
+     * 
+     */
+    public Output<Optional<Boolean>> isPrioritized() {
+        return Codegen.optional(this.isPrioritized);
     }
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> name;

@@ -12,6 +12,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Zero Trust Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -81,7 +85,7 @@ import (
 type ZeroTrustDeviceCustomProfile struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Whether to allow the user to switch WARP between modes.
 	AllowModeSwitch pulumi.BoolOutput `pulumi:"allowModeSwitch"`
 	// Whether to receive update notifications when a new version of the client is available.
@@ -140,9 +144,6 @@ func NewZeroTrustDeviceCustomProfile(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Match == nil {
 		return nil, errors.New("invalid value for required argument 'Match'")
 	}
@@ -291,7 +292,7 @@ func (ZeroTrustDeviceCustomProfileState) ElementType() reflect.Type {
 }
 
 type zeroTrustDeviceCustomProfileArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Whether to allow the user to switch WARP between modes.
 	AllowModeSwitch *bool `pulumi:"allowModeSwitch"`
 	// Whether to receive update notifications when a new version of the client is available.
@@ -339,7 +340,7 @@ type zeroTrustDeviceCustomProfileArgs struct {
 
 // The set of arguments for constructing a ZeroTrustDeviceCustomProfile resource.
 type ZeroTrustDeviceCustomProfileArgs struct {
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// Whether to allow the user to switch WARP between modes.
 	AllowModeSwitch pulumi.BoolPtrInput
 	// Whether to receive update notifications when a new version of the client is available.
@@ -472,8 +473,8 @@ func (o ZeroTrustDeviceCustomProfileOutput) ToZeroTrustDeviceCustomProfileOutput
 	return o
 }
 
-func (o ZeroTrustDeviceCustomProfileOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o ZeroTrustDeviceCustomProfileOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Whether to allow the user to switch WARP between modes.

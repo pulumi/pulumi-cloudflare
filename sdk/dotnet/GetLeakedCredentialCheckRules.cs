@@ -12,6 +12,13 @@ namespace Pulumi.Cloudflare
     public static class GetLeakedCredentialCheckRules
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account WAF Read`
+        /// - `Account WAF Write`
+        /// - `Zone WAF Read`
+        /// - `Zone WAF Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +37,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetLeakedCredentialCheckRulesResult> InvokeAsync(GetLeakedCredentialCheckRulesArgs args, InvokeOptions? options = null)
+        public static Task<GetLeakedCredentialCheckRulesResult> InvokeAsync(GetLeakedCredentialCheckRulesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLeakedCredentialCheckRulesResult>("cloudflare:index/getLeakedCredentialCheckRules:getLeakedCredentialCheckRules", args ?? new GetLeakedCredentialCheckRulesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account WAF Read`
+        /// - `Account WAF Write`
+        /// - `Zone WAF Read`
+        /// - `Zone WAF Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +66,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetLeakedCredentialCheckRulesResult> Invoke(GetLeakedCredentialCheckRulesInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetLeakedCredentialCheckRulesResult> Invoke(GetLeakedCredentialCheckRulesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLeakedCredentialCheckRulesResult>("cloudflare:index/getLeakedCredentialCheckRules:getLeakedCredentialCheckRules", args ?? new GetLeakedCredentialCheckRulesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account WAF Read`
+        /// - `Account WAF Write`
+        /// - `Zone WAF Read`
+        /// - `Zone WAF Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -90,8 +111,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Defines an identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetLeakedCredentialCheckRulesArgs()
         {
@@ -110,8 +131,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Defines an identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetLeakedCredentialCheckRulesInvokeArgs()
         {
@@ -138,7 +159,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Defines an identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetLeakedCredentialCheckRulesResult(
@@ -148,7 +169,7 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<Outputs.GetLeakedCredentialCheckRulesResultResult> results,
 
-            string zoneId)
+            string? zoneId)
         {
             Id = id;
             MaxItems = maxItems;

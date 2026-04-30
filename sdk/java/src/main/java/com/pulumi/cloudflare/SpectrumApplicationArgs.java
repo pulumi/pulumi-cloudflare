@@ -203,15 +203,15 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
      * Zone identifier.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private Output<String> zoneId;
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
 
     /**
      * @return Zone identifier.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private SpectrumApplicationArgs() {}
@@ -508,7 +508,7 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder zoneId(Output<String> zoneId) {
+        public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -529,9 +529,6 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
             }
             if ($.protocol == null) {
                 throw new MissingRequiredPropertyException("SpectrumApplicationArgs", "protocol");
-            }
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("SpectrumApplicationArgs", "zoneId");
             }
             return $;
         }

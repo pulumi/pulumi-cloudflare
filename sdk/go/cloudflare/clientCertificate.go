@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `SSL and Certificates Read`
+// - `SSL and Certificates Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -85,7 +90,7 @@ type ClientCertificate struct {
 	// The number of days the Client Certificate will be valid after the issuedOn date
 	ValidityDays pulumi.IntOutput `pulumi:"validityDays"`
 	// Identifier.
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewClientCertificate registers a new resource with the given unique name, arguments, and options.
@@ -100,9 +105,6 @@ func NewClientCertificate(ctx *pulumi.Context,
 	}
 	if args.ValidityDays == nil {
 		return nil, errors.New("invalid value for required argument 'ValidityDays'")
-	}
-	if args.ZoneId == nil {
-		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ClientCertificate
@@ -219,7 +221,7 @@ type clientCertificateArgs struct {
 	// The number of days the Client Certificate will be valid after the issuedOn date
 	ValidityDays int `pulumi:"validityDays"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ClientCertificate resource.
@@ -230,7 +232,7 @@ type ClientCertificateArgs struct {
 	// The number of days the Client Certificate will be valid after the issuedOn date
 	ValidityDays pulumi.IntInput
 	// Identifier.
-	ZoneId pulumi.StringInput
+	ZoneId pulumi.StringPtrInput
 }
 
 func (ClientCertificateArgs) ElementType() reflect.Type {
@@ -411,8 +413,8 @@ func (o ClientCertificateOutput) ValidityDays() pulumi.IntOutput {
 }
 
 // Identifier.
-func (o ClientCertificateOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ClientCertificate) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+func (o ClientCertificateOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientCertificate) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type ClientCertificateArrayOutput struct{ *pulumi.OutputState }

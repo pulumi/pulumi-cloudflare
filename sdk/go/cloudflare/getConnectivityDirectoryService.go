@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetConnectivityDirectoryService(ctx, &cloudflare.LookupConnectivityDirectoryServiceArgs{
-//				AccountId: "account_id",
+//				AccountId: pulumi.StringRef("account_id"),
 //				ServiceId: pulumi.StringRef("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
 //			}, nil)
 //			if err != nil {
@@ -49,26 +49,30 @@ func LookupConnectivityDirectoryService(ctx *pulumi.Context, args *LookupConnect
 
 // A collection of arguments for invoking getConnectivityDirectoryService.
 type LookupConnectivityDirectoryServiceArgs struct {
-	AccountId string                                 `pulumi:"accountId"`
+	AccountId *string                                `pulumi:"accountId"`
 	Filter    *GetConnectivityDirectoryServiceFilter `pulumi:"filter"`
 	ServiceId *string                                `pulumi:"serviceId"`
 }
 
 // A collection of values returned by getConnectivityDirectoryService.
 type LookupConnectivityDirectoryServiceResult struct {
-	AccountId string                                 `pulumi:"accountId"`
-	CreatedAt string                                 `pulumi:"createdAt"`
-	Filter    *GetConnectivityDirectoryServiceFilter `pulumi:"filter"`
-	Host      GetConnectivityDirectoryServiceHost    `pulumi:"host"`
-	HttpPort  int                                    `pulumi:"httpPort"`
-	HttpsPort int                                    `pulumi:"httpsPort"`
+	AccountId *string `pulumi:"accountId"`
+	// Available values: "postgresql", "mysql".
+	AppProtocol string                                 `pulumi:"appProtocol"`
+	CreatedAt   string                                 `pulumi:"createdAt"`
+	Filter      *GetConnectivityDirectoryServiceFilter `pulumi:"filter"`
+	Host        GetConnectivityDirectoryServiceHost    `pulumi:"host"`
+	HttpPort    int                                    `pulumi:"httpPort"`
+	HttpsPort   int                                    `pulumi:"httpsPort"`
 	// The ID of this resource.
 	Id        string `pulumi:"id"`
 	Name      string `pulumi:"name"`
 	ServiceId string `pulumi:"serviceId"`
-	// Available values: "http".
-	Type      string `pulumi:"type"`
-	UpdatedAt string `pulumi:"updatedAt"`
+	TcpPort   int    `pulumi:"tcpPort"`
+	// TLS settings for a connectivity service.
+	TlsSettings GetConnectivityDirectoryServiceTlsSettings `pulumi:"tlsSettings"`
+	Type        string                                     `pulumi:"type"`
+	UpdatedAt   string                                     `pulumi:"updatedAt"`
 }
 
 func LookupConnectivityDirectoryServiceOutput(ctx *pulumi.Context, args LookupConnectivityDirectoryServiceOutputArgs, opts ...pulumi.InvokeOption) LookupConnectivityDirectoryServiceResultOutput {
@@ -82,7 +86,7 @@ func LookupConnectivityDirectoryServiceOutput(ctx *pulumi.Context, args LookupCo
 
 // A collection of arguments for invoking getConnectivityDirectoryService.
 type LookupConnectivityDirectoryServiceOutputArgs struct {
-	AccountId pulumi.StringInput                            `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput                         `pulumi:"accountId"`
 	Filter    GetConnectivityDirectoryServiceFilterPtrInput `pulumi:"filter"`
 	ServiceId pulumi.StringPtrInput                         `pulumi:"serviceId"`
 }
@@ -106,8 +110,13 @@ func (o LookupConnectivityDirectoryServiceResultOutput) ToLookupConnectivityDire
 	return o
 }
 
-func (o LookupConnectivityDirectoryServiceResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupConnectivityDirectoryServiceResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupConnectivityDirectoryServiceResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupConnectivityDirectoryServiceResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// Available values: "postgresql", "mysql".
+func (o LookupConnectivityDirectoryServiceResultOutput) AppProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectivityDirectoryServiceResult) string { return v.AppProtocol }).(pulumi.StringOutput)
 }
 
 func (o LookupConnectivityDirectoryServiceResultOutput) CreatedAt() pulumi.StringOutput {
@@ -145,7 +154,17 @@ func (o LookupConnectivityDirectoryServiceResultOutput) ServiceId() pulumi.Strin
 	return o.ApplyT(func(v LookupConnectivityDirectoryServiceResult) string { return v.ServiceId }).(pulumi.StringOutput)
 }
 
-// Available values: "http".
+func (o LookupConnectivityDirectoryServiceResultOutput) TcpPort() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupConnectivityDirectoryServiceResult) int { return v.TcpPort }).(pulumi.IntOutput)
+}
+
+// TLS settings for a connectivity service.
+func (o LookupConnectivityDirectoryServiceResultOutput) TlsSettings() GetConnectivityDirectoryServiceTlsSettingsOutput {
+	return o.ApplyT(func(v LookupConnectivityDirectoryServiceResult) GetConnectivityDirectoryServiceTlsSettings {
+		return v.TlsSettings
+	}).(GetConnectivityDirectoryServiceTlsSettingsOutput)
+}
+
 func (o LookupConnectivityDirectoryServiceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectivityDirectoryServiceResult) string { return v.Type }).(pulumi.StringOutput)
 }

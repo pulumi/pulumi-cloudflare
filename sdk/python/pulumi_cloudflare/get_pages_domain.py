@@ -67,7 +67,7 @@ class GetPagesDomainResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -172,6 +172,11 @@ def get_pages_domain(account_id: Optional[_builtins.str] = None,
                      project_name: Optional[_builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPagesDomainResult:
     """
+    Accepted Permissions
+
+    - `Pages Read`
+    - `Pages Write`
+
     ## Example Usage
 
     ```python
@@ -208,11 +213,16 @@ def get_pages_domain(account_id: Optional[_builtins.str] = None,
         validation_data=pulumi.get(__ret__, 'validation_data'),
         verification_data=pulumi.get(__ret__, 'verification_data'),
         zone_tag=pulumi.get(__ret__, 'zone_tag'))
-def get_pages_domain_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_pages_domain_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             domain_name: Optional[pulumi.Input[_builtins.str]] = None,
                             project_name: Optional[pulumi.Input[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPagesDomainResult]:
     """
+    Accepted Permissions
+
+    - `Pages Read`
+    - `Pages Write`
+
     ## Example Usage
 
     ```python

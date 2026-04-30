@@ -5,6 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -57,7 +63,7 @@ export class WorkersForPlatformsNamespace extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * Identifier.
      */
@@ -103,7 +109,7 @@ export class WorkersForPlatformsNamespace extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     /** @deprecated cloudflare.index/workersforplatformsnamespace.WorkersForPlatformsNamespace has been deprecated in favor of cloudflare.index/workersforplatformsdispatchnamespace.WorkersForPlatformsDispatchNamespace */
-    constructor(name: string, args: WorkersForPlatformsNamespaceArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: WorkersForPlatformsNamespaceArgs, opts?: pulumi.CustomResourceOptions)
     /** @deprecated cloudflare.index/workersforplatformsnamespace.WorkersForPlatformsNamespace has been deprecated in favor of cloudflare.index/workersforplatformsdispatchnamespace.WorkersForPlatformsDispatchNamespace */
     constructor(name: string, argsOrState?: WorkersForPlatformsNamespaceArgs | WorkersForPlatformsNamespaceState, opts?: pulumi.CustomResourceOptions) {
         pulumi.log.warn("WorkersForPlatformsNamespace is deprecated: cloudflare.index/workersforplatformsnamespace.WorkersForPlatformsNamespace has been deprecated in favor of cloudflare.index/workersforplatformsdispatchnamespace.WorkersForPlatformsDispatchNamespace")
@@ -123,9 +129,6 @@ export class WorkersForPlatformsNamespace extends pulumi.CustomResource {
             resourceInputs["trustedWorkers"] = state?.trustedWorkers;
         } else {
             const args = argsOrState as WorkersForPlatformsNamespaceArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["name"] = args?.name;
             resourceInputs["createdBy"] = undefined /*out*/;
@@ -197,7 +200,7 @@ export interface WorkersForPlatformsNamespaceArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * The name of the dispatch namespace.
      */

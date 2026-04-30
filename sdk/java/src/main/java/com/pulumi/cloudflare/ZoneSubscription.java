@@ -16,6 +16,11 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Billing Read`
+ * - `Billing Write`
+ * 
  * ## Example Usage
  * 
  * <pre>

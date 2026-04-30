@@ -61,7 +61,7 @@ public final class GetZoneLockdownResult {
      * @return Defines an identifier.
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetZoneLockdownResult() {}
     /**
@@ -127,8 +127,8 @@ public final class GetZoneLockdownResult {
      * @return Defines an identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -149,7 +149,7 @@ public final class GetZoneLockdownResult {
         private String modifiedOn;
         private Boolean paused;
         private List<String> urls;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetZoneLockdownResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -240,10 +240,8 @@ public final class GetZoneLockdownResult {
             return urls(List.of(urls));
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetZoneLockdownResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

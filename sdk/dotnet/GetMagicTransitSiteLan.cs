@@ -12,6 +12,13 @@ namespace Pulumi.Cloudflare
     public static class GetMagicTransitSiteLan
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Magic Transit Read`
+        /// - `Magic Transit Write`
+        /// - `Magic WAN Read`
+        /// - `Magic WAN Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -36,6 +43,13 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMagicTransitSiteLanResult>("cloudflare:index/getMagicTransitSiteLan:getMagicTransitSiteLan", args ?? new GetMagicTransitSiteLanArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Magic Transit Read`
+        /// - `Magic Transit Write`
+        /// - `Magic WAN Read`
+        /// - `Magic WAN Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -60,6 +74,13 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetMagicTransitSiteLanResult>("cloudflare:index/getMagicTransitSiteLan:getMagicTransitSiteLan", args ?? new GetMagicTransitSiteLanInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Magic Transit Read`
+        /// - `Magic Transit Write`
+        /// - `Magic WAN Read`
+        /// - `Magic WAN Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -90,8 +111,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Identifier
@@ -116,8 +137,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Identifier
@@ -144,7 +165,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         public readonly int BondId;
         /// <summary>
         /// mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
@@ -154,6 +175,14 @@ namespace Pulumi.Cloudflare
         /// Identifier
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// mark true to use this LAN for source-based breakout traffic
+        /// </summary>
+        public readonly bool IsBreakout;
+        /// <summary>
+        /// mark true to use this LAN for source-based prioritized traffic
+        /// </summary>
+        public readonly bool IsPrioritized;
         /// <summary>
         /// Identifier
         /// </summary>
@@ -177,13 +206,17 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetMagicTransitSiteLanResult(
-            string accountId,
+            string? accountId,
 
             int bondId,
 
             bool haLink,
 
             string id,
+
+            bool isBreakout,
+
+            bool isPrioritized,
 
             string lanId,
 
@@ -205,6 +238,8 @@ namespace Pulumi.Cloudflare
             BondId = bondId;
             HaLink = haLink;
             Id = id;
+            IsBreakout = isBreakout;
+            IsPrioritized = isPrioritized;
             LanId = lanId;
             Name = name;
             Nat = nat;

@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Calls Read`
+ * - `Calls Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -52,7 +57,7 @@ export class CallsTurnApp extends pulumi.CustomResource {
     /**
      * The account identifier tag.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * The date and time the item was created.
      */
@@ -85,7 +90,7 @@ export class CallsTurnApp extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: CallsTurnAppArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: CallsTurnAppArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CallsTurnAppArgs | CallsTurnAppState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -100,9 +105,6 @@ export class CallsTurnApp extends pulumi.CustomResource {
             resourceInputs["uid"] = state?.uid;
         } else {
             const args = argsOrState as CallsTurnAppArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["keyId"] = args?.keyId;
             resourceInputs["name"] = args?.name;
@@ -159,7 +161,7 @@ export interface CallsTurnAppArgs {
     /**
      * The account identifier tag.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * A Cloudflare-generated unique identifier for a item.
      */

@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustDexTestResult {
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return The configuration object which contains the details for the WARP client to conduct the test.
      * 
@@ -67,8 +67,8 @@ public final class GetZeroTrustDexTestResult {
     private String testId;
 
     private GetZeroTrustDexTestResult() {}
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return The configuration object which contains the details for the WARP client to conduct the test.
@@ -149,7 +149,7 @@ public final class GetZeroTrustDexTestResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private GetZeroTrustDexTestData data;
         private String description;
         private @Nullable String dexTestId;
@@ -179,10 +179,8 @@ public final class GetZeroTrustDexTestResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustDexTestResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

@@ -42,15 +42,15 @@ public final class GetApiShieldSchemaPlainArgs extends com.pulumi.resources.Invo
      * Identifier.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private String zoneId;
+    @Import(name="zoneId")
+    private @Nullable String zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private GetApiShieldSchemaPlainArgs() {}
@@ -101,7 +101,7 @@ public final class GetApiShieldSchemaPlainArgs extends com.pulumi.resources.Invo
          * @return builder
          * 
          */
-        public Builder zoneId(String zoneId) {
+        public Builder zoneId(@Nullable String zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -109,9 +109,6 @@ public final class GetApiShieldSchemaPlainArgs extends com.pulumi.resources.Invo
         public GetApiShieldSchemaPlainArgs build() {
             if ($.schemaId == null) {
                 throw new MissingRequiredPropertyException("GetApiShieldSchemaPlainArgs", "schemaId");
-            }
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("GetApiShieldSchemaPlainArgs", "zoneId");
             }
             return $;
         }

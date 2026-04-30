@@ -31,7 +31,7 @@ export function getZeroTrustGatewayPolicy(args: GetZeroTrustGatewayPolicyArgs, o
  * A collection of arguments for invoking getZeroTrustGatewayPolicy.
  */
 export interface GetZeroTrustGatewayPolicyArgs {
-    accountId: string;
+    accountId?: string;
     /**
      * Identify the API resource with a UUID.
      */
@@ -42,7 +42,7 @@ export interface GetZeroTrustGatewayPolicyArgs {
  * A collection of values returned by getZeroTrustGatewayPolicy.
  */
 export interface GetZeroTrustGatewayPolicyResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
      * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
@@ -152,7 +152,7 @@ export function getZeroTrustGatewayPolicyOutput(args: GetZeroTrustGatewayPolicyO
  * A collection of arguments for invoking getZeroTrustGatewayPolicy.
  */
 export interface GetZeroTrustGatewayPolicyOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Identify the API resource with a UUID.
      */

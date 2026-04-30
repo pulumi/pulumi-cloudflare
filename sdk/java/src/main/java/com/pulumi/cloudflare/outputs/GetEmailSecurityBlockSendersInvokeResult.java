@@ -19,7 +19,7 @@ public final class GetEmailSecurityBlockSendersInvokeResult {
      * @return Account Identifier
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return The sorting direction.
      * Available values: &#34;asc&#34;, &#34;desc&#34;.
@@ -67,8 +67,8 @@ public final class GetEmailSecurityBlockSendersInvokeResult {
      * @return Account Identifier
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return The sorting direction.
@@ -137,7 +137,7 @@ public final class GetEmailSecurityBlockSendersInvokeResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private @Nullable String direction;
         private String id;
         private @Nullable Integer maxItems;
@@ -161,10 +161,8 @@ public final class GetEmailSecurityBlockSendersInvokeResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetEmailSecurityBlockSendersInvokeResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

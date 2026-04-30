@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetUniversalSslSetting
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetUniversalSslSettingResult> InvokeAsync(GetUniversalSslSettingArgs args, InvokeOptions? options = null)
+        public static Task<GetUniversalSslSettingResult> InvokeAsync(GetUniversalSslSettingArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUniversalSslSettingResult>("cloudflare:index/getUniversalSslSetting:getUniversalSslSetting", args ?? new GetUniversalSslSettingArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetUniversalSslSettingResult> Invoke(GetUniversalSslSettingInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetUniversalSslSettingResult> Invoke(GetUniversalSslSettingInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUniversalSslSettingResult>("cloudflare:index/getUniversalSslSetting:getUniversalSslSetting", args ?? new GetUniversalSslSettingInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +99,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetUniversalSslSettingArgs()
         {
@@ -98,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetUniversalSslSettingInvokeArgs()
         {
@@ -119,7 +134,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetUniversalSslSettingResult(
@@ -127,7 +142,7 @@ namespace Pulumi.Cloudflare
 
             string id,
 
-            string zoneId)
+            string? zoneId)
         {
             Enabled = enabled;
             Id = id;

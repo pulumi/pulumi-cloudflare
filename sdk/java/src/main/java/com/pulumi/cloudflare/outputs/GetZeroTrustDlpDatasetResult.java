@@ -12,10 +12,12 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustDlpDatasetResult {
-    private String accountId;
+    private @Nullable String accountId;
     private Boolean caseSensitive;
     private List<GetZeroTrustDlpDatasetColumn> columns;
     private String createdAt;
@@ -47,8 +49,8 @@ public final class GetZeroTrustDlpDatasetResult {
     private List<GetZeroTrustDlpDatasetUpload> uploads;
 
     private GetZeroTrustDlpDatasetResult() {}
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     public Boolean caseSensitive() {
         return this.caseSensitive;
@@ -115,7 +117,7 @@ public final class GetZeroTrustDlpDatasetResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private Boolean caseSensitive;
         private List<GetZeroTrustDlpDatasetColumn> columns;
         private String createdAt;
@@ -149,10 +151,8 @@ public final class GetZeroTrustDlpDatasetResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustDlpDatasetResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

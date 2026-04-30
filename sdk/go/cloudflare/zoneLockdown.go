@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Firewall Services Read`
+// - `Firewall Services Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -73,7 +78,7 @@ type ZoneLockdown struct {
 	// The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
 	Urls pulumi.StringArrayOutput `pulumi:"urls"`
 	// Defines an identifier.
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewZoneLockdown registers a new resource with the given unique name, arguments, and options.
@@ -88,9 +93,6 @@ func NewZoneLockdown(ctx *pulumi.Context,
 	}
 	if args.Urls == nil {
 		return nil, errors.New("invalid value for required argument 'Urls'")
-	}
-	if args.ZoneId == nil {
-		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZoneLockdown
@@ -168,7 +170,7 @@ type zoneLockdownArgs struct {
 	// The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
 	Urls []string `pulumi:"urls"`
 	// Defines an identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ZoneLockdown resource.
@@ -184,7 +186,7 @@ type ZoneLockdownArgs struct {
 	// The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
 	Urls pulumi.StringArrayInput
 	// Defines an identifier.
-	ZoneId pulumi.StringInput
+	ZoneId pulumi.StringPtrInput
 }
 
 func (ZoneLockdownArgs) ElementType() reflect.Type {
@@ -310,8 +312,8 @@ func (o ZoneLockdownOutput) Urls() pulumi.StringArrayOutput {
 }
 
 // Defines an identifier.
-func (o ZoneLockdownOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZoneLockdown) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+func (o ZoneLockdownOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneLockdown) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type ZoneLockdownArrayOutput struct{ *pulumi.OutputState }

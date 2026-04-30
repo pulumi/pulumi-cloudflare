@@ -5,6 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Gateway`
+ * - `Account API Gateway Read`
+ * - `Domain API Gateway`
+ * - `Domain API Gateway Read`
+ *
  * > `cloudflare.ApiShieldOperationSchemaValidationSettings` is in a deprecation phase and will be removed in the future.
  *   Instead, please utilize the cloudflare.SchemaValidationOperationSettings resource instead.
  *
@@ -72,7 +79,7 @@ export class ApiShieldOperationSchemaValidationSettings extends pulumi.CustomRes
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a ApiShieldOperationSchemaValidationSettings resource with the given unique name, arguments, and options.
@@ -94,9 +101,6 @@ export class ApiShieldOperationSchemaValidationSettings extends pulumi.CustomRes
             const args = argsOrState as ApiShieldOperationSchemaValidationSettingsArgs | undefined;
             if (args?.operationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'operationId'");
-            }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["mitigationAction"] = args?.mitigationAction;
             resourceInputs["operationId"] = args?.operationId;
@@ -152,5 +156,5 @@ export interface ApiShieldOperationSchemaValidationSettingsArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

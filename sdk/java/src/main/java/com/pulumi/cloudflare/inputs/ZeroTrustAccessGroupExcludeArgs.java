@@ -27,6 +27,7 @@ import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupExcludeOidcArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupExcludeOktaArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupExcludeSamlArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupExcludeServiceTokenArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupExcludeUserRiskScoreArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.util.Objects;
@@ -222,6 +223,13 @@ public final class ZeroTrustAccessGroupExcludeArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.serviceToken);
     }
 
+    @Import(name="userRiskScore")
+    private @Nullable Output<ZeroTrustAccessGroupExcludeUserRiskScoreArgs> userRiskScore;
+
+    public Optional<Output<ZeroTrustAccessGroupExcludeUserRiskScoreArgs>> userRiskScore() {
+        return Optional.ofNullable(this.userRiskScore);
+    }
+
     private ZeroTrustAccessGroupExcludeArgs() {}
 
     private ZeroTrustAccessGroupExcludeArgs(ZeroTrustAccessGroupExcludeArgs $) {
@@ -249,6 +257,7 @@ public final class ZeroTrustAccessGroupExcludeArgs extends com.pulumi.resources.
         this.okta = $.okta;
         this.saml = $.saml;
         this.serviceToken = $.serviceToken;
+        this.userRiskScore = $.userRiskScore;
     }
 
     public static Builder builder() {
@@ -507,6 +516,15 @@ public final class ZeroTrustAccessGroupExcludeArgs extends com.pulumi.resources.
 
         public Builder serviceToken(ZeroTrustAccessGroupExcludeServiceTokenArgs serviceToken) {
             return serviceToken(Output.of(serviceToken));
+        }
+
+        public Builder userRiskScore(@Nullable Output<ZeroTrustAccessGroupExcludeUserRiskScoreArgs> userRiskScore) {
+            $.userRiskScore = userRiskScore;
+            return this;
+        }
+
+        public Builder userRiskScore(ZeroTrustAccessGroupExcludeUserRiskScoreArgs userRiskScore) {
+            return userRiskScore(Output.of(userRiskScore));
         }
 
         public ZeroTrustAccessGroupExcludeArgs build() {

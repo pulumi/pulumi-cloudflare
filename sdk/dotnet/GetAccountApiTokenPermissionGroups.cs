@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetAccountApiTokenPermissionGroups
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Tokens Read`
+        /// - `Account API Tokens Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -32,10 +37,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetAccountApiTokenPermissionGroupsResult> InvokeAsync(GetAccountApiTokenPermissionGroupsArgs args, InvokeOptions? options = null)
+        public static Task<GetAccountApiTokenPermissionGroupsResult> InvokeAsync(GetAccountApiTokenPermissionGroupsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountApiTokenPermissionGroupsResult>("cloudflare:index/getAccountApiTokenPermissionGroups:getAccountApiTokenPermissionGroups", args ?? new GetAccountApiTokenPermissionGroupsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Tokens Read`
+        /// - `Account API Tokens Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -56,10 +66,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetAccountApiTokenPermissionGroupsResult> Invoke(GetAccountApiTokenPermissionGroupsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetAccountApiTokenPermissionGroupsResult> Invoke(GetAccountApiTokenPermissionGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountApiTokenPermissionGroupsResult>("cloudflare:index/getAccountApiTokenPermissionGroups:getAccountApiTokenPermissionGroups", args ?? new GetAccountApiTokenPermissionGroupsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Tokens Read`
+        /// - `Account API Tokens Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -90,8 +105,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Filter by the name of the permission group.
@@ -118,8 +133,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Filter by the name of the permission group.
@@ -148,7 +163,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -167,7 +182,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetAccountApiTokenPermissionGroupsResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

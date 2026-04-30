@@ -182,6 +182,11 @@ def get_api_token(filter: Optional[Union['GetApiTokenFilterArgs', 'GetApiTokenFi
                   token_id: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApiTokenResult:
     """
+    Accepted Permissions
+
+    - `API Tokens Read`
+    - `API Tokens Write`
+
     ## Example Usage
 
     ```python
@@ -217,6 +222,11 @@ def get_api_token_output(filter: Optional[pulumi.Input[Optional[Union['GetApiTok
                          token_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApiTokenResult]:
     """
+    Accepted Permissions
+
+    - `API Tokens Read`
+    - `API Tokens Write`
+
     ## Example Usage
 
     ```python

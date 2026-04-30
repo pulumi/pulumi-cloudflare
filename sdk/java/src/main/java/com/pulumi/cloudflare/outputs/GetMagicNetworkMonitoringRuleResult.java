@@ -10,10 +10,12 @@ import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMagicNetworkMonitoringRuleResult {
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
      * 
@@ -77,8 +79,8 @@ public final class GetMagicNetworkMonitoringRuleResult {
     private String zscoreTarget;
 
     private GetMagicNetworkMonitoringRuleResult() {}
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
@@ -175,7 +177,7 @@ public final class GetMagicNetworkMonitoringRuleResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private Boolean automaticAdvertisement;
         private Double bandwidthThreshold;
         private String duration;
@@ -207,10 +209,8 @@ public final class GetMagicNetworkMonitoringRuleResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetMagicNetworkMonitoringRuleResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

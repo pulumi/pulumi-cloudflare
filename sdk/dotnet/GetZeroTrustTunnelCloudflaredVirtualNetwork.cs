@@ -12,6 +12,13 @@ namespace Pulumi.Cloudflare
     public static class GetZeroTrustTunnelCloudflaredVirtualNetwork
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare One Networks Read`
+        /// - `Cloudflare One Networks Write`
+        /// - `Cloudflare Tunnel Read`
+        /// - `Cloudflare Tunnel Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,10 +38,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZeroTrustTunnelCloudflaredVirtualNetworkResult> InvokeAsync(GetZeroTrustTunnelCloudflaredVirtualNetworkArgs args, InvokeOptions? options = null)
+        public static Task<GetZeroTrustTunnelCloudflaredVirtualNetworkResult> InvokeAsync(GetZeroTrustTunnelCloudflaredVirtualNetworkArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustTunnelCloudflaredVirtualNetworkResult>("cloudflare:index/getZeroTrustTunnelCloudflaredVirtualNetwork:getZeroTrustTunnelCloudflaredVirtualNetwork", args ?? new GetZeroTrustTunnelCloudflaredVirtualNetworkArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare One Networks Read`
+        /// - `Cloudflare One Networks Write`
+        /// - `Cloudflare Tunnel Read`
+        /// - `Cloudflare Tunnel Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,10 +68,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZeroTrustTunnelCloudflaredVirtualNetworkResult> Invoke(GetZeroTrustTunnelCloudflaredVirtualNetworkInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZeroTrustTunnelCloudflaredVirtualNetworkResult> Invoke(GetZeroTrustTunnelCloudflaredVirtualNetworkInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustTunnelCloudflaredVirtualNetworkResult>("cloudflare:index/getZeroTrustTunnelCloudflaredVirtualNetwork:getZeroTrustTunnelCloudflaredVirtualNetwork", args ?? new GetZeroTrustTunnelCloudflaredVirtualNetworkInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare One Networks Read`
+        /// - `Cloudflare One Networks Write`
+        /// - `Cloudflare Tunnel Read`
+        /// - `Cloudflare Tunnel Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +108,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Cloudflare account ID
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         [Input("filter")]
         public Inputs.GetZeroTrustTunnelCloudflaredVirtualNetworkFilterArgs? Filter { get; set; }
@@ -110,8 +131,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Cloudflare account ID
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("filter")]
         public Input<Inputs.GetZeroTrustTunnelCloudflaredVirtualNetworkFilterInputArgs>? Filter { get; set; }
@@ -135,7 +156,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Cloudflare account ID
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Optional remark describing the virtual network.
         /// </summary>
@@ -168,7 +189,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustTunnelCloudflaredVirtualNetworkResult(
-            string accountId,
+            string? accountId,
 
             string comment,
 

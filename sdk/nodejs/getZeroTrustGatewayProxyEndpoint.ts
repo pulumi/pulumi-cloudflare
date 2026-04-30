@@ -29,7 +29,7 @@ export function getZeroTrustGatewayProxyEndpoint(args: GetZeroTrustGatewayProxyE
  * A collection of arguments for invoking getZeroTrustGatewayProxyEndpoint.
  */
 export interface GetZeroTrustGatewayProxyEndpointArgs {
-    accountId: string;
+    accountId?: string;
     proxyEndpointId: string;
 }
 
@@ -37,7 +37,7 @@ export interface GetZeroTrustGatewayProxyEndpointArgs {
  * A collection of values returned by getZeroTrustGatewayProxyEndpoint.
  */
 export interface GetZeroTrustGatewayProxyEndpointResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     readonly createdAt: string;
     /**
      * The ID of this resource.
@@ -88,6 +88,6 @@ export function getZeroTrustGatewayProxyEndpointOutput(args: GetZeroTrustGateway
  * A collection of arguments for invoking getZeroTrustGatewayProxyEndpoint.
  */
 export interface GetZeroTrustGatewayProxyEndpointOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     proxyEndpointId: pulumi.Input<string>;
 }

@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustAccessAiControlsMcpPortal(ctx, &cloudflare.LookupZeroTrustAccessAiControlsMcpPortalArgs{
-//				AccountId: "a86a8f5c339544d7bdc89926de14fb8c",
+//				AccountId: pulumi.StringRef("a86a8f5c339544d7bdc89926de14fb8c"),
 //				Id:        pulumi.StringRef("my-mcp-portal"),
 //			}, nil)
 //			if err != nil {
@@ -49,7 +49,7 @@ func LookupZeroTrustAccessAiControlsMcpPortal(ctx *pulumi.Context, args *LookupZ
 
 // A collection of arguments for invoking getZeroTrustAccessAiControlsMcpPortal.
 type LookupZeroTrustAccessAiControlsMcpPortalArgs struct {
-	AccountId string                                       `pulumi:"accountId"`
+	AccountId *string                                      `pulumi:"accountId"`
 	Filter    *GetZeroTrustAccessAiControlsMcpPortalFilter `pulumi:"filter"`
 	// portal id
 	Id *string `pulumi:"id"`
@@ -57,12 +57,14 @@ type LookupZeroTrustAccessAiControlsMcpPortalArgs struct {
 
 // A collection of values returned by getZeroTrustAccessAiControlsMcpPortal.
 type LookupZeroTrustAccessAiControlsMcpPortalResult struct {
-	AccountId   string                                       `pulumi:"accountId"`
-	CreatedAt   string                                       `pulumi:"createdAt"`
-	CreatedBy   string                                       `pulumi:"createdBy"`
-	Description string                                       `pulumi:"description"`
-	Filter      *GetZeroTrustAccessAiControlsMcpPortalFilter `pulumi:"filter"`
-	Hostname    string                                       `pulumi:"hostname"`
+	AccountId *string `pulumi:"accountId"`
+	// Allow remote code execution in Dynamic Workers (beta)
+	AllowCodeMode bool                                         `pulumi:"allowCodeMode"`
+	CreatedAt     string                                       `pulumi:"createdAt"`
+	CreatedBy     string                                       `pulumi:"createdBy"`
+	Description   string                                       `pulumi:"description"`
+	Filter        *GetZeroTrustAccessAiControlsMcpPortalFilter `pulumi:"filter"`
+	Hostname      string                                       `pulumi:"hostname"`
 	// portal id
 	Id         string `pulumi:"id"`
 	ModifiedAt string `pulumi:"modifiedAt"`
@@ -84,7 +86,7 @@ func LookupZeroTrustAccessAiControlsMcpPortalOutput(ctx *pulumi.Context, args Lo
 
 // A collection of arguments for invoking getZeroTrustAccessAiControlsMcpPortal.
 type LookupZeroTrustAccessAiControlsMcpPortalOutputArgs struct {
-	AccountId pulumi.StringInput                                  `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput                               `pulumi:"accountId"`
 	Filter    GetZeroTrustAccessAiControlsMcpPortalFilterPtrInput `pulumi:"filter"`
 	// portal id
 	Id pulumi.StringPtrInput `pulumi:"id"`
@@ -109,8 +111,13 @@ func (o LookupZeroTrustAccessAiControlsMcpPortalResultOutput) ToLookupZeroTrustA
 	return o
 }
 
-func (o LookupZeroTrustAccessAiControlsMcpPortalResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustAccessAiControlsMcpPortalResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustAccessAiControlsMcpPortalResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessAiControlsMcpPortalResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// Allow remote code execution in Dynamic Workers (beta)
+func (o LookupZeroTrustAccessAiControlsMcpPortalResultOutput) AllowCodeMode() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessAiControlsMcpPortalResult) bool { return v.AllowCodeMode }).(pulumi.BoolOutput)
 }
 
 func (o LookupZeroTrustAccessAiControlsMcpPortalResultOutput) CreatedAt() pulumi.StringOutput {

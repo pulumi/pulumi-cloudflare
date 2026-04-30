@@ -43,7 +43,7 @@ class GetHyperdriveConfigsResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Define configurations using a unique string identifier.
         """
@@ -90,6 +90,11 @@ def get_hyperdrive_configs(account_id: Optional[_builtins.str] = None,
                            max_items: Optional[_builtins.int] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHyperdriveConfigsResult:
     """
+    Accepted Permissions
+
+    - `Hyperdrive Read`
+    - `Hyperdrive Write`
+
     ## Example Usage
 
     ```python
@@ -114,10 +119,15 @@ def get_hyperdrive_configs(account_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'))
-def get_hyperdrive_configs_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_hyperdrive_configs_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                   max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHyperdriveConfigsResult]:
     """
+    Accepted Permissions
+
+    - `Hyperdrive Read`
+    - `Hyperdrive Write`
+
     ## Example Usage
 
     ```python

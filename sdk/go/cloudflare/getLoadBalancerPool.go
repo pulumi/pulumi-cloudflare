@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Load Balancing: Monitors and Pools Read`
+// - `Load Balancing: Monitors and Pools Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetLoadBalancerPool(ctx, &cloudflare.LookupLoadBalancerPoolArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				PoolId:    pulumi.StringRef("17b5962d775c646f3f9725cbc7a53df4"),
 //			}, nil)
 //			if err != nil {
@@ -50,7 +55,7 @@ func LookupLoadBalancerPool(ctx *pulumi.Context, args *LookupLoadBalancerPoolArg
 // A collection of arguments for invoking getLoadBalancerPool.
 type LookupLoadBalancerPoolArgs struct {
 	// Identifier.
-	AccountId string                     `pulumi:"accountId"`
+	AccountId *string                    `pulumi:"accountId"`
 	Filter    *GetLoadBalancerPoolFilter `pulumi:"filter"`
 	PoolId    *string                    `pulumi:"poolId"`
 }
@@ -58,7 +63,7 @@ type LookupLoadBalancerPoolArgs struct {
 // A collection of values returned by getLoadBalancerPool.
 type LookupLoadBalancerPoolResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// A list of regions from which to run health checks. Null means every Cloudflare data center.
 	CheckRegions []string `pulumi:"checkRegions"`
 	CreatedOn    string   `pulumi:"createdOn"`
@@ -111,7 +116,7 @@ func LookupLoadBalancerPoolOutput(ctx *pulumi.Context, args LookupLoadBalancerPo
 // A collection of arguments for invoking getLoadBalancerPool.
 type LookupLoadBalancerPoolOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput                `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput             `pulumi:"accountId"`
 	Filter    GetLoadBalancerPoolFilterPtrInput `pulumi:"filter"`
 	PoolId    pulumi.StringPtrInput             `pulumi:"poolId"`
 }
@@ -136,8 +141,8 @@ func (o LookupLoadBalancerPoolResultOutput) ToLookupLoadBalancerPoolResultOutput
 }
 
 // Identifier.
-func (o LookupLoadBalancerPoolResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupLoadBalancerPoolResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupLoadBalancerPoolResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupLoadBalancerPoolResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // A list of regions from which to run health checks. Null means every Cloudflare data center.

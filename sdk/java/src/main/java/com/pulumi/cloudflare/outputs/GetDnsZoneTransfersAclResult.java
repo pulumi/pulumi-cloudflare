@@ -7,10 +7,12 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDnsZoneTransfersAclResult {
-    private String accountId;
+    private @Nullable String accountId;
     private String aclId;
     /**
      * @return The ID of this resource.
@@ -29,8 +31,8 @@ public final class GetDnsZoneTransfersAclResult {
     private String name;
 
     private GetDnsZoneTransfersAclResult() {}
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     public String aclId() {
         return this.aclId;
@@ -66,7 +68,7 @@ public final class GetDnsZoneTransfersAclResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String aclId;
         private String id;
         private String ipRange;
@@ -82,10 +84,8 @@ public final class GetDnsZoneTransfersAclResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetDnsZoneTransfersAclResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

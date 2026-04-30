@@ -11,6 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Domain Page Shield`
+// - `Domain Page Shield Read`
+// - `Page Shield`
+// - `Page Shield Read`
+// - `Zone Settings Read`
+// - `Zone Settings Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +35,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetPageShieldConnectionsList(ctx, &cloudflare.LookupPageShieldConnectionsListArgs{
-//				ZoneId:              "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId:              pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Direction:           pulumi.StringRef("asc"),
 //				ExcludeCdnCgi:       pulumi.BoolRef(true),
 //				ExcludeUrls:         pulumi.StringRef("blog.cloudflare.com,www.example"),
@@ -80,8 +89,7 @@ type LookupPageShieldConnectionsListArgs struct {
 	PrioritizeMalicious *bool    `pulumi:"prioritizeMalicious"`
 	Status              *string  `pulumi:"status"`
 	Urls                *string  `pulumi:"urls"`
-	// Identifier
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId              *string  `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getPageShieldConnectionsList.
@@ -109,8 +117,7 @@ type LookupPageShieldConnectionsListResult struct {
 	Results             []GetPageShieldConnectionsListResult `pulumi:"results"`
 	Status              *string                              `pulumi:"status"`
 	Urls                *string                              `pulumi:"urls"`
-	// Identifier
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId              *string                              `pulumi:"zoneId"`
 }
 
 func LookupPageShieldConnectionsListOutput(ctx *pulumi.Context, args LookupPageShieldConnectionsListOutputArgs, opts ...pulumi.InvokeOption) LookupPageShieldConnectionsListResultOutput {
@@ -144,8 +151,7 @@ type LookupPageShieldConnectionsListOutputArgs struct {
 	PrioritizeMalicious pulumi.BoolPtrInput    `pulumi:"prioritizeMalicious"`
 	Status              pulumi.StringPtrInput  `pulumi:"status"`
 	Urls                pulumi.StringPtrInput  `pulumi:"urls"`
-	// Identifier
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId              pulumi.StringPtrInput  `pulumi:"zoneId"`
 }
 
 func (LookupPageShieldConnectionsListOutputArgs) ElementType() reflect.Type {
@@ -235,9 +241,8 @@ func (o LookupPageShieldConnectionsListResultOutput) Urls() pulumi.StringPtrOutp
 	return o.ApplyT(func(v LookupPageShieldConnectionsListResult) *string { return v.Urls }).(pulumi.StringPtrOutput)
 }
 
-// Identifier
-func (o LookupPageShieldConnectionsListResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPageShieldConnectionsListResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupPageShieldConnectionsListResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPageShieldConnectionsListResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

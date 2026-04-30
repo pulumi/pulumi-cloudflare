@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloud Email Security: Read`
+ * - `Cloud Email Security: Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +24,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getEmailSecurityBlockSender(args: GetEmailSecurityBlockSenderArgs, opts?: pulumi.InvokeOptions): Promise<GetEmailSecurityBlockSenderResult> {
+export function getEmailSecurityBlockSender(args?: GetEmailSecurityBlockSenderArgs, opts?: pulumi.InvokeOptions): Promise<GetEmailSecurityBlockSenderResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getEmailSecurityBlockSender:getEmailSecurityBlockSender", {
         "accountId": args.accountId,
@@ -35,7 +41,7 @@ export interface GetEmailSecurityBlockSenderArgs {
     /**
      * Account Identifier
      */
-    accountId: string;
+    accountId?: string;
     filter?: inputs.GetEmailSecurityBlockSenderFilter;
     /**
      * The unique identifier for the allow policy.
@@ -50,7 +56,7 @@ export interface GetEmailSecurityBlockSenderResult {
     /**
      * Account Identifier
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     readonly comments: string;
     readonly createdAt: string;
     readonly filter?: outputs.GetEmailSecurityBlockSenderFilter;
@@ -71,6 +77,11 @@ export interface GetEmailSecurityBlockSenderResult {
     readonly patternType: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Cloud Email Security: Read`
+ * - `Cloud Email Security: Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -83,7 +94,8 @@ export interface GetEmailSecurityBlockSenderResult {
  * });
  * ```
  */
-export function getEmailSecurityBlockSenderOutput(args: GetEmailSecurityBlockSenderOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEmailSecurityBlockSenderResult> {
+export function getEmailSecurityBlockSenderOutput(args?: GetEmailSecurityBlockSenderOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEmailSecurityBlockSenderResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getEmailSecurityBlockSender:getEmailSecurityBlockSender", {
         "accountId": args.accountId,
@@ -99,7 +111,7 @@ export interface GetEmailSecurityBlockSenderOutputArgs {
     /**
      * Account Identifier
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetEmailSecurityBlockSenderFilterArgs>;
     /**
      * The unique identifier for the allow policy.

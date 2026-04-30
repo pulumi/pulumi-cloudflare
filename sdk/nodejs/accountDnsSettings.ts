@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account DNS Settings Read`
+ * - `Account DNS Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -15,6 +20,7 @@ import * as utilities from "./utilities";
  *
  * const exampleAccountDnsSettings = new cloudflare.AccountDnsSettings("example_account_dns_settings", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     enforceDnsOnly: false,
  *     zoneDefaults: {
  *         flattenAllCnames: false,
  *         foundationDns: false,
@@ -76,7 +82,11 @@ export class AccountDnsSettings extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
+    /**
+     * When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
+     */
+    declare public readonly enforceDnsOnly: pulumi.Output<boolean | undefined>;
     declare public readonly zoneDefaults: pulumi.Output<outputs.AccountDnsSettingsZoneDefaults | undefined>;
 
     /**
@@ -86,20 +96,19 @@ export class AccountDnsSettings extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: AccountDnsSettingsArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: AccountDnsSettingsArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccountDnsSettingsArgs | AccountDnsSettingsState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountDnsSettingsState | undefined;
             resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["enforceDnsOnly"] = state?.enforceDnsOnly;
             resourceInputs["zoneDefaults"] = state?.zoneDefaults;
         } else {
             const args = argsOrState as AccountDnsSettingsArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["enforceDnsOnly"] = args?.enforceDnsOnly;
             resourceInputs["zoneDefaults"] = args?.zoneDefaults;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -115,6 +124,10 @@ export interface AccountDnsSettingsState {
      * Identifier.
      */
     accountId?: pulumi.Input<string>;
+    /**
+     * When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
+     */
+    enforceDnsOnly?: pulumi.Input<boolean>;
     zoneDefaults?: pulumi.Input<inputs.AccountDnsSettingsZoneDefaults>;
 }
 
@@ -125,6 +138,10 @@ export interface AccountDnsSettingsArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
+    /**
+     * When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
+     */
+    enforceDnsOnly?: pulumi.Input<boolean>;
     zoneDefaults?: pulumi.Input<inputs.AccountDnsSettingsZoneDefaults>;
 }

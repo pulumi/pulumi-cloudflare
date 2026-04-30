@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetRateLimit
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Firewall Services Read`
+        /// - `Firewall Services Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +40,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRateLimitResult>("cloudflare:index/getRateLimit:getRateLimit", args ?? new GetRateLimitArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Firewall Services Read`
+        /// - `Firewall Services Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +68,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetRateLimitResult>("cloudflare:index/getRateLimit:getRateLimit", args ?? new GetRateLimitInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Firewall Services Read`
+        /// - `Firewall Services Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -93,8 +108,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Defines an identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetRateLimitArgs()
         {
@@ -113,8 +128,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Defines an identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetRateLimitInvokeArgs()
         {
@@ -165,7 +180,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Defines an identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetRateLimitResult(
@@ -187,7 +202,7 @@ namespace Pulumi.Cloudflare
 
             double threshold,
 
-            string zoneId)
+            string? zoneId)
         {
             Action = action;
             Bypasses = bypasses;

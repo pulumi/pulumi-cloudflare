@@ -21,8 +21,9 @@ __all__ = ['WorkersScriptArgs', 'WorkersScript']
 @pulumi.input_type
 class WorkersScriptArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  script_name: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 annotations: Optional[pulumi.Input['WorkersScriptAnnotationsArgs']] = None,
                  assets: Optional[pulumi.Input['WorkersScriptAssetsArgs']] = None,
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptBindingArgs']]]] = None,
                  body_part: Optional[pulumi.Input[_builtins.str]] = None,
@@ -45,8 +46,9 @@ class WorkersScriptArgs:
         """
         The set of arguments for constructing a WorkersScript resource.
 
-        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input['WorkersScriptAnnotationsArgs'] annotations: Annotations for the version created by this upload.
         :param pulumi.Input['WorkersScriptAssetsArgs'] assets: Configuration for assets within a Worker.
         :param pulumi.Input[Sequence[pulumi.Input['WorkersScriptBindingArgs']]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         :param pulumi.Input[_builtins.str] body_part: Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
@@ -68,8 +70,11 @@ class WorkersScriptArgs:
         :param pulumi.Input[_builtins.str] usage_model: Usage model for the Worker invocations.
                Available values: "standard", "bundled", "unbound".
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "script_name", script_name)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
         if assets is not None:
             pulumi.set(__self__, "assets", assets)
         if bindings is not None:
@@ -110,18 +115,6 @@ class WorkersScriptArgs:
             pulumi.set(__self__, "usage_model", usage_model)
 
     @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
-
-    @_builtins.property
     @pulumi.getter(name="scriptName")
     def script_name(self) -> pulumi.Input[_builtins.str]:
         """
@@ -132,6 +125,30 @@ class WorkersScriptArgs:
     @script_name.setter
     def script_name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "script_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input['WorkersScriptAnnotationsArgs']]:
+        """
+        Annotations for the version created by this upload.
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input['WorkersScriptAnnotationsArgs']]):
+        pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter
@@ -367,6 +384,7 @@ class WorkersScriptArgs:
 class _WorkersScriptState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 annotations: Optional[pulumi.Input['WorkersScriptAnnotationsArgs']] = None,
                  assets: Optional[pulumi.Input['WorkersScriptAssetsArgs']] = None,
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptBindingArgs']]]] = None,
                  body_part: Optional[pulumi.Input[_builtins.str]] = None,
@@ -403,6 +421,7 @@ class _WorkersScriptState:
         Input properties used for looking up and filtering WorkersScript resources.
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input['WorkersScriptAnnotationsArgs'] annotations: Annotations for the version created by this upload.
         :param pulumi.Input['WorkersScriptAssetsArgs'] assets: Configuration for assets within a Worker.
         :param pulumi.Input[Sequence[pulumi.Input['WorkersScriptBindingArgs']]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         :param pulumi.Input[_builtins.str] body_part: Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
@@ -438,6 +457,8 @@ class _WorkersScriptState:
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
         if assets is not None:
             pulumi.set(__self__, "assets", assets)
         if bindings is not None:
@@ -520,6 +541,18 @@ class _WorkersScriptState:
     @account_id.setter
     def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "account_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input['WorkersScriptAnnotationsArgs']]:
+        """
+        Annotations for the version created by this upload.
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input['WorkersScriptAnnotationsArgs']]):
+        pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter
@@ -913,6 +946,7 @@ class WorkersScript(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 annotations: Optional[pulumi.Input[Union['WorkersScriptAnnotationsArgs', 'WorkersScriptAnnotationsArgsDict']]] = None,
                  assets: Optional[pulumi.Input[Union['WorkersScriptAssetsArgs', 'WorkersScriptAssetsArgsDict']]] = None,
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptBindingArgs', 'WorkersScriptBindingArgsDict']]]]] = None,
                  body_part: Optional[pulumi.Input[_builtins.str]] = None,
@@ -935,87 +969,13 @@ class WorkersScript(pulumi.CustomResource):
                  usage_model: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Workers Scripts Read`
+        - `Workers Scripts Write`
+        - `Workers Tail Read`
+
         > For more direct control over Workers resources, we recommend the beta `Worker`, `WorkerVersion`, and `WorkersDeployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-        import pulumi_std as std
-
-        example_workers_script = cloudflare.WorkersScript("example_workers_script",
-            account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            script_name="this-is_my_script-01",
-            assets={
-                "config": {
-                    "headers": \"\"\"        /dashboard/*
-                X-Frame-Options: DENY
-
-                /static/*
-                Access-Control-Allow-Origin: *
-        \"\"\",
-                    "redirects": \"\"\"        /foo /bar 301
-                /news/* /blog/:splat
-        \"\"\",
-                    "html_handling": "auto-trailing-slash",
-                    "not_found_handling": "none",
-                    "run_worker_first": False,
-                },
-                "jwt": "jwt",
-            },
-            bindings=[{
-                "name": "MY_ENV_VAR",
-                "text": "my_data",
-                "type": "plain_text",
-            }],
-            compatibility_date="2021-01-01",
-            compatibility_flags=["nodejs_compat"],
-            content_file="worker.js",
-            content_sha256=std.filesha256(input="worker.js").result,
-            keep_assets=False,
-            keep_bindings=["kv_namespace"],
-            limits={
-                "cpu_ms": 50,
-            },
-            logpush=False,
-            main_module="worker.js",
-            migrations={
-                "deleted_classes": ["string"],
-                "new_classes": ["string"],
-                "new_sqlite_classes": ["string"],
-                "new_tag": "v2",
-                "old_tag": "v1",
-                "renamed_classes": [{
-                    "from_": "from",
-                    "to": "to",
-                }],
-                "transferred_classes": [{
-                    "from_": "from",
-                    "from_script": "from_script",
-                    "to": "to",
-                }],
-            },
-            observability={
-                "enabled": True,
-                "head_sampling_rate": 0.1,
-                "logs": {
-                    "enabled": True,
-                    "invocation_logs": True,
-                    "destinations": ["cloudflare"],
-                    "head_sampling_rate": 0.1,
-                    "persist": True,
-                },
-            },
-            placement={
-                "mode": "smart",
-            },
-            tail_consumers=[{
-                "service": "my-log-consumer",
-                "environment": "production",
-                "namespace": "my-namespace",
-            }])
-        ```
 
         ## Import
 
@@ -1027,6 +987,7 @@ class WorkersScript(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[Union['WorkersScriptAnnotationsArgs', 'WorkersScriptAnnotationsArgsDict']] annotations: Annotations for the version created by this upload.
         :param pulumi.Input[Union['WorkersScriptAssetsArgs', 'WorkersScriptAssetsArgsDict']] assets: Configuration for assets within a Worker.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptBindingArgs', 'WorkersScriptBindingArgsDict']]]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         :param pulumi.Input[_builtins.str] body_part: Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
@@ -1056,87 +1017,13 @@ class WorkersScript(pulumi.CustomResource):
                  args: WorkersScriptArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Workers Scripts Read`
+        - `Workers Scripts Write`
+        - `Workers Tail Read`
+
         > For more direct control over Workers resources, we recommend the beta `Worker`, `WorkerVersion`, and `WorkersDeployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-        import pulumi_std as std
-
-        example_workers_script = cloudflare.WorkersScript("example_workers_script",
-            account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            script_name="this-is_my_script-01",
-            assets={
-                "config": {
-                    "headers": \"\"\"        /dashboard/*
-                X-Frame-Options: DENY
-
-                /static/*
-                Access-Control-Allow-Origin: *
-        \"\"\",
-                    "redirects": \"\"\"        /foo /bar 301
-                /news/* /blog/:splat
-        \"\"\",
-                    "html_handling": "auto-trailing-slash",
-                    "not_found_handling": "none",
-                    "run_worker_first": False,
-                },
-                "jwt": "jwt",
-            },
-            bindings=[{
-                "name": "MY_ENV_VAR",
-                "text": "my_data",
-                "type": "plain_text",
-            }],
-            compatibility_date="2021-01-01",
-            compatibility_flags=["nodejs_compat"],
-            content_file="worker.js",
-            content_sha256=std.filesha256(input="worker.js").result,
-            keep_assets=False,
-            keep_bindings=["kv_namespace"],
-            limits={
-                "cpu_ms": 50,
-            },
-            logpush=False,
-            main_module="worker.js",
-            migrations={
-                "deleted_classes": ["string"],
-                "new_classes": ["string"],
-                "new_sqlite_classes": ["string"],
-                "new_tag": "v2",
-                "old_tag": "v1",
-                "renamed_classes": [{
-                    "from_": "from",
-                    "to": "to",
-                }],
-                "transferred_classes": [{
-                    "from_": "from",
-                    "from_script": "from_script",
-                    "to": "to",
-                }],
-            },
-            observability={
-                "enabled": True,
-                "head_sampling_rate": 0.1,
-                "logs": {
-                    "enabled": True,
-                    "invocation_logs": True,
-                    "destinations": ["cloudflare"],
-                    "head_sampling_rate": 0.1,
-                    "persist": True,
-                },
-            },
-            placement={
-                "mode": "smart",
-            },
-            tail_consumers=[{
-                "service": "my-log-consumer",
-                "environment": "production",
-                "namespace": "my-namespace",
-            }])
-        ```
 
         ## Import
 
@@ -1161,6 +1048,7 @@ class WorkersScript(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 annotations: Optional[pulumi.Input[Union['WorkersScriptAnnotationsArgs', 'WorkersScriptAnnotationsArgsDict']]] = None,
                  assets: Optional[pulumi.Input[Union['WorkersScriptAssetsArgs', 'WorkersScriptAssetsArgsDict']]] = None,
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptBindingArgs', 'WorkersScriptBindingArgsDict']]]]] = None,
                  body_part: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1190,9 +1078,8 @@ class WorkersScript(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkersScriptArgs.__new__(WorkersScriptArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["annotations"] = annotations
             __props__.__dict__["assets"] = assets
             __props__.__dict__["bindings"] = bindings
             __props__.__dict__["body_part"] = body_part
@@ -1240,6 +1127,7 @@ class WorkersScript(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
+            annotations: Optional[pulumi.Input[Union['WorkersScriptAnnotationsArgs', 'WorkersScriptAnnotationsArgsDict']]] = None,
             assets: Optional[pulumi.Input[Union['WorkersScriptAssetsArgs', 'WorkersScriptAssetsArgsDict']]] = None,
             bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptBindingArgs', 'WorkersScriptBindingArgsDict']]]]] = None,
             body_part: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1280,6 +1168,7 @@ class WorkersScript(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[Union['WorkersScriptAnnotationsArgs', 'WorkersScriptAnnotationsArgsDict']] annotations: Annotations for the version created by this upload.
         :param pulumi.Input[Union['WorkersScriptAssetsArgs', 'WorkersScriptAssetsArgsDict']] assets: Configuration for assets within a Worker.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptBindingArgs', 'WorkersScriptBindingArgsDict']]]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         :param pulumi.Input[_builtins.str] body_part: Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
@@ -1318,6 +1207,7 @@ class WorkersScript(pulumi.CustomResource):
         __props__ = _WorkersScriptState.__new__(_WorkersScriptState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["annotations"] = annotations
         __props__.__dict__["assets"] = assets
         __props__.__dict__["bindings"] = bindings
         __props__.__dict__["body_part"] = body_part
@@ -1354,11 +1244,19 @@ class WorkersScript(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def annotations(self) -> pulumi.Output['outputs.WorkersScriptAnnotations']:
+        """
+        Annotations for the version created by this upload.
+        """
+        return pulumi.get(self, "annotations")
 
     @_builtins.property
     @pulumi.getter

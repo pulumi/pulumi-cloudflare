@@ -8,6 +8,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPageShieldPolicyResult {
@@ -51,7 +53,7 @@ public final class GetPageShieldPolicyResult {
      * @return Identifier
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetPageShieldPolicyResult() {}
     /**
@@ -108,8 +110,8 @@ public final class GetPageShieldPolicyResult {
      * @return Identifier
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -128,7 +130,7 @@ public final class GetPageShieldPolicyResult {
         private String id;
         private String policyId;
         private String value;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetPageShieldPolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -199,10 +201,8 @@ public final class GetPageShieldPolicyResult {
             return this;
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetPageShieldPolicyResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

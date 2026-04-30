@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Account Firewall Access Rules Read`
+    /// - `Account Firewall Access Rules Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

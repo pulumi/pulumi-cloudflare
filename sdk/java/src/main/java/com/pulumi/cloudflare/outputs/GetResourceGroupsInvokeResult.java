@@ -19,7 +19,7 @@ public final class GetResourceGroupsInvokeResult {
      * @return Account identifier tag.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return ID of the resource group to be fetched.
      * 
@@ -46,8 +46,8 @@ public final class GetResourceGroupsInvokeResult {
      * @return Account identifier tag.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return ID of the resource group to be fetched.
@@ -87,7 +87,7 @@ public final class GetResourceGroupsInvokeResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private @Nullable String id;
         private @Nullable Integer maxItems;
         private @Nullable String name;
@@ -103,10 +103,8 @@ public final class GetResourceGroupsInvokeResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetResourceGroupsInvokeResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

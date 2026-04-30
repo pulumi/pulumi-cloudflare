@@ -11,6 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account Settings Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetWebAnalyticsSites(ctx, &cloudflare.LookupWebAnalyticsSitesArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				OrderBy:   pulumi.StringRef("host"),
 //			}, nil)
 //			if err != nil {
@@ -50,7 +54,7 @@ func LookupWebAnalyticsSites(ctx *pulumi.Context, args *LookupWebAnalyticsSitesA
 // A collection of arguments for invoking getWebAnalyticsSites.
 type LookupWebAnalyticsSitesArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The property used to sort the list of results.
@@ -61,7 +65,7 @@ type LookupWebAnalyticsSitesArgs struct {
 // A collection of values returned by getWebAnalyticsSites.
 type LookupWebAnalyticsSitesResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -85,7 +89,7 @@ func LookupWebAnalyticsSitesOutput(ctx *pulumi.Context, args LookupWebAnalyticsS
 // A collection of arguments for invoking getWebAnalyticsSites.
 type LookupWebAnalyticsSitesOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// The property used to sort the list of results.
@@ -113,8 +117,8 @@ func (o LookupWebAnalyticsSitesResultOutput) ToLookupWebAnalyticsSitesResultOutp
 }
 
 // Identifier.
-func (o LookupWebAnalyticsSitesResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWebAnalyticsSitesResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupWebAnalyticsSitesResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWebAnalyticsSitesResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

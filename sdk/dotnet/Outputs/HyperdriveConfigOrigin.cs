@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Defines the host (hostname or IP) of your origin database.
         /// </summary>
-        public readonly string Host;
+        public readonly string? Host;
         /// <summary>
         /// Set the password needed to access your origin database. The API never returns this write-only value.
         /// </summary>
@@ -43,6 +43,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Scheme;
         /// <summary>
+        /// The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database.
+        /// </summary>
+        public readonly string? ServiceId;
+        /// <summary>
         /// Set the user of your origin database.
         /// </summary>
         public readonly string User;
@@ -55,13 +59,15 @@ namespace Pulumi.Cloudflare.Outputs
 
             string database,
 
-            string host,
+            string? host,
 
             string password,
 
             int? port,
 
             string scheme,
+
+            string? serviceId,
 
             string user)
         {
@@ -72,6 +78,7 @@ namespace Pulumi.Cloudflare.Outputs
             Password = password;
             Port = port;
             Scheme = scheme;
+            ServiceId = serviceId;
             User = user;
         }
     }

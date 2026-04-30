@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Pages Read`
+ * - `Pages Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -36,7 +41,7 @@ export interface GetPagesDomainArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * The domain name.
      */
@@ -54,7 +59,7 @@ export interface GetPagesDomainResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Available values: "google", "letsEncrypt".
      */
@@ -86,6 +91,11 @@ export interface GetPagesDomainResult {
     readonly zoneTag: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Pages Read`
+ * - `Pages Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -115,7 +125,7 @@ export interface GetPagesDomainOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * The domain name.
      */

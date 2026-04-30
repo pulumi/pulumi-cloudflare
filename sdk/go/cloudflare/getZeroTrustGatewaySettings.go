@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustGatewaySettings(ctx, &cloudflare.LookupZeroTrustGatewaySettingsArgs{
-//				AccountId: "699d98642c564d2e855e9661899b7252",
+//				AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -48,13 +48,13 @@ func LookupZeroTrustGatewaySettings(ctx *pulumi.Context, args *LookupZeroTrustGa
 
 // A collection of arguments for invoking getZeroTrustGatewaySettings.
 type LookupZeroTrustGatewaySettingsArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 }
 
 // A collection of values returned by getZeroTrustGatewaySettings.
 type LookupZeroTrustGatewaySettingsResult struct {
-	AccountId string `pulumi:"accountId"`
-	CreatedAt string `pulumi:"createdAt"`
+	AccountId *string `pulumi:"accountId"`
+	CreatedAt string  `pulumi:"createdAt"`
 	// The ID of this resource.
 	Id string `pulumi:"id"`
 	// Specify account settings.
@@ -73,7 +73,7 @@ func LookupZeroTrustGatewaySettingsOutput(ctx *pulumi.Context, args LookupZeroTr
 
 // A collection of arguments for invoking getZeroTrustGatewaySettings.
 type LookupZeroTrustGatewaySettingsOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 }
 
 func (LookupZeroTrustGatewaySettingsOutputArgs) ElementType() reflect.Type {
@@ -95,8 +95,8 @@ func (o LookupZeroTrustGatewaySettingsResultOutput) ToLookupZeroTrustGatewaySett
 	return o
 }
 
-func (o LookupZeroTrustGatewaySettingsResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustGatewaySettingsResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustGatewaySettingsResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustGatewaySettingsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupZeroTrustGatewaySettingsResultOutput) CreatedAt() pulumi.StringOutput {

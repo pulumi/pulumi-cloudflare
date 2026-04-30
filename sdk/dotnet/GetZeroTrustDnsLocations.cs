@@ -12,6 +12,12 @@ namespace Pulumi.Cloudflare
     public static class GetZeroTrustDnsLocations
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare Zero Trust Secure DNS Locations Write`
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +36,16 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZeroTrustDnsLocationsResult> InvokeAsync(GetZeroTrustDnsLocationsArgs args, InvokeOptions? options = null)
+        public static Task<GetZeroTrustDnsLocationsResult> InvokeAsync(GetZeroTrustDnsLocationsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustDnsLocationsResult>("cloudflare:index/getZeroTrustDnsLocations:getZeroTrustDnsLocations", args ?? new GetZeroTrustDnsLocationsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare Zero Trust Secure DNS Locations Write`
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +64,16 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZeroTrustDnsLocationsResult> Invoke(GetZeroTrustDnsLocationsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZeroTrustDnsLocationsResult> Invoke(GetZeroTrustDnsLocationsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustDnsLocationsResult>("cloudflare:index/getZeroTrustDnsLocations:getZeroTrustDnsLocations", args ?? new GetZeroTrustDnsLocationsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare Zero Trust Secure DNS Locations Write`
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -81,8 +99,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDnsLocationsArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -98,8 +116,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDnsLocationsInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -117,7 +135,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustDnsLocationsResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -133,7 +151,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustDnsLocationsResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

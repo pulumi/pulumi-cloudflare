@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Images Read`
+ * - `Images Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -15,7 +20,7 @@ import * as utilities from "./utilities";
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     imageId: "id",
  *     creator: "creator",
- *     file: null,
+ *     file: "Example data",
  *     metadata: {},
  *     requireSignedUrls: true,
  *     url: "https://example.com/path/to/logo.png",
@@ -59,7 +64,7 @@ export class Image extends pulumi.CustomResource {
     /**
      * Account identifier tag.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * Can set the creator field with an internal user ID.
      */
@@ -127,9 +132,6 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["variants"] = state?.variants;
         } else {
             const args = argsOrState as ImageArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.imageId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'imageId'");
             }
@@ -207,7 +209,7 @@ export interface ImageArgs {
     /**
      * Account identifier tag.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Can set the creator field with an internal user ID.
      */

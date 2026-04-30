@@ -12,6 +12,13 @@ namespace Pulumi.Cloudflare
     public static class GetTokenValidationConfigs
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Gateway`
+        /// - `Account API Gateway Read`
+        /// - `Domain API Gateway`
+        /// - `Domain API Gateway Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +37,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetTokenValidationConfigsResult> InvokeAsync(GetTokenValidationConfigsArgs args, InvokeOptions? options = null)
+        public static Task<GetTokenValidationConfigsResult> InvokeAsync(GetTokenValidationConfigsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTokenValidationConfigsResult>("cloudflare:index/getTokenValidationConfigs:getTokenValidationConfigs", args ?? new GetTokenValidationConfigsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Gateway`
+        /// - `Account API Gateway Read`
+        /// - `Domain API Gateway`
+        /// - `Domain API Gateway Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +66,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetTokenValidationConfigsResult> Invoke(GetTokenValidationConfigsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetTokenValidationConfigsResult> Invoke(GetTokenValidationConfigsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTokenValidationConfigsResult>("cloudflare:index/getTokenValidationConfigs:getTokenValidationConfigs", args ?? new GetTokenValidationConfigsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Gateway`
+        /// - `Account API Gateway Read`
+        /// - `Domain API Gateway`
+        /// - `Domain API Gateway Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -90,8 +111,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetTokenValidationConfigsArgs()
         {
@@ -110,8 +131,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetTokenValidationConfigsInvokeArgs()
         {
@@ -138,7 +159,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetTokenValidationConfigsResult(
@@ -148,7 +169,7 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<Outputs.GetTokenValidationConfigsResultResult> results,
 
-            string zoneId)
+            string? zoneId)
         {
             Id = id;
             MaxItems = maxItems;

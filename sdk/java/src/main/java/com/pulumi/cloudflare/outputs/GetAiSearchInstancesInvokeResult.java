@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAiSearchInstancesInvokeResult {
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -26,6 +26,19 @@ public final class GetAiSearchInstancesInvokeResult {
      * 
      */
     private @Nullable Integer maxItems;
+    private @Nullable String namespace;
+    /**
+     * @return Order By Column Name
+     * Available values: &#34;createdAt&#34;.
+     * 
+     */
+    private String orderBy;
+    /**
+     * @return Order By Direction
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    private String orderByDirection;
     /**
      * @return The items returned by the data source
      * 
@@ -38,8 +51,8 @@ public final class GetAiSearchInstancesInvokeResult {
     private @Nullable String search;
 
     private GetAiSearchInstancesInvokeResult() {}
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -54,6 +67,25 @@ public final class GetAiSearchInstancesInvokeResult {
      */
     public Optional<Integer> maxItems() {
         return Optional.ofNullable(this.maxItems);
+    }
+    public Optional<String> namespace() {
+        return Optional.ofNullable(this.namespace);
+    }
+    /**
+     * @return Order By Column Name
+     * Available values: &#34;createdAt&#34;.
+     * 
+     */
+    public String orderBy() {
+        return this.orderBy;
+    }
+    /**
+     * @return Order By Direction
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    public String orderByDirection() {
+        return this.orderByDirection;
     }
     /**
      * @return The items returned by the data source
@@ -79,9 +111,12 @@ public final class GetAiSearchInstancesInvokeResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String id;
         private @Nullable Integer maxItems;
+        private @Nullable String namespace;
+        private String orderBy;
+        private String orderByDirection;
         private List<GetAiSearchInstancesResult> results;
         private @Nullable String search;
         public Builder() {}
@@ -90,15 +125,16 @@ public final class GetAiSearchInstancesInvokeResult {
     	      this.accountId = defaults.accountId;
     	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
+    	      this.namespace = defaults.namespace;
+    	      this.orderBy = defaults.orderBy;
+    	      this.orderByDirection = defaults.orderByDirection;
     	      this.results = defaults.results;
     	      this.search = defaults.search;
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetAiSearchInstancesInvokeResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }
@@ -114,6 +150,28 @@ public final class GetAiSearchInstancesInvokeResult {
         public Builder maxItems(@Nullable Integer maxItems) {
 
             this.maxItems = maxItems;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder namespace(@Nullable String namespace) {
+
+            this.namespace = namespace;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder orderBy(String orderBy) {
+            if (orderBy == null) {
+              throw new MissingRequiredPropertyException("GetAiSearchInstancesInvokeResult", "orderBy");
+            }
+            this.orderBy = orderBy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder orderByDirection(String orderByDirection) {
+            if (orderByDirection == null) {
+              throw new MissingRequiredPropertyException("GetAiSearchInstancesInvokeResult", "orderByDirection");
+            }
+            this.orderByDirection = orderByDirection;
             return this;
         }
         @CustomType.Setter
@@ -138,6 +196,9 @@ public final class GetAiSearchInstancesInvokeResult {
             _resultValue.accountId = accountId;
             _resultValue.id = id;
             _resultValue.maxItems = maxItems;
+            _resultValue.namespace = namespace;
+            _resultValue.orderBy = orderBy;
+            _resultValue.orderByDirection = orderByDirection;
             _resultValue.results = results;
             _resultValue.search = search;
             return _resultValue;

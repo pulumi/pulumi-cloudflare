@@ -18,7 +18,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustDevicePostureIntegrations(args: GetZeroTrustDevicePostureIntegrationsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDevicePostureIntegrationsResult> {
+export function getZeroTrustDevicePostureIntegrations(args?: GetZeroTrustDevicePostureIntegrationsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDevicePostureIntegrationsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDevicePostureIntegrations:getZeroTrustDevicePostureIntegrations", {
         "accountId": args.accountId,
@@ -30,7 +31,7 @@ export function getZeroTrustDevicePostureIntegrations(args: GetZeroTrustDevicePo
  * A collection of arguments for invoking getZeroTrustDevicePostureIntegrations.
  */
 export interface GetZeroTrustDevicePostureIntegrationsArgs {
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -41,7 +42,7 @@ export interface GetZeroTrustDevicePostureIntegrationsArgs {
  * A collection of values returned by getZeroTrustDevicePostureIntegrations.
  */
 export interface GetZeroTrustDevicePostureIntegrationsResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -67,7 +68,8 @@ export interface GetZeroTrustDevicePostureIntegrationsResult {
  * });
  * ```
  */
-export function getZeroTrustDevicePostureIntegrationsOutput(args: GetZeroTrustDevicePostureIntegrationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDevicePostureIntegrationsResult> {
+export function getZeroTrustDevicePostureIntegrationsOutput(args?: GetZeroTrustDevicePostureIntegrationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDevicePostureIntegrationsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDevicePostureIntegrations:getZeroTrustDevicePostureIntegrations", {
         "accountId": args.accountId,
@@ -79,7 +81,7 @@ export function getZeroTrustDevicePostureIntegrationsOutput(args: GetZeroTrustDe
  * A collection of arguments for invoking getZeroTrustDevicePostureIntegrations.
  */
 export interface GetZeroTrustDevicePostureIntegrationsOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

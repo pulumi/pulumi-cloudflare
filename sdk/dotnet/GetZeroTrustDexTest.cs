@@ -12,6 +12,13 @@ namespace Pulumi.Cloudflare
     public static class GetZeroTrustDexTest
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare DEX Read`
+        /// - `Cloudflare DEX Write`
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Report`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,10 +38,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZeroTrustDexTestResult> InvokeAsync(GetZeroTrustDexTestArgs args, InvokeOptions? options = null)
+        public static Task<GetZeroTrustDexTestResult> InvokeAsync(GetZeroTrustDexTestArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustDexTestResult>("cloudflare:index/getZeroTrustDexTest:getZeroTrustDexTest", args ?? new GetZeroTrustDexTestArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare DEX Read`
+        /// - `Cloudflare DEX Write`
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Report`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,10 +68,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZeroTrustDexTestResult> Invoke(GetZeroTrustDexTestInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZeroTrustDexTestResult> Invoke(GetZeroTrustDexTestInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustDexTestResult>("cloudflare:index/getZeroTrustDexTest:getZeroTrustDexTest", args ?? new GetZeroTrustDexTestInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare DEX Read`
+        /// - `Cloudflare DEX Write`
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Report`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +105,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDexTestArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// The unique identifier for the test.
@@ -116,8 +137,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDexTestInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// The unique identifier for the test.
@@ -150,7 +171,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustDexTestResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The configuration object which contains the details for the WARP client to conduct the test.
         /// </summary>
@@ -192,7 +213,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustDexTestResult(
-            string accountId,
+            string? accountId,
 
             Outputs.GetZeroTrustDexTestDataResult data,
 

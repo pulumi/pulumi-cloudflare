@@ -18,7 +18,7 @@ public final class GetWorkersKvNamespaceResult {
      * @return Identifier.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     private @Nullable GetWorkersKvNamespaceFilter filter;
     /**
      * @return Namespace identifier tag.
@@ -46,8 +46,8 @@ public final class GetWorkersKvNamespaceResult {
      * @return Identifier.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     public Optional<GetWorkersKvNamespaceFilter> filter() {
         return Optional.ofNullable(this.filter);
@@ -90,7 +90,7 @@ public final class GetWorkersKvNamespaceResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private @Nullable GetWorkersKvNamespaceFilter filter;
         private String id;
         private @Nullable String namespaceId;
@@ -108,10 +108,8 @@ public final class GetWorkersKvNamespaceResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetWorkersKvNamespaceResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

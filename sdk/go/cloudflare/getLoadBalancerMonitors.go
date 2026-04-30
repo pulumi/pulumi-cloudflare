@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Load Balancing: Monitors and Pools Read`
+// - `Load Balancing: Monitors and Pools Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetLoadBalancerMonitors(ctx, &cloudflare.LookupLoadBalancerMonitorsArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +54,7 @@ func LookupLoadBalancerMonitors(ctx *pulumi.Context, args *LookupLoadBalancerMon
 // A collection of arguments for invoking getLoadBalancerMonitors.
 type LookupLoadBalancerMonitorsArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 }
@@ -57,7 +62,7 @@ type LookupLoadBalancerMonitorsArgs struct {
 // A collection of values returned by getLoadBalancerMonitors.
 type LookupLoadBalancerMonitorsResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -78,7 +83,7 @@ func LookupLoadBalancerMonitorsOutput(ctx *pulumi.Context, args LookupLoadBalanc
 // A collection of arguments for invoking getLoadBalancerMonitors.
 type LookupLoadBalancerMonitorsOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
@@ -103,8 +108,8 @@ func (o LookupLoadBalancerMonitorsResultOutput) ToLookupLoadBalancerMonitorsResu
 }
 
 // Identifier.
-func (o LookupLoadBalancerMonitorsResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupLoadBalancerMonitorsResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupLoadBalancerMonitorsResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupLoadBalancerMonitorsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

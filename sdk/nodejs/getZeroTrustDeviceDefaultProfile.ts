@@ -18,7 +18,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustDeviceDefaultProfile(args: GetZeroTrustDeviceDefaultProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDeviceDefaultProfileResult> {
+export function getZeroTrustDeviceDefaultProfile(args?: GetZeroTrustDeviceDefaultProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDeviceDefaultProfileResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDeviceDefaultProfile:getZeroTrustDeviceDefaultProfile", {
         "accountId": args.accountId,
@@ -29,14 +30,14 @@ export function getZeroTrustDeviceDefaultProfile(args: GetZeroTrustDeviceDefault
  * A collection of arguments for invoking getZeroTrustDeviceDefaultProfile.
  */
 export interface GetZeroTrustDeviceDefaultProfileArgs {
-    accountId: string;
+    accountId?: string;
 }
 
 /**
  * A collection of values returned by getZeroTrustDeviceDefaultProfile.
  */
 export interface GetZeroTrustDeviceDefaultProfileResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Whether to allow the user to switch WARP between modes.
      */
@@ -87,6 +88,7 @@ export interface GetZeroTrustDeviceDefaultProfileResult {
      * List of routes included in the WARP client's tunnel.
      */
     readonly includes: outputs.GetZeroTrustDeviceDefaultProfileInclude[];
+    readonly policyId: string;
     /**
      * Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
      */
@@ -121,7 +123,8 @@ export interface GetZeroTrustDeviceDefaultProfileResult {
  * });
  * ```
  */
-export function getZeroTrustDeviceDefaultProfileOutput(args: GetZeroTrustDeviceDefaultProfileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDeviceDefaultProfileResult> {
+export function getZeroTrustDeviceDefaultProfileOutput(args?: GetZeroTrustDeviceDefaultProfileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDeviceDefaultProfileResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDeviceDefaultProfile:getZeroTrustDeviceDefaultProfile", {
         "accountId": args.accountId,
@@ -132,5 +135,5 @@ export function getZeroTrustDeviceDefaultProfileOutput(args: GetZeroTrustDeviceD
  * A collection of arguments for invoking getZeroTrustDeviceDefaultProfile.
  */
 export interface GetZeroTrustDeviceDefaultProfileOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
 }

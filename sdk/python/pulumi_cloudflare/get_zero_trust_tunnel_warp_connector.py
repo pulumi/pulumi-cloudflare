@@ -74,7 +74,7 @@ class GetZeroTrustTunnelWarpConnectorResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Cloudflare account ID
         """
@@ -212,6 +212,13 @@ def get_zero_trust_tunnel_warp_connector(account_id: Optional[_builtins.str] = N
                                          tunnel_id: Optional[_builtins.str] = None,
                                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustTunnelWarpConnectorResult:
     """
+    Accepted Permissions
+
+    - `Cloudflare One Connector: WARP Read`
+    - `Cloudflare One Connector: WARP Write`
+    - `Cloudflare One Connectors Read`
+    - `Cloudflare One Connectors Write`
+
     ## Example Usage
 
     ```python
@@ -248,11 +255,18 @@ def get_zero_trust_tunnel_warp_connector(account_id: Optional[_builtins.str] = N
         status=pulumi.get(__ret__, 'status'),
         tun_type=pulumi.get(__ret__, 'tun_type'),
         tunnel_id=pulumi.get(__ret__, 'tunnel_id'))
-def get_zero_trust_tunnel_warp_connector_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_tunnel_warp_connector_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                 filter: Optional[pulumi.Input[Optional[Union['GetZeroTrustTunnelWarpConnectorFilterArgs', 'GetZeroTrustTunnelWarpConnectorFilterArgsDict']]]] = None,
                                                 tunnel_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustTunnelWarpConnectorResult]:
     """
+    Accepted Permissions
+
+    - `Cloudflare One Connector: WARP Read`
+    - `Cloudflare One Connector: WARP Write`
+    - `Cloudflare One Connectors Read`
+    - `Cloudflare One Connectors Write`
+
     ## Example Usage
 
     ```python

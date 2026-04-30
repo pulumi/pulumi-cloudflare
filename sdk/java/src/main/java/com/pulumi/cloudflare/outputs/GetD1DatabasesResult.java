@@ -21,6 +21,12 @@ public final class GetD1DatabasesResult {
      */
     private String id;
     /**
+     * @return Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;.
+     * 
+     */
+    private String jurisdiction;
+    /**
      * @return D1 database name.
      * 
      */
@@ -46,6 +52,14 @@ public final class GetD1DatabasesResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;.
+     * 
+     */
+    public String jurisdiction() {
+        return this.jurisdiction;
     }
     /**
      * @return D1 database name.
@@ -76,6 +90,7 @@ public final class GetD1DatabasesResult {
     public static final class Builder {
         private String createdAt;
         private String id;
+        private String jurisdiction;
         private String name;
         private String uuid;
         private String version;
@@ -84,6 +99,7 @@ public final class GetD1DatabasesResult {
     	      Objects.requireNonNull(defaults);
     	      this.createdAt = defaults.createdAt;
     	      this.id = defaults.id;
+    	      this.jurisdiction = defaults.jurisdiction;
     	      this.name = defaults.name;
     	      this.uuid = defaults.uuid;
     	      this.version = defaults.version;
@@ -103,6 +119,14 @@ public final class GetD1DatabasesResult {
               throw new MissingRequiredPropertyException("GetD1DatabasesResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder jurisdiction(String jurisdiction) {
+            if (jurisdiction == null) {
+              throw new MissingRequiredPropertyException("GetD1DatabasesResult", "jurisdiction");
+            }
+            this.jurisdiction = jurisdiction;
             return this;
         }
         @CustomType.Setter
@@ -133,6 +157,7 @@ public final class GetD1DatabasesResult {
             final var _resultValue = new GetD1DatabasesResult();
             _resultValue.createdAt = createdAt;
             _resultValue.id = id;
+            _resultValue.jurisdiction = jurisdiction;
             _resultValue.name = name;
             _resultValue.uuid = uuid;
             _resultValue.version = version;

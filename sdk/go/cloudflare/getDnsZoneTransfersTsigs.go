@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account Settings Read`
+// - `Account Settings Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetDnsZoneTransfersTsigs(ctx, &cloudflare.LookupDnsZoneTransfersTsigsArgs{
-//				AccountId: "01a7362d577a6c3019a474fd6f485823",
+//				AccountId: pulumi.StringRef("01a7362d577a6c3019a474fd6f485823"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -48,14 +53,14 @@ func LookupDnsZoneTransfersTsigs(ctx *pulumi.Context, args *LookupDnsZoneTransfe
 
 // A collection of arguments for invoking getDnsZoneTransfersTsigs.
 type LookupDnsZoneTransfersTsigsArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 }
 
 // A collection of values returned by getDnsZoneTransfersTsigs.
 type LookupDnsZoneTransfersTsigsResult struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -75,7 +80,7 @@ func LookupDnsZoneTransfersTsigsOutput(ctx *pulumi.Context, args LookupDnsZoneTr
 
 // A collection of arguments for invoking getDnsZoneTransfersTsigs.
 type LookupDnsZoneTransfersTsigsOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
@@ -99,8 +104,8 @@ func (o LookupDnsZoneTransfersTsigsResultOutput) ToLookupDnsZoneTransfersTsigsRe
 	return o
 }
 
-func (o LookupDnsZoneTransfersTsigsResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDnsZoneTransfersTsigsResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupDnsZoneTransfersTsigsResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDnsZoneTransfersTsigsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -12,6 +12,14 @@ namespace Pulumi.Cloudflare
     public static class GetNotificationPolicyWebhooks
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// - `Notifications Read`
+        /// - `Notifications Write`
+        /// - `Zero Trust: PII Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +43,14 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNotificationPolicyWebhooksResult>("cloudflare:index/getNotificationPolicyWebhooks:getNotificationPolicyWebhooks", args ?? new GetNotificationPolicyWebhooksArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// - `Notifications Read`
+        /// - `Notifications Write`
+        /// - `Zero Trust: PII Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +74,14 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetNotificationPolicyWebhooksResult>("cloudflare:index/getNotificationPolicyWebhooks:getNotificationPolicyWebhooks", args ?? new GetNotificationPolicyWebhooksInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// - `Notifications Read`
+        /// - `Notifications Write`
+        /// - `Zero Trust: PII Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +111,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account id
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// The unique identifier of a webhook
@@ -107,8 +131,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account id
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// The unique identifier of a webhook
@@ -129,7 +153,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account id
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Timestamp of when the webhook destination was created.
         /// </summary>
@@ -170,7 +194,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetNotificationPolicyWebhooksResult(
-            string accountId,
+            string? accountId,
 
             string createdAt,
 

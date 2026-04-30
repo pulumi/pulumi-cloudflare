@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account Filter Lists Edit`
+ * - `Account Filter Lists Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -36,7 +41,7 @@ export interface GetListItemArgs {
     /**
      * The Account ID for this resource.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Defines the unique ID of the item in the List.
      */
@@ -54,7 +59,7 @@ export interface GetListItemResult {
     /**
      * The Account ID for this resource.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Defines a non-negative 32 bit integer.
      */
@@ -97,6 +102,11 @@ export interface GetListItemResult {
     readonly redirect: outputs.GetListItemRedirect;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account Filter Lists Edit`
+ * - `Account Filter Lists Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -126,7 +136,7 @@ export interface GetListItemOutputArgs {
     /**
      * The Account ID for this resource.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Defines the unique ID of the item in the List.
      */

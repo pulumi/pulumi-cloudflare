@@ -12,6 +12,13 @@ namespace Pulumi.Cloudflare
     public static class GetZoneCacheReserve
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zone Read`
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// - `Zone Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +37,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZoneCacheReserveResult> InvokeAsync(GetZoneCacheReserveArgs args, InvokeOptions? options = null)
+        public static Task<GetZoneCacheReserveResult> InvokeAsync(GetZoneCacheReserveArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZoneCacheReserveResult>("cloudflare:index/getZoneCacheReserve:getZoneCacheReserve", args ?? new GetZoneCacheReserveArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zone Read`
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// - `Zone Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +66,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZoneCacheReserveResult> Invoke(GetZoneCacheReserveInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZoneCacheReserveResult> Invoke(GetZoneCacheReserveInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZoneCacheReserveResult>("cloudflare:index/getZoneCacheReserve:getZoneCacheReserve", args ?? new GetZoneCacheReserveInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zone Read`
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// - `Zone Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +105,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetZoneCacheReserveArgs()
         {
@@ -98,8 +119,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetZoneCacheReserveInvokeArgs()
         {
@@ -131,7 +152,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetZoneCacheReserveResult(
@@ -143,7 +164,7 @@ namespace Pulumi.Cloudflare
 
             string value,
 
-            string zoneId)
+            string? zoneId)
         {
             Editable = editable;
             Id = id;

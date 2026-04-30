@@ -12,6 +12,13 @@ namespace Pulumi.Cloudflare
     public static class GetZeroTrustDexRule
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare DEX Read`
+        /// - `Cloudflare DEX Write`
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Report`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +42,13 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustDexRuleResult>("cloudflare:index/getZeroTrustDexRule:getZeroTrustDexRule", args ?? new GetZeroTrustDexRuleArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare DEX Read`
+        /// - `Cloudflare DEX Write`
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Report`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +72,13 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustDexRuleResult>("cloudflare:index/getZeroTrustDexRule:getZeroTrustDexRule", args ?? new GetZeroTrustDexRuleInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare DEX Read`
+        /// - `Cloudflare DEX Write`
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Report`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +105,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDexRuleArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// API Resource UUID tag.
@@ -101,8 +122,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDexRuleInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// API Resource UUID tag.
@@ -120,7 +141,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustDexRuleResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         public readonly string CreatedAt;
         public readonly string Description;
         /// <summary>
@@ -138,7 +159,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustDexRuleResult(
-            string accountId,
+            string? accountId,
 
             string createdAt,
 

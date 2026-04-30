@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account Filter Lists Edit`
+ * - `Account Filter Lists Read`
+ *
  * > The `cloudflare.List` resource supports defining list items in line with the
  *   `items` attribute. The provider also has a `cloudflare.ListItem` resource for
  *   managing items as independent resources. Using both in line `items` definitions
@@ -50,7 +55,7 @@ export class List extends pulumi.CustomResource {
     /**
      * The Account ID for this resource.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * The RFC 3339 timestamp of when the list was created.
      */
@@ -109,9 +114,6 @@ export class List extends pulumi.CustomResource {
             resourceInputs["numReferencingFilters"] = state?.numReferencingFilters;
         } else {
             const args = argsOrState as ListArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.kind === undefined && !opts.urn) {
                 throw new Error("Missing required property 'kind'");
             }
@@ -183,7 +185,7 @@ export interface ListArgs {
     /**
      * The Account ID for this resource.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * An informative summary of the list.
      */

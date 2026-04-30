@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Waiting Rooms Read`
+ * - `Waiting Rooms Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -35,7 +40,7 @@ export interface GetWaitingRoomArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -84,9 +89,14 @@ export interface GetWaitingRoomResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Waiting Rooms Read`
+ * - `Waiting Rooms Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -115,5 +125,5 @@ export interface GetWaitingRoomOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

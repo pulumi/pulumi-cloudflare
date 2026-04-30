@@ -44,6 +44,7 @@ import javax.annotation.Nullable;
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .aiBotsProtection("block")
  *             .cfRobotsVariant("policy_only")
+ *             .contentBotsProtection("disabled")
  *             .crawlerProtection("enabled")
  *             .enableJs(true)
  *             .fightMode(true)
@@ -123,6 +124,22 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
      */
     public Output<String> cfRobotsVariant() {
         return this.cfRobotsVariant;
+    }
+    /**
+     * Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.
+     * Available values: &#34;block&#34;, &#34;disabled&#34;.
+     * 
+     */
+    @Export(name="contentBotsProtection", refs={String.class}, tree="[0]")
+    private Output<String> contentBotsProtection;
+
+    /**
+     * @return Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.
+     * Available values: &#34;block&#34;, &#34;disabled&#34;.
+     * 
+     */
+    public Output<String> contentBotsProtection() {
+        return this.contentBotsProtection;
     }
     /**
      * Enable rule to punish AI Scrapers and Crawlers via a link maze.

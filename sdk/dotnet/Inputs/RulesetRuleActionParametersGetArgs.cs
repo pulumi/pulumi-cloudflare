@@ -91,6 +91,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Content { get; set; }
 
         /// <summary>
+        /// Whether to enable content conversion (e.g., HTML to Markdown).
+        /// </summary>
+        [Input("contentConverter")]
+        public Input<bool>? ContentConverter { get; set; }
+
+        /// <summary>
         /// The content type header to set with the error response.
         /// Available values: "application/json", "text/html", "text/plain", "text/xml".
         /// </summary>
@@ -358,6 +364,12 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("readTimeout")]
         public Input<int>? ReadTimeout { get; set; }
+
+        /// <summary>
+        /// Whether to redirect verified AI training crawlers to canonical URLs.
+        /// </summary>
+        [Input("redirectsForAiTraining")]
+        public Input<bool>? RedirectsForAiTraining { get; set; }
 
         /// <summary>
         /// The request body buffering mode to configure.

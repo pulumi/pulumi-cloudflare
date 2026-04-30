@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `DNS Read`
+// - `DNS Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -58,7 +63,7 @@ type RegionalHostname struct {
 	// Configure which routing method to use for the regional hostname
 	Routing pulumi.StringOutput `pulumi:"routing"`
 	// Identifier.
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewRegionalHostname registers a new resource with the given unique name, arguments, and options.
@@ -73,9 +78,6 @@ func NewRegionalHostname(ctx *pulumi.Context,
 	}
 	if args.RegionKey == nil {
 		return nil, errors.New("invalid value for required argument 'RegionKey'")
-	}
-	if args.ZoneId == nil {
-		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RegionalHostname
@@ -137,7 +139,7 @@ type regionalHostnameArgs struct {
 	// Configure which routing method to use for the regional hostname
 	Routing *string `pulumi:"routing"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a RegionalHostname resource.
@@ -149,7 +151,7 @@ type RegionalHostnameArgs struct {
 	// Configure which routing method to use for the regional hostname
 	Routing pulumi.StringPtrInput
 	// Identifier.
-	ZoneId pulumi.StringInput
+	ZoneId pulumi.StringPtrInput
 }
 
 func (RegionalHostnameArgs) ElementType() reflect.Type {
@@ -260,8 +262,8 @@ func (o RegionalHostnameOutput) Routing() pulumi.StringOutput {
 }
 
 // Identifier.
-func (o RegionalHostnameOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *RegionalHostname) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+func (o RegionalHostnameOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionalHostname) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type RegionalHostnameArrayOutput struct{ *pulumi.OutputState }

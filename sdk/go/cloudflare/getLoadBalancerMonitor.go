@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Load Balancing: Monitors and Pools Read`
+// - `Load Balancing: Monitors and Pools Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetLoadBalancerMonitor(ctx, &cloudflare.LookupLoadBalancerMonitorArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				MonitorId: "f1aba936b94213e5b8dca0c0dbf1f9cc",
 //			}, nil)
 //			if err != nil {
@@ -50,14 +55,14 @@ func LookupLoadBalancerMonitor(ctx *pulumi.Context, args *LookupLoadBalancerMoni
 // A collection of arguments for invoking getLoadBalancerMonitor.
 type LookupLoadBalancerMonitorArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
-	MonitorId string `pulumi:"monitorId"`
+	AccountId *string `pulumi:"accountId"`
+	MonitorId string  `pulumi:"monitorId"`
 }
 
 // A collection of values returned by getLoadBalancerMonitor.
 type LookupLoadBalancerMonitorResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.
 	AllowInsecure bool `pulumi:"allowInsecure"`
 	// To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.
@@ -110,8 +115,8 @@ func LookupLoadBalancerMonitorOutput(ctx *pulumi.Context, args LookupLoadBalance
 // A collection of arguments for invoking getLoadBalancerMonitor.
 type LookupLoadBalancerMonitorOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
-	MonitorId pulumi.StringInput `pulumi:"monitorId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	MonitorId pulumi.StringInput    `pulumi:"monitorId"`
 }
 
 func (LookupLoadBalancerMonitorOutputArgs) ElementType() reflect.Type {
@@ -134,8 +139,8 @@ func (o LookupLoadBalancerMonitorResultOutput) ToLookupLoadBalancerMonitorResult
 }
 
 // Identifier.
-func (o LookupLoadBalancerMonitorResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupLoadBalancerMonitorResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupLoadBalancerMonitorResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupLoadBalancerMonitorResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.

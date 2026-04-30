@@ -25,6 +25,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// Log settings for the Worker.
         /// </summary>
         public readonly Outputs.GetWorkersScriptsResultObservabilityLogsResult Logs;
+        /// <summary>
+        /// Trace settings for the Worker.
+        /// </summary>
+        public readonly Outputs.GetWorkersScriptsResultObservabilityTracesResult Traces;
 
         [OutputConstructor]
         private GetWorkersScriptsResultObservabilityResult(
@@ -32,11 +36,14 @@ namespace Pulumi.Cloudflare.Outputs
 
             double headSamplingRate,
 
-            Outputs.GetWorkersScriptsResultObservabilityLogsResult logs)
+            Outputs.GetWorkersScriptsResultObservabilityLogsResult logs,
+
+            Outputs.GetWorkersScriptsResultObservabilityTracesResult traces)
         {
             Enabled = enabled;
             HeadSamplingRate = headSamplingRate;
             Logs = logs;
+            Traces = traces;
         }
     }
 }

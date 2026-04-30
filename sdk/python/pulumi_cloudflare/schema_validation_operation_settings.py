@@ -21,7 +21,7 @@ class SchemaValidationOperationSettingsArgs:
     def __init__(__self__, *,
                  mitigation_action: pulumi.Input[_builtins.str],
                  operation_id: pulumi.Input[_builtins.str],
-                 zone_id: pulumi.Input[_builtins.str]):
+                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SchemaValidationOperationSettings resource.
 
@@ -37,7 +37,8 @@ class SchemaValidationOperationSettingsArgs:
         """
         pulumi.set(__self__, "mitigation_action", mitigation_action)
         pulumi.set(__self__, "operation_id", operation_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter(name="mitigationAction")
@@ -71,14 +72,14 @@ class SchemaValidationOperationSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[_builtins.str]:
+    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: pulumi.Input[_builtins.str]):
+    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -162,6 +163,13 @@ class SchemaValidationOperationSettings(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Account API Gateway`
+        - `Account API Gateway Read`
+        - `Domain API Gateway`
+        - `Domain API Gateway Read`
+
         ## Example Usage
 
         ```python
@@ -198,6 +206,13 @@ class SchemaValidationOperationSettings(pulumi.CustomResource):
                  args: SchemaValidationOperationSettingsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Account API Gateway`
+        - `Account API Gateway Read`
+        - `Domain API Gateway`
+        - `Domain API Gateway Read`
+
         ## Example Usage
 
         ```python
@@ -248,8 +263,6 @@ class SchemaValidationOperationSettings(pulumi.CustomResource):
             if operation_id is None and not opts.urn:
                 raise TypeError("Missing required property 'operation_id'")
             __props__.__dict__["operation_id"] = operation_id
-            if zone_id is None and not opts.urn:
-                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
         super(SchemaValidationOperationSettings, __self__).__init__(
             'cloudflare:index/schemaValidationOperationSettings:SchemaValidationOperationSettings',
@@ -314,7 +327,7 @@ class SchemaValidationOperationSettings(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[_builtins.str]:
+    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier.
         """

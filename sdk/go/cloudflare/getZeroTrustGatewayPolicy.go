@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustGatewayPolicy(ctx, &cloudflare.LookupZeroTrustGatewayPolicyArgs{
-//				AccountId: "699d98642c564d2e855e9661899b7252",
+//				AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //				RuleId:    "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 //			}, nil)
 //			if err != nil {
@@ -49,14 +49,14 @@ func LookupZeroTrustGatewayPolicy(ctx *pulumi.Context, args *LookupZeroTrustGate
 
 // A collection of arguments for invoking getZeroTrustGatewayPolicy.
 type LookupZeroTrustGatewayPolicyArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Identify the API resource with a UUID.
 	RuleId string `pulumi:"ruleId"`
 }
 
 // A collection of values returned by getZeroTrustGatewayPolicy.
 type LookupZeroTrustGatewayPolicyResult struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 	Action    string `pulumi:"action"`
@@ -113,7 +113,7 @@ func LookupZeroTrustGatewayPolicyOutput(ctx *pulumi.Context, args LookupZeroTrus
 
 // A collection of arguments for invoking getZeroTrustGatewayPolicy.
 type LookupZeroTrustGatewayPolicyOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Identify the API resource with a UUID.
 	RuleId pulumi.StringInput `pulumi:"ruleId"`
 }
@@ -137,8 +137,8 @@ func (o LookupZeroTrustGatewayPolicyResultOutput) ToLookupZeroTrustGatewayPolicy
 	return o
 }
 
-func (o LookupZeroTrustGatewayPolicyResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustGatewayPolicyResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.

@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Access: Apps and Policies Read`
+ * - `Access: Apps and Policies Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -75,6 +80,11 @@ export interface GetZeroTrustAccessShortLivedCertificateResult {
     readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Access: Apps and Policies Read`
+ * - `Access: Apps and Policies Write`
+ *
  * ## Example Usage
  *
  * ```typescript

@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.inputs.AccessApplicationCorsHeadersArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationDestinationArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationFooterLinkArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationLandingPageDesignArgs;
+import com.pulumi.cloudflare.inputs.AccessApplicationOauthConfigurationArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationPolicyArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationSaasAppArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationScimConfigArgs;
@@ -348,6 +349,21 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+     * 
+     */
+    @Import(name="oauthConfiguration")
+    private @Nullable Output<AccessApplicationOauthConfigurationArgs> oauthConfiguration;
+
+    /**
+     * @return Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+     * 
+     */
+    public Optional<Output<AccessApplicationOauthConfigurationArgs>> oauthConfiguration() {
+        return Optional.ofNullable(this.oauthConfiguration);
+    }
+
+    /**
      * Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
      * 
      */
@@ -618,6 +634,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         this.landingPageDesign = $.landingPageDesign;
         this.logoUrl = $.logoUrl;
         this.name = $.name;
+        this.oauthConfiguration = $.oauthConfiguration;
         this.optionsPreflightBypass = $.optionsPreflightBypass;
         this.pathCookieAttribute = $.pathCookieAttribute;
         this.policies = $.policies;
@@ -1142,6 +1159,27 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param oauthConfiguration Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oauthConfiguration(@Nullable Output<AccessApplicationOauthConfigurationArgs> oauthConfiguration) {
+            $.oauthConfiguration = oauthConfiguration;
+            return this;
+        }
+
+        /**
+         * @param oauthConfiguration Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oauthConfiguration(AccessApplicationOauthConfigurationArgs oauthConfiguration) {
+            return oauthConfiguration(Output.of(oauthConfiguration));
         }
 
         /**

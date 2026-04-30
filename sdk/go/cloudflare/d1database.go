@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `D1 Read`
+// - `D1 Write`
+//
 // !> When a D1 Database is replaced all the data is lost. Please ensure you have a
 //
 //	backup of your data before replacing a D1 Database.
@@ -54,7 +59,7 @@ type D1Database struct {
 	pulumi.CustomResourceState
 
 	// Account identifier tag.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Specifies the timestamp the resource was created as an ISO8601 string.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The D1 database's size, in bytes.
@@ -82,9 +87,6 @@ func NewD1Database(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -162,7 +164,7 @@ func (D1DatabaseState) ElementType() reflect.Type {
 
 type d1databaseArgs struct {
 	// Account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
 	// Available values: "eu", "fedramp".
 	Jurisdiction *string `pulumi:"jurisdiction"`
@@ -178,7 +180,7 @@ type d1databaseArgs struct {
 // The set of arguments for constructing a D1Database resource.
 type D1DatabaseArgs struct {
 	// Account identifier tag.
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
 	// Available values: "eu", "fedramp".
 	Jurisdiction pulumi.StringPtrInput
@@ -279,8 +281,8 @@ func (o D1DatabaseOutput) ToD1DatabaseOutputWithContext(ctx context.Context) D1D
 }
 
 // Account identifier tag.
-func (o D1DatabaseOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *D1Database) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o D1DatabaseOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *D1Database) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the timestamp the resource was created as an ISO8601 string.

@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Workers Scripts Read`
+// - `Workers Scripts Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetWorkersCronTrigger(ctx, &cloudflare.LookupWorkersCronTriggerArgs{
-//				AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:  pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ScriptName: "this-is_my_script-01",
 //			}, nil)
 //			if err != nil {
@@ -50,7 +55,7 @@ func LookupWorkersCronTrigger(ctx *pulumi.Context, args *LookupWorkersCronTrigge
 // A collection of arguments for invoking getWorkersCronTrigger.
 type LookupWorkersCronTriggerArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Name of the script, used in URLs and route configuration.
 	ScriptName string `pulumi:"scriptName"`
 }
@@ -58,7 +63,7 @@ type LookupWorkersCronTriggerArgs struct {
 // A collection of values returned by getWorkersCronTrigger.
 type LookupWorkersCronTriggerResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Name of the script, used in URLs and route configuration.
 	Id        string                          `pulumi:"id"`
 	Schedules []GetWorkersCronTriggerSchedule `pulumi:"schedules"`
@@ -78,7 +83,7 @@ func LookupWorkersCronTriggerOutput(ctx *pulumi.Context, args LookupWorkersCronT
 // A collection of arguments for invoking getWorkersCronTrigger.
 type LookupWorkersCronTriggerOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Name of the script, used in URLs and route configuration.
 	ScriptName pulumi.StringInput `pulumi:"scriptName"`
 }
@@ -103,8 +108,8 @@ func (o LookupWorkersCronTriggerResultOutput) ToLookupWorkersCronTriggerResultOu
 }
 
 // Identifier.
-func (o LookupWorkersCronTriggerResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkersCronTriggerResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupWorkersCronTriggerResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkersCronTriggerResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Name of the script, used in URLs and route configuration.

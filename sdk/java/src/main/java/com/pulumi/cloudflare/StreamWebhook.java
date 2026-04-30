@@ -11,9 +11,16 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Stream Read`
+ * - `Stream Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -60,28 +67,56 @@ public class StreamWebhook extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return The account identifier tag.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
+    }
+    /**
+     * The date and time the webhook was last modified.
+     * 
+     */
+    @Export(name="modified", refs={String.class}, tree="[0]")
+    private Output<String> modified;
+
+    /**
+     * @return The date and time the webhook was last modified.
+     * 
+     */
+    public Output<String> modified() {
+        return this.modified;
     }
     /**
      * The URL where webhooks will be sent.
      * 
      */
     @Export(name="notificationUrl", refs={String.class}, tree="[0]")
-    private Output<String> notificationUrl;
+    private Output</* @Nullable */ String> notificationUrl;
 
     /**
      * @return The URL where webhooks will be sent.
      * 
      */
-    public Output<String> notificationUrl() {
-        return this.notificationUrl;
+    public Output<Optional<String>> notificationUrl() {
+        return Codegen.optional(this.notificationUrl);
+    }
+    /**
+     * The secret used to verify webhook signatures.
+     * 
+     */
+    @Export(name="secret", refs={String.class}, tree="[0]")
+    private Output<String> secret;
+
+    /**
+     * @return The secret used to verify webhook signatures.
+     * 
+     */
+    public Output<String> secret() {
+        return this.secret;
     }
 
     /**
@@ -96,7 +131,7 @@ public class StreamWebhook extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public StreamWebhook(java.lang.String name, StreamWebhookArgs args) {
+    public StreamWebhook(java.lang.String name, @Nullable StreamWebhookArgs args) {
         this(name, args, null);
     }
     /**
@@ -105,7 +140,7 @@ public class StreamWebhook extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public StreamWebhook(java.lang.String name, StreamWebhookArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public StreamWebhook(java.lang.String name, @Nullable StreamWebhookArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/streamWebhook:StreamWebhook", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -113,7 +148,7 @@ public class StreamWebhook extends com.pulumi.resources.CustomResource {
         super("cloudflare:index/streamWebhook:StreamWebhook", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static StreamWebhookArgs makeArgs(StreamWebhookArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static StreamWebhookArgs makeArgs(@Nullable StreamWebhookArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }
@@ -123,6 +158,9 @@ public class StreamWebhook extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "secret"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

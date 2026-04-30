@@ -12,6 +12,12 @@ namespace Pulumi.Cloudflare
     public static class GetWorkersDeployment
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// - `Workers Tail Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -36,6 +42,12 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkersDeploymentResult>("cloudflare:index/getWorkersDeployment:getWorkersDeployment", args ?? new GetWorkersDeploymentArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// - `Workers Tail Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -60,6 +72,12 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkersDeploymentResult>("cloudflare:index/getWorkersDeployment:getWorkersDeployment", args ?? new GetWorkersDeploymentInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// - `Workers Tail Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -90,8 +108,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         [Input("deploymentId", required: true)]
         public string DeploymentId { get; set; } = null!;
@@ -113,8 +131,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("deploymentId", required: true)]
         public Input<string> DeploymentId { get; set; } = null!;
@@ -138,7 +156,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         public readonly Outputs.GetWorkersDeploymentAnnotationsResult Annotations;
         public readonly string AuthorEmail;
         public readonly string CreatedOn;
@@ -160,7 +178,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetWorkersDeploymentResult(
-            string accountId,
+            string? accountId,
 
             Outputs.GetWorkersDeploymentAnnotationsResult annotations,
 

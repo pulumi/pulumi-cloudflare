@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `DNS Read`
+    /// - `DNS Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -28,6 +33,7 @@ namespace Pulumi.Cloudflare
     ///         Type = "A",
     ///         Comment = "Domain verification record",
     ///         Content = "198.51.100.4",
+    ///         PrivateRouting = true,
     ///         Proxied = true,
     ///         Settings = new Cloudflare.Inputs.DnsRecordSettingsArgs
     ///         {
@@ -108,6 +114,12 @@ namespace Pulumi.Cloudflare
         public Output<double?> Priority { get; private set; } = null!;
 
         /// <summary>
+        /// Enables private network routing to the origin.
+        /// </summary>
+        [Output("privateRouting")]
+        public Output<bool?> PrivateRouting { get; private set; } = null!;
+
+        /// <summary>
         /// Whether the record can be proxied by Cloudflare or not.
         /// </summary>
         [Output("proxiable")]
@@ -154,7 +166,7 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("zoneId")]
-        public Output<string> ZoneId { get; private set; } = null!;
+        public Output<string?> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -237,6 +249,12 @@ namespace Pulumi.Cloudflare
         public Input<double>? Priority { get; set; }
 
         /// <summary>
+        /// Enables private network routing to the origin.
+        /// </summary>
+        [Input("privateRouting")]
+        public Input<bool>? PrivateRouting { get; set; }
+
+        /// <summary>
         /// Whether the record is receiving the performance and security benefits of Cloudflare.
         /// </summary>
         [Input("proxied")]
@@ -276,8 +294,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public RecordArgs()
         {
@@ -340,6 +358,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("priority")]
         public Input<double>? Priority { get; set; }
+
+        /// <summary>
+        /// Enables private network routing to the origin.
+        /// </summary>
+        [Input("privateRouting")]
+        public Input<bool>? PrivateRouting { get; set; }
 
         /// <summary>
         /// Whether the record can be proxied by Cloudflare or not.

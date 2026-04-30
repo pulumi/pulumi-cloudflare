@@ -27,7 +27,7 @@ class GetWorkersResult:
     """
     A collection of values returned by getWorkers.
     """
-    def __init__(__self__, account_id=None, id=None, max_items=None, results=None):
+    def __init__(__self__, account_id=None, id=None, max_items=None, order=None, order_by=None, results=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -37,13 +37,19 @@ class GetWorkersResult:
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
+        if order and not isinstance(order, str):
+            raise TypeError("Expected argument 'order' to be a str")
+        pulumi.set(__self__, "order", order)
+        if order_by and not isinstance(order_by, str):
+            raise TypeError("Expected argument 'order_by' to be a str")
+        pulumi.set(__self__, "order_by", order_by)
         if results and not isinstance(results, list):
             raise TypeError("Expected argument 'results' to be a list")
         pulumi.set(__self__, "results", results)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -67,6 +73,24 @@ class GetWorkersResult:
 
     @_builtins.property
     @pulumi.getter
+    def order(self) -> _builtins.str:
+        """
+        Sort direction.
+        Available values: "asc", "desc".
+        """
+        return pulumi.get(self, "order")
+
+    @_builtins.property
+    @pulumi.getter(name="orderBy")
+    def order_by(self) -> _builtins.str:
+        """
+        Property to sort results by.
+        Available values: "deployed*on", "updated*on", "created_on", "name".
+        """
+        return pulumi.get(self, "order_by")
+
+    @_builtins.property
+    @pulumi.getter
     def results(self) -> Sequence['outputs.GetWorkersResultResult']:
         """
         The items returned by the data source
@@ -83,13 +107,23 @@ class AwaitableGetWorkersResult(GetWorkersResult):
             account_id=self.account_id,
             id=self.id,
             max_items=self.max_items,
+            order=self.order,
+            order_by=self.order_by,
             results=self.results)
 
 
 def get_workers(account_id: Optional[_builtins.str] = None,
                 max_items: Optional[_builtins.int] = None,
+                order: Optional[_builtins.str] = None,
+                order_by: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkersResult:
     """
+    Accepted Permissions
+
+    - `Workers Scripts Read`
+    - `Workers Scripts Write`
+    - `Workers Tail Read`
+
     ## Example Usage
 
     ```python
@@ -102,10 +136,16 @@ def get_workers(account_id: Optional[_builtins.str] = None,
 
     :param _builtins.str account_id: Identifier.
     :param _builtins.int max_items: Max items to fetch, default: 1000
+    :param _builtins.str order: Sort direction.
+           Available values: "asc", "desc".
+    :param _builtins.str order_by: Property to sort results by.
+           Available values: "deployed*on", "updated*on", "created_on", "name".
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
+    __args__['order'] = order
+    __args__['orderBy'] = order_by
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getWorkers:getWorkers', __args__, opts=opts, typ=GetWorkersResult).value
 
@@ -113,11 +153,21 @@ def get_workers(account_id: Optional[_builtins.str] = None,
         account_id=pulumi.get(__ret__, 'account_id'),
         id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
+        order=pulumi.get(__ret__, 'order'),
+        order_by=pulumi.get(__ret__, 'order_by'),
         results=pulumi.get(__ret__, 'results'))
-def get_workers_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_workers_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+                       order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                       order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkersResult]:
     """
+    Accepted Permissions
+
+    - `Workers Scripts Read`
+    - `Workers Scripts Write`
+    - `Workers Tail Read`
+
     ## Example Usage
 
     ```python
@@ -130,14 +180,22 @@ def get_workers_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
 
     :param _builtins.str account_id: Identifier.
     :param _builtins.int max_items: Max items to fetch, default: 1000
+    :param _builtins.str order: Sort direction.
+           Available values: "asc", "desc".
+    :param _builtins.str order_by: Property to sort results by.
+           Available values: "deployed*on", "updated*on", "created_on", "name".
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
+    __args__['order'] = order
+    __args__['orderBy'] = order_by
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getWorkers:getWorkers', __args__, opts=opts, typ=GetWorkersResult)
     return __ret__.apply(lambda __response__: GetWorkersResult(
         account_id=pulumi.get(__response__, 'account_id'),
         id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
+        order=pulumi.get(__response__, 'order'),
+        order_by=pulumi.get(__response__, 'order_by'),
         results=pulumi.get(__response__, 'results')))

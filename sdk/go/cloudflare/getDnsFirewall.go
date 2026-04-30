@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `DNS Firewall Read`
+// - `DNS Firewall Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetDnsFirewall(ctx, &cloudflare.LookupDnsFirewallArgs{
-//				AccountId:     "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:     pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				DnsFirewallId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
@@ -50,7 +55,7 @@ func LookupDnsFirewall(ctx *pulumi.Context, args *LookupDnsFirewallArgs, opts ..
 // A collection of arguments for invoking getDnsFirewall.
 type LookupDnsFirewallArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Identifier.
 	DnsFirewallId string `pulumi:"dnsFirewallId"`
 }
@@ -58,7 +63,7 @@ type LookupDnsFirewallArgs struct {
 // A collection of values returned by getDnsFirewall.
 type LookupDnsFirewallResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Attack mitigation settings
 	AttackMitigation GetDnsFirewallAttackMitigation `pulumi:"attackMitigation"`
 	// Whether to refuse to answer queries for the ANY type
@@ -96,7 +101,7 @@ func LookupDnsFirewallOutput(ctx *pulumi.Context, args LookupDnsFirewallOutputAr
 // A collection of arguments for invoking getDnsFirewall.
 type LookupDnsFirewallOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Identifier.
 	DnsFirewallId pulumi.StringInput `pulumi:"dnsFirewallId"`
 }
@@ -121,8 +126,8 @@ func (o LookupDnsFirewallResultOutput) ToLookupDnsFirewallResultOutputWithContex
 }
 
 // Identifier.
-func (o LookupDnsFirewallResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDnsFirewallResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupDnsFirewallResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDnsFirewallResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Attack mitigation settings

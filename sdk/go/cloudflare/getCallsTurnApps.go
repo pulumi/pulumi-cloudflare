@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Calls Read`
+// - `Calls Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetCallsTurnApps(ctx, &cloudflare.LookupCallsTurnAppsArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +54,7 @@ func LookupCallsTurnApps(ctx *pulumi.Context, args *LookupCallsTurnAppsArgs, opt
 // A collection of arguments for invoking getCallsTurnApps.
 type LookupCallsTurnAppsArgs struct {
 	// The account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 }
@@ -57,7 +62,7 @@ type LookupCallsTurnAppsArgs struct {
 // A collection of values returned by getCallsTurnApps.
 type LookupCallsTurnAppsResult struct {
 	// The account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -78,7 +83,7 @@ func LookupCallsTurnAppsOutput(ctx *pulumi.Context, args LookupCallsTurnAppsOutp
 // A collection of arguments for invoking getCallsTurnApps.
 type LookupCallsTurnAppsOutputArgs struct {
 	// The account identifier tag.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
@@ -103,8 +108,8 @@ func (o LookupCallsTurnAppsResultOutput) ToLookupCallsTurnAppsResultOutputWithCo
 }
 
 // The account identifier tag.
-func (o LookupCallsTurnAppsResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCallsTurnAppsResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupCallsTurnAppsResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCallsTurnAppsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

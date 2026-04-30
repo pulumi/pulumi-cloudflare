@@ -13,21 +13,31 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetConnectivityDirectoryServicesResultResult
     {
+        /// <summary>
+        /// Available values: "postgresql", "mysql".
+        /// </summary>
+        public readonly string AppProtocol;
         public readonly string CreatedAt;
         public readonly Outputs.GetConnectivityDirectoryServicesResultHostResult Host;
         public readonly int HttpPort;
         public readonly int HttpsPort;
-        public readonly string Id;
         public readonly string Name;
         public readonly string ServiceId;
+        public readonly int TcpPort;
         /// <summary>
-        /// Available values: "http".
+        /// TLS settings for a connectivity service.
+        /// </summary>
+        public readonly Outputs.GetConnectivityDirectoryServicesResultTlsSettingsResult TlsSettings;
+        /// <summary>
+        /// Available values: "tcp", "http".
         /// </summary>
         public readonly string Type;
         public readonly string UpdatedAt;
 
         [OutputConstructor]
         private GetConnectivityDirectoryServicesResultResult(
+            string appProtocol,
+
             string createdAt,
 
             Outputs.GetConnectivityDirectoryServicesResultHostResult host,
@@ -36,23 +46,27 @@ namespace Pulumi.Cloudflare.Outputs
 
             int httpsPort,
 
-            string id,
-
             string name,
 
             string serviceId,
+
+            int tcpPort,
+
+            Outputs.GetConnectivityDirectoryServicesResultTlsSettingsResult tlsSettings,
 
             string type,
 
             string updatedAt)
         {
+            AppProtocol = appProtocol;
             CreatedAt = createdAt;
             Host = host;
             HttpPort = httpPort;
             HttpsPort = httpsPort;
-            Id = id;
             Name = name;
             ServiceId = serviceId;
+            TcpPort = tcpPort;
+            TlsSettings = tlsSettings;
             Type = type;
             UpdatedAt = updatedAt;
         }

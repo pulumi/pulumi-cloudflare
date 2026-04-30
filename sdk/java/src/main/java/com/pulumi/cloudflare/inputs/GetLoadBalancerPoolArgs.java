@@ -6,7 +6,6 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.GetLoadBalancerPoolFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -21,15 +20,15 @@ public final class GetLoadBalancerPoolArgs extends com.pulumi.resources.InvokeAr
      * Identifier.
      * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     @Import(name="filter")
@@ -78,7 +77,7 @@ public final class GetLoadBalancerPoolArgs extends com.pulumi.resources.InvokeAr
          * @return builder
          * 
          */
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -112,9 +111,6 @@ public final class GetLoadBalancerPoolArgs extends com.pulumi.resources.InvokeAr
         }
 
         public GetLoadBalancerPoolArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetLoadBalancerPoolArgs", "accountId");
-            }
             return $;
         }
     }

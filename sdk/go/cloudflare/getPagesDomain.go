@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Pages Read`
+// - `Pages Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetPagesDomain(ctx, &cloudflare.LookupPagesDomainArgs{
-//				AccountId:   "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:   pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ProjectName: "this-is-my-project-01",
 //				DomainName:  "this-is-my-domain-01.com",
 //			}, nil)
@@ -51,7 +56,7 @@ func LookupPagesDomain(ctx *pulumi.Context, args *LookupPagesDomainArgs, opts ..
 // A collection of arguments for invoking getPagesDomain.
 type LookupPagesDomainArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The domain name.
 	DomainName string `pulumi:"domainName"`
 	// Name of the project.
@@ -61,7 +66,7 @@ type LookupPagesDomainArgs struct {
 // A collection of values returned by getPagesDomain.
 type LookupPagesDomainResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Available values: "google", "letsEncrypt".
 	CertificateAuthority string `pulumi:"certificateAuthority"`
 	CreatedOn            string `pulumi:"createdOn"`
@@ -93,7 +98,7 @@ func LookupPagesDomainOutput(ctx *pulumi.Context, args LookupPagesDomainOutputAr
 // A collection of arguments for invoking getPagesDomain.
 type LookupPagesDomainOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// The domain name.
 	DomainName pulumi.StringInput `pulumi:"domainName"`
 	// Name of the project.
@@ -120,8 +125,8 @@ func (o LookupPagesDomainResultOutput) ToLookupPagesDomainResultOutputWithContex
 }
 
 // Identifier.
-func (o LookupPagesDomainResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPagesDomainResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupPagesDomainResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPagesDomainResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Available values: "google", "letsEncrypt".

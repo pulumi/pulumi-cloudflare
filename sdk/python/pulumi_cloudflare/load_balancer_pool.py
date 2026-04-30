@@ -21,9 +21,9 @@ __all__ = ['LoadBalancerPoolArgs', 'LoadBalancerPool']
 @pulumi.input_type
 class LoadBalancerPoolArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
                  origins: pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginArgs']]],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  check_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -39,9 +39,9 @@ class LoadBalancerPoolArgs:
         """
         The set of arguments for constructing a LoadBalancerPool resource.
 
-        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] name: A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginArgs']]] origins: The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] check_regions: A list of regions from which to run health checks. Null means every Cloudflare data center.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the pool.
         :param pulumi.Input[_builtins.bool] enabled: Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
@@ -55,9 +55,10 @@ class LoadBalancerPoolArgs:
         :param pulumi.Input['LoadBalancerPoolNotificationFilterArgs'] notification_filter: Filter pool and origin health notifications by resource type or health status. Use null to reset.
         :param pulumi.Input['LoadBalancerPoolOriginSteeringArgs'] origin_steering: Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "origins", origins)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if check_regions is not None:
             pulumi.set(__self__, "check_regions", check_regions)
         if description is not None:
@@ -84,18 +85,6 @@ class LoadBalancerPoolArgs:
             pulumi.set(__self__, "origin_steering", origin_steering)
 
     @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
-
-    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
         """
@@ -118,6 +107,18 @@ class LoadBalancerPoolArgs:
     @origins.setter
     def origins(self, value: pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginArgs']]]):
         pulumi.set(self, "origins", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="checkRegions")
@@ -592,6 +593,11 @@ class LoadBalancerPool(pulumi.CustomResource):
                  origins: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPoolOriginArgs', 'LoadBalancerPoolOriginArgsDict']]]]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Load Balancing: Monitors and Pools Read`
+        - `Load Balancing: Monitors and Pools Write`
+
         ## Example Usage
 
         ```python
@@ -604,6 +610,7 @@ class LoadBalancerPool(pulumi.CustomResource):
             origins=[{
                 "address": "0.0.0.0",
                 "enabled": True,
+                "flatten_cname": True,
                 "header": {
                     "host": ["example.com"],
                 },
@@ -673,6 +680,11 @@ class LoadBalancerPool(pulumi.CustomResource):
                  args: LoadBalancerPoolArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Load Balancing: Monitors and Pools Read`
+        - `Load Balancing: Monitors and Pools Write`
+
         ## Example Usage
 
         ```python
@@ -685,6 +697,7 @@ class LoadBalancerPool(pulumi.CustomResource):
             origins=[{
                 "address": "0.0.0.0",
                 "enabled": True,
+                "flatten_cname": True,
                 "header": {
                     "host": ["example.com"],
                 },
@@ -768,8 +781,6 @@ class LoadBalancerPool(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = LoadBalancerPoolArgs.__new__(LoadBalancerPoolArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["check_regions"] = check_regions
             __props__.__dict__["description"] = description
@@ -874,7 +885,7 @@ class LoadBalancerPool(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier.
         """
@@ -927,7 +938,7 @@ class LoadBalancerPool(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="loadShedding")
-    def load_shedding(self) -> pulumi.Output[Optional['outputs.LoadBalancerPoolLoadShedding']]:
+    def load_shedding(self) -> pulumi.Output['outputs.LoadBalancerPoolLoadShedding']:
         """
         Configures load shedding policies and percentages for the pool.
         """
@@ -996,7 +1007,7 @@ class LoadBalancerPool(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="notificationFilter")
-    def notification_filter(self) -> pulumi.Output[Optional['outputs.LoadBalancerPoolNotificationFilter']]:
+    def notification_filter(self) -> pulumi.Output['outputs.LoadBalancerPoolNotificationFilter']:
         """
         Filter pool and origin health notifications by resource type or health status. Use null to reset.
         """
@@ -1004,7 +1015,7 @@ class LoadBalancerPool(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="originSteering")
-    def origin_steering(self) -> pulumi.Output[Optional['outputs.LoadBalancerPoolOriginSteering']]:
+    def origin_steering(self) -> pulumi.Output['outputs.LoadBalancerPoolOriginSteering']:
         """
         Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
         """

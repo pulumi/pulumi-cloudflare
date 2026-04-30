@@ -12,6 +12,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Workers R2 Storage Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -50,7 +54,7 @@ type R2Bucket struct {
 	pulumi.CustomResourceState
 
 	// Account ID.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Creation timestamp.
 	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
 	// Jurisdiction where objects in this bucket are guaranteed to be stored.
@@ -73,9 +77,6 @@ func NewR2Bucket(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -143,7 +144,7 @@ func (R2BucketState) ElementType() reflect.Type {
 
 type r2bucketArgs struct {
 	// Account ID.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Jurisdiction where objects in this bucket are guaranteed to be stored.
 	// Available values: "default", "eu", "fedramp".
 	Jurisdiction *string `pulumi:"jurisdiction"`
@@ -160,7 +161,7 @@ type r2bucketArgs struct {
 // The set of arguments for constructing a R2Bucket resource.
 type R2BucketArgs struct {
 	// Account ID.
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// Jurisdiction where objects in this bucket are guaranteed to be stored.
 	// Available values: "default", "eu", "fedramp".
 	Jurisdiction pulumi.StringPtrInput
@@ -262,8 +263,8 @@ func (o R2BucketOutput) ToR2BucketOutputWithContext(ctx context.Context) R2Bucke
 }
 
 // Account ID.
-func (o R2BucketOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *R2Bucket) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o R2BucketOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *R2Bucket) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Creation timestamp.

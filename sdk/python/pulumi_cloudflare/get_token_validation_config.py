@@ -115,7 +115,7 @@ class GetTokenValidationConfigResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -144,6 +144,13 @@ def get_token_validation_config(config_id: Optional[_builtins.str] = None,
                                 zone_id: Optional[_builtins.str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTokenValidationConfigResult:
     """
+    Accepted Permissions
+
+    - `Account API Gateway`
+    - `Account API Gateway Read`
+    - `Domain API Gateway`
+    - `Domain API Gateway Read`
+
     ## Example Usage
 
     ```python
@@ -176,9 +183,16 @@ def get_token_validation_config(config_id: Optional[_builtins.str] = None,
         token_type=pulumi.get(__ret__, 'token_type'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_token_validation_config_output(config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                       zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                                       zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTokenValidationConfigResult]:
     """
+    Accepted Permissions
+
+    - `Account API Gateway`
+    - `Account API Gateway Read`
+    - `Domain API Gateway`
+    - `Domain API Gateway Read`
+
     ## Example Usage
 
     ```python

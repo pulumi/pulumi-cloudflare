@@ -56,11 +56,7 @@ public final class GetPageShieldCookiesListInvokeResult {
     private @Nullable String sameSite;
     private @Nullable Boolean secure;
     private @Nullable String type;
-    /**
-     * @return Identifier
-     * 
-     */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetPageShieldCookiesListInvokeResult() {}
     /**
@@ -136,12 +132,8 @@ public final class GetPageShieldCookiesListInvokeResult {
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
-    /**
-     * @return Identifier
-     * 
-     */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -170,7 +162,7 @@ public final class GetPageShieldCookiesListInvokeResult {
         private @Nullable String sameSite;
         private @Nullable Boolean secure;
         private @Nullable String type;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetPageShieldCookiesListInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -304,10 +296,8 @@ public final class GetPageShieldCookiesListInvokeResult {
             return this;
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetPageShieldCookiesListInvokeResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

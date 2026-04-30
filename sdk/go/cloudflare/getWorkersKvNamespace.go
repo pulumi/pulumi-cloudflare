@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Workers KV Storage Read`
+// - `Workers KV Storage Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetWorkersKvNamespace(ctx, &cloudflare.LookupWorkersKvNamespaceArgs{
-//				AccountId:   "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:   pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				NamespaceId: pulumi.StringRef("0f2ac74b498b48028cb68387c421e279"),
 //			}, nil)
 //			if err != nil {
@@ -50,7 +55,7 @@ func LookupWorkersKvNamespace(ctx *pulumi.Context, args *LookupWorkersKvNamespac
 // A collection of arguments for invoking getWorkersKvNamespace.
 type LookupWorkersKvNamespaceArgs struct {
 	// Identifier.
-	AccountId string                       `pulumi:"accountId"`
+	AccountId *string                      `pulumi:"accountId"`
 	Filter    *GetWorkersKvNamespaceFilter `pulumi:"filter"`
 	// Namespace identifier tag.
 	NamespaceId *string `pulumi:"namespaceId"`
@@ -59,7 +64,7 @@ type LookupWorkersKvNamespaceArgs struct {
 // A collection of values returned by getWorkersKvNamespace.
 type LookupWorkersKvNamespaceResult struct {
 	// Identifier.
-	AccountId string                       `pulumi:"accountId"`
+	AccountId *string                      `pulumi:"accountId"`
 	Filter    *GetWorkersKvNamespaceFilter `pulumi:"filter"`
 	// Namespace identifier tag.
 	Id string `pulumi:"id"`
@@ -83,7 +88,7 @@ func LookupWorkersKvNamespaceOutput(ctx *pulumi.Context, args LookupWorkersKvNam
 // A collection of arguments for invoking getWorkersKvNamespace.
 type LookupWorkersKvNamespaceOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput                  `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput               `pulumi:"accountId"`
 	Filter    GetWorkersKvNamespaceFilterPtrInput `pulumi:"filter"`
 	// Namespace identifier tag.
 	NamespaceId pulumi.StringPtrInput `pulumi:"namespaceId"`
@@ -109,8 +114,8 @@ func (o LookupWorkersKvNamespaceResultOutput) ToLookupWorkersKvNamespaceResultOu
 }
 
 // Identifier.
-func (o LookupWorkersKvNamespaceResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkersKvNamespaceResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupWorkersKvNamespaceResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkersKvNamespaceResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupWorkersKvNamespaceResultOutput) Filter() GetWorkersKvNamespaceFilterPtrOutput {

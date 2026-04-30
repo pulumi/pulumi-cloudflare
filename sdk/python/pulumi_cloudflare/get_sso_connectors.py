@@ -43,7 +43,7 @@ class GetSsoConnectorsResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Account identifier tag.
         """
@@ -90,6 +90,10 @@ def get_sso_connectors(account_id: Optional[_builtins.str] = None,
                        max_items: Optional[_builtins.int] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSsoConnectorsResult:
     """
+    Accepted Permissions
+
+    - `SSO Connector Read`
+
     ## Example Usage
 
     ```python
@@ -114,10 +118,14 @@ def get_sso_connectors(account_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'))
-def get_sso_connectors_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_sso_connectors_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSsoConnectorsResult]:
     """
+    Accepted Permissions
+
+    - `SSO Connector Read`
+
     ## Example Usage
 
     ```python

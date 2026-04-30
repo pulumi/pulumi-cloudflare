@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetCustomHostnamesResult',
@@ -27,13 +28,22 @@ class GetCustomHostnamesResult:
     """
     A collection of values returned by getCustomHostnames.
     """
-    def __init__(__self__, direction=None, hostname=None, id=None, max_items=None, order=None, results=None, ssl=None, zone_id=None):
+    def __init__(__self__, certificate_authority=None, custom_origin_server=None, direction=None, hostname=None, hostname_status=None, id=None, max_items=None, order=None, results=None, ssl=None, ssl_status=None, wildcard=None, zone_id=None):
+        if certificate_authority and not isinstance(certificate_authority, str):
+            raise TypeError("Expected argument 'certificate_authority' to be a str")
+        pulumi.set(__self__, "certificate_authority", certificate_authority)
+        if custom_origin_server and not isinstance(custom_origin_server, str):
+            raise TypeError("Expected argument 'custom_origin_server' to be a str")
+        pulumi.set(__self__, "custom_origin_server", custom_origin_server)
         if direction and not isinstance(direction, str):
             raise TypeError("Expected argument 'direction' to be a str")
         pulumi.set(__self__, "direction", direction)
-        if hostname and not isinstance(hostname, str):
-            raise TypeError("Expected argument 'hostname' to be a str")
+        if hostname and not isinstance(hostname, dict):
+            raise TypeError("Expected argument 'hostname' to be a dict")
         pulumi.set(__self__, "hostname", hostname)
+        if hostname_status and not isinstance(hostname_status, str):
+            raise TypeError("Expected argument 'hostname_status' to be a str")
+        pulumi.set(__self__, "hostname_status", hostname_status)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -49,9 +59,32 @@ class GetCustomHostnamesResult:
         if ssl and not isinstance(ssl, float):
             raise TypeError("Expected argument 'ssl' to be a float")
         pulumi.set(__self__, "ssl", ssl)
+        if ssl_status and not isinstance(ssl_status, str):
+            raise TypeError("Expected argument 'ssl_status' to be a str")
+        pulumi.set(__self__, "ssl_status", ssl_status)
+        if wildcard and not isinstance(wildcard, bool):
+            raise TypeError("Expected argument 'wildcard' to be a bool")
+        pulumi.set(__self__, "wildcard", wildcard)
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
+
+    @_builtins.property
+    @pulumi.getter(name="certificateAuthority")
+    def certificate_authority(self) -> Optional[_builtins.str]:
+        """
+        Filter by the certificate authority that issued the SSL certificate.
+        Available values: "google", "lets*encrypt", "ssl*com".
+        """
+        return pulumi.get(self, "certificate_authority")
+
+    @_builtins.property
+    @pulumi.getter(name="customOriginServer")
+    def custom_origin_server(self) -> Optional[_builtins.str]:
+        """
+        Filter by custom origin server name.
+        """
+        return pulumi.get(self, "custom_origin_server")
 
     @_builtins.property
     @pulumi.getter
@@ -64,11 +97,17 @@ class GetCustomHostnamesResult:
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[_builtins.str]:
-        """
-        Fully qualified domain name to match against. This parameter cannot be used with the 'id' parameter.
-        """
+    def hostname(self) -> Optional['outputs.GetCustomHostnamesHostnameResult']:
         return pulumi.get(self, "hostname")
+
+    @_builtins.property
+    @pulumi.getter(name="hostnameStatus")
+    def hostname_status(self) -> Optional[_builtins.str]:
+        """
+        Filter by the hostname's activation status.
+        Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "test_failed", "provisioned", "blocked".
+        """
+        return pulumi.get(self, "hostname_status")
 
     @_builtins.property
     @pulumi.getter
@@ -113,8 +152,25 @@ class GetCustomHostnamesResult:
         return pulumi.get(self, "ssl")
 
     @_builtins.property
+    @pulumi.getter(name="sslStatus")
+    def ssl_status(self) -> Optional[_builtins.str]:
+        """
+        Filter by SSL certificate status.
+        Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
+        """
+        return pulumi.get(self, "ssl_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def wildcard(self) -> Optional[_builtins.bool]:
+        """
+        Filter by whether the custom hostname is a wildcard hostname.
+        """
+        return pulumi.get(self, "wildcard")
+
+    @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -127,25 +183,40 @@ class AwaitableGetCustomHostnamesResult(GetCustomHostnamesResult):
         if False:
             yield self
         return GetCustomHostnamesResult(
+            certificate_authority=self.certificate_authority,
+            custom_origin_server=self.custom_origin_server,
             direction=self.direction,
             hostname=self.hostname,
+            hostname_status=self.hostname_status,
             id=self.id,
             max_items=self.max_items,
             order=self.order,
             results=self.results,
             ssl=self.ssl,
+            ssl_status=self.ssl_status,
+            wildcard=self.wildcard,
             zone_id=self.zone_id)
 
 
-def get_custom_hostnames(direction: Optional[_builtins.str] = None,
-                         hostname: Optional[_builtins.str] = None,
+def get_custom_hostnames(certificate_authority: Optional[_builtins.str] = None,
+                         custom_origin_server: Optional[_builtins.str] = None,
+                         direction: Optional[_builtins.str] = None,
+                         hostname: Optional[Union['GetCustomHostnamesHostnameArgs', 'GetCustomHostnamesHostnameArgsDict']] = None,
+                         hostname_status: Optional[_builtins.str] = None,
                          id: Optional[_builtins.str] = None,
                          max_items: Optional[_builtins.int] = None,
                          order: Optional[_builtins.str] = None,
                          ssl: Optional[_builtins.float] = None,
+                         ssl_status: Optional[_builtins.str] = None,
+                         wildcard: Optional[_builtins.bool] = None,
                          zone_id: Optional[_builtins.str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCustomHostnamesResult:
     """
+    Accepted Permissions
+
+    - `SSL and Certificates Read`
+    - `SSL and Certificates Write`
+
     ## Example Usage
 
     ```python
@@ -154,52 +225,86 @@ def get_custom_hostnames(direction: Optional[_builtins.str] = None,
 
     example_custom_hostnames = cloudflare.get_custom_hostnames(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         id="0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+        certificate_authority="google",
+        custom_origin_server="origin2.example.com",
         direction="desc",
-        hostname="app.example.com",
-        ssl=0)
+        hostname={
+            "contain": "example.com",
+        },
+        hostname_status="provisioned",
+        ssl=0,
+        ssl_status="active",
+        wildcard=False)
     ```
 
 
+    :param _builtins.str certificate_authority: Filter by the certificate authority that issued the SSL certificate.
+           Available values: "google", "lets*encrypt", "ssl*com".
+    :param _builtins.str custom_origin_server: Filter by custom origin server name.
     :param _builtins.str direction: Direction to order hostnames.
            Available values: "asc", "desc".
-    :param _builtins.str hostname: Fully qualified domain name to match against. This parameter cannot be used with the 'id' parameter.
+    :param _builtins.str hostname_status: Filter by the hostname's activation status.
+           Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "test_failed", "provisioned", "blocked".
     :param _builtins.str id: Hostname ID to match against. This ID was generated and returned during the initial custom_hostname creation. This parameter cannot be used with the 'hostname' parameter.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str order: Field to order hostnames by.
            Available values: "ssl", "ssl_status".
     :param _builtins.float ssl: Whether to filter hostnames based on if they have SSL enabled.
            Available values: 0, 1.
+    :param _builtins.str ssl_status: Filter by SSL certificate status.
+           Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
+    :param _builtins.bool wildcard: Filter by whether the custom hostname is a wildcard hostname.
     :param _builtins.str zone_id: Identifier.
     """
     __args__ = dict()
+    __args__['certificateAuthority'] = certificate_authority
+    __args__['customOriginServer'] = custom_origin_server
     __args__['direction'] = direction
     __args__['hostname'] = hostname
+    __args__['hostnameStatus'] = hostname_status
     __args__['id'] = id
     __args__['maxItems'] = max_items
     __args__['order'] = order
     __args__['ssl'] = ssl
+    __args__['sslStatus'] = ssl_status
+    __args__['wildcard'] = wildcard
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getCustomHostnames:getCustomHostnames', __args__, opts=opts, typ=GetCustomHostnamesResult).value
 
     return AwaitableGetCustomHostnamesResult(
+        certificate_authority=pulumi.get(__ret__, 'certificate_authority'),
+        custom_origin_server=pulumi.get(__ret__, 'custom_origin_server'),
         direction=pulumi.get(__ret__, 'direction'),
         hostname=pulumi.get(__ret__, 'hostname'),
+        hostname_status=pulumi.get(__ret__, 'hostname_status'),
         id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         order=pulumi.get(__ret__, 'order'),
         results=pulumi.get(__ret__, 'results'),
         ssl=pulumi.get(__ret__, 'ssl'),
+        ssl_status=pulumi.get(__ret__, 'ssl_status'),
+        wildcard=pulumi.get(__ret__, 'wildcard'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_custom_hostnames_output(direction: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                hostname: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_custom_hostnames_output(certificate_authority: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                custom_origin_server: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                direction: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                hostname: Optional[pulumi.Input[Optional[Union['GetCustomHostnamesHostnameArgs', 'GetCustomHostnamesHostnameArgsDict']]]] = None,
+                                hostname_status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                 id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                 max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                 order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                 ssl: Optional[pulumi.Input[Optional[_builtins.float]]] = None,
-                                zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                                ssl_status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                wildcard: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+                                zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCustomHostnamesResult]:
     """
+    Accepted Permissions
+
+    - `SSL and Certificates Read`
+    - `SSL and Certificates Write`
+
     ## Example Usage
 
     ```python
@@ -208,39 +313,63 @@ def get_custom_hostnames_output(direction: Optional[pulumi.Input[Optional[_built
 
     example_custom_hostnames = cloudflare.get_custom_hostnames(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         id="0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+        certificate_authority="google",
+        custom_origin_server="origin2.example.com",
         direction="desc",
-        hostname="app.example.com",
-        ssl=0)
+        hostname={
+            "contain": "example.com",
+        },
+        hostname_status="provisioned",
+        ssl=0,
+        ssl_status="active",
+        wildcard=False)
     ```
 
 
+    :param _builtins.str certificate_authority: Filter by the certificate authority that issued the SSL certificate.
+           Available values: "google", "lets*encrypt", "ssl*com".
+    :param _builtins.str custom_origin_server: Filter by custom origin server name.
     :param _builtins.str direction: Direction to order hostnames.
            Available values: "asc", "desc".
-    :param _builtins.str hostname: Fully qualified domain name to match against. This parameter cannot be used with the 'id' parameter.
+    :param _builtins.str hostname_status: Filter by the hostname's activation status.
+           Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "test_failed", "provisioned", "blocked".
     :param _builtins.str id: Hostname ID to match against. This ID was generated and returned during the initial custom_hostname creation. This parameter cannot be used with the 'hostname' parameter.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str order: Field to order hostnames by.
            Available values: "ssl", "ssl_status".
     :param _builtins.float ssl: Whether to filter hostnames based on if they have SSL enabled.
            Available values: 0, 1.
+    :param _builtins.str ssl_status: Filter by SSL certificate status.
+           Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
+    :param _builtins.bool wildcard: Filter by whether the custom hostname is a wildcard hostname.
     :param _builtins.str zone_id: Identifier.
     """
     __args__ = dict()
+    __args__['certificateAuthority'] = certificate_authority
+    __args__['customOriginServer'] = custom_origin_server
     __args__['direction'] = direction
     __args__['hostname'] = hostname
+    __args__['hostnameStatus'] = hostname_status
     __args__['id'] = id
     __args__['maxItems'] = max_items
     __args__['order'] = order
     __args__['ssl'] = ssl
+    __args__['sslStatus'] = ssl_status
+    __args__['wildcard'] = wildcard
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getCustomHostnames:getCustomHostnames', __args__, opts=opts, typ=GetCustomHostnamesResult)
     return __ret__.apply(lambda __response__: GetCustomHostnamesResult(
+        certificate_authority=pulumi.get(__response__, 'certificate_authority'),
+        custom_origin_server=pulumi.get(__response__, 'custom_origin_server'),
         direction=pulumi.get(__response__, 'direction'),
         hostname=pulumi.get(__response__, 'hostname'),
+        hostname_status=pulumi.get(__response__, 'hostname_status'),
         id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
         order=pulumi.get(__response__, 'order'),
         results=pulumi.get(__response__, 'results'),
         ssl=pulumi.get(__response__, 'ssl'),
+        ssl_status=pulumi.get(__response__, 'ssl_status'),
+        wildcard=pulumi.get(__response__, 'wildcard'),
         zone_id=pulumi.get(__response__, 'zone_id')))

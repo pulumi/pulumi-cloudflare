@@ -7,6 +7,15 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudflare One Connector: cloudflared Read`
+ * - `Cloudflare One Connector: cloudflared Write`
+ * - `Cloudflare One Connectors Read`
+ * - `Cloudflare One Connectors Write`
+ * - `Cloudflare Tunnel Read`
+ * - `Cloudflare Tunnel Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -105,7 +114,7 @@ export class ZeroTrustTunnelCloudflaredConfig extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * The tunnel configuration and ingress rules.
      */
@@ -146,9 +155,6 @@ export class ZeroTrustTunnelCloudflaredConfig extends pulumi.CustomResource {
             resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as ZeroTrustTunnelCloudflaredConfigArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.tunnelId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tunnelId'");
             }
@@ -201,7 +207,7 @@ export interface ZeroTrustTunnelCloudflaredConfigArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * The tunnel configuration and ingress rules.
      */

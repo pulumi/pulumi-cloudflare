@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetZoneSubscription
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Billing Read`
+        /// - `Billing Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZoneSubscriptionResult> InvokeAsync(GetZoneSubscriptionArgs args, InvokeOptions? options = null)
+        public static Task<GetZoneSubscriptionResult> InvokeAsync(GetZoneSubscriptionArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZoneSubscriptionResult>("cloudflare:index/getZoneSubscription:getZoneSubscription", args ?? new GetZoneSubscriptionArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Billing Read`
+        /// - `Billing Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZoneSubscriptionResult> Invoke(GetZoneSubscriptionInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZoneSubscriptionResult> Invoke(GetZoneSubscriptionInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZoneSubscriptionResult>("cloudflare:index/getZoneSubscription:getZoneSubscription", args ?? new GetZoneSubscriptionInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Billing Read`
+        /// - `Billing Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +99,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetZoneSubscriptionArgs()
         {
@@ -98,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetZoneSubscriptionInvokeArgs()
         {
@@ -148,7 +163,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetZoneSubscriptionResult(
@@ -168,7 +183,7 @@ namespace Pulumi.Cloudflare
 
             string state,
 
-            string zoneId)
+            string? zoneId)
         {
             Currency = currency;
             CurrentPeriodEnd = currentPeriodEnd;

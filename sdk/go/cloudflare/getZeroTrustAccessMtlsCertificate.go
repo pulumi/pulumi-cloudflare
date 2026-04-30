@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Access: Mutual TLS Certificates Read`
+// - `Access: Mutual TLS Certificates Write`
+//
 // ## Example Usage
 //
 // ```go

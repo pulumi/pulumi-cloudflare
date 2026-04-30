@@ -21,6 +21,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Access: Organizations, Identity Providers, and Groups Read`
+ * - `Access: Organizations, Identity Providers, and Groups Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -33,11 +38,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.ZeroTrustAccessGroup;
  * import com.pulumi.cloudflare.ZeroTrustAccessGroupArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeGroupArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeCertificateArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupExcludeArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupExcludeGroupArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupExcludeCertificateArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupRequireArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupRequireGroupArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupRequireCertificateArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -53,21 +58,18 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var exampleZeroTrustAccessGroup = new ZeroTrustAccessGroup("exampleZeroTrustAccessGroup", ZeroTrustAccessGroupArgs.builder()
  *             .includes(ZeroTrustAccessGroupIncludeArgs.builder()
- *                 .group(ZeroTrustAccessGroupIncludeGroupArgs.builder()
- *                     .id("aa0a4aab-672b-4bdb-bc33-a59f1130a11f")
+ *                 .certificate(ZeroTrustAccessGroupIncludeCertificateArgs.builder()
  *                     .build())
  *                 .build())
  *             .name("Allow devs")
  *             .zoneId("zone_id")
  *             .excludes(ZeroTrustAccessGroupExcludeArgs.builder()
- *                 .group(ZeroTrustAccessGroupExcludeGroupArgs.builder()
- *                     .id("aa0a4aab-672b-4bdb-bc33-a59f1130a11f")
+ *                 .certificate(ZeroTrustAccessGroupExcludeCertificateArgs.builder()
  *                     .build())
  *                 .build())
  *             .isDefault(true)
  *             .requires(ZeroTrustAccessGroupRequireArgs.builder()
- *                 .group(ZeroTrustAccessGroupRequireGroupArgs.builder()
- *                     .id("aa0a4aab-672b-4bdb-bc33-a59f1130a11f")
+ *                 .certificate(ZeroTrustAccessGroupRequireCertificateArgs.builder()
  *                     .build())
  *                 .build())
  *             .build());

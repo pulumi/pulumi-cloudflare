@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetStreamWebhook
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Stream Read`
+        /// - `Stream Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetStreamWebhookResult> InvokeAsync(GetStreamWebhookArgs args, InvokeOptions? options = null)
+        public static Task<GetStreamWebhookResult> InvokeAsync(GetStreamWebhookArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetStreamWebhookResult>("cloudflare:index/getStreamWebhook:getStreamWebhook", args ?? new GetStreamWebhookArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Stream Read`
+        /// - `Stream Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetStreamWebhookResult> Invoke(GetStreamWebhookInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetStreamWebhookResult> Invoke(GetStreamWebhookInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetStreamWebhookResult>("cloudflare:index/getStreamWebhook:getStreamWebhook", args ?? new GetStreamWebhookInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Stream Read`
+        /// - `Stream Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +99,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         public GetStreamWebhookArgs()
         {
@@ -98,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         public GetStreamWebhookInvokeArgs()
         {
@@ -114,20 +129,41 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier tag.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The date and time the webhook was last modified.
+        /// </summary>
+        public readonly string Modified;
+        /// <summary>
+        /// The URL where webhooks will be sent.
+        /// </summary>
+        public readonly string NotificationUrl;
+        /// <summary>
+        /// The secret used to verify webhook signatures.
+        /// </summary>
+        public readonly string Secret;
 
         [OutputConstructor]
         private GetStreamWebhookResult(
-            string accountId,
+            string? accountId,
 
-            string id)
+            string id,
+
+            string modified,
+
+            string notificationUrl,
+
+            string secret)
         {
             AccountId = accountId;
             Id = id;
+            Modified = modified;
+            NotificationUrl = notificationUrl;
+            Secret = secret;
         }
     }
 }

@@ -40,15 +40,15 @@ export class AiSearchInstance extends pulumi.CustomResource {
     }
 
     declare public readonly accountId: pulumi.Output<string>;
-    declare public readonly aiGatewayId: pulumi.Output<string | undefined>;
+    declare public readonly aiGatewayId: pulumi.Output<string>;
     /**
-     * Use your AI Search ID.
+     * AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
      */
     declare public readonly aiSearchInstanceId: pulumi.Output<string>;
     /**
-     * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+     * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
      */
-    declare public readonly aisearchModel: pulumi.Output<string | undefined>;
+    declare public readonly aisearchModel: pulumi.Output<string>;
     declare public readonly cache: pulumi.Output<boolean>;
     /**
      * Available values: "super*strict*match", "close*enough", "flexible*friend", "anythingGoes".
@@ -61,20 +61,32 @@ export class AiSearchInstance extends pulumi.CustomResource {
     declare public /*out*/ readonly createdBy: pulumi.Output<string>;
     declare public readonly customMetadatas: pulumi.Output<outputs.AiSearchInstanceCustomMetadata[] | undefined>;
     /**
-     * Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
+     * Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
      */
-    declare public readonly embeddingModel: pulumi.Output<string | undefined>;
+    declare public readonly embeddingModel: pulumi.Output<string>;
     declare public /*out*/ readonly enable: pulumi.Output<boolean>;
+    declare public /*out*/ readonly engineVersion: pulumi.Output<number>;
     /**
      * Available values: "max", "rrf".
      */
     declare public readonly fusionMethod: pulumi.Output<string>;
+    /**
+     * Deprecated — use indexMethod instead.
+     *
+     * @deprecated This attribute is deprecated.
+     */
     declare public readonly hybridSearchEnabled: pulumi.Output<boolean>;
+    /**
+     * Controls which storage backends are used during indexing. Defaults to vector-only.
+     */
+    declare public readonly indexMethod: pulumi.Output<outputs.AiSearchInstanceIndexMethod>;
+    declare public readonly indexingOptions: pulumi.Output<outputs.AiSearchInstanceIndexingOptions>;
     declare public /*out*/ readonly lastActivity: pulumi.Output<string>;
     declare public readonly maxNumResults: pulumi.Output<number>;
     declare public readonly metadata: pulumi.Output<outputs.AiSearchInstanceMetadata | undefined>;
     declare public /*out*/ readonly modifiedAt: pulumi.Output<string>;
     declare public /*out*/ readonly modifiedBy: pulumi.Output<string>;
+    declare public /*out*/ readonly namespace: pulumi.Output<string>;
     declare public readonly paused: pulumi.Output<boolean>;
     declare public /*out*/ readonly publicEndpointId: pulumi.Output<string>;
     declare public readonly publicEndpointParams: pulumi.Output<outputs.AiSearchInstancePublicEndpointParams>;
@@ -82,22 +94,27 @@ export class AiSearchInstance extends pulumi.CustomResource {
     /**
      * Available values: "@cf/baai/bge-reranker-base", "".
      */
-    declare public readonly rerankingModel: pulumi.Output<string | undefined>;
+    declare public readonly rerankingModel: pulumi.Output<string>;
     declare public readonly retrievalOptions: pulumi.Output<outputs.AiSearchInstanceRetrievalOptions>;
     /**
-     * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+     * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
      */
-    declare public readonly rewriteModel: pulumi.Output<string | undefined>;
+    declare public readonly rewriteModel: pulumi.Output<string>;
     declare public readonly rewriteQuery: pulumi.Output<boolean>;
     declare public readonly scoreThreshold: pulumi.Output<number>;
-    declare public readonly source: pulumi.Output<string>;
+    declare public readonly source: pulumi.Output<string | undefined>;
     declare public readonly sourceParams: pulumi.Output<outputs.AiSearchInstanceSourceParams>;
     declare public /*out*/ readonly status: pulumi.Output<string>;
     declare public readonly summarization: pulumi.Output<boolean>;
     /**
-     * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+     * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
      */
     declare public readonly summarizationModel: pulumi.Output<string | undefined>;
+    /**
+     * Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+     * Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
+     */
+    declare public readonly syncInterval: pulumi.Output<number>;
     declare public readonly systemPromptAisearch: pulumi.Output<string | undefined>;
     declare public readonly systemPromptIndexSummarization: pulumi.Output<string | undefined>;
     declare public readonly systemPromptRewriteQuery: pulumi.Output<string | undefined>;
@@ -105,7 +122,7 @@ export class AiSearchInstance extends pulumi.CustomResource {
     /**
      * Available values: "r2", "web-crawler".
      */
-    declare public readonly type: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly vectorizeName: pulumi.Output<string>;
 
     /**
@@ -135,13 +152,17 @@ export class AiSearchInstance extends pulumi.CustomResource {
             resourceInputs["customMetadatas"] = state?.customMetadatas;
             resourceInputs["embeddingModel"] = state?.embeddingModel;
             resourceInputs["enable"] = state?.enable;
+            resourceInputs["engineVersion"] = state?.engineVersion;
             resourceInputs["fusionMethod"] = state?.fusionMethod;
             resourceInputs["hybridSearchEnabled"] = state?.hybridSearchEnabled;
+            resourceInputs["indexMethod"] = state?.indexMethod;
+            resourceInputs["indexingOptions"] = state?.indexingOptions;
             resourceInputs["lastActivity"] = state?.lastActivity;
             resourceInputs["maxNumResults"] = state?.maxNumResults;
             resourceInputs["metadata"] = state?.metadata;
             resourceInputs["modifiedAt"] = state?.modifiedAt;
             resourceInputs["modifiedBy"] = state?.modifiedBy;
+            resourceInputs["namespace"] = state?.namespace;
             resourceInputs["paused"] = state?.paused;
             resourceInputs["publicEndpointId"] = state?.publicEndpointId;
             resourceInputs["publicEndpointParams"] = state?.publicEndpointParams;
@@ -156,6 +177,7 @@ export class AiSearchInstance extends pulumi.CustomResource {
             resourceInputs["status"] = state?.status;
             resourceInputs["summarization"] = state?.summarization;
             resourceInputs["summarizationModel"] = state?.summarizationModel;
+            resourceInputs["syncInterval"] = state?.syncInterval;
             resourceInputs["systemPromptAisearch"] = state?.systemPromptAisearch;
             resourceInputs["systemPromptIndexSummarization"] = state?.systemPromptIndexSummarization;
             resourceInputs["systemPromptRewriteQuery"] = state?.systemPromptRewriteQuery;
@@ -170,12 +192,6 @@ export class AiSearchInstance extends pulumi.CustomResource {
             if (args?.aiSearchInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aiSearchInstanceId'");
             }
-            if (args?.source === undefined && !opts.urn) {
-                throw new Error("Missing required property 'source'");
-            }
-            if (args?.type === undefined && !opts.urn) {
-                throw new Error("Missing required property 'type'");
-            }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["aiGatewayId"] = args?.aiGatewayId;
             resourceInputs["aiSearchInstanceId"] = args?.aiSearchInstanceId;
@@ -189,6 +205,8 @@ export class AiSearchInstance extends pulumi.CustomResource {
             resourceInputs["embeddingModel"] = args?.embeddingModel;
             resourceInputs["fusionMethod"] = args?.fusionMethod;
             resourceInputs["hybridSearchEnabled"] = args?.hybridSearchEnabled;
+            resourceInputs["indexMethod"] = args?.indexMethod;
+            resourceInputs["indexingOptions"] = args?.indexingOptions;
             resourceInputs["maxNumResults"] = args?.maxNumResults;
             resourceInputs["metadata"] = args?.metadata;
             resourceInputs["paused"] = args?.paused;
@@ -203,6 +221,7 @@ export class AiSearchInstance extends pulumi.CustomResource {
             resourceInputs["sourceParams"] = args?.sourceParams;
             resourceInputs["summarization"] = args?.summarization;
             resourceInputs["summarizationModel"] = args?.summarizationModel;
+            resourceInputs["syncInterval"] = args?.syncInterval;
             resourceInputs["systemPromptAisearch"] = args?.systemPromptAisearch;
             resourceInputs["systemPromptIndexSummarization"] = args?.systemPromptIndexSummarization;
             resourceInputs["systemPromptRewriteQuery"] = args?.systemPromptRewriteQuery;
@@ -211,9 +230,11 @@ export class AiSearchInstance extends pulumi.CustomResource {
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["enable"] = undefined /*out*/;
+            resourceInputs["engineVersion"] = undefined /*out*/;
             resourceInputs["lastActivity"] = undefined /*out*/;
             resourceInputs["modifiedAt"] = undefined /*out*/;
             resourceInputs["modifiedBy"] = undefined /*out*/;
+            resourceInputs["namespace"] = undefined /*out*/;
             resourceInputs["publicEndpointId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["vectorizeName"] = undefined /*out*/;
@@ -230,11 +251,11 @@ export interface AiSearchInstanceState {
     accountId?: pulumi.Input<string>;
     aiGatewayId?: pulumi.Input<string>;
     /**
-     * Use your AI Search ID.
+     * AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
      */
     aiSearchInstanceId?: pulumi.Input<string>;
     /**
-     * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+     * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
      */
     aisearchModel?: pulumi.Input<string>;
     cache?: pulumi.Input<boolean>;
@@ -249,20 +270,32 @@ export interface AiSearchInstanceState {
     createdBy?: pulumi.Input<string>;
     customMetadatas?: pulumi.Input<pulumi.Input<inputs.AiSearchInstanceCustomMetadata>[]>;
     /**
-     * Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
+     * Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
      */
     embeddingModel?: pulumi.Input<string>;
     enable?: pulumi.Input<boolean>;
+    engineVersion?: pulumi.Input<number>;
     /**
      * Available values: "max", "rrf".
      */
     fusionMethod?: pulumi.Input<string>;
+    /**
+     * Deprecated — use indexMethod instead.
+     *
+     * @deprecated This attribute is deprecated.
+     */
     hybridSearchEnabled?: pulumi.Input<boolean>;
+    /**
+     * Controls which storage backends are used during indexing. Defaults to vector-only.
+     */
+    indexMethod?: pulumi.Input<inputs.AiSearchInstanceIndexMethod>;
+    indexingOptions?: pulumi.Input<inputs.AiSearchInstanceIndexingOptions>;
     lastActivity?: pulumi.Input<string>;
     maxNumResults?: pulumi.Input<number>;
     metadata?: pulumi.Input<inputs.AiSearchInstanceMetadata>;
     modifiedAt?: pulumi.Input<string>;
     modifiedBy?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string>;
     paused?: pulumi.Input<boolean>;
     publicEndpointId?: pulumi.Input<string>;
     publicEndpointParams?: pulumi.Input<inputs.AiSearchInstancePublicEndpointParams>;
@@ -273,7 +306,7 @@ export interface AiSearchInstanceState {
     rerankingModel?: pulumi.Input<string>;
     retrievalOptions?: pulumi.Input<inputs.AiSearchInstanceRetrievalOptions>;
     /**
-     * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+     * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
      */
     rewriteModel?: pulumi.Input<string>;
     rewriteQuery?: pulumi.Input<boolean>;
@@ -283,9 +316,14 @@ export interface AiSearchInstanceState {
     status?: pulumi.Input<string>;
     summarization?: pulumi.Input<boolean>;
     /**
-     * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+     * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
      */
     summarizationModel?: pulumi.Input<string>;
+    /**
+     * Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+     * Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
+     */
+    syncInterval?: pulumi.Input<number>;
     systemPromptAisearch?: pulumi.Input<string>;
     systemPromptIndexSummarization?: pulumi.Input<string>;
     systemPromptRewriteQuery?: pulumi.Input<string>;
@@ -304,11 +342,11 @@ export interface AiSearchInstanceArgs {
     accountId: pulumi.Input<string>;
     aiGatewayId?: pulumi.Input<string>;
     /**
-     * Use your AI Search ID.
+     * AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
      */
     aiSearchInstanceId: pulumi.Input<string>;
     /**
-     * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+     * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
      */
     aisearchModel?: pulumi.Input<string>;
     cache?: pulumi.Input<boolean>;
@@ -321,14 +359,24 @@ export interface AiSearchInstanceArgs {
     chunkSize?: pulumi.Input<number>;
     customMetadatas?: pulumi.Input<pulumi.Input<inputs.AiSearchInstanceCustomMetadata>[]>;
     /**
-     * Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
+     * Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
      */
     embeddingModel?: pulumi.Input<string>;
     /**
      * Available values: "max", "rrf".
      */
     fusionMethod?: pulumi.Input<string>;
+    /**
+     * Deprecated — use indexMethod instead.
+     *
+     * @deprecated This attribute is deprecated.
+     */
     hybridSearchEnabled?: pulumi.Input<boolean>;
+    /**
+     * Controls which storage backends are used during indexing. Defaults to vector-only.
+     */
+    indexMethod?: pulumi.Input<inputs.AiSearchInstanceIndexMethod>;
+    indexingOptions?: pulumi.Input<inputs.AiSearchInstanceIndexingOptions>;
     maxNumResults?: pulumi.Input<number>;
     metadata?: pulumi.Input<inputs.AiSearchInstanceMetadata>;
     paused?: pulumi.Input<boolean>;
@@ -340,18 +388,23 @@ export interface AiSearchInstanceArgs {
     rerankingModel?: pulumi.Input<string>;
     retrievalOptions?: pulumi.Input<inputs.AiSearchInstanceRetrievalOptions>;
     /**
-     * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+     * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
      */
     rewriteModel?: pulumi.Input<string>;
     rewriteQuery?: pulumi.Input<boolean>;
     scoreThreshold?: pulumi.Input<number>;
-    source: pulumi.Input<string>;
+    source?: pulumi.Input<string>;
     sourceParams?: pulumi.Input<inputs.AiSearchInstanceSourceParams>;
     summarization?: pulumi.Input<boolean>;
     /**
-     * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+     * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
      */
     summarizationModel?: pulumi.Input<string>;
+    /**
+     * Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+     * Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
+     */
+    syncInterval?: pulumi.Input<number>;
     systemPromptAisearch?: pulumi.Input<string>;
     systemPromptIndexSummarization?: pulumi.Input<string>;
     systemPromptRewriteQuery?: pulumi.Input<string>;
@@ -359,5 +412,5 @@ export interface AiSearchInstanceArgs {
     /**
      * Available values: "r2", "web-crawler".
      */
-    type: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }

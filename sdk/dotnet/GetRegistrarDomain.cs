@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleRegistrarDomain = Cloudflare.Index.GetRegistrarDomain.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         DomainName = "cloudflare.com",
+        ///         DomainName = "example.com",
         ///     });
         /// 
         /// });
@@ -48,7 +48,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleRegistrarDomain = Cloudflare.Index.GetRegistrarDomain.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         DomainName = "cloudflare.com",
+        ///         DomainName = "example.com",
         ///     });
         /// 
         /// });
@@ -71,7 +71,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleRegistrarDomain = Cloudflare.Index.GetRegistrarDomain.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         DomainName = "cloudflare.com",
+        ///         DomainName = "example.com",
         ///     });
         /// 
         /// });
@@ -87,11 +87,14 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
-        /// Domain name.
+        /// Fully qualified domain name (FQDN) including the extension
+        /// (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+        /// identifies a registration — the same domain cannot be registered
+        /// twice, making it a natural idempotency key for registration requests.
         /// </summary>
         [Input("domainName", required: true)]
         public string DomainName { get; set; } = null!;
@@ -107,11 +110,14 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Domain name.
+        /// Fully qualified domain name (FQDN) including the extension
+        /// (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+        /// identifies a registration — the same domain cannot be registered
+        /// twice, making it a natural idempotency key for registration requests.
         /// </summary>
         [Input("domainName", required: true)]
         public Input<string> DomainName { get; set; } = null!;
@@ -129,9 +135,12 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
-        /// Domain name.
+        /// Fully qualified domain name (FQDN) including the extension
+        /// (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+        /// identifies a registration — the same domain cannot be registered
+        /// twice, making it a natural idempotency key for registration requests.
         /// </summary>
         public readonly string DomainName;
         /// <summary>
@@ -141,7 +150,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetRegistrarDomainResult(
-            string accountId,
+            string? accountId,
 
             string domainName,
 

@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudflare One Networks Read`
+ * - `Cloudflare One Networks Write`
+ * - `Cloudflare Tunnel Read`
+ * - `Cloudflare Tunnel Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +26,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustNetworkHostnameRoute(args: GetZeroTrustNetworkHostnameRouteArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustNetworkHostnameRouteResult> {
+export function getZeroTrustNetworkHostnameRoute(args?: GetZeroTrustNetworkHostnameRouteArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustNetworkHostnameRouteResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustNetworkHostnameRoute:getZeroTrustNetworkHostnameRoute", {
         "accountId": args.accountId,
@@ -35,7 +43,7 @@ export interface GetZeroTrustNetworkHostnameRouteArgs {
     /**
      * Cloudflare account ID
      */
-    accountId: string;
+    accountId?: string;
     filter?: inputs.GetZeroTrustNetworkHostnameRouteFilter;
     /**
      * The hostname route ID.
@@ -50,7 +58,7 @@ export interface GetZeroTrustNetworkHostnameRouteResult {
     /**
      * Cloudflare account ID
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * An optional description of the hostname route.
      */
@@ -86,6 +94,13 @@ export interface GetZeroTrustNetworkHostnameRouteResult {
     readonly tunnelName: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudflare One Networks Read`
+ * - `Cloudflare One Networks Write`
+ * - `Cloudflare Tunnel Read`
+ * - `Cloudflare Tunnel Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -98,7 +113,8 @@ export interface GetZeroTrustNetworkHostnameRouteResult {
  * });
  * ```
  */
-export function getZeroTrustNetworkHostnameRouteOutput(args: GetZeroTrustNetworkHostnameRouteOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustNetworkHostnameRouteResult> {
+export function getZeroTrustNetworkHostnameRouteOutput(args?: GetZeroTrustNetworkHostnameRouteOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustNetworkHostnameRouteResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustNetworkHostnameRoute:getZeroTrustNetworkHostnameRoute", {
         "accountId": args.accountId,
@@ -114,7 +130,7 @@ export interface GetZeroTrustNetworkHostnameRouteOutputArgs {
     /**
      * Cloudflare account ID
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetZeroTrustNetworkHostnameRouteFilterArgs>;
     /**
      * The hostname route ID.

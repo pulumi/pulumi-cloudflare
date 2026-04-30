@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Zero Trust Read`
+// - `Zero Trust Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -65,12 +70,12 @@ import (
 type DlpPredefinedProfile struct {
 	pulumi.CustomResourceState
 
-	AccountId           pulumi.StringOutput      `pulumi:"accountId"`
+	AccountId           pulumi.StringPtrOutput   `pulumi:"accountId"`
 	AiContextEnabled    pulumi.BoolOutput        `pulumi:"aiContextEnabled"`
 	AllowedMatchCount   pulumi.IntOutput         `pulumi:"allowedMatchCount"`
 	ConfidenceThreshold pulumi.StringOutput      `pulumi:"confidenceThreshold"`
 	EnabledEntries      pulumi.StringArrayOutput `pulumi:"enabledEntries"`
-	// Deprecated: This attribute is deprecated.
+	// Deprecated: This attribute is deprecated. Use enabledEntries instead.
 	Entries DlpPredefinedProfileEntryArrayOutput `pulumi:"entries"`
 	// The name of the predefined profile.
 	Name       pulumi.StringOutput `pulumi:"name"`
@@ -87,9 +92,6 @@ func NewDlpPredefinedProfile(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.ProfileId == nil {
 		return nil, errors.New("invalid value for required argument 'ProfileId'")
 	}
@@ -127,7 +129,7 @@ type dlpPredefinedProfileState struct {
 	AllowedMatchCount   *int     `pulumi:"allowedMatchCount"`
 	ConfidenceThreshold *string  `pulumi:"confidenceThreshold"`
 	EnabledEntries      []string `pulumi:"enabledEntries"`
-	// Deprecated: This attribute is deprecated.
+	// Deprecated: This attribute is deprecated. Use enabledEntries instead.
 	Entries []DlpPredefinedProfileEntry `pulumi:"entries"`
 	// The name of the predefined profile.
 	Name       *string `pulumi:"name"`
@@ -143,7 +145,7 @@ type DlpPredefinedProfileState struct {
 	AllowedMatchCount   pulumi.IntPtrInput
 	ConfidenceThreshold pulumi.StringPtrInput
 	EnabledEntries      pulumi.StringArrayInput
-	// Deprecated: This attribute is deprecated.
+	// Deprecated: This attribute is deprecated. Use enabledEntries instead.
 	Entries DlpPredefinedProfileEntryArrayInput
 	// The name of the predefined profile.
 	Name       pulumi.StringPtrInput
@@ -158,12 +160,12 @@ func (DlpPredefinedProfileState) ElementType() reflect.Type {
 }
 
 type dlpPredefinedProfileArgs struct {
-	AccountId           string   `pulumi:"accountId"`
+	AccountId           *string  `pulumi:"accountId"`
 	AiContextEnabled    *bool    `pulumi:"aiContextEnabled"`
 	AllowedMatchCount   *int     `pulumi:"allowedMatchCount"`
 	ConfidenceThreshold *string  `pulumi:"confidenceThreshold"`
 	EnabledEntries      []string `pulumi:"enabledEntries"`
-	// Deprecated: This attribute is deprecated.
+	// Deprecated: This attribute is deprecated. Use enabledEntries instead.
 	Entries    []DlpPredefinedProfileEntry `pulumi:"entries"`
 	OcrEnabled *bool                       `pulumi:"ocrEnabled"`
 	ProfileId  string                      `pulumi:"profileId"`
@@ -171,12 +173,12 @@ type dlpPredefinedProfileArgs struct {
 
 // The set of arguments for constructing a DlpPredefinedProfile resource.
 type DlpPredefinedProfileArgs struct {
-	AccountId           pulumi.StringInput
+	AccountId           pulumi.StringPtrInput
 	AiContextEnabled    pulumi.BoolPtrInput
 	AllowedMatchCount   pulumi.IntPtrInput
 	ConfidenceThreshold pulumi.StringPtrInput
 	EnabledEntries      pulumi.StringArrayInput
-	// Deprecated: This attribute is deprecated.
+	// Deprecated: This attribute is deprecated. Use enabledEntries instead.
 	Entries    DlpPredefinedProfileEntryArrayInput
 	OcrEnabled pulumi.BoolPtrInput
 	ProfileId  pulumi.StringInput
@@ -269,8 +271,8 @@ func (o DlpPredefinedProfileOutput) ToDlpPredefinedProfileOutputWithContext(ctx 
 	return o
 }
 
-func (o DlpPredefinedProfileOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *DlpPredefinedProfile) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o DlpPredefinedProfileOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DlpPredefinedProfile) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o DlpPredefinedProfileOutput) AiContextEnabled() pulumi.BoolOutput {
@@ -289,7 +291,7 @@ func (o DlpPredefinedProfileOutput) EnabledEntries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DlpPredefinedProfile) pulumi.StringArrayOutput { return v.EnabledEntries }).(pulumi.StringArrayOutput)
 }
 
-// Deprecated: This attribute is deprecated.
+// Deprecated: This attribute is deprecated. Use enabledEntries instead.
 func (o DlpPredefinedProfileOutput) Entries() DlpPredefinedProfileEntryArrayOutput {
 	return o.ApplyT(func(v *DlpPredefinedProfile) DlpPredefinedProfileEntryArrayOutput { return v.Entries }).(DlpPredefinedProfileEntryArrayOutput)
 }

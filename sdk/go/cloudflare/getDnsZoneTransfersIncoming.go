@@ -11,6 +11,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `DNS Read`
+// - `DNS Write`
+// - `Zone Settings Read`
+// - `Zone Settings Write`
+// - `Zone Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +34,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetDnsZoneTransfersIncoming(ctx, &cloudflare.LookupDnsZoneTransfersIncomingArgs{
-//				ZoneId: "269d8f4853475ca241c4e730be286b20",
+//				ZoneId: pulumi.StringRef("269d8f4853475ca241c4e730be286b20"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -48,7 +56,7 @@ func LookupDnsZoneTransfersIncoming(ctx *pulumi.Context, args *LookupDnsZoneTran
 
 // A collection of arguments for invoking getDnsZoneTransfersIncoming.
 type LookupDnsZoneTransfersIncomingArgs struct {
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getDnsZoneTransfersIncoming.
@@ -70,7 +78,7 @@ type LookupDnsZoneTransfersIncomingResult struct {
 	Peers []string `pulumi:"peers"`
 	// The serial number of the SOA for the given zone.
 	SoaSerial float64 `pulumi:"soaSerial"`
-	ZoneId    string  `pulumi:"zoneId"`
+	ZoneId    *string `pulumi:"zoneId"`
 }
 
 func LookupDnsZoneTransfersIncomingOutput(ctx *pulumi.Context, args LookupDnsZoneTransfersIncomingOutputArgs, opts ...pulumi.InvokeOption) LookupDnsZoneTransfersIncomingResultOutput {
@@ -84,7 +92,7 @@ func LookupDnsZoneTransfersIncomingOutput(ctx *pulumi.Context, args LookupDnsZon
 
 // A collection of arguments for invoking getDnsZoneTransfersIncoming.
 type LookupDnsZoneTransfersIncomingOutputArgs struct {
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupDnsZoneTransfersIncomingOutputArgs) ElementType() reflect.Type {
@@ -147,8 +155,8 @@ func (o LookupDnsZoneTransfersIncomingResultOutput) SoaSerial() pulumi.Float64Ou
 	return o.ApplyT(func(v LookupDnsZoneTransfersIncomingResult) float64 { return v.SoaSerial }).(pulumi.Float64Output)
 }
 
-func (o LookupDnsZoneTransfersIncomingResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDnsZoneTransfersIncomingResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupDnsZoneTransfersIncomingResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDnsZoneTransfersIncomingResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -7,15 +7,23 @@ import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.WorkflowArgs;
 import com.pulumi.cloudflare.inputs.WorkflowState;
 import com.pulumi.cloudflare.outputs.WorkflowInstances;
+import com.pulumi.cloudflare.outputs.WorkflowLimits;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Double;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -27,6 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.Workflow;
  * import com.pulumi.cloudflare.WorkflowArgs;
+ * import com.pulumi.cloudflare.inputs.WorkflowLimitsArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -45,6 +54,9 @@ import javax.annotation.Nullable;
  *             .workflowName("x")
  *             .className("x")
  *             .scriptName("x")
+ *             .limits(WorkflowLimitsArgs.builder()
+ *                 .steps(1)
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -62,10 +74,10 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/workflow:Workflow")
 public class Workflow extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     @Export(name="className", refs={String.class}, tree="[0]")
     private Output<String> className;
@@ -90,6 +102,12 @@ public class Workflow extends com.pulumi.resources.CustomResource {
 
     public Output<Double> isDeleted() {
         return this.isDeleted;
+    }
+    @Export(name="limits", refs={WorkflowLimits.class}, tree="[0]")
+    private Output</* @Nullable */ WorkflowLimits> limits;
+
+    public Output<Optional<WorkflowLimits>> limits() {
+        return Codegen.optional(this.limits);
     }
     @Export(name="modifiedOn", refs={String.class}, tree="[0]")
     private Output<String> modifiedOn;

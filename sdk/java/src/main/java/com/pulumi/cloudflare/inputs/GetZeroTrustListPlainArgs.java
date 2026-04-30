@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.GetZeroTrustListFilter;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,11 +15,11 @@ public final class GetZeroTrustListPlainArgs extends com.pulumi.resources.Invoke
 
     public static final GetZeroTrustListPlainArgs Empty = new GetZeroTrustListPlainArgs();
 
-    @Import(name="accountId", required=true)
-    private String accountId;
+    @Import(name="accountId")
+    private @Nullable String accountId;
 
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     @Import(name="filter")
@@ -71,7 +70,7 @@ public final class GetZeroTrustListPlainArgs extends com.pulumi.resources.Invoke
             $ = new GetZeroTrustListPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(String accountId) {
+        public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -93,9 +92,6 @@ public final class GetZeroTrustListPlainArgs extends com.pulumi.resources.Invoke
         }
 
         public GetZeroTrustListPlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetZeroTrustListPlainArgs", "accountId");
-            }
             return $;
         }
     }

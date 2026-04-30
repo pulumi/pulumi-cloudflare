@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Magic Transit Read`
+// - `Magic Transit Write`
+// - `Magic WAN Read`
+// - `Magic WAN Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetMagicTransitSite(ctx, &cloudflare.LookupMagicTransitSiteArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				SiteId:    pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
@@ -50,7 +57,7 @@ func LookupMagicTransitSite(ctx *pulumi.Context, args *LookupMagicTransitSiteArg
 // A collection of arguments for invoking getMagicTransitSite.
 type LookupMagicTransitSiteArgs struct {
 	// Identifier
-	AccountId string                     `pulumi:"accountId"`
+	AccountId *string                    `pulumi:"accountId"`
 	Filter    *GetMagicTransitSiteFilter `pulumi:"filter"`
 	// Identifier
 	SiteId *string `pulumi:"siteId"`
@@ -59,7 +66,7 @@ type LookupMagicTransitSiteArgs struct {
 // A collection of values returned by getMagicTransitSite.
 type LookupMagicTransitSiteResult struct {
 	// Identifier
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Magic Connector identifier tag.
 	ConnectorId string                     `pulumi:"connectorId"`
 	Description string                     `pulumi:"description"`
@@ -90,7 +97,7 @@ func LookupMagicTransitSiteOutput(ctx *pulumi.Context, args LookupMagicTransitSi
 // A collection of arguments for invoking getMagicTransitSite.
 type LookupMagicTransitSiteOutputArgs struct {
 	// Identifier
-	AccountId pulumi.StringInput                `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput             `pulumi:"accountId"`
 	Filter    GetMagicTransitSiteFilterPtrInput `pulumi:"filter"`
 	// Identifier
 	SiteId pulumi.StringPtrInput `pulumi:"siteId"`
@@ -116,8 +123,8 @@ func (o LookupMagicTransitSiteResultOutput) ToLookupMagicTransitSiteResultOutput
 }
 
 // Identifier
-func (o LookupMagicTransitSiteResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMagicTransitSiteResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupMagicTransitSiteResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMagicTransitSiteResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Magic Connector identifier tag.

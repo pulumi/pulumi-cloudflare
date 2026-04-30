@@ -11,6 +11,8 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPageShieldScriptsResult {
@@ -21,9 +23,13 @@ public final class GetPageShieldScriptsResult {
      */
     private Integer cryptominingScore;
     /**
-     * @return The dataflow score of the JavaScript content.
+     * @return The dataflow score of the JavaScript content. This field has been deprecated in favour of js*integrity*score.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
      * 
      */
+    @Deprecated /* This attribute is deprecated. */
     private Integer dataflowScore;
     private Boolean domainReportedMalicious;
     /**
@@ -63,9 +69,13 @@ public final class GetPageShieldScriptsResult {
      */
     private Integer malwareScore;
     /**
-     * @return The obfuscation score of the JavaScript content.
+     * @return The obfuscation score of the JavaScript content. This field has been deprecated in favour of js*integrity*score.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
      * 
      */
+    @Deprecated /* This attribute is deprecated. */
     private Integer obfuscationScore;
     private List<String> pageUrls;
     /**
@@ -81,7 +91,7 @@ public final class GetPageShieldScriptsResult {
      * @return Identifier
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetPageShieldScriptsResult() {}
     public String addedAt() {
@@ -95,9 +105,13 @@ public final class GetPageShieldScriptsResult {
         return this.cryptominingScore;
     }
     /**
-     * @return The dataflow score of the JavaScript content.
+     * @return The dataflow score of the JavaScript content. This field has been deprecated in favour of js*integrity*score.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
      * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public Integer dataflowScore() {
         return this.dataflowScore;
     }
@@ -165,9 +179,13 @@ public final class GetPageShieldScriptsResult {
         return this.malwareScore;
     }
     /**
-     * @return The obfuscation score of the JavaScript content.
+     * @return The obfuscation score of the JavaScript content. This field has been deprecated in favour of js*integrity*score.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
      * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public Integer obfuscationScore() {
         return this.obfuscationScore;
     }
@@ -197,8 +215,8 @@ public final class GetPageShieldScriptsResult {
      * @return Identifier
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -233,7 +251,7 @@ public final class GetPageShieldScriptsResult {
         private Boolean urlContainsCdnCgiPath;
         private Boolean urlReportedMalicious;
         private List<GetPageShieldScriptsVersion> versions;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetPageShieldScriptsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -460,10 +478,8 @@ public final class GetPageShieldScriptsResult {
             return versions(List.of(versions));
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetPageShieldScriptsResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

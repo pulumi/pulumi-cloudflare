@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Billing Read`
+ * - `Billing Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZoneSubscription(args: GetZoneSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneSubscriptionResult> {
+export function getZoneSubscription(args?: GetZoneSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneSubscriptionResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZoneSubscription:getZoneSubscription", {
         "zoneId": args.zoneId,
@@ -32,7 +38,7 @@ export interface GetZoneSubscriptionArgs {
     /**
      * Identifier
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -76,9 +82,14 @@ export interface GetZoneSubscriptionResult {
     /**
      * Identifier
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Billing Read`
+ * - `Billing Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -90,7 +101,8 @@ export interface GetZoneSubscriptionResult {
  * });
  * ```
  */
-export function getZoneSubscriptionOutput(args: GetZoneSubscriptionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneSubscriptionResult> {
+export function getZoneSubscriptionOutput(args?: GetZoneSubscriptionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneSubscriptionResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZoneSubscription:getZoneSubscription", {
         "zoneId": args.zoneId,
@@ -104,5 +116,5 @@ export interface GetZoneSubscriptionOutputArgs {
     /**
      * Identifier
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

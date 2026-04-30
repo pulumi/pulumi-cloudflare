@@ -12,9 +12,15 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -166,14 +172,14 @@ public class EmailRoutingSettings extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output<String> zoneId;
+    private Output</* @Nullable */ String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Output<Optional<String>> zoneId() {
+        return Codegen.optional(this.zoneId);
     }
 
     /**
@@ -188,7 +194,7 @@ public class EmailRoutingSettings extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EmailRoutingSettings(java.lang.String name, EmailRoutingSettingsArgs args) {
+    public EmailRoutingSettings(java.lang.String name, @Nullable EmailRoutingSettingsArgs args) {
         this(name, args, null);
     }
     /**
@@ -197,7 +203,7 @@ public class EmailRoutingSettings extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EmailRoutingSettings(java.lang.String name, EmailRoutingSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public EmailRoutingSettings(java.lang.String name, @Nullable EmailRoutingSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/emailRoutingSettings:EmailRoutingSettings", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -205,7 +211,7 @@ public class EmailRoutingSettings extends com.pulumi.resources.CustomResource {
         super("cloudflare:index/emailRoutingSettings:EmailRoutingSettings", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static EmailRoutingSettingsArgs makeArgs(EmailRoutingSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static EmailRoutingSettingsArgs makeArgs(@Nullable EmailRoutingSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

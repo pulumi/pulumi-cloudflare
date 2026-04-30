@@ -54,11 +54,11 @@ public final class GetLoadBalancerPlainArgs extends com.pulumi.resources.InvokeA
         return Optional.ofNullable(this.regionPools);
     }
 
-    @Import(name="zoneId", required=true)
-    private String zoneId;
+    @Import(name="zoneId")
+    private @Nullable String zoneId;
 
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private GetLoadBalancerPlainArgs() {}
@@ -115,7 +115,7 @@ public final class GetLoadBalancerPlainArgs extends com.pulumi.resources.InvokeA
             return this;
         }
 
-        public Builder zoneId(String zoneId) {
+        public Builder zoneId(@Nullable String zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -123,9 +123,6 @@ public final class GetLoadBalancerPlainArgs extends com.pulumi.resources.InvokeA
         public GetLoadBalancerPlainArgs build() {
             if ($.loadBalancerId == null) {
                 throw new MissingRequiredPropertyException("GetLoadBalancerPlainArgs", "loadBalancerId");
-            }
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("GetLoadBalancerPlainArgs", "zoneId");
             }
             return $;
         }

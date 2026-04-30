@@ -39,7 +39,7 @@ class GetBotnetFeedConfigAsnResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -73,6 +73,11 @@ class AwaitableGetBotnetFeedConfigAsnResult(GetBotnetFeedConfigAsnResult):
 def get_botnet_feed_config_asn(account_id: Optional[_builtins.str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBotnetFeedConfigAsnResult:
     """
+    Accepted Permissions
+
+    - `DDoS Botnet Feed Read`
+    - `DDoS Botnet Feed Write`
+
     ## Example Usage
 
     ```python
@@ -94,9 +99,14 @@ def get_botnet_feed_config_asn(account_id: Optional[_builtins.str] = None,
         account_id=pulumi.get(__ret__, 'account_id'),
         asn=pulumi.get(__ret__, 'asn'),
         id=pulumi.get(__ret__, 'id'))
-def get_botnet_feed_config_asn_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_botnet_feed_config_asn_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBotnetFeedConfigAsnResult]:
     """
+    Accepted Permissions
+
+    - `DDoS Botnet Feed Read`
+    - `DDoS Botnet Feed Write`
+
     ## Example Usage
 
     ```python

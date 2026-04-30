@@ -7,11 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Stream Read`
+// - `Stream Write`
+//
 // ## Example Usage
 //
 // ## Import
@@ -21,7 +25,7 @@ type StreamLiveInput struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// The date and time the live input was created.
 	Created pulumi.StringOutput `pulumi:"created"`
 	// Sets the creator ID asssociated with this live input.
@@ -61,12 +65,9 @@ type StreamLiveInput struct {
 func NewStreamLiveInput(ctx *pulumi.Context,
 	name string, args *StreamLiveInputArgs, opts ...pulumi.ResourceOption) (*StreamLiveInput, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &StreamLiveInputArgs{}
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource StreamLiveInput
 	err := ctx.RegisterResource("cloudflare:index/streamLiveInput:StreamLiveInput", name, args, &resource, opts...)
@@ -171,7 +172,7 @@ func (StreamLiveInputState) ElementType() reflect.Type {
 
 type streamLiveInputArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Sets the creator ID asssociated with this live input.
 	DefaultCreator *string `pulumi:"defaultCreator"`
 	// Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
@@ -189,7 +190,7 @@ type streamLiveInputArgs struct {
 // The set of arguments for constructing a StreamLiveInput resource.
 type StreamLiveInputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// Sets the creator ID asssociated with this live input.
 	DefaultCreator pulumi.StringPtrInput
 	// Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
@@ -292,8 +293,8 @@ func (o StreamLiveInputOutput) ToStreamLiveInputOutputWithContext(ctx context.Co
 }
 
 // Identifier.
-func (o StreamLiveInputOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *StreamLiveInput) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o StreamLiveInputOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamLiveInput) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The date and time the live input was created.

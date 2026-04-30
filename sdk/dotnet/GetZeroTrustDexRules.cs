@@ -12,6 +12,13 @@ namespace Pulumi.Cloudflare
     public static class GetZeroTrustDexRules
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare DEX Read`
+        /// - `Cloudflare DEX Write`
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Report`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,10 +38,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZeroTrustDexRulesResult> InvokeAsync(GetZeroTrustDexRulesArgs args, InvokeOptions? options = null)
+        public static Task<GetZeroTrustDexRulesResult> InvokeAsync(GetZeroTrustDexRulesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustDexRulesResult>("cloudflare:index/getZeroTrustDexRules:getZeroTrustDexRules", args ?? new GetZeroTrustDexRulesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare DEX Read`
+        /// - `Cloudflare DEX Write`
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Report`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,10 +68,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZeroTrustDexRulesResult> Invoke(GetZeroTrustDexRulesInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZeroTrustDexRulesResult> Invoke(GetZeroTrustDexRulesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustDexRulesResult>("cloudflare:index/getZeroTrustDexRules:getZeroTrustDexRules", args ?? new GetZeroTrustDexRulesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare DEX Read`
+        /// - `Cloudflare DEX Write`
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Report`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +105,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDexRulesArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -121,8 +142,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDexRulesInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -160,7 +181,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustDexRulesResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -190,7 +211,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustDexRulesResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

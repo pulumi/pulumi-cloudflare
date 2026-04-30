@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Logs Read`
+// - `Logs Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetLogpullRetention(ctx, &cloudflare.LookupLogpullRetentionArgs{
-//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +54,7 @@ func LookupLogpullRetention(ctx *pulumi.Context, args *LookupLogpullRetentionArg
 // A collection of arguments for invoking getLogpullRetention.
 type LookupLogpullRetentionArgs struct {
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getLogpullRetention.
@@ -59,7 +64,7 @@ type LookupLogpullRetentionResult struct {
 	// Identifier.
 	Id string `pulumi:"id"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupLogpullRetentionOutput(ctx *pulumi.Context, args LookupLogpullRetentionOutputArgs, opts ...pulumi.InvokeOption) LookupLogpullRetentionResultOutput {
@@ -74,7 +79,7 @@ func LookupLogpullRetentionOutput(ctx *pulumi.Context, args LookupLogpullRetenti
 // A collection of arguments for invoking getLogpullRetention.
 type LookupLogpullRetentionOutputArgs struct {
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupLogpullRetentionOutputArgs) ElementType() reflect.Type {
@@ -107,8 +112,8 @@ func (o LookupLogpullRetentionResultOutput) Id() pulumi.StringOutput {
 }
 
 // Identifier.
-func (o LookupLogpullRetentionResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupLogpullRetentionResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupLogpullRetentionResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupLogpullRetentionResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

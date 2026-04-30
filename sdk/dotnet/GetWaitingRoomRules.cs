@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetWaitingRoomRules
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Waiting Rooms Read`
+        /// - `Waiting Rooms Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +40,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWaitingRoomRulesResult>("cloudflare:index/getWaitingRoomRules:getWaitingRoomRules", args ?? new GetWaitingRoomRulesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Waiting Rooms Read`
+        /// - `Waiting Rooms Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +68,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetWaitingRoomRulesResult>("cloudflare:index/getWaitingRoomRules:getWaitingRoomRules", args ?? new GetWaitingRoomRulesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Waiting Rooms Read`
+        /// - `Waiting Rooms Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -90,8 +105,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetWaitingRoomRulesArgs()
         {
@@ -107,8 +122,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetWaitingRoomRulesInvokeArgs()
         {
@@ -150,7 +165,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetWaitingRoomRulesResult(
@@ -170,7 +185,7 @@ namespace Pulumi.Cloudflare
 
             string waitingRoomId,
 
-            string zoneId)
+            string? zoneId)
         {
             Action = action;
             Description = description;

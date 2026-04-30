@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Firewall Services Read`
+// - `Firewall Services Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -62,7 +67,7 @@ type UserAgentBlockingRule struct {
 	// When true, indicates that the rule is currently paused.
 	Paused pulumi.BoolOutput `pulumi:"paused"`
 	// Defines an identifier.
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewUserAgentBlockingRule registers a new resource with the given unique name, arguments, and options.
@@ -77,9 +82,6 @@ func NewUserAgentBlockingRule(ctx *pulumi.Context,
 	}
 	if args.Mode == nil {
 		return nil, errors.New("invalid value for required argument 'Mode'")
-	}
-	if args.ZoneId == nil {
-		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource UserAgentBlockingRule
@@ -143,7 +145,7 @@ type userAgentBlockingRuleArgs struct {
 	// When true, indicates that the rule is currently paused.
 	Paused *bool `pulumi:"paused"`
 	// Defines an identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a UserAgentBlockingRule resource.
@@ -157,7 +159,7 @@ type UserAgentBlockingRuleArgs struct {
 	// When true, indicates that the rule is currently paused.
 	Paused pulumi.BoolPtrInput
 	// Defines an identifier.
-	ZoneId pulumi.StringInput
+	ZoneId pulumi.StringPtrInput
 }
 
 func (UserAgentBlockingRuleArgs) ElementType() reflect.Type {
@@ -268,8 +270,8 @@ func (o UserAgentBlockingRuleOutput) Paused() pulumi.BoolOutput {
 }
 
 // Defines an identifier.
-func (o UserAgentBlockingRuleOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *UserAgentBlockingRule) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+func (o UserAgentBlockingRuleOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAgentBlockingRule) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type UserAgentBlockingRuleArrayOutput struct{ *pulumi.OutputState }

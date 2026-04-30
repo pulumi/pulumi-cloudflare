@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Zero Trust Read`
+// - `Zero Trust Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustDlpEntry(ctx, &cloudflare.LookupZeroTrustDlpEntryArgs{
-//				AccountId: "account_id",
+//				AccountId: pulumi.StringRef("account_id"),
 //				EntryId:   "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 //			}, nil)
 //			if err != nil {
@@ -49,13 +54,13 @@ func LookupZeroTrustDlpEntry(ctx *pulumi.Context, args *LookupZeroTrustDlpEntryA
 
 // A collection of arguments for invoking getZeroTrustDlpEntry.
 type LookupZeroTrustDlpEntryArgs struct {
-	AccountId string `pulumi:"accountId"`
-	EntryId   string `pulumi:"entryId"`
+	AccountId *string `pulumi:"accountId"`
+	EntryId   string  `pulumi:"entryId"`
 }
 
 // A collection of values returned by getZeroTrustDlpEntry.
 type LookupZeroTrustDlpEntryResult struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Only applies to custom word lists.
 	// Determines if the words should be matched in a case-sensitive manner
 	// Cannot be set to false if secret is true
@@ -92,8 +97,8 @@ func LookupZeroTrustDlpEntryOutput(ctx *pulumi.Context, args LookupZeroTrustDlpE
 
 // A collection of arguments for invoking getZeroTrustDlpEntry.
 type LookupZeroTrustDlpEntryOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
-	EntryId   pulumi.StringInput `pulumi:"entryId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	EntryId   pulumi.StringInput    `pulumi:"entryId"`
 }
 
 func (LookupZeroTrustDlpEntryOutputArgs) ElementType() reflect.Type {
@@ -115,8 +120,8 @@ func (o LookupZeroTrustDlpEntryResultOutput) ToLookupZeroTrustDlpEntryResultOutp
 	return o
 }
 
-func (o LookupZeroTrustDlpEntryResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustDlpEntryResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustDlpEntryResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustDlpEntryResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Only applies to custom word lists.

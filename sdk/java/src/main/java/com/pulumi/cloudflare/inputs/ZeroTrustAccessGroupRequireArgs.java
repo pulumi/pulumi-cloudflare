@@ -27,6 +27,7 @@ import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupRequireOidcArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupRequireOktaArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupRequireSamlArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupRequireServiceTokenArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupRequireUserRiskScoreArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.util.Objects;
@@ -222,6 +223,13 @@ public final class ZeroTrustAccessGroupRequireArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.serviceToken);
     }
 
+    @Import(name="userRiskScore")
+    private @Nullable Output<ZeroTrustAccessGroupRequireUserRiskScoreArgs> userRiskScore;
+
+    public Optional<Output<ZeroTrustAccessGroupRequireUserRiskScoreArgs>> userRiskScore() {
+        return Optional.ofNullable(this.userRiskScore);
+    }
+
     private ZeroTrustAccessGroupRequireArgs() {}
 
     private ZeroTrustAccessGroupRequireArgs(ZeroTrustAccessGroupRequireArgs $) {
@@ -249,6 +257,7 @@ public final class ZeroTrustAccessGroupRequireArgs extends com.pulumi.resources.
         this.okta = $.okta;
         this.saml = $.saml;
         this.serviceToken = $.serviceToken;
+        this.userRiskScore = $.userRiskScore;
     }
 
     public static Builder builder() {
@@ -507,6 +516,15 @@ public final class ZeroTrustAccessGroupRequireArgs extends com.pulumi.resources.
 
         public Builder serviceToken(ZeroTrustAccessGroupRequireServiceTokenArgs serviceToken) {
             return serviceToken(Output.of(serviceToken));
+        }
+
+        public Builder userRiskScore(@Nullable Output<ZeroTrustAccessGroupRequireUserRiskScoreArgs> userRiskScore) {
+            $.userRiskScore = userRiskScore;
+            return this;
+        }
+
+        public Builder userRiskScore(ZeroTrustAccessGroupRequireUserRiskScoreArgs userRiskScore) {
+            return userRiskScore(Output.of(userRiskScore));
         }
 
         public ZeroTrustAccessGroupRequireArgs build() {

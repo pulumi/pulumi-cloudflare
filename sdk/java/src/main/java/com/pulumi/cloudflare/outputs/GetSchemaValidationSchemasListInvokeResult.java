@@ -45,7 +45,7 @@ public final class GetSchemaValidationSchemasListInvokeResult {
      * @return Identifier.
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetSchemaValidationSchemasListInvokeResult() {}
     /**
@@ -87,8 +87,8 @@ public final class GetSchemaValidationSchemasListInvokeResult {
      * @return Identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -105,7 +105,7 @@ public final class GetSchemaValidationSchemasListInvokeResult {
         private Boolean omitSource;
         private List<GetSchemaValidationSchemasListResult> results;
         private @Nullable Boolean validationEnabled;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetSchemaValidationSchemasListInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -157,10 +157,8 @@ public final class GetSchemaValidationSchemasListInvokeResult {
             return this;
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetSchemaValidationSchemasListInvokeResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

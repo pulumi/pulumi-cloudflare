@@ -22,6 +22,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+        /// Available values: "eu", "fedramp".
+        /// </summary>
+        public readonly string Jurisdiction;
+        /// <summary>
         /// D1 database name.
         /// </summary>
         public readonly string Name;
@@ -37,6 +42,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string id,
 
+            string jurisdiction,
+
             string name,
 
             string uuid,
@@ -45,6 +52,7 @@ namespace Pulumi.Cloudflare.Outputs
         {
             CreatedAt = createdAt;
             Id = id;
+            Jurisdiction = jurisdiction;
             Name = name;
             Uuid = uuid;
             Version = version;

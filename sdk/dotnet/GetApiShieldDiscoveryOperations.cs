@@ -12,6 +12,13 @@ namespace Pulumi.Cloudflare
     public static class GetApiShieldDiscoveryOperations
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Gateway`
+        /// - `Account API Gateway Read`
+        /// - `Domain API Gateway`
+        /// - `Domain API Gateway Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -44,10 +51,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetApiShieldDiscoveryOperationsResult> InvokeAsync(GetApiShieldDiscoveryOperationsArgs args, InvokeOptions? options = null)
+        public static Task<GetApiShieldDiscoveryOperationsResult> InvokeAsync(GetApiShieldDiscoveryOperationsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApiShieldDiscoveryOperationsResult>("cloudflare:index/getApiShieldDiscoveryOperations:getApiShieldDiscoveryOperations", args ?? new GetApiShieldDiscoveryOperationsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Gateway`
+        /// - `Account API Gateway Read`
+        /// - `Domain API Gateway`
+        /// - `Domain API Gateway Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -80,10 +94,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetApiShieldDiscoveryOperationsResult> Invoke(GetApiShieldDiscoveryOperationsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetApiShieldDiscoveryOperationsResult> Invoke(GetApiShieldDiscoveryOperationsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApiShieldDiscoveryOperationsResult>("cloudflare:index/getApiShieldDiscoveryOperations:getApiShieldDiscoveryOperations", args ?? new GetApiShieldDiscoveryOperationsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Gateway`
+        /// - `Account API Gateway Read`
+        /// - `Domain API Gateway`
+        /// - `Domain API Gateway Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -160,8 +181,8 @@ namespace Pulumi.Cloudflare
         [Input("state")]
         public string? State { get; set; }
 
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetApiShieldDiscoveryOperationsArgs()
         {
@@ -208,8 +229,8 @@ namespace Pulumi.Cloudflare
         [Input("state")]
         public Input<string>? State { get; set; }
 
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetApiShieldDiscoveryOperationsInvokeArgs()
         {
@@ -235,7 +256,7 @@ namespace Pulumi.Cloudflare
         public readonly string? Origin;
         public readonly ImmutableArray<Outputs.GetApiShieldDiscoveryOperationsResultResult> Results;
         public readonly string? State;
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetApiShieldDiscoveryOperationsResult(
@@ -261,7 +282,7 @@ namespace Pulumi.Cloudflare
 
             string? state,
 
-            string zoneId)
+            string? zoneId)
         {
             Diff = diff;
             Direction = direction;

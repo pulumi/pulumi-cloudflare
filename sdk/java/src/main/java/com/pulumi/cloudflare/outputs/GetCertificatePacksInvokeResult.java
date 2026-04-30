@@ -46,7 +46,7 @@ public final class GetCertificatePacksInvokeResult {
      * @return Identifier.
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetCertificatePacksInvokeResult() {}
     /**
@@ -90,8 +90,8 @@ public final class GetCertificatePacksInvokeResult {
      * @return Identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -108,7 +108,7 @@ public final class GetCertificatePacksInvokeResult {
         private @Nullable Integer maxItems;
         private List<GetCertificatePacksResult> results;
         private @Nullable String status;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetCertificatePacksInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -158,10 +158,8 @@ public final class GetCertificatePacksInvokeResult {
             return this;
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetCertificatePacksInvokeResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

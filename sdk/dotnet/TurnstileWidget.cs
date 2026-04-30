@@ -10,6 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Account Settings Read`
+    /// - `Account Settings Write`
+    /// - `Turnstile Sites Read`
+    /// - `Turnstile Sites Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -54,7 +61,7 @@ namespace Pulumi.Cloudflare
         /// Identifier
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// If bot*fight*mode is set to `True`, Cloudflare issues computationally
@@ -185,8 +192,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// If bot*fight*mode is set to `True`, Cloudflare issues computationally

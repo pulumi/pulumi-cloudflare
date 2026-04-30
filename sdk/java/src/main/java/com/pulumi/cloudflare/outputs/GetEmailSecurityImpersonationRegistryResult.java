@@ -19,7 +19,7 @@ public final class GetEmailSecurityImpersonationRegistryResult {
      * @return Account Identifier
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     private String comments;
     private String createdAt;
     private Integer directoryId;
@@ -49,8 +49,8 @@ public final class GetEmailSecurityImpersonationRegistryResult {
      * @return Account Identifier
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     public String comments() {
         return this.comments;
@@ -111,7 +111,7 @@ public final class GetEmailSecurityImpersonationRegistryResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String comments;
         private String createdAt;
         private Integer directoryId;
@@ -145,10 +145,8 @@ public final class GetEmailSecurityImpersonationRegistryResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetEmailSecurityImpersonationRegistryResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var exampleRegistrarDomain = new RegistrarDomain("exampleRegistrarDomain", RegistrarDomainArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .domainName("cloudflare.com")
+ *             .domainName("example.com")
  *             .autoRenew(true)
  *             .locked(false)
  *             .privacy(true)
@@ -65,14 +65,14 @@ public class RegistrarDomain extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return Identifier
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * Auto-renew controls whether subscription is automatically renewed upon domain expiration.
@@ -89,14 +89,20 @@ public class RegistrarDomain extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoRenew);
     }
     /**
-     * Domain name.
+     * Fully qualified domain name (FQDN) including the extension
+     * (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+     * identifies a registration — the same domain cannot be registered
+     * twice, making it a natural idempotency key for registration requests.
      * 
      */
     @Export(name="domainName", refs={String.class}, tree="[0]")
     private Output<String> domainName;
 
     /**
-     * @return Domain name.
+     * @return Fully qualified domain name (FQDN) including the extension
+     * (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+     * identifies a registration — the same domain cannot be registered
+     * twice, making it a natural idempotency key for registration requests.
      * 
      */
     public Output<String> domainName() {

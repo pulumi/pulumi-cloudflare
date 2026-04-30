@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Cloud Email Security: Read`
+    /// - `Cloud Email Security: Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -46,7 +51,7 @@ namespace Pulumi.Cloudflare
         /// Account Identifier
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         [Output("bodies")]
         public Output<ImmutableArray<Outputs.EmailSecurityTrustedDomainsBody>> Bodies { get; private set; } = null!;
@@ -89,7 +94,7 @@ namespace Pulumi.Cloudflare
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public EmailSecurityTrustedDomains(string name, EmailSecurityTrustedDomainsArgs args, CustomResourceOptions? options = null)
+        public EmailSecurityTrustedDomains(string name, EmailSecurityTrustedDomainsArgs? args = null, CustomResourceOptions? options = null)
             : base("cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains", name, args ?? new EmailSecurityTrustedDomainsArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -130,8 +135,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account Identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("bodies")]
         private InputList<Inputs.EmailSecurityTrustedDomainsBodyArgs>? _bodies;

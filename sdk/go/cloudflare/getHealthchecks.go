@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Health Checks Read`
+// - `Health Checks Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetHealthchecks(ctx, &cloudflare.LookupHealthchecksArgs{
-//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,7 +56,7 @@ type LookupHealthchecksArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Identifier
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getHealthchecks.
@@ -63,7 +68,7 @@ type LookupHealthchecksResult struct {
 	// The items returned by the data source
 	Results []GetHealthchecksResult `pulumi:"results"`
 	// Identifier
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupHealthchecksOutput(ctx *pulumi.Context, args LookupHealthchecksOutputArgs, opts ...pulumi.InvokeOption) LookupHealthchecksResultOutput {
@@ -80,7 +85,7 @@ type LookupHealthchecksOutputArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// Identifier
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupHealthchecksOutputArgs) ElementType() reflect.Type {
@@ -118,8 +123,8 @@ func (o LookupHealthchecksResultOutput) Results() GetHealthchecksResultArrayOutp
 }
 
 // Identifier
-func (o LookupHealthchecksResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupHealthchecksResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupHealthchecksResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupHealthchecksResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

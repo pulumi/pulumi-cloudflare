@@ -56,19 +56,19 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
 
     /**
      * @deprecated
-     * This attribute is deprecated.
+     * This attribute is deprecated. Use enabledEntries instead.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated /* This attribute is deprecated. Use enabledEntries instead. */
     @Import(name="entries")
     private @Nullable Output<List<ZeroTrustDlpPredefinedProfileEntryArgs>> entries;
 
     /**
      * @deprecated
-     * This attribute is deprecated.
+     * This attribute is deprecated. Use enabledEntries instead.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated /* This attribute is deprecated. Use enabledEntries instead. */
     public Optional<Output<List<ZeroTrustDlpPredefinedProfileEntryArgs>>> entries() {
         return Optional.ofNullable(this.entries);
     }
@@ -203,10 +203,10 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
          * @return builder
          * 
          * @deprecated
-         * This attribute is deprecated.
+         * This attribute is deprecated. Use enabledEntries instead.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated /* This attribute is deprecated. Use enabledEntries instead. */
         public Builder entries(@Nullable Output<List<ZeroTrustDlpPredefinedProfileEntryArgs>> entries) {
             $.entries = entries;
             return this;
@@ -216,10 +216,10 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
          * @return builder
          * 
          * @deprecated
-         * This attribute is deprecated.
+         * This attribute is deprecated. Use enabledEntries instead.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated /* This attribute is deprecated. Use enabledEntries instead. */
         public Builder entries(List<ZeroTrustDlpPredefinedProfileEntryArgs> entries) {
             return entries(Output.of(entries));
         }
@@ -228,10 +228,10 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
          * @return builder
          * 
          * @deprecated
-         * This attribute is deprecated.
+         * This attribute is deprecated. Use enabledEntries instead.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated /* This attribute is deprecated. Use enabledEntries instead. */
         public Builder entries(ZeroTrustDlpPredefinedProfileEntryArgs... entries) {
             return entries(List.of(entries));
         }

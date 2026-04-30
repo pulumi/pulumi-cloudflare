@@ -5,6 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `DNS Read`
+ * - `DNS Write`
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ * - `Zone Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -16,7 +24,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getDnsZoneTransfersOutgoing(args: GetDnsZoneTransfersOutgoingArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsZoneTransfersOutgoingResult> {
+export function getDnsZoneTransfersOutgoing(args?: GetDnsZoneTransfersOutgoingArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsZoneTransfersOutgoingResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getDnsZoneTransfersOutgoing:getDnsZoneTransfersOutgoing", {
         "zoneId": args.zoneId,
@@ -27,7 +36,7 @@ export function getDnsZoneTransfersOutgoing(args: GetDnsZoneTransfersOutgoingArg
  * A collection of arguments for invoking getDnsZoneTransfersOutgoing.
  */
 export interface GetDnsZoneTransfersOutgoingArgs {
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -62,9 +71,17 @@ export interface GetDnsZoneTransfersOutgoingResult {
      * The serial number of the SOA for the given zone.
      */
     readonly soaSerial: number;
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `DNS Read`
+ * - `DNS Write`
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ * - `Zone Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -76,7 +93,8 @@ export interface GetDnsZoneTransfersOutgoingResult {
  * });
  * ```
  */
-export function getDnsZoneTransfersOutgoingOutput(args: GetDnsZoneTransfersOutgoingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDnsZoneTransfersOutgoingResult> {
+export function getDnsZoneTransfersOutgoingOutput(args?: GetDnsZoneTransfersOutgoingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDnsZoneTransfersOutgoingResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getDnsZoneTransfersOutgoing:getDnsZoneTransfersOutgoing", {
         "zoneId": args.zoneId,
@@ -87,5 +105,5 @@ export function getDnsZoneTransfersOutgoingOutput(args: GetDnsZoneTransfersOutgo
  * A collection of arguments for invoking getDnsZoneTransfersOutgoing.
  */
 export interface GetDnsZoneTransfersOutgoingOutputArgs {
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

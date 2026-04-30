@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Stream Read`
+// - `Stream Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetStreamWatermark(ctx, &cloudflare.LookupStreamWatermarkArgs{
-//				AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:  pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Identifier: "ea95132c15732412d22c1476fa83f27a",
 //			}, nil)
 //			if err != nil {
@@ -50,7 +55,7 @@ func LookupStreamWatermark(ctx *pulumi.Context, args *LookupStreamWatermarkArgs,
 // A collection of arguments for invoking getStreamWatermark.
 type LookupStreamWatermarkArgs struct {
 	// The account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The unique identifier for a watermark profile.
 	Identifier string `pulumi:"identifier"`
 }
@@ -58,7 +63,7 @@ type LookupStreamWatermarkArgs struct {
 // A collection of values returned by getStreamWatermark.
 type LookupStreamWatermarkResult struct {
 	// The account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The date and a time a watermark profile was created.
 	Created string `pulumi:"created"`
 	// The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null.
@@ -99,7 +104,7 @@ func LookupStreamWatermarkOutput(ctx *pulumi.Context, args LookupStreamWatermark
 // A collection of arguments for invoking getStreamWatermark.
 type LookupStreamWatermarkOutputArgs struct {
 	// The account identifier tag.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// The unique identifier for a watermark profile.
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 }
@@ -124,8 +129,8 @@ func (o LookupStreamWatermarkResultOutput) ToLookupStreamWatermarkResultOutputWi
 }
 
 // The account identifier tag.
-func (o LookupStreamWatermarkResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupStreamWatermarkResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupStreamWatermarkResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupStreamWatermarkResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The date and a time a watermark profile was created.

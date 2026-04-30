@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.StreamState;
 import com.pulumi.cloudflare.outputs.StreamInput;
 import com.pulumi.cloudflare.outputs.StreamPlayback;
+import com.pulumi.cloudflare.outputs.StreamPublicDetails;
 import com.pulumi.cloudflare.outputs.StreamStatus;
 import com.pulumi.cloudflare.outputs.StreamWatermark;
 import com.pulumi.core.Output;
@@ -23,6 +24,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Stream Read`
+ * - `Stream Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -68,14 +74,14 @@ public class Stream extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return The account identifier tag.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
@@ -90,6 +96,20 @@ public class Stream extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> allowedOrigins() {
         return Codegen.optional(this.allowedOrigins);
+    }
+    /**
+     * The unique identifier of the source video this video was clipped from.
+     * 
+     */
+    @Export(name="clippedFrom", refs={String.class}, tree="[0]")
+    private Output<String> clippedFrom;
+
+    /**
+     * @return The unique identifier of the source video this video was clipped from.
+     * 
+     */
+    public Output<String> clippedFrom() {
+        return this.clippedFrom;
     }
     /**
      * The date and time the media item was created.
@@ -182,6 +202,20 @@ public class Stream extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.maxDurationSeconds);
     }
     /**
+     * The maximum size in bytes for the video upload.
+     * 
+     */
+    @Export(name="maxSizeBytes", refs={Integer.class}, tree="[0]")
+    private Output<Integer> maxSizeBytes;
+
+    /**
+     * @return The maximum size in bytes for the video upload.
+     * 
+     */
+    public Output<Integer> maxSizeBytes() {
+        return this.maxSizeBytes;
+    }
+    /**
      * A user modifiable key-value store used to reference other systems of record for managing videos.
      * 
      */
@@ -228,6 +262,20 @@ public class Stream extends com.pulumi.resources.CustomResource {
      */
     public Output<String> preview() {
         return this.preview;
+    }
+    /**
+     * Public details for the video including title, share link, channel link, and logo.
+     * 
+     */
+    @Export(name="publicDetails", refs={StreamPublicDetails.class}, tree="[0]")
+    private Output</* @Nullable */ StreamPublicDetails> publicDetails;
+
+    /**
+     * @return Public details for the video including title, share link, channel link, and logo.
+     * 
+     */
+    public Output<Optional<StreamPublicDetails>> publicDetails() {
+        return Codegen.optional(this.publicDetails);
     }
     /**
      * Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
@@ -342,18 +390,18 @@ public class Stream extends com.pulumi.resources.CustomResource {
         return this.thumbnailTimestampPct;
     }
     /**
-     * A Cloudflare-generated unique identifier for a media item.
+     * The unique identifier for the video. Can be used to verify the video being updated.
      * 
      */
     @Export(name="uid", refs={String.class}, tree="[0]")
-    private Output<String> uid;
+    private Output</* @Nullable */ String> uid;
 
     /**
-     * @return A Cloudflare-generated unique identifier for a media item.
+     * @return The unique identifier for the video. Can be used to verify the video being updated.
      * 
      */
-    public Output<String> uid() {
-        return this.uid;
+    public Output<Optional<String>> uid() {
+        return Codegen.optional(this.uid);
     }
     /**
      * The date and time when the video upload URL is no longer valid for direct user uploads.
@@ -402,7 +450,7 @@ public class Stream extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Stream(java.lang.String name, StreamArgs args) {
+    public Stream(java.lang.String name, @Nullable StreamArgs args) {
         this(name, args, null);
     }
     /**
@@ -411,7 +459,7 @@ public class Stream extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Stream(java.lang.String name, StreamArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Stream(java.lang.String name, @Nullable StreamArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/stream:Stream", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -419,7 +467,7 @@ public class Stream extends com.pulumi.resources.CustomResource {
         super("cloudflare:index/stream:Stream", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static StreamArgs makeArgs(StreamArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static StreamArgs makeArgs(@Nullable StreamArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

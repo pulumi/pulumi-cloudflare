@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMagicWanGreTunnelResult {
@@ -15,7 +17,7 @@ public final class GetMagicWanGreTunnelResult {
      * @return Identifier
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     private GetMagicWanGreTunnelGreTunnel greTunnel;
     /**
      * @return Identifier
@@ -33,8 +35,8 @@ public final class GetMagicWanGreTunnelResult {
      * @return Identifier
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     public GetMagicWanGreTunnelGreTunnel greTunnel() {
         return this.greTunnel;
@@ -63,7 +65,7 @@ public final class GetMagicWanGreTunnelResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private GetMagicWanGreTunnelGreTunnel greTunnel;
         private String greTunnelId;
         private String id;
@@ -77,10 +79,8 @@ public final class GetMagicWanGreTunnelResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetMagicWanGreTunnelResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

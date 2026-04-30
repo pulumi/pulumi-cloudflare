@@ -75,7 +75,7 @@ class GetCloudforceOneRequestPriorityResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -211,6 +211,11 @@ def get_cloudforce_one_request_priority(account_id: Optional[_builtins.str] = No
                                         priority_id: Optional[_builtins.str] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCloudforceOneRequestPriorityResult:
     """
+    Accepted Permissions
+
+    - `Cloudforce One Read`
+    - `Cloudforce One Write`
+
     ## Example Usage
 
     ```python
@@ -247,10 +252,15 @@ def get_cloudforce_one_request_priority(account_id: Optional[_builtins.str] = No
         tlp=pulumi.get(__ret__, 'tlp'),
         tokens=pulumi.get(__ret__, 'tokens'),
         updated=pulumi.get(__ret__, 'updated'))
-def get_cloudforce_one_request_priority_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_cloudforce_one_request_priority_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                priority_id: Optional[pulumi.Input[_builtins.str]] = None,
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCloudforceOneRequestPriorityResult]:
     """
+    Accepted Permissions
+
+    - `Cloudforce One Read`
+    - `Cloudforce One Write`
+
     ## Example Usage
 
     ```python

@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetDcvDelegation
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetDcvDelegationResult> InvokeAsync(GetDcvDelegationArgs args, InvokeOptions? options = null)
+        public static Task<GetDcvDelegationResult> InvokeAsync(GetDcvDelegationArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDcvDelegationResult>("cloudflare:index/getDcvDelegation:getDcvDelegation", args ?? new GetDcvDelegationArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetDcvDelegationResult> Invoke(GetDcvDelegationInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetDcvDelegationResult> Invoke(GetDcvDelegationInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDcvDelegationResult>("cloudflare:index/getDcvDelegation:getDcvDelegation", args ?? new GetDcvDelegationInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +99,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetDcvDelegationArgs()
         {
@@ -98,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetDcvDelegationInvokeArgs()
         {
@@ -122,7 +137,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetDcvDelegationResult(
@@ -130,7 +145,7 @@ namespace Pulumi.Cloudflare
 
             string uuid,
 
-            string zoneId)
+            string? zoneId)
         {
             Id = id;
             Uuid = uuid;

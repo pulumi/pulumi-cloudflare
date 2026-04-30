@@ -12,6 +12,13 @@ namespace Pulumi.Cloudflare
     public static class GetSchemaValidationOperationSettingsList
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Gateway`
+        /// - `Account API Gateway Read`
+        /// - `Domain API Gateway`
+        /// - `Domain API Gateway Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +37,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetSchemaValidationOperationSettingsListResult> InvokeAsync(GetSchemaValidationOperationSettingsListArgs args, InvokeOptions? options = null)
+        public static Task<GetSchemaValidationOperationSettingsListResult> InvokeAsync(GetSchemaValidationOperationSettingsListArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSchemaValidationOperationSettingsListResult>("cloudflare:index/getSchemaValidationOperationSettingsList:getSchemaValidationOperationSettingsList", args ?? new GetSchemaValidationOperationSettingsListArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Gateway`
+        /// - `Account API Gateway Read`
+        /// - `Domain API Gateway`
+        /// - `Domain API Gateway Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +66,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetSchemaValidationOperationSettingsListResult> Invoke(GetSchemaValidationOperationSettingsListInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetSchemaValidationOperationSettingsListResult> Invoke(GetSchemaValidationOperationSettingsListInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSchemaValidationOperationSettingsListResult>("cloudflare:index/getSchemaValidationOperationSettingsList:getSchemaValidationOperationSettingsList", args ?? new GetSchemaValidationOperationSettingsListInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Gateway`
+        /// - `Account API Gateway Read`
+        /// - `Domain API Gateway`
+        /// - `Domain API Gateway Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +105,8 @@ namespace Pulumi.Cloudflare
         [Input("maxItems")]
         public int? MaxItems { get; set; }
 
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetSchemaValidationOperationSettingsListArgs()
         {
@@ -98,8 +119,8 @@ namespace Pulumi.Cloudflare
         [Input("maxItems")]
         public Input<int>? MaxItems { get; set; }
 
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetSchemaValidationOperationSettingsListInvokeArgs()
         {
@@ -117,7 +138,7 @@ namespace Pulumi.Cloudflare
         public readonly string Id;
         public readonly int? MaxItems;
         public readonly ImmutableArray<Outputs.GetSchemaValidationOperationSettingsListResultResult> Results;
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetSchemaValidationOperationSettingsListResult(
@@ -127,7 +148,7 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<Outputs.GetSchemaValidationOperationSettingsListResultResult> results,
 
-            string zoneId)
+            string? zoneId)
         {
             Id = id;
             MaxItems = maxItems;

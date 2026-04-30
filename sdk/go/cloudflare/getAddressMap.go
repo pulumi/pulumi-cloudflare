@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Address Maps Read`
+// - `Address Maps Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetAddressMap(ctx, &cloudflare.LookupAddressMapArgs{
-//				AccountId:    "258def64c72dae45f3e4c8516e2111f2",
+//				AccountId:    pulumi.StringRef("258def64c72dae45f3e4c8516e2111f2"),
 //				AddressMapId: "055817b111884e0227e1be16a0be6ee0",
 //			}, nil)
 //			if err != nil {
@@ -50,7 +55,7 @@ func LookupAddressMap(ctx *pulumi.Context, args *LookupAddressMapArgs, opts ...p
 // A collection of arguments for invoking getAddressMap.
 type LookupAddressMapArgs struct {
 	// Identifier of a Cloudflare account.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Identifier of an Address Map.
 	AddressMapId string `pulumi:"addressMapId"`
 }
@@ -58,7 +63,7 @@ type LookupAddressMapArgs struct {
 // A collection of values returned by getAddressMap.
 type LookupAddressMapResult struct {
 	// Identifier of a Cloudflare account.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Identifier of an Address Map.
 	AddressMapId string `pulumi:"addressMapId"`
 	// If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
@@ -93,7 +98,7 @@ func LookupAddressMapOutput(ctx *pulumi.Context, args LookupAddressMapOutputArgs
 // A collection of arguments for invoking getAddressMap.
 type LookupAddressMapOutputArgs struct {
 	// Identifier of a Cloudflare account.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Identifier of an Address Map.
 	AddressMapId pulumi.StringInput `pulumi:"addressMapId"`
 }
@@ -118,8 +123,8 @@ func (o LookupAddressMapResultOutput) ToLookupAddressMapResultOutputWithContext(
 }
 
 // Identifier of a Cloudflare account.
-func (o LookupAddressMapResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAddressMapResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupAddressMapResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAddressMapResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Identifier of an Address Map.

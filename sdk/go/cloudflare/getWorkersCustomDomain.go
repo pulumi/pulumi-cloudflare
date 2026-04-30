@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Workers Scripts Read`
+// - `Workers Scripts Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetWorkersCustomDomain(ctx, &cloudflare.LookupWorkersCustomDomainArgs{
-//				AccountId: "9a7806061c88ada191ed06f989cc3dac",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				DomainId:  pulumi.StringRef("dbe10b4bc17c295377eabd600e1787fd"),
 //			}, nil)
 //			if err != nil {
@@ -49,33 +54,35 @@ func LookupWorkersCustomDomain(ctx *pulumi.Context, args *LookupWorkersCustomDom
 
 // A collection of arguments for invoking getWorkersCustomDomain.
 type LookupWorkersCustomDomainArgs struct {
-	// Identifer of the account.
-	AccountId string `pulumi:"accountId"`
-	// Identifer of the Worker Domain.
+	// Identifier.
+	AccountId *string `pulumi:"accountId"`
+	// ID of the domain.
 	DomainId *string                       `pulumi:"domainId"`
 	Filter   *GetWorkersCustomDomainFilter `pulumi:"filter"`
 }
 
 // A collection of values returned by getWorkersCustomDomain.
 type LookupWorkersCustomDomainResult struct {
-	// Identifer of the account.
-	AccountId string `pulumi:"accountId"`
-	// Identifer of the Worker Domain.
+	// Identifier.
+	AccountId *string `pulumi:"accountId"`
+	// ID of the TLS certificate issued for the domain.
+	CertId string `pulumi:"certId"`
+	// ID of the domain.
 	DomainId *string `pulumi:"domainId"`
-	// Worker environment associated with the zone and hostname.
+	// Worker environment associated with the domain.
 	//
 	// Deprecated: This attribute is deprecated.
 	Environment string                        `pulumi:"environment"`
 	Filter      *GetWorkersCustomDomainFilter `pulumi:"filter"`
-	// Hostname of the Worker Domain.
+	// Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
 	Hostname string `pulumi:"hostname"`
-	// Identifer of the Worker Domain.
+	// ID of the domain.
 	Id string `pulumi:"id"`
-	// Worker service associated with the zone and hostname.
+	// Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
 	Service string `pulumi:"service"`
-	// Identifier of the zone.
+	// ID of the zone containing the domain hostname.
 	ZoneId string `pulumi:"zoneId"`
-	// Name of the zone.
+	// Name of the zone containing the domain hostname.
 	ZoneName string `pulumi:"zoneName"`
 }
 
@@ -90,9 +97,9 @@ func LookupWorkersCustomDomainOutput(ctx *pulumi.Context, args LookupWorkersCust
 
 // A collection of arguments for invoking getWorkersCustomDomain.
 type LookupWorkersCustomDomainOutputArgs struct {
-	// Identifer of the account.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// Identifer of the Worker Domain.
+	// Identifier.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	// ID of the domain.
 	DomainId pulumi.StringPtrInput                `pulumi:"domainId"`
 	Filter   GetWorkersCustomDomainFilterPtrInput `pulumi:"filter"`
 }
@@ -116,17 +123,22 @@ func (o LookupWorkersCustomDomainResultOutput) ToLookupWorkersCustomDomainResult
 	return o
 }
 
-// Identifer of the account.
-func (o LookupWorkersCustomDomainResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkersCustomDomainResult) string { return v.AccountId }).(pulumi.StringOutput)
+// Identifier.
+func (o LookupWorkersCustomDomainResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkersCustomDomainResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// Identifer of the Worker Domain.
+// ID of the TLS certificate issued for the domain.
+func (o LookupWorkersCustomDomainResultOutput) CertId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkersCustomDomainResult) string { return v.CertId }).(pulumi.StringOutput)
+}
+
+// ID of the domain.
 func (o LookupWorkersCustomDomainResultOutput) DomainId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkersCustomDomainResult) *string { return v.DomainId }).(pulumi.StringPtrOutput)
 }
 
-// Worker environment associated with the zone and hostname.
+// Worker environment associated with the domain.
 //
 // Deprecated: This attribute is deprecated.
 func (o LookupWorkersCustomDomainResultOutput) Environment() pulumi.StringOutput {
@@ -137,27 +149,27 @@ func (o LookupWorkersCustomDomainResultOutput) Filter() GetWorkersCustomDomainFi
 	return o.ApplyT(func(v LookupWorkersCustomDomainResult) *GetWorkersCustomDomainFilter { return v.Filter }).(GetWorkersCustomDomainFilterPtrOutput)
 }
 
-// Hostname of the Worker Domain.
+// Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
 func (o LookupWorkersCustomDomainResultOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersCustomDomainResult) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
-// Identifer of the Worker Domain.
+// ID of the domain.
 func (o LookupWorkersCustomDomainResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersCustomDomainResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Worker service associated with the zone and hostname.
+// Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
 func (o LookupWorkersCustomDomainResultOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersCustomDomainResult) string { return v.Service }).(pulumi.StringOutput)
 }
 
-// Identifier of the zone.
+// ID of the zone containing the domain hostname.
 func (o LookupWorkersCustomDomainResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersCustomDomainResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }
 
-// Name of the zone.
+// Name of the zone containing the domain hostname.
 func (o LookupWorkersCustomDomainResultOutput) ZoneName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersCustomDomainResult) string { return v.ZoneName }).(pulumi.StringOutput)
 }

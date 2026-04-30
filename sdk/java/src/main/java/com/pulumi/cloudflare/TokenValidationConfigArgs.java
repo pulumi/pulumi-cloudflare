@@ -10,6 +10,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class TokenValidationConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -63,15 +65,15 @@ public final class TokenValidationConfigArgs extends com.pulumi.resources.Resour
      * Identifier.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private Output<String> zoneId;
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private TokenValidationConfigArgs() {}
@@ -170,7 +172,7 @@ public final class TokenValidationConfigArgs extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder zoneId(Output<String> zoneId) {
+        public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -200,9 +202,6 @@ public final class TokenValidationConfigArgs extends com.pulumi.resources.Resour
             }
             if ($.tokenType == null) {
                 throw new MissingRequiredPropertyException("TokenValidationConfigArgs", "tokenType");
-            }
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("TokenValidationConfigArgs", "zoneId");
             }
             return $;
         }

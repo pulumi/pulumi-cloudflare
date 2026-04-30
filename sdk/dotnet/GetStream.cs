@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetStream
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Stream Read`
+        /// - `Stream Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +40,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetStreamResult>("cloudflare:index/getStream:getStream", args ?? new GetStreamArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Stream Read`
+        /// - `Stream Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +68,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetStreamResult>("cloudflare:index/getStream:getStream", args ?? new GetStreamInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Stream Read`
+        /// - `Stream Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +102,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// A Cloudflare-generated unique identifier for a media item.
@@ -107,8 +122,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// A Cloudflare-generated unique identifier for a media item.
@@ -129,11 +144,15 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier tag.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
         /// </summary>
         public readonly ImmutableArray<string> AllowedOrigins;
+        /// <summary>
+        /// The unique identifier of the source video this video was clipped from.
+        /// </summary>
+        public readonly string ClippedFrom;
         /// <summary>
         /// The date and time the media item was created.
         /// </summary>
@@ -164,6 +183,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly int MaxDurationSeconds;
         /// <summary>
+        /// The maximum size in bytes for the video upload.
+        /// </summary>
+        public readonly int MaxSizeBytes;
+        /// <summary>
         /// A user modifiable key-value store used to reference other systems of record for managing videos.
         /// </summary>
         public readonly string Meta;
@@ -176,6 +199,10 @@ namespace Pulumi.Cloudflare
         /// The video's preview page URI. This field is omitted until encoding is complete.
         /// </summary>
         public readonly string Preview;
+        /// <summary>
+        /// Public details for the video including title, share link, channel link, and logo.
+        /// </summary>
+        public readonly Outputs.GetStreamPublicDetailsResult PublicDetails;
         /// <summary>
         /// Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
         /// </summary>
@@ -224,9 +251,11 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetStreamResult(
-            string accountId,
+            string? accountId,
 
             ImmutableArray<string> allowedOrigins,
+
+            string clippedFrom,
 
             string created,
 
@@ -244,6 +273,8 @@ namespace Pulumi.Cloudflare
 
             int maxDurationSeconds,
 
+            int maxSizeBytes,
+
             string meta,
 
             string modified,
@@ -251,6 +282,8 @@ namespace Pulumi.Cloudflare
             Outputs.GetStreamPlaybackResult playback,
 
             string preview,
+
+            Outputs.GetStreamPublicDetailsResult publicDetails,
 
             bool readyToStream,
 
@@ -278,6 +311,7 @@ namespace Pulumi.Cloudflare
         {
             AccountId = accountId;
             AllowedOrigins = allowedOrigins;
+            ClippedFrom = clippedFrom;
             Created = created;
             Creator = creator;
             Duration = duration;
@@ -286,10 +320,12 @@ namespace Pulumi.Cloudflare
             Input = input;
             LiveInput = liveInput;
             MaxDurationSeconds = maxDurationSeconds;
+            MaxSizeBytes = maxSizeBytes;
             Meta = meta;
             Modified = modified;
             Playback = playback;
             Preview = preview;
+            PublicDetails = publicDetails;
             ReadyToStream = readyToStream;
             ReadyToStreamAt = readyToStreamAt;
             RequireSignedUrls = requireSignedUrls;

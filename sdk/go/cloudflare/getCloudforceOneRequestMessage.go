@@ -11,6 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloudforce One Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetCloudforceOneRequestMessage(ctx, &cloudflare.LookupCloudforceOneRequestMessageArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				RequestId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 //				Page:      0,
 //				PerPage:   10,
@@ -56,7 +60,7 @@ func LookupCloudforceOneRequestMessage(ctx *pulumi.Context, args *LookupCloudfor
 // A collection of arguments for invoking getCloudforceOneRequestMessage.
 type LookupCloudforceOneRequestMessageArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Retrieve mes  ges created after this time.
 	After *string `pulumi:"after"`
 	// Retrieve messages created before this time.
@@ -77,7 +81,7 @@ type LookupCloudforceOneRequestMessageArgs struct {
 // A collection of values returned by getCloudforceOneRequestMessage.
 type LookupCloudforceOneRequestMessageResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Retrieve mes  ges created after this time.
 	After *string `pulumi:"after"`
 	// Author of message.
@@ -119,7 +123,7 @@ func LookupCloudforceOneRequestMessageOutput(ctx *pulumi.Context, args LookupClo
 // A collection of arguments for invoking getCloudforceOneRequestMessage.
 type LookupCloudforceOneRequestMessageOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Retrieve mes  ges created after this time.
 	After pulumi.StringPtrInput `pulumi:"after"`
 	// Retrieve messages created before this time.
@@ -157,8 +161,8 @@ func (o LookupCloudforceOneRequestMessageResultOutput) ToLookupCloudforceOneRequ
 }
 
 // Identifier.
-func (o LookupCloudforceOneRequestMessageResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCloudforceOneRequestMessageResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupCloudforceOneRequestMessageResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestMessageResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Retrieve mes  ges created after this time.

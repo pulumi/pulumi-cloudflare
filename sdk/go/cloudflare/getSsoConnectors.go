@@ -11,6 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `SSO Connector Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetSsoConnectors(ctx, &cloudflare.LookupSsoConnectorsArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +53,7 @@ func LookupSsoConnectors(ctx *pulumi.Context, args *LookupSsoConnectorsArgs, opt
 // A collection of arguments for invoking getSsoConnectors.
 type LookupSsoConnectorsArgs struct {
 	// Account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 }
@@ -57,7 +61,7 @@ type LookupSsoConnectorsArgs struct {
 // A collection of values returned by getSsoConnectors.
 type LookupSsoConnectorsResult struct {
 	// Account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -78,7 +82,7 @@ func LookupSsoConnectorsOutput(ctx *pulumi.Context, args LookupSsoConnectorsOutp
 // A collection of arguments for invoking getSsoConnectors.
 type LookupSsoConnectorsOutputArgs struct {
 	// Account identifier tag.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
@@ -103,8 +107,8 @@ func (o LookupSsoConnectorsResultOutput) ToLookupSsoConnectorsResultOutputWithCo
 }
 
 // Account identifier tag.
-func (o LookupSsoConnectorsResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSsoConnectorsResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupSsoConnectorsResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSsoConnectorsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

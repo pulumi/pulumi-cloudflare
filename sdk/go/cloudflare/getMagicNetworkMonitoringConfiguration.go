@@ -11,6 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Magic Network Monitoring Admin`
+// - `Magic Network Monitoring Config Read`
+// - `Magic Network Monitoring Config Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetMagicNetworkMonitoringConfiguration(ctx, &cloudflare.LookupMagicNetworkMonitoringConfigurationArgs{
-//				AccountId: "6f91088a406011ed95aed352566e8d4c",
+//				AccountId: pulumi.StringRef("6f91088a406011ed95aed352566e8d4c"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -48,12 +54,12 @@ func LookupMagicNetworkMonitoringConfiguration(ctx *pulumi.Context, args *Lookup
 
 // A collection of arguments for invoking getMagicNetworkMonitoringConfiguration.
 type LookupMagicNetworkMonitoringConfigurationArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 }
 
 // A collection of values returned by getMagicNetworkMonitoringConfiguration.
 type LookupMagicNetworkMonitoringConfigurationResult struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.
 	DefaultSampling float64 `pulumi:"defaultSampling"`
 	// The provider-assigned unique ID for this managed resource.
@@ -75,7 +81,7 @@ func LookupMagicNetworkMonitoringConfigurationOutput(ctx *pulumi.Context, args L
 
 // A collection of arguments for invoking getMagicNetworkMonitoringConfiguration.
 type LookupMagicNetworkMonitoringConfigurationOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 }
 
 func (LookupMagicNetworkMonitoringConfigurationOutputArgs) ElementType() reflect.Type {
@@ -97,8 +103,8 @@ func (o LookupMagicNetworkMonitoringConfigurationResultOutput) ToLookupMagicNetw
 	return o
 }
 
-func (o LookupMagicNetworkMonitoringConfigurationResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMagicNetworkMonitoringConfigurationResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupMagicNetworkMonitoringConfigurationResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMagicNetworkMonitoringConfigurationResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.

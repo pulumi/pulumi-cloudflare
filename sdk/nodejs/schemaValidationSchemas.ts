@@ -5,6 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Gateway`
+ * - `Account API Gateway Read`
+ * - `Domain API Gateway`
+ * - `Domain API Gateway Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -79,7 +86,7 @@ export class SchemaValidationSchemas extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a SchemaValidationSchemas resource with the given unique name, arguments, and options.
@@ -114,9 +121,6 @@ export class SchemaValidationSchemas extends pulumi.CustomResource {
             }
             if (args?.validationEnabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'validationEnabled'");
-            }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["kind"] = args?.kind;
             resourceInputs["name"] = args?.name;
@@ -187,5 +191,5 @@ export interface SchemaValidationSchemasArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

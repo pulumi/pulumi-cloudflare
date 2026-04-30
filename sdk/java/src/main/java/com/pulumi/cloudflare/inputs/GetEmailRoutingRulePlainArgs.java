@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.GetEmailRoutingRuleFilter;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -42,15 +41,15 @@ public final class GetEmailRoutingRulePlainArgs extends com.pulumi.resources.Inv
      * Identifier.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private String zoneId;
+    @Import(name="zoneId")
+    private @Nullable String zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private GetEmailRoutingRulePlainArgs() {}
@@ -101,15 +100,12 @@ public final class GetEmailRoutingRulePlainArgs extends com.pulumi.resources.Inv
          * @return builder
          * 
          */
-        public Builder zoneId(String zoneId) {
+        public Builder zoneId(@Nullable String zoneId) {
             $.zoneId = zoneId;
             return this;
         }
 
         public GetEmailRoutingRulePlainArgs build() {
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("GetEmailRoutingRulePlainArgs", "zoneId");
-            }
             return $;
         }
     }

@@ -10,10 +10,12 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustDevicePostureRuleResult {
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return The description of the device posture rule.
      * 
@@ -62,8 +64,8 @@ public final class GetZeroTrustDevicePostureRuleResult {
     private String type;
 
     private GetZeroTrustDevicePostureRuleResult() {}
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return The description of the device posture rule.
@@ -139,7 +141,7 @@ public final class GetZeroTrustDevicePostureRuleResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String description;
         private String expiration;
         private String id;
@@ -165,10 +167,8 @@ public final class GetZeroTrustDevicePostureRuleResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustDevicePostureRuleResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

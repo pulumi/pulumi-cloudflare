@@ -7,11 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Stream Read`
+// - `Stream Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -45,9 +49,11 @@ type Stream struct {
 	pulumi.CustomResourceState
 
 	// The account identifier tag.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
 	AllowedOrigins pulumi.StringArrayOutput `pulumi:"allowedOrigins"`
+	// The unique identifier of the source video this video was clipped from.
+	ClippedFrom pulumi.StringOutput `pulumi:"clippedFrom"`
 	// The date and time the media item was created.
 	Created pulumi.StringOutput `pulumi:"created"`
 	// A user-defined identifier for the media creator.
@@ -61,6 +67,8 @@ type Stream struct {
 	LiveInput pulumi.StringOutput `pulumi:"liveInput"`
 	// The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.
 	MaxDurationSeconds pulumi.IntPtrOutput `pulumi:"maxDurationSeconds"`
+	// The maximum size in bytes for the video upload.
+	MaxSizeBytes pulumi.IntOutput `pulumi:"maxSizeBytes"`
 	// A user modifiable key-value store used to reference other systems of record for managing videos.
 	Meta pulumi.StringPtrOutput `pulumi:"meta"`
 	// The date and time the media item was last modified.
@@ -68,6 +76,8 @@ type Stream struct {
 	Playback StreamPlaybackOutput `pulumi:"playback"`
 	// The video's preview page URI. This field is omitted until encoding is complete.
 	Preview pulumi.StringOutput `pulumi:"preview"`
+	// Public details for the video including title, share link, channel link, and logo.
+	PublicDetails StreamPublicDetailsPtrOutput `pulumi:"publicDetails"`
 	// Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
 	ReadyToStream pulumi.BoolOutput `pulumi:"readyToStream"`
 	// Indicates the time at which the video became playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
@@ -84,8 +94,8 @@ type Stream struct {
 	Thumbnail pulumi.StringOutput `pulumi:"thumbnail"`
 	// The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.
 	ThumbnailTimestampPct pulumi.Float64Output `pulumi:"thumbnailTimestampPct"`
-	// A Cloudflare-generated unique identifier for a media item.
-	Uid pulumi.StringOutput `pulumi:"uid"`
+	// The unique identifier for the video. Can be used to verify the video being updated.
+	Uid pulumi.StringPtrOutput `pulumi:"uid"`
 	// The date and time when the video upload URL is no longer valid for direct user uploads.
 	UploadExpiry pulumi.StringPtrOutput `pulumi:"uploadExpiry"`
 	// The date and time the media item was uploaded.
@@ -97,12 +107,9 @@ type Stream struct {
 func NewStream(ctx *pulumi.Context,
 	name string, args *StreamArgs, opts ...pulumi.ResourceOption) (*Stream, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &StreamArgs{}
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Stream
 	err := ctx.RegisterResource("cloudflare:index/stream:Stream", name, args, &resource, opts...)
@@ -130,6 +137,8 @@ type streamState struct {
 	AccountId *string `pulumi:"accountId"`
 	// Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
 	AllowedOrigins []string `pulumi:"allowedOrigins"`
+	// The unique identifier of the source video this video was clipped from.
+	ClippedFrom *string `pulumi:"clippedFrom"`
 	// The date and time the media item was created.
 	Created *string `pulumi:"created"`
 	// A user-defined identifier for the media creator.
@@ -143,6 +152,8 @@ type streamState struct {
 	LiveInput *string `pulumi:"liveInput"`
 	// The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.
 	MaxDurationSeconds *int `pulumi:"maxDurationSeconds"`
+	// The maximum size in bytes for the video upload.
+	MaxSizeBytes *int `pulumi:"maxSizeBytes"`
 	// A user modifiable key-value store used to reference other systems of record for managing videos.
 	Meta *string `pulumi:"meta"`
 	// The date and time the media item was last modified.
@@ -150,6 +161,8 @@ type streamState struct {
 	Playback *StreamPlayback `pulumi:"playback"`
 	// The video's preview page URI. This field is omitted until encoding is complete.
 	Preview *string `pulumi:"preview"`
+	// Public details for the video including title, share link, channel link, and logo.
+	PublicDetails *StreamPublicDetails `pulumi:"publicDetails"`
 	// Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
 	ReadyToStream *bool `pulumi:"readyToStream"`
 	// Indicates the time at which the video became playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
@@ -166,7 +179,7 @@ type streamState struct {
 	Thumbnail *string `pulumi:"thumbnail"`
 	// The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.
 	ThumbnailTimestampPct *float64 `pulumi:"thumbnailTimestampPct"`
-	// A Cloudflare-generated unique identifier for a media item.
+	// The unique identifier for the video. Can be used to verify the video being updated.
 	Uid *string `pulumi:"uid"`
 	// The date and time when the video upload URL is no longer valid for direct user uploads.
 	UploadExpiry *string `pulumi:"uploadExpiry"`
@@ -180,6 +193,8 @@ type StreamState struct {
 	AccountId pulumi.StringPtrInput
 	// Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
 	AllowedOrigins pulumi.StringArrayInput
+	// The unique identifier of the source video this video was clipped from.
+	ClippedFrom pulumi.StringPtrInput
 	// The date and time the media item was created.
 	Created pulumi.StringPtrInput
 	// A user-defined identifier for the media creator.
@@ -193,6 +208,8 @@ type StreamState struct {
 	LiveInput pulumi.StringPtrInput
 	// The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.
 	MaxDurationSeconds pulumi.IntPtrInput
+	// The maximum size in bytes for the video upload.
+	MaxSizeBytes pulumi.IntPtrInput
 	// A user modifiable key-value store used to reference other systems of record for managing videos.
 	Meta pulumi.StringPtrInput
 	// The date and time the media item was last modified.
@@ -200,6 +217,8 @@ type StreamState struct {
 	Playback StreamPlaybackPtrInput
 	// The video's preview page URI. This field is omitted until encoding is complete.
 	Preview pulumi.StringPtrInput
+	// Public details for the video including title, share link, channel link, and logo.
+	PublicDetails StreamPublicDetailsPtrInput
 	// Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
 	ReadyToStream pulumi.BoolPtrInput
 	// Indicates the time at which the video became playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
@@ -216,7 +235,7 @@ type StreamState struct {
 	Thumbnail pulumi.StringPtrInput
 	// The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.
 	ThumbnailTimestampPct pulumi.Float64PtrInput
-	// A Cloudflare-generated unique identifier for a media item.
+	// The unique identifier for the video. Can be used to verify the video being updated.
 	Uid pulumi.StringPtrInput
 	// The date and time when the video upload URL is no longer valid for direct user uploads.
 	UploadExpiry pulumi.StringPtrInput
@@ -231,7 +250,7 @@ func (StreamState) ElementType() reflect.Type {
 
 type streamArgs struct {
 	// The account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
 	AllowedOrigins []string `pulumi:"allowedOrigins"`
 	// A user-defined identifier for the media creator.
@@ -242,12 +261,16 @@ type streamArgs struct {
 	MaxDurationSeconds *int `pulumi:"maxDurationSeconds"`
 	// A user modifiable key-value store used to reference other systems of record for managing videos.
 	Meta *string `pulumi:"meta"`
+	// Public details for the video including title, share link, channel link, and logo.
+	PublicDetails *StreamPublicDetails `pulumi:"publicDetails"`
 	// Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.
 	RequireSignedUrls *bool `pulumi:"requireSignedUrls"`
 	// Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.
 	ScheduledDeletion *string `pulumi:"scheduledDeletion"`
 	// The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.
 	ThumbnailTimestampPct *float64 `pulumi:"thumbnailTimestampPct"`
+	// The unique identifier for the video. Can be used to verify the video being updated.
+	Uid *string `pulumi:"uid"`
 	// The date and time when the video upload URL is no longer valid for direct user uploads.
 	UploadExpiry *string `pulumi:"uploadExpiry"`
 }
@@ -255,7 +278,7 @@ type streamArgs struct {
 // The set of arguments for constructing a Stream resource.
 type StreamArgs struct {
 	// The account identifier tag.
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
 	AllowedOrigins pulumi.StringArrayInput
 	// A user-defined identifier for the media creator.
@@ -266,12 +289,16 @@ type StreamArgs struct {
 	MaxDurationSeconds pulumi.IntPtrInput
 	// A user modifiable key-value store used to reference other systems of record for managing videos.
 	Meta pulumi.StringPtrInput
+	// Public details for the video including title, share link, channel link, and logo.
+	PublicDetails StreamPublicDetailsPtrInput
 	// Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.
 	RequireSignedUrls pulumi.BoolPtrInput
 	// Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.
 	ScheduledDeletion pulumi.StringPtrInput
 	// The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.
 	ThumbnailTimestampPct pulumi.Float64PtrInput
+	// The unique identifier for the video. Can be used to verify the video being updated.
+	Uid pulumi.StringPtrInput
 	// The date and time when the video upload URL is no longer valid for direct user uploads.
 	UploadExpiry pulumi.StringPtrInput
 }
@@ -364,13 +391,18 @@ func (o StreamOutput) ToStreamOutputWithContext(ctx context.Context) StreamOutpu
 }
 
 // The account identifier tag.
-func (o StreamOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o StreamOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Stream) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
 func (o StreamOutput) AllowedOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringArrayOutput { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
+}
+
+// The unique identifier of the source video this video was clipped from.
+func (o StreamOutput) ClippedFrom() pulumi.StringOutput {
+	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.ClippedFrom }).(pulumi.StringOutput)
 }
 
 // The date and time the media item was created.
@@ -407,6 +439,11 @@ func (o StreamOutput) MaxDurationSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Stream) pulumi.IntPtrOutput { return v.MaxDurationSeconds }).(pulumi.IntPtrOutput)
 }
 
+// The maximum size in bytes for the video upload.
+func (o StreamOutput) MaxSizeBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v *Stream) pulumi.IntOutput { return v.MaxSizeBytes }).(pulumi.IntOutput)
+}
+
 // A user modifiable key-value store used to reference other systems of record for managing videos.
 func (o StreamOutput) Meta() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringPtrOutput { return v.Meta }).(pulumi.StringPtrOutput)
@@ -424,6 +461,11 @@ func (o StreamOutput) Playback() StreamPlaybackOutput {
 // The video's preview page URI. This field is omitted until encoding is complete.
 func (o StreamOutput) Preview() pulumi.StringOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.Preview }).(pulumi.StringOutput)
+}
+
+// Public details for the video including title, share link, channel link, and logo.
+func (o StreamOutput) PublicDetails() StreamPublicDetailsPtrOutput {
+	return o.ApplyT(func(v *Stream) StreamPublicDetailsPtrOutput { return v.PublicDetails }).(StreamPublicDetailsPtrOutput)
 }
 
 // Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
@@ -466,9 +508,9 @@ func (o StreamOutput) ThumbnailTimestampPct() pulumi.Float64Output {
 	return o.ApplyT(func(v *Stream) pulumi.Float64Output { return v.ThumbnailTimestampPct }).(pulumi.Float64Output)
 }
 
-// A Cloudflare-generated unique identifier for a media item.
-func (o StreamOutput) Uid() pulumi.StringOutput {
-	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+// The unique identifier for the video. Can be used to verify the video being updated.
+func (o StreamOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Stream) pulumi.StringPtrOutput { return v.Uid }).(pulumi.StringPtrOutput)
 }
 
 // The date and time when the video upload URL is no longer valid for direct user uploads.

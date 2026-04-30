@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `User Details Read`
+// - `User Details Write`
+//
 // ## Example Usage
 //
 // ```go

@@ -21,35 +21,24 @@ __all__ = ['ImageVariantArgs', 'ImageVariant']
 @pulumi.input_type
 class ImageVariantArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  image_variant_id: pulumi.Input[_builtins.str],
                  options: pulumi.Input['ImageVariantOptionsArgs'],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  never_require_signed_urls: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ImageVariant resource.
 
-        :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
         :param pulumi.Input[_builtins.str] image_variant_id: The ID of this resource.
         :param pulumi.Input['ImageVariantOptionsArgs'] options: Allows you to define image resizing sizes for different use cases.
+        :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
         :param pulumi.Input[_builtins.bool] never_require_signed_urls: Indicates whether the variant can access an image without a signature, regardless of image access control.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "image_variant_id", image_variant_id)
         pulumi.set(__self__, "options", options)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if never_require_signed_urls is not None:
             pulumi.set(__self__, "never_require_signed_urls", never_require_signed_urls)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Account identifier tag.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="imageVariantId")
@@ -74,6 +63,18 @@ class ImageVariantArgs:
     @options.setter
     def options(self, value: pulumi.Input['ImageVariantOptionsArgs']):
         pulumi.set(self, "options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Account identifier tag.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="neverRequireSignedUrls")
@@ -185,6 +186,11 @@ class ImageVariant(pulumi.CustomResource):
                  options: Optional[pulumi.Input[Union['ImageVariantOptionsArgs', 'ImageVariantOptionsArgsDict']]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Images Read`
+        - `Images Write`
+
         ## Example Usage
 
         ```python
@@ -224,6 +230,11 @@ class ImageVariant(pulumi.CustomResource):
                  args: ImageVariantArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Images Read`
+        - `Images Write`
+
         ## Example Usage
 
         ```python
@@ -277,8 +288,6 @@ class ImageVariant(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ImageVariantArgs.__new__(ImageVariantArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             if image_variant_id is None and not opts.urn:
                 raise TypeError("Missing required property 'image_variant_id'")
@@ -328,7 +337,7 @@ class ImageVariant(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Account identifier tag.
         """

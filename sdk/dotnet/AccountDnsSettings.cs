@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Account DNS Settings Read`
+    /// - `Account DNS Settings Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -23,6 +28,7 @@ namespace Pulumi.Cloudflare
     ///     var exampleAccountDnsSettings = new Cloudflare.Index.AccountDnsSettings("example_account_dns_settings", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         EnforceDnsOnly = false,
     ///         ZoneDefaults = new Cloudflare.Inputs.AccountDnsSettingsZoneDefaultsArgs
     ///         {
     ///             FlattenAllCnames = false,
@@ -66,7 +72,13 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
+
+        /// <summary>
+        /// When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
+        /// </summary>
+        [Output("enforceDnsOnly")]
+        public Output<bool?> EnforceDnsOnly { get; private set; } = null!;
 
         [Output("zoneDefaults")]
         public Output<Outputs.AccountDnsSettingsZoneDefaults?> ZoneDefaults { get; private set; } = null!;
@@ -79,7 +91,7 @@ namespace Pulumi.Cloudflare
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public AccountDnsSettings(string name, AccountDnsSettingsArgs args, CustomResourceOptions? options = null)
+        public AccountDnsSettings(string name, AccountDnsSettingsArgs? args = null, CustomResourceOptions? options = null)
             : base("cloudflare:index/accountDnsSettings:AccountDnsSettings", name, args ?? new AccountDnsSettingsArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -120,8 +132,14 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
+        /// </summary>
+        [Input("enforceDnsOnly")]
+        public Input<bool>? EnforceDnsOnly { get; set; }
 
         [Input("zoneDefaults")]
         public Input<Inputs.AccountDnsSettingsZoneDefaultsArgs>? ZoneDefaults { get; set; }
@@ -139,6 +157,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
+        /// </summary>
+        [Input("enforceDnsOnly")]
+        public Input<bool>? EnforceDnsOnly { get; set; }
 
         [Input("zoneDefaults")]
         public Input<Inputs.AccountDnsSettingsZoneDefaultsGetArgs>? ZoneDefaults { get; set; }

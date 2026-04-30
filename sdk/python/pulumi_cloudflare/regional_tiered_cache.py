@@ -143,6 +143,13 @@ class RegionalTieredCache(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Zone Read`
+        - `Zone Settings Read`
+        - `Zone Settings Write`
+        - `Zone Write`
+
         ## Example Usage
 
         ```python
@@ -174,6 +181,13 @@ class RegionalTieredCache(pulumi.CustomResource):
                  args: RegionalTieredCacheArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Zone Read`
+        - `Zone Settings Read`
+        - `Zone Settings Write`
+        - `Zone Write`
+
         ## Example Usage
 
         ```python

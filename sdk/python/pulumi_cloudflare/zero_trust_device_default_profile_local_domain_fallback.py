@@ -90,6 +90,10 @@ class ZeroTrustDeviceDefaultProfileLocalDomainFallback(pulumi.CustomResource):
                  domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs', 'ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgsDict']]]]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Zero Trust Write`
+
         ## Example Usage
 
         ```python
@@ -122,6 +126,10 @@ class ZeroTrustDeviceDefaultProfileLocalDomainFallback(pulumi.CustomResource):
                  args: ZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Zero Trust Write`
+
         ## Example Usage
 
         ```python

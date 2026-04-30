@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Pages Read`
+// - `Pages Write`
+//
 // > A DNS record for the domain is not automatically created. You need to create
 //
 //	a `cloudflareRecord` resource for the domain you want to use.
@@ -53,7 +58,7 @@ type PagesDomain struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Available values: "google", "letsEncrypt".
 	CertificateAuthority pulumi.StringOutput `pulumi:"certificateAuthority"`
 	CreatedOn            pulumi.StringOutput `pulumi:"createdOn"`
@@ -76,9 +81,6 @@ func NewPagesDomain(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -149,7 +151,7 @@ func (PagesDomainState) ElementType() reflect.Type {
 
 type pagesDomainArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The domain name.
 	Name string `pulumi:"name"`
 	// Name of the project.
@@ -159,7 +161,7 @@ type pagesDomainArgs struct {
 // The set of arguments for constructing a PagesDomain resource.
 type PagesDomainArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// The domain name.
 	Name pulumi.StringInput
 	// Name of the project.
@@ -254,8 +256,8 @@ func (o PagesDomainOutput) ToPagesDomainOutputWithContext(ctx context.Context) P
 }
 
 // Identifier.
-func (o PagesDomainOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *PagesDomain) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o PagesDomainOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PagesDomain) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Available values: "google", "letsEncrypt".

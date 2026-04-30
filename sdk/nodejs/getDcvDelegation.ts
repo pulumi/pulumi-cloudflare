@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -16,7 +21,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getDcvDelegation(args: GetDcvDelegationArgs, opts?: pulumi.InvokeOptions): Promise<GetDcvDelegationResult> {
+export function getDcvDelegation(args?: GetDcvDelegationArgs, opts?: pulumi.InvokeOptions): Promise<GetDcvDelegationResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getDcvDelegation:getDcvDelegation", {
         "zoneId": args.zoneId,
@@ -30,7 +36,7 @@ export interface GetDcvDelegationArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -48,9 +54,14 @@ export interface GetDcvDelegationResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -62,7 +73,8 @@ export interface GetDcvDelegationResult {
  * });
  * ```
  */
-export function getDcvDelegationOutput(args: GetDcvDelegationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDcvDelegationResult> {
+export function getDcvDelegationOutput(args?: GetDcvDelegationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDcvDelegationResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getDcvDelegation:getDcvDelegation", {
         "zoneId": args.zoneId,
@@ -76,5 +88,5 @@ export interface GetDcvDelegationOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

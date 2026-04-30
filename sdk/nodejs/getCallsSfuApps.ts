@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Calls Read`
+ * - `Calls Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getCallsSfuApps(args: GetCallsSfuAppsArgs, opts?: pulumi.InvokeOptions): Promise<GetCallsSfuAppsResult> {
+export function getCallsSfuApps(args?: GetCallsSfuAppsArgs, opts?: pulumi.InvokeOptions): Promise<GetCallsSfuAppsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCallsSfuApps:getCallsSfuApps", {
         "accountId": args.accountId,
@@ -33,7 +39,7 @@ export interface GetCallsSfuAppsArgs {
     /**
      * The account identifier tag.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -47,7 +53,7 @@ export interface GetCallsSfuAppsResult {
     /**
      * The account identifier tag.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -62,6 +68,11 @@ export interface GetCallsSfuAppsResult {
     readonly results: outputs.GetCallsSfuAppsResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Calls Read`
+ * - `Calls Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,7 +84,8 @@ export interface GetCallsSfuAppsResult {
  * });
  * ```
  */
-export function getCallsSfuAppsOutput(args: GetCallsSfuAppsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCallsSfuAppsResult> {
+export function getCallsSfuAppsOutput(args?: GetCallsSfuAppsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCallsSfuAppsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCallsSfuApps:getCallsSfuApps", {
         "accountId": args.accountId,
@@ -88,7 +100,7 @@ export interface GetCallsSfuAppsOutputArgs {
     /**
      * The account identifier tag.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

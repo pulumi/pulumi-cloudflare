@@ -7,6 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account Settings Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getWebAnalyticsSite(args: GetWebAnalyticsSiteArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAnalyticsSiteResult> {
+export function getWebAnalyticsSite(args?: GetWebAnalyticsSiteArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAnalyticsSiteResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWebAnalyticsSite:getWebAnalyticsSite", {
         "accountId": args.accountId,
@@ -35,7 +40,7 @@ export interface GetWebAnalyticsSiteArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     filter?: inputs.GetWebAnalyticsSiteFilter;
     /**
      * Identifier.
@@ -50,7 +55,7 @@ export interface GetWebAnalyticsSiteResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
      */
@@ -84,6 +89,10 @@ export interface GetWebAnalyticsSiteResult {
     readonly snippet: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account Settings Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -96,7 +105,8 @@ export interface GetWebAnalyticsSiteResult {
  * });
  * ```
  */
-export function getWebAnalyticsSiteOutput(args: GetWebAnalyticsSiteOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWebAnalyticsSiteResult> {
+export function getWebAnalyticsSiteOutput(args?: GetWebAnalyticsSiteOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWebAnalyticsSiteResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWebAnalyticsSite:getWebAnalyticsSite", {
         "accountId": args.accountId,
@@ -112,7 +122,7 @@ export interface GetWebAnalyticsSiteOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetWebAnalyticsSiteFilterArgs>;
     /**
      * Identifier.

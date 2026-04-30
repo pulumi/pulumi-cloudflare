@@ -7,11 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloud Email Security: Read`
+// - `Cloud Email Security: Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -52,7 +56,7 @@ type EmailSecurityTrustedDomains struct {
 	pulumi.CustomResourceState
 
 	// Account Identifier
-	AccountId pulumi.StringOutput                        `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput                     `pulumi:"accountId"`
 	Bodies    EmailSecurityTrustedDomainsBodyArrayOutput `pulumi:"bodies"`
 	Comments  pulumi.StringPtrOutput                     `pulumi:"comments"`
 	CreatedAt pulumi.StringOutput                        `pulumi:"createdAt"`
@@ -72,12 +76,9 @@ type EmailSecurityTrustedDomains struct {
 func NewEmailSecurityTrustedDomains(ctx *pulumi.Context,
 	name string, args *EmailSecurityTrustedDomainsArgs, opts ...pulumi.ResourceOption) (*EmailSecurityTrustedDomains, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &EmailSecurityTrustedDomainsArgs{}
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EmailSecurityTrustedDomains
 	err := ctx.RegisterResource("cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains", name, args, &resource, opts...)
@@ -142,7 +143,7 @@ func (EmailSecurityTrustedDomainsState) ElementType() reflect.Type {
 
 type emailSecurityTrustedDomainsArgs struct {
 	// Account Identifier
-	AccountId string                            `pulumi:"accountId"`
+	AccountId *string                           `pulumi:"accountId"`
 	Bodies    []EmailSecurityTrustedDomainsBody `pulumi:"bodies"`
 	Comments  *string                           `pulumi:"comments"`
 	// Select to prevent recently registered domains from triggering a
@@ -159,7 +160,7 @@ type emailSecurityTrustedDomainsArgs struct {
 // The set of arguments for constructing a EmailSecurityTrustedDomains resource.
 type EmailSecurityTrustedDomainsArgs struct {
 	// Account Identifier
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	Bodies    EmailSecurityTrustedDomainsBodyArrayInput
 	Comments  pulumi.StringPtrInput
 	// Select to prevent recently registered domains from triggering a
@@ -261,8 +262,8 @@ func (o EmailSecurityTrustedDomainsOutput) ToEmailSecurityTrustedDomainsOutputWi
 }
 
 // Account Identifier
-func (o EmailSecurityTrustedDomainsOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *EmailSecurityTrustedDomains) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o EmailSecurityTrustedDomainsOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailSecurityTrustedDomains) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o EmailSecurityTrustedDomainsOutput) Bodies() EmailSecurityTrustedDomainsBodyArrayOutput {

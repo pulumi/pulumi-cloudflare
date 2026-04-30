@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloud Email Security: Read`
+ * - `Cloud Email Security: Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +24,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getEmailSecurityImpersonationRegistry(args: GetEmailSecurityImpersonationRegistryArgs, opts?: pulumi.InvokeOptions): Promise<GetEmailSecurityImpersonationRegistryResult> {
+export function getEmailSecurityImpersonationRegistry(args?: GetEmailSecurityImpersonationRegistryArgs, opts?: pulumi.InvokeOptions): Promise<GetEmailSecurityImpersonationRegistryResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getEmailSecurityImpersonationRegistry:getEmailSecurityImpersonationRegistry", {
         "accountId": args.accountId,
@@ -35,7 +41,7 @@ export interface GetEmailSecurityImpersonationRegistryArgs {
     /**
      * Account Identifier
      */
-    accountId: string;
+    accountId?: string;
     displayNameId?: number;
     filter?: inputs.GetEmailSecurityImpersonationRegistryFilter;
 }
@@ -47,7 +53,7 @@ export interface GetEmailSecurityImpersonationRegistryResult {
     /**
      * Account Identifier
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     readonly comments: string;
     readonly createdAt: string;
     readonly directoryId: number;
@@ -69,6 +75,11 @@ export interface GetEmailSecurityImpersonationRegistryResult {
     readonly provenance: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Cloud Email Security: Read`
+ * - `Cloud Email Security: Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -81,7 +92,8 @@ export interface GetEmailSecurityImpersonationRegistryResult {
  * });
  * ```
  */
-export function getEmailSecurityImpersonationRegistryOutput(args: GetEmailSecurityImpersonationRegistryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEmailSecurityImpersonationRegistryResult> {
+export function getEmailSecurityImpersonationRegistryOutput(args?: GetEmailSecurityImpersonationRegistryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEmailSecurityImpersonationRegistryResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getEmailSecurityImpersonationRegistry:getEmailSecurityImpersonationRegistry", {
         "accountId": args.accountId,
@@ -97,7 +109,7 @@ export interface GetEmailSecurityImpersonationRegistryOutputArgs {
     /**
      * Account Identifier
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     displayNameId?: pulumi.Input<number>;
     filter?: pulumi.Input<inputs.GetEmailSecurityImpersonationRegistryFilterArgs>;
 }

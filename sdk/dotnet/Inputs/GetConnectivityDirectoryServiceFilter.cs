@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class GetConnectivityDirectoryServiceFilterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Available values: "http".
+        /// Available values: "tcp", "http".
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }

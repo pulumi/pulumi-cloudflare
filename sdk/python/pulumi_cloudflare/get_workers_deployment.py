@@ -61,7 +61,7 @@ class GetWorkersDeploymentResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -145,6 +145,12 @@ def get_workers_deployment(account_id: Optional[_builtins.str] = None,
                            script_name: Optional[_builtins.str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkersDeploymentResult:
     """
+    Accepted Permissions
+
+    - `Workers Scripts Read`
+    - `Workers Scripts Write`
+    - `Workers Tail Read`
+
     ## Example Usage
 
     ```python
@@ -178,11 +184,17 @@ def get_workers_deployment(account_id: Optional[_builtins.str] = None,
         source=pulumi.get(__ret__, 'source'),
         strategy=pulumi.get(__ret__, 'strategy'),
         versions=pulumi.get(__ret__, 'versions'))
-def get_workers_deployment_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_workers_deployment_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                   deployment_id: Optional[pulumi.Input[_builtins.str]] = None,
                                   script_name: Optional[pulumi.Input[_builtins.str]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkersDeploymentResult]:
     """
+    Accepted Permissions
+
+    - `Workers Scripts Read`
+    - `Workers Scripts Write`
+    - `Workers Tail Read`
+
     ## Example Usage
 
     ```python

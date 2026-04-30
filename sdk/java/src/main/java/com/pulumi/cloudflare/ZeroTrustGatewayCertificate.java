@@ -61,10 +61,10 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate")
 public class ZeroTrustGatewayCertificate extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * Whether to activate the certificate on Cloudflare&#39;s edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `bindingStatus` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic
@@ -233,7 +233,7 @@ public class ZeroTrustGatewayCertificate extends com.pulumi.resources.CustomReso
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ZeroTrustGatewayCertificate(java.lang.String name, ZeroTrustGatewayCertificateArgs args) {
+    public ZeroTrustGatewayCertificate(java.lang.String name, @Nullable ZeroTrustGatewayCertificateArgs args) {
         this(name, args, null);
     }
     /**
@@ -242,7 +242,7 @@ public class ZeroTrustGatewayCertificate extends com.pulumi.resources.CustomReso
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ZeroTrustGatewayCertificate(java.lang.String name, ZeroTrustGatewayCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public ZeroTrustGatewayCertificate(java.lang.String name, @Nullable ZeroTrustGatewayCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -250,7 +250,7 @@ public class ZeroTrustGatewayCertificate extends com.pulumi.resources.CustomReso
         super("cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static ZeroTrustGatewayCertificateArgs makeArgs(ZeroTrustGatewayCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static ZeroTrustGatewayCertificateArgs makeArgs(@Nullable ZeroTrustGatewayCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

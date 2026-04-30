@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetObservatoryScheduledTest
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -36,6 +41,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetObservatoryScheduledTestResult>("cloudflare:index/getObservatoryScheduledTest:getObservatoryScheduledTest", args ?? new GetObservatoryScheduledTestArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -60,6 +70,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetObservatoryScheduledTestResult>("cloudflare:index/getObservatoryScheduledTest:getObservatoryScheduledTest", args ?? new GetObservatoryScheduledTestInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -103,8 +118,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetObservatoryScheduledTestArgs()
         {
@@ -130,8 +145,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetObservatoryScheduledTestInvokeArgs()
         {
@@ -164,7 +179,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetObservatoryScheduledTestResult(
@@ -176,7 +191,7 @@ namespace Pulumi.Cloudflare
 
             string url,
 
-            string zoneId)
+            string? zoneId)
         {
             Frequency = frequency;
             Id = id;

@@ -34,7 +34,7 @@ public final class GetSnippetListInvokeResult {
      * @return Use this field to specify the unique ID of the zone.
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetSnippetListInvokeResult() {}
     /**
@@ -62,8 +62,8 @@ public final class GetSnippetListInvokeResult {
      * @return Use this field to specify the unique ID of the zone.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -78,7 +78,7 @@ public final class GetSnippetListInvokeResult {
         private String id;
         private @Nullable Integer maxItems;
         private List<GetSnippetListResult> results;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetSnippetListInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -114,10 +114,8 @@ public final class GetSnippetListInvokeResult {
             return results(List.of(results));
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetSnippetListInvokeResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

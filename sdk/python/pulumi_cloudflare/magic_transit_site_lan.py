@@ -21,10 +21,12 @@ __all__ = ['MagicTransitSiteLanArgs', 'MagicTransitSiteLan']
 @pulumi.input_type
 class MagicTransitSiteLanArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  site_id: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  bond_id: Optional[pulumi.Input[_builtins.int]] = None,
                  ha_link: Optional[pulumi.Input[_builtins.bool]] = None,
+                 is_breakout: Optional[pulumi.Input[_builtins.bool]] = None,
+                 is_prioritized: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  nat: Optional[pulumi.Input['MagicTransitSiteLanNatArgs']] = None,
                  physport: Optional[pulumi.Input[_builtins.int]] = None,
@@ -34,18 +36,25 @@ class MagicTransitSiteLanArgs:
         """
         The set of arguments for constructing a MagicTransitSiteLan resource.
 
-        :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.str] site_id: Identifier
+        :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.bool] ha_link: mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
+        :param pulumi.Input[_builtins.bool] is_breakout: mark true to use this LAN for source-based breakout traffic
+        :param pulumi.Input[_builtins.bool] is_prioritized: mark true to use this LAN for source-based prioritized traffic
         :param pulumi.Input['MagicTransitSiteLanStaticAddressingArgs'] static_addressing: If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static*address is required along with secondary and virtual address.
         :param pulumi.Input[_builtins.int] vlan_tag: VLAN ID. Use zero for untagged.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "site_id", site_id)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if bond_id is not None:
             pulumi.set(__self__, "bond_id", bond_id)
         if ha_link is not None:
             pulumi.set(__self__, "ha_link", ha_link)
+        if is_breakout is not None:
+            pulumi.set(__self__, "is_breakout", is_breakout)
+        if is_prioritized is not None:
+            pulumi.set(__self__, "is_prioritized", is_prioritized)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if nat is not None:
@@ -60,18 +69,6 @@ class MagicTransitSiteLanArgs:
             pulumi.set(__self__, "vlan_tag", vlan_tag)
 
     @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Identifier
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
-
-    @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Input[_builtins.str]:
         """
@@ -82,6 +79,18 @@ class MagicTransitSiteLanArgs:
     @site_id.setter
     def site_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "site_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="bondId")
@@ -103,6 +112,30 @@ class MagicTransitSiteLanArgs:
     @ha_link.setter
     def ha_link(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "ha_link", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isBreakout")
+    def is_breakout(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        mark true to use this LAN for source-based breakout traffic
+        """
+        return pulumi.get(self, "is_breakout")
+
+    @is_breakout.setter
+    def is_breakout(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "is_breakout", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isPrioritized")
+    def is_prioritized(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        mark true to use this LAN for source-based prioritized traffic
+        """
+        return pulumi.get(self, "is_prioritized")
+
+    @is_prioritized.setter
+    def is_prioritized(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "is_prioritized", value)
 
     @_builtins.property
     @pulumi.getter
@@ -171,6 +204,8 @@ class _MagicTransitSiteLanState:
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  bond_id: Optional[pulumi.Input[_builtins.int]] = None,
                  ha_link: Optional[pulumi.Input[_builtins.bool]] = None,
+                 is_breakout: Optional[pulumi.Input[_builtins.bool]] = None,
+                 is_prioritized: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  nat: Optional[pulumi.Input['MagicTransitSiteLanNatArgs']] = None,
                  physport: Optional[pulumi.Input[_builtins.int]] = None,
@@ -183,6 +218,8 @@ class _MagicTransitSiteLanState:
 
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.bool] ha_link: mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
+        :param pulumi.Input[_builtins.bool] is_breakout: mark true to use this LAN for source-based breakout traffic
+        :param pulumi.Input[_builtins.bool] is_prioritized: mark true to use this LAN for source-based prioritized traffic
         :param pulumi.Input[_builtins.str] site_id: Identifier
         :param pulumi.Input['MagicTransitSiteLanStaticAddressingArgs'] static_addressing: If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static*address is required along with secondary and virtual address.
         :param pulumi.Input[_builtins.int] vlan_tag: VLAN ID. Use zero for untagged.
@@ -193,6 +230,10 @@ class _MagicTransitSiteLanState:
             pulumi.set(__self__, "bond_id", bond_id)
         if ha_link is not None:
             pulumi.set(__self__, "ha_link", ha_link)
+        if is_breakout is not None:
+            pulumi.set(__self__, "is_breakout", is_breakout)
+        if is_prioritized is not None:
+            pulumi.set(__self__, "is_prioritized", is_prioritized)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if nat is not None:
@@ -240,6 +281,30 @@ class _MagicTransitSiteLanState:
     @ha_link.setter
     def ha_link(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "ha_link", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isBreakout")
+    def is_breakout(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        mark true to use this LAN for source-based breakout traffic
+        """
+        return pulumi.get(self, "is_breakout")
+
+    @is_breakout.setter
+    def is_breakout(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "is_breakout", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isPrioritized")
+    def is_prioritized(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        mark true to use this LAN for source-based prioritized traffic
+        """
+        return pulumi.get(self, "is_prioritized")
+
+    @is_prioritized.setter
+    def is_prioritized(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "is_prioritized", value)
 
     @_builtins.property
     @pulumi.getter
@@ -323,6 +388,8 @@ class MagicTransitSiteLan(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  bond_id: Optional[pulumi.Input[_builtins.int]] = None,
                  ha_link: Optional[pulumi.Input[_builtins.bool]] = None,
+                 is_breakout: Optional[pulumi.Input[_builtins.bool]] = None,
+                 is_prioritized: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  nat: Optional[pulumi.Input[Union['MagicTransitSiteLanNatArgs', 'MagicTransitSiteLanNatArgsDict']]] = None,
                  physport: Optional[pulumi.Input[_builtins.int]] = None,
@@ -332,6 +399,13 @@ class MagicTransitSiteLan(pulumi.CustomResource):
                  vlan_tag: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Magic Transit Read`
+        - `Magic Transit Write`
+        - `Magic WAN Read`
+        - `Magic WAN Write`
+
         ## Example Usage
 
         ```python
@@ -343,6 +417,8 @@ class MagicTransitSiteLan(pulumi.CustomResource):
             site_id="023e105f4ecef8ad9ca31a8372d0c353",
             bond_id=2,
             ha_link=True,
+            is_breakout=True,
+            is_prioritized=True,
             name="name",
             nat={
                 "static_prefix": "192.0.2.0/24",
@@ -387,6 +463,8 @@ class MagicTransitSiteLan(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.bool] ha_link: mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
+        :param pulumi.Input[_builtins.bool] is_breakout: mark true to use this LAN for source-based breakout traffic
+        :param pulumi.Input[_builtins.bool] is_prioritized: mark true to use this LAN for source-based prioritized traffic
         :param pulumi.Input[_builtins.str] site_id: Identifier
         :param pulumi.Input[Union['MagicTransitSiteLanStaticAddressingArgs', 'MagicTransitSiteLanStaticAddressingArgsDict']] static_addressing: If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static*address is required along with secondary and virtual address.
         :param pulumi.Input[_builtins.int] vlan_tag: VLAN ID. Use zero for untagged.
@@ -398,6 +476,13 @@ class MagicTransitSiteLan(pulumi.CustomResource):
                  args: MagicTransitSiteLanArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Magic Transit Read`
+        - `Magic Transit Write`
+        - `Magic WAN Read`
+        - `Magic WAN Write`
+
         ## Example Usage
 
         ```python
@@ -409,6 +494,8 @@ class MagicTransitSiteLan(pulumi.CustomResource):
             site_id="023e105f4ecef8ad9ca31a8372d0c353",
             bond_id=2,
             ha_link=True,
+            is_breakout=True,
+            is_prioritized=True,
             name="name",
             nat={
                 "static_prefix": "192.0.2.0/24",
@@ -467,6 +554,8 @@ class MagicTransitSiteLan(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  bond_id: Optional[pulumi.Input[_builtins.int]] = None,
                  ha_link: Optional[pulumi.Input[_builtins.bool]] = None,
+                 is_breakout: Optional[pulumi.Input[_builtins.bool]] = None,
+                 is_prioritized: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  nat: Optional[pulumi.Input[Union['MagicTransitSiteLanNatArgs', 'MagicTransitSiteLanNatArgsDict']]] = None,
                  physport: Optional[pulumi.Input[_builtins.int]] = None,
@@ -483,11 +572,11 @@ class MagicTransitSiteLan(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MagicTransitSiteLanArgs.__new__(MagicTransitSiteLanArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["bond_id"] = bond_id
             __props__.__dict__["ha_link"] = ha_link
+            __props__.__dict__["is_breakout"] = is_breakout
+            __props__.__dict__["is_prioritized"] = is_prioritized
             __props__.__dict__["name"] = name
             __props__.__dict__["nat"] = nat
             __props__.__dict__["physport"] = physport
@@ -510,6 +599,8 @@ class MagicTransitSiteLan(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
             bond_id: Optional[pulumi.Input[_builtins.int]] = None,
             ha_link: Optional[pulumi.Input[_builtins.bool]] = None,
+            is_breakout: Optional[pulumi.Input[_builtins.bool]] = None,
+            is_prioritized: Optional[pulumi.Input[_builtins.bool]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             nat: Optional[pulumi.Input[Union['MagicTransitSiteLanNatArgs', 'MagicTransitSiteLanNatArgsDict']]] = None,
             physport: Optional[pulumi.Input[_builtins.int]] = None,
@@ -526,6 +617,8 @@ class MagicTransitSiteLan(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.bool] ha_link: mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
+        :param pulumi.Input[_builtins.bool] is_breakout: mark true to use this LAN for source-based breakout traffic
+        :param pulumi.Input[_builtins.bool] is_prioritized: mark true to use this LAN for source-based prioritized traffic
         :param pulumi.Input[_builtins.str] site_id: Identifier
         :param pulumi.Input[Union['MagicTransitSiteLanStaticAddressingArgs', 'MagicTransitSiteLanStaticAddressingArgsDict']] static_addressing: If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static*address is required along with secondary and virtual address.
         :param pulumi.Input[_builtins.int] vlan_tag: VLAN ID. Use zero for untagged.
@@ -537,6 +630,8 @@ class MagicTransitSiteLan(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["bond_id"] = bond_id
         __props__.__dict__["ha_link"] = ha_link
+        __props__.__dict__["is_breakout"] = is_breakout
+        __props__.__dict__["is_prioritized"] = is_prioritized
         __props__.__dict__["name"] = name
         __props__.__dict__["nat"] = nat
         __props__.__dict__["physport"] = physport
@@ -548,7 +643,7 @@ class MagicTransitSiteLan(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier
         """
@@ -566,6 +661,22 @@ class MagicTransitSiteLan(pulumi.CustomResource):
         mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
         """
         return pulumi.get(self, "ha_link")
+
+    @_builtins.property
+    @pulumi.getter(name="isBreakout")
+    def is_breakout(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        mark true to use this LAN for source-based breakout traffic
+        """
+        return pulumi.get(self, "is_breakout")
+
+    @_builtins.property
+    @pulumi.getter(name="isPrioritized")
+    def is_prioritized(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        mark true to use this LAN for source-based prioritized traffic
+        """
+        return pulumi.get(self, "is_prioritized")
 
     @_builtins.property
     @pulumi.getter

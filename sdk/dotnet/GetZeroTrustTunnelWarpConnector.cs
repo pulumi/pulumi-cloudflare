@@ -12,6 +12,13 @@ namespace Pulumi.Cloudflare
     public static class GetZeroTrustTunnelWarpConnector
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare One Connector: WARP Read`
+        /// - `Cloudflare One Connector: WARP Write`
+        /// - `Cloudflare One Connectors Read`
+        /// - `Cloudflare One Connectors Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,10 +38,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZeroTrustTunnelWarpConnectorResult> InvokeAsync(GetZeroTrustTunnelWarpConnectorArgs args, InvokeOptions? options = null)
+        public static Task<GetZeroTrustTunnelWarpConnectorResult> InvokeAsync(GetZeroTrustTunnelWarpConnectorArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustTunnelWarpConnectorResult>("cloudflare:index/getZeroTrustTunnelWarpConnector:getZeroTrustTunnelWarpConnector", args ?? new GetZeroTrustTunnelWarpConnectorArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare One Connector: WARP Read`
+        /// - `Cloudflare One Connector: WARP Write`
+        /// - `Cloudflare One Connectors Read`
+        /// - `Cloudflare One Connectors Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,10 +68,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZeroTrustTunnelWarpConnectorResult> Invoke(GetZeroTrustTunnelWarpConnectorInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZeroTrustTunnelWarpConnectorResult> Invoke(GetZeroTrustTunnelWarpConnectorInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustTunnelWarpConnectorResult>("cloudflare:index/getZeroTrustTunnelWarpConnector:getZeroTrustTunnelWarpConnector", args ?? new GetZeroTrustTunnelWarpConnectorInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare One Connector: WARP Read`
+        /// - `Cloudflare One Connector: WARP Write`
+        /// - `Cloudflare One Connectors Read`
+        /// - `Cloudflare One Connectors Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +108,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Cloudflare account ID
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         [Input("filter")]
         public Inputs.GetZeroTrustTunnelWarpConnectorFilterArgs? Filter { get; set; }
@@ -110,8 +131,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Cloudflare account ID
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("filter")]
         public Input<Inputs.GetZeroTrustTunnelWarpConnectorFilterInputArgs>? Filter { get; set; }
@@ -135,7 +156,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Cloudflare account ID
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Cloudflare account ID
         /// </summary>
@@ -190,7 +211,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustTunnelWarpConnectorResult(
-            string accountId,
+            string? accountId,
 
             string accountTag,
 

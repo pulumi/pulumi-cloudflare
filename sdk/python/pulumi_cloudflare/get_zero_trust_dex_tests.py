@@ -49,7 +49,7 @@ class GetZeroTrustDexTestsResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -114,6 +114,13 @@ def get_zero_trust_dex_tests(account_id: Optional[_builtins.str] = None,
                              test_name: Optional[_builtins.str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustDexTestsResult:
     """
+    Accepted Permissions
+
+    - `Cloudflare DEX Read`
+    - `Cloudflare DEX Write`
+    - `Zero Trust Read`
+    - `Zero Trust Report`
+
     ## Example Usage
 
     ```python
@@ -146,12 +153,19 @@ def get_zero_trust_dex_tests(account_id: Optional[_builtins.str] = None,
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'),
         test_name=pulumi.get(__ret__, 'test_name'))
-def get_zero_trust_dex_tests_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_dex_tests_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                     kind: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                     max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                     test_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDexTestsResult]:
     """
+    Accepted Permissions
+
+    - `Cloudflare DEX Read`
+    - `Cloudflare DEX Write`
+    - `Zero Trust Read`
+    - `Zero Trust Report`
+
     ## Example Usage
 
     ```python

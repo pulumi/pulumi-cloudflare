@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetWorkersRoute
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers Routes Read`
+        /// - `Workers Routes Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +40,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkersRouteResult>("cloudflare:index/getWorkersRoute:getWorkersRoute", args ?? new GetWorkersRouteArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers Routes Read`
+        /// - `Workers Routes Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +68,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkersRouteResult>("cloudflare:index/getWorkersRoute:getWorkersRoute", args ?? new GetWorkersRouteInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers Routes Read`
+        /// - `Workers Routes Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -93,8 +108,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetWorkersRouteArgs()
         {
@@ -113,8 +128,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetWorkersRouteInvokeArgs()
         {
@@ -145,7 +160,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetWorkersRouteResult(
@@ -157,7 +172,7 @@ namespace Pulumi.Cloudflare
 
             string script,
 
-            string zoneId)
+            string? zoneId)
         {
             Id = id;
             Pattern = pattern;

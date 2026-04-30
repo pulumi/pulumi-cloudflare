@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Magic Transit Read`
+ * - `Magic Transit Write`
+ * - `Magic WAN Read`
+ * - `Magic WAN Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +26,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getMagicTransitSite(args: GetMagicTransitSiteArgs, opts?: pulumi.InvokeOptions): Promise<GetMagicTransitSiteResult> {
+export function getMagicTransitSite(args?: GetMagicTransitSiteArgs, opts?: pulumi.InvokeOptions): Promise<GetMagicTransitSiteResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getMagicTransitSite:getMagicTransitSite", {
         "accountId": args.accountId,
@@ -35,7 +43,7 @@ export interface GetMagicTransitSiteArgs {
     /**
      * Identifier
      */
-    accountId: string;
+    accountId?: string;
     filter?: inputs.GetMagicTransitSiteFilter;
     /**
      * Identifier
@@ -50,7 +58,7 @@ export interface GetMagicTransitSiteResult {
     /**
      * Identifier
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Magic Connector identifier tag.
      */
@@ -83,6 +91,13 @@ export interface GetMagicTransitSiteResult {
     readonly siteId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Magic Transit Read`
+ * - `Magic Transit Write`
+ * - `Magic WAN Read`
+ * - `Magic WAN Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -95,7 +110,8 @@ export interface GetMagicTransitSiteResult {
  * });
  * ```
  */
-export function getMagicTransitSiteOutput(args: GetMagicTransitSiteOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMagicTransitSiteResult> {
+export function getMagicTransitSiteOutput(args?: GetMagicTransitSiteOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMagicTransitSiteResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getMagicTransitSite:getMagicTransitSite", {
         "accountId": args.accountId,
@@ -111,7 +127,7 @@ export interface GetMagicTransitSiteOutputArgs {
     /**
      * Identifier
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetMagicTransitSiteFilterArgs>;
     /**
      * Identifier

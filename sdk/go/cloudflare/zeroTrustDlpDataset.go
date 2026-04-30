@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Zero Trust Read`
+// - `Zero Trust Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -49,7 +54,7 @@ import (
 type ZeroTrustDlpDataset struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Only applies to custom word lists.
 	// Determines if the words should be matched in a case-sensitive manner
 	// Cannot be set to false if `secret` is true or undefined
@@ -88,9 +93,6 @@ func NewZeroTrustDlpDataset(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -187,7 +189,7 @@ func (ZeroTrustDlpDatasetState) ElementType() reflect.Type {
 }
 
 type zeroTrustDlpDatasetArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Only applies to custom word lists.
 	// Determines if the words should be matched in a case-sensitive manner
 	// Cannot be set to false if `secret` is true or undefined
@@ -207,7 +209,7 @@ type zeroTrustDlpDatasetArgs struct {
 
 // The set of arguments for constructing a ZeroTrustDlpDataset resource.
 type ZeroTrustDlpDatasetArgs struct {
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// Only applies to custom word lists.
 	// Determines if the words should be matched in a case-sensitive manner
 	// Cannot be set to false if `secret` is true or undefined
@@ -312,8 +314,8 @@ func (o ZeroTrustDlpDatasetOutput) ToZeroTrustDlpDatasetOutputWithContext(ctx co
 	return o
 }
 
-func (o ZeroTrustDlpDatasetOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustDlpDataset) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o ZeroTrustDlpDatasetOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpDataset) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Only applies to custom word lists.

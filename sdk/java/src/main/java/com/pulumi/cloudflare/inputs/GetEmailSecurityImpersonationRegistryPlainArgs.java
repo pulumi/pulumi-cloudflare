@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.GetEmailSecurityImpersonationRegistryFilter;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -21,15 +20,15 @@ public final class GetEmailSecurityImpersonationRegistryPlainArgs extends com.pu
      * Account Identifier
      * 
      */
-    @Import(name="accountId", required=true)
-    private String accountId;
+    @Import(name="accountId")
+    private @Nullable String accountId;
 
     /**
      * @return Account Identifier
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     @Import(name="displayNameId")
@@ -78,7 +77,7 @@ public final class GetEmailSecurityImpersonationRegistryPlainArgs extends com.pu
          * @return builder
          * 
          */
-        public Builder accountId(String accountId) {
+        public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -94,9 +93,6 @@ public final class GetEmailSecurityImpersonationRegistryPlainArgs extends com.pu
         }
 
         public GetEmailSecurityImpersonationRegistryPlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetEmailSecurityImpersonationRegistryPlainArgs", "accountId");
-            }
             return $;
         }
     }

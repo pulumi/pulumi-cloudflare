@@ -59,7 +59,7 @@ class GetEmailRoutingAddressResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -150,6 +150,11 @@ def get_email_routing_address(account_id: Optional[_builtins.str] = None,
                               filter: Optional[Union['GetEmailRoutingAddressFilterArgs', 'GetEmailRoutingAddressFilterArgsDict']] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEmailRoutingAddressResult:
     """
+    Accepted Permissions
+
+    - `Email Routing Addresses Read`
+    - `Email Routing Addresses Write`
+
     ## Example Usage
 
     ```python
@@ -181,11 +186,16 @@ def get_email_routing_address(account_id: Optional[_builtins.str] = None,
         modified=pulumi.get(__ret__, 'modified'),
         tag=pulumi.get(__ret__, 'tag'),
         verified=pulumi.get(__ret__, 'verified'))
-def get_email_routing_address_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_email_routing_address_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                      destination_address_identifier: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                      filter: Optional[pulumi.Input[Optional[Union['GetEmailRoutingAddressFilterArgs', 'GetEmailRoutingAddressFilterArgsDict']]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEmailRoutingAddressResult]:
     """
+    Accepted Permissions
+
+    - `Email Routing Addresses Read`
+    - `Email Routing Addresses Write`
+
     ## Example Usage
 
     ```python

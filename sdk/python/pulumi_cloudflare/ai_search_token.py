@@ -19,26 +19,21 @@ __all__ = ['AiSearchTokenArgs', 'AiSearchToken']
 @pulumi.input_type
 class AiSearchTokenArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  cf_api_id: pulumi.Input[_builtins.str],
                  cf_api_key: pulumi.Input[_builtins.str],
-                 name: pulumi.Input[_builtins.str]):
+                 name: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 legacy: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AiSearchToken resource.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "cf_api_id", cf_api_id)
         pulumi.set(__self__, "cf_api_key", cf_api_key)
         pulumi.set(__self__, "name", name)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if legacy is not None:
+            pulumi.set(__self__, "legacy", legacy)
 
     @_builtins.property
     @pulumi.getter(name="cfApiId")
@@ -66,6 +61,24 @@ class AiSearchTokenArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def legacy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "legacy")
+
+    @legacy.setter
+    def legacy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "legacy", value)
 
 
 @pulumi.input_type
@@ -205,6 +218,7 @@ class AiSearchToken(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  cf_api_id: Optional[pulumi.Input[_builtins.str]] = None,
                  cf_api_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 legacy: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -246,6 +260,7 @@ class AiSearchToken(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  cf_api_id: Optional[pulumi.Input[_builtins.str]] = None,
                  cf_api_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 legacy: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -256,8 +271,6 @@ class AiSearchToken(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AiSearchTokenArgs.__new__(AiSearchTokenArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             if cf_api_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cf_api_id'")
@@ -265,13 +278,13 @@ class AiSearchToken(pulumi.CustomResource):
             if cf_api_key is None and not opts.urn:
                 raise TypeError("Missing required property 'cf_api_key'")
             __props__.__dict__["cf_api_key"] = None if cf_api_key is None else pulumi.Output.secret(cf_api_key)
+            __props__.__dict__["legacy"] = legacy
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["created_at"] = None
             __props__.__dict__["created_by"] = None
             __props__.__dict__["enabled"] = None
-            __props__.__dict__["legacy"] = None
             __props__.__dict__["modified_at"] = None
             __props__.__dict__["modified_by"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["cfApiKey"])
@@ -322,7 +335,7 @@ class AiSearchToken(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property

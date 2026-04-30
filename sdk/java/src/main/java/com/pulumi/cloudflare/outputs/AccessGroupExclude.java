@@ -27,6 +27,7 @@ import com.pulumi.cloudflare.outputs.AccessGroupExcludeOidc;
 import com.pulumi.cloudflare.outputs.AccessGroupExcludeOkta;
 import com.pulumi.cloudflare.outputs.AccessGroupExcludeSaml;
 import com.pulumi.cloudflare.outputs.AccessGroupExcludeServiceToken;
+import com.pulumi.cloudflare.outputs.AccessGroupExcludeUserRiskScore;
 import com.pulumi.core.annotations.CustomType;
 import java.util.Objects;
 import java.util.Optional;
@@ -66,6 +67,7 @@ public final class AccessGroupExclude {
     private @Nullable AccessGroupExcludeOkta okta;
     private @Nullable AccessGroupExcludeSaml saml;
     private @Nullable AccessGroupExcludeServiceToken serviceToken;
+    private @Nullable AccessGroupExcludeUserRiskScore userRiskScore;
 
     private AccessGroupExclude() {}
     /**
@@ -148,6 +150,9 @@ public final class AccessGroupExclude {
     public Optional<AccessGroupExcludeServiceToken> serviceToken() {
         return Optional.ofNullable(this.serviceToken);
     }
+    public Optional<AccessGroupExcludeUserRiskScore> userRiskScore() {
+        return Optional.ofNullable(this.userRiskScore);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -182,6 +187,7 @@ public final class AccessGroupExclude {
         private @Nullable AccessGroupExcludeOkta okta;
         private @Nullable AccessGroupExcludeSaml saml;
         private @Nullable AccessGroupExcludeServiceToken serviceToken;
+        private @Nullable AccessGroupExcludeUserRiskScore userRiskScore;
         public Builder() {}
         public Builder(AccessGroupExclude defaults) {
     	      Objects.requireNonNull(defaults);
@@ -209,6 +215,7 @@ public final class AccessGroupExclude {
     	      this.okta = defaults.okta;
     	      this.saml = defaults.saml;
     	      this.serviceToken = defaults.serviceToken;
+    	      this.userRiskScore = defaults.userRiskScore;
         }
 
         @CustomType.Setter
@@ -355,6 +362,12 @@ public final class AccessGroupExclude {
             this.serviceToken = serviceToken;
             return this;
         }
+        @CustomType.Setter
+        public Builder userRiskScore(@Nullable AccessGroupExcludeUserRiskScore userRiskScore) {
+
+            this.userRiskScore = userRiskScore;
+            return this;
+        }
         public AccessGroupExclude build() {
             final var _resultValue = new AccessGroupExclude();
             _resultValue.anyValidServiceToken = anyValidServiceToken;
@@ -381,6 +394,7 @@ public final class AccessGroupExclude {
             _resultValue.okta = okta;
             _resultValue.saml = saml;
             _resultValue.serviceToken = serviceToken;
+            _resultValue.userRiskScore = userRiskScore;
             return _resultValue;
         }
     }

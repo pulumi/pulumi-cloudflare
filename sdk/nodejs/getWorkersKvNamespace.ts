@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Workers KV Storage Read`
+ * - `Workers KV Storage Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +24,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getWorkersKvNamespace(args: GetWorkersKvNamespaceArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkersKvNamespaceResult> {
+export function getWorkersKvNamespace(args?: GetWorkersKvNamespaceArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkersKvNamespaceResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWorkersKvNamespace:getWorkersKvNamespace", {
         "accountId": args.accountId,
@@ -35,7 +41,7 @@ export interface GetWorkersKvNamespaceArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     filter?: inputs.GetWorkersKvNamespaceFilter;
     /**
      * Namespace identifier tag.
@@ -50,7 +56,7 @@ export interface GetWorkersKvNamespaceResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     readonly filter?: outputs.GetWorkersKvNamespaceFilter;
     /**
      * Namespace identifier tag.
@@ -70,6 +76,11 @@ export interface GetWorkersKvNamespaceResult {
     readonly title: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Workers KV Storage Read`
+ * - `Workers KV Storage Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -82,7 +93,8 @@ export interface GetWorkersKvNamespaceResult {
  * });
  * ```
  */
-export function getWorkersKvNamespaceOutput(args: GetWorkersKvNamespaceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkersKvNamespaceResult> {
+export function getWorkersKvNamespaceOutput(args?: GetWorkersKvNamespaceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkersKvNamespaceResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWorkersKvNamespace:getWorkersKvNamespace", {
         "accountId": args.accountId,
@@ -98,7 +110,7 @@ export interface GetWorkersKvNamespaceOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetWorkersKvNamespaceFilterArgs>;
     /**
      * Namespace identifier tag.

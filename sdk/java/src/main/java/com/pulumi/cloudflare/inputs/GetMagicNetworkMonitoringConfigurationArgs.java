@@ -5,20 +5,21 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetMagicNetworkMonitoringConfigurationArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetMagicNetworkMonitoringConfigurationArgs Empty = new GetMagicNetworkMonitoringConfigurationArgs();
 
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     private GetMagicNetworkMonitoringConfigurationArgs() {}
@@ -45,7 +46,7 @@ public final class GetMagicNetworkMonitoringConfigurationArgs extends com.pulumi
             $ = new GetMagicNetworkMonitoringConfigurationArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -55,9 +56,6 @@ public final class GetMagicNetworkMonitoringConfigurationArgs extends com.pulumi
         }
 
         public GetMagicNetworkMonitoringConfigurationArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetMagicNetworkMonitoringConfigurationArgs", "accountId");
-            }
             return $;
         }
     }

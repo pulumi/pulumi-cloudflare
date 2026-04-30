@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Load Balancing: Monitors and Pools Read`
+    /// - `Load Balancing: Monitors and Pools Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -30,6 +35,7 @@ namespace Pulumi.Cloudflare
     ///             {
     ///                 Address = "0.0.0.0",
     ///                 Enabled = true,
+    ///                 FlattenCname = true,
     ///                 Header = new Cloudflare.Inputs.LoadBalancerPoolOriginHeaderArgs
     ///                 {
     ///                     Host = new[]
@@ -93,7 +99,7 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// A list of regions from which to run health checks. Null means every Cloudflare data center.
@@ -132,7 +138,7 @@ namespace Pulumi.Cloudflare
         /// Configures load shedding policies and percentages for the pool.
         /// </summary>
         [Output("loadShedding")]
-        public Output<Outputs.LoadBalancerPoolLoadShedding?> LoadShedding { get; private set; } = null!;
+        public Output<Outputs.LoadBalancerPoolLoadShedding> LoadShedding { get; private set; } = null!;
 
         /// <summary>
         /// The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
@@ -183,13 +189,13 @@ namespace Pulumi.Cloudflare
         /// Filter pool and origin health notifications by resource type or health status. Use null to reset.
         /// </summary>
         [Output("notificationFilter")]
-        public Output<Outputs.LoadBalancerPoolNotificationFilter?> NotificationFilter { get; private set; } = null!;
+        public Output<Outputs.LoadBalancerPoolNotificationFilter> NotificationFilter { get; private set; } = null!;
 
         /// <summary>
         /// Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
         /// </summary>
         [Output("originSteering")]
-        public Output<Outputs.LoadBalancerPoolOriginSteering?> OriginSteering { get; private set; } = null!;
+        public Output<Outputs.LoadBalancerPoolOriginSteering> OriginSteering { get; private set; } = null!;
 
         /// <summary>
         /// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
@@ -246,8 +252,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("checkRegions")]
         private InputList<string>? _checkRegions;

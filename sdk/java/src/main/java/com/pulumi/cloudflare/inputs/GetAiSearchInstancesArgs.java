@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -17,11 +16,11 @@ public final class GetAiSearchInstancesArgs extends com.pulumi.resources.InvokeA
 
     public static final GetAiSearchInstancesArgs Empty = new GetAiSearchInstancesArgs();
 
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -37,6 +36,47 @@ public final class GetAiSearchInstancesArgs extends com.pulumi.resources.InvokeA
      */
     public Optional<Output<Integer>> maxItems() {
         return Optional.ofNullable(this.maxItems);
+    }
+
+    @Import(name="namespace")
+    private @Nullable Output<String> namespace;
+
+    public Optional<Output<String>> namespace() {
+        return Optional.ofNullable(this.namespace);
+    }
+
+    /**
+     * Order By Column Name
+     * Available values: &#34;createdAt&#34;.
+     * 
+     */
+    @Import(name="orderBy")
+    private @Nullable Output<String> orderBy;
+
+    /**
+     * @return Order By Column Name
+     * Available values: &#34;createdAt&#34;.
+     * 
+     */
+    public Optional<Output<String>> orderBy() {
+        return Optional.ofNullable(this.orderBy);
+    }
+
+    /**
+     * Order By Direction
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    @Import(name="orderByDirection")
+    private @Nullable Output<String> orderByDirection;
+
+    /**
+     * @return Order By Direction
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    public Optional<Output<String>> orderByDirection() {
+        return Optional.ofNullable(this.orderByDirection);
     }
 
     /**
@@ -59,6 +99,9 @@ public final class GetAiSearchInstancesArgs extends com.pulumi.resources.InvokeA
     private GetAiSearchInstancesArgs(GetAiSearchInstancesArgs $) {
         this.accountId = $.accountId;
         this.maxItems = $.maxItems;
+        this.namespace = $.namespace;
+        this.orderBy = $.orderBy;
+        this.orderByDirection = $.orderByDirection;
         this.search = $.search;
     }
 
@@ -80,7 +123,7 @@ public final class GetAiSearchInstancesArgs extends com.pulumi.resources.InvokeA
             $ = new GetAiSearchInstancesArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -110,6 +153,61 @@ public final class GetAiSearchInstancesArgs extends com.pulumi.resources.InvokeA
             return maxItems(Output.of(maxItems));
         }
 
+        public Builder namespace(@Nullable Output<String> namespace) {
+            $.namespace = namespace;
+            return this;
+        }
+
+        public Builder namespace(String namespace) {
+            return namespace(Output.of(namespace));
+        }
+
+        /**
+         * @param orderBy Order By Column Name
+         * Available values: &#34;createdAt&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orderBy(@Nullable Output<String> orderBy) {
+            $.orderBy = orderBy;
+            return this;
+        }
+
+        /**
+         * @param orderBy Order By Column Name
+         * Available values: &#34;createdAt&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orderBy(String orderBy) {
+            return orderBy(Output.of(orderBy));
+        }
+
+        /**
+         * @param orderByDirection Order By Direction
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orderByDirection(@Nullable Output<String> orderByDirection) {
+            $.orderByDirection = orderByDirection;
+            return this;
+        }
+
+        /**
+         * @param orderByDirection Order By Direction
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orderByDirection(String orderByDirection) {
+            return orderByDirection(Output.of(orderByDirection));
+        }
+
         /**
          * @param search Search by id
          * 
@@ -132,9 +230,6 @@ public final class GetAiSearchInstancesArgs extends com.pulumi.resources.InvokeA
         }
 
         public GetAiSearchInstancesArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetAiSearchInstancesArgs", "accountId");
-            }
             return $;
         }
     }

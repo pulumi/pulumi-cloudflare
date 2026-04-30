@@ -16,7 +16,15 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool Activated;
         public readonly Outputs.GetMagicTransitConnectorsResultDeviceResult Device;
         public readonly string Id;
+        /// <summary>
+        /// Allowed days of the week for upgrades. Default is all days.
+        /// </summary>
+        public readonly ImmutableArray<string> InterruptWindowDaysOfWeeks;
         public readonly double InterruptWindowDurationHours;
+        /// <summary>
+        /// List of dates (YYYY-MM-DD) when upgrades are blocked.
+        /// </summary>
+        public readonly ImmutableArray<string> InterruptWindowEmbargoDates;
         public readonly double InterruptWindowHourOfDay;
         public readonly string LastHeartbeat;
         public readonly string LastSeenVersion;
@@ -33,7 +41,11 @@ namespace Pulumi.Cloudflare.Outputs
 
             string id,
 
+            ImmutableArray<string> interruptWindowDaysOfWeeks,
+
             double interruptWindowDurationHours,
+
+            ImmutableArray<string> interruptWindowEmbargoDates,
 
             double interruptWindowHourOfDay,
 
@@ -52,7 +64,9 @@ namespace Pulumi.Cloudflare.Outputs
             Activated = activated;
             Device = device;
             Id = id;
+            InterruptWindowDaysOfWeeks = interruptWindowDaysOfWeeks;
             InterruptWindowDurationHours = interruptWindowDurationHours;
+            InterruptWindowEmbargoDates = interruptWindowEmbargoDates;
             InterruptWindowHourOfDay = interruptWindowHourOfDay;
             LastHeartbeat = lastHeartbeat;
             LastSeenVersion = lastSeenVersion;

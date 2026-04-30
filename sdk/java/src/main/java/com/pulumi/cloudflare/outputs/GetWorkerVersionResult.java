@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionAnnotations;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionAssets;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionBinding;
+import com.pulumi.cloudflare.outputs.GetWorkerVersionContainer;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionLimits;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionMigrations;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionModule;
@@ -25,7 +26,7 @@ public final class GetWorkerVersionResult {
      * @return Identifier.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Metadata about the version.
      * 
@@ -39,6 +40,7 @@ public final class GetWorkerVersionResult {
     private List<GetWorkerVersionBinding> bindings;
     private String compatibilityDate;
     private List<String> compatibilityFlags;
+    private List<GetWorkerVersionContainer> containers;
     private String createdOn;
     private String id;
     /**
@@ -50,12 +52,14 @@ public final class GetWorkerVersionResult {
     private GetWorkerVersionLimits limits;
     private String mainModule;
     private String mainScriptBase64;
+    private String migrationTag;
     private GetWorkerVersionMigrations migrations;
     private List<GetWorkerVersionModule> modules;
     private Integer number;
     private GetWorkerVersionPlacement placement;
     private String source;
     private Integer startupTimeMs;
+    private List<String> urls;
     /**
      * @deprecated
      * This attribute is deprecated.
@@ -64,7 +68,7 @@ public final class GetWorkerVersionResult {
     @Deprecated /* This attribute is deprecated. */
     private String usageModel;
     /**
-     * @return Identifier for the version, which can be ID or the literal &#34;latest&#34; to operate on the most recently created version.
+     * @return Identifier for the version, which can be a UUID, a UUID prefix (minimum length 8), or the literal &#34;latest&#34; to operate on the most recently created version.
      * 
      */
     private String versionId;
@@ -79,8 +83,8 @@ public final class GetWorkerVersionResult {
      * @return Identifier.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Metadata about the version.
@@ -105,6 +109,9 @@ public final class GetWorkerVersionResult {
     public List<String> compatibilityFlags() {
         return this.compatibilityFlags;
     }
+    public List<GetWorkerVersionContainer> containers() {
+        return this.containers;
+    }
     public String createdOn() {
         return this.createdOn;
     }
@@ -128,6 +135,9 @@ public final class GetWorkerVersionResult {
     public String mainScriptBase64() {
         return this.mainScriptBase64;
     }
+    public String migrationTag() {
+        return this.migrationTag;
+    }
     public GetWorkerVersionMigrations migrations() {
         return this.migrations;
     }
@@ -146,6 +156,9 @@ public final class GetWorkerVersionResult {
     public Integer startupTimeMs() {
         return this.startupTimeMs;
     }
+    public List<String> urls() {
+        return this.urls;
+    }
     /**
      * @deprecated
      * This attribute is deprecated.
@@ -156,7 +169,7 @@ public final class GetWorkerVersionResult {
         return this.usageModel;
     }
     /**
-     * @return Identifier for the version, which can be ID or the literal &#34;latest&#34; to operate on the most recently created version.
+     * @return Identifier for the version, which can be a UUID, a UUID prefix (minimum length 8), or the literal &#34;latest&#34; to operate on the most recently created version.
      * 
      */
     public String versionId() {
@@ -179,24 +192,27 @@ public final class GetWorkerVersionResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private GetWorkerVersionAnnotations annotations;
         private GetWorkerVersionAssets assets;
         private List<GetWorkerVersionBinding> bindings;
         private String compatibilityDate;
         private List<String> compatibilityFlags;
+        private List<GetWorkerVersionContainer> containers;
         private String createdOn;
         private String id;
         private @Nullable String include;
         private GetWorkerVersionLimits limits;
         private String mainModule;
         private String mainScriptBase64;
+        private String migrationTag;
         private GetWorkerVersionMigrations migrations;
         private List<GetWorkerVersionModule> modules;
         private Integer number;
         private GetWorkerVersionPlacement placement;
         private String source;
         private Integer startupTimeMs;
+        private List<String> urls;
         private String usageModel;
         private String versionId;
         private String workerId;
@@ -209,28 +225,29 @@ public final class GetWorkerVersionResult {
     	      this.bindings = defaults.bindings;
     	      this.compatibilityDate = defaults.compatibilityDate;
     	      this.compatibilityFlags = defaults.compatibilityFlags;
+    	      this.containers = defaults.containers;
     	      this.createdOn = defaults.createdOn;
     	      this.id = defaults.id;
     	      this.include = defaults.include;
     	      this.limits = defaults.limits;
     	      this.mainModule = defaults.mainModule;
     	      this.mainScriptBase64 = defaults.mainScriptBase64;
+    	      this.migrationTag = defaults.migrationTag;
     	      this.migrations = defaults.migrations;
     	      this.modules = defaults.modules;
     	      this.number = defaults.number;
     	      this.placement = defaults.placement;
     	      this.source = defaults.source;
     	      this.startupTimeMs = defaults.startupTimeMs;
+    	      this.urls = defaults.urls;
     	      this.usageModel = defaults.usageModel;
     	      this.versionId = defaults.versionId;
     	      this.workerId = defaults.workerId;
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetWorkerVersionResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }
@@ -281,6 +298,17 @@ public final class GetWorkerVersionResult {
             return compatibilityFlags(List.of(compatibilityFlags));
         }
         @CustomType.Setter
+        public Builder containers(List<GetWorkerVersionContainer> containers) {
+            if (containers == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionResult", "containers");
+            }
+            this.containers = containers;
+            return this;
+        }
+        public Builder containers(GetWorkerVersionContainer... containers) {
+            return containers(List.of(containers));
+        }
+        @CustomType.Setter
         public Builder createdOn(String createdOn) {
             if (createdOn == null) {
               throw new MissingRequiredPropertyException("GetWorkerVersionResult", "createdOn");
@@ -324,6 +352,14 @@ public final class GetWorkerVersionResult {
               throw new MissingRequiredPropertyException("GetWorkerVersionResult", "mainScriptBase64");
             }
             this.mainScriptBase64 = mainScriptBase64;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder migrationTag(String migrationTag) {
+            if (migrationTag == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionResult", "migrationTag");
+            }
+            this.migrationTag = migrationTag;
             return this;
         }
         @CustomType.Setter
@@ -378,6 +414,17 @@ public final class GetWorkerVersionResult {
             return this;
         }
         @CustomType.Setter
+        public Builder urls(List<String> urls) {
+            if (urls == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionResult", "urls");
+            }
+            this.urls = urls;
+            return this;
+        }
+        public Builder urls(String... urls) {
+            return urls(List.of(urls));
+        }
+        @CustomType.Setter
         public Builder usageModel(String usageModel) {
             if (usageModel == null) {
               throw new MissingRequiredPropertyException("GetWorkerVersionResult", "usageModel");
@@ -409,18 +456,21 @@ public final class GetWorkerVersionResult {
             _resultValue.bindings = bindings;
             _resultValue.compatibilityDate = compatibilityDate;
             _resultValue.compatibilityFlags = compatibilityFlags;
+            _resultValue.containers = containers;
             _resultValue.createdOn = createdOn;
             _resultValue.id = id;
             _resultValue.include = include;
             _resultValue.limits = limits;
             _resultValue.mainModule = mainModule;
             _resultValue.mainScriptBase64 = mainScriptBase64;
+            _resultValue.migrationTag = migrationTag;
             _resultValue.migrations = migrations;
             _resultValue.modules = modules;
             _resultValue.number = number;
             _resultValue.placement = placement;
             _resultValue.source = source;
             _resultValue.startupTimeMs = startupTimeMs;
+            _resultValue.urls = urls;
             _resultValue.usageModel = usageModel;
             _resultValue.versionId = versionId;
             _resultValue.workerId = workerId;

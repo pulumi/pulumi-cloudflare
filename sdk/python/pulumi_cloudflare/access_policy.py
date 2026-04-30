@@ -21,9 +21,9 @@ __all__ = ['AccessPolicyArgs', 'AccessPolicy']
 @pulumi.input_type
 class AccessPolicyArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  decision: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyApprovalGroupArgs']]]] = None,
                  approval_required: Optional[pulumi.Input[_builtins.bool]] = None,
                  connection_rules: Optional[pulumi.Input['AccessPolicyConnectionRulesArgs']] = None,
@@ -38,10 +38,10 @@ class AccessPolicyArgs:
         """
         The set of arguments for constructing a AccessPolicy resource.
 
-        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] decision: The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
                Available values: "allow", "deny", "non_identity", "bypass".
         :param pulumi.Input[_builtins.str] name: The name of the Access policy.
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyApprovalGroupArgs']]] approval_groups: Administrators who can approve a temporary authentication request.
         :param pulumi.Input[_builtins.bool] approval_required: Requires the user to request access from an administrator at the start of each session.
         :param pulumi.Input['AccessPolicyConnectionRulesArgs'] connection_rules: The rules that define how users may connect to targets secured by your application.
@@ -54,9 +54,10 @@ class AccessPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]] requires: Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
         :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "decision", decision)
         pulumi.set(__self__, "name", name)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if approval_groups is not None:
             pulumi.set(__self__, "approval_groups", approval_groups)
         if approval_required is not None:
@@ -79,18 +80,6 @@ class AccessPolicyArgs:
             pulumi.set(__self__, "requires", requires)
         if session_duration is not None:
             pulumi.set(__self__, "session_duration", session_duration)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -116,6 +105,18 @@ class AccessPolicyArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="approvalGroups")
@@ -512,6 +513,11 @@ class AccessPolicy(pulumi.CustomResource):
                  session_duration: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Access: Apps and Policies Read`
+        - `Access: Apps and Policies Write`
+
         ## Example Usage
 
         ```python
@@ -522,9 +528,7 @@ class AccessPolicy(pulumi.CustomResource):
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             decision="allow",
             includes=[{
-                "group": {
-                    "id": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-                },
+                "certificate": {},
             }],
             name="Allow devs",
             approval_groups=[
@@ -553,9 +557,7 @@ class AccessPolicy(pulumi.CustomResource):
                 },
             },
             excludes=[{
-                "group": {
-                    "id": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-                },
+                "certificate": {},
             }],
             isolation_required=False,
             mfa_config={
@@ -564,15 +566,13 @@ class AccessPolicy(pulumi.CustomResource):
                     "biometrics",
                     "security_key",
                 ],
-                "mfa_bypass": False,
+                "mfa_disabled": False,
                 "session_duration": "24h",
             },
             purpose_justification_prompt="Please enter a justification for entering this protected domain.",
             purpose_justification_required=True,
             requires=[{
-                "group": {
-                    "id": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-                },
+                "certificate": {},
             }],
             session_duration="24h")
         ```
@@ -609,6 +609,11 @@ class AccessPolicy(pulumi.CustomResource):
                  args: AccessPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Access: Apps and Policies Read`
+        - `Access: Apps and Policies Write`
+
         ## Example Usage
 
         ```python
@@ -619,9 +624,7 @@ class AccessPolicy(pulumi.CustomResource):
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             decision="allow",
             includes=[{
-                "group": {
-                    "id": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-                },
+                "certificate": {},
             }],
             name="Allow devs",
             approval_groups=[
@@ -650,9 +653,7 @@ class AccessPolicy(pulumi.CustomResource):
                 },
             },
             excludes=[{
-                "group": {
-                    "id": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-                },
+                "certificate": {},
             }],
             isolation_required=False,
             mfa_config={
@@ -661,15 +662,13 @@ class AccessPolicy(pulumi.CustomResource):
                     "biometrics",
                     "security_key",
                 ],
-                "mfa_bypass": False,
+                "mfa_disabled": False,
                 "session_duration": "24h",
             },
             purpose_justification_prompt="Please enter a justification for entering this protected domain.",
             purpose_justification_required=True,
             requires=[{
-                "group": {
-                    "id": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-                },
+                "certificate": {},
             }],
             session_duration="24h")
         ```
@@ -720,8 +719,6 @@ class AccessPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AccessPolicyArgs.__new__(AccessPolicyArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["approval_groups"] = approval_groups
             __props__.__dict__["approval_required"] = approval_required
@@ -811,7 +808,7 @@ class AccessPolicy(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier.
         """

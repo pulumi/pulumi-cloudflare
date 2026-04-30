@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Calls Read`
+    /// - `Calls Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -40,7 +45,7 @@ namespace Pulumi.Cloudflare
         /// The account identifier tag.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// The date and time the item was created.
@@ -86,7 +91,7 @@ namespace Pulumi.Cloudflare
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public CallsTurnApp(string name, CallsTurnAppArgs args, CustomResourceOptions? options = null)
+        public CallsTurnApp(string name, CallsTurnAppArgs? args = null, CustomResourceOptions? options = null)
             : base("cloudflare:index/callsTurnApp:CallsTurnApp", name, args ?? new CallsTurnAppArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -131,8 +136,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// A Cloudflare-generated unique identifier for a item.

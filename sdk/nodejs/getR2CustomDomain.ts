@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Workers R2 Storage Read`
+ * - `Workers R2 Storage Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -36,7 +41,7 @@ export interface GetR2CustomDomainArgs {
     /**
      * Account ID.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Name of the bucket.
      */
@@ -54,7 +59,7 @@ export interface GetR2CustomDomainResult {
     /**
      * Account ID.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Name of the bucket.
      */
@@ -91,6 +96,11 @@ export interface GetR2CustomDomainResult {
     readonly zoneName: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Workers R2 Storage Read`
+ * - `Workers R2 Storage Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -120,7 +130,7 @@ export interface GetR2CustomDomainOutputArgs {
     /**
      * Account ID.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Name of the bucket.
      */

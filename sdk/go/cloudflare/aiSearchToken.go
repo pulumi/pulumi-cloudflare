@@ -18,16 +18,16 @@ import (
 type AiSearchToken struct {
 	pulumi.CustomResourceState
 
-	AccountId  pulumi.StringOutput `pulumi:"accountId"`
-	CfApiId    pulumi.StringOutput `pulumi:"cfApiId"`
-	CfApiKey   pulumi.StringOutput `pulumi:"cfApiKey"`
-	CreatedAt  pulumi.StringOutput `pulumi:"createdAt"`
-	CreatedBy  pulumi.StringOutput `pulumi:"createdBy"`
-	Enabled    pulumi.BoolOutput   `pulumi:"enabled"`
-	Legacy     pulumi.BoolOutput   `pulumi:"legacy"`
-	ModifiedAt pulumi.StringOutput `pulumi:"modifiedAt"`
-	ModifiedBy pulumi.StringOutput `pulumi:"modifiedBy"`
-	Name       pulumi.StringOutput `pulumi:"name"`
+	AccountId  pulumi.StringPtrOutput `pulumi:"accountId"`
+	CfApiId    pulumi.StringOutput    `pulumi:"cfApiId"`
+	CfApiKey   pulumi.StringOutput    `pulumi:"cfApiKey"`
+	CreatedAt  pulumi.StringOutput    `pulumi:"createdAt"`
+	CreatedBy  pulumi.StringOutput    `pulumi:"createdBy"`
+	Enabled    pulumi.BoolOutput      `pulumi:"enabled"`
+	Legacy     pulumi.BoolOutput      `pulumi:"legacy"`
+	ModifiedAt pulumi.StringOutput    `pulumi:"modifiedAt"`
+	ModifiedBy pulumi.StringOutput    `pulumi:"modifiedBy"`
+	Name       pulumi.StringOutput    `pulumi:"name"`
 }
 
 // NewAiSearchToken registers a new resource with the given unique name, arguments, and options.
@@ -37,9 +37,6 @@ func NewAiSearchToken(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.CfApiId == nil {
 		return nil, errors.New("invalid value for required argument 'CfApiId'")
 	}
@@ -109,17 +106,19 @@ func (AiSearchTokenState) ElementType() reflect.Type {
 }
 
 type aiSearchTokenArgs struct {
-	AccountId string `pulumi:"accountId"`
-	CfApiId   string `pulumi:"cfApiId"`
-	CfApiKey  string `pulumi:"cfApiKey"`
-	Name      string `pulumi:"name"`
+	AccountId *string `pulumi:"accountId"`
+	CfApiId   string  `pulumi:"cfApiId"`
+	CfApiKey  string  `pulumi:"cfApiKey"`
+	Legacy    *bool   `pulumi:"legacy"`
+	Name      string  `pulumi:"name"`
 }
 
 // The set of arguments for constructing a AiSearchToken resource.
 type AiSearchTokenArgs struct {
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	CfApiId   pulumi.StringInput
 	CfApiKey  pulumi.StringInput
+	Legacy    pulumi.BoolPtrInput
 	Name      pulumi.StringInput
 }
 
@@ -210,8 +209,8 @@ func (o AiSearchTokenOutput) ToAiSearchTokenOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o AiSearchTokenOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *AiSearchToken) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o AiSearchTokenOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiSearchToken) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o AiSearchTokenOutput) CfApiId() pulumi.StringOutput {

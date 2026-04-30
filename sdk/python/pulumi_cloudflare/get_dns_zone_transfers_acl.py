@@ -45,7 +45,7 @@ class GetDnsZoneTransfersAclResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -95,6 +95,11 @@ def get_dns_zone_transfers_acl(account_id: Optional[_builtins.str] = None,
                                acl_id: Optional[_builtins.str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDnsZoneTransfersAclResult:
     """
+    Accepted Permissions
+
+    - `Account Settings Read`
+    - `Account Settings Write`
+
     ## Example Usage
 
     ```python
@@ -117,10 +122,15 @@ def get_dns_zone_transfers_acl(account_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         ip_range=pulumi.get(__ret__, 'ip_range'),
         name=pulumi.get(__ret__, 'name'))
-def get_dns_zone_transfers_acl_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_dns_zone_transfers_acl_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                       acl_id: Optional[pulumi.Input[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDnsZoneTransfersAclResult]:
     """
+    Accepted Permissions
+
+    - `Account Settings Read`
+    - `Account Settings Write`
+
     ## Example Usage
 
     ```python

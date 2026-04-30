@@ -31,6 +31,7 @@ import (
 //				ZeroTrustAccessAiControlsMcpPortalId: pulumi.String("my-mcp-portal"),
 //				Hostname:                             pulumi.String("exmaple.com"),
 //				Name:                                 pulumi.String("My MCP Portal"),
+//				AllowCodeMode:                        pulumi.Bool(true),
 //				Description:                          pulumi.String("This is my custom MCP Portal"),
 //				SecureWebGateway:                     pulumi.Bool(false),
 //				Servers: cloudflare.ZeroTrustAccessAiControlsMcpPortalServerArray{
@@ -41,6 +42,7 @@ import (
 //						UpdatedPrompts: cloudflare.ZeroTrustAccessAiControlsMcpPortalServerUpdatedPromptArray{
 //							&cloudflare.ZeroTrustAccessAiControlsMcpPortalServerUpdatedPromptArgs{
 //								Name:        pulumi.String("name"),
+//								Alias:       pulumi.String("my-custom-alias"),
 //								Description: pulumi.String("description"),
 //								Enabled:     pulumi.Bool(true),
 //							},
@@ -48,6 +50,7 @@ import (
 //						UpdatedTools: cloudflare.ZeroTrustAccessAiControlsMcpPortalServerUpdatedToolArray{
 //							&cloudflare.ZeroTrustAccessAiControlsMcpPortalServerUpdatedToolArgs{
 //								Name:        pulumi.String("name"),
+//								Alias:       pulumi.String("my-custom-alias"),
 //								Description: pulumi.String("description"),
 //								Enabled:     pulumi.Bool(true),
 //							},
@@ -72,16 +75,18 @@ import (
 type ZeroTrustAccessAiControlsMcpPortal struct {
 	pulumi.CustomResourceState
 
-	AccountId   pulumi.StringOutput    `pulumi:"accountId"`
-	CreatedAt   pulumi.StringOutput    `pulumi:"createdAt"`
-	CreatedBy   pulumi.StringOutput    `pulumi:"createdBy"`
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	Hostname    pulumi.StringOutput    `pulumi:"hostname"`
-	ModifiedAt  pulumi.StringOutput    `pulumi:"modifiedAt"`
-	ModifiedBy  pulumi.StringOutput    `pulumi:"modifiedBy"`
-	Name        pulumi.StringOutput    `pulumi:"name"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	// Allow remote code execution in Dynamic Workers (beta)
+	AllowCodeMode pulumi.BoolOutput      `pulumi:"allowCodeMode"`
+	CreatedAt     pulumi.StringOutput    `pulumi:"createdAt"`
+	CreatedBy     pulumi.StringOutput    `pulumi:"createdBy"`
+	Description   pulumi.StringPtrOutput `pulumi:"description"`
+	Hostname      pulumi.StringOutput    `pulumi:"hostname"`
+	ModifiedAt    pulumi.StringOutput    `pulumi:"modifiedAt"`
+	ModifiedBy    pulumi.StringOutput    `pulumi:"modifiedBy"`
+	Name          pulumi.StringOutput    `pulumi:"name"`
 	// Route outbound MCP traffic through Zero Trust Secure Web Gateway
-	SecureWebGateway pulumi.BoolPtrOutput                                `pulumi:"secureWebGateway"`
+	SecureWebGateway pulumi.BoolOutput                                   `pulumi:"secureWebGateway"`
 	Servers          ZeroTrustAccessAiControlsMcpPortalServerArrayOutput `pulumi:"servers"`
 	// portal id
 	ZeroTrustAccessAiControlsMcpPortalId pulumi.StringOutput `pulumi:"zeroTrustAccessAiControlsMcpPortalId"`
@@ -94,9 +99,6 @@ func NewZeroTrustAccessAiControlsMcpPortal(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Hostname == nil {
 		return nil, errors.New("invalid value for required argument 'Hostname'")
 	}
@@ -129,14 +131,16 @@ func GetZeroTrustAccessAiControlsMcpPortal(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustAccessAiControlsMcpPortal resources.
 type zeroTrustAccessAiControlsMcpPortalState struct {
-	AccountId   *string `pulumi:"accountId"`
-	CreatedAt   *string `pulumi:"createdAt"`
-	CreatedBy   *string `pulumi:"createdBy"`
-	Description *string `pulumi:"description"`
-	Hostname    *string `pulumi:"hostname"`
-	ModifiedAt  *string `pulumi:"modifiedAt"`
-	ModifiedBy  *string `pulumi:"modifiedBy"`
-	Name        *string `pulumi:"name"`
+	AccountId *string `pulumi:"accountId"`
+	// Allow remote code execution in Dynamic Workers (beta)
+	AllowCodeMode *bool   `pulumi:"allowCodeMode"`
+	CreatedAt     *string `pulumi:"createdAt"`
+	CreatedBy     *string `pulumi:"createdBy"`
+	Description   *string `pulumi:"description"`
+	Hostname      *string `pulumi:"hostname"`
+	ModifiedAt    *string `pulumi:"modifiedAt"`
+	ModifiedBy    *string `pulumi:"modifiedBy"`
+	Name          *string `pulumi:"name"`
 	// Route outbound MCP traffic through Zero Trust Secure Web Gateway
 	SecureWebGateway *bool                                      `pulumi:"secureWebGateway"`
 	Servers          []ZeroTrustAccessAiControlsMcpPortalServer `pulumi:"servers"`
@@ -145,14 +149,16 @@ type zeroTrustAccessAiControlsMcpPortalState struct {
 }
 
 type ZeroTrustAccessAiControlsMcpPortalState struct {
-	AccountId   pulumi.StringPtrInput
-	CreatedAt   pulumi.StringPtrInput
-	CreatedBy   pulumi.StringPtrInput
-	Description pulumi.StringPtrInput
-	Hostname    pulumi.StringPtrInput
-	ModifiedAt  pulumi.StringPtrInput
-	ModifiedBy  pulumi.StringPtrInput
-	Name        pulumi.StringPtrInput
+	AccountId pulumi.StringPtrInput
+	// Allow remote code execution in Dynamic Workers (beta)
+	AllowCodeMode pulumi.BoolPtrInput
+	CreatedAt     pulumi.StringPtrInput
+	CreatedBy     pulumi.StringPtrInput
+	Description   pulumi.StringPtrInput
+	Hostname      pulumi.StringPtrInput
+	ModifiedAt    pulumi.StringPtrInput
+	ModifiedBy    pulumi.StringPtrInput
+	Name          pulumi.StringPtrInput
 	// Route outbound MCP traffic through Zero Trust Secure Web Gateway
 	SecureWebGateway pulumi.BoolPtrInput
 	Servers          ZeroTrustAccessAiControlsMcpPortalServerArrayInput
@@ -165,10 +171,12 @@ func (ZeroTrustAccessAiControlsMcpPortalState) ElementType() reflect.Type {
 }
 
 type zeroTrustAccessAiControlsMcpPortalArgs struct {
-	AccountId   string  `pulumi:"accountId"`
-	Description *string `pulumi:"description"`
-	Hostname    string  `pulumi:"hostname"`
-	Name        string  `pulumi:"name"`
+	AccountId *string `pulumi:"accountId"`
+	// Allow remote code execution in Dynamic Workers (beta)
+	AllowCodeMode *bool   `pulumi:"allowCodeMode"`
+	Description   *string `pulumi:"description"`
+	Hostname      string  `pulumi:"hostname"`
+	Name          string  `pulumi:"name"`
 	// Route outbound MCP traffic through Zero Trust Secure Web Gateway
 	SecureWebGateway *bool                                      `pulumi:"secureWebGateway"`
 	Servers          []ZeroTrustAccessAiControlsMcpPortalServer `pulumi:"servers"`
@@ -178,10 +186,12 @@ type zeroTrustAccessAiControlsMcpPortalArgs struct {
 
 // The set of arguments for constructing a ZeroTrustAccessAiControlsMcpPortal resource.
 type ZeroTrustAccessAiControlsMcpPortalArgs struct {
-	AccountId   pulumi.StringInput
-	Description pulumi.StringPtrInput
-	Hostname    pulumi.StringInput
-	Name        pulumi.StringInput
+	AccountId pulumi.StringPtrInput
+	// Allow remote code execution in Dynamic Workers (beta)
+	AllowCodeMode pulumi.BoolPtrInput
+	Description   pulumi.StringPtrInput
+	Hostname      pulumi.StringInput
+	Name          pulumi.StringInput
 	// Route outbound MCP traffic through Zero Trust Secure Web Gateway
 	SecureWebGateway pulumi.BoolPtrInput
 	Servers          ZeroTrustAccessAiControlsMcpPortalServerArrayInput
@@ -276,8 +286,13 @@ func (o ZeroTrustAccessAiControlsMcpPortalOutput) ToZeroTrustAccessAiControlsMcp
 	return o
 }
 
-func (o ZeroTrustAccessAiControlsMcpPortalOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpPortal) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o ZeroTrustAccessAiControlsMcpPortalOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpPortal) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// Allow remote code execution in Dynamic Workers (beta)
+func (o ZeroTrustAccessAiControlsMcpPortalOutput) AllowCodeMode() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpPortal) pulumi.BoolOutput { return v.AllowCodeMode }).(pulumi.BoolOutput)
 }
 
 func (o ZeroTrustAccessAiControlsMcpPortalOutput) CreatedAt() pulumi.StringOutput {
@@ -309,8 +324,8 @@ func (o ZeroTrustAccessAiControlsMcpPortalOutput) Name() pulumi.StringOutput {
 }
 
 // Route outbound MCP traffic through Zero Trust Secure Web Gateway
-func (o ZeroTrustAccessAiControlsMcpPortalOutput) SecureWebGateway() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpPortal) pulumi.BoolPtrOutput { return v.SecureWebGateway }).(pulumi.BoolPtrOutput)
+func (o ZeroTrustAccessAiControlsMcpPortalOutput) SecureWebGateway() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpPortal) pulumi.BoolOutput { return v.SecureWebGateway }).(pulumi.BoolOutput)
 }
 
 func (o ZeroTrustAccessAiControlsMcpPortalOutput) Servers() ZeroTrustAccessAiControlsMcpPortalServerArrayOutput {

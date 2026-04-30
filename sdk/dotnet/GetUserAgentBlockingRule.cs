@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetUserAgentBlockingRule
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Firewall Services Read`
+        /// - `Firewall Services Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,10 +36,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetUserAgentBlockingRuleResult> InvokeAsync(GetUserAgentBlockingRuleArgs args, InvokeOptions? options = null)
+        public static Task<GetUserAgentBlockingRuleResult> InvokeAsync(GetUserAgentBlockingRuleArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserAgentBlockingRuleResult>("cloudflare:index/getUserAgentBlockingRule:getUserAgentBlockingRule", args ?? new GetUserAgentBlockingRuleArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Firewall Services Read`
+        /// - `Firewall Services Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,10 +64,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetUserAgentBlockingRuleResult> Invoke(GetUserAgentBlockingRuleInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetUserAgentBlockingRuleResult> Invoke(GetUserAgentBlockingRuleInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUserAgentBlockingRuleResult>("cloudflare:index/getUserAgentBlockingRule:getUserAgentBlockingRule", args ?? new GetUserAgentBlockingRuleInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Firewall Services Read`
+        /// - `Firewall Services Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -96,8 +111,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Defines an identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetUserAgentBlockingRuleArgs()
         {
@@ -119,8 +134,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Defines an identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetUserAgentBlockingRuleInvokeArgs()
         {
@@ -161,7 +176,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Defines an identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetUserAgentBlockingRuleResult(
@@ -179,7 +194,7 @@ namespace Pulumi.Cloudflare
 
             string? uaRuleId,
 
-            string zoneId)
+            string? zoneId)
         {
             Configuration = configuration;
             Description = description;

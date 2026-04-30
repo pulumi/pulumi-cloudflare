@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustRiskScoringIntegrations(args: GetZeroTrustRiskScoringIntegrationsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustRiskScoringIntegrationsResult> {
+export function getZeroTrustRiskScoringIntegrations(args?: GetZeroTrustRiskScoringIntegrationsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustRiskScoringIntegrationsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustRiskScoringIntegrations:getZeroTrustRiskScoringIntegrations", {
         "accountId": args.accountId,
@@ -30,7 +36,7 @@ export function getZeroTrustRiskScoringIntegrations(args: GetZeroTrustRiskScorin
  * A collection of arguments for invoking getZeroTrustRiskScoringIntegrations.
  */
 export interface GetZeroTrustRiskScoringIntegrationsArgs {
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -41,7 +47,7 @@ export interface GetZeroTrustRiskScoringIntegrationsArgs {
  * A collection of values returned by getZeroTrustRiskScoringIntegrations.
  */
 export interface GetZeroTrustRiskScoringIntegrationsResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -56,6 +62,11 @@ export interface GetZeroTrustRiskScoringIntegrationsResult {
     readonly results: outputs.GetZeroTrustRiskScoringIntegrationsResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -67,7 +78,8 @@ export interface GetZeroTrustRiskScoringIntegrationsResult {
  * });
  * ```
  */
-export function getZeroTrustRiskScoringIntegrationsOutput(args: GetZeroTrustRiskScoringIntegrationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustRiskScoringIntegrationsResult> {
+export function getZeroTrustRiskScoringIntegrationsOutput(args?: GetZeroTrustRiskScoringIntegrationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustRiskScoringIntegrationsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustRiskScoringIntegrations:getZeroTrustRiskScoringIntegrations", {
         "accountId": args.accountId,
@@ -79,7 +91,7 @@ export function getZeroTrustRiskScoringIntegrationsOutput(args: GetZeroTrustRisk
  * A collection of arguments for invoking getZeroTrustRiskScoringIntegrations.
  */
 export interface GetZeroTrustRiskScoringIntegrationsOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

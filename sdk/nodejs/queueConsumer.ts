@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Queues Read`
+ * - `Queues Write`
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -64,7 +71,7 @@ export class QueueConsumer extends pulumi.CustomResource {
     /**
      * A Resource identifier.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * A Resource identifier.
      */
@@ -79,8 +86,8 @@ export class QueueConsumer extends pulumi.CustomResource {
     /**
      * Name of a Worker
      */
-    declare public readonly scriptName: pulumi.Output<string | undefined>;
-    declare public readonly settings: pulumi.Output<outputs.QueueConsumerSettings | undefined>;
+    declare public readonly scriptName: pulumi.Output<string>;
+    declare public readonly settings: pulumi.Output<outputs.QueueConsumerSettings>;
     /**
      * Available values: "worker", "httpPull".
      */
@@ -110,9 +117,6 @@ export class QueueConsumer extends pulumi.CustomResource {
             resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as QueueConsumerArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.queueId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'queueId'");
             }
@@ -171,7 +175,7 @@ export interface QueueConsumerArgs {
     /**
      * A Resource identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     deadLetterQueue?: pulumi.Input<string>;
     /**
      * A Resource identifier.

@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetEmailSecurityTrustedDomains
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloud Email Security: Read`
+        /// - `Cloud Email Security: Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,10 +36,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetEmailSecurityTrustedDomainsResult> InvokeAsync(GetEmailSecurityTrustedDomainsArgs args, InvokeOptions? options = null)
+        public static Task<GetEmailSecurityTrustedDomainsResult> InvokeAsync(GetEmailSecurityTrustedDomainsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEmailSecurityTrustedDomainsResult>("cloudflare:index/getEmailSecurityTrustedDomains:getEmailSecurityTrustedDomains", args ?? new GetEmailSecurityTrustedDomainsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloud Email Security: Read`
+        /// - `Cloud Email Security: Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,10 +64,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetEmailSecurityTrustedDomainsResult> Invoke(GetEmailSecurityTrustedDomainsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetEmailSecurityTrustedDomainsResult> Invoke(GetEmailSecurityTrustedDomainsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEmailSecurityTrustedDomainsResult>("cloudflare:index/getEmailSecurityTrustedDomains:getEmailSecurityTrustedDomains", args ?? new GetEmailSecurityTrustedDomainsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloud Email Security: Read`
+        /// - `Cloud Email Security: Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +102,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account Identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         [Input("filter")]
         public Inputs.GetEmailSecurityTrustedDomainsFilterArgs? Filter { get; set; }
@@ -110,8 +125,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account Identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("filter")]
         public Input<Inputs.GetEmailSecurityTrustedDomainsFilterInputArgs>? Filter { get; set; }
@@ -135,7 +150,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account Identifier
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         public readonly string Comments;
         public readonly string CreatedAt;
         public readonly Outputs.GetEmailSecurityTrustedDomainsFilterResult? Filter;
@@ -164,7 +179,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetEmailSecurityTrustedDomainsResult(
-            string accountId,
+            string? accountId,
 
             string comments,
 

@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Magic Transit Read`
+ * - `Magic Transit Write`
+ * - `Magic WAN Read`
+ * - `Magic WAN Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -65,7 +72,7 @@ export class MagicTransitSiteWan extends pulumi.CustomResource {
     /**
      * Identifier
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
      * Available values: "low", "mid", "high".
@@ -110,9 +117,6 @@ export class MagicTransitSiteWan extends pulumi.CustomResource {
             resourceInputs["vlanTag"] = state?.vlanTag;
         } else {
             const args = argsOrState as MagicTransitSiteWanArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.physport === undefined && !opts.urn) {
                 throw new Error("Missing required property 'physport'");
             }
@@ -170,7 +174,7 @@ export interface MagicTransitSiteWanArgs {
     /**
      * Identifier
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     physport: pulumi.Input<number>;
     priority?: pulumi.Input<number>;

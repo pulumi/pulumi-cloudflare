@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Load Balancers Read`
+ * - `Load Balancers Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -264,7 +269,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      * Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
      */
     declare public readonly ttl: pulumi.Output<number>;
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly zoneName: pulumi.Output<string>;
 
     /**
@@ -313,9 +318,6 @@ export class LoadBalancer extends pulumi.CustomResource {
             }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
-            }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["adaptiveRouting"] = args?.adaptiveRouting;
             resourceInputs["countryPools"] = args?.countryPools;
@@ -514,5 +516,5 @@ export interface LoadBalancerArgs {
      * Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
      */
     ttl?: pulumi.Input<number>;
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

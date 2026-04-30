@@ -13,9 +13,49 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Access: Apps and Policies Read`
+ * - `Access: Apps and Policies Revoke`
+ * - `Access: Apps and Policies Write`
+ * - `Access: Mutual TLS Certificates Write`
+ * - `Access: Organizations, Identity Providers, and Groups Write`
+ * - `Analytics Read`
+ * - `Apps Write`
+ * - `Cache Purge`
+ * - `DNS Read`
+ * - `DNS Write`
+ * - `Firewall Services Read`
+ * - `Firewall Services Write`
+ * - `Load Balancers Read`
+ * - `Load Balancers Write`
+ * - `Logs Read`
+ * - `Logs Write`
+ * - `Page Rules Read`
+ * - `Page Rules Write`
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ * - `Stream Read`
+ * - `Stream Write`
+ * - `Trust and Safety Read`
+ * - `Trust and Safety Write`
+ * - `Workers Routes Read`
+ * - `Workers Routes Write`
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Zaraz Admin`
+ * - `Zaraz Edit`
+ * - `Zaraz Read`
+ * - `Zero Trust: PII Read`
+ * - `Zone Read`
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ * - `Zone Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -152,14 +192,14 @@ public class PageRule extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output<String> zoneId;
+    private Output</* @Nullable */ String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Output<Optional<String>> zoneId() {
+        return Codegen.optional(this.zoneId);
     }
 
     /**

@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Logs Read`
+    /// - `Logs Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

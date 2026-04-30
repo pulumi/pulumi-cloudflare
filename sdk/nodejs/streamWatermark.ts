@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Stream Read`
+ * - `Stream Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -13,12 +18,12 @@ import * as utilities from "./utilities";
  *
  * const exampleStreamWatermark = new cloudflare.StreamWatermark("example_stream_watermark", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     file: "@/Users/rchen/Downloads/watermark.png",
  *     name: "Marketing Videos",
  *     opacity: 0.75,
  *     padding: 0.1,
  *     position: "center",
  *     scale: 0.1,
+ *     url: "https://example.com",
  * });
  * ```
  *
@@ -57,7 +62,7 @@ export class StreamWatermark extends pulumi.CustomResource {
     /**
      * The account identifier tag.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * The date and a time a watermark profile was created.
      */
@@ -66,10 +71,6 @@ export class StreamWatermark extends pulumi.CustomResource {
      * The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null.
      */
     declare public /*out*/ readonly downloadedFrom: pulumi.Output<string>;
-    /**
-     * The image file to upload.
-     */
-    declare public readonly file: pulumi.Output<string>;
     /**
      * The height of the image in pixels.
      */
@@ -107,6 +108,10 @@ export class StreamWatermark extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
+     * URL of the watermark image to copy.
+     */
+    declare public readonly url: pulumi.Output<string | undefined>;
+    /**
      * The width of the image in pixels.
      */
     declare public /*out*/ readonly width: pulumi.Output<number>;
@@ -118,7 +123,7 @@ export class StreamWatermark extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: StreamWatermarkArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: StreamWatermarkArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: StreamWatermarkArgs | StreamWatermarkState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -127,7 +132,6 @@ export class StreamWatermark extends pulumi.CustomResource {
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["created"] = state?.created;
             resourceInputs["downloadedFrom"] = state?.downloadedFrom;
-            resourceInputs["file"] = state?.file;
             resourceInputs["height"] = state?.height;
             resourceInputs["identifier"] = state?.identifier;
             resourceInputs["name"] = state?.name;
@@ -137,23 +141,18 @@ export class StreamWatermark extends pulumi.CustomResource {
             resourceInputs["scale"] = state?.scale;
             resourceInputs["size"] = state?.size;
             resourceInputs["uid"] = state?.uid;
+            resourceInputs["url"] = state?.url;
             resourceInputs["width"] = state?.width;
         } else {
             const args = argsOrState as StreamWatermarkArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
-            if (args?.file === undefined && !opts.urn) {
-                throw new Error("Missing required property 'file'");
-            }
             resourceInputs["accountId"] = args?.accountId;
-            resourceInputs["file"] = args?.file;
             resourceInputs["identifier"] = args?.identifier;
             resourceInputs["name"] = args?.name;
             resourceInputs["opacity"] = args?.opacity;
             resourceInputs["padding"] = args?.padding;
             resourceInputs["position"] = args?.position;
             resourceInputs["scale"] = args?.scale;
+            resourceInputs["url"] = args?.url;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["downloadedFrom"] = undefined /*out*/;
             resourceInputs["height"] = undefined /*out*/;
@@ -182,10 +181,6 @@ export interface StreamWatermarkState {
      * The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null.
      */
     downloadedFrom?: pulumi.Input<string>;
-    /**
-     * The image file to upload.
-     */
-    file?: pulumi.Input<string>;
     /**
      * The height of the image in pixels.
      */
@@ -223,6 +218,10 @@ export interface StreamWatermarkState {
      */
     uid?: pulumi.Input<string>;
     /**
+     * URL of the watermark image to copy.
+     */
+    url?: pulumi.Input<string>;
+    /**
      * The width of the image in pixels.
      */
     width?: pulumi.Input<number>;
@@ -235,11 +234,7 @@ export interface StreamWatermarkArgs {
     /**
      * The account identifier tag.
      */
-    accountId: pulumi.Input<string>;
-    /**
-     * The image file to upload.
-     */
-    file: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * The unique identifier for a watermark profile.
      */
@@ -264,4 +259,8 @@ export interface StreamWatermarkArgs {
      * The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video.
      */
     scale?: pulumi.Input<number>;
+    /**
+     * URL of the watermark image to copy.
+     */
+    url?: pulumi.Input<string>;
 }

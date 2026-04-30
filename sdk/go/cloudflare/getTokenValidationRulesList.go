@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account API Gateway`
+// - `Account API Gateway Read`
+// - `Domain API Gateway`
+// - `Domain API Gateway Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetTokenValidationRulesList(ctx, &cloudflare.LookupTokenValidationRulesListArgs{
-//				ZoneId:   "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId:   pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Id:       pulumi.StringRef("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
 //				Action:   pulumi.StringRef("log"),
 //				Enabled:  pulumi.BoolRef(true),
@@ -75,7 +82,7 @@ type LookupTokenValidationRulesListArgs struct {
 	// Select rules using any of these token configurations.
 	TokenConfigurations []string `pulumi:"tokenConfigurations"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getTokenValidationRulesList.
@@ -100,7 +107,7 @@ type LookupTokenValidationRulesListResult struct {
 	// Select rules using any of these token configurations.
 	TokenConfigurations []string `pulumi:"tokenConfigurations"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupTokenValidationRulesListOutput(ctx *pulumi.Context, args LookupTokenValidationRulesListOutputArgs, opts ...pulumi.InvokeOption) LookupTokenValidationRulesListResultOutput {
@@ -132,7 +139,7 @@ type LookupTokenValidationRulesListOutputArgs struct {
 	// Select rules using any of these token configurations.
 	TokenConfigurations pulumi.StringArrayInput `pulumi:"tokenConfigurations"`
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupTokenValidationRulesListOutputArgs) ElementType() reflect.Type {
@@ -201,8 +208,8 @@ func (o LookupTokenValidationRulesListResultOutput) TokenConfigurations() pulumi
 }
 
 // Identifier.
-func (o LookupTokenValidationRulesListResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTokenValidationRulesListResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupTokenValidationRulesListResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupTokenValidationRulesListResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetBotManagement
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Bot Management Read`
+        /// - `Bot Management Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetBotManagementResult> InvokeAsync(GetBotManagementArgs args, InvokeOptions? options = null)
+        public static Task<GetBotManagementResult> InvokeAsync(GetBotManagementArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBotManagementResult>("cloudflare:index/getBotManagement:getBotManagement", args ?? new GetBotManagementArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Bot Management Read`
+        /// - `Bot Management Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetBotManagementResult> Invoke(GetBotManagementInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetBotManagementResult> Invoke(GetBotManagementInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBotManagementResult>("cloudflare:index/getBotManagement:getBotManagement", args ?? new GetBotManagementInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Bot Management Read`
+        /// - `Bot Management Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +99,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetBotManagementArgs()
         {
@@ -98,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetBotManagementInvokeArgs()
         {
@@ -129,6 +144,11 @@ namespace Pulumi.Cloudflare
         /// Available values: "off", "PolicyOnly".
         /// </summary>
         public readonly string CfRobotsVariant;
+        /// <summary>
+        /// Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.
+        /// Available values: "block", "disabled".
+        /// </summary>
+        public readonly string ContentBotsProtection;
         /// <summary>
         /// Enable rule to punish AI Scrapers and Crawlers via a link maze.
         /// Available values: "enabled", "disabled".
@@ -190,7 +210,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetBotManagementResult(
@@ -201,6 +221,8 @@ namespace Pulumi.Cloudflare
             bool bmCookieEnabled,
 
             string cfRobotsVariant,
+
+            string contentBotsProtection,
 
             string crawlerProtection,
 
@@ -228,12 +250,13 @@ namespace Pulumi.Cloudflare
 
             bool usingLatestModel,
 
-            string zoneId)
+            string? zoneId)
         {
             AiBotsProtection = aiBotsProtection;
             AutoUpdateModel = autoUpdateModel;
             BmCookieEnabled = bmCookieEnabled;
             CfRobotsVariant = cfRobotsVariant;
+            ContentBotsProtection = contentBotsProtection;
             CrawlerProtection = crawlerProtection;
             EnableJs = enableJs;
             FightMode = fightMode;

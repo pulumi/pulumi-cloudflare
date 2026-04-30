@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `DDoS Botnet Feed Read`
+// - `DDoS Botnet Feed Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetBotnetFeedConfigAsn(ctx, &cloudflare.GetBotnetFeedConfigAsnArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,14 +54,14 @@ func GetBotnetFeedConfigAsn(ctx *pulumi.Context, args *GetBotnetFeedConfigAsnArg
 // A collection of arguments for invoking getBotnetFeedConfigAsn.
 type GetBotnetFeedConfigAsnArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 }
 
 // A collection of values returned by getBotnetFeedConfigAsn.
 type GetBotnetFeedConfigAsnResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
-	Asn       int    `pulumi:"asn"`
+	AccountId *string `pulumi:"accountId"`
+	Asn       int     `pulumi:"asn"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 }
@@ -73,7 +78,7 @@ func GetBotnetFeedConfigAsnOutput(ctx *pulumi.Context, args GetBotnetFeedConfigA
 // A collection of arguments for invoking getBotnetFeedConfigAsn.
 type GetBotnetFeedConfigAsnOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 }
 
 func (GetBotnetFeedConfigAsnOutputArgs) ElementType() reflect.Type {
@@ -96,8 +101,8 @@ func (o GetBotnetFeedConfigAsnResultOutput) ToGetBotnetFeedConfigAsnResultOutput
 }
 
 // Identifier.
-func (o GetBotnetFeedConfigAsnResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetBotnetFeedConfigAsnResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o GetBotnetFeedConfigAsnResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBotnetFeedConfigAsnResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o GetBotnetFeedConfigAsnResultOutput) Asn() pulumi.IntOutput {

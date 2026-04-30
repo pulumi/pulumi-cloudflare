@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetFilter
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Firewall Services Read`
+        /// - `Firewall Services Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,10 +36,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetFilterResult> InvokeAsync(GetFilterArgs args, InvokeOptions? options = null)
+        public static Task<GetFilterResult> InvokeAsync(GetFilterArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFilterResult>("cloudflare:index/getFilter:getFilter", args ?? new GetFilterArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Firewall Services Read`
+        /// - `Firewall Services Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,10 +64,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetFilterResult> Invoke(GetFilterInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetFilterResult> Invoke(GetFilterInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFilterResult>("cloudflare:index/getFilter:getFilter", args ?? new GetFilterInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Firewall Services Read`
+        /// - `Firewall Services Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -96,8 +111,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Defines an identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetFilterArgs()
         {
@@ -119,8 +134,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Defines an identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetFilterInvokeArgs()
         {
@@ -160,7 +175,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Defines an identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetFilterResult(
@@ -178,7 +193,7 @@ namespace Pulumi.Cloudflare
 
             string @ref,
 
-            string zoneId)
+            string? zoneId)
         {
             Description = description;
             Expression = expression;

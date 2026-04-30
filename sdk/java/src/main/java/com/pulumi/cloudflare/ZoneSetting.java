@@ -14,9 +14,15 @@ import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Object;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ * 
  * &gt; If using the `sslRecommender` zone setting, use the `enabled` attribute instead of `value`.
  * 
  * ## Example Usage
@@ -475,14 +481,14 @@ public class ZoneSetting extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output<String> zoneId;
+    private Output</* @Nullable */ String> zoneId;
 
     /**
      * @return Identifier
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Output<Optional<String>> zoneId() {
+        return Codegen.optional(this.zoneId);
     }
 
     /**

@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Zone Settings Read`
+// - `Zone Settings Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetArgoSmartRouting(ctx, &cloudflare.LookupArgoSmartRoutingArgs{
-//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +54,7 @@ func LookupArgoSmartRouting(ctx *pulumi.Context, args *LookupArgoSmartRoutingArg
 // A collection of arguments for invoking getArgoSmartRouting.
 type LookupArgoSmartRoutingArgs struct {
 	// Specifies the zone associated with the API call.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getArgoSmartRouting.
@@ -64,7 +69,7 @@ type LookupArgoSmartRoutingResult struct {
 	// Available values: "on", "off".
 	Value string `pulumi:"value"`
 	// Specifies the zone associated with the API call.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupArgoSmartRoutingOutput(ctx *pulumi.Context, args LookupArgoSmartRoutingOutputArgs, opts ...pulumi.InvokeOption) LookupArgoSmartRoutingResultOutput {
@@ -79,7 +84,7 @@ func LookupArgoSmartRoutingOutput(ctx *pulumi.Context, args LookupArgoSmartRouti
 // A collection of arguments for invoking getArgoSmartRouting.
 type LookupArgoSmartRoutingOutputArgs struct {
 	// Specifies the zone associated with the API call.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupArgoSmartRoutingOutputArgs) ElementType() reflect.Type {
@@ -123,8 +128,8 @@ func (o LookupArgoSmartRoutingResultOutput) Value() pulumi.StringOutput {
 }
 
 // Specifies the zone associated with the API call.
-func (o LookupArgoSmartRoutingResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupArgoSmartRoutingResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupArgoSmartRoutingResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupArgoSmartRoutingResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

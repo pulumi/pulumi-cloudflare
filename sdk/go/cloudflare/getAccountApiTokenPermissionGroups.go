@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account API Tokens Read`
+// - `Account API Tokens Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetAccountApiTokenPermissionGroups(ctx, &cloudflare.GetAccountApiTokenPermissionGroupsArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Name:      pulumi.StringRef("Account%20Settings%20Write"),
 //				Scope:     pulumi.StringRef("com.cloudflare.api.account.zone"),
 //			}, nil)
@@ -51,7 +56,7 @@ func GetAccountApiTokenPermissionGroups(ctx *pulumi.Context, args *GetAccountApi
 // A collection of arguments for invoking getAccountApiTokenPermissionGroups.
 type GetAccountApiTokenPermissionGroupsArgs struct {
 	// Account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Filter by the name of the permission group.
 	// The value must be URL-encoded.
 	Name *string `pulumi:"name"`
@@ -63,7 +68,7 @@ type GetAccountApiTokenPermissionGroupsArgs struct {
 // A collection of values returned by getAccountApiTokenPermissionGroups.
 type GetAccountApiTokenPermissionGroupsResult struct {
 	// Account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Filter by the name of the permission group.
@@ -87,7 +92,7 @@ func GetAccountApiTokenPermissionGroupsOutput(ctx *pulumi.Context, args GetAccou
 // A collection of arguments for invoking getAccountApiTokenPermissionGroups.
 type GetAccountApiTokenPermissionGroupsOutputArgs struct {
 	// Account identifier tag.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Filter by the name of the permission group.
 	// The value must be URL-encoded.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -116,8 +121,8 @@ func (o GetAccountApiTokenPermissionGroupsResultOutput) ToGetAccountApiTokenPerm
 }
 
 // Account identifier tag.
-func (o GetAccountApiTokenPermissionGroupsResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAccountApiTokenPermissionGroupsResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o GetAccountApiTokenPermissionGroupsResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountApiTokenPermissionGroupsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

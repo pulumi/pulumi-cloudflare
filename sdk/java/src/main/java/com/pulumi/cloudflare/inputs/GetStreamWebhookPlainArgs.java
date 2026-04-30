@@ -4,9 +4,10 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetStreamWebhookPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -17,15 +18,15 @@ public final class GetStreamWebhookPlainArgs extends com.pulumi.resources.Invoke
      * The account identifier tag.
      * 
      */
-    @Import(name="accountId", required=true)
-    private String accountId;
+    @Import(name="accountId")
+    private @Nullable String accountId;
 
     /**
      * @return The account identifier tag.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     private GetStreamWebhookPlainArgs() {}
@@ -58,15 +59,12 @@ public final class GetStreamWebhookPlainArgs extends com.pulumi.resources.Invoke
          * @return builder
          * 
          */
-        public Builder accountId(String accountId) {
+        public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
         }
 
         public GetStreamWebhookPlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetStreamWebhookPlainArgs", "accountId");
-            }
             return $;
         }
     }

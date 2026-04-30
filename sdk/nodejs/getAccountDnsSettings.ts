@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account DNS Settings Read`
+ * - `Account DNS Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getAccountDnsSettings(args: GetAccountDnsSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountDnsSettingsResult> {
+export function getAccountDnsSettings(args?: GetAccountDnsSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountDnsSettingsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAccountDnsSettings:getAccountDnsSettings", {
         "accountId": args.accountId,
@@ -32,7 +38,7 @@ export interface GetAccountDnsSettingsArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
 }
 
 /**
@@ -42,7 +48,11 @@ export interface GetAccountDnsSettingsResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
+    /**
+     * When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
+     */
+    readonly enforceDnsOnly: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -50,6 +60,11 @@ export interface GetAccountDnsSettingsResult {
     readonly zoneDefaults: outputs.GetAccountDnsSettingsZoneDefaults;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account DNS Settings Read`
+ * - `Account DNS Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -61,7 +76,8 @@ export interface GetAccountDnsSettingsResult {
  * });
  * ```
  */
-export function getAccountDnsSettingsOutput(args: GetAccountDnsSettingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountDnsSettingsResult> {
+export function getAccountDnsSettingsOutput(args?: GetAccountDnsSettingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountDnsSettingsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccountDnsSettings:getAccountDnsSettings", {
         "accountId": args.accountId,
@@ -75,5 +91,5 @@ export interface GetAccountDnsSettingsOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
 }

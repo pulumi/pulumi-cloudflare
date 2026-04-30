@@ -43,6 +43,7 @@ class ZeroTrustAccessApplicationArgs:
                  landing_page_design: Optional[pulumi.Input['ZeroTrustAccessApplicationLandingPageDesignArgs']] = None,
                  logo_url: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 oauth_configuration: Optional[pulumi.Input['ZeroTrustAccessApplicationOauthConfigurationArgs']] = None,
                  options_preflight_bypass: Optional[pulumi.Input[_builtins.bool]] = None,
                  path_cookie_attribute: Optional[pulumi.Input[_builtins.bool]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationPolicyArgs']]]] = None,
@@ -83,6 +84,7 @@ class ZeroTrustAccessApplicationArgs:
         :param pulumi.Input['ZeroTrustAccessApplicationLandingPageDesignArgs'] landing_page_design: The design of the App Launcher landing page shown to users when they log in.
         :param pulumi.Input[_builtins.str] logo_url: The image URL for the logo shown in the App Launcher dashboard.
         :param pulumi.Input[_builtins.str] name: The name of the application.
+        :param pulumi.Input['ZeroTrustAccessApplicationOauthConfigurationArgs'] oauth_configuration: Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
         :param pulumi.Input[_builtins.bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
         :param pulumi.Input[_builtins.bool] path_cookie_attribute: Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationPolicyArgs']]] policies: The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
@@ -149,6 +151,8 @@ class ZeroTrustAccessApplicationArgs:
             pulumi.set(__self__, "logo_url", logo_url)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if oauth_configuration is not None:
+            pulumi.set(__self__, "oauth_configuration", oauth_configuration)
         if options_preflight_bypass is not None:
             pulumi.set(__self__, "options_preflight_bypass", options_preflight_bypass)
         if path_cookie_attribute is not None:
@@ -447,6 +451,18 @@ class ZeroTrustAccessApplicationArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="oauthConfiguration")
+    def oauth_configuration(self) -> Optional[pulumi.Input['ZeroTrustAccessApplicationOauthConfigurationArgs']]:
+        """
+        Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+        """
+        return pulumi.get(self, "oauth_configuration")
+
+    @oauth_configuration.setter
+    def oauth_configuration(self, value: Optional[pulumi.Input['ZeroTrustAccessApplicationOauthConfigurationArgs']]):
+        pulumi.set(self, "oauth_configuration", value)
+
+    @_builtins.property
     @pulumi.getter(name="optionsPreflightBypass")
     def options_preflight_bypass(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -667,6 +683,7 @@ class _ZeroTrustAccessApplicationState:
                  landing_page_design: Optional[pulumi.Input['ZeroTrustAccessApplicationLandingPageDesignArgs']] = None,
                  logo_url: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 oauth_configuration: Optional[pulumi.Input['ZeroTrustAccessApplicationOauthConfigurationArgs']] = None,
                  options_preflight_bypass: Optional[pulumi.Input[_builtins.bool]] = None,
                  path_cookie_attribute: Optional[pulumi.Input[_builtins.bool]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationPolicyArgs']]]] = None,
@@ -708,6 +725,7 @@ class _ZeroTrustAccessApplicationState:
         :param pulumi.Input['ZeroTrustAccessApplicationLandingPageDesignArgs'] landing_page_design: The design of the App Launcher landing page shown to users when they log in.
         :param pulumi.Input[_builtins.str] logo_url: The image URL for the logo shown in the App Launcher dashboard.
         :param pulumi.Input[_builtins.str] name: The name of the application.
+        :param pulumi.Input['ZeroTrustAccessApplicationOauthConfigurationArgs'] oauth_configuration: Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
         :param pulumi.Input[_builtins.bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
         :param pulumi.Input[_builtins.bool] path_cookie_attribute: Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationPolicyArgs']]] policies: The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
@@ -776,6 +794,8 @@ class _ZeroTrustAccessApplicationState:
             pulumi.set(__self__, "logo_url", logo_url)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if oauth_configuration is not None:
+            pulumi.set(__self__, "oauth_configuration", oauth_configuration)
         if options_preflight_bypass is not None:
             pulumi.set(__self__, "options_preflight_bypass", options_preflight_bypass)
         if path_cookie_attribute is not None:
@@ -1086,6 +1106,18 @@ class _ZeroTrustAccessApplicationState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="oauthConfiguration")
+    def oauth_configuration(self) -> Optional[pulumi.Input['ZeroTrustAccessApplicationOauthConfigurationArgs']]:
+        """
+        Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+        """
+        return pulumi.get(self, "oauth_configuration")
+
+    @oauth_configuration.setter
+    def oauth_configuration(self, value: Optional[pulumi.Input['ZeroTrustAccessApplicationOauthConfigurationArgs']]):
+        pulumi.set(self, "oauth_configuration", value)
+
+    @_builtins.property
     @pulumi.getter(name="optionsPreflightBypass")
     def options_preflight_bypass(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -1308,6 +1340,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
                  landing_page_design: Optional[pulumi.Input[Union['ZeroTrustAccessApplicationLandingPageDesignArgs', 'ZeroTrustAccessApplicationLandingPageDesignArgsDict']]] = None,
                  logo_url: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 oauth_configuration: Optional[pulumi.Input[Union['ZeroTrustAccessApplicationOauthConfigurationArgs', 'ZeroTrustAccessApplicationOauthConfigurationArgsDict']]] = None,
                  options_preflight_bypass: Optional[pulumi.Input[_builtins.bool]] = None,
                  path_cookie_attribute: Optional[pulumi.Input[_builtins.bool]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationPolicyArgs', 'ZeroTrustAccessApplicationPolicyArgsDict']]]]] = None,
@@ -1358,6 +1391,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
         :param pulumi.Input[Union['ZeroTrustAccessApplicationLandingPageDesignArgs', 'ZeroTrustAccessApplicationLandingPageDesignArgsDict']] landing_page_design: The design of the App Launcher landing page shown to users when they log in.
         :param pulumi.Input[_builtins.str] logo_url: The image URL for the logo shown in the App Launcher dashboard.
         :param pulumi.Input[_builtins.str] name: The name of the application.
+        :param pulumi.Input[Union['ZeroTrustAccessApplicationOauthConfigurationArgs', 'ZeroTrustAccessApplicationOauthConfigurationArgsDict']] oauth_configuration: Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
         :param pulumi.Input[_builtins.bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
         :param pulumi.Input[_builtins.bool] path_cookie_attribute: Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationPolicyArgs', 'ZeroTrustAccessApplicationPolicyArgsDict']]]] policies: The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
@@ -1433,6 +1467,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
                  landing_page_design: Optional[pulumi.Input[Union['ZeroTrustAccessApplicationLandingPageDesignArgs', 'ZeroTrustAccessApplicationLandingPageDesignArgsDict']]] = None,
                  logo_url: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 oauth_configuration: Optional[pulumi.Input[Union['ZeroTrustAccessApplicationOauthConfigurationArgs', 'ZeroTrustAccessApplicationOauthConfigurationArgsDict']]] = None,
                  options_preflight_bypass: Optional[pulumi.Input[_builtins.bool]] = None,
                  path_cookie_attribute: Optional[pulumi.Input[_builtins.bool]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationPolicyArgs', 'ZeroTrustAccessApplicationPolicyArgsDict']]]]] = None,
@@ -1480,6 +1515,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
             __props__.__dict__["landing_page_design"] = landing_page_design
             __props__.__dict__["logo_url"] = logo_url
             __props__.__dict__["name"] = name
+            __props__.__dict__["oauth_configuration"] = oauth_configuration
             __props__.__dict__["options_preflight_bypass"] = options_preflight_bypass
             __props__.__dict__["path_cookie_attribute"] = path_cookie_attribute
             __props__.__dict__["policies"] = policies
@@ -1532,6 +1568,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
             landing_page_design: Optional[pulumi.Input[Union['ZeroTrustAccessApplicationLandingPageDesignArgs', 'ZeroTrustAccessApplicationLandingPageDesignArgsDict']]] = None,
             logo_url: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            oauth_configuration: Optional[pulumi.Input[Union['ZeroTrustAccessApplicationOauthConfigurationArgs', 'ZeroTrustAccessApplicationOauthConfigurationArgsDict']]] = None,
             options_preflight_bypass: Optional[pulumi.Input[_builtins.bool]] = None,
             path_cookie_attribute: Optional[pulumi.Input[_builtins.bool]] = None,
             policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationPolicyArgs', 'ZeroTrustAccessApplicationPolicyArgsDict']]]]] = None,
@@ -1577,6 +1614,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
         :param pulumi.Input[Union['ZeroTrustAccessApplicationLandingPageDesignArgs', 'ZeroTrustAccessApplicationLandingPageDesignArgsDict']] landing_page_design: The design of the App Launcher landing page shown to users when they log in.
         :param pulumi.Input[_builtins.str] logo_url: The image URL for the logo shown in the App Launcher dashboard.
         :param pulumi.Input[_builtins.str] name: The name of the application.
+        :param pulumi.Input[Union['ZeroTrustAccessApplicationOauthConfigurationArgs', 'ZeroTrustAccessApplicationOauthConfigurationArgsDict']] oauth_configuration: Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
         :param pulumi.Input[_builtins.bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
         :param pulumi.Input[_builtins.bool] path_cookie_attribute: Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationPolicyArgs', 'ZeroTrustAccessApplicationPolicyArgsDict']]]] policies: The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
@@ -1626,6 +1664,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
         __props__.__dict__["landing_page_design"] = landing_page_design
         __props__.__dict__["logo_url"] = logo_url
         __props__.__dict__["name"] = name
+        __props__.__dict__["oauth_configuration"] = oauth_configuration
         __props__.__dict__["options_preflight_bypass"] = options_preflight_bypass
         __props__.__dict__["path_cookie_attribute"] = path_cookie_attribute
         __props__.__dict__["policies"] = policies
@@ -1824,6 +1863,14 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
         The name of the application.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="oauthConfiguration")
+    def oauth_configuration(self) -> pulumi.Output[Optional['outputs.ZeroTrustAccessApplicationOauthConfiguration']]:
+        """
+        Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+        """
+        return pulumi.get(self, "oauth_configuration")
 
     @_builtins.property
     @pulumi.getter(name="optionsPreflightBypass")

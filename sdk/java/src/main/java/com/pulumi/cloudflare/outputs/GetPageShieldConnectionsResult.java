@@ -9,6 +9,8 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPageShieldConnectionsResult {
@@ -38,7 +40,7 @@ public final class GetPageShieldConnectionsResult {
      * @return Identifier
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetPageShieldConnectionsResult() {}
     public String addedAt() {
@@ -95,8 +97,8 @@ public final class GetPageShieldConnectionsResult {
      * @return Identifier
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -122,7 +124,7 @@ public final class GetPageShieldConnectionsResult {
         private String url;
         private Boolean urlContainsCdnCgiPath;
         private Boolean urlReportedMalicious;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetPageShieldConnectionsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -265,10 +267,8 @@ public final class GetPageShieldConnectionsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetPageShieldConnectionsResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

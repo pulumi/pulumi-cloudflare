@@ -12,6 +12,23 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class GetAiSearchInstanceFilterArgs : global::Pulumi.InvokeArgs
     {
+        [Input("namespace")]
+        public string? Namespace { get; set; }
+
+        /// <summary>
+        /// Order By Column Name
+        /// Available values: "CreatedAt".
+        /// </summary>
+        [Input("orderBy", required: true)]
+        public string OrderBy { get; set; } = null!;
+
+        /// <summary>
+        /// Order By Direction
+        /// Available values: "asc", "desc".
+        /// </summary>
+        [Input("orderByDirection", required: true)]
+        public string OrderByDirection { get; set; } = null!;
+
         /// <summary>
         /// Search by id
         /// </summary>

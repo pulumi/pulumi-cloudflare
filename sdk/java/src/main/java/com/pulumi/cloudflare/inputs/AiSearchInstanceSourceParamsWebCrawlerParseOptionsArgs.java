@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelectorArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -17,6 +18,21 @@ import javax.annotation.Nullable;
 public final class AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs Empty = new AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs();
+
+    /**
+     * List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.
+     * 
+     */
+    @Import(name="contentSelectors")
+    private @Nullable Output<List<AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelectorArgs>> contentSelectors;
+
+    /**
+     * @return List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.
+     * 
+     */
+    public Optional<Output<List<AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelectorArgs>>> contentSelectors() {
+        return Optional.ofNullable(this.contentSelectors);
+    }
 
     @Import(name="includeHeaders")
     private @Nullable Output<Map<String,String>> includeHeaders;
@@ -57,6 +73,7 @@ public final class AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs extend
     private AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs() {}
 
     private AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs(AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs $) {
+        this.contentSelectors = $.contentSelectors;
         this.includeHeaders = $.includeHeaders;
         this.includeImages = $.includeImages;
         this.specificSitemaps = $.specificSitemaps;
@@ -79,6 +96,37 @@ public final class AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs extend
 
         public Builder(AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs defaults) {
             $ = new AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param contentSelectors List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contentSelectors(@Nullable Output<List<AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelectorArgs>> contentSelectors) {
+            $.contentSelectors = contentSelectors;
+            return this;
+        }
+
+        /**
+         * @param contentSelectors List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contentSelectors(List<AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelectorArgs> contentSelectors) {
+            return contentSelectors(Output.of(contentSelectors));
+        }
+
+        /**
+         * @param contentSelectors List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contentSelectors(AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelectorArgs... contentSelectors) {
+            return contentSelectors(List.of(contentSelectors));
         }
 
         public Builder includeHeaders(@Nullable Output<Map<String,String>> includeHeaders) {

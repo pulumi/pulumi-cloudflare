@@ -5,6 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -32,7 +38,7 @@ export interface GetWorkersForPlatformsDispatchNamespaceArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Name of the Workers for Platforms dispatch namespace.
      */
@@ -46,7 +52,7 @@ export interface GetWorkersForPlatformsDispatchNamespaceResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Identifier.
      */
@@ -89,6 +95,12 @@ export interface GetWorkersForPlatformsDispatchNamespaceResult {
     readonly trustedWorkers: boolean;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -116,7 +128,7 @@ export interface GetWorkersForPlatformsDispatchNamespaceOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Name of the Workers for Platforms dispatch namespace.
      */

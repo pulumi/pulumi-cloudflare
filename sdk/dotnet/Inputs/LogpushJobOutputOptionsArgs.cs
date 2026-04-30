@@ -49,6 +49,12 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
+        /// If set to true, subrequests will be merged into the parent request. Only supported for the `HttpRequests` dataset.
+        /// </summary>
+        [Input("mergeSubrequests")]
+        public Input<bool>? MergeSubrequests { get; set; }
+
+        /// <summary>
         /// Specifies the output type, such as `Ndjson` or `Csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
         /// Available values: "ndjson", "csv".
         /// </summary>
@@ -86,8 +92,8 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<double>? SampleRate { get; set; }
 
         /// <summary>
-        /// String to specify the format for timestamps, such as `Unixnano`, `Unix`, or `Rfc3339`.
-        /// Available values: "unixnano", "unix", "rfc3339".
+        /// String to specify the format for timestamps, such as `Unixnano`, `Unix`, `Rfc3339`, `Rfc3339ms` or `Rfc3339ns`.
+        /// Available values: "unixnano", "unix", "rfc3339", "rfc3339ms", "rfc3339ns".
         /// </summary>
         [Input("timestampFormat")]
         public Input<string>? TimestampFormat { get; set; }

@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -29,7 +34,7 @@ export function getZeroTrustGatewayPacfile(args: GetZeroTrustGatewayPacfileArgs,
  * A collection of arguments for invoking getZeroTrustGatewayPacfile.
  */
 export interface GetZeroTrustGatewayPacfileArgs {
-    accountId: string;
+    accountId?: string;
     pacfileId: string;
 }
 
@@ -37,7 +42,7 @@ export interface GetZeroTrustGatewayPacfileArgs {
  * A collection of values returned by getZeroTrustGatewayPacfile.
  */
 export interface GetZeroTrustGatewayPacfileResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Actual contents of the PAC file
      */
@@ -67,6 +72,11 @@ export interface GetZeroTrustGatewayPacfileResult {
     readonly url: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -91,6 +101,6 @@ export function getZeroTrustGatewayPacfileOutput(args: GetZeroTrustGatewayPacfil
  * A collection of arguments for invoking getZeroTrustGatewayPacfile.
  */
 export interface GetZeroTrustGatewayPacfileOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     pacfileId: pulumi.Input<string>;
 }

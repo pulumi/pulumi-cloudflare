@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Access: Custom Pages Read`
+ * - `Access: Custom Pages Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -32,7 +37,7 @@ export interface GetZeroTrustAccessCustomPageArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * UUID.
      */
@@ -46,7 +51,7 @@ export interface GetZeroTrustAccessCustomPageResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Custom page HTML.
      */
@@ -74,6 +79,11 @@ export interface GetZeroTrustAccessCustomPageResult {
     readonly uid: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Access: Custom Pages Read`
+ * - `Access: Custom Pages Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -101,7 +111,7 @@ export interface GetZeroTrustAccessCustomPageOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * UUID.
      */

@@ -12,6 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Magic Transit Read`
+// - `Magic Transit Write`
+// - `Magic WAN Read`
+// - `Magic WAN Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -56,7 +63,7 @@ type MagicTransitSite struct {
 	pulumi.CustomResourceState
 
 	// Identifier
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Magic Connector identifier tag.
 	ConnectorId pulumi.StringPtrOutput `pulumi:"connectorId"`
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -77,9 +84,6 @@ func NewMagicTransitSite(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -143,7 +147,7 @@ func (MagicTransitSiteState) ElementType() reflect.Type {
 
 type magicTransitSiteArgs struct {
 	// Identifier
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Magic Connector identifier tag.
 	ConnectorId *string `pulumi:"connectorId"`
 	Description *string `pulumi:"description"`
@@ -160,7 +164,7 @@ type magicTransitSiteArgs struct {
 // The set of arguments for constructing a MagicTransitSite resource.
 type MagicTransitSiteArgs struct {
 	// Identifier
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// Magic Connector identifier tag.
 	ConnectorId pulumi.StringPtrInput
 	Description pulumi.StringPtrInput
@@ -262,8 +266,8 @@ func (o MagicTransitSiteOutput) ToMagicTransitSiteOutputWithContext(ctx context.
 }
 
 // Identifier
-func (o MagicTransitSiteOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *MagicTransitSite) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o MagicTransitSiteOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicTransitSite) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Magic Connector identifier tag.

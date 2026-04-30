@@ -10,6 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Zone Read`
+    /// - `Zone Settings Read`
+    /// - `Zone Settings Write`
+    /// - `Zone Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

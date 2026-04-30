@@ -22,15 +22,25 @@ __all__ = ['ObservatoryScheduledTestArgs', 'ObservatoryScheduledTest']
 class ObservatoryScheduledTestArgs:
     def __init__(__self__, *,
                  url: pulumi.Input[_builtins.str],
-                 zone_id: pulumi.Input[_builtins.str]):
+                 frequency: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ObservatoryScheduledTest resource.
 
         :param pulumi.Input[_builtins.str] url: A URL.
+        :param pulumi.Input[_builtins.str] frequency: The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
+        :param pulumi.Input[_builtins.str] region: A test region.
+               Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         pulumi.set(__self__, "url", url)
-        pulumi.set(__self__, "zone_id", zone_id)
+        if frequency is not None:
+            pulumi.set(__self__, "frequency", frequency)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter
@@ -45,15 +55,40 @@ class ObservatoryScheduledTestArgs:
         pulumi.set(self, "url", value)
 
     @_builtins.property
+    @pulumi.getter
+    def frequency(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
+        """
+        return pulumi.get(self, "frequency")
+
+    @frequency.setter
+    def frequency(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "frequency", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A test region.
+        Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+    @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[_builtins.str]:
+    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: pulumi.Input[_builtins.str]):
+    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -69,8 +104,7 @@ class _ObservatoryScheduledTestState:
         """
         Input properties used for looking up and filtering ObservatoryScheduledTest resources.
 
-        :param pulumi.Input[_builtins.str] frequency: The frequency of the test.
-               Available values: "DAILY", "WEEKLY".
+        :param pulumi.Input[_builtins.str] frequency: The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
         :param pulumi.Input[_builtins.str] region: A test region.
                Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
         :param pulumi.Input['ObservatoryScheduledTestScheduleArgs'] schedule: The test schedule.
@@ -94,8 +128,7 @@ class _ObservatoryScheduledTestState:
     @pulumi.getter
     def frequency(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The frequency of the test.
-        Available values: "DAILY", "WEEKLY".
+        The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
         """
         return pulumi.get(self, "frequency")
 
@@ -168,10 +201,17 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 frequency: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Zone Settings Read`
+        - `Zone Settings Write`
+
         ## Example Usage
 
         ```python
@@ -192,6 +232,9 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] frequency: The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
+        :param pulumi.Input[_builtins.str] region: A test region.
+               Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
         :param pulumi.Input[_builtins.str] url: A URL.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -202,6 +245,11 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
                  args: ObservatoryScheduledTestArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Zone Settings Read`
+        - `Zone Settings Write`
+
         ## Example Usage
 
         ```python
@@ -235,6 +283,8 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 frequency: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -246,14 +296,12 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ObservatoryScheduledTestArgs.__new__(ObservatoryScheduledTestArgs)
 
+            __props__.__dict__["frequency"] = frequency
+            __props__.__dict__["region"] = region
             if url is None and not opts.urn:
                 raise TypeError("Missing required property 'url'")
             __props__.__dict__["url"] = url
-            if zone_id is None and not opts.urn:
-                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
-            __props__.__dict__["frequency"] = None
-            __props__.__dict__["region"] = None
             __props__.__dict__["schedule"] = None
             __props__.__dict__["test"] = None
         super(ObservatoryScheduledTest, __self__).__init__(
@@ -279,8 +327,7 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] frequency: The frequency of the test.
-               Available values: "DAILY", "WEEKLY".
+        :param pulumi.Input[_builtins.str] frequency: The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
         :param pulumi.Input[_builtins.str] region: A test region.
                Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
         :param pulumi.Input[Union['ObservatoryScheduledTestScheduleArgs', 'ObservatoryScheduledTestScheduleArgsDict']] schedule: The test schedule.
@@ -303,8 +350,7 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
     @pulumi.getter
     def frequency(self) -> pulumi.Output[_builtins.str]:
         """
-        The frequency of the test.
-        Available values: "DAILY", "WEEKLY".
+        The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
         """
         return pulumi.get(self, "frequency")
 
@@ -340,7 +386,7 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[_builtins.str]:
+    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier.
         """

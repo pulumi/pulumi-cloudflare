@@ -3,10 +3,12 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.StreamAudioTrackAudioArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -44,6 +46,21 @@ public final class StreamAudioTrackState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> audioIdentifier() {
         return Optional.ofNullable(this.audioIdentifier);
+    }
+
+    /**
+     * Array of audio tracks for the video.
+     * 
+     */
+    @Import(name="audios")
+    private @Nullable Output<List<StreamAudioTrackAudioArgs>> audios;
+
+    /**
+     * @return Array of audio tracks for the video.
+     * 
+     */
+    public Optional<Output<List<StreamAudioTrackAudioArgs>>> audios() {
+        return Optional.ofNullable(this.audios);
     }
 
     /**
@@ -128,6 +145,7 @@ public final class StreamAudioTrackState extends com.pulumi.resources.ResourceAr
     private StreamAudioTrackState(StreamAudioTrackState $) {
         this.accountId = $.accountId;
         this.audioIdentifier = $.audioIdentifier;
+        this.audios = $.audios;
         this.default_ = $.default_;
         this.identifier = $.identifier;
         this.label = $.label;
@@ -193,6 +211,37 @@ public final class StreamAudioTrackState extends com.pulumi.resources.ResourceAr
          */
         public Builder audioIdentifier(String audioIdentifier) {
             return audioIdentifier(Output.of(audioIdentifier));
+        }
+
+        /**
+         * @param audios Array of audio tracks for the video.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder audios(@Nullable Output<List<StreamAudioTrackAudioArgs>> audios) {
+            $.audios = audios;
+            return this;
+        }
+
+        /**
+         * @param audios Array of audio tracks for the video.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder audios(List<StreamAudioTrackAudioArgs> audios) {
+            return audios(Output.of(audios));
+        }
+
+        /**
+         * @param audios Array of audio tracks for the video.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder audios(StreamAudioTrackAudioArgs... audios) {
+            return audios(List.of(audios));
         }
 
         /**

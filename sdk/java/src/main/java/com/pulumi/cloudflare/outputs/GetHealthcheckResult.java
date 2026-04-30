@@ -12,6 +12,8 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetHealthcheckResult {
@@ -107,7 +109,7 @@ public final class GetHealthcheckResult {
      * @return Identifier
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetHealthcheckResult() {}
     /**
@@ -240,8 +242,8 @@ public final class GetHealthcheckResult {
      * @return Identifier
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -272,7 +274,7 @@ public final class GetHealthcheckResult {
         private GetHealthcheckTcpConfig tcpConfig;
         private Integer timeout;
         private String type;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetHealthcheckResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -454,10 +456,8 @@ public final class GetHealthcheckResult {
             return this;
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetHealthcheckResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

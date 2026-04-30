@@ -51,7 +51,7 @@ class GetZeroTrustAccessCustomPageResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -126,6 +126,11 @@ def get_zero_trust_access_custom_page(account_id: Optional[_builtins.str] = None
                                       custom_page_id: Optional[_builtins.str] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustAccessCustomPageResult:
     """
+    Accepted Permissions
+
+    - `Access: Custom Pages Read`
+    - `Access: Custom Pages Write`
+
     ## Example Usage
 
     ```python
@@ -154,10 +159,15 @@ def get_zero_trust_access_custom_page(account_id: Optional[_builtins.str] = None
         name=pulumi.get(__ret__, 'name'),
         type=pulumi.get(__ret__, 'type'),
         uid=pulumi.get(__ret__, 'uid'))
-def get_zero_trust_access_custom_page_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_access_custom_page_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                              custom_page_id: Optional[pulumi.Input[_builtins.str]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessCustomPageResult]:
     """
+    Accepted Permissions
+
+    - `Access: Custom Pages Read`
+    - `Access: Custom Pages Write`
+
     ## Example Usage
 
     ```python

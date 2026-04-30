@@ -13,6 +13,8 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMagicTransitSiteLanResult {
@@ -20,7 +22,7 @@ public final class GetMagicTransitSiteLanResult {
      * @return Identifier
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     private Integer bondId;
     /**
      * @return mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
@@ -32,6 +34,16 @@ public final class GetMagicTransitSiteLanResult {
      * 
      */
     private String id;
+    /**
+     * @return mark true to use this LAN for source-based breakout traffic
+     * 
+     */
+    private Boolean isBreakout;
+    /**
+     * @return mark true to use this LAN for source-based prioritized traffic
+     * 
+     */
+    private Boolean isPrioritized;
     /**
      * @return Identifier
      * 
@@ -62,8 +74,8 @@ public final class GetMagicTransitSiteLanResult {
      * @return Identifier
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     public Integer bondId() {
         return this.bondId;
@@ -81,6 +93,20 @@ public final class GetMagicTransitSiteLanResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return mark true to use this LAN for source-based breakout traffic
+     * 
+     */
+    public Boolean isBreakout() {
+        return this.isBreakout;
+    }
+    /**
+     * @return mark true to use this LAN for source-based prioritized traffic
+     * 
+     */
+    public Boolean isPrioritized() {
+        return this.isPrioritized;
     }
     /**
      * @return Identifier
@@ -132,10 +158,12 @@ public final class GetMagicTransitSiteLanResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private Integer bondId;
         private Boolean haLink;
         private String id;
+        private Boolean isBreakout;
+        private Boolean isPrioritized;
         private String lanId;
         private String name;
         private GetMagicTransitSiteLanNat nat;
@@ -151,6 +179,8 @@ public final class GetMagicTransitSiteLanResult {
     	      this.bondId = defaults.bondId;
     	      this.haLink = defaults.haLink;
     	      this.id = defaults.id;
+    	      this.isBreakout = defaults.isBreakout;
+    	      this.isPrioritized = defaults.isPrioritized;
     	      this.lanId = defaults.lanId;
     	      this.name = defaults.name;
     	      this.nat = defaults.nat;
@@ -162,10 +192,8 @@ public final class GetMagicTransitSiteLanResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetMagicTransitSiteLanResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }
@@ -191,6 +219,22 @@ public final class GetMagicTransitSiteLanResult {
               throw new MissingRequiredPropertyException("GetMagicTransitSiteLanResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder isBreakout(Boolean isBreakout) {
+            if (isBreakout == null) {
+              throw new MissingRequiredPropertyException("GetMagicTransitSiteLanResult", "isBreakout");
+            }
+            this.isBreakout = isBreakout;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder isPrioritized(Boolean isPrioritized) {
+            if (isPrioritized == null) {
+              throw new MissingRequiredPropertyException("GetMagicTransitSiteLanResult", "isPrioritized");
+            }
+            this.isPrioritized = isPrioritized;
             return this;
         }
         @CustomType.Setter
@@ -266,6 +310,8 @@ public final class GetMagicTransitSiteLanResult {
             _resultValue.bondId = bondId;
             _resultValue.haLink = haLink;
             _resultValue.id = id;
+            _resultValue.isBreakout = isBreakout;
+            _resultValue.isPrioritized = isPrioritized;
             _resultValue.lanId = lanId;
             _resultValue.name = name;
             _resultValue.nat = nat;

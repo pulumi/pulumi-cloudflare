@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -21,15 +20,15 @@ public final class GetZeroTrustGatewayAppTypesListArgs extends com.pulumi.resour
      * Provide the identifier string.
      * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
      * @return Provide the identifier string.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -78,7 +77,7 @@ public final class GetZeroTrustGatewayAppTypesListArgs extends com.pulumi.resour
          * @return builder
          * 
          */
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -115,9 +114,6 @@ public final class GetZeroTrustGatewayAppTypesListArgs extends com.pulumi.resour
         }
 
         public GetZeroTrustGatewayAppTypesListArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetZeroTrustGatewayAppTypesListArgs", "accountId");
-            }
             return $;
         }
     }

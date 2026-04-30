@@ -10,6 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Queues Read`
+    /// - `Queues Write`
+    /// - `Workers Scripts Read`
+    /// - `Workers Scripts Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -42,7 +49,7 @@ namespace Pulumi.Cloudflare
         /// A Resource identifier.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         [Output("consumers")]
         public Output<ImmutableArray<Outputs.QueueConsumer>> Consumers { get; private set; } = null!;
@@ -120,8 +127,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// A Resource identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("queueName", required: true)]
         public Input<string> QueueName { get; set; } = null!;

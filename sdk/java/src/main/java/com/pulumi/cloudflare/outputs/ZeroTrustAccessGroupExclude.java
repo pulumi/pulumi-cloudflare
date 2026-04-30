@@ -27,6 +27,7 @@ import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupExcludeOidc;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupExcludeOkta;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupExcludeSaml;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupExcludeServiceToken;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupExcludeUserRiskScore;
 import com.pulumi.core.annotations.CustomType;
 import java.util.Objects;
 import java.util.Optional;
@@ -66,6 +67,7 @@ public final class ZeroTrustAccessGroupExclude {
     private @Nullable ZeroTrustAccessGroupExcludeOkta okta;
     private @Nullable ZeroTrustAccessGroupExcludeSaml saml;
     private @Nullable ZeroTrustAccessGroupExcludeServiceToken serviceToken;
+    private @Nullable ZeroTrustAccessGroupExcludeUserRiskScore userRiskScore;
 
     private ZeroTrustAccessGroupExclude() {}
     /**
@@ -148,6 +150,9 @@ public final class ZeroTrustAccessGroupExclude {
     public Optional<ZeroTrustAccessGroupExcludeServiceToken> serviceToken() {
         return Optional.ofNullable(this.serviceToken);
     }
+    public Optional<ZeroTrustAccessGroupExcludeUserRiskScore> userRiskScore() {
+        return Optional.ofNullable(this.userRiskScore);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -182,6 +187,7 @@ public final class ZeroTrustAccessGroupExclude {
         private @Nullable ZeroTrustAccessGroupExcludeOkta okta;
         private @Nullable ZeroTrustAccessGroupExcludeSaml saml;
         private @Nullable ZeroTrustAccessGroupExcludeServiceToken serviceToken;
+        private @Nullable ZeroTrustAccessGroupExcludeUserRiskScore userRiskScore;
         public Builder() {}
         public Builder(ZeroTrustAccessGroupExclude defaults) {
     	      Objects.requireNonNull(defaults);
@@ -209,6 +215,7 @@ public final class ZeroTrustAccessGroupExclude {
     	      this.okta = defaults.okta;
     	      this.saml = defaults.saml;
     	      this.serviceToken = defaults.serviceToken;
+    	      this.userRiskScore = defaults.userRiskScore;
         }
 
         @CustomType.Setter
@@ -355,6 +362,12 @@ public final class ZeroTrustAccessGroupExclude {
             this.serviceToken = serviceToken;
             return this;
         }
+        @CustomType.Setter
+        public Builder userRiskScore(@Nullable ZeroTrustAccessGroupExcludeUserRiskScore userRiskScore) {
+
+            this.userRiskScore = userRiskScore;
+            return this;
+        }
         public ZeroTrustAccessGroupExclude build() {
             final var _resultValue = new ZeroTrustAccessGroupExclude();
             _resultValue.anyValidServiceToken = anyValidServiceToken;
@@ -381,6 +394,7 @@ public final class ZeroTrustAccessGroupExclude {
             _resultValue.okta = okta;
             _resultValue.saml = saml;
             _resultValue.serviceToken = serviceToken;
+            _resultValue.userRiskScore = userRiskScore;
             return _resultValue;
         }
     }

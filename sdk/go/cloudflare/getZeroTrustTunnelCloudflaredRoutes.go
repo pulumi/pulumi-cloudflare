@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloudflare One Networks Read`
+// - `Cloudflare One Networks Write`
+// - `Cloudflare Tunnel Read`
+// - `Cloudflare Tunnel Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustTunnelCloudflaredRoutes(ctx, &cloudflare.LookupZeroTrustTunnelCloudflaredRoutesArgs{
-//				AccountId:       "699d98642c564d2e855e9661899b7252",
+//				AccountId:       pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //				ExistedAt:       pulumi.StringRef("2019-10-12T07%3A20%3A50.52Z"),
 //				IsDeleted:       pulumi.BoolRef(true),
 //				NetworkSubset:   pulumi.StringRef("172.16.0.0/16"),
@@ -59,7 +66,7 @@ func LookupZeroTrustTunnelCloudflaredRoutes(ctx *pulumi.Context, args *LookupZer
 // A collection of arguments for invoking getZeroTrustTunnelCloudflaredRoutes.
 type LookupZeroTrustTunnelCloudflaredRoutesArgs struct {
 	// Cloudflare account ID
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Optional remark describing the route.
 	Comment *string `pulumi:"comment"`
 	// If provided, include only resources that were created (and not deleted) before this time. URL encoded.
@@ -85,7 +92,7 @@ type LookupZeroTrustTunnelCloudflaredRoutesArgs struct {
 // A collection of values returned by getZeroTrustTunnelCloudflaredRoutes.
 type LookupZeroTrustTunnelCloudflaredRoutesResult struct {
 	// Cloudflare account ID
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Optional remark describing the route.
 	Comment string `pulumi:"comment"`
 	// If provided, include only resources that were created (and not deleted) before this time. URL encoded.
@@ -124,7 +131,7 @@ func LookupZeroTrustTunnelCloudflaredRoutesOutput(ctx *pulumi.Context, args Look
 // A collection of arguments for invoking getZeroTrustTunnelCloudflaredRoutes.
 type LookupZeroTrustTunnelCloudflaredRoutesOutputArgs struct {
 	// Cloudflare account ID
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Optional remark describing the route.
 	Comment pulumi.StringPtrInput `pulumi:"comment"`
 	// If provided, include only resources that were created (and not deleted) before this time. URL encoded.
@@ -167,8 +174,8 @@ func (o LookupZeroTrustTunnelCloudflaredRoutesResultOutput) ToLookupZeroTrustTun
 }
 
 // Cloudflare account ID
-func (o LookupZeroTrustTunnelCloudflaredRoutesResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredRoutesResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustTunnelCloudflaredRoutesResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredRoutesResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Optional remark describing the route.

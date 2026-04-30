@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetAiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelector;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -13,6 +14,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAiSearchInstanceSourceParamsWebCrawlerParseOptions {
+    /**
+     * @return List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.
+     * 
+     */
+    private List<GetAiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelector> contentSelectors;
     private Map<String,String> includeHeaders;
     private Boolean includeImages;
     /**
@@ -23,6 +29,13 @@ public final class GetAiSearchInstanceSourceParamsWebCrawlerParseOptions {
     private Boolean useBrowserRendering;
 
     private GetAiSearchInstanceSourceParamsWebCrawlerParseOptions() {}
+    /**
+     * @return List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.
+     * 
+     */
+    public List<GetAiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelector> contentSelectors() {
+        return this.contentSelectors;
+    }
     public Map<String,String> includeHeaders() {
         return this.includeHeaders;
     }
@@ -49,6 +62,7 @@ public final class GetAiSearchInstanceSourceParamsWebCrawlerParseOptions {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetAiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelector> contentSelectors;
         private Map<String,String> includeHeaders;
         private Boolean includeImages;
         private List<String> specificSitemaps;
@@ -56,12 +70,24 @@ public final class GetAiSearchInstanceSourceParamsWebCrawlerParseOptions {
         public Builder() {}
         public Builder(GetAiSearchInstanceSourceParamsWebCrawlerParseOptions defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.contentSelectors = defaults.contentSelectors;
     	      this.includeHeaders = defaults.includeHeaders;
     	      this.includeImages = defaults.includeImages;
     	      this.specificSitemaps = defaults.specificSitemaps;
     	      this.useBrowserRendering = defaults.useBrowserRendering;
         }
 
+        @CustomType.Setter
+        public Builder contentSelectors(List<GetAiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelector> contentSelectors) {
+            if (contentSelectors == null) {
+              throw new MissingRequiredPropertyException("GetAiSearchInstanceSourceParamsWebCrawlerParseOptions", "contentSelectors");
+            }
+            this.contentSelectors = contentSelectors;
+            return this;
+        }
+        public Builder contentSelectors(GetAiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelector... contentSelectors) {
+            return contentSelectors(List.of(contentSelectors));
+        }
         @CustomType.Setter
         public Builder includeHeaders(Map<String,String> includeHeaders) {
             if (includeHeaders == null) {
@@ -99,6 +125,7 @@ public final class GetAiSearchInstanceSourceParamsWebCrawlerParseOptions {
         }
         public GetAiSearchInstanceSourceParamsWebCrawlerParseOptions build() {
             final var _resultValue = new GetAiSearchInstanceSourceParamsWebCrawlerParseOptions();
+            _resultValue.contentSelectors = contentSelectors;
             _resultValue.includeHeaders = includeHeaders;
             _resultValue.includeImages = includeImages;
             _resultValue.specificSitemaps = specificSitemaps;

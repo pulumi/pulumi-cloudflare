@@ -12,6 +12,13 @@ namespace Pulumi.Cloudflare
     public static class GetSchemaValidationSettings
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Gateway`
+        /// - `Account API Gateway Read`
+        /// - `Domain API Gateway`
+        /// - `Domain API Gateway Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +37,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetSchemaValidationSettingsResult> InvokeAsync(GetSchemaValidationSettingsArgs args, InvokeOptions? options = null)
+        public static Task<GetSchemaValidationSettingsResult> InvokeAsync(GetSchemaValidationSettingsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSchemaValidationSettingsResult>("cloudflare:index/getSchemaValidationSettings:getSchemaValidationSettings", args ?? new GetSchemaValidationSettingsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Gateway`
+        /// - `Account API Gateway Read`
+        /// - `Domain API Gateway`
+        /// - `Domain API Gateway Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +66,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetSchemaValidationSettingsResult> Invoke(GetSchemaValidationSettingsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetSchemaValidationSettingsResult> Invoke(GetSchemaValidationSettingsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSchemaValidationSettingsResult>("cloudflare:index/getSchemaValidationSettings:getSchemaValidationSettings", args ?? new GetSchemaValidationSettingsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Gateway`
+        /// - `Account API Gateway Read`
+        /// - `Domain API Gateway`
+        /// - `Domain API Gateway Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +105,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetSchemaValidationSettingsArgs()
         {
@@ -98,8 +119,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetSchemaValidationSettingsInvokeArgs()
         {
@@ -123,7 +144,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetSchemaValidationSettingsResult(
@@ -133,7 +154,7 @@ namespace Pulumi.Cloudflare
 
             string validationOverrideMitigationAction,
 
-            string zoneId)
+            string? zoneId)
         {
             Id = id;
             ValidationDefaultMitigationAction = validationDefaultMitigationAction;

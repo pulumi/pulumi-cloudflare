@@ -84,8 +84,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDeviceCustomProfileLocalDomainFallbackArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         [Input("policyId", required: true)]
         public string PolicyId { get; set; } = null!;
@@ -98,8 +98,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDeviceCustomProfileLocalDomainFallbackInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("policyId", required: true)]
         public Input<string> PolicyId { get; set; } = null!;
@@ -114,7 +114,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustDeviceCustomProfileLocalDomainFallbackResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// A description of the fallback domain, displayed in the client UI.
         /// </summary>
@@ -135,7 +135,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustDeviceCustomProfileLocalDomainFallbackResult(
-            string accountId,
+            string? accountId,
 
             string description,
 

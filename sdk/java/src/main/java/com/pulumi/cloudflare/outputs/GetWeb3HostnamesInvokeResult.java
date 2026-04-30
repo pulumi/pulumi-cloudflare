@@ -34,7 +34,7 @@ public final class GetWeb3HostnamesInvokeResult {
      * @return Specify the identifier of the hostname.
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetWeb3HostnamesInvokeResult() {}
     /**
@@ -62,8 +62,8 @@ public final class GetWeb3HostnamesInvokeResult {
      * @return Specify the identifier of the hostname.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -78,7 +78,7 @@ public final class GetWeb3HostnamesInvokeResult {
         private String id;
         private @Nullable Integer maxItems;
         private List<GetWeb3HostnamesResult> results;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetWeb3HostnamesInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -114,10 +114,8 @@ public final class GetWeb3HostnamesInvokeResult {
             return results(List.of(results));
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetWeb3HostnamesInvokeResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

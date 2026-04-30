@@ -12,6 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Access: Mutual TLS Certificates Read`
+// - `Access: Mutual TLS Certificates Write`
+// - `SSL and Certificates Read`
+// - `SSL and Certificates Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -84,6 +91,7 @@ import (
 // `),
 //
 //				BundleMethod: pulumi.String("ubiquitous"),
+//				CustomCsrId:  pulumi.String("7b163417-1d2b-4c84-a38a-2fb7a0cd7752"),
 //				Deploy:       pulumi.String("staging"),
 //				GeoRestrictions: &cloudflare.CustomSslGeoRestrictionsArgs{
 //					Label: pulumi.String("us"),
@@ -113,6 +121,8 @@ type CustomSsl struct {
 	BundleMethod pulumi.StringOutput `pulumi:"bundleMethod"`
 	// The zone's SSL certificate or certificate and the intermediate(s).
 	Certificate pulumi.StringOutput `pulumi:"certificate"`
+	// The identifier for the Custom CSR that was used.
+	CustomCsrId pulumi.StringPtrOutput `pulumi:"customCsrId"`
 	// The environment to deploy the certificate to.
 	// Available values: "staging", "production".
 	Deploy pulumi.StringPtrOutput `pulumi:"deploy"`
@@ -148,7 +158,7 @@ type CustomSsl struct {
 	// When the certificate was uploaded to Cloudflare.
 	UploadedOn pulumi.StringOutput `pulumi:"uploadedOn"`
 	// Identifier.
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewCustomSsl registers a new resource with the given unique name, arguments, and options.
@@ -163,9 +173,6 @@ func NewCustomSsl(ctx *pulumi.Context,
 	}
 	if args.PrivateKey == nil {
 		return nil, errors.New("invalid value for required argument 'PrivateKey'")
-	}
-	if args.ZoneId == nil {
-		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	if args.PrivateKey != nil {
 		args.PrivateKey = pulumi.ToSecret(args.PrivateKey).(pulumi.StringInput)
@@ -202,6 +209,8 @@ type customSslState struct {
 	BundleMethod *string `pulumi:"bundleMethod"`
 	// The zone's SSL certificate or certificate and the intermediate(s).
 	Certificate *string `pulumi:"certificate"`
+	// The identifier for the Custom CSR that was used.
+	CustomCsrId *string `pulumi:"customCsrId"`
 	// The environment to deploy the certificate to.
 	// Available values: "staging", "production".
 	Deploy *string `pulumi:"deploy"`
@@ -246,6 +255,8 @@ type CustomSslState struct {
 	BundleMethod pulumi.StringPtrInput
 	// The zone's SSL certificate or certificate and the intermediate(s).
 	Certificate pulumi.StringPtrInput
+	// The identifier for the Custom CSR that was used.
+	CustomCsrId pulumi.StringPtrInput
 	// The environment to deploy the certificate to.
 	// Available values: "staging", "production".
 	Deploy pulumi.StringPtrInput
@@ -294,6 +305,8 @@ type customSslArgs struct {
 	BundleMethod *string `pulumi:"bundleMethod"`
 	// The zone's SSL certificate or certificate and the intermediate(s).
 	Certificate string `pulumi:"certificate"`
+	// The identifier for the Custom CSR that was used.
+	CustomCsrId *string `pulumi:"customCsrId"`
 	// The environment to deploy the certificate to.
 	// Available values: "staging", "production".
 	Deploy *string `pulumi:"deploy"`
@@ -308,7 +321,7 @@ type customSslArgs struct {
 	// Available values: "legacy*custom", "sniCustom".
 	Type *string `pulumi:"type"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a CustomSsl resource.
@@ -318,6 +331,8 @@ type CustomSslArgs struct {
 	BundleMethod pulumi.StringPtrInput
 	// The zone's SSL certificate or certificate and the intermediate(s).
 	Certificate pulumi.StringInput
+	// The identifier for the Custom CSR that was used.
+	CustomCsrId pulumi.StringPtrInput
 	// The environment to deploy the certificate to.
 	// Available values: "staging", "production".
 	Deploy pulumi.StringPtrInput
@@ -332,7 +347,7 @@ type CustomSslArgs struct {
 	// Available values: "legacy*custom", "sniCustom".
 	Type pulumi.StringPtrInput
 	// Identifier.
-	ZoneId pulumi.StringInput
+	ZoneId pulumi.StringPtrInput
 }
 
 func (CustomSslArgs) ElementType() reflect.Type {
@@ -433,6 +448,11 @@ func (o CustomSslOutput) Certificate() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomSsl) pulumi.StringOutput { return v.Certificate }).(pulumi.StringOutput)
 }
 
+// The identifier for the Custom CSR that was used.
+func (o CustomSslOutput) CustomCsrId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomSsl) pulumi.StringPtrOutput { return v.CustomCsrId }).(pulumi.StringPtrOutput)
+}
+
 // The environment to deploy the certificate to.
 // Available values: "staging", "production".
 func (o CustomSslOutput) Deploy() pulumi.StringPtrOutput {
@@ -513,8 +533,8 @@ func (o CustomSslOutput) UploadedOn() pulumi.StringOutput {
 }
 
 // Identifier.
-func (o CustomSslOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *CustomSsl) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+func (o CustomSslOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomSsl) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type CustomSslArrayOutput struct{ *pulumi.OutputState }

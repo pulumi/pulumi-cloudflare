@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account Settings Read`
+// - `Account Settings Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetDnsZoneTransfersTsig(ctx, &cloudflare.LookupDnsZoneTransfersTsigArgs{
-//				AccountId: "01a7362d577a6c3019a474fd6f485823",
+//				AccountId: pulumi.StringRef("01a7362d577a6c3019a474fd6f485823"),
 //				TsigId:    "69cd1e104af3e6ed3cb344f263fd0d5a",
 //			}, nil)
 //			if err != nil {
@@ -49,13 +54,13 @@ func LookupDnsZoneTransfersTsig(ctx *pulumi.Context, args *LookupDnsZoneTransfer
 
 // A collection of arguments for invoking getDnsZoneTransfersTsig.
 type LookupDnsZoneTransfersTsigArgs struct {
-	AccountId string `pulumi:"accountId"`
-	TsigId    string `pulumi:"tsigId"`
+	AccountId *string `pulumi:"accountId"`
+	TsigId    string  `pulumi:"tsigId"`
 }
 
 // A collection of values returned by getDnsZoneTransfersTsig.
 type LookupDnsZoneTransfersTsigResult struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// TSIG algorithm.
 	Algo string `pulumi:"algo"`
 	// The ID of this resource.
@@ -78,8 +83,8 @@ func LookupDnsZoneTransfersTsigOutput(ctx *pulumi.Context, args LookupDnsZoneTra
 
 // A collection of arguments for invoking getDnsZoneTransfersTsig.
 type LookupDnsZoneTransfersTsigOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
-	TsigId    pulumi.StringInput `pulumi:"tsigId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	TsigId    pulumi.StringInput    `pulumi:"tsigId"`
 }
 
 func (LookupDnsZoneTransfersTsigOutputArgs) ElementType() reflect.Type {
@@ -101,8 +106,8 @@ func (o LookupDnsZoneTransfersTsigResultOutput) ToLookupDnsZoneTransfersTsigResu
 	return o
 }
 
-func (o LookupDnsZoneTransfersTsigResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDnsZoneTransfersTsigResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupDnsZoneTransfersTsigResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDnsZoneTransfersTsigResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // TSIG algorithm.

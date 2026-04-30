@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Access: Custom Pages Read`
+// - `Access: Custom Pages Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustAccessCustomPages(ctx, &cloudflare.LookupZeroTrustAccessCustomPagesArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +54,7 @@ func LookupZeroTrustAccessCustomPages(ctx *pulumi.Context, args *LookupZeroTrust
 // A collection of arguments for invoking getZeroTrustAccessCustomPages.
 type LookupZeroTrustAccessCustomPagesArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 }
@@ -57,7 +62,7 @@ type LookupZeroTrustAccessCustomPagesArgs struct {
 // A collection of values returned by getZeroTrustAccessCustomPages.
 type LookupZeroTrustAccessCustomPagesResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -78,7 +83,7 @@ func LookupZeroTrustAccessCustomPagesOutput(ctx *pulumi.Context, args LookupZero
 // A collection of arguments for invoking getZeroTrustAccessCustomPages.
 type LookupZeroTrustAccessCustomPagesOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
@@ -103,8 +108,8 @@ func (o LookupZeroTrustAccessCustomPagesResultOutput) ToLookupZeroTrustAccessCus
 }
 
 // Identifier.
-func (o LookupZeroTrustAccessCustomPagesResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustAccessCustomPagesResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustAccessCustomPagesResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessCustomPagesResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

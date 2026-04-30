@@ -101,7 +101,7 @@ class GetClientCertificatesResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -130,6 +130,11 @@ def get_client_certificates(limit: Optional[_builtins.int] = None,
                             zone_id: Optional[_builtins.str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClientCertificatesResult:
     """
+    Accepted Permissions
+
+    - `SSL and Certificates Read`
+    - `SSL and Certificates Write`
+
     ## Example Usage
 
     ```python
@@ -171,9 +176,14 @@ def get_client_certificates_output(limit: Optional[pulumi.Input[Optional[_builti
                                    max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                    offset: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                    status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                                   zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClientCertificatesResult]:
     """
+    Accepted Permissions
+
+    - `SSL and Certificates Read`
+    - `SSL and Certificates Write`
+
     ## Example Usage
 
     ```python

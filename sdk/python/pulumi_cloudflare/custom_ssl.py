@@ -23,20 +23,21 @@ class CustomSslArgs:
     def __init__(__self__, *,
                  certificate: pulumi.Input[_builtins.str],
                  private_key: pulumi.Input[_builtins.str],
-                 zone_id: pulumi.Input[_builtins.str],
                  bundle_method: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_csr_id: Optional[pulumi.Input[_builtins.str]] = None,
                  deploy: Optional[pulumi.Input[_builtins.str]] = None,
                  geo_restrictions: Optional[pulumi.Input['CustomSslGeoRestrictionsArgs']] = None,
                  policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CustomSsl resource.
 
         :param pulumi.Input[_builtins.str] certificate: The zone's SSL certificate or certificate and the intermediate(s).
         :param pulumi.Input[_builtins.str] private_key: The zone's private key.
-        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.str] bundle_method: A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
                Available values: "ubiquitous", "optimal", "force".
+        :param pulumi.Input[_builtins.str] custom_csr_id: The identifier for the Custom CSR that was used.
         :param pulumi.Input[_builtins.str] deploy: The environment to deploy the certificate to.
                Available values: "staging", "production".
         :param pulumi.Input['CustomSslGeoRestrictionsArgs'] geo_restrictions: Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
@@ -44,12 +45,14 @@ class CustomSslArgs:
                Note: The API accepts this field as either "policy" or "policy*restrictions" in requests. Responses return this field as "policy_restrictions".
         :param pulumi.Input[_builtins.str] type: The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
                Available values: "legacy*custom", "sni_custom".
+        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         pulumi.set(__self__, "certificate", certificate)
         pulumi.set(__self__, "private_key", private_key)
-        pulumi.set(__self__, "zone_id", zone_id)
         if bundle_method is not None:
             pulumi.set(__self__, "bundle_method", bundle_method)
+        if custom_csr_id is not None:
+            pulumi.set(__self__, "custom_csr_id", custom_csr_id)
         if deploy is not None:
             pulumi.set(__self__, "deploy", deploy)
         if geo_restrictions is not None:
@@ -58,6 +61,8 @@ class CustomSslArgs:
             pulumi.set(__self__, "policy", policy)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter
@@ -84,18 +89,6 @@ class CustomSslArgs:
         pulumi.set(self, "private_key", value)
 
     @_builtins.property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "zone_id")
-
-    @zone_id.setter
-    def zone_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "zone_id", value)
-
-    @_builtins.property
     @pulumi.getter(name="bundleMethod")
     def bundle_method(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -107,6 +100,18 @@ class CustomSslArgs:
     @bundle_method.setter
     def bundle_method(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "bundle_method", value)
+
+    @_builtins.property
+    @pulumi.getter(name="customCsrId")
+    def custom_csr_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The identifier for the Custom CSR that was used.
+        """
+        return pulumi.get(self, "custom_csr_id")
+
+    @custom_csr_id.setter
+    def custom_csr_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "custom_csr_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -159,12 +164,25 @@ class CustomSslArgs:
     def type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "type", value)
 
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "zone_id", value)
+
 
 @pulumi.input_type
 class _CustomSslState:
     def __init__(__self__, *,
                  bundle_method: Optional[pulumi.Input[_builtins.str]] = None,
                  certificate: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_csr_id: Optional[pulumi.Input[_builtins.str]] = None,
                  deploy: Optional[pulumi.Input[_builtins.str]] = None,
                  expires_on: Optional[pulumi.Input[_builtins.str]] = None,
                  geo_restrictions: Optional[pulumi.Input['CustomSslGeoRestrictionsArgs']] = None,
@@ -187,6 +205,7 @@ class _CustomSslState:
         :param pulumi.Input[_builtins.str] bundle_method: A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
                Available values: "ubiquitous", "optimal", "force".
         :param pulumi.Input[_builtins.str] certificate: The zone's SSL certificate or certificate and the intermediate(s).
+        :param pulumi.Input[_builtins.str] custom_csr_id: The identifier for the Custom CSR that was used.
         :param pulumi.Input[_builtins.str] deploy: The environment to deploy the certificate to.
                Available values: "staging", "production".
         :param pulumi.Input[_builtins.str] expires_on: When the certificate from the authority expires.
@@ -212,6 +231,8 @@ class _CustomSslState:
             pulumi.set(__self__, "bundle_method", bundle_method)
         if certificate is not None:
             pulumi.set(__self__, "certificate", certificate)
+        if custom_csr_id is not None:
+            pulumi.set(__self__, "custom_csr_id", custom_csr_id)
         if deploy is not None:
             pulumi.set(__self__, "deploy", deploy)
         if expires_on is not None:
@@ -269,6 +290,18 @@ class _CustomSslState:
     @certificate.setter
     def certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "certificate", value)
+
+    @_builtins.property
+    @pulumi.getter(name="customCsrId")
+    def custom_csr_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The identifier for the Custom CSR that was used.
+        """
+        return pulumi.get(self, "custom_csr_id")
+
+    @custom_csr_id.setter
+    def custom_csr_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "custom_csr_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -471,6 +504,7 @@ class CustomSsl(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bundle_method: Optional[pulumi.Input[_builtins.str]] = None,
                  certificate: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_csr_id: Optional[pulumi.Input[_builtins.str]] = None,
                  deploy: Optional[pulumi.Input[_builtins.str]] = None,
                  geo_restrictions: Optional[pulumi.Input[Union['CustomSslGeoRestrictionsArgs', 'CustomSslGeoRestrictionsArgsDict']]] = None,
                  policy: Optional[pulumi.Input[_builtins.str]] = None,
@@ -479,6 +513,13 @@ class CustomSsl(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Access: Mutual TLS Certificates Read`
+        - `Access: Mutual TLS Certificates Write`
+        - `SSL and Certificates Read`
+        - `SSL and Certificates Write`
+
         ## Example Usage
 
         ```python
@@ -541,6 +582,7 @@ class CustomSsl(pulumi.CustomResource):
 
         \"\"\",
             bundle_method="ubiquitous",
+            custom_csr_id="7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
             deploy="staging",
             geo_restrictions={
                 "label": "us",
@@ -561,6 +603,7 @@ class CustomSsl(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] bundle_method: A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
                Available values: "ubiquitous", "optimal", "force".
         :param pulumi.Input[_builtins.str] certificate: The zone's SSL certificate or certificate and the intermediate(s).
+        :param pulumi.Input[_builtins.str] custom_csr_id: The identifier for the Custom CSR that was used.
         :param pulumi.Input[_builtins.str] deploy: The environment to deploy the certificate to.
                Available values: "staging", "production".
         :param pulumi.Input[Union['CustomSslGeoRestrictionsArgs', 'CustomSslGeoRestrictionsArgsDict']] geo_restrictions: Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
@@ -578,6 +621,13 @@ class CustomSsl(pulumi.CustomResource):
                  args: CustomSslArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Access: Mutual TLS Certificates Read`
+        - `Access: Mutual TLS Certificates Write`
+        - `SSL and Certificates Read`
+        - `SSL and Certificates Write`
+
         ## Example Usage
 
         ```python
@@ -640,6 +690,7 @@ class CustomSsl(pulumi.CustomResource):
 
         \"\"\",
             bundle_method="ubiquitous",
+            custom_csr_id="7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
             deploy="staging",
             geo_restrictions={
                 "label": "us",
@@ -672,6 +723,7 @@ class CustomSsl(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bundle_method: Optional[pulumi.Input[_builtins.str]] = None,
                  certificate: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_csr_id: Optional[pulumi.Input[_builtins.str]] = None,
                  deploy: Optional[pulumi.Input[_builtins.str]] = None,
                  geo_restrictions: Optional[pulumi.Input[Union['CustomSslGeoRestrictionsArgs', 'CustomSslGeoRestrictionsArgsDict']]] = None,
                  policy: Optional[pulumi.Input[_builtins.str]] = None,
@@ -691,6 +743,7 @@ class CustomSsl(pulumi.CustomResource):
             if certificate is None and not opts.urn:
                 raise TypeError("Missing required property 'certificate'")
             __props__.__dict__["certificate"] = certificate
+            __props__.__dict__["custom_csr_id"] = custom_csr_id
             __props__.__dict__["deploy"] = deploy
             __props__.__dict__["geo_restrictions"] = geo_restrictions
             __props__.__dict__["policy"] = policy
@@ -698,8 +751,6 @@ class CustomSsl(pulumi.CustomResource):
                 raise TypeError("Missing required property 'private_key'")
             __props__.__dict__["private_key"] = None if private_key is None else pulumi.Output.secret(private_key)
             __props__.__dict__["type"] = type
-            if zone_id is None and not opts.urn:
-                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["expires_on"] = None
             __props__.__dict__["hosts"] = None
@@ -725,6 +776,7 @@ class CustomSsl(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             bundle_method: Optional[pulumi.Input[_builtins.str]] = None,
             certificate: Optional[pulumi.Input[_builtins.str]] = None,
+            custom_csr_id: Optional[pulumi.Input[_builtins.str]] = None,
             deploy: Optional[pulumi.Input[_builtins.str]] = None,
             expires_on: Optional[pulumi.Input[_builtins.str]] = None,
             geo_restrictions: Optional[pulumi.Input[Union['CustomSslGeoRestrictionsArgs', 'CustomSslGeoRestrictionsArgsDict']]] = None,
@@ -751,6 +803,7 @@ class CustomSsl(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] bundle_method: A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
                Available values: "ubiquitous", "optimal", "force".
         :param pulumi.Input[_builtins.str] certificate: The zone's SSL certificate or certificate and the intermediate(s).
+        :param pulumi.Input[_builtins.str] custom_csr_id: The identifier for the Custom CSR that was used.
         :param pulumi.Input[_builtins.str] deploy: The environment to deploy the certificate to.
                Available values: "staging", "production".
         :param pulumi.Input[_builtins.str] expires_on: When the certificate from the authority expires.
@@ -778,6 +831,7 @@ class CustomSsl(pulumi.CustomResource):
 
         __props__.__dict__["bundle_method"] = bundle_method
         __props__.__dict__["certificate"] = certificate
+        __props__.__dict__["custom_csr_id"] = custom_csr_id
         __props__.__dict__["deploy"] = deploy
         __props__.__dict__["expires_on"] = expires_on
         __props__.__dict__["geo_restrictions"] = geo_restrictions
@@ -812,6 +866,14 @@ class CustomSsl(pulumi.CustomResource):
         The zone's SSL certificate or certificate and the intermediate(s).
         """
         return pulumi.get(self, "certificate")
+
+    @_builtins.property
+    @pulumi.getter(name="customCsrId")
+    def custom_csr_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The identifier for the Custom CSR that was used.
+        """
+        return pulumi.get(self, "custom_csr_id")
 
     @_builtins.property
     @pulumi.getter
@@ -935,7 +997,7 @@ class CustomSsl(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[_builtins.str]:
+    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier.
         """

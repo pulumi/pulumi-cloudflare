@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `DNS Read`
+ * - `DNS Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -72,7 +77,7 @@ export class RegionalHostname extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a RegionalHostname resource with the given unique name, arguments, and options.
@@ -99,9 +104,6 @@ export class RegionalHostname extends pulumi.CustomResource {
             }
             if (args?.regionKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'regionKey'");
-            }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["hostname"] = args?.hostname;
             resourceInputs["regionKey"] = args?.regionKey;
@@ -159,5 +161,5 @@ export interface RegionalHostnameArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

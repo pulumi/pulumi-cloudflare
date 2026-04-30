@@ -9,10 +9,12 @@ import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustDeviceSettingsResult {
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
      * 
@@ -65,8 +67,8 @@ public final class GetZeroTrustDeviceSettingsResult {
     private Boolean useZtVirtualIp;
 
     private GetZeroTrustDeviceSettingsResult() {}
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
@@ -148,7 +150,7 @@ public final class GetZeroTrustDeviceSettingsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private Double disableForTime;
         private Boolean externalEmergencySignalEnabled;
         private String externalEmergencySignalFingerprint;
@@ -176,10 +178,8 @@ public final class GetZeroTrustDeviceSettingsResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustDeviceSettingsResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

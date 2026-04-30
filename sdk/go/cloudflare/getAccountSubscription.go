@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Billing Read`
+// - `Billing Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetAccountSubscription(ctx, &cloudflare.LookupAccountSubscriptionArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,13 +54,13 @@ func LookupAccountSubscription(ctx *pulumi.Context, args *LookupAccountSubscript
 // A collection of arguments for invoking getAccountSubscription.
 type LookupAccountSubscriptionArgs struct {
 	// Identifier
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 }
 
 // A collection of values returned by getAccountSubscription.
 type LookupAccountSubscriptionResult struct {
 	// Identifier
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The monetary unit in which pricing information is displayed.
 	Currency string `pulumi:"currency"`
 	// The end of the current period and also when the next billing is due.
@@ -88,7 +93,7 @@ func LookupAccountSubscriptionOutput(ctx *pulumi.Context, args LookupAccountSubs
 // A collection of arguments for invoking getAccountSubscription.
 type LookupAccountSubscriptionOutputArgs struct {
 	// Identifier
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 }
 
 func (LookupAccountSubscriptionOutputArgs) ElementType() reflect.Type {
@@ -111,8 +116,8 @@ func (o LookupAccountSubscriptionResultOutput) ToLookupAccountSubscriptionResult
 }
 
 // Identifier
-func (o LookupAccountSubscriptionResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAccountSubscriptionResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupAccountSubscriptionResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAccountSubscriptionResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The monetary unit in which pricing information is displayed.

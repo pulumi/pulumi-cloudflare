@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Magic Transit Read`
+ * - `Magic Transit Write`
+ * - `Magic WAN Read`
+ * - `Magic WAN Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -34,7 +41,7 @@ export interface GetMagicWanGreTunnelArgs {
     /**
      * Identifier
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Identifier
      */
@@ -48,7 +55,7 @@ export interface GetMagicWanGreTunnelResult {
     /**
      * Identifier
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     readonly greTunnel: outputs.GetMagicWanGreTunnelGreTunnel;
     /**
      * Identifier
@@ -60,6 +67,13 @@ export interface GetMagicWanGreTunnelResult {
     readonly id: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Magic Transit Read`
+ * - `Magic Transit Write`
+ * - `Magic WAN Read`
+ * - `Magic WAN Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -87,7 +101,7 @@ export interface GetMagicWanGreTunnelOutputArgs {
     /**
      * Identifier
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Identifier
      */

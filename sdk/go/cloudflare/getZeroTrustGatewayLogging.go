@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustGatewayLogging(ctx, &cloudflare.LookupZeroTrustGatewayLoggingArgs{
-//				AccountId: "699d98642c564d2e855e9661899b7252",
+//				AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -48,13 +48,13 @@ func LookupZeroTrustGatewayLogging(ctx *pulumi.Context, args *LookupZeroTrustGat
 
 // A collection of arguments for invoking getZeroTrustGatewayLogging.
 type LookupZeroTrustGatewayLoggingArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 }
 
 // A collection of values returned by getZeroTrustGatewayLogging.
 type LookupZeroTrustGatewayLoggingResult struct {
-	AccountId string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
+	AccountId *string `pulumi:"accountId"`
+	// The ID of this resource.
 	Id string `pulumi:"id"`
 	// Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
 	RedactPii bool `pulumi:"redactPii"`
@@ -73,7 +73,7 @@ func LookupZeroTrustGatewayLoggingOutput(ctx *pulumi.Context, args LookupZeroTru
 
 // A collection of arguments for invoking getZeroTrustGatewayLogging.
 type LookupZeroTrustGatewayLoggingOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 }
 
 func (LookupZeroTrustGatewayLoggingOutputArgs) ElementType() reflect.Type {
@@ -95,11 +95,11 @@ func (o LookupZeroTrustGatewayLoggingResultOutput) ToLookupZeroTrustGatewayLoggi
 	return o
 }
 
-func (o LookupZeroTrustGatewayLoggingResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustGatewayLoggingResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustGatewayLoggingResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustGatewayLoggingResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this resource.
 func (o LookupZeroTrustGatewayLoggingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayLoggingResult) string { return v.Id }).(pulumi.StringOutput)
 }

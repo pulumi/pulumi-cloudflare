@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetAiSearchInstancesResultCustomMetadataResult
     {
         /// <summary>
-        /// Available values: "text", "number", "boolean".
+        /// Available values: "text", "number", "boolean", "datetime".
         /// </summary>
         public readonly string DataType;
         public readonly string FieldName;

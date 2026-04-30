@@ -15,14 +15,14 @@ public final class AiSearchInstanceCustomMetadataArgs extends com.pulumi.resourc
     public static final AiSearchInstanceCustomMetadataArgs Empty = new AiSearchInstanceCustomMetadataArgs();
 
     /**
-     * Available values: &#34;text&#34;, &#34;number&#34;, &#34;boolean&#34;.
+     * Available values: &#34;text&#34;, &#34;number&#34;, &#34;boolean&#34;, &#34;datetime&#34;.
      * 
      */
     @Import(name="dataType", required=true)
     private Output<String> dataType;
 
     /**
-     * @return Available values: &#34;text&#34;, &#34;number&#34;, &#34;boolean&#34;.
+     * @return Available values: &#34;text&#34;, &#34;number&#34;, &#34;boolean&#34;, &#34;datetime&#34;.
      * 
      */
     public Output<String> dataType() {
@@ -62,7 +62,7 @@ public final class AiSearchInstanceCustomMetadataArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param dataType Available values: &#34;text&#34;, &#34;number&#34;, &#34;boolean&#34;.
+         * @param dataType Available values: &#34;text&#34;, &#34;number&#34;, &#34;boolean&#34;, &#34;datetime&#34;.
          * 
          * @return builder
          * 
@@ -73,7 +73,7 @@ public final class AiSearchInstanceCustomMetadataArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param dataType Available values: &#34;text&#34;, &#34;number&#34;, &#34;boolean&#34;.
+         * @param dataType Available values: &#34;text&#34;, &#34;number&#34;, &#34;boolean&#34;, &#34;datetime&#34;.
          * 
          * @return builder
          * 

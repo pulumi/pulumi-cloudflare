@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.StreamInputArgs;
 import com.pulumi.cloudflare.inputs.StreamPlaybackArgs;
+import com.pulumi.cloudflare.inputs.StreamPublicDetailsArgs;
 import com.pulumi.cloudflare.inputs.StreamStatusArgs;
 import com.pulumi.cloudflare.inputs.StreamWatermarkArgs;
 import com.pulumi.core.Output;
@@ -51,6 +52,21 @@ public final class StreamState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<String>>> allowedOrigins() {
         return Optional.ofNullable(this.allowedOrigins);
+    }
+
+    /**
+     * The unique identifier of the source video this video was clipped from.
+     * 
+     */
+    @Import(name="clippedFrom")
+    private @Nullable Output<String> clippedFrom;
+
+    /**
+     * @return The unique identifier of the source video this video was clipped from.
+     * 
+     */
+    public Optional<Output<String>> clippedFrom() {
+        return Optional.ofNullable(this.clippedFrom);
     }
 
     /**
@@ -151,6 +167,21 @@ public final class StreamState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The maximum size in bytes for the video upload.
+     * 
+     */
+    @Import(name="maxSizeBytes")
+    private @Nullable Output<Integer> maxSizeBytes;
+
+    /**
+     * @return The maximum size in bytes for the video upload.
+     * 
+     */
+    public Optional<Output<Integer>> maxSizeBytes() {
+        return Optional.ofNullable(this.maxSizeBytes);
+    }
+
+    /**
      * A user modifiable key-value store used to reference other systems of record for managing videos.
      * 
      */
@@ -200,6 +231,21 @@ public final class StreamState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> preview() {
         return Optional.ofNullable(this.preview);
+    }
+
+    /**
+     * Public details for the video including title, share link, channel link, and logo.
+     * 
+     */
+    @Import(name="publicDetails")
+    private @Nullable Output<StreamPublicDetailsArgs> publicDetails;
+
+    /**
+     * @return Public details for the video including title, share link, channel link, and logo.
+     * 
+     */
+    public Optional<Output<StreamPublicDetailsArgs>> publicDetails() {
+        return Optional.ofNullable(this.publicDetails);
     }
 
     /**
@@ -323,14 +369,14 @@ public final class StreamState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A Cloudflare-generated unique identifier for a media item.
+     * The unique identifier for the video. Can be used to verify the video being updated.
      * 
      */
     @Import(name="uid")
     private @Nullable Output<String> uid;
 
     /**
-     * @return A Cloudflare-generated unique identifier for a media item.
+     * @return The unique identifier for the video. Can be used to verify the video being updated.
      * 
      */
     public Optional<Output<String>> uid() {
@@ -379,6 +425,7 @@ public final class StreamState extends com.pulumi.resources.ResourceArgs {
     private StreamState(StreamState $) {
         this.accountId = $.accountId;
         this.allowedOrigins = $.allowedOrigins;
+        this.clippedFrom = $.clippedFrom;
         this.created = $.created;
         this.creator = $.creator;
         this.duration = $.duration;
@@ -386,10 +433,12 @@ public final class StreamState extends com.pulumi.resources.ResourceArgs {
         this.input = $.input;
         this.liveInput = $.liveInput;
         this.maxDurationSeconds = $.maxDurationSeconds;
+        this.maxSizeBytes = $.maxSizeBytes;
         this.meta = $.meta;
         this.modified = $.modified;
         this.playback = $.playback;
         this.preview = $.preview;
+        this.publicDetails = $.publicDetails;
         this.readyToStream = $.readyToStream;
         this.readyToStreamAt = $.readyToStreamAt;
         this.requireSignedUrls = $.requireSignedUrls;
@@ -472,6 +521,27 @@ public final class StreamState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder allowedOrigins(String... allowedOrigins) {
             return allowedOrigins(List.of(allowedOrigins));
+        }
+
+        /**
+         * @param clippedFrom The unique identifier of the source video this video was clipped from.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clippedFrom(@Nullable Output<String> clippedFrom) {
+            $.clippedFrom = clippedFrom;
+            return this;
+        }
+
+        /**
+         * @param clippedFrom The unique identifier of the source video this video was clipped from.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clippedFrom(String clippedFrom) {
+            return clippedFrom(Output.of(clippedFrom));
         }
 
         /**
@@ -610,6 +680,27 @@ public final class StreamState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param maxSizeBytes The maximum size in bytes for the video upload.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxSizeBytes(@Nullable Output<Integer> maxSizeBytes) {
+            $.maxSizeBytes = maxSizeBytes;
+            return this;
+        }
+
+        /**
+         * @param maxSizeBytes The maximum size in bytes for the video upload.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxSizeBytes(Integer maxSizeBytes) {
+            return maxSizeBytes(Output.of(maxSizeBytes));
+        }
+
+        /**
          * @param meta A user modifiable key-value store used to reference other systems of record for managing videos.
          * 
          * @return builder
@@ -679,6 +770,27 @@ public final class StreamState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder preview(String preview) {
             return preview(Output.of(preview));
+        }
+
+        /**
+         * @param publicDetails Public details for the video including title, share link, channel link, and logo.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicDetails(@Nullable Output<StreamPublicDetailsArgs> publicDetails) {
+            $.publicDetails = publicDetails;
+            return this;
+        }
+
+        /**
+         * @param publicDetails Public details for the video including title, share link, channel link, and logo.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicDetails(StreamPublicDetailsArgs publicDetails) {
+            return publicDetails(Output.of(publicDetails));
         }
 
         /**
@@ -850,7 +962,7 @@ public final class StreamState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uid A Cloudflare-generated unique identifier for a media item.
+         * @param uid The unique identifier for the video. Can be used to verify the video being updated.
          * 
          * @return builder
          * 
@@ -861,7 +973,7 @@ public final class StreamState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uid A Cloudflare-generated unique identifier for a media item.
+         * @param uid The unique identifier for the video. Can be used to verify the video being updated.
          * 
          * @return builder
          * 

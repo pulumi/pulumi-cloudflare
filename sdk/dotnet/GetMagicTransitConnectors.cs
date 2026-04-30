@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetMagicTransitConnectors
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Magic WAN Read`
+        /// - `Magic WAN Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetMagicTransitConnectorsResult> InvokeAsync(GetMagicTransitConnectorsArgs args, InvokeOptions? options = null)
+        public static Task<GetMagicTransitConnectorsResult> InvokeAsync(GetMagicTransitConnectorsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMagicTransitConnectorsResult>("cloudflare:index/getMagicTransitConnectors:getMagicTransitConnectors", args ?? new GetMagicTransitConnectorsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Magic WAN Read`
+        /// - `Magic WAN Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetMagicTransitConnectorsResult> Invoke(GetMagicTransitConnectorsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetMagicTransitConnectorsResult> Invoke(GetMagicTransitConnectorsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMagicTransitConnectorsResult>("cloudflare:index/getMagicTransitConnectors:getMagicTransitConnectors", args ?? new GetMagicTransitConnectorsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Magic WAN Read`
+        /// - `Magic WAN Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +99,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -104,8 +119,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -126,7 +141,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -142,7 +157,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetMagicTransitConnectorsResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

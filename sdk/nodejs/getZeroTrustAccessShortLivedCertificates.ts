@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Access: Apps and Policies Read`
+ * - `Access: Apps and Policies Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,6 +78,11 @@ export interface GetZeroTrustAccessShortLivedCertificatesResult {
     readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Access: Apps and Policies Read`
+ * - `Access: Apps and Policies Write`
+ *
  * ## Example Usage
  *
  * ```typescript

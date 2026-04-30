@@ -232,6 +232,11 @@ class ZoneSubscription(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Billing Read`
+        - `Billing Write`
+
         ## Example Usage
 
         ```python
@@ -274,6 +279,11 @@ class ZoneSubscription(pulumi.CustomResource):
                  args: ZoneSubscriptionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Billing Read`
+        - `Billing Write`
+
         ## Example Usage
 
         ```python

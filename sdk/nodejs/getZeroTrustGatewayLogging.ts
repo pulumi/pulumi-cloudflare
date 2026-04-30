@@ -18,7 +18,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustGatewayLogging(args: GetZeroTrustGatewayLoggingArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustGatewayLoggingResult> {
+export function getZeroTrustGatewayLogging(args?: GetZeroTrustGatewayLoggingArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustGatewayLoggingResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustGatewayLogging:getZeroTrustGatewayLogging", {
         "accountId": args.accountId,
@@ -29,16 +30,16 @@ export function getZeroTrustGatewayLogging(args: GetZeroTrustGatewayLoggingArgs,
  * A collection of arguments for invoking getZeroTrustGatewayLogging.
  */
 export interface GetZeroTrustGatewayLoggingArgs {
-    accountId: string;
+    accountId?: string;
 }
 
 /**
  * A collection of values returned by getZeroTrustGatewayLogging.
  */
 export interface GetZeroTrustGatewayLoggingResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this resource.
      */
     readonly id: string;
     /**
@@ -62,7 +63,8 @@ export interface GetZeroTrustGatewayLoggingResult {
  * });
  * ```
  */
-export function getZeroTrustGatewayLoggingOutput(args: GetZeroTrustGatewayLoggingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustGatewayLoggingResult> {
+export function getZeroTrustGatewayLoggingOutput(args?: GetZeroTrustGatewayLoggingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustGatewayLoggingResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustGatewayLogging:getZeroTrustGatewayLogging", {
         "accountId": args.accountId,
@@ -73,5 +75,5 @@ export function getZeroTrustGatewayLoggingOutput(args: GetZeroTrustGatewayLoggin
  * A collection of arguments for invoking getZeroTrustGatewayLogging.
  */
 export interface GetZeroTrustGatewayLoggingOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
 }

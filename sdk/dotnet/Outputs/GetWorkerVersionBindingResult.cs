@@ -26,6 +26,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AllowedSenderAddresses;
         /// <summary>
+        /// ID of the Flagship app to bind to for feature flag evaluation.
+        /// </summary>
+        public readonly string AppId;
+        /// <summary>
         /// R2 bucket to bind to.
         /// </summary>
         public readonly string BucketName;
@@ -38,6 +42,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string ClassName;
         /// <summary>
+        /// Identifier of the D1 database to bind to.
+        /// </summary>
+        public readonly string DatabaseId;
+        /// <summary>
         /// The name of the dataset to bind to.
         /// </summary>
         public readonly string Dataset;
@@ -45,6 +53,14 @@ namespace Pulumi.Cloudflare.Outputs
         /// Destination address for the email.
         /// </summary>
         public readonly string DestinationAddress;
+        /// <summary>
+        /// The dispatch namespace the Durable Object script belongs to.
+        /// </summary>
+        public readonly string DispatchNamespace;
+        /// <summary>
+        /// Entrypoint to invoke on the target Worker.
+        /// </summary>
+        public readonly string Entrypoint;
         /// <summary>
         /// The environment of the ScriptName to bind to.
         /// </summary>
@@ -63,12 +79,16 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string IndexName;
         /// <summary>
+        /// The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
+        /// </summary>
+        public readonly string InstanceName;
+        /// <summary>
         /// JSON data to use.
         /// </summary>
         public readonly string Json;
         /// <summary>
         /// The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-        /// Available values: "eu", "fedramp".
+        /// Available values: "eu", "fedramp", "fedramp-high".
         /// </summary>
         public readonly string Jurisdiction;
         /// <summary>
@@ -84,13 +104,17 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The name of the dispatch namespace.
+        /// The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field.
         /// </summary>
         public readonly string Namespace;
         /// <summary>
         /// Namespace identifier tag.
         /// </summary>
         public readonly string NamespaceId;
+        /// <summary>
+        /// Identifier of the network to bind to. Only "cf1:network" is currently supported. Mutually exclusive with tunnel_id.
+        /// </summary>
+        public readonly string NetworkId;
         /// <summary>
         /// The old name of the inherited binding. If set, the binding will be renamed from `OldName` to `Name` in the new version. If not set, the binding will keep the same name between versions.
         /// </summary>
@@ -124,6 +148,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Service;
         /// <summary>
+        /// Identifier of the VPC service to bind to.
+        /// </summary>
+        public readonly string ServiceId;
+        /// <summary>
         /// The rate limit configuration.
         /// </summary>
         public readonly Outputs.GetWorkerVersionBindingSimpleResult Simple;
@@ -136,8 +164,12 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Text;
         /// <summary>
+        /// UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
+        /// </summary>
+        public readonly string TunnelId;
+        /// <summary>
         /// The kind of resource that the binding provides.
-        /// Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "WasmModule".
+        /// Available values: "ai", "ai*search", "ai*search*namespace", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
         /// </summary>
         public readonly string Type;
         /// <summary>
@@ -161,15 +193,23 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> allowedSenderAddresses,
 
+            string appId,
+
             string bucketName,
 
             string certificateId,
 
             string className,
 
+            string databaseId,
+
             string dataset,
 
             string destinationAddress,
+
+            string dispatchNamespace,
+
+            string entrypoint,
 
             string environment,
 
@@ -178,6 +218,8 @@ namespace Pulumi.Cloudflare.Outputs
             string id,
 
             string indexName,
+
+            string instanceName,
 
             string json,
 
@@ -192,6 +234,8 @@ namespace Pulumi.Cloudflare.Outputs
             string @namespace,
 
             string namespaceId,
+
+            string networkId,
 
             string oldName,
 
@@ -209,11 +253,15 @@ namespace Pulumi.Cloudflare.Outputs
 
             string service,
 
+            string serviceId,
+
             Outputs.GetWorkerVersionBindingSimpleResult simple,
 
             string storeId,
 
             string text,
+
+            string tunnelId,
 
             string type,
 
@@ -226,15 +274,20 @@ namespace Pulumi.Cloudflare.Outputs
             Algorithm = algorithm;
             AllowedDestinationAddresses = allowedDestinationAddresses;
             AllowedSenderAddresses = allowedSenderAddresses;
+            AppId = appId;
             BucketName = bucketName;
             CertificateId = certificateId;
             ClassName = className;
+            DatabaseId = databaseId;
             Dataset = dataset;
             DestinationAddress = destinationAddress;
+            DispatchNamespace = dispatchNamespace;
+            Entrypoint = entrypoint;
             Environment = environment;
             Format = format;
             Id = id;
             IndexName = indexName;
+            InstanceName = instanceName;
             Json = json;
             Jurisdiction = jurisdiction;
             KeyBase64 = keyBase64;
@@ -242,6 +295,7 @@ namespace Pulumi.Cloudflare.Outputs
             Name = name;
             Namespace = @namespace;
             NamespaceId = namespaceId;
+            NetworkId = networkId;
             OldName = oldName;
             Outbound = outbound;
             Part = part;
@@ -250,9 +304,11 @@ namespace Pulumi.Cloudflare.Outputs
             ScriptName = scriptName;
             SecretName = secretName;
             Service = service;
+            ServiceId = serviceId;
             Simple = simple;
             StoreId = storeId;
             Text = text;
+            TunnelId = tunnelId;
             Type = type;
             Usages = usages;
             VersionId = versionId;

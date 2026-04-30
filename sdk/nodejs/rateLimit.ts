@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Firewall Services Read`
+ * - `Firewall Services Write`
+ *
  * > `cloudflare.RateLimit` is in a deprecation phase until June 15th, 2025.
  *   During this time period, this resource is still
  *   fully supported but you are strongly advised to move to the
@@ -120,7 +125,7 @@ export class RateLimit extends pulumi.CustomResource {
     /**
      * Defines an identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a RateLimit resource with the given unique name, arguments, and options.
@@ -156,9 +161,6 @@ export class RateLimit extends pulumi.CustomResource {
             }
             if (args?.threshold === undefined && !opts.urn) {
                 throw new Error("Missing required property 'threshold'");
-            }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["action"] = args?.action;
             resourceInputs["match"] = args?.match;
@@ -235,5 +237,5 @@ export interface RateLimitArgs {
     /**
      * Defines an identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetCloudforceOneRequestAsset
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudforce One Read`
+        /// - `Cloudforce One Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -36,6 +41,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCloudforceOneRequestAssetResult>("cloudflare:index/getCloudforceOneRequestAsset:getCloudforceOneRequestAsset", args ?? new GetCloudforceOneRequestAssetArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudforce One Read`
+        /// - `Cloudforce One Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -60,6 +70,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetCloudforceOneRequestAssetResult>("cloudflare:index/getCloudforceOneRequestAsset:getCloudforceOneRequestAsset", args ?? new GetCloudforceOneRequestAssetInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudforce One Read`
+        /// - `Cloudforce One Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -90,8 +105,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// UUID.
@@ -116,8 +131,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// UUID.
@@ -144,7 +159,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// UUID.
         /// </summary>
@@ -176,7 +191,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetCloudforceOneRequestAssetResult(
-            string accountId,
+            string? accountId,
 
             string assetId,
 

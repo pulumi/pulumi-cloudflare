@@ -12,6 +12,8 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWaitingRoomResult {
@@ -62,7 +64,7 @@ public final class GetWaitingRoomResult {
      * @return Identifier.
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetWaitingRoomResult() {}
     /**
@@ -166,8 +168,8 @@ public final class GetWaitingRoomResult {
      * @return Identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -206,7 +208,7 @@ public final class GetWaitingRoomResult {
         private String turnstileAction;
         private String turnstileMode;
         private String waitingRoomId;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetWaitingRoomResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -463,10 +465,8 @@ public final class GetWaitingRoomResult {
             return this;
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetWaitingRoomResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

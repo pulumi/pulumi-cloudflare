@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustLists(ctx, &cloudflare.LookupZeroTrustListsArgs{
-//				AccountId: "699d98642c564d2e855e9661899b7252",
+//				AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //				Type:      pulumi.StringRef("SERIAL"),
 //			}, nil)
 //			if err != nil {
@@ -49,17 +49,17 @@ func LookupZeroTrustLists(ctx *pulumi.Context, args *LookupZeroTrustListsArgs, o
 
 // A collection of arguments for invoking getZeroTrustLists.
 type LookupZeroTrustListsArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Specify the list type.
-	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
 	Type *string `pulumi:"type"`
 }
 
 // A collection of values returned by getZeroTrustLists.
 type LookupZeroTrustListsResult struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -67,7 +67,7 @@ type LookupZeroTrustListsResult struct {
 	// The items returned by the data source
 	Results []GetZeroTrustListsResult `pulumi:"results"`
 	// Specify the list type.
-	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
 	Type *string `pulumi:"type"`
 }
 
@@ -82,11 +82,11 @@ func LookupZeroTrustListsOutput(ctx *pulumi.Context, args LookupZeroTrustListsOu
 
 // A collection of arguments for invoking getZeroTrustLists.
 type LookupZeroTrustListsOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// Specify the list type.
-	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -109,8 +109,8 @@ func (o LookupZeroTrustListsResultOutput) ToLookupZeroTrustListsResultOutputWith
 	return o
 }
 
-func (o LookupZeroTrustListsResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustListsResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustListsResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustListsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -129,7 +129,7 @@ func (o LookupZeroTrustListsResultOutput) Results() GetZeroTrustListsResultArray
 }
 
 // Specify the list type.
-// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
 func (o LookupZeroTrustListsResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustListsResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

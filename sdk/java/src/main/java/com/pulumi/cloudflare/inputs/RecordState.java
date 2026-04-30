@@ -156,6 +156,21 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Enables private network routing to the origin.
+     * 
+     */
+    @Import(name="privateRouting")
+    private @Nullable Output<Boolean> privateRouting;
+
+    /**
+     * @return Enables private network routing to the origin.
+     * 
+     */
+    public Optional<Output<Boolean>> privateRouting() {
+        return Optional.ofNullable(this.privateRouting);
+    }
+
+    /**
      * Whether the record can be proxied by Cloudflare or not.
      * 
      */
@@ -289,6 +304,7 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         this.modifiedOn = $.modifiedOn;
         this.name = $.name;
         this.priority = $.priority;
+        this.privateRouting = $.privateRouting;
         this.proxiable = $.proxiable;
         this.proxied = $.proxied;
         this.settings = $.settings;
@@ -504,6 +520,27 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder priority(Double priority) {
             return priority(Output.of(priority));
+        }
+
+        /**
+         * @param privateRouting Enables private network routing to the origin.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateRouting(@Nullable Output<Boolean> privateRouting) {
+            $.privateRouting = privateRouting;
+            return this;
+        }
+
+        /**
+         * @param privateRouting Enables private network routing to the origin.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateRouting(Boolean privateRouting) {
+            return privateRouting(Output.of(privateRouting));
         }
 
         /**

@@ -22,11 +22,11 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
 
     public static final ZeroTrustDeviceCustomProfileArgs Empty = new ZeroTrustDeviceCustomProfileArgs();
 
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -397,7 +397,7 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
             $ = new ZeroTrustDeviceCustomProfileArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -877,9 +877,6 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
         }
 
         public ZeroTrustDeviceCustomProfileArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustDeviceCustomProfileArgs", "accountId");
-            }
             if ($.match == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustDeviceCustomProfileArgs", "match");
             }

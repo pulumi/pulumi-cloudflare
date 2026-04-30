@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloud Email Security: Read`
+ * - `Cloud Email Security: Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -56,7 +61,7 @@ export class EmailSecurityImpersonationRegistry extends pulumi.CustomResource {
     /**
      * Account Identifier
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly comments: pulumi.Output<string>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     declare public /*out*/ readonly directoryId: pulumi.Output<number>;
@@ -97,9 +102,6 @@ export class EmailSecurityImpersonationRegistry extends pulumi.CustomResource {
             resourceInputs["provenance"] = state?.provenance;
         } else {
             const args = argsOrState as EmailSecurityImpersonationRegistryArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.email === undefined && !opts.urn) {
                 throw new Error("Missing required property 'email'");
             }
@@ -156,7 +158,7 @@ export interface EmailSecurityImpersonationRegistryArgs {
     /**
      * Account Identifier
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     email: pulumi.Input<string>;
     isEmailRegex: pulumi.Input<boolean>;
     name: pulumi.Input<string>;

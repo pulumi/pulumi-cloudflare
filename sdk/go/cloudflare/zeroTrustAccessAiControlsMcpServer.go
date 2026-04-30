@@ -30,10 +30,26 @@ import (
 //				AccountId:                            pulumi.String("a86a8f5c339544d7bdc89926de14fb8c"),
 //				ZeroTrustAccessAiControlsMcpServerId: pulumi.String("my-mcp-server"),
 //				AuthType:                             pulumi.String("unauthenticated"),
-//				Hostname:                             pulumi.String("https://exmaple.com/mcp"),
+//				Hostname:                             pulumi.String("https://example.com/mcp"),
 //				Name:                                 pulumi.String("My MCP Server"),
 //				AuthCredentials:                      pulumi.String("auth_credentials"),
 //				Description:                          pulumi.String("This is one remote mcp server"),
+//				UpdatedPrompts: cloudflare.ZeroTrustAccessAiControlsMcpServerUpdatedPromptArray{
+//					&cloudflare.ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs{
+//						Name:        pulumi.String("name"),
+//						Alias:       pulumi.String("my-custom-alias"),
+//						Description: pulumi.String("description"),
+//						Enabled:     pulumi.Bool(true),
+//					},
+//				},
+//				UpdatedTools: cloudflare.ZeroTrustAccessAiControlsMcpServerUpdatedToolArray{
+//					&cloudflare.ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs{
+//						Name:        pulumi.String("name"),
+//						Alias:       pulumi.String("my-custom-alias"),
+//						Description: pulumi.String("description"),
+//						Enabled:     pulumi.Bool(true),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -52,23 +68,25 @@ import (
 type ZeroTrustAccessAiControlsMcpServer struct {
 	pulumi.CustomResourceState
 
-	AccountId       pulumi.StringOutput    `pulumi:"accountId"`
+	AccountId       pulumi.StringPtrOutput `pulumi:"accountId"`
 	AuthCredentials pulumi.StringPtrOutput `pulumi:"authCredentials"`
 	// Available values: "oauth", "bearer", "unauthenticated".
-	AuthType           pulumi.StringOutput         `pulumi:"authType"`
-	CreatedAt          pulumi.StringOutput         `pulumi:"createdAt"`
-	CreatedBy          pulumi.StringOutput         `pulumi:"createdBy"`
-	Description        pulumi.StringPtrOutput      `pulumi:"description"`
-	Error              pulumi.StringOutput         `pulumi:"error"`
-	Hostname           pulumi.StringOutput         `pulumi:"hostname"`
-	LastSuccessfulSync pulumi.StringOutput         `pulumi:"lastSuccessfulSync"`
-	LastSynced         pulumi.StringOutput         `pulumi:"lastSynced"`
-	ModifiedAt         pulumi.StringOutput         `pulumi:"modifiedAt"`
-	ModifiedBy         pulumi.StringOutput         `pulumi:"modifiedBy"`
-	Name               pulumi.StringOutput         `pulumi:"name"`
-	Prompts            pulumi.StringMapArrayOutput `pulumi:"prompts"`
-	Status             pulumi.StringOutput         `pulumi:"status"`
-	Tools              pulumi.StringMapArrayOutput `pulumi:"tools"`
+	AuthType           pulumi.StringOutput                                        `pulumi:"authType"`
+	CreatedAt          pulumi.StringOutput                                        `pulumi:"createdAt"`
+	CreatedBy          pulumi.StringOutput                                        `pulumi:"createdBy"`
+	Description        pulumi.StringPtrOutput                                     `pulumi:"description"`
+	Error              pulumi.StringOutput                                        `pulumi:"error"`
+	Hostname           pulumi.StringOutput                                        `pulumi:"hostname"`
+	LastSuccessfulSync pulumi.StringOutput                                        `pulumi:"lastSuccessfulSync"`
+	LastSynced         pulumi.StringOutput                                        `pulumi:"lastSynced"`
+	ModifiedAt         pulumi.StringOutput                                        `pulumi:"modifiedAt"`
+	ModifiedBy         pulumi.StringOutput                                        `pulumi:"modifiedBy"`
+	Name               pulumi.StringOutput                                        `pulumi:"name"`
+	Prompts            pulumi.StringMapArrayOutput                                `pulumi:"prompts"`
+	Status             pulumi.StringOutput                                        `pulumi:"status"`
+	Tools              pulumi.StringMapArrayOutput                                `pulumi:"tools"`
+	UpdatedPrompts     ZeroTrustAccessAiControlsMcpServerUpdatedPromptArrayOutput `pulumi:"updatedPrompts"`
+	UpdatedTools       ZeroTrustAccessAiControlsMcpServerUpdatedToolArrayOutput   `pulumi:"updatedTools"`
 	// server id
 	ZeroTrustAccessAiControlsMcpServerId pulumi.StringOutput `pulumi:"zeroTrustAccessAiControlsMcpServerId"`
 }
@@ -80,9 +98,6 @@ func NewZeroTrustAccessAiControlsMcpServer(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.AuthType == nil {
 		return nil, errors.New("invalid value for required argument 'AuthType'")
 	}
@@ -95,6 +110,13 @@ func NewZeroTrustAccessAiControlsMcpServer(ctx *pulumi.Context,
 	if args.ZeroTrustAccessAiControlsMcpServerId == nil {
 		return nil, errors.New("invalid value for required argument 'ZeroTrustAccessAiControlsMcpServerId'")
 	}
+	if args.AuthCredentials != nil {
+		args.AuthCredentials = pulumi.ToSecret(args.AuthCredentials).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"authCredentials",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustAccessAiControlsMcpServer
 	err := ctx.RegisterResource("cloudflare:index/zeroTrustAccessAiControlsMcpServer:ZeroTrustAccessAiControlsMcpServer", name, args, &resource, opts...)
@@ -121,20 +143,22 @@ type zeroTrustAccessAiControlsMcpServerState struct {
 	AccountId       *string `pulumi:"accountId"`
 	AuthCredentials *string `pulumi:"authCredentials"`
 	// Available values: "oauth", "bearer", "unauthenticated".
-	AuthType           *string             `pulumi:"authType"`
-	CreatedAt          *string             `pulumi:"createdAt"`
-	CreatedBy          *string             `pulumi:"createdBy"`
-	Description        *string             `pulumi:"description"`
-	Error              *string             `pulumi:"error"`
-	Hostname           *string             `pulumi:"hostname"`
-	LastSuccessfulSync *string             `pulumi:"lastSuccessfulSync"`
-	LastSynced         *string             `pulumi:"lastSynced"`
-	ModifiedAt         *string             `pulumi:"modifiedAt"`
-	ModifiedBy         *string             `pulumi:"modifiedBy"`
-	Name               *string             `pulumi:"name"`
-	Prompts            []map[string]string `pulumi:"prompts"`
-	Status             *string             `pulumi:"status"`
-	Tools              []map[string]string `pulumi:"tools"`
+	AuthType           *string                                           `pulumi:"authType"`
+	CreatedAt          *string                                           `pulumi:"createdAt"`
+	CreatedBy          *string                                           `pulumi:"createdBy"`
+	Description        *string                                           `pulumi:"description"`
+	Error              *string                                           `pulumi:"error"`
+	Hostname           *string                                           `pulumi:"hostname"`
+	LastSuccessfulSync *string                                           `pulumi:"lastSuccessfulSync"`
+	LastSynced         *string                                           `pulumi:"lastSynced"`
+	ModifiedAt         *string                                           `pulumi:"modifiedAt"`
+	ModifiedBy         *string                                           `pulumi:"modifiedBy"`
+	Name               *string                                           `pulumi:"name"`
+	Prompts            []map[string]string                               `pulumi:"prompts"`
+	Status             *string                                           `pulumi:"status"`
+	Tools              []map[string]string                               `pulumi:"tools"`
+	UpdatedPrompts     []ZeroTrustAccessAiControlsMcpServerUpdatedPrompt `pulumi:"updatedPrompts"`
+	UpdatedTools       []ZeroTrustAccessAiControlsMcpServerUpdatedTool   `pulumi:"updatedTools"`
 	// server id
 	ZeroTrustAccessAiControlsMcpServerId *string `pulumi:"zeroTrustAccessAiControlsMcpServerId"`
 }
@@ -157,6 +181,8 @@ type ZeroTrustAccessAiControlsMcpServerState struct {
 	Prompts            pulumi.StringMapArrayInput
 	Status             pulumi.StringPtrInput
 	Tools              pulumi.StringMapArrayInput
+	UpdatedPrompts     ZeroTrustAccessAiControlsMcpServerUpdatedPromptArrayInput
+	UpdatedTools       ZeroTrustAccessAiControlsMcpServerUpdatedToolArrayInput
 	// server id
 	ZeroTrustAccessAiControlsMcpServerId pulumi.StringPtrInput
 }
@@ -166,26 +192,30 @@ func (ZeroTrustAccessAiControlsMcpServerState) ElementType() reflect.Type {
 }
 
 type zeroTrustAccessAiControlsMcpServerArgs struct {
-	AccountId       string  `pulumi:"accountId"`
+	AccountId       *string `pulumi:"accountId"`
 	AuthCredentials *string `pulumi:"authCredentials"`
 	// Available values: "oauth", "bearer", "unauthenticated".
-	AuthType    string  `pulumi:"authType"`
-	Description *string `pulumi:"description"`
-	Hostname    string  `pulumi:"hostname"`
-	Name        string  `pulumi:"name"`
+	AuthType       string                                            `pulumi:"authType"`
+	Description    *string                                           `pulumi:"description"`
+	Hostname       string                                            `pulumi:"hostname"`
+	Name           string                                            `pulumi:"name"`
+	UpdatedPrompts []ZeroTrustAccessAiControlsMcpServerUpdatedPrompt `pulumi:"updatedPrompts"`
+	UpdatedTools   []ZeroTrustAccessAiControlsMcpServerUpdatedTool   `pulumi:"updatedTools"`
 	// server id
 	ZeroTrustAccessAiControlsMcpServerId string `pulumi:"zeroTrustAccessAiControlsMcpServerId"`
 }
 
 // The set of arguments for constructing a ZeroTrustAccessAiControlsMcpServer resource.
 type ZeroTrustAccessAiControlsMcpServerArgs struct {
-	AccountId       pulumi.StringInput
+	AccountId       pulumi.StringPtrInput
 	AuthCredentials pulumi.StringPtrInput
 	// Available values: "oauth", "bearer", "unauthenticated".
-	AuthType    pulumi.StringInput
-	Description pulumi.StringPtrInput
-	Hostname    pulumi.StringInput
-	Name        pulumi.StringInput
+	AuthType       pulumi.StringInput
+	Description    pulumi.StringPtrInput
+	Hostname       pulumi.StringInput
+	Name           pulumi.StringInput
+	UpdatedPrompts ZeroTrustAccessAiControlsMcpServerUpdatedPromptArrayInput
+	UpdatedTools   ZeroTrustAccessAiControlsMcpServerUpdatedToolArrayInput
 	// server id
 	ZeroTrustAccessAiControlsMcpServerId pulumi.StringInput
 }
@@ -277,8 +307,8 @@ func (o ZeroTrustAccessAiControlsMcpServerOutput) ToZeroTrustAccessAiControlsMcp
 	return o
 }
 
-func (o ZeroTrustAccessAiControlsMcpServerOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpServer) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o ZeroTrustAccessAiControlsMcpServerOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpServer) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o ZeroTrustAccessAiControlsMcpServerOutput) AuthCredentials() pulumi.StringPtrOutput {
@@ -340,6 +370,18 @@ func (o ZeroTrustAccessAiControlsMcpServerOutput) Status() pulumi.StringOutput {
 
 func (o ZeroTrustAccessAiControlsMcpServerOutput) Tools() pulumi.StringMapArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpServer) pulumi.StringMapArrayOutput { return v.Tools }).(pulumi.StringMapArrayOutput)
+}
+
+func (o ZeroTrustAccessAiControlsMcpServerOutput) UpdatedPrompts() ZeroTrustAccessAiControlsMcpServerUpdatedPromptArrayOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpServer) ZeroTrustAccessAiControlsMcpServerUpdatedPromptArrayOutput {
+		return v.UpdatedPrompts
+	}).(ZeroTrustAccessAiControlsMcpServerUpdatedPromptArrayOutput)
+}
+
+func (o ZeroTrustAccessAiControlsMcpServerOutput) UpdatedTools() ZeroTrustAccessAiControlsMcpServerUpdatedToolArrayOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpServer) ZeroTrustAccessAiControlsMcpServerUpdatedToolArrayOutput {
+		return v.UpdatedTools
+	}).(ZeroTrustAccessAiControlsMcpServerUpdatedToolArrayOutput)
 }
 
 // server id

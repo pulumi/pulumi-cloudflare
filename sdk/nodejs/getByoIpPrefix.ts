@@ -5,6 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `IP Prefixes: BGP On Demand Read`
+ * - `IP Prefixes: BGP On Demand Write`
+ * - `IP Prefixes: Read`
+ * - `IP Prefixes: Write`
+ * - `Magic Transit Read`
+ * - `Magic Transit Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -32,7 +41,7 @@ export interface GetByoIpPrefixArgs {
     /**
      * Identifier of a Cloudflare account.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Identifier of an IP Prefix.
      */
@@ -46,7 +55,7 @@ export interface GetByoIpPrefixResult {
     /**
      * Identifier of a Cloudflare account.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
      *
@@ -123,6 +132,15 @@ export interface GetByoIpPrefixResult {
     readonly rpkiValidationState: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `IP Prefixes: BGP On Demand Read`
+ * - `IP Prefixes: BGP On Demand Write`
+ * - `IP Prefixes: Read`
+ * - `IP Prefixes: Write`
+ * - `Magic Transit Read`
+ * - `Magic Transit Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -150,7 +168,7 @@ export interface GetByoIpPrefixOutputArgs {
     /**
      * Identifier of a Cloudflare account.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Identifier of an IP Prefix.
      */

@@ -283,6 +283,11 @@ class ZeroTrustAccessServiceToken(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Access: Service Tokens Read`
+        - `Access: Service Tokens Write`
+
         ## Example Usage
 
         ```python
@@ -320,6 +325,11 @@ class ZeroTrustAccessServiceToken(pulumi.CustomResource):
                  args: ZeroTrustAccessServiceTokenArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Access: Service Tokens Read`
+        - `Access: Service Tokens Write`
+
         ## Example Usage
 
         ```python

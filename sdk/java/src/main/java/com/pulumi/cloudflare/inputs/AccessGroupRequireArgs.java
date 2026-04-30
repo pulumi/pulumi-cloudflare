@@ -27,6 +27,7 @@ import com.pulumi.cloudflare.inputs.AccessGroupRequireOidcArgs;
 import com.pulumi.cloudflare.inputs.AccessGroupRequireOktaArgs;
 import com.pulumi.cloudflare.inputs.AccessGroupRequireSamlArgs;
 import com.pulumi.cloudflare.inputs.AccessGroupRequireServiceTokenArgs;
+import com.pulumi.cloudflare.inputs.AccessGroupRequireUserRiskScoreArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.util.Objects;
@@ -222,6 +223,13 @@ public final class AccessGroupRequireArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.serviceToken);
     }
 
+    @Import(name="userRiskScore")
+    private @Nullable Output<AccessGroupRequireUserRiskScoreArgs> userRiskScore;
+
+    public Optional<Output<AccessGroupRequireUserRiskScoreArgs>> userRiskScore() {
+        return Optional.ofNullable(this.userRiskScore);
+    }
+
     private AccessGroupRequireArgs() {}
 
     private AccessGroupRequireArgs(AccessGroupRequireArgs $) {
@@ -249,6 +257,7 @@ public final class AccessGroupRequireArgs extends com.pulumi.resources.ResourceA
         this.okta = $.okta;
         this.saml = $.saml;
         this.serviceToken = $.serviceToken;
+        this.userRiskScore = $.userRiskScore;
     }
 
     public static Builder builder() {
@@ -507,6 +516,15 @@ public final class AccessGroupRequireArgs extends com.pulumi.resources.ResourceA
 
         public Builder serviceToken(AccessGroupRequireServiceTokenArgs serviceToken) {
             return serviceToken(Output.of(serviceToken));
+        }
+
+        public Builder userRiskScore(@Nullable Output<AccessGroupRequireUserRiskScoreArgs> userRiskScore) {
+            $.userRiskScore = userRiskScore;
+            return this;
+        }
+
+        public Builder userRiskScore(AccessGroupRequireUserRiskScoreArgs userRiskScore) {
+            return userRiskScore(Output.of(userRiskScore));
         }
 
         public AccessGroupRequireArgs build() {

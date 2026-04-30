@@ -9,12 +9,14 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustGatewayLoggingResult {
-    private String accountId;
+    private @Nullable String accountId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this resource.
      * 
      */
     private String id;
@@ -30,11 +32,11 @@ public final class GetZeroTrustGatewayLoggingResult {
     private GetZeroTrustGatewayLoggingSettingsByRuleType settingsByRuleType;
 
     private GetZeroTrustGatewayLoggingResult() {}
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this resource.
      * 
      */
     public String id() {
@@ -64,7 +66,7 @@ public final class GetZeroTrustGatewayLoggingResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String id;
         private Boolean redactPii;
         private GetZeroTrustGatewayLoggingSettingsByRuleType settingsByRuleType;
@@ -78,10 +80,8 @@ public final class GetZeroTrustGatewayLoggingResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustGatewayLoggingResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

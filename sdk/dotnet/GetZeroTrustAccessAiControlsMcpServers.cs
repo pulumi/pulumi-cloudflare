@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZeroTrustAccessAiControlsMcpServersResult> InvokeAsync(GetZeroTrustAccessAiControlsMcpServersArgs args, InvokeOptions? options = null)
+        public static Task<GetZeroTrustAccessAiControlsMcpServersResult> InvokeAsync(GetZeroTrustAccessAiControlsMcpServersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustAccessAiControlsMcpServersResult>("cloudflare:index/getZeroTrustAccessAiControlsMcpServers:getZeroTrustAccessAiControlsMcpServers", args ?? new GetZeroTrustAccessAiControlsMcpServersArgs(), options.WithDefaults());
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZeroTrustAccessAiControlsMcpServersResult> Invoke(GetZeroTrustAccessAiControlsMcpServersInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZeroTrustAccessAiControlsMcpServersResult> Invoke(GetZeroTrustAccessAiControlsMcpServersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustAccessAiControlsMcpServersResult>("cloudflare:index/getZeroTrustAccessAiControlsMcpServers:getZeroTrustAccessAiControlsMcpServers", args ?? new GetZeroTrustAccessAiControlsMcpServersInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustAccessAiControlsMcpServersArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -107,8 +107,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustAccessAiControlsMcpServersInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -132,7 +132,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustAccessAiControlsMcpServersResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -152,7 +152,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustAccessAiControlsMcpServersResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

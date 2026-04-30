@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudflare One Connector: WARP Read`
+ * - `Cloudflare One Connector: WARP Write`
+ * - `Cloudflare One Connectors Read`
+ * - `Cloudflare One Connectors Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -16,6 +23,7 @@ import * as utilities from "./utilities";
  * const exampleZeroTrustTunnelWarpConnector = new cloudflare.ZeroTrustTunnelWarpConnector("example_zero_trust_tunnel_warp_connector", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     name: "blog",
+ *     ha: true,
  * });
  * ```
  *
@@ -56,7 +64,7 @@ export class ZeroTrustTunnelWarpConnector extends pulumi.CustomResource {
     /**
      * Cloudflare account ID
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * Cloudflare account ID
      */
@@ -83,6 +91,10 @@ export class ZeroTrustTunnelWarpConnector extends pulumi.CustomResource {
      * Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
      */
     declare public /*out*/ readonly deletedAt: pulumi.Output<string>;
+    /**
+     * Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
+     */
+    declare public readonly ha: pulumi.Output<boolean>;
     /**
      * Metadata associated with the tunnel.
      */
@@ -126,6 +138,7 @@ export class ZeroTrustTunnelWarpConnector extends pulumi.CustomResource {
             resourceInputs["connsInactiveAt"] = state?.connsInactiveAt;
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["deletedAt"] = state?.deletedAt;
+            resourceInputs["ha"] = state?.ha;
             resourceInputs["metadata"] = state?.metadata;
             resourceInputs["name"] = state?.name;
             resourceInputs["status"] = state?.status;
@@ -133,13 +146,11 @@ export class ZeroTrustTunnelWarpConnector extends pulumi.CustomResource {
             resourceInputs["tunnelSecret"] = state?.tunnelSecret;
         } else {
             const args = argsOrState as ZeroTrustTunnelWarpConnectorArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
             resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["ha"] = args?.ha;
             resourceInputs["name"] = args?.name;
             resourceInputs["tunnelSecret"] = args?.tunnelSecret ? pulumi.secret(args.tunnelSecret) : undefined;
             resourceInputs["accountTag"] = undefined /*out*/;
@@ -194,6 +205,10 @@ export interface ZeroTrustTunnelWarpConnectorState {
      */
     deletedAt?: pulumi.Input<string>;
     /**
+     * Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
+     */
+    ha?: pulumi.Input<boolean>;
+    /**
      * Metadata associated with the tunnel.
      */
     metadata?: pulumi.Input<string>;
@@ -224,7 +239,11 @@ export interface ZeroTrustTunnelWarpConnectorArgs {
     /**
      * Cloudflare account ID
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
+    /**
+     * Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
+     */
+    ha?: pulumi.Input<boolean>;
     /**
      * A user-friendly name for a tunnel.
      */

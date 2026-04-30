@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `User Details Read`
+ * - `User Details Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -52,6 +57,11 @@ export interface GetOrganizationResult {
     readonly profile: outputs.GetOrganizationProfile;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `User Details Read`
+ * - `User Details Write`
+ *
  * ## Example Usage
  *
  * ```typescript

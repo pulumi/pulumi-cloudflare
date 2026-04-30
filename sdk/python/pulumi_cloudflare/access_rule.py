@@ -275,6 +275,11 @@ class AccessRule(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Account Firewall Access Rules Read`
+        - `Account Firewall Access Rules Write`
+
         ## Example Usage
 
         ```python
@@ -314,6 +319,11 @@ class AccessRule(pulumi.CustomResource):
                  args: AccessRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Account Firewall Access Rules Read`
+        - `Account Firewall Access Rules Write`
+
         ## Example Usage
 
         ```python

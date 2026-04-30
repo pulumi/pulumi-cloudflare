@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Magic Transit Read`
+// - `Magic Transit Write`
+// - `Magic WAN Read`
+// - `Magic WAN Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetMagicTransitSiteAcl(ctx, &cloudflare.LookupMagicTransitSiteAclArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				SiteId:    "023e105f4ecef8ad9ca31a8372d0c353",
 //				AclId:     "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
@@ -51,7 +58,7 @@ func LookupMagicTransitSiteAcl(ctx *pulumi.Context, args *LookupMagicTransitSite
 // A collection of arguments for invoking getMagicTransitSiteAcl.
 type LookupMagicTransitSiteAclArgs struct {
 	// Identifier
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Identifier
 	AclId string `pulumi:"aclId"`
 	// Identifier
@@ -61,7 +68,7 @@ type LookupMagicTransitSiteAclArgs struct {
 // A collection of values returned by getMagicTransitSiteAcl.
 type LookupMagicTransitSiteAclResult struct {
 	// Identifier
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Identifier
 	AclId string `pulumi:"aclId"`
 	// Description for the ACL.
@@ -93,7 +100,7 @@ func LookupMagicTransitSiteAclOutput(ctx *pulumi.Context, args LookupMagicTransi
 // A collection of arguments for invoking getMagicTransitSiteAcl.
 type LookupMagicTransitSiteAclOutputArgs struct {
 	// Identifier
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Identifier
 	AclId pulumi.StringInput `pulumi:"aclId"`
 	// Identifier
@@ -120,8 +127,8 @@ func (o LookupMagicTransitSiteAclResultOutput) ToLookupMagicTransitSiteAclResult
 }
 
 // Identifier
-func (o LookupMagicTransitSiteAclResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMagicTransitSiteAclResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupMagicTransitSiteAclResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMagicTransitSiteAclResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Identifier

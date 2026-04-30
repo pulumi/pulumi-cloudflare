@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account WAF Read`
+ * - `Account WAF Write`
+ * - `Zone WAF Read`
+ * - `Zone WAF Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +25,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getContentScanningExpressions(args: GetContentScanningExpressionsArgs, opts?: pulumi.InvokeOptions): Promise<GetContentScanningExpressionsResult> {
+export function getContentScanningExpressions(args?: GetContentScanningExpressionsArgs, opts?: pulumi.InvokeOptions): Promise<GetContentScanningExpressionsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getContentScanningExpressions:getContentScanningExpressions", {
         "maxItems": args.maxItems,
@@ -37,7 +45,7 @@ export interface GetContentScanningExpressionsArgs {
     /**
      * Defines an identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -59,9 +67,16 @@ export interface GetContentScanningExpressionsResult {
     /**
      * Defines an identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account WAF Read`
+ * - `Account WAF Write`
+ * - `Zone WAF Read`
+ * - `Zone WAF Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,7 +88,8 @@ export interface GetContentScanningExpressionsResult {
  * });
  * ```
  */
-export function getContentScanningExpressionsOutput(args: GetContentScanningExpressionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetContentScanningExpressionsResult> {
+export function getContentScanningExpressionsOutput(args?: GetContentScanningExpressionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetContentScanningExpressionsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getContentScanningExpressions:getContentScanningExpressions", {
         "maxItems": args.maxItems,
@@ -92,5 +108,5 @@ export interface GetContentScanningExpressionsOutputArgs {
     /**
      * Defines an identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

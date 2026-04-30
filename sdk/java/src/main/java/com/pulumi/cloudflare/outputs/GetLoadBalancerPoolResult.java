@@ -25,7 +25,7 @@ public final class GetLoadBalancerPoolResult {
      * @return Identifier.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return A list of regions from which to run health checks. Null means every Cloudflare data center.
      * 
@@ -121,8 +121,8 @@ public final class GetLoadBalancerPoolResult {
      * @return Identifier.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return A list of regions from which to run health checks. Null means every Cloudflare data center.
@@ -265,7 +265,7 @@ public final class GetLoadBalancerPoolResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private List<String> checkRegions;
         private String createdOn;
         private String description;
@@ -315,10 +315,8 @@ public final class GetLoadBalancerPoolResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetLoadBalancerPoolResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

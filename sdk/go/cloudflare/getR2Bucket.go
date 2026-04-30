@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetR2Bucket(ctx, &cloudflare.LookupR2BucketArgs{
-//				AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:  pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				BucketName: "example-bucket",
 //			}, nil)
 //			if err != nil {
@@ -50,7 +50,7 @@ func LookupR2Bucket(ctx *pulumi.Context, args *LookupR2BucketArgs, opts ...pulum
 // A collection of arguments for invoking getR2Bucket.
 type LookupR2BucketArgs struct {
 	// Account ID.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
 }
@@ -58,7 +58,7 @@ type LookupR2BucketArgs struct {
 // A collection of values returned by getR2Bucket.
 type LookupR2BucketResult struct {
 	// Account ID.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
 	// Creation timestamp.
@@ -90,7 +90,7 @@ func LookupR2BucketOutput(ctx *pulumi.Context, args LookupR2BucketOutputArgs, op
 // A collection of arguments for invoking getR2Bucket.
 type LookupR2BucketOutputArgs struct {
 	// Account ID.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
 }
@@ -115,8 +115,8 @@ func (o LookupR2BucketResultOutput) ToLookupR2BucketResultOutputWithContext(ctx 
 }
 
 // Account ID.
-func (o LookupR2BucketResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupR2BucketResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupR2BucketResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupR2BucketResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Name of the bucket.

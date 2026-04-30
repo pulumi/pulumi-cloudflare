@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Zero Trust Read`
+// - `Zero Trust Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustDlpDataset(ctx, &cloudflare.LookupZeroTrustDlpDatasetArgs{
-//				AccountId: "account_id",
+//				AccountId: pulumi.StringRef("account_id"),
 //				DatasetId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 //			}, nil)
 //			if err != nil {
@@ -49,13 +54,13 @@ func LookupZeroTrustDlpDataset(ctx *pulumi.Context, args *LookupZeroTrustDlpData
 
 // A collection of arguments for invoking getZeroTrustDlpDataset.
 type LookupZeroTrustDlpDatasetArgs struct {
-	AccountId string `pulumi:"accountId"`
-	DatasetId string `pulumi:"datasetId"`
+	AccountId *string `pulumi:"accountId"`
+	DatasetId string  `pulumi:"datasetId"`
 }
 
 // A collection of values returned by getZeroTrustDlpDataset.
 type LookupZeroTrustDlpDatasetResult struct {
-	AccountId     string                         `pulumi:"accountId"`
+	AccountId     *string                        `pulumi:"accountId"`
 	CaseSensitive bool                           `pulumi:"caseSensitive"`
 	Columns       []GetZeroTrustDlpDatasetColumn `pulumi:"columns"`
 	CreatedAt     string                         `pulumi:"createdAt"`
@@ -86,8 +91,8 @@ func LookupZeroTrustDlpDatasetOutput(ctx *pulumi.Context, args LookupZeroTrustDl
 
 // A collection of arguments for invoking getZeroTrustDlpDataset.
 type LookupZeroTrustDlpDatasetOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
-	DatasetId pulumi.StringInput `pulumi:"datasetId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	DatasetId pulumi.StringInput    `pulumi:"datasetId"`
 }
 
 func (LookupZeroTrustDlpDatasetOutputArgs) ElementType() reflect.Type {
@@ -109,8 +114,8 @@ func (o LookupZeroTrustDlpDatasetResultOutput) ToLookupZeroTrustDlpDatasetResult
 	return o
 }
 
-func (o LookupZeroTrustDlpDatasetResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustDlpDatasetResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustDlpDatasetResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustDlpDatasetResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupZeroTrustDlpDatasetResultOutput) CaseSensitive() pulumi.BoolOutput {

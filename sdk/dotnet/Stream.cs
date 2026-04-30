@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Stream Read`
+    /// - `Stream Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -39,13 +44,19 @@ namespace Pulumi.Cloudflare
         /// The account identifier tag.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
         /// </summary>
         [Output("allowedOrigins")]
         public Output<ImmutableArray<string>> AllowedOrigins { get; private set; } = null!;
+
+        /// <summary>
+        /// The unique identifier of the source video this video was clipped from.
+        /// </summary>
+        [Output("clippedFrom")]
+        public Output<string> ClippedFrom { get; private set; } = null!;
 
         /// <summary>
         /// The date and time the media item was created.
@@ -87,6 +98,12 @@ namespace Pulumi.Cloudflare
         public Output<int?> MaxDurationSeconds { get; private set; } = null!;
 
         /// <summary>
+        /// The maximum size in bytes for the video upload.
+        /// </summary>
+        [Output("maxSizeBytes")]
+        public Output<int> MaxSizeBytes { get; private set; } = null!;
+
+        /// <summary>
         /// A user modifiable key-value store used to reference other systems of record for managing videos.
         /// </summary>
         [Output("meta")]
@@ -106,6 +123,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("preview")]
         public Output<string> Preview { get; private set; } = null!;
+
+        /// <summary>
+        /// Public details for the video including title, share link, channel link, and logo.
+        /// </summary>
+        [Output("publicDetails")]
+        public Output<Outputs.StreamPublicDetails?> PublicDetails { get; private set; } = null!;
 
         /// <summary>
         /// Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
@@ -156,10 +179,10 @@ namespace Pulumi.Cloudflare
         public Output<double> ThumbnailTimestampPct { get; private set; } = null!;
 
         /// <summary>
-        /// A Cloudflare-generated unique identifier for a media item.
+        /// The unique identifier for the video. Can be used to verify the video being updated.
         /// </summary>
         [Output("uid")]
-        public Output<string> Uid { get; private set; } = null!;
+        public Output<string?> Uid { get; private set; } = null!;
 
         /// <summary>
         /// The date and time when the video upload URL is no longer valid for direct user uploads.
@@ -184,7 +207,7 @@ namespace Pulumi.Cloudflare
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Stream(string name, StreamArgs args, CustomResourceOptions? options = null)
+        public Stream(string name, StreamArgs? args = null, CustomResourceOptions? options = null)
             : base("cloudflare:index/stream:Stream", name, args ?? new StreamArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -225,8 +248,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("allowedOrigins")]
         private InputList<string>? _allowedOrigins;
@@ -265,6 +288,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? Meta { get; set; }
 
         /// <summary>
+        /// Public details for the video including title, share link, channel link, and logo.
+        /// </summary>
+        [Input("publicDetails")]
+        public Input<Inputs.StreamPublicDetailsArgs>? PublicDetails { get; set; }
+
+        /// <summary>
         /// Indicates whether the video can be a accessed using the UID. When set to `True`, a signed token must be generated with a signing key to view the video.
         /// </summary>
         [Input("requireSignedUrls")]
@@ -281,6 +310,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("thumbnailTimestampPct")]
         public Input<double>? ThumbnailTimestampPct { get; set; }
+
+        /// <summary>
+        /// The unique identifier for the video. Can be used to verify the video being updated.
+        /// </summary>
+        [Input("uid")]
+        public Input<string>? Uid { get; set; }
 
         /// <summary>
         /// The date and time when the video upload URL is no longer valid for direct user uploads.
@@ -313,6 +348,12 @@ namespace Pulumi.Cloudflare
             get => _allowedOrigins ?? (_allowedOrigins = new InputList<string>());
             set => _allowedOrigins = value;
         }
+
+        /// <summary>
+        /// The unique identifier of the source video this video was clipped from.
+        /// </summary>
+        [Input("clippedFrom")]
+        public Input<string>? ClippedFrom { get; set; }
 
         /// <summary>
         /// The date and time the media item was created.
@@ -354,6 +395,12 @@ namespace Pulumi.Cloudflare
         public Input<int>? MaxDurationSeconds { get; set; }
 
         /// <summary>
+        /// The maximum size in bytes for the video upload.
+        /// </summary>
+        [Input("maxSizeBytes")]
+        public Input<int>? MaxSizeBytes { get; set; }
+
+        /// <summary>
         /// A user modifiable key-value store used to reference other systems of record for managing videos.
         /// </summary>
         [Input("meta")]
@@ -373,6 +420,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("preview")]
         public Input<string>? Preview { get; set; }
+
+        /// <summary>
+        /// Public details for the video including title, share link, channel link, and logo.
+        /// </summary>
+        [Input("publicDetails")]
+        public Input<Inputs.StreamPublicDetailsGetArgs>? PublicDetails { get; set; }
 
         /// <summary>
         /// Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
@@ -423,7 +476,7 @@ namespace Pulumi.Cloudflare
         public Input<double>? ThumbnailTimestampPct { get; set; }
 
         /// <summary>
-        /// A Cloudflare-generated unique identifier for a media item.
+        /// The unique identifier for the video. Can be used to verify the video being updated.
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }

@@ -13,17 +13,34 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class GetCustomHostnameFilterInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Filter by the certificate authority that issued the SSL certificate.
+        /// Available values: "google", "lets*encrypt", "ssl*com".
+        /// </summary>
+        [Input("certificateAuthority")]
+        public Input<string>? CertificateAuthority { get; set; }
+
+        /// <summary>
+        /// Filter by custom origin server name.
+        /// </summary>
+        [Input("customOriginServer")]
+        public Input<string>? CustomOriginServer { get; set; }
+
+        /// <summary>
         /// Direction to order hostnames.
         /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
 
-        /// <summary>
-        /// Fully qualified domain name to match against. This parameter cannot be used with the 'id' parameter.
-        /// </summary>
         [Input("hostname")]
-        public Input<string>? Hostname { get; set; }
+        public Input<Inputs.GetCustomHostnameFilterHostnameInputArgs>? Hostname { get; set; }
+
+        /// <summary>
+        /// Filter by the hostname's activation status.
+        /// Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "TestFailed", "provisioned", "blocked".
+        /// </summary>
+        [Input("hostnameStatus")]
+        public Input<string>? HostnameStatus { get; set; }
 
         /// <summary>
         /// Hostname ID to match against. This ID was generated and returned during the initial CustomHostname creation. This parameter cannot be used with the 'hostname' parameter.
@@ -44,6 +61,19 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("ssl")]
         public Input<double>? Ssl { get; set; }
+
+        /// <summary>
+        /// Filter by SSL certificate status.
+        /// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
+        /// </summary>
+        [Input("sslStatus")]
+        public Input<string>? SslStatus { get; set; }
+
+        /// <summary>
+        /// Filter by whether the custom hostname is a wildcard hostname.
+        /// </summary>
+        [Input("wildcard")]
+        public Input<bool>? Wildcard { get; set; }
 
         public GetCustomHostnameFilterInputArgs()
         {

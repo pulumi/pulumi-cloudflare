@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustDevicePostureRules(ctx, &cloudflare.LookupZeroTrustDevicePostureRulesArgs{
-//				AccountId: "699d98642c564d2e855e9661899b7252",
+//				AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -48,14 +48,14 @@ func LookupZeroTrustDevicePostureRules(ctx *pulumi.Context, args *LookupZeroTrus
 
 // A collection of arguments for invoking getZeroTrustDevicePostureRules.
 type LookupZeroTrustDevicePostureRulesArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 }
 
 // A collection of values returned by getZeroTrustDevicePostureRules.
 type LookupZeroTrustDevicePostureRulesResult struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -75,7 +75,7 @@ func LookupZeroTrustDevicePostureRulesOutput(ctx *pulumi.Context, args LookupZer
 
 // A collection of arguments for invoking getZeroTrustDevicePostureRules.
 type LookupZeroTrustDevicePostureRulesOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
@@ -99,8 +99,8 @@ func (o LookupZeroTrustDevicePostureRulesResultOutput) ToLookupZeroTrustDevicePo
 	return o
 }
 
-func (o LookupZeroTrustDevicePostureRulesResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustDevicePostureRulesResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustDevicePostureRulesResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustDevicePostureRulesResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

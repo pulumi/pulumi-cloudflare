@@ -23,18 +23,20 @@ func LookupAiSearchToken(ctx *pulumi.Context, args *LookupAiSearchTokenArgs, opt
 
 // A collection of arguments for invoking getAiSearchToken.
 type LookupAiSearchTokenArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string                 `pulumi:"accountId"`
+	Filter    *GetAiSearchTokenFilter `pulumi:"filter"`
 	// The ID of this resource.
-	Id string `pulumi:"id"`
+	Id *string `pulumi:"id"`
 }
 
 // A collection of values returned by getAiSearchToken.
 type LookupAiSearchTokenResult struct {
-	AccountId string `pulumi:"accountId"`
-	CfApiId   string `pulumi:"cfApiId"`
-	CreatedAt string `pulumi:"createdAt"`
-	CreatedBy string `pulumi:"createdBy"`
-	Enabled   bool   `pulumi:"enabled"`
+	AccountId *string                 `pulumi:"accountId"`
+	CfApiId   string                  `pulumi:"cfApiId"`
+	CreatedAt string                  `pulumi:"createdAt"`
+	CreatedBy string                  `pulumi:"createdBy"`
+	Enabled   bool                    `pulumi:"enabled"`
+	Filter    *GetAiSearchTokenFilter `pulumi:"filter"`
 	// The ID of this resource.
 	Id         string `pulumi:"id"`
 	Legacy     bool   `pulumi:"legacy"`
@@ -54,9 +56,10 @@ func LookupAiSearchTokenOutput(ctx *pulumi.Context, args LookupAiSearchTokenOutp
 
 // A collection of arguments for invoking getAiSearchToken.
 type LookupAiSearchTokenOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput          `pulumi:"accountId"`
+	Filter    GetAiSearchTokenFilterPtrInput `pulumi:"filter"`
 	// The ID of this resource.
-	Id pulumi.StringInput `pulumi:"id"`
+	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
 func (LookupAiSearchTokenOutputArgs) ElementType() reflect.Type {
@@ -78,8 +81,8 @@ func (o LookupAiSearchTokenResultOutput) ToLookupAiSearchTokenResultOutputWithCo
 	return o
 }
 
-func (o LookupAiSearchTokenResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAiSearchTokenResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupAiSearchTokenResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAiSearchTokenResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupAiSearchTokenResultOutput) CfApiId() pulumi.StringOutput {
@@ -96,6 +99,10 @@ func (o LookupAiSearchTokenResultOutput) CreatedBy() pulumi.StringOutput {
 
 func (o LookupAiSearchTokenResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupAiSearchTokenResult) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o LookupAiSearchTokenResultOutput) Filter() GetAiSearchTokenFilterPtrOutput {
+	return o.ApplyT(func(v LookupAiSearchTokenResult) *GetAiSearchTokenFilter { return v.Filter }).(GetAiSearchTokenFilterPtrOutput)
 }
 
 // The ID of this resource.

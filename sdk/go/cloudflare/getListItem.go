@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account Filter Lists Edit`
+// - `Account Filter Lists Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetListItem(ctx, &cloudflare.LookupListItemArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ListId:    "2c0fc9fa937b11eaa1b71c4d701ab86e",
 //				ItemId:    "34b12448945f11eaa1b71c4d701ab86e",
 //			}, nil)
@@ -51,7 +56,7 @@ func LookupListItem(ctx *pulumi.Context, args *LookupListItemArgs, opts ...pulum
 // A collection of arguments for invoking getListItem.
 type LookupListItemArgs struct {
 	// The Account ID for this resource.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Defines the unique ID of the item in the List.
 	ItemId string `pulumi:"itemId"`
 	// The unique ID of the list.
@@ -61,7 +66,7 @@ type LookupListItemArgs struct {
 // A collection of values returned by getListItem.
 type LookupListItemResult struct {
 	// The Account ID for this resource.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Defines a non-negative 32 bit integer.
 	Asn int `pulumi:"asn"`
 	// Defines an informative summary of the list item.
@@ -96,7 +101,7 @@ func LookupListItemOutput(ctx *pulumi.Context, args LookupListItemOutputArgs, op
 // A collection of arguments for invoking getListItem.
 type LookupListItemOutputArgs struct {
 	// The Account ID for this resource.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Defines the unique ID of the item in the List.
 	ItemId pulumi.StringInput `pulumi:"itemId"`
 	// The unique ID of the list.
@@ -123,8 +128,8 @@ func (o LookupListItemResultOutput) ToLookupListItemResultOutputWithContext(ctx 
 }
 
 // The Account ID for this resource.
-func (o LookupListItemResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupListItemResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupListItemResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupListItemResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Defines a non-negative 32 bit integer.

@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationCorsHeadersArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationDestinationArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationFooterLinkArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationLandingPageDesignArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationOauthConfigurationArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationPolicyArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationSaasAppArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationScimConfigArgs;
@@ -348,6 +349,21 @@ public final class ZeroTrustAccessApplicationArgs extends com.pulumi.resources.R
     }
 
     /**
+     * Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+     * 
+     */
+    @Import(name="oauthConfiguration")
+    private @Nullable Output<ZeroTrustAccessApplicationOauthConfigurationArgs> oauthConfiguration;
+
+    /**
+     * @return Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+     * 
+     */
+    public Optional<Output<ZeroTrustAccessApplicationOauthConfigurationArgs>> oauthConfiguration() {
+        return Optional.ofNullable(this.oauthConfiguration);
+    }
+
+    /**
      * Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
      * 
      */
@@ -618,6 +634,7 @@ public final class ZeroTrustAccessApplicationArgs extends com.pulumi.resources.R
         this.landingPageDesign = $.landingPageDesign;
         this.logoUrl = $.logoUrl;
         this.name = $.name;
+        this.oauthConfiguration = $.oauthConfiguration;
         this.optionsPreflightBypass = $.optionsPreflightBypass;
         this.pathCookieAttribute = $.pathCookieAttribute;
         this.policies = $.policies;
@@ -1142,6 +1159,27 @@ public final class ZeroTrustAccessApplicationArgs extends com.pulumi.resources.R
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param oauthConfiguration Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oauthConfiguration(@Nullable Output<ZeroTrustAccessApplicationOauthConfigurationArgs> oauthConfiguration) {
+            $.oauthConfiguration = oauthConfiguration;
+            return this;
+        }
+
+        /**
+         * @param oauthConfiguration Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oauthConfiguration(ZeroTrustAccessApplicationOauthConfigurationArgs oauthConfiguration) {
+            return oauthConfiguration(Output.of(oauthConfiguration));
         }
 
         /**

@@ -10,6 +10,8 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetR2CustomDomainResult {
@@ -17,7 +19,7 @@ public final class GetR2CustomDomainResult {
      * @return Account ID.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Name of the bucket.
      * 
@@ -66,8 +68,8 @@ public final class GetR2CustomDomainResult {
      * @return Account ID.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Name of the bucket.
@@ -139,7 +141,7 @@ public final class GetR2CustomDomainResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String bucketName;
         private List<String> ciphers;
         private String domain;
@@ -165,10 +167,8 @@ public final class GetR2CustomDomainResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetR2CustomDomainResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

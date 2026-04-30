@@ -10,139 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Workers Scripts Read`
+    /// - `Workers Scripts Write`
+    /// - `Workers Tail Read`
+    /// 
     /// &gt; For more direct control over Workers resources, we recommend the beta `cloudflare.Worker`, `cloudflare.WorkerVersion`, and `cloudflare.WorkersDeployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// using Std = Pulumi.Std;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleWorkersScript = new Cloudflare.Index.WorkersScript("example_workers_script", new()
-    ///     {
-    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         ScriptName = "this-is_my_script-01",
-    ///         Assets = new Cloudflare.Inputs.WorkersScriptAssetsArgs
-    ///         {
-    ///             Config = new Cloudflare.Inputs.WorkersScriptAssetsConfigArgs
-    ///             {
-    ///                 Headers = @"        /dashboard/*
-    ///         X-Frame-Options: DENY
-    /// 
-    ///         /static/*
-    ///         Access-Control-Allow-Origin: *
-    /// ",
-    ///                 Redirects = @"        /foo /bar 301
-    ///         /news/* /blog/:splat
-    /// ",
-    ///                 HtmlHandling = "auto-trailing-slash",
-    ///                 NotFoundHandling = "none",
-    ///                 RunWorkerFirst = false,
-    ///             },
-    ///             Jwt = "jwt",
-    ///         },
-    ///         Bindings = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.WorkersScriptBindingArgs
-    ///             {
-    ///                 Name = "MY_ENV_VAR",
-    ///                 Text = "my_data",
-    ///                 Type = "plain_text",
-    ///             },
-    ///         },
-    ///         CompatibilityDate = "2021-01-01",
-    ///         CompatibilityFlags = new[]
-    ///         {
-    ///             "nodejs_compat",
-    ///         },
-    ///         ContentFile = "worker.js",
-    ///         ContentSha256 = Std.Index.Filesha256.Invoke(new()
-    ///         {
-    ///             Input = "worker.js",
-    ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         KeepAssets = false,
-    ///         KeepBindings = new[]
-    ///         {
-    ///             "kv_namespace",
-    ///         },
-    ///         Limits = new Cloudflare.Inputs.WorkersScriptLimitsArgs
-    ///         {
-    ///             CpuMs = 50,
-    ///         },
-    ///         Logpush = false,
-    ///         MainModule = "worker.js",
-    ///         Migrations = new Cloudflare.Inputs.WorkersScriptMigrationsArgs
-    ///         {
-    ///             DeletedClasses = new[]
-    ///             {
-    ///                 "string",
-    ///             },
-    ///             NewClasses = new[]
-    ///             {
-    ///                 "string",
-    ///             },
-    ///             NewSqliteClasses = new[]
-    ///             {
-    ///                 "string",
-    ///             },
-    ///             NewTag = "v2",
-    ///             OldTag = "v1",
-    ///             RenamedClasses = new[]
-    ///             {
-    ///                 new Cloudflare.Inputs.WorkersScriptMigrationsRenamedClassArgs
-    ///                 {
-    ///                     From = "from",
-    ///                     To = "to",
-    ///                 },
-    ///             },
-    ///             TransferredClasses = new[]
-    ///             {
-    ///                 new Cloudflare.Inputs.WorkersScriptMigrationsTransferredClassArgs
-    ///                 {
-    ///                     From = "from",
-    ///                     FromScript = "from_script",
-    ///                     To = "to",
-    ///                 },
-    ///             },
-    ///         },
-    ///         Observability = new Cloudflare.Inputs.WorkersScriptObservabilityArgs
-    ///         {
-    ///             Enabled = true,
-    ///             HeadSamplingRate = 0.1,
-    ///             Logs = new Cloudflare.Inputs.WorkersScriptObservabilityLogsArgs
-    ///             {
-    ///                 Enabled = true,
-    ///                 InvocationLogs = true,
-    ///                 Destinations = new[]
-    ///                 {
-    ///                     "cloudflare",
-    ///                 },
-    ///                 HeadSamplingRate = 0.1,
-    ///                 Persist = true,
-    ///             },
-    ///         },
-    ///         Placement = new Cloudflare.Inputs.WorkersScriptPlacementArgs
-    ///         {
-    ///             Mode = "smart",
-    ///         },
-    ///         TailConsumers = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.WorkersScriptTailConsumerArgs
-    ///             {
-    ///                 Service = "my-log-consumer",
-    ///                 Environment = "production",
-    ///                 Namespace = "my-namespace",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 
@@ -158,7 +32,13 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
+
+        /// <summary>
+        /// Annotations for the version created by this upload.
+        /// </summary>
+        [Output("annotations")]
+        public Output<Outputs.WorkerScriptAnnotations> Annotations { get; private set; } = null!;
 
         /// <summary>
         /// Configuration for assets within a Worker.
@@ -403,8 +283,14 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// Annotations for the version created by this upload.
+        /// </summary>
+        [Input("annotations")]
+        public Input<Inputs.WorkerScriptAnnotationsArgs>? Annotations { get; set; }
 
         /// <summary>
         /// Configuration for assets within a Worker.
@@ -564,6 +450,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// Annotations for the version created by this upload.
+        /// </summary>
+        [Input("annotations")]
+        public Input<Inputs.WorkerScriptAnnotationsGetArgs>? Annotations { get; set; }
 
         /// <summary>
         /// Configuration for assets within a Worker.

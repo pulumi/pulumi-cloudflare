@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Images Read`
+// - `Images Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetImages(ctx, &cloudflare.LookupImagesArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Creator:   pulumi.StringRef("creator"),
 //			}, nil)
 //			if err != nil {
@@ -50,7 +55,7 @@ func LookupImages(ctx *pulumi.Context, args *LookupImagesArgs, opts ...pulumi.In
 // A collection of arguments for invoking getImages.
 type LookupImagesArgs struct {
 	// Account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Internal user ID set within the creator field. Setting to empty string "" will return images where creator field is not set
 	Creator *string `pulumi:"creator"`
 	// Max items to fetch, default: 1000
@@ -60,7 +65,7 @@ type LookupImagesArgs struct {
 // A collection of values returned by getImages.
 type LookupImagesResult struct {
 	// Account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Internal user ID set within the creator field. Setting to empty string "" will return images where creator field is not set
 	Creator *string `pulumi:"creator"`
 	// The provider-assigned unique ID for this managed resource.
@@ -83,7 +88,7 @@ func LookupImagesOutput(ctx *pulumi.Context, args LookupImagesOutputArgs, opts .
 // A collection of arguments for invoking getImages.
 type LookupImagesOutputArgs struct {
 	// Account identifier tag.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Internal user ID set within the creator field. Setting to empty string "" will return images where creator field is not set
 	Creator pulumi.StringPtrInput `pulumi:"creator"`
 	// Max items to fetch, default: 1000
@@ -110,8 +115,8 @@ func (o LookupImagesResultOutput) ToLookupImagesResultOutputWithContext(ctx cont
 }
 
 // Account identifier tag.
-func (o LookupImagesResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupImagesResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupImagesResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupImagesResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Internal user ID set within the creator field. Setting to empty string "" will return images where creator field is not set

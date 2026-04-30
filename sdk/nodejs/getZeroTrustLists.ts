@@ -19,7 +19,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustLists(args: GetZeroTrustListsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustListsResult> {
+export function getZeroTrustLists(args?: GetZeroTrustListsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustListsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustLists:getZeroTrustLists", {
         "accountId": args.accountId,
@@ -32,14 +33,14 @@ export function getZeroTrustLists(args: GetZeroTrustListsArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getZeroTrustLists.
  */
 export interface GetZeroTrustListsArgs {
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
     maxItems?: number;
     /**
      * Specify the list type.
-     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
      */
     type?: string;
 }
@@ -48,7 +49,7 @@ export interface GetZeroTrustListsArgs {
  * A collection of values returned by getZeroTrustLists.
  */
 export interface GetZeroTrustListsResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -63,7 +64,7 @@ export interface GetZeroTrustListsResult {
     readonly results: outputs.GetZeroTrustListsResult[];
     /**
      * Specify the list type.
-     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
      */
     readonly type?: string;
 }
@@ -80,7 +81,8 @@ export interface GetZeroTrustListsResult {
  * });
  * ```
  */
-export function getZeroTrustListsOutput(args: GetZeroTrustListsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustListsResult> {
+export function getZeroTrustListsOutput(args?: GetZeroTrustListsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustListsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustLists:getZeroTrustLists", {
         "accountId": args.accountId,
@@ -93,14 +95,14 @@ export function getZeroTrustListsOutput(args: GetZeroTrustListsOutputArgs, opts?
  * A collection of arguments for invoking getZeroTrustLists.
  */
 export interface GetZeroTrustListsOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */
     maxItems?: pulumi.Input<number>;
     /**
      * Specify the list type.
-     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
      */
     type?: pulumi.Input<string>;
 }

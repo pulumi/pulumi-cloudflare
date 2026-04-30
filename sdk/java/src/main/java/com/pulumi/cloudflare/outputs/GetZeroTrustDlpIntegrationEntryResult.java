@@ -13,10 +13,12 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustDlpIntegrationEntryResult {
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner
@@ -54,8 +56,8 @@ public final class GetZeroTrustDlpIntegrationEntryResult {
     private String wordList;
 
     private GetZeroTrustDlpIntegrationEntryResult() {}
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Only applies to custom word lists.
@@ -136,7 +138,7 @@ public final class GetZeroTrustDlpIntegrationEntryResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private Boolean caseSensitive;
         private GetZeroTrustDlpIntegrationEntryConfidence confidence;
         private String createdAt;
@@ -178,10 +180,8 @@ public final class GetZeroTrustDlpIntegrationEntryResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustDlpIntegrationEntryResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

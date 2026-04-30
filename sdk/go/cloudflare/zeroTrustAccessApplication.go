@@ -66,6 +66,8 @@ type ZeroTrustAccessApplication struct {
 	LogoUrl pulumi.StringPtrOutput `pulumi:"logoUrl"`
 	// The name of the application.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+	OauthConfiguration ZeroTrustAccessApplicationOauthConfigurationPtrOutput `pulumi:"oauthConfiguration"`
 	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
 	OptionsPreflightBypass pulumi.BoolPtrOutput `pulumi:"optionsPreflightBypass"`
 	// Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
@@ -188,6 +190,8 @@ type zeroTrustAccessApplicationState struct {
 	LogoUrl *string `pulumi:"logoUrl"`
 	// The name of the application.
 	Name *string `pulumi:"name"`
+	// Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+	OauthConfiguration *ZeroTrustAccessApplicationOauthConfiguration `pulumi:"oauthConfiguration"`
 	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
 	OptionsPreflightBypass *bool `pulumi:"optionsPreflightBypass"`
 	// Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
@@ -275,6 +279,8 @@ type ZeroTrustAccessApplicationState struct {
 	LogoUrl pulumi.StringPtrInput
 	// The name of the application.
 	Name pulumi.StringPtrInput
+	// Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+	OauthConfiguration ZeroTrustAccessApplicationOauthConfigurationPtrInput
 	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
 	OptionsPreflightBypass pulumi.BoolPtrInput
 	// Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
@@ -364,6 +370,8 @@ type zeroTrustAccessApplicationArgs struct {
 	LogoUrl *string `pulumi:"logoUrl"`
 	// The name of the application.
 	Name *string `pulumi:"name"`
+	// Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+	OauthConfiguration *ZeroTrustAccessApplicationOauthConfiguration `pulumi:"oauthConfiguration"`
 	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
 	OptionsPreflightBypass *bool `pulumi:"optionsPreflightBypass"`
 	// Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
@@ -450,6 +458,8 @@ type ZeroTrustAccessApplicationArgs struct {
 	LogoUrl pulumi.StringPtrInput
 	// The name of the application.
 	Name pulumi.StringPtrInput
+	// Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+	OauthConfiguration ZeroTrustAccessApplicationOauthConfigurationPtrInput
 	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
 	OptionsPreflightBypass pulumi.BoolPtrInput
 	// Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
@@ -698,6 +708,13 @@ func (o ZeroTrustAccessApplicationOutput) LogoUrl() pulumi.StringPtrOutput {
 // The name of the application.
 func (o ZeroTrustAccessApplicationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessApplication) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+func (o ZeroTrustAccessApplicationOutput) OauthConfiguration() ZeroTrustAccessApplicationOauthConfigurationPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessApplication) ZeroTrustAccessApplicationOauthConfigurationPtrOutput {
+		return v.OauthConfiguration
+	}).(ZeroTrustAccessApplicationOauthConfigurationPtrOutput)
 }
 
 // Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.

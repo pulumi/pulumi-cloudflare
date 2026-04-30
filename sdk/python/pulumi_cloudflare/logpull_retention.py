@@ -107,6 +107,11 @@ class LogpullRetention(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Logs Read`
+        - `Logs Write`
+
         ## Example Usage
 
         ```python
@@ -137,6 +142,11 @@ class LogpullRetention(pulumi.CustomResource):
                  args: LogpullRetentionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Logs Read`
+        - `Logs Write`
+
         ## Example Usage
 
         ```python

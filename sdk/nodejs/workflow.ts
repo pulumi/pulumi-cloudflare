@@ -7,6 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,6 +24,9 @@ import * as utilities from "./utilities";
  *     workflowName: "x",
  *     className: "x",
  *     scriptName: "x",
+ *     limits: {
+ *         steps: 1,
+ *     },
  * });
  * ```
  *
@@ -55,11 +64,12 @@ export class Workflow extends pulumi.CustomResource {
         return obj['__pulumiType'] === Workflow.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     declare public readonly className: pulumi.Output<string>;
     declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     declare public /*out*/ readonly instances: pulumi.Output<outputs.WorkflowInstances>;
     declare public /*out*/ readonly isDeleted: pulumi.Output<number>;
+    declare public readonly limits: pulumi.Output<outputs.WorkflowLimits | undefined>;
     declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     declare public /*out*/ readonly name: pulumi.Output<string>;
     declare public readonly scriptName: pulumi.Output<string>;
@@ -86,6 +96,7 @@ export class Workflow extends pulumi.CustomResource {
             resourceInputs["createdOn"] = state?.createdOn;
             resourceInputs["instances"] = state?.instances;
             resourceInputs["isDeleted"] = state?.isDeleted;
+            resourceInputs["limits"] = state?.limits;
             resourceInputs["modifiedOn"] = state?.modifiedOn;
             resourceInputs["name"] = state?.name;
             resourceInputs["scriptName"] = state?.scriptName;
@@ -95,9 +106,6 @@ export class Workflow extends pulumi.CustomResource {
             resourceInputs["workflowName"] = state?.workflowName;
         } else {
             const args = argsOrState as WorkflowArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.className === undefined && !opts.urn) {
                 throw new Error("Missing required property 'className'");
             }
@@ -109,6 +117,7 @@ export class Workflow extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["className"] = args?.className;
+            resourceInputs["limits"] = args?.limits;
             resourceInputs["scriptName"] = args?.scriptName;
             resourceInputs["workflowName"] = args?.workflowName;
             resourceInputs["createdOn"] = undefined /*out*/;
@@ -134,6 +143,7 @@ export interface WorkflowState {
     createdOn?: pulumi.Input<string>;
     instances?: pulumi.Input<inputs.WorkflowInstances>;
     isDeleted?: pulumi.Input<number>;
+    limits?: pulumi.Input<inputs.WorkflowLimits>;
     modifiedOn?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     scriptName?: pulumi.Input<string>;
@@ -147,8 +157,9 @@ export interface WorkflowState {
  * The set of arguments for constructing a Workflow resource.
  */
 export interface WorkflowArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     className: pulumi.Input<string>;
+    limits?: pulumi.Input<inputs.WorkflowLimits>;
     scriptName: pulumi.Input<string>;
     workflowName: pulumi.Input<string>;
 }

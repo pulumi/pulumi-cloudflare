@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetAccountDnsSettingsInternalViews
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `DNS View Read`
+        /// - `DNS View Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -40,10 +45,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetAccountDnsSettingsInternalViewsResult> InvokeAsync(GetAccountDnsSettingsInternalViewsArgs args, InvokeOptions? options = null)
+        public static Task<GetAccountDnsSettingsInternalViewsResult> InvokeAsync(GetAccountDnsSettingsInternalViewsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountDnsSettingsInternalViewsResult>("cloudflare:index/getAccountDnsSettingsInternalViews:getAccountDnsSettingsInternalViews", args ?? new GetAccountDnsSettingsInternalViewsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `DNS View Read`
+        /// - `DNS View Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -72,10 +82,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetAccountDnsSettingsInternalViewsResult> Invoke(GetAccountDnsSettingsInternalViewsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetAccountDnsSettingsInternalViewsResult> Invoke(GetAccountDnsSettingsInternalViewsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountDnsSettingsInternalViewsResult>("cloudflare:index/getAccountDnsSettingsInternalViews:getAccountDnsSettingsInternalViews", args ?? new GetAccountDnsSettingsInternalViewsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `DNS View Read`
+        /// - `DNS View Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -114,8 +129,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Direction to order DNS views in.
@@ -170,8 +185,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Direction to order DNS views in.
@@ -228,7 +243,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Direction to order DNS views in.
         /// Available values: "asc", "desc".
@@ -268,7 +283,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetAccountDnsSettingsInternalViewsResult(
-            string accountId,
+            string? accountId,
 
             string direction,
 

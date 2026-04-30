@@ -10,6 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Account Custom Pages Read`
+    /// - `Account Custom Pages Write`
+    /// - `Account Settings Read`
+    /// - `Account Settings Write`
+    /// - `Zero Trust: PII Read`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

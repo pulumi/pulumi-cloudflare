@@ -6,8 +6,11 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.GetAccountDnsSettingsZoneDefaults;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccountDnsSettingsResult {
@@ -15,7 +18,12 @@ public final class GetAccountDnsSettingsResult {
      * @return Identifier.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
+    /**
+     * @return When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record&#39;s individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
+     * 
+     */
+    private Boolean enforceDnsOnly;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -28,8 +36,15 @@ public final class GetAccountDnsSettingsResult {
      * @return Identifier.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
+    }
+    /**
+     * @return When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record&#39;s individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
+     * 
+     */
+    public Boolean enforceDnsOnly() {
+        return this.enforceDnsOnly;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -51,23 +66,31 @@ public final class GetAccountDnsSettingsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
+        private Boolean enforceDnsOnly;
         private String id;
         private GetAccountDnsSettingsZoneDefaults zoneDefaults;
         public Builder() {}
         public Builder(GetAccountDnsSettingsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.enforceDnsOnly = defaults.enforceDnsOnly;
     	      this.id = defaults.id;
     	      this.zoneDefaults = defaults.zoneDefaults;
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetAccountDnsSettingsResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enforceDnsOnly(Boolean enforceDnsOnly) {
+            if (enforceDnsOnly == null) {
+              throw new MissingRequiredPropertyException("GetAccountDnsSettingsResult", "enforceDnsOnly");
+            }
+            this.enforceDnsOnly = enforceDnsOnly;
             return this;
         }
         @CustomType.Setter
@@ -89,6 +112,7 @@ public final class GetAccountDnsSettingsResult {
         public GetAccountDnsSettingsResult build() {
             final var _resultValue = new GetAccountDnsSettingsResult();
             _resultValue.accountId = accountId;
+            _resultValue.enforceDnsOnly = enforceDnsOnly;
             _resultValue.id = id;
             _resultValue.zoneDefaults = zoneDefaults;
             return _resultValue;

@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Magic WAN Read`
+ * - `Magic WAN Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -34,7 +39,7 @@ export interface GetMagicTransitConnectorArgs {
     /**
      * Account identifier
      */
-    accountId: string;
+    accountId?: string;
     connectorId: string;
 }
 
@@ -45,7 +50,7 @@ export interface GetMagicTransitConnectorResult {
     /**
      * Account identifier
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     readonly activated: boolean;
     readonly connectorId: string;
     readonly device: outputs.GetMagicTransitConnectorDevice;
@@ -53,7 +58,15 @@ export interface GetMagicTransitConnectorResult {
      * The ID of this resource.
      */
     readonly id: string;
+    /**
+     * Allowed days of the week for upgrades. Default is all days.
+     */
+    readonly interruptWindowDaysOfWeeks: string[];
     readonly interruptWindowDurationHours: number;
+    /**
+     * List of dates (YYYY-MM-DD) when upgrades are blocked.
+     */
+    readonly interruptWindowEmbargoDates: string[];
     readonly interruptWindowHourOfDay: number;
     readonly lastHeartbeat: string;
     readonly lastSeenVersion: string;
@@ -63,6 +76,11 @@ export interface GetMagicTransitConnectorResult {
     readonly timezone: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Magic WAN Read`
+ * - `Magic WAN Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -90,6 +108,6 @@ export interface GetMagicTransitConnectorOutputArgs {
     /**
      * Account identifier
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     connectorId: pulumi.Input<string>;
 }

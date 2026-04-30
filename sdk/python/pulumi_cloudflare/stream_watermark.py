@@ -19,28 +19,28 @@ __all__ = ['StreamWatermarkInitArgs', 'StreamWatermark']
 @pulumi.input_type
 class StreamWatermarkInitArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
-                 file: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  opacity: Optional[pulumi.Input[_builtins.float]] = None,
                  padding: Optional[pulumi.Input[_builtins.float]] = None,
                  position: Optional[pulumi.Input[_builtins.str]] = None,
-                 scale: Optional[pulumi.Input[_builtins.float]] = None):
+                 scale: Optional[pulumi.Input[_builtins.float]] = None,
+                 url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a StreamWatermark resource.
 
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
-        :param pulumi.Input[_builtins.str] file: The image file to upload.
         :param pulumi.Input[_builtins.str] identifier: The unique identifier for a watermark profile.
         :param pulumi.Input[_builtins.str] name: A short description of the watermark profile.
         :param pulumi.Input[_builtins.float] opacity: The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque.
         :param pulumi.Input[_builtins.float] padding: The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm.
         :param pulumi.Input[_builtins.str] position: The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter.
         :param pulumi.Input[_builtins.float] scale: The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video.
+        :param pulumi.Input[_builtins.str] url: URL of the watermark image to copy.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "file", file)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
         if name is not None:
@@ -53,30 +53,20 @@ class StreamWatermarkInitArgs:
             pulumi.set(__self__, "position", position)
         if scale is not None:
             pulumi.set(__self__, "scale", scale)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The account identifier tag.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "account_id", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def file(self) -> pulumi.Input[_builtins.str]:
-        """
-        The image file to upload.
-        """
-        return pulumi.get(self, "file")
-
-    @file.setter
-    def file(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "file", value)
 
     @_builtins.property
     @pulumi.getter
@@ -150,6 +140,18 @@ class StreamWatermarkInitArgs:
     def scale(self, value: Optional[pulumi.Input[_builtins.float]]):
         pulumi.set(self, "scale", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        URL of the watermark image to copy.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "url", value)
+
 
 @pulumi.input_type
 class _StreamWatermarkState:
@@ -157,7 +159,6 @@ class _StreamWatermarkState:
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  created: Optional[pulumi.Input[_builtins.str]] = None,
                  downloaded_from: Optional[pulumi.Input[_builtins.str]] = None,
-                 file: Optional[pulumi.Input[_builtins.str]] = None,
                  height: Optional[pulumi.Input[_builtins.int]] = None,
                  identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -167,6 +168,7 @@ class _StreamWatermarkState:
                  scale: Optional[pulumi.Input[_builtins.float]] = None,
                  size: Optional[pulumi.Input[_builtins.float]] = None,
                  uid: Optional[pulumi.Input[_builtins.str]] = None,
+                 url: Optional[pulumi.Input[_builtins.str]] = None,
                  width: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering StreamWatermark resources.
@@ -174,7 +176,6 @@ class _StreamWatermarkState:
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
         :param pulumi.Input[_builtins.str] created: The date and a time a watermark profile was created.
         :param pulumi.Input[_builtins.str] downloaded_from: The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null.
-        :param pulumi.Input[_builtins.str] file: The image file to upload.
         :param pulumi.Input[_builtins.int] height: The height of the image in pixels.
         :param pulumi.Input[_builtins.str] identifier: The unique identifier for a watermark profile.
         :param pulumi.Input[_builtins.str] name: A short description of the watermark profile.
@@ -184,6 +185,7 @@ class _StreamWatermarkState:
         :param pulumi.Input[_builtins.float] scale: The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video.
         :param pulumi.Input[_builtins.float] size: The size of the image in bytes.
         :param pulumi.Input[_builtins.str] uid: The unique identifier for a watermark profile.
+        :param pulumi.Input[_builtins.str] url: URL of the watermark image to copy.
         :param pulumi.Input[_builtins.int] width: The width of the image in pixels.
         """
         if account_id is not None:
@@ -192,8 +194,6 @@ class _StreamWatermarkState:
             pulumi.set(__self__, "created", created)
         if downloaded_from is not None:
             pulumi.set(__self__, "downloaded_from", downloaded_from)
-        if file is not None:
-            pulumi.set(__self__, "file", file)
         if height is not None:
             pulumi.set(__self__, "height", height)
         if identifier is not None:
@@ -212,6 +212,8 @@ class _StreamWatermarkState:
             pulumi.set(__self__, "size", size)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
         if width is not None:
             pulumi.set(__self__, "width", width)
 
@@ -250,18 +252,6 @@ class _StreamWatermarkState:
     @downloaded_from.setter
     def downloaded_from(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "downloaded_from", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def file(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The image file to upload.
-        """
-        return pulumi.get(self, "file")
-
-    @file.setter
-    def file(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "file", value)
 
     @_builtins.property
     @pulumi.getter
@@ -373,6 +363,18 @@ class _StreamWatermarkState:
 
     @_builtins.property
     @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        URL of the watermark image to copy.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "url", value)
+
+    @_builtins.property
+    @pulumi.getter
     def width(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The width of the image in pixels.
@@ -391,15 +393,20 @@ class StreamWatermark(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 file: Optional[pulumi.Input[_builtins.str]] = None,
                  identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  opacity: Optional[pulumi.Input[_builtins.float]] = None,
                  padding: Optional[pulumi.Input[_builtins.float]] = None,
                  position: Optional[pulumi.Input[_builtins.str]] = None,
                  scale: Optional[pulumi.Input[_builtins.float]] = None,
+                 url: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Stream Read`
+        - `Stream Write`
+
         ## Example Usage
 
         ```python
@@ -408,12 +415,12 @@ class StreamWatermark(pulumi.CustomResource):
 
         example_stream_watermark = cloudflare.StreamWatermark("example_stream_watermark",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            file="@/Users/rchen/Downloads/watermark.png",
             name="Marketing Videos",
             opacity=0.75,
             padding=0.1,
             position="center",
-            scale=0.1)
+            scale=0.1,
+            url="https://example.com")
         ```
 
         ## Import
@@ -424,21 +431,26 @@ class StreamWatermark(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
-        :param pulumi.Input[_builtins.str] file: The image file to upload.
         :param pulumi.Input[_builtins.str] identifier: The unique identifier for a watermark profile.
         :param pulumi.Input[_builtins.str] name: A short description of the watermark profile.
         :param pulumi.Input[_builtins.float] opacity: The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque.
         :param pulumi.Input[_builtins.float] padding: The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm.
         :param pulumi.Input[_builtins.str] position: The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter.
         :param pulumi.Input[_builtins.float] scale: The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video.
+        :param pulumi.Input[_builtins.str] url: URL of the watermark image to copy.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: StreamWatermarkInitArgs,
+                 args: Optional[StreamWatermarkInitArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Stream Read`
+        - `Stream Write`
+
         ## Example Usage
 
         ```python
@@ -447,12 +459,12 @@ class StreamWatermark(pulumi.CustomResource):
 
         example_stream_watermark = cloudflare.StreamWatermark("example_stream_watermark",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            file="@/Users/rchen/Downloads/watermark.png",
             name="Marketing Videos",
             opacity=0.75,
             padding=0.1,
             position="center",
-            scale=0.1)
+            scale=0.1,
+            url="https://example.com")
         ```
 
         ## Import
@@ -476,13 +488,13 @@ class StreamWatermark(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 file: Optional[pulumi.Input[_builtins.str]] = None,
                  identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  opacity: Optional[pulumi.Input[_builtins.float]] = None,
                  padding: Optional[pulumi.Input[_builtins.float]] = None,
                  position: Optional[pulumi.Input[_builtins.str]] = None,
                  scale: Optional[pulumi.Input[_builtins.float]] = None,
+                 url: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -492,18 +504,14 @@ class StreamWatermark(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = StreamWatermarkInitArgs.__new__(StreamWatermarkInitArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
-            if file is None and not opts.urn:
-                raise TypeError("Missing required property 'file'")
-            __props__.__dict__["file"] = file
             __props__.__dict__["identifier"] = identifier
             __props__.__dict__["name"] = name
             __props__.__dict__["opacity"] = opacity
             __props__.__dict__["padding"] = padding
             __props__.__dict__["position"] = position
             __props__.__dict__["scale"] = scale
+            __props__.__dict__["url"] = url
             __props__.__dict__["created"] = None
             __props__.__dict__["downloaded_from"] = None
             __props__.__dict__["height"] = None
@@ -523,7 +531,6 @@ class StreamWatermark(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
             created: Optional[pulumi.Input[_builtins.str]] = None,
             downloaded_from: Optional[pulumi.Input[_builtins.str]] = None,
-            file: Optional[pulumi.Input[_builtins.str]] = None,
             height: Optional[pulumi.Input[_builtins.int]] = None,
             identifier: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -533,6 +540,7 @@ class StreamWatermark(pulumi.CustomResource):
             scale: Optional[pulumi.Input[_builtins.float]] = None,
             size: Optional[pulumi.Input[_builtins.float]] = None,
             uid: Optional[pulumi.Input[_builtins.str]] = None,
+            url: Optional[pulumi.Input[_builtins.str]] = None,
             width: Optional[pulumi.Input[_builtins.int]] = None) -> 'StreamWatermark':
         """
         Get an existing StreamWatermark resource's state with the given name, id, and optional extra
@@ -544,7 +552,6 @@ class StreamWatermark(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
         :param pulumi.Input[_builtins.str] created: The date and a time a watermark profile was created.
         :param pulumi.Input[_builtins.str] downloaded_from: The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null.
-        :param pulumi.Input[_builtins.str] file: The image file to upload.
         :param pulumi.Input[_builtins.int] height: The height of the image in pixels.
         :param pulumi.Input[_builtins.str] identifier: The unique identifier for a watermark profile.
         :param pulumi.Input[_builtins.str] name: A short description of the watermark profile.
@@ -554,6 +561,7 @@ class StreamWatermark(pulumi.CustomResource):
         :param pulumi.Input[_builtins.float] scale: The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video.
         :param pulumi.Input[_builtins.float] size: The size of the image in bytes.
         :param pulumi.Input[_builtins.str] uid: The unique identifier for a watermark profile.
+        :param pulumi.Input[_builtins.str] url: URL of the watermark image to copy.
         :param pulumi.Input[_builtins.int] width: The width of the image in pixels.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -563,7 +571,6 @@ class StreamWatermark(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["created"] = created
         __props__.__dict__["downloaded_from"] = downloaded_from
-        __props__.__dict__["file"] = file
         __props__.__dict__["height"] = height
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["name"] = name
@@ -573,12 +580,13 @@ class StreamWatermark(pulumi.CustomResource):
         __props__.__dict__["scale"] = scale
         __props__.__dict__["size"] = size
         __props__.__dict__["uid"] = uid
+        __props__.__dict__["url"] = url
         __props__.__dict__["width"] = width
         return StreamWatermark(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The account identifier tag.
         """
@@ -599,14 +607,6 @@ class StreamWatermark(pulumi.CustomResource):
         The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null.
         """
         return pulumi.get(self, "downloaded_from")
-
-    @_builtins.property
-    @pulumi.getter
-    def file(self) -> pulumi.Output[_builtins.str]:
-        """
-        The image file to upload.
-        """
-        return pulumi.get(self, "file")
 
     @_builtins.property
     @pulumi.getter
@@ -679,6 +679,14 @@ class StreamWatermark(pulumi.CustomResource):
         The unique identifier for a watermark profile.
         """
         return pulumi.get(self, "uid")
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        URL of the watermark image to copy.
+        """
+        return pulumi.get(self, "url")
 
     @_builtins.property
     @pulumi.getter

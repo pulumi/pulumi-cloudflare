@@ -19,7 +19,7 @@ __all__ = ['WorkersForPlatformsDispatchNamespaceArgs', 'WorkersForPlatformsDispa
 @pulumi.input_type
 class WorkersForPlatformsDispatchNamespaceArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkersForPlatformsDispatchNamespace resource.
@@ -27,20 +27,21 @@ class WorkersForPlatformsDispatchNamespaceArgs:
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] name: The name of the dispatch namespace.
         """
-        pulumi.set(__self__, "account_id", account_id)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
@@ -235,6 +236,12 @@ class WorkersForPlatformsDispatchNamespace(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Workers Scripts Read`
+        - `Workers Scripts Write`
+        - `Workers Tail Read`
+
         ## Example Usage
 
         ```python
@@ -262,9 +269,15 @@ class WorkersForPlatformsDispatchNamespace(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: WorkersForPlatformsDispatchNamespaceArgs,
+                 args: Optional[WorkersForPlatformsDispatchNamespaceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Workers Scripts Read`
+        - `Workers Scripts Write`
+        - `Workers Tail Read`
+
         ## Example Usage
 
         ```python
@@ -309,8 +322,6 @@ class WorkersForPlatformsDispatchNamespace(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkersForPlatformsDispatchNamespaceArgs.__new__(WorkersForPlatformsDispatchNamespaceArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["name"] = name
             __props__.__dict__["created_by"] = None
@@ -379,7 +390,7 @@ class WorkersForPlatformsDispatchNamespace(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier.
         """

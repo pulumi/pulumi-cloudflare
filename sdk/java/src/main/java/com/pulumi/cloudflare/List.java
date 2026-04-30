@@ -17,6 +17,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Account Filter Lists Edit`
+ * - `Account Filter Lists Read`
+ * 
  * &gt; The `cloudflare.List` resource supports defining list items in line with the
  *   `items` attribute. The provider also has a `cloudflare.ListItem` resource for
  *   managing items as independent resources. Using both in line `items` definitions
@@ -37,14 +42,14 @@ public class List extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return The Account ID for this resource.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * The RFC 3339 timestamp of when the list was created.

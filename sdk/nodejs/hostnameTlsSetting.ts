@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -15,7 +20,10 @@ import * as utilities from "./utilities";
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     settingId: "ciphers",
  *     hostname: "app.example.com",
- *     value: "1.0",
+ *     value: [
+ *         "ECDHE-RSA-AES128-GCM-SHA256",
+ *         "AES128-GCM-SHA256",
+ *     ],
  * });
  * ```
  *
@@ -80,7 +88,7 @@ export class HostnameTlsSetting extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a HostnameTlsSetting resource with the given unique name, arguments, and options.
@@ -112,9 +120,6 @@ export class HostnameTlsSetting extends pulumi.CustomResource {
             }
             if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
-            }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["hostname"] = args?.hostname;
             resourceInputs["settingId"] = args?.settingId;
@@ -182,5 +187,5 @@ export interface HostnameTlsSettingArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

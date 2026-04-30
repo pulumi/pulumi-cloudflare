@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetR2CustomDomain
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers R2 Storage Read`
+        /// - `Workers R2 Storage Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -36,6 +41,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetR2CustomDomainResult>("cloudflare:index/getR2CustomDomain:getR2CustomDomain", args ?? new GetR2CustomDomainArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers R2 Storage Read`
+        /// - `Workers R2 Storage Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -60,6 +70,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetR2CustomDomainResult>("cloudflare:index/getR2CustomDomain:getR2CustomDomain", args ?? new GetR2CustomDomainInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers R2 Storage Read`
+        /// - `Workers R2 Storage Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -90,8 +105,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account ID.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Name of the bucket.
@@ -116,8 +131,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account ID.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Name of the bucket.
@@ -144,7 +159,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account ID.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Name of the bucket.
         /// </summary>
@@ -182,7 +197,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetR2CustomDomainResult(
-            string accountId,
+            string? accountId,
 
             string bucketName,
 

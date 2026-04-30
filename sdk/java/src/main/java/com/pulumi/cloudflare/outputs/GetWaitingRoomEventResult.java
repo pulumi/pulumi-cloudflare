@@ -9,6 +9,8 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWaitingRoomEventResult {
@@ -102,7 +104,7 @@ public final class GetWaitingRoomEventResult {
      * @return Identifier.
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetWaitingRoomEventResult() {}
     public String createdOn() {
@@ -235,8 +237,8 @@ public final class GetWaitingRoomEventResult {
      * @return Identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -268,7 +270,7 @@ public final class GetWaitingRoomEventResult {
         private String turnstileAction;
         private String turnstileMode;
         private String waitingRoomId;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetWaitingRoomEventResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -456,10 +458,8 @@ public final class GetWaitingRoomEventResult {
             return this;
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetWaitingRoomEventResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Stream Read`
+ * - `Stream Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -51,7 +56,7 @@ export class StreamKey extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * The date and time a signing key was created.
      */
@@ -60,6 +65,10 @@ export class StreamKey extends pulumi.CustomResource {
      * The signing key in JWK format.
      */
     declare public /*out*/ readonly jwk: pulumi.Output<string>;
+    /**
+     * The unique identifier for the signing key.
+     */
+    declare public /*out*/ readonly keyId: pulumi.Output<string>;
     /**
      * The signing key in PEM format.
      */
@@ -72,7 +81,7 @@ export class StreamKey extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: StreamKeyArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: StreamKeyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: StreamKeyArgs | StreamKeyState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -81,15 +90,14 @@ export class StreamKey extends pulumi.CustomResource {
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["created"] = state?.created;
             resourceInputs["jwk"] = state?.jwk;
+            resourceInputs["keyId"] = state?.keyId;
             resourceInputs["pem"] = state?.pem;
         } else {
             const args = argsOrState as StreamKeyArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["jwk"] = undefined /*out*/;
+            resourceInputs["keyId"] = undefined /*out*/;
             resourceInputs["pem"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -116,6 +124,10 @@ export interface StreamKeyState {
      */
     jwk?: pulumi.Input<string>;
     /**
+     * The unique identifier for the signing key.
+     */
+    keyId?: pulumi.Input<string>;
+    /**
      * The signing key in PEM format.
      */
     pem?: pulumi.Input<string>;
@@ -128,5 +140,5 @@ export interface StreamKeyArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
 }

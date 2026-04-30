@@ -9,6 +9,8 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetByoIpPrefixResult {
@@ -16,7 +18,7 @@ public final class GetByoIpPrefixResult {
      * @return Identifier of a Cloudflare account.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Prefix advertisement status to the Internet. This field is only not &#39;null&#39; if on demand is enabled.
      * 
@@ -121,8 +123,8 @@ public final class GetByoIpPrefixResult {
      * @return Identifier of a Cloudflare account.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Prefix advertisement status to the Internet. This field is only not &#39;null&#39; if on demand is enabled.
@@ -268,7 +270,7 @@ public final class GetByoIpPrefixResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private Boolean advertised;
         private String advertisedModifiedAt;
         private String approved;
@@ -312,10 +314,8 @@ public final class GetByoIpPrefixResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetByoIpPrefixResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

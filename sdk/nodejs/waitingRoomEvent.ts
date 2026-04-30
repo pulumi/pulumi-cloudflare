@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Waiting Rooms Read`
+ * - `Waiting Rooms Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -134,7 +139,7 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a WaitingRoomEvent resource with the given unique name, arguments, and options.
@@ -181,9 +186,6 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
             }
             if (args?.waitingRoomId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'waitingRoomId'");
-            }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["customPageHtml"] = args?.customPageHtml;
             resourceInputs["description"] = args?.description;
@@ -355,5 +357,5 @@ export interface WaitingRoomEventArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

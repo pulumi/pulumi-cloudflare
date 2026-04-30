@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.DlpCustomProfileState;
 import com.pulumi.cloudflare.outputs.DlpCustomProfileContextAwareness;
 import com.pulumi.cloudflare.outputs.DlpCustomProfileEntry;
+import com.pulumi.cloudflare.outputs.DlpCustomProfileSensitivityLevel;
 import com.pulumi.cloudflare.outputs.DlpCustomProfileSharedEntry;
 import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
@@ -22,6 +23,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -91,10 +97,10 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/dlpCustomProfile:DlpCustomProfile")
 public class DlpCustomProfile extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     @Export(name="aiContextEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> aiContextEnabled;
@@ -155,6 +161,34 @@ public class DlpCustomProfile extends com.pulumi.resources.CustomResource {
         return this.createdAt;
     }
     /**
+     * Data class IDs to associate with the profile.
+     * 
+     */
+    @Export(name="dataClasses", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> dataClasses;
+
+    /**
+     * @return Data class IDs to associate with the profile.
+     * 
+     */
+    public Output<Optional<List<String>>> dataClasses() {
+        return Codegen.optional(this.dataClasses);
+    }
+    /**
+     * Data tag IDs to associate with the profile.
+     * 
+     */
+    @Export(name="dataTags", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> dataTags;
+
+    /**
+     * @return Data tag IDs to associate with the profile.
+     * 
+     */
+    public Output<Optional<List<String>>> dataTags() {
+        return Codegen.optional(this.dataTags);
+    }
+    /**
      * The description of the profile.
      * 
      */
@@ -213,6 +247,20 @@ public class DlpCustomProfile extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> openAccess() {
         return this.openAccess;
+    }
+    /**
+     * Sensitivity levels to associate with the profile.
+     * 
+     */
+    @Export(name="sensitivityLevels", refs={List.class,DlpCustomProfileSensitivityLevel.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<DlpCustomProfileSensitivityLevel>> sensitivityLevels;
+
+    /**
+     * @return Sensitivity levels to associate with the profile.
+     * 
+     */
+    public Output<Optional<List<DlpCustomProfileSensitivityLevel>>> sensitivityLevels() {
+        return Codegen.optional(this.sensitivityLevels);
     }
     /**
      * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).

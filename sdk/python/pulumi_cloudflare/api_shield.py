@@ -100,7 +100,12 @@ class ApiShield(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages API Shield configuration properties for a zone, specifically auth ID characteristics.
+        Accepted Permissions
+
+        - `Account API Gateway`
+        - `Account API Gateway Read`
+        - `Domain API Gateway`
+        - `Domain API Gateway Read`
 
         When using `type = "jwt"` for auth ID characteristics, the `name` field must be a claim location expressed as `$(token_config_id):$(json_path)`, where:
         - `token_config_id` is the ID of the token configuration used in validating the JWT
@@ -140,7 +145,12 @@ class ApiShield(pulumi.CustomResource):
                  args: ApiShieldArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages API Shield configuration properties for a zone, specifically auth ID characteristics.
+        Accepted Permissions
+
+        - `Account API Gateway`
+        - `Account API Gateway Read`
+        - `Domain API Gateway`
+        - `Domain API Gateway Read`
 
         When using `type = "jwt"` for auth ID characteristics, the `name` field must be a claim location expressed as `$(token_config_id):$(json_path)`, where:
         - `token_config_id` is the ID of the token configuration used in validating the JWT

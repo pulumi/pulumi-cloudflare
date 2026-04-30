@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Account Settings Read`
+    /// - `Account Settings Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -44,7 +49,7 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
@@ -114,7 +119,7 @@ namespace Pulumi.Cloudflare
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public WebAnalyticsSite(string name, WebAnalyticsSiteArgs args, CustomResourceOptions? options = null)
+        public WebAnalyticsSite(string name, WebAnalyticsSiteArgs? args = null, CustomResourceOptions? options = null)
             : base("cloudflare:index/webAnalyticsSite:WebAnalyticsSite", name, args ?? new WebAnalyticsSiteArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -155,8 +160,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.

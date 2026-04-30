@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetRegistrarDomainArgs extends com.pulumi.resources.InvokeArgs {
@@ -18,26 +20,32 @@ public final class GetRegistrarDomainArgs extends com.pulumi.resources.InvokeArg
      * Identifier
      * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
      * @return Identifier
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
-     * Domain name.
+     * Fully qualified domain name (FQDN) including the extension
+     * (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+     * identifies a registration — the same domain cannot be registered
+     * twice, making it a natural idempotency key for registration requests.
      * 
      */
     @Import(name="domainName", required=true)
     private Output<String> domainName;
 
     /**
-     * @return Domain name.
+     * @return Fully qualified domain name (FQDN) including the extension
+     * (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+     * identifies a registration — the same domain cannot be registered
+     * twice, making it a natural idempotency key for registration requests.
      * 
      */
     public Output<String> domainName() {
@@ -75,7 +83,7 @@ public final class GetRegistrarDomainArgs extends com.pulumi.resources.InvokeArg
          * @return builder
          * 
          */
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -91,7 +99,10 @@ public final class GetRegistrarDomainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param domainName Domain name.
+         * @param domainName Fully qualified domain name (FQDN) including the extension
+         * (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+         * identifies a registration — the same domain cannot be registered
+         * twice, making it a natural idempotency key for registration requests.
          * 
          * @return builder
          * 
@@ -102,7 +113,10 @@ public final class GetRegistrarDomainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param domainName Domain name.
+         * @param domainName Fully qualified domain name (FQDN) including the extension
+         * (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+         * identifies a registration — the same domain cannot be registered
+         * twice, making it a natural idempotency key for registration requests.
          * 
          * @return builder
          * 
@@ -112,9 +126,6 @@ public final class GetRegistrarDomainArgs extends com.pulumi.resources.InvokeArg
         }
 
         public GetRegistrarDomainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetRegistrarDomainArgs", "accountId");
-            }
             if ($.domainName == null) {
                 throw new MissingRequiredPropertyException("GetRegistrarDomainArgs", "domainName");
             }

@@ -5,7 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## Example Usage
+ * Accepted Permissions
+ *
+ * - `Domain Page Shield`
+ * - `Domain Page Shield Read`
+ * - `Page Shield`
+ * - `Page Shield Read`
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
  *
  * ## Import
  *
@@ -65,7 +72,7 @@ export class PageShieldPolicy extends pulumi.CustomResource {
     /**
      * Identifier
      */
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a PageShieldPolicy resource with the given unique name, arguments, and options.
@@ -102,9 +109,6 @@ export class PageShieldPolicy extends pulumi.CustomResource {
             }
             if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
-            }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["action"] = args?.action;
             resourceInputs["description"] = args?.description;
@@ -177,5 +181,5 @@ export interface PageShieldPolicyArgs {
     /**
      * Identifier
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

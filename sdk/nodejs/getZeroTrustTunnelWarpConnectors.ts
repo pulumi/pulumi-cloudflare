@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudflare One Connector: WARP Read`
+ * - `Cloudflare One Connector: WARP Write`
+ * - `Cloudflare One Connectors Read`
+ * - `Cloudflare One Connectors Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -27,7 +34,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustTunnelWarpConnectors(args: GetZeroTrustTunnelWarpConnectorsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustTunnelWarpConnectorsResult> {
+export function getZeroTrustTunnelWarpConnectors(args?: GetZeroTrustTunnelWarpConnectorsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustTunnelWarpConnectorsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustTunnelWarpConnectors:getZeroTrustTunnelWarpConnectors", {
         "accountId": args.accountId,
@@ -51,7 +59,7 @@ export interface GetZeroTrustTunnelWarpConnectorsArgs {
     /**
      * Cloudflare account ID
      */
-    accountId: string;
+    accountId?: string;
     excludePrefix?: string;
     /**
      * If provided, include only resources that were created (and not deleted) before this time. URL encoded.
@@ -90,7 +98,7 @@ export interface GetZeroTrustTunnelWarpConnectorsResult {
     /**
      * Cloudflare account ID
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     readonly excludePrefix?: string;
     /**
      * If provided, include only resources that were created (and not deleted) before this time. URL encoded.
@@ -130,6 +138,13 @@ export interface GetZeroTrustTunnelWarpConnectorsResult {
     readonly wasInactiveAt?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudflare One Connector: WARP Read`
+ * - `Cloudflare One Connector: WARP Write`
+ * - `Cloudflare One Connectors Read`
+ * - `Cloudflare One Connectors Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -150,7 +165,8 @@ export interface GetZeroTrustTunnelWarpConnectorsResult {
  * });
  * ```
  */
-export function getZeroTrustTunnelWarpConnectorsOutput(args: GetZeroTrustTunnelWarpConnectorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustTunnelWarpConnectorsResult> {
+export function getZeroTrustTunnelWarpConnectorsOutput(args?: GetZeroTrustTunnelWarpConnectorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustTunnelWarpConnectorsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustTunnelWarpConnectors:getZeroTrustTunnelWarpConnectors", {
         "accountId": args.accountId,
@@ -174,7 +190,7 @@ export interface GetZeroTrustTunnelWarpConnectorsOutputArgs {
     /**
      * Cloudflare account ID
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     excludePrefix?: pulumi.Input<string>;
     /**
      * If provided, include only resources that were created (and not deleted) before this time. URL encoded.

@@ -4,9 +4,10 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetLeakedCredentialCheckPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -17,15 +18,15 @@ public final class GetLeakedCredentialCheckPlainArgs extends com.pulumi.resource
      * Defines an identifier.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private String zoneId;
+    @Import(name="zoneId")
+    private @Nullable String zoneId;
 
     /**
      * @return Defines an identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private GetLeakedCredentialCheckPlainArgs() {}
@@ -58,15 +59,12 @@ public final class GetLeakedCredentialCheckPlainArgs extends com.pulumi.resource
          * @return builder
          * 
          */
-        public Builder zoneId(String zoneId) {
+        public Builder zoneId(@Nullable String zoneId) {
             $.zoneId = zoneId;
             return this;
         }
 
         public GetLeakedCredentialCheckPlainArgs build() {
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("GetLeakedCredentialCheckPlainArgs", "zoneId");
-            }
             return $;
         }
     }

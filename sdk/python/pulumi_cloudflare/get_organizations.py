@@ -134,6 +134,11 @@ def get_organizations(containing: Optional[Union['GetOrganizationsContainingArgs
                       parent: Optional[Union['GetOrganizationsParentArgs', 'GetOrganizationsParentArgsDict']] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationsResult:
     """
+    Accepted Permissions
+
+    - `User Details Read`
+    - `User Details Write`
+
     ## Example Usage
 
     ```python
@@ -195,6 +200,11 @@ def get_organizations_output(containing: Optional[pulumi.Input[Optional[Union['G
                              parent: Optional[pulumi.Input[Optional[Union['GetOrganizationsParentArgs', 'GetOrganizationsParentArgsDict']]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationsResult]:
     """
+    Accepted Permissions
+
+    - `User Details Read`
+    - `User Details Write`
+
     ## Example Usage
 
     ```python

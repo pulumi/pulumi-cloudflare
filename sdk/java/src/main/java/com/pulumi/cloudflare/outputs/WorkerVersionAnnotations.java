@@ -12,12 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkerVersionAnnotations {
     /**
-     * @return Human-readable message about the version.
+     * @return Human-readable message about the version. Truncated to 1000 bytes if longer.
      * 
      */
     private @Nullable String workersMessage;
     /**
-     * @return User-provided identifier for the version.
+     * @return User-provided identifier for the version. Maximum 100 bytes.
      * 
      */
     private @Nullable String workersTag;
@@ -29,14 +29,14 @@ public final class WorkerVersionAnnotations {
 
     private WorkerVersionAnnotations() {}
     /**
-     * @return Human-readable message about the version.
+     * @return Human-readable message about the version. Truncated to 1000 bytes if longer.
      * 
      */
     public Optional<String> workersMessage() {
         return Optional.ofNullable(this.workersMessage);
     }
     /**
-     * @return User-provided identifier for the version.
+     * @return User-provided identifier for the version. Maximum 100 bytes.
      * 
      */
     public Optional<String> workersTag() {

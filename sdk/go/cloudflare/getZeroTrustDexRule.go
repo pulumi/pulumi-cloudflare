@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloudflare DEX Read`
+// - `Cloudflare DEX Write`
+// - `Zero Trust Read`
+// - `Zero Trust Report`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustDexRule(ctx, &cloudflare.LookupZeroTrustDexRuleArgs{
-//				AccountId: "01a7362d577a6c3019a474fd6f485823",
+//				AccountId: pulumi.StringRef("01a7362d577a6c3019a474fd6f485823"),
 //				RuleId:    "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 //			}, nil)
 //			if err != nil {
@@ -49,16 +56,16 @@ func LookupZeroTrustDexRule(ctx *pulumi.Context, args *LookupZeroTrustDexRuleArg
 
 // A collection of arguments for invoking getZeroTrustDexRule.
 type LookupZeroTrustDexRuleArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// API Resource UUID tag.
 	RuleId string `pulumi:"ruleId"`
 }
 
 // A collection of values returned by getZeroTrustDexRule.
 type LookupZeroTrustDexRuleResult struct {
-	AccountId   string `pulumi:"accountId"`
-	CreatedAt   string `pulumi:"createdAt"`
-	Description string `pulumi:"description"`
+	AccountId   *string `pulumi:"accountId"`
+	CreatedAt   string  `pulumi:"createdAt"`
+	Description string  `pulumi:"description"`
 	// API Resource UUID tag.
 	Id    string `pulumi:"id"`
 	Match string `pulumi:"match"`
@@ -80,7 +87,7 @@ func LookupZeroTrustDexRuleOutput(ctx *pulumi.Context, args LookupZeroTrustDexRu
 
 // A collection of arguments for invoking getZeroTrustDexRule.
 type LookupZeroTrustDexRuleOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// API Resource UUID tag.
 	RuleId pulumi.StringInput `pulumi:"ruleId"`
 }
@@ -104,8 +111,8 @@ func (o LookupZeroTrustDexRuleResultOutput) ToLookupZeroTrustDexRuleResultOutput
 	return o
 }
 
-func (o LookupZeroTrustDexRuleResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustDexRuleResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustDexRuleResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustDexRuleResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupZeroTrustDexRuleResultOutput) CreatedAt() pulumi.StringOutput {

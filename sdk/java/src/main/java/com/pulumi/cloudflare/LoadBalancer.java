@@ -20,9 +20,15 @@ import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Load Balancers Read`
+ * - `Load Balancers Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -480,10 +486,10 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.ttl;
     }
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output<String> zoneId;
+    private Output</* @Nullable */ String> zoneId;
 
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Output<Optional<String>> zoneId() {
+        return Codegen.optional(this.zoneId);
     }
     @Export(name="zoneName", refs={String.class}, tree="[0]")
     private Output<String> zoneName;

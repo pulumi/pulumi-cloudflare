@@ -11,6 +11,8 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAddressMapResult {
@@ -18,7 +20,7 @@ public final class GetAddressMapResult {
      * @return Identifier of a Cloudflare account.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Identifier of an Address Map.
      * 
@@ -72,8 +74,8 @@ public final class GetAddressMapResult {
      * @return Identifier of a Cloudflare account.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Identifier of an Address Map.
@@ -154,7 +156,7 @@ public final class GetAddressMapResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String addressMapId;
         private Boolean canDelete;
         private Boolean canModifyIps;
@@ -184,10 +186,8 @@ public final class GetAddressMapResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetAddressMapResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

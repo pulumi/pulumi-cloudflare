@@ -57,8 +57,8 @@ import (
 type TeamsList struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	CreatedAt pulumi.StringOutput    `pulumi:"createdAt"`
 	// Provide the list description.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Add items to the list.
@@ -68,7 +68,7 @@ type TeamsList struct {
 	// Specify the list name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Specify the list type.
-	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
 	Type      pulumi.StringOutput `pulumi:"type"`
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
@@ -80,9 +80,6 @@ func NewTeamsList(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -129,7 +126,7 @@ type teamsListState struct {
 	// Specify the list name.
 	Name *string `pulumi:"name"`
 	// Specify the list type.
-	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
 	Type      *string `pulumi:"type"`
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
@@ -146,7 +143,7 @@ type TeamsListState struct {
 	// Specify the list name.
 	Name pulumi.StringPtrInput
 	// Specify the list type.
-	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
 	Type      pulumi.StringPtrInput
 	UpdatedAt pulumi.StringPtrInput
 }
@@ -156,7 +153,7 @@ func (TeamsListState) ElementType() reflect.Type {
 }
 
 type teamsListArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Provide the list description.
 	Description *string `pulumi:"description"`
 	// Add items to the list.
@@ -164,13 +161,13 @@ type teamsListArgs struct {
 	// Specify the list name.
 	Name string `pulumi:"name"`
 	// Specify the list type.
-	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
 	Type string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a TeamsList resource.
 type TeamsListArgs struct {
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// Provide the list description.
 	Description pulumi.StringPtrInput
 	// Add items to the list.
@@ -178,7 +175,7 @@ type TeamsListArgs struct {
 	// Specify the list name.
 	Name pulumi.StringInput
 	// Specify the list type.
-	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
 	Type pulumi.StringInput
 }
 
@@ -269,8 +266,8 @@ func (o TeamsListOutput) ToTeamsListOutputWithContext(ctx context.Context) Teams
 	return o
 }
 
-func (o TeamsListOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *TeamsList) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o TeamsListOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamsList) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o TeamsListOutput) CreatedAt() pulumi.StringOutput {
@@ -298,7 +295,7 @@ func (o TeamsListOutput) Name() pulumi.StringOutput {
 }
 
 // Specify the list type.
-// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
 func (o TeamsListOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsList) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

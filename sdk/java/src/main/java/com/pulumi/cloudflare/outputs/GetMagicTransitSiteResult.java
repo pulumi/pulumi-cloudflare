@@ -19,7 +19,7 @@ public final class GetMagicTransitSiteResult {
      * @return Identifier
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Magic Connector identifier tag.
      * 
@@ -63,8 +63,8 @@ public final class GetMagicTransitSiteResult {
      * @return Identifier
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Magic Connector identifier tag.
@@ -131,7 +131,7 @@ public final class GetMagicTransitSiteResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String connectorId;
         private String description;
         private @Nullable GetMagicTransitSiteFilter filter;
@@ -157,10 +157,8 @@ public final class GetMagicTransitSiteResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetMagicTransitSiteResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

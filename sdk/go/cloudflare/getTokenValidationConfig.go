@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account API Gateway`
+// - `Account API Gateway Read`
+// - `Domain API Gateway`
+// - `Domain API Gateway Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetTokenValidationConfig(ctx, &cloudflare.LookupTokenValidationConfigArgs{
-//				ZoneId:   "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId:   pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ConfigId: "4a7ee8d3-dd63-4ceb-9d5f-c27831854ce7",
 //			}, nil)
 //			if err != nil {
@@ -52,7 +59,7 @@ type LookupTokenValidationConfigArgs struct {
 	// UUID.
 	ConfigId string `pulumi:"configId"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getTokenValidationConfig.
@@ -70,7 +77,7 @@ type LookupTokenValidationConfigResult struct {
 	// Available values: "JWT".
 	TokenType string `pulumi:"tokenType"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupTokenValidationConfigOutput(ctx *pulumi.Context, args LookupTokenValidationConfigOutputArgs, opts ...pulumi.InvokeOption) LookupTokenValidationConfigResultOutput {
@@ -87,7 +94,7 @@ type LookupTokenValidationConfigOutputArgs struct {
 	// UUID.
 	ConfigId pulumi.StringInput `pulumi:"configId"`
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupTokenValidationConfigOutputArgs) ElementType() reflect.Type {
@@ -149,8 +156,8 @@ func (o LookupTokenValidationConfigResultOutput) TokenType() pulumi.StringOutput
 }
 
 // Identifier.
-func (o LookupTokenValidationConfigResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTokenValidationConfigResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupTokenValidationConfigResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupTokenValidationConfigResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

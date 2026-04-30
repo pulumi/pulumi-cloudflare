@@ -30,7 +30,15 @@ namespace Pulumi.Cloudflare
     ///             SerialNumber = "serial_number",
     ///         },
     ///         Activated = true,
-    ///         InterruptWindowDurationHours = 0,
+    ///         InterruptWindowDaysOfWeek = new[]
+    ///         {
+    ///             "Sunday",
+    ///         },
+    ///         InterruptWindowDurationHours = 1,
+    ///         InterruptWindowEmbargoDates = new[]
+    ///         {
+    ///             "string",
+    ///         },
     ///         InterruptWindowHourOfDay = 0,
     ///         Notes = "notes",
     ///         Timezone = "timezone",

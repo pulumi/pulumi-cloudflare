@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetSchemaValidationOperationSettingsPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -20,11 +22,11 @@ public final class GetSchemaValidationOperationSettingsPlainArgs extends com.pul
         return this.operationId;
     }
 
-    @Import(name="zoneId", required=true)
-    private String zoneId;
+    @Import(name="zoneId")
+    private @Nullable String zoneId;
 
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private GetSchemaValidationOperationSettingsPlainArgs() {}
@@ -57,7 +59,7 @@ public final class GetSchemaValidationOperationSettingsPlainArgs extends com.pul
             return this;
         }
 
-        public Builder zoneId(String zoneId) {
+        public Builder zoneId(@Nullable String zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -65,9 +67,6 @@ public final class GetSchemaValidationOperationSettingsPlainArgs extends com.pul
         public GetSchemaValidationOperationSettingsPlainArgs build() {
             if ($.operationId == null) {
                 throw new MissingRequiredPropertyException("GetSchemaValidationOperationSettingsPlainArgs", "operationId");
-            }
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("GetSchemaValidationOperationSettingsPlainArgs", "zoneId");
             }
             return $;
         }

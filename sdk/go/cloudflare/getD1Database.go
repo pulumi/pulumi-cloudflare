@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `D1 Read`
+// - `D1 Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetD1Database(ctx, &cloudflare.LookupD1DatabaseArgs{
-//				AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:  pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				DatabaseId: pulumi.StringRef("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
 //			}, nil)
 //			if err != nil {
@@ -50,7 +55,7 @@ func LookupD1Database(ctx *pulumi.Context, args *LookupD1DatabaseArgs, opts ...p
 // A collection of arguments for invoking getD1Database.
 type LookupD1DatabaseArgs struct {
 	// Account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// D1 database identifier (UUID).
 	DatabaseId *string              `pulumi:"databaseId"`
 	Filter     *GetD1DatabaseFilter `pulumi:"filter"`
@@ -59,7 +64,7 @@ type LookupD1DatabaseArgs struct {
 // A collection of values returned by getD1Database.
 type LookupD1DatabaseResult struct {
 	// Account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Specifies the timestamp the resource was created as an ISO8601 string.
 	CreatedAt string `pulumi:"createdAt"`
 	// D1 database identifier (UUID).
@@ -69,6 +74,9 @@ type LookupD1DatabaseResult struct {
 	Filter   *GetD1DatabaseFilter `pulumi:"filter"`
 	// D1 database identifier (UUID).
 	Id string `pulumi:"id"`
+	// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+	// Available values: "eu", "fedramp".
+	Jurisdiction string `pulumi:"jurisdiction"`
 	// D1 database name.
 	Name      string  `pulumi:"name"`
 	NumTables float64 `pulumi:"numTables"`
@@ -91,7 +99,7 @@ func LookupD1DatabaseOutput(ctx *pulumi.Context, args LookupD1DatabaseOutputArgs
 // A collection of arguments for invoking getD1Database.
 type LookupD1DatabaseOutputArgs struct {
 	// Account identifier tag.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// D1 database identifier (UUID).
 	DatabaseId pulumi.StringPtrInput       `pulumi:"databaseId"`
 	Filter     GetD1DatabaseFilterPtrInput `pulumi:"filter"`
@@ -117,8 +125,8 @@ func (o LookupD1DatabaseResultOutput) ToLookupD1DatabaseResultOutputWithContext(
 }
 
 // Account identifier tag.
-func (o LookupD1DatabaseResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupD1DatabaseResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupD1DatabaseResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupD1DatabaseResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the timestamp the resource was created as an ISO8601 string.
@@ -143,6 +151,12 @@ func (o LookupD1DatabaseResultOutput) Filter() GetD1DatabaseFilterPtrOutput {
 // D1 database identifier (UUID).
 func (o LookupD1DatabaseResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupD1DatabaseResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+// Available values: "eu", "fedramp".
+func (o LookupD1DatabaseResultOutput) Jurisdiction() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupD1DatabaseResult) string { return v.Jurisdiction }).(pulumi.StringOutput)
 }
 
 // D1 database name.

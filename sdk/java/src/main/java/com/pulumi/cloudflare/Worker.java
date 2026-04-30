@@ -17,9 +17,16 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -33,6 +40,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.WorkerArgs;
  * import com.pulumi.cloudflare.inputs.WorkerObservabilityArgs;
  * import com.pulumi.cloudflare.inputs.WorkerObservabilityLogsArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerObservabilityTracesArgs;
  * import com.pulumi.cloudflare.inputs.WorkerSubdomainArgs;
  * import com.pulumi.cloudflare.inputs.WorkerTailConsumerArgs;
  * import java.util.List;
@@ -56,9 +64,17 @@ import javax.annotation.Nullable;
  *                 .enabled(true)
  *                 .headSamplingRate(1.0)
  *                 .logs(WorkerObservabilityLogsArgs.builder()
+ *                     .destinations("string")
  *                     .enabled(true)
  *                     .headSamplingRate(1.0)
  *                     .invocationLogs(true)
+ *                     .persist(true)
+ *                     .build())
+ *                 .traces(WorkerObservabilityTracesArgs.builder()
+ *                     .destinations("string")
+ *                     .enabled(true)
+ *                     .headSamplingRate(1.0)
+ *                     .persist(true)
  *                     .build())
  *                 .build())
  *             .subdomain(WorkerSubdomainArgs.builder()
@@ -92,14 +108,14 @@ public class Worker extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * When the Worker was created.
@@ -114,6 +130,20 @@ public class Worker extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createdOn() {
         return this.createdOn;
+    }
+    /**
+     * When the Worker&#39;s most recent deployment was created. `null` if the Worker has never been deployed.
+     * 
+     */
+    @Export(name="deployedOn", refs={String.class}, tree="[0]")
+    private Output<String> deployedOn;
+
+    /**
+     * @return When the Worker&#39;s most recent deployment was created. `null` if the Worker has never been deployed.
+     * 
+     */
+    public Output<String> deployedOn() {
+        return this.deployedOn;
     }
     /**
      * Whether logpush is enabled for the Worker.

@@ -17,6 +17,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Images Read`
+ * - `Images Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -45,7 +50,7 @@ import javax.annotation.Nullable;
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .imageId("id")
  *             .creator("creator")
- *             .file(null)
+ *             .file("Example data")
  *             .metadata(Map.ofEntries(
  *             ))
  *             .requireSignedUrls(true)
@@ -71,14 +76,14 @@ public class Image extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return Account identifier tag.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * Can set the creator field with an internal user ID.

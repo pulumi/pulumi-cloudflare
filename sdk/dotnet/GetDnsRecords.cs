@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetDnsRecords
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `DNS Read`
+        /// - `DNS Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -64,10 +69,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetDnsRecordsResult> InvokeAsync(GetDnsRecordsArgs args, InvokeOptions? options = null)
+        public static Task<GetDnsRecordsResult> InvokeAsync(GetDnsRecordsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDnsRecordsResult>("cloudflare:index/getDnsRecords:getDnsRecords", args ?? new GetDnsRecordsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `DNS Read`
+        /// - `DNS Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -120,10 +130,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetDnsRecordsResult> Invoke(GetDnsRecordsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetDnsRecordsResult> Invoke(GetDnsRecordsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDnsRecordsResult>("cloudflare:index/getDnsRecords:getDnsRecords", args ?? new GetDnsRecordsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `DNS Read`
+        /// - `DNS Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -251,8 +266,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetDnsRecordsArgs()
         {
@@ -330,8 +345,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetDnsRecordsInvokeArgs()
         {
@@ -395,7 +410,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetDnsRecordsResult(
@@ -427,7 +442,7 @@ namespace Pulumi.Cloudflare
 
             string? type,
 
-            string zoneId)
+            string? zoneId)
         {
             Comment = comment;
             Content = content;

@@ -27,7 +27,7 @@ class GetWorkerVersionResult:
     """
     A collection of values returned by getWorkerVersion.
     """
-    def __init__(__self__, account_id=None, annotations=None, assets=None, bindings=None, compatibility_date=None, compatibility_flags=None, created_on=None, id=None, include=None, limits=None, main_module=None, main_script_base64=None, migrations=None, modules=None, number=None, placement=None, source=None, startup_time_ms=None, usage_model=None, version_id=None, worker_id=None):
+    def __init__(__self__, account_id=None, annotations=None, assets=None, bindings=None, compatibility_date=None, compatibility_flags=None, containers=None, created_on=None, id=None, include=None, limits=None, main_module=None, main_script_base64=None, migration_tag=None, migrations=None, modules=None, number=None, placement=None, source=None, startup_time_ms=None, urls=None, usage_model=None, version_id=None, worker_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -46,6 +46,9 @@ class GetWorkerVersionResult:
         if compatibility_flags and not isinstance(compatibility_flags, list):
             raise TypeError("Expected argument 'compatibility_flags' to be a list")
         pulumi.set(__self__, "compatibility_flags", compatibility_flags)
+        if containers and not isinstance(containers, list):
+            raise TypeError("Expected argument 'containers' to be a list")
+        pulumi.set(__self__, "containers", containers)
         if created_on and not isinstance(created_on, str):
             raise TypeError("Expected argument 'created_on' to be a str")
         pulumi.set(__self__, "created_on", created_on)
@@ -64,6 +67,9 @@ class GetWorkerVersionResult:
         if main_script_base64 and not isinstance(main_script_base64, str):
             raise TypeError("Expected argument 'main_script_base64' to be a str")
         pulumi.set(__self__, "main_script_base64", main_script_base64)
+        if migration_tag and not isinstance(migration_tag, str):
+            raise TypeError("Expected argument 'migration_tag' to be a str")
+        pulumi.set(__self__, "migration_tag", migration_tag)
         if migrations and not isinstance(migrations, dict):
             raise TypeError("Expected argument 'migrations' to be a dict")
         pulumi.set(__self__, "migrations", migrations)
@@ -82,6 +88,9 @@ class GetWorkerVersionResult:
         if startup_time_ms and not isinstance(startup_time_ms, int):
             raise TypeError("Expected argument 'startup_time_ms' to be a int")
         pulumi.set(__self__, "startup_time_ms", startup_time_ms)
+        if urls and not isinstance(urls, list):
+            raise TypeError("Expected argument 'urls' to be a list")
+        pulumi.set(__self__, "urls", urls)
         if usage_model and not isinstance(usage_model, str):
             raise TypeError("Expected argument 'usage_model' to be a str")
         pulumi.set(__self__, "usage_model", usage_model)
@@ -94,7 +103,7 @@ class GetWorkerVersionResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -132,6 +141,11 @@ class GetWorkerVersionResult:
         return pulumi.get(self, "compatibility_flags")
 
     @_builtins.property
+    @pulumi.getter
+    def containers(self) -> Sequence['outputs.GetWorkerVersionContainerResult']:
+        return pulumi.get(self, "containers")
+
+    @_builtins.property
     @pulumi.getter(name="createdOn")
     def created_on(self) -> _builtins.str:
         return pulumi.get(self, "created_on")
@@ -166,6 +180,11 @@ class GetWorkerVersionResult:
         return pulumi.get(self, "main_script_base64")
 
     @_builtins.property
+    @pulumi.getter(name="migrationTag")
+    def migration_tag(self) -> _builtins.str:
+        return pulumi.get(self, "migration_tag")
+
+    @_builtins.property
     @pulumi.getter
     def migrations(self) -> 'outputs.GetWorkerVersionMigrationsResult':
         return pulumi.get(self, "migrations")
@@ -196,6 +215,11 @@ class GetWorkerVersionResult:
         return pulumi.get(self, "startup_time_ms")
 
     @_builtins.property
+    @pulumi.getter
+    def urls(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "urls")
+
+    @_builtins.property
     @pulumi.getter(name="usageModel")
     @_utilities.deprecated("""This attribute is deprecated.""")
     def usage_model(self) -> _builtins.str:
@@ -205,7 +229,7 @@ class GetWorkerVersionResult:
     @pulumi.getter(name="versionId")
     def version_id(self) -> _builtins.str:
         """
-        Identifier for the version, which can be ID or the literal "latest" to operate on the most recently created version.
+        Identifier for the version, which can be a UUID, a UUID prefix (minimum length 8), or the literal "latest" to operate on the most recently created version.
         """
         return pulumi.get(self, "version_id")
 
@@ -230,18 +254,21 @@ class AwaitableGetWorkerVersionResult(GetWorkerVersionResult):
             bindings=self.bindings,
             compatibility_date=self.compatibility_date,
             compatibility_flags=self.compatibility_flags,
+            containers=self.containers,
             created_on=self.created_on,
             id=self.id,
             include=self.include,
             limits=self.limits,
             main_module=self.main_module,
             main_script_base64=self.main_script_base64,
+            migration_tag=self.migration_tag,
             migrations=self.migrations,
             modules=self.modules,
             number=self.number,
             placement=self.placement,
             source=self.source,
             startup_time_ms=self.startup_time_ms,
+            urls=self.urls,
             usage_model=self.usage_model,
             version_id=self.version_id,
             worker_id=self.worker_id)
@@ -253,6 +280,12 @@ def get_worker_version(account_id: Optional[_builtins.str] = None,
                        worker_id: Optional[_builtins.str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkerVersionResult:
     """
+    Accepted Permissions
+
+    - `Workers Scripts Read`
+    - `Workers Scripts Write`
+    - `Workers Tail Read`
+
     ## Example Usage
 
     ```python
@@ -269,7 +302,7 @@ def get_worker_version(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Identifier.
     :param _builtins.str include: Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
            Available values: "modules".
-    :param _builtins.str version_id: Identifier for the version, which can be ID or the literal "latest" to operate on the most recently created version.
+    :param _builtins.str version_id: Identifier for the version, which can be a UUID, a UUID prefix (minimum length 8), or the literal "latest" to operate on the most recently created version.
     :param _builtins.str worker_id: Identifier for the Worker, which can be ID or name.
     """
     __args__ = dict()
@@ -287,27 +320,36 @@ def get_worker_version(account_id: Optional[_builtins.str] = None,
         bindings=pulumi.get(__ret__, 'bindings'),
         compatibility_date=pulumi.get(__ret__, 'compatibility_date'),
         compatibility_flags=pulumi.get(__ret__, 'compatibility_flags'),
+        containers=pulumi.get(__ret__, 'containers'),
         created_on=pulumi.get(__ret__, 'created_on'),
         id=pulumi.get(__ret__, 'id'),
         include=pulumi.get(__ret__, 'include'),
         limits=pulumi.get(__ret__, 'limits'),
         main_module=pulumi.get(__ret__, 'main_module'),
         main_script_base64=pulumi.get(__ret__, 'main_script_base64'),
+        migration_tag=pulumi.get(__ret__, 'migration_tag'),
         migrations=pulumi.get(__ret__, 'migrations'),
         modules=pulumi.get(__ret__, 'modules'),
         number=pulumi.get(__ret__, 'number'),
         placement=pulumi.get(__ret__, 'placement'),
         source=pulumi.get(__ret__, 'source'),
         startup_time_ms=pulumi.get(__ret__, 'startup_time_ms'),
+        urls=pulumi.get(__ret__, 'urls'),
         usage_model=pulumi.get(__ret__, 'usage_model'),
         version_id=pulumi.get(__ret__, 'version_id'),
         worker_id=pulumi.get(__ret__, 'worker_id'))
-def get_worker_version_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_worker_version_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               include: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               version_id: Optional[pulumi.Input[_builtins.str]] = None,
                               worker_id: Optional[pulumi.Input[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkerVersionResult]:
     """
+    Accepted Permissions
+
+    - `Workers Scripts Read`
+    - `Workers Scripts Write`
+    - `Workers Tail Read`
+
     ## Example Usage
 
     ```python
@@ -324,7 +366,7 @@ def get_worker_version_output(account_id: Optional[pulumi.Input[_builtins.str]] 
     :param _builtins.str account_id: Identifier.
     :param _builtins.str include: Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
            Available values: "modules".
-    :param _builtins.str version_id: Identifier for the version, which can be ID or the literal "latest" to operate on the most recently created version.
+    :param _builtins.str version_id: Identifier for the version, which can be a UUID, a UUID prefix (minimum length 8), or the literal "latest" to operate on the most recently created version.
     :param _builtins.str worker_id: Identifier for the Worker, which can be ID or name.
     """
     __args__ = dict()
@@ -341,18 +383,21 @@ def get_worker_version_output(account_id: Optional[pulumi.Input[_builtins.str]] 
         bindings=pulumi.get(__response__, 'bindings'),
         compatibility_date=pulumi.get(__response__, 'compatibility_date'),
         compatibility_flags=pulumi.get(__response__, 'compatibility_flags'),
+        containers=pulumi.get(__response__, 'containers'),
         created_on=pulumi.get(__response__, 'created_on'),
         id=pulumi.get(__response__, 'id'),
         include=pulumi.get(__response__, 'include'),
         limits=pulumi.get(__response__, 'limits'),
         main_module=pulumi.get(__response__, 'main_module'),
         main_script_base64=pulumi.get(__response__, 'main_script_base64'),
+        migration_tag=pulumi.get(__response__, 'migration_tag'),
         migrations=pulumi.get(__response__, 'migrations'),
         modules=pulumi.get(__response__, 'modules'),
         number=pulumi.get(__response__, 'number'),
         placement=pulumi.get(__response__, 'placement'),
         source=pulumi.get(__response__, 'source'),
         startup_time_ms=pulumi.get(__response__, 'startup_time_ms'),
+        urls=pulumi.get(__response__, 'urls'),
         usage_model=pulumi.get(__response__, 'usage_model'),
         version_id=pulumi.get(__response__, 'version_id'),
         worker_id=pulumi.get(__response__, 'worker_id')))

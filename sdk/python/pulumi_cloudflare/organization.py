@@ -140,6 +140,10 @@ class Organization(pulumi.CustomResource):
                  profile: Optional[pulumi.Input[Union['OrganizationProfileArgs', 'OrganizationProfileArgsDict']]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `User Details Write`
+
         ## Example Usage
 
         ```python
@@ -177,6 +181,10 @@ class Organization(pulumi.CustomResource):
                  args: OrganizationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `User Details Write`
+
         ## Example Usage
 
         ```python

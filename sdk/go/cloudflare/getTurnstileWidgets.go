@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account Settings Read`
+// - `Account Settings Write`
+// - `Turnstile Sites Read`
+// - `Turnstile Sites Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetTurnstileWidgets(ctx, &cloudflare.LookupTurnstileWidgetsArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Direction: pulumi.StringRef("asc"),
 //				Filter:    pulumi.StringRef("name:my-widget"),
 //				Order:     pulumi.StringRef("id"),
@@ -52,7 +59,7 @@ func LookupTurnstileWidgets(ctx *pulumi.Context, args *LookupTurnstileWidgetsArg
 // A collection of arguments for invoking getTurnstileWidgets.
 type LookupTurnstileWidgetsArgs struct {
 	// Identifier
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Direction to order widgets.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
@@ -66,7 +73,7 @@ type LookupTurnstileWidgetsArgs struct {
 // A collection of values returned by getTurnstileWidgets.
 type LookupTurnstileWidgetsResult struct {
 	// Identifier
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Direction to order widgets.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
@@ -92,7 +99,7 @@ func LookupTurnstileWidgetsOutput(ctx *pulumi.Context, args LookupTurnstileWidge
 // A collection of arguments for invoking getTurnstileWidgets.
 type LookupTurnstileWidgetsOutputArgs struct {
 	// Identifier
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Direction to order widgets.
 	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
@@ -123,8 +130,8 @@ func (o LookupTurnstileWidgetsResultOutput) ToLookupTurnstileWidgetsResultOutput
 }
 
 // Identifier
-func (o LookupTurnstileWidgetsResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTurnstileWidgetsResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupTurnstileWidgetsResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupTurnstileWidgetsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Direction to order widgets.

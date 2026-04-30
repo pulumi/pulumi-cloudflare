@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetWeb3Hostname
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Web3 Hostnames Read`
+        /// - `Web3 Hostnames Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +40,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWeb3HostnameResult>("cloudflare:index/getWeb3Hostname:getWeb3Hostname", args ?? new GetWeb3HostnameArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Web3 Hostnames Read`
+        /// - `Web3 Hostnames Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +68,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetWeb3HostnameResult>("cloudflare:index/getWeb3Hostname:getWeb3Hostname", args ?? new GetWeb3HostnameInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Web3 Hostnames Read`
+        /// - `Web3 Hostnames Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -93,8 +108,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Specify the identifier of the hostname.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetWeb3HostnameArgs()
         {
@@ -113,8 +128,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Specify the identifier of the hostname.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetWeb3HostnameInvokeArgs()
         {
@@ -161,7 +176,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Specify the identifier of the hostname.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetWeb3HostnameResult(
@@ -183,7 +198,7 @@ namespace Pulumi.Cloudflare
 
             string target,
 
-            string zoneId)
+            string? zoneId)
         {
             CreatedOn = createdOn;
             Description = description;

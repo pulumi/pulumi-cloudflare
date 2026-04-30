@@ -6,11 +6,15 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getAiSearchInstances(args: GetAiSearchInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetAiSearchInstancesResult> {
+export function getAiSearchInstances(args?: GetAiSearchInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetAiSearchInstancesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAiSearchInstances:getAiSearchInstances", {
         "accountId": args.accountId,
         "maxItems": args.maxItems,
+        "namespace": args.namespace,
+        "orderBy": args.orderBy,
+        "orderByDirection": args.orderByDirection,
         "search": args.search,
     }, opts);
 }
@@ -19,11 +23,22 @@ export function getAiSearchInstances(args: GetAiSearchInstancesArgs, opts?: pulu
  * A collection of arguments for invoking getAiSearchInstances.
  */
 export interface GetAiSearchInstancesArgs {
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
     maxItems?: number;
+    namespace?: string;
+    /**
+     * Order By Column Name
+     * Available values: "createdAt".
+     */
+    orderBy?: string;
+    /**
+     * Order By Direction
+     * Available values: "asc", "desc".
+     */
+    orderByDirection?: string;
     /**
      * Search by id
      */
@@ -34,7 +49,7 @@ export interface GetAiSearchInstancesArgs {
  * A collection of values returned by getAiSearchInstances.
  */
 export interface GetAiSearchInstancesResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -43,6 +58,17 @@ export interface GetAiSearchInstancesResult {
      * Max items to fetch, default: 1000
      */
     readonly maxItems?: number;
+    readonly namespace?: string;
+    /**
+     * Order By Column Name
+     * Available values: "createdAt".
+     */
+    readonly orderBy: string;
+    /**
+     * Order By Direction
+     * Available values: "asc", "desc".
+     */
+    readonly orderByDirection: string;
     /**
      * The items returned by the data source
      */
@@ -52,11 +78,15 @@ export interface GetAiSearchInstancesResult {
      */
     readonly search?: string;
 }
-export function getAiSearchInstancesOutput(args: GetAiSearchInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAiSearchInstancesResult> {
+export function getAiSearchInstancesOutput(args?: GetAiSearchInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAiSearchInstancesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAiSearchInstances:getAiSearchInstances", {
         "accountId": args.accountId,
         "maxItems": args.maxItems,
+        "namespace": args.namespace,
+        "orderBy": args.orderBy,
+        "orderByDirection": args.orderByDirection,
         "search": args.search,
     }, opts);
 }
@@ -65,11 +95,22 @@ export function getAiSearchInstancesOutput(args: GetAiSearchInstancesOutputArgs,
  * A collection of arguments for invoking getAiSearchInstances.
  */
 export interface GetAiSearchInstancesOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */
     maxItems?: pulumi.Input<number>;
+    namespace?: pulumi.Input<string>;
+    /**
+     * Order By Column Name
+     * Available values: "createdAt".
+     */
+    orderBy?: pulumi.Input<string>;
+    /**
+     * Order By Direction
+     * Available values: "asc", "desc".
+     */
+    orderByDirection?: pulumi.Input<string>;
     /**
      * Search by id
      */

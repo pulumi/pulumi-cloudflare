@@ -5,6 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudforce One Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -55,7 +59,7 @@ export class CloudforceOneRequestMessage extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * Author of message.
      */
@@ -103,9 +107,6 @@ export class CloudforceOneRequestMessage extends pulumi.CustomResource {
             resourceInputs["updated"] = state?.updated;
         } else {
             const args = argsOrState as CloudforceOneRequestMessageArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.requestId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'requestId'");
             }
@@ -163,7 +164,7 @@ export interface CloudforceOneRequestMessageArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Content of message.
      */

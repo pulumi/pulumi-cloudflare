@@ -11,10 +11,12 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustDnsLocationResult {
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Indicate whether this location is the default location.
      * 
@@ -80,8 +82,8 @@ public final class GetZeroTrustDnsLocationResult {
     private String updatedAt;
 
     private GetZeroTrustDnsLocationResult() {}
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Indicate whether this location is the default location.
@@ -186,7 +188,7 @@ public final class GetZeroTrustDnsLocationResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private Boolean clientDefault;
         private String createdAt;
         private String dnsDestinationIpsId;
@@ -224,10 +226,8 @@ public final class GetZeroTrustDnsLocationResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustDnsLocationResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `API Tokens Read`
+ * - `API Tokens Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -87,6 +92,11 @@ export interface GetApiTokenResult {
     readonly tokenId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `API Tokens Read`
+ * - `API Tokens Write`
+ *
  * ## Example Usage
  *
  * ```typescript

@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Zone Settings Read`
+    /// - `Zone Settings Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -39,8 +44,7 @@ namespace Pulumi.Cloudflare
     public partial class ObservatoryScheduledTest : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The frequency of the test.
-        /// Available values: "DAILY", "WEEKLY".
+        /// The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
         /// </summary>
         [Output("frequency")]
         public Output<string> Frequency { get; private set; } = null!;
@@ -71,7 +75,7 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("zoneId")]
-        public Output<string> ZoneId { get; private set; } = null!;
+        public Output<string?> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -120,6 +124,19 @@ namespace Pulumi.Cloudflare
     public sealed class ObservatoryScheduledTestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
+        /// </summary>
+        [Input("frequency")]
+        public Input<string>? Frequency { get; set; }
+
+        /// <summary>
+        /// A test region.
+        /// Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
         /// A URL.
         /// </summary>
         [Input("url", required: true)]
@@ -128,8 +145,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public ObservatoryScheduledTestArgs()
         {
@@ -140,8 +157,7 @@ namespace Pulumi.Cloudflare
     public sealed class ObservatoryScheduledTestState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The frequency of the test.
-        /// Available values: "DAILY", "WEEKLY".
+        /// The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
         /// </summary>
         [Input("frequency")]
         public Input<string>? Frequency { get; set; }

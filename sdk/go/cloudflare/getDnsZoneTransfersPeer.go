@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account Settings Read`
+// - `Account Settings Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetDnsZoneTransfersPeer(ctx, &cloudflare.LookupDnsZoneTransfersPeerArgs{
-//				AccountId: "01a7362d577a6c3019a474fd6f485823",
+//				AccountId: pulumi.StringRef("01a7362d577a6c3019a474fd6f485823"),
 //				PeerId:    "23ff594956f20c2a721606e94745a8aa",
 //			}, nil)
 //			if err != nil {
@@ -49,13 +54,13 @@ func LookupDnsZoneTransfersPeer(ctx *pulumi.Context, args *LookupDnsZoneTransfer
 
 // A collection of arguments for invoking getDnsZoneTransfersPeer.
 type LookupDnsZoneTransfersPeerArgs struct {
-	AccountId string `pulumi:"accountId"`
-	PeerId    string `pulumi:"peerId"`
+	AccountId *string `pulumi:"accountId"`
+	PeerId    string  `pulumi:"peerId"`
 }
 
 // A collection of values returned by getDnsZoneTransfersPeer.
 type LookupDnsZoneTransfersPeerResult struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The ID of this resource.
 	Id string `pulumi:"id"`
 	// IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.
@@ -82,8 +87,8 @@ func LookupDnsZoneTransfersPeerOutput(ctx *pulumi.Context, args LookupDnsZoneTra
 
 // A collection of arguments for invoking getDnsZoneTransfersPeer.
 type LookupDnsZoneTransfersPeerOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
-	PeerId    pulumi.StringInput `pulumi:"peerId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	PeerId    pulumi.StringInput    `pulumi:"peerId"`
 }
 
 func (LookupDnsZoneTransfersPeerOutputArgs) ElementType() reflect.Type {
@@ -105,8 +110,8 @@ func (o LookupDnsZoneTransfersPeerResultOutput) ToLookupDnsZoneTransfersPeerResu
 	return o
 }
 
-func (o LookupDnsZoneTransfersPeerResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDnsZoneTransfersPeerResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupDnsZoneTransfersPeerResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDnsZoneTransfersPeerResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The ID of this resource.

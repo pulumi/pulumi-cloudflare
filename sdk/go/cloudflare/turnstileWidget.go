@@ -12,6 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account Settings Read`
+// - `Account Settings Write`
+// - `Turnstile Sites Read`
+// - `Turnstile Sites Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -59,7 +66,7 @@ type TurnstileWidget struct {
 	pulumi.CustomResourceState
 
 	// Identifier
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// If bot*fight*mode is set to `true`, Cloudflare issues computationally
 	// expensive challenges in response to malicious bots (ENT only).
 	BotFightMode pulumi.BoolOutput `pulumi:"botFightMode"`
@@ -99,9 +106,6 @@ func NewTurnstileWidget(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Domains == nil {
 		return nil, errors.New("invalid value for required argument 'Domains'")
 	}
@@ -213,7 +217,7 @@ func (TurnstileWidgetState) ElementType() reflect.Type {
 
 type turnstileWidgetArgs struct {
 	// Identifier
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// If bot*fight*mode is set to `true`, Cloudflare issues computationally
 	// expensive challenges in response to malicious bots (ENT only).
 	BotFightMode *bool `pulumi:"botFightMode"`
@@ -241,7 +245,7 @@ type turnstileWidgetArgs struct {
 // The set of arguments for constructing a TurnstileWidget resource.
 type TurnstileWidgetArgs struct {
 	// Identifier
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// If bot*fight*mode is set to `true`, Cloudflare issues computationally
 	// expensive challenges in response to malicious bots (ENT only).
 	BotFightMode pulumi.BoolPtrInput
@@ -354,8 +358,8 @@ func (o TurnstileWidgetOutput) ToTurnstileWidgetOutputWithContext(ctx context.Co
 }
 
 // Identifier
-func (o TurnstileWidgetOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *TurnstileWidget) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o TurnstileWidgetOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TurnstileWidget) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // If bot*fight*mode is set to `true`, Cloudflare issues computationally

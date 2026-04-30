@@ -18,7 +18,7 @@ public final class GetZeroTrustAccessInfrastructureTargetResult {
      * @return Account identifier
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Date and time at which the target was created
      * 
@@ -56,8 +56,8 @@ public final class GetZeroTrustAccessInfrastructureTargetResult {
      * @return Account identifier
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Date and time at which the target was created
@@ -114,7 +114,7 @@ public final class GetZeroTrustAccessInfrastructureTargetResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String createdAt;
         private @Nullable GetZeroTrustAccessInfrastructureTargetFilter filter;
         private String hostname;
@@ -136,10 +136,8 @@ public final class GetZeroTrustAccessInfrastructureTargetResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessInfrastructureTargetResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

@@ -12,6 +12,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloudflare One Connector: cloudflared Read`
+// - `Cloudflare One Connector: cloudflared Write`
+// - `Cloudflare One Connectors Read`
+// - `Cloudflare One Connectors Write`
+// - `Cloudflare Tunnel Read`
+// - `Cloudflare Tunnel Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -105,7 +114,7 @@ type TunnelConfig struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// The tunnel configuration and ingress rules.
 	Config    TunnelConfigConfigOutput `pulumi:"config"`
 	CreatedAt pulumi.StringOutput      `pulumi:"createdAt"`
@@ -125,9 +134,6 @@ func NewTunnelConfig(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.TunnelId == nil {
 		return nil, errors.New("invalid value for required argument 'TunnelId'")
 	}
@@ -195,7 +201,7 @@ func (TunnelConfigState) ElementType() reflect.Type {
 
 type tunnelConfigArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The tunnel configuration and ingress rules.
 	Config *TunnelConfigConfig `pulumi:"config"`
 	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
@@ -208,7 +214,7 @@ type tunnelConfigArgs struct {
 // The set of arguments for constructing a TunnelConfig resource.
 type TunnelConfigArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// The tunnel configuration and ingress rules.
 	Config TunnelConfigConfigPtrInput
 	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
@@ -306,8 +312,8 @@ func (o TunnelConfigOutput) ToTunnelConfigOutputWithContext(ctx context.Context)
 }
 
 // Identifier.
-func (o TunnelConfigOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *TunnelConfig) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o TunnelConfigOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelConfig) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The tunnel configuration and ingress rules.

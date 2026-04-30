@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetLoadBalancer
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Load Balancers Read`
+        /// - `Load Balancers Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +40,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancerResult>("cloudflare:index/getLoadBalancer:getLoadBalancer", args ?? new GetLoadBalancerArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Load Balancers Read`
+        /// - `Load Balancers Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +68,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetLoadBalancerResult>("cloudflare:index/getLoadBalancer:getLoadBalancer", args ?? new GetLoadBalancerInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Load Balancers Read`
+        /// - `Load Balancers Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -111,8 +126,8 @@ namespace Pulumi.Cloudflare
             set => _regionPools = value;
         }
 
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetLoadBalancerArgs()
         {
@@ -149,8 +164,8 @@ namespace Pulumi.Cloudflare
             set => _regionPools = value;
         }
 
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetLoadBalancerInvokeArgs()
         {
@@ -246,7 +261,7 @@ namespace Pulumi.Cloudflare
         /// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
         /// </summary>
         public readonly double Ttl;
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetLoadBalancerResult(
@@ -296,7 +311,7 @@ namespace Pulumi.Cloudflare
 
             double ttl,
 
-            string zoneId)
+            string? zoneId)
         {
             AdaptiveRouting = adaptiveRouting;
             CountryPools = countryPools;

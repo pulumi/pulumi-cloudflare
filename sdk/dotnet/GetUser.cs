@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetUser
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `User Details Read`
+        /// - `User Details Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,6 +36,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("cloudflare:index/getUser:getUser", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `User Details Read`
+        /// - `User Details Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -50,6 +60,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetUserResult>("cloudflare:index/getUser:getUser", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `User Details Read`
+        /// - `User Details Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

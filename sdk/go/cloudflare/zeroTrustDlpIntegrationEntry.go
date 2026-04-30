@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Zero Trust Read`
+// - `Zero Trust Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -49,7 +54,7 @@ import (
 type ZeroTrustDlpIntegrationEntry struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Only applies to custom word lists.
 	// Determines if the words should be matched in a case-sensitive manner
 	// Cannot be set to false if secret is true
@@ -82,9 +87,6 @@ func NewZeroTrustDlpIntegrationEntry(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Enabled == nil {
 		return nil, errors.New("invalid value for required argument 'Enabled'")
 	}
@@ -172,9 +174,9 @@ func (ZeroTrustDlpIntegrationEntryState) ElementType() reflect.Type {
 }
 
 type zeroTrustDlpIntegrationEntryArgs struct {
-	AccountId string `pulumi:"accountId"`
-	Enabled   bool   `pulumi:"enabled"`
-	EntryId   string `pulumi:"entryId"`
+	AccountId *string `pulumi:"accountId"`
+	Enabled   bool    `pulumi:"enabled"`
+	EntryId   string  `pulumi:"entryId"`
 	// This field is not used as the owning profile.
 	// For predefined entries it is already set to a predefined profile.
 	ProfileId *string `pulumi:"profileId"`
@@ -182,7 +184,7 @@ type zeroTrustDlpIntegrationEntryArgs struct {
 
 // The set of arguments for constructing a ZeroTrustDlpIntegrationEntry resource.
 type ZeroTrustDlpIntegrationEntryArgs struct {
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	Enabled   pulumi.BoolInput
 	EntryId   pulumi.StringInput
 	// This field is not used as the owning profile.
@@ -277,8 +279,8 @@ func (o ZeroTrustDlpIntegrationEntryOutput) ToZeroTrustDlpIntegrationEntryOutput
 	return o
 }
 
-func (o ZeroTrustDlpIntegrationEntryOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustDlpIntegrationEntry) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o ZeroTrustDlpIntegrationEntryOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpIntegrationEntry) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Only applies to custom word lists.

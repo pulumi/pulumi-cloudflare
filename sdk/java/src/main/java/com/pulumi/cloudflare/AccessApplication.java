@@ -10,6 +10,7 @@ import com.pulumi.cloudflare.outputs.AccessApplicationCorsHeaders;
 import com.pulumi.cloudflare.outputs.AccessApplicationDestination;
 import com.pulumi.cloudflare.outputs.AccessApplicationFooterLink;
 import com.pulumi.cloudflare.outputs.AccessApplicationLandingPageDesign;
+import com.pulumi.cloudflare.outputs.AccessApplicationOauthConfiguration;
 import com.pulumi.cloudflare.outputs.AccessApplicationPolicy;
 import com.pulumi.cloudflare.outputs.AccessApplicationSaasApp;
 import com.pulumi.cloudflare.outputs.AccessApplicationScimConfig;
@@ -354,6 +355,20 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+     * 
+     */
+    @Export(name="oauthConfiguration", refs={AccessApplicationOauthConfiguration.class}, tree="[0]")
+    private Output</* @Nullable */ AccessApplicationOauthConfiguration> oauthConfiguration;
+
+    /**
+     * @return Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+     * 
+     */
+    public Output<Optional<AccessApplicationOauthConfiguration>> oauthConfiguration() {
+        return Codegen.optional(this.oauthConfiguration);
     }
     /**
      * Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.

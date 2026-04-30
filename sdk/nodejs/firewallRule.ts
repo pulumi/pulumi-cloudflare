@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Firewall Services Read`
+ * - `Firewall Services Write`
+ *
  * > `cloudflare.FirewallRule` is in a deprecation phase until June 15th, 2025.
  *   During this time period, this resource is still
  *   fully supported but you are strongly advised  to move to the
@@ -97,7 +102,7 @@ export class FirewallRule extends pulumi.CustomResource {
     /**
      * Defines an identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a FirewallRule resource with the given unique name, arguments, and options.
@@ -127,9 +132,6 @@ export class FirewallRule extends pulumi.CustomResource {
             }
             if (args?.filter === undefined && !opts.urn) {
                 throw new Error("Missing required property 'filter'");
-            }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["action"] = args?.action;
             resourceInputs["filter"] = args?.filter;
@@ -189,5 +191,5 @@ export interface FirewallRuleArgs {
     /**
      * Defines an identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

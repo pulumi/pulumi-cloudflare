@@ -26,8 +26,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetRegistrarDomain(ctx, &cloudflare.LookupRegistrarDomainArgs{
-//				AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
-//				DomainName: "cloudflare.com",
+//				AccountId:  pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				DomainName: "example.com",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -50,16 +50,22 @@ func LookupRegistrarDomain(ctx *pulumi.Context, args *LookupRegistrarDomainArgs,
 // A collection of arguments for invoking getRegistrarDomain.
 type LookupRegistrarDomainArgs struct {
 	// Identifier
-	AccountId string `pulumi:"accountId"`
-	// Domain name.
+	AccountId *string `pulumi:"accountId"`
+	// Fully qualified domain name (FQDN) including the extension
+	// (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+	// identifies a registration — the same domain cannot be registered
+	// twice, making it a natural idempotency key for registration requests.
 	DomainName string `pulumi:"domainName"`
 }
 
 // A collection of values returned by getRegistrarDomain.
 type LookupRegistrarDomainResult struct {
 	// Identifier
-	AccountId string `pulumi:"accountId"`
-	// Domain name.
+	AccountId *string `pulumi:"accountId"`
+	// Fully qualified domain name (FQDN) including the extension
+	// (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+	// identifies a registration — the same domain cannot be registered
+	// twice, making it a natural idempotency key for registration requests.
 	DomainName string `pulumi:"domainName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -77,8 +83,11 @@ func LookupRegistrarDomainOutput(ctx *pulumi.Context, args LookupRegistrarDomain
 // A collection of arguments for invoking getRegistrarDomain.
 type LookupRegistrarDomainOutputArgs struct {
 	// Identifier
-	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// Domain name.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	// Fully qualified domain name (FQDN) including the extension
+	// (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+	// identifies a registration — the same domain cannot be registered
+	// twice, making it a natural idempotency key for registration requests.
 	DomainName pulumi.StringInput `pulumi:"domainName"`
 }
 
@@ -102,11 +111,14 @@ func (o LookupRegistrarDomainResultOutput) ToLookupRegistrarDomainResultOutputWi
 }
 
 // Identifier
-func (o LookupRegistrarDomainResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRegistrarDomainResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupRegistrarDomainResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupRegistrarDomainResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// Domain name.
+// Fully qualified domain name (FQDN) including the extension
+// (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+// identifies a registration — the same domain cannot be registered
+// twice, making it a natural idempotency key for registration requests.
 func (o LookupRegistrarDomainResultOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistrarDomainResult) string { return v.DomainName }).(pulumi.StringOutput)
 }

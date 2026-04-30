@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Calls Read`
+ * - `Calls Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getCallsTurnApps(args: GetCallsTurnAppsArgs, opts?: pulumi.InvokeOptions): Promise<GetCallsTurnAppsResult> {
+export function getCallsTurnApps(args?: GetCallsTurnAppsArgs, opts?: pulumi.InvokeOptions): Promise<GetCallsTurnAppsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCallsTurnApps:getCallsTurnApps", {
         "accountId": args.accountId,
@@ -33,7 +39,7 @@ export interface GetCallsTurnAppsArgs {
     /**
      * The account identifier tag.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -47,7 +53,7 @@ export interface GetCallsTurnAppsResult {
     /**
      * The account identifier tag.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -62,6 +68,11 @@ export interface GetCallsTurnAppsResult {
     readonly results: outputs.GetCallsTurnAppsResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Calls Read`
+ * - `Calls Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,7 +84,8 @@ export interface GetCallsTurnAppsResult {
  * });
  * ```
  */
-export function getCallsTurnAppsOutput(args: GetCallsTurnAppsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCallsTurnAppsResult> {
+export function getCallsTurnAppsOutput(args?: GetCallsTurnAppsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCallsTurnAppsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCallsTurnApps:getCallsTurnApps", {
         "accountId": args.accountId,
@@ -88,7 +100,7 @@ export interface GetCallsTurnAppsOutputArgs {
     /**
      * The account identifier tag.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

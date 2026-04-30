@@ -6,7 +6,6 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.GetApiShieldOperationFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -59,15 +58,15 @@ public final class GetApiShieldOperationArgs extends com.pulumi.resources.Invoke
      * Identifier.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private Output<String> zoneId;
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private GetApiShieldOperationArgs() {}
@@ -164,7 +163,7 @@ public final class GetApiShieldOperationArgs extends com.pulumi.resources.Invoke
          * @return builder
          * 
          */
-        public Builder zoneId(Output<String> zoneId) {
+        public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -180,9 +179,6 @@ public final class GetApiShieldOperationArgs extends com.pulumi.resources.Invoke
         }
 
         public GetApiShieldOperationArgs build() {
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("GetApiShieldOperationArgs", "zoneId");
-            }
             return $;
         }
     }

@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetZoneLockdown
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Firewall Services Read`
+        /// - `Firewall Services Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,10 +36,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZoneLockdownResult> InvokeAsync(GetZoneLockdownArgs args, InvokeOptions? options = null)
+        public static Task<GetZoneLockdownResult> InvokeAsync(GetZoneLockdownArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZoneLockdownResult>("cloudflare:index/getZoneLockdown:getZoneLockdown", args ?? new GetZoneLockdownArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Firewall Services Read`
+        /// - `Firewall Services Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,10 +64,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZoneLockdownResult> Invoke(GetZoneLockdownInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZoneLockdownResult> Invoke(GetZoneLockdownInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZoneLockdownResult>("cloudflare:index/getZoneLockdown:getZoneLockdown", args ?? new GetZoneLockdownInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Firewall Services Read`
+        /// - `Firewall Services Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -96,8 +111,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Defines an identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetZoneLockdownArgs()
         {
@@ -119,8 +134,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Defines an identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetZoneLockdownInvokeArgs()
         {
@@ -168,7 +183,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Defines an identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetZoneLockdownResult(
@@ -190,7 +205,7 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<string> urls,
 
-            string zoneId)
+            string? zoneId)
         {
             Configurations = configurations;
             CreatedOn = createdOn;

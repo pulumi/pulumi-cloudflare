@@ -7,6 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -133,6 +137,7 @@ export class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
      * The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
      */
     declare public readonly lanAllowSubnetSize: pulumi.Output<number | undefined>;
+    declare public /*out*/ readonly policyId: pulumi.Output<string>;
     /**
      * Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
      */
@@ -184,6 +189,7 @@ export class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
             resourceInputs["includes"] = state?.includes;
             resourceInputs["lanAllowMinutes"] = state?.lanAllowMinutes;
             resourceInputs["lanAllowSubnetSize"] = state?.lanAllowSubnetSize;
+            resourceInputs["policyId"] = state?.policyId;
             resourceInputs["registerInterfaceIpWithDns"] = state?.registerInterfaceIpWithDns;
             resourceInputs["sccmVpnBoundarySupport"] = state?.sccmVpnBoundarySupport;
             resourceInputs["serviceModeV2"] = state?.serviceModeV2;
@@ -217,6 +223,7 @@ export class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
             resourceInputs["enabled"] = undefined /*out*/;
             resourceInputs["fallbackDomains"] = undefined /*out*/;
             resourceInputs["gatewayUniqueId"] = undefined /*out*/;
+            resourceInputs["policyId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy" }, { type: "cloudflare:index/splitTunnel:SplitTunnel" }] };
@@ -284,6 +291,7 @@ export interface ZeroTrustDeviceDefaultProfileState {
      * The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
      */
     lanAllowSubnetSize?: pulumi.Input<number>;
+    policyId?: pulumi.Input<string>;
     /**
      * Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
      */

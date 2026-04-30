@@ -89,7 +89,7 @@ class GetApiShieldSchemasResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -116,6 +116,13 @@ def get_api_shield_schemas(max_items: Optional[_builtins.int] = None,
                            zone_id: Optional[_builtins.str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApiShieldSchemasResult:
     """
+    Accepted Permissions
+
+    - `Account API Gateway`
+    - `Account API Gateway Read`
+    - `Domain API Gateway`
+    - `Domain API Gateway Read`
+
     ## Example Usage
 
     ```python
@@ -150,9 +157,16 @@ def get_api_shield_schemas(max_items: Optional[_builtins.int] = None,
 def get_api_shield_schemas_output(max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                   omit_source: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                                   validation_enabled: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                                  zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApiShieldSchemasResult]:
     """
+    Accepted Permissions
+
+    - `Account API Gateway`
+    - `Account API Gateway Read`
+    - `Domain API Gateway`
+    - `Domain API Gateway Read`
+
     ## Example Usage
 
     ```python

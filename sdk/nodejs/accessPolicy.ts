@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Access: Apps and Policies Read`
+ * - `Access: Apps and Policies Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -17,9 +22,7 @@ import * as utilities from "./utilities";
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     decision: "allow",
  *     includes: [{
- *         group: {
- *             id: "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
- *         },
+ *         certificate: {},
  *     }],
  *     name: "Allow devs",
  *     approvalGroups: [
@@ -48,9 +51,7 @@ import * as utilities from "./utilities";
  *         },
  *     },
  *     excludes: [{
- *         group: {
- *             id: "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
- *         },
+ *         certificate: {},
  *     }],
  *     isolationRequired: false,
  *     mfaConfig: {
@@ -59,15 +60,13 @@ import * as utilities from "./utilities";
  *             "biometrics",
  *             "security_key",
  *         ],
- *         mfaBypass: false,
+ *         mfaDisabled: false,
  *         sessionDuration: "24h",
  *     },
  *     purposeJustificationPrompt: "Please enter a justification for entering this protected domain.",
  *     purposeJustificationRequired: true,
  *     requires: [{
- *         group: {
- *             id: "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
- *         },
+ *         certificate: {},
  *     }],
  *     sessionDuration: "24h",
  * });
@@ -113,7 +112,7 @@ export class AccessPolicy extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * Administrators who can approve a temporary authentication request.
      */
@@ -200,9 +199,6 @@ export class AccessPolicy extends pulumi.CustomResource {
             resourceInputs["sessionDuration"] = state?.sessionDuration;
         } else {
             const args = argsOrState as AccessPolicyArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.decision === undefined && !opts.urn) {
                 throw new Error("Missing required property 'decision'");
             }
@@ -301,7 +297,7 @@ export interface AccessPolicyArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Administrators who can approve a temporary authentication request.
      */

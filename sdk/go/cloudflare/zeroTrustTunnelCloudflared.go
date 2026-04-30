@@ -12,6 +12,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloudflare One Connector: cloudflared Read`
+// - `Cloudflare One Connector: cloudflared Write`
+// - `Cloudflare One Connectors Read`
+// - `Cloudflare One Connectors Write`
+// - `Cloudflare Tunnel Read`
+// - `Cloudflare Tunnel Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -50,7 +59,7 @@ type ZeroTrustTunnelCloudflared struct {
 	pulumi.CustomResourceState
 
 	// Cloudflare account ID
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Cloudflare account ID
 	AccountTag pulumi.StringOutput `pulumi:"accountTag"`
 	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
@@ -93,9 +102,6 @@ func NewZeroTrustTunnelCloudflared(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -216,7 +222,7 @@ func (ZeroTrustTunnelCloudflaredState) ElementType() reflect.Type {
 
 type zeroTrustTunnelCloudflaredArgs struct {
 	// Cloudflare account ID
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
 	// Available values: "local", "cloudflare".
 	ConfigSrc *string `pulumi:"configSrc"`
@@ -229,7 +235,7 @@ type zeroTrustTunnelCloudflaredArgs struct {
 // The set of arguments for constructing a ZeroTrustTunnelCloudflared resource.
 type ZeroTrustTunnelCloudflaredArgs struct {
 	// Cloudflare account ID
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
 	// Available values: "local", "cloudflare".
 	ConfigSrc pulumi.StringPtrInput
@@ -327,8 +333,8 @@ func (o ZeroTrustTunnelCloudflaredOutput) ToZeroTrustTunnelCloudflaredOutputWith
 }
 
 // Cloudflare account ID
-func (o ZeroTrustTunnelCloudflaredOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustTunnelCloudflared) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o ZeroTrustTunnelCloudflaredOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustTunnelCloudflared) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Cloudflare account ID

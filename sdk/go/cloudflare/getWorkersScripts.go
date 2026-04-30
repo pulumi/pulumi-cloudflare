@@ -11,6 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Workers Scripts Read`
+// - `Workers Scripts Write`
+// - `Workers Tail Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetWorkersScripts(ctx, &cloudflare.LookupWorkersScriptsArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Tags:      pulumi.StringRef("production:yes,staging:no"),
 //			}, nil)
 //			if err != nil {
@@ -50,7 +56,7 @@ func LookupWorkersScripts(ctx *pulumi.Context, args *LookupWorkersScriptsArgs, o
 // A collection of arguments for invoking getWorkersScripts.
 type LookupWorkersScriptsArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is 'yes' or 'no'.
@@ -60,7 +66,7 @@ type LookupWorkersScriptsArgs struct {
 // A collection of values returned by getWorkersScripts.
 type LookupWorkersScriptsResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -83,7 +89,7 @@ func LookupWorkersScriptsOutput(ctx *pulumi.Context, args LookupWorkersScriptsOu
 // A collection of arguments for invoking getWorkersScripts.
 type LookupWorkersScriptsOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is 'yes' or 'no'.
@@ -110,8 +116,8 @@ func (o LookupWorkersScriptsResultOutput) ToLookupWorkersScriptsResultOutputWith
 }
 
 // Identifier.
-func (o LookupWorkersScriptsResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkersScriptsResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupWorkersScriptsResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkersScriptsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

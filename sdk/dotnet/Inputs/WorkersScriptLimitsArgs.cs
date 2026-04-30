@@ -18,6 +18,12 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("cpuMs")]
         public Input<int>? CpuMs { get; set; }
 
+        /// <summary>
+        /// The number of subrequests this Worker can make per request.
+        /// </summary>
+        [Input("subrequests")]
+        public Input<int>? Subrequests { get; set; }
+
         public WorkersScriptLimitsArgs()
         {
         }

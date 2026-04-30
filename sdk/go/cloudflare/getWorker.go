@@ -11,6 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Workers Scripts Read`
+// - `Workers Scripts Write`
+// - `Workers Tail Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,8 +32,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetWorker(ctx, &cloudflare.LookupWorkerArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
-//				WorkerId:  "worker_id",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				WorkerId:  pulumi.StringRef("worker_id"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -50,17 +56,21 @@ func LookupWorker(ctx *pulumi.Context, args *LookupWorkerArgs, opts ...pulumi.In
 // A collection of arguments for invoking getWorker.
 type LookupWorkerArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string          `pulumi:"accountId"`
+	Filter    *GetWorkerFilter `pulumi:"filter"`
 	// Identifier for the Worker, which can be ID or name.
-	WorkerId string `pulumi:"workerId"`
+	WorkerId *string `pulumi:"workerId"`
 }
 
 // A collection of values returned by getWorker.
 type LookupWorkerResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// When the Worker was created.
 	CreatedOn string `pulumi:"createdOn"`
+	// When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.
+	DeployedOn string           `pulumi:"deployedOn"`
+	Filter     *GetWorkerFilter `pulumi:"filter"`
 	// Identifier for the Worker, which can be ID or name.
 	Id string `pulumi:"id"`
 	// Whether logpush is enabled for the Worker.
@@ -80,7 +90,7 @@ type LookupWorkerResult struct {
 	// When the Worker was most recently updated.
 	UpdatedOn string `pulumi:"updatedOn"`
 	// Identifier for the Worker, which can be ID or name.
-	WorkerId string `pulumi:"workerId"`
+	WorkerId *string `pulumi:"workerId"`
 }
 
 func LookupWorkerOutput(ctx *pulumi.Context, args LookupWorkerOutputArgs, opts ...pulumi.InvokeOption) LookupWorkerResultOutput {
@@ -95,9 +105,10 @@ func LookupWorkerOutput(ctx *pulumi.Context, args LookupWorkerOutputArgs, opts .
 // A collection of arguments for invoking getWorker.
 type LookupWorkerOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput   `pulumi:"accountId"`
+	Filter    GetWorkerFilterPtrInput `pulumi:"filter"`
 	// Identifier for the Worker, which can be ID or name.
-	WorkerId pulumi.StringInput `pulumi:"workerId"`
+	WorkerId pulumi.StringPtrInput `pulumi:"workerId"`
 }
 
 func (LookupWorkerOutputArgs) ElementType() reflect.Type {
@@ -120,13 +131,22 @@ func (o LookupWorkerResultOutput) ToLookupWorkerResultOutputWithContext(ctx cont
 }
 
 // Identifier.
-func (o LookupWorkerResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkerResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupWorkerResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkerResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // When the Worker was created.
 func (o LookupWorkerResultOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkerResult) string { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.
+func (o LookupWorkerResultOutput) DeployedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkerResult) string { return v.DeployedOn }).(pulumi.StringOutput)
+}
+
+func (o LookupWorkerResultOutput) Filter() GetWorkerFilterPtrOutput {
+	return o.ApplyT(func(v LookupWorkerResult) *GetWorkerFilter { return v.Filter }).(GetWorkerFilterPtrOutput)
 }
 
 // Identifier for the Worker, which can be ID or name.
@@ -175,8 +195,8 @@ func (o LookupWorkerResultOutput) UpdatedOn() pulumi.StringOutput {
 }
 
 // Identifier for the Worker, which can be ID or name.
-func (o LookupWorkerResultOutput) WorkerId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkerResult) string { return v.WorkerId }).(pulumi.StringOutput)
+func (o LookupWorkerResultOutput) WorkerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkerResult) *string { return v.WorkerId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -12,6 +12,12 @@ namespace Pulumi.Cloudflare
     public static class GetWorkersForPlatformsDispatchNamespace
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// - `Workers Tail Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +41,12 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkersForPlatformsDispatchNamespaceResult>("cloudflare:index/getWorkersForPlatformsDispatchNamespace:getWorkersForPlatformsDispatchNamespace", args ?? new GetWorkersForPlatformsDispatchNamespaceArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// - `Workers Tail Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +70,12 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkersForPlatformsDispatchNamespaceResult>("cloudflare:index/getWorkersForPlatformsDispatchNamespace:getWorkersForPlatformsDispatchNamespace", args ?? new GetWorkersForPlatformsDispatchNamespaceInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// - `Workers Tail Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +105,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Name of the Workers for Platforms dispatch namespace.
@@ -107,8 +125,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Name of the Workers for Platforms dispatch namespace.
@@ -129,7 +147,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Identifier.
         /// </summary>
@@ -173,7 +191,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetWorkersForPlatformsDispatchNamespaceResult(
-            string accountId,
+            string? accountId,
 
             string createdBy,
 

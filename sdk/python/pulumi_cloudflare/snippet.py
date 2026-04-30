@@ -24,7 +24,7 @@ class SnippetArgs:
                  files: pulumi.Input[Sequence[pulumi.Input['SnippetFileArgs']]],
                  metadata: pulumi.Input['SnippetMetadataArgs'],
                  snippet_name: pulumi.Input[_builtins.str],
-                 zone_id: pulumi.Input[_builtins.str]):
+                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Snippet resource.
 
@@ -36,7 +36,8 @@ class SnippetArgs:
         pulumi.set(__self__, "files", files)
         pulumi.set(__self__, "metadata", metadata)
         pulumi.set(__self__, "snippet_name", snippet_name)
-        pulumi.set(__self__, "zone_id", zone_id)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter
@@ -76,14 +77,14 @@ class SnippetArgs:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[_builtins.str]:
+    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Use this field to specify the unique ID of the zone.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: pulumi.Input[_builtins.str]):
+    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -204,6 +205,11 @@ class Snippet(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Snippets Read`
+        - `Snippets Write`
+
         ## Example Usage
 
         ```python
@@ -246,6 +252,11 @@ class Snippet(pulumi.CustomResource):
                  args: SnippetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Snippets Read`
+        - `Snippets Write`
+
         ## Example Usage
 
         ```python
@@ -311,8 +322,6 @@ class Snippet(pulumi.CustomResource):
             if snippet_name is None and not opts.urn:
                 raise TypeError("Missing required property 'snippet_name'")
             __props__.__dict__["snippet_name"] = snippet_name
-            if zone_id is None and not opts.urn:
-                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["created_on"] = None
             __props__.__dict__["modified_on"] = None
@@ -400,7 +409,7 @@ class Snippet(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[_builtins.str]:
+    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Use this field to specify the unique ID of the zone.
         """

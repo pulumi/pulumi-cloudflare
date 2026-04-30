@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustDeviceDefaultProfile(ctx, &cloudflare.LookupZeroTrustDeviceDefaultProfileArgs{
-//				AccountId: "699d98642c564d2e855e9661899b7252",
+//				AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -48,12 +48,12 @@ func LookupZeroTrustDeviceDefaultProfile(ctx *pulumi.Context, args *LookupZeroTr
 
 // A collection of arguments for invoking getZeroTrustDeviceDefaultProfile.
 type LookupZeroTrustDeviceDefaultProfileArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 }
 
 // A collection of values returned by getZeroTrustDeviceDefaultProfile.
 type LookupZeroTrustDeviceDefaultProfileResult struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Whether to allow the user to switch WARP between modes.
 	AllowModeSwitch bool `pulumi:"allowModeSwitch"`
 	// Whether to receive update notifications when a new version of the client is available.
@@ -80,6 +80,7 @@ type LookupZeroTrustDeviceDefaultProfileResult struct {
 	Id string `pulumi:"id"`
 	// List of routes included in the WARP client's tunnel.
 	Includes []GetZeroTrustDeviceDefaultProfileInclude `pulumi:"includes"`
+	PolicyId string                                    `pulumi:"policyId"`
 	// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
 	RegisterInterfaceIpWithDns bool `pulumi:"registerInterfaceIpWithDns"`
 	// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
@@ -104,7 +105,7 @@ func LookupZeroTrustDeviceDefaultProfileOutput(ctx *pulumi.Context, args LookupZ
 
 // A collection of arguments for invoking getZeroTrustDeviceDefaultProfile.
 type LookupZeroTrustDeviceDefaultProfileOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 }
 
 func (LookupZeroTrustDeviceDefaultProfileOutputArgs) ElementType() reflect.Type {
@@ -126,8 +127,8 @@ func (o LookupZeroTrustDeviceDefaultProfileResultOutput) ToLookupZeroTrustDevice
 	return o
 }
 
-func (o LookupZeroTrustDeviceDefaultProfileResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustDeviceDefaultProfileResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustDeviceDefaultProfileResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustDeviceDefaultProfileResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Whether to allow the user to switch WARP between modes.
@@ -202,6 +203,10 @@ func (o LookupZeroTrustDeviceDefaultProfileResultOutput) Includes() GetZeroTrust
 	return o.ApplyT(func(v LookupZeroTrustDeviceDefaultProfileResult) []GetZeroTrustDeviceDefaultProfileInclude {
 		return v.Includes
 	}).(GetZeroTrustDeviceDefaultProfileIncludeArrayOutput)
+}
+
+func (o LookupZeroTrustDeviceDefaultProfileResultOutput) PolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustDeviceDefaultProfileResult) string { return v.PolicyId }).(pulumi.StringOutput)
 }
 
 // Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.

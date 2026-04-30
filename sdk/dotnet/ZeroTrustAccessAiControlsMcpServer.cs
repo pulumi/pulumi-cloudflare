@@ -25,10 +25,30 @@ namespace Pulumi.Cloudflare
     ///         AccountId = "a86a8f5c339544d7bdc89926de14fb8c",
     ///         ZeroTrustAccessAiControlsMcpServerId = "my-mcp-server",
     ///         AuthType = "unauthenticated",
-    ///         Hostname = "https://exmaple.com/mcp",
+    ///         Hostname = "https://example.com/mcp",
     ///         Name = "My MCP Server",
     ///         AuthCredentials = "auth_credentials",
     ///         Description = "This is one remote mcp server",
+    ///         UpdatedPrompts = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs
+    ///             {
+    ///                 Name = "name",
+    ///                 Alias = "my-custom-alias",
+    ///                 Description = "description",
+    ///                 Enabled = true,
+    ///             },
+    ///         },
+    ///         UpdatedTools = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs
+    ///             {
+    ///                 Name = "name",
+    ///                 Alias = "my-custom-alias",
+    ///                 Description = "description",
+    ///                 Enabled = true,
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -44,7 +64,7 @@ namespace Pulumi.Cloudflare
     public partial class ZeroTrustAccessAiControlsMcpServer : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         [Output("authCredentials")]
         public Output<string?> AuthCredentials { get; private set; } = null!;
@@ -94,6 +114,12 @@ namespace Pulumi.Cloudflare
         [Output("tools")]
         public Output<ImmutableArray<ImmutableDictionary<string, string>>> Tools { get; private set; } = null!;
 
+        [Output("updatedPrompts")]
+        public Output<ImmutableArray<Outputs.ZeroTrustAccessAiControlsMcpServerUpdatedPrompt>> UpdatedPrompts { get; private set; } = null!;
+
+        [Output("updatedTools")]
+        public Output<ImmutableArray<Outputs.ZeroTrustAccessAiControlsMcpServerUpdatedTool>> UpdatedTools { get; private set; } = null!;
+
         /// <summary>
         /// server id
         /// </summary>
@@ -123,6 +149,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "authCredentials",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -146,11 +176,20 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustAccessAiControlsMcpServerArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("authCredentials")]
-        public Input<string>? AuthCredentials { get; set; }
+        private Input<string>? _authCredentials;
+        public Input<string>? AuthCredentials
+        {
+            get => _authCredentials;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _authCredentials = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Available values: "oauth", "bearer", "unauthenticated".
@@ -166,6 +205,22 @@ namespace Pulumi.Cloudflare
 
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        [Input("updatedPrompts")]
+        private InputList<Inputs.ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs>? _updatedPrompts;
+        public InputList<Inputs.ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs> UpdatedPrompts
+        {
+            get => _updatedPrompts ?? (_updatedPrompts = new InputList<Inputs.ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs>());
+            set => _updatedPrompts = value;
+        }
+
+        [Input("updatedTools")]
+        private InputList<Inputs.ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs>? _updatedTools;
+        public InputList<Inputs.ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs> UpdatedTools
+        {
+            get => _updatedTools ?? (_updatedTools = new InputList<Inputs.ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs>());
+            set => _updatedTools = value;
+        }
 
         /// <summary>
         /// server id
@@ -185,7 +240,16 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         [Input("authCredentials")]
-        public Input<string>? AuthCredentials { get; set; }
+        private Input<string>? _authCredentials;
+        public Input<string>? AuthCredentials
+        {
+            get => _authCredentials;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _authCredentials = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Available values: "oauth", "bearer", "unauthenticated".
@@ -240,6 +304,22 @@ namespace Pulumi.Cloudflare
         {
             get => _tools ?? (_tools = new InputList<ImmutableDictionary<string, string>>());
             set => _tools = value;
+        }
+
+        [Input("updatedPrompts")]
+        private InputList<Inputs.ZeroTrustAccessAiControlsMcpServerUpdatedPromptGetArgs>? _updatedPrompts;
+        public InputList<Inputs.ZeroTrustAccessAiControlsMcpServerUpdatedPromptGetArgs> UpdatedPrompts
+        {
+            get => _updatedPrompts ?? (_updatedPrompts = new InputList<Inputs.ZeroTrustAccessAiControlsMcpServerUpdatedPromptGetArgs>());
+            set => _updatedPrompts = value;
+        }
+
+        [Input("updatedTools")]
+        private InputList<Inputs.ZeroTrustAccessAiControlsMcpServerUpdatedToolGetArgs>? _updatedTools;
+        public InputList<Inputs.ZeroTrustAccessAiControlsMcpServerUpdatedToolGetArgs> UpdatedTools
+        {
+            get => _updatedTools ?? (_updatedTools = new InputList<Inputs.ZeroTrustAccessAiControlsMcpServerUpdatedToolGetArgs>());
+            set => _updatedTools = value;
         }
 
         /// <summary>

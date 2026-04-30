@@ -52,6 +52,21 @@ public final class CustomSslState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The identifier for the Custom CSR that was used.
+     * 
+     */
+    @Import(name="customCsrId")
+    private @Nullable Output<String> customCsrId;
+
+    /**
+     * @return The identifier for the Custom CSR that was used.
+     * 
+     */
+    public Optional<Output<String>> customCsrId() {
+        return Optional.ofNullable(this.customCsrId);
+    }
+
+    /**
      * The environment to deploy the certificate to.
      * Available values: &#34;staging&#34;, &#34;production&#34;.
      * 
@@ -292,6 +307,7 @@ public final class CustomSslState extends com.pulumi.resources.ResourceArgs {
     private CustomSslState(CustomSslState $) {
         this.bundleMethod = $.bundleMethod;
         this.certificate = $.certificate;
+        this.customCsrId = $.customCsrId;
         this.deploy = $.deploy;
         this.expiresOn = $.expiresOn;
         this.geoRestrictions = $.geoRestrictions;
@@ -370,6 +386,27 @@ public final class CustomSslState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder certificate(String certificate) {
             return certificate(Output.of(certificate));
+        }
+
+        /**
+         * @param customCsrId The identifier for the Custom CSR that was used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customCsrId(@Nullable Output<String> customCsrId) {
+            $.customCsrId = customCsrId;
+            return this;
+        }
+
+        /**
+         * @param customCsrId The identifier for the Custom CSR that was used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customCsrId(String customCsrId) {
+            return customCsrId(Output.of(customCsrId));
         }
 
         /**

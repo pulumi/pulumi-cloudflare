@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -14,12 +19,13 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleWorkersCustomDomain = cloudflare.getWorkersCustomDomain({
- *     accountId: "9a7806061c88ada191ed06f989cc3dac",
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     domainId: "dbe10b4bc17c295377eabd600e1787fd",
  * });
  * ```
  */
-export function getWorkersCustomDomain(args: GetWorkersCustomDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkersCustomDomainResult> {
+export function getWorkersCustomDomain(args?: GetWorkersCustomDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkersCustomDomainResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWorkersCustomDomain:getWorkersCustomDomain", {
         "accountId": args.accountId,
@@ -33,11 +39,11 @@ export function getWorkersCustomDomain(args: GetWorkersCustomDomainArgs, opts?: 
  */
 export interface GetWorkersCustomDomainArgs {
     /**
-     * Identifer of the account.
+     * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
-     * Identifer of the Worker Domain.
+     * ID of the domain.
      */
     domainId?: string;
     filter?: inputs.GetWorkersCustomDomainFilter;
@@ -48,42 +54,51 @@ export interface GetWorkersCustomDomainArgs {
  */
 export interface GetWorkersCustomDomainResult {
     /**
-     * Identifer of the account.
+     * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
-     * Identifer of the Worker Domain.
+     * ID of the TLS certificate issued for the domain.
+     */
+    readonly certId: string;
+    /**
+     * ID of the domain.
      */
     readonly domainId?: string;
     /**
-     * Worker environment associated with the zone and hostname.
+     * Worker environment associated with the domain.
      *
      * @deprecated This attribute is deprecated.
      */
     readonly environment: string;
     readonly filter?: outputs.GetWorkersCustomDomainFilter;
     /**
-     * Hostname of the Worker Domain.
+     * Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
      */
     readonly hostname: string;
     /**
-     * Identifer of the Worker Domain.
+     * ID of the domain.
      */
     readonly id: string;
     /**
-     * Worker service associated with the zone and hostname.
+     * Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
      */
     readonly service: string;
     /**
-     * Identifier of the zone.
+     * ID of the zone containing the domain hostname.
      */
     readonly zoneId: string;
     /**
-     * Name of the zone.
+     * Name of the zone containing the domain hostname.
      */
     readonly zoneName: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -91,12 +106,13 @@ export interface GetWorkersCustomDomainResult {
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleWorkersCustomDomain = cloudflare.getWorkersCustomDomain({
- *     accountId: "9a7806061c88ada191ed06f989cc3dac",
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     domainId: "dbe10b4bc17c295377eabd600e1787fd",
  * });
  * ```
  */
-export function getWorkersCustomDomainOutput(args: GetWorkersCustomDomainOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkersCustomDomainResult> {
+export function getWorkersCustomDomainOutput(args?: GetWorkersCustomDomainOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkersCustomDomainResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWorkersCustomDomain:getWorkersCustomDomain", {
         "accountId": args.accountId,
@@ -110,11 +126,11 @@ export function getWorkersCustomDomainOutput(args: GetWorkersCustomDomainOutputA
  */
 export interface GetWorkersCustomDomainOutputArgs {
     /**
-     * Identifer of the account.
+     * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
-     * Identifer of the Worker Domain.
+     * ID of the domain.
      */
     domainId?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetWorkersCustomDomainFilterArgs>;

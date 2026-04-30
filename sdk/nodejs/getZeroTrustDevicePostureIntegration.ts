@@ -31,7 +31,7 @@ export function getZeroTrustDevicePostureIntegration(args: GetZeroTrustDevicePos
  * A collection of arguments for invoking getZeroTrustDevicePostureIntegration.
  */
 export interface GetZeroTrustDevicePostureIntegrationArgs {
-    accountId: string;
+    accountId?: string;
     /**
      * API UUID.
      */
@@ -42,7 +42,7 @@ export interface GetZeroTrustDevicePostureIntegrationArgs {
  * A collection of values returned by getZeroTrustDevicePostureIntegration.
  */
 export interface GetZeroTrustDevicePostureIntegrationResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The configuration object containing third-party integration information.
      */
@@ -94,7 +94,7 @@ export function getZeroTrustDevicePostureIntegrationOutput(args: GetZeroTrustDev
  * A collection of arguments for invoking getZeroTrustDevicePostureIntegration.
  */
 export interface GetZeroTrustDevicePostureIntegrationOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * API UUID.
      */

@@ -7,6 +7,15 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Domain Page Shield`
+ * - `Domain Page Shield Read`
+ * - `Page Shield`
+ * - `Page Shield Read`
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -30,7 +39,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getPageShieldConnectionsList(args: GetPageShieldConnectionsListArgs, opts?: pulumi.InvokeOptions): Promise<GetPageShieldConnectionsListResult> {
+export function getPageShieldConnectionsList(args?: GetPageShieldConnectionsListArgs, opts?: pulumi.InvokeOptions): Promise<GetPageShieldConnectionsListResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getPageShieldConnectionsList:getPageShieldConnectionsList", {
         "direction": args.direction,
@@ -84,10 +94,7 @@ export interface GetPageShieldConnectionsListArgs {
     prioritizeMalicious?: boolean;
     status?: string;
     urls?: string;
-    /**
-     * Identifier
-     */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -129,12 +136,18 @@ export interface GetPageShieldConnectionsListResult {
     readonly results: outputs.GetPageShieldConnectionsListResult[];
     readonly status?: string;
     readonly urls?: string;
-    /**
-     * Identifier
-     */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Domain Page Shield`
+ * - `Domain Page Shield Read`
+ * - `Page Shield`
+ * - `Page Shield Read`
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -158,7 +171,8 @@ export interface GetPageShieldConnectionsListResult {
  * });
  * ```
  */
-export function getPageShieldConnectionsListOutput(args: GetPageShieldConnectionsListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPageShieldConnectionsListResult> {
+export function getPageShieldConnectionsListOutput(args?: GetPageShieldConnectionsListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPageShieldConnectionsListResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getPageShieldConnectionsList:getPageShieldConnectionsList", {
         "direction": args.direction,
@@ -212,8 +226,5 @@ export interface GetPageShieldConnectionsListOutputArgs {
     prioritizeMalicious?: pulumi.Input<boolean>;
     status?: pulumi.Input<string>;
     urls?: pulumi.Input<string>;
-    /**
-     * Identifier
-     */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

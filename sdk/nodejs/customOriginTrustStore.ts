@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -87,7 +92,7 @@ export class CustomOriginTrustStore extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a CustomOriginTrustStore resource with the given unique name, arguments, and options.
@@ -114,9 +119,6 @@ export class CustomOriginTrustStore extends pulumi.CustomResource {
             const args = argsOrState as CustomOriginTrustStoreArgs | undefined;
             if (args?.certificate === undefined && !opts.urn) {
                 throw new Error("Missing required property 'certificate'");
-            }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["certificate"] = args?.certificate;
             resourceInputs["zoneId"] = args?.zoneId;
@@ -182,5 +184,5 @@ export interface CustomOriginTrustStoreArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

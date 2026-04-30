@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Firewall Services Read`
+ * - `Firewall Services Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +24,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZoneLockdown(args: GetZoneLockdownArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneLockdownResult> {
+export function getZoneLockdown(args?: GetZoneLockdownArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneLockdownResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZoneLockdown:getZoneLockdown", {
         "filter": args.filter,
@@ -40,7 +46,7 @@ export interface GetZoneLockdownArgs {
     /**
      * Defines an identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -83,9 +89,14 @@ export interface GetZoneLockdownResult {
     /**
      * Defines an identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Firewall Services Read`
+ * - `Firewall Services Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -98,7 +109,8 @@ export interface GetZoneLockdownResult {
  * });
  * ```
  */
-export function getZoneLockdownOutput(args: GetZoneLockdownOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneLockdownResult> {
+export function getZoneLockdownOutput(args?: GetZoneLockdownOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneLockdownResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZoneLockdown:getZoneLockdown", {
         "filter": args.filter,
@@ -119,5 +131,5 @@ export interface GetZoneLockdownOutputArgs {
     /**
      * Defines an identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

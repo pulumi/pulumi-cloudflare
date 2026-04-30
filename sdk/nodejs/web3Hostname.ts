@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Web3 Hostnames Read`
+ * - `Web3 Hostnames Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -81,7 +86,7 @@ export class Web3Hostname extends pulumi.CustomResource {
     /**
      * Specify the identifier of the hostname.
      */
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a Web3Hostname resource with the given unique name, arguments, and options.
@@ -111,9 +116,6 @@ export class Web3Hostname extends pulumi.CustomResource {
             }
             if (args?.target === undefined && !opts.urn) {
                 throw new Error("Missing required property 'target'");
-            }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["description"] = args?.description;
             resourceInputs["dnslink"] = args?.dnslink;
@@ -187,5 +189,5 @@ export interface Web3HostnameArgs {
     /**
      * Specify the identifier of the hostname.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

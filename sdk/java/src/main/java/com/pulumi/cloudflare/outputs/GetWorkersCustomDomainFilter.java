@@ -12,62 +12,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetWorkersCustomDomainFilter {
     /**
-     * @return Worker environment associated with the zone and hostname.
+     * @return Worker environment associated with the domain.
      * 
      */
     private @Nullable String environment;
     /**
-     * @return Hostname of the Worker Domain.
+     * @return Hostname of the domain.
      * 
      */
     private @Nullable String hostname;
     /**
-     * @return Worker service associated with the zone and hostname.
+     * @return Name of the Worker associated with the domain.
      * 
      */
     private @Nullable String service;
     /**
-     * @return Identifier of the zone.
+     * @return ID of the zone containing the domain hostname.
      * 
      */
     private @Nullable String zoneId;
     /**
-     * @return Name of the zone.
+     * @return Name of the zone containing the domain hostname.
      * 
      */
     private @Nullable String zoneName;
 
     private GetWorkersCustomDomainFilter() {}
     /**
-     * @return Worker environment associated with the zone and hostname.
+     * @return Worker environment associated with the domain.
      * 
      */
     public Optional<String> environment() {
         return Optional.ofNullable(this.environment);
     }
     /**
-     * @return Hostname of the Worker Domain.
+     * @return Hostname of the domain.
      * 
      */
     public Optional<String> hostname() {
         return Optional.ofNullable(this.hostname);
     }
     /**
-     * @return Worker service associated with the zone and hostname.
+     * @return Name of the Worker associated with the domain.
      * 
      */
     public Optional<String> service() {
         return Optional.ofNullable(this.service);
     }
     /**
-     * @return Identifier of the zone.
+     * @return ID of the zone containing the domain hostname.
      * 
      */
     public Optional<String> zoneId() {
         return Optional.ofNullable(this.zoneId);
     }
     /**
-     * @return Name of the zone.
+     * @return Name of the zone containing the domain hostname.
      * 
      */
     public Optional<String> zoneName() {

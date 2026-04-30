@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Gateway`
+ * - `Account API Gateway Read`
+ * - `Domain API Gateway`
+ * - `Domain API Gateway Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -26,7 +33,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getApiShieldDiscoveryOperations(args: GetApiShieldDiscoveryOperationsArgs, opts?: pulumi.InvokeOptions): Promise<GetApiShieldDiscoveryOperationsResult> {
+export function getApiShieldDiscoveryOperations(args?: GetApiShieldDiscoveryOperationsArgs, opts?: pulumi.InvokeOptions): Promise<GetApiShieldDiscoveryOperationsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getApiShieldDiscoveryOperations:getApiShieldDiscoveryOperations", {
         "diff": args.diff,
@@ -55,7 +63,7 @@ export interface GetApiShieldDiscoveryOperationsArgs {
     order?: string;
     origin?: string;
     state?: string;
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -76,9 +84,16 @@ export interface GetApiShieldDiscoveryOperationsResult {
     readonly origin?: string;
     readonly results: outputs.GetApiShieldDiscoveryOperationsResult[];
     readonly state?: string;
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Gateway`
+ * - `Account API Gateway Read`
+ * - `Domain API Gateway`
+ * - `Domain API Gateway Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -98,7 +113,8 @@ export interface GetApiShieldDiscoveryOperationsResult {
  * });
  * ```
  */
-export function getApiShieldDiscoveryOperationsOutput(args: GetApiShieldDiscoveryOperationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApiShieldDiscoveryOperationsResult> {
+export function getApiShieldDiscoveryOperationsOutput(args?: GetApiShieldDiscoveryOperationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApiShieldDiscoveryOperationsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getApiShieldDiscoveryOperations:getApiShieldDiscoveryOperations", {
         "diff": args.diff,
@@ -127,5 +143,5 @@ export interface GetApiShieldDiscoveryOperationsOutputArgs {
     order?: pulumi.Input<string>;
     origin?: pulumi.Input<string>;
     state?: pulumi.Input<string>;
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

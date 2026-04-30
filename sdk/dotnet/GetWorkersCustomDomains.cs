@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetWorkersCustomDomains
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -24,10 +29,10 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleWorkersCustomDomains = Cloudflare.Index.GetWorkersCustomDomains.Invoke(new()
         ///     {
-        ///         AccountId = "9a7806061c88ada191ed06f989cc3dac",
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Environment = "production",
-        ///         Hostname = "foo.example.com",
-        ///         Service = "foo",
+        ///         Hostname = "app.example.com",
+        ///         Service = "my-worker",
         ///         ZoneId = "593c9c94de529bbbfaac7c53ced0447d",
         ///         ZoneName = "example.com",
         ///     });
@@ -35,10 +40,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetWorkersCustomDomainsResult> InvokeAsync(GetWorkersCustomDomainsArgs args, InvokeOptions? options = null)
+        public static Task<GetWorkersCustomDomainsResult> InvokeAsync(GetWorkersCustomDomainsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkersCustomDomainsResult>("cloudflare:index/getWorkersCustomDomains:getWorkersCustomDomains", args ?? new GetWorkersCustomDomainsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -51,10 +61,10 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleWorkersCustomDomains = Cloudflare.Index.GetWorkersCustomDomains.Invoke(new()
         ///     {
-        ///         AccountId = "9a7806061c88ada191ed06f989cc3dac",
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Environment = "production",
-        ///         Hostname = "foo.example.com",
-        ///         Service = "foo",
+        ///         Hostname = "app.example.com",
+        ///         Service = "my-worker",
         ///         ZoneId = "593c9c94de529bbbfaac7c53ced0447d",
         ///         ZoneName = "example.com",
         ///     });
@@ -62,10 +72,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetWorkersCustomDomainsResult> Invoke(GetWorkersCustomDomainsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetWorkersCustomDomainsResult> Invoke(GetWorkersCustomDomainsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkersCustomDomainsResult>("cloudflare:index/getWorkersCustomDomains:getWorkersCustomDomains", args ?? new GetWorkersCustomDomainsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -78,10 +93,10 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleWorkersCustomDomains = Cloudflare.Index.GetWorkersCustomDomains.Invoke(new()
         ///     {
-        ///         AccountId = "9a7806061c88ada191ed06f989cc3dac",
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Environment = "production",
-        ///         Hostname = "foo.example.com",
-        ///         Service = "foo",
+        ///         Hostname = "app.example.com",
+        ///         Service = "my-worker",
         ///         ZoneId = "593c9c94de529bbbfaac7c53ced0447d",
         ///         ZoneName = "example.com",
         ///     });
@@ -97,19 +112,19 @@ namespace Pulumi.Cloudflare
     public sealed class GetWorkersCustomDomainsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifer of the account.
+        /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
-        /// Worker environment associated with the zone and hostname.
+        /// Worker environment associated with the domain.
         /// </summary>
         [Input("environment")]
         public string? Environment { get; set; }
 
         /// <summary>
-        /// Hostname of the Worker Domain.
+        /// Hostname of the domain.
         /// </summary>
         [Input("hostname")]
         public string? Hostname { get; set; }
@@ -121,19 +136,19 @@ namespace Pulumi.Cloudflare
         public int? MaxItems { get; set; }
 
         /// <summary>
-        /// Worker service associated with the zone and hostname.
+        /// Name of the Worker associated with the domain.
         /// </summary>
         [Input("service")]
         public string? Service { get; set; }
 
         /// <summary>
-        /// Identifier of the zone.
+        /// ID of the zone containing the domain hostname.
         /// </summary>
         [Input("zoneId")]
         public string? ZoneId { get; set; }
 
         /// <summary>
-        /// Name of the zone.
+        /// Name of the zone containing the domain hostname.
         /// </summary>
         [Input("zoneName")]
         public string? ZoneName { get; set; }
@@ -147,19 +162,19 @@ namespace Pulumi.Cloudflare
     public sealed class GetWorkersCustomDomainsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifer of the account.
+        /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Worker environment associated with the zone and hostname.
+        /// Worker environment associated with the domain.
         /// </summary>
         [Input("environment")]
         public Input<string>? Environment { get; set; }
 
         /// <summary>
-        /// Hostname of the Worker Domain.
+        /// Hostname of the domain.
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
@@ -171,19 +186,19 @@ namespace Pulumi.Cloudflare
         public Input<int>? MaxItems { get; set; }
 
         /// <summary>
-        /// Worker service associated with the zone and hostname.
+        /// Name of the Worker associated with the domain.
         /// </summary>
         [Input("service")]
         public Input<string>? Service { get; set; }
 
         /// <summary>
-        /// Identifier of the zone.
+        /// ID of the zone containing the domain hostname.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
 
         /// <summary>
-        /// Name of the zone.
+        /// Name of the zone containing the domain hostname.
         /// </summary>
         [Input("zoneName")]
         public Input<string>? ZoneName { get; set; }
@@ -199,15 +214,15 @@ namespace Pulumi.Cloudflare
     public sealed class GetWorkersCustomDomainsResult
     {
         /// <summary>
-        /// Identifer of the account.
+        /// Identifier.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
-        /// Worker environment associated with the zone and hostname.
+        /// Worker environment associated with the domain.
         /// </summary>
         public readonly string? Environment;
         /// <summary>
-        /// Hostname of the Worker Domain.
+        /// Hostname of the domain.
         /// </summary>
         public readonly string? Hostname;
         /// <summary>
@@ -223,21 +238,21 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<Outputs.GetWorkersCustomDomainsResultResult> Results;
         /// <summary>
-        /// Worker service associated with the zone and hostname.
+        /// Name of the Worker associated with the domain.
         /// </summary>
         public readonly string? Service;
         /// <summary>
-        /// Identifier of the zone.
+        /// ID of the zone containing the domain hostname.
         /// </summary>
         public readonly string? ZoneId;
         /// <summary>
-        /// Name of the zone.
+        /// Name of the zone containing the domain hostname.
         /// </summary>
         public readonly string? ZoneName;
 
         [OutputConstructor]
         private GetWorkersCustomDomainsResult(
-            string accountId,
+            string? accountId,
 
             string? environment,
 

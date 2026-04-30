@@ -21,15 +21,15 @@ public final class EmailSecurityBlockSenderArgs extends com.pulumi.resources.Res
      * Account Identifier
      * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
      * @return Account Identifier
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     @Import(name="comments")
@@ -102,7 +102,7 @@ public final class EmailSecurityBlockSenderArgs extends com.pulumi.resources.Res
          * @return builder
          * 
          */
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -166,9 +166,6 @@ public final class EmailSecurityBlockSenderArgs extends com.pulumi.resources.Res
         }
 
         public EmailSecurityBlockSenderArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("EmailSecurityBlockSenderArgs", "accountId");
-            }
             if ($.isRegex == null) {
                 throw new MissingRequiredPropertyException("EmailSecurityBlockSenderArgs", "isRegex");
             }

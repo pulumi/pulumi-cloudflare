@@ -19,22 +19,26 @@ __all__ = ['RegistrarDomainArgs', 'RegistrarDomain']
 @pulumi.input_type
 class RegistrarDomainArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  domain_name: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
                  locked: Optional[pulumi.Input[_builtins.bool]] = None,
                  privacy: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a RegistrarDomain resource.
 
+        :param pulumi.Input[_builtins.str] domain_name: Fully qualified domain name (FQDN) including the extension
+               (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+               identifies a registration — the same domain cannot be registered
+               twice, making it a natural idempotency key for registration requests.
         :param pulumi.Input[_builtins.str] account_id: Identifier
-        :param pulumi.Input[_builtins.str] domain_name: Domain name.
         :param pulumi.Input[_builtins.bool] auto_renew: Auto-renew controls whether subscription is automatically renewed upon domain expiration.
         :param pulumi.Input[_builtins.bool] locked: Shows whether a registrar lock is in place for a domain.
         :param pulumi.Input[_builtins.bool] privacy: Privacy option controls redacting WHOIS information.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "domain_name", domain_name)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if locked is not None:
@@ -43,28 +47,31 @@ class RegistrarDomainArgs:
             pulumi.set(__self__, "privacy", privacy)
 
     @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Identifier
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
-
-    @_builtins.property
     @pulumi.getter(name="domainName")
     def domain_name(self) -> pulumi.Input[_builtins.str]:
         """
-        Domain name.
+        Fully qualified domain name (FQDN) including the extension
+        (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+        identifies a registration — the same domain cannot be registered
+        twice, making it a natural idempotency key for registration requests.
         """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
     def domain_name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "domain_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
@@ -116,7 +123,10 @@ class _RegistrarDomainState:
 
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.bool] auto_renew: Auto-renew controls whether subscription is automatically renewed upon domain expiration.
-        :param pulumi.Input[_builtins.str] domain_name: Domain name.
+        :param pulumi.Input[_builtins.str] domain_name: Fully qualified domain name (FQDN) including the extension
+               (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+               identifies a registration — the same domain cannot be registered
+               twice, making it a natural idempotency key for registration requests.
         :param pulumi.Input[_builtins.bool] locked: Shows whether a registrar lock is in place for a domain.
         :param pulumi.Input[_builtins.bool] privacy: Privacy option controls redacting WHOIS information.
         """
@@ -159,7 +169,10 @@ class _RegistrarDomainState:
     @pulumi.getter(name="domainName")
     def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Domain name.
+        Fully qualified domain name (FQDN) including the extension
+        (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+        identifies a registration — the same domain cannot be registered
+        twice, making it a natural idempotency key for registration requests.
         """
         return pulumi.get(self, "domain_name")
 
@@ -213,7 +226,7 @@ class RegistrarDomain(pulumi.CustomResource):
 
         example_registrar_domain = cloudflare.RegistrarDomain("example_registrar_domain",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            domain_name="cloudflare.com",
+            domain_name="example.com",
             auto_renew=True,
             locked=False,
             privacy=True)
@@ -228,7 +241,10 @@ class RegistrarDomain(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.bool] auto_renew: Auto-renew controls whether subscription is automatically renewed upon domain expiration.
-        :param pulumi.Input[_builtins.str] domain_name: Domain name.
+        :param pulumi.Input[_builtins.str] domain_name: Fully qualified domain name (FQDN) including the extension
+               (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+               identifies a registration — the same domain cannot be registered
+               twice, making it a natural idempotency key for registration requests.
         :param pulumi.Input[_builtins.bool] locked: Shows whether a registrar lock is in place for a domain.
         :param pulumi.Input[_builtins.bool] privacy: Privacy option controls redacting WHOIS information.
         """
@@ -247,7 +263,7 @@ class RegistrarDomain(pulumi.CustomResource):
 
         example_registrar_domain = cloudflare.RegistrarDomain("example_registrar_domain",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            domain_name="cloudflare.com",
+            domain_name="example.com",
             auto_renew=True,
             locked=False,
             privacy=True)
@@ -287,8 +303,6 @@ class RegistrarDomain(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RegistrarDomainArgs.__new__(RegistrarDomainArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["auto_renew"] = auto_renew
             if domain_name is None and not opts.urn:
@@ -320,7 +334,10 @@ class RegistrarDomain(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.bool] auto_renew: Auto-renew controls whether subscription is automatically renewed upon domain expiration.
-        :param pulumi.Input[_builtins.str] domain_name: Domain name.
+        :param pulumi.Input[_builtins.str] domain_name: Fully qualified domain name (FQDN) including the extension
+               (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+               identifies a registration — the same domain cannot be registered
+               twice, making it a natural idempotency key for registration requests.
         :param pulumi.Input[_builtins.bool] locked: Shows whether a registrar lock is in place for a domain.
         :param pulumi.Input[_builtins.bool] privacy: Privacy option controls redacting WHOIS information.
         """
@@ -337,7 +354,7 @@ class RegistrarDomain(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier
         """
@@ -355,7 +372,10 @@ class RegistrarDomain(pulumi.CustomResource):
     @pulumi.getter(name="domainName")
     def domain_name(self) -> pulumi.Output[_builtins.str]:
         """
-        Domain name.
+        Fully qualified domain name (FQDN) including the extension
+        (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+        identifies a registration — the same domain cannot be registered
+        twice, making it a natural idempotency key for registration requests.
         """
         return pulumi.get(self, "domain_name")
 

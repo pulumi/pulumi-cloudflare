@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +24,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getSpectrumApplication(args: GetSpectrumApplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetSpectrumApplicationResult> {
+export function getSpectrumApplication(args?: GetSpectrumApplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetSpectrumApplicationResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getSpectrumApplication:getSpectrumApplication", {
         "appId": args.appId,
@@ -40,7 +46,7 @@ export interface GetSpectrumApplicationArgs {
     /**
      * Zone identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -117,9 +123,14 @@ export interface GetSpectrumApplicationResult {
     /**
      * Zone identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -132,7 +143,8 @@ export interface GetSpectrumApplicationResult {
  * });
  * ```
  */
-export function getSpectrumApplicationOutput(args: GetSpectrumApplicationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSpectrumApplicationResult> {
+export function getSpectrumApplicationOutput(args?: GetSpectrumApplicationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSpectrumApplicationResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getSpectrumApplication:getSpectrumApplication", {
         "appId": args.appId,
@@ -153,5 +165,5 @@ export interface GetSpectrumApplicationOutputArgs {
     /**
      * Zone identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

@@ -7,17 +7,19 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetZeroTrustDlpDatasetPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetZeroTrustDlpDatasetPlainArgs Empty = new GetZeroTrustDlpDatasetPlainArgs();
 
-    @Import(name="accountId", required=true)
-    private String accountId;
+    @Import(name="accountId")
+    private @Nullable String accountId;
 
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     @Import(name="datasetId", required=true)
@@ -52,7 +54,7 @@ public final class GetZeroTrustDlpDatasetPlainArgs extends com.pulumi.resources.
             $ = new GetZeroTrustDlpDatasetPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(String accountId) {
+        public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -63,9 +65,6 @@ public final class GetZeroTrustDlpDatasetPlainArgs extends com.pulumi.resources.
         }
 
         public GetZeroTrustDlpDatasetPlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetZeroTrustDlpDatasetPlainArgs", "accountId");
-            }
             if ($.datasetId == null) {
                 throw new MissingRequiredPropertyException("GetZeroTrustDlpDatasetPlainArgs", "datasetId");
             }

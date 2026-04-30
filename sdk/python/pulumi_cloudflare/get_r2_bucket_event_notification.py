@@ -49,7 +49,7 @@ class GetR2BucketEventNotificationResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Account ID.
         """
@@ -112,6 +112,11 @@ def get_r2_bucket_event_notification(account_id: Optional[_builtins.str] = None,
                                      queue_id: Optional[_builtins.str] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetR2BucketEventNotificationResult:
     """
+    Accepted Permissions
+
+    - `Workers R2 Storage Read`
+    - `Workers R2 Storage Write`
+
     ## Example Usage
 
     ```python
@@ -142,11 +147,16 @@ def get_r2_bucket_event_notification(account_id: Optional[_builtins.str] = None,
         queue_id=pulumi.get(__ret__, 'queue_id'),
         queue_name=pulumi.get(__ret__, 'queue_name'),
         rules=pulumi.get(__ret__, 'rules'))
-def get_r2_bucket_event_notification_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_r2_bucket_event_notification_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                             bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
                                             queue_id: Optional[pulumi.Input[_builtins.str]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetR2BucketEventNotificationResult]:
     """
+    Accepted Permissions
+
+    - `Workers R2 Storage Read`
+    - `Workers R2 Storage Write`
+
     ## Example Usage
 
     ```python

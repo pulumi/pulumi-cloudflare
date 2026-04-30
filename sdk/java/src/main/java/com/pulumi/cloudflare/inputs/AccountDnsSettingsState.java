@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.AccountDnsSettingsZoneDefaultsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -31,6 +32,21 @@ public final class AccountDnsSettingsState extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.accountId);
     }
 
+    /**
+     * When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record&#39;s individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
+     * 
+     */
+    @Import(name="enforceDnsOnly")
+    private @Nullable Output<Boolean> enforceDnsOnly;
+
+    /**
+     * @return When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record&#39;s individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
+     * 
+     */
+    public Optional<Output<Boolean>> enforceDnsOnly() {
+        return Optional.ofNullable(this.enforceDnsOnly);
+    }
+
     @Import(name="zoneDefaults")
     private @Nullable Output<AccountDnsSettingsZoneDefaultsArgs> zoneDefaults;
 
@@ -42,6 +58,7 @@ public final class AccountDnsSettingsState extends com.pulumi.resources.Resource
 
     private AccountDnsSettingsState(AccountDnsSettingsState $) {
         this.accountId = $.accountId;
+        this.enforceDnsOnly = $.enforceDnsOnly;
         this.zoneDefaults = $.zoneDefaults;
     }
 
@@ -82,6 +99,27 @@ public final class AccountDnsSettingsState extends com.pulumi.resources.Resource
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param enforceDnsOnly When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record&#39;s individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enforceDnsOnly(@Nullable Output<Boolean> enforceDnsOnly) {
+            $.enforceDnsOnly = enforceDnsOnly;
+            return this;
+        }
+
+        /**
+         * @param enforceDnsOnly When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record&#39;s individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enforceDnsOnly(Boolean enforceDnsOnly) {
+            return enforceDnsOnly(Output.of(enforceDnsOnly));
         }
 
         public Builder zoneDefaults(@Nullable Output<AccountDnsSettingsZoneDefaultsArgs> zoneDefaults) {

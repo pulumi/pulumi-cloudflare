@@ -12,6 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Workers Scripts Read`
+// - `Workers Scripts Write`
+// - `Workers Tail Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -34,9 +40,21 @@ import (
 //					Enabled:          pulumi.Bool(true),
 //					HeadSamplingRate: pulumi.Float64(1),
 //					Logs: &cloudflare.WorkerObservabilityLogsArgs{
+//						Destinations: pulumi.StringArray{
+//							pulumi.String("string"),
+//						},
 //						Enabled:          pulumi.Bool(true),
 //						HeadSamplingRate: pulumi.Float64(1),
 //						InvocationLogs:   pulumi.Bool(true),
+//						Persist:          pulumi.Bool(true),
+//					},
+//					Traces: &cloudflare.WorkerObservabilityTracesArgs{
+//						Destinations: pulumi.StringArray{
+//							pulumi.String("string"),
+//						},
+//						Enabled:          pulumi.Bool(true),
+//						HeadSamplingRate: pulumi.Float64(1),
+//						Persist:          pulumi.Bool(true),
 //					},
 //				},
 //				Subdomain: &cloudflare.WorkerSubdomainArgs{
@@ -71,9 +89,11 @@ type Worker struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// When the Worker was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
+	// When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.
+	DeployedOn pulumi.StringOutput `pulumi:"deployedOn"`
 	// Whether logpush is enabled for the Worker.
 	Logpush pulumi.BoolOutput `pulumi:"logpush"`
 	// Name of the Worker.
@@ -99,9 +119,6 @@ func NewWorker(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -132,6 +149,8 @@ type workerState struct {
 	AccountId *string `pulumi:"accountId"`
 	// When the Worker was created.
 	CreatedOn *string `pulumi:"createdOn"`
+	// When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.
+	DeployedOn *string `pulumi:"deployedOn"`
 	// Whether logpush is enabled for the Worker.
 	Logpush *bool `pulumi:"logpush"`
 	// Name of the Worker.
@@ -155,6 +174,8 @@ type WorkerState struct {
 	AccountId pulumi.StringPtrInput
 	// When the Worker was created.
 	CreatedOn pulumi.StringPtrInput
+	// When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.
+	DeployedOn pulumi.StringPtrInput
 	// Whether logpush is enabled for the Worker.
 	Logpush pulumi.BoolPtrInput
 	// Name of the Worker.
@@ -179,7 +200,7 @@ func (WorkerState) ElementType() reflect.Type {
 
 type workerArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Whether logpush is enabled for the Worker.
 	Logpush *bool `pulumi:"logpush"`
 	// Name of the Worker.
@@ -197,7 +218,7 @@ type workerArgs struct {
 // The set of arguments for constructing a Worker resource.
 type WorkerArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// Whether logpush is enabled for the Worker.
 	Logpush pulumi.BoolPtrInput
 	// Name of the Worker.
@@ -300,13 +321,18 @@ func (o WorkerOutput) ToWorkerOutputWithContext(ctx context.Context) WorkerOutpu
 }
 
 // Identifier.
-func (o WorkerOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Worker) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o WorkerOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Worker) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // When the Worker was created.
 func (o WorkerOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Worker) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.
+func (o WorkerOutput) DeployedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *Worker) pulumi.StringOutput { return v.DeployedOn }).(pulumi.StringOutput)
 }
 
 // Whether logpush is enabled for the Worker.

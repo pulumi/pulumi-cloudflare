@@ -12,6 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Workers Scripts Read`
+// - `Workers Scripts Write`
+// - `Workers Tail Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -58,7 +64,7 @@ type WorkersDeployment struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId   pulumi.StringOutput                `pulumi:"accountId"`
+	AccountId   pulumi.StringPtrOutput             `pulumi:"accountId"`
 	Annotations WorkersDeploymentAnnotationsOutput `pulumi:"annotations"`
 	AuthorEmail pulumi.StringOutput                `pulumi:"authorEmail"`
 	CreatedOn   pulumi.StringOutput                `pulumi:"createdOn"`
@@ -77,9 +83,6 @@ func NewWorkersDeployment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.ScriptName == nil {
 		return nil, errors.New("invalid value for required argument 'ScriptName'")
 	}
@@ -145,7 +148,7 @@ func (WorkersDeploymentState) ElementType() reflect.Type {
 
 type workersDeploymentArgs struct {
 	// Identifier.
-	AccountId   string                        `pulumi:"accountId"`
+	AccountId   *string                       `pulumi:"accountId"`
 	Annotations *WorkersDeploymentAnnotations `pulumi:"annotations"`
 	// Name of the script, used in URLs and route configuration.
 	ScriptName string `pulumi:"scriptName"`
@@ -157,7 +160,7 @@ type workersDeploymentArgs struct {
 // The set of arguments for constructing a WorkersDeployment resource.
 type WorkersDeploymentArgs struct {
 	// Identifier.
-	AccountId   pulumi.StringInput
+	AccountId   pulumi.StringPtrInput
 	Annotations WorkersDeploymentAnnotationsPtrInput
 	// Name of the script, used in URLs and route configuration.
 	ScriptName pulumi.StringInput
@@ -254,8 +257,8 @@ func (o WorkersDeploymentOutput) ToWorkersDeploymentOutputWithContext(ctx contex
 }
 
 // Identifier.
-func (o WorkersDeploymentOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *WorkersDeployment) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o WorkersDeploymentOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkersDeployment) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o WorkersDeploymentOutput) Annotations() WorkersDeploymentAnnotationsOutput {

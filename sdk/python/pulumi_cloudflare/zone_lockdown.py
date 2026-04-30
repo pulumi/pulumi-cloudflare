@@ -23,29 +23,30 @@ class ZoneLockdownArgs:
     def __init__(__self__, *,
                  configurations: pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]],
                  urls: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 zone_id: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  paused: Optional[pulumi.Input[_builtins.bool]] = None,
-                 priority: Optional[pulumi.Input[_builtins.float]] = None):
+                 priority: Optional[pulumi.Input[_builtins.float]] = None,
+                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZoneLockdown resource.
 
         :param pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]] configurations: A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] urls: The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
-        :param pulumi.Input[_builtins.str] zone_id: Defines an identifier.
         :param pulumi.Input[_builtins.str] description: An informative summary of the rule. This value is sanitized and any tags will be removed.
         :param pulumi.Input[_builtins.bool] paused: When true, indicates that the rule is currently paused.
         :param pulumi.Input[_builtins.float] priority: The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
+        :param pulumi.Input[_builtins.str] zone_id: Defines an identifier.
         """
         pulumi.set(__self__, "configurations", configurations)
         pulumi.set(__self__, "urls", urls)
-        pulumi.set(__self__, "zone_id", zone_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if paused is not None:
             pulumi.set(__self__, "paused", paused)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter
@@ -70,18 +71,6 @@ class ZoneLockdownArgs:
     @urls.setter
     def urls(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         pulumi.set(self, "urls", value)
-
-    @_builtins.property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Defines an identifier.
-        """
-        return pulumi.get(self, "zone_id")
-
-    @zone_id.setter
-    def zone_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "zone_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -118,6 +107,18 @@ class ZoneLockdownArgs:
     @priority.setter
     def priority(self, value: Optional[pulumi.Input[_builtins.float]]):
         pulumi.set(self, "priority", value)
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Defines an identifier.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
@@ -271,6 +272,11 @@ class ZoneLockdown(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Firewall Services Read`
+        - `Firewall Services Write`
+
         ## Example Usage
 
         ```python
@@ -312,6 +318,11 @@ class ZoneLockdown(pulumi.CustomResource):
                  args: ZoneLockdownArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Firewall Services Read`
+        - `Firewall Services Write`
+
         ## Example Usage
 
         ```python
@@ -376,8 +387,6 @@ class ZoneLockdown(pulumi.CustomResource):
             if urls is None and not opts.urn:
                 raise TypeError("Missing required property 'urls'")
             __props__.__dict__["urls"] = urls
-            if zone_id is None and not opts.urn:
-                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["created_on"] = None
             __props__.__dict__["modified_on"] = None
@@ -487,7 +496,7 @@ class ZoneLockdown(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[_builtins.str]:
+    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Defines an identifier.
         """

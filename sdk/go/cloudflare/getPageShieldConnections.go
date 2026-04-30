@@ -11,6 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Domain Page Shield`
+// - `Domain Page Shield Read`
+// - `Page Shield`
+// - `Page Shield Read`
+// - `Zone Settings Read`
+// - `Zone Settings Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +35,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetPageShieldConnections(ctx, &cloudflare.GetPageShieldConnectionsArgs{
-//				ZoneId:       "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId:       pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ConnectionId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
@@ -52,7 +61,7 @@ type GetPageShieldConnectionsArgs struct {
 	// Identifier
 	ConnectionId string `pulumi:"connectionId"`
 	// Identifier
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getPageShieldConnections.
@@ -74,7 +83,7 @@ type GetPageShieldConnectionsResult struct {
 	UrlContainsCdnCgiPath     bool     `pulumi:"urlContainsCdnCgiPath"`
 	UrlReportedMalicious      bool     `pulumi:"urlReportedMalicious"`
 	// Identifier
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func GetPageShieldConnectionsOutput(ctx *pulumi.Context, args GetPageShieldConnectionsOutputArgs, opts ...pulumi.InvokeOption) GetPageShieldConnectionsResultOutput {
@@ -91,7 +100,7 @@ type GetPageShieldConnectionsOutputArgs struct {
 	// Identifier
 	ConnectionId pulumi.StringInput `pulumi:"connectionId"`
 	// Identifier
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (GetPageShieldConnectionsOutputArgs) ElementType() reflect.Type {
@@ -172,8 +181,8 @@ func (o GetPageShieldConnectionsResultOutput) UrlReportedMalicious() pulumi.Bool
 }
 
 // Identifier
-func (o GetPageShieldConnectionsResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPageShieldConnectionsResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o GetPageShieldConnectionsResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPageShieldConnectionsResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

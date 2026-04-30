@@ -20,15 +20,15 @@ public final class CloudforceOneRequestMessageArgs extends com.pulumi.resources.
      * Identifier.
      * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -93,7 +93,7 @@ public final class CloudforceOneRequestMessageArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -151,9 +151,6 @@ public final class CloudforceOneRequestMessageArgs extends com.pulumi.resources.
         }
 
         public CloudforceOneRequestMessageArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("CloudforceOneRequestMessageArgs", "accountId");
-            }
             if ($.requestId == null) {
                 throw new MissingRequiredPropertyException("CloudforceOneRequestMessageArgs", "requestId");
             }

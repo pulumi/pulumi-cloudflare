@@ -18,7 +18,7 @@ public final class GetCloudforceOneRequestResult {
      * @return Identifier.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     private String completed;
     /**
      * @return Request content.
@@ -82,8 +82,8 @@ public final class GetCloudforceOneRequestResult {
      * @return Identifier.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     public String completed() {
         return this.completed;
@@ -182,7 +182,7 @@ public final class GetCloudforceOneRequestResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String completed;
         private String content;
         private String created;
@@ -220,10 +220,8 @@ public final class GetCloudforceOneRequestResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetCloudforceOneRequestResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

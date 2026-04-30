@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account DNS Settings Read`
+// - `Account DNS Settings Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetAccountDnsSettings(ctx, &cloudflare.LookupAccountDnsSettingsArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,13 +54,15 @@ func LookupAccountDnsSettings(ctx *pulumi.Context, args *LookupAccountDnsSetting
 // A collection of arguments for invoking getAccountDnsSettings.
 type LookupAccountDnsSettingsArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 }
 
 // A collection of values returned by getAccountDnsSettings.
 type LookupAccountDnsSettingsResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
+	// When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
+	EnforceDnsOnly bool `pulumi:"enforceDnsOnly"`
 	// The provider-assigned unique ID for this managed resource.
 	Id           string                            `pulumi:"id"`
 	ZoneDefaults GetAccountDnsSettingsZoneDefaults `pulumi:"zoneDefaults"`
@@ -73,7 +80,7 @@ func LookupAccountDnsSettingsOutput(ctx *pulumi.Context, args LookupAccountDnsSe
 // A collection of arguments for invoking getAccountDnsSettings.
 type LookupAccountDnsSettingsOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 }
 
 func (LookupAccountDnsSettingsOutputArgs) ElementType() reflect.Type {
@@ -96,8 +103,13 @@ func (o LookupAccountDnsSettingsResultOutput) ToLookupAccountDnsSettingsResultOu
 }
 
 // Identifier.
-func (o LookupAccountDnsSettingsResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAccountDnsSettingsResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupAccountDnsSettingsResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAccountDnsSettingsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
+func (o LookupAccountDnsSettingsResultOutput) EnforceDnsOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupAccountDnsSettingsResult) bool { return v.EnforceDnsOnly }).(pulumi.BoolOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

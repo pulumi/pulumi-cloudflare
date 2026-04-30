@@ -18,6 +18,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Account Firewall Access Rules Read`
+ * - `Account Firewall Access Rules Write`
+ * 
  * ## Example Usage
  * 
  * <pre>

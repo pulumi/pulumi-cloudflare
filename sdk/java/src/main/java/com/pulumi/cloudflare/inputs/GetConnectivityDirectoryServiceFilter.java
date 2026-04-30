@@ -15,14 +15,14 @@ public final class GetConnectivityDirectoryServiceFilter extends com.pulumi.reso
     public static final GetConnectivityDirectoryServiceFilter Empty = new GetConnectivityDirectoryServiceFilter();
 
     /**
-     * Available values: &#34;http&#34;.
+     * Available values: &#34;tcp&#34;, &#34;http&#34;.
      * 
      */
     @Import(name="type")
     private @Nullable String type;
 
     /**
-     * @return Available values: &#34;http&#34;.
+     * @return Available values: &#34;tcp&#34;, &#34;http&#34;.
      * 
      */
     public Optional<String> type() {
@@ -54,7 +54,7 @@ public final class GetConnectivityDirectoryServiceFilter extends com.pulumi.reso
         }
 
         /**
-         * @param type Available values: &#34;http&#34;.
+         * @param type Available values: &#34;tcp&#34;, &#34;http&#34;.
          * 
          * @return builder
          * 

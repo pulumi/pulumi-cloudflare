@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustAccessAiControlsMcpServersInvokeResult {
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -38,8 +38,8 @@ public final class GetZeroTrustAccessAiControlsMcpServersInvokeResult {
     private @Nullable String search;
 
     private GetZeroTrustAccessAiControlsMcpServersInvokeResult() {}
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -79,7 +79,7 @@ public final class GetZeroTrustAccessAiControlsMcpServersInvokeResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String id;
         private @Nullable Integer maxItems;
         private List<GetZeroTrustAccessAiControlsMcpServersResult> results;
@@ -95,10 +95,8 @@ public final class GetZeroTrustAccessAiControlsMcpServersInvokeResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpServersInvokeResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Workers Scripts Read`
+    /// - `Workers Scripts Write`
+    /// - `Workers Tail Read`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -42,7 +48,7 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Identifier.
@@ -106,7 +112,7 @@ namespace Pulumi.Cloudflare
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public WorkersForPlatformsDispatchNamespace(string name, WorkersForPlatformsDispatchNamespaceArgs args, CustomResourceOptions? options = null)
+        public WorkersForPlatformsDispatchNamespace(string name, WorkersForPlatformsDispatchNamespaceArgs? args = null, CustomResourceOptions? options = null)
             : base("cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace", name, args ?? new WorkersForPlatformsDispatchNamespaceArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -151,8 +157,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// The name of the dispatch namespace.

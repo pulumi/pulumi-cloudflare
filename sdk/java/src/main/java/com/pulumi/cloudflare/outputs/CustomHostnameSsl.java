@@ -43,6 +43,11 @@ public final class CustomHostnameSsl {
      */
     private @Nullable String customCertificate;
     /**
+     * @return The identifier for the Custom CSR that was used.
+     * 
+     */
+    private @Nullable String customCsrId;
+    /**
      * @return The key for a custom uploaded certificate.
      * 
      */
@@ -109,6 +114,13 @@ public final class CustomHostnameSsl {
         return Optional.ofNullable(this.customCertificate);
     }
     /**
+     * @return The identifier for the Custom CSR that was used.
+     * 
+     */
+    public Optional<String> customCsrId() {
+        return Optional.ofNullable(this.customCsrId);
+    }
+    /**
      * @return The key for a custom uploaded certificate.
      * 
      */
@@ -160,6 +172,7 @@ public final class CustomHostnameSsl {
         private @Nullable Boolean cloudflareBranding;
         private @Nullable List<CustomHostnameSslCustomCertBundle> customCertBundles;
         private @Nullable String customCertificate;
+        private @Nullable String customCsrId;
         private @Nullable String customKey;
         private @Nullable String method;
         private @Nullable CustomHostnameSslSettings settings;
@@ -173,6 +186,7 @@ public final class CustomHostnameSsl {
     	      this.cloudflareBranding = defaults.cloudflareBranding;
     	      this.customCertBundles = defaults.customCertBundles;
     	      this.customCertificate = defaults.customCertificate;
+    	      this.customCsrId = defaults.customCsrId;
     	      this.customKey = defaults.customKey;
     	      this.method = defaults.method;
     	      this.settings = defaults.settings;
@@ -214,6 +228,12 @@ public final class CustomHostnameSsl {
             return this;
         }
         @CustomType.Setter
+        public Builder customCsrId(@Nullable String customCsrId) {
+
+            this.customCsrId = customCsrId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder customKey(@Nullable String customKey) {
 
             this.customKey = customKey;
@@ -250,6 +270,7 @@ public final class CustomHostnameSsl {
             _resultValue.cloudflareBranding = cloudflareBranding;
             _resultValue.customCertBundles = customCertBundles;
             _resultValue.customCertificate = customCertificate;
+            _resultValue.customCsrId = customCsrId;
             _resultValue.customKey = customKey;
             _resultValue.method = method;
             _resultValue.settings = settings;

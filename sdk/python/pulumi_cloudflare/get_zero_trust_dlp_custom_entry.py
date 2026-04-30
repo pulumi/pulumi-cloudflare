@@ -85,7 +85,7 @@ class GetZeroTrustDlpCustomEntryResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -218,6 +218,11 @@ def get_zero_trust_dlp_custom_entry(account_id: Optional[_builtins.str] = None,
                                     entry_id: Optional[_builtins.str] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustDlpCustomEntryResult:
     """
+    Accepted Permissions
+
+    - `Zero Trust Read`
+    - `Zero Trust Write`
+
     ## Example Usage
 
     ```python
@@ -253,10 +258,15 @@ def get_zero_trust_dlp_custom_entry(account_id: Optional[_builtins.str] = None,
         upload_status=pulumi.get(__ret__, 'upload_status'),
         variant=pulumi.get(__ret__, 'variant'),
         word_list=pulumi.get(__ret__, 'word_list'))
-def get_zero_trust_dlp_custom_entry_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_dlp_custom_entry_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                            entry_id: Optional[pulumi.Input[_builtins.str]] = None,
                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDlpCustomEntryResult]:
     """
+    Accepted Permissions
+
+    - `Zero Trust Read`
+    - `Zero Trust Write`
+
     ## Example Usage
 
     ```python

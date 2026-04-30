@@ -60,7 +60,7 @@ class GetZeroTrustRiskScoringIntegrationResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -157,6 +157,11 @@ def get_zero_trust_risk_scoring_integration(account_id: Optional[_builtins.str] 
                                             integration_id: Optional[_builtins.str] = None,
                                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustRiskScoringIntegrationResult:
     """
+    Accepted Permissions
+
+    - `Zero Trust Read`
+    - `Zero Trust Write`
+
     ## Example Usage
 
     ```python
@@ -184,10 +189,15 @@ def get_zero_trust_risk_scoring_integration(account_id: Optional[_builtins.str] 
         reference_id=pulumi.get(__ret__, 'reference_id'),
         tenant_url=pulumi.get(__ret__, 'tenant_url'),
         well_known_url=pulumi.get(__ret__, 'well_known_url'))
-def get_zero_trust_risk_scoring_integration_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_risk_scoring_integration_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                    integration_id: Optional[pulumi.Input[_builtins.str]] = None,
                                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustRiskScoringIntegrationResult]:
     """
+    Accepted Permissions
+
+    - `Zero Trust Read`
+    - `Zero Trust Write`
+
     ## Example Usage
 
     ```python

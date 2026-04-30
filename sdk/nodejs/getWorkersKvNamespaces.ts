@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Workers KV Storage Read`
+ * - `Workers KV Storage Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -20,7 +25,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getWorkersKvNamespaces(args: GetWorkersKvNamespacesArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkersKvNamespacesResult> {
+export function getWorkersKvNamespaces(args?: GetWorkersKvNamespacesArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkersKvNamespacesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWorkersKvNamespaces:getWorkersKvNamespaces", {
         "accountId": args.accountId,
@@ -37,7 +43,7 @@ export interface GetWorkersKvNamespacesArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Direction to order namespaces.
      * Available values: "asc", "desc".
@@ -61,7 +67,7 @@ export interface GetWorkersKvNamespacesResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Direction to order namespaces.
      * Available values: "asc", "desc".
@@ -86,6 +92,11 @@ export interface GetWorkersKvNamespacesResult {
     readonly results: outputs.GetWorkersKvNamespacesResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Workers KV Storage Read`
+ * - `Workers KV Storage Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -99,7 +110,8 @@ export interface GetWorkersKvNamespacesResult {
  * });
  * ```
  */
-export function getWorkersKvNamespacesOutput(args: GetWorkersKvNamespacesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkersKvNamespacesResult> {
+export function getWorkersKvNamespacesOutput(args?: GetWorkersKvNamespacesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkersKvNamespacesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWorkersKvNamespaces:getWorkersKvNamespaces", {
         "accountId": args.accountId,
@@ -116,7 +128,7 @@ export interface GetWorkersKvNamespacesOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Direction to order namespaces.
      * Available values: "asc", "desc".

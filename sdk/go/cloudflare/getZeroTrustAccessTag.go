@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustAccessTag(ctx, &cloudflare.LookupZeroTrustAccessTagArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				TagName:   "engineers",
 //			}, nil)
 //			if err != nil {
@@ -50,7 +50,7 @@ func LookupZeroTrustAccessTag(ctx *pulumi.Context, args *LookupZeroTrustAccessTa
 // A collection of arguments for invoking getZeroTrustAccessTag.
 type LookupZeroTrustAccessTagArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The name of the tag
 	TagName string `pulumi:"tagName"`
 }
@@ -58,7 +58,7 @@ type LookupZeroTrustAccessTagArgs struct {
 // A collection of values returned by getZeroTrustAccessTag.
 type LookupZeroTrustAccessTagResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The name of the tag
 	Id string `pulumi:"id"`
 	// The name of the tag
@@ -79,7 +79,7 @@ func LookupZeroTrustAccessTagOutput(ctx *pulumi.Context, args LookupZeroTrustAcc
 // A collection of arguments for invoking getZeroTrustAccessTag.
 type LookupZeroTrustAccessTagOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// The name of the tag
 	TagName pulumi.StringInput `pulumi:"tagName"`
 }
@@ -104,8 +104,8 @@ func (o LookupZeroTrustAccessTagResultOutput) ToLookupZeroTrustAccessTagResultOu
 }
 
 // Identifier.
-func (o LookupZeroTrustAccessTagResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustAccessTagResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustAccessTagResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessTagResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The name of the tag

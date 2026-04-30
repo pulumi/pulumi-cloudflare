@@ -11,10 +11,10 @@ namespace Pulumi.Cloudflare
 {
     public static class GetAiSearchInstances
     {
-        public static Task<GetAiSearchInstancesResult> InvokeAsync(GetAiSearchInstancesArgs args, InvokeOptions? options = null)
+        public static Task<GetAiSearchInstancesResult> InvokeAsync(GetAiSearchInstancesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAiSearchInstancesResult>("cloudflare:index/getAiSearchInstances:getAiSearchInstances", args ?? new GetAiSearchInstancesArgs(), options.WithDefaults());
 
-        public static Output<GetAiSearchInstancesResult> Invoke(GetAiSearchInstancesInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetAiSearchInstancesResult> Invoke(GetAiSearchInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAiSearchInstancesResult>("cloudflare:index/getAiSearchInstances:getAiSearchInstances", args ?? new GetAiSearchInstancesInvokeArgs(), options.WithDefaults());
 
         public static Output<GetAiSearchInstancesResult> Invoke(GetAiSearchInstancesInvokeArgs args, InvokeOutputOptions options)
@@ -24,14 +24,31 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetAiSearchInstancesArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         [Input("maxItems")]
         public int? MaxItems { get; set; }
+
+        [Input("namespace")]
+        public string? Namespace { get; set; }
+
+        /// <summary>
+        /// Order By Column Name
+        /// Available values: "CreatedAt".
+        /// </summary>
+        [Input("orderBy")]
+        public string? OrderBy { get; set; }
+
+        /// <summary>
+        /// Order By Direction
+        /// Available values: "asc", "desc".
+        /// </summary>
+        [Input("orderByDirection")]
+        public string? OrderByDirection { get; set; }
 
         /// <summary>
         /// Search by id
@@ -47,14 +64,31 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetAiSearchInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         [Input("maxItems")]
         public Input<int>? MaxItems { get; set; }
+
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
+
+        /// <summary>
+        /// Order By Column Name
+        /// Available values: "CreatedAt".
+        /// </summary>
+        [Input("orderBy")]
+        public Input<string>? OrderBy { get; set; }
+
+        /// <summary>
+        /// Order By Direction
+        /// Available values: "asc", "desc".
+        /// </summary>
+        [Input("orderByDirection")]
+        public Input<string>? OrderByDirection { get; set; }
 
         /// <summary>
         /// Search by id
@@ -72,7 +106,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetAiSearchInstancesResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -81,6 +115,17 @@ namespace Pulumi.Cloudflare
         /// Max items to fetch, default: 1000
         /// </summary>
         public readonly int? MaxItems;
+        public readonly string? Namespace;
+        /// <summary>
+        /// Order By Column Name
+        /// Available values: "CreatedAt".
+        /// </summary>
+        public readonly string OrderBy;
+        /// <summary>
+        /// Order By Direction
+        /// Available values: "asc", "desc".
+        /// </summary>
+        public readonly string OrderByDirection;
         /// <summary>
         /// The items returned by the data source
         /// </summary>
@@ -92,11 +137,17 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetAiSearchInstancesResult(
-            string accountId,
+            string? accountId,
 
             string id,
 
             int? maxItems,
+
+            string? @namespace,
+
+            string orderBy,
+
+            string orderByDirection,
 
             ImmutableArray<Outputs.GetAiSearchInstancesResultResult> results,
 
@@ -105,6 +156,9 @@ namespace Pulumi.Cloudflare
             AccountId = accountId;
             Id = id;
             MaxItems = maxItems;
+            Namespace = @namespace;
+            OrderBy = orderBy;
+            OrderByDirection = orderByDirection;
             Results = results;
             Search = search;
         }

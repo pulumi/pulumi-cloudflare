@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -20,15 +19,15 @@ public final class GetConnectivityDirectoryServicesPlainArgs extends com.pulumi.
      * Account identifier
      * 
      */
-    @Import(name="accountId", required=true)
-    private String accountId;
+    @Import(name="accountId")
+    private @Nullable String accountId;
 
     /**
      * @return Account identifier
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -47,14 +46,14 @@ public final class GetConnectivityDirectoryServicesPlainArgs extends com.pulumi.
     }
 
     /**
-     * Available values: &#34;http&#34;.
+     * Available values: &#34;tcp&#34;, &#34;http&#34;.
      * 
      */
     @Import(name="type")
     private @Nullable String type;
 
     /**
-     * @return Available values: &#34;http&#34;.
+     * @return Available values: &#34;tcp&#34;, &#34;http&#34;.
      * 
      */
     public Optional<String> type() {
@@ -93,7 +92,7 @@ public final class GetConnectivityDirectoryServicesPlainArgs extends com.pulumi.
          * @return builder
          * 
          */
-        public Builder accountId(String accountId) {
+        public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -110,7 +109,7 @@ public final class GetConnectivityDirectoryServicesPlainArgs extends com.pulumi.
         }
 
         /**
-         * @param type Available values: &#34;http&#34;.
+         * @param type Available values: &#34;tcp&#34;, &#34;http&#34;.
          * 
          * @return builder
          * 
@@ -121,9 +120,6 @@ public final class GetConnectivityDirectoryServicesPlainArgs extends com.pulumi.
         }
 
         public GetConnectivityDirectoryServicesPlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetConnectivityDirectoryServicesPlainArgs", "accountId");
-            }
             return $;
         }
     }

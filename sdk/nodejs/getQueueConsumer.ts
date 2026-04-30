@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Queues Read`
+ * - `Queues Write`
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ *
  * ## Example Usage
  */
 export function getQueueConsumer(args: GetQueueConsumerArgs, opts?: pulumi.InvokeOptions): Promise<GetQueueConsumerResult> {
@@ -24,7 +31,7 @@ export interface GetQueueConsumerArgs {
     /**
      * A Resource identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * A Resource identifier.
      */
@@ -38,7 +45,7 @@ export interface GetQueueConsumerResult {
     /**
      * A Resource identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * A Resource identifier.
      */
@@ -68,6 +75,13 @@ export interface GetQueueConsumerResult {
     readonly type: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Queues Read`
+ * - `Queues Write`
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ *
  * ## Example Usage
  */
 export function getQueueConsumerOutput(args: GetQueueConsumerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetQueueConsumerResult> {
@@ -85,7 +99,7 @@ export interface GetQueueConsumerOutputArgs {
     /**
      * A Resource identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * A Resource identifier.
      */

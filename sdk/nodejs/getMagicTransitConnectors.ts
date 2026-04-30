@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Magic WAN Read`
+ * - `Magic WAN Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getMagicTransitConnectors(args: GetMagicTransitConnectorsArgs, opts?: pulumi.InvokeOptions): Promise<GetMagicTransitConnectorsResult> {
+export function getMagicTransitConnectors(args?: GetMagicTransitConnectorsArgs, opts?: pulumi.InvokeOptions): Promise<GetMagicTransitConnectorsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getMagicTransitConnectors:getMagicTransitConnectors", {
         "accountId": args.accountId,
@@ -33,7 +39,7 @@ export interface GetMagicTransitConnectorsArgs {
     /**
      * Account identifier
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -47,7 +53,7 @@ export interface GetMagicTransitConnectorsResult {
     /**
      * Account identifier
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -62,6 +68,11 @@ export interface GetMagicTransitConnectorsResult {
     readonly results: outputs.GetMagicTransitConnectorsResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Magic WAN Read`
+ * - `Magic WAN Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,7 +84,8 @@ export interface GetMagicTransitConnectorsResult {
  * });
  * ```
  */
-export function getMagicTransitConnectorsOutput(args: GetMagicTransitConnectorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMagicTransitConnectorsResult> {
+export function getMagicTransitConnectorsOutput(args?: GetMagicTransitConnectorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMagicTransitConnectorsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getMagicTransitConnectors:getMagicTransitConnectors", {
         "accountId": args.accountId,
@@ -88,7 +100,7 @@ export interface GetMagicTransitConnectorsOutputArgs {
     /**
      * Account identifier
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

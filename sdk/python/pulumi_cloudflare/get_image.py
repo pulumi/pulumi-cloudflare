@@ -57,7 +57,7 @@ class GetImageResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Account identifier tag.
         """
@@ -149,6 +149,11 @@ def get_image(account_id: Optional[_builtins.str] = None,
               image_id: Optional[_builtins.str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImageResult:
     """
+    Accepted Permissions
+
+    - `Images Read`
+    - `Images Write`
+
     ## Example Usage
 
     ```python
@@ -179,10 +184,15 @@ def get_image(account_id: Optional[_builtins.str] = None,
         require_signed_urls=pulumi.get(__ret__, 'require_signed_urls'),
         uploaded=pulumi.get(__ret__, 'uploaded'),
         variants=pulumi.get(__ret__, 'variants'))
-def get_image_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_image_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                      image_id: Optional[pulumi.Input[_builtins.str]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImageResult]:
     """
+    Accepted Permissions
+
+    - `Images Read`
+    - `Images Write`
+
     ## Example Usage
 
     ```python

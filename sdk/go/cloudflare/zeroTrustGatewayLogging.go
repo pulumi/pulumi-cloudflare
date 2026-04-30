@@ -55,7 +55,9 @@ import (
 //
 // ## Import
 //
-// > This resource does not currently support `pulumi import`.
+// ```sh
+// $ pulumi import cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging example '<account_id>'
+// ```
 type ZeroTrustGatewayLogging struct {
 	pulumi.CustomResourceState
 

@@ -7,6 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -38,14 +44,14 @@ export interface GetWorkerVersionArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
      * Available values: "modules".
      */
     include?: string;
     /**
-     * Identifier for the version, which can be ID or the literal "latest" to operate on the most recently created version.
+     * Identifier for the version, which can be a UUID, a UUID prefix (minimum length 8), or the literal "latest" to operate on the most recently created version.
      */
     versionId: string;
     /**
@@ -61,7 +67,7 @@ export interface GetWorkerVersionResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Metadata about the version.
      */
@@ -73,6 +79,7 @@ export interface GetWorkerVersionResult {
     readonly bindings: outputs.GetWorkerVersionBinding[];
     readonly compatibilityDate: string;
     readonly compatibilityFlags: string[];
+    readonly containers: outputs.GetWorkerVersionContainer[];
     readonly createdOn: string;
     readonly id: string;
     /**
@@ -83,18 +90,20 @@ export interface GetWorkerVersionResult {
     readonly limits: outputs.GetWorkerVersionLimits;
     readonly mainModule: string;
     readonly mainScriptBase64: string;
+    readonly migrationTag: string;
     readonly migrations: outputs.GetWorkerVersionMigrations;
     readonly modules: outputs.GetWorkerVersionModule[];
     readonly number: number;
     readonly placement: outputs.GetWorkerVersionPlacement;
     readonly source: string;
     readonly startupTimeMs: number;
+    readonly urls: string[];
     /**
      * @deprecated This attribute is deprecated.
      */
     readonly usageModel: string;
     /**
-     * Identifier for the version, which can be ID or the literal "latest" to operate on the most recently created version.
+     * Identifier for the version, which can be a UUID, a UUID prefix (minimum length 8), or the literal "latest" to operate on the most recently created version.
      */
     readonly versionId: string;
     /**
@@ -103,6 +112,12 @@ export interface GetWorkerVersionResult {
     readonly workerId: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -134,14 +149,14 @@ export interface GetWorkerVersionOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
      * Available values: "modules".
      */
     include?: pulumi.Input<string>;
     /**
-     * Identifier for the version, which can be ID or the literal "latest" to operate on the most recently created version.
+     * Identifier for the version, which can be a UUID, a UUID prefix (minimum length 8), or the literal "latest" to operate on the most recently created version.
      */
     versionId: pulumi.Input<string>;
     /**

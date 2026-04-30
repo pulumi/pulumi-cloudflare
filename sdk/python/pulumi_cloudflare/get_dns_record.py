@@ -28,7 +28,7 @@ class GetDnsRecordResult:
     """
     A collection of values returned by getDnsRecord.
     """
-    def __init__(__self__, comment=None, comment_modified_on=None, content=None, created_on=None, data=None, dns_record_id=None, filter=None, id=None, meta=None, modified_on=None, name=None, priority=None, proxiable=None, proxied=None, settings=None, tags=None, tags_modified_on=None, ttl=None, type=None, zone_id=None):
+    def __init__(__self__, comment=None, comment_modified_on=None, content=None, created_on=None, data=None, dns_record_id=None, filter=None, id=None, meta=None, modified_on=None, name=None, priority=None, private_routing=None, proxiable=None, proxied=None, settings=None, tags=None, tags_modified_on=None, ttl=None, type=None, zone_id=None):
         if comment and not isinstance(comment, str):
             raise TypeError("Expected argument 'comment' to be a str")
         pulumi.set(__self__, "comment", comment)
@@ -65,6 +65,9 @@ class GetDnsRecordResult:
         if priority and not isinstance(priority, float):
             raise TypeError("Expected argument 'priority' to be a float")
         pulumi.set(__self__, "priority", priority)
+        if private_routing and not isinstance(private_routing, bool):
+            raise TypeError("Expected argument 'private_routing' to be a bool")
+        pulumi.set(__self__, "private_routing", private_routing)
         if proxiable and not isinstance(proxiable, bool):
             raise TypeError("Expected argument 'proxiable' to be a bool")
         pulumi.set(__self__, "proxiable", proxiable)
@@ -179,9 +182,17 @@ class GetDnsRecordResult:
     @pulumi.getter
     def priority(self) -> _builtins.float:
         """
-        Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
+        Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
         """
         return pulumi.get(self, "priority")
+
+    @_builtins.property
+    @pulumi.getter(name="privateRouting")
+    def private_routing(self) -> _builtins.bool:
+        """
+        Enables private network routing to the origin.
+        """
+        return pulumi.get(self, "private_routing")
 
     @_builtins.property
     @pulumi.getter
@@ -242,7 +253,7 @@ class GetDnsRecordResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -267,6 +278,7 @@ class AwaitableGetDnsRecordResult(GetDnsRecordResult):
             modified_on=self.modified_on,
             name=self.name,
             priority=self.priority,
+            private_routing=self.private_routing,
             proxiable=self.proxiable,
             proxied=self.proxied,
             settings=self.settings,
@@ -282,6 +294,11 @@ def get_dns_record(dns_record_id: Optional[_builtins.str] = None,
                    zone_id: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDnsRecordResult:
     """
+    Accepted Permissions
+
+    - `DNS Read`
+    - `DNS Write`
+
     ## Example Usage
 
     ```python
@@ -316,6 +333,7 @@ def get_dns_record(dns_record_id: Optional[_builtins.str] = None,
         modified_on=pulumi.get(__ret__, 'modified_on'),
         name=pulumi.get(__ret__, 'name'),
         priority=pulumi.get(__ret__, 'priority'),
+        private_routing=pulumi.get(__ret__, 'private_routing'),
         proxiable=pulumi.get(__ret__, 'proxiable'),
         proxied=pulumi.get(__ret__, 'proxied'),
         settings=pulumi.get(__ret__, 'settings'),
@@ -326,9 +344,14 @@ def get_dns_record(dns_record_id: Optional[_builtins.str] = None,
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_dns_record_output(dns_record_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                           filter: Optional[pulumi.Input[Optional[Union['GetDnsRecordFilterArgs', 'GetDnsRecordFilterArgsDict']]]] = None,
-                          zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                          zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDnsRecordResult]:
     """
+    Accepted Permissions
+
+    - `DNS Read`
+    - `DNS Write`
+
     ## Example Usage
 
     ```python
@@ -362,6 +385,7 @@ def get_dns_record_output(dns_record_id: Optional[pulumi.Input[Optional[_builtin
         modified_on=pulumi.get(__response__, 'modified_on'),
         name=pulumi.get(__response__, 'name'),
         priority=pulumi.get(__response__, 'priority'),
+        private_routing=pulumi.get(__response__, 'private_routing'),
         proxiable=pulumi.get(__response__, 'proxiable'),
         proxied=pulumi.get(__response__, 'proxied'),
         settings=pulumi.get(__response__, 'settings'),

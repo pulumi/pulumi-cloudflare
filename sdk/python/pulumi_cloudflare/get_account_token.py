@@ -71,7 +71,7 @@ class GetAccountTokenResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Account identifier tag.
         """
@@ -195,6 +195,11 @@ def get_account_token(account_id: Optional[_builtins.str] = None,
                       token_id: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountTokenResult:
     """
+    Accepted Permissions
+
+    - `Account API Tokens Read`
+    - `Account API Tokens Write`
+
     ## Example Usage
 
     ```python
@@ -230,11 +235,16 @@ def get_account_token(account_id: Optional[_builtins.str] = None,
         policies=pulumi.get(__ret__, 'policies'),
         status=pulumi.get(__ret__, 'status'),
         token_id=pulumi.get(__ret__, 'token_id'))
-def get_account_token_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_account_token_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              filter: Optional[pulumi.Input[Optional[Union['GetAccountTokenFilterArgs', 'GetAccountTokenFilterArgsDict']]]] = None,
                              token_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountTokenResult]:
     """
+    Accepted Permissions
+
+    - `Account API Tokens Read`
+    - `Account API Tokens Write`
+
     ## Example Usage
 
     ```python

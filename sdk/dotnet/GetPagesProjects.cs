@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetPagesProjects
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Pages Read`
+        /// - `Pages Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetPagesProjectsResult> InvokeAsync(GetPagesProjectsArgs args, InvokeOptions? options = null)
+        public static Task<GetPagesProjectsResult> InvokeAsync(GetPagesProjectsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPagesProjectsResult>("cloudflare:index/getPagesProjects:getPagesProjects", args ?? new GetPagesProjectsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Pages Read`
+        /// - `Pages Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetPagesProjectsResult> Invoke(GetPagesProjectsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetPagesProjectsResult> Invoke(GetPagesProjectsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPagesProjectsResult>("cloudflare:index/getPagesProjects:getPagesProjects", args ?? new GetPagesProjectsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Pages Read`
+        /// - `Pages Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +99,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -104,8 +119,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -126,7 +141,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -142,7 +157,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetPagesProjectsResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

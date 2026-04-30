@@ -11,6 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Workers Scripts Read`
+// - `Workers Scripts Write`
+// - `Workers Tail Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetWorkersForPlatformsDispatchNamespaces(ctx, &cloudflare.LookupWorkersForPlatformsDispatchNamespacesArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +55,7 @@ func LookupWorkersForPlatformsDispatchNamespaces(ctx *pulumi.Context, args *Look
 // A collection of arguments for invoking getWorkersForPlatformsDispatchNamespaces.
 type LookupWorkersForPlatformsDispatchNamespacesArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 }
@@ -57,7 +63,7 @@ type LookupWorkersForPlatformsDispatchNamespacesArgs struct {
 // A collection of values returned by getWorkersForPlatformsDispatchNamespaces.
 type LookupWorkersForPlatformsDispatchNamespacesResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -78,7 +84,7 @@ func LookupWorkersForPlatformsDispatchNamespacesOutput(ctx *pulumi.Context, args
 // A collection of arguments for invoking getWorkersForPlatformsDispatchNamespaces.
 type LookupWorkersForPlatformsDispatchNamespacesOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
@@ -103,8 +109,8 @@ func (o LookupWorkersForPlatformsDispatchNamespacesResultOutput) ToLookupWorkers
 }
 
 // Identifier.
-func (o LookupWorkersForPlatformsDispatchNamespacesResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkersForPlatformsDispatchNamespacesResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupWorkersForPlatformsDispatchNamespacesResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkersForPlatformsDispatchNamespacesResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -34,6 +34,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> FieldNames;
         /// <summary>
+        /// If set to true, subrequests will be merged into the parent request. Only supported for the `HttpRequests` dataset.
+        /// </summary>
+        public readonly bool? MergeSubrequests;
+        /// <summary>
         /// Specifies the output type, such as `Ndjson` or `Csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
         /// Available values: "ndjson", "csv".
         /// </summary>
@@ -59,8 +63,8 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly double? SampleRate;
         /// <summary>
-        /// String to specify the format for timestamps, such as `Unixnano`, `Unix`, or `Rfc3339`.
-        /// Available values: "unixnano", "unix", "rfc3339".
+        /// String to specify the format for timestamps, such as `Unixnano`, `Unix`, `Rfc3339`, `Rfc3339ms` or `Rfc3339ns`.
+        /// Available values: "unixnano", "unix", "rfc3339", "rfc3339ms", "rfc3339ns".
         /// </summary>
         public readonly string? TimestampFormat;
 
@@ -75,6 +79,8 @@ namespace Pulumi.Cloudflare.Outputs
             string? fieldDelimiter,
 
             ImmutableArray<string> fieldNames,
+
+            bool? mergeSubrequests,
 
             string? outputType,
 
@@ -95,6 +101,7 @@ namespace Pulumi.Cloudflare.Outputs
             Cve202144228 = cve202144228;
             FieldDelimiter = fieldDelimiter;
             FieldNames = fieldNames;
+            MergeSubrequests = mergeSubrequests;
             OutputType = outputType;
             RecordDelimiter = recordDelimiter;
             RecordPrefix = recordPrefix;

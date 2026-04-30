@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Workers R2 Storage Read`
+// - `Workers R2 Storage Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetR2BucketEventNotification(ctx, &cloudflare.LookupR2BucketEventNotificationArgs{
-//				AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:  pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				BucketName: "example-bucket",
 //				QueueId:    "queue_id",
 //			}, nil)
@@ -51,7 +56,7 @@ func LookupR2BucketEventNotification(ctx *pulumi.Context, args *LookupR2BucketEv
 // A collection of arguments for invoking getR2BucketEventNotification.
 type LookupR2BucketEventNotificationArgs struct {
 	// Account ID.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
 	// Queue ID.
@@ -61,7 +66,7 @@ type LookupR2BucketEventNotificationArgs struct {
 // A collection of values returned by getR2BucketEventNotification.
 type LookupR2BucketEventNotificationResult struct {
 	// Account ID.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
 	// The provider-assigned unique ID for this managed resource.
@@ -85,7 +90,7 @@ func LookupR2BucketEventNotificationOutput(ctx *pulumi.Context, args LookupR2Buc
 // A collection of arguments for invoking getR2BucketEventNotification.
 type LookupR2BucketEventNotificationOutputArgs struct {
 	// Account ID.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
 	// Queue ID.
@@ -112,8 +117,8 @@ func (o LookupR2BucketEventNotificationResultOutput) ToLookupR2BucketEventNotifi
 }
 
 // Account ID.
-func (o LookupR2BucketEventNotificationResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupR2BucketEventNotificationResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupR2BucketEventNotificationResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupR2BucketEventNotificationResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Name of the bucket.

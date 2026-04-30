@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Access: Apps and Policies Read`
+// - `Access: Apps and Policies Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -31,9 +36,7 @@ import (
 //				Decision:  pulumi.String("allow"),
 //				Includes: cloudflare.ZeroTrustAccessPolicyIncludeArray{
 //					&cloudflare.ZeroTrustAccessPolicyIncludeArgs{
-//						Group: &cloudflare.ZeroTrustAccessPolicyIncludeGroupArgs{
-//							Id: pulumi.String("aa0a4aab-672b-4bdb-bc33-a59f1130a11f"),
-//						},
+//						Certificate: &cloudflare.ZeroTrustAccessPolicyIncludeCertificateArgs{},
 //					},
 //				},
 //				Name: pulumi.String("Allow devs"),
@@ -68,9 +71,7 @@ import (
 //				},
 //				Excludes: cloudflare.ZeroTrustAccessPolicyExcludeArray{
 //					&cloudflare.ZeroTrustAccessPolicyExcludeArgs{
-//						Group: &cloudflare.ZeroTrustAccessPolicyExcludeGroupArgs{
-//							Id: pulumi.String("aa0a4aab-672b-4bdb-bc33-a59f1130a11f"),
-//						},
+//						Certificate: &cloudflare.ZeroTrustAccessPolicyExcludeCertificateArgs{},
 //					},
 //				},
 //				IsolationRequired: pulumi.Bool(false),
@@ -80,16 +81,14 @@ import (
 //						pulumi.String("biometrics"),
 //						pulumi.String("security_key"),
 //					},
-//					MfaBypass:       pulumi.Bool(false),
+//					MfaDisabled:     pulumi.Bool(false),
 //					SessionDuration: pulumi.String("24h"),
 //				},
 //				PurposeJustificationPrompt:   pulumi.String("Please enter a justification for entering this protected domain."),
 //				PurposeJustificationRequired: pulumi.Bool(true),
 //				Requires: cloudflare.ZeroTrustAccessPolicyRequireArray{
 //					&cloudflare.ZeroTrustAccessPolicyRequireArgs{
-//						Group: &cloudflare.ZeroTrustAccessPolicyRequireGroupArgs{
-//							Id: pulumi.String("aa0a4aab-672b-4bdb-bc33-a59f1130a11f"),
-//						},
+//						Certificate: &cloudflare.ZeroTrustAccessPolicyRequireCertificateArgs{},
 //					},
 //				},
 //				SessionDuration: pulumi.String("24h"),
@@ -112,7 +111,7 @@ type ZeroTrustAccessPolicy struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Administrators who can approve a temporary authentication request.
 	ApprovalGroups ZeroTrustAccessPolicyApprovalGroupArrayOutput `pulumi:"approvalGroups"`
 	// Requires the user to request access from an administrator at the start of each session.
@@ -149,9 +148,6 @@ func NewZeroTrustAccessPolicy(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Decision == nil {
 		return nil, errors.New("invalid value for required argument 'Decision'")
 	}
@@ -256,7 +252,7 @@ func (ZeroTrustAccessPolicyState) ElementType() reflect.Type {
 
 type zeroTrustAccessPolicyArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Administrators who can approve a temporary authentication request.
 	ApprovalGroups []ZeroTrustAccessPolicyApprovalGroup `pulumi:"approvalGroups"`
 	// Requires the user to request access from an administrator at the start of each session.
@@ -289,7 +285,7 @@ type zeroTrustAccessPolicyArgs struct {
 // The set of arguments for constructing a ZeroTrustAccessPolicy resource.
 type ZeroTrustAccessPolicyArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// Administrators who can approve a temporary authentication request.
 	ApprovalGroups ZeroTrustAccessPolicyApprovalGroupArrayInput
 	// Requires the user to request access from an administrator at the start of each session.
@@ -407,8 +403,8 @@ func (o ZeroTrustAccessPolicyOutput) ToZeroTrustAccessPolicyOutputWithContext(ct
 }
 
 // Identifier.
-func (o ZeroTrustAccessPolicyOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o ZeroTrustAccessPolicyOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Administrators who can approve a temporary authentication request.

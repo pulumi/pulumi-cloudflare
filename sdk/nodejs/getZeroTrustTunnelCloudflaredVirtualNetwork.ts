@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudflare One Networks Read`
+ * - `Cloudflare One Networks Write`
+ * - `Cloudflare Tunnel Read`
+ * - `Cloudflare Tunnel Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +26,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustTunnelCloudflaredVirtualNetwork(args: GetZeroTrustTunnelCloudflaredVirtualNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustTunnelCloudflaredVirtualNetworkResult> {
+export function getZeroTrustTunnelCloudflaredVirtualNetwork(args?: GetZeroTrustTunnelCloudflaredVirtualNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustTunnelCloudflaredVirtualNetworkResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustTunnelCloudflaredVirtualNetwork:getZeroTrustTunnelCloudflaredVirtualNetwork", {
         "accountId": args.accountId,
@@ -35,7 +43,7 @@ export interface GetZeroTrustTunnelCloudflaredVirtualNetworkArgs {
     /**
      * Cloudflare account ID
      */
-    accountId: string;
+    accountId?: string;
     filter?: inputs.GetZeroTrustTunnelCloudflaredVirtualNetworkFilter;
     /**
      * UUID of the virtual network.
@@ -50,7 +58,7 @@ export interface GetZeroTrustTunnelCloudflaredVirtualNetworkResult {
     /**
      * Cloudflare account ID
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Optional remark describing the virtual network.
      */
@@ -82,6 +90,13 @@ export interface GetZeroTrustTunnelCloudflaredVirtualNetworkResult {
     readonly virtualNetworkId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudflare One Networks Read`
+ * - `Cloudflare One Networks Write`
+ * - `Cloudflare Tunnel Read`
+ * - `Cloudflare Tunnel Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -94,7 +109,8 @@ export interface GetZeroTrustTunnelCloudflaredVirtualNetworkResult {
  * });
  * ```
  */
-export function getZeroTrustTunnelCloudflaredVirtualNetworkOutput(args: GetZeroTrustTunnelCloudflaredVirtualNetworkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustTunnelCloudflaredVirtualNetworkResult> {
+export function getZeroTrustTunnelCloudflaredVirtualNetworkOutput(args?: GetZeroTrustTunnelCloudflaredVirtualNetworkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustTunnelCloudflaredVirtualNetworkResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustTunnelCloudflaredVirtualNetwork:getZeroTrustTunnelCloudflaredVirtualNetwork", {
         "accountId": args.accountId,
@@ -110,7 +126,7 @@ export interface GetZeroTrustTunnelCloudflaredVirtualNetworkOutputArgs {
     /**
      * Cloudflare account ID
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetZeroTrustTunnelCloudflaredVirtualNetworkFilterArgs>;
     /**
      * UUID of the virtual network.

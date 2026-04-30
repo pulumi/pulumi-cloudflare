@@ -11,6 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Magic Network Monitoring Admin`
+// - `Magic Network Monitoring Config Read`
+// - `Magic Network Monitoring Config Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetMagicNetworkMonitoringRule(ctx, &cloudflare.LookupMagicNetworkMonitoringRuleArgs{
-//				AccountId: "6f91088a406011ed95aed352566e8d4c",
+//				AccountId: pulumi.StringRef("6f91088a406011ed95aed352566e8d4c"),
 //				RuleId:    "2890e6fa406311ed9b5a23f70f6fb8cf",
 //			}, nil)
 //			if err != nil {
@@ -49,14 +55,14 @@ func LookupMagicNetworkMonitoringRule(ctx *pulumi.Context, args *LookupMagicNetw
 
 // A collection of arguments for invoking getMagicNetworkMonitoringRule.
 type LookupMagicNetworkMonitoringRuleArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The id of the rule. Must be unique.
 	RuleId string `pulumi:"ruleId"`
 }
 
 // A collection of values returned by getMagicNetworkMonitoringRule.
 type LookupMagicNetworkMonitoringRuleResult struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
 	AutomaticAdvertisement bool `pulumi:"automaticAdvertisement"`
 	// The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
@@ -98,7 +104,7 @@ func LookupMagicNetworkMonitoringRuleOutput(ctx *pulumi.Context, args LookupMagi
 
 // A collection of arguments for invoking getMagicNetworkMonitoringRule.
 type LookupMagicNetworkMonitoringRuleOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// The id of the rule. Must be unique.
 	RuleId pulumi.StringInput `pulumi:"ruleId"`
 }
@@ -122,8 +128,8 @@ func (o LookupMagicNetworkMonitoringRuleResultOutput) ToLookupMagicNetworkMonito
 	return o
 }
 
-func (o LookupMagicNetworkMonitoringRuleResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMagicNetworkMonitoringRuleResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupMagicNetworkMonitoringRuleResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMagicNetworkMonitoringRuleResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.

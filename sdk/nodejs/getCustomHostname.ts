@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +24,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getCustomHostname(args: GetCustomHostnameArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomHostnameResult> {
+export function getCustomHostname(args?: GetCustomHostnameArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomHostnameResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCustomHostname:getCustomHostname", {
         "customHostnameId": args.customHostnameId,
@@ -40,7 +46,7 @@ export interface GetCustomHostnameArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -97,9 +103,14 @@ export interface GetCustomHostnameResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -112,7 +123,8 @@ export interface GetCustomHostnameResult {
  * });
  * ```
  */
-export function getCustomHostnameOutput(args: GetCustomHostnameOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomHostnameResult> {
+export function getCustomHostnameOutput(args?: GetCustomHostnameOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomHostnameResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCustomHostname:getCustomHostname", {
         "customHostnameId": args.customHostnameId,
@@ -133,5 +145,5 @@ export interface GetCustomHostnameOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

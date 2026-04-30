@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Logs Read`
+ * - `Logs Write`
+ *
  * ## Example Usage
  *
  * ```typescript

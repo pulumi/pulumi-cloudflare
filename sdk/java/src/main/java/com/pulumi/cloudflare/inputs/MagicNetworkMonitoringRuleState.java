@@ -44,21 +44,6 @@ public final class MagicNetworkMonitoringRuleState extends com.pulumi.resources.
      * The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
      * 
      */
-    @Import(name="bandwidth")
-    private @Nullable Output<Double> bandwidth;
-
-    /**
-     * @return The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
-     * 
-     */
-    public Optional<Output<Double>> bandwidth() {
-        return Optional.ofNullable(this.bandwidth);
-    }
-
-    /**
-     * The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
-     * 
-     */
     @Import(name="bandwidthThreshold")
     private @Nullable Output<Double> bandwidthThreshold;
 
@@ -197,7 +182,6 @@ public final class MagicNetworkMonitoringRuleState extends com.pulumi.resources.
     private MagicNetworkMonitoringRuleState(MagicNetworkMonitoringRuleState $) {
         this.accountId = $.accountId;
         this.automaticAdvertisement = $.automaticAdvertisement;
-        this.bandwidth = $.bandwidth;
         this.bandwidthThreshold = $.bandwidthThreshold;
         this.duration = $.duration;
         this.name = $.name;
@@ -255,27 +239,6 @@ public final class MagicNetworkMonitoringRuleState extends com.pulumi.resources.
          */
         public Builder automaticAdvertisement(Boolean automaticAdvertisement) {
             return automaticAdvertisement(Output.of(automaticAdvertisement));
-        }
-
-        /**
-         * @param bandwidth The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder bandwidth(@Nullable Output<Double> bandwidth) {
-            $.bandwidth = bandwidth;
-            return this;
-        }
-
-        /**
-         * @param bandwidth The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder bandwidth(Double bandwidth) {
-            return bandwidth(Output.of(bandwidth));
         }
 
         /**

@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetWorkersDeploymentAnnotationsResult
     {
         /// <summary>
-        /// Human-readable message about the deployment. Truncated to 100 bytes.
+        /// Human-readable message about the deployment. Truncated to 1000 bytes if longer.
         /// </summary>
         public readonly string WorkersMessage;
         /// <summary>

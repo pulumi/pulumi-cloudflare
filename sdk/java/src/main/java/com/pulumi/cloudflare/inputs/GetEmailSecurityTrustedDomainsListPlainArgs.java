@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -21,15 +20,15 @@ public final class GetEmailSecurityTrustedDomainsListPlainArgs extends com.pulum
      * Account Identifier
      * 
      */
-    @Import(name="accountId", required=true)
-    private String accountId;
+    @Import(name="accountId")
+    private @Nullable String accountId;
 
     /**
      * @return Account Identifier
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -160,7 +159,7 @@ public final class GetEmailSecurityTrustedDomainsListPlainArgs extends com.pulum
          * @return builder
          * 
          */
-        public Builder accountId(String accountId) {
+        public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -230,9 +229,6 @@ public final class GetEmailSecurityTrustedDomainsListPlainArgs extends com.pulum
         }
 
         public GetEmailSecurityTrustedDomainsListPlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetEmailSecurityTrustedDomainsListPlainArgs", "accountId");
-            }
             return $;
         }
     }

@@ -18,6 +18,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Access: Service Tokens Read`
+ * - `Access: Service Tokens Write`
+ * 
  * ## Example Usage
  * 
  * <pre>

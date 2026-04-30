@@ -5,6 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Magic Network Monitoring Admin`
+ * - `Magic Network Monitoring Config Read`
+ * - `Magic Network Monitoring Config Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -29,7 +35,7 @@ export function getMagicNetworkMonitoringRule(args: GetMagicNetworkMonitoringRul
  * A collection of arguments for invoking getMagicNetworkMonitoringRule.
  */
 export interface GetMagicNetworkMonitoringRuleArgs {
-    accountId: string;
+    accountId?: string;
     /**
      * The id of the rule. Must be unique.
      */
@@ -40,7 +46,7 @@ export interface GetMagicNetworkMonitoringRuleArgs {
  * A collection of values returned by getMagicNetworkMonitoringRule.
  */
 export interface GetMagicNetworkMonitoringRuleResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
      */
@@ -93,6 +99,12 @@ export interface GetMagicNetworkMonitoringRuleResult {
     readonly zscoreTarget: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Magic Network Monitoring Admin`
+ * - `Magic Network Monitoring Config Read`
+ * - `Magic Network Monitoring Config Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -117,7 +129,7 @@ export function getMagicNetworkMonitoringRuleOutput(args: GetMagicNetworkMonitor
  * A collection of arguments for invoking getMagicNetworkMonitoringRule.
  */
 export interface GetMagicNetworkMonitoringRuleOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * The id of the rule. Must be unique.
      */

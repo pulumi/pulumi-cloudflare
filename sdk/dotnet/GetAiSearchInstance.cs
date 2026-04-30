@@ -11,10 +11,10 @@ namespace Pulumi.Cloudflare
 {
     public static class GetAiSearchInstance
     {
-        public static Task<GetAiSearchInstanceResult> InvokeAsync(GetAiSearchInstanceArgs args, InvokeOptions? options = null)
+        public static Task<GetAiSearchInstanceResult> InvokeAsync(GetAiSearchInstanceArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAiSearchInstanceResult>("cloudflare:index/getAiSearchInstance:getAiSearchInstance", args ?? new GetAiSearchInstanceArgs(), options.WithDefaults());
 
-        public static Output<GetAiSearchInstanceResult> Invoke(GetAiSearchInstanceInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetAiSearchInstanceResult> Invoke(GetAiSearchInstanceInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAiSearchInstanceResult>("cloudflare:index/getAiSearchInstance:getAiSearchInstance", args ?? new GetAiSearchInstanceInvokeArgs(), options.WithDefaults());
 
         public static Output<GetAiSearchInstanceResult> Invoke(GetAiSearchInstanceInvokeArgs args, InvokeOutputOptions options)
@@ -24,14 +24,14 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetAiSearchInstanceArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         [Input("filter")]
         public Inputs.GetAiSearchInstanceFilterArgs? Filter { get; set; }
 
         /// <summary>
-        /// Use your AI Search ID.
+        /// AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
@@ -44,14 +44,14 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetAiSearchInstanceInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("filter")]
         public Input<Inputs.GetAiSearchInstanceFilterInputArgs>? Filter { get; set; }
 
         /// <summary>
-        /// Use your AI Search ID.
+        /// AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -66,10 +66,10 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetAiSearchInstanceResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         public readonly string AiGatewayId;
         /// <summary>
-        /// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+        /// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
         /// </summary>
         public readonly string AisearchModel;
         public readonly bool Cache;
@@ -83,25 +83,35 @@ namespace Pulumi.Cloudflare
         public readonly string CreatedBy;
         public readonly ImmutableArray<Outputs.GetAiSearchInstanceCustomMetadataResult> CustomMetadatas;
         /// <summary>
-        /// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
+        /// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
         /// </summary>
         public readonly string EmbeddingModel;
         public readonly bool Enable;
+        public readonly double EngineVersion;
         public readonly Outputs.GetAiSearchInstanceFilterResult? Filter;
         /// <summary>
         /// Available values: "max", "rrf".
         /// </summary>
         public readonly string FusionMethod;
+        /// <summary>
+        /// Deprecated — use IndexMethod instead.
+        /// </summary>
         public readonly bool HybridSearchEnabled;
         /// <summary>
-        /// Use your AI Search ID.
+        /// AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Controls which storage backends are used during indexing. Defaults to vector-only.
+        /// </summary>
+        public readonly Outputs.GetAiSearchInstanceIndexMethodResult IndexMethod;
+        public readonly Outputs.GetAiSearchInstanceIndexingOptionsResult IndexingOptions;
         public readonly string LastActivity;
         public readonly int MaxNumResults;
         public readonly Outputs.GetAiSearchInstanceMetadataResult Metadata;
         public readonly string ModifiedAt;
         public readonly string ModifiedBy;
+        public readonly string Namespace;
         public readonly bool Paused;
         public readonly string PublicEndpointId;
         public readonly Outputs.GetAiSearchInstancePublicEndpointParamsResult PublicEndpointParams;
@@ -112,7 +122,7 @@ namespace Pulumi.Cloudflare
         public readonly string RerankingModel;
         public readonly Outputs.GetAiSearchInstanceRetrievalOptionsResult RetrievalOptions;
         /// <summary>
-        /// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+        /// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
         /// </summary>
         public readonly string RewriteModel;
         public readonly bool RewriteQuery;
@@ -120,16 +130,20 @@ namespace Pulumi.Cloudflare
         public readonly string Source;
         public readonly Outputs.GetAiSearchInstanceSourceParamsResult SourceParams;
         public readonly string Status;
+        /// <summary>
+        /// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+        /// Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
+        /// </summary>
+        public readonly double SyncInterval;
         public readonly string TokenId;
         /// <summary>
         /// Available values: "r2", "web-crawler".
         /// </summary>
         public readonly string Type;
-        public readonly string VectorizeName;
 
         [OutputConstructor]
         private GetAiSearchInstanceResult(
-            string accountId,
+            string? accountId,
 
             string aiGatewayId,
 
@@ -153,6 +167,8 @@ namespace Pulumi.Cloudflare
 
             bool enable,
 
+            double engineVersion,
+
             Outputs.GetAiSearchInstanceFilterResult? filter,
 
             string fusionMethod,
@@ -160,6 +176,10 @@ namespace Pulumi.Cloudflare
             bool hybridSearchEnabled,
 
             string id,
+
+            Outputs.GetAiSearchInstanceIndexMethodResult indexMethod,
+
+            Outputs.GetAiSearchInstanceIndexingOptionsResult indexingOptions,
 
             string lastActivity,
 
@@ -170,6 +190,8 @@ namespace Pulumi.Cloudflare
             string modifiedAt,
 
             string modifiedBy,
+
+            string @namespace,
 
             bool paused,
 
@@ -195,11 +217,11 @@ namespace Pulumi.Cloudflare
 
             string status,
 
+            double syncInterval,
+
             string tokenId,
 
-            string type,
-
-            string vectorizeName)
+            string type)
         {
             AccountId = accountId;
             AiGatewayId = aiGatewayId;
@@ -213,15 +235,19 @@ namespace Pulumi.Cloudflare
             CustomMetadatas = customMetadatas;
             EmbeddingModel = embeddingModel;
             Enable = enable;
+            EngineVersion = engineVersion;
             Filter = filter;
             FusionMethod = fusionMethod;
             HybridSearchEnabled = hybridSearchEnabled;
             Id = id;
+            IndexMethod = indexMethod;
+            IndexingOptions = indexingOptions;
             LastActivity = lastActivity;
             MaxNumResults = maxNumResults;
             Metadata = metadata;
             ModifiedAt = modifiedAt;
             ModifiedBy = modifiedBy;
+            Namespace = @namespace;
             Paused = paused;
             PublicEndpointId = publicEndpointId;
             PublicEndpointParams = publicEndpointParams;
@@ -234,9 +260,9 @@ namespace Pulumi.Cloudflare
             Source = source;
             SourceParams = sourceParams;
             Status = status;
+            SyncInterval = syncInterval;
             TokenId = tokenId;
             Type = type;
-            VectorizeName = vectorizeName;
         }
     }
 }

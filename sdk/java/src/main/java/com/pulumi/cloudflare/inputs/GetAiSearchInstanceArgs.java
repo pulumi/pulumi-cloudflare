@@ -6,7 +6,6 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.GetAiSearchInstanceFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,11 +16,11 @@ public final class GetAiSearchInstanceArgs extends com.pulumi.resources.InvokeAr
 
     public static final GetAiSearchInstanceArgs Empty = new GetAiSearchInstanceArgs();
 
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     @Import(name="filter")
@@ -32,14 +31,14 @@ public final class GetAiSearchInstanceArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Use your AI Search ID.
+     * AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return Use your AI Search ID.
+     * @return AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
      * 
      */
     public Optional<Output<String>> id() {
@@ -72,7 +71,7 @@ public final class GetAiSearchInstanceArgs extends com.pulumi.resources.InvokeAr
             $ = new GetAiSearchInstanceArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -91,7 +90,7 @@ public final class GetAiSearchInstanceArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param id Use your AI Search ID.
+         * @param id AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
          * 
          * @return builder
          * 
@@ -102,7 +101,7 @@ public final class GetAiSearchInstanceArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param id Use your AI Search ID.
+         * @param id AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
          * 
          * @return builder
          * 
@@ -112,9 +111,6 @@ public final class GetAiSearchInstanceArgs extends com.pulumi.resources.InvokeAr
         }
 
         public GetAiSearchInstanceArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetAiSearchInstanceArgs", "accountId");
-            }
             return $;
         }
     }

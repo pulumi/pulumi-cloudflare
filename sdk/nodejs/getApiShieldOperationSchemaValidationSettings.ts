@@ -5,6 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Gateway`
+ * - `Account API Gateway Read`
+ * - `Domain API Gateway`
+ * - `Domain API Gateway Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -30,7 +37,7 @@ export function getApiShieldOperationSchemaValidationSettings(args: GetApiShield
  */
 export interface GetApiShieldOperationSchemaValidationSettingsArgs {
     operationId: string;
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -43,9 +50,16 @@ export interface GetApiShieldOperationSchemaValidationSettingsResult {
     readonly id: string;
     readonly mitigationAction: string;
     readonly operationId: string;
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Gateway`
+ * - `Account API Gateway Read`
+ * - `Domain API Gateway`
+ * - `Domain API Gateway Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -71,5 +85,5 @@ export function getApiShieldOperationSchemaValidationSettingsOutput(args: GetApi
  */
 export interface GetApiShieldOperationSchemaValidationSettingsOutputArgs {
     operationId: pulumi.Input<string>;
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

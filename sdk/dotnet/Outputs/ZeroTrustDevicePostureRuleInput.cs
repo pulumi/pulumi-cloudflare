@@ -18,6 +18,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly double? ActiveThreats;
         /// <summary>
+        /// The set of Kolide device authentication states that pass the posture check. Device must match one of the specified states.
+        /// </summary>
+        public readonly ImmutableArray<string> AuthStates;
+        /// <summary>
         /// UUID of Cloudflare managed certificate.
         /// </summary>
         public readonly string? CertificateId;
@@ -193,6 +197,8 @@ namespace Pulumi.Cloudflare.Outputs
         private ZeroTrustDevicePostureRuleInput(
             double? activeThreats,
 
+            ImmutableArray<string> authStates,
+
             string? certificateId,
 
             ImmutableArray<string> checkDisks,
@@ -276,6 +282,7 @@ namespace Pulumi.Cloudflare.Outputs
             string? versionOperator)
         {
             ActiveThreats = activeThreats;
+            AuthStates = authStates;
             CertificateId = certificateId;
             CheckDisks = checkDisks;
             CheckPrivateKey = checkPrivateKey;

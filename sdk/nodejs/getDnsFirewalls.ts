@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `DNS Firewall Read`
+ * - `DNS Firewall Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getDnsFirewalls(args: GetDnsFirewallsArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsFirewallsResult> {
+export function getDnsFirewalls(args?: GetDnsFirewallsArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsFirewallsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getDnsFirewalls:getDnsFirewalls", {
         "accountId": args.accountId,
@@ -33,7 +39,7 @@ export interface GetDnsFirewallsArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -47,7 +53,7 @@ export interface GetDnsFirewallsResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -62,6 +68,11 @@ export interface GetDnsFirewallsResult {
     readonly results: outputs.GetDnsFirewallsResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `DNS Firewall Read`
+ * - `DNS Firewall Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,7 +84,8 @@ export interface GetDnsFirewallsResult {
  * });
  * ```
  */
-export function getDnsFirewallsOutput(args: GetDnsFirewallsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDnsFirewallsResult> {
+export function getDnsFirewallsOutput(args?: GetDnsFirewallsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDnsFirewallsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getDnsFirewalls:getDnsFirewalls", {
         "accountId": args.accountId,
@@ -88,7 +100,7 @@ export interface GetDnsFirewallsOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

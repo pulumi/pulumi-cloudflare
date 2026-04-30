@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account API Tokens Read`
+// - `Account API Tokens Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetAccountApiTokenPermissionGroupsList(ctx, &cloudflare.LookupAccountApiTokenPermissionGroupsListArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Name:      pulumi.StringRef("Account%20Settings%20Write"),
 //				Scope:     pulumi.StringRef("com.cloudflare.api.account.zone"),
 //			}, nil)
@@ -51,7 +56,7 @@ func LookupAccountApiTokenPermissionGroupsList(ctx *pulumi.Context, args *Lookup
 // A collection of arguments for invoking getAccountApiTokenPermissionGroupsList.
 type LookupAccountApiTokenPermissionGroupsListArgs struct {
 	// Account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Filter by the name of the permission group.
@@ -65,7 +70,7 @@ type LookupAccountApiTokenPermissionGroupsListArgs struct {
 // A collection of values returned by getAccountApiTokenPermissionGroupsList.
 type LookupAccountApiTokenPermissionGroupsListResult struct {
 	// Account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -92,7 +97,7 @@ func LookupAccountApiTokenPermissionGroupsListOutput(ctx *pulumi.Context, args L
 // A collection of arguments for invoking getAccountApiTokenPermissionGroupsList.
 type LookupAccountApiTokenPermissionGroupsListOutputArgs struct {
 	// Account identifier tag.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// Filter by the name of the permission group.
@@ -123,8 +128,8 @@ func (o LookupAccountApiTokenPermissionGroupsListResultOutput) ToLookupAccountAp
 }
 
 // Account identifier tag.
-func (o LookupAccountApiTokenPermissionGroupsListResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAccountApiTokenPermissionGroupsListResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupAccountApiTokenPermissionGroupsListResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAccountApiTokenPermissionGroupsListResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -7,10 +7,12 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustGatewayPacfileResult {
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Actual contents of the PAC file
      * 
@@ -46,8 +48,8 @@ public final class GetZeroTrustGatewayPacfileResult {
     private String url;
 
     private GetZeroTrustGatewayPacfileResult() {}
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Actual contents of the PAC file
@@ -110,7 +112,7 @@ public final class GetZeroTrustGatewayPacfileResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String contents;
         private String createdAt;
         private String description;
@@ -136,10 +138,8 @@ public final class GetZeroTrustGatewayPacfileResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustGatewayPacfileResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

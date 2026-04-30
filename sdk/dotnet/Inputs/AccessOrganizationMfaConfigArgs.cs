@@ -25,6 +25,18 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
+        /// Allows a user to skip MFA via Authentication Method Reference (AMR) matching when the AMR claim provided by the IdP the user used to authenticate contains "mfa". Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days).
+        /// </summary>
+        [Input("amrMatchingSessionDuration")]
+        public Input<string>? AmrMatchingSessionDuration { get; set; }
+
+        /// <summary>
+        /// Specifies a Cloudflare List of required FIDO2 authenticator device AAGUIDs.
+        /// </summary>
+        [Input("requiredAaguids")]
+        public Input<string>? RequiredAaguids { get; set; }
+
+        /// <summary>
         /// Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
         /// </summary>
         [Input("sessionDuration")]

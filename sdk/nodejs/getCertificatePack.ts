@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +24,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getCertificatePack(args: GetCertificatePackArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificatePackResult> {
+export function getCertificatePack(args?: GetCertificatePackArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificatePackResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCertificatePack:getCertificatePack", {
         "certificatePackId": args.certificatePackId,
@@ -40,7 +46,7 @@ export interface GetCertificatePackArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -112,9 +118,14 @@ export interface GetCertificatePackResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -127,7 +138,8 @@ export interface GetCertificatePackResult {
  * });
  * ```
  */
-export function getCertificatePackOutput(args: GetCertificatePackOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCertificatePackResult> {
+export function getCertificatePackOutput(args?: GetCertificatePackOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCertificatePackResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCertificatePack:getCertificatePack", {
         "certificatePackId": args.certificatePackId,
@@ -148,5 +160,5 @@ export interface GetCertificatePackOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

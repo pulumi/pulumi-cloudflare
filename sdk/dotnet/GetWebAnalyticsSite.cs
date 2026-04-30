@@ -12,6 +12,10 @@ namespace Pulumi.Cloudflare
     public static class GetWebAnalyticsSite
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Settings Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,10 +35,14 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetWebAnalyticsSiteResult> InvokeAsync(GetWebAnalyticsSiteArgs args, InvokeOptions? options = null)
+        public static Task<GetWebAnalyticsSiteResult> InvokeAsync(GetWebAnalyticsSiteArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWebAnalyticsSiteResult>("cloudflare:index/getWebAnalyticsSite:getWebAnalyticsSite", args ?? new GetWebAnalyticsSiteArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Settings Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,10 +62,14 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetWebAnalyticsSiteResult> Invoke(GetWebAnalyticsSiteInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetWebAnalyticsSiteResult> Invoke(GetWebAnalyticsSiteInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWebAnalyticsSiteResult>("cloudflare:index/getWebAnalyticsSite:getWebAnalyticsSite", args ?? new GetWebAnalyticsSiteInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Settings Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +99,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         [Input("filter")]
         public Inputs.GetWebAnalyticsSiteFilterArgs? Filter { get; set; }
@@ -110,8 +122,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("filter")]
         public Input<Inputs.GetWebAnalyticsSiteFilterInputArgs>? Filter { get; set; }
@@ -135,7 +147,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
         /// </summary>
@@ -170,7 +182,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetWebAnalyticsSiteResult(
-            string accountId,
+            string? accountId,
 
             bool autoInstall,
 

@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,15 +21,30 @@ public final class ZeroTrustTunnelWarpConnectorArgs extends com.pulumi.resources
      * Cloudflare account ID
      * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
      * @return Cloudflare account ID
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
+    }
+
+    /**
+     * Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
+     * 
+     */
+    @Import(name="ha")
+    private @Nullable Output<Boolean> ha;
+
+    /**
+     * @return Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
+     * 
+     */
+    public Optional<Output<Boolean>> ha() {
+        return Optional.ofNullable(this.ha);
     }
 
     /**
@@ -65,6 +81,7 @@ public final class ZeroTrustTunnelWarpConnectorArgs extends com.pulumi.resources
 
     private ZeroTrustTunnelWarpConnectorArgs(ZeroTrustTunnelWarpConnectorArgs $) {
         this.accountId = $.accountId;
+        this.ha = $.ha;
         this.name = $.name;
         this.tunnelSecret = $.tunnelSecret;
     }
@@ -93,7 +110,7 @@ public final class ZeroTrustTunnelWarpConnectorArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -106,6 +123,27 @@ public final class ZeroTrustTunnelWarpConnectorArgs extends com.pulumi.resources
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param ha Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ha(@Nullable Output<Boolean> ha) {
+            $.ha = ha;
+            return this;
+        }
+
+        /**
+         * @param ha Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ha(Boolean ha) {
+            return ha(Output.of(ha));
         }
 
         /**
@@ -151,9 +189,6 @@ public final class ZeroTrustTunnelWarpConnectorArgs extends com.pulumi.resources
         }
 
         public ZeroTrustTunnelWarpConnectorArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustTunnelWarpConnectorArgs", "accountId");
-            }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustTunnelWarpConnectorArgs", "name");
             }

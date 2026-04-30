@@ -20,7 +20,7 @@ public final class GetAccountDnsSettingsInternalViewsInvokeResult {
      * @return Identifier.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Direction to order DNS views in.
      * Available values: &#34;asc&#34;, &#34;desc&#34;.
@@ -71,8 +71,8 @@ public final class GetAccountDnsSettingsInternalViewsInvokeResult {
      * @return Identifier.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Direction to order DNS views in.
@@ -146,7 +146,7 @@ public final class GetAccountDnsSettingsInternalViewsInvokeResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String direction;
         private String id;
         private String match;
@@ -172,10 +172,8 @@ public final class GetAccountDnsSettingsInternalViewsInvokeResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetAccountDnsSettingsInternalViewsInvokeResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

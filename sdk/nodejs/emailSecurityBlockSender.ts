@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloud Email Security: Read`
+ * - `Cloud Email Security: Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -57,7 +62,7 @@ export class EmailSecurityBlockSender extends pulumi.CustomResource {
     /**
      * Account Identifier
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     declare public readonly comments: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     declare public readonly isRegex: pulumi.Output<boolean>;
@@ -90,9 +95,6 @@ export class EmailSecurityBlockSender extends pulumi.CustomResource {
             resourceInputs["patternType"] = state?.patternType;
         } else {
             const args = argsOrState as EmailSecurityBlockSenderArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.isRegex === undefined && !opts.urn) {
                 throw new Error("Missing required property 'isRegex'");
             }
@@ -141,7 +143,7 @@ export interface EmailSecurityBlockSenderArgs {
     /**
      * Account Identifier
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     comments?: pulumi.Input<string>;
     isRegex: pulumi.Input<boolean>;
     pattern: pulumi.Input<string>;

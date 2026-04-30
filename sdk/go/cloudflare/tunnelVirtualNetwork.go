@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloudflare One Networks Write`
+// - `Cloudflare Tunnel Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -53,7 +58,7 @@ type TunnelVirtualNetwork struct {
 	pulumi.CustomResourceState
 
 	// Cloudflare account ID
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Optional remark describing the virtual network.
 	Comment pulumi.StringOutput `pulumi:"comment"`
 	// Timestamp of when the resource was created.
@@ -77,9 +82,6 @@ func NewTunnelVirtualNetwork(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -155,7 +157,7 @@ func (TunnelVirtualNetworkState) ElementType() reflect.Type {
 
 type tunnelVirtualNetworkArgs struct {
 	// Cloudflare account ID
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Optional remark describing the virtual network.
 	Comment *string `pulumi:"comment"`
 	// If `true`, this virtual network is the default for the account.
@@ -171,7 +173,7 @@ type tunnelVirtualNetworkArgs struct {
 // The set of arguments for constructing a TunnelVirtualNetwork resource.
 type TunnelVirtualNetworkArgs struct {
 	// Cloudflare account ID
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// Optional remark describing the virtual network.
 	Comment pulumi.StringPtrInput
 	// If `true`, this virtual network is the default for the account.
@@ -272,8 +274,8 @@ func (o TunnelVirtualNetworkOutput) ToTunnelVirtualNetworkOutputWithContext(ctx 
 }
 
 // Cloudflare account ID
-func (o TunnelVirtualNetworkOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *TunnelVirtualNetwork) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o TunnelVirtualNetworkOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelVirtualNetwork) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Optional remark describing the virtual network.

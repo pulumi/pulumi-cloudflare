@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -16,11 +15,11 @@ public final class GetZeroTrustDevicePostureRulesPlainArgs extends com.pulumi.re
 
     public static final GetZeroTrustDevicePostureRulesPlainArgs Empty = new GetZeroTrustDevicePostureRulesPlainArgs();
 
-    @Import(name="accountId", required=true)
-    private String accountId;
+    @Import(name="accountId")
+    private @Nullable String accountId;
 
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -63,7 +62,7 @@ public final class GetZeroTrustDevicePostureRulesPlainArgs extends com.pulumi.re
             $ = new GetZeroTrustDevicePostureRulesPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(String accountId) {
+        public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -80,9 +79,6 @@ public final class GetZeroTrustDevicePostureRulesPlainArgs extends com.pulumi.re
         }
 
         public GetZeroTrustDevicePostureRulesPlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetZeroTrustDevicePostureRulesPlainArgs", "accountId");
-            }
             return $;
         }
     }

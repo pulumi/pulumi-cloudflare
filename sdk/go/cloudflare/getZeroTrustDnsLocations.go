@@ -11,6 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloudflare Zero Trust Secure DNS Locations Write`
+// - `Zero Trust Read`
+// - `Zero Trust Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustDnsLocations(ctx, &cloudflare.LookupZeroTrustDnsLocationsArgs{
-//				AccountId: "699d98642c564d2e855e9661899b7252",
+//				AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -48,14 +54,14 @@ func LookupZeroTrustDnsLocations(ctx *pulumi.Context, args *LookupZeroTrustDnsLo
 
 // A collection of arguments for invoking getZeroTrustDnsLocations.
 type LookupZeroTrustDnsLocationsArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 }
 
 // A collection of values returned by getZeroTrustDnsLocations.
 type LookupZeroTrustDnsLocationsResult struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -75,7 +81,7 @@ func LookupZeroTrustDnsLocationsOutput(ctx *pulumi.Context, args LookupZeroTrust
 
 // A collection of arguments for invoking getZeroTrustDnsLocations.
 type LookupZeroTrustDnsLocationsOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
@@ -99,8 +105,8 @@ func (o LookupZeroTrustDnsLocationsResultOutput) ToLookupZeroTrustDnsLocationsRe
 	return o
 }
 
-func (o LookupZeroTrustDnsLocationsResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustDnsLocationsResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustDnsLocationsResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustDnsLocationsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -12,6 +12,14 @@ namespace Pulumi.Cloudflare
     public static class GetNotificationPolicyWebhooksList
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// - `Notifications Read`
+        /// - `Notifications Write`
+        /// - `Zero Trust: PII Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +38,18 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetNotificationPolicyWebhooksListResult> InvokeAsync(GetNotificationPolicyWebhooksListArgs args, InvokeOptions? options = null)
+        public static Task<GetNotificationPolicyWebhooksListResult> InvokeAsync(GetNotificationPolicyWebhooksListArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNotificationPolicyWebhooksListResult>("cloudflare:index/getNotificationPolicyWebhooksList:getNotificationPolicyWebhooksList", args ?? new GetNotificationPolicyWebhooksListArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// - `Notifications Read`
+        /// - `Notifications Write`
+        /// - `Zero Trust: PII Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +68,18 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetNotificationPolicyWebhooksListResult> Invoke(GetNotificationPolicyWebhooksListInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetNotificationPolicyWebhooksListResult> Invoke(GetNotificationPolicyWebhooksListInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNotificationPolicyWebhooksListResult>("cloudflare:index/getNotificationPolicyWebhooksList:getNotificationPolicyWebhooksList", args ?? new GetNotificationPolicyWebhooksListInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// - `Notifications Read`
+        /// - `Notifications Write`
+        /// - `Zero Trust: PII Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +108,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account id
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -104,8 +128,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account id
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -126,7 +150,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account id
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -142,7 +166,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetNotificationPolicyWebhooksListResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

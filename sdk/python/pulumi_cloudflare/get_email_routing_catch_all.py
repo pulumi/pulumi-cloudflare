@@ -101,7 +101,7 @@ class GetEmailRoutingCatchAllResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -126,6 +126,11 @@ class AwaitableGetEmailRoutingCatchAllResult(GetEmailRoutingCatchAllResult):
 def get_email_routing_catch_all(zone_id: Optional[_builtins.str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEmailRoutingCatchAllResult:
     """
+    Accepted Permissions
+
+    - `Email Routing Rules Read`
+    - `Email Routing Rules Write`
+
     ## Example Usage
 
     ```python
@@ -151,9 +156,14 @@ def get_email_routing_catch_all(zone_id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         tag=pulumi.get(__ret__, 'tag'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_email_routing_catch_all_output(zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_email_routing_catch_all_output(zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEmailRoutingCatchAllResult]:
     """
+    Accepted Permissions
+
+    - `Email Routing Rules Read`
+    - `Email Routing Rules Write`
+
     ## Example Usage
 
     ```python

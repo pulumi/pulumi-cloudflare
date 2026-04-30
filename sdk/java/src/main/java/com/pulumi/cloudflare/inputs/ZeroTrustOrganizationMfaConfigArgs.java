@@ -32,6 +32,36 @@ public final class ZeroTrustOrganizationMfaConfigArgs extends com.pulumi.resourc
     }
 
     /**
+     * Allows a user to skip MFA via Authentication Method Reference (AMR) matching when the AMR claim provided by the IdP the user used to authenticate contains &#34;mfa&#34;. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days).
+     * 
+     */
+    @Import(name="amrMatchingSessionDuration")
+    private @Nullable Output<String> amrMatchingSessionDuration;
+
+    /**
+     * @return Allows a user to skip MFA via Authentication Method Reference (AMR) matching when the AMR claim provided by the IdP the user used to authenticate contains &#34;mfa&#34;. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days).
+     * 
+     */
+    public Optional<Output<String>> amrMatchingSessionDuration() {
+        return Optional.ofNullable(this.amrMatchingSessionDuration);
+    }
+
+    /**
+     * Specifies a Cloudflare List of required FIDO2 authenticator device AAGUIDs.
+     * 
+     */
+    @Import(name="requiredAaguids")
+    private @Nullable Output<String> requiredAaguids;
+
+    /**
+     * @return Specifies a Cloudflare List of required FIDO2 authenticator device AAGUIDs.
+     * 
+     */
+    public Optional<Output<String>> requiredAaguids() {
+        return Optional.ofNullable(this.requiredAaguids);
+    }
+
+    /**
      * Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
      * 
      */
@@ -50,6 +80,8 @@ public final class ZeroTrustOrganizationMfaConfigArgs extends com.pulumi.resourc
 
     private ZeroTrustOrganizationMfaConfigArgs(ZeroTrustOrganizationMfaConfigArgs $) {
         this.allowedAuthenticators = $.allowedAuthenticators;
+        this.amrMatchingSessionDuration = $.amrMatchingSessionDuration;
+        this.requiredAaguids = $.requiredAaguids;
         this.sessionDuration = $.sessionDuration;
     }
 
@@ -100,6 +132,48 @@ public final class ZeroTrustOrganizationMfaConfigArgs extends com.pulumi.resourc
          */
         public Builder allowedAuthenticators(String... allowedAuthenticators) {
             return allowedAuthenticators(List.of(allowedAuthenticators));
+        }
+
+        /**
+         * @param amrMatchingSessionDuration Allows a user to skip MFA via Authentication Method Reference (AMR) matching when the AMR claim provided by the IdP the user used to authenticate contains &#34;mfa&#34;. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder amrMatchingSessionDuration(@Nullable Output<String> amrMatchingSessionDuration) {
+            $.amrMatchingSessionDuration = amrMatchingSessionDuration;
+            return this;
+        }
+
+        /**
+         * @param amrMatchingSessionDuration Allows a user to skip MFA via Authentication Method Reference (AMR) matching when the AMR claim provided by the IdP the user used to authenticate contains &#34;mfa&#34;. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder amrMatchingSessionDuration(String amrMatchingSessionDuration) {
+            return amrMatchingSessionDuration(Output.of(amrMatchingSessionDuration));
+        }
+
+        /**
+         * @param requiredAaguids Specifies a Cloudflare List of required FIDO2 authenticator device AAGUIDs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requiredAaguids(@Nullable Output<String> requiredAaguids) {
+            $.requiredAaguids = requiredAaguids;
+            return this;
+        }
+
+        /**
+         * @param requiredAaguids Specifies a Cloudflare List of required FIDO2 authenticator device AAGUIDs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requiredAaguids(String requiredAaguids) {
+            return requiredAaguids(Output.of(requiredAaguids));
         }
 
         /**

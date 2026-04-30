@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Health Checks Read`
+ * - `Health Checks Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -106,7 +111,7 @@ export class Healthcheck extends pulumi.CustomResource {
     /**
      * A human-readable description of the health check.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The current failure reason if status is unhealthy.
      */
@@ -152,7 +157,7 @@ export class Healthcheck extends pulumi.CustomResource {
     /**
      * Identifier
      */
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a Healthcheck resource with the given unique name, arguments, and options.
@@ -192,9 +197,6 @@ export class Healthcheck extends pulumi.CustomResource {
             }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
-            }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["address"] = args?.address;
             resourceInputs["checkRegions"] = args?.checkRegions;
@@ -352,5 +354,5 @@ export interface HealthcheckArgs {
     /**
      * Identifier
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

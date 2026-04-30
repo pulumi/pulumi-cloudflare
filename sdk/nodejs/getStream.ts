@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Stream Read`
+ * - `Stream Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -34,7 +39,7 @@ export interface GetStreamArgs {
     /**
      * The account identifier tag.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */
@@ -48,11 +53,15 @@ export interface GetStreamResult {
     /**
      * The account identifier tag.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
      */
     readonly allowedOrigins: string[];
+    /**
+     * The unique identifier of the source video this video was clipped from.
+     */
+    readonly clippedFrom: string;
     /**
      * The date and time the media item was created.
      */
@@ -83,6 +92,10 @@ export interface GetStreamResult {
      */
     readonly maxDurationSeconds: number;
     /**
+     * The maximum size in bytes for the video upload.
+     */
+    readonly maxSizeBytes: number;
+    /**
      * A user modifiable key-value store used to reference other systems of record for managing videos.
      */
     readonly meta: string;
@@ -95,6 +108,10 @@ export interface GetStreamResult {
      * The video's preview page URI. This field is omitted until encoding is complete.
      */
     readonly preview: string;
+    /**
+     * Public details for the video including title, share link, channel link, and logo.
+     */
+    readonly publicDetails: outputs.GetStreamPublicDetails;
     /**
      * Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
      */
@@ -142,6 +159,11 @@ export interface GetStreamResult {
     readonly watermark: outputs.GetStreamWatermark;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Stream Read`
+ * - `Stream Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -169,7 +191,7 @@ export interface GetStreamOutputArgs {
     /**
      * The account identifier tag.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */

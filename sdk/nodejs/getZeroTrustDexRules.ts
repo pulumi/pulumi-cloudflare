@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudflare DEX Read`
+ * - `Cloudflare DEX Write`
+ * - `Zero Trust Read`
+ * - `Zero Trust Report`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +26,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustDexRules(args: GetZeroTrustDexRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDexRulesResult> {
+export function getZeroTrustDexRules(args?: GetZeroTrustDexRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDexRulesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDexRules:getZeroTrustDexRules", {
         "accountId": args.accountId,
@@ -34,7 +42,7 @@ export function getZeroTrustDexRules(args: GetZeroTrustDexRulesArgs, opts?: pulu
  * A collection of arguments for invoking getZeroTrustDexRules.
  */
 export interface GetZeroTrustDexRulesArgs {
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -59,7 +67,7 @@ export interface GetZeroTrustDexRulesArgs {
  * A collection of values returned by getZeroTrustDexRules.
  */
 export interface GetZeroTrustDexRulesResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -88,6 +96,13 @@ export interface GetZeroTrustDexRulesResult {
     readonly sortOrder: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudflare DEX Read`
+ * - `Cloudflare DEX Write`
+ * - `Zero Trust Read`
+ * - `Zero Trust Report`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -100,7 +115,8 @@ export interface GetZeroTrustDexRulesResult {
  * });
  * ```
  */
-export function getZeroTrustDexRulesOutput(args: GetZeroTrustDexRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDexRulesResult> {
+export function getZeroTrustDexRulesOutput(args?: GetZeroTrustDexRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDexRulesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDexRules:getZeroTrustDexRules", {
         "accountId": args.accountId,
@@ -115,7 +131,7 @@ export function getZeroTrustDexRulesOutput(args: GetZeroTrustDexRulesOutputArgs,
  * A collection of arguments for invoking getZeroTrustDexRules.
  */
 export interface GetZeroTrustDexRulesOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

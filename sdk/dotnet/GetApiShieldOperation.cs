@@ -12,18 +12,39 @@ namespace Pulumi.Cloudflare
     public static class GetApiShieldOperation
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Gateway`
+        /// - `Account API Gateway Read`
+        /// - `Domain API Gateway`
+        /// - `Domain API Gateway Read`
+        /// 
         /// ## Example Usage
         /// </summary>
-        public static Task<GetApiShieldOperationResult> InvokeAsync(GetApiShieldOperationArgs args, InvokeOptions? options = null)
+        public static Task<GetApiShieldOperationResult> InvokeAsync(GetApiShieldOperationArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApiShieldOperationResult>("cloudflare:index/getApiShieldOperation:getApiShieldOperation", args ?? new GetApiShieldOperationArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Gateway`
+        /// - `Account API Gateway Read`
+        /// - `Domain API Gateway`
+        /// - `Domain API Gateway Read`
+        /// 
         /// ## Example Usage
         /// </summary>
-        public static Output<GetApiShieldOperationResult> Invoke(GetApiShieldOperationInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetApiShieldOperationResult> Invoke(GetApiShieldOperationInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApiShieldOperationResult>("cloudflare:index/getApiShieldOperation:getApiShieldOperation", args ?? new GetApiShieldOperationInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Gateway`
+        /// - `Account API Gateway Read`
+        /// - `Domain API Gateway`
+        /// - `Domain API Gateway Read`
+        /// 
         /// ## Example Usage
         /// </summary>
         public static Output<GetApiShieldOperationResult> Invoke(GetApiShieldOperationInvokeArgs args, InvokeOutputOptions options)
@@ -57,8 +78,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetApiShieldOperationArgs()
         {
@@ -92,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetApiShieldOperationInvokeArgs()
         {
@@ -136,7 +157,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetApiShieldOperationResult(
@@ -158,7 +179,7 @@ namespace Pulumi.Cloudflare
 
             string operationId,
 
-            string zoneId)
+            string? zoneId)
         {
             Endpoint = endpoint;
             Feature = feature;

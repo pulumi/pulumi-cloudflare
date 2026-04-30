@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Access: Mutual TLS Certificates Read`
+// - `Access: Mutual TLS Certificates Write`
+// - `SSL and Certificates Read`
+// - `SSL and Certificates Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetCustomSsls(ctx, &cloudflare.LookupCustomSslsArgs{
-//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Status: pulumi.StringRef("active"),
 //			}, nil)
 //			if err != nil {
@@ -58,7 +65,7 @@ type LookupCustomSslsArgs struct {
 	// Available values: "active", "expired", "deleted", "pending", "initializing".
 	Status *string `pulumi:"status"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getCustomSsls.
@@ -76,7 +83,7 @@ type LookupCustomSslsResult struct {
 	// Available values: "active", "expired", "deleted", "pending", "initializing".
 	Status *string `pulumi:"status"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupCustomSslsOutput(ctx *pulumi.Context, args LookupCustomSslsOutputArgs, opts ...pulumi.InvokeOption) LookupCustomSslsResultOutput {
@@ -99,7 +106,7 @@ type LookupCustomSslsOutputArgs struct {
 	// Available values: "active", "expired", "deleted", "pending", "initializing".
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupCustomSslsOutputArgs) ElementType() reflect.Type {
@@ -149,8 +156,8 @@ func (o LookupCustomSslsResultOutput) Status() pulumi.StringPtrOutput {
 }
 
 // Identifier.
-func (o LookupCustomSslsResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCustomSslsResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupCustomSslsResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCustomSslsResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

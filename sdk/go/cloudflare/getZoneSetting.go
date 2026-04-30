@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Zone Settings Read`
+// - `Zone Settings Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZoneSetting(ctx, &cloudflare.LookupZoneSettingArgs{
-//				ZoneId:    "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId:    pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				SettingId: "always_online",
 //			}, nil)
 //			if err != nil {
@@ -52,7 +57,7 @@ type LookupZoneSettingArgs struct {
 	// Setting name
 	SettingId string `pulumi:"settingId"`
 	// Identifier
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getZoneSetting.
@@ -74,7 +79,7 @@ type LookupZoneSettingResult struct {
 	// Available values: "on", "off".
 	Value string `pulumi:"value"`
 	// Identifier
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupZoneSettingOutput(ctx *pulumi.Context, args LookupZoneSettingOutputArgs, opts ...pulumi.InvokeOption) LookupZoneSettingResultOutput {
@@ -91,7 +96,7 @@ type LookupZoneSettingOutputArgs struct {
 	// Setting name
 	SettingId pulumi.StringInput `pulumi:"settingId"`
 	// Identifier
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupZoneSettingOutputArgs) ElementType() reflect.Type {
@@ -151,8 +156,8 @@ func (o LookupZoneSettingResultOutput) Value() pulumi.StringOutput {
 }
 
 // Identifier
-func (o LookupZoneSettingResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZoneSettingResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupZoneSettingResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZoneSettingResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

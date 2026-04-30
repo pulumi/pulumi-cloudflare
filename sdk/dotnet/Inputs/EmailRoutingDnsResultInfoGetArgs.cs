@@ -36,6 +36,12 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("totalCount")]
         public Input<double>? TotalCount { get; set; }
 
+        /// <summary>
+        /// The number of total pages in the entire result set.
+        /// </summary>
+        [Input("totalPages")]
+        public Input<double>? TotalPages { get; set; }
+
         public EmailRoutingDnsResultInfoGetArgs()
         {
         }

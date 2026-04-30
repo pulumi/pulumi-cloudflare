@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -16,7 +21,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustDeviceDefaultProfileCertificates(args: GetZeroTrustDeviceDefaultProfileCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDeviceDefaultProfileCertificatesResult> {
+export function getZeroTrustDeviceDefaultProfileCertificates(args?: GetZeroTrustDeviceDefaultProfileCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDeviceDefaultProfileCertificatesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDeviceDefaultProfileCertificates:getZeroTrustDeviceDefaultProfileCertificates", {
         "zoneId": args.zoneId,
@@ -27,7 +33,7 @@ export function getZeroTrustDeviceDefaultProfileCertificates(args: GetZeroTrustD
  * A collection of arguments for invoking getZeroTrustDeviceDefaultProfileCertificates.
  */
 export interface GetZeroTrustDeviceDefaultProfileCertificatesArgs {
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -42,9 +48,14 @@ export interface GetZeroTrustDeviceDefaultProfileCertificatesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -56,7 +67,8 @@ export interface GetZeroTrustDeviceDefaultProfileCertificatesResult {
  * });
  * ```
  */
-export function getZeroTrustDeviceDefaultProfileCertificatesOutput(args: GetZeroTrustDeviceDefaultProfileCertificatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDeviceDefaultProfileCertificatesResult> {
+export function getZeroTrustDeviceDefaultProfileCertificatesOutput(args?: GetZeroTrustDeviceDefaultProfileCertificatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDeviceDefaultProfileCertificatesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDeviceDefaultProfileCertificates:getZeroTrustDeviceDefaultProfileCertificates", {
         "zoneId": args.zoneId,
@@ -67,5 +79,5 @@ export function getZeroTrustDeviceDefaultProfileCertificatesOutput(args: GetZero
  * A collection of arguments for invoking getZeroTrustDeviceDefaultProfileCertificates.
  */
 export interface GetZeroTrustDeviceDefaultProfileCertificatesOutputArgs {
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

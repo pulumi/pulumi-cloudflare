@@ -33,6 +33,7 @@ class AccessOrganizationArgs:
                  mfa_config: Optional[pulumi.Input['AccessOrganizationMfaConfigArgs']] = None,
                  mfa_configuration_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
                  mfa_required_for_all_apps: Optional[pulumi.Input[_builtins.bool]] = None,
+                 mfa_ssh_piv_key_requirements: Optional[pulumi.Input['AccessOrganizationMfaSshPivKeyRequirementsArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  session_duration: Optional[pulumi.Input[_builtins.str]] = None,
                  ui_read_only_toggle_reason: Optional[pulumi.Input[_builtins.str]] = None,
@@ -52,6 +53,7 @@ class AccessOrganizationArgs:
         :param pulumi.Input['AccessOrganizationMfaConfigArgs'] mfa_config: Configures multi-factor authentication (MFA) settings for an organization.
         :param pulumi.Input[_builtins.bool] mfa_configuration_allowed: Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
         :param pulumi.Input[_builtins.bool] mfa_required_for_all_apps: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+        :param pulumi.Input['AccessOrganizationMfaSshPivKeyRequirementsArgs'] mfa_ssh_piv_key_requirements: Configures SSH PIV key requirements for MFA using hardware security keys.
         :param pulumi.Input[_builtins.str] name: The name of your Zero Trust organization.
         :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         :param pulumi.Input[_builtins.str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
@@ -83,6 +85,8 @@ class AccessOrganizationArgs:
             pulumi.set(__self__, "mfa_configuration_allowed", mfa_configuration_allowed)
         if mfa_required_for_all_apps is not None:
             pulumi.set(__self__, "mfa_required_for_all_apps", mfa_required_for_all_apps)
+        if mfa_ssh_piv_key_requirements is not None:
+            pulumi.set(__self__, "mfa_ssh_piv_key_requirements", mfa_ssh_piv_key_requirements)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if session_duration is not None:
@@ -233,6 +237,18 @@ class AccessOrganizationArgs:
     @mfa_required_for_all_apps.setter
     def mfa_required_for_all_apps(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "mfa_required_for_all_apps", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mfaSshPivKeyRequirements")
+    def mfa_ssh_piv_key_requirements(self) -> Optional[pulumi.Input['AccessOrganizationMfaSshPivKeyRequirementsArgs']]:
+        """
+        Configures SSH PIV key requirements for MFA using hardware security keys.
+        """
+        return pulumi.get(self, "mfa_ssh_piv_key_requirements")
+
+    @mfa_ssh_piv_key_requirements.setter
+    def mfa_ssh_piv_key_requirements(self, value: Optional[pulumi.Input['AccessOrganizationMfaSshPivKeyRequirementsArgs']]):
+        pulumi.set(self, "mfa_ssh_piv_key_requirements", value)
 
     @_builtins.property
     @pulumi.getter
@@ -322,6 +338,7 @@ class _AccessOrganizationState:
                  mfa_config: Optional[pulumi.Input['AccessOrganizationMfaConfigArgs']] = None,
                  mfa_configuration_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
                  mfa_required_for_all_apps: Optional[pulumi.Input[_builtins.bool]] = None,
+                 mfa_ssh_piv_key_requirements: Optional[pulumi.Input['AccessOrganizationMfaSshPivKeyRequirementsArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  session_duration: Optional[pulumi.Input[_builtins.str]] = None,
                  ui_read_only_toggle_reason: Optional[pulumi.Input[_builtins.str]] = None,
@@ -341,6 +358,7 @@ class _AccessOrganizationState:
         :param pulumi.Input['AccessOrganizationMfaConfigArgs'] mfa_config: Configures multi-factor authentication (MFA) settings for an organization.
         :param pulumi.Input[_builtins.bool] mfa_configuration_allowed: Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
         :param pulumi.Input[_builtins.bool] mfa_required_for_all_apps: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+        :param pulumi.Input['AccessOrganizationMfaSshPivKeyRequirementsArgs'] mfa_ssh_piv_key_requirements: Configures SSH PIV key requirements for MFA using hardware security keys.
         :param pulumi.Input[_builtins.str] name: The name of your Zero Trust organization.
         :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         :param pulumi.Input[_builtins.str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
@@ -372,6 +390,8 @@ class _AccessOrganizationState:
             pulumi.set(__self__, "mfa_configuration_allowed", mfa_configuration_allowed)
         if mfa_required_for_all_apps is not None:
             pulumi.set(__self__, "mfa_required_for_all_apps", mfa_required_for_all_apps)
+        if mfa_ssh_piv_key_requirements is not None:
+            pulumi.set(__self__, "mfa_ssh_piv_key_requirements", mfa_ssh_piv_key_requirements)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if session_duration is not None:
@@ -522,6 +542,18 @@ class _AccessOrganizationState:
     @mfa_required_for_all_apps.setter
     def mfa_required_for_all_apps(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "mfa_required_for_all_apps", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mfaSshPivKeyRequirements")
+    def mfa_ssh_piv_key_requirements(self) -> Optional[pulumi.Input['AccessOrganizationMfaSshPivKeyRequirementsArgs']]:
+        """
+        Configures SSH PIV key requirements for MFA using hardware security keys.
+        """
+        return pulumi.get(self, "mfa_ssh_piv_key_requirements")
+
+    @mfa_ssh_piv_key_requirements.setter
+    def mfa_ssh_piv_key_requirements(self, value: Optional[pulumi.Input['AccessOrganizationMfaSshPivKeyRequirementsArgs']]):
+        pulumi.set(self, "mfa_ssh_piv_key_requirements", value)
 
     @_builtins.property
     @pulumi.getter
@@ -619,6 +651,7 @@ class AccessOrganization(pulumi.CustomResource):
                  mfa_config: Optional[pulumi.Input[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict']]] = None,
                  mfa_configuration_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
                  mfa_required_for_all_apps: Optional[pulumi.Input[_builtins.bool]] = None,
+                 mfa_ssh_piv_key_requirements: Optional[pulumi.Input[Union['AccessOrganizationMfaSshPivKeyRequirementsArgs', 'AccessOrganizationMfaSshPivKeyRequirementsArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  session_duration: Optional[pulumi.Input[_builtins.str]] = None,
                  ui_read_only_toggle_reason: Optional[pulumi.Input[_builtins.str]] = None,
@@ -627,6 +660,12 @@ class AccessOrganization(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Access: Organizations, Identity Providers, and Groups Read`
+        - `Access: Organizations, Identity Providers, and Groups Revoke`
+        - `Access: Organizations, Identity Providers, and Groups Write`
+
         ## Example Usage
 
         ```python
@@ -658,10 +697,24 @@ class AccessOrganization(pulumi.CustomResource):
                     "biometrics",
                     "security_key",
                 ],
+                "amr_matching_session_duration": "12h",
+                "required_aaguids": "2fc0579f-8113-47ea-b116-bb5a8db9202a",
                 "session_duration": "24h",
             },
-            mfa_configuration_allowed=True,
             mfa_required_for_all_apps=False,
+            mfa_ssh_piv_key_requirements={
+                "pin_policy": "always",
+                "require_fips_device": True,
+                "ssh_key_sizes": [
+                    256,
+                    2048,
+                ],
+                "ssh_key_types": [
+                    "ecdsa",
+                    "rsa",
+                ],
+                "touch_policy": "always",
+            },
             name="Widget Corps Internal Applications",
             session_duration="24h",
             ui_read_only_toggle_reason="Temporarily turn off the UI read only lock to make a change via the UI",
@@ -686,6 +739,7 @@ class AccessOrganization(pulumi.CustomResource):
         :param pulumi.Input[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict']] mfa_config: Configures multi-factor authentication (MFA) settings for an organization.
         :param pulumi.Input[_builtins.bool] mfa_configuration_allowed: Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
         :param pulumi.Input[_builtins.bool] mfa_required_for_all_apps: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+        :param pulumi.Input[Union['AccessOrganizationMfaSshPivKeyRequirementsArgs', 'AccessOrganizationMfaSshPivKeyRequirementsArgsDict']] mfa_ssh_piv_key_requirements: Configures SSH PIV key requirements for MFA using hardware security keys.
         :param pulumi.Input[_builtins.str] name: The name of your Zero Trust organization.
         :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         :param pulumi.Input[_builtins.str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
@@ -700,6 +754,12 @@ class AccessOrganization(pulumi.CustomResource):
                  args: Optional[AccessOrganizationArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Access: Organizations, Identity Providers, and Groups Read`
+        - `Access: Organizations, Identity Providers, and Groups Revoke`
+        - `Access: Organizations, Identity Providers, and Groups Write`
+
         ## Example Usage
 
         ```python
@@ -731,10 +791,24 @@ class AccessOrganization(pulumi.CustomResource):
                     "biometrics",
                     "security_key",
                 ],
+                "amr_matching_session_duration": "12h",
+                "required_aaguids": "2fc0579f-8113-47ea-b116-bb5a8db9202a",
                 "session_duration": "24h",
             },
-            mfa_configuration_allowed=True,
             mfa_required_for_all_apps=False,
+            mfa_ssh_piv_key_requirements={
+                "pin_policy": "always",
+                "require_fips_device": True,
+                "ssh_key_sizes": [
+                    256,
+                    2048,
+                ],
+                "ssh_key_types": [
+                    "ecdsa",
+                    "rsa",
+                ],
+                "touch_policy": "always",
+            },
             name="Widget Corps Internal Applications",
             session_duration="24h",
             ui_read_only_toggle_reason="Temporarily turn off the UI read only lock to make a change via the UI",
@@ -774,6 +848,7 @@ class AccessOrganization(pulumi.CustomResource):
                  mfa_config: Optional[pulumi.Input[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict']]] = None,
                  mfa_configuration_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
                  mfa_required_for_all_apps: Optional[pulumi.Input[_builtins.bool]] = None,
+                 mfa_ssh_piv_key_requirements: Optional[pulumi.Input[Union['AccessOrganizationMfaSshPivKeyRequirementsArgs', 'AccessOrganizationMfaSshPivKeyRequirementsArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  session_duration: Optional[pulumi.Input[_builtins.str]] = None,
                  ui_read_only_toggle_reason: Optional[pulumi.Input[_builtins.str]] = None,
@@ -802,6 +877,7 @@ class AccessOrganization(pulumi.CustomResource):
             __props__.__dict__["mfa_config"] = mfa_config
             __props__.__dict__["mfa_configuration_allowed"] = mfa_configuration_allowed
             __props__.__dict__["mfa_required_for_all_apps"] = mfa_required_for_all_apps
+            __props__.__dict__["mfa_ssh_piv_key_requirements"] = mfa_ssh_piv_key_requirements
             __props__.__dict__["name"] = name
             __props__.__dict__["session_duration"] = session_duration
             __props__.__dict__["ui_read_only_toggle_reason"] = ui_read_only_toggle_reason
@@ -832,6 +908,7 @@ class AccessOrganization(pulumi.CustomResource):
             mfa_config: Optional[pulumi.Input[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict']]] = None,
             mfa_configuration_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
             mfa_required_for_all_apps: Optional[pulumi.Input[_builtins.bool]] = None,
+            mfa_ssh_piv_key_requirements: Optional[pulumi.Input[Union['AccessOrganizationMfaSshPivKeyRequirementsArgs', 'AccessOrganizationMfaSshPivKeyRequirementsArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             session_duration: Optional[pulumi.Input[_builtins.str]] = None,
             ui_read_only_toggle_reason: Optional[pulumi.Input[_builtins.str]] = None,
@@ -855,6 +932,7 @@ class AccessOrganization(pulumi.CustomResource):
         :param pulumi.Input[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict']] mfa_config: Configures multi-factor authentication (MFA) settings for an organization.
         :param pulumi.Input[_builtins.bool] mfa_configuration_allowed: Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
         :param pulumi.Input[_builtins.bool] mfa_required_for_all_apps: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+        :param pulumi.Input[Union['AccessOrganizationMfaSshPivKeyRequirementsArgs', 'AccessOrganizationMfaSshPivKeyRequirementsArgsDict']] mfa_ssh_piv_key_requirements: Configures SSH PIV key requirements for MFA using hardware security keys.
         :param pulumi.Input[_builtins.str] name: The name of your Zero Trust organization.
         :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         :param pulumi.Input[_builtins.str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
@@ -878,6 +956,7 @@ class AccessOrganization(pulumi.CustomResource):
         __props__.__dict__["mfa_config"] = mfa_config
         __props__.__dict__["mfa_configuration_allowed"] = mfa_configuration_allowed
         __props__.__dict__["mfa_required_for_all_apps"] = mfa_required_for_all_apps
+        __props__.__dict__["mfa_ssh_piv_key_requirements"] = mfa_ssh_piv_key_requirements
         __props__.__dict__["name"] = name
         __props__.__dict__["session_duration"] = session_duration
         __props__.__dict__["ui_read_only_toggle_reason"] = ui_read_only_toggle_reason
@@ -975,6 +1054,14 @@ class AccessOrganization(pulumi.CustomResource):
         Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
         """
         return pulumi.get(self, "mfa_required_for_all_apps")
+
+    @_builtins.property
+    @pulumi.getter(name="mfaSshPivKeyRequirements")
+    def mfa_ssh_piv_key_requirements(self) -> pulumi.Output[Optional['outputs.AccessOrganizationMfaSshPivKeyRequirements']]:
+        """
+        Configures SSH PIV key requirements for MFA using hardware security keys.
+        """
+        return pulumi.get(self, "mfa_ssh_piv_key_requirements")
 
     @_builtins.property
     @pulumi.getter

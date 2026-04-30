@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Firewall Services Read`
+// - `Firewall Services Write`
+//
 // > `RateLimit` is in a deprecation phase until June 15th, 2025.
 //
 //	During this time period, this resource is still
@@ -101,7 +106,7 @@ type RateLimit struct {
 	// The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
 	Threshold pulumi.Float64Output `pulumi:"threshold"`
 	// Defines an identifier.
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewRateLimit registers a new resource with the given unique name, arguments, and options.
@@ -122,9 +127,6 @@ func NewRateLimit(ctx *pulumi.Context,
 	}
 	if args.Threshold == nil {
 		return nil, errors.New("invalid value for required argument 'Threshold'")
-	}
-	if args.ZoneId == nil {
-		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RateLimit
@@ -200,7 +202,7 @@ type rateLimitArgs struct {
 	// The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
 	Threshold float64 `pulumi:"threshold"`
 	// Defines an identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a RateLimit resource.
@@ -214,7 +216,7 @@ type RateLimitArgs struct {
 	// The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
 	Threshold pulumi.Float64Input
 	// Defines an identifier.
-	ZoneId pulumi.StringInput
+	ZoneId pulumi.StringPtrInput
 }
 
 func (RateLimitArgs) ElementType() reflect.Type {
@@ -340,8 +342,8 @@ func (o RateLimitOutput) Threshold() pulumi.Float64Output {
 }
 
 // Defines an identifier.
-func (o RateLimitOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *RateLimit) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+func (o RateLimitOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RateLimit) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type RateLimitArrayOutput struct{ *pulumi.OutputState }

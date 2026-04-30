@@ -12,6 +12,15 @@ namespace Pulumi.Cloudflare
     public static class GetZeroTrustTunnelCloudflaredConfig
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare One Connector: cloudflared Read`
+        /// - `Cloudflare One Connector: cloudflared Write`
+        /// - `Cloudflare One Connectors Read`
+        /// - `Cloudflare One Connectors Write`
+        /// - `Cloudflare Tunnel Read`
+        /// - `Cloudflare Tunnel Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +44,15 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustTunnelCloudflaredConfigResult>("cloudflare:index/getZeroTrustTunnelCloudflaredConfig:getZeroTrustTunnelCloudflaredConfig", args ?? new GetZeroTrustTunnelCloudflaredConfigArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare One Connector: cloudflared Read`
+        /// - `Cloudflare One Connector: cloudflared Write`
+        /// - `Cloudflare One Connectors Read`
+        /// - `Cloudflare One Connectors Write`
+        /// - `Cloudflare Tunnel Read`
+        /// - `Cloudflare Tunnel Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +76,15 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustTunnelCloudflaredConfigResult>("cloudflare:index/getZeroTrustTunnelCloudflaredConfig:getZeroTrustTunnelCloudflaredConfig", args ?? new GetZeroTrustTunnelCloudflaredConfigInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare One Connector: cloudflared Read`
+        /// - `Cloudflare One Connector: cloudflared Write`
+        /// - `Cloudflare One Connectors Read`
+        /// - `Cloudflare One Connectors Write`
+        /// - `Cloudflare Tunnel Read`
+        /// - `Cloudflare Tunnel Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +114,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// UUID of the tunnel.
@@ -107,8 +134,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// UUID of the tunnel.
@@ -129,7 +156,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The tunnel configuration and ingress rules.
         /// </summary>
@@ -155,7 +182,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustTunnelCloudflaredConfigResult(
-            string accountId,
+            string? accountId,
 
             Outputs.GetZeroTrustTunnelCloudflaredConfigConfigResult config,
 

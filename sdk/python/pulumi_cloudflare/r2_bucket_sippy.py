@@ -21,40 +21,29 @@ __all__ = ['R2BucketSippyArgs', 'R2BucketSippy']
 @pulumi.input_type
 class R2BucketSippyArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  bucket_name: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  destination: Optional[pulumi.Input['R2BucketSippyDestinationArgs']] = None,
                  jurisdiction: Optional[pulumi.Input[_builtins.str]] = None,
                  source: Optional[pulumi.Input['R2BucketSippySourceArgs']] = None):
         """
         The set of arguments for constructing a R2BucketSippy resource.
 
-        :param pulumi.Input[_builtins.str] account_id: Account ID.
         :param pulumi.Input[_builtins.str] bucket_name: Name of the bucket.
+        :param pulumi.Input[_builtins.str] account_id: Account ID.
         :param pulumi.Input['R2BucketSippyDestinationArgs'] destination: R2 bucket to copy objects to.
         :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction of the bucket
         :param pulumi.Input['R2BucketSippySourceArgs'] source: AWS S3 bucket to copy objects from.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "bucket_name", bucket_name)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if destination is not None:
             pulumi.set(__self__, "destination", destination)
         if jurisdiction is not None:
             pulumi.set(__self__, "jurisdiction", jurisdiction)
         if source is not None:
             pulumi.set(__self__, "source", source)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Account ID.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="bucketName")
@@ -67,6 +56,18 @@ class R2BucketSippyArgs:
     @bucket_name.setter
     def bucket_name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "bucket_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Account ID.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -223,6 +224,10 @@ class R2BucketSippy(pulumi.CustomResource):
                  source: Optional[pulumi.Input[Union['R2BucketSippySourceArgs', 'R2BucketSippySourceArgsDict']]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Workers R2 Storage Write`
+
         ## Example Usage
 
         ```python
@@ -266,6 +271,10 @@ class R2BucketSippy(pulumi.CustomResource):
                  args: R2BucketSippyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Workers R2 Storage Write`
+
         ## Example Usage
 
         ```python
@@ -323,8 +332,6 @@ class R2BucketSippy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = R2BucketSippyArgs.__new__(R2BucketSippyArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             if bucket_name is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket_name'")
@@ -377,7 +384,7 @@ class R2BucketSippy(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Account ID.
         """

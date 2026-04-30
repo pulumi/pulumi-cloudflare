@@ -79,7 +79,7 @@ class GetTotalTlsResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -102,6 +102,11 @@ class AwaitableGetTotalTlsResult(GetTotalTlsResult):
 def get_total_tls(zone_id: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTotalTlsResult:
     """
+    Accepted Permissions
+
+    - `SSL and Certificates Read`
+    - `SSL and Certificates Write`
+
     ## Example Usage
 
     ```python
@@ -125,9 +130,14 @@ def get_total_tls(zone_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         validity_period=pulumi.get(__ret__, 'validity_period'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_total_tls_output(zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_total_tls_output(zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTotalTlsResult]:
     """
+    Accepted Permissions
+
+    - `SSL and Certificates Read`
+    - `SSL and Certificates Write`
+
     ## Example Usage
 
     ```python

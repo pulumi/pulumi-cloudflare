@@ -11,6 +11,49 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account Rulesets Read`
+// - `Account Rulesets Write`
+// - `Account WAF Read`
+// - `Account WAF Write`
+// - `Bot Management Read`
+// - `Bot Management Write`
+// - `Cache Settings Read`
+// - `Cache Settings Write`
+// - `Config Settings Read`
+// - `Config Settings Write`
+// - `Custom Errors Read`
+// - `Custom Errors Write`
+// - `Dynamic URL Redirects Read`
+// - `Dynamic URL Redirects Write`
+// - `HTTP DDoS Managed Ruleset Read`
+// - `HTTP DDoS Managed Ruleset Write`
+// - `L4 DDoS Managed Ruleset Read`
+// - `L4 DDoS Managed Ruleset Write`
+// - `Logs Read`
+// - `Logs Write`
+// - `Magic Firewall Read`
+// - `Magic Firewall Write`
+// - `Managed headers Read`
+// - `Managed headers Write`
+// - `Mass URL Redirects Read`
+// - `Mass URL Redirects Write`
+// - `Origin Read`
+// - `Origin Write`
+// - `Response Compression Read`
+// - `Response Compression Write`
+// - `Sanitize Read`
+// - `Sanitize Write`
+// - `Select Configuration Read`
+// - `Select Configuration Write`
+// - `Transform Rules Read`
+// - `Transform Rules Write`
+// - `Zone Transform Rules Read`
+// - `Zone Transform Rules Write`
+// - `Zone WAF Read`
+// - `Zone WAF Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +69,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetManagedTransforms(ctx, &cloudflare.LookupManagedTransformsArgs{
-//				ZoneId: "9f1839b6152d298aca64c4e906b6d074",
+//				ZoneId: pulumi.StringRef("9f1839b6152d298aca64c4e906b6d074"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +92,7 @@ func LookupManagedTransforms(ctx *pulumi.Context, args *LookupManagedTransformsA
 // A collection of arguments for invoking getManagedTransforms.
 type LookupManagedTransformsArgs struct {
 	// The unique ID of the zone.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getManagedTransforms.
@@ -61,7 +104,7 @@ type LookupManagedTransformsResult struct {
 	// The list of Managed Response Transforms.
 	ManagedResponseHeaders []GetManagedTransformsManagedResponseHeader `pulumi:"managedResponseHeaders"`
 	// The unique ID of the zone.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupManagedTransformsOutput(ctx *pulumi.Context, args LookupManagedTransformsOutputArgs, opts ...pulumi.InvokeOption) LookupManagedTransformsResultOutput {
@@ -76,7 +119,7 @@ func LookupManagedTransformsOutput(ctx *pulumi.Context, args LookupManagedTransf
 // A collection of arguments for invoking getManagedTransforms.
 type LookupManagedTransformsOutputArgs struct {
 	// The unique ID of the zone.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupManagedTransformsOutputArgs) ElementType() reflect.Type {
@@ -118,8 +161,8 @@ func (o LookupManagedTransformsResultOutput) ManagedResponseHeaders() GetManaged
 }
 
 // The unique ID of the zone.
-func (o LookupManagedTransformsResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupManagedTransformsResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupManagedTransformsResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupManagedTransformsResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

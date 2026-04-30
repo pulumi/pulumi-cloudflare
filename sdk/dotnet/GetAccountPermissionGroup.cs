@@ -12,6 +12,38 @@ namespace Pulumi.Cloudflare
     public static class GetAccountPermissionGroup
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Firewall Access Rules Read`
+        /// - `Account Firewall Access Rules Write`
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// - `Billing Read`
+        /// - `Billing Write`
+        /// - `DDoS Botnet Feed Read`
+        /// - `DDoS Botnet Feed Write`
+        /// - `DDoS Protection Read`
+        /// - `DDoS Protection Write`
+        /// - `DNS Firewall Read`
+        /// - `DNS Firewall Write`
+        /// - `DNS View Read`
+        /// - `DNS View Write`
+        /// - `Load Balancers Account Read`
+        /// - `Load Balancers Account Write`
+        /// - `Load Balancing: Monitors and Pools Read`
+        /// - `Load Balancing: Monitors and Pools Write`
+        /// - `SCIM Provisioning`
+        /// - `Trust and Safety Read`
+        /// - `Trust and Safety Write`
+        /// - `Workers KV Storage Read`
+        /// - `Workers KV Storage Write`
+        /// - `Workers R2 Storage Read`
+        /// - `Workers R2 Storage Write`
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// - `Workers Tail Read`
+        /// - `Zero Trust: PII Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +67,38 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountPermissionGroupResult>("cloudflare:index/getAccountPermissionGroup:getAccountPermissionGroup", args ?? new GetAccountPermissionGroupArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Firewall Access Rules Read`
+        /// - `Account Firewall Access Rules Write`
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// - `Billing Read`
+        /// - `Billing Write`
+        /// - `DDoS Botnet Feed Read`
+        /// - `DDoS Botnet Feed Write`
+        /// - `DDoS Protection Read`
+        /// - `DDoS Protection Write`
+        /// - `DNS Firewall Read`
+        /// - `DNS Firewall Write`
+        /// - `DNS View Read`
+        /// - `DNS View Write`
+        /// - `Load Balancers Account Read`
+        /// - `Load Balancers Account Write`
+        /// - `Load Balancing: Monitors and Pools Read`
+        /// - `Load Balancing: Monitors and Pools Write`
+        /// - `SCIM Provisioning`
+        /// - `Trust and Safety Read`
+        /// - `Trust and Safety Write`
+        /// - `Workers KV Storage Read`
+        /// - `Workers KV Storage Write`
+        /// - `Workers R2 Storage Read`
+        /// - `Workers R2 Storage Write`
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// - `Workers Tail Read`
+        /// - `Zero Trust: PII Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +122,38 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountPermissionGroupResult>("cloudflare:index/getAccountPermissionGroup:getAccountPermissionGroup", args ?? new GetAccountPermissionGroupInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Firewall Access Rules Read`
+        /// - `Account Firewall Access Rules Write`
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// - `Billing Read`
+        /// - `Billing Write`
+        /// - `DDoS Botnet Feed Read`
+        /// - `DDoS Botnet Feed Write`
+        /// - `DDoS Protection Read`
+        /// - `DDoS Protection Write`
+        /// - `DNS Firewall Read`
+        /// - `DNS Firewall Write`
+        /// - `DNS View Read`
+        /// - `DNS View Write`
+        /// - `Load Balancers Account Read`
+        /// - `Load Balancers Account Write`
+        /// - `Load Balancing: Monitors and Pools Read`
+        /// - `Load Balancing: Monitors and Pools Write`
+        /// - `SCIM Provisioning`
+        /// - `Trust and Safety Read`
+        /// - `Trust and Safety Write`
+        /// - `Workers KV Storage Read`
+        /// - `Workers KV Storage Write`
+        /// - `Workers R2 Storage Read`
+        /// - `Workers R2 Storage Write`
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// - `Workers Tail Read`
+        /// - `Zero Trust: PII Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +183,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Permission Group identifier tag.
@@ -107,8 +203,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Permission Group identifier tag.
@@ -129,7 +225,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Identifier of the permission group.
         /// </summary>
@@ -149,7 +245,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetAccountPermissionGroupResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

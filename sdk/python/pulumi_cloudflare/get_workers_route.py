@@ -77,7 +77,7 @@ class GetWorkersRouteResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -101,6 +101,11 @@ def get_workers_route(route_id: Optional[_builtins.str] = None,
                       zone_id: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkersRouteResult:
     """
+    Accepted Permissions
+
+    - `Workers Routes Read`
+    - `Workers Routes Write`
+
     ## Example Usage
 
     ```python
@@ -128,9 +133,14 @@ def get_workers_route(route_id: Optional[_builtins.str] = None,
         script=pulumi.get(__ret__, 'script'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_workers_route_output(route_id: Optional[pulumi.Input[_builtins.str]] = None,
-                             zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                             zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkersRouteResult]:
     """
+    Accepted Permissions
+
+    - `Workers Routes Read`
+    - `Workers Routes Write`
+
     ## Example Usage
 
     ```python

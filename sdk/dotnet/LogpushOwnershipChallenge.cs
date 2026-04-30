@@ -10,6 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Logs Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -86,6 +90,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "destinationConf",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -115,11 +123,21 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        [Input("destinationConf", required: true)]
+        private Input<string>? _destinationConf;
+
         /// <summary>
         /// Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
         /// </summary>
-        [Input("destinationConf", required: true)]
-        public Input<string> DestinationConf { get; set; } = null!;
+        public Input<string>? DestinationConf
+        {
+            get => _destinationConf;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _destinationConf = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -141,11 +159,21 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        [Input("destinationConf")]
+        private Input<string>? _destinationConf;
+
         /// <summary>
         /// Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
         /// </summary>
-        [Input("destinationConf")]
-        public Input<string>? DestinationConf { get; set; }
+        public Input<string>? DestinationConf
+        {
+            get => _destinationConf;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _destinationConf = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("filename")]
         public Input<string>? Filename { get; set; }

@@ -70,7 +70,9 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * &gt; This resource does not currently support `pulumi import`.
+ * ```sh
+ * $ pulumi import cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging example &#39;&lt;account_id&gt;&#39;
+ * ```
  * 
  */
 @ResourceType(type="cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging")

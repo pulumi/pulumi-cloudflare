@@ -20,6 +20,11 @@ public final class GetZeroTrustDevicePostureRuleInput {
      */
     private Double activeThreats;
     /**
+     * @return The set of Kolide device authentication states that pass the posture check. Device must match one of the specified states.
+     * 
+     */
+    private List<String> authStates;
+    /**
      * @return UUID of Cloudflare managed certificate.
      * 
      */
@@ -238,6 +243,13 @@ public final class GetZeroTrustDevicePostureRuleInput {
      */
     public Double activeThreats() {
         return this.activeThreats;
+    }
+    /**
+     * @return The set of Kolide device authentication states that pass the posture check. Device must match one of the specified states.
+     * 
+     */
+    public List<String> authStates() {
+        return this.authStates;
     }
     /**
      * @return UUID of Cloudflare managed certificate.
@@ -543,6 +555,7 @@ public final class GetZeroTrustDevicePostureRuleInput {
     @CustomType.Builder
     public static final class Builder {
         private Double activeThreats;
+        private List<String> authStates;
         private String certificateId;
         private List<String> checkDisks;
         private Boolean checkPrivateKey;
@@ -588,6 +601,7 @@ public final class GetZeroTrustDevicePostureRuleInput {
         public Builder(GetZeroTrustDevicePostureRuleInput defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.activeThreats = defaults.activeThreats;
+    	      this.authStates = defaults.authStates;
     	      this.certificateId = defaults.certificateId;
     	      this.checkDisks = defaults.checkDisks;
     	      this.checkPrivateKey = defaults.checkPrivateKey;
@@ -638,6 +652,17 @@ public final class GetZeroTrustDevicePostureRuleInput {
             }
             this.activeThreats = activeThreats;
             return this;
+        }
+        @CustomType.Setter
+        public Builder authStates(List<String> authStates) {
+            if (authStates == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDevicePostureRuleInput", "authStates");
+            }
+            this.authStates = authStates;
+            return this;
+        }
+        public Builder authStates(String... authStates) {
+            return authStates(List.of(authStates));
         }
         @CustomType.Setter
         public Builder certificateId(String certificateId) {
@@ -979,6 +1004,7 @@ public final class GetZeroTrustDevicePostureRuleInput {
         public GetZeroTrustDevicePostureRuleInput build() {
             final var _resultValue = new GetZeroTrustDevicePostureRuleInput();
             _resultValue.activeThreats = activeThreats;
+            _resultValue.authStates = authStates;
             _resultValue.certificateId = certificateId;
             _resultValue.checkDisks = checkDisks;
             _resultValue.checkPrivateKey = checkPrivateKey;

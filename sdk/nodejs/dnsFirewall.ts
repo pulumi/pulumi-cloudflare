@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `DNS Firewall Read`
+ * - `DNS Firewall Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -72,7 +77,7 @@ export class DnsFirewall extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * Attack mitigation settings
      */
@@ -164,9 +169,6 @@ export class DnsFirewall extends pulumi.CustomResource {
             resourceInputs["upstreamIps"] = state?.upstreamIps;
         } else {
             const args = argsOrState as DnsFirewallArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -271,7 +273,7 @@ export interface DnsFirewallArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Attack mitigation settings
      */

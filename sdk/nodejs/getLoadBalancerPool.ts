@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Load Balancing: Monitors and Pools Read`
+ * - `Load Balancing: Monitors and Pools Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +24,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getLoadBalancerPool(args: GetLoadBalancerPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancerPoolResult> {
+export function getLoadBalancerPool(args?: GetLoadBalancerPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancerPoolResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getLoadBalancerPool:getLoadBalancerPool", {
         "accountId": args.accountId,
@@ -35,7 +41,7 @@ export interface GetLoadBalancerPoolArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     filter?: inputs.GetLoadBalancerPoolFilter;
     poolId?: string;
 }
@@ -47,7 +53,7 @@ export interface GetLoadBalancerPoolResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * A list of regions from which to run health checks. Null means every Cloudflare data center.
      */
@@ -122,6 +128,11 @@ export interface GetLoadBalancerPoolResult {
     readonly poolId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Load Balancing: Monitors and Pools Read`
+ * - `Load Balancing: Monitors and Pools Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -134,7 +145,8 @@ export interface GetLoadBalancerPoolResult {
  * });
  * ```
  */
-export function getLoadBalancerPoolOutput(args: GetLoadBalancerPoolOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLoadBalancerPoolResult> {
+export function getLoadBalancerPoolOutput(args?: GetLoadBalancerPoolOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLoadBalancerPoolResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getLoadBalancerPool:getLoadBalancerPool", {
         "accountId": args.accountId,
@@ -150,7 +162,7 @@ export interface GetLoadBalancerPoolOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetLoadBalancerPoolFilterArgs>;
     poolId?: pulumi.Input<string>;
 }

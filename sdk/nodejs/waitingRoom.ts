@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Waiting Rooms Read`
+ * - `Waiting Rooms Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -90,7 +95,7 @@ export class WaitingRoom extends pulumi.CustomResource {
     /**
      * Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(_*cf*waitingroom). If `cookieSuffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additionalRoutes`.
      */
-    declare public readonly cookieSuffix: pulumi.Output<string | undefined>;
+    declare public readonly cookieSuffix: pulumi.Output<string>;
     declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
      * Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom*page*html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge:
@@ -283,7 +288,7 @@ export class WaitingRoom extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a WaitingRoom resource with the given unique name, arguments, and options.
@@ -337,9 +342,6 @@ export class WaitingRoom extends pulumi.CustomResource {
             }
             if (args?.totalActiveUsers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'totalActiveUsers'");
-            }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["additionalRoutes"] = args?.additionalRoutes;
             resourceInputs["cookieAttributes"] = args?.cookieAttributes;
@@ -782,5 +784,5 @@ export interface WaitingRoomArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

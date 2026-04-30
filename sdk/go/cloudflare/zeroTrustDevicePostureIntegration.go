@@ -12,6 +12,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Zero Trust Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -55,7 +59,7 @@ import (
 type ZeroTrustDevicePostureIntegration struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// The configuration object containing third-party integration information.
 	Config ZeroTrustDevicePostureIntegrationConfigOutput `pulumi:"config"`
 	// The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
@@ -74,9 +78,6 @@ func NewZeroTrustDevicePostureIntegration(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Config == nil {
 		return nil, errors.New("invalid value for required argument 'Config'")
 	}
@@ -148,7 +149,7 @@ func (ZeroTrustDevicePostureIntegrationState) ElementType() reflect.Type {
 }
 
 type zeroTrustDevicePostureIntegrationArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The configuration object containing third-party integration information.
 	Config ZeroTrustDevicePostureIntegrationConfig `pulumi:"config"`
 	// The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
@@ -162,7 +163,7 @@ type zeroTrustDevicePostureIntegrationArgs struct {
 
 // The set of arguments for constructing a ZeroTrustDevicePostureIntegration resource.
 type ZeroTrustDevicePostureIntegrationArgs struct {
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// The configuration object containing third-party integration information.
 	Config ZeroTrustDevicePostureIntegrationConfigInput
 	// The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
@@ -261,8 +262,8 @@ func (o ZeroTrustDevicePostureIntegrationOutput) ToZeroTrustDevicePostureIntegra
 	return o
 }
 
-func (o ZeroTrustDevicePostureIntegrationOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustDevicePostureIntegration) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o ZeroTrustDevicePostureIntegrationOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDevicePostureIntegration) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The configuration object containing third-party integration information.

@@ -18,11 +18,11 @@ public final class ZeroTrustListArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ZeroTrustListArgs Empty = new ZeroTrustListArgs();
 
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -72,7 +72,7 @@ public final class ZeroTrustListArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Specify the list type.
-     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;, &#34;CATEGORY&#34;, &#34;LOCATION&#34;, &#34;DEVICE&#34;.
+     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;, &#34;CATEGORY&#34;, &#34;LOCATION&#34;, &#34;DEVICE&#34;, &#34;AAGUID&#34;.
      * 
      */
     @Import(name="type", required=true)
@@ -80,7 +80,7 @@ public final class ZeroTrustListArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Specify the list type.
-     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;, &#34;CATEGORY&#34;, &#34;LOCATION&#34;, &#34;DEVICE&#34;.
+     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;, &#34;CATEGORY&#34;, &#34;LOCATION&#34;, &#34;DEVICE&#34;, &#34;AAGUID&#34;.
      * 
      */
     public Output<String> type() {
@@ -115,7 +115,7 @@ public final class ZeroTrustListArgs extends com.pulumi.resources.ResourceArgs {
             $ = new ZeroTrustListArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -199,7 +199,7 @@ public final class ZeroTrustListArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type Specify the list type.
-         * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;, &#34;CATEGORY&#34;, &#34;LOCATION&#34;, &#34;DEVICE&#34;.
+         * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;, &#34;CATEGORY&#34;, &#34;LOCATION&#34;, &#34;DEVICE&#34;, &#34;AAGUID&#34;.
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class ZeroTrustListArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type Specify the list type.
-         * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;, &#34;CATEGORY&#34;, &#34;LOCATION&#34;, &#34;DEVICE&#34;.
+         * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;, &#34;CATEGORY&#34;, &#34;LOCATION&#34;, &#34;DEVICE&#34;, &#34;AAGUID&#34;.
          * 
          * @return builder
          * 
@@ -221,9 +221,6 @@ public final class ZeroTrustListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ZeroTrustListArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustListArgs", "accountId");
-            }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustListArgs", "name");
             }

@@ -63,7 +63,7 @@ class GetApiShieldSchemaValidationSettingsResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -85,6 +85,13 @@ class AwaitableGetApiShieldSchemaValidationSettingsResult(GetApiShieldSchemaVali
 def get_api_shield_schema_validation_settings(zone_id: Optional[_builtins.str] = None,
                                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApiShieldSchemaValidationSettingsResult:
     """
+    Accepted Permissions
+
+    - `Account API Gateway`
+    - `Account API Gateway Read`
+    - `Domain API Gateway`
+    - `Domain API Gateway Read`
+
     ## Example Usage
 
     ```python
@@ -107,9 +114,16 @@ def get_api_shield_schema_validation_settings(zone_id: Optional[_builtins.str] =
         validation_default_mitigation_action=pulumi.get(__ret__, 'validation_default_mitigation_action'),
         validation_override_mitigation_action=pulumi.get(__ret__, 'validation_override_mitigation_action'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_api_shield_schema_validation_settings_output(zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_api_shield_schema_validation_settings_output(zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApiShieldSchemaValidationSettingsResult]:
     """
+    Accepted Permissions
+
+    - `Account API Gateway`
+    - `Account API Gateway Read`
+    - `Domain API Gateway`
+    - `Domain API Gateway Read`
+
     ## Example Usage
 
     ```python

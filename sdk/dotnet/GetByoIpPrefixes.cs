@@ -12,6 +12,15 @@ namespace Pulumi.Cloudflare
     public static class GetByoIpPrefixes
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `IP Prefixes: BGP On Demand Read`
+        /// - `IP Prefixes: BGP On Demand Write`
+        /// - `IP Prefixes: Read`
+        /// - `IP Prefixes: Write`
+        /// - `Magic Transit Read`
+        /// - `Magic Transit Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +39,19 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetByoIpPrefixesResult> InvokeAsync(GetByoIpPrefixesArgs args, InvokeOptions? options = null)
+        public static Task<GetByoIpPrefixesResult> InvokeAsync(GetByoIpPrefixesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetByoIpPrefixesResult>("cloudflare:index/getByoIpPrefixes:getByoIpPrefixes", args ?? new GetByoIpPrefixesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `IP Prefixes: BGP On Demand Read`
+        /// - `IP Prefixes: BGP On Demand Write`
+        /// - `IP Prefixes: Read`
+        /// - `IP Prefixes: Write`
+        /// - `Magic Transit Read`
+        /// - `Magic Transit Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +70,19 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetByoIpPrefixesResult> Invoke(GetByoIpPrefixesInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetByoIpPrefixesResult> Invoke(GetByoIpPrefixesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetByoIpPrefixesResult>("cloudflare:index/getByoIpPrefixes:getByoIpPrefixes", args ?? new GetByoIpPrefixesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `IP Prefixes: BGP On Demand Read`
+        /// - `IP Prefixes: BGP On Demand Write`
+        /// - `IP Prefixes: Read`
+        /// - `IP Prefixes: Write`
+        /// - `Magic Transit Read`
+        /// - `Magic Transit Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +111,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier of a Cloudflare account.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -104,8 +131,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier of a Cloudflare account.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -126,7 +153,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier of a Cloudflare account.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -142,7 +169,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetByoIpPrefixesResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

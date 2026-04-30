@@ -15,8 +15,14 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// CPU time limit in milliseconds.
         /// </summary>
-        [Input("cpuMs", required: true)]
-        public Input<int> CpuMs { get; set; } = null!;
+        [Input("cpuMs")]
+        public Input<int>? CpuMs { get; set; }
+
+        /// <summary>
+        /// Subrequest limit per request.
+        /// </summary>
+        [Input("subrequests")]
+        public Input<int>? Subrequests { get; set; }
 
         public WorkerVersionLimitsGetArgs()
         {

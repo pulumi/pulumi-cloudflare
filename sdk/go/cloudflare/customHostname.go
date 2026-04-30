@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `SSL and Certificates Read`
+// - `SSL and Certificates Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -47,6 +52,7 @@ import (
 //
 // `),
 //
+//					CustomCsrId: pulumi.String("7b163417-1d2b-4c84-a38a-2fb7a0cd7752"),
 //					CustomKey: pulumi.String(`    -----BEGIN RSA PRIVATE KEY-----
 //	    MIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG
 //	    dtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn
@@ -127,14 +133,14 @@ type CustomHostname struct {
 	// This presents the token to be served by the given http url to activate a hostname.
 	OwnershipVerificationHttp CustomHostnameOwnershipVerificationHttpOutput `pulumi:"ownershipVerificationHttp"`
 	// SSL properties used when creating the custom hostname.
-	Ssl CustomHostnameSslOutput `pulumi:"ssl"`
+	Ssl CustomHostnameSslPtrOutput `pulumi:"ssl"`
 	// Status of the hostname's activation.
 	// Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "testFailed", "provisioned", "blocked".
 	Status pulumi.StringOutput `pulumi:"status"`
 	// These are errors that were encountered while trying to activate a hostname.
 	VerificationErrors pulumi.StringArrayOutput `pulumi:"verificationErrors"`
 	// Identifier.
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewCustomHostname registers a new resource with the given unique name, arguments, and options.
@@ -146,12 +152,6 @@ func NewCustomHostname(ctx *pulumi.Context,
 
 	if args.Hostname == nil {
 		return nil, errors.New("invalid value for required argument 'Hostname'")
-	}
-	if args.Ssl == nil {
-		return nil, errors.New("invalid value for required argument 'Ssl'")
-	}
-	if args.ZoneId == nil {
-		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CustomHostname
@@ -241,9 +241,9 @@ type customHostnameArgs struct {
 	// The custom hostname that will point to your hostname via CNAME.
 	Hostname string `pulumi:"hostname"`
 	// SSL properties used when creating the custom hostname.
-	Ssl CustomHostnameSsl `pulumi:"ssl"`
+	Ssl *CustomHostnameSsl `pulumi:"ssl"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a CustomHostname resource.
@@ -257,9 +257,9 @@ type CustomHostnameArgs struct {
 	// The custom hostname that will point to your hostname via CNAME.
 	Hostname pulumi.StringInput
 	// SSL properties used when creating the custom hostname.
-	Ssl CustomHostnameSslInput
+	Ssl CustomHostnameSslPtrInput
 	// Identifier.
-	ZoneId pulumi.StringInput
+	ZoneId pulumi.StringPtrInput
 }
 
 func (CustomHostnameArgs) ElementType() reflect.Type {
@@ -387,8 +387,8 @@ func (o CustomHostnameOutput) OwnershipVerificationHttp() CustomHostnameOwnershi
 }
 
 // SSL properties used when creating the custom hostname.
-func (o CustomHostnameOutput) Ssl() CustomHostnameSslOutput {
-	return o.ApplyT(func(v *CustomHostname) CustomHostnameSslOutput { return v.Ssl }).(CustomHostnameSslOutput)
+func (o CustomHostnameOutput) Ssl() CustomHostnameSslPtrOutput {
+	return o.ApplyT(func(v *CustomHostname) CustomHostnameSslPtrOutput { return v.Ssl }).(CustomHostnameSslPtrOutput)
 }
 
 // Status of the hostname's activation.
@@ -403,8 +403,8 @@ func (o CustomHostnameOutput) VerificationErrors() pulumi.StringArrayOutput {
 }
 
 // Identifier.
-func (o CustomHostnameOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *CustomHostname) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+func (o CustomHostnameOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomHostname) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type CustomHostnameArrayOutput struct{ *pulumi.OutputState }

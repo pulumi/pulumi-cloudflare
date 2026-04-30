@@ -34,7 +34,7 @@ export interface GetR2BucketCorsArgs {
     /**
      * Account ID.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Name of the bucket.
      */
@@ -48,7 +48,7 @@ export interface GetR2BucketCorsResult {
     /**
      * Account ID.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Name of the bucket.
      */
@@ -87,7 +87,7 @@ export interface GetR2BucketCorsOutputArgs {
     /**
      * Account ID.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Name of the bucket.
      */

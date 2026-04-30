@@ -125,7 +125,7 @@ class GetApiShieldDiscoveryOperationsResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "zone_id")
 
 
@@ -161,6 +161,13 @@ def get_api_shield_discovery_operations(diff: Optional[_builtins.bool] = None,
                                         zone_id: Optional[_builtins.str] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApiShieldDiscoveryOperationsResult:
     """
+    Accepted Permissions
+
+    - `Account API Gateway`
+    - `Account API Gateway Read`
+    - `Domain API Gateway`
+    - `Domain API Gateway Read`
+
     ## Example Usage
 
     ```python
@@ -214,9 +221,16 @@ def get_api_shield_discovery_operations_output(diff: Optional[pulumi.Input[Optio
                                                order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                origin: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                state: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                               zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                                               zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApiShieldDiscoveryOperationsResult]:
     """
+    Accepted Permissions
+
+    - `Account API Gateway`
+    - `Account API Gateway Read`
+    - `Domain API Gateway`
+    - `Domain API Gateway Read`
+
     ## Example Usage
 
     ```python

@@ -26,8 +26,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetConnectivityDirectoryServices(ctx, &cloudflare.LookupConnectivityDirectoryServicesArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
-//				Type:      pulumi.StringRef("http"),
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Type:      pulumi.StringRef("tcp"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -50,24 +50,24 @@ func LookupConnectivityDirectoryServices(ctx *pulumi.Context, args *LookupConnec
 // A collection of arguments for invoking getConnectivityDirectoryServices.
 type LookupConnectivityDirectoryServicesArgs struct {
 	// Account identifier
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Available values: "http".
+	// Available values: "tcp", "http".
 	Type *string `pulumi:"type"`
 }
 
 // A collection of values returned by getConnectivityDirectoryServices.
 type LookupConnectivityDirectoryServicesResult struct {
 	// Account identifier
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
 	Results []GetConnectivityDirectoryServicesResult `pulumi:"results"`
-	// Available values: "http".
+	// Available values: "tcp", "http".
 	Type *string `pulumi:"type"`
 }
 
@@ -83,10 +83,10 @@ func LookupConnectivityDirectoryServicesOutput(ctx *pulumi.Context, args LookupC
 // A collection of arguments for invoking getConnectivityDirectoryServices.
 type LookupConnectivityDirectoryServicesOutputArgs struct {
 	// Account identifier
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// Available values: "http".
+	// Available values: "tcp", "http".
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -110,8 +110,8 @@ func (o LookupConnectivityDirectoryServicesResultOutput) ToLookupConnectivityDir
 }
 
 // Account identifier
-func (o LookupConnectivityDirectoryServicesResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupConnectivityDirectoryServicesResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupConnectivityDirectoryServicesResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupConnectivityDirectoryServicesResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -131,7 +131,7 @@ func (o LookupConnectivityDirectoryServicesResultOutput) Results() GetConnectivi
 	}).(GetConnectivityDirectoryServicesResultArrayOutput)
 }
 
-// Available values: "http".
+// Available values: "tcp", "http".
 func (o LookupConnectivityDirectoryServicesResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConnectivityDirectoryServicesResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

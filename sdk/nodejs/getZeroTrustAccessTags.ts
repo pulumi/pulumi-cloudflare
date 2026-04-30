@@ -18,7 +18,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustAccessTags(args: GetZeroTrustAccessTagsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessTagsResult> {
+export function getZeroTrustAccessTags(args?: GetZeroTrustAccessTagsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessTagsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustAccessTags:getZeroTrustAccessTags", {
         "accountId": args.accountId,
@@ -33,7 +34,7 @@ export interface GetZeroTrustAccessTagsArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -47,7 +48,7 @@ export interface GetZeroTrustAccessTagsResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -73,7 +74,8 @@ export interface GetZeroTrustAccessTagsResult {
  * });
  * ```
  */
-export function getZeroTrustAccessTagsOutput(args: GetZeroTrustAccessTagsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessTagsResult> {
+export function getZeroTrustAccessTagsOutput(args?: GetZeroTrustAccessTagsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessTagsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustAccessTags:getZeroTrustAccessTags", {
         "accountId": args.accountId,
@@ -88,7 +90,7 @@ export interface GetZeroTrustAccessTagsOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

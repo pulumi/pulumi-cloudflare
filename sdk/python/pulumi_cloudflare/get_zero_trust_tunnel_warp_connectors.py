@@ -70,7 +70,7 @@ class GetZeroTrustTunnelWarpConnectorsResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Cloudflare account ID
         """
@@ -196,6 +196,13 @@ def get_zero_trust_tunnel_warp_connectors(account_id: Optional[_builtins.str] = 
                                           was_inactive_at: Optional[_builtins.str] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustTunnelWarpConnectorsResult:
     """
+    Accepted Permissions
+
+    - `Cloudflare One Connector: WARP Read`
+    - `Cloudflare One Connector: WARP Write`
+    - `Cloudflare One Connectors Read`
+    - `Cloudflare One Connectors Write`
+
     ## Example Usage
 
     ```python
@@ -253,7 +260,7 @@ def get_zero_trust_tunnel_warp_connectors(account_id: Optional[_builtins.str] = 
         uuid=pulumi.get(__ret__, 'uuid'),
         was_active_at=pulumi.get(__ret__, 'was_active_at'),
         was_inactive_at=pulumi.get(__ret__, 'was_inactive_at'))
-def get_zero_trust_tunnel_warp_connectors_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_tunnel_warp_connectors_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                  exclude_prefix: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                  existed_at: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                  include_prefix: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -266,6 +273,13 @@ def get_zero_trust_tunnel_warp_connectors_output(account_id: Optional[pulumi.Inp
                                                  was_inactive_at: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustTunnelWarpConnectorsResult]:
     """
+    Accepted Permissions
+
+    - `Cloudflare One Connector: WARP Read`
+    - `Cloudflare One Connector: WARP Write`
+    - `Cloudflare One Connectors Read`
+    - `Cloudflare One Connectors Write`
+
     ## Example Usage
 
     ```python

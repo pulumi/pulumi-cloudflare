@@ -27,13 +27,16 @@ class GetStreamResult:
     """
     A collection of values returned by getStream.
     """
-    def __init__(__self__, account_id=None, allowed_origins=None, created=None, creator=None, duration=None, id=None, identifier=None, input=None, live_input=None, max_duration_seconds=None, meta=None, modified=None, playback=None, preview=None, ready_to_stream=None, ready_to_stream_at=None, require_signed_urls=None, scheduled_deletion=None, size=None, status=None, thumbnail=None, thumbnail_timestamp_pct=None, uid=None, upload_expiry=None, uploaded=None, watermark=None):
+    def __init__(__self__, account_id=None, allowed_origins=None, clipped_from=None, created=None, creator=None, duration=None, id=None, identifier=None, input=None, live_input=None, max_duration_seconds=None, max_size_bytes=None, meta=None, modified=None, playback=None, preview=None, public_details=None, ready_to_stream=None, ready_to_stream_at=None, require_signed_urls=None, scheduled_deletion=None, size=None, status=None, thumbnail=None, thumbnail_timestamp_pct=None, uid=None, upload_expiry=None, uploaded=None, watermark=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if allowed_origins and not isinstance(allowed_origins, list):
             raise TypeError("Expected argument 'allowed_origins' to be a list")
         pulumi.set(__self__, "allowed_origins", allowed_origins)
+        if clipped_from and not isinstance(clipped_from, str):
+            raise TypeError("Expected argument 'clipped_from' to be a str")
+        pulumi.set(__self__, "clipped_from", clipped_from)
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
         pulumi.set(__self__, "created", created)
@@ -58,6 +61,9 @@ class GetStreamResult:
         if max_duration_seconds and not isinstance(max_duration_seconds, int):
             raise TypeError("Expected argument 'max_duration_seconds' to be a int")
         pulumi.set(__self__, "max_duration_seconds", max_duration_seconds)
+        if max_size_bytes and not isinstance(max_size_bytes, int):
+            raise TypeError("Expected argument 'max_size_bytes' to be a int")
+        pulumi.set(__self__, "max_size_bytes", max_size_bytes)
         if meta and not isinstance(meta, str):
             raise TypeError("Expected argument 'meta' to be a str")
         pulumi.set(__self__, "meta", meta)
@@ -70,6 +76,9 @@ class GetStreamResult:
         if preview and not isinstance(preview, str):
             raise TypeError("Expected argument 'preview' to be a str")
         pulumi.set(__self__, "preview", preview)
+        if public_details and not isinstance(public_details, dict):
+            raise TypeError("Expected argument 'public_details' to be a dict")
+        pulumi.set(__self__, "public_details", public_details)
         if ready_to_stream and not isinstance(ready_to_stream, bool):
             raise TypeError("Expected argument 'ready_to_stream' to be a bool")
         pulumi.set(__self__, "ready_to_stream", ready_to_stream)
@@ -109,7 +118,7 @@ class GetStreamResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         The account identifier tag.
         """
@@ -122,6 +131,14 @@ class GetStreamResult:
         Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
         """
         return pulumi.get(self, "allowed_origins")
+
+    @_builtins.property
+    @pulumi.getter(name="clippedFrom")
+    def clipped_from(self) -> _builtins.str:
+        """
+        The unique identifier of the source video this video was clipped from.
+        """
+        return pulumi.get(self, "clipped_from")
 
     @_builtins.property
     @pulumi.getter
@@ -185,6 +202,14 @@ class GetStreamResult:
         return pulumi.get(self, "max_duration_seconds")
 
     @_builtins.property
+    @pulumi.getter(name="maxSizeBytes")
+    def max_size_bytes(self) -> _builtins.int:
+        """
+        The maximum size in bytes for the video upload.
+        """
+        return pulumi.get(self, "max_size_bytes")
+
+    @_builtins.property
     @pulumi.getter
     def meta(self) -> _builtins.str:
         """
@@ -212,6 +237,14 @@ class GetStreamResult:
         The video's preview page URI. This field is omitted until encoding is complete.
         """
         return pulumi.get(self, "preview")
+
+    @_builtins.property
+    @pulumi.getter(name="publicDetails")
+    def public_details(self) -> 'outputs.GetStreamPublicDetailsResult':
+        """
+        Public details for the video including title, share link, channel link, and logo.
+        """
+        return pulumi.get(self, "public_details")
 
     @_builtins.property
     @pulumi.getter(name="readyToStream")
@@ -315,6 +348,7 @@ class AwaitableGetStreamResult(GetStreamResult):
         return GetStreamResult(
             account_id=self.account_id,
             allowed_origins=self.allowed_origins,
+            clipped_from=self.clipped_from,
             created=self.created,
             creator=self.creator,
             duration=self.duration,
@@ -323,10 +357,12 @@ class AwaitableGetStreamResult(GetStreamResult):
             input=self.input,
             live_input=self.live_input,
             max_duration_seconds=self.max_duration_seconds,
+            max_size_bytes=self.max_size_bytes,
             meta=self.meta,
             modified=self.modified,
             playback=self.playback,
             preview=self.preview,
+            public_details=self.public_details,
             ready_to_stream=self.ready_to_stream,
             ready_to_stream_at=self.ready_to_stream_at,
             require_signed_urls=self.require_signed_urls,
@@ -345,6 +381,11 @@ def get_stream(account_id: Optional[_builtins.str] = None,
                identifier: Optional[_builtins.str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStreamResult:
     """
+    Accepted Permissions
+
+    - `Stream Read`
+    - `Stream Write`
+
     ## Example Usage
 
     ```python
@@ -368,6 +409,7 @@ def get_stream(account_id: Optional[_builtins.str] = None,
     return AwaitableGetStreamResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         allowed_origins=pulumi.get(__ret__, 'allowed_origins'),
+        clipped_from=pulumi.get(__ret__, 'clipped_from'),
         created=pulumi.get(__ret__, 'created'),
         creator=pulumi.get(__ret__, 'creator'),
         duration=pulumi.get(__ret__, 'duration'),
@@ -376,10 +418,12 @@ def get_stream(account_id: Optional[_builtins.str] = None,
         input=pulumi.get(__ret__, 'input'),
         live_input=pulumi.get(__ret__, 'live_input'),
         max_duration_seconds=pulumi.get(__ret__, 'max_duration_seconds'),
+        max_size_bytes=pulumi.get(__ret__, 'max_size_bytes'),
         meta=pulumi.get(__ret__, 'meta'),
         modified=pulumi.get(__ret__, 'modified'),
         playback=pulumi.get(__ret__, 'playback'),
         preview=pulumi.get(__ret__, 'preview'),
+        public_details=pulumi.get(__ret__, 'public_details'),
         ready_to_stream=pulumi.get(__ret__, 'ready_to_stream'),
         ready_to_stream_at=pulumi.get(__ret__, 'ready_to_stream_at'),
         require_signed_urls=pulumi.get(__ret__, 'require_signed_urls'),
@@ -392,10 +436,15 @@ def get_stream(account_id: Optional[_builtins.str] = None,
         upload_expiry=pulumi.get(__ret__, 'upload_expiry'),
         uploaded=pulumi.get(__ret__, 'uploaded'),
         watermark=pulumi.get(__ret__, 'watermark'))
-def get_stream_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_stream_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                       identifier: Optional[pulumi.Input[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStreamResult]:
     """
+    Accepted Permissions
+
+    - `Stream Read`
+    - `Stream Write`
+
     ## Example Usage
 
     ```python
@@ -418,6 +467,7 @@ def get_stream_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
     return __ret__.apply(lambda __response__: GetStreamResult(
         account_id=pulumi.get(__response__, 'account_id'),
         allowed_origins=pulumi.get(__response__, 'allowed_origins'),
+        clipped_from=pulumi.get(__response__, 'clipped_from'),
         created=pulumi.get(__response__, 'created'),
         creator=pulumi.get(__response__, 'creator'),
         duration=pulumi.get(__response__, 'duration'),
@@ -426,10 +476,12 @@ def get_stream_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
         input=pulumi.get(__response__, 'input'),
         live_input=pulumi.get(__response__, 'live_input'),
         max_duration_seconds=pulumi.get(__response__, 'max_duration_seconds'),
+        max_size_bytes=pulumi.get(__response__, 'max_size_bytes'),
         meta=pulumi.get(__response__, 'meta'),
         modified=pulumi.get(__response__, 'modified'),
         playback=pulumi.get(__response__, 'playback'),
         preview=pulumi.get(__response__, 'preview'),
+        public_details=pulumi.get(__response__, 'public_details'),
         ready_to_stream=pulumi.get(__response__, 'ready_to_stream'),
         ready_to_stream_at=pulumi.get(__response__, 'ready_to_stream_at'),
         require_signed_urls=pulumi.get(__response__, 'require_signed_urls'),

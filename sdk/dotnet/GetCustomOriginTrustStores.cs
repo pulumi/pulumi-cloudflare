@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetCustomOriginTrustStores
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -32,10 +37,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetCustomOriginTrustStoresResult> InvokeAsync(GetCustomOriginTrustStoresArgs args, InvokeOptions? options = null)
+        public static Task<GetCustomOriginTrustStoresResult> InvokeAsync(GetCustomOriginTrustStoresArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCustomOriginTrustStoresResult>("cloudflare:index/getCustomOriginTrustStores:getCustomOriginTrustStores", args ?? new GetCustomOriginTrustStoresArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -56,10 +66,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetCustomOriginTrustStoresResult> Invoke(GetCustomOriginTrustStoresInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetCustomOriginTrustStoresResult> Invoke(GetCustomOriginTrustStoresInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCustomOriginTrustStoresResult>("cloudflare:index/getCustomOriginTrustStores:getCustomOriginTrustStores", args ?? new GetCustomOriginTrustStoresInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -108,8 +123,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetCustomOriginTrustStoresArgs()
         {
@@ -140,8 +155,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetCustomOriginTrustStoresInvokeArgs()
         {
@@ -176,7 +191,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetCustomOriginTrustStoresResult(
@@ -190,7 +205,7 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<Outputs.GetCustomOriginTrustStoresResultResult> results,
 
-            string zoneId)
+            string? zoneId)
         {
             Id = id;
             Limit = limit;

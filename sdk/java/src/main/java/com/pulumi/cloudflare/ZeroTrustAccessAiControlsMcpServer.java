@@ -6,6 +6,8 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.ZeroTrustAccessAiControlsMcpServerArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessAiControlsMcpServerState;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessAiControlsMcpServerUpdatedPrompt;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessAiControlsMcpServerUpdatedTool;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -28,6 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.ZeroTrustAccessAiControlsMcpServer;
  * import com.pulumi.cloudflare.ZeroTrustAccessAiControlsMcpServerArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -45,10 +49,22 @@ import javax.annotation.Nullable;
  *             .accountId("a86a8f5c339544d7bdc89926de14fb8c")
  *             .zeroTrustAccessAiControlsMcpServerId("my-mcp-server")
  *             .authType("unauthenticated")
- *             .hostname("https://exmaple.com/mcp")
+ *             .hostname("https://example.com/mcp")
  *             .name("My MCP Server")
  *             .authCredentials("auth_credentials")
  *             .description("This is one remote mcp server")
+ *             .updatedPrompts(ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs.builder()
+ *                 .name("name")
+ *                 .alias("my-custom-alias")
+ *                 .description("description")
+ *                 .enabled(true)
+ *                 .build())
+ *             .updatedTools(ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs.builder()
+ *                 .name("name")
+ *                 .alias("my-custom-alias")
+ *                 .description("description")
+ *                 .enabled(true)
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -66,10 +82,10 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/zeroTrustAccessAiControlsMcpServer:ZeroTrustAccessAiControlsMcpServer")
 public class ZeroTrustAccessAiControlsMcpServer extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     @Export(name="authCredentials", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> authCredentials;
@@ -169,6 +185,18 @@ public class ZeroTrustAccessAiControlsMcpServer extends com.pulumi.resources.Cus
     public Output<List<Map<String,String>>> tools() {
         return this.tools;
     }
+    @Export(name="updatedPrompts", refs={List.class,ZeroTrustAccessAiControlsMcpServerUpdatedPrompt.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ZeroTrustAccessAiControlsMcpServerUpdatedPrompt>> updatedPrompts;
+
+    public Output<Optional<List<ZeroTrustAccessAiControlsMcpServerUpdatedPrompt>>> updatedPrompts() {
+        return Codegen.optional(this.updatedPrompts);
+    }
+    @Export(name="updatedTools", refs={List.class,ZeroTrustAccessAiControlsMcpServerUpdatedTool.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ZeroTrustAccessAiControlsMcpServerUpdatedTool>> updatedTools;
+
+    public Output<Optional<List<ZeroTrustAccessAiControlsMcpServerUpdatedTool>>> updatedTools() {
+        return Codegen.optional(this.updatedTools);
+    }
     /**
      * server id
      * 
@@ -223,6 +251,9 @@ public class ZeroTrustAccessAiControlsMcpServer extends com.pulumi.resources.Cus
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "authCredentials"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

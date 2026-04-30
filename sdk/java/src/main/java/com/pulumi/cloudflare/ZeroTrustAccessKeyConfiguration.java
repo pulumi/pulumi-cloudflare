@@ -17,6 +17,11 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Access: Organizations, Identity Providers, and Groups Read`
+ * - `Access: Organizations, Identity Providers, and Groups Write`
+ * 
  * ## Example Usage
  * 
  * <pre>

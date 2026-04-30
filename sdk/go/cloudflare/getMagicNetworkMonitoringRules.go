@@ -11,6 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Magic Network Monitoring Admin`
+// - `Magic Network Monitoring Config Read`
+// - `Magic Network Monitoring Config Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetMagicNetworkMonitoringRules(ctx, &cloudflare.LookupMagicNetworkMonitoringRulesArgs{
-//				AccountId: "6f91088a406011ed95aed352566e8d4c",
+//				AccountId: pulumi.StringRef("6f91088a406011ed95aed352566e8d4c"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -48,14 +54,14 @@ func LookupMagicNetworkMonitoringRules(ctx *pulumi.Context, args *LookupMagicNet
 
 // A collection of arguments for invoking getMagicNetworkMonitoringRules.
 type LookupMagicNetworkMonitoringRulesArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 }
 
 // A collection of values returned by getMagicNetworkMonitoringRules.
 type LookupMagicNetworkMonitoringRulesResult struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -75,7 +81,7 @@ func LookupMagicNetworkMonitoringRulesOutput(ctx *pulumi.Context, args LookupMag
 
 // A collection of arguments for invoking getMagicNetworkMonitoringRules.
 type LookupMagicNetworkMonitoringRulesOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
@@ -99,8 +105,8 @@ func (o LookupMagicNetworkMonitoringRulesResultOutput) ToLookupMagicNetworkMonit
 	return o
 }
 
-func (o LookupMagicNetworkMonitoringRulesResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMagicNetworkMonitoringRulesResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupMagicNetworkMonitoringRulesResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMagicNetworkMonitoringRulesResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

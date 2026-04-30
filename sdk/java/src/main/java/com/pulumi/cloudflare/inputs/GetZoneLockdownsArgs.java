@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -172,15 +171,15 @@ public final class GetZoneLockdownsArgs extends com.pulumi.resources.InvokeArgs 
      * Defines an identifier.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private Output<String> zoneId;
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
 
     /**
      * @return Defines an identifier.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private GetZoneLockdownsArgs() {}
@@ -433,7 +432,7 @@ public final class GetZoneLockdownsArgs extends com.pulumi.resources.InvokeArgs 
          * @return builder
          * 
          */
-        public Builder zoneId(Output<String> zoneId) {
+        public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -449,9 +448,6 @@ public final class GetZoneLockdownsArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         public GetZoneLockdownsArgs build() {
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("GetZoneLockdownsArgs", "zoneId");
-            }
             return $;
         }
     }

@@ -18,11 +18,11 @@ public final class ZeroTrustDlpEntryArgs extends com.pulumi.resources.ResourceAr
 
     public static final ZeroTrustDlpEntryArgs Empty = new ZeroTrustDlpEntryArgs();
 
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     @Import(name="description")
@@ -105,7 +105,7 @@ public final class ZeroTrustDlpEntryArgs extends com.pulumi.resources.ResourceAr
             $ = new ZeroTrustDlpEntryArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -181,9 +181,6 @@ public final class ZeroTrustDlpEntryArgs extends com.pulumi.resources.ResourceAr
         }
 
         public ZeroTrustDlpEntryArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustDlpEntryArgs", "accountId");
-            }
             if ($.enabled == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustDlpEntryArgs", "enabled");
             }

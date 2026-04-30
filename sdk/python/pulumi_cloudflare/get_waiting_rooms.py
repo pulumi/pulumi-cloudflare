@@ -103,6 +103,10 @@ def get_waiting_rooms(account_id: Optional[_builtins.str] = None,
                       zone_id: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWaitingRoomsResult:
     """
+    Accepted Permissions
+
+    - `Account Waiting Rooms Read`
+
     ## Example Usage
 
     ```python
@@ -136,6 +140,10 @@ def get_waiting_rooms_output(account_id: Optional[pulumi.Input[Optional[_builtin
                              zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWaitingRoomsResult]:
     """
+    Accepted Permissions
+
+    - `Account Waiting Rooms Read`
+
     ## Example Usage
 
     ```python

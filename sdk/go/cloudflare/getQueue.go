@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Queues Read`
+// - `Queues Write`
+// - `Workers Scripts Read`
+// - `Workers Scripts Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetQueue(ctx, &cloudflare.LookupQueueArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				QueueId:   "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
@@ -50,7 +57,7 @@ func LookupQueue(ctx *pulumi.Context, args *LookupQueueArgs, opts ...pulumi.Invo
 // A collection of arguments for invoking getQueue.
 type LookupQueueArgs struct {
 	// A Resource identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// A Resource identifier.
 	QueueId string `pulumi:"queueId"`
 }
@@ -58,7 +65,7 @@ type LookupQueueArgs struct {
 // A collection of values returned by getQueue.
 type LookupQueueResult struct {
 	// A Resource identifier.
-	AccountId           string                 `pulumi:"accountId"`
+	AccountId           *string                `pulumi:"accountId"`
 	Consumers           []GetQueueConsumerType `pulumi:"consumers"`
 	ConsumersTotalCount float64                `pulumi:"consumersTotalCount"`
 	CreatedOn           string                 `pulumi:"createdOn"`
@@ -85,7 +92,7 @@ func LookupQueueOutput(ctx *pulumi.Context, args LookupQueueOutputArgs, opts ...
 // A collection of arguments for invoking getQueue.
 type LookupQueueOutputArgs struct {
 	// A Resource identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// A Resource identifier.
 	QueueId pulumi.StringInput `pulumi:"queueId"`
 }
@@ -110,8 +117,8 @@ func (o LookupQueueResultOutput) ToLookupQueueResultOutputWithContext(ctx contex
 }
 
 // A Resource identifier.
-func (o LookupQueueResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupQueueResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupQueueResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupQueueResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupQueueResultOutput) Consumers() GetQueueConsumerTypeArrayOutput {

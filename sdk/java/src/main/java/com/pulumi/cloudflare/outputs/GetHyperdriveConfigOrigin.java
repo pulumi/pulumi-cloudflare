@@ -48,6 +48,11 @@ public final class GetHyperdriveConfigOrigin {
      */
     private String scheme;
     /**
+     * @return The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database.
+     * 
+     */
+    private String serviceId;
+    /**
      * @return Set the user of your origin database.
      * 
      */
@@ -105,6 +110,13 @@ public final class GetHyperdriveConfigOrigin {
         return this.scheme;
     }
     /**
+     * @return The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database.
+     * 
+     */
+    public String serviceId() {
+        return this.serviceId;
+    }
+    /**
      * @return Set the user of your origin database.
      * 
      */
@@ -128,6 +140,7 @@ public final class GetHyperdriveConfigOrigin {
         private String password;
         private Integer port;
         private String scheme;
+        private String serviceId;
         private String user;
         public Builder() {}
         public Builder(GetHyperdriveConfigOrigin defaults) {
@@ -139,6 +152,7 @@ public final class GetHyperdriveConfigOrigin {
     	      this.password = defaults.password;
     	      this.port = defaults.port;
     	      this.scheme = defaults.scheme;
+    	      this.serviceId = defaults.serviceId;
     	      this.user = defaults.user;
         }
 
@@ -199,6 +213,14 @@ public final class GetHyperdriveConfigOrigin {
             return this;
         }
         @CustomType.Setter
+        public Builder serviceId(String serviceId) {
+            if (serviceId == null) {
+              throw new MissingRequiredPropertyException("GetHyperdriveConfigOrigin", "serviceId");
+            }
+            this.serviceId = serviceId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder user(String user) {
             if (user == null) {
               throw new MissingRequiredPropertyException("GetHyperdriveConfigOrigin", "user");
@@ -215,6 +237,7 @@ public final class GetHyperdriveConfigOrigin {
             _resultValue.password = password;
             _resultValue.port = port;
             _resultValue.scheme = scheme;
+            _resultValue.serviceId = serviceId;
             _resultValue.user = user;
             return _resultValue;
         }

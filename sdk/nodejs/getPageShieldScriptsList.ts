@@ -7,6 +7,15 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Domain Page Shield`
+ * - `Domain Page Shield Read`
+ * - `Page Shield`
+ * - `Page Shield Read`
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -29,7 +38,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getPageShieldScriptsList(args: GetPageShieldScriptsListArgs, opts?: pulumi.InvokeOptions): Promise<GetPageShieldScriptsListResult> {
+export function getPageShieldScriptsList(args?: GetPageShieldScriptsListArgs, opts?: pulumi.InvokeOptions): Promise<GetPageShieldScriptsListResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getPageShieldScriptsList:getPageShieldScriptsList", {
         "direction": args.direction,
@@ -90,10 +100,7 @@ export interface GetPageShieldScriptsListArgs {
     prioritizeMalicious?: boolean;
     status?: string;
     urls?: string;
-    /**
-     * Identifier
-     */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -141,12 +148,18 @@ export interface GetPageShieldScriptsListResult {
     readonly results: outputs.GetPageShieldScriptsListResult[];
     readonly status?: string;
     readonly urls?: string;
-    /**
-     * Identifier
-     */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Domain Page Shield`
+ * - `Domain Page Shield Read`
+ * - `Page Shield`
+ * - `Page Shield Read`
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -169,7 +182,8 @@ export interface GetPageShieldScriptsListResult {
  * });
  * ```
  */
-export function getPageShieldScriptsListOutput(args: GetPageShieldScriptsListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPageShieldScriptsListResult> {
+export function getPageShieldScriptsListOutput(args?: GetPageShieldScriptsListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPageShieldScriptsListResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getPageShieldScriptsList:getPageShieldScriptsList", {
         "direction": args.direction,
@@ -230,8 +244,5 @@ export interface GetPageShieldScriptsListOutputArgs {
     prioritizeMalicious?: pulumi.Input<boolean>;
     status?: pulumi.Input<string>;
     urls?: pulumi.Input<string>;
-    /**
-     * Identifier
-     */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

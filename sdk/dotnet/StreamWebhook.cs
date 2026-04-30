@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Stream Read`
+    /// - `Stream Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -40,13 +45,25 @@ namespace Pulumi.Cloudflare
         /// The account identifier tag.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
+
+        /// <summary>
+        /// The date and time the webhook was last modified.
+        /// </summary>
+        [Output("modified")]
+        public Output<string> Modified { get; private set; } = null!;
 
         /// <summary>
         /// The URL where webhooks will be sent.
         /// </summary>
         [Output("notificationUrl")]
-        public Output<string> NotificationUrl { get; private set; } = null!;
+        public Output<string?> NotificationUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// The secret used to verify webhook signatures.
+        /// </summary>
+        [Output("secret")]
+        public Output<string> Secret { get; private set; } = null!;
 
 
         /// <summary>
@@ -56,7 +73,7 @@ namespace Pulumi.Cloudflare
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public StreamWebhook(string name, StreamWebhookArgs args, CustomResourceOptions? options = null)
+        public StreamWebhook(string name, StreamWebhookArgs? args = null, CustomResourceOptions? options = null)
             : base("cloudflare:index/streamWebhook:StreamWebhook", name, args ?? new StreamWebhookArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -71,6 +88,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "secret",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -97,14 +118,14 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// The URL where webhooks will be sent.
         /// </summary>
-        [Input("notificationUrl", required: true)]
-        public Input<string> NotificationUrl { get; set; } = null!;
+        [Input("notificationUrl")]
+        public Input<string>? NotificationUrl { get; set; }
 
         public StreamWebhookArgs()
         {
@@ -121,10 +142,32 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
+        /// The date and time the webhook was last modified.
+        /// </summary>
+        [Input("modified")]
+        public Input<string>? Modified { get; set; }
+
+        /// <summary>
         /// The URL where webhooks will be sent.
         /// </summary>
         [Input("notificationUrl")]
         public Input<string>? NotificationUrl { get; set; }
+
+        [Input("secret")]
+        private Input<string>? _secret;
+
+        /// <summary>
+        /// The secret used to verify webhook signatures.
+        /// </summary>
+        public Input<string>? Secret
+        {
+            get => _secret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public StreamWebhookState()
         {

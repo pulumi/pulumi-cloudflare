@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetRegistrarDomains(ctx, &cloudflare.LookupRegistrarDomainsArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +49,7 @@ func LookupRegistrarDomains(ctx *pulumi.Context, args *LookupRegistrarDomainsArg
 // A collection of arguments for invoking getRegistrarDomains.
 type LookupRegistrarDomainsArgs struct {
 	// Identifier
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 }
@@ -57,7 +57,7 @@ type LookupRegistrarDomainsArgs struct {
 // A collection of values returned by getRegistrarDomains.
 type LookupRegistrarDomainsResult struct {
 	// Identifier
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -78,7 +78,7 @@ func LookupRegistrarDomainsOutput(ctx *pulumi.Context, args LookupRegistrarDomai
 // A collection of arguments for invoking getRegistrarDomains.
 type LookupRegistrarDomainsOutputArgs struct {
 	// Identifier
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
@@ -103,8 +103,8 @@ func (o LookupRegistrarDomainsResultOutput) ToLookupRegistrarDomainsResultOutput
 }
 
 // Identifier
-func (o LookupRegistrarDomainsResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRegistrarDomainsResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupRegistrarDomainsResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupRegistrarDomainsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

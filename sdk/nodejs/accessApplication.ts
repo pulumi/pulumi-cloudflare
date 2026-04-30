@@ -136,6 +136,10 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+     */
+    declare public readonly oauthConfiguration: pulumi.Output<outputs.AccessApplicationOauthConfiguration | undefined>;
+    /**
      * Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
      */
     declare public readonly optionsPreflightBypass: pulumi.Output<boolean | undefined>;
@@ -242,6 +246,7 @@ export class AccessApplication extends pulumi.CustomResource {
             resourceInputs["landingPageDesign"] = state?.landingPageDesign;
             resourceInputs["logoUrl"] = state?.logoUrl;
             resourceInputs["name"] = state?.name;
+            resourceInputs["oauthConfiguration"] = state?.oauthConfiguration;
             resourceInputs["optionsPreflightBypass"] = state?.optionsPreflightBypass;
             resourceInputs["pathCookieAttribute"] = state?.pathCookieAttribute;
             resourceInputs["policies"] = state?.policies;
@@ -282,6 +287,7 @@ export class AccessApplication extends pulumi.CustomResource {
             resourceInputs["landingPageDesign"] = args?.landingPageDesign;
             resourceInputs["logoUrl"] = args?.logoUrl;
             resourceInputs["name"] = args?.name;
+            resourceInputs["oauthConfiguration"] = args?.oauthConfiguration;
             resourceInputs["optionsPreflightBypass"] = args?.optionsPreflightBypass;
             resourceInputs["pathCookieAttribute"] = args?.pathCookieAttribute;
             resourceInputs["policies"] = args?.policies;
@@ -400,6 +406,10 @@ export interface AccessApplicationState {
      * The name of the application.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+     */
+    oauthConfiguration?: pulumi.Input<inputs.AccessApplicationOauthConfiguration>;
     /**
      * Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
      */
@@ -558,6 +568,10 @@ export interface AccessApplicationArgs {
      * The name of the application.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+     */
+    oauthConfiguration?: pulumi.Input<inputs.AccessApplicationOauthConfiguration>;
     /**
      * Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
      */

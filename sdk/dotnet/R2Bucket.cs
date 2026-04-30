@@ -10,6 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Workers R2 Storage Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -44,7 +48,7 @@ namespace Pulumi.Cloudflare
         /// Account ID.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Creation timestamp.
@@ -128,8 +132,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account ID.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Jurisdiction where objects in this bucket are guaranteed to be stored.

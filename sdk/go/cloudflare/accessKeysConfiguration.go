@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Access: Organizations, Identity Providers, and Groups Read`
+// - `Access: Organizations, Identity Providers, and Groups Write`
+//
 // ## Example Usage
 //
 // ```go

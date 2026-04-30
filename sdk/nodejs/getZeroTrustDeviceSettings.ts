@@ -16,7 +16,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustDeviceSettings(args: GetZeroTrustDeviceSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDeviceSettingsResult> {
+export function getZeroTrustDeviceSettings(args?: GetZeroTrustDeviceSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDeviceSettingsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDeviceSettings:getZeroTrustDeviceSettings", {
         "accountId": args.accountId,
@@ -27,14 +28,14 @@ export function getZeroTrustDeviceSettings(args: GetZeroTrustDeviceSettingsArgs,
  * A collection of arguments for invoking getZeroTrustDeviceSettings.
  */
 export interface GetZeroTrustDeviceSettingsArgs {
-    accountId: string;
+    accountId?: string;
 }
 
 /**
  * A collection of values returned by getZeroTrustDeviceSettings.
  */
 export interface GetZeroTrustDeviceSettingsResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
      */
@@ -88,7 +89,8 @@ export interface GetZeroTrustDeviceSettingsResult {
  * });
  * ```
  */
-export function getZeroTrustDeviceSettingsOutput(args: GetZeroTrustDeviceSettingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDeviceSettingsResult> {
+export function getZeroTrustDeviceSettingsOutput(args?: GetZeroTrustDeviceSettingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDeviceSettingsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDeviceSettings:getZeroTrustDeviceSettings", {
         "accountId": args.accountId,
@@ -99,5 +101,5 @@ export function getZeroTrustDeviceSettingsOutput(args: GetZeroTrustDeviceSetting
  * A collection of arguments for invoking getZeroTrustDeviceSettings.
  */
 export interface GetZeroTrustDeviceSettingsOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
 }

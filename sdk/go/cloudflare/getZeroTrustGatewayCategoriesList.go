@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Zero Trust Read`
+// - `Zero Trust Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustGatewayCategoriesList(ctx, &cloudflare.LookupZeroTrustGatewayCategoriesListArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +54,7 @@ func LookupZeroTrustGatewayCategoriesList(ctx *pulumi.Context, args *LookupZeroT
 // A collection of arguments for invoking getZeroTrustGatewayCategoriesList.
 type LookupZeroTrustGatewayCategoriesListArgs struct {
 	// Provide the identifier string.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 }
@@ -57,7 +62,7 @@ type LookupZeroTrustGatewayCategoriesListArgs struct {
 // A collection of values returned by getZeroTrustGatewayCategoriesList.
 type LookupZeroTrustGatewayCategoriesListResult struct {
 	// Provide the identifier string.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -78,7 +83,7 @@ func LookupZeroTrustGatewayCategoriesListOutput(ctx *pulumi.Context, args Lookup
 // A collection of arguments for invoking getZeroTrustGatewayCategoriesList.
 type LookupZeroTrustGatewayCategoriesListOutputArgs struct {
 	// Provide the identifier string.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
@@ -103,8 +108,8 @@ func (o LookupZeroTrustGatewayCategoriesListResultOutput) ToLookupZeroTrustGatew
 }
 
 // Provide the identifier string.
-func (o LookupZeroTrustGatewayCategoriesListResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustGatewayCategoriesListResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustGatewayCategoriesListResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustGatewayCategoriesListResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

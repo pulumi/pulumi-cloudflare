@@ -19,31 +19,20 @@ __all__ = ['EmailSecurityImpersonationRegistryArgs', 'EmailSecurityImpersonation
 @pulumi.input_type
 class EmailSecurityImpersonationRegistryArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  email: pulumi.Input[_builtins.str],
                  is_email_regex: pulumi.Input[_builtins.bool],
-                 name: pulumi.Input[_builtins.str]):
+                 name: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EmailSecurityImpersonationRegistry resource.
 
         :param pulumi.Input[_builtins.str] account_id: Account Identifier
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "is_email_regex", is_email_regex)
         pulumi.set(__self__, "name", name)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Account Identifier
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
 
     @_builtins.property
     @pulumi.getter
@@ -71,6 +60,18 @@ class EmailSecurityImpersonationRegistryArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Account Identifier
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
 
 @pulumi.input_type
@@ -234,6 +235,11 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Cloud Email Security: Read`
+        - `Cloud Email Security: Write`
+
         ## Example Usage
 
         ```python
@@ -265,6 +271,11 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
                  args: EmailSecurityImpersonationRegistryArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Cloud Email Security: Read`
+        - `Cloud Email Security: Write`
+
         ## Example Usage
 
         ```python
@@ -313,8 +324,6 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EmailSecurityImpersonationRegistryArgs.__new__(EmailSecurityImpersonationRegistryArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             if email is None and not opts.urn:
                 raise TypeError("Missing required property 'email'")
@@ -381,7 +390,7 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Account Identifier
         """

@@ -7,6 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +25,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getWorkersScript(args: GetWorkersScriptArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkersScriptResult> {
+export function getWorkersScript(args?: GetWorkersScriptArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkersScriptResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWorkersScript:getWorkersScript", {
         "accountId": args.accountId,
@@ -35,7 +42,7 @@ export interface GetWorkersScriptArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     filter?: inputs.GetWorkersScriptFilter;
     /**
      * Name of the script, used in URLs and route configuration.
@@ -50,7 +57,7 @@ export interface GetWorkersScriptResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     readonly filter?: outputs.GetWorkersScriptFilter;
     /**
      * Name of the script, used in URLs and route configuration.
@@ -63,6 +70,12 @@ export interface GetWorkersScriptResult {
     readonly scriptName?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -75,7 +88,8 @@ export interface GetWorkersScriptResult {
  * });
  * ```
  */
-export function getWorkersScriptOutput(args: GetWorkersScriptOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkersScriptResult> {
+export function getWorkersScriptOutput(args?: GetWorkersScriptOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkersScriptResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWorkersScript:getWorkersScript", {
         "accountId": args.accountId,
@@ -91,7 +105,7 @@ export interface GetWorkersScriptOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetWorkersScriptFilterArgs>;
     /**
      * Name of the script, used in URLs and route configuration.

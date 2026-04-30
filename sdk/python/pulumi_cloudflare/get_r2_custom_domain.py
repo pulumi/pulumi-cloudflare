@@ -61,7 +61,7 @@ class GetR2CustomDomainResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Account ID.
         """
@@ -161,6 +161,11 @@ def get_r2_custom_domain(account_id: Optional[_builtins.str] = None,
                          domain: Optional[_builtins.str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetR2CustomDomainResult:
     """
+    Accepted Permissions
+
+    - `Workers R2 Storage Read`
+    - `Workers R2 Storage Write`
+
     ## Example Usage
 
     ```python
@@ -195,11 +200,16 @@ def get_r2_custom_domain(account_id: Optional[_builtins.str] = None,
         status=pulumi.get(__ret__, 'status'),
         zone_id=pulumi.get(__ret__, 'zone_id'),
         zone_name=pulumi.get(__ret__, 'zone_name'))
-def get_r2_custom_domain_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_r2_custom_domain_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                 bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
                                 domain: Optional[pulumi.Input[_builtins.str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetR2CustomDomainResult]:
     """
+    Accepted Permissions
+
+    - `Workers R2 Storage Read`
+    - `Workers R2 Storage Write`
+
     ## Example Usage
 
     ```python

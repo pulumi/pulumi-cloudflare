@@ -9,6 +9,8 @@ import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDnsZoneTransfersOutgoingResult {
@@ -47,7 +49,7 @@ public final class GetDnsZoneTransfersOutgoingResult {
      * 
      */
     private Double soaSerial;
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetDnsZoneTransfersOutgoingResult() {}
     /**
@@ -99,8 +101,8 @@ public final class GetDnsZoneTransfersOutgoingResult {
     public Double soaSerial() {
         return this.soaSerial;
     }
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -119,7 +121,7 @@ public final class GetDnsZoneTransfersOutgoingResult {
         private String name;
         private List<String> peers;
         private Double soaSerial;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetDnsZoneTransfersOutgoingResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -193,10 +195,8 @@ public final class GetDnsZoneTransfersOutgoingResult {
             return this;
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetDnsZoneTransfersOutgoingResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

@@ -19,32 +19,21 @@ __all__ = ['CloudforceOneRequestMessageArgs', 'CloudforceOneRequestMessage']
 @pulumi.input_type
 class CloudforceOneRequestMessageArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  request_id: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  content: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CloudforceOneRequestMessage resource.
 
-        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] request_id: UUID.
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] content: Content of message.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "request_id", request_id)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if content is not None:
             pulumi.set(__self__, "content", content)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="requestId")
@@ -57,6 +46,18 @@ class CloudforceOneRequestMessageArgs:
     @request_id.setter
     def request_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "request_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -203,6 +204,10 @@ class CloudforceOneRequestMessage(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Cloudforce One Write`
+
         ## Example Usage
 
         ```python
@@ -235,6 +240,10 @@ class CloudforceOneRequestMessage(pulumi.CustomResource):
                  args: CloudforceOneRequestMessageArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Cloudforce One Write`
+
         ## Example Usage
 
         ```python
@@ -281,8 +290,6 @@ class CloudforceOneRequestMessage(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CloudforceOneRequestMessageArgs.__new__(CloudforceOneRequestMessageArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["content"] = content
             if request_id is None and not opts.urn:
@@ -339,7 +346,7 @@ class CloudforceOneRequestMessage(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier.
         """

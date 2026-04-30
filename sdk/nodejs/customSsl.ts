@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Access: Mutual TLS Certificates Read`
+ * - `Access: Mutual TLS Certificates Write`
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -69,6 +76,7 @@ import * as utilities from "./utilities";
  *
  * `,
  *     bundleMethod: "ubiquitous",
+ *     customCsrId: "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
  *     deploy: "staging",
  *     geoRestrictions: {
  *         label: "us",
@@ -121,6 +129,10 @@ export class CustomSsl extends pulumi.CustomResource {
      * The zone's SSL certificate or certificate and the intermediate(s).
      */
     declare public readonly certificate: pulumi.Output<string>;
+    /**
+     * The identifier for the Custom CSR that was used.
+     */
+    declare public readonly customCsrId: pulumi.Output<string | undefined>;
     /**
      * The environment to deploy the certificate to.
      * Available values: "staging", "production".
@@ -184,7 +196,7 @@ export class CustomSsl extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a CustomSsl resource with the given unique name, arguments, and options.
@@ -201,6 +213,7 @@ export class CustomSsl extends pulumi.CustomResource {
             const state = argsOrState as CustomSslState | undefined;
             resourceInputs["bundleMethod"] = state?.bundleMethod;
             resourceInputs["certificate"] = state?.certificate;
+            resourceInputs["customCsrId"] = state?.customCsrId;
             resourceInputs["deploy"] = state?.deploy;
             resourceInputs["expiresOn"] = state?.expiresOn;
             resourceInputs["geoRestrictions"] = state?.geoRestrictions;
@@ -225,11 +238,9 @@ export class CustomSsl extends pulumi.CustomResource {
             if (args?.privateKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'privateKey'");
             }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
-            }
             resourceInputs["bundleMethod"] = args?.bundleMethod;
             resourceInputs["certificate"] = args?.certificate;
+            resourceInputs["customCsrId"] = args?.customCsrId;
             resourceInputs["deploy"] = args?.deploy;
             resourceInputs["geoRestrictions"] = args?.geoRestrictions;
             resourceInputs["policy"] = args?.policy;
@@ -267,6 +278,10 @@ export interface CustomSslState {
      * The zone's SSL certificate or certificate and the intermediate(s).
      */
     certificate?: pulumi.Input<string>;
+    /**
+     * The identifier for the Custom CSR that was used.
+     */
+    customCsrId?: pulumi.Input<string>;
     /**
      * The environment to deploy the certificate to.
      * Available values: "staging", "production".
@@ -347,6 +362,10 @@ export interface CustomSslArgs {
      */
     certificate: pulumi.Input<string>;
     /**
+     * The identifier for the Custom CSR that was used.
+     */
+    customCsrId?: pulumi.Input<string>;
+    /**
      * The environment to deploy the certificate to.
      * Available values: "staging", "production".
      */
@@ -372,5 +391,5 @@ export interface CustomSslArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

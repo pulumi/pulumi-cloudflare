@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Magic Transit Read`
+// - `Magic Transit Write`
+// - `Magic WAN Read`
+// - `Magic WAN Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetMagicWanIpsecTunnel(ctx, &cloudflare.LookupMagicWanIpsecTunnelArgs{
-//				AccountId:     "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:     pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				IpsecTunnelId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
@@ -50,7 +57,7 @@ func LookupMagicWanIpsecTunnel(ctx *pulumi.Context, args *LookupMagicWanIpsecTun
 // A collection of arguments for invoking getMagicWanIpsecTunnel.
 type LookupMagicWanIpsecTunnelArgs struct {
 	// Identifier
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Identifier
 	IpsecTunnelId string `pulumi:"ipsecTunnelId"`
 }
@@ -58,7 +65,7 @@ type LookupMagicWanIpsecTunnelArgs struct {
 // A collection of values returned by getMagicWanIpsecTunnel.
 type LookupMagicWanIpsecTunnelResult struct {
 	// Identifier
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Identifier
 	Id          string                            `pulumi:"id"`
 	IpsecTunnel GetMagicWanIpsecTunnelIpsecTunnel `pulumi:"ipsecTunnel"`
@@ -78,7 +85,7 @@ func LookupMagicWanIpsecTunnelOutput(ctx *pulumi.Context, args LookupMagicWanIps
 // A collection of arguments for invoking getMagicWanIpsecTunnel.
 type LookupMagicWanIpsecTunnelOutputArgs struct {
 	// Identifier
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Identifier
 	IpsecTunnelId pulumi.StringInput `pulumi:"ipsecTunnelId"`
 }
@@ -103,8 +110,8 @@ func (o LookupMagicWanIpsecTunnelResultOutput) ToLookupMagicWanIpsecTunnelResult
 }
 
 // Identifier
-func (o LookupMagicWanIpsecTunnelResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMagicWanIpsecTunnelResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupMagicWanIpsecTunnelResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMagicWanIpsecTunnelResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Identifier

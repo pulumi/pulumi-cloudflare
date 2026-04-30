@@ -55,8 +55,8 @@ import (
 type ZeroTrustList struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	CreatedAt pulumi.StringOutput    `pulumi:"createdAt"`
 	// Provide the list description.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Add items to the list.
@@ -66,7 +66,7 @@ type ZeroTrustList struct {
 	// Specify the list name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Specify the list type.
-	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
 	Type      pulumi.StringOutput `pulumi:"type"`
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
@@ -78,9 +78,6 @@ func NewZeroTrustList(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -127,7 +124,7 @@ type zeroTrustListState struct {
 	// Specify the list name.
 	Name *string `pulumi:"name"`
 	// Specify the list type.
-	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
 	Type      *string `pulumi:"type"`
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
@@ -144,7 +141,7 @@ type ZeroTrustListState struct {
 	// Specify the list name.
 	Name pulumi.StringPtrInput
 	// Specify the list type.
-	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
 	Type      pulumi.StringPtrInput
 	UpdatedAt pulumi.StringPtrInput
 }
@@ -154,7 +151,7 @@ func (ZeroTrustListState) ElementType() reflect.Type {
 }
 
 type zeroTrustListArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Provide the list description.
 	Description *string `pulumi:"description"`
 	// Add items to the list.
@@ -162,13 +159,13 @@ type zeroTrustListArgs struct {
 	// Specify the list name.
 	Name string `pulumi:"name"`
 	// Specify the list type.
-	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
 	Type string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a ZeroTrustList resource.
 type ZeroTrustListArgs struct {
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// Provide the list description.
 	Description pulumi.StringPtrInput
 	// Add items to the list.
@@ -176,7 +173,7 @@ type ZeroTrustListArgs struct {
 	// Specify the list name.
 	Name pulumi.StringInput
 	// Specify the list type.
-	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
 	Type pulumi.StringInput
 }
 
@@ -267,8 +264,8 @@ func (o ZeroTrustListOutput) ToZeroTrustListOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o ZeroTrustListOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustList) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o ZeroTrustListOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustList) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o ZeroTrustListOutput) CreatedAt() pulumi.StringOutput {
@@ -296,7 +293,7 @@ func (o ZeroTrustListOutput) Name() pulumi.StringOutput {
 }
 
 // Specify the list type.
-// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
 func (o ZeroTrustListOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustList) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -10,10 +10,12 @@ import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMagicNetworkMonitoringConfigurationResult {
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.
      * 
@@ -33,8 +35,8 @@ public final class GetMagicNetworkMonitoringConfigurationResult {
     private List<GetMagicNetworkMonitoringConfigurationWarpDevice> warpDevices;
 
     private GetMagicNetworkMonitoringConfigurationResult() {}
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.
@@ -73,7 +75,7 @@ public final class GetMagicNetworkMonitoringConfigurationResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private Double defaultSampling;
         private String id;
         private String name;
@@ -91,10 +93,8 @@ public final class GetMagicNetworkMonitoringConfigurationResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetMagicNetworkMonitoringConfigurationResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

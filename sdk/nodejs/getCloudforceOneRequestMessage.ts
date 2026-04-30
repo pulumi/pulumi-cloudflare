@@ -5,6 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudforce One Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -44,7 +48,7 @@ export interface GetCloudforceOneRequestMessageArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Retrieve mes  ges created after this time.
      */
@@ -83,7 +87,7 @@ export interface GetCloudforceOneRequestMessageResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Retrieve mes  ges created after this time.
      */
@@ -139,6 +143,10 @@ export interface GetCloudforceOneRequestMessageResult {
     readonly updated: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudforce One Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -178,7 +186,7 @@ export interface GetCloudforceOneRequestMessageOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Retrieve mes  ges created after this time.
      */

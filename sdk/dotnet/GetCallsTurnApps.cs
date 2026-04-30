@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetCallsTurnApps
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Calls Read`
+        /// - `Calls Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetCallsTurnAppsResult> InvokeAsync(GetCallsTurnAppsArgs args, InvokeOptions? options = null)
+        public static Task<GetCallsTurnAppsResult> InvokeAsync(GetCallsTurnAppsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCallsTurnAppsResult>("cloudflare:index/getCallsTurnApps:getCallsTurnApps", args ?? new GetCallsTurnAppsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Calls Read`
+        /// - `Calls Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetCallsTurnAppsResult> Invoke(GetCallsTurnAppsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetCallsTurnAppsResult> Invoke(GetCallsTurnAppsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCallsTurnAppsResult>("cloudflare:index/getCallsTurnApps:getCallsTurnApps", args ?? new GetCallsTurnAppsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Calls Read`
+        /// - `Calls Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +99,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -104,8 +119,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -126,7 +141,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier tag.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -142,7 +157,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetCallsTurnAppsResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

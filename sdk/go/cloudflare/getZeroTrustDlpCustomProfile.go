@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Zero Trust Read`
+// - `Zero Trust Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustDlpCustomProfile(ctx, &cloudflare.LookupZeroTrustDlpCustomProfileArgs{
-//				AccountId: "account_id",
+//				AccountId: pulumi.StringRef("account_id"),
 //				ProfileId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 //			}, nil)
 //			if err != nil {
@@ -49,14 +54,14 @@ func LookupZeroTrustDlpCustomProfile(ctx *pulumi.Context, args *LookupZeroTrustD
 
 // A collection of arguments for invoking getZeroTrustDlpCustomProfile.
 type LookupZeroTrustDlpCustomProfileArgs struct {
-	AccountId string `pulumi:"accountId"`
-	ProfileId string `pulumi:"profileId"`
+	AccountId *string `pulumi:"accountId"`
+	ProfileId string  `pulumi:"profileId"`
 }
 
 // A collection of values returned by getZeroTrustDlpCustomProfile.
 type LookupZeroTrustDlpCustomProfileResult struct {
-	AccountId        string `pulumi:"accountId"`
-	AiContextEnabled bool   `pulumi:"aiContextEnabled"`
+	AccountId        *string `pulumi:"accountId"`
+	AiContextEnabled bool    `pulumi:"aiContextEnabled"`
 	// Related DLP policies will trigger when the match count exceeds the number set.
 	AllowedMatchCount int `pulumi:"allowedMatchCount"`
 	// Available values: "low", "medium", "high", "veryHigh".
@@ -67,6 +72,10 @@ type LookupZeroTrustDlpCustomProfileResult struct {
 	ContextAwareness GetZeroTrustDlpCustomProfileContextAwareness `pulumi:"contextAwareness"`
 	// When the profile was created.
 	CreatedAt string `pulumi:"createdAt"`
+	// Data classes associated with this profile.
+	DataClasses []string `pulumi:"dataClasses"`
+	// Data tags associated with this profile.
+	DataTags []string `pulumi:"dataTags"`
 	// The description of the profile.
 	Description string `pulumi:"description"`
 	// Deprecated: This attribute is deprecated.
@@ -77,9 +86,11 @@ type LookupZeroTrustDlpCustomProfileResult struct {
 	Name       string `pulumi:"name"`
 	OcrEnabled bool   `pulumi:"ocrEnabled"`
 	// Whether this profile can be accessed by anyone.
-	OpenAccess    bool                                      `pulumi:"openAccess"`
-	ProfileId     string                                    `pulumi:"profileId"`
-	SharedEntries []GetZeroTrustDlpCustomProfileSharedEntry `pulumi:"sharedEntries"`
+	OpenAccess bool   `pulumi:"openAccess"`
+	ProfileId  string `pulumi:"profileId"`
+	// Sensitivity levels associated with this profile.
+	SensitivityLevels []GetZeroTrustDlpCustomProfileSensitivityLevel `pulumi:"sensitivityLevels"`
+	SharedEntries     []GetZeroTrustDlpCustomProfileSharedEntry      `pulumi:"sharedEntries"`
 	// Available values: "custom", "predefined", "integration".
 	Type string `pulumi:"type"`
 	// When the profile was lasted updated.
@@ -97,8 +108,8 @@ func LookupZeroTrustDlpCustomProfileOutput(ctx *pulumi.Context, args LookupZeroT
 
 // A collection of arguments for invoking getZeroTrustDlpCustomProfile.
 type LookupZeroTrustDlpCustomProfileOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
-	ProfileId pulumi.StringInput `pulumi:"profileId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	ProfileId pulumi.StringInput    `pulumi:"profileId"`
 }
 
 func (LookupZeroTrustDlpCustomProfileOutputArgs) ElementType() reflect.Type {
@@ -120,8 +131,8 @@ func (o LookupZeroTrustDlpCustomProfileResultOutput) ToLookupZeroTrustDlpCustomP
 	return o
 }
 
-func (o LookupZeroTrustDlpCustomProfileResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustDlpCustomProfileResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustDlpCustomProfileResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustDlpCustomProfileResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupZeroTrustDlpCustomProfileResultOutput) AiContextEnabled() pulumi.BoolOutput {
@@ -150,6 +161,16 @@ func (o LookupZeroTrustDlpCustomProfileResultOutput) ContextAwareness() GetZeroT
 // When the profile was created.
 func (o LookupZeroTrustDlpCustomProfileResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpCustomProfileResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Data classes associated with this profile.
+func (o LookupZeroTrustDlpCustomProfileResultOutput) DataClasses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustDlpCustomProfileResult) []string { return v.DataClasses }).(pulumi.StringArrayOutput)
+}
+
+// Data tags associated with this profile.
+func (o LookupZeroTrustDlpCustomProfileResultOutput) DataTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustDlpCustomProfileResult) []string { return v.DataTags }).(pulumi.StringArrayOutput)
 }
 
 // The description of the profile.
@@ -183,6 +204,13 @@ func (o LookupZeroTrustDlpCustomProfileResultOutput) OpenAccess() pulumi.BoolOut
 
 func (o LookupZeroTrustDlpCustomProfileResultOutput) ProfileId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpCustomProfileResult) string { return v.ProfileId }).(pulumi.StringOutput)
+}
+
+// Sensitivity levels associated with this profile.
+func (o LookupZeroTrustDlpCustomProfileResultOutput) SensitivityLevels() GetZeroTrustDlpCustomProfileSensitivityLevelArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustDlpCustomProfileResult) []GetZeroTrustDlpCustomProfileSensitivityLevel {
+		return v.SensitivityLevels
+	}).(GetZeroTrustDlpCustomProfileSensitivityLevelArrayOutput)
 }
 
 func (o LookupZeroTrustDlpCustomProfileResultOutput) SharedEntries() GetZeroTrustDlpCustomProfileSharedEntryArrayOutput {

@@ -12,6 +12,12 @@ namespace Pulumi.Cloudflare
     public static class GetZeroTrustOrganization
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Access: Organizations, Identity Providers, and Groups Read`
+        /// - `Access: Organizations, Identity Providers, and Groups Revoke`
+        /// - `Access: Organizations, Identity Providers, and Groups Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +41,12 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustOrganizationResult>("cloudflare:index/getZeroTrustOrganization:getZeroTrustOrganization", args ?? new GetZeroTrustOrganizationArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Access: Organizations, Identity Providers, and Groups Read`
+        /// - `Access: Organizations, Identity Providers, and Groups Revoke`
+        /// - `Access: Organizations, Identity Providers, and Groups Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +70,12 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustOrganizationResult>("cloudflare:index/getZeroTrustOrganization:getZeroTrustOrganization", args ?? new GetZeroTrustOrganizationInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Access: Organizations, Identity Providers, and Groups Read`
+        /// - `Access: Organizations, Identity Providers, and Groups Revoke`
+        /// - `Access: Organizations, Identity Providers, and Groups Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -165,13 +183,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly Outputs.GetZeroTrustOrganizationMfaConfigResult MfaConfig;
         /// <summary>
-        /// Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
-        /// </summary>
-        public readonly bool MfaConfigurationAllowed;
-        /// <summary>
         /// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
         /// </summary>
         public readonly bool MfaRequiredForAllApps;
+        /// <summary>
+        /// Configures SSH PIV key requirements for MFA using hardware security keys.
+        /// </summary>
+        public readonly Outputs.GetZeroTrustOrganizationMfaSshPivKeyRequirementsResult MfaSshPivKeyRequirements;
         /// <summary>
         /// The name of your Zero Trust organization.
         /// </summary>
@@ -221,9 +239,9 @@ namespace Pulumi.Cloudflare
 
             Outputs.GetZeroTrustOrganizationMfaConfigResult mfaConfig,
 
-            bool mfaConfigurationAllowed,
-
             bool mfaRequiredForAllApps,
+
+            Outputs.GetZeroTrustOrganizationMfaSshPivKeyRequirementsResult mfaSshPivKeyRequirements,
 
             string name,
 
@@ -248,8 +266,8 @@ namespace Pulumi.Cloudflare
             IsUiReadOnly = isUiReadOnly;
             LoginDesign = loginDesign;
             MfaConfig = mfaConfig;
-            MfaConfigurationAllowed = mfaConfigurationAllowed;
             MfaRequiredForAllApps = mfaRequiredForAllApps;
+            MfaSshPivKeyRequirements = mfaSshPivKeyRequirements;
             Name = name;
             SessionDuration = sessionDuration;
             UiReadOnlyToggleReason = uiReadOnlyToggleReason;

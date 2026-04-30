@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Address Maps Read`
+ * - `Address Maps Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -34,7 +39,7 @@ export interface GetAddressMapArgs {
     /**
      * Identifier of a Cloudflare account.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Identifier of an Address Map.
      */
@@ -48,7 +53,7 @@ export interface GetAddressMapResult {
     /**
      * Identifier of a Cloudflare account.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Identifier of an Address Map.
      */
@@ -89,6 +94,11 @@ export interface GetAddressMapResult {
     readonly modifiedAt: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Address Maps Read`
+ * - `Address Maps Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -116,7 +126,7 @@ export interface GetAddressMapOutputArgs {
     /**
      * Identifier of a Cloudflare account.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Identifier of an Address Map.
      */

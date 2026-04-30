@@ -12,6 +12,15 @@ namespace Pulumi.Cloudflare
     public static class GetPageShieldScriptsList
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Domain Page Shield`
+        /// - `Domain Page Shield Read`
+        /// - `Page Shield`
+        /// - `Page Shield Read`
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -41,10 +50,19 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetPageShieldScriptsListResult> InvokeAsync(GetPageShieldScriptsListArgs args, InvokeOptions? options = null)
+        public static Task<GetPageShieldScriptsListResult> InvokeAsync(GetPageShieldScriptsListArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPageShieldScriptsListResult>("cloudflare:index/getPageShieldScriptsList:getPageShieldScriptsList", args ?? new GetPageShieldScriptsListArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Domain Page Shield`
+        /// - `Domain Page Shield Read`
+        /// - `Page Shield`
+        /// - `Page Shield Read`
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -74,10 +92,19 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetPageShieldScriptsListResult> Invoke(GetPageShieldScriptsListInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetPageShieldScriptsListResult> Invoke(GetPageShieldScriptsListInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPageShieldScriptsListResult>("cloudflare:index/getPageShieldScriptsList:getPageShieldScriptsList", args ?? new GetPageShieldScriptsListInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Domain Page Shield`
+        /// - `Domain Page Shield Read`
+        /// - `Page Shield`
+        /// - `Page Shield Read`
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -178,11 +205,8 @@ namespace Pulumi.Cloudflare
         [Input("urls")]
         public string? Urls { get; set; }
 
-        /// <summary>
-        /// Identifier
-        /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetPageShieldScriptsListArgs()
         {
@@ -256,11 +280,8 @@ namespace Pulumi.Cloudflare
         [Input("urls")]
         public Input<string>? Urls { get; set; }
 
-        /// <summary>
-        /// Identifier
-        /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetPageShieldScriptsListInvokeArgs()
         {
@@ -313,10 +334,7 @@ namespace Pulumi.Cloudflare
         public readonly ImmutableArray<Outputs.GetPageShieldScriptsListResultResult> Results;
         public readonly string? Status;
         public readonly string? Urls;
-        /// <summary>
-        /// Identifier
-        /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetPageShieldScriptsListResult(
@@ -352,7 +370,7 @@ namespace Pulumi.Cloudflare
 
             string? urls,
 
-            string zoneId)
+            string? zoneId)
         {
             Direction = direction;
             ExcludeCdnCgi = excludeCdnCgi;

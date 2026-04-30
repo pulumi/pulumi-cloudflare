@@ -43,6 +43,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.ZeroTrustAccessGroupIncludeOkta? Okta;
         public readonly Outputs.ZeroTrustAccessGroupIncludeSaml? Saml;
         public readonly Outputs.ZeroTrustAccessGroupIncludeServiceToken? ServiceToken;
+        public readonly Outputs.ZeroTrustAccessGroupIncludeUserRiskScore? UserRiskScore;
 
         [OutputConstructor]
         private ZeroTrustAccessGroupInclude(
@@ -92,7 +93,9 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.ZeroTrustAccessGroupIncludeSaml? saml,
 
-            Outputs.ZeroTrustAccessGroupIncludeServiceToken? serviceToken)
+            Outputs.ZeroTrustAccessGroupIncludeServiceToken? serviceToken,
+
+            Outputs.ZeroTrustAccessGroupIncludeUserRiskScore? userRiskScore)
         {
             AnyValidServiceToken = anyValidServiceToken;
             AuthContext = authContext;
@@ -118,6 +121,7 @@ namespace Pulumi.Cloudflare.Outputs
             Okta = okta;
             Saml = saml;
             ServiceToken = serviceToken;
+            UserRiskScore = userRiskScore;
         }
     }
 }

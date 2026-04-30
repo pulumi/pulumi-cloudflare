@@ -28,7 +28,7 @@ class GetZeroTrustAccessAiControlsMcpServerResult:
     """
     A collection of values returned by getZeroTrustAccessAiControlsMcpServer.
     """
-    def __init__(__self__, account_id=None, auth_type=None, created_at=None, created_by=None, description=None, error=None, filter=None, hostname=None, id=None, last_successful_sync=None, last_synced=None, modified_at=None, modified_by=None, name=None, prompts=None, status=None, tools=None):
+    def __init__(__self__, account_id=None, auth_type=None, created_at=None, created_by=None, description=None, error=None, filter=None, hostname=None, id=None, last_successful_sync=None, last_synced=None, modified_at=None, modified_by=None, name=None, prompts=None, status=None, tools=None, updated_prompts=None, updated_tools=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -80,10 +80,16 @@ class GetZeroTrustAccessAiControlsMcpServerResult:
         if tools and not isinstance(tools, list):
             raise TypeError("Expected argument 'tools' to be a list")
         pulumi.set(__self__, "tools", tools)
+        if updated_prompts and not isinstance(updated_prompts, list):
+            raise TypeError("Expected argument 'updated_prompts' to be a list")
+        pulumi.set(__self__, "updated_prompts", updated_prompts)
+        if updated_tools and not isinstance(updated_tools, list):
+            raise TypeError("Expected argument 'updated_tools' to be a list")
+        pulumi.set(__self__, "updated_tools", updated_tools)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -172,6 +178,16 @@ class GetZeroTrustAccessAiControlsMcpServerResult:
     def tools(self) -> Sequence[Mapping[str, _builtins.str]]:
         return pulumi.get(self, "tools")
 
+    @_builtins.property
+    @pulumi.getter(name="updatedPrompts")
+    def updated_prompts(self) -> Sequence['outputs.GetZeroTrustAccessAiControlsMcpServerUpdatedPromptResult']:
+        return pulumi.get(self, "updated_prompts")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedTools")
+    def updated_tools(self) -> Sequence['outputs.GetZeroTrustAccessAiControlsMcpServerUpdatedToolResult']:
+        return pulumi.get(self, "updated_tools")
+
 
 class AwaitableGetZeroTrustAccessAiControlsMcpServerResult(GetZeroTrustAccessAiControlsMcpServerResult):
     # pylint: disable=using-constant-test
@@ -195,7 +211,9 @@ class AwaitableGetZeroTrustAccessAiControlsMcpServerResult(GetZeroTrustAccessAiC
             name=self.name,
             prompts=self.prompts,
             status=self.status,
-            tools=self.tools)
+            tools=self.tools,
+            updated_prompts=self.updated_prompts,
+            updated_tools=self.updated_tools)
 
 
 def get_zero_trust_access_ai_controls_mcp_server(account_id: Optional[_builtins.str] = None,
@@ -240,8 +258,10 @@ def get_zero_trust_access_ai_controls_mcp_server(account_id: Optional[_builtins.
         name=pulumi.get(__ret__, 'name'),
         prompts=pulumi.get(__ret__, 'prompts'),
         status=pulumi.get(__ret__, 'status'),
-        tools=pulumi.get(__ret__, 'tools'))
-def get_zero_trust_access_ai_controls_mcp_server_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+        tools=pulumi.get(__ret__, 'tools'),
+        updated_prompts=pulumi.get(__ret__, 'updated_prompts'),
+        updated_tools=pulumi.get(__ret__, 'updated_tools'))
+def get_zero_trust_access_ai_controls_mcp_server_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                         filter: Optional[pulumi.Input[Optional[Union['GetZeroTrustAccessAiControlsMcpServerFilterArgs', 'GetZeroTrustAccessAiControlsMcpServerFilterArgsDict']]]] = None,
                                                         id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessAiControlsMcpServerResult]:
@@ -282,4 +302,6 @@ def get_zero_trust_access_ai_controls_mcp_server_output(account_id: Optional[pul
         name=pulumi.get(__response__, 'name'),
         prompts=pulumi.get(__response__, 'prompts'),
         status=pulumi.get(__response__, 'status'),
-        tools=pulumi.get(__response__, 'tools')))
+        tools=pulumi.get(__response__, 'tools'),
+        updated_prompts=pulumi.get(__response__, 'updated_prompts'),
+        updated_tools=pulumi.get(__response__, 'updated_tools')))

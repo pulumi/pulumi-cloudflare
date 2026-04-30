@@ -17,6 +17,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Cloud Connector Read`
+ * - `Cloud Connector Write`
+ * 
  * ## Example Usage
  * 
  * <pre>

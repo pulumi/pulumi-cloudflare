@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetAuthenticatedOriginPullsSettings
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetAuthenticatedOriginPullsSettingsResult> InvokeAsync(GetAuthenticatedOriginPullsSettingsArgs args, InvokeOptions? options = null)
+        public static Task<GetAuthenticatedOriginPullsSettingsResult> InvokeAsync(GetAuthenticatedOriginPullsSettingsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAuthenticatedOriginPullsSettingsResult>("cloudflare:index/getAuthenticatedOriginPullsSettings:getAuthenticatedOriginPullsSettings", args ?? new GetAuthenticatedOriginPullsSettingsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetAuthenticatedOriginPullsSettingsResult> Invoke(GetAuthenticatedOriginPullsSettingsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetAuthenticatedOriginPullsSettingsResult> Invoke(GetAuthenticatedOriginPullsSettingsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAuthenticatedOriginPullsSettingsResult>("cloudflare:index/getAuthenticatedOriginPullsSettings:getAuthenticatedOriginPullsSettings", args ?? new GetAuthenticatedOriginPullsSettingsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +99,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetAuthenticatedOriginPullsSettingsArgs()
         {
@@ -98,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetAuthenticatedOriginPullsSettingsInvokeArgs()
         {
@@ -122,7 +137,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetAuthenticatedOriginPullsSettingsResult(
@@ -130,7 +145,7 @@ namespace Pulumi.Cloudflare
 
             string id,
 
-            string zoneId)
+            string? zoneId)
         {
             Enabled = enabled;
             Id = id;

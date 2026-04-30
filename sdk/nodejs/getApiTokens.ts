@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `API Tokens Read`
+ * - `API Tokens Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -65,6 +70,11 @@ export interface GetApiTokensResult {
     readonly results: outputs.GetApiTokensResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `API Tokens Read`
+ * - `API Tokens Write`
+ *
  * ## Example Usage
  *
  * ```typescript

@@ -9,6 +9,8 @@ import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZoneSettingResult {
@@ -53,7 +55,7 @@ public final class GetZoneSettingResult {
      * @return Identifier
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetZoneSettingResult() {}
     /**
@@ -111,8 +113,8 @@ public final class GetZoneSettingResult {
      * @return Identifier
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -131,7 +133,7 @@ public final class GetZoneSettingResult {
         private String settingId;
         private Double timeRemaining;
         private String value;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetZoneSettingResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -202,10 +204,8 @@ public final class GetZoneSettingResult {
             return this;
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetZoneSettingResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

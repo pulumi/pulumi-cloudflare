@@ -23,7 +23,6 @@ class WaitingRoomEventArgs:
                  event_start_time: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
                  waiting_room_id: pulumi.Input[_builtins.str],
-                 zone_id: pulumi.Input[_builtins.str],
                  custom_page_html: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  disable_session_renewal: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -35,14 +34,14 @@ class WaitingRoomEventArgs:
                  suspended: Optional[pulumi.Input[_builtins.bool]] = None,
                  total_active_users: Optional[pulumi.Input[_builtins.int]] = None,
                  turnstile_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 turnstile_mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 turnstile_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WaitingRoomEvent resource.
 
         :param pulumi.Input[_builtins.str] event_end_time: An ISO 8601 timestamp that marks the end of the event.
         :param pulumi.Input[_builtins.str] event_start_time: An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`.
         :param pulumi.Input[_builtins.str] name: A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed.
-        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.str] custom_page_html: If set, the event will override the waiting room's `custom_page_html` property while it is active. If null, the event will inherit it.
         :param pulumi.Input[_builtins.str] description: A note that you can use to add more details about the event.
         :param pulumi.Input[_builtins.bool] disable_session_renewal: If set, the event will override the waiting room's `disable_session_renewal` property while it is active. If null, the event will inherit it.
@@ -57,12 +56,12 @@ class WaitingRoomEventArgs:
                Available values: "log", "infinite_queue".
         :param pulumi.Input[_builtins.str] turnstile_mode: If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it.
                Available values: "off", "invisible", "visible*non*interactive", "visible_managed".
+        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         pulumi.set(__self__, "event_end_time", event_end_time)
         pulumi.set(__self__, "event_start_time", event_start_time)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "waiting_room_id", waiting_room_id)
-        pulumi.set(__self__, "zone_id", zone_id)
         if custom_page_html is not None:
             pulumi.set(__self__, "custom_page_html", custom_page_html)
         if description is not None:
@@ -87,6 +86,8 @@ class WaitingRoomEventArgs:
             pulumi.set(__self__, "turnstile_action", turnstile_action)
         if turnstile_mode is not None:
             pulumi.set(__self__, "turnstile_mode", turnstile_mode)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter(name="eventEndTime")
@@ -132,18 +133,6 @@ class WaitingRoomEventArgs:
     @waiting_room_id.setter
     def waiting_room_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "waiting_room_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "zone_id")
-
-    @zone_id.setter
-    def zone_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="customPageHtml")
@@ -290,6 +279,18 @@ class WaitingRoomEventArgs:
     @turnstile_mode.setter
     def turnstile_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "turnstile_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
@@ -622,6 +623,11 @@ class WaitingRoomEvent(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Waiting Rooms Read`
+        - `Waiting Rooms Write`
+
         ## Example Usage
 
         ```python
@@ -683,6 +689,11 @@ class WaitingRoomEvent(pulumi.CustomResource):
                  args: WaitingRoomEventArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Waiting Rooms Read`
+        - `Waiting Rooms Write`
+
         ## Example Usage
 
         ```python
@@ -781,8 +792,6 @@ class WaitingRoomEvent(pulumi.CustomResource):
             if waiting_room_id is None and not opts.urn:
                 raise TypeError("Missing required property 'waiting_room_id'")
             __props__.__dict__["waiting_room_id"] = waiting_room_id
-            if zone_id is None and not opts.urn:
-                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["created_on"] = None
             __props__.__dict__["modified_on"] = None
@@ -1005,7 +1014,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[_builtins.str]:
+    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier.
         """

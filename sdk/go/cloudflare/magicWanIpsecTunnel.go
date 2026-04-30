@@ -90,7 +90,7 @@ type MagicWanIpsecTunnel struct {
 	// The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
 	CustomerEndpoint pulumi.StringPtrOutput `pulumi:"customerEndpoint"`
 	// An optional description forthe IPsec tunnel.
-	Description pulumi.StringPtrOutput               `pulumi:"description"`
+	Description pulumi.StringOutput                  `pulumi:"description"`
 	HealthCheck MagicWanIpsecTunnelHealthCheckOutput `pulumi:"healthCheck"`
 	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 	InterfaceAddress pulumi.StringOutput `pulumi:"interfaceAddress"`
@@ -421,8 +421,8 @@ func (o MagicWanIpsecTunnelOutput) CustomerEndpoint() pulumi.StringPtrOutput {
 }
 
 // An optional description forthe IPsec tunnel.
-func (o MagicWanIpsecTunnelOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnel) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o MagicWanIpsecTunnelOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *MagicWanIpsecTunnel) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 func (o MagicWanIpsecTunnelOutput) HealthCheck() MagicWanIpsecTunnelHealthCheckOutput {

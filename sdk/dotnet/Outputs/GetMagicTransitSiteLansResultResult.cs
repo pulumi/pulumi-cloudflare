@@ -22,6 +22,14 @@ namespace Pulumi.Cloudflare.Outputs
         /// Identifier
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// mark true to use this LAN for source-based breakout traffic
+        /// </summary>
+        public readonly bool IsBreakout;
+        /// <summary>
+        /// mark true to use this LAN for source-based prioritized traffic
+        /// </summary>
+        public readonly bool IsPrioritized;
         public readonly string Name;
         public readonly Outputs.GetMagicTransitSiteLansResultNatResult Nat;
         public readonly int Physport;
@@ -47,6 +55,10 @@ namespace Pulumi.Cloudflare.Outputs
 
             string id,
 
+            bool isBreakout,
+
+            bool isPrioritized,
+
             string name,
 
             Outputs.GetMagicTransitSiteLansResultNatResult nat,
@@ -64,6 +76,8 @@ namespace Pulumi.Cloudflare.Outputs
             BondId = bondId;
             HaLink = haLink;
             Id = id;
+            IsBreakout = isBreakout;
+            IsPrioritized = isPrioritized;
             Name = name;
             Nat = nat;
             Physport = physport;

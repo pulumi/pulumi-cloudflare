@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Load Balancers Read`
+// - `Load Balancers Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetLoadBalancers(ctx, &cloudflare.LookupLoadBalancersArgs{
-//				ZoneId: "699d98642c564d2e855e9661899b7252",
+//				ZoneId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,8 +54,8 @@ func LookupLoadBalancers(ctx *pulumi.Context, args *LookupLoadBalancersArgs, opt
 // A collection of arguments for invoking getLoadBalancers.
 type LookupLoadBalancersArgs struct {
 	// Max items to fetch, default: 1000
-	MaxItems *int   `pulumi:"maxItems"`
-	ZoneId   string `pulumi:"zoneId"`
+	MaxItems *int    `pulumi:"maxItems"`
+	ZoneId   *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getLoadBalancers.
@@ -61,7 +66,7 @@ type LookupLoadBalancersResult struct {
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
 	Results []GetLoadBalancersResult `pulumi:"results"`
-	ZoneId  string                   `pulumi:"zoneId"`
+	ZoneId  *string                  `pulumi:"zoneId"`
 }
 
 func LookupLoadBalancersOutput(ctx *pulumi.Context, args LookupLoadBalancersOutputArgs, opts ...pulumi.InvokeOption) LookupLoadBalancersResultOutput {
@@ -76,8 +81,8 @@ func LookupLoadBalancersOutput(ctx *pulumi.Context, args LookupLoadBalancersOutp
 // A collection of arguments for invoking getLoadBalancers.
 type LookupLoadBalancersOutputArgs struct {
 	// Max items to fetch, default: 1000
-	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	ZoneId   pulumi.StringInput `pulumi:"zoneId"`
+	MaxItems pulumi.IntPtrInput    `pulumi:"maxItems"`
+	ZoneId   pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupLoadBalancersOutputArgs) ElementType() reflect.Type {
@@ -114,8 +119,8 @@ func (o LookupLoadBalancersResultOutput) Results() GetLoadBalancersResultArrayOu
 	return o.ApplyT(func(v LookupLoadBalancersResult) []GetLoadBalancersResult { return v.Results }).(GetLoadBalancersResultArrayOutput)
 }
 
-func (o LookupLoadBalancersResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupLoadBalancersResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupLoadBalancersResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupLoadBalancersResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

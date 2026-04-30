@@ -7,6 +7,15 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Domain Page Shield`
+ * - `Domain Page Shield Read`
+ * - `Page Shield`
+ * - `Page Shield Read`
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +27,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getPageShieldPolicies(args: GetPageShieldPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetPageShieldPoliciesResult> {
+export function getPageShieldPolicies(args?: GetPageShieldPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetPageShieldPoliciesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getPageShieldPolicies:getPageShieldPolicies", {
         "maxItems": args.maxItems,
@@ -37,7 +47,7 @@ export interface GetPageShieldPoliciesArgs {
     /**
      * Identifier
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -59,9 +69,18 @@ export interface GetPageShieldPoliciesResult {
     /**
      * Identifier
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Domain Page Shield`
+ * - `Domain Page Shield Read`
+ * - `Page Shield`
+ * - `Page Shield Read`
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,7 +92,8 @@ export interface GetPageShieldPoliciesResult {
  * });
  * ```
  */
-export function getPageShieldPoliciesOutput(args: GetPageShieldPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPageShieldPoliciesResult> {
+export function getPageShieldPoliciesOutput(args?: GetPageShieldPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPageShieldPoliciesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getPageShieldPolicies:getPageShieldPolicies", {
         "maxItems": args.maxItems,
@@ -92,5 +112,5 @@ export interface GetPageShieldPoliciesOutputArgs {
     /**
      * Identifier
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

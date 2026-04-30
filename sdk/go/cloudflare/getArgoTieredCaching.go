@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetArgoTieredCaching(ctx, &cloudflare.LookupArgoTieredCachingArgs{
-//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +49,7 @@ func LookupArgoTieredCaching(ctx *pulumi.Context, args *LookupArgoTieredCachingA
 // A collection of arguments for invoking getArgoTieredCaching.
 type LookupArgoTieredCachingArgs struct {
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getArgoTieredCaching.
@@ -64,7 +64,7 @@ type LookupArgoTieredCachingResult struct {
 	// Available values: "on", "off".
 	Value string `pulumi:"value"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupArgoTieredCachingOutput(ctx *pulumi.Context, args LookupArgoTieredCachingOutputArgs, opts ...pulumi.InvokeOption) LookupArgoTieredCachingResultOutput {
@@ -79,7 +79,7 @@ func LookupArgoTieredCachingOutput(ctx *pulumi.Context, args LookupArgoTieredCac
 // A collection of arguments for invoking getArgoTieredCaching.
 type LookupArgoTieredCachingOutputArgs struct {
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupArgoTieredCachingOutputArgs) ElementType() reflect.Type {
@@ -123,8 +123,8 @@ func (o LookupArgoTieredCachingResultOutput) Value() pulumi.StringOutput {
 }
 
 // Identifier.
-func (o LookupArgoTieredCachingResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupArgoTieredCachingResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupArgoTieredCachingResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupArgoTieredCachingResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

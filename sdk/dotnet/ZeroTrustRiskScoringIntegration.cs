@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Zero Trust Read`
+    /// - `Zero Trust Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -41,7 +46,7 @@ namespace Pulumi.Cloudflare
     public partial class ZeroTrustRiskScoringIntegration : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// The Cloudflare account tag.
@@ -132,8 +137,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustRiskScoringIntegrationArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Whether this integration is enabled. If disabled, no risk changes will be exported to the third-party.

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -47,7 +46,7 @@ import (
 type ZeroTrustGatewayCertificate struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Whether to activate the certificate on Cloudflare's edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `bindingStatus` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic
 	Activate pulumi.BoolPtrOutput `pulumi:"activate"`
 	// Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.
@@ -78,12 +77,9 @@ type ZeroTrustGatewayCertificate struct {
 func NewZeroTrustGatewayCertificate(ctx *pulumi.Context,
 	name string, args *ZeroTrustGatewayCertificateArgs, opts ...pulumi.ResourceOption) (*ZeroTrustGatewayCertificate, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ZeroTrustGatewayCertificateArgs{}
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustGatewayCertificate
 	err := ctx.RegisterResource("cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate", name, args, &resource, opts...)
@@ -167,7 +163,7 @@ func (ZeroTrustGatewayCertificateState) ElementType() reflect.Type {
 }
 
 type zeroTrustGatewayCertificateArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Whether to activate the certificate on Cloudflare's edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `bindingStatus` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic
 	Activate *bool `pulumi:"activate"`
 	// Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.
@@ -176,7 +172,7 @@ type zeroTrustGatewayCertificateArgs struct {
 
 // The set of arguments for constructing a ZeroTrustGatewayCertificate resource.
 type ZeroTrustGatewayCertificateArgs struct {
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// Whether to activate the certificate on Cloudflare's edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `bindingStatus` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic
 	Activate pulumi.BoolPtrInput
 	// Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.
@@ -270,8 +266,8 @@ func (o ZeroTrustGatewayCertificateOutput) ToZeroTrustGatewayCertificateOutputWi
 	return o
 }
 
-func (o ZeroTrustGatewayCertificateOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o ZeroTrustGatewayCertificateOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Whether to activate the certificate on Cloudflare's edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `bindingStatus` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic

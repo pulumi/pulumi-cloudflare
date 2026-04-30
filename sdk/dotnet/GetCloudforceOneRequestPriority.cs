@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetCloudforceOneRequestPriority
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudforce One Read`
+        /// - `Cloudforce One Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +40,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCloudforceOneRequestPriorityResult>("cloudflare:index/getCloudforceOneRequestPriority:getCloudforceOneRequestPriority", args ?? new GetCloudforceOneRequestPriorityArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudforce One Read`
+        /// - `Cloudforce One Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +68,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetCloudforceOneRequestPriorityResult>("cloudflare:index/getCloudforceOneRequestPriority:getCloudforceOneRequestPriority", args ?? new GetCloudforceOneRequestPriorityInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudforce One Read`
+        /// - `Cloudforce One Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +102,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// UUID.
@@ -107,8 +122,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// UUID.
@@ -129,7 +144,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         public readonly string Completed;
         /// <summary>
         /// Request content.
@@ -179,7 +194,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetCloudforceOneRequestPriorityResult(
-            string accountId,
+            string? accountId,
 
             string completed,
 

@@ -21,21 +21,22 @@ class RegionalHostnameArgs:
     def __init__(__self__, *,
                  hostname: pulumi.Input[_builtins.str],
                  region_key: pulumi.Input[_builtins.str],
-                 zone_id: pulumi.Input[_builtins.str],
-                 routing: Optional[pulumi.Input[_builtins.str]] = None):
+                 routing: Optional[pulumi.Input[_builtins.str]] = None,
+                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegionalHostname resource.
 
         :param pulumi.Input[_builtins.str] hostname: DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
         :param pulumi.Input[_builtins.str] region_key: Identifying key for the region
-        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.str] routing: Configure which routing method to use for the regional hostname
+        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "region_key", region_key)
-        pulumi.set(__self__, "zone_id", zone_id)
         if routing is not None:
             pulumi.set(__self__, "routing", routing)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter
@@ -62,18 +63,6 @@ class RegionalHostnameArgs:
         pulumi.set(self, "region_key", value)
 
     @_builtins.property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "zone_id")
-
-    @zone_id.setter
-    def zone_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "zone_id", value)
-
-    @_builtins.property
     @pulumi.getter
     def routing(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -84,6 +73,18 @@ class RegionalHostnameArgs:
     @routing.setter
     def routing(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "routing", value)
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
@@ -187,6 +188,11 @@ class RegionalHostname(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `DNS Read`
+        - `DNS Write`
+
         ## Example Usage
 
         ```python
@@ -221,6 +227,11 @@ class RegionalHostname(pulumi.CustomResource):
                  args: RegionalHostnameArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `DNS Read`
+        - `DNS Write`
+
         ## Example Usage
 
         ```python
@@ -276,8 +287,6 @@ class RegionalHostname(pulumi.CustomResource):
                 raise TypeError("Missing required property 'region_key'")
             __props__.__dict__["region_key"] = region_key
             __props__.__dict__["routing"] = routing
-            if zone_id is None and not opts.urn:
-                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["created_on"] = None
         super(RegionalHostname, __self__).__init__(
@@ -353,7 +362,7 @@ class RegionalHostname(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[_builtins.str]:
+    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier.
         """

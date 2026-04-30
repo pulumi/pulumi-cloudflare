@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Magic WAN Read`
+// - `Magic WAN Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetMagicTransitConnectors(ctx, &cloudflare.LookupMagicTransitConnectorsArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +54,7 @@ func LookupMagicTransitConnectors(ctx *pulumi.Context, args *LookupMagicTransitC
 // A collection of arguments for invoking getMagicTransitConnectors.
 type LookupMagicTransitConnectorsArgs struct {
 	// Account identifier
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 }
@@ -57,7 +62,7 @@ type LookupMagicTransitConnectorsArgs struct {
 // A collection of values returned by getMagicTransitConnectors.
 type LookupMagicTransitConnectorsResult struct {
 	// Account identifier
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -78,7 +83,7 @@ func LookupMagicTransitConnectorsOutput(ctx *pulumi.Context, args LookupMagicTra
 // A collection of arguments for invoking getMagicTransitConnectors.
 type LookupMagicTransitConnectorsOutputArgs struct {
 	// Account identifier
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
@@ -103,8 +108,8 @@ func (o LookupMagicTransitConnectorsResultOutput) ToLookupMagicTransitConnectors
 }
 
 // Account identifier
-func (o LookupMagicTransitConnectorsResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMagicTransitConnectorsResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupMagicTransitConnectorsResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMagicTransitConnectorsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

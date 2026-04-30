@@ -13,31 +13,31 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class GetWorkersCustomDomainFilterInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Worker environment associated with the zone and hostname.
+        /// Worker environment associated with the domain.
         /// </summary>
         [Input("environment")]
         public Input<string>? Environment { get; set; }
 
         /// <summary>
-        /// Hostname of the Worker Domain.
+        /// Hostname of the domain.
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
 
         /// <summary>
-        /// Worker service associated with the zone and hostname.
+        /// Name of the Worker associated with the domain.
         /// </summary>
         [Input("service")]
         public Input<string>? Service { get; set; }
 
         /// <summary>
-        /// Identifier of the zone.
+        /// ID of the zone containing the domain hostname.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
 
         /// <summary>
-        /// Name of the zone.
+        /// Name of the zone containing the domain hostname.
         /// </summary>
         [Input("zoneName")]
         public Input<string>? ZoneName { get; set; }

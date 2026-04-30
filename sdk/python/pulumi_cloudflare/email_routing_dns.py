@@ -275,6 +275,11 @@ class EmailRoutingDns(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Zone Settings Read`
+        - `Zone Settings Write`
+
         ## Example Usage
 
         ```python
@@ -305,6 +310,11 @@ class EmailRoutingDns(pulumi.CustomResource):
                  args: EmailRoutingDnsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Zone Settings Read`
+        - `Zone Settings Write`
+
         ## Example Usage
 
         ```python

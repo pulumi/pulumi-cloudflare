@@ -214,7 +214,7 @@ class GetSpectrumApplicationResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         """
         Zone identifier.
         """
@@ -251,6 +251,11 @@ def get_spectrum_application(app_id: Optional[_builtins.str] = None,
                              zone_id: Optional[_builtins.str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSpectrumApplicationResult:
     """
+    Accepted Permissions
+
+    - `Zone Settings Read`
+    - `Zone Settings Write`
+
     ## Example Usage
 
     ```python
@@ -292,9 +297,14 @@ def get_spectrum_application(app_id: Optional[_builtins.str] = None,
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_spectrum_application_output(app_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                     filter: Optional[pulumi.Input[Optional[Union['GetSpectrumApplicationFilterArgs', 'GetSpectrumApplicationFilterArgsDict']]]] = None,
-                                    zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                                    zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSpectrumApplicationResult]:
     """
+    Accepted Permissions
+
+    - `Zone Settings Read`
+    - `Zone Settings Write`
+
     ## Example Usage
 
     ```python

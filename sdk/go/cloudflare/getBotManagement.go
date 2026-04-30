@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Bot Management Read`
+// - `Bot Management Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetBotManagement(ctx, &cloudflare.LookupBotManagementArgs{
-//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +54,7 @@ func LookupBotManagement(ctx *pulumi.Context, args *LookupBotManagementArgs, opt
 // A collection of arguments for invoking getBotManagement.
 type LookupBotManagementArgs struct {
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getBotManagement.
@@ -64,6 +69,9 @@ type LookupBotManagementResult struct {
 	// Specifies the Robots Access Control License variant to use.
 	// Available values: "off", "policyOnly".
 	CfRobotsVariant string `pulumi:"cfRobotsVariant"`
+	// Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.
+	// Available values: "block", "disabled".
+	ContentBotsProtection string `pulumi:"contentBotsProtection"`
 	// Enable rule to punish AI Scrapers and Crawlers via a link maze.
 	// Available values: "enabled", "disabled".
 	CrawlerProtection string `pulumi:"crawlerProtection"`
@@ -97,7 +105,7 @@ type LookupBotManagementResult struct {
 	// A read-only field that indicates whether the zone currently is running the latest ML model.
 	UsingLatestModel bool `pulumi:"usingLatestModel"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupBotManagementOutput(ctx *pulumi.Context, args LookupBotManagementOutputArgs, opts ...pulumi.InvokeOption) LookupBotManagementResultOutput {
@@ -112,7 +120,7 @@ func LookupBotManagementOutput(ctx *pulumi.Context, args LookupBotManagementOutp
 // A collection of arguments for invoking getBotManagement.
 type LookupBotManagementOutputArgs struct {
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupBotManagementOutputArgs) ElementType() reflect.Type {
@@ -154,6 +162,12 @@ func (o LookupBotManagementResultOutput) BmCookieEnabled() pulumi.BoolOutput {
 // Available values: "off", "policyOnly".
 func (o LookupBotManagementResultOutput) CfRobotsVariant() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBotManagementResult) string { return v.CfRobotsVariant }).(pulumi.StringOutput)
+}
+
+// Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.
+// Available values: "block", "disabled".
+func (o LookupBotManagementResultOutput) ContentBotsProtection() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBotManagementResult) string { return v.ContentBotsProtection }).(pulumi.StringOutput)
 }
 
 // Enable rule to punish AI Scrapers and Crawlers via a link maze.
@@ -230,8 +244,8 @@ func (o LookupBotManagementResultOutput) UsingLatestModel() pulumi.BoolOutput {
 }
 
 // Identifier.
-func (o LookupBotManagementResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBotManagementResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupBotManagementResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupBotManagementResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

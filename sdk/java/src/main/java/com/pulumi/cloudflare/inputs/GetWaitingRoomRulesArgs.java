@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetWaitingRoomRulesArgs extends com.pulumi.resources.InvokeArgs {
@@ -25,15 +27,15 @@ public final class GetWaitingRoomRulesArgs extends com.pulumi.resources.InvokeAr
      * Identifier.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private Output<String> zoneId;
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private GetWaitingRoomRulesArgs() {}
@@ -76,7 +78,7 @@ public final class GetWaitingRoomRulesArgs extends com.pulumi.resources.InvokeAr
          * @return builder
          * 
          */
-        public Builder zoneId(Output<String> zoneId) {
+        public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -94,9 +96,6 @@ public final class GetWaitingRoomRulesArgs extends com.pulumi.resources.InvokeAr
         public GetWaitingRoomRulesArgs build() {
             if ($.waitingRoomId == null) {
                 throw new MissingRequiredPropertyException("GetWaitingRoomRulesArgs", "waitingRoomId");
-            }
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("GetWaitingRoomRulesArgs", "zoneId");
             }
             return $;
         }

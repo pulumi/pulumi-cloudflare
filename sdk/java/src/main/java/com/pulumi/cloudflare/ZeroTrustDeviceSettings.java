@@ -17,6 +17,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Zero Trust Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -67,10 +71,10 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings")
 public class ZeroTrustDeviceSettings extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
@@ -211,7 +215,7 @@ public class ZeroTrustDeviceSettings extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ZeroTrustDeviceSettings(java.lang.String name, ZeroTrustDeviceSettingsArgs args) {
+    public ZeroTrustDeviceSettings(java.lang.String name, @Nullable ZeroTrustDeviceSettingsArgs args) {
         this(name, args, null);
     }
     /**
@@ -220,7 +224,7 @@ public class ZeroTrustDeviceSettings extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ZeroTrustDeviceSettings(java.lang.String name, ZeroTrustDeviceSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public ZeroTrustDeviceSettings(java.lang.String name, @Nullable ZeroTrustDeviceSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -228,7 +232,7 @@ public class ZeroTrustDeviceSettings extends com.pulumi.resources.CustomResource
         super("cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static ZeroTrustDeviceSettingsArgs makeArgs(ZeroTrustDeviceSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static ZeroTrustDeviceSettingsArgs makeArgs(@Nullable ZeroTrustDeviceSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

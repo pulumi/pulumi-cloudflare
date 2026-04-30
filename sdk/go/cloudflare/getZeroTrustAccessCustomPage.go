@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Access: Custom Pages Read`
+// - `Access: Custom Pages Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustAccessCustomPage(ctx, &cloudflare.LookupZeroTrustAccessCustomPageArgs{
-//				AccountId:    "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:    pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				CustomPageId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 //			}, nil)
 //			if err != nil {
@@ -50,7 +55,7 @@ func LookupZeroTrustAccessCustomPage(ctx *pulumi.Context, args *LookupZeroTrustA
 // A collection of arguments for invoking getZeroTrustAccessCustomPage.
 type LookupZeroTrustAccessCustomPageArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// UUID.
 	CustomPageId string `pulumi:"customPageId"`
 }
@@ -58,7 +63,7 @@ type LookupZeroTrustAccessCustomPageArgs struct {
 // A collection of values returned by getZeroTrustAccessCustomPage.
 type LookupZeroTrustAccessCustomPageResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Custom page HTML.
 	CustomHtml string `pulumi:"customHtml"`
 	// UUID.
@@ -86,7 +91,7 @@ func LookupZeroTrustAccessCustomPageOutput(ctx *pulumi.Context, args LookupZeroT
 // A collection of arguments for invoking getZeroTrustAccessCustomPage.
 type LookupZeroTrustAccessCustomPageOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// UUID.
 	CustomPageId pulumi.StringInput `pulumi:"customPageId"`
 }
@@ -111,8 +116,8 @@ func (o LookupZeroTrustAccessCustomPageResultOutput) ToLookupZeroTrustAccessCust
 }
 
 // Identifier.
-func (o LookupZeroTrustAccessCustomPageResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustAccessCustomPageResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustAccessCustomPageResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessCustomPageResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Custom page HTML.

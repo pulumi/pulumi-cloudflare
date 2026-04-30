@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account Filter Lists Edit`
+// - `Account Filter Lists Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetLists(ctx, &cloudflare.LookupListsArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +54,7 @@ func LookupLists(ctx *pulumi.Context, args *LookupListsArgs, opts ...pulumi.Invo
 // A collection of arguments for invoking getLists.
 type LookupListsArgs struct {
 	// The Account ID for this resource.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 }
@@ -57,7 +62,7 @@ type LookupListsArgs struct {
 // A collection of values returned by getLists.
 type LookupListsResult struct {
 	// The Account ID for this resource.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -78,7 +83,7 @@ func LookupListsOutput(ctx *pulumi.Context, args LookupListsOutputArgs, opts ...
 // A collection of arguments for invoking getLists.
 type LookupListsOutputArgs struct {
 	// The Account ID for this resource.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
@@ -103,8 +108,8 @@ func (o LookupListsResultOutput) ToLookupListsResultOutputWithContext(ctx contex
 }
 
 // The Account ID for this resource.
-func (o LookupListsResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupListsResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupListsResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupListsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

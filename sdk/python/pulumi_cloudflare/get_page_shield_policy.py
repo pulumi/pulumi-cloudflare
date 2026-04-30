@@ -111,7 +111,7 @@ class GetPageShieldPolicyResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         """
         Identifier
         """
@@ -138,6 +138,15 @@ def get_page_shield_policy(policy_id: Optional[_builtins.str] = None,
                            zone_id: Optional[_builtins.str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPageShieldPolicyResult:
     """
+    Accepted Permissions
+
+    - `Domain Page Shield`
+    - `Domain Page Shield Read`
+    - `Page Shield`
+    - `Page Shield Read`
+    - `Zone Settings Read`
+    - `Zone Settings Write`
+
     ## Example Usage
 
     ```python
@@ -168,9 +177,18 @@ def get_page_shield_policy(policy_id: Optional[_builtins.str] = None,
         value=pulumi.get(__ret__, 'value'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_page_shield_policy_output(policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                                  zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPageShieldPolicyResult]:
     """
+    Accepted Permissions
+
+    - `Domain Page Shield`
+    - `Domain Page Shield Read`
+    - `Page Shield`
+    - `Page Shield Read`
+    - `Zone Settings Read`
+    - `Zone Settings Write`
+
     ## Example Usage
 
     ```python

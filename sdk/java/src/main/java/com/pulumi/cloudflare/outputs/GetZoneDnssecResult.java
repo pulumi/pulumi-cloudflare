@@ -9,6 +9,8 @@ import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZoneDnssecResult {
@@ -54,7 +56,7 @@ public final class GetZoneDnssecResult {
      * @return Identifier.
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetZoneDnssecResult() {}
     /**
@@ -129,8 +131,8 @@ public final class GetZoneDnssecResult {
      * @return Identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -157,7 +159,7 @@ public final class GetZoneDnssecResult {
         private String modifiedOn;
         private String publicKey;
         private String status;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetZoneDnssecResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -300,10 +302,8 @@ public final class GetZoneDnssecResult {
             return this;
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetZoneDnssecResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

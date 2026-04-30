@@ -27,6 +27,7 @@ import com.pulumi.cloudflare.inputs.AccessPolicyIncludeOidcArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyIncludeOktaArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyIncludeSamlArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyIncludeServiceTokenArgs;
+import com.pulumi.cloudflare.inputs.AccessPolicyIncludeUserRiskScoreArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.util.Objects;
@@ -222,6 +223,13 @@ public final class AccessPolicyIncludeArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.serviceToken);
     }
 
+    @Import(name="userRiskScore")
+    private @Nullable Output<AccessPolicyIncludeUserRiskScoreArgs> userRiskScore;
+
+    public Optional<Output<AccessPolicyIncludeUserRiskScoreArgs>> userRiskScore() {
+        return Optional.ofNullable(this.userRiskScore);
+    }
+
     private AccessPolicyIncludeArgs() {}
 
     private AccessPolicyIncludeArgs(AccessPolicyIncludeArgs $) {
@@ -249,6 +257,7 @@ public final class AccessPolicyIncludeArgs extends com.pulumi.resources.Resource
         this.okta = $.okta;
         this.saml = $.saml;
         this.serviceToken = $.serviceToken;
+        this.userRiskScore = $.userRiskScore;
     }
 
     public static Builder builder() {
@@ -507,6 +516,15 @@ public final class AccessPolicyIncludeArgs extends com.pulumi.resources.Resource
 
         public Builder serviceToken(AccessPolicyIncludeServiceTokenArgs serviceToken) {
             return serviceToken(Output.of(serviceToken));
+        }
+
+        public Builder userRiskScore(@Nullable Output<AccessPolicyIncludeUserRiskScoreArgs> userRiskScore) {
+            $.userRiskScore = userRiskScore;
+            return this;
+        }
+
+        public Builder userRiskScore(AccessPolicyIncludeUserRiskScoreArgs userRiskScore) {
+            return userRiskScore(Output.of(userRiskScore));
         }
 
         public AccessPolicyIncludeArgs build() {

@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetLoadBalancerPools
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Load Balancing: Monitors and Pools Read`
+        /// - `Load Balancing: Monitors and Pools Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,10 +36,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetLoadBalancerPoolsResult> InvokeAsync(GetLoadBalancerPoolsArgs args, InvokeOptions? options = null)
+        public static Task<GetLoadBalancerPoolsResult> InvokeAsync(GetLoadBalancerPoolsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancerPoolsResult>("cloudflare:index/getLoadBalancerPools:getLoadBalancerPools", args ?? new GetLoadBalancerPoolsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Load Balancing: Monitors and Pools Read`
+        /// - `Load Balancing: Monitors and Pools Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,10 +64,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetLoadBalancerPoolsResult> Invoke(GetLoadBalancerPoolsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetLoadBalancerPoolsResult> Invoke(GetLoadBalancerPoolsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLoadBalancerPoolsResult>("cloudflare:index/getLoadBalancerPools:getLoadBalancerPools", args ?? new GetLoadBalancerPoolsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Load Balancing: Monitors and Pools Read`
+        /// - `Load Balancing: Monitors and Pools Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +102,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -113,8 +128,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -141,7 +156,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -161,7 +176,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetLoadBalancerPoolsResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

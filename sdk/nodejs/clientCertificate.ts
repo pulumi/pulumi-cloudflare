@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -130,7 +135,7 @@ export class ClientCertificate extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a ClientCertificate resource with the given unique name, arguments, and options.
@@ -171,9 +176,6 @@ export class ClientCertificate extends pulumi.CustomResource {
             }
             if (args?.validityDays === undefined && !opts.urn) {
                 throw new Error("Missing required property 'validityDays'");
-            }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["csr"] = args?.csr;
             resourceInputs["reactivate"] = args?.reactivate;
@@ -296,5 +298,5 @@ export interface ClientCertificateArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

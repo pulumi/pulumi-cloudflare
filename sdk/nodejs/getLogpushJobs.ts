@@ -7,6 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Logs Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,6 +77,10 @@ export interface GetLogpushJobsResult {
     readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Logs Write`
+ *
  * ## Example Usage
  *
  * ```typescript

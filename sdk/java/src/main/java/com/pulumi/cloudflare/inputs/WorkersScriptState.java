@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.WorkersScriptAnnotationsArgs;
 import com.pulumi.cloudflare.inputs.WorkersScriptAssetsArgs;
 import com.pulumi.cloudflare.inputs.WorkersScriptBindingArgs;
 import com.pulumi.cloudflare.inputs.WorkersScriptLimitsArgs;
@@ -39,6 +40,21 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
+    }
+
+    /**
+     * Annotations for the version created by this upload.
+     * 
+     */
+    @Import(name="annotations")
+    private @Nullable Output<WorkersScriptAnnotationsArgs> annotations;
+
+    /**
+     * @return Annotations for the version created by this upload.
+     * 
+     */
+    public Optional<Output<WorkersScriptAnnotationsArgs>> annotations() {
+        return Optional.ofNullable(this.annotations);
     }
 
     /**
@@ -535,6 +551,7 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
 
     private WorkersScriptState(WorkersScriptState $) {
         this.accountId = $.accountId;
+        this.annotations = $.annotations;
         this.assets = $.assets;
         this.bindings = $.bindings;
         this.bodyPart = $.bodyPart;
@@ -606,6 +623,27 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param annotations Annotations for the version created by this upload.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder annotations(@Nullable Output<WorkersScriptAnnotationsArgs> annotations) {
+            $.annotations = annotations;
+            return this;
+        }
+
+        /**
+         * @param annotations Annotations for the version created by this upload.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder annotations(WorkersScriptAnnotationsArgs annotations) {
+            return annotations(Output.of(annotations));
         }
 
         /**

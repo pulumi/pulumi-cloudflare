@@ -8,10 +8,12 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustDevicePostureIntegrationResult {
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return The configuration object containing third-party integration information.
      * 
@@ -45,8 +47,8 @@ public final class GetZeroTrustDevicePostureIntegrationResult {
     private String type;
 
     private GetZeroTrustDevicePostureIntegrationResult() {}
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return The configuration object containing third-party integration information.
@@ -101,7 +103,7 @@ public final class GetZeroTrustDevicePostureIntegrationResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private GetZeroTrustDevicePostureIntegrationConfig config;
         private String id;
         private String integrationId;
@@ -121,10 +123,8 @@ public final class GetZeroTrustDevicePostureIntegrationResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustDevicePostureIntegrationResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

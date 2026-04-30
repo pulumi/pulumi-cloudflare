@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Firewall Services Read`
+ * - `Firewall Services Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -21,7 +26,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getUserAgentBlockingRules(args: GetUserAgentBlockingRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetUserAgentBlockingRulesResult> {
+export function getUserAgentBlockingRules(args?: GetUserAgentBlockingRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetUserAgentBlockingRulesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getUserAgentBlockingRules:getUserAgentBlockingRules", {
         "description": args.description,
@@ -55,7 +61,7 @@ export interface GetUserAgentBlockingRulesArgs {
     /**
      * Defines an identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -89,9 +95,14 @@ export interface GetUserAgentBlockingRulesResult {
     /**
      * Defines an identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Firewall Services Read`
+ * - `Firewall Services Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -106,7 +117,8 @@ export interface GetUserAgentBlockingRulesResult {
  * });
  * ```
  */
-export function getUserAgentBlockingRulesOutput(args: GetUserAgentBlockingRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUserAgentBlockingRulesResult> {
+export function getUserAgentBlockingRulesOutput(args?: GetUserAgentBlockingRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUserAgentBlockingRulesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getUserAgentBlockingRules:getUserAgentBlockingRules", {
         "description": args.description,
@@ -140,5 +152,5 @@ export interface GetUserAgentBlockingRulesOutputArgs {
     /**
      * Defines an identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

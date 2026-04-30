@@ -116,9 +116,10 @@ class GetPageShieldScriptsResult:
 
     @_builtins.property
     @pulumi.getter(name="dataflowScore")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def dataflow_score(self) -> _builtins.int:
         """
-        The dataflow score of the JavaScript content.
+        The dataflow score of the JavaScript content. This field has been deprecated in favour of js*integrity*score.
         """
         return pulumi.get(self, "dataflow_score")
 
@@ -207,9 +208,10 @@ class GetPageShieldScriptsResult:
 
     @_builtins.property
     @pulumi.getter(name="obfuscationScore")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def obfuscation_score(self) -> _builtins.int:
         """
-        The obfuscation score of the JavaScript content.
+        The obfuscation score of the JavaScript content. This field has been deprecated in favour of js*integrity*score.
         """
         return pulumi.get(self, "obfuscation_score")
 
@@ -248,7 +250,7 @@ class GetPageShieldScriptsResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         """
         Identifier
         """
@@ -291,6 +293,15 @@ def get_page_shield_scripts(script_id: Optional[_builtins.str] = None,
                             zone_id: Optional[_builtins.str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPageShieldScriptsResult:
     """
+    Accepted Permissions
+
+    - `Domain Page Shield`
+    - `Domain Page Shield Read`
+    - `Page Shield`
+    - `Page Shield Read`
+    - `Zone Settings Read`
+    - `Zone Settings Write`
+
     ## Example Usage
 
     ```python
@@ -337,9 +348,18 @@ def get_page_shield_scripts(script_id: Optional[_builtins.str] = None,
         versions=pulumi.get(__ret__, 'versions'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_page_shield_scripts_output(script_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                   zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                                   zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPageShieldScriptsResult]:
     """
+    Accepted Permissions
+
+    - `Domain Page Shield`
+    - `Domain Page Shield Read`
+    - `Page Shield`
+    - `Page Shield Read`
+    - `Zone Settings Read`
+    - `Zone Settings Write`
+
     ## Example Usage
 
     ```python

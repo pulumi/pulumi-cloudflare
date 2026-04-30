@@ -8,10 +8,12 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustGatewayCertificateResult {
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Indicate the read-only deployment status of the certificate on Cloudflare&#39;s edge. Gateway TLS interception can use certificates in the &#39;available&#39; (previously called &#39;active&#39;) state.
      * Available values: &#34;pending*deployment&#34;, &#34;available&#34;, &#34;pending*deletion&#34;, &#34;inactive&#34;.
@@ -65,8 +67,8 @@ public final class GetZeroTrustGatewayCertificateResult {
     private String uploadedOn;
 
     private GetZeroTrustGatewayCertificateResult() {}
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Indicate the read-only deployment status of the certificate on Cloudflare&#39;s edge. Gateway TLS interception can use certificates in the &#39;available&#39; (previously called &#39;active&#39;) state.
@@ -155,7 +157,7 @@ public final class GetZeroTrustGatewayCertificateResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String bindingStatus;
         private String certificate;
         private String certificateId;
@@ -189,10 +191,8 @@ public final class GetZeroTrustGatewayCertificateResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustGatewayCertificateResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

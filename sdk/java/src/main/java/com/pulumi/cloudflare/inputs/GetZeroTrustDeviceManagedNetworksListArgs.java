@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -17,11 +16,11 @@ public final class GetZeroTrustDeviceManagedNetworksListArgs extends com.pulumi.
 
     public static final GetZeroTrustDeviceManagedNetworksListArgs Empty = new GetZeroTrustDeviceManagedNetworksListArgs();
 
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -64,7 +63,7 @@ public final class GetZeroTrustDeviceManagedNetworksListArgs extends com.pulumi.
             $ = new GetZeroTrustDeviceManagedNetworksListArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -95,9 +94,6 @@ public final class GetZeroTrustDeviceManagedNetworksListArgs extends com.pulumi.
         }
 
         public GetZeroTrustDeviceManagedNetworksListArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetZeroTrustDeviceManagedNetworksListArgs", "accountId");
-            }
             return $;
         }
     }

@@ -17,9 +17,13 @@ public final class GetPageShieldScriptsVersion {
      */
     private Integer cryptominingScore;
     /**
-     * @return The dataflow score of the JavaScript content.
+     * @return The dataflow score of the JavaScript content. This field has been deprecated in favour of js*integrity*score.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
      * 
      */
+    @Deprecated /* This attribute is deprecated. */
     private Integer dataflowScore;
     /**
      * @return The timestamp of when the script was last fetched.
@@ -47,9 +51,13 @@ public final class GetPageShieldScriptsVersion {
      */
     private Integer malwareScore;
     /**
-     * @return The obfuscation score of the JavaScript content.
+     * @return The obfuscation score of the JavaScript content. This field has been deprecated in favour of js*integrity*score.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
      * 
      */
+    @Deprecated /* This attribute is deprecated. */
     private Integer obfuscationScore;
 
     private GetPageShieldScriptsVersion() {}
@@ -61,9 +69,13 @@ public final class GetPageShieldScriptsVersion {
         return this.cryptominingScore;
     }
     /**
-     * @return The dataflow score of the JavaScript content.
+     * @return The dataflow score of the JavaScript content. This field has been deprecated in favour of js*integrity*score.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
      * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public Integer dataflowScore() {
         return this.dataflowScore;
     }
@@ -103,9 +115,13 @@ public final class GetPageShieldScriptsVersion {
         return this.malwareScore;
     }
     /**
-     * @return The obfuscation score of the JavaScript content.
+     * @return The obfuscation score of the JavaScript content. This field has been deprecated in favour of js*integrity*score.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
      * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public Integer obfuscationScore() {
         return this.obfuscationScore;
     }

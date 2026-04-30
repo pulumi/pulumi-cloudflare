@@ -20,7 +20,7 @@ public final class GetZeroTrustTunnelCloudflaredsInvokeResult {
      * @return Cloudflare account ID
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     private @Nullable String excludePrefix;
     /**
      * @return If provided, include only resources that were created (and not deleted) before this time. URL encoded.
@@ -72,8 +72,8 @@ public final class GetZeroTrustTunnelCloudflaredsInvokeResult {
      * @return Cloudflare account ID
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     public Optional<String> excludePrefix() {
         return Optional.ofNullable(this.excludePrefix);
@@ -154,7 +154,7 @@ public final class GetZeroTrustTunnelCloudflaredsInvokeResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private @Nullable String excludePrefix;
         private @Nullable String existedAt;
         private String id;
@@ -186,10 +186,8 @@ public final class GetZeroTrustTunnelCloudflaredsInvokeResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustTunnelCloudflaredsInvokeResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }
